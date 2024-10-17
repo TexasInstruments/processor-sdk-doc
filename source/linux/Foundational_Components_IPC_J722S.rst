@@ -55,9 +55,9 @@ loading the R5F and C7x cores. Here are the files it looks for on an J722S devic
    +------------------+-----------------+----------------------+-----------------------+
    | C7x              | 7e200000.c7x    | C7x core             | j722s-c71_1-fw        |
    +------------------+-----------------+----------------------+-----------------------+
-   | R5F	           | 79000000.r5f    | R5F core(MCU domain) | j722s-mcu-r5f0_0-fw   |
+   | R5F              | 79000000.r5f    | R5F core(MCU domain) | j722s-mcu-r5f0_0-fw   |
    +------------------+-----------------+----------------------+-----------------------+
-   | R5F	           | 78400000.r5f    | R5F core(MAIN domain)| j722s-main-r5f0_0-fw  |
+   | R5F              | 78400000.r5f    | R5F core(MAIN domain)| j722s-main-r5f0_0-fw  |
    +------------------+-----------------+----------------------+-----------------------+
 
 Generally on a target file system the above files are soft linked to the
@@ -75,23 +75,23 @@ For updating MCU (DM) R5F firmware binary, tispl.bin needs to be recompiled with
 
 #. Go to linux installer and replace the existing R5F MCU (DM) firmware binary with the new one
 
-.. code-block:: console
+   .. code-block:: console
 
-   host#  cp <path_to_new_fw_binary>/ipc_echo_testb_freertos_mcu1_0_release.xer5f <path_to_linux_installer>/board-support/prebuilt-images/ti-dm/j722s/ipc_echo_testb_mcu1_0_release_strip.xer5f
+      host#  cp <path_to_new_fw_binary>/ipc_echo_testb_freertos_mcu1_0_release.xer5f <path_to_linux_installer>/board-support/prebuilt-images/ti-dm/j722s/ipc_echo_testb_mcu1_0_release_strip.xer5f
 
 #. Recompile u-boot to regenerate tispl.bin using the top level makefile.
 
-.. code-block:: console
+   .. code-block:: console
 
-   host# make u-boot
+      host# make u-boot
 
-Please refer to :ref:`top-level-makefile` for more details on Top Level makefile.
+   Please refer to :ref:`top-level-makefile` for more details on Top Level makefile.
 
 #. Replace the updated tispl.bin containing new R5F firmware binary in the boot partition of sdcard and reboot
 
-.. code-block:: console
+   .. code-block:: console
 
-   host# sudo cp board-support/u-boot_build/A53/tispl.bin  /media/$USER/boot
+      host# sudo cp board-support/u-boot_build/A53/tispl.bin  /media/$USER/boot
 
 .. _booting_remote_cores_from_Linux_console:
 

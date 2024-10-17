@@ -45,7 +45,7 @@ in the SDK package that can be run from ARM Linux.
 The remoteproc driver is hard-coded to look for specific files when
 loading the R5F and C7x cores. Here are the files it looks for on an J784S4 device:
 
-::
+.. code-block:: text
 
 	+------------------+-----------------+----------------------+-----------------------+
 	| Core Name        | RemoteProc Name | Description          | Firmware File Name    |
@@ -58,27 +58,27 @@ loading the R5F and C7x cores. Here are the files it looks for on an J784S4 devi
 	+------------------+-----------------+----------------------+-----------------------+
 	| C7x              | 67800000.c7x    | C7x core             | j784s4-c71_3-fw       |
 	+------------------+-----------------+----------------------+-----------------------+
-	| R5F	           | 41000000.r5f    | R5F core(MCU domain) | j784s4-mcu-r5f0_0-fw  |
+	| R5F              | 41000000.r5f    | R5F core(MCU domain) | j784s4-mcu-r5f0_0-fw  |
 	+------------------+-----------------+----------------------+-----------------------+
-	| R5F	           | 41400000.r5f    | R5F core(MCU domain) | j784s4-mcu-r5f0_1-fw  |
+	| R5F              | 41400000.r5f    | R5F core(MCU domain) | j784s4-mcu-r5f0_1-fw  |
 	+------------------+-----------------+----------------------+-----------------------+
-	| R5F	           | 5c00000.r5f     | R5F core(MAIN domain)| j784s4-main-r5f0_0-fw |
+	| R5F              | 5c00000.r5f     | R5F core(MAIN domain)| j784s4-main-r5f0_0-fw |
 	+------------------+-----------------+----------------------+-----------------------+
-	| R5F	           | 5d00000.r5f     | R5F core(MAIN domain)| j784s4-main-r5f0_1-fw |
+	| R5F              | 5d00000.r5f     | R5F core(MAIN domain)| j784s4-main-r5f0_1-fw |
 	+------------------+-----------------+----------------------+-----------------------+
-	| R5F	           | 5e00000.r5f     | R5F core(MAIN domain)| j784s4-main-r5f1_0-fw |
+	| R5F              | 5e00000.r5f     | R5F core(MAIN domain)| j784s4-main-r5f1_0-fw |
 	+------------------+-----------------+----------------------+-----------------------+
-	| R5F	           | 5f00000.r5f     | R5F core(MAIN domain)| j784s4-main-r5f1_1-fw |
+	| R5F              | 5f00000.r5f     | R5F core(MAIN domain)| j784s4-main-r5f1_1-fw |
 	+------------------+-----------------+----------------------+-----------------------+
-	| R5F	           | 5900000.r5f     | R5F core(MAIN domain)| j784s4-main-r5f2_0-fw |
+	| R5F              | 5900000.r5f     | R5F core(MAIN domain)| j784s4-main-r5f2_0-fw |
 	+------------------+-----------------+----------------------+-----------------------+
-	| R5F	           | 5a00000.r5f     | R5F core(MAIN domain)| j784s4-main-r5f2_1-fw |
+	| R5F              | 5a00000.r5f     | R5F core(MAIN domain)| j784s4-main-r5f2_1-fw |
 	+------------------+-----------------+----------------------+-----------------------+
 
 Generally on a target file system the above files are soft linked to the
 intended executable FW files:
 
-::
+.. code-block:: console
 
 	root@j784s4-evm:~# ls -l /lib/firmware/
 	lrwxrwxrwx 1 root root      66 Mar  9  2018 j784s4-c71_0-fw -> /lib/firmware/ti-ipc/j784s4/ipc_echo_test_c7x_1_release_strip.xe71
@@ -99,23 +99,23 @@ For updating MCU (DM) R5F firmware binary, tispl.bin needs to be recompiled with
 
 #. Go to linux installer and replace the existing R5F MCU (DM) firmware binary with the new one
 
-::
+   .. code-block:: console
 
-    host#  cp <path_to_new_fw_binary>/ipc_echo_testb_freertos_mcu1_0_release.xer5f <path_to_linux_installer>/board-support/prebuilt-images/ti-dm/j784s4/ipc_echo_testb_mcu1_0_release_strip.xer5f
+      host#  cp <path_to_new_fw_binary>/ipc_echo_testb_freertos_mcu1_0_release.xer5f <path_to_linux_installer>/board-support/prebuilt-images/ti-dm/j784s4/ipc_echo_testb_mcu1_0_release_strip.xer5f
 
 #. Recompile u-boot to regenerate tispl.bin using the top level makefile.
 
-::
+   .. code-block:: console
 
-    host# make u-boot
+      host# make u-boot
 
-Please refer to :ref:`top-level-makefile` for more details on Top Level makefile.
+   Please refer to :ref:`top-level-makefile` for more details on Top Level makefile.
 
 #. Replace the updated tispl.bin containing new R5F firmware binary in the boot partition of sdcard and reboot
 
-::
+   .. code-block:: console
 
-    host# sudo cp board-support/u-boot_build/A72/tispl.bin  /media/$USER/boot
+      host# sudo cp board-support/u-boot_build/A72/tispl.bin  /media/$USER/boot
 
 .. _booting_remote_cores_from_Linux_console:
 
@@ -126,7 +126,7 @@ To reload a remote core with new executables, please follow the below steps.
 
 First, identify the remotproc node associated with the remote core:
 
-::
+.. code-block:: console
 
 	root@j784s4-evm:~# head /sys/class/remoteproc/remoteproc*/name
 	==> /sys/class/remoteproc/remoteproc0/name <==
@@ -165,20 +165,20 @@ First, identify the remotproc node associated with the remote core:
 
 Then, use the sysfs interface to stop the remote core. For example, to stop the C71x
 
-::
+.. code-block:: console
 
 	root@j784s4-evm:~# echo stop > /sys/class/remoteproc/remoteproc5/state
 	[  748.578297] remoteproc remoteproc5: stopped remote processor 5c00000.r5f
 
 If needed, update the firmware symbolic link to point to a new firmware:
 
-::
+.. code-block:: console
 
 	root@j784s4-evm:/lib/firmware# ln -sf /lib/firmware/ti-ipc/j784s4/ipc_echo_test_c7x_1_release_strip.xe71 j784s4-c71_0-fw
 
 Finally, use the sysfs interface to start the remote core:
 
-::
+.. code-block:: console
 
 	root@j784s4-evm:~# echo start > /sys/class/remoteproc/remoteproc5/state
 	[  798.485687] remoteproc remoteproc5: powering up 5c00000.r5f
@@ -205,7 +205,7 @@ memory carveouts (DMA pools) are shown below.
 
 See the devicetree bindings documentation for more details: `Documentation/devicetree/bindings/remoteproc/ti,k3-r5f-rproc.yaml <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/Documentation/devicetree/bindings/remoteproc/ti,k3-r5f-rproc.yaml?h=ti-linux-6.6.y>`__
 
-::
+.. code-block:: text
 
 	+------------------+--------------------+---------+----------------------------+
 	| Memory Section   | Physical Address   | Size    | Description                |
@@ -259,6 +259,7 @@ See the devicetree bindings documentation for more details: `Documentation/devic
 	| R5F(main) Pool   | 0xa7100000         | 15MB    | R5F externel code/data mem |
 	+------------------+--------------------+---------+----------------------------+
 
+.. code-block:: console
 
 	root@j784s4-evm:~# dmesg | grep Reserved
 	[    0.000000] Reserved memory: created DMA memory pool at 0x00000000a0000000, size 1 MiB
@@ -314,7 +315,7 @@ M4F and R5F external memory section sizes in their respective linker mapfiles.
 
 arch/arm64/boot/dts/ti/k3-j784s4-evm.dts
 
-::
+.. code-block:: text
 
 	reserved_memory: reserved-memory {
 		#address-cells = <2>;
