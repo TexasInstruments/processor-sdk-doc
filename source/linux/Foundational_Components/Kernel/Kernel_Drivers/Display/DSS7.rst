@@ -362,6 +362,9 @@ Device Tree Node
 Documentation for tidss device tree node and its properties can be found in linux kernel device tree bindings in below directory
 ``Documentation/devicetree/bindings/display/ti/``. Seperate binding files are present for different version of the DSS controller.
 
+.. ifconfig:: CONFIG_part_variant in ('J721S2')
+
+   - Pin designated as HPD for DP should not be used for other purpose, irrespective of whether it is connected as HPD or not.
 
 Driver Usage
 ============
