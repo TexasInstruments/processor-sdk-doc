@@ -86,7 +86,7 @@ For updating MCU (DM) R5F firmware binary, tispl.bin needs to be recompiled with
 
     host# make u-boot
 
-Please refer to `Top-Level Makefile <../../Overview/Top_Level_Makefile.html>`__ for more details on Top Level makefile.
+Please refer to :ref:`top-level-makefile` for more details on Top Level makefile.
 
 #. Replace the updated tispl.bin containing new R5F firmware binary in the boot partition of sdcard and reboot
 
