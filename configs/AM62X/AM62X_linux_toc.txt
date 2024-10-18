@@ -142,6 +142,7 @@ linux/How_to_Guides/Host/Moving_Files_to_the_Target_System
 linux/How_to_Guides/Host/K3_Resource_Partitioning_Tool
 linux/How_to_Guides/Host/How_to_Setup_and_Debug_using_Lauterbach
 linux/How_to_Guides/Host/SYSFW_Trace_Parser
+linux/How_to_Guides/Host/Minimal_Platform_Development
 linux/How_to_Guides/Target/Processor_SDK_Linux_File_System_Optimization_Customization
 linux/How_to_Guides/Target/How_to_boot_quickly
 #linux/How_to_Guides/Target/How_to_manually_flash_emmc_device   # We do not support this for now
