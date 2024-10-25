@@ -5,15 +5,13 @@ Processor SDK Documentation in Sphinx
 
 ### Install tools on Ubuntu
 
-    $ sudo apt-get install python-sphinx
-
-OR use the following command in a python virtual environment for a known working
-config as of 2023/09/05:
+Use the following command in a python virtual environment for a known working
+config:
 
     # python3 -m pip install -r requirements.txt
 
 OR you can use a docker container like the following:
-    - [psdk-doc-docker](https://github.com/StaticRocket/psdk-doc-docker/pkgs/container/psdk-doc-docker)
+    - [psdk-doc-docker](https://github.com/TexasInstruments/processor-sdk-doc/pkgs/container/processor-sdk-doc)
 
 ### Clone the Git Repo
 

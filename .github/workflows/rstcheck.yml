@@ -1,0 +1,71 @@
+---
+name: "rstcheck"
+
+on:
+  pull_request:
+    branches: [master]
+    paths:
+      - source
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/texasinstruments/processor-sdk-doc:latest
+      options: --entrypoint /bin/bash
+    permissions:
+      contents: read
+      issues: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Update refs and settings
+        run: |
+          git config --global --add safe.directory "$PWD"
+          git switch -C pr
+          git fetch --no-tags --depth=1 origin master
+          git switch master
+
+      - name: Run rstcheck
+        id: rstcheck
+        run: |
+          bin/delta.sh -a master -b pr \
+            -- rstcheck -r source/
+          if [ "$(wc -l < _new-warn.log)" -gt "0" ]; then
+            {
+              echo "New warnings found with rstcheck:";
+              echo '```text';
+              cat _new-warn.log;
+              echo '```';
+            } >> "$GITHUB_STEP_SUMMARY"
+            {
+              echo 'NEW_WARNINGS<<EOF'
+              echo "$(< "$GITHUB_STEP_SUMMARY")"
+              echo 'EOF'
+            } >> "$GITHUB_OUTPUT"
+            exit 1
+          fi
+          echo "No new warnings found with rstcheck" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Update pr with info
+        uses: actions/github-script@v7
+        if: ${{ failure() && steps.rstcheck.outputs.NEW_WARNINGS != '' }}
+        env:
+          NEW_WARNINGS: ${{ steps.rstcheck.outputs.NEW_WARNINGS }}
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            github.rest.issues.createComment({
+              owner: context.repo.owner,
+              issue_number: context.issue.number,
+              repo: context.repo.repo,
+              body: process.env.NEW_WARNINGS
+            })

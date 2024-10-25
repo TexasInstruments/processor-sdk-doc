@@ -750,11 +750,11 @@ Enabling camera sensors
 
 .. ifconfig:: CONFIG_part_variant in ('J784S4','J742S2')
 
-    J784S4/J742S2 has three instances of CSI2RX capture subsystem and can support upto
-    twelve **IMX390** cameras using FPDLink fusion EVM, J784S4/J742S2 EVM and AM69A SK also
-    supports **OV5640** module connected to MIPI connector. AM69A SK has two
-    instances of 22-pin FFC camera connector to which **IMX219** based RPi camera
-    modules can be interfaced.
+    J784S4/AM69A and J742S2 has three instances of CSI2RX capture subsystem and
+    can support upto twelve **IMX390** cameras using FPDLink fusion EVM.
+    J784S4-EVM/AM69A-SK and J742S2-EVM also supports **OV5640** module connected
+    to MIPI connector. AM69A-SK has two instances of 22-pin FFC camera connector
+    to which **IMX219** based RPi camera modules can be interfaced.
 
     Applying sensor overlays
     ========================

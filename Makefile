@@ -22,7 +22,7 @@ $(info ROOTDIR is $(ROOTDIR))
 $(info DEVFAMILY is $(DEVFAMILY_UP))
 FAMILYSETUPFILE = python-scripts/family_setup.py
 
-ifeq ($(DEVFAMILY_UP), $(filter $(DEVFAMILY_UP), J721E J7200 J721S2 J784S4 AM68 AM69 J722S AM67))
+ifeq ($(DEVFAMILY_UP), $(filter $(DEVFAMILY_UP), J721E J7200 J721S2 J784S4 AM68 AM69 J722S AM67 J742S2))
   CONFDIR = source/devices/J7_Family/${OS_LOW}
 else
   CONFDIR = source/devices/$(DEVFAMILY_UP)/${OS_LOW}

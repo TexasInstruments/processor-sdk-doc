@@ -1,15 +1,15 @@
 #!/bin/bash
-### PSDK-doc check new build WARNINGs
+
+# SPDX-License-Identifier: MIT
+# Copyright (C) 2024 Texas Instruments Incorporated - https://www.ti.com
+
+### Wrapper to calculate deltas between two commits
 
 HELP_STRING="
-Build and check if git branch or commit <NEW> generates any new build WARNING(s)
-based on git branch or commit <OLD>.
+Check if git branch or commit <NEW> generates any new build output running
+<COMMAND> based on git branch or commit <OLD>.
 
 check-warn.sh [OPTIONS]
-
-BUILD OPTIONS:
-  -d, --device DEV   build for device-family DEV
-  -o, --os OS        build for os OS, default: linux
 
 DIFF OPTIONS:
   -a OLD             git branch or commit ID OLD as the base, 'HEAD' is
@@ -17,12 +17,16 @@ DIFF OPTIONS:
   -b NEW             git branch or commit ID NEW for checking WARNING(s), 'HEAD'
                      is acceptable
   -m, --merge        automatically pick the merge-base for the given commits
+  --                 everything after this is the COMMAND to be executed
 
 OTHER OPTIONS:
   -h, --help         this message
 "
 
-trap restore_branch 1 2 3 6 15
+A_FILE=
+B_FILE=
+
+trap clean 1 2 3 6 15
 
 usage()
 {
@@ -44,42 +48,46 @@ restore_branch()
 	[ -z "$_cbr" ] || git checkout "$_cbr"
 }
 
+clean_files()
+{
+	rm -f "${A_FILE}" "${B_FILE}"
+}
+
+clean()
+{
+	clean_files
+	restore_branch
+}
+
 summary()
 {
-	local _num
-
-	rm -f build/_new-warn.log
+	rm -f _new-warn.log
 	diff --changed-group-format="%>" --unchanged-group-format="" \
-		build/_a.log build/_b.log > build/_new-warn.log
+		"${A_FILE}" "${B_FILE}" > _new-warn.log
 
-	_num=$(wc -l < build/_new-warn.log)
+	_num=$(wc -l < _new-warn.log)
 
 	echo
 	echo "Found $_num new build WARNING(s)."
 	echo
 
 	if [ "$_num" != "0" ]; then
-		cat build/_new-warn.log
+		cat _new-warn.log
 	fi
 }
 
 generate_log()
 {
-	local git_hash log_name log_path
+	local git_hash log_path
 
 	git_hash=$1
-	log_name=$2
-
-	log_path="build/${log_name}.log"
+	log_path=$2
 
 	git checkout "${git_hash}" || exit 10
 
 	mkdir -p build
 
-	rm -f "${log_path}"
-	make DEVFAMILY="${_dev}" OS="${_os}" clean
-	make DEVFAMILY="${_dev}" OS="${_os}" config 2> >(tee -a "${log_path}" >&2) || exit 12
-	make DEVFAMILY="${_dev}" OS="${_os}" 2> >(tee -a "${log_path}" >&2) || exit 13
+	"${_cmd[@]}" 2>&1 | tee -a "${log_path}"
 }
 
 rev-parse()
@@ -95,12 +103,6 @@ rev-parse()
 
 main()
 {
-	if [[ "$(head -1 Makefile 2> /dev/null)" != "# Makefile for Sphinx"* ]]
-	then
-		echo "Error: Not in the top directory"
-		exit 3
-	fi
-
 	# do nothing if current workspace is not clean
 	if [ -n "$(git status --porcelain --untracked-files=no)" ]
 	then
@@ -119,11 +121,17 @@ main()
 		exit 5
 	fi
 
-	generate_log "${_old}" "_a"
-	generate_log "${_new}" "_b"
+	if ! A_FILE=$(mktemp) || ! B_FILE=$(mktemp); then
+		echo "Could not make temp files!"
+		exit 1
+	fi
+
+	generate_log "${_old}" "${A_FILE}"
+	generate_log "${_new}" "${B_FILE}"
 
 	restore_branch
 	summary
+	#clean_files
 }
 
 while [ "$#" -gt 0 ]; do
@@ -134,14 +142,13 @@ while [ "$#" -gt 0 ]; do
 	-a) shift; _old=$1; shift;;
 	-b) shift; _new=$1; shift;;
 	-m | --merge) shift; _merge=1;;
+	--) shift; break;;
 	*) shift;;
 	esac
 done
+_cmd=("$@")
 
-[ -n "$_dev" ] || usage 1
-[ -n "$_os" ] || _os=linux
-
-if [ -z "${_new}" ] || [ -z "${_old}" ]; then
+if [ -z "${_new}" ] || [ -z "${_old}" ] || [ -z "${_cmd[*]}" ]; then
 	usage 2
 fi
 
