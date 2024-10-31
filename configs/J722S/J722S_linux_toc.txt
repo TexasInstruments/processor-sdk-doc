@@ -46,6 +46,7 @@ linux/Foundational_Components/Kernel/Kernel_Drivers/Audio
 linux/Foundational_Components/Kernel/Kernel_Drivers/Camera/CSI2RX
 linux/Foundational_Components/Kernel/Kernel_Drivers/Crypto
 linux/Foundational_Components/Kernel/Kernel_Drivers/Display/DSS7
+linux/Foundational_Components/Kernel/Kernel_Drivers/E5010_JPEG_Encoder
 linux/Foundational_Components/Kernel/Kernel_Drivers/GPIO
 linux/Foundational_Components/Kernel/Kernel_Drivers/I2C
 linux/Foundational_Components/Kernel/Kernel_Drivers/MCAN
