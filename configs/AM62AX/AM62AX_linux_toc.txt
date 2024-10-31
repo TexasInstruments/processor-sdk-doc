@@ -103,7 +103,6 @@ linux/Foundational_Components_IPC62ax
 linux/Foundational_Components_Edge_AI
 linux/Foundational_Components_OPTEE
 linux/Foundational_Components_ATF
-linux/Foundational_Components_Multimedia_Other_Tools
 linux/Foundational_Components_Multimedia_wave5
 linux/How_to_Guides
 linux/How_to_Guides_Developer_Notes
