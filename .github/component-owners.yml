@@ -1,0 +1,32 @@
+---
+# Each component identified by its path prefix has a list of owners
+components:
+
+  # Ownership applies recursively to any file in a directory
+
+  ./:
+    - cshilwant
+    - StaticRocket
+    - praneethbajjuri
+    - uditkumarti
+
+  source/buildroot/:
+    - TexasInstruments/sitara-mpu-linux-sdk
+
+  source/debian/:
+    - TexasInstruments/sitara-mpu-linux-sdk
+
+  source/system/:
+    - TexasInstruments/sitara-mpu-linux-sdk
+
+  source/linux/Overview/:
+    - TexasInstruments/sitara-mpu-linux-sdk
+
+  source/linux/Foundational_Components/:
+    - praneethbajjuri
+    - uditkumarti
+    - r-vignesh
+
+  source/linux/Foundational_Components/Power_Management/:
+    - praneethbajjuri
+    - DhruvaG2000
