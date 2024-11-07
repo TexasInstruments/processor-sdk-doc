@@ -1,3 +1,5 @@
+.. include:: <isonum.txt>
+
 ======================================
  RT-linux 10.00 Performance Guide
 ======================================
@@ -283,8 +285,8 @@ resulting in a score that is double the bandwidth LMBench will show.
 
 CoreMarkPro
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-CoreMark®-Pro is a comprehensive, advanced processor benchmark that works with
-and enhances the market-proven industry-standard EEMBC CoreMark® benchmark.
+CoreMark\ |reg|\ -Pro is a comprehensive, advanced processor benchmark that works with
+and enhances the market-proven industry-standard EEMBC CoreMark\ |reg| benchmark.
 While CoreMark stresses the CPU pipeline, CoreMark-Pro tests the entire processor,
 adding comprehensive support for multicore technology, a combination of integer
 and floating-point workloads, and data sets for utilizing larger memory subsystems.
@@ -529,7 +531,7 @@ PCIe-ETH
     "256","939"
 
 - Command: iperf3 -c $server_ip -w $window_size
-- PCIe-Ethernet Card being used: Intel® 82574L Gigabit Ethernet Controller
+- PCIe-Ethernet Card being used: Intel\ |reg| 82574L Gigabit Ethernet Controller
 
 PCIe-NVMe-SSD
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^

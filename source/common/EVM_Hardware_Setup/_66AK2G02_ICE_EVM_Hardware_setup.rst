@@ -1,3 +1,4 @@
+.. include:: <isonum.txt>
 
 66AK2G02 ICE EVM Hardware Setup
 ================================
@@ -11,7 +12,7 @@ industrial communications applications for the Texas Instrument’s
 Keystone2 System-on-Chip (SoC) 66AK2G02. The K2G SOC (66AK2G02) is the new
 device from TI’s Keystone II architecture with
 
--  ARM® Cortex® -A15 Microprocessor Unit (ARM A15) Subsystem at up to
+-  ARM\ |reg| Cortex\ |reg| -A15 Microprocessor Unit (ARM A15) Subsystem at up to
    600MHz
 -  C66x Fixed- and Floating-Point VLIW DSP Subsystem at up to 600MHz
 -  Two Programmable Real-Time Unit and Industrial Communication
@@ -20,7 +21,7 @@ device from TI’s Keystone II architecture with
    RAM
 -  Up to 36-Bit DDR3 External Memory Interface (EMIF) with ECC (32-Bit
    Data + 4-Bit ECC)
--  PCI-Express® 2.0 Port with Integrated PHY
+-  PCI-Express\ |reg| 2.0 Port with Integrated PHY
 -  Three Multichannel Audio Serial Port (McASP) Peripherals
 -  Multichannel Buffered Serial Port (McBSP)
 -  Six Enhanced High Resolution Pulse Width Modulation (eHRPWM)

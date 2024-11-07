@@ -1,3 +1,5 @@
+.. include:: <isonum.txt>
+
 .. http://processors.wiki.ti.com/index.php/AM335x_Power_Management_User_Guide
 
 AM335x Power Management User Guide
@@ -294,7 +296,7 @@ insight in to the power consumption of select Sitara processors.
    Summary <http://processors.wiki.ti.com/index.php/AM335x_Power_Consumption_Summary>`__
 
 This document discusses the power consumption for common system
-application usage scenarios for the AM335x ARM® Cortex™-A8
+application usage scenarios for the AM335x ARM\ |reg| Cortex™-A8
 Microprocessors (MPUs).
 
 -  `AM335x Power Management Standby User's

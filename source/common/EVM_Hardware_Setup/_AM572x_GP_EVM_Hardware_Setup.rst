@@ -1,3 +1,5 @@
+.. include:: <isonum.txt>
+
 .. http://processors.wiki.ti.com/index.php/AM572x_GP_EVM_Hardware_Setup
 
 AM572x GP EVM Hardware Setup
@@ -7,7 +9,7 @@ AM572x GP EVM Hardware Setup
    :name: description
 
 The AM572x Evaluation Module provides an affordable platform to quickly
-start evaluation of Sitara™ ARM® Cortex®-A15 AM57x Processors (AM5728,
+start evaluation of Sitara™ ARM\ |reg| Cortex\ |reg|\ -A15 AM57x Processors (AM5728,
 AM5726, AM5718, AM5716) and accelerate development for HMI, machine
 vision, networking, medical imaging and many other industrial
 applications. It is a development platform based on the dual ARM
