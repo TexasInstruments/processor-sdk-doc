@@ -1,3 +1,5 @@
+.. include:: <isonum.txt>
+
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Audio_Pre-Processing
 
 Introduction
@@ -15,7 +17,7 @@ The key functions in this use case include:
 
 -  Read 7 canned audio input files from hard drive into buffers in DDR
    using GEL function
--  Generate 12 virtual mics using BF (Beamforming) (30° apart)
+-  Generate 12 virtual mics using BF (Beamforming) (30\ |deg| apart)
 -  Apply ASNR (Adaptive Spectral Noise Reduction) on each virtual mic
 -  Use MSS (Multiple Source Selection) to select the best virtual mic
    from the 12 virtual mics
@@ -73,7 +75,7 @@ The application will use AER & VOLIB APIs for its noise reduction
 processing needs. The following steps are performed for noise reduction:
 
 -  Use 7 canned audio inputs to generate 12 virtual mics using
-   BF(Beamforming) (30° apart)
+   BF(Beamforming) (30\ |deg| apart)
 -  Apply ASNR(Adaptive Spectral Noise Reduction) on each virtual mic
 -  Use MSS(Multiple Source Selection)to select the best virtual mic from
    the 12 virtual mics
