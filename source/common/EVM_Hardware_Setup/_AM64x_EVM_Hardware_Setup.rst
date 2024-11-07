@@ -24,7 +24,7 @@ headers, multiple boot options and flexible debug capabilities.The starter kit
 is equipped with AM64x processor and an optimized feature-set to allow the user
 to create commercial and industrial solutions using Ethernet-based, USB, and
 serial wired interfaces, two Ethernet Ports for wired connectivity. Using standard
-serial protocols such as UART, I²C, and SPI, the starter kit can interface with
+serial protocols such as UART, I2C, and SPI, the starter kit can interface with
 a multitude of other devices, acting as a communications gateway.
 
 For Quick Start Quide `click here. <https://dev.ti.com/tirex/content/tirex-product-tree/am64x-devtools/docs/am64x_skevm_quick_start_guide.html>`__
