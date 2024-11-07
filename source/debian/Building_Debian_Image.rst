@@ -45,26 +45,26 @@ Repository Structure
     ├── build.sh
     ├── builds.toml
     ├── configs
-    │   ├── bdebstrap_configs
-    │   │   ├── bookworm
-    │   │   │   ├── bookworm-<machine>.yaml
-    │   │   │   └── bookworm-rt-<machine>.yaml
-    │   │   └── trixie
-    │   │       ├── trixie-<machine>.yaml
-    │   │       └── trixie-rt-<machine>.yaml
-    │   ├── bsp_sources.toml
-    │   └── machines --> Machine configurations for each BSP version
-    │       ├── 09.02.00.010.toml
-    │       └── 10.01.10.04.toml
+    │   ├── bdebstrap_configs
+    │   │   ├── bookworm
+    │   │   │   ├── bookworm-<machine>.yaml
+    │   │   │   └── bookworm-rt-<machine>.yaml
+    │   │   └── trixie
+    │   │       ├── trixie-<machine>.yaml
+    │   │       └── trixie-rt-<machine>.yaml
+    │   ├── bsp_sources.toml
+    │   └── machines --> Machine configurations for each BSP version
+    │       ├── 09.02.00.010.toml
+    │       └── 10.01.10.04.toml
     ├── create-sdcard.sh
     ├── create-wic.sh
     ├── LICENSE
     ├── README.md
     ├── scripts
-    │   ├── build_bsp.sh
-    │   ├── build_distro.sh
-    │   ├── common.sh
-    │   └── setup.sh
+    │   ├── build_bsp.sh
+    │   ├── build_distro.sh
+    │   ├── common.sh
+    │   └── setup.sh
     └── target --> Custom files to deploy in target.
 
 ``build.sh``: the "main" script that the user should run to generate Debian images.

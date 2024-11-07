@@ -1022,7 +1022,7 @@ NOT the current frequency.
          if (clock_gettime(clkid, &ts)) {
             perror("clock_gettime");
          } else {
-            printf("clock time: %ld.%09ld or %s",
+            printf("clock time: %ld.%09ld or %s",
                    ts.tv_sec, ts.tv_nsec, ctime(&ts.tv_sec));
          }
 
@@ -1232,7 +1232,7 @@ asserted low when the polarity bit is low.
          pfd.timeout.nsec = 0;
          pfd.timeout.flags = ~PPS_TIME_INVALID;
          if (ioctl(fd, PPS_FETCH, &pfd)) {
-            pr_err("failed to fetch PPS: %m");
+            pr_err("failed to fetch PPS: %m");
             return 0;
          }
 
@@ -1788,7 +1788,7 @@ PTP EXTTS feature of the Linux PTP infrastructure.
            /* reading timestamps */
            for (i=0; i < 10; i++) {
                    read(fd, &event, sizeof(event));
-                   printf("event index %u at %lld.%09u\n", event.index,
+                   printf("event index %u at %lld.%09u\n", event.index,
                            event.t.sec, event.t.nsec);
            }
 
@@ -2032,12 +2032,12 @@ Delete the 100-th entry in the table
        • version: the ALE version information
        • enable: 0 to disable the ALE, 1 to enable ALE (should be 1 for normal operations)
        • clear: set to 1 to clear the table (refer to [1] for description)
-       • ageout : set to 1 to force age out of entries (refer to [1] for description])
-       • p0_uni_flood_en : set to 1 to enable unknown unicasts to be flooded to host port. Set to 0 to not flood such unicasts. Note: if set to 0, CPSW may delay
+       • ageout : set to 1 to force age out of entries (refer to [1] for description])
+       • p0_uni_flood_en : set to 1 to enable unknown unicasts to be flooded to host port. Set to 0 to not flood such unicasts. Note: if set to 0, CPSW may delay
          sending packets to the SOC host until it learns what mac addresses the host is using.
-       • vlan_nolearn : set to 1 to prevent VLAN id from being learned along with source address.
-       • no_port_vlan : set to 1 to allow processing of packets received with VLAN ID=0; set to 0 to replace received packets with VLAN ID=0 to the VLAN set in the port’s default VLAN register.
-       • oui_deny : 0/1 (refer to [1] for a description of this bit)
+       • vlan_nolearn : set to 1 to prevent VLAN id from being learned along with source address.
+       • no_port_vlan : set to 1 to allow processing of packets received with VLAN ID=0; set to 0 to replace received packets with VLAN ID=0 to the VLAN set in the port’s default VLAN register.
+       • oui_deny : 0/1 (refer to [1] for a description of this bit)
        • bypass: set to 1 to enable ALE bypass. In this mode the CPSW will not act as switch on receive; instead it will forward all received traffic from external ports to the host port. Set
          to 0 for normal (switched) operations.
        • rate_limit_tx: set to 1 for rate limiting to apply to transmit direction, set to 0 for receive direction. Refer to [1] for a description of this bit.
@@ -2051,25 +2051,25 @@ Delete the 100-th entry in the table
        o 3: forwarding
        • port_state.1: set the port 1 state.
        • port_state.2: set the port 2 state
-       • drop_untagged.0 : set to 1 to drop untagged packets received on port 0 (host port)
-       • drop_untagged.1 : set to 1 to drop untagged packets received on port 1
-       • drop_untagged.2 : set to 1 to drop untagged packets received on port 2
-       • drop_unknown.0 : set to 1 to drop packets received on port 0 (host port) with unknown VLAN tags. Set to 0 to allows these to be processed
-       • drop_unknown.1 : set to 1 to drop packets received on port 1 with unknown VLAN tags. Set to 0 to allow these to be processed.
-       • drop_unknown.2 : set to 1 to drop packets received on port 2 with unknown VLAN tags. Set to 0 to allow these to be processed.
-       • nolearn.0 : set to 1 to disable address learning for port 0
-       • nolearn.1 : set to 1 to disable address learning for port 1
-       • nolearn.2 : set to 1 to disable address learning for port 2
-       • unknown_vlan_member : this is the port mask for packets received with unknown VLAN IDs. The port mask is a 5 bit number with a bit representing each port. Bit 0 refers to the
+       • drop_untagged.0 : set to 1 to drop untagged packets received on port 0 (host port)
+       • drop_untagged.1 : set to 1 to drop untagged packets received on port 1
+       • drop_untagged.2 : set to 1 to drop untagged packets received on port 2
+       • drop_unknown.0 : set to 1 to drop packets received on port 0 (host port) with unknown VLAN tags. Set to 0 to allows these to be processed
+       • drop_unknown.1 : set to 1 to drop packets received on port 1 with unknown VLAN tags. Set to 0 to allow these to be processed.
+       • drop_unknown.2 : set to 1 to drop packets received on port 2 with unknown VLAN tags. Set to 0 to allow these to be processed.
+       • nolearn.0 : set to 1 to disable address learning for port 0
+       • nolearn.1 : set to 1 to disable address learning for port 1
+       • nolearn.2 : set to 1 to disable address learning for port 2
+       • unknown_vlan_member : this is the port mask for packets received with unknown VLAN IDs. The port mask is a 5 bit number with a bit representing each port. Bit 0 refers to the
          host port. A ‘1’ in bit position N means include the port in further forwarding decision. (e.g., port mask = 0x7 means ports 0 (internal), 1 and 2 should be included in the
          forwarding decision). Refer to [1] for more details.
-       • unknown_mcast_flood= : this is the port mask for packets received with unkwown VLAN ID and unknown (un-registered) destination multicast address. This port_mask will be used in the
+       • unknown_mcast_flood= : this is the port mask for packets received with unkwown VLAN ID and unknown (un-registered) destination multicast address. This port_mask will be used in the
          multicast flooding decision. unknown multicast flooding.
        • unknown_reg_flood: this is the port mask for packets received with unknown VLAN ID and registered (known) destination multicast address. It is used in the multicast forwarding decision.
        • unknown_force_untag_egress: this is a port mask to control if VLAN tags are stripped off on egress or not. Set to 1 to force tags to be stripped by h/w prior to transmission
-       • bcast_limit.0 : threshold for broadcast pacing on port 0 .
+       • bcast_limit.0 : threshold for broadcast pacing on port 0 .
        • bcast_limit.1: threshold for broadcast pacing on port 1.
-       • bcast_limit.2 : threshold for broadcast pacing on port 2 .
+       • bcast_limit.2 : threshold for broadcast pacing on port 2 .
        • mcast_limit.0: threshold for multicast pacing on port 0 .
        • mcast_limit.1: threshold for multicast pacing on port 1 ..
        • mcast_limit.2: threshold for multicast pacing on port 2 .
@@ -2179,13 +2179,13 @@ egress on port 2 only:
 
     echo “unknown_force_untag_egress=7” > /sys/class/net/eth0/device/ale_control
 
-To set to Port 1 to “Admit tagged” (i.e. drop un-tagged) :
+To set to Port 1 to “Admit tagged” (i.e. drop un-tagged) :
 
 ::
 
     echo “drop_untagged.1=1” > /sys/class/net/eth0/device/ale_control
 
-To set to Port 1 to “Admit all” :
+To set to Port 1 to “Admit all” :
 
 ::
 

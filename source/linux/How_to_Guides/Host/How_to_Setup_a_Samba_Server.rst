@@ -5,10 +5,10 @@ How to Setup a Samba Server
 .. rubric:: Introduction
    :name: introduction-samba-server
 
-When using a Virtual machine you may share files & folders via the
-Share Foldr feature of that partoicular Virtual Machine.  Another
+When using a Virtual machine you may share files & folders via the
+Share Foldr feature of that partoicular Virtual Machine.  Another
 alternative, especially if you are using a dedicated Linux host, is to
-configure a Samba server on your Linux host. 
+configure a Samba server on your Linux host.
 
 Samba allows a host to interact with a Microsoft Windows client or
 server as if it is a Windows file and print server. In other words, if
@@ -19,15 +19,15 @@ machine) through windows.
 .. rubric:: Installing a Samba Server
    :name: installing-a-samba-server
 
-1.  Samba can be installed by opening a terminal. (Applications ->
+1.  Samba can be installed by opening a terminal. (Applications ->
 System Tools -> Terminal)
 
-2.  Switch to root user by typing su and entering the password you set
+2.  Switch to root user by typing su and entering the password you set
 during the install.
 
 3. On Fedora install Samba with the yum command: system-config-samba
 
-|     On Ubuntu install Samba using:  sudo apt-get install
+|     On Ubuntu install Samba using:  sudo apt-get install
   system-config-samba
 
 4. Open the Samba GUI (System -> Administration -> Samba).
@@ -81,8 +81,8 @@ configure the network proxy.**
 9. Enable the Samba and NFS services
 
 
--  System -> Administration -> Services  (**NOTE - Not available in
-   Ubuntu 10.04 LTS.  However the Samba service should start
+-  System -> Administration -> Services  (**NOTE - Not available in
+   Ubuntu 10.04 LTS.  However the Samba service should start
    automatically**)
 -  Enable the services by browsing through the list on the left and
    locating nfs and smb. If they are not already enabled, enable them by

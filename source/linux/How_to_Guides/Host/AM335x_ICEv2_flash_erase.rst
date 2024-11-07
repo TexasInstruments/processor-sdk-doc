@@ -41,7 +41,7 @@ on a Ubuntu 14.04 host system
       </div>
 
    -  Click **File -> New-> Target Configuration File**
-   -  Filename : AM3359-ice-v2.ccxml. Check "Use shared location" to be
+   -  Filename : AM3359-ice-v2.ccxml. Check "Use shared location" to be
       available to anyone who uses the workspace. Click Finish. A window
       opens up which is to configure the connection details
 
@@ -88,7 +88,7 @@ on a Ubuntu 14.04 host system
    -  The program will give you the following prompts, type the
       responses and press Enter
 
-      -  Enter Operation [1 - Flash ] [2 - Erase] : 2
+      -  Enter Operation [1 - Flash ] [2 - Erase] : 2
       -  Enter the offset [in Hex]: 0
       -  Enter size to be erased in Kilo bytes: 64
 

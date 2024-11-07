@@ -77,7 +77,7 @@ Target Configuration
 .. Image:: /images/OMAPL137_targetConfig.png
 
 
--  Check "OMAPL137" or "C6747" as Device and save. 
+-  Check "OMAPL137" or "C6747" as Device and save.
 
 .. Tip:: If you don't see "OMAPL137", ensure that you have installed CCS and selected Single Core DSP devices in the installation.
 

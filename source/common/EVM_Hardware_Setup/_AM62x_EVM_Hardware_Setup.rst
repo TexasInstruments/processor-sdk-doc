@@ -4,7 +4,7 @@ AM62x SK EVM Hardware Setup
 .. rubric:: Description
 
 The AM62x starter kit (SK) evaluation module (EVM) is a stand-alone test and development platform
-built around the AM62x system-on-a-chip (SoC). AM62x processors are comprised of a quad-core 64-bit
+built around the AM62x system-on-a-chip (SoC). AM62x processors are comprised of a quad-core 64-bit
 Arm®-Cortex®-A53 microprocessor, single-core Arm Cortex-R5F microcontroller (MCU) and an Arm
 Cortex-M4F MCU.
 

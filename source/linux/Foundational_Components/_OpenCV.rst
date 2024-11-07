@@ -632,7 +632,7 @@ implementation:
 ::
 
      ...
-        String opts = format("-D CN=%d -D NMIXTURES=%d%s -DTIDSP_MOG2 -D SUBLINE_CACHE=%d", nchannels, nmixtures, bShadowDetection ? " -DSHADOW_DETECT" : "", subline_cache);
+        String opts = format("-D CN=%d -D NMIXTURES=%d%s -DTIDSP_MOG2 -D SUBLINE_CACHE=%d", nchannels, nmixtures, bShadowDetection ? " -DSHADOW_DETECT" : "", subline_cache);
         kernel_apply.create("mog2_kernel", ocl::video::bgfg_mog2_oclsrc, opts);
     ...
 
@@ -716,8 +716,8 @@ modules/video/src/opencl/bgfg\_mog2.cl:
 
        TI DSP specific OpenCL implementation
     ...
-      cv::String kname = format( "tidsp_gaussian" ) ;
-      cv::String kdefs = format("-D T=%s -D T1=%s -D cn=%d", ocl::typeToStr(type), ocl::typeToStr(depth), cn) ;
+      cv::String kname = format( "tidsp_gaussian" ) ;
+      cv::String kdefs = format("-D T=%s -D T1=%s -D cn=%d", ocl::typeToStr(type), ocl::typeToStr(depth), cn) ;
       ocl::Kernel k(kname.c_str(), ocl::imgproc::gauss_oclsrc, kdefs.c_str() );
     ...
 
@@ -907,7 +907,7 @@ Profiling results of DSP optimized OpenCV OpenCL kernels (SDK 3.1), AM5728 platf
 --------------------------------------------------------------------------------------
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-**Single channel, 1200x709, barcode ROI detection use case**
+**Single channel, 1200x709, barcode ROI detection use case**
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. csv-table::
@@ -1112,17 +1112,17 @@ http://downloads.ti.com/mctools/esd/docs/opencl/memory/host-malloc-extension.htm
     #include <opencv2/core/ocl.hpp>
     #include <opencv2/imgproc/imgproc.hpp>
     #include <opencv2/highgui/highgui.hpp>
-     
+
     using namespace std;
     using namespace cv;
     using namespace cl;
-     
+
     const int NumElements     = 512*512;  // image size
     const int NumWorkGroups   = 256;
     const int VectorElements  = 4;
     const int NumVecElements  = NumElements / VectorElements;
     const int WorkGroupSize   = NumVecElements / NumWorkGroups;
-     
+
     void ProcRawCL(Mat &mat_src, const std::string &kernel_name)
     {
         //===============================================================
@@ -1136,7 +1136,7 @@ http://downloads.ti.com/mctools/esd/docs/opencl/memory/host-malloc-extension.htm
         Mat test_mat1(mat_src.size(), CV_8UC1, ptr_cmem1);
         Mat test_mat2(mat_src.size(), CV_8UC1, ptr_cmem2);
         Mat test_mat3(mat_src.size(), CV_8UC1, ptr_cmem3);
-     
+
         mat_src.copyTo(test_mat1);
         threshold(test_mat1, test_mat2, 128.0, 192.0, THRESH_BINARY);
         imwrite("out_cmem1.jpg", test_mat2);
@@ -1146,31 +1146,31 @@ http://downloads.ti.com/mctools/esd/docs/opencl/memory/host-malloc-extension.htm
        {
          Context context(CL_DEVICE_TYPE_ACCELERATOR);
          std::vector<Device> devices = context.getInfo<CL_CONTEXT_DEVICES>();
-     
+
          int d = 0;
          std::string str;
          ifstream t(kernel_name);
          std::string kernelStr((istreambuf_iterator<char>(t)), istreambuf_iterator<char>());
-     
+
          devices[d].getInfo(CL_DEVICE_NAME, &str);
          cout << "DEVICE: " << str << endl << endl;
-     
+
          Program::Sources source(1, std::make_pair(kernelStr.c_str(), kernelStr.length()));
          Program          program = Program(context, source);
          program.build(devices);
-     
+
          Kernel kernel(program, "maskVector");
          Buffer bufA   (context, CL_MEM_READ_ONLY  | CL_MEM_USE_HOST_PTR, bufsize, ptr_cmem2);
          Buffer bufDst (context, CL_MEM_WRITE_ONLY | CL_MEM_USE_HOST_PTR, bufsize, ptr_cmem1);
          kernel.setArg(0, bufA);
          kernel.setArg(1, bufDst);
-     
+
          Event ev1;
-     
+
          CommandQueue Q(context, devices[d], CL_QUEUE_PROFILING_ENABLE);
          Q.enqueueNDRangeKernel(kernel, NullRange, NDRange(NumVecElements), NDRange(WorkGroupSize), NULL, &ev1);
          ev1.wait();
-     
+
          ocl_event_times(ev1, "Kernel Exec");
          imwrite("out_cmem2.jpg", test_mat1);
        }

@@ -28,7 +28,7 @@ devices:
 
 For devices with available cryptographic hardware accelerators, a Linux
 driver and additionally a Cryptodev kernel module (for OpenSSL) is used
-to access them.  Other devices use the pure software implementation of these
+to access them.  Other devices use the pure software implementation of these
 cryptographic operations.
 
 .. ifconfig:: CONFIG_crypto in ('sa2ul')

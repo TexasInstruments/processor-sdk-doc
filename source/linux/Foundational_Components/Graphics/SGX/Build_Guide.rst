@@ -92,19 +92,19 @@ In the repository the following structure can be seen:
    ├── README.md
    └── targetfs
        ├── common
-       │   ├── 50-pvrsrvctl.rules.template
-       │   ├── etc
-       │   └── pvrsrvctl.service.template
+       │   ├── 50-pvrsrvctl.rules.template
+       │   ├── etc
+       │   └── pvrsrvctl.service.template
        ├── ti335x_linux
-       │   └── lws-generic
+       │   └── lws-generic
        ├── ti343x_linux
-       │   └── lws-generic
+       │   └── lws-generic
        ├── ti437x_linux
-       │   └── lws-generic
+       │   └── lws-generic
        ├── ti443x_linux
-       │   └── lws-generic
+       │   └── lws-generic
        ├── ti572x_linux
-       │   └── lws-generic
+       │   └── lws-generic
        └── ti654x_linux
            └── lws-generic
 

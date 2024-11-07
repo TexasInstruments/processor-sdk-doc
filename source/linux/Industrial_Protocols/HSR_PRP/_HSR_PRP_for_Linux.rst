@@ -57,18 +57,18 @@ Features supported
    -  Duplicate discard table on Port to Port path (HSR)
    -  Data integrity (CRC) check during port to port forwarding, except cut through (HSR)
 
--  **QoS scheme** : 3-bit VLAN PCP
+-  **QoS scheme** : 3-bit VLAN PCP
 
-   -  No of levels supported : 2
-   -  Number of host queues : 2 \| 2 QoS levels per host queue
-   -  Number of port queues : 2 \| 2 QoS levels per port queue
+   -  No of levels supported : 2
+   -  Number of host queues : 2 \| 2 QoS levels per host queue
+   -  Number of port queues : 2 \| 2 QoS levels per port queue
 
 -  **Statistics**
 
    -  Supports all MIB statistics as per standard
    -  Node Table statistics for debugging
 
--  **Storm Prevention** : Yes. Configurable per port
+-  **Storm Prevention** : Yes. Configurable per port
 
 -  **Dual instance of HSR/PRP using two PRU-ICSS on AM571x**
 
@@ -345,7 +345,7 @@ type without having to reboot the board:-
 * PRP
 
 Two feature flags are added to help offload HSR or PRP in the PRU
-Ethernet driver :- hsr-rx-offload and prp-rx-offload. PRU Firmware
+Ethernet driver :- hsr-rx-offload and prp-rx-offload. PRU Firmware
 essentially offload the rx side processing of LRE, such as duplicate
 detection and drop, node table update, stats update etc. To reflect the
 same, the features are named with a rx-offload suffx to the protocol name.

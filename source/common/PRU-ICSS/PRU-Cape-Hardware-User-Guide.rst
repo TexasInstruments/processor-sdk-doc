@@ -8,8 +8,8 @@ PRU Cape Hardware User Guide
 Introduction
 ^^^^^^^^^^^^
 
-This document describes the hardware architecture of the PRU Cape 
-which is compatible with the Beagle Bone Black development platform. 
+This document describes the hardware architecture of the PRU Cape
+which is compatible with the Beagle Bone Black development platform.
 
 |
 
@@ -147,7 +147,7 @@ Signals Used
 +------------------------------+------------------------------+------------------------+------------------------+
 | PR1\_PRU0\_GPI15             | P8-15                        | GPMC\_AD15             | PRU0\_GPI\_15          |
 +------------------------------+------------------------------+------------------------+------------------------+
-| VDD\_3V3C                    | P9-3, P9-4                   | VDD\_3V3C              | VDD\_3V3C              |
+| VDD\_3V3C                    | P9-3, P9-4                   | VDD\_3V3C              | VDD\_3V3C              |
 +------------------------------+------------------------------+------------------------+------------------------+
 | DGND                         | P8-1, P8-2, P9-1,P9-2        | DGND                   | DGND                   |
 +------------------------------+------------------------------+------------------------+------------------------+
@@ -168,7 +168,7 @@ This section describes major functional blocks of the PRU Cape.
 Audio
 """""
 
-The audio portion of the PRU Cape is composed of a Dual 8-bit DAC
+The audio portion of the PRU Cape is composed of a Dual 8-bit DAC
 (DAC082S085) and a dual 105 mW Amplifier (LM4808). The output is then
 sent to a 3.5 mm Audio jack with a max pk-pk of .89V, following the
 consumer standard.
@@ -201,7 +201,7 @@ the cape, the rest of the EEPROM is available for use.
 +--------------------------+-------------------------+-----------------------+----------------------+
 | **CAPE NAME**            | **BBB HEADER NUMBER**   | **BBB MODE 0 NAME**   | **CAPE USE**         |
 +--------------------------+-------------------------+-----------------------+----------------------+
-| I2C2\_SDA                | P9-20                   | I2C2\_SDA             | I2C SCL              |
+| I2C2\_SDA                | P9-20                   | I2C2\_SDA             | I2C SCL              |
 +--------------------------+-------------------------+-----------------------+----------------------+
 | I2C2\_SCL                | P9-19                   | I2C2\_SCL             | I2C SDA              |
 +--------------------------+-------------------------+-----------------------+----------------------+
@@ -223,14 +223,13 @@ IN to allow use of the PRU Subsystem's eCAP IP.
 | PR1\_PRU0\_GPI15            | P8-15                   | GPMC\_AD15             | PRU0\_GPI\_15          |
 +-----------------------------+-------------------------+------------------------+------------------------+
 
- 
 LCD
 """
 
-The LCD screen is on a duaghter board with its own built in
-controller, model number  NHD-0208AZ-RN-YBW-33V. The LCD is connected to
+The LCD screen is on a duaghter board with its own built in
+controller, model number  NHD-0208AZ-RN-YBW-33V. The LCD is connected to
 the PRU Cape throught the 2x8 female header in the middle of the cape.
-The LCD is a 2x8 Character display operating at 3.3V.
+The LCD is a 2x8 Character display operating at 3.3V.
 
 |
 
@@ -336,7 +335,7 @@ PRU or any signal that can be accessed through the Cape Headers.
 UART
 """"
 
-There is one RS-232 connector (DB9 male) on the PRU Cape. The MAX3232ECD
+There is one RS-232 connector (DB9 male) on the PRU Cape. The MAX3232ECD
 is the line driver/receiver.
 
 |

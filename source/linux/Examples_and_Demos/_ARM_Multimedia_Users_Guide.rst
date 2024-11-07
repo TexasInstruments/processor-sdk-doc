@@ -161,7 +161,7 @@ buffers, they do not modify the data otherwise.
 
 ::
 
-    gst-launch-0.10 filesrc location=$filename ! qtdemux name=demux demux.audio_00 ! queue ! ffdec_aac ! alsasink sync=false demux.video_00 ! queue ! ffdec_mpeg4 ! ffmpegcolorspace ! fbdevsink device=/dev/fb0
+    gst-launch-0.10 filesrc location=$filename ! qtdemux name=demux demux.audio_00 ! queue ! ffdec_aac ! alsasink sync=false demux.video_00 ! queue ! ffdec_mpeg4 ! ffmpegcolorspace ! fbdevsink device=/dev/fb0
 
 "filename" is defined based on the selected display device which could
 be LCD of DVI.
@@ -180,7 +180,7 @@ as mentioned in the description page below.
 
 ::
 
-    gst-launch-0.10 filesrc location=$filename ! mpeg4videoparse ! ffdec_mpeg4 ! ffmpegcolorspace ! fbdevsink device=/dev/fb0
+    gst-launch-0.10 filesrc location=$filename ! mpeg4videoparse ! ffdec_mpeg4 ! ffmpegcolorspace ! fbdevsink device=/dev/fb0
 
 |
 
@@ -198,7 +198,7 @@ as mentioned in the description page below.
 
 ::
 
-    gst-launch-0.10 filesrc location=$filename ! h264parse ! ffdec_h264 ! ffmpegcolorspace ! fbdevsink device=/dev/fb0
+    gst-launch-0.10 filesrc location=$filename ! h264parse ! ffdec_h264 ! ffmpegcolorspace ! fbdevsink device=/dev/fb0
 
 .. rubric:: AAC Decode
    :name: aac-decode
@@ -214,7 +214,7 @@ mentioned in the description page below.
 
 ::
 
-    gst-launch-0.10 filesrc location=$filename ! aacparse ! faad ! alsasink
+    gst-launch-0.10 filesrc location=$filename ! aacparse ! faad ! alsasink
 
 .. rubric:: Streaming
    :name: streaming
@@ -226,7 +226,7 @@ the files directory using the pipeline
 
 ::
 
-    gst-launch souphttpsrc location=http://<ip address>/files/HistoryOfTI.aac ! aacparse ! faad ! alsasink
+    gst-launch souphttpsrc location=http://<ip address>/files/HistoryOfTI.aac ! aacparse ! faad ! alsasink
 
 |
 

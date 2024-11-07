@@ -8,7 +8,7 @@ Connect to an EVM via Telnet
 
 The initialization file (/etc/init.d/rcS) starts a telnet server. If
 your development host is in the same sub-net as the EVM, you can telnet
-to it using the IP address assigned in the U-boot environment.  The
+to it using the IP address assigned in the U-boot environment.  The
 following is an example from a Linux host.
 
 ::
@@ -23,7 +23,7 @@ be root and the password should be left blank (just hit Enter).
 From a Windows XP host, click the Start button, then click Run... Type
 telnet and click OK. This will open a telnet window.
 
-Type "o < ip-addr >" and hit enter.  Example:
+Type "o < ip-addr >" and hit enter.  Example:
 
 ::
 

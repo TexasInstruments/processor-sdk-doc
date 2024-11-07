@@ -4,7 +4,7 @@ J722S EVM Hardware Setup
 .. rubric:: Description
 
 The J722S evaluation module (or TDA4VEN and AM67 EVM) is a stand-alone test and development platform
-built around the J722S system-on-a-chip (SoC). J722S processors are comprised of a quad-core 64-bit
+built around the J722S system-on-a-chip (SoC). J722S processors are comprised of a quad-core 64-bit
 Arm®-Cortex®-A53 microprocessor, dual-core Arm Cortex-R5F microcontroller (MCU).
 The EVM gives developers the basic resources needed for most general‐purpose type projects.
 

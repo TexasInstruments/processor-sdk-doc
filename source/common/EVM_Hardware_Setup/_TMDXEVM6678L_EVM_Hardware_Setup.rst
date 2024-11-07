@@ -74,7 +74,7 @@ The application needs an IP address. It can use either a static IP
 address (pre-configured) or it can request one using DHCP. This is
 controlled by setting dip switch 2 of SW9.
 
-| User Switch 2 ON : DHCP
+| User Switch 2 ON : DHCP
 | User Switch 2 OFF: Static IP
 
 .. image:: /images/TMD6678LSW9.png
@@ -110,7 +110,7 @@ Boot Mode Dip Switch Settings
 
 The EVM supports booting image from various devices (EEPROM, NAND or
 NOR) via IBL (at I2C address 0x51), I2C EEPROM (at I2C address 0x50),
-and ROM Boot modes (such as Ethernet, SRIO, PCIe, SPI etc.) which
+and ROM Boot modes (such as Ethernet, SRIO, PCIe, SPI etc.) which
 address the boot source directly from the ROM code. Below is the table
 showing the boot mode dip switch settings for different boot mode that
 the EVM supports:
@@ -121,7 +121,7 @@ the EVM supports:
 |                | (Pin1, 2, 3,   | (Pin1, 2, 3,   | (Pin1, 2, 3,   | (Pin1, 2, 3,   |
 |                | 4)             | 4)             | 4)             | 4)             |
 +================+================+================+================+================+
-| IBL NOR boot   | (off, off, on, | (on, on, on,   | (on, on, on,   | (on, on, on,   |
+| IBL NOR boot   | (off, off, on, | (on, on, on,   | (on, on, on,   | (on, on, on,   |
 | on image 0     | off)\ :sup:`1, | on)\ :sup:`3`  | off)\ :sup:`4` | on)            |
 | (default)      | 2`             |                |                |                |
 +----------------+----------------+----------------+----------------+----------------+
@@ -160,10 +160,10 @@ the EVM supports:
 
 | **Footnotes:**
 
-1. Pin 1 of SW3 is the endian pin, by default, it is set to off (Little
-Endian) 
+1. Pin 1 of SW3 is the endian pin, by default, it is set to off (Little
+Endian)
 
-2. Pin 2-4 of SW3 are the boot mode pins, by default it is set to I2C
+2. Pin 2-4 of SW3 are the boot mode pins, by default it is set to I2C
 boot mode (off, on, off)
 
 3. Pin 1-4 of SW4 and pin 1-2 of SW5 are the boot parameter index pins
@@ -173,7 +173,7 @@ default, image 0 is programmed to offset byte address 0x0 on NOR, and
 0x4000 (block 1 start address) on NAND, image 1 is programmed to offset
 byte address 0xA00000 on NOR, and 0x2000000 on NAND.
 
-4. Pin 4 of SW5 is the I2C address pin (off: 0x51, on: 0x50)  for I2C
+4. Pin 4 of SW5 is the I2C address pin (off: 0x51, on: 0x50)  for I2C
 boot mode
 
 5. This will set the board to boot from SRIO boot mode, with reference
@@ -181,7 +181,7 @@ clock at 312.5 MHz, data rate at 3.125 GBs, and lane setup 4-1x ports
 and DSP System PLL at 100 MHz.
 
 6. This will set the board to boot from Ethernet boot mode, with SerDes
-clock multiplier x 4, core PLL clock at 100 MHz.
+clock multiplier x 4, core PLL clock at 100 MHz.
 
 7. This will set the board to boot form PCIE boot mode, with PCIE in end
 point mode and DSP System PLL at 100 MHz.

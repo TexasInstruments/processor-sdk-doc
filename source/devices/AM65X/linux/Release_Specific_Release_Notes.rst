@@ -238,7 +238,7 @@ Installation and Usage
 ======================
 
 The :ref:`Software Developer's Guide <linux-index>` provides instructions on how to setup up your Linux development
-environment, install the SDK and start your development.  It also includes User's Guides for various Example Applications and Code
+environment, install the SDK and start your development.  It also includes User's Guides for various Example Applications and Code
 Composer Studio.
 
 |

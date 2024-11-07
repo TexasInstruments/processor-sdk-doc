@@ -55,7 +55,7 @@ Download & Install the SDK Installer on Host
        version of the SDK. We recommend checking the above site and using the
        latest version if at all possible. Before running the SDK Installer from
        the SD card, the SD Card from the EVM box needs to be mounted to your
-       Linux Host PC (using a USB SD Card reader).  The SDK Installer is found
+       Linux Host PC (using a USB SD Card reader).  The SDK Installer is found
        in the START\_HERE partition of the SD card.
 
 .. ifconfig:: CONFIG_sdk in ('JACINTO','j7_foundational')
@@ -111,7 +111,7 @@ for the installer (e.g. text installer, etc.):
 
     ./|__SDK_INSTALL_FILE__| --help
 
-.. rubric:: SDK Installer Execution Steps
+.. rubric:: SDK Installer Execution Steps
    :name: sdkinstaller-execution-steps
 
 1. **Confirm**

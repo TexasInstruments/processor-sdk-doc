@@ -851,7 +851,7 @@ Additional Information
 #. `ALSA User Space
    Library <http://www.alsa-project.org/alsa-doc/alsa-lib/>`__
 #. `Using ALSA Audio
-   API <http://www.equalarea.com/paul/alsa-audio.html>`__ Author: Paul
+   API <http://www.equalarea.com/paul/alsa-audio.html>`__ Author: Paul
    Davis
 
 .. rubric:: Software Help

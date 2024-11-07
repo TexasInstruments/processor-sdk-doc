@@ -331,7 +331,7 @@ Driver Configuration
    for pending background operations and give the card some time to service
    them before they become critical. This feature is already part of the
    framework and to start using it the User needs to enable:
-   EXT\_CSD : BKOPS\_EN [163] BIT 0.
+   EXT\_CSD : BKOPS\_EN [163] BIT 0.
 
    **This can be done using the "mmc-utils" tool from user space or using
    the "mmc" command in U-boot.**

@@ -402,7 +402,7 @@ Build the PRU Firmware
       ::
 
           while(1){
-             if ((__R31 & SW1) != SW1){
+             if ((__R31 & SW1) != SW1){
                  /* Interrupt PRU1, wait 500ms for cheap "debounce" */
                  /* TODO: Trigger interrupt - see #defines */
                  __delay_cycles(100000000); /* 500ms @ 200MHz */

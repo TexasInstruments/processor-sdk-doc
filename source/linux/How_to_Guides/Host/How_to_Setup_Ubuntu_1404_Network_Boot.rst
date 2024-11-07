@@ -194,10 +194,10 @@ USB there are some additional steps required.
          .. code::
 
            #!/bin/sh
-               
+
            IF=$1
            STATUS=$2
-         					      
+
            if [ "$IF" = "usb0" ] && [ "$STATUS" = "up" ]; then
                 service isc-dhcp-server restart
            fi
@@ -248,7 +248,7 @@ USB there are some additional steps required.
       .. code::
 
          #!/bin/sh
-        
+
          if [ "$IFACE" = usb0 ]; then
              sudo service isc-dhcp-server restart
          fi
@@ -267,7 +267,7 @@ USB there are some additional steps required.
 
          [main]
          plugins=ifupdown
-        
+
          [ifupdown]
          managed=false
 

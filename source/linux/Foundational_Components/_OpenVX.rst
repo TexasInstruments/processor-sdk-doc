@@ -62,26 +62,26 @@ kernels and call them using OpenVX APIs.
 |                                      | layer also binds TIOVX framework to  |
 |                                      | a specific OS like Linux or TI-RTOS  |
 +--------------------------------------+--------------------------------------+
-| TIOVX Kernel Wrapper                 | Kernel wrappers allow TI and         |
+| TIOVX Kernel Wrapper                 | Kernel wrappers allow TI and         |
 |                                      | customers to integrate a natively    |
 |                                      | implemented kernel into the TIOVX    |
 |                                      | framework.                           |
 +--------------------------------------+--------------------------------------+
-| TIOVX Conformance tests              | OpenVX conformance test from Khronos |
+| TIOVX Conformance tests              | OpenVX conformance test from Khronos |
 |                                      | to make sure an implementation       |
 |                                      | implements OpenVX according to       |
 |                                      | specification.                       |
 +--------------------------------------+--------------------------------------+
 
-There are two versions of VXLIB kernels: without BAM framework, and
-with BAM framework. BAM is a low level framework representing directed
+There are two versions of VXLIB kernels: without BAM framework, and
+with BAM framework. BAM is a low level framework representing directed
 acyclic graph, where EDMA transfers are heavily utilized to bring 2D
 memory objects to higher speed L2 memory, thus improving performance
 almost twofold.
 
-Current release has kernels with BAM framework. This framework
+Current release has kernels with BAM framework. This framework
 achieves higher performance via heavy use of EDMA, which brings blocks
-of data from remote DDR memory to local L2, while DSP does the
+of data from remote DDR memory to local L2, while DSP does the
 processing. List of these kernels can be checked in
 https://git.ti.com/processor-sdk/tiovx/trees/master/kernels/openvx-core/c66x/bam.
 
@@ -91,7 +91,7 @@ https://git.ti.com/processor-sdk/tiovx/trees/master/kernels/openvx-core/c66x/bam
 There are 44 kernels in current release of VXLIB (typically there are
 multiple implementations for different data types).
 
-Here is complete list of DSP kernel wrappers (wrappers are part of TIOVX):
+Here is complete list of DSP kernel wrappers (wrappers are part of TIOVX):
 
 -  AbsDiff
 -  AccumulateSquare
@@ -147,30 +147,30 @@ Following TIOVX components are present in EVM filesystem:
 |                          |                          | using different test     |
 |                          |                          | vectors                  |
 +--------------------------+--------------------------+--------------------------+
-| DSP firmware             | /lib/firmware/dra7-dsp1- | DSP firmware including   |
+| DSP firmware             | /lib/firmware/dra7-dsp1- | DSP firmware including   |
 |                          | fw.xe66.openvx,          | DSP side of TIOVX        |
 |                          |                          | framwork implementation, |
 |                          | /lib/firmware/dra7-dsp   | IPC implementation,      |
-|                          | 2-fw.xe66.openvx         | DSP kernels (part of     |
-|                          |                          | VXLIB DSP library) - for |
+|                          | 2-fw.xe66.openvx         | DSP kernels (part of     |
+|                          |                          | VXLIB DSP library) - for |
 |                          |                          | DSP1. This firmware is   |
 |                          |                          | loaded at boot time, or  |
 |                          |                          | using procedure          |
 |                          |                          | mentioned below (to      |
-|                          |                          | switch from OCL firmware |
-|                          |                          | to TIOVX firmware)       |
+|                          |                          | switch from OCL firmware |
+|                          |                          | to TIOVX firmware)       |
 +--------------------------+--------------------------+--------------------------+
 
 TIOVX release 1.0.0.0 runs exclusively wrt OpenCL, as both firmwares use
-common resources DSP cores and CMEM memory. That is: application can be
+common resources DSP cores and CMEM memory. That is: application can be
 either TIOVX-based, or OpenCL -based. Future releases may remove this
-limitation and use static split in resources (between OpenCL and
+limitation and use static split in resources (between OpenCL and
 OpenVX). **TIOVX needs CMEM memory with two blocks**: block 0 is big DDR
 block for exchange of big buffers (>100MB) and block 1 (~1MB) which is
 used as shared memory visible from all cores to exchange shared data
 objects (typically in OCMC)
 
-.. rubric:: Switch from OpenCL to OpenVX firmware:
+.. rubric:: Switch from OpenCL to OpenVX firmware:
    :name: switch-from-opencl-to-openvxfirmware
 
 Run the command below to switch from OpenCL to OpenVx firmware:
@@ -184,7 +184,7 @@ Run the command below to switch from OpenCL to OpenVx firmware:
 
 First, it is necessary to copy test vectors from
 https://git.ti.com/processor-sdk/tiovx/trees/master/conformance_tests/test_data
-to EVM filesystem (e.g. ~/tiovx/test\_data).Then run following
+to EVM filesystem (e.g. ~/tiovx/test\_data).Then run following
 commands:
 
 ::
@@ -235,7 +235,7 @@ Please note that last ~3000 lines of test log include performance data
 (execution time and number of pixels processed) useful for further
 evaluation.
 
-.. rubric:: Switch from OpenVX, back to OpenCL firmware:
+.. rubric:: Switch from OpenVX, back to OpenCL firmware:
    :name: switch-from-openvx-back-to-openclfirmware
 
 After finishing running the TIOVX test application, switch the firmware back to the default for OpenCL:
@@ -249,7 +249,7 @@ After finishing running the TIOVX test application, switch the firmware back to 
 
 | TIOVX framework implementation is available at
   https://git.ti.com/processor-sdk/tiovx/trees/master
-| TIOVX sample application including IPC implementation based on
+| TIOVX sample application including IPC implementation based on
   standard MessageQ, as well as application running conformance tests,
   can be found at
   https://git.ti.com/processor-sdk/tiovx-app/trees/master

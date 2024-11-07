@@ -33,7 +33,7 @@ does the following things:
     .. rubric:: BeagleBone Black Users
        :name: beaglebone-black-users
 
-    To run the SDK's setup scripts the following cables are required to be
+    To run the SDK's setup scripts the following cables are required to be
     connected to the BeagleBone Black and your Linux PC. Please ensure both
     are connected before following any of the steps in this guide.
 
@@ -79,12 +79,12 @@ does the following things:
    :name: how-to-run-the-setup-script
 
 The Setup Script (**setup.sh**) is located in the |__SDK_FULL_NAME__| installation
-directory.  By default, this directory has a name that has the form
+directory.  By default, this directory has a name that has the form
 |__SDK_INSTALL_DIR__|.
 
 .. ifconfig:: CONFIG_sdk in ('SITARA')
 
-   Change to that ti-processor-sdk-linux install directory.
+   Change to that ti-processor-sdk-linux install directory.
 
 Then run the script:
 
@@ -140,7 +140,7 @@ packages may vary for different releases:
 
     This part requires you to have administrator priviliges (sudo access).
 
-A unique step is required for users using Ubuntu 12.04+. By default the
+A unique step is required for users using Ubuntu 12.04+. By default the
 user does not have the proper permissions to access a serial device ( ex
 ttyS0, ttyUSB0, etc...). A user must be apart of a "dialout" group to
 access these serial device without root privileges.

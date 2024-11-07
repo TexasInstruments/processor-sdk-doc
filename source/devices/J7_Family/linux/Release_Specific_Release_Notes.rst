@@ -252,7 +252,7 @@ Issues opened in previous releases that were closed on this release
   "LCPD-38644","v4l2 compliance failing with try_fmt","am62axx_sk-fs,am62pxx_sk-fs,am68_sk-fs,am69_sk-fs,j721s2-evm,j722s_evm-fs,j742s2_evm-fs,j784s4-evm"
   "LCPD-38622","J722S 4 Camera IMX219 GStreamer Pipeline Failure","j722s_evm-fs"
   "LCPD-38596","Upstream: correct mux node name for can ","j7200-evm,j721s2-evm"
-  "LCPD-38554","MCAN: add am68, am69, j7-sk in mcan docs ","am68_sk-fs,am69_sk-fs,j721e-sk"
+  "LCPD-38554","MCAN: add am68, am69, j7-sk in mcan docs","am68_sk-fs,am69_sk-fs,j721e-sk"
   "LCPD-38528","Documentation: IPC:  Update 6.1.y links to 6.6.y","am62pxx_sk-fs,am62xx_sk-fs,j722s_evm-fs"
   "LCPD-38500","Add J721E SR 2.0 Support (k3conf and u-boot)","j721e-idk-gw"
   "LCPD-38497","Graceful Shutdown test failing","am69_sk-fs,j7200-evm,j721e-idk-gw,j721s2-evm,j784s4-evm"

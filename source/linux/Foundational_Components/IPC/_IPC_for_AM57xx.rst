@@ -79,17 +79,17 @@ CCS is installed at:
 
     /mnt/data/user/ti/my_custom_ccs_x.x.x_install
     ├── ccsvX
-    │   ├── ccs_base
-    │   ├── doc
-    │   ├── eclipse
-    │   ├── install_info
-    │   ├── install_logs
-    │   ├── install_scripts
-    │   ├── tools
-    │   ├── uninstall_ccs
-    │   ├── uninstall_ccs.dat
-    │   ├── uninstallers
-    │   └── utils
+    │   ├── ccs_base
+    │   ├── doc
+    │   ├── eclipse
+    │   ├── install_info
+    │   ├── install_logs
+    │   ├── install_scripts
+    │   ├── tools
+    │   ├── uninstall_ccs
+    │   ├── uninstall_ccs.dat
+    │   ├── uninstallers
+    │   └── utils
     ├── Code Composer Studio x.x.x.desktop
     └── xdctools_x_xx_xx_xx_core
         ├── bin
@@ -158,34 +158,34 @@ Here are the key files that you should see after a successful build:
 ::
 
     ├── dsp1
-    │   └── bin
-    │       ├── debug
-    │       │   └── server_dsp1.xe66
-    │       └── release
-    │           └── server_dsp1.xe66
+    │   └── bin
+    │       ├── debug
+    │       │   └── server_dsp1.xe66
+    │       └── release
+    │           └── server_dsp1.xe66
     ├── dsp2
-    │   └── bin
-    │       ├── debug
-    │       │   └── server_dsp2.xe66
-    │       └── release
-    │           └── server_dsp2.xe66
+    │   └── bin
+    │       ├── debug
+    │       │   └── server_dsp2.xe66
+    │       └── release
+    │           └── server_dsp2.xe66
     ├── host
-    │       ├── debug
-    │       │   └── app_host
-    │       └── release
-    │           └── app_host
+    │       ├── debug
+    │       │   └── app_host
+    │       └── release
+    │           └── app_host
     ├── ipu1
-    │   └── bin
-    │       ├── debug
-    │       │   └── server_ipu1.xem4
-    │       └── release
-    │           └── server_ipu1.xem4
+    │   └── bin
+    │       ├── debug
+    │       │   └── server_ipu1.xem4
+    │       └── release
+    │           └── server_ipu1.xem4
     └── ipu2
-        └── bin
-            ├── debug
-            │   └── server_ipu2.xem4
-            └── release
-                └── server_ipu2.xem4
+        └── bin
+            ├── debug
+            │   └── server_ipu2.xem4
+            └── release
+                └── server_ipu2.xem4
 
 |
 
@@ -313,14 +313,14 @@ Finally, we can run the example on DSP1:
 
     root@am57xx-evm:~# cat /proc/iomem
     [snip...]
-    58060000-58078fff : core
-    58820000-5882ffff : l2ram
-    58882000-588820ff : /ocp/mmu@58882000
-    80000000-9fffffff : System RAM
-      80008000-808d204b : Kernel code
-      80926000-809c96bf : Kernel data
-    a0000000-abffffff : CMEM
-    ac000000-ffcfffff : System RAM
+    58060000-58078fff : core
+    58820000-5882ffff : l2ram
+    58882000-588820ff : /ocp/mmu@58882000
+    80000000-9fffffff : System RAM
+      80008000-808d204b : Kernel code
+      80926000-809c96bf : Kernel data
+    a0000000-abffffff : CMEM
+    ac000000-ffcfffff : System RAM
 
 |
 
@@ -547,30 +547,24 @@ ipc/packages/ti/ipc/remoteproc/rsc\_table\_vayu\_dsp.h
             DSP_MEM_TEXT, 0,
             DSP_MEM_TEXT_SIZE, 0, 0, "DSP_MEM_TEXT",
         },
-     
         {
             TYPE_CARVEOUT,
             DSP_MEM_DATA, 0,
             DSP_MEM_DATA_SIZE, 0, 0, "DSP_MEM_DATA",
         },
-     
         {
             TYPE_CARVEOUT,
             DSP_MEM_HEAP, 0,
             DSP_MEM_HEAP_SIZE, 0, 0, "DSP_MEM_HEAP",
         },
-     
         {
             TYPE_CARVEOUT,
             DSP_MEM_IPC_DATA, 0,
             DSP_MEM_IPC_DATA_SIZE, 0, 0, "DSP_MEM_IPC_DATA",
         },
-     
         {
             TYPE_TRACE, TRACEBUFADDR, 0x8000, 0, "trace:dsp",
         },
-     
-     
         {
             TYPE_DEVMEM,
             DSP_MEM_IPC_VRING, PHYS_MEM_IPC_VRING,
@@ -856,7 +850,7 @@ ipc\_3\_43\_02\_04/examples/DRA7XX\_linux\_elf/ex02\_messageq/ipu1/IpuAmmu.cfg
     AMMU.largePages[0].size = AMMU.Large_512M;
     AMMU.largePages[0].L1_cacheable = AMMU.CachePolicy_CACHEABLE;
     AMMU.largePages[0].L1_posted = AMMU.PostedPolicy_POSTED;
-     
+
     /* Peripheral regions: Large Page (512M); non-cacheable */
     /* config large page[1] to map 512MB VA 0x60000000 to L3 0x60000000 */
     AMMU.largePages[1].pageEnabled = AMMU.Enable_YES;
@@ -865,7 +859,7 @@ ipc\_3\_43\_02\_04/examples/DRA7XX\_linux\_elf/ex02\_messageq/ipu1/IpuAmmu.cfg
     AMMU.largePages[1].size = AMMU.Large_512M;
     AMMU.largePages[1].L1_cacheable = AMMU.CachePolicy_NON_CACHEABLE;
     AMMU.largePages[1].L1_posted = AMMU.PostedPolicy_POSTED;
-     
+
     /* Private, Shared and IPC Data regions: Large page (512M); cacheable */
     /* config large page[2] to map 512MB VA 0x80000000 to L3 0x80000000 */
     AMMU.largePages[2].pageEnabled = AMMU.Enable_YES;
@@ -923,25 +917,25 @@ ipc/packages/ti/ipc/remoteproc/rsc\_table\_vayu\_ipu.h
 
     #define IPU_MEM_TEXT            0x0
     #define IPU_MEM_DATA            0x80000000
-     
+
     #define IPU_MEM_IOBUFS          0x90000000
-     
+
     #define IPU_MEM_IPC_DATA        0x9F000000
     #define IPU_MEM_IPC_VRING       0x60000000
     #define IPU_MEM_RPMSG_VRING0    0x60000000
     #define IPU_MEM_RPMSG_VRING1    0x60004000
     #define IPU_MEM_VRING_BUFS0     0x60040000
     #define IPU_MEM_VRING_BUFS1     0x60080000
-     
+
     #define IPU_MEM_IPC_VRING_SIZE  SZ_1M
     #define IPU_MEM_IPC_DATA_SIZE   SZ_1M
-     
+
     #if defined(VAYU_IPU_1)
     #define IPU_MEM_TEXT_SIZE       (SZ_1M)
     #elif defined(VAYU_IPU_2)
     #define IPU_MEM_TEXT_SIZE       (SZ_1M * 6)
     #endif
-     
+
     #if defined(VAYU_IPU_1)
     #define IPU_MEM_DATA_SIZE       (SZ_1M * 5)
     #elif defined(VAYU_IPU_2)
@@ -961,13 +955,11 @@ ipc/packages/ti/ipc/remoteproc/rsc\_table\_vayu\_ipu.h
             IPU_MEM_TEXT, 0,
             IPU_MEM_TEXT_SIZE, 0, 0, "IPU_MEM_TEXT",
         },
-     
         {
             TYPE_CARVEOUT,
             IPU_MEM_DATA, 0,
             IPU_MEM_DATA_SIZE, 0, 0, "IPU_MEM_DATA",
         },
-     
         {
             TYPE_CARVEOUT,
             IPU_MEM_IPC_DATA, 0,
@@ -1191,7 +1183,7 @@ To do this, follow these steps.
 -  For **Target**, select ti.targets.elf.C66
 -  For **Platform**, select ti.platforms.evmDRA7XX
 -  Once the platform is selected, edit its name buy hand and
-   append :dsp1 to the end. After this it should be
+   append :dsp1 to the end. After this it should be
    ti.platforms.evmDRA7XX:dsp1
 -  Go ahead and leave the **Build-profile** set to debug.
 -  Hit the OK button.
@@ -1393,11 +1385,11 @@ before BIOS\_start()
 .. code-block:: c
 
         ipc_main();
-     
+
         if (callIpcStartup) {
             IpcMgr_ipcStartup();
         }
-     
+
         /* Start BIOS */
         BIOS_start();
         return (0);
@@ -1567,12 +1559,12 @@ following log on the serial IO console:
 
 ::
 
-    uart driver and utils example test cases :
+    uart driver and utils example test cases :
     Enter 16 characters or press Esc
     1234567890123456  <- user input
     Data received is
     1234567890123456  <- loopback from user input
-    uart driver and utils example test cases :
+    uart driver and utils example test cases :
     Enter 16 characters or press Esc
 
 |
@@ -1639,7 +1631,7 @@ To do this, follow these steps.
 -  For **Target**, select **ti.targets.arm.elf.M4**
 -  For **Platform**, select **ti.platforms.evmDRA7XX**
 -  Once the platform is selected, edit its name buy hand and
-   append :ipu2 to the end. After this it should be
+   append :ipu2 to the end. After this it should be
    ti.platforms.evmDRA7XX:ipu2
 -  Go ahead and leave the **Build-profile** set to debug.
 -  Hit the OK button.
@@ -1855,7 +1847,7 @@ needs to be performed by the M4.
 
 |
 
-**Modified Code :**
+**Modified Code :**
 
 ::
 
@@ -1872,7 +1864,7 @@ adding the following code before Board\_init API call:
            (CSL_l4per_cm_core_componentRegs *)CSL_MPU_L4PER_CM_CORE_REGS;
        CSL_FINST(l4PerCmReg->CM_L4PER_UART3_CLKCTRL_REG,
            L4PER_CM_CORE_COMPONENT_CM_L4PER_UART3_CLKCTRL_REG_MODULEMODE, ENABLE);
-       while(CSL_L4PER_CM_CORE_COMPONENT_CM_L4PER_UART3_CLKCTRL_REG_IDLEST_FUNC !=
+       while(CSL_L4PER_CM_CORE_COMPONENT_CM_L4PER_UART3_CLKCTRL_REG_IDLEST_FUNC !=
           CSL_FEXT(l4PerCmReg->CM_L4PER_UART3_CLKCTRL_REG,
            L4PER_CM_CORE_COMPONENT_CM_L4PER_UART3_CLKCTRL_REG_IDLEST));
 

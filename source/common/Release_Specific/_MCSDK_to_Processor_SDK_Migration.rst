@@ -356,7 +356,7 @@ application rather than the design of the software.
    header files as “ti/csl/device/k2?/src/xxxx.h” needs to be changed to
    “ti/csl/soc/k2?/src/xxxx.h”
 -  One top level include header files per IP replaces multiple CSL files
-   per IP for the following :
+   per IP for the following :
 
    -  <ti/csl/cslr\_bcp.h>, <ti/csl/cslr\_iqn2.h>, <ti/csl/csl\_rac.h>,
       <ti/csl/csl\_tac2.h>, <ti/csl/cslr\_aif2.h> and

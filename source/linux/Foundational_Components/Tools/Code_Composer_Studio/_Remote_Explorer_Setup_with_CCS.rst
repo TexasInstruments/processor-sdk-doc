@@ -73,25 +73,25 @@ Connection Wizard.
 
 .. Image:: /images/X-New_Connection.png
 
-#. Do NOT click the Finish button.  Click **Next**
+#. Do NOT click the Finish button.  Click **Next**
 #. Check **ssh.files** to use the *Secure Shell* protocol for
    communication
 
 .. Image:: /images/Ssh-files.png
 
-#. Do NOT click the Finish button.  Click **Next**
+#. Do NOT click the Finish button.  Click **Next**
 #. Check **processes.shell.linux** to use a shell to work with processes
    on the remote system
 
 .. Image:: /images/Processes_.png
 
-#. Do NOT click the Finish button.  Click **Next**
+#. Do NOT click the Finish button.  Click **Next**
 #. Check **ssh.shells** to use *Secure Shell* to work will shell
    commands
 
 .. Image:: /images/Shells.png
 
-#. Do NOT click the Finish button.  Click **Next**
+#. Do NOT click the Finish button.  Click **Next**
 #. Check **ssh.terminals** to use *Secure Shell* to work with terminals
 
 .. Image:: /images/Terminals.png

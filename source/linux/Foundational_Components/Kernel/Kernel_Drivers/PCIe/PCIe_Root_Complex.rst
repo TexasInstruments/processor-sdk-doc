@@ -478,7 +478,7 @@ including desktop, mobile, server, storage and embedded communications.
     procedure can be used to boot Linux kernel using this rootfs.
 
     Boot EVM to u-boot prompt. Add following env variables to u-boot
-    environment :-
+    environment :-
 
     ::
 

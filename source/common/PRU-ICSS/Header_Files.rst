@@ -46,7 +46,7 @@ layout is like this:
 union{
 u32 register_name;
 struct {
-bit_field_names : bit_size;
+bit_field_names : bit_size;
 . . .
 } register_name_bit;
 };

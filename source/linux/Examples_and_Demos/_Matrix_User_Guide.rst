@@ -45,9 +45,9 @@ Matrix is an HTML 5 based application launcher created to highlight
 available applications and demos provided in new Software Development
 Kits. There are two forms of Matrix, local and remote Matrix. All of the
 example applications and demos are available using either the local or
-remote version. The local version launches by default when the target
-system is booted and uses the target system's touchscreen interface for
-user input. Matrix comes as a 4x3 matrix of icons or as a 4x2 matrix
+remote version. The local version launches by default when the target
+system is booted and uses the target system's touchscreen interface for
+user input. Matrix comes as a 4x3 matrix of icons or as a 4x2 matrix
 depending on the display resolution.
 
 .. Image:: /images/Matrix_2_Main_Menu.png
@@ -60,7 +60,7 @@ depending on the display resolution.
 
 Local Matrix refers to Matrix being displayed on a display device
 attached to the target system. The launcher for Matrix is just a
-simple QT application that displays a Webkit base browser that points
+simple QT application that displays a Webkit base browser that points
 to the URL http://localhost:80
 
 .. raw:: html
@@ -86,14 +86,14 @@ The URL for Remote Matrix is http://<target system's ip address>
 
 You can find the target's ip address by using local Matrix and clicking
 on the Settings icon and then on the Network Settings icon. Or using a
-terminal logged in to the target system enter the below command:
+terminal logged in to the target system enter the below command:
 
 ::
 
     ifconfig
 
 From the output displayed, look in the section that starts with eth0.
-You sould see an IP address right after "inet addr". This is the IP
+You sould see an IP address right after "inet addr". This is the IP
 address you should use for remote Matrix.
 
 With Remote Matrix you can interact with Matrix on your PC, cellphone,
@@ -106,7 +106,7 @@ still look at the display device connected to the target system.
    :name: matrix-project-webpage
 
 The offical website for Matrix is located at
-`**gforge.ti.com/gf/project/matrix-gui-v2/** <https://gforge.ti.com/gf/project/matrix-gui-v2/>`__ Any
+`**gforge.ti.com/gf/project/matrix-gui-v2/** <https://gforge.ti.com/gf/project/matrix-gui-v2/>`__ Any
 comments or bug reports for Matrix should be posted there.
 
 .. rubric:: How to Use the Matrix
@@ -140,7 +140,7 @@ Below is a summary of all the Matrix web pages:
 .. rubric:: Example Application Description Page
    :name: example-application-description-page
 
-Below is an example application description page. Description pages can
+Below is an example application description page. Description pages can
 be used to add additional information that may not be obvious.
 
 .. raw:: html
@@ -164,7 +164,7 @@ be used to add additional information that may not be obvious.
 .. rubric:: Coming Soon Page
    :name: coming-soon-page
 
--  Displayed for Matrix directories that doesn't contain any
+-  Displayed for Matrix directories that doesn't contain any
    applications within it.
 
 .. rubric:: Application/Script Execution Page
@@ -196,14 +196,14 @@ the .desktop files and also the html that is generated from the various
 php pages. While this provides a substantial performance boost,
 developers must be aware that any changes to the Matrix apps folder
 which includes adding, deleting and modifying files can result in many
-problems within Matrix. To properly update Matrix with the latest
-information, Matrix's caches need to be cleared. 
+problems within Matrix. To properly update Matrix with the latest
+information, Matrix's caches need to be cleared.
 
-.. rubric:: Automatically Clearing Matrix Cache
+.. rubric:: Automatically Clearing Matrix Cache
    :name: automaticallyclearing-matrix-cache
 
 The simpliest way to clear Matrix's cache is to use the Refresh Matrix
-application found within Matrix's Settings submenu. Simply running the
+application found within Matrix's Settings submenu. Simply running the
 application will cause Matrix to clear all the cached files and
 regenerate the .desktops cache file. Once the application is done
 running, Matrix will be updated with the latest information found from
@@ -226,7 +226,7 @@ To clear Matrix's caches you need to perform only two steps:
 
 1. Execute the generate.php file.
 
-In the terminal of the target system, enter the folllowing line of code.
+In the terminal of the target system, enter the folllowing line of code.
 
 ::
 
@@ -235,7 +235,7 @@ In the terminal of the target system, enter the folllowing line of code.
 or
 
 In a browser enter the following url. Note replace <target ip> with the
-IP address of the target system.
+IP address of the target system.
 
 ::
 
@@ -257,7 +257,7 @@ Once the above steps are completed, Matrix will be updated.
 .. rubric:: Launching Matrix
    :name: launching-matrix
 
-Use the following shell script in the target's terminal window to run
+Use the following shell script in the target's terminal window to run
 Matrix as a background task:
 
 ::
@@ -267,7 +267,7 @@ Matrix as a background task:
 This script ensures that the touchscreen has been calibrated and that
 the Qt Window server is running.
 
-Alternatively, Matrix can be launched manually with this full syntax:
+Alternatively, Matrix can be launched manually with this full syntax:
 
 ::
 
@@ -296,7 +296,7 @@ Touchscreen** <How_to_Guides/Target/How_to_Recalibrate_the_Touchscreen.html#how-
 .. rubric:: Matrix is running but I don't want it running
    :name: matrix-is-running-but-i-dont-want-it-running
 
-#. Exit Matrix by going to the Settings submenu and running the Exit
+#. Exit Matrix by going to the Settings submenu and running the Exit
    Matrix application. Note that exiting Matrix only shuts down local
    Matrix. Remote Matrix can still be used.
 #. Or if the touchscreen is not working, from the console, type:
@@ -305,7 +305,6 @@ Touchscreen** <How_to_Guides/Target/How_to_Recalibrate_the_Touchscreen.html#how-
 
     /etc/init.d/matrix-gui-2.0 stop
 
- 
 
 .. rubric:: I don't want Matrix to run on boot up
    :name: i-dont-want-matrix-to-run-on-boot-up
@@ -348,13 +347,13 @@ Below are step by step instructions.
    location.
 #. Create a .desktop file based on the parameters discussed below. It is
    recommended the name of the desktop file match the name of the newly
-   created folder. No white spaces can be used for the .desktop
+   created folder. No white spaces can be used for the .desktop
    filename. The .desktop file parameters should be set depending on if
    you want to add a new application or a new directory to Matrix. The
    Type field must be set according to your decision. The .desktop file
    must have the .desktop suffix.
 #. Update the Icon field in the .desktop to reference any existing Icon
-   in the /usr/share/matrix-gui-2.0 directory or subdirectories. You can
+   in the /usr/share/matrix-gui-2.0 directory or subdirectories. You can
    also add a new 96x96 png image and place it into your newly created
    folder.
 #. Optionally for applications you can add a HTML file that contains the
@@ -368,7 +367,7 @@ Below are step by step instructions.
 Run your new application from Matrix!
 See reference examples below: `**Examples** <#examples>`__
 
-Blank template icons for Matrix can be found here: 
+Blank template icons for Matrix can be found here:
 `**gforge.ti.com/gf/download/frsrelease/712/5167/blank\_icons\_1.1.tar.gz** <https://gforge.ti.com/gf/download/frsrelease/712/5167/blank_icons_1.1.tar.gz>`__
 
 .. rubric:: Creating the .Desktop File
@@ -390,7 +389,7 @@ The fields and values are case sensitive.
 .. rubric:: Creating a New Matrix Directory
    :name: creating-a-new-matrix-directory
 
-You can get all the files including the image discussed below from the
+You can get all the files including the image discussed below from the
 following file:
 `**Ex\_directory.tar.gz** </images/7/7d/Ex_directory.tar.gz>`__
 
@@ -412,7 +411,7 @@ Fill the contents of the file with the text shown below:
 
 This .desktop above tells Matrix that this .desktop is meant to create a
 new directory since Type=Directory. The directory should be named "Ex
-Demo" and will use the icon located within the ex\_directory directory.
+Demo" and will use the icon located within the ex\_directory directory.
 This new directory should be the 5th icon displayed as long as there
 aren't any other .desktop files that specify X-MATRIX-DisplayPriority=5
 and will be displayed in the Matrix Main Menu. Now any applications that
@@ -422,21 +421,21 @@ Category parameter set to ex\_dir.
 -  Note that sometimes Linux will rename the .desktop file to the name
    specified in the Name field. If this occurs don't worry about trying
    to force it to use the file name specified.
--  If you are writing these files in Windows, be sure to use Unix-style
-   EOL characters
+-  If you are writing these files in Windows, be sure to use Unix-style
+   EOL characters
 
-Now move the .desktop file and image into the ex\_directory directory
+Now move the .desktop file and image into the ex\_directory directory
 that was created.
 
-.. rubric:: Moving the Newly created Directory to the Target's
-   File System
+.. rubric:: Moving the Newly created Directory to the Target's
+   File System
    :name: moving-the-newly-createddirectory-to-the-targets-filesystem
 
 Open the Linux terminal and go to the directory that contains the
 ex\_directory.
 
-Enter the below command to copy ex\_directory to
-the /usr/share/matrix-gui-2.0/apps/ directory located in the target's
+Enter the below command to copy ex\_directory to
+the /usr/share/matrix-gui-2.0/apps/ directory located in the target's
 file system. Depending on the targetNFS directory premissions you might
 have to include sudo before the cp command.
 
@@ -444,8 +443,8 @@ have to include sudo before the cp command.
 
     host $ cp ex_directory ~/ti-processor-sdk-linux-[platformName]-evm-xx.xx.xx.xx/targetNFS/usr/share/matrix-gui-2.0/apps/
 
-If NFS isn't being used then you need to copy the ex\_directory to
-the the /usr/share/matrix-gui-2.0/apps/ directory in the target's
+If NFS isn't being used then you need to copy the ex\_directory to
+the the /usr/share/matrix-gui-2.0/apps/ directory in the target's
 filesystem.
 
 .. rubric:: Updating Matrix
@@ -462,7 +461,7 @@ for your Ex Demo.
 .. rubric:: Creating a New Application
    :name: creating-a-new-application
 
-This example is assuming that you completed the \ `**Creating a New
+This example is assuming that you completed the \ `**Creating a New
 Matrix Directory** <#creating-a-new-matrix-directory>`__ example.
 
 You can get all the files including the image discussed below from the
@@ -491,17 +490,17 @@ Fill the contents of the file with the below text:
 
 Type=Application lets Matrix know that this .desktop is for an
 application. The name of the application is "Test App". The
-icon example-icon.png can be found within the ex\_application
-directory. The command to execute is a shell script that will be located
+icon example-icon.png can be found within the ex\_application
+directory. The command to execute is a shell script that will be located
 within ex\_application. The script that is being ran is a simply shell
 script that output text to the terminal. Therefore, the ProgramType
 should be set to console. This application should be added to the Ex
-Demo directory from the previous example. Therefore, Categories will be
+Demo directory from the previous example. Therefore, Categories will be
 set to ex\_dir which is the same value that X-MATRIX-CategoryTarget is
 set to. You could optionally remove the Categories field to have this
 application displayed in Matrix's Main Menu. This application will also
 have a description page. The html file to be used is located within the
-ex\_application directory. A lock is also being used. Therefore, any
+ex\_application directory. A lock is also being used. Therefore, any
 other application including itself that has the same lock can't run
 simultaneously.
 
@@ -515,7 +514,7 @@ Create a file named test\_script.sh
     echo "I am finally awake!"
 
 | The newly created script needs to have its permission set to be
-  executable. Enter the below command to give read, write and execute
+  executable. Enter the below command to give read, write and execute
   permission to all users and groups for the script:
 
 ::
@@ -530,19 +529,19 @@ Create a new file called app\_desc.html
     <h2>Purpose:</h2>
     <p>The purpose of this application is to demonstrate the ease in adding a new application to Matrix.</p>
 
-Now move the .desktop file, script file, the png image located in the
-Ex\_application.tar.gz file and the html file into the ex\_application
+Now move the .desktop file, script file, the png image located in the
+Ex\_application.tar.gz file and the html file into the ex\_application
 folder.
 
-.. rubric:: Moving the newly created Directory to the Target System
+.. rubric:: Moving the newly created Directory to the Target System
    :name: moving-the-newly-createddirectory-to-the-target-system
 
 Open the Linux terminal and go to the directory that contains the
 ex\_application directory.
 
 Enter the below command to copy the ex\_application directory
-to /usr/share/matrix-gui-2.0/apps/ located in the target's file system.
-Depending on the targetNFS directory permissions you might have to
+to /usr/share/matrix-gui-2.0/apps/ located in the target's file system.
+Depending on the targetNFS directory permissions you might have to
 include sudo before the cp command.
 
 ::
@@ -557,21 +556,21 @@ the target's filesystem.
    :name: updating-matrix-2
 
 Now in either local or remote Matrix go to the Settings directory and
-click and then run the Refresh Matrix application. This will delete all
+click and then run the Refresh Matrix application. This will delete all
 the cache files that Matrix generates and regenerate all the needed
 files which will include any updates that you have made.
 
-Now if you go back to the Matrix's Main Menu and click on the Ex
-Demo directory you should see your newly created application. Click on
+Now if you go back to the Matrix's Main Menu and click on the Ex
+Demo directory you should see your newly created application. Click on
 the application's icon and you will see the application's description
 page. Click the Run button and your application will execute. If you try
-to run two instances of this application simultaneously via local and
+to run two instances of this application simultaneously via local and
 remote Matrtix you will get a message saying that the program can't run
 because a lock exists. Because of X-Matrix-Lock being set to
 test\_app\_lock, Matrix knows not to run two instances of a
-program simultaneously that share the same lock. You can run the
+program simultaneously that share the same lock. You can run the
 application again when the previous application is done running.
 
 You have just successfully added a new application to Matrix using all
-the possibly parameters! 
+the possibly parameters!
 

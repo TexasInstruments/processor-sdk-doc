@@ -94,20 +94,20 @@ In the repository the following structure can be seen:
    ├── README
    └── targetfs
        ├── am62_linux
-       │   └── lws-generic
-       │       └── release
+       │   └── lws-generic
+       │       └── release
        ├── am62p_linux
-       │   └── lws-generic
-       │       └── release
+       │   └── lws-generic
+       │       └── release
        ├── j721e_linux
-       │   └── lws-generic
-       │       └── release
+       │   └── lws-generic
+       │       └── release
        ├── j721s2_linux
-       │   └── lws-generic
-       │       └── release
+       │   └── lws-generic
+       │       └── release
        ├── j722s_linux
-       │   └── lws-generic
-       │       └── release
+       │   └── lws-generic
+       │       └── release
        └── j784s4_linux
            └── lws-generic
                └── release

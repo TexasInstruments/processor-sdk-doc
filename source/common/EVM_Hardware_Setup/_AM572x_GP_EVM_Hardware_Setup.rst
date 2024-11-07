@@ -160,7 +160,7 @@ scenario, the SBL component provides the same functionality
 .. rubric:: CCS Setup
    :name: ccs-setup
 
-There are two scenarios while connecting to the EVM :
+There are two scenarios while connecting to the EVM :
 
 -  **Connect to EVM without a SD card boot image to boot the EVM**
 -  **Connect to EVM after booting an image from the SD card**.
@@ -207,7 +207,7 @@ provided below:
 .. rubric:: Connecting to target
    :name: connecting-to-target
 
-**Step1 :** Download Code composer Studio and AM572x Sitara CSP package
+**Step1 :** Download Code composer Studio and AM572x Sitara CSP package
 as described in the wiki article mentioned below:
 
 `Install Code composer Studio v6 for
@@ -301,7 +301,7 @@ in the previous section.
     CortexA15_0: GEL Output:        PHY_STATUSx registers
     CortexA15_0: GEL Output:        Two EMIFs in interleaved mode - (2GB total)
     CortexA15_0: GEL Output: --->>> DDR3 Initialization is DONE! <<<---
-    CortexA15_0: GEL Output: --->>> AM572x Target Connect Sequence DONE !!!!!  <<<---
+    CortexA15_0: GEL Output: --->>> AM572x Target Connect Sequence DONE !!!!!  <<<---
     CortexA15_0: GEL Output: --->>> IPU1SS Initialization is in progress ... <<<---
     CortexA15_0: GEL Output: --->>> IPU1SS Initialization is DONE! <<<---
     CortexA15_0: GEL Output: --->>> IPU2SS Initialization is in progress ... <<<---

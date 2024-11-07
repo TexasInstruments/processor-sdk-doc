@@ -19,8 +19,8 @@ provided here.**
    :name: introduction-build-ubuntu-linux-host-under-vmware
 
 This guide demonstrates how to get a virtual Ubuntu Linux machine
-running with VMware under Windows 7.  Please use only the 32-bit Ubuntu
-14.04 release as this is what is called an LTS (Long Term Support). 
+running with VMware under Windows 7.  Please use only the 32-bit Ubuntu
+14.04 release as this is what is called an LTS (Long Term Support).
 There are SDK scripts that will be checking for this release identity.
 
 **Requirements**:
@@ -28,14 +28,14 @@ There are SDK scripts that will be checking for this release identity.
 -  Windows 7 host with internet connection, at least 1G of RAM and 40G
    of free hard drive space.
 
-The instructions here are for setting up a 40G virtual machine.  The
+The instructions here are for setting up a 40G virtual machine.  The
 entire 40G is not taken at once, but as the machine is used and software
-is installed, the machine can grow and take up as much as 40G. 
+is installed, the machine can grow and take up as much as 40G.
 
-.. rubric:: Download the Ubuntu 14.04 LTS ISO image
+.. rubric:: Download the Ubuntu 14.04 LTS ISO image
    :name: download-the-ubuntu-14.04-ltsiso-image
 
-Get the Ubuntu 14.04 LTS CD ISO image from:
+Get the Ubuntu 14.04 LTS CD ISO image from:
 http://releases.ubuntu.com/14.04/. Select PC (Intel x86) desktop CD
 under the Desktop CD section.
 
@@ -50,15 +50,15 @@ Get VMware from: http://www.vmware.com
 
 Vmware Player is a free download from the website and enables the user
 to create an entire virtual machine from scratch using just the ISO
-image downloaded from Ubuntu.  It is necessary to sign up for an account
-at VMware in order to get to the download areas.  The general steps to
+image downloaded from Ubuntu.  It is necessary to sign up for an account
+at VMware in order to get to the download areas.  The general steps to
 getting VMware are as follows:
 
 -  Login to the vmware website
 -  Select VMware Player from the products menu
 -  Follow the steps to download VMware Player
 
-**NOTE - We have tested with v7.0.0 with no known issues.  As of
+**NOTE - We have tested with v7.0.0 with no known issues.  As of
 Feburary, 2015, v7.0.0 is the latest version.**
 
 -  Run the executable to install VMware
@@ -71,19 +71,19 @@ Before starting a new installation it is assumed that the Windows host
 has a proper internet connection to a DHCP server and that the Windows
 host has enough hard drive space for the new virtual machine.
 
-The following steps are performed with VMware 7.0.0.  The exact steps
+The following steps are performed with VMware 7.0.0.  The exact steps
 with other versions may vary slightly
 
 -  Start VMware.
 -  From the File menu select "Create a New Virtual Machine..."
--  Choose to install the operating system later.  Click "Next".
+-  Choose to install the operating system later.  Click "Next".
 -  Select Linux as the "Guest Operating System" and then choose Ubuntu
-   as the "Version".  Click "next".
+   as the "Version".  Click "next".
 -  Provide a "Virtual machine name" and "Location" where the machine
-   will be stored on the Windows host.  The defaults are fine here. 
+   will be stored on the Windows host.  The defaults are fine here.
    Click "Next".
 -  For "Maximum disk size (GB)" it is good to start with 40G if
-   possible.  This means that it will take up 40G on the Windows host.
+   possible.  This means that it will take up 40G on the Windows host.
    Make sure that the Windows host has at least this much before
    proceeding. It is also a good practice to tell VMware to split the
    virtual disk into 2G files. This will makes the image easier to copy
@@ -107,20 +107,20 @@ connection state".
 .. rubric:: Adding a serial port to the virtual machine
    :name: adding-a-serial-port-to-the-virtual-machine
 
-If you plan to use a serial terminal application, a serial port must be
-added to the virtual machine.  This port must be a physical serial port
-which exists on the host PC.  Click on "Add..." and select "Serial
-Port".  Click "Next".  Choose "Use physical serial port on host".  Click
-"Next".  Click Finish.  Click "Ok".
+If you plan to use a serial terminal application, a serial port must be
+added to the virtual machine.  This port must be a physical serial port
+which exists on the host PC.  Click on "Add..." and select "Serial
+Port".  Click "Next".  Choose "Use physical serial port on host".  Click
+"Next".  Click Finish.  Click "Ok".
 
 |
 
 Since this is a physical port on the host PC, it cannot be used by the
-host PC and the virtual machine at the same time.  When the virtual
+host PC and the virtual machine at the same time.  When the virtual
 machine is started, the serial port will be unavailable for use by the
-host PC.  If the serial port is being used at the time that the virtual
+host PC.  If the serial port is being used at the time that the virtual
 machine is started, the virtual machine will not be able to access the
-serial port after it is booted up.  So if you want the virtual machine
+serial port after it is booted up.  So if you want the virtual machine
 to gain control of the physical serial port of the host PC, there can
 not be any application like hyperterminal or teraterm running on the
 host PC at the time that the virtual machine is started.
@@ -129,37 +129,37 @@ Further instructions for using the serial port with minicom inside of
 Ubuntu are
 `here <http://processors.wiki.ti.com/index.php/Setting_up_Minicom_in_Ubuntu>`__.
 
-| Minicom is the preferred application for use with the Sitara SDK.  And
+| Minicom is the preferred application for use with the Sitara SDK.  And
   the installation and setup of minicom is done automattically by the
-  Sitara SDK installer. 
+  Sitara SDK installer.
 
 |
 
-Now click on "Play virtual machine".  Since this is the first time
-starting the machine and the Ubuntu ISO image is in the virtual CD
+Now click on "Play virtual machine".  Since this is the first time
+starting the machine and the Ubuntu ISO image is in the virtual CD
 drive, the Ubuntu OS will install itself in the virtual machine.
 
 Click through the Ubuntu installation, making the appropriate choices as
-you go.  This will help with SDK installation scripts.
+you go.  This will help with SDK installation scripts.
 
 .. Image:: /images/Vmware-player.PNG
 
 |
-| The full installation will take 20-30 minutes.  When it completes the
-  machine will reboot.  The machine will now prompt for the username and
+| The full installation will take 20-30 minutes.  When it completes the
+  machine will reboot.  The machine will now prompt for the username and
   password that you created during the installation.
 
 After the machine reboots into Ubuntu it is helpful to take the Ubuntu
-ISO out of the virtual CD drive.  Click on the VM menu and select
-"Settings...".  Click on CD/DVD and change the connection from "Use
-ISO image file" to "Use physical drive".  The actual drive letter can be
-selected from the drop down list.  If there is no physical drive on the
+ISO out of the virtual CD drive.  Click on the VM menu and select
+"Settings...".  Click on CD/DVD and change the connection from "Use
+ISO image file" to "Use physical drive".  The actual drive letter can be
+selected from the drop down list.  If there is no physical drive on the
 host machine, the CD/DVD device can be simply removed from the machine.
 
 .. rubric:: Install VMware Tools
    :name: install-vmware-tools
 
-VMware tools is a very useful addition to VMware.  It allows you to
+VMware tools is a very useful addition to VMware.  It allows you to
 resize the VMware screen ,cut-and-paste of text and drag and drop files
 from the Ubuntu machine to and from the Windows host.
 
@@ -168,26 +168,26 @@ Install VMware Tools
 
 .. Image:: /images/Install_vmware_tools.png
 
-The VMware tools are contained in an ISO image that VMware
-will automatically mount.  This drive will show up on the Ubuntu
+The VMware tools are contained in an ISO image that VMware
+will automatically mount.  This drive will show up on the Ubuntu
 desktop as if it were a disk in a DVD drive.
 
 .. Image:: /images/Vmware-tools-cd.png
 
-There will be a single tarball on the drive named
+There will be a single tarball on the drive named
 VMwareTools-9.9.0-2304977.tar.gz (or with a slightly different version
-number). Extract the tarball somewhere in your /home/<user>
-directory.  You will see that a vmware-tools-distrib folder was
+number). Extract the tarball somewhere in your /home/<user>
+directory.  You will see that a vmware-tools-distrib folder was
 created and a file name vmware-install.pl inside. Execute
-vmware-install.pl to install VMware Tools.  The Perl script must be
-executed as a super-user.  This is done in Ubuntu by pre-pending the
-command with "sudo".  When prompted for a password, enter the
-password for the user account.  In Ubuntu, there is no "root"
-account.  However, the first user account created when Ubuntu is
+vmware-install.pl to install VMware Tools.  The Perl script must be
+executed as a super-user.  This is done in Ubuntu by pre-pending the
+command with "sudo".  When prompted for a password, enter the
+password for the user account.  In Ubuntu, there is no "root"
+account.  However, the first user account created when Ubuntu is
 installed can become a super-user with the "sudo" command. Select all
 of defaults during installation of VMware Tools.
 
-An example is shown below. 
+An example is shown below.
 
 ::
 
@@ -199,10 +199,10 @@ An example is shown below. 
    :name: confirming-a-valid-network-connection
 
 After logging into the machine for the first time, bring up a terminal
-window.  This can be found under the Applications menu in Ubuntu. 
-Applications --> Accessories --> Terminal.  Type **pwd** in this
-terminal.  This should return **/home/<user>**.  Now type **ifconfig**. 
-This should return information about the network connection.  Under
+window.  This can be found under the Applications menu in Ubuntu.
+Applications --> Accessories --> Terminal.  Type **pwd** in this
+terminal.  This should return **/home/<user>**.  Now type **ifconfig**.
+This should return information about the network connection.  Under
 **eth0** the IP address should be similar (but not the same) as the IP
 address owned by the Windows host.
 
@@ -221,7 +221,7 @@ address owned by the Windows host.
 
     lo Link encap:Local Loopback
     inet addr:127.0.0.1 Mask:255.0.0.0
-    inet6 addr: ::1/128 Scope:Host
+    inet6 addr: ::1/128 Scope:Host
     UP LOOPBACK RUNNING MTU:16436 Metric:1
     RX packets:12 errors:0 dropped:0 overruns:0 frame:0
     TX packets:12 errors:0 dropped:0 overruns:0 carrier:0
@@ -230,13 +230,13 @@ address owned by the Windows host.
 
 |
 
-.. rubric:: How to Read a USB SD Card Reader in VMware
+.. rubric:: How to Read a USB SD Card Reader in VMware
    :name: how-to-read-a-usbsdcard-reader-in-vmware
 
 | Sometimes there will be a need to connect a SD Card to the Virtual
   Machine (for example, to run the create SD card script provided with
   the SDK that partitions, formats, and populates a SD card that can be
-  used with a target board). When a USB card reader with an SD card is
+  used with a target board). When a USB card reader with an SD card is
   inserted into the USB slot of the host machine, the virtual machine
   will automatically detect the drive and mount partitions from the SD
   card, making the card available to Linux running in the virtual

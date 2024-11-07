@@ -1619,7 +1619,7 @@ background
     $ phc2sys -a -m &
 
 Lines similar to the following should be displayed after a few seconds
-(mixed with the "ptp4l[304.713]: rms ..." lines from ptp4l) :
+(mixed with the "ptp4l[304.713]: rms ..." lines from ptp4l) :
 
 ::
 
@@ -1830,9 +1830,9 @@ each clock plays in this test is as follows:
 
 ::
 
-    DUT-2 : AM572x : Master clock
-    DUT-1 : AM571x : Transparent clock
-    DUT-3 : AM572x : Slave clock
+    DUT-2 : AM572x : Master clock
+    DUT-1 : AM571x : Transparent clock
+    DUT-3 : AM572x : Slave clock
 
 .. note:: In this release BMCA enhanced for HSR is not supported, hence the connection is not a HSR close-loop network.
 
@@ -1852,9 +1852,9 @@ section for HSR) will be used in the setup of the tests.
 
 ::
 
-    DUT-2 : setup_hsr.sh : dut_2_hsr_oc.cfg
-    DUT-1 : setup_hsr.sh : dut_1_hsr_oc.cfg
-    DUT-3 : setup_hsr.sh : dut_3_hsr_oc.cfg
+    DUT-2 : setup_hsr.sh : dut_2_hsr_oc.cfg
+    DUT-1 : setup_hsr.sh : dut_1_hsr_oc.cfg
+    DUT-3 : setup_hsr.sh : dut_3_hsr_oc.cfg
 
 -  Connect the 3 AM57xx IDKs as shown above.
 
@@ -1938,11 +1938,11 @@ associated with ICSS2 (PRUSS2 timer) is ptp1.
     lrwxrwxrwx    1 root     root             0 Apr 20 19:11 ptp0 -> ../../devices/platform/44000000.ocp/48484000.ethernet/ptp/ptp0
     lrwxrwxrwx    1 root     root             0 Apr 21 21:18 ptp1 -> ../../devices/platform/pruss2_eth/ptp/ptp1
     ptp clock names:
-    /sys/class/ptp/ptp0 : CTPS timer
-    /sys/class/ptp/ptp1 : PRUSS2 timer
+    /sys/class/ptp/ptp0 : CTPS timer
+    /sys/class/ptp/ptp1 : PRUSS2 timer
     pps's ptp device:
-    /sys/class/pps/pps0 : ptp0
-    /sys/class/pps/pps1 : ptp1
+    /sys/class/pps/pps0 : ptp0
+    /sys/class/pps/pps1 : ptp1
     root@am57xx-evm:~#
 
 Test 2. Without a hybrid clock between Master and Slave Clock

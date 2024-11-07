@@ -48,7 +48,7 @@ Get Started
 4.  Connect an ethernet cable from your ethernet switch or router to the
     AM64x EVM
 
-5.  Connect your PC to the same ethernet switch or router
+5.  Connect your PC to the same ethernet switch or router
 
 6.  Connect the UART (J26 via USB cable) to the PC's USB port.
 
@@ -63,18 +63,18 @@ Get Started
 .. Image:: /images/OOB_Linux_ifconfig.png
 
 10. On the PC, open a Internet Browser and enter in the
-    following: \ http://IP_ADDRESS_OF_AM64x_EVM:8081, for example, http://192.168.86.198:8081
+    following: \ http://IP_ADDRESS_OF_AM64x_EVM:8081, for example, http://192.168.86.198:8081
 
 11. The following web page will pop up:
 
 .. Image:: /images/OOB_GUI_root.png
 
-12. Click on the "Benchmark Demo": 
+12. Click on the "Benchmark Demo":
 
 .. Image:: /images/OOB_GUI_stats.png
 
 13. With the current release, the R5F app for each R5F core are fixed. User can only
-    change the "Options" for each core, then click "LOAD" to refresh the statistics 
+    change the "Options" for each core, then click "LOAD" to refresh the statistics
 
 +-------------+------------------+----------------------+-----------------------------------------------------------+
 | **R5 Core** | **App Name**     |   Default Option     | **Description**                                           |
@@ -82,7 +82,7 @@ Get Started
 | 0_0         | ADC and PWM Loop |      8Khz            | ADC/PWM benchmark for R5 5 ADC sample read & 1 PWM write  |
 |             |                  |                      | This is not enabled in current release.                   |
 +-------------+------------------+----------------------+-----------------------------------------------------------+
-| 0_1         | CFFT             |      1Khz & 128pt    | CMSIS CFFT benchmark for R5                               |
+| 0_1         | CFFT             |      1Khz & 128pt    | CMSIS CFFT benchmark for R5                               |
 +-------------+------------------+----------------------+-----------------------------------------------------------+
 | 1_0         | FIR Filtering    |      1Khz            | CMSIS FIR filtering benchmark for R5 320pt & 29-tap       |
 +-------------+------------------+----------------------+-----------------------------------------------------------+
@@ -97,11 +97,11 @@ Software Architecture
 Building Blocks
 ---------------
 
--  **User Interface:** The GUI was built by using `GUI Composer <https://dev.ti.com/gc/v2/>`__. The
+-  **User Interface:** The GUI was built by using `GUI Composer <https://dev.ti.com/gc/v2/>`__. The
    Benchmark Demo is the second page where inputs and outputs can be
    accessed.
 
--  **Web Server:** The benchmark data is sent between the GUI and the
+-  **Web Server:** The benchmark data is sent between the GUI and the
    AM64x via HTTP communication. New data are pulled from the AM64x and
    sent to the GUI every second, while data sending from the GUI to the
    AM64x is transmitted every time "Load" is clicked. The data are
@@ -113,7 +113,7 @@ Building Blocks
       MCU+ SDK for more details.
 
    -  Linux application code handles the IPC RPMsg\_char and the JSON
-      file update for A53 
+      file update for A53
 
    -  Web server code is built on Node JS
 
@@ -156,13 +156,13 @@ is a JSON string containing the input/output benchmark data.
 JSON
 ~~~~
 
-A JSON file has been used to exchange structured information between the
-web server and the A53 Linux application (a user space application
-program). It will read the user input such as the input application and
+A JSON file has been used to exchange structured information between the
+web server and the A53 Linux application (a user space application
+program). It will read the user input such as the input application and
 parameters used to run on the desired R5F core. On the other hand, the
 A53 Linux application will also get the benchmark data from the R5 cores
 and then update the JSON file accordingly. The updated JSON file
-will then be displayed on the GUI every second.     
+will then be displayed on the GUI every second.
 
 Build Baremetal Demos and Update SD card
 ----------------------------------------
@@ -183,11 +183,11 @@ Directory Structure
 The source code can be found at `[this link] <https://git.ti.com/cgit/processor-sdk/sitara-apps/>`__.
 
 +------+--------------------------------------------------+----------------------------------------------------------------------------------------+
-|      | **Directory Name**                               | **Description**                                                                        |
+|      | **Directory Name**                               | **Description**                                                                        |
 +======+==================================================+========================================================================================+
 | 1    | apps/benchmark\_demo/webserver\_app/app          | GUI code and component files                                                           |
 +------+--------------------------------------------------+----------------------------------------------------------------------------------------+
-| 2    | apps/benchmark\_demo/webserver\_app/linux\_app   | Linux application code handles the IPC RPMsg\_char and the JSON file update for A53    |
+| 2    | apps/benchmark\_demo/webserver\_app/linux\_app   | Linux application code handles the IPC RPMsg\_char and the JSON file update for A53    |
 +------+--------------------------------------------------+----------------------------------------------------------------------------------------+
 | 3    | apps/benchmark\_demo/webserver\_app/webserver    | Web server and node files                                                              |
 +------+--------------------------------------------------+----------------------------------------------------------------------------------------+

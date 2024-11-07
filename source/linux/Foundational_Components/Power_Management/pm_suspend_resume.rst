@@ -217,7 +217,7 @@ cycle should look like this:
      PM: noirq resume of devices complete after 39.113 msecs
      PM: early resume of devices complete after 10.180 msecs
      net eth0: initializing cpsw version 1.12 (0)
-     net eth0: phy found : id is : 0x4dd074
+     net eth0: phy found : id is : 0x4dd074
      PM: resume of devices complete after 368.844 msecs
      Restarting tasks ... done
    $

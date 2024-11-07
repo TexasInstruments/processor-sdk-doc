@@ -190,5 +190,5 @@ Table:
 
 -  The Mentor USB driver can be built as module or built into kernel.
    For more information refer to `USB
-   configuration <http://processors.wiki.ti.com/index.php/UsbgeneralpageLinuxCore>`__ 
+   configuration <http://processors.wiki.ti.com/index.php/UsbgeneralpageLinuxCore>`__
 

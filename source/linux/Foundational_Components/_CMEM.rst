@@ -165,7 +165,7 @@ section of 'config.bib' of your BSP:
 
 ::
 
-       CMEM_DSP     89000000    02800000    RESERVED ; 40 MB
+       CMEM_DSP     89000000    02800000    RESERVED ; 40 MB
 
 That reserves 40MB of memory for CMEM, DSPLINK, DSP code as well as DSP
 heap usage starting at virtual address 0x89000000. There is no
@@ -189,28 +189,28 @@ TI EVM3530:
         ; Make 1 pool available for allocation for block 1
         "NumPools0"=dword:7
         "NumPools1"=dword:0
-     
+
         "Block0_NumBuffers_Pool0"=dword:20
         "Block0_PoolSize_Pool0"=dword:1000 ; size in bytes (hex)
         "Block0_NumBuffers_Pool1"=dword:8
         "Block0_PoolSize_Pool1"=dword:20000 ; size in bytes (hex)
         "Block0_NumBuffers_Pool2"=dword:5
         "Block0_PoolSize_Pool2"=dword:100000 ; size in bytes (hex)
-     
+
         "Block0_NumBuffers_Pool3"=dword:1
         "Block0_PoolSize_Pool3"=dword:15cfc0 ; size in bytes (hex)
         "Block0_NumBuffers_Pool4"=dword:1
         "Block0_PoolSize_Pool4"=dword:3e800 ; size in bytes (hex)
         "Block0_NumBuffers_Pool5"=dword:1
         "Block0_PoolSize_Pool5"=dword:36ee80 ; size in bytes (hex)
-     
+
         "Block0_NumBuffers_Pool6"=dword:3
         "Block0_PoolSize_Pool6"=dword:96000 ; size in bytes (hex)
-     
+
         ;; "Block1_NumBuffers_Pool1"=dword:2
-        ;; "Block1_PoolSize_Pool1"=dword:4000 ; size in bytes (hex)
-     
-     
+        ;; "Block1_PoolSize_Pool1"=dword:4000 ; size in bytes (hex)
+
+
         ; Physical start + physical end can be use to ask CMEM to map a specific
         ; range of physical addresses.
         ; This is a potential security risk.  If physical start == 0 then the code
@@ -218,7 +218,7 @@ TI EVM3530:
         ; physical end - physical start == length of allocation.  In the special
         ; case, memory is allocated via a call to AllocPhysMem() (as shown in
         ; this example).  MmMapIoSpace() is used to map the normal case where
-        ; physical start != 0.
+        ; physical start != 0.
         ;
         ; physical start and end for block 0
         "PhysicalStart0"=dword:85000000
@@ -450,13 +450,13 @@ of processes to start as a parameter. Now load the kernel module
 
 ::
 
-           % insmod cmemk.ko phys_start=0xcaf01000 phys_end=0xCB601000 pools=4x1000 phys_start_1=0xCB601000 phys_end_1=0xCB701000 pools_1=4x1000
+           % insmod cmemk.ko phys_start=0xcaf01000 phys_end=0xCB601000 pools=4x1000 phys_start_1=0xCB601000 phys_end_1=0xCB701000 pools_1=4x1000
 
 (Uses DDR)
 
 ::
 
-           % insmod cmemk.ko phys_start=0x40300000 phys_end=0x4033FFFF pools=4x500 phys_start_1=0x4033FFFF phys_end_1=0x4037ffff pools_1=4x500 allowOverlap=1
+           % insmod cmemk.ko phys_start=0x40300000 phys_end=0x4033FFFF pools=4x500 phys_start_1=0x4033FFFF phys_end_1=0x4037ffff pools_1=4x500 allowOverlap=1
 
 (Uses OCMC1, for this rebuild the Translate Test app with macro
 BUFFER\_SIZE = 500 at line #49 in file
@@ -465,7 +465,7 @@ test,
 
 ::
 
-           % multi_process 3
+           % multi_process 3
 
 where 3 is the number of processes to be spawned.
 
@@ -477,13 +477,13 @@ This app tests the address translation. Now load the kernel module
 
 ::
 
-           % insmod cmemk.ko phys_start=0xcaf01000 phys_end=0xCB601000 pools=1x3145728
+           % insmod cmemk.ko phys_start=0xcaf01000 phys_end=0xCB601000 pools=1x3145728
 
 (Uses DDR)
 
 ::
 
-           % insmod cmemk.ko phys_start=0x40300000 phys_end=0x4037ffff pools=1x20000 allowOverlap=1
+           % insmod cmemk.ko phys_start=0x40300000 phys_end=0x4037ffff pools=1x20000 allowOverlap=1
 
 (Uses OCMC1, for this rebuild the Translate Test app with macro BUFSIZE
 = 20000 at line #48 in file (linuxutils)/src/cmem/tests/translate.c) Now
@@ -491,7 +491,7 @@ run the Translate test,
 
 ::
 
-           % translate
+           % translate
 
 .. rubric:: API Test
    :name: api-test
@@ -502,7 +502,7 @@ Now load the kernel module 'cmemk.ko' with the below command:
 
 ::
 
-           % insmod cmemk.ko phys_start=0x87800000 phys_end=0x87F00000 pools=4xBUFSIZE phys_start_1=0x87F00000 phys_end_1=0x88000000 pools_1=4xBUFSIZE
+           % insmod cmemk.ko phys_start=0x87800000 phys_end=0x87F00000 pools=4xBUFSIZE phys_start_1=0x87F00000 phys_end_1=0x88000000 pools_1=4xBUFSIZE
 
 where BUFSIZE is the number of bytes you plan on passing as command line
 parameter to apitest. If in doubt, use a larger number as BUFSIZE
@@ -511,13 +511,13 @@ Now run the API test,
 
 ::
 
-           % apitest <BUFSIZE>
+           % apitest <BUFSIZE>
 
 (e.g) With BUFSIZE=10240
 
 ::
 
-           % apitest 10240
+           % apitest 10240
 
 .. rubric:: CMEM FAQ
    :name: cmem-faq
