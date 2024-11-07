@@ -49,11 +49,11 @@ kernel configuration.
     .. code-block:: text
 
         Symbol: CRYPTO_DEV_SA2UL [=m]
-          ¦ Type  : tristate
-          ¦ Prompt: Support for TI security accelerator
-          ¦   Location:
-          ¦     -> Cryptographic API (CRYPTO [=y])
-          ¦ (1)   -> Hardware crypto devices (CRYPTO_HW [=y])
+          | Type  : tristate
+          | Prompt: Support for TI security accelerator
+          |   Location:
+          |     -> Cryptographic API (CRYPTO [=y])
+          | (1)   -> Hardware crypto devices (CRYPTO_HW [=y])
 
     To check if sa2ul module is properly installed,
     run the below command from the Linux command prompt:
