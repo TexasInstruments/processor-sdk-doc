@@ -35,29 +35,29 @@ designed to help you through the initial setup of the EVM.
 
 |
 
-+--------------------------------------------------------------------------+
-| **1. Once you have received the TI-RTOS or Linux™ software from your TI  |
-| representative, create a bootable µSD card (using the included blank     |
-| µSD) and insert it into the EVM**                                        |
-+--------------------------------------------------------------------------+
-| .. raw:: html                                                            |
-|                                                                          |
-|    <div class="thumb tleft">                                             |
-|                                                                          |
-| .. raw:: html                                                            |
-|                                                                          |
-|    <div class="thumbinner" style="width:227px;">                         |
-|                                                                          |
-| .. raw:: html                                                            |
-|                                                                          |
-|    <div class="thumbcaption">                                            |
-|                                                                          |
-| .. raw:: html                                                            |
-|                                                                          |
-|    <div class="magnify">                                                 |
-|                                                                          |
-| .. Image:: /images/IDK_uSD.png                                           |
-+--------------------------------------------------------------------------+
++------------------------------------------------------------------------------+
+| **1. Once you have received the TI-RTOS or Linux™ software from your TI      |
+| representative, create a bootable |micro|\ SD card (using the included blank |
+| |micro|\ SD) and insert it into the EVM**                                    |
++------------------------------------------------------------------------------+
+| .. raw:: html                                                                |
+|                                                                              |
+|    <div class="thumb tleft">                                                 |
+|                                                                              |
+| .. raw:: html                                                                |
+|                                                                              |
+|    <div class="thumbinner" style="width:227px;">                             |
+|                                                                              |
+| .. raw:: html                                                                |
+|                                                                              |
+|    <div class="thumbcaption">                                                |
+|                                                                              |
+| .. raw:: html                                                                |
+|                                                                              |
+|    <div class="magnify">                                                     |
+|                                                                              |
+| .. Image:: /images/IDK_uSD.png                                               |
++------------------------------------------------------------------------------+
 
 +--------------------------------------------------------------------------+
 | **2. Connect the power cable to the power jack on the board and plug in  |

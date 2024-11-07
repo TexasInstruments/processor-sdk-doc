@@ -34,7 +34,7 @@ and dual ARM Cortex-M4 cores.
 
 **Other components:**
 
-- µSD card with Linux SDK
+- |micro|\ SD card with Linux SDK
 - USB-to-serial debug cable
 - HDMI cable for optional external display
 - LCD brackets
