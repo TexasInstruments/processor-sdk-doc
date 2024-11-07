@@ -259,7 +259,7 @@ Errata Workarounds Available in this Release
    LCPD-16350,DSS: Frame Buffer Flip/Mirror Feature Using RGB24/BGR24 Packed Format can Result in Pixel Corruption
    LCPD-9173,i897: USB Stop Endpoint doesnt work in certain circumstances
    LCPD-17333,[CPTS] GENF (and ESTF) Reconfiguration Issue
-   LCPD-14186,UDMA-P Host Packet Descriptors 0x3FFFFF Packet Length Mode not Functional
+   LCPD-14186,"UDMA-P Host Packet Descriptor's ""0x3FFFFF"" Packet Length Mode not Functional"
    LCPD-1776,"[J6 SATA Adaptation] J6 - Errata i783, SATA Lockup After SATA DPLL Unlock/Relock"
    LCPD-941,"OMAP4,5: DSS: implement workaround for errata i740"
    LCPD-1171,DRA7: DMM errata i878 (framebuffer part)
@@ -292,7 +292,7 @@ SDK Known Issues
    PLSDK-2960,am571x-idk,HSR/PRP: Noticed 1 packet loss seen with UDP tests over 60 minute test,None
    PLSDK-2989,"am335x-evm, am437x-evm, am437x-hsevm, am572x-evm, am572x-hsevm, k2e-evm, k2g-evm, k2l-evm, k2l-hsevm",defconfig build failure: reported diff,
    PLSDK-3031,"am571x-idk, am572x-idk, am574x-idk",HSR: erroneous A-B forwarding of frames,
-   PLSDK-3032,"am571x-idk, am572x-idk, am574x-idk","HSR: forwarding of untagged frames in default mode H not according to IEC 62439-3:2016, 5.3.3 DANH receiving from an HSR port.",None
+   PLSDK-3032,"am571x-idk, am572x-idk, am574x-idk","HSR: forwarding of untagged frames in default mode H not according to IEC 62439-3:2016, ""5.3.3 DANH receiving from an HSR port"".",None
    PLSDK-3057,"am335x-evm, am437x-evm, am572x-evm, am654x-evm, am654x-idk",ARMNN with TFLite parser: performance/accuracy issue with quantized mobilenet models,Patch from arm compute library https://review.mlplatform.org/c/ml/ComputeLibrary/+/1620/.
    PLSDK-3071,"am571x-idk, am572x-evm, am572x-idk, am574x-idk",Dual camera demo: Overlapping of camera and stats panel due to big font size,None
    PLSDK-3074,am572x-idk,NetJury Test Failure: TC_PRP_4_2_4_____IP_addresses,None
