@@ -196,7 +196,7 @@ Known Issues/Errata
    may timeout resulting in uncorrelated data. In this case the data can
    be saved to a binary file and post process for correlation to work.
 
-.. rubric:: uia_1_00_04_35 : Tutorial 1 and Tutorial 2 do not build properly.
+.. rubric:: uia_1_00_04_35 : Tutorial 1 and Tutorial 2 do not build properly.
    :name: uia_1_00_04_35-tutorial-1-and-tutorial-2-do-not-build-properly.
 
 -  The build fails with the error *"dc.services.global.XDCException:
@@ -206,7 +206,7 @@ Known Issues/Errata
    the UIAMetaData.xs file. Then delete the <Debug> folder from your
    project and rebuild.
 
-.. rubric:: uia_1_03_00_02 : JTAG Transport does not work properly on
+.. rubric:: uia_1_03_00_02 : JTAG Transport does not work properly on
    some devices.
    :name: uia_1_03_00_02-jtag-transport-does-not-work-properly-on-some-devices.
 

@@ -305,7 +305,7 @@ Driver Configuration
      which can check for pending background operations and give the card
      some time to clear up the same.
    | This feature is already part of the framework and to start using it
-     the User needs to enable EXT\_CSD : BKOPS\_EN [163] BIT 0.
+     the User needs to enable EXT\_CSD : BKOPS\_EN [163] BIT 0.
 
    **This can be done using the "mmc-utils" tool from user space or using
    the "mmc" command in U-boot.**

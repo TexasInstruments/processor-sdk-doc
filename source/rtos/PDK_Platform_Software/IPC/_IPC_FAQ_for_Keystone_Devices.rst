@@ -3,9 +3,9 @@
 Overview
 ^^^^^^^^^^
 
-This wiki article is a collection of frequently asked questions (FAQ) on
+This wiki article is a collection of frequently asked questions (FAQ) on
 IPC on Keystone family of devices , along with some useful collateral
-and software reference links. 
+and software reference links.
 
 |
 
@@ -38,7 +38,7 @@ Keystone IPC Frequently Asked Questions (FAQ)
 
 **Ans:**
 
-Please visit :
+Please visit :
 http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/doxygen/html/index.html
 
 The IPC product contains the following APIs:
@@ -105,13 +105,13 @@ machine. This cannot be built through CCS.
 |
 
 .. rubric:: Q: Is there any simple example to demonstrate IPC methods
-   like message Q or notify for Keystone-II ?
+   like message Q or notify for Keystone-II ?
    :name: q-is-there-any-simple-example-to-demonstrate-ipc-methods-like-message-q-or-notify-for-keystone-ii
 
 **Ans:**
 
 | Please look at the ex44_compute.zip
-  in :~/ti/ipc_3_3x_xx_xx/examples/TCI6638_linux_elf
+  in :~/ti/ipc_3_3x_xx_xx/examples/TCI6638_linux_elf
 
 ::
 
@@ -164,7 +164,7 @@ CCS based projects for these examples.
 
 **Ans:**
 
-Tested version : "mcsdk_bios_3_00_03_15". The Image processing demo was
+Tested version : "mcsdk_bios_3_00_03_15". The Image processing demo was
 tested multiple times with this version and it works fine.
 
 The image processing demo source code can be found in below path.
@@ -195,7 +195,7 @@ at
 
 |
 
-.. rubric:: Q: How to import the slave code of Image processing demo and
+.. rubric:: Q: How to import the slave code of Image processing demo and
    how do I build it?
    :name: qhow-to-import-the-slave-code-of-image-processing-demo-and-how-do-i-build-it
 
@@ -226,7 +226,7 @@ Take the binary file, image_processing_evmtci66xxk2x_slave.out and
 replace it in the path target Linux filesystem,
 “/usr/share/matrix-gui-2.0/apps/demo_imageproc/bin/"
 
-.. rubric:: Q:  While building the ARM(master) side code of Image
+.. rubric:: Q:  While building the ARM(master) side code of Image
    processing demo, I see a compilation error message about Std.h as
    below when I make it with or without BUILD_LOCAL=true.
    :name: q-while-building-the-armmaster-side-code-of-image-processing-demo-i-see-a-compilation-error-message-about-std.h-as-below-when-i-make-it-with-or-without-build_localtrue.
@@ -238,7 +238,7 @@ replace it in the path target Linux filesystem,
 | *make[1]: Entering directory
   \`/home/user/ti/mcsdk_bios_3_0x_0x_0x/demos/image_processing/ipc/master/src'
   mcip_mem_mgmt.c:53:24: fatal error: ti/ipc/Std.h: No such file or
-  directory #include <ti/ipc/Std.h> Compilation terminated.*
+  directory #include <ti/ipc/Std.h> Compilation terminated.*
 
 | **Ans:**
 | There is an error in the Makefile. Make file needs to be updated for
@@ -253,8 +253,8 @@ as below,
 
 ::
 
-         IPC_INSTALL_DIR := /opt/ti/ipc_3_xx_0x_0x
-         CFLAGS  := -Wall -I$(COMMON_INC) -I$(MASTER_INC) -I$(IPC_INSTALL_DIR)/linux/include -I$(IPC_INSTALL_DIR)/packages -D_GNU_SOURCE
+         IPC_INSTALL_DIR := /opt/ti/ipc_3_xx_0x_0x
+         CFLAGS  := -Wall -I$(COMMON_INC) -I$(MASTER_INC) -I$(IPC_INSTALL_DIR)/linux/include -I$(IPC_INSTALL_DIR)/packages -D_GNU_SOURCE
 
 .. rubric:: Q: While building the ARM(master) side code of Image
    processing demo, I see a linker error message like below.
@@ -283,17 +283,17 @@ as below,
 
 ::
 
-        IPC_INSTALL_DIR := /opt/ti/ipc_3_3x_xx_xx
+        IPC_INSTALL_DIR := /opt/ti/ipc_3_3x_xx_xx
 
         #The location where the libraries are installed after building the IPC package
-        SIPC_LINUX_DIR := /opt/ti/ipc_3_3x_xx_xx/IPC_Linux_libraries
+        SIPC_LINUX_DIR := /opt/ti/ipc_3_3x_xx_xx/IPC_Linux_libraries
 
 ::
 
-        CROSS_COMPILE ?= arm-linux-gnueabihf-
-        CC            := $(CROSS_COMPILE)gcc
-        CFLAGS        := -Wall -I$(COMMON_INC) -I$(MASTER_INC) -I$(IPC_INSTALL_DIR)/linux/include -I$(IPC_INSTALL_DIR)/packages -D_GNU_SOURCE
-        LFLAGS        := -lpthread -L$(SIPC_LINUX_DIR)/ -ltitransportrpmsg -L$(SIPC_LINUX_DIR)/ -ltiipc -L$(SIPC_LINUX_DIR)/ -ltiipcutils
+        CROSS_COMPILE ?= arm-linux-gnueabihf-
+        CC            := $(CROSS_COMPILE)gcc
+        CFLAGS        := -Wall -I$(COMMON_INC) -I$(MASTER_INC) -I$(IPC_INSTALL_DIR)/linux/include -I$(IPC_INSTALL_DIR)/packages -D_GNU_SOURCE
+        LFLAGS        := -lpthread -L$(SIPC_LINUX_DIR)/ -ltitransportrpmsg -L$(SIPC_LINUX_DIR)/ -ltiipc -L$(SIPC_LINUX_DIR)/ -ltiipcutils
 
 |
 
@@ -354,7 +354,7 @@ after the throughput (msg/s) has been calculated.
 .. Image:: /images/Qmss_IPC.png
 
 .. rubric:: Q: How can I build the qmssIpcbenchmark of pdk_C6678_1_1_2_x
-   pdk_C6678_1_1_2_x with release build configuration ?
+   pdk_C6678_1_1_2_x with release build configuration ?
    :name: q-how-can-i-build-the-qmssipcbenchmark-of-pdk_c6678_1_1_2_x-pdk_c6678_1_1_2_x-with-release-build-configuration
 
 **Ans:**
@@ -370,11 +370,11 @@ after the throughput (msg/s) has been calculated.
 | **How to change the Common.bld:**
 | 1. Go to C:\ti\ipc_3_00_xx_xx\packages\ti\sdo\ipc\build\Common.bld (
   Note: Go to the IPC version you use for building the transport
-  library. Here, it refers to IPC version : 3.00.4.29)
+  library. Here, it refers to IPC version : 3.00.4.29)
 | 2. Modify
 | Line No:88 profiles[0] = "release";
 | Line No: 99 var libPath = "lib/ipc/release/";
-| 3. Build with option : -mo -o3 -q -k -eo.o in config.bld of transport
+| 3. Build with option : -mo -o3 -q -k -eo.o in config.bld of transport
   library located at
   "..\ti\pdk_C6678_1_1_2_x\packages\ti\transport\ipc\qmss\transports"
 | 4. Now build qmssIpcBenchmark project.
@@ -385,7 +385,7 @@ after the throughput (msg/s) has been calculated.
 |
 
 .. rubric:: Q: How to re-build the IPC - QMSS transport library and
-   generate “ti.transport.ipc.qmss.transports.ae66” ?
+   generate “ti.transport.ipc.qmss.transports.ae66” ?
    :name: q-how-to-re-build-the-ipc---qmss-transport-library-and-generate-ti.transport.ipc.qmss.transports.ae66
 
 **Ans:**

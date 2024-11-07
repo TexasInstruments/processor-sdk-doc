@@ -87,14 +87,14 @@ In baremetal case with a linker cmd file:
 
 ::
 
-   BOARD_IO_DELAY_CODE : {
+   BOARD_IO_DELAY_CODE : {
 
       . = ALIGN(4);
       *(BOARD_IO_DELAY_CODE*)
 
    } > OCMC_RAM1
 
-   BOARD_IO_DELAY_DATA : {
+   BOARD_IO_DELAY_DATA : {
 
       . = ALIGN(4);
       *(BOARD_IO_DELAY_DATA*)

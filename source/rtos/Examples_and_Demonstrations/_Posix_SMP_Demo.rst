@@ -196,11 +196,11 @@ the toolchains for the cores being used.
 
     #DEPOT = <ROOT_INSTALL_PATH>
     #### BIOS-side dependencies ####
-    #BIOS_INSTALL_PATH ?= $(DEPOT)\bios_n_nn_nn_nn
-    #XDC_INSTALL_PATH ?= $(DEPOT)\xdctools_n_nn_nn_nn_core
+    #BIOS_INSTALL_PATH ?= $(DEPOT)\bios_n_nn_nn_nn
+    #XDC_INSTALL_PATH ?= $(DEPOT)\xdctools_n_nn_nn_nn_core
     #### BIOS-side toolchains ####
-    #TOOLCHAIN_PATH_A15 ?= $(DEPOT)\ccsv6\tools\compiler\gcc-arm-none-eabi-n_n-xxxxqn
-    #TOOLCHAIN_PATH_M4 ?= $(DEPOT)\ccsv6\tools\compiler\ti-cgt-arm_x.x.x
+    #TOOLCHAIN_PATH_A15 ?= $(DEPOT)\ccsv6\tools\compiler\gcc-arm-none-eabi-n_n-xxxxqn
+    #TOOLCHAIN_PATH_M4 ?= $(DEPOT)\ccsv6\tools\compiler\ti-cgt-arm_x.x.x
 
 Navigate to the demo directory and run "make". The steps to run the demo
 will be the same.

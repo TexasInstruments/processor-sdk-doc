@@ -299,7 +299,7 @@ Sample code for SMBus transaction:
     status = I2C_transfer(handle, &i2cTransaction);
     if (status != I2C_STS_SUCCESS) {
         /* I2C transaction failed */
-    } 
+    }
 
 |
 

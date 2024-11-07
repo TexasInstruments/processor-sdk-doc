@@ -237,7 +237,7 @@ can move on to the next step.
 
 .. code-block:: text
 
-    Would you like to re-partition the drive anyways [y/n] :
+    Would you like to re-partition the drive anyways [y/n] :
 
 -  Options:
 
@@ -263,7 +263,7 @@ many partitions you want to create for the SD card.
 
 .. code-block:: text
 
-    Number of partitions needed [2/3] :
+    Number of partitions needed [2/3] :
 
 -  Options:
 

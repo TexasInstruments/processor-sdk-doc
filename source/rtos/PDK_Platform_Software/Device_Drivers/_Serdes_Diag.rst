@@ -51,7 +51,7 @@ API reference for application:
 
     #include <ti/diag/serdes_diag/src/am65xx/serdes_diag_k3.h>
 
- Sample code for initiating Serdes Diag transaction:
+ Sample code for initiating Serdes Diag transaction:
 
 ::
 

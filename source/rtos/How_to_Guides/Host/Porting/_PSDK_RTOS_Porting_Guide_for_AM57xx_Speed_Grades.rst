@@ -35,7 +35,7 @@ Comparison of AM572x, AM571x and AM570x devices
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Quick Feature Set comparison between devices in Sitara AM57xx
-family :**
+family :**
 
 .. Image:: /images/AM572x_AM571X_AM570x_Comparison.png
 
@@ -129,7 +129,7 @@ above configuration, you will also need to modify OPP_NOM settings in
 the board library by updating the DPLL setting for MPU and DSP in the
 file <BoardName>_pll.c as shown below:
 
-**Step1 : Update MPU, DSP, IVA and GPU DPLL setting**
+**Step1 : Update MPU, DSP, IVA and GPU DPLL setting**
 
 -  **MPU DPLL Changes:**
 
@@ -172,7 +172,7 @@ removing the ivaPLL and gpuPLL settings in board.
     -                gpuPllcParam.div = 3U;
     -                gpuPllcParam.divM2 = 2U;
 
-**Step 2 : Disable clocks configuration and wakeup for IVA in PRCM**
+**Step 2 : Disable clocks configuration and wakeup for IVA in PRCM**
 
 -  **Remove IVA wakeup and Module configuration**
 

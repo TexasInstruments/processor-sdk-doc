@@ -215,6 +215,6 @@ exclusive(exc): excluding the cycles of its child functions.)
    in the report.
 
    Functions which are optimized out will not appear in the report eg.
-   empty/single-line functions, ``ti_sysbios_*`` functions etc.
+   empty/single-line functions, ``ti_sysbios_*`` functions etc.
 
 |

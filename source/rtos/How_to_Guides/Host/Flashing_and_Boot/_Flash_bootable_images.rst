@@ -141,7 +141,7 @@ For Windows users:
 
      > cd [SDK Install Path]\processor_sdk_rtos_<platform>_<version>\bin
      > set DSS_SCRIPT_DIR=[CCS Install Path]\ccsv6\ccs_base\scripting\bin
-     > %DSS_SCRIPT_DIR%\dss.bat program_evm.js [tmdx|tmds]evm(6678|6657|k2h|k2e|k2l)[l|le|ls][-le|-be]
+     > %DSS_SCRIPT_DIR%\dss.bat program_evm.js [tmdx|tmds]evm(6678|6657|k2h|k2e|k2l)[l|le|ls][-le|-be]
 
 For Linux users:
 

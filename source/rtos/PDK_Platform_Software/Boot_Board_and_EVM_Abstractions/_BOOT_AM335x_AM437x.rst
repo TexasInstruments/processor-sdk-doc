@@ -83,7 +83,7 @@ Boot Sequence
 #. Secondary Bootloader(SBL)
 
    -  Configure PLL and Initialize DDR
-   -  Configure PRCM and PinMux  for Boot Peripherals
+   -  Configure PRCM and PinMux  for Boot Peripherals
    -  Copies application image to DDR
    -  Passes execution control to Application
 
@@ -95,7 +95,7 @@ Tools and Binary formats
 +-----------------------+-----------------------+-----------------------+
 | Binary format         | Requirement           | Details               |
 +-----------------------+-----------------------+-----------------------+
-| .bin                  | QSPI bootloader,      | QSPI bootloader       |
+| .bin                  | QSPI bootloader,      | QSPI bootloader       |
 |                       |                       | binary should in .bin |
 |                       | UART bootloader and   | format and            |
 |                       | app                   | Application binary    |
@@ -109,7 +109,7 @@ Tools and Binary formats
 |                       |                       | terminal.             |
 +-----------------------+-----------------------+-----------------------+
 | \_ti.bin              | MMCSD bootloader      | .bin binaries are     |
-|                       | and app,              | converted to          |
+|                       | and app,              | converted to          |
 |                       |                       | \_ti.bin format by    |
 |                       | NAND bootloader and   | adding Image          |
 |                       | app,                  | size(4bytes) and      |
@@ -122,7 +122,7 @@ Tools and Binary formats
 |                       |                       | chapter of `AM437x    |
 |                       |                       | TRM`_                 |
 |                       |                       |                       |
-|                       |                       | MMCSD, NAND and MCSPI |
+|                       |                       | MMCSD, NAND and MCSPI |
 |                       |                       | boot loaders and      |
 |                       |                       | application binaries  |
 |                       |                       | should be appended    |
@@ -336,7 +336,7 @@ Booting from SD Card involves two steps.
 #. Preparing SD card.
 #. Booting target.
 
-Preparing SD card 
+Preparing SD card
 '''''''''''''''''''
 
 #. To boot target the SD card should be bootable. Follow the steps at
@@ -433,10 +433,10 @@ details below:
 
     StarterWare QSPI Flash Writer!!
     BOARDInit status [0x0]
-    SoC                   : [AM43XX]
-    Core                  : [A9]
-    Board Detected        : [IDKEVM]
-    Base Board Revision   : [UNKNOWN]
+    SoC                   : [AM43XX]
+    Core                  : [A9]
+    Board Detected        : [IDKEVM]
+    Base Board Revision   : [UNKNOWN]
     Daughter Card Revision: [UNKNOWN]
     Copying boot to QSPI Flash
     Copying app to QSPI Flash
@@ -451,17 +451,17 @@ Booting the target.
 #. Connect UART cable to a host running serial terminal application
    (teraterm/hyperterminal) with 115200 baud, 8bit, No parity and 1 STOP
    bit configuration.
-#. After flashing successfully remove SD card and reboot to see
+#. After flashing successfully remove SD card and reboot to see
    following logs
 
 ::
 
     StarterWare Boot Loader
     BOARDInit status [0x0]
-    SoC                   : [AM43XX]
-    Core                  : [A9]
-    Board Detected        : [IDKEVM]
-    Base Board Revision   : [UNKNOWN]
+    SoC                   : [AM43XX]
+    Core                  : [A9]
+    Board Detected        : [IDKEVM]
+    Base Board Revision   : [UNKNOWN]
     Daughter Card Revision: [UNKNOWN]
     Copying Header of the application image
     Copying image from flash to DDR
@@ -482,15 +482,15 @@ Booting Via UART
 ROM and Bootloader supports XMODEM protocol with images being binary
 not requiring any additional headers. Following are steps for boot:
 
-#. Configure board for UART boot mode :
+#. Configure board for UART boot mode :
    UART boot need to be first in the boot device list. Note: In case if
    any other boot mode is selected, the first available boot image
    (eg:NAND or MMCSD etc) will override. In case of no valid images,
-   UART boot will be selected.   
+   UART boot will be selected.
 
-   -  Select View->Memory Browser through CCS.   
-   -  Select address 0x44e10040.   
-   -  Write 0x19 to last 2 bytes of this memory address.(UART boot)   
+   -  Select View->Memory Browser through CCS.
+   -  Select address 0x44e10040.
+   -  Write 0x19 to last 2 bytes of this memory address.(UART boot)
    -  Soft reset the board. This is a volatile bit which gets reset
       after power on.
 
@@ -498,7 +498,7 @@ not requiring any additional headers. Following are steps for boot:
    XMODEM. File can be sent via xmodem through tera-term File-> Transfer
    -> XMODEM -> Send.
 #. On transmitting bootloader
-   image, bootloader_boot_uart_a9host_debug.bin via XMODEM, following
+   image, bootloader_boot_uart_a9host_debug.bin via XMODEM, following
    message will be expected on serial console.
 
 ::
@@ -506,17 +506,17 @@ not requiring any additional headers. Following are steps for boot:
     CCCCCCCCCCCCCCCCCCCCCCCCCCCC
     StarterWare Boot Loader
     BOARDInit status [0x0]
-     SoC                   : [AM43XX]
-     Core                  : [A9]
-     Board Detected        : [IDKEVM]
-     Base Board Revision   : [UNKNOWN]
+     SoC                   : [AM43XX]
+     Core                  : [A9]
+     Board Detected        : [IDKEVM]
+     Base Board Revision   : [UNKNOWN]
      Daughter Card Revision: [UNKNOWN]
     GPIO Instance number: 0
     Pin number: 22
     Please transfer file:
     CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 
-  4.  As  a next step application binary (without header) can be sent
+  4.  As  a next step application binary (without header) can be sent
 via XMODEM which will lead to application start executing.
 
 Booting Via McSPI
@@ -584,7 +584,7 @@ Booting from McSPI involves two steps.
 .. rubric:: Booting the target
    :name: booting-the-target
 
-#. Connect a serial cable to a host running a serial terminal
+#. Connect a serial cable to a host running a serial terminal
    application (teraterm/hyperterminal) with 115200 baud, 8bit, No
    parity and 1 STOP bit configuration.
 #. Configure the board for SPI boot mode.
@@ -629,7 +629,7 @@ Booting from NAND involves two steps.
 
     Enter image file path
 
-    Provide the complete path (e.g.
+    Provide the complete path (e.g.
 <PDK_INSTALL_DIR/packages/ti/starterware/binary/bootloader/bin/<am335x/am437x-evm>/<compiler>/bootloader_boot_nand_a8host_<debug/release>_ti.bin)
 
 -  Enter offset when prompted as shown below.
@@ -638,7 +638,7 @@ Booting from NAND involves two steps.
 
     Enter offset (in hex):
 
-|     This offset is start location from where the image should be
+|     This offset is start location from where the image should be
   flashed.
 | NOTE:
 
@@ -656,7 +656,7 @@ Booting from NAND involves two steps.
     Enter 3 ---> T0 EXIT
     Please enter ECC scheme type:
 
-    Always select BCH8 for bootloader and application as ROM code and
+    Always select BCH8 for bootloader and application as ROM code and
 bootloader uses the BCH8 ECC scheme.
 
 -  Ensure that flash info displayed by tool matches NAND flash in EVM.
@@ -678,7 +678,7 @@ bootloader uses the BCH8 ECC scheme.
 -  Connect a UART cable to a host running a serial terminal application
    (teraterm/hyperterminal) with 115200 baud, 8bit, No parity and 1 STOP
    bit configuration.
--  Configure the board for NAND boot mode. Refer to corresponding
+-  Configure the board for NAND boot mode. Refer to corresponding
    hardware user's guide for bootmode settings.
 -  On reset, ROM detects bootloader from NAND and copies it to internal
    memory. Bootloader then copies application image from the NAND to DDR
@@ -689,10 +689,10 @@ bootloader uses the BCH8 ECC scheme.
 
        StarterWare Boot Loader
     BOARDInit status [0x0]
-    SoC                   : [AM335X]
-    Core                  : [A8]
-    Board Detected        : [GPEVM]
-    Base Board Revision   : [1.5]
+    SoC                   : [AM335X]
+    Core                  : [A8]
+    Board Detected        : [GPEVM]
+    Base Board Revision   : [1.5]
     Daughter Card Revision: [UNKNOWN]
     NAND flash is connected to GPMC on this board
     Jumping to StarterWare Application...
@@ -803,7 +803,7 @@ adding
     heap1.sectionName = ".stack";
     Memory.defaultHeapInstance = heap1;
 
-**Compiler Setting :** --remove-section=.stack
+**Compiler Setting :** --remove-section=.stack
 
 **Option 2** Configure Segment type to be "NO LOAD" in .cfg and use
 excludeSections

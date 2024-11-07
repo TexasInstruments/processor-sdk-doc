@@ -136,7 +136,7 @@ CCS Setup
 This section describes the setup to connect to 66AK2G02 ICE EVM using
 Code composer Studio environment and an emulator.
 
-There are two scenarios while connecting to the EVM :
+There are two scenarios while connecting to the EVM :
 
 -  **Connect to EVM without a SD card boot image to boot the EVM**
 -  **Connect to EVM after booting an image from the SD card**.

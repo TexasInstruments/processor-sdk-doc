@@ -79,7 +79,7 @@ API reference for application:
 
     #include <ti/drv/iolink/IOLINK.h>
 
- Sample code for IOLINK control operation:
+ Sample code for IOLINK control operation:
 
 ::
 

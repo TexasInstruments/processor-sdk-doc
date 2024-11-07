@@ -73,7 +73,7 @@ STMLib
 
 -  This library provides "C" printf and binary APIs for hardware
    assisted (System Trace software messages) instrumentation in your
-   code. STM messages are captured via an ETB or with an external
+   code. STM messages are captured via an ETB or with an external
    XDS560v2 System Trace receiver.
 -  For instructions on setting up CCS to capture STM data see `Using
    System Trace(STM) <http://processors.wiki.ti.com/index.php/Using_System_Trace_(STM)>`__.
@@ -225,13 +225,13 @@ compatible with CCSv6.
 |                       | CortexA8 Core Trace   | tion/esd/ctoolslib/ET |
 |                       | triggering.           | MLib_0.6.zip>`__      |
 +-----------------------+-----------------------+-----------------------+
-| DSPTraceLib           | Software Library to   | `DSPTraceLib_1.14 <ht |
+| DSPTraceLib           | Software Library to   | `DSPTraceLib_1.14 <ht |
 |                       | configure DSP Trace   | tp://downloads.ti.com |
 |                       | export                | /emulation/esd/ctools |
 |                       |                       | lib/DSPTraceLib_1.14. |
 |                       |                       | zip>`__               |
 +-----------------------+-----------------------+-----------------------+
-| cTools_UCLib          | Library that          | `Ctools_UCLib_1.5 <ht |
+| cTools_UCLib          | Library that          | `Ctools_UCLib_1.5 <ht |
 |                       | configures key        | tp://downloads.ti.com |
 |                       | Keystone CP Tracer    | /emulation/esd/ctools |
 |                       | and DSP Trace Use     | lib/Ctools_UCLib_1.5. |
@@ -240,7 +240,7 @@ compatible with CCSv6.
 | PMICMILib             | Power and Clock       | `PMICMILib_1.3 <http: |
 |                       | management            | //downloads.ti.com/em |
 |                       | Instrumentation       | ulation/esd/ctoolslib |
-|                       | Library               | /PMICMILib_1.3.zip>`_ |
+|                       | Library               | /PMICMILib_1.3.zip>`_ |
 |                       |                       | _                     |
 +-----------------------+-----------------------+-----------------------+
 | SCILib                | Statistic Collector   | `SCILib_1.5 <http://d |
@@ -291,7 +291,7 @@ Refer here for the detail on using `BIN2TDF. <http://processors.wiki.ti.com/inde
 Refer here for the detail on using
 `TD <http://processors.wiki.ti.com/index.php/TD>`__ .
 
- 
+
 
 Support
 -------

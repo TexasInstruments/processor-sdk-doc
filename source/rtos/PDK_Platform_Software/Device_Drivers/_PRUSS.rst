@@ -8,7 +8,7 @@ Introduction
 
 | The PRUSS (Programmable Real-Time Unit Subsystem) provides a
   well-defined API layer which allows applications to use the PRUSS low
-  level driver to control  sub system.
+  level driver to control  sub system.
 
 |
 
@@ -119,9 +119,9 @@ Examples
 |                       |   count.Application   |                       |
 |                       |   is to test PRU’s    || Prints related to    |
 |                       |   load, control and   | sending and           |
-|                       |   Interrupt           | receiving  event from |
+|                       |   Interrupt           | receiving  event from |
 |                       |   controller          | PRU will be printed   |
-|                       |   functionalities.    | on  console. Test     |
+|                       |   functionalities.    | on  console. Test     |
 |                       |                       | program at the end    |
 |                       |                       | expected to output:   |
 |                       |                       | "All tests have       |

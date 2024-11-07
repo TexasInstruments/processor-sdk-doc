@@ -171,9 +171,9 @@ Building VPS examples
    pdksetupenv.sh(bat) file.
 -  cd <pdk>/packages
 -  pdksetupenv.bat (sh)
--  make vps  : to build vps examples under **<pdk>/ti/packages/binary**
+-  make vps  : to build vps examples under **<pdk>/ti/packages/binary**
    folder
--  make vps_clean : to clean the vps and vps examples.
+-  make vps_clean : to clean the vps and vps examples.
 
 VPS examples
 ------------

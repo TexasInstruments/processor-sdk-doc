@@ -8,7 +8,7 @@ AM335x Power Management User Guide
 
 This article provides a description of the example applications under
 the Power page of the Matrix application that comes with the Sitara
-SDK.  This page is labled "Power" in the top-level Matrix GUI. The
+SDK.  This page is labled "Power" in the top-level Matrix GUI. The
 location of the Power icon on the main Matrix app list may be different
 than shown here, depending on screen size. (Screen shots from SDK 06.00)
 

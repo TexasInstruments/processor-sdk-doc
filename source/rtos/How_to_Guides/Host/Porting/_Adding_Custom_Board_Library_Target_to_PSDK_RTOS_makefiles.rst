@@ -59,7 +59,7 @@ files for including Low level driver(LLD), source files relevant to
 board and the common board.c file
 
 -  In packages/ti/board/build/makefile.mk, add board.c to the
-   customBoard build :
+   customBoard build :
 
 ::
 
@@ -238,7 +238,7 @@ AM572x EVM, you can invoke the build using:
 
 
 
-**Step 10 : Building the custom board with the updated settings**
+**Step 10 : Building the custom board with the updated settings**
 
 To build package change directory to
 <SDK_INSTALL_PATH>/pdk_am57xx_x_x_x/packages, first run pdksetupenv.bat

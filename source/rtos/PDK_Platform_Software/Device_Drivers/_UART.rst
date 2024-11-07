@@ -40,8 +40,8 @@ pins are required before calling any driver APIs.By default Board_Init()
 API supports all initialization sequence for TI supported EVMs. In
 addition it initializes UART instance for Console/STDIO.Refer `Processor
 SDK RTOS Board Support <index_board.html#board-support>`__
-for additional details.Once board specific configuration is complete 
-UART_init() API can be called to initialize driver.
+for additional details.Once board specific configuration is complete
+UART_init() API can be called to initialize driver.
 
 .. rubric:: **UART Configuration Structure**
    :name: uart-configuration-structure
@@ -159,7 +159,7 @@ operation
     ...
     UART_writePolling(handle, bufferPrompt, sizeof(bufferPrompt));/* Write Polling API */
 
-.. rubric:: DMA Usage :
+.. rubric:: DMA Usage :
    :name: dma-usage
 
 UART driver supports DMA operations to transfer data between

@@ -209,7 +209,7 @@ utilizes the DSP FM APIs.
             for (i = 0; i < fmGblCfgParams.maxNumCores; i++) {
                 /* Notify remote DSP cores of exception - WARNING: This will generate NMI
                  * pulse to the remote DSP cores */
-                if (i != CSL_chipReadDNUM()) {
+                if (i != CSL_chipReadDNUM()) {
                     Fault_Mgmt_notify_remote_core(i);
                 }
             }

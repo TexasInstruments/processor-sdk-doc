@@ -90,7 +90,7 @@ In board\_late\_init call the splash screen routine.
 
 ::
 
-    #if !defined(CONFIG_SPL_BUILD)
+    #if !defined(CONFIG_SPL_BUILD)
             splash_screen();
             /* try reading mac address from efuse */
             mac_lo = readl(&cdev->macid0l);
@@ -105,7 +105,7 @@ bmp\_display.
 .. code-block:: text
 
     #if defined(CONFIG_LCD) && defined(CONFIG_AM335X_LCD) && \
-                    !defined(CONFIG_SPL_BUILD)
+                    !defined(CONFIG_SPL_BUILD)
     void lcdbacklight(int on)
     {
             gpio_request(GPIO_BACKLIGHT_EN, "backlight_en");
@@ -156,12 +156,12 @@ bmp\_display.
             struct am335x_lcdpanel lcd_panel;
 
             memset(&lcd_panel, 0, sizeof(struct am335x_lcdpanel));
-            if (load_lcdtiming(&lcd_panel) != 0)
+            if (load_lcdtiming(&lcd_panel) != 0)
                     return;
 
             lcd_panel.panel_power_ctrl = &lcdpower;
 
-            if (am335xfb_init(&lcd_panel) != 0)
+            if (am335xfb_init(&lcd_panel) != 0)
                     printf("ERROR: failed to initialize video!");
 
             /* Modify panel into to real resolution */

@@ -106,7 +106,7 @@ How to Run the Example
 The Processor SDK Linux release includes the pre-built binaries for the
 host_linux example as part of the tisdk-rootfs-image filesystem.
 
-Step 1 : To run the demo, the first step is to make sure there is no
+Step 1 : To run the demo, the first step is to make sure there is no
 other default applications using the same resources. For example, the
 following command is needed to disable the default OpenCL applications.
 

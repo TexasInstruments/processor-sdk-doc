@@ -207,7 +207,7 @@ Guide <rtos-index>`.
 |
 
 .. rubric:: How can I optimize the build time when rebuilding the
-   Processor SDK RTOS ?
+   Processor SDK RTOS ?
    :name: how-can-i-optimize-the-build-time-when-rebuilding-the-processor-sdk-rtos
 
 Processor SDK RTOS top level build will rebuild IPC, all components
@@ -330,7 +330,7 @@ projects, users can follow the sequence provided below:
 Each low level driver (LLD) in the PDK package contains two versions of
 the driver library. The naming conventions are as follows:
 
--  **Generic Core-specific Driver Library** :
+-  **Generic Core-specific Driver Library** :
    ti.drv.<module>.<core_specific_extension>
 
 Example: ti.drv.gpio.aa15fg (A15 core-specific GPIO driver library)
@@ -728,7 +728,7 @@ on the custom hardware.
 Filesystem Support
 ==================
 
-.. rubric:: What filesystem support if provided by Processor SDK RTOS ?
+.. rubric:: What filesystem support if provided by Processor SDK RTOS ?
    Can I use UBIFS, RAMFS, or FATFS with TI RTOS when using external
    non-volatile memory devices?
    :name: what-filesystem-support-if-provided-by-processor-sdk-rtos-can-i-use-ubifs-ramfs-or-fatfs-with-ti-rtos-when-using-external-non-volatile-memory-devices
@@ -839,7 +839,7 @@ to add correct coreID to the configuration to their BIOS configuration
 to allow the hardware interrupts to be routed to the secondary core.
 
 For example on AM572x which has 2 A15 cores, to run the TI RTOS example
-on secondary ARM core, application users need to add :
+on secondary ARM core, application users need to add :
 
 ::
 
@@ -884,7 +884,7 @@ clock module. The GEL is created with the assumption that the DSP1
 developers will use GPtimer5 and DSP2 users will use GPtimer6 to source
 clock module. This means that DSP2 developers will need to add
 configuration script to change the clock source to GPtimer6. Try to add
-the following in your DSP2.cfg :
+the following in your DSP2.cfg :
 
 ::
 

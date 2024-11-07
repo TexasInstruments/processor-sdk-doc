@@ -32,7 +32,7 @@ Code Organization
 =================
 
 THE SORTE ARM application and firmware sources can be found under the
-following directory :
+following directory :
 
 **<PDK>/packages/ti/drv/pruss/example/apps/sorte/**
 
