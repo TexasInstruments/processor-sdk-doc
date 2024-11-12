@@ -254,7 +254,7 @@ which you can start development.
    .. ifconfig:: CONFIG_sdk in ('SITARA')
 
        Use the `Create SD Card <Processor_SDK_Linux_create_SD_card.html>`__,
-       or **One-time Program EVM for K2H/K2K, K2E, and K2L** - following directions for `Program EVM User Guide <Program_EVM.html>`__
+       or **One-time Program EVM for K2H/K2K, K2E, and K2L** - following directions for :ref:`Program EVM User Guide <program-evm-user-guide>`
 
    .. ifconfig:: CONFIG_sdk in ('JACINTO','j7_foundational')
 

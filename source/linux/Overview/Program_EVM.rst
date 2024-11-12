@@ -1,5 +1,7 @@
 .. http://processors.wiki.ti.com/index.php/Program_EVM_UG
 
+.. _program-evm-user-guide:
+
 Program EVM User Guide
 ======================
 

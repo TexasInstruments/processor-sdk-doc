@@ -6,7 +6,7 @@ The below lab is going to walk you through the process of using CCS to load SPL/
 Step 1: Software Downloads
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-* A Linux host system configured in accordance with the `Processor SDK Linux Getting Started Guide <http://software-dl.ti.com/processor-sdk-linux/esd/docs/latest/linux/Overview_Getting_Started_Guide.html>`__, with the latest Processor Software Development Kit (PSDK) and Code Composer Studios (CCS) installed. Please refer to the release notes. This document was written using Ubuntu 18.04, Processor SDK Linux 06.03, and CCS 10.0.
+* A Linux host system configured in accordance with the :ref:`Processor SDK Linux Getting Started Guide <overview-getting-started>`, with the latest Processor Software Development Kit (PSDK) and Code Composer Studios (CCS) installed. Please refer to the release notes. This document was written using Ubuntu 18.04, Processor SDK Linux 06.03, and CCS 10.0.
 
 Step 2: Testing Hardware Connection
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -43,7 +43,7 @@ Step 3: Building the SPL/Uboot images
 
 * Before we compile the Uboot, please add the following flag "CONFIG_OF_EMBED=y" in the am43xx_evm_defconfig file. If you refer to the <u-boot_dir>/README file, it mentions "If this variable is defined, U-Boot will embed a device tree binary in its image." Please keep in mind that this is suitable for debugging and development only and is not recommended for production.
 
-* There are two methods of compiling Uboot: `method1 <Overview/Top_Level_Makefile.html#top-level-makefile>`__ and `method2 <Foundational_Components_U-Boot.html#build-and-boot-flow-on-32-bit-platforms>`__. Both methods will generate the necessary files required for Uboot debugging
+* There are two methods of compiling Uboot: :ref:`method1 <top-level-makefile>` and :ref:`method2 <Build-U-Boot-label>`. Both methods will generate the necessary files required for Uboot debugging
 
 * Upon successful compilation, there are a total of 3 images that we are interested:
 

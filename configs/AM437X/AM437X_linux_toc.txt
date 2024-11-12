@@ -12,6 +12,7 @@ linux/Overview/Download_and_Install_the_SDK
 linux/Overview/Run_Setup_Scripts
 linux/Overview/Top_Level_Makefile
 linux/Overview/GCC_ToolChain
+linux/Overview/Program_EVM
 devices/AM437X/linux/index
 devices/AM437X/linux/Release_Specific
 devices/AM437X/linux/Release_Specific_Release_Notes
@@ -28,6 +29,7 @@ linux/Foundational_Components/U-Boot/UG-DFU
 linux/Foundational_Components/U-Boot/UG-Network
 linux/Foundational_Components/U-Boot/UG-NAND
 linux/Foundational_Components/U-Boot/UG-Memory
+linux/Foundational_Components/U-Boot/UG-SATA
 linux/Foundational_Components/U-Boot/UG-SPI
 linux/Foundational_Components/U-Boot/UG-QSPI
 linux/Foundational_Components/U-Boot/UG-NOR
@@ -64,6 +66,7 @@ linux/Foundational_Components/Kernel/Kernel_Drivers/SPI
 linux/Foundational_Components/Kernel/Kernel_Drivers/Storage/NAND
 linux/Foundational_Components/Kernel/Kernel_Drivers/Storage/MMC-SD
 linux/Foundational_Components/Kernel/Kernel_Drivers/UART
+linux/Foundational_Components/Kernel/Kernel_Drivers/UFS
 linux/Foundational_Components/Kernel/Kernel_Drivers/USB/DWC3
 linux/Foundational_Components_Kernel_Users_Guide
 linux/Foundational_Components_Kernel_Release_Notes
