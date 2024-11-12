@@ -21,7 +21,7 @@ Replacement Variables
 '__SDK_SHORT_NAME__'             : 'SITARA'
 '__SDK_INSTALL_FILE__'           : 'ti-processor-sdk-linux-[platform]-<version>-Linux-x86-Install.bin'
 '__SDK_INSTALL_DIR__'            : 'ti-processor-sdk-linux-[platformName]-evm-<version>'
-'__SDK_DOWNLOAD_URL__'           : '`AM437X-Linux-SDK-Download-page <http://software-dl.ti.com/processor-sdk-linux/esd/AM437X/latest/index_FDS.html>`__'
+'__SDK_DOWNLOAD_URL__'           : '`AM437X-Linux-SDK-Download-page <https://www.ti.com/tool/PROCESSOR-SDK-AM437X>`__'
 '__LINUX_UBUNTU_VERSION_LONG__'  : '22.04 (64-bit)'
 '__LINUX_UBUNTU_VERSION_SHORT__' : '22.04'
 '__RTOS_UBUNTU_VERSION_LONG__'   : '14.04 (64-bit), 16.04 (64-bit)'
