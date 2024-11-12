@@ -971,15 +971,8 @@ to your set up.
 
    a. Use the script included with the SDK to create a bootable SD card.
 
-      .. ifconfig:: CONFIG_part_family in ('AM64X_family')
-
-          You can find instructions on this process at the
-          `Linux Create SD Card documentation <../../devices/AM64X/Overview/Create_SD_Card.html>`__.
-
-      .. ifconfig:: CONFIG_part_family not in ('AM64X_family')
-
-          You can find instructions on this process at the
-          `Linux SD Card Creation Guide <../../linux/Overview/Processor_SDK_Linux_create_SD_card_script.html>`__.
+      You can find instructions on this process at the
+      `Linux SD Card Creation Guide <../../linux/Overview/Processor_SDK_Linux_create_SD_card.html>`__.
 
    b. Once the card is created, mount it on your Linux host to copy the
       files to it.

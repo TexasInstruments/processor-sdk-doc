@@ -161,7 +161,7 @@ to get the imagination active and engaged.
     Black <http://beagleboard.org/Products/BeagleBone%20Black>`__, you might
     not have a SD card with the SDK on it. Or, maybe, the SDK on your SD
     card is simply a few revisions old and you want the latest and greatest.
-    If that is the case, check out the `Creating a SD Card with Windows <Processor_SDK_Linux_Creating_a_SD_Card_with_Windows.html>`__
+    If that is the case, check out the `Create SD Card <Processor_SDK_Linux_create_SD_card.html>`__
     page. Just remember, you won’t be able to build or change anything,
     simply evaluate the SDK Embedded Linux System with Matrix as delivered.
     But, even this is enough to get the imagination going and all some folks
@@ -253,7 +253,7 @@ which you can start development.
 
    .. ifconfig:: CONFIG_sdk in ('SITARA')
 
-       Use the `SDK Create SD Card Script <Processor_SDK_Linux_create_SD_card_script.html>`__,
+       Use the `Create SD Card <Processor_SDK_Linux_create_SD_card.html>`__,
        or **One-time Program EVM for K2H/K2K, K2E, and K2L** - following directions for `Program EVM User Guide <Program_EVM.html>`__
 
    .. ifconfig:: CONFIG_sdk in ('JACINTO','j7_foundational')

@@ -93,7 +93,7 @@ be adapted accordingly.
 
    -  For help creating a 2 partition SD card with the SDK content see
       the `create\_sdcard.sh
-      script <Overview/Processor_SDK_Linux_create_SD_card_script.html>`__ page
+      script <Overview/Processor_SDK_Linux_create_SD_card.html>`__ page
 
 -  QT Creator 5.7.0 installed on your Linux host.
 

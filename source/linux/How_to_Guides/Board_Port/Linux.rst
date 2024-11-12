@@ -108,7 +108,7 @@ file.
 
    #. Create a bootable SD card by following the steps outlined in the `Linux SD
       Card Creation Guide
-      <../../Overview/Processor_SDK_Linux_create_SD_card_script.html>`__. It is
+      <../../Overview/Processor_SDK_Linux_create_SD_card.html>`__. It is
       recommended to follow the steps to create a "SD Card Using Default Images."
 
    #. Make a copy of the **am335x-boneblack.dtb** file in the SD card root file
