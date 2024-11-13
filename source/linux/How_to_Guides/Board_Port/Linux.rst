@@ -9,7 +9,7 @@ Board Port using a **hello_world.dts** file, which can then be
 iteratively changed to add needed peripherals.
 
 This tutorial assumes the latest `TI SDK
-<https://software-dl.ti.com/processor-sdk-linux/esd/AM335X/latest/index_FDS.html>`__
+<https://www.ti.com/tool/PROCESSOR-SDK-AM335X>`__
 has been installed, and a host machine has been properly configured.
 
 This tutorial also recommends using TI's :download:`hello_world.dts <files/hello_world.dts>` file.

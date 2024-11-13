@@ -99,7 +99,7 @@ be adapted accordingly.
 -  QT Creator 5.7.0 installed on your Linux host.
 
    -  You can download Qt Creator from open source distribution version
-      of Qt http://download.qt.io/official_releases/qt/5.7/5.7.0/
+      of Qt at http://download.qt.io/official_releases/qt/
    -  QT will download as a .run file. Make the file executable by
       running the **chmod + <qtfile>** command and **./<qtfile>**. These
       steps should launch the QT installer.
@@ -1458,10 +1458,9 @@ style sheets.
 For debugging QT application with source code to QT libraries,
 corresponding QT library will need to be installed to the
 <ti-processor-sdk-linux-xxx>/linux-devkit/sysroots/armv7ahf-neon-linux-gnueabi
-location. The \*.ipk package can be found from the `yocto build of
-PSDK <http://processors.wiki.ti.com/index.php/Processor_SDK_Building_The_SDK>`__
-under
-build/arago-tmp-external-arm-toolchain/work/armv7ahf-neon-linux-gnueabi.
+location. The \*.ipk package can be found from the
+:ref:`yocto build of PSDK <building-the-sdk-with-yocto>`
+under build/arago-tmp-external-arm-toolchain/work/armv7ahf-neon-linux-gnueabi.
 Linux "find" command can be used to refine the search for \*.ipk file.
 For example, following steps to debug qtbase application
 

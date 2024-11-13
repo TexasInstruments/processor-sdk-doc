@@ -22,7 +22,7 @@ on a Ubuntu 14.04 host system
 #. Launch Code Composer Studio (CCS)
 
    -  If you do not have CCS, download it here: `CCS
-      Download <http://processors.wiki.ti.com/index.php/Download_CCS>`__
+      Download <https://www.ti.com/tool/download/CCSTUDIO>`__
 
 #. Create a target configuration file in CCS to connect to the AM3359
    ICE board

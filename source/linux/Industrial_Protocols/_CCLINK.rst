@@ -102,11 +102,10 @@ CCIEF-BASIC\_Slave/build/linux. Then, run "make" which generates
 Slave\_sample
 
 An alternative to rebuild CCLINK IEF Basic is cross-compilation on X86
-using the Yocto recipe. In order to do that, please refer to `Processor
-SDK Building The
-SDK <http://processors.wiki.ti.com/index.php/Processor_SDK_Building_The_SDK>`__
-to set up the build environment, and `Processor SDK Yocto
-Recipes <http://processors.wiki.ti.com/index.php/Processor_SDK_Building_The_SDK#Recipes>`__
+using the Yocto recipe. In order to do that, please refer to
+:ref:`Processor SDK Building The SDK <building-the-sdk-with-yocto>`
+to set up the build environment, and
+:ref:`Processor SDK Yocto Recipes <building-the-sdk-recipes>`
 to bitbake the recipes and install the newly built packages for CCLINK
 IEF Basic:
 

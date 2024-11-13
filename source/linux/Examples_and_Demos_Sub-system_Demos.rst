@@ -28,8 +28,6 @@ WLAN and Bluetooth
 ==================
 .. include:: Examples_and_Demos/_WLAN_and_Bluetooth.rst
 
-.. _hands-on-with-qt:
-
 Hands on with QT
 ================
 .. include:: Examples_and_Demos/_Hands_on_with_QT.rst
