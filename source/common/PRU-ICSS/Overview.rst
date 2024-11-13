@@ -277,11 +277,11 @@ PRU evaluation hardware can be ordered from ti.com:
 
    * PRU Networking
 
-     * `TMDS64GPEVM <https://www.ti.com/tool/TMDS64GPEVM>`__
+     * `TMDS64EVM <https://www.ti.com/tool/TMDS64EVM>`__
 
    * Generic PRU Development
 
-     * `SK-AM64 <https://www.ti.com/tool/SK-AM64>`__
+     * `SK-AM64 <https://www.ti.com/tool/SK-AM64B>`__
 
  * AM65x
 

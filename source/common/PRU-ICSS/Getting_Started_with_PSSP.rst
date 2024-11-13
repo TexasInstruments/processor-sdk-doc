@@ -74,7 +74,7 @@ a few requirements once you have installed to your preferred directory.
 
 #. (**Optional**) Install CCS to the directory of your choosing
    CCS installation instruction for Linux can be found
-   `here <http://processors.wiki.ti.com/index.php/Linux_Host_Support_CCSv7#Installation_Instructions>`__.
+   `here <https://software-dl.ti.com/ccs/esd/documents/ccs_linux_host_support.html>`__.
    Makefiles are provided in order to build all examples in the PRU Software Support
    Package. The ability to build the PRU projects using the Makefiles
    makes CCS optional in a Linux environment.
@@ -88,7 +88,7 @@ a few requirements once you have installed to your preferred directory.
    `here <https://git.ti.com/pru-software-support-package/pru-software-support-package/trees/master>`__.
 #. Install CCS to the directory of your choosing
    Installers can be found
-   `here <http://processors.wiki.ti.com/index.php/Download_CCS#Code_Composer_Studio_Version_7_Downloads>`__.
+   `here <https://www.ti.com/tool/download/CCSTUDIO>`__.
 
 |
 

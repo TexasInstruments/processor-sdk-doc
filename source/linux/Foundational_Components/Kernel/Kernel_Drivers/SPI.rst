@@ -198,7 +198,7 @@ simple means to send and receive SPI messages the spidev driver can be
 used. Spidev provides a user space accessible means to communicate with
 the SPI interface. Latest documentation regarding spidev driver can be
 found
-`here <https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/spi/spidev.rst>`__.
+`here <https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/spi/spidev.rst>`_.
 
 Spidev allows users to interact with the spi interface in a variety of
 programming languages that can communicate with kernel ioctls.

@@ -96,7 +96,7 @@ can be located by browsing to `SDK for Sitara
 Processors <http://www.ti.com/tool/linuxezsdk-sitara>`__ and selecting
 the device being used. The CCS installer can be found on the device's
 SDK installer page under the Optional Addons or directly from the
-`Download CCS <http://processors.wiki.ti.com/index.php/Download_CCS>`__ wiki page.
+`Download CCS <https://www.ti.com/tool/download/CCSTUDIO>`__ page.
 
 .. Image:: /images/SDK_download_page.png
 
@@ -292,8 +292,8 @@ After opening CCS with a new workspace:
 
 #. The *Projects:* list will now be populated with the projects found.
 #. Uncheck the following projects. They are Qt projects and are imported
-   using a different method. For more information, see the `Hands on
-   with QT <Examples_and_Demos_Sub-system_Demos.html#hands-on-with-qt>`__
+   using a different method. For more information, see the :ref:`Hands on
+   with QT <hands-on-with-qt>`
    training.
 
    -  matrix\_browser

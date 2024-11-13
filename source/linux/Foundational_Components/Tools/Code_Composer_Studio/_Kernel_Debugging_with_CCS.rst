@@ -5,9 +5,9 @@
 Starting with Sitara Linux SDK 6.0 the location of the toolchain has
 changed and for non ARM 9 devices a new Linaro based toolchain will be
 used. Details about the change in toolchain location can be found
-`here <http://processors.wiki.ti.com/index.php/Sitara_Linux_SDK_GCC_Toolchain#Updated.C2.A0Linux-Devkit_Structure>`__.
+:ref:`here <overview-getting-started>`.
 Also details about the switch to Linaro can be found
-`here <http://processors.wiki.ti.com/index.php/Sitara_Linux_SDK_GCC_Toolchain#Switch_to_Linaro>`__.
+:ref:`here <overview-getting-started>`.
 
 AM18x users are not affected by the switch to Linaro. Therefore, any
 references to the Linaro toolchain prefix "**arm-linux-gnueabihf**-"
@@ -324,7 +324,7 @@ your emulator and board must be ready.
 
 In this example a Beaglebone (AM3359) was used, together with the Sitara
 support package available at the `CCS download
-page <http://processors.wiki.ti.com/index.php/Download_CCS>`__.
+page <https://www.ti.com/tool/download/CCSTUDIO>`__.
 **Note:** check the `Getting Started
 Guide <http://processors.wiki.ti.com/index.php/GSG:Debugging_projects_v5#Creating_a_Target_Configuration_File>`__
 to learn how to create one.

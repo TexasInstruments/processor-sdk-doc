@@ -60,7 +60,7 @@ Software
    However, the notation ***<PRU_SW_PATH>*** will be used throughout
    the labs to reference this assumed installation location. If you use
    a different location please modify the steps below.
--  `CCSv6 <http://processors.wiki.ti.com/index.php/Download_CCS#Code_Composer_Studio_Version_6_Downloads>`__
+-  `CCSv6 <ti.com/tool/download/CCSTUDIO>`__
 -  `PRU Code Generation
    Tools <http://software-dl.ti.com/codegen/non-esd/downloads/download.htm#PRU>`__
    (also available through the CCS App Center)
@@ -868,9 +868,8 @@ Configure the Kernel
 .. note::
 
     This step is needed before building the kernel, kernel modules, device
-    tree files, etc. For more information about these steps, see the `Kernel
-    Users
-    Guide <http://software-dl.ti.com/processor-sdk-linux/esd/docs/latest/linux/Foundational_Components_Kernel_Users_Guide.html>`__.
+    tree files, etc. For more information about these steps, see the
+    :ref:`Kernel Users Guide <linux_kernel_users_guide>`.
 
 4. Prepare to build the kernel, kernel modules, device tree files, etc
 
