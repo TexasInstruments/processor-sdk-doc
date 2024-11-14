@@ -40,8 +40,7 @@ does the following things:
     are connected before following any of the steps in this guide.
 
     -  USB Mini cable (included with BBBlack)
-    -  `FTDI Serial
-       cable <http://circuitco.com/support/index.php?title=BeagleBone_Black_Accessories#Serial_Debug_Cables>`__
+    -  FTDI Serial cable
 
     .. rubric:: Clearing the eMMC
        :name: clearing-the-emmc
@@ -67,7 +66,7 @@ does the following things:
        :name: restoring-the-emmc
 
     Instructions on restoring the eMMC can be found
-    `here <http://circuitco.com/support/index.php?title=Updating_The_Software>`__.
+    `here <https://ladvien.com/restoring-angstrom-bbb/>`__.
 
     .. rubric:: K2H/K2K, K2L, and K2E Users
        :name: k2hk2k-k2l-and-k2e-users

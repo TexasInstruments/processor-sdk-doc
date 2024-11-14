@@ -43,7 +43,7 @@ to update the register settings. The **Power Management Configuration
 Update Tool** (bmc\_tool.py) performs the task of sending commands to
 the BMC to get the current module versions, and perform updates using
 configuration files. Instructions for executing the update tool
-(bmc\_tool.py) are available here: :download:`BMC Tool UCD Update Guide <../files/Bmc_tool_ucd_update_guide_v2.pdf>`
+(bmc\_tool.py) are available here: :download:`BMC Tool UCD Update Guide <../../../files/Bmc_tool_ucd_update_guide_v2.pdf>`
 
 The latest version of the tool is available
 `here <http://wfcache.advantech.com/www/support/TI-EVM/Rev4_0/BMC/BMC_EVMK2K_1_0_2_6-20160330.zip>`__.
@@ -493,14 +493,9 @@ Connect to EVMK2H using CCS
 -  Connect mini USB cable to the XDS2xx MIPI adapter card marked J1 or
    connect external emulator to the MIPI connector on J3
 
-.. note:: For newer versions of CCS, a XDS200 firmware update is recommended which user can perform using instruction on the article
-below:
-
--  `Updating XDS2xx
-   Firmware <http://dev.ti.com/tirex/explore/node?node=AADzJ8Y-La4f7Bi5Ga0TcA__FUz-xrs__LATEST>`__
-
-.. note:: For newer versions of CCS, a XDS200 firmware update is recommended which user can perform using instruction on
-`Updating\_the\_XDS200\_firmware <http://dev.ti.com/tirex/explore/node?node=AADzJ8Y-La4f7Bi5Ga0TcA__FUz-xrs__LATEST>__`
+.. note::
+   For newer versions of CCS, a XDS200 firmware update is recommended which user can perform using instruction on the article
+   `Updating XDS200 Firmware <http://dev.ti.com/tirex/explore/node?node=AADzJ8Y-La4f7Bi5Ga0TcA__FUz-xrs__LATEST>`__
 
 **Step 2:** Create CCS Target configuration
 

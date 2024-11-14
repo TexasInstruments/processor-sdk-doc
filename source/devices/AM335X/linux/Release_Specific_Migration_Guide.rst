@@ -391,16 +391,11 @@ descriptors to be used for both ingress/egress packets processing. if
 not specified the default value 256 will be used which will allow to
 place descriptors pool into the internal CPPI RAM.
 
-**New approach**
-http://processors.wiki.ti.com/index.php/Linux_Core_CPSW_User%27s_Guide#Configure_number_of_TX.2FRX_descriptors
-
 .. rubric:: PCI ENDPOINT
    :name: pci-endpoint
 
 The usage of 'pci-ep' configfs directory to configure PCI Endpoint has
-been changed in accordance with upstream review comments. Please see
-http://processors.wiki.ti.com/index.php/Linux_Core_PCIe_EP_User%27s_Guide#4.9_Kernel,
-for additional details
+been changed in accordance with upstream review comments.
 
 .. rubric:: Display
    :name: display
