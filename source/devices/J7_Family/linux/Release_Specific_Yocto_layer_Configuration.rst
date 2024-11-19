@@ -26,5 +26,5 @@ Use below in place of <Config File>, to setup the meta layers for the current re
 +----------------------------------------------------+-------------------------------------+--------------------------------+
 |                    Description                     |      Config File                    | Supported yocto build machine  |
 +====================================================+=====================================+================================+
-| |__SDK_FULL_NAME__| : 10_00_00 Release             | processor-sdk-linux-10_00_00.txt    | |__SDK_BUILD_MACHINE__|        |
+| |__SDK_FULL_NAME__| : 10_01_00 Release             | processor-sdk-linux-10_01_00.txt    | |__SDK_BUILD_MACHINE__|        |
 +----------------------------------------------------+-------------------------------------+--------------------------------+
