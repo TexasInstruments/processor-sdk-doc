@@ -12,6 +12,15 @@ of the Processor SDK for Linux.
 Processor SDK 10.xx Releases
 ================================
 
+Processor SDK Jacinto 10.01
+-------------------------------
+- This is the Second release in the 2024 LTS stream 6.6 kernel, 2024.04 U-Boot and Yocto scarthgap/5.0
+- Device tree updated with dual license
+- ATF 2.11+
+- OPTEE 4.20
+- Yocto Scarthgap/5.0
+- Platforms Supported : J721E, J7200, J721S2, J784S4, AM68, AM69, J722S, J742S2
+
 Processor SDK Jacinto 10.00
 -------------------------------
 - This is the first release in the 2024 LTS stream 6.6 kernel, 2024.04 U-Boot and Yocto scarthgap/5.0
