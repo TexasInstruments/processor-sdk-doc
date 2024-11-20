@@ -192,6 +192,15 @@ html_search_language = 'en'
 # implements a search results scorer. If empty, the default will be used.
 html_search_scorer = ''
 
+# Read the Docs specific parameters for the "Edit on GitHub" button
+html_context = {
+    "display_github": True,
+    "github_user": "texasinstruments",
+    "github_repo": "processor-sdk-doc",
+    "github_version": "master",
+    "conf_py_path": "/source/",
+}
+
 # -- Options for LaTeX output ---------------------------------------------
 
 latex_elements = {
