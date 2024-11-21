@@ -1,17 +1,83 @@
 .. include:: /_replacevars.rst
 
-OSPI/QSPI
-------------------------------------
+OSPI/QSPI NOR/NAND
+------------------
 
-OSPI/QSPI is a serial peripheral interface like SPI the major difference
-being the support for Octal/Quad read, uses 8/4 data lines for read compared to
-2 lines used by the traditional SPI. This section documents how to write
-files to the QSPI device and use it to load and then boot the Linux
-Kernel using a root filesystem also found on QSPI. At this time, no
-special builds of U-Boot are required to perform these operations on the
-supported hardware. For simplicity we assume the files are being loaded
-from an SD card. Using the network interface (if applicable) is
-documented in U-boot SPI section.
+.. rubric:: Introduction
+   :name: u-boot-introduction-qspi-ug
+
+Octal Serial Peripheral Interface (OSPI) and Quad Serial Peripheral Interface
+(QSPI) are SPI modules that have x8 IO lines and x4 IO lines respectively.
+These controllers are mainly used to interface with Octal and Quad SPI flashes.
+OSPI is backward compatible with QSPI. These modules can also work in dual (x2)
+and single (x1) modes. OSPI and QSPI controllers on TI SoCs support memory
+mapped IO interface, which provide a direct interface for accessing data from
+the external SPI flash, thereby simplifying software requirements. These
+controllers work only in master mode.
+
+.. ifconfig:: CONFIG_part_variant in ('AM64X')
+
+   +------------+------------+------------------------------------+
+   | SoC Family | Capability | Driver                             |
+   +============+============+====================================+
+   | AM64x      | OSPI NOR   | :file:`drivers/spi/cadence_qspi.c` |
+   +------------+------------+------------------------------------+
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+   +-------------+------------+------------------------------------+
+   | SoC Family  | Capability | Driver                             |
+   +=============+============+====================================+
+   | AM62x SK    | OSPI NOR   | :file:`drivers/spi/cadence_qspi.c` |
+   +-------------+------------+------------------------------------+
+   | AM62x LP SK | OSPI NAND  | :file:`drivers/spi/cadence_qspi.c` |
+   +-------------+------------+------------------------------------+
+
+.. ifconfig:: CONFIG_part_variant in ('AM62AX')
+
+   +------------+------------+------------------------------------+
+   | SoC Family | Capability | Driver                             |
+   +============+============+====================================+
+   | AM62Ax     | OSPI NAND  | :file:`drivers/spi/cadence_qspi.c` |
+   +------------+------------+------------------------------------+
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX', 'J7200')
+
+   +--------------+------------+------------------------------------+
+   | SoC Family   | Capability | Driver                             |
+   +==============+============+====================================+
+   | AM62Px/J7200 | OSPI NOR   | :file:`drivers/spi/cadence_qspi.c` |
+   +--------------+------------+------------------------------------+
+
+.. ifconfig:: CONFIG_part_variant in ('J721E')
+
+   +-------------+--------------+------------------------------------+
+   | SoC Family  | Capability   | Driver                             |
+   +=============+==============+====================================+
+   | AM654/J721e | 1x QSPI NOR, | :file:`drivers/spi/cadence_qspi.c` |
+   |             | 1x OSPI NOR  |                                    |
+   +-------------+--------------+------------------------------------+
+
+.. ifconfig:: CONFIG_part_variant in ('J722S')
+
+   +------------+--------------+------------------------------------+
+   | SoC Family | Capability   | Driver                             |
+   +============+==============+====================================+
+   |            | 1x OSPI NOR  | :file:`drivers/spi/cadence_qspi.c` |
+   + J722S      +--------------+------------------------------------+
+   |            | 1x OSPI NAND | :file:`drivers/spi/cadence_qspi.c` |
+   +------------+--------------+------------------------------------+
+
+.. ifconfig:: CONFIG_part_variant in ('J721S2', 'J784S4','J742S2')
+
+   +---------------+--------------+------------------------------------+
+   | SoC Family    | Capability   | Driver                             |
+   +===============+==============+====================================+
+   |               | 1x QSPI NOR, | :file:`drivers/spi/cadence_qspi.c` |
+   | J721S2/J784S4 | 1x OSPI NOR  |                                    |
+   +               +--------------+------------------------------------+
+   |               | 1x OSPI NAND | :file:`drivers/spi/cadence_qspi.c` |
+   +---------------+--------------+------------------------------------+
 
 .. note::
 
@@ -19,14 +85,159 @@ documented in U-boot SPI section.
     whether or not the OSPI flash part chosen for custom board designs meets all
     the criteria listed at https://e2e.ti.com/support/processors/f/791/t/946418
 
+.. rubric:: Driver Features
+
+OSPI controllers supports PHY Calibration in DQS + Double Data Rate (DDR) mode
+for OSPI/QSPI NOR flashes in Octal configuration wherein data can be read on
+both edges of the clock, and non-DQS + Single Data Rate (SDR) mode for
+OSPI/QSPI NAND flashes in Quad and Octal configuration.
+
+.. rubric:: Memory mapped read support
+   :name: u-boot-memory-mapped-read-support
+
+Once the controller is configured in memory map mode, the whole
+flash memory is made available as a memory region at an SoC specific address.
+This region can be accessed using normal memcpy() (or mem-to-mem dma
+copy). Controller hardware will internally communicate with
+SPI flash over SPI bus and get the requested data. This mode provides
+the best throughput and is the default mode in the SDK.
+
+.. rubric:: Supported SPI modes
+   :name: u-boot-supported-spi-modes
+
+The :file:`cadence_qspi.c` driver supports standard SPI mode 0 only.
+
+.. rubric:: DMA support
+   :name: u-boot-dma-support
+
+The driver uses mem-to-mem DMA copy on top of an OSPI/QSPI memory mapped port
+during flash read operations for maximum throughput and reduced CPU load.
+
+The OSPI Controller does not support interfacing with non-flash SPI slaves.
+
+.. rubric:: Driver Configuration
+   :name: u-boot-driver-configuration-qspi
+
+.. rubric:: Source Location
+   :name: u-boot-source-location-qspi
+
+OSPI driver is at: :file:`drivers/spi/cadence_qspi.c` under U-Boot source tree.
+This driver also supports QSPI version of the same IP.
+
+.. rubric:: DT Configuration
+   :name: dt-configuration-u-boot-qspi
+
+.. ifconfig:: CONFIG_part_variant in ('AM64X', 'AM62X', 'AM62PX', 'J7200', 'J721E', 'J722S', 'J721S2', 'J784S4','J742S2')
+
+   The following is an example device-tree node for an OSPI NOR device
+
+   .. code-block:: dts
+
+      &ospi0 {
+
+         flash@0{
+            compatible = "jedec,spi-nor";
+            reg = <0x0>;
+            spi-tx-bus-width = <8>;
+            spi-rx-bus-width = <8>;
+            spi-max-frequency = <25000000>;
+            cdns,tshsl-ns = <60>;
+            cdns,tsd2d-ns = <60>;
+            cdns,tchsh-ns = <60>;
+            cdns,tslch-ns = <60>;
+            cdns,read-delay = <4>;
+
+            partitions {
+               compatible = "fixed-partitions";
+               #address-cells = <1>;
+               #size-cells = <1>;
+               bootph-all;
+
+               partition@0 {
+                  label = "ospi.tiboot3";
+                  reg = <0x00 0x80000>;
+               };
+
+               partition@80000 {
+                  label = "ospi.tispl";
+                  reg = <0x80000 0x200000>;
+               };
+
+               // other partitions
+            };
+         };
+      };
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'J722S', 'J721S2', 'J784S4','J742S2')
+
+   The following is an example device-tree node for an OSPI NAND device
+
+   .. code-block:: dts
+
+      &ospi0 {
+
+         flash@0 {
+            compatible = "spi-nand";
+            reg = <0x0>;
+            spi-tx-bus-width = <8>;
+            spi-rx-bus-width = <8>;
+            spi-max-frequency = <25000000>;
+            cdns,tshsl-ns = <60>;
+            cdns,tsd2d-ns = <60>;
+            cdns,tchsh-ns = <60>;
+            cdns,tslch-ns = <60>;
+            cdns,read-delay = <2>;
+
+            partitions {
+               compatible = "fixed-partitions";
+               #address-cells = <1>;
+               #size-cells = <1>;
+
+               partition@0 {
+                  label = "ospi_nand.tiboot3";
+                  reg = <0x0 0x80000>;
+               };
+
+               partition@80000 {
+                  label = "ospi_nand.tispl";
+                  reg = <0x80000 0x200000>;
+               };
+
+               // other partitions
+            };
+         };
+      };
+
+Flash properties:
+
+1. **compatible:** specifies the compatible string for the device, the operating
+   system uses this string to identify and the match the driver for the device.
+   Use 'jedec,spi-nor' for OSPI/QSPI NOR flashes and 'spi-nand' for OSPI/QSPI
+   NAND flashes.
+
+2. **spi-tx-bus-width and spi-rx-bus-width:** specifies the bus width in bits for
+   SPI transactions when transmitting (tx) and receiving (rx) data. Set for '8'
+   for OSPI flashes and '4' for QSPI flashes.
+
+3. **spi-max-frequency:** defines the maximum frequency in Hertz at which the SPI
+   bus can operate. Set 1/4th or 1/8th of 'assigned-clocks' value of 'ospi0'
+   node for SDR and DDR mode respectively. If PHY Calibration is enabled, this
+   value is ignored, and the maximum frequency is determined by the value
+   specified in the 'assigned-clocks' property of 'ospi0' node.
+
+4. **cdns,read-delay:** specifies the delay in clock cycles between the fetch of a
+   command and responding to that command by the flash devices. This differs
+   with flashes, try with different read delays starting from 0 and find the
+   minimum read-delay at which the flash driver probes correctly.
+
 .. note::
 
-    The sf command is used to access SPI NOR flash, supporting read/write/erase and
-    a few other functions. For more information on sf command in U-boot please
-    refer to the u-boot documentation: `here <https://u-boot.readthedocs.io/en/latest/usage/cmd/sf.html>`__.
-    And for accessing SPI NAND flash, the mtd command is used, supporting
-    read/write/erase and bad block management.
-
+    The :command:`sf` command is used to access SPI NOR flash, supporting
+    read/write/erase and a few other functions. For more information on sf
+    command in U-boot please refer to the u-boot documentation:
+    `here <https://u-boot.readthedocs.io/en/latest/usage/cmd/sf.html>`__.
+    And for accessing SPI NAND flash, the :command:`mtd` command is used,
+    supporting read/write/erase and bad block management.
 
 .. ifconfig:: CONFIG_part_variant in ('AM65X', 'J721E')
 
@@ -262,191 +473,90 @@ documented in U-boot SPI section.
 
 .. ifconfig:: CONFIG_part_variant in ('AM64X')
 
-    AM64X has a cypress s28hs512t flash and sysfw is bundled with tiboot3.bin.
+    AM64x has a Cypress S28HS512T OSPI NOR flash and SYSFW is bundled with
+    :file:`tiboot3.bin`.
 
-    **flashing images to ospi**
+    Below are two methods which can be used to flash the OSPI NOR device. For
+    all methods, we will load the bootloaders into memory and then flash each
+    to OSPI NOR at the respective addresses.
 
-    below commands can be used to download tiboot3.bin, tispl.bin and
-    u-boot.img over tftp and then flash it to ospi at respective addresses.
+    **Flashing Images to OSPI NOR using TFTP server**
 
-    .. code-block:: console
-
-      => sf probe
-      => tftp ${loadaddr} tiboot3.bin
-      => sf update $loadaddr 0x0 $filesize
-      => tftp ${loadaddr} tispl.bin
-      => sf update $loadaddr 0x100000 $filesize
-      => tftp ${loadaddr} u-boot.img
-      => sf update $loadaddr 0x300000 $filesize
-
-    **phy calibration**
-
-    phy calibration allows for higher read performance. to enable phy, the phy
-    calibration pattern must be flashed to ospi at the start of the last erase
-    sector. for the cypress s28hs512t flash, this lies at the address 0x3fc0000.
-
-    download the binary file containing the phy pattern from :download:`here </files/ospi_phy_pattern>`.
-    below commands can be used to flash the phy pattern, with the location of the
-    pattern depending on which flash is being used:
-
-    .. code-block:: console
-
-       => sf probe
-       => tftp ${loadaddr} ospi_phy_pattern
-       => sf update $loadaddr 0x3fc0000 $filesize
-
-    **flash layout for ospi**
-
-    .. code-block:: console
-
-             0x0 +----------------------------+
-                 |     ospi.tiboot3(1m)       |
-                 |                            |
-        0x100000 +----------------------------+
-                 |     ospi.tispl(2m)         |
-                 |                            |
-        0x300000 +----------------------------+
-                 |     ospi.u-boot(4m)        |
-                 |                            |
-        0x700000 +----------------------------+
-                 |     ospi.env(128k)         |
-                 |                            |
-        0x720000 +----------------------------+
-                 |   ospi.env.backup(128k)    |
-                 |                            |
-        0x740000 +----------------------------+
-                 |      padding (768k)        |
-        0x800000 +----------------------------+
-                 |     ospi.rootfs(ubifs)     |
-                 |                            |
-       0x3fc0000 +----------------------------+
-                 |   ospi.phypattern (256k)   |
-                 |                            |
-                 +----------------------------+
-
-.. ifconfig:: CONFIG_part_variant in ('AM62X')
-
-    AM62x Starter Kit (SK) has a Cypress S28HS512T flash and sysfw is bundled with tiboot3.bin.
-
-    Below are three methods which can be used to flash the OSPI device. For all methods, we will load the
-    bootloders into memory and then flash each to OSPI at the respective addresses.
-
-    **Flashing images to OSPI using TFTP server**
-
-    In this example, use tftp-hpa in Ubuntu as tftp server. Assume bootloader names are 'tiboot3.bin', 'tispl.bin',
-    'u-boot.img'. Verify ethernet connection between AM62x EVM and host machine before proceeding.
+    In this example, we'll use the ``tftp-hpa`` package from Ubuntu for our
+    tftp server. Assume bootloader names are :file:`tiboot3.bin`,
+    :file:`tispl.bin`, :file:`u-boot.img`. Verify ethernet connection between
+    AM64x and host machine before proceeding.
 
     1. Setup TFTP server in Host machine
 
-    .. code-block:: console
+       .. code-block:: console
 
-      # For complete instructions refer to: https://help.ubuntu.com/community/TFTP
-      $ sudo apt install tftp-hpa
-      $ sudo vi /etc/default/tftpd-hpa #optional to change tftp directory and other options
-      $ sudo chown -R tftp /tftp #change owner/group of new directory /tftp
-      $ sudo systemctl restart tftpd-hpa #restart server
+          # For complete instructions refer to: https://help.ubuntu.com/community/TFTP
+          $ sudo apt install tftp-hpa
+          $ sudo vi /etc/default/tftpd-hpa # optional to change tftp directory and other options
+          $ sudo chown -R tftp /tftp # change owner/group of new directory /tftp
+          $ sudo systemctl restart tftpd-hpa # restart server
 
-    2. Setup U-boot environment for AM62x EVM
+    2. Setup U-boot environment for AM64x
 
-    .. code-block:: console
+       .. code-block:: console
 
-      # Boot to U-boot prompt using a working boot method
-      => setenv ipaddr <ip-address-for-EVM>
-      => setenv serverip <ip-address-of-tftp-server>
-      => saveenv #optional to save the U-boot ENV
+          # Boot to U-boot prompt using a working boot method
+          => setenv ipaddr <ip-address-of-am64x>
+          => setenv serverip <ip-address-of-tftp-server>
+          => saveenv # optional to save the U-boot ENV
 
     3. Use tftp command to load the bootloaders into memory and flash to OSPI
+       NOR
 
-    .. code-block:: console
+       .. code-block:: console
 
-      => sf probe
-      => tftp ${loadaddr} tiboot3.bin
-      => sf update $loadaddr 0x0 $filesize
-      => tftp ${loadaddr} tispl.bin
-      => sf update $loadaddr 0x80000 $filesize
-      => tftp ${loadaddr} u-boot.img
-      => sf update $loadaddr 0x280000 $filesize
+          => sf probe
+          => tftp ${loadaddr} tiboot3.bin
+          => sf update $loadaddr 0x0 $filesize
+          => tftp ${loadaddr} tispl.bin
+          => sf update $loadaddr 0x100000 $filesize
+          => tftp ${loadaddr} u-boot.img
+          => sf update $loadaddr 0x300000 $filesize
 
-    4. Change boot mode pins to boot with OSPI boot mode and reboot EVM
+    4. Change boot mode pins to OSPI boot mode and reboot AM64x
 
-    **Flashing images to OSPI using SD card**
+    **Flashing images to OSPI NOR using SD card**
 
-    In this example, load binaries from SD card. Assume bootloader names are 'tiboot3.bin', 'tispl.bin',
-    'u-boot.img'. Boot via SD card boot and stop at U-boot prompt before procceeding.
+    In this example, load binaries from SD card. Assume bootloader names are
+    :file:`tiboot3.bin`, :file:`tispl.bin`, :file:`u-boot.img`. Boot via SD
+    card boot and stop at U-boot prompt before procceeding.
 
-    1. Use fatload command to load the bootloaders into memory and flash to OSPI
+    1. Use fatload command to load the bootloaders into memory and flash to
+       OSPI NOR
 
-    .. code-block:: console
+       .. code-block:: console
 
-      => sf probe
-      => fatload mmc 1 ${loadaddr} tiboot3.bin
-      => sf update $loadaddr 0x0 $filesize
-      => fatload mmc 1 ${loadaddr} tispl.bin
-      => sf update $loadaddr 0x80000 $filesize
-      => fatload mmc 1 ${loadaddr} u-boot.img
-      => sf update $loadaddr 0x280000 $filesize
+          => sf probe
+          => fatload mmc 1 ${loadaddr} tiboot3.bin
+          => sf update $loadaddr 0x0 $filesize
+          => fatload mmc 1 ${loadaddr} tispl.bin
+          => sf update $loadaddr 0x100000 $filesize
+          => fatload mmc 1 ${loadaddr} u-boot.img
+          => sf update $loadaddr 0x300000 $filesize
 
-    2. Change boot mode pins to boot with OSPI boot mode and reboot EVM
-
-    **Flashing images to OSPI using DHCP server**
-
-    The dhcp command can be used for obtaining a IP adress and for loading binaries over network. A DHCP server
-    should be present for dhcp command to assign an IP to the board. Use this method only if there is already a
-    DHCP server in your network. Assume bootloader names are 'tiboot3.bin', 'tispl.bin', 'u-boot.img'. Verify
-    ethernet connection between AM62x EVM and host machine before proceeding.
-
-    .. warning::
-        Setting up a custom DHCP server in company network may cause network issues, it is not the recommended
-        method.
-
-    1. Setup DHCP server
-
-      Please refer to the following documentation: `Linux Academy for AM62x <https://dev.ti.com/tirex/explore/node?node=A__AAMryXJaAxNxBtu83GpJJA__linux_academy_am62x__XaWts8R__LATEST>`__
-
-    2. Setup U-boot environment for AM62x EVM
-
-    .. code-block:: console
-
-      # Boot to U-boot prompt using a working boot method
-      => setenv serverip <ip-address-of-tftp-server>
-      => dhcp
-
-    3. Verify IP is assigned
-
-    .. code-block:: console
-
-      => dhcp
-      link up on port 1, speed 1000, full duplex
-      BOOTP broadcast 1
-      BOOTP broadcast 2
-      BOOTP broadcast 3
-      DHCP client bound to address 192.168.42.107 (1017 ms)
-
-    4. Use tftp *or* dhcp commands to load the bootloaders into memory and flash to OSPI
-
-      #. dhcp commands as shown in <path-to-Processor-SDK>/bin/Ethernet_flash/am62xx-evm/uEnv_ethernet_ospi-nor_am62xx-evm.txt
-      #. tftp commands as shown in step 3 of *Flashing images to OSPI using TFTP server*
-
-    5. Change boot mode pins to boot with OSPI boot mode and reboot EVM
+    2. Change boot mode pins to OSPI boot mode and reboot AM64x
 
     **OSPI Boot Mode**
 
-    Please refer to the AM62x TRM Section 5.3 for more information. The following command could also be used to change boot mode to
-    OSPI after following one of the methods above. Verify to use the "reset" command which uses warm reset and not cold reset.
+    Please refer to the AM64x TRM Section 4.4 for more information.
 
-    .. code-block:: console
+    **Phy Calibration**
 
-      => mw.l 0x43000030 0x00000273; reset
-
-    **Phy calibration**
-
-    Phy calibration allows for higher read performance. To enable phy, the phy
+    Phy Calibration allows for higher read performance. To enable phy, the phy
     calibration pattern must be flashed to OSPI at the start of the last erase
-    sector. For the Cypress S28HS512T flash, this lies at the address 0x3fc0000.
+    sector. For the Cypress S28HS512T flash, this lies at the address 0x3FC0000.
+    The partition name should be 'ospi.phypattern' as the driver looks for it
+    before PHY Calibration.
 
     Download the binary file containing the phy pattern from :download:`here </files/ospi_phy_pattern>`.
-    The commands below can be used to flash the phy pattern, with the location of the
-    pattern depending on which flash is being used:
+    The commands below can be used to flash the phy pattern, with the location
+    of the pattern depending on which flash is being used:
 
     .. code-block:: console
 
@@ -454,66 +564,534 @@ documented in U-boot SPI section.
        => tftp ${loadaddr} ospi_phy_pattern
        => sf update $loadaddr 0x3fc0000 $filesize
 
-    **Flash layout for OSPI**
-
-    .. code-block:: console
-
-             0x0 +----------------------------+
-                 |     ospi.tiboot3(512k)     |
-                 |                            |
-         0x80000 +----------------------------+
-                 |     ospi.tispl(2m)         |
-                 |                            |
-        0x280000 +----------------------------+
-                 |     ospi.u-boot(4m)        |
-                 |                            |
-        0x680000 +----------------------------+
-                 |     ospi.env(128k)         |
-                 |                            |
-        0x6c0000 +----------------------------+
-                 |   ospi.env.backup(128k)    |
-                 |                            |
-        0x740000 +----------------------------+
-                 |      padding (768k)        |
-        0x800000 +----------------------------+
-                 |     ospi.rootfs(ubifs)     |
-                 |                            |
-       0x3fc0000 +----------------------------+
-                 |   ospi.phypattern (256k)   |
-                 |                            |
-                 +----------------------------+
-
-    **Enabling QSPI-NOR**
-
-    To use QSPI-NOR Flash with the AM625x SoC, the following changes are needed to configure the bus-width
-    to get 1-1-4 Mode working optimally. The OSPI module in the SoC is capable of
-    supporting single, dual, quad (QSPI mode) or octal I/O instructions. Cypress s25hs512t QSPI-NOR
-    Flash was tested to be working with the AM625x SoC after the following modifications in Device Tree.
+    **Flash layout for OSPI NOR**
 
     .. code-block:: text
 
-        diff --git a/arch/arm/dts/k3-am625-sk.dts b/arch/arm/dts/k3-am625-sk.dts
-        index bfe1e78ed895..980054144d20 100644
-        --- a/arch/arm/dts/k3-am625-sk.dts
-        +++ b/arch/arm/dts/k3-am625-sk.dts
-        @@ -32,8 +32,8 @@
-            flash@0{
-                compatible = "jedec,spi-nor";
-                reg = <0x0>;
-        -       spi-tx-bus-width = <8>;
-        -       spi-rx-bus-width = <8>;
-        +       spi-tx-bus-width = <1>;
-        +       spi-rx-bus-width = <4>;
-                spi-max-frequency = <25000000>;
-                cdns,tshsl-ns = <60>;
-                cdns,tsd2d-ns = <60>;
-        --
-        2.25.1
+       +---------------------+ 0x0
+       |   ospi.tiboot3      |
+       |   (1m)              |
+       +---------------------+ 0x100000
+       |   ospi.tispl        |
+       |   (2m)              |
+       +---------------------+ 0x300000
+       |   ospi.u-boot       |
+       |   (4m)              |
+       +---------------------+ 0x700000
+       |   ospi.env          |
+       |   (256k)            |
+       +---------------------+ 0x740000
+       |   ospi.env.backup   |
+       |   (256k)            |
+       +---------------------+ 0x780000
+       |   padding           |
+       |   (512k)            |
+       +---------------------+ 0x800000
+       |   ospi.rootfs       |
+       |   (55m)(ubifs)      |
+       +---------------------+ 0x3FC0000
+       |   ospi.phypattern   |
+       |   (256k)            |
+       +---------------------+
 
-    The reason for choosing tx-bus-width as 1 is due to the fact that writing to flashes is always a
-    slow process and thus using multi I/O writes doesn't really offer much performance boost. Hence,
-    writes always take place in 1S mode. However, reads can happen much faster and hence we allow for
-    Quad Mode rx-bus-width.
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+    **AM62x SK**
+
+    AM62x Starter Kit (SK) has a Cypress S28HS512T OSPI NOR flash and SYSFW is
+    bundled with :file:`tiboot3.bin`.
+
+    Below are two methods which can be used to flash the OSPI NOR device. For
+    all methods, we will load the bootloaders into memory and then flash each
+    to OSPI NOR at the respective addresses.
+
+    **Flashing Images to OSPI NOR using TFTP server**
+
+    In this example, we'll use the ``tftp-hpa`` package from Ubuntu for our
+    tftp server. Assume bootloader names are :file:`tiboot3.bin`,
+    :file:`tispl.bin`, :file:`u-boot.img`. Verify ethernet connection between
+    AM62x SK and host machine before proceeding.
+
+    1. Setup TFTP server in Host machine
+
+       .. code-block:: console
+
+          # For complete instructions refer to: https://help.ubuntu.com/community/TFTP
+          $ sudo apt install tftp-hpa
+          $ sudo vi /etc/default/tftpd-hpa # optional to change tftp directory and other options
+          $ sudo chown -R tftp /tftp # change owner/group of new directory /tftp
+          $ sudo systemctl restart tftpd-hpa # restart server
+
+    2. Setup U-boot environment for AM62x SK
+
+       .. code-block:: console
+
+          # Boot to U-boot prompt using a working boot method
+          => setenv ipaddr <ip-address-of-am62x-sk>
+          => setenv serverip <ip-address-of-tftp-server>
+          => saveenv # optional to save the U-boot ENV
+
+    3. Use tftp command to load the bootloaders into memory and flash to OSPI
+       NOR
+
+       .. code-block:: console
+
+          => sf probe
+          => tftp ${loadaddr} tiboot3.bin
+          => sf update $loadaddr 0x0 $filesize
+          => tftp ${loadaddr} tispl.bin
+          => sf update $loadaddr 0x80000 $filesize
+          => tftp ${loadaddr} u-boot.img
+          => sf update $loadaddr 0x280000 $filesize
+
+    4. Change boot mode pins to OSPI boot mode and reboot AM62x SK
+
+    **Flashing images to OSPI NOR using SD card**
+
+    In this example, load binaries from SD card. Assume bootloader names are
+    :file:`tiboot3.bin`, :file:`tispl.bin`, :file:`u-boot.img`. Boot via SD
+    card boot and stop at U-boot prompt before procceeding.
+
+    1. Use fatload command to load the bootloaders into memory and flash to
+       OSPI NOR
+
+       .. code-block:: console
+
+          => sf probe
+          => fatload mmc 1 ${loadaddr} tiboot3.bin
+          => sf update $loadaddr 0x0 $filesize
+          => fatload mmc 1 ${loadaddr} tispl.bin
+          => sf update $loadaddr 0x80000 $filesize
+          => fatload mmc 1 ${loadaddr} u-boot.img
+          => sf update $loadaddr 0x280000 $filesize
+
+    2. Change boot mode pins to OSPI boot mode and reboot AM62x SK
+
+    **OSPI Boot Mode**
+
+    Please refer to the AM62x TRM Section 5.4 for more information.
+
+    **Phy Calibration**
+
+    Phy Calibration allows for higher read performance. To enable phy, the phy
+    calibration pattern must be flashed to OSPI at the start of the last erase
+    sector. For the Cypress S28HS512T flash, this lies at the address 0x3FC0000.
+    The partition name should be 'ospi.phypattern' as the driver looks for it
+    before PHY Calibration.
+
+    Download the binary file containing the phy pattern from :download:`here </files/ospi_phy_pattern>`.
+    The commands below can be used to flash the phy pattern, with the location
+    of the pattern depending on which flash is being used:
+
+    .. code-block:: console
+
+       => sf probe
+       => tftp ${loadaddr} ospi_phy_pattern
+       => sf update $loadaddr 0x3fc0000 $filesize
+
+    **Flash layout for OSPI NOR**
+
+    .. code-block:: text
+
+       +---------------------+ 0x0
+       |   ospi.tiboot3      |
+       |   (512k)            |
+       +---------------------+ 0x80000
+       |   ospi.tispl        |
+       |   (2m)              |
+       +---------------------+ 0x280000
+       |   ospi.u-boot       |
+       |   (4m)              |
+       +---------------------+ 0x680000
+       |   ospi.env          |
+       |   (256k)            |
+       +---------------------+ 0x6C0000
+       |   ospi.env.backup   |
+       |   (256k)            |
+       +---------------------+ 0x700000
+       |   padding           |
+       |   (1m)              |
+       +---------------------+ 0x800000
+       |   ospi.rootfs       |
+       |   (55m)(ubifs)      |
+       +---------------------+ 0x3FC0000
+       |   ospi.phypattern   |
+       |   (256k)            |
+       +---------------------+
+
+    **AM62x LP SK**
+
+    AM62x Low Power Starter Kit (LP-SK) has a Winbond W35N01JW OSPI NAND flash
+    and SYSFW is bundled with :file:`tiboot3.bin`.
+
+    Below are two methods which can be used to flash the OSPI NAND device.
+    For all methods, we will load the bootloaders into memory and then flash
+    each to OSPI NAND at the respective addresses.
+
+    **Flashing Images to OSPI NAND using TFTP server**
+
+    In this example, we'll use the ``tftp-hpa`` package from Ubuntu for our
+    tftp server. Assume bootloader names are :file:`tiboot3.bin`,
+    :file:`tispl.bin`, :file:`u-boot.img`. Verify ethernet connection between
+    AM62x LP-SK and host machine before proceeding.
+
+    1. Setup TFTP server in Host machine
+
+       .. code-block:: console
+
+          # For complete instructions refer to: https://help.ubuntu.com/community/TFTP
+          $ sudo apt install tftp-hpa
+          $ sudo vi /etc/default/tftpd-hpa # optional to change tftp directory and other options
+          $ sudo chown -R tftp /tftp # change owner/group of new directory /tftp
+          $ sudo systemctl restart tftpd-hpa # restart server
+
+    2. Setup U-boot environment for AM62x LP-SK
+
+       .. code-block:: console
+
+          # Boot to U-boot prompt using a working boot method
+          => setenv ipaddr <ip-address-of-am62x-lp-sk>
+          => setenv serverip <ip-address-of-tftp-server>
+          => saveenv # optional to save the U-boot ENV
+
+    3. Use tftp command to load the bootloaders into memory and flash to OSPI
+       NAND
+
+       .. code-block:: console
+
+          => mtd list
+          => tftp ${loadaddr} tiboot3.bin
+          => mtd write spi-nand0 $loadaddr 0x0 $filesize
+          => tftp ${loadaddr} tispl.bin
+          => mtd write spi-nand0 $loadaddr 0x80000 $filesize
+          => tftp ${loadaddr} u-boot.img
+          => mtd write spi-nand0 $loadaddr 0x280000 $filesize
+
+    4. Change boot mode pins to boot with Serial NAND boot mode and reboot
+       AM62x LP-SK
+
+    **Flashing images to OSPI NAND using SD card**
+
+    In this example, load binaries from SD card. Assume bootloader names are
+    :file:`tiboot3.bin`, :file:`tispl.bin`, :file:`u-boot.img`. Boot via SD
+    card boot and stop at U-boot prompt before procceeding.
+
+    1. Use fatload command to load the bootloaders into memory and flash to
+       OSPI NAND
+
+    .. code-block:: console
+
+       => mtd list
+       => fatload mmc 1 ${loadaddr} tiboot3.bin
+       => mtd write spi-nand0 $loadaddr 0x0 $filesize
+       => fatload mmc 1 ${loadaddr} tispl.bin
+       => mtd write spi-nand0 $loadaddr 0x80000 $filesize
+       => fatload mmc 1 ${loadaddr} u-boot.img
+       => mtd write spi-nand0 $loadaddr 0x280000 $filesize
+
+    2. Change boot mode pins to boot with Serial NAND boot mode and reboot
+    AM62x LP-SK
+
+    **Serial NAND Boot Mode**
+
+    Please refer to the AM62x TRM Section 5.4 for more information. Both OSPI
+    NAND and QSPI NAND lie under Serial NAND Boot mode.
+
+    **Phy Calibration**
+
+    Phy Calibration allows for higher read and write performance. To enable
+    phy, the phy calibration pattern must be flashed to OSPI NAND at the start
+    of the last erase block. For the Winbond W35N01JW flash, this lies at the
+    address 0x7FC0000. The partition name should be 'ospi_nand.phypattern' as
+    the driver looks for it before PHY Calibration.
+
+    Download the binary file containing the phy pattern from :download:`here </files/ospi_phy_pattern>`.
+    The commands below can be used to flash the phy pattern, with the location
+    of the pattern depending on which flash is being used:
+
+    .. code-block:: console
+
+       => mtd list
+       => tftp ${loadaddr} ospi_phy_pattern
+       => mtd write spi-nand0 $loadaddr 0x7fc0000 $filesize
+
+    **Flash layout for OSPI NAND**
+
+    .. code-block:: text
+
+       +--------------------------+ 0x0
+       |   ospi_nand.tiboot3      |
+       |   (512k)                 |
+       +--------------------------+ 0x80000
+       |   ospi_nand.tispl        |
+       |   (2m)                   |
+       +--------------------------+ 0x280000
+       |   ospi_nand.u-boot       |
+       |   (4m)                   |
+       +--------------------------+ 0x680000
+       |   ospi_nand.env          |
+       |   (256k)                 |
+       +--------------------------+ 0x6C0000
+       |   ospi_nand.env.backup   |
+       |   (256k)                 |
+       +--------------------------+ 0x700000
+       |   padding                |
+       |   (25m)                  |
+       +--------------------------+ 0x2000000
+       |   ospi_nand.rootfs       |
+       |   (95m)(ubifs)           |
+       +--------------------------+ 0x7FC0000
+       |   ospi_nand.phypattern   |
+       |   (256k)                 |
+       +--------------------------+
+
+.. ifconfig:: CONFIG_part_variant in ('AM62AX')
+
+    AM62Ax has a Winbond W35N01JW OSPI NAND flash and SYSFW is bundled with
+    :file:`tiboot3.bin`.
+
+    Below are two methods which can be used to flash the OSPI NAND device.
+    For all methods, we will load the bootloaders into memory and then flash
+    each to OSPI NAND at the respective addresses.
+
+    **Flashing Images to OSPI NAND using TFTP server**
+
+    In this example, we'll use the ``tftp-hpa`` package from Ubuntu for our
+    tftp server. Assume bootloader names are :file:`tiboot3.bin`,
+    :file:`tispl.bin`, :file:`u-boot.img`. Verify ethernet connection between
+    AM62Ax and host machine before proceeding.
+
+    1. Setup TFTP server in Host machine
+
+       .. code-block:: console
+
+          # For complete instructions refer to: https://help.ubuntu.com/community/TFTP
+          $ sudo apt install tftp-hpa
+          $ sudo vi /etc/default/tftpd-hpa # optional to change tftp directory and other options
+          $ sudo chown -R tftp /tftp # change owner/group of new directory /tftp
+          $ sudo systemctl restart tftpd-hpa # restart server
+
+    2. Setup U-boot environment for AM62Ax
+
+       .. code-block:: console
+
+          # Boot to U-boot prompt using a working boot method
+          => setenv ipaddr <ip-address-of-am62ax>
+          => setenv serverip <ip-address-of-tftp-server>
+          => saveenv # optional to save the U-boot ENV
+
+    3. Use tftp command to load the bootloaders into memory and flash to OSPI
+       NAND
+
+       .. code-block:: console
+
+          => mtd list
+          => tftp ${loadaddr} tiboot3.bin
+          => mtd write spi-nand0 $loadaddr 0x0 $filesize
+          => tftp ${loadaddr} tispl.bin
+          => mtd write spi-nand0 $loadaddr 0x80000 $filesize
+          => tftp ${loadaddr} u-boot.img
+          => mtd write spi-nand0 $loadaddr 0x280000 $filesize
+
+    4. Change boot mode pins to boot with Serial NAND boot mode and reboot
+       AM62Ax
+
+    **Flashing images to OSPI NAND using SD card**
+
+    In this example, load binaries from SD card. Assume bootloader names are
+    :file:`tiboot3.bin`, :file:`tispl.bin`, :file:`u-boot.img`. Boot via SD
+    card boot and stop at U-boot prompt before procceeding.
+
+    1. Use fatload command to load the bootloaders into memory and flash to
+       OSPI NAND
+
+    .. code-block:: console
+
+       => mtd list
+       => fatload mmc 1 ${loadaddr} tiboot3.bin
+       => mtd write spi-nand0 $loadaddr 0x0 $filesize
+       => fatload mmc 1 ${loadaddr} tispl.bin
+       => mtd write spi-nand0 $loadaddr 0x80000 $filesize
+       => fatload mmc 1 ${loadaddr} u-boot.img
+       => mtd write spi-nand0 $loadaddr 0x280000 $filesize
+
+    2. Change boot mode pins to boot with Serial NAND boot mode and reboot EVM
+
+    **Serial NAND Boot Mode**
+
+    Please refer to the AM62Ax TRM Section 5.4 for more information. Both OSPI
+    NAND and QSPI NAND lie under Serial NAND Boot mode.
+
+    **Phy Calibration**
+
+    Phy Calibration allows for higher read and write performance. To enable
+    phy, the phy calibration pattern must be flashed to OSPI NAND at the start
+    of the last erase block. For the Winbond W35N01JW flash, this lies at the
+    address 0x7FC0000. The partition name should be 'ospi_nand.phypattern' as
+    the driver looks for it before PHY Calibration.
+
+    Download the binary file containing the phy pattern from :download:`here </files/ospi_phy_pattern>`.
+    The commands below can be used to flash the phy pattern, with the location
+    of the pattern depending on which flash is being used:
+
+    .. code-block:: console
+
+       => mtd list
+       => tftp ${loadaddr} ospi_phy_pattern
+       => mtd write spi-nand0 $loadaddr 0x7fc0000 $filesize
+
+    **Flash layout for OSPI NAND**
+
+    .. code-block:: text
+
+       +--------------------------+ 0x0
+       |   ospi_nand.tiboot3      |
+       |   (512k)                 |
+       +--------------------------+ 0x80000
+       |   ospi_nand.tispl        |
+       |   (2m)                   |
+       +--------------------------+ 0x280000
+       |   ospi_nand.u-boot       |
+       |   (4m)                   |
+       +--------------------------+ 0x680000
+       |   ospi_nand.env          |
+       |   (256k)                 |
+       +--------------------------+ 0x6C0000
+       |   ospi_nand.env.backup   |
+       |   (256k)                 |
+       +--------------------------+ 0x700000
+       |   padding                |
+       |   (25m)                  |
+       +--------------------------+ 0x2000000
+       |   ospi_nand.rootfs       |
+       |   (95m)(ubifs)           |
+       +--------------------------+ 0x7FC0000
+       |   ospi_nand.phypattern   |
+       |   (256k)                 |
+       +--------------------------+
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+    AM62Px has a Cypress S28HS512T OSPI NOR flash and SYSFW is bundled with
+    :file:`tiboot3.bin`.
+
+    Below are two methods which can be used to flash the OSPI NOR device. For
+    all methods, we will load the bootloaders into memory and then flash each
+    to OSPI NOR at the respective addresses.
+
+    **Flashing Images to OSPI NOR using TFTP server**
+
+    In this example, we'll use the ``tftp-hpa`` package from Ubuntu for our
+    tftp server. Assume bootloader names are :file:`tiboot3.bin`,
+    :file:`tispl.bin`, :file:`u-boot.img`. Verify ethernet connection between
+    AM62Px and host machine before proceeding.
+
+    1. Setup TFTP server in Host machine
+
+       .. code-block:: console
+
+          # For complete instructions refer to: https://help.ubuntu.com/community/TFTP
+          $ sudo apt install tftp-hpa
+          $ sudo vi /etc/default/tftpd-hpa # optional to change tftp directory and other options
+          $ sudo chown -R tftp /tftp # change owner/group of new directory /tftp
+          $ sudo systemctl restart tftpd-hpa # restart server
+
+    2. Setup U-boot environment for AM62Px
+
+       .. code-block:: console
+
+          # Boot to U-boot prompt using a working boot method
+          => setenv ipaddr <ip-address-of-am62px>
+          => setenv serverip <ip-address-of-tftp-server>
+          => saveenv # optional to save the U-boot ENV
+
+    3. Use tftp command to load the bootloaders into memory and flash to OSPI
+       NOR
+
+       .. code-block:: console
+
+          => sf probe
+          => tftp ${loadaddr} tiboot3.bin
+          => sf update $loadaddr 0x0 $filesize
+          => tftp ${loadaddr} tispl.bin
+          => sf update $loadaddr 0x80000 $filesize
+          => tftp ${loadaddr} u-boot.img
+          => sf update $loadaddr 0x280000 $filesize
+
+    4. Change boot mode pins to OSPI boot mode and reboot AM62Px
+
+    **Flashing images to OSPI NOR using SD card**
+
+    In this example, load binaries from SD card. Assume bootloader names are
+    :file:`tiboot3.bin`, :file:`tispl.bin`, :file:`u-boot.img`. Boot via SD
+    card boot and stop at U-boot prompt before procceeding.
+
+    1. Use fatload command to load the bootloaders into memory and flash to
+       OSPI NOR
+
+       .. code-block:: console
+
+          => sf probe
+          => fatload mmc 1 ${loadaddr} tiboot3.bin
+          => sf update $loadaddr 0x0 $filesize
+          => fatload mmc 1 ${loadaddr} tispl.bin
+          => sf update $loadaddr 0x80000 $filesize
+          => fatload mmc 1 ${loadaddr} u-boot.img
+          => sf update $loadaddr 0x280000 $filesize
+
+    2. Change boot mode pins to OSPI boot mode and reboot AM62Px
+
+    **OSPI Boot Mode**
+
+    Please refer to the AM62Px TRM Section 5.4 for more information.
+
+    **Phy Calibration**
+
+    Phy Calibration allows for higher read performance. To enable phy, the phy
+    calibration pattern must be flashed to OSPI at the start of the last erase
+    sector. For the Cypress S28HS512T flash, this lies at the address 0x3FC0000.
+    The partition name should be 'ospi.phypattern' as the driver looks for it
+    before PHY Calibration.
+
+    Download the binary file containing the phy pattern from :download:`here </files/ospi_phy_pattern>`.
+    The commands below can be used to flash the phy pattern, with the location
+    of the pattern depending on which flash is being used:
+
+    .. code-block:: console
+
+       => sf probe
+       => tftp ${loadaddr} ospi_phy_pattern
+       => sf update $loadaddr 0x3fc0000 $filesize
+
+    **Flash layout for OSPI NOR**
+
+    .. code-block:: text
+
+       +---------------------+ 0x0
+       |   ospi.tiboot3      |
+       |   (512k)            |
+       +---------------------+ 0x80000
+       |   ospi.tispl        |
+       |   (2m)              |
+       +---------------------+ 0x280000
+       |   ospi.u-boot       |
+       |   (4m)              |
+       +---------------------+ 0x680000
+       |   ospi.env          |
+       |   (256k)            |
+       +---------------------+ 0x6C0000
+       |   ospi.env.backup   |
+       |   (256k)            |
+       +---------------------+ 0x700000
+       |   padding           |
+       |   (1m)              |
+       +---------------------+ 0x800000
+       |   ospi.rootfs       |
+       |   (55m)(ubifs)      |
+       +---------------------+ 0x3FC0000
+       |   ospi.phypattern   |
+       |   (256k)            |
+       +---------------------+
 
 .. ifconfig:: CONFIG_part_variant in ('J721S2')
 
