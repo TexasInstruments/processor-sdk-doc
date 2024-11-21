@@ -34,6 +34,7 @@ Alternatively, Kernel sources can directly be fetched from GIT.
     You can find the details about the git repository, branch and commit id in
     the :ref:`release-specific-build-information-kernel` section of the release notes.
 
+.. _preparing-to-build:
 
 Preparing to Build
 ------------------

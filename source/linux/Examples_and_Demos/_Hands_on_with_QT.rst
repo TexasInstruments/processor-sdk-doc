@@ -93,13 +93,12 @@ be adapted accordingly.
 -  SD card with Sitara Linux SDK installed.
 
    -  For help creating a 2 partition SD card with the SDK content see
-      the `create\_sdcard.sh
-      script <Overview/Processor_SDK_Linux_create_SD_card.html>`__ page
+      the :ref:`create\_sdcard.sh script <processor-sdk-linux-sd-card-with-default-images>` page
 
 -  QT Creator 5.7.0 installed on your Linux host.
 
    -  You can download Qt Creator from open source distribution version
-      of Qt at http://download.qt.io/official_releases/qt/
+      of Qt at https://download.qt.io/official_releases/qt/
    -  QT will download as a .run file. Make the file executable by
       running the **chmod + <qtfile>** command and **./<qtfile>**. These
       steps should launch the QT installer.
@@ -1460,7 +1459,7 @@ corresponding QT library will need to be installed to the
 <ti-processor-sdk-linux-xxx>/linux-devkit/sysroots/armv7ahf-neon-linux-gnueabi
 location. The \*.ipk package can be found from the
 :ref:`yocto build of PSDK <building-the-sdk-with-yocto>`
-under build/arago-tmp-external-arm-toolchain/work/armv7ahf-neon-linux-gnueabi.
+under :file:`build/arago-tmp-external-arm-toolchain/work/armv7ahf-neon-linux-gnueabi`.
 Linux "find" command can be used to refine the search for \*.ipk file.
 For example, following steps to debug qtbase application
 

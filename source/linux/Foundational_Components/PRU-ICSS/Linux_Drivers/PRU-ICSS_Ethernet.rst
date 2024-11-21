@@ -232,7 +232,7 @@ Here are the steps needed to test out the new Ethernet interfaces:
    -  follow the script directions to format your SD card and then
       install the pre-built binaries from the SDK
    -  for more information on creating an SD card:
-      `Processor\_SDK\_Linux\_create\_SD\_card\_script <Overview/Processor_SDK_Linux_create_SD_card.html>`__
+      :ref:`Processor\_SDK\_Linux\_create\_SD\_card\_script <processor-sdk-linux-sd-card-with-default-images>`
 
 -  Boot from the newly created SD card
 

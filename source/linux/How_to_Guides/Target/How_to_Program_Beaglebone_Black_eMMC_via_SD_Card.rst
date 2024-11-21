@@ -28,8 +28,8 @@ What is Needed
 
 Preparing the SD Card
 ---------------------
-* Follow the steps outlined in the `Linux SD Card Creation Guide
-  <../../Overview/Processor_SDK_Linux_create_SD_card.html>`__.
+* Follow the steps outlined in the :ref:`Linux SD Card Creation Guide
+  <processor-sdk-linux-sd-card-with-default-images>`.
 * For this guide, it is recommended to follow the steps to create an "SD Card
   Using Default Images."
 * Once the SD Card has been created with default

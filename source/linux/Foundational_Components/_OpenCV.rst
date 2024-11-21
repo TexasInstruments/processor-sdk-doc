@@ -538,7 +538,7 @@ to AM57xx): **export OPENCV\_OPENCL\_DEVICE='TI AM57:ACCELERATOR:TI
 Multicore C66 DSP'**
 
 -  For additional information, please refer to:
-   `OpenCL User Guide <http://downloads.ti.com/mctools/esd/docs/opencl/index.html>`__
+   `OpenCL User Guide <https://downloads.ti.com/mctools/esd/docs/opencl/index.html>`__
 
 --------------------------------
 OpenCV OpenCL development setup

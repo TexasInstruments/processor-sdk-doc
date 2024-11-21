@@ -60,7 +60,7 @@ Software
    However, the notation ***<PRU_SW_PATH>*** will be used throughout
    the labs to reference this assumed installation location. If you use
    a different location please modify the steps below.
--  `CCSv6 <ti.com/tool/download/CCSTUDIO>`__
+-  `CCSv6 <https://www.ti.com/tool/download/CCSTUDIO>`__
 -  `PRU Code Generation
    Tools <http://software-dl.ti.com/codegen/non-esd/downloads/download.htm#PRU>`__
    (also available through the CCS App Center)
@@ -971,7 +971,7 @@ to your set up.
    a. Use the script included with the SDK to create a bootable SD card.
 
       You can find instructions on this process at the
-      `Linux SD Card Creation Guide <../../linux/Overview/Processor_SDK_Linux_create_SD_card.html>`__.
+      :ref:`Linux SD Card Creation Guide <processor-sdk-linux-create-sd-card>`.
 
    b. Once the card is created, mount it on your Linux host to copy the
       files to it.

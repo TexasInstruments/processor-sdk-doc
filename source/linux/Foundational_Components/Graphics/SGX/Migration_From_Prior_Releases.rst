@@ -6,6 +6,8 @@
 Migration from prior releases
 #############################
 
+.. _from-processor-sdk-1-x-to-2-x-for-am3-am4:
+
 ******************************************
 From Processor SDK 1.x to 2.x for AM3, AM4
 ******************************************
@@ -61,6 +63,8 @@ the SDK file system:
 
    - :file:`/usr/bin/sgx_render_test`
 
+.. _from-processor-sdk-2-0-0-to-2-0-x-for-am4:
+
 *****************************************
 From Processor SDK 2.0.0 to 2.0.x for AM4
 *****************************************
@@ -91,6 +95,8 @@ The window system will be dynamically loaded by DDK based on the application use
 case, so that the PVR configuration parameter WindowSystem at the PVR
 configuration file :file:`/etc/powervr.ini` is no longer used.
 
+.. _from-processor-sdk-2-0-1-to-2-0-x-for-am3-4-5:
+
 **********************************************
 From Processor SDK 2.0.1 to 2.0.x for AM3/4/5
 **********************************************
@@ -118,6 +124,8 @@ The window system will be dynamically loaded by DDK based on the
 application use case, so that the PVR configuration parameter
 WindowSystem at the PVR configuration file /etc/powervr.ini is no longer
 required.
+
+.. _from-processor-sdk-3-1-to-3-x-for-am3-4-5:
 
 *****************************************
 From Processor SDK 3.1 to 3.x for AM3/4/5

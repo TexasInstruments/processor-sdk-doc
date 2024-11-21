@@ -33,7 +33,6 @@ Processor CoreSDK Sitara 10.00
       instructions<Build-U-Boot-label>` for the updated steps.
 
     - For Linux builds, generic ``defconfig`` is used instead of custom
-      fragments. Please refer to `linux users guide
-      <../../../linux/Foundational_Components_Kernel_Users_Guide.html#preparing-to-build>`__
+      fragments. Please refer to :ref:`linux users guide <preparing-to-build>`
       for build instructions.
 

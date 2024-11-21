@@ -27,10 +27,10 @@ Then we can go ahead with 'scsi scan' to see the attached devices:
 |
 
 All the remaining scsi commands detailed in the
-:ref:`previous section <ug-sata>` are
+:doc:`previous section <UG-SATA>` are
 also applicable.
 
 For more information about UFS see
-:ref:`Kernel UFS Guide <ufs>`.
+:doc:`Kernel UFS Guide <../Kernel/Kernel_Drivers/UFS>`.
 
 

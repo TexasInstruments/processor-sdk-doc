@@ -131,7 +131,7 @@ Processor SDK 05.02
 Processor SDK 05.01
 ----------------------
 
-- Introduced AM65x as a new platform. Please refer to release notes for more details
+- Introduced AM65x as a new platform.
 
 .. rubric:: PRUETH Driver
 
@@ -432,7 +432,6 @@ Processor SDK 03.03
 
 -  HDMI-connected monitor no longer takes precedence over built-in LCD
    as a default graphics display for e.g. Matrix
--  See the Release Notes for full list of modifications.
 
 |
 
@@ -441,8 +440,8 @@ Processor SDK 03.02
 
 -  The QT QPA eglfs\_kms, which supports multiple screens, has been
    enabled and used as the default eglfs platform plugin. For more
-   information, see `QT and Graphics
-   Migration <../../../linux/Foundational_Components_Graphics.html>`__
+   information, see :ref:`QT and Graphics
+   Migration <from-processor-sdk-3-1-to-3-x-for-am3-4-5>`
 -  bootmonitor now goes thru mkimage and as a result the load address
    changed. Users should manually execute following commands in their
    u-boot environment to properly install the secure monitor on k2
@@ -496,7 +495,6 @@ Processor SDK 03.00
 -  In K2 U-Boot, multi slave support is currently missing. To use
    multiple interfaces, please disable CONFIG\_DM\_ET option in u-boot
    .config and build.
--  See the Release Notes for full list of modifications.
 
 |
 
@@ -510,9 +508,8 @@ Processor SDK 02.00.02
 -  OpenCV now uses OpenCL under the hood, to offload compute tasks to
    C66x cores. This is transparent to the application
 -  The SGX driver for AM335x has been enhanced to support DRM/WAYLAND
-   based Multi-Window Display. For more information, see `AM3 Graphics
-   Migration <../../../linux/Foundational_Components/Graphics/SGX/Migration_From_Prior_Releases.html#from-processor-sdk-2-0-1-to-2-0-x-for-am3-4-5>`__
--  See the Release Notes for full list of modifications.
+   based Multi-Window Display. For more information, see :ref:`AM3 Graphics
+   Migration <from-processor-sdk-2-0-1-to-2-0-x-for-am3-4-5>`
 
 |
 
@@ -523,10 +520,9 @@ Processor SDK 02.00.01
 -  This release also supports RT Linux is supported on AM4 and AM5
    device
 -  The SGX driver for AM4 has been enhanced to support DRM/WAYLAND based
-   Multi-Window Display. For more information, see `AM4 Graphics
-   Migration <../../../linux/Foundational_Components/Graphics/SGX/Migration_From_Prior_Releases.html#from-processor-sdk-2-0-0-to-2-0-x-for-am4>`__
+   Multi-Window Display. For more information, see :ref:`AM4 Graphics
+   Migration <from-processor-sdk-2-0-0-to-2-0-x-for-am4>`
 -  There is no migration impact to customers using AM3, and AM5.
--  See the Release Notes for full list of modifications.
 
 |
 
@@ -540,9 +536,7 @@ Processor SDK 02.00.00
 -  For AM3, AM4, Graphics SDK is now obsolete and Graphics stack is
    integrated into Processor SDK, and supports null DRM based Full
    Window, with Front and Flip modes. For more information, see
-   `Graphics
-   Migration <../../../linux/Foundational_Components/Graphics/SGX/Migration_From_Prior_Releases.html#from-processor-sdk-1-x-to-2-x-for-am3-am4>`__
+   :ref:`Graphics Migration <from-processor-sdk-1-x-to-2-x-for-am3-am4>`
 -  Ethernet performance degraded ~10% on am335x-evm due to move from
    preempt\_voluntary
--  See the Release Notes for full list of modifications.
 
