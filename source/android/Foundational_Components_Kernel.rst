@@ -120,7 +120,7 @@ To enable new modules:
 
 #. In the ``module_outs`` array, add the path to your new kernel module.
 
-#. Rebuild the kernel as documented in :ref:`android_build_kernel`.
+#. Rebuild the kernel as documented in :ref:`android-build-kernel`.
 
 #. If the driver module needs to be loaded early (in the ramdisk), edit
    :file:`${YOUR_PATH}/ti-aosp-14/device/ti/am62x/BoardConfig-common.mk`
