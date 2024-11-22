@@ -9,12 +9,22 @@ GCC ToolChain Setup
 
 Before compiling any of the sources referenced in this document, set the cross compiler paths to the toolchains packaged in the Processor SDK [Recommended] as shown below. Refer to :ref:`yocto-toolchain` section for more details on usage.
 
-.. code-block:: console
+.. ifconfig:: CONFIG_part_variant in ('AM335X', 'AM437X', 'AM57X')
 
-   host# export CROSS_COMPILE_64="${SDK_INSTALL_DIR}/linux-devkit/sysroots/x86_64-arago-linux/usr/bin/aarch64-oe-linux/aarch64-oe-linux-"
-   host# export SYSROOT_64="${SDK_INSTALL_DIR}/linux-devkit/sysroots/aarch64-oe-linux"
-   host# export CC_64="${CROSS_COMPILE_64}gcc --sysroot=${SYSROOT_64}"
-   host# export CROSS_COMPILE_32="${SDK_INSTALL_DIR}/k3r5-devkit/sysroots/x86_64-arago-linux/usr/bin/arm-oe-eabi/arm-oe-eabi-"
+   .. code-block:: console
+
+      host# export CROSS_COMPILE_32="${SDK_INSTALL_DIR}/linux-devkit/sysroots/x86_64-arago-linux/usr/bin/arm-oe-linux-gnueabi/arm-oe-linux-gnueabi-"
+      host# export SYSROOT_32="${SDK_INSTALL_DIR}/linux-devkit/sysroots/armv7at2hf-neon-oe-linux-gnueabi"
+      host# export CC_32="${CROSS_COMPILE_32}gcc --sysroot=${SYSROOT_32}"
+
+.. ifconfig:: CONFIG_part_variant not in ('AM335X', 'AM437X', 'AM57X')
+
+   .. code-block:: console
+
+      host# export CROSS_COMPILE_64="${SDK_INSTALL_DIR}/linux-devkit/sysroots/x86_64-arago-linux/usr/bin/aarch64-oe-linux/aarch64-oe-linux-"
+      host# export SYSROOT_64="${SDK_INSTALL_DIR}/linux-devkit/sysroots/aarch64-oe-linux"
+      host# export CC_64="${CROSS_COMPILE_64}gcc --sysroot=${SYSROOT_64}"
+      host# export CROSS_COMPILE_32="${SDK_INSTALL_DIR}/k3r5-devkit/sysroots/x86_64-arago-linux/usr/bin/arm-oe-eabi/arm-oe-eabi-"
 
 If the Processor SDK is not installed, the Arm GNU toolchains can be downloaded and setup. Refer to :ref:`external-arm-toolchain` section for more details on usage.
 
@@ -46,22 +56,43 @@ The |__SDK_FULL_NAME__| package comes with this toolchain preinstalled at linux-
 directory within the SDK. Below paths are relative to the <SDK_INSTALL_DIR> and will be
 referred to using the first column in the following sections.
 
-.. list-table:: Linux Devkit Contents
-   :widths: 20 30 50
-   :header-rows: 1
+.. ifconfig:: CONFIG_part_variant in ('AM335X', 'AM437X', 'AM57X')
 
-   * - Variable
-     - Location
-     - Description
-   * - CROSS_COMPILE_64
-     - linux-devkit/sysroots/x86_64-arago-linux/usr/bin/aarch64-oe-linux/aarch64-oe-linux-
-     - Cross compiler toolchain for the ARMv8 architecture
-   * - SYSROOT_64
-     - linux-devkit/sysroots/aarch64-oe-linux/
-     - Sysroot with the cross compiled libraries and headers for the ARMv8 architecture with Linux OS
-   * - ENV_SETUP_64
-     - linux-devkit/environment-setup-aarch64-oe-linux
-     - Shell script that sets environment variables to compile binaries for the ARMv8 linux target
+   .. list-table:: Linux Devkit Contents
+      :widths: 20 30 50
+      :header-rows: 1
+
+      * - Variable
+        - Location
+        - Description
+      * - CROSS_COMPILE_32
+        - linux-devkit/sysroots/x86_64-arago-linux/usr/bin/arm-oe-linux-gnueabi/arm-oe-linux-gnueabi-
+        - Cross compiler toolchain for the ARMv8 architecture
+      * - SYSROOT_32
+        - linux-devkit/sysroots/armv7at2hf-neon-oe-linux-gnueabi/
+        - Sysroot with the cross compiled libraries and headers for the ARMv8 architecture with Linux OS
+      * - ENV_SETUP_32
+        - linux-devkit/environment-setup-armv7at2hf-neon-oe-linux-gnueabi
+        - Shell script that sets environment variables to compile binaries for the ARMv8 linux target
+
+.. ifconfig:: CONFIG_part_variant not in ('AM335X', 'AM437X', 'AM57X')
+
+   .. list-table:: Linux Devkit Contents
+      :widths: 20 30 50
+      :header-rows: 1
+
+      * - Variable
+        - Location
+        - Description
+      * - CROSS_COMPILE_64
+        - linux-devkit/sysroots/x86_64-arago-linux/usr/bin/aarch64-oe-linux/aarch64-oe-linux-
+        - Cross compiler toolchain for the ARMv8 architecture
+      * - SYSROOT_64
+        - linux-devkit/sysroots/aarch64-oe-linux/
+        - Sysroot with the cross compiled libraries and headers for the ARMv8 architecture with Linux OS
+      * - ENV_SETUP_64
+        - linux-devkit/environment-setup-aarch64-oe-linux
+        - Shell script that sets environment variables to compile binaries for the ARMv8 linux target
 
 .. rubric:: Target Sysroot
    :name: cross-compiled-libraries
@@ -79,9 +110,17 @@ also find the header files corresponding to these libraries in the
 an example if your application wants access to the alsa asound library
 then you can now do the following command:
 
-.. code-block:: console
+.. ifconfig:: CONFIG_part_variant in ('AM335X', 'AM437X', 'AM57X')
 
-   host# ${CROSS_COMPILE_64}gcc -lasound app.c -o app.out
+   .. code-block:: console
+
+      host# ${CROSS_COMPILE_32}gcc -lasound app.c -o app.out
+
+.. ifconfig:: CONFIG_part_variant not in ('AM335X', 'AM437X', 'AM57X')
+
+   .. code-block:: console
+
+      host# ${CROSS_COMPILE_64}gcc -lasound app.c -o app.out
 
 .. rubric:: Environment-setup script
    :name: environment-setup-script
@@ -101,9 +140,17 @@ for you. This script exports variables to perform actions such as:
 To **use** the environment-setup script you only need to source it. This
 is as simple as:
 
-.. code-block:: console
+.. ifconfig:: CONFIG_part_variant in ('AM335X', 'AM437X', 'AM57X')
 
-   host# source ${ENV_SETUP_64}
+   .. code-block:: console
+
+      host# source ${ENV_SETUP_32}
+
+.. ifconfig:: CONFIG_part_variant not in ('AM335X', 'AM437X', 'AM57X')
+
+   .. code-block:: console
+
+      host# source ${ENV_SETUP_64}
 
 .. note::
    :name: when-compiling-the-linux-kernel
@@ -133,7 +180,7 @@ libraries.
    .. code-block:: c
 
       #include <stdio.h>
-      
+
       int main() {
           printf ("Hello World from TI!!!\n");
           return 0;
@@ -145,9 +192,17 @@ libraries.
    - **Compile Directly** : Cross-compile the **helloworld.c** file using the
      cross-compile toolchain directly
 
-     .. code-block:: console
+     .. ifconfig:: CONFIG_part_variant in ('AM335X', 'AM437X', 'AM57X')
 
-        host# ${CROSS_COMPILE_64}gcc --sysroot=${SYSROOT_64} helloworld.c -o helloworld
+        .. code-block:: console
+
+           host# ${CROSS_COMPILE_32}gcc --sysroot=${SYSROOT_32} helloworld.c -o helloworld
+
+     .. ifconfig:: CONFIG_part_variant not in ('AM335X', 'AM437X', 'AM57X')
+
+        .. code-block:: console
+
+           host# ${CROSS_COMPILE_64}gcc --sysroot=${SYSROOT_64} helloworld.c -o helloworld
 
      Be sure to give the correct path to the gcc cross compiler and target
      sysroot as listed earlier.
@@ -155,10 +210,19 @@ libraries.
    - **Using the environement setup script** : Cross-compile after sourcing
      the setup script
 
-     .. code-block:: console
+     .. ifconfig:: CONFIG_part_variant in ('AM335X', 'AM437X', 'AM57X')
 
-        host# source ${ENV_SETUP_64}
-        host# ${CC} helloworld.c -o helloworld
+        .. code-block:: console
+
+           host# source ${ENV_SETUP_32}
+           host# ${CC_32} helloworld.c -o helloworld
+
+     .. ifconfig:: CONFIG_part_variant not in ('AM335X', 'AM437X', 'AM57X')
+
+        .. code-block:: console
+
+           host# source ${ENV_SETUP_64}
+           host# ${CC} helloworld.c -o helloworld
 
 3. After the above steps are run you should now have a **helloworld**
    executable in your directory that has been compiled for the ARM. A
@@ -178,29 +242,35 @@ libraries.
 k3r5-devkit
 ^^^^^^^^^^^
 
-.. rubric:: Overview
+.. ifconfig:: CONFIG_part_variant in ('AM335X', 'AM437X', 'AM57X')
 
-The |__SDK_FULL_NAME__| package comes with an ARMv7 toolchain preinstalled at k3r5-devkit/
-directory within the SDK. Below paths are relative to the <SDK_INSTALL_DIR>.
+   .. attention::
 
-.. list-table:: k3r5 Devkit Contents
-   :widths: 20 30 50
-   :header-rows: 1
+      The Processor SDK LINUX package for AM335x, AM437x and AM57X devices does not support k3r5-devkit toolchain.
 
-   * - Variable
-     - Location
-     - Description
-   * - CROSS_COMPILE_32
-     - k3r5-devkit/sysroots/x86_64-arago-linux/usr/bin/arm-oe-eabi/arm-oe-eabi-
-     - Cross compiler toolchain for the ARMv7 architecture
-   * - SYSROOT_32
-     - k3r5-devkit/sysroots/armv7at2hf-vfp-oe-eabi/
-     - Sysroot with the cross compiled libraries and headers for the ARMv7 architecture
-   * - ENV_SETUP_32
-     - k3r5-devkit/environment-setup-armv7at2hf-vfp-oe-eabi
-     - Shell script that sets environment variables to compile binaries for the target
+.. ifconfig:: CONFIG_part_variant not in ('AM335X', 'AM437X', 'AM57X')
 
-|
+   .. rubric:: Overview
+
+   The |__SDK_FULL_NAME__| package comes with an ARMv7 toolchain preinstalled at k3r5-devkit/
+   directory within the SDK. Below paths are relative to the <SDK_INSTALL_DIR>.
+
+   .. list-table:: k3r5 Devkit Contents
+      :widths: 20 30 50
+      :header-rows: 1
+
+      * - Variable
+        - Location
+        - Description
+      * - CROSS_COMPILE_32
+        - k3r5-devkit/sysroots/x86_64-arago-linux/usr/bin/arm-oe-eabi/arm-oe-eabi-
+        - Cross compiler toolchain for the ARMv7 architecture
+      * - SYSROOT_32
+        - k3r5-devkit/sysroots/armv7at2hf-vfp-oe-eabi/
+        - Sysroot with the cross compiled libraries and headers for the ARMv7 architecture
+      * - ENV_SETUP_32
+        - k3r5-devkit/environment-setup-armv7at2hf-vfp-oe-eabi
+        - Shell script that sets environment variables to compile binaries for the target
 
 
 .. _external-arm-toolchain:
