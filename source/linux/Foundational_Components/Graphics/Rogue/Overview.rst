@@ -131,6 +131,9 @@ This is included by default in the SDK. The kernel module is located at:
 
    # /lib/modules/$(uname -r)/extra/pvrsrvkm.ko
 
+Please see the :doc:`Build_Guide` for more information about integration of
+this software stack into other ecosystems.
+
 Graphics Demos
 ==============
 

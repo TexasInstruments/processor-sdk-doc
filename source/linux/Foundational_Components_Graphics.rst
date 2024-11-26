@@ -26,6 +26,7 @@ the details on the features supported by these hardware blocks.
    Foundational_Components/Graphics/Rogue/Overview.rst
    Foundational_Components/Graphics/Rogue/Rogue_Debug_Info.rst
    Foundational_Components/Graphics/Rogue/Rogue_Power_Management_Info.rst
+   Foundational_Components/Graphics/Rogue/Build_Guide.rst
 
    Foundational_Components/Graphics/Common/Display.rst
 
