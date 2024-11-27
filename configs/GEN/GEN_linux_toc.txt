@@ -132,6 +132,7 @@ linux/Foundational_Components/Graphics/SGX/Migration_From_Prior_Releases
 linux/Foundational_Components/Graphics/SGX/OMAP_DRM
 linux/Foundational_Components/Graphics/SGX/Overview
 linux/Foundational_Components/Graphics/SGX/SGX_Debug_Info
+linux/Foundational_Components/Graphics/SGX/Build_Guide
 
 linux/Industrial_Protocols
 linux/Industrial_Protocols_ICSS_Dual_EMAC

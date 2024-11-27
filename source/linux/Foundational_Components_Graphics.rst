@@ -22,6 +22,7 @@ the details on the features supported by these hardware blocks.
    Foundational_Components/Graphics/SGX/AM3_Beagle_Bone_Black_Configuration.rst
    Foundational_Components/Graphics/SGX/Migration_From_Prior_Releases.rst
    Foundational_Components/Graphics/SGX/OMAP_DRM.rst
+   Foundational_Components/Graphics/SGX/Build_Guide.rst
 
    Foundational_Components/Graphics/Rogue/Overview.rst
    Foundational_Components/Graphics/Rogue/Rogue_Debug_Info.rst
