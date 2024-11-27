@@ -212,6 +212,7 @@ Known Issues
    :header: "Record ID", "Title", "Platform", "Workaround"
    :widths: 5, 10, 50, 35
 
+   "LCPD-42226","am64xx-evm : OSPI NOR boot fails","am64xx-hsevm","Refer :ref:`here <u-boot-introduction-qspi-ug>`"
    "LCPD-38695","Documentation: Kernel_Drivers/Network & PRU-ICSS sections doesn't follow sphinx convention","am64xx-evm",""
    "LCPD-38689","Linux benchmarks: add context to Boot-time measurement","am62axx_sk-fs,am62pxx_sk-fs,am62xx_lp_sk-fs,am64xx-evm,am654x-evm",""
    "LCPD-38688","RT Linux benchmarks: add histogram for cyclic test","am62axx_sk-fs,am62pxx_sk-fs,am62xx_lp_sk-fs,am62xx_sk-fs,am64xx-evm",""

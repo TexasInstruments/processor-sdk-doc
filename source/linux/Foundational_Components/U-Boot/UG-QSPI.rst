@@ -23,6 +23,34 @@ controllers work only in master mode.
    | AM64x      | OSPI NOR   | :file:`drivers/spi/cadence_qspi.c` |
    +------------+------------+------------------------------------+
 
+   .. important::
+
+      The BCDMA channel[0] is being allocated for read during OSPI NOR boot.
+      Currently, OSPI NOR boot fails in AM64x-EVM as the 'main_bcdma' node
+      is not passed in FDT to the early boot stage. Hence, user can apply the
+      following patch to add 'bootph-all' property to 'main_bcdma' node.
+
+      This issue (Record ID: LCPD-42226) has been listed in the :ref:`Known Issues <known-issues>`
+
+      .. code-block:: diff
+
+         diff --git a/arch/arm/dts/k3-am642-evm-u-boot.dtsi b/arch/arm/dts/k3-am642-evm-u-boot.dtsi
+         index 5d7cbe0477c3..e30e6cd63dd9 100644
+         --- a/arch/arm/dts/k3-am642-evm-u-boot.dtsi
+         +++ b/arch/arm/dts/k3-am642-evm-u-boot.dtsi
+         @@ -121,6 +121,10 @@
+            bootph-all;
+         };
+
+         +&main_bcdma {
+         +	bootph-all;
+         +};
+         +
+         &main_pktdma {
+            bootph-all;
+         };
+
+
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
    +-------------+------------+------------------------------------+
