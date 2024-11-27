@@ -660,19 +660,14 @@ PCIe-ETH
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. csv-table:: PCIe Ethernet performance
-    :header: "TCP Window Size(Kbytes)","am68_sk-fs: Bandwidth (Mbits/sec)","j7200-evm: Bandwidth (Mbits/sec)","j721e-idk-gw: Bandwidth (Mbits/sec)","j721s2-evm: Bandwidth (Mbits/sec)"
+    :header: "TCP Window Size(Kbytes)","am68-sk: Bandwidth (Mbits/sec)","am69-sk: Bandwidth (Mbits/sec)","j721e-idk-gw: Bandwidth (Mbits/sec)","j7200-evm: Bandwidth (Mbits/sec)","j721s2-evm: Bandwidth (Mbits/sec)","j784s4-evm: Bandwidth (Mbits/sec)","j722s-evm: Bandwidth (Mbits/sec)"
 
-    "8","0.00"
-    "16","0.00"
-    "32","0.00","0.00"
-    "64","0.00"
-    "128","0.00","0.00","0.00"
-    "256","0.00","0.00"
-
-
-
- 
-
+    "8","183","187","184","184","185","187","178"
+    "16","437","440","438","439","439","440","414"
+    "32","585","589","589","589","584","589","550"
+    "64","929","937","935","935","928","937","914"
+    "128","938","939","938","938","938","939","937"
+    "256","938","940","939","939","938","940","938"
 
 PCIe-NVMe-SSD
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
