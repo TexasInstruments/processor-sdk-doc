@@ -4,7 +4,7 @@ Android Bootloaders
 
 **Getting toolchain for u-boot builds**
 
-Links to download toolchains for building u-boot are mentioned in the SDK download page.
+The toolchains are automatically downloaded by the build scripts.
 
 **Install OPTEE-OS build dependencies**
 
@@ -12,6 +12,16 @@ Links to download toolchains for building u-boot are mentioned in the SDK downlo
 
   Check OPTEE-OS docs to know list of dependencies needed to be installed :
   https://optee.readthedocs.io/en/latest/building/prerequisites.html
+
+
+**Install additional dependencies**
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
+
+   .. code-block:: console
+
+      $ sudo apt install bc bison build-essential curl u-boot-tools flex git libssl-dev python3 python3-pip wget -y
+      $ pip3 install pycryptodome pyelftools shyaml --user
 
 
 .. _android-download-bootloaders:
@@ -22,19 +32,16 @@ Downloading sources
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
 
-    .. code-block:: console
+   Fetch the code using ``repo``:
 
-       $ mkdir ${YOUR_PATH}/ti-bootloader-aosp/ && cd $_
-       $ git clone -b 10.00.07 git://git.ti.com/atf/arm-trusted-firmware.git
-       $ git clone -b 10.00.07 git://git.ti.com/optee/ti-optee-os.git
-       $ git clone -b 09.02.00.010 git://git.ti.com/ti-u-boot/ti-u-boot.git
-       $ git clone -b 10.00.07 git://git.ti.com/processor-firmware/ti-linux-firmware.git
+   .. code-block:: console
 
-    To test the experimental ``2024.04`` U-Boot release, clone U-Boot as following instead:
+      $ mkdir ${YOUR_PATH}/ti-bootloader-aosp/ && cd $_
+      $ repo init -u https://git.ti.com/git/android/manifest.git -b android15-release -m bootloaders.xml
+      $ repo sync
 
-    .. code-block:: console
-
-       $ git clone -b 10.00.07 git://git.ti.com/ti-u-boot/ti-u-boot.git
+   For more information about ``repo``, visit `Android's official
+   documentation <https://source.android.com/setup/build/downloading>`__
 
 .. _android-build-bootloaders:
 
@@ -42,112 +49,111 @@ Downloading sources
 Build Instructions
 ******************
 
-Building the bootloaders is similar to the upstream procedure.
-For detailed information, see `k3 upstream documentation <https://docs.u-boot.org/en/latest/board/ti/k3.html#build-procedure>`__.
-
-0. Start setting up the generic environment variables:
+#. Build bootloaders images using:
 
    .. code-block:: console
 
-      $ export CC32=arm-none-linux-gnueabihf-
-      $ export CC64=aarch64-none-linux-gnu-
-      $ export LNX_FW_PATH=${YOUR_PATH}/ti-bootloaders-aosp/ti-linux-firmware
-      $ export TFA_PATH=${YOUR_PATH}/ti-bootloader-aosp/arm-trusted-firmware
-      $ export OPTEE_PATH=${YOUR_PATH}/ti-bootloader-aosp/ti-optee-os
-      $ export UBOOT_PATH=${YOUR_PATH}/ti-bootloader-aosp/ti-u-boot
+      $ cd ${YOUR_PATH}/ti-bootloader-aosp/
+      $ ./build/build_all.sh --config=build/config/boards/am62x-sk.yaml
 
-1. Then, configure the board specific environment variables
+   This will generate all the required bootloaders in :file:`out/am62x-sk/release`:
+
+   .. code-block:: console
+
+      $ tree out
+      out/am62x-sk/
+      └── release
+          ├── bl31-release.bin
+          ├── tee-release.bin
+          ├── tiboot3-release-gp.bin
+          ├── tiboot3-release-hsfs.bin
+          ├── tispl-release.bin
+          └── u-boot-release.img
+
+   These binaries are valid for an AM62X SoC.
+   To build for other boards, look at :file:`build/config/boards`.
+   We can see the following valid combinations:
 
    .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-      For AM62x SK EVM, use:
+      .. list-table::
+         :header-rows: 1
 
-      .. code-block:: console
+         * - Name
+           - Description
 
-         $ export UBOOT_CFG_CORTEXR=am62x_evm_r5_defconfig
-         $ export UBOOT_CFG_CORTEXA="am62x_evm_a53_defconfig am62x_android_a53.config"
-         $ #OR, for use with experimental U-Boot 2024.04
-         $ #export UBOOT_CFG_CORTEXA="am62x_evm_a53_defconfig am62x_a53_android.config"
+         * - am625-beagleplay-dfu.yaml
+           - BeaglePlay board with DFU boot enabled (usage with snagboot)
 
-      For AM62x LP SK EVM, use:
+         * - am625-beagleplay.yaml
+           - BeaglePlay board (regular eMMC boot)
 
-      .. code-block:: console
+         * - am62x-lp-sk-dfu.yaml
+           - AM62x LP board with DFU boot enabled (usage with snagboot)
 
-         $ export UBOOT_CFG_CORTEXR=am62x_lpsk_r5_defconfig
-         $ export UBOOT_CFG_CORTEXA="am62x_lpsk_a53_defconfig am62x_android_a53.config"
-         $ #OR, for use with experimental U-Boot 2024.04
-         $ #export UBOOT_CFG_CORTEXA="am62x_lpsk_a53_defconfig am62x_a53_android.config"
+         * - am62x-lp-sk.yaml
+           - AM62x LP board (regular eMMC boot)
 
-      For Beagle Play, use:
+         * - am62x-sk-dfu.yaml
+           - AM62x board with DFU boot enabled (usage with snagboot)
 
-      .. code-block:: console
-
-         $ export UBOOT_CFG_CORTEXR="am62x_evm_r5_defconfig am625_beagleplay_r5.config am625_beagleplay_android_r5.config"
-         $ export UBOOT_CFG_CORTEXA="am62x_evm_a53_defconfig am625_beagleplay_a53.config am62x_android_a53.config am625_beagleplay_android_a53.config"
-         $ #OR, for use with experimental U-Boot 2024.04
-         $ #export UBOOT_CFG_CORTEXR=am62x_beagleplay_r5_defconfig
-         $ #export UBOOT_CFG_CORTEXA="am62x_beagleplay_a53_defconfig am62x_a53_android.config"
-
+         * - am62x-sk.yaml
+           - AM62x board (regular eMMC boot)
 
    .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
-      .. code-block:: console
+      .. list-table::
+         :header-rows: 1
 
-         $ export UBOOT_CFG_CORTEXR=am62px_evm_r5_defconfig
-         $ export UBOOT_CFG_CORTEXA="am62px_evm_a53_defconfig am62x_android_a53.config"
-         $ #OR, for use with experimental U-Boot 2024.04
-         $ #export UBOOT_CFG_CORTEXA="am62px_evm_a53_defconfig am62x_a53_android.config"
+         * - Name
+           - Description
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
+         * - am62p-sk-dfu.yaml
+           - AM62Px board with DFU boot enabled (usage with snagboot)
 
-    2. Build ATF:
+         * - am62p-sk.yaml
+           - AM62Px board (regular eMMC boot)
 
-       .. code-block:: console
+#. From :file:`out/am62x-sk/release`, copy the :file:`tiboot3.bin`, :file:`tispl.bin`
+   and :file:`u-boot.img` generated to
+   :file:`${YOUR_PATH}/ti-aosp-14/vendor/ti/am62x/bootloader`.
 
-          $ cd ${TFA_PATH}
-          $ make E=0 CROSS_COMPILE=$CC64 ARCH=aarch64 PLAT=k3 TARGET_BOARD=lite SPD=opteed CFLAGS+="-DK3_PM_SYSTEM_SUSPEND=1"
+   If not copied, the prebuilt bootloader binaries already present
+   in :file:`vendor/ti/am62x/bootloader` will get used by :file:`flashall.sh` flashing script.
 
-    3. Build OPTEE-OS:
+   .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-       .. code-block:: console
+      For picking the correct filenames, refer to the `upstream documentation <https://docs.u-boot.org/en/latest/board/ti/am62x_sk.html#target-images>`__.
 
-          $ cd ${OPTEE_PATH}
-          $ make PLATFORM=k3 CFG_ARM64_core=y CROSS_COMPILE=$CC32 CROSS_COMPILE64=$CC64
+   .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
+      For picking the correct filenames, refer to the `upstream documentation <https://docs.u-boot.org/en/latest/board/ti/am62px_sk.html#target-images>`__.
 
-    4. Build :file:`tiboot3.bin`:
+#. Finally, rebuild Android by following :ref:`android-build-aosp`.
 
-       .. code-block:: console
+.. warning::
 
-          $ cd ${UBOOT_PATH}
-          $ make ARCH=arm $UBOOT_CFG_CORTEXR
-          $ make ARCH=arm CROSS_COMPILE=$CC32 \
-                  BINMAN_INDIRS=${LNX_FW_PATH}
+   If you also modify Trusted Applications (TA), it's recommended to use the :file:`release_android.sh`
+   script to avoid copying all the TAs manually as it's quite error prone.
 
+********************
+Release Instructions
+********************
 
-    5. Build :file:`tispl.bin` and :file:`u-boot.img`:
+In addition to building and copying manually to :file:`${YOUR_PATH}/ti-aosp-14`,
+it's also possible to automatically build **all supported variants** and copy them to Android.
 
-       .. code-block:: console
+Assuming Android has already been downloaded following
+:ref:`android-download-aosp`, This can be done using:
 
-          $ cd ${UBOOT_PATH}
-          $ make ARCH=arm $UBOOT_CFG_CORTEXA
-          $ make ARCH=arm CROSS_COMPILE=$CC64 \
-                 BL31=${TFA_PATH}/build/k3/lite/release/bl31.bin \
-                 TEE=${OPTEE_PATH}/out/arm-plat-k3/core/tee-pager_v2.bin \
-                 BINMAN_INDIRS=${LNX_FW_PATH}
+.. code-block:: console
 
+   $ cd ${YOUR_PATH}/ti-bootloader-aosp/
+   $ ./build/release_android.sh --aosp=${YOUR_PATH}/ti-aosp-14 --commit
+   # [...] lots of build logs later
 
-    6. Copy the :file:`tiboot3.bin`, :file:`tispl.bin` and :file:`u-boot.img` generated in steps 4 and 5
-       to :file:`${YOUR_PATH}/ti-aosp-14/vendor/ti/am62x/bootloader`.
-       If not copied, the prebuilt bootloader binaries already present in :file:`vendor/ti/am62x/bootloader`
-       will get used by :file:`flashall.sh` flashing script.
+After that, rebuild Android by following :ref:`android-build-aosp` to use the new bootloaders.
 
-       .. ifconfig:: CONFIG_part_variant in ('AM62X')
+.. tip::
 
-          For picking the correct filenames, refer to the `upstream documentation <https://docs.u-boot.org/en/latest/board/ti/am62x_sk.html#target-images>`__.
-
-       .. ifconfig:: CONFIG_part_variant in ('AM62PX')
-
-          For picking the correct filenames, refer to the `upstream documentation <https://docs.u-boot.org/en/latest/board/ti/am62px_sk.html#target-images>`__.
-
-    7. Rebuild Android by following :ref:`android-build-aosp`.
+   To only release for a particular board, pass the ``--config`` option to :file:`release_android.sh`.
