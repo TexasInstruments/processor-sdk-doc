@@ -39,6 +39,7 @@ Here are the steps to configure this schedule.
 ::
 
  #Setup interface and queue configuration
+ #Bring down all interfaces associated with the same CPSW instance to update tx channels
         ip link set dev eth0 down
         ethtool -L eth0 tx 3
 

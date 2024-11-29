@@ -43,6 +43,7 @@ Assume 2 AM65x IDKs are connected back to back over MCU Ethernet port (typically
 
 .. code-block:: console
 
+   # bring down all interfaces associated with the same CPSW instance to update tx channels
    root@evm:~# ip link set dev eth0 down
   [   84.543137] am65-cpsw-nuss 46000000.ethernet eth0: Link is Down
    root@evm:~# ethtool -L eth0 tx 2
@@ -798,7 +799,7 @@ Connect eth0 of AM625-SK to eth1 of J7VCL and eth0 of J7ES to eth2 of J7VCL.
     ifconfig eth0 down
     ethtool -L eth0 tx 4
     ethtool --set-priv-flags eth0 p0-rx-ptype-rrobin off
-    ethtool --set-mm eth0 pmac-enabled on tx-enabled on verify-enabled on verify-time 10 tx-min-frag-siz4
+    ethtool --set-mm eth0 pmac-enabled on tx-enabled on verify-enabled on verify-time 10 tx-min-frag-size 124
     ifconfig eth0 up
     sleep 10
 
@@ -812,8 +813,8 @@ Connect eth0 of AM625-SK to eth1 of J7VCL and eth0 of J7ES to eth2 of J7VCL.
 
     tc -g class show dev eth0
     tc qdisc add dev eth0 clsact
-    tc filter add dev eth0 egress protocol ip prio 1 u32 match ip dport 5002 0xffff action skbedit prior2
-    tc filter add dev eth0 egress protocol ip prio 1 u32 match ip dport 5003 0xffff action skbedit prior3
+    tc filter add dev eth0 egress protocol ip prio 1 u32 match ip dport 5002 0xffff action skbedit priority 2
+    tc filter add dev eth0 egress protocol ip prio 1 u32 match ip dport 5003 0xffff action skbedit priority 3
     ip addr add 192.168.100.20/24 dev eth0
 
 3. On J7ES, run the following commands:
@@ -1325,8 +1326,8 @@ CASE-3 is the same as CASE-1 and CASE-2 combined.
 Frame sent by J7VCL with preemption on J7VCL Egress Port and Assembled on AM625-SK's (Switch) Ingress Port followed by preemption on AM625-SK's (Switch) Egress Port and Assembled on J7ES
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-Connect eth0 of J7VCL to eth0 of AM62a and eth0 of J7ES to eth1 of
-AM62a
+Connect eth0 of J7VCL to eth0 of AM625-SK and eth0 of J7ES to eth1 of
+AM625-SK
 
 **Steps:**
 
@@ -1436,7 +1437,7 @@ AM62a
     ifconfig eth0.100 192.168.100.20 netmask 255.255.255.0
     sleep 2
 
-4. Run the following commands on AM62a (Switch):
+4. Run the following commands on AM625-SK (Switch):
 
 .. code-block:: console
 
@@ -1520,7 +1521,7 @@ On AM625-SK (Switch):
       MACMergeFragCountTx: 50371
       MACMergeHoldCount: 0
 
-On AM64-SK (Receiver):
+On J7ES (Receiver):
 
 .. code-block:: console
 
