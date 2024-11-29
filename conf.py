@@ -48,10 +48,11 @@ extensions = [
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
-# The suffix(es) of source filenames.
-# You can specify multiple suffix as a list of string:
-# source_suffix = ['.rst', '.md']
-source_suffix = '.rst'
+# A dictionary mapping the file extensions (suffixes) of source files to their file types. Sphinx
+# considers all files files with suffixes in source_suffix to be source files.
+source_suffix = {
+    '.rst': 'restructuredtext'
+}
 
 # The encoding of source files.
 #source_encoding = 'utf-8-sig'
