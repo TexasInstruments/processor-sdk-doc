@@ -17,7 +17,9 @@ text = []
 #                               in <DEVICE_FAMILY>_config.txt
 #                               (i.e. each has name, key pairs)
 
-def read_familyvals(app, valuesfile, fam_replacevars, fam_configvals):
+def read_familyvals(valuesfile):
+    fam_replacevars = {}
+    fam_configvals = {}
     filt_hash_pair = [None] * 2
     with open("configs" + os.sep + valuesfile, 'r') as f:
         text = f.readlines() # read text lines to list
@@ -67,6 +69,4 @@ def read_familyvals(app, valuesfile, fam_replacevars, fam_configvals):
                         filt_hash_pair[k] = filt_hash_item
                     # Fill fam_configvals hash table
                     fam_configvals[filt_hash_pair[0]] = filt_hash_pair[1]
-                    app.add_config_value(filt_hash_pair[0], filt_hash_pair[1], 'env')
-        #print(fam_replacevars)
-        #print(fam_configvals)
+    return (fam_replacevars, fam_configvals)

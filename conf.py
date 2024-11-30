@@ -274,10 +274,12 @@ family_tocfiles = [f"{FAMILY}/{FAMILY}_{OS}_toc.txt"]
 # Family Configuration file to use
 family_config_inputfile = f"{FAMILY}/{FAMILY}_{OS}_config.txt"
 
-# Hash table for Replacement Variables
-family_replacevars = {}
-# Hash table for Configuration Values
-family_configvals = {}
+# Hash table for Replacement Variables and Config Values
+family_replacevars, family_configvals = interpretvalues.read_familyvals(family_config_inputfile)
+
+# Unpack replacement variables and place them in the preamble for all documents
+rst_prolog = replacevars.unpack_replacevars(family_replacevars)
+print(f'rst_prolog = """{rst_prolog}"""')
 
 def setup(app):
     """
@@ -286,11 +288,6 @@ def setup(app):
 
     # Load overrides
     app.add_css_file("css/theme_overrides.css")
-
-    # Read the replacement variables and the configuration values
-    print("Device Family Build setup started")
-    interpretvalues.read_familyvals(app, family_config_inputfile,
-                                    family_replacevars, family_configvals)
 
     print("Build setup: Filled Replacement Variables (family_replacevars)"
             "and Configuration Values (family_configvals) hash tables")
@@ -309,6 +306,8 @@ def setup(app):
         print(elem)
     print(']')
 
-    # Write to the replacevars.rst.inc file for usage by Sphinx
-    replacevars.write_replacevars(app, family_replacevars)
+    # Load family config values into application context
+    for key, value in family_configvals.items():
+        app.add_config_value(key, value, 'env')
+
     print("Device Family Build setup completed")
