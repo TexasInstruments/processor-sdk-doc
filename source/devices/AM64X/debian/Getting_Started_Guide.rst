@@ -1,6 +1,4 @@
 .. _overview-getting-started:
-.. include:: /_replacevars.rst
-
 ***************************
 Getting Started with Debian
 ***************************

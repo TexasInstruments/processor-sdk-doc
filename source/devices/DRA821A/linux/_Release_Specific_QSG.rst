@@ -1,5 +1,3 @@
-.. include:: /_replacevars.rst
-
 .. rubric:: Quick Start Guide
 
 Thanks for your interest in |__SDK_FULL_NAME__|.

@@ -1,5 +1,3 @@
-.. include:: /_replacevars.rst
-
 .. _pi-hdr-programming:
 
 #############################

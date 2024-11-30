@@ -1,6 +1,4 @@
 .. _android-index:
-.. include:: /_replacevars.rst
-
 ################################################
 Processor SDK Android Software Developer's Guide
 ################################################

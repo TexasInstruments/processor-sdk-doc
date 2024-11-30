@@ -1,5 +1,3 @@
-.. include:: /_replacevars.rst
-
 .. _download-and-install-sdk:
 
 Download and Install the SDK

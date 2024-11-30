@@ -1,5 +1,3 @@
-.. include:: /_replacevars.rst
-
 ###########################################
 Flash via USB Device Firmware Upgrade (DFU)
 ###########################################

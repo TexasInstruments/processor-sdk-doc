@@ -1,8 +1,6 @@
 ..
     The top level heading in this rst file would be level 2 header with `====`
 
-.. include:: /_replacevars.rst
-
 Rogue Debug Info
 ================
 

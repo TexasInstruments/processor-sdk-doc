@@ -1,5 +1,3 @@
-.. include:: /_replacevars.rst
-
 PRU-ICSS Serial UART
 --------------------
 

@@ -1,5 +1,3 @@
-.. include:: /_replacevars.rst
-
 .. _pm_wakeup_sources:
 
 ##############

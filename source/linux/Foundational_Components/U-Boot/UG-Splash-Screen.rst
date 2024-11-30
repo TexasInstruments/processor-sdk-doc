@@ -1,6 +1,4 @@
 .. _Uboot-splash-label:
-.. include:: /_replacevars.rst
-
 ====================
 U-Boot Splash Screen
 ====================

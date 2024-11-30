@@ -1,5 +1,3 @@
-.. include:: /_replacevars.rst
-
 .. _Audio_User_Guide:
 
 Audio

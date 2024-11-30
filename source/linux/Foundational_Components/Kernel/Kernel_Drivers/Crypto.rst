@@ -1,7 +1,5 @@
 .. http://processors.wiki.ti.com/index.php/Linux_Core_Crypto_User_Guide
 
-.. include:: /_replacevars.rst
-
 Crypto
 ---------------------------------
 

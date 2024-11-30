@@ -1,5 +1,3 @@
-.. include:: /_replacevars.rst
-
 Moving Files to the Target System
 =================================
 

@@ -1,5 +1,3 @@
-.. include:: /_replacevars.rst
-
 .. _toolchains:
 
 GCC ToolChain Setup

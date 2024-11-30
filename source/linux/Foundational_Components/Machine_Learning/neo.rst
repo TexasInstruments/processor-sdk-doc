@@ -1,5 +1,3 @@
-.. include:: /_replacevars.rst
-
 Neo-AI Deep Learning Runtime
 ============================
 

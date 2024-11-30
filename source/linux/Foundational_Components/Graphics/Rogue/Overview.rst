@@ -1,5 +1,3 @@
-.. include:: /_replacevars.rst
-.. include:: <isonum.txt>
 .. include:: <isopub.txt>
 
 ############

@@ -1,5 +1,3 @@
-.. include:: /_replacevars.rst
-
 ##############################
 Getting Started with Buildroot
 ##############################

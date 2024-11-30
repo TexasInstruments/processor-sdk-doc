@@ -1,5 +1,3 @@
-.. include:: /_replacevars.rst
-
 .. _cpsw_proxy_client:
 
 CPSW Proxy Client

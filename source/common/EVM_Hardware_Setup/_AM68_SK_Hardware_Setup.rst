@@ -1,5 +1,3 @@
-.. include:: /_replacevars.rst
-
 AM68 SK Hardware Setup
 ====================================================
 

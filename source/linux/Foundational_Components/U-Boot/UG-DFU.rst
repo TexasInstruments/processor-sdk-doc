@@ -1,5 +1,3 @@
-.. include:: /_replacevars.rst
-
 .. _usb-device-firmware-upgrade-label:
 
 USB Device Firmware Upgrade (DFU)

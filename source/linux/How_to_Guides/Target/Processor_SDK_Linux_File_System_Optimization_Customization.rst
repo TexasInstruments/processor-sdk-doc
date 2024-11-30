@@ -1,5 +1,3 @@
-.. include:: /_replacevars.rst
-
 ##########################################
 SDK File System Optimization/Customization
 ##########################################
