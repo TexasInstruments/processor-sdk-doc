@@ -25,10 +25,10 @@ found on the SDK download page.
 
 
 ****************
-Release 10.00.00
+Release 10.01.00
 ****************
 
-Released on July 2024
+Released on December 2024
 
 What's new
 ==========

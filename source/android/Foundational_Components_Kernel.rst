@@ -15,7 +15,7 @@ Downloading sources
     .. code-block:: console
 
        $ mkdir ${YOUR_PATH}/ti-kernel-aosp/ && cd $_
-       $ repo init -u https://git.ti.com/git/android/manifest.git -b android14-release -m releases/RLS_10_00_Kernel.xml
+       $ repo init -u https://git.ti.com/git/android/manifest.git -b android14-release -m releases/RLS_10_01_Kernel.xml
        $ repo sync
 
     .. tip::
@@ -24,13 +24,13 @@ Downloading sources
 
        .. code-block:: console
 
-          $ repo init -u https://git.ti.com/git/android/manifest.git -b android14-release -m releases/RLS_10_00_Kernel.xml --depth=1
+          $ repo init -u https://git.ti.com/git/android/manifest.git -b android14-release -m releases/RLS_10_01_Kernel.xml --depth=1
 
     A preview for the ``android15-6.6`` kernel is also available for testing via a dedicated manifest:
 
     .. code-block:: console
 
-       $ repo init -u https://git.ti.com/git/android/manifest.git -b android14-release -m releases/RLS_10_00_Kernel-6.6.xml
+       $ repo init -u https://git.ti.com/git/android/manifest.git -b android14-release -m releases/RLS_10_01_Kernel-6.6.xml
 
 .. _android-build-kernel:
 
