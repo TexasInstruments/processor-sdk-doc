@@ -18,24 +18,6 @@ Apply this patch in U-Boot source code:
 
     .. code-block:: diff
 
-        diff --git a/configs/am62x_android_a53.config b/configs/am62x_android_a53.config
-        index fc949f65d7fe..d50952557192 100644
-        --- a/configs/am62x_android_a53.config
-        +++ b/configs/am62x_android_a53.config
-        @@ -5,7 +5,7 @@ CONFIG_USB_FUNCTION_FASTBOOT=y
-        CONFIG_FASTBOOT_BUF_ADDR=0xC0000000
-        CONFIG_FASTBOOT_BUF_SIZE=0x2F000000
-        CONFIG_FASTBOOT_FLASH=y
-        -CONFIG_FASTBOOT_FLASH_MMC_DEV=0
-        +CONFIG_FASTBOOT_FLASH_MMC_DEV=1
-        CONFIG_FASTBOOT_CMD_OEM_FORMAT=y
-        # Enable Android boot flow
-        CONFIG_SYS_MALLOC_LEN=0x08000000
-
-When using the the experimental ``2024.04`` U-Boot apply this patch instead:
-
-    .. code-block:: diff
-
        diff --git a/configs/am62x_a53_android.config b/configs/am62x_a53_android.config
        index 55fa93b140f9..dd0d36069d74 100644
        --- a/configs/am62x_a53_android.config
