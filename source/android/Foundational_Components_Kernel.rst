@@ -15,7 +15,7 @@ Downloading sources
     .. code-block:: console
 
        $ mkdir ${YOUR_PATH}/ti-kernel-aosp/ && cd $_
-       $ repo init -u https://git.ti.com/git/android/manifest.git -b android14-release -m releases/RLS_10_01_Kernel.xml
+       $ repo init -u https://git.ti.com/git/android/manifest.git -b android15-release -m releases/RLS_10_01_Kernel.xml
        $ repo sync
 
     .. tip::
@@ -24,13 +24,13 @@ Downloading sources
 
        .. code-block:: console
 
-          $ repo init -u https://git.ti.com/git/android/manifest.git -b android14-release -m releases/RLS_10_01_Kernel.xml --depth=1
+          $ repo init -u https://git.ti.com/git/android/manifest.git -b android15-release -m releases/RLS_10_01_Kernel.xml --depth=1
 
     A preview for the ``android15-6.6`` kernel is also available for testing via a dedicated manifest:
 
     .. code-block:: console
 
-       $ repo init -u https://git.ti.com/git/android/manifest.git -b android14-release -m releases/RLS_10_01_Kernel-6.6.xml
+       $ repo init -u https://git.ti.com/git/android/manifest.git -b android15-release -m releases/RLS_10_01_Kernel-6.6.xml
 
 .. _android-build-kernel:
 
@@ -51,7 +51,7 @@ Building everything from scratch
 
       $ cd ${YOUR_PATH}/ti-kernel-aosp/
       $ export TARGET_KERNEL_USE="6.1" # or "6.6" for experimental kernel
-      $ export DIST_DIR=${YOUR_PATH}/ti-aosp-14/device/ti/am62x-kernel/kernel/${TARGET_KERNEL_USE}
+      $ export DIST_DIR=${YOUR_PATH}/ti-aosp-15/device/ti/am62x-kernel/kernel/${TARGET_KERNEL_USE}
       $ tools/bazel run //common:ti_dist -- --dist_dir=$DIST_DIR
 
 Android uses Kleaf, a Bazel-based build system to build the kernel.
@@ -67,7 +67,7 @@ Rebuilding faster
 
       $ cd ${YOUR_PATH}/ti-kernel-aosp/
       $ export TARGET_KERNEL_USE="6.1" # or "6.6" for experimental kernel
-      $ export DIST_DIR=${YOUR_PATH}/ti-aosp-14/device/ti/am62x-kernel/kernel/${TARGET_KERNEL_USE}
+      $ export DIST_DIR=${YOUR_PATH}/ti-aosp-15/device/ti/am62x-kernel/kernel/${TARGET_KERNEL_USE}
       $ tools/bazel run --config=fast //common:ti_dist -- --dist_dir=$DIST_DIR
 
 
@@ -123,7 +123,7 @@ To enable new modules:
 #. Rebuild the kernel as documented in :ref:`android-build-kernel`.
 
 #. If the driver module needs to be loaded early (in the ramdisk), edit
-   :file:`${YOUR_PATH}/ti-aosp-14/device/ti/am62x/BoardConfig-common.mk`
+   :file:`${YOUR_PATH}/ti-aosp-15/device/ti/am62x/BoardConfig-common.mk`
    and add the path to your module:
 
    .. code-block:: make

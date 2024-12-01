@@ -116,7 +116,7 @@ Build Instructions
 
 #. From :file:`out/am62x-sk/release`, copy the :file:`tiboot3.bin`, :file:`tispl.bin`
    and :file:`u-boot.img` generated to
-   :file:`${YOUR_PATH}/ti-aosp-14/vendor/ti/am62x/bootloader`.
+   :file:`${YOUR_PATH}/ti-aosp-15/vendor/ti/am62x/bootloader`.
 
    If not copied, the prebuilt bootloader binaries already present
    in :file:`vendor/ti/am62x/bootloader` will get used by :file:`flashall.sh` flashing script.
@@ -140,7 +140,7 @@ Build Instructions
 Release Instructions
 ********************
 
-In addition to building and copying manually to :file:`${YOUR_PATH}/ti-aosp-14`,
+In addition to building and copying manually to :file:`${YOUR_PATH}/ti-aosp-15`,
 it's also possible to automatically build **all supported variants** and copy them to Android.
 
 Assuming Android has already been downloaded following
@@ -149,7 +149,7 @@ Assuming Android has already been downloaded following
 .. code-block:: console
 
    $ cd ${YOUR_PATH}/ti-bootloader-aosp/
-   $ ./build/release_android.sh --aosp=${YOUR_PATH}/ti-aosp-14 --commit
+   $ ./build/release_android.sh --aosp=${YOUR_PATH}/ti-aosp-15 --commit
    # [...] lots of build logs later
 
 After that, rebuild Android by following :ref:`android-build-aosp` to use the new bootloaders.
