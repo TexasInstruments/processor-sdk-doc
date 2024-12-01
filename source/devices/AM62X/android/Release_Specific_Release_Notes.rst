@@ -101,11 +101,6 @@ Known Issues
      - Post Release Fix
      - Component
 
-   * - **SITSW-5071**
-     - U-Boot 2024.04 crashes with ``adtbo_idx=1``
-     - https://git.ti.com/cgit/ti-u-boot/ti-u-boot/commit/?h=ti-u-boot-2024.04&id=afd0e59eb7bfce8945635e36562ee03046cc489b
-     - N/A
-
    * - **SITSW-1387**
      - Mcasp: Buffer underflow console messages seen
      - N/A
