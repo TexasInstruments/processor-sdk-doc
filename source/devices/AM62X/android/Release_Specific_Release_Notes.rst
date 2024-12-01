@@ -33,7 +33,7 @@ Released on December 2024
 What's new
 ==========
 
-* This is a Android 14 based release of Processor SDK Android
+* This is a Android 15 based release of Processor SDK Android
 
 
 Release Features
@@ -57,7 +57,7 @@ SDK Components and Versions
 +------------------------------------+-------------------------------------------------------------------------------+
 | **Component**                      |  **Version**                                                                  |
 +====================================+===============================================================================+
-| **Android**                        | Android 14 / Android 14 Car                                                   |
+| **Android**                        | Android 15 / Android 15 Car                                                   |
 +------------------------------------+-------------------------------------------------------------------------------+
 | **Linux Kernel**                   | Linux 6.1.78 (6.6.30 preview available)                                       |
 +------------------------------------+-------------------------------------------------------------------------------+

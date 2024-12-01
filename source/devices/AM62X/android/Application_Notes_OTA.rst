@@ -22,7 +22,7 @@ OTA via ``adb sideload``
 
 .. code-block:: console
 
-   $ cd ${YOUR_PATH}/ti-aosp-14
+   $ cd ${YOUR_PATH}/ti-aosp-15
    $ source build/envsetup.sh
    $ lunch <BUILD_TARGET>
    $ export DIST_DIR=./dist_output
@@ -70,7 +70,7 @@ OTA via Update Engine
       $ PYTHONPATH=$ANDROID_BUILD_TOP/system/apex/apexer/:$PYTHONPATH
       $ export PYTHONPATH
 
-3. Patch the :file:`gen_update_config.py` script to be compatible with Android 14.
+3. Patch the :file:`gen_update_config.py` script to be compatible with Android 15.
    In :file:`bootable/recovery`, apply the following change:
 
    https://android-review.googlesource.com/c/platform/bootable/recovery/+/2837717

@@ -43,8 +43,8 @@ Downloading sources
 
     .. code-block:: console
 
-       $ mkdir ${YOUR_PATH}/ti-aosp-14 && cd $_
-       $ repo init -u https://git.ti.com/git/android/manifest.git -b android14-release -m releases/RLS_10_01.xml
+       $ mkdir ${YOUR_PATH}/ti-aosp-15 && cd $_
+       $ repo init -u https://git.ti.com/git/android/manifest.git -b android15-release -m releases/RLS_10_01.xml
        $ repo sync
 
 .. tip::
@@ -69,7 +69,7 @@ Build Instructions
 
    .. code-block:: console
 
-      $ cd ${YOUR_PATH}/ti-aosp-14
+      $ cd ${YOUR_PATH}/ti-aosp-15
       $ source build/envsetup.sh
       $ lunch <BUILD_TARGET>
       $ m
@@ -138,7 +138,7 @@ The following build flags are available. **Default** values are **highlighted**.
 .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
 
    After building is complete, the necessary images will be available in
-   :file:`${YOUR_PATH}/ti-aosp-14/out/target/product/am62*/`.
+   :file:`${YOUR_PATH}/ti-aosp-15/out/target/product/am62*/`.
 
    To proceed to flash Android, see :ref:`android-flashing`.
 

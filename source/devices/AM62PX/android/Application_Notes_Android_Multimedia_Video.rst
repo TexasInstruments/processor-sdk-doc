@@ -10,10 +10,10 @@ found in the Texas Instruments AM62Px SoC.
 The Wave5 hardware is implemented via:
 
 - the ``wave5`` driver, located in :file:`~/10_01_00/ti-kernel-aosp/common/drivers/media/platform/chips-media/wave5/`
-- a firmware located in :file:`~/10_01_00/ti-aosp-14/vendor/ti/vendor/ti/am62x/firmware/vendor/firmware/cnm/`
+- a firmware located in :file:`~/10_01_00/ti-aosp-15/vendor/ti/vendor/ti/am62x/firmware/vendor/firmware/cnm/`
 
 The userspace associated component is based on the AOSP-provided ``v4l2_codec2`` HAL.
-The source can be found in :file:`~/10_01_00/ti-aosp-14/external/v4l2_codec2`.
+The source can be found in :file:`~/10_01_00/ti-aosp-15/external/v4l2_codec2`.
 
 
 *******
@@ -29,7 +29,7 @@ We can run a sample playback via ``atest`` from a development tree.
 .. code-block:: console
 
    # Standard Android build commands
-   $ cd ${YOUR_PATH}/ti-aosp-14
+   $ cd ${YOUR_PATH}/ti-aosp-15
    $ source build/envsetup.sh
    $ lunch <BUILD_TARGET>
 
@@ -145,5 +145,5 @@ To enable more logs, ``v4l2_codec2`` should be rebuild. It's possible to enable 
 
 .. code-block:: console
 
-   $ cd ~/src/ti-aosp-14/external/v4l2_codec2
+   $ cd ~/src/ti-aosp-15/external/v4l2_codec2
    $ sed -i 's#//\#define LOG_NDEBUG 0#\#define LOG_NDEBUG 0#' *.cpp
