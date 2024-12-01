@@ -16,28 +16,28 @@ There are 2 ways of applying an OTA update:
 OTA via ``adb sideload``
 ************************
 
-1. Build and flash android images following :ref:`android-build-aosp` instructions.
+   #. Build and flash android images following :ref:`android-build-aosp` instructions.
 
-2. Build OTA package
+   #. Build OTA package
 
-   .. code-block:: console
+      .. code-block:: console
 
-      $ cd ${YOUR_PATH}/ti-aosp-15
-      $ source build/envsetup.sh
-      $ lunch <BUILD_TARGET>
-      $ export DIST_DIR=./dist_output
-      $ m dist
+         $ cd ${YOUR_PATH}/ti-aosp-15
+         $ source build/envsetup.sh
+         $ lunch <BUILD_TARGET>
+         $ export DIST_DIR=./dist_output
+         $ m dist
 
-3. `Enable adb debugging on your device <https://developer.android.com/studio/command-line/adb#Enabling>`__
+   #. `Enable adb debugging on your device <https://developer.android.com/studio/command-line/adb#Enabling>`__
 
-4. Reboot to recovery and apply OTA
+   #. Reboot to recovery and apply OTA
 
-   .. code-block:: console
+      .. code-block:: console
 
-      $ adb reboot sideload
-      $ adb wait-for-sideload
-      $ adb sideload $DIST_DIR/am62p-ota-eng.${USER}.zip
-      $ adb reboot
+         $ adb reboot sideload
+         $ adb wait-for-sideload
+         $ adb sideload $DIST_DIR/am62p-ota-eng.${USER}.zip
+         $ adb reboot
 
 
 .. _android-ota-update-engine:
@@ -46,110 +46,110 @@ OTA via ``adb sideload``
 OTA via Update Engine
 *********************
 
-1. Build the OTA package
+   #. Build the OTA package
 
-   .. code-block:: console
+      .. code-block:: console
 
-      $ source build/envsetup.sh
-      $ lunch <BUILD_TARGET>
-      $ export DIST_DIR=./dist_output
-      $ m
-      $ m dist
+         $ source build/envsetup.sh
+         $ lunch <BUILD_TARGET>
+         $ export DIST_DIR=./dist_output
+         $ m
+         $ m dist
 
-2. Set your ``PYTHONPATH``.
+   #. Set your ``PYTHONPATH``.
 
-   Some dependent python modules for :file:`gen_update_config.py` are part of AOSP tree or
-   part of the build output.
+      Some dependent python modules for :file:`gen_update_config.py` are part of AOSP tree or
+      part of the build output.
 
-   .. code-block:: console
+      .. code-block:: console
 
-      $ cd $ANDROID_BUILD_TOP
-      $ apex_manifest_pb2_path=$(find out -name 'apex_manifest_pb2.py' -print -quit)
-      $ PYTHONPATH=$ANDROID_BUILD_TOP/$(dirname ${apex_manifest_pb2_path}):$PYTHONPATH
-      $ PYTHONPATH=$ANDROID_BUILD_TOP/build/make/tools/releasetools:$PYTHONPATH
-      $ PYTHONPATH=$ANDROID_BUILD_TOP/system/apex/apexer/:$PYTHONPATH
-      $ export PYTHONPATH
+         $ cd $ANDROID_BUILD_TOP
+         $ apex_manifest_pb2_path=$(find out -name 'apex_manifest_pb2.py' -print -quit)
+         $ PYTHONPATH=$ANDROID_BUILD_TOP/$(dirname ${apex_manifest_pb2_path}):$PYTHONPATH
+         $ PYTHONPATH=$ANDROID_BUILD_TOP/build/make/tools/releasetools:$PYTHONPATH
+         $ PYTHONPATH=$ANDROID_BUILD_TOP/system/apex/apexer/:$PYTHONPATH
+         $ export PYTHONPATH
 
-3. Patch the :file:`gen_update_config.py` script to be compatible with Android 15.
-   In :file:`bootable/recovery`, apply the following change:
+   #. Patch the :file:`gen_update_config.py` script to be compatible with Android 15.
+      In :file:`bootable/recovery`, apply the following change:
 
-   https://android-review.googlesource.com/c/platform/bootable/recovery/+/2837717
+      https://android-review.googlesource.com/c/platform/bootable/recovery/+/2837717
 
-   This can be done with:
+      This can be done with:
 
-   .. code-block:: console
+      .. code-block:: console
 
-      $ cd $ANDROID_BUILD_TOP/bootable/recovery
-      $ git fetch https://android.googlesource.com/platform/bootable/recovery refs/changes/17/2837717/1
-      $ git cherry-pick FETCH_HEAD
+         $ cd $ANDROID_BUILD_TOP/bootable/recovery
+         $ git fetch https://android.googlesource.com/platform/bootable/recovery refs/changes/17/2837717/1
+         $ git cherry-pick FETCH_HEAD
 
-4. Update the ota config file. Feel free to change ``$DIST_DIR`` to match your developer environment.
+   #. Update the ota config file. Feel free to change ``$DIST_DIR`` to match your developer environment.
 
-   .. code-block:: console
+      .. code-block:: console
 
-      $ source build/envsetup.sh
-      $ lunch <BUILD_TARGET>
-      $ DIST_DIR=dist_output
-      $ BOARD=am62p
-      $ bootable/recovery/updater_sample/tools/gen_update_config.py --ab_install NON_STREAMING $DIST_DIR/$BOARD-ota-eng.${USER}.zip $DIST_DIR/$BOARD-ota-eng.${USER}.json file:///data/user/0/com.example.android.systemupdatersample/files/packages/$BOARD-ota-eng.${USER}.zip
+         $ source build/envsetup.sh
+         $ lunch <BUILD_TARGET>
+         $ DIST_DIR=dist_output
+         $ BOARD=am62p
+         $ bootable/recovery/updater_sample/tools/gen_update_config.py --ab_install NON_STREAMING $DIST_DIR/$BOARD-ota-eng.${USER}.zip $DIST_DIR/$BOARD-ota-eng.${USER}.json file:///data/user/0/com.example.android.systemupdatersample/files/packages/$BOARD-ota-eng.${USER}.zip
 
-   .. warning::
+      .. warning::
 
-      Be careful, last line is **one single** very long line.
+         Be careful, last line is **one single** very long line.
 
-5. Run the SystemUpdaterSample app once:
+   #. Run the SystemUpdaterSample app once:
 
-   .. code-block:: console
+      .. code-block:: console
 
-      $ adb root
-      $ adb shell setenforce 0
-      $ adb shell am start com.example.android.systemupdatersample/com.example.android.systemupdatersample.ui.MainActivity
+         $ adb root
+         $ adb shell setenforce 0
+         $ adb shell am start com.example.android.systemupdatersample/com.example.android.systemupdatersample.ui.MainActivity
 
-6. Push the files on the board:
+   #. Push the files on the board:
 
-   .. code-block:: console
+      .. code-block:: console
 
-      $ adb root
-      $ adb shell mkdir /data/user/0/com.example.android.systemupdatersample/files/configs
-      $ adb shell mkdir /data/user/0/com.example.android.systemupdatersample/files/packages
-      $ adb push $DIST_DIR/$BOARD-ota-eng.${USER}.json /data/user/0/com.example.android.systemupdatersample/files/configs/
-      $ adb push $DIST_DIR/$BOARD-ota-eng.${USER}.zip /data/user/0/com.example.android.systemupdatersample/files/packages/
+         $ adb root
+         $ adb shell mkdir /data/user/0/com.example.android.systemupdatersample/files/configs
+         $ adb shell mkdir /data/user/0/com.example.android.systemupdatersample/files/packages
+         $ adb push $DIST_DIR/$BOARD-ota-eng.${USER}.json /data/user/0/com.example.android.systemupdatersample/files/configs/
+         $ adb push $DIST_DIR/$BOARD-ota-eng.${USER}.zip /data/user/0/com.example.android.systemupdatersample/files/packages/
 
-7. Change SELinux label:
+   #. Change SELinux label:
 
-   .. code-block:: console
+      .. code-block:: console
 
-      $ adb shell chcon -R u:object_r:ota_package_file:s0 /data/user/0/com.example.android.systemupdatersample/
+         $ adb shell chcon -R u:object_r:ota_package_file:s0 /data/user/0/com.example.android.systemupdatersample/
 
 
-8. Change Unix permisssions:
+   #. Change Unix permisssions:
 
-   .. code-block:: console
+      .. code-block:: console
 
-      $ adb shell chmod -R 777 /data/user/0/com.example.android.systemupdatersample/
+         $ adb shell chmod -R 777 /data/user/0/com.example.android.systemupdatersample/
 
-9. Run the update on the UI:
+   #. Run the update on the UI:
 
-   - Tap on ``RELOAD`` to load the config
-   - Tap on ``APPLY`` to apply the OTA
-   - Tap ``OK`` to confirm application
-   - Wait for progress bar to complete
-   - Tap on ``SWITCH SLOT`` to finish update (scroll downwards to see the button)
-   - Wait for verification
+      - Tap on ``RELOAD`` to load the config
+      - Tap on ``APPLY`` to apply the OTA
+      - Tap ``OK`` to confirm application
+      - Wait for progress bar to complete
+      - Tap on ``SWITCH SLOT`` to finish update (scroll downwards to see the button)
+      - Wait for verification
 
-10. Reboot the device with:
+   #. Reboot the device with:
 
-    .. code-block:: console
+      .. code-block:: console
 
-       $ adb shell svc power reboot
+         $ adb shell svc power reboot
 
-11. Confirm that booting on slot b
+   #. Confirm that booting on slot b
 
-    .. code-block:: console
+      .. code-block:: console
 
-       $ adb root
-       $ adb shell grep -o 'androidboot.slot_suffix=[_ab]*' /proc/cmdline
-       androidboot.slot_suffix=_b
+         $ adb root
+         $ adb shell grep -o 'androidboot.slot_suffix=[_ab]*' /proc/cmdline
+         androidboot.slot_suffix=_b
 
 
 Troubleshooting
