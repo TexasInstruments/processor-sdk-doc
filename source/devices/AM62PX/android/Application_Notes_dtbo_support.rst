@@ -11,23 +11,8 @@ DTBOs can be enabled from U-Boot when extra peripherals are connected to the boa
 
    DTBOs are **board specific**.
 
-It's possible to change the ``dtbo_index`` from the U-Boot shell.
+It's possible to change the ``adtbo_idx`` from the U-Boot shell.
 For example:
-
-.. code-block:: console
-
-   => env set dtbo_index 1
-   => saveenv
-   => reset
-
-To enable multiple DTBOs, pass a space-separated index list.
-For example:
-
-.. code-block:: console
-
-   => env set dtbo_index '1 2'
-
-When using the the experimental ``2024.04`` U-Boot set the ``adtbo_idx`` variable instead:
 
 .. code-block::
 
@@ -37,7 +22,7 @@ When using the the experimental ``2024.04`` U-Boot set the ``adtbo_idx`` variabl
 
 .. warning::
 
-   With the experimental ``2024.04`` U-Boot, multiple DTBOs are **not supported**.
+   Multiple DTBOs are **not supported**.
 
 The following Device-Tree Overlays are supported:
 
