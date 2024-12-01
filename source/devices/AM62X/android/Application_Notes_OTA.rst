@@ -135,8 +135,8 @@ OTA via Update Engine
       .. code-block:: console
 
          $ adb root
-         $ adb shell grep -o 'androidboot.slot_suffix=[_ab]*' /proc/cmdline
-         androidboot.slot_suffix=_b
+         $ adb shell grep 'androidboot.slot_suffix' /proc/bootconfig
+         androidboot.slot_suffix = "_b"
 
 
 Troubleshooting
