@@ -15,7 +15,7 @@ Downloading sources
     .. code-block:: console
 
        $ mkdir ${YOUR_PATH}/ti-kernel-aosp/ && cd $_
-       $ repo init -u https://git.ti.com/git/android/manifest.git -b android15-release -m releases/RLS_10_01_Kernel.xml
+       $ repo init -u https://git.ti.com/git/android/manifest.git -b android15-release -m releases/RLS_10_01_Kernel-6.6.xml
        $ repo sync
 
     .. tip::
@@ -24,13 +24,7 @@ Downloading sources
 
        .. code-block:: console
 
-          $ repo init -u https://git.ti.com/git/android/manifest.git -b android15-release -m releases/RLS_10_01_Kernel.xml --depth=1
-
-    A preview for the ``android15-6.6`` kernel is also available for testing via a dedicated manifest:
-
-    .. code-block:: console
-
-       $ repo init -u https://git.ti.com/git/android/manifest.git -b android15-release -m releases/RLS_10_01_Kernel-6.6.xml
+          $ repo init -u https://git.ti.com/git/android/manifest.git -b android15-release -m releases/RLS_10_01_Kernel-6.6.xml --depth=1
 
 .. _android-build-kernel:
 
@@ -50,7 +44,7 @@ Building everything from scratch
    .. code-block:: console
 
       $ cd ${YOUR_PATH}/ti-kernel-aosp/
-      $ export TARGET_KERNEL_USE="6.1" # or "6.6" for experimental kernel
+      $ export TARGET_KERNEL_USE="6.6"
       $ export DIST_DIR=${YOUR_PATH}/ti-aosp-15/device/ti/am62x-kernel/kernel/${TARGET_KERNEL_USE}
       $ tools/bazel run //common:ti_dist -- --dist_dir=$DIST_DIR
 
@@ -66,7 +60,7 @@ Rebuilding faster
    .. code-block:: console
 
       $ cd ${YOUR_PATH}/ti-kernel-aosp/
-      $ export TARGET_KERNEL_USE="6.1" # or "6.6" for experimental kernel
+      $ export TARGET_KERNEL_USE="6.6"
       $ export DIST_DIR=${YOUR_PATH}/ti-aosp-15/device/ti/am62x-kernel/kernel/${TARGET_KERNEL_USE}
       $ tools/bazel run --config=fast //common:ti_dist -- --dist_dir=$DIST_DIR
 
