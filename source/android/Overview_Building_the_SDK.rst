@@ -128,9 +128,6 @@ The following build flags are available. **Default** values are **highlighted**.
    * - ``TARGET_SDCARD_BOOT``
      - **false**/true
      - Boot from SD card instead of eMMC
-   * - ``TARGET_KERNEL_USE``
-     - **6.1**/6.6
-     - Pick kernel version. 6.6 is experimental
    * - ``TARGET_BOOTLOADER_VERSION``
      - **unset**/2024.04
      - Pick U-Boot version (default: ``2023.04``). 2024.04 is experimental
