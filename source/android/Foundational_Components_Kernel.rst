@@ -107,19 +107,14 @@ To enable new modules:
 #. Edit :file:`${YOUR_PATH}/ti-kernel-aosp/BUILD.bazel` to add your new module.
    Look for the following section:
 
-   .. code-block:: c
+   .. code-block:: bash
 
-      kernel_build(
-          name = "ti",
+      _TI_MODULE_OUTS = [
+          # keep sorted
+          "crypto/af_alg.ko",
+          "crypto/algif_hash.ko",
 
-          // [...]
-
-          module_outs = get_gki_modules_list("arm64") + [
-                # keep sorted
-                "crypto/af_alg.ko",
-
-
-#. In the ``module_outs`` array, add the path to your new kernel module.
+#. In the ``_TI_MODULE_OUTS`` array, add the path to your new kernel module.
 
 #. Rebuild the kernel as documented in :ref:`android-build-kernel`.
 
