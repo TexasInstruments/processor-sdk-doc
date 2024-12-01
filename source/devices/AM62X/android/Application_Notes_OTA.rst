@@ -70,19 +70,6 @@ OTA via Update Engine
          $ PYTHONPATH=$ANDROID_BUILD_TOP/system/apex/apexer/:$PYTHONPATH
          $ export PYTHONPATH
 
-   #. Patch the :file:`gen_update_config.py` script to be compatible with Android 15.
-      In :file:`bootable/recovery`, apply the following change:
-
-      https://android-review.googlesource.com/c/platform/bootable/recovery/+/2837717
-
-      This can be done with:
-
-      .. code-block:: console
-
-         $ cd $ANDROID_BUILD_TOP/bootable/recovery
-         $ git fetch https://android.googlesource.com/platform/bootable/recovery refs/changes/17/2837717/1
-         $ git cherry-pick FETCH_HEAD
-
    #. Update the ota config file. Feel free to change ``$DIST_DIR`` to match your developer environment.
 
       .. code-block:: console
