@@ -48,9 +48,16 @@ Building everything from scratch
       $ export DIST_DIR=${YOUR_PATH}/ti-aosp-15/device/ti/am62x-kernel/kernel/${TARGET_KERNEL_USE}
       $ tools/bazel run //common:ti_dist -- --dist_dir=$DIST_DIR
 
-Android uses Kleaf, a Bazel-based build system to build the kernel.
-AOSP documentation can be found `here <https://source.android.com/docs/setup/build/building-kernels?hl=fr>`__ and
-Kleaf documentation `here  <https://android.googlesource.com/kernel/build/+/refs/heads/main/kleaf/README.md>`__
+   Android uses Kleaf, a Bazel-based build system to build the kernel.
+   AOSP documentation can be found `here <https://source.android.com/docs/setup/build/building-kernels?hl=fr>`__ and
+   Kleaf documentation `here  <https://android.googlesource.com/kernel/build/+/refs/heads/main/kleaf/README.md>`__
+
+   .. attention::
+
+      Kernel builds hangs when using the ``btrfs`` file system.
+      This is a known issue according to the `kleaf documentation <https://android.googlesource.com/kernel/build/+/refs/heads/main/kleaf/docs/errors.md#build-hangs-on-btrfs>`_
+      Make sure to pass the ``--workaround_btrfs_b292212788`` flag to bazel when using ``btrfs``.
+
 
 Rebuilding faster
 =================
