@@ -294,7 +294,7 @@ Booting the Board and Testing RPMsg
 
    -  In the case of the BeagleBone Black you will need an FTDI to TTL
       cable like the one found
-      `here <http://elinux.org/Beagleboard:BeagleBone_Black_Accessories#Serial_Debug_Cables>`__
+      `here <https://elinux.org/Beagleboard:BeagleBone_Black_Accessories#Serial_Debug_Cables>`__
 
 #. Find out which tty device on your Ubuntu host computer corresponds to
    your evaluation board

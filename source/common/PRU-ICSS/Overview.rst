@@ -71,9 +71,9 @@ Getting Started Information
 
 Detailed information for getting started with PRU development can be found here:
 
-`PRU-ICSS / PRU_ICSSG Getting Starting Guide on Linux <http://www.ti.com/lit/pdf/sprace9>`__
+`PRU-ICSS / PRU_ICSSG Getting Starting Guide on Linux <https://www.ti.com/lit/pdf/sprace9>`__
 
-`PRU-ICSS / PRU_ICSSG Getting Started Guide on TI-RTOS <http://www.ti.com/lit/pdf/sprach5>`__
+`PRU-ICSS / PRU_ICSSG Getting Started Guide on TI-RTOS <https://www.ti.com/lit/pdf/sprach5>`__
 
 :ref:`getting_started_with_pssp`
 
@@ -93,14 +93,14 @@ Manuals (TRMs).
 PRU Differences Between Devices
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-`PRU-ICSS / PRU_ICSSG Feature Comparison Across Devices <http://www.ti.com/lit/sprac90>`__
+`PRU-ICSS / PRU_ICSSG Feature Comparison Across Devices <https://www.ti.com/lit/sprac90>`__
 
-`PRU-ICSS / PRU_ICSSG Migration Guide <http://www.ti.com/lit/spracj8>`__
+`PRU-ICSS / PRU_ICSSG Migration Guide <https://www.ti.com/lit/spracj8>`__
 
 Miscellaneous
 ^^^^^^^^^^^^^
 
-`PRU Read Latencies <http://www.ti.com/lit/sprace8>`__
+`PRU Read Latencies <https://www.ti.com/lit/sprace8>`__
 
 |
 
@@ -131,14 +131,14 @@ PRU C Compiler
 PRU C compiler is available for download through the Code Composer Studio (CCS)
 App Center, or through the `PRU-CGT page <https://www.ti.com/tool/PRU-CGT>`__.
 
-`PRU Optimizing C/C++ Compiler User's Guide <http://www.ti.com/lit/pdf/spruhv7>`__
+`PRU Optimizing C/C++ Compiler User's Guide <https://www.ti.com/lit/pdf/spruhv7>`__
 
-`PRU Assembly Language Tools User's Guide <http://www.ti.com/lit/pdf/spruhv6>`__
+`PRU Assembly Language Tools User's Guide <https://www.ti.com/lit/pdf/spruhv6>`__
 
 PRU Assembly Instructions
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-`PRU Assembly Instruction Guide <http://www.ti.com/lit/pdf/spruij2>`__
+`PRU Assembly Instruction Guide <https://www.ti.com/lit/pdf/spruij2>`__
 
 
 |
@@ -182,7 +182,7 @@ Information about specific components of PRU projects can be found at
 :ref:`pru_resource_tables`, :ref:`pru_intc_configuration`, and
 :ref:`pru_header_files`.
 
-`PRU-ICSS / PRU_ICSSG Migration Guide <http://www.ti.com/lit/spracj8>`__
+`PRU-ICSS / PRU_ICSSG Migration Guide <https://www.ti.com/lit/spracj8>`__
 
 |
 
@@ -317,7 +317,7 @@ The Beagleboard community discusses PRU `here <https://forum.beagleboard.org/>`_
 
 :ref:`pru_overview_faq`
 
-`FAQ for PRU-ICSS Industrial Software <http://software-dl.ti.com/processor-industrial-sw/esd/docs/indsw/FAQ_Sitara_Industrial.html>`__
+`FAQ for PRU-ICSS Industrial Software <https://software-dl.ti.com/processor-industrial-sw/esd/docs/indsw/FAQ_Sitara_Industrial.html>`__
 
 |
 
@@ -356,7 +356,7 @@ Can I develop my own industrial protocols on the PRU-ICSS?
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 TI only supports the industrial protocols enabled in the IDK (Industrial
-Development Kit) available on `ti.com <http://www.ti.com>`__.
+Development Kit) available on `ti.com <https://www.ti.com>`__.
 Independent development of industrial protocols using the MII_RT and
 IEP (Industrial Ethernet Peripheral) blocks in not supported or enabled.
 
@@ -507,7 +507,7 @@ On devices with multiple PRU-ICSSs, how can one PRU-ICSS interrupt the other?
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Check the PRU-ICSS System Event table in your device-specific reference
-manual on `ti.com <http://www.ti.com>`__. There will be a System event
+manual on `ti.com <https://www.ti.com>`__. There will be a System event
 tied to a PRU Host event from the other PRU-ICSS. By generating an
 interrupt of this Host, one PRU-ICSS can interrupt another PRU-ICSS. The
 other PRU-ICSS will detect this interrupt as the corresponding System

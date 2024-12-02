@@ -23,7 +23,7 @@ Archives section at the bottom of this page.
 .. Image:: /images/Am335x_ice.jpg
 
 .. rubric:: `AM3359 Industrial Communications Engine
-   (ICE) <http://www.ti.com/tool/tmdsice3359>`__
+   (ICE) <https://www.ti.com/tool/tmdsice3359>`__
    :name: am3359-industrial-communications-engine-ice
 
 The AM3359 Industrial Communications Engine (ICE) is a development
@@ -40,7 +40,7 @@ external components and with best in class low power performance.
 .. Image:: /images/Am437x_idk_500x300.jpg
 
 .. rubric:: `AM437x Industrial Development Kit
-   (IDK) <http://www.ti.com/tool/tmdsidk437x>`__
+   (IDK) <https://www.ti.com/tool/tmdsidk437x>`__
    :name: am437x-industrial-development-kit-idk
 
 The AM437x Industrial Development Kit (IDK) is an application
@@ -59,7 +59,7 @@ with best in class low power performance.
 .. Image:: /images/Am571x_idk.JPG
 
 .. rubric:: `AM571x Industrial Development Kit
-   (IDK) <http://www.ti.com/tool/TMDXIDK5718>`__
+   (IDK) <https://www.ti.com/tool/TMDXIDK5718>`__
    :name: am571x-industrial-development-kit-idk
 
 The AM571x IDK is a standalone test, development, and evaluation module
@@ -90,7 +90,7 @@ industrial communication network.
 .. Image:: /images/Am572x_idk.PNG
 
 .. rubric:: `AM572x Industrial Development Kit
-   (IDK) <http://www.ti.com/tool/TMDXIDK5728>`__
+   (IDK) <https://www.ti.com/tool/TMDXIDK5728>`__
    :name: am572x-industrial-development-kit-idk
 
 The AM572x Industrial Development Kit (IDK) is a development platform
@@ -114,7 +114,7 @@ subsystems.
 .. Image:: /images/K2g_ice.PNG
 
 .. rubric:: `K2G Industrial Communication Engine
-   (ICE) <http://www.ti.com/tool/k2gice>`__
+   (ICE) <https://www.ti.com/lit/pdf/spruie3>`__
    :name: k2g-industrial-communication-engine-ice
 
 The K2G Industrial Communications Engine (ICE) enables 66AK2Gx processor
@@ -201,26 +201,26 @@ Here are the steps needed to test out the new Ethernet interfaces:
 -  Get your hands on one of the industrial boards
 
    -  `AM3359 Industrial Communications Engine
-      (ICE) <http://www.ti.com/tool/tmdsice3359>`__
+      (ICE) <https://www.ti.com/tool/tmdsice3359>`__
    -  `AM437x Industrial Development Kit
-      (IDK) <http://www.ti.com/tool/tmdsidk437x>`__
+      (IDK) <https://www.ti.com/tool/tmdsidk437x>`__
    -  `AM571x Industrial Development Kit
-      (IDK) <http://www.ti.com/tool/TMDXIDK5718>`__
+      (IDK) <https://www.ti.com/tool/TMDXIDK5718>`__
    -  `AM572x Industrial Development Kit
-      (IDK) <http://www.ti.com/tool/TMDXIDK5728>`__
+      (IDK) <https://www.ti.com/tool/TMDXIDK5728>`__
    -  `K2G Industrial Communication Engine
-      (ICE) <http://www.ti.com/tool/k2gice>`__
+      (ICE) <https://www.ti.com/lit/pdf/spruie3>`__
 
 -  Download the Linux Processor SDK (v3.1.0.6 or higher)
 
    -  `Linux Processor SDK for AM335x
-      devices <http://www.ti.com/tool/PROCESSOR-SDK-AM335x>`__
+      devices <https://www.ti.com/tool/PROCESSOR-SDK-AM335x>`__
    -  `Linux Processor SDK for AM437x
-      devices <http://www.ti.com/tool/PROCESSOR-SDK-AM437X>`__
+      devices <https://www.ti.com/tool/PROCESSOR-SDK-AM437X>`__
    -  `Linux Processor SDK for AM57x
-      devices <http://www.ti.com/tool/PROCESSOR-SDK-AM57X>`__
+      devices <https://www.ti.com/tool/PROCESSOR-SDK-AM57X>`__
    -  `Linux Processor SDK for K2G
-      devices <http://www.ti.com/tool/PROCESSOR-SDK-K2G>`__
+      devices <https://www.ti.com/tool/PROCESSOR-SDK-K2G>`__
 
 -  Run the 'create SD card' script provided in the SDK to create a
    bootable SD card

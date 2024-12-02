@@ -86,8 +86,8 @@ Device tree bindings
 
 The DT bindings description can be found at:
 
-| `Documentation/devicetree/bindings/net/ti,icssg-prueth.txt <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/Documentation/devicetree/bindings/net/ti,icssg-prueth.txt?h=ti-linux-5.10.y>`__
-| `Documentation/devicetree/bindings/net/ti,davinci-mdio.yaml <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/Documentation/devicetree/bindings/net/ti,davinci-mdio.yaml?h=ti-linux-5.10.y>`__
+| `Documentation/devicetree/bindings/net/ti,icssg-prueth.yaml <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/Documentation/devicetree/bindings/net/ti,icssg-prueth.yaml?h=ti-linux-6.6.y>`__
+| `Documentation/devicetree/bindings/net/ti,davinci-mdio.yaml <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/Documentation/devicetree/bindings/net/ti,davinci-mdio.yaml?h=ti-linux-6.6.y>`__
 |
 
 User guide
@@ -606,7 +606,7 @@ Example oc.cfg for OC,
 where **eth1** is the intended PRU-ICSSG Ethernet port over which the OC
 functionality is provided.
 
-See `The Linux PTP Project <http://linuxptp.sourceforge.net#>`__ for
+See `The Linux PTP Project <https://linuxptp.sourceforge.net#>`__ for
 more details about linuxptp in general and `ptp4l(8) - Linux man
 page <https://man.cx/ptp4l>`__ about ptp4l configurations in particular.
 

@@ -36,8 +36,8 @@ Hardware
 """"""""
 
 -  AM335x Beaglebone Black - `Order
-   Now <http://beagleboard.org/Products>`__
--  BeagleBone PRU Cape - `Order Now <http://www.ti.com/tool/PRUCAPE>`__
+   Now <https://www.beagleboard.org/boards/beaglebone-black>`__
+-  BeagleBone PRU Cape - `Order Now <https://www.ti.com/tool/PRUCAPE>`__
 -  5V power supply *or* USB cable connection
 -  JTAG emulator
 -  FTDI cable
@@ -45,7 +45,7 @@ Hardware
 Software
 """"""""
 
--  `Linux Processor SDK <http://www.ti.com/tool/PROCESSOR-SDK-AM335X>`__
+-  `Linux Processor SDK <https://www.ti.com/tool/PROCESSOR-SDK-AM335X>`__
    installed. This lab assumes the latest Linux Processor SDK is
    installed in /home/sitara. If you use a different location please
    modify the below steps accordingly.
@@ -62,7 +62,7 @@ Software
    a different location please modify the steps below.
 -  `CCSv6 <https://www.ti.com/tool/download/CCSTUDIO>`__
 -  `PRU Code Generation
-   Tools <http://software-dl.ti.com/codegen/non-esd/downloads/download.htm#PRU>`__
+   Tools <https://software-dl.ti.com/codegen/non-esd/downloads/download.htm#PRU>`__
    (also available through the CCS App Center)
 
 |
