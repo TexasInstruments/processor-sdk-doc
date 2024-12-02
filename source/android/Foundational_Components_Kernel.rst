@@ -93,8 +93,38 @@ The usual (``make menuconfig``) is done via ``bazel`` command :
       will be used to create :file:`boot.img`
 
 
+Rebuild Android images
+======================
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
+
+   We should re-generate the Android images to include the newly build kernel.
+   Follow the Android :ref:`android-build-aosp` to do so.
+
+*********************
+Flashing instructions
+*********************
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
+
+   In order to flash a new kernel, several images should be flashed:
+
+   .. code-block:: console
+
+      $ adb reboot fastboot
+      < Wait for fastbootd reboot >
+
+      $ cd <PATH/TO/IMAGES>
+      $ fastboot flash boot boot.img
+      $ fastboot flash vendor_boot vendor_boot.img
+      $ fastboot flash vendor_dlkm vendor_dlkm.img
+      $ fastboot reboot
+
+   The board should boot with the new kernel.
+
+********************
 Enabling new drivers
-====================
+********************
 
 Since the kernel is based on the
 `Generic Kernel Image <https://source.android.com/docs/core/architecture/kernel/generic-kernel-image>`_,
@@ -129,31 +159,3 @@ To enable new modules:
 
 #. Finally, rebuild the Android images.
 
-Rebuild Android images
-======================
-
-.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
-
-   We should re-generate the Android images to include the newly build kernel.
-   Follow the Android :ref:`android-build-aosp` to do so.
-
-*********************
-Flashing instructions
-*********************
-
-.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
-
-   In order to flash a new kernel, several images should be flashed:
-
-   .. code-block:: console
-
-      $ adb reboot fastboot
-      < Wait for fastbootd reboot >
-
-      $ cd <PATH/TO/IMAGES>
-      $ fastboot flash boot boot.img
-      $ fastboot flash vendor_boot vendor_boot.img
-      $ fastboot flash vendor_dlkm vendor_dlkm.img
-      $ fastboot reboot
-
-   The board should boot with the new kernel.
