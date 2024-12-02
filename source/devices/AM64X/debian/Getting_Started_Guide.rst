@@ -1,4 +1,5 @@
 .. _overview-getting-started:
+
 ***************************
 Getting Started with Debian
 ***************************

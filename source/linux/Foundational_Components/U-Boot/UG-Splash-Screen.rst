@@ -1,4 +1,5 @@
 .. _Uboot-splash-label:
+
 ====================
 U-Boot Splash Screen
 ====================
