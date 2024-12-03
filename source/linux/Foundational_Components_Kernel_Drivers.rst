@@ -27,6 +27,7 @@ Kernel Drivers
    Foundational_Components/Kernel/Kernel_Drivers/Network/HSR_PRP_Non_Offload
    Foundational_Components/Kernel/Kernel_Drivers/Network/HSR_Offload
    Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW-Ethernet
+   Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW2g
    Foundational_Components/Kernel/Kernel_Drivers/Network/NETCONF-YANG
    Foundational_Components/Kernel/Kernel_Drivers/PCIe/PCIe_End_Point
    Foundational_Components/Kernel/Kernel_Drivers/PCIe/PCIe_Backplane
