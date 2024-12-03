@@ -97,9 +97,8 @@ The TI Apps Launcher launches on Linux startup. Follow the below instructions to
    .. Image:: /images/ti-apps-launcher-j7.png
       :height: 400
 
-
 Launching the Industrial HMI
-____________________________
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
@@ -125,7 +124,7 @@ ____________________________
 
 
 Launching the Camera App
-________________________
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
@@ -201,7 +200,7 @@ ________________________
 
 
 Launching the ARM Analytics Demo
-________________________________
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
 
@@ -228,7 +227,7 @@ ________________________________
 
 
 Launching the Benchmarks Demo
-_____________________________
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
@@ -258,7 +257,7 @@ _____________________________
 
 
 Launching the GPU Performance Demo
-__________________________________
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
@@ -287,7 +286,7 @@ __________________________________
    4. You will see the updated values of FPS & Score metrices getting populated in the table.
 
 Launching the Seva Store
-________________________
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
 
@@ -305,7 +304,7 @@ ________________________
       :height: 400
 
 Launching the Chromium Browser
-______________________________
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
 
@@ -330,7 +329,7 @@ ______________________________
 3. Refer :ref:`Chromium Browser - User Guide <Chromium_Browser-label>` to know more about Chromium Browser.
   
 Launching the 3D Demo
-_____________________
+^^^^^^^^^^^^^^^^^^^^^
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
 
@@ -354,7 +353,7 @@ _____________________
       This section is not valid for this platform.
 
 Using the Settings Button
-_________________________
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. The Settings button on the left panel can be used to set docker's systemd-proxy and system proxy if your SK-EVM is connected to a VPN.
 
@@ -365,14 +364,69 @@ _________________________
 
 3. Once you enter the necessary values for both HTTPS and No proxy, click on `Set Proxy` to set the proxy configuration.
 
+
+Using terminal
+^^^^^^^^^^^^^^
+
+.. ifconfig:: CONFIG_sdk in ('SITARA')
+
+   The terminal button on the left panel can be used to open a terminal application, which is
+   based on QMLtermwidget.
+
+   .. Image:: /images/terminal.png
+      :height: 400
+
+.. ifconfig:: CONFIG_sdk not in ('SITARA')
+
+   This section is not applicable for this platform.
+
+Using Wi-Fi Demo
+^^^^^^^^^^^^^^^^
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
+
+   1. The *Wifi* button on the left panel allows you to connect to an external Wi-Fi network.
+   2. Ensure the required overlay is applied and the M.2 Wi-Fi card is connected to SK-EVM. For more
+      information, refer to :ref:`enable_m2cc3301`.
+   3. Click the toggle button to turn on Wi-Fi.
+
+   .. Image:: /images/wifi_home.png
+      :height: 400
+
+   4. Click on the *Refresh* button to scan for available SSIDs.
+   5. Select an SSID from the list, then enter the passphrase and Wi-Fi security type.
+   6. For certain security types, you may need to provide additional details.
+   7. After entering all the required info, click on *Connect*.
+
+   .. Image:: /images/wifi_ssid.png
+      :height: 400
+
+   8. If the all entered details are correct, device will be connected to the selected Wi-Fi
+      network. If needed, click *Disconnect* to disconnect from the network and return to
+      SSID selection menu.
+
+   .. Image:: /images/wifi_connected.png
+      :height: 400
+
+   .. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+      .. note::
+
+         This section is not applicable for AM62xLP and AM62xSIP.
+
+.. ifconfig:: CONFIG_part_variant not in ('AM62X', 'AM62PX')
+
+   This section is not applicable for this platform.
+
+
 Power Menu
-__________
+^^^^^^^^^^
 
 1. The top right corner of the TI Apps Launcher is dedicated for the Power Menu.
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
 
-    2. The Power Menu supports Shutdown, Reboot, Suspend to RAM and Exit (from TI Apps Launcher) functions.
+    2. The Power Menu supports Shutdown, Reboot, Suspend to RAM (For Linux only) and Exit (from TI Apps Launcher) functions.
 
     .. Image:: /images/ti-apps-launcher-powermenu1.png
        :height: 400
@@ -403,7 +457,13 @@ The source code is available at `TI Apps Launcher <https://github.com/TexasInstr
 
       .. code-block:: console
 
-         $ qmake "SOURCES += configs/am62pxx-evm.cpp" "DEFINES += SOC_AM62P" ./ti-apps-launcher.pro ; make
+         For Linux build
+
+         $ qmake "SOURCES += configs/am62pxx-evm.cpp" "DEFINES += SOC_AM62P" "DEFINES += RT_BUILD=0" ./ti-apps-launcher.pro ; make
+
+         For RT-Linux build
+
+         $ qmake "SOURCES += configs/am62pxx-evm.cpp" "DEFINES += SOC_AM62P" "DEFINES += RT_BUILD=1" ./ti-apps-launcher.pro ; make
 
       |
 
@@ -411,10 +471,19 @@ The source code is available at `TI Apps Launcher <https://github.com/TexasInstr
 
       .. code-block:: console
 
-         $ qmake "SOURCES += configs/am62xx-evm.cpp" "DEFINES += SOC_AM62" ./ti-apps-launcher.pro ; make # For AM62x SK
-         $ qmake "SOURCES += configs/am62xx-lp-evm.cpp" "DEFINES += SOC_AM62_LP" ./ti-apps-launcher.pro ; make # For AM62x LP SK
-         $ qmake "SOURCES += configs/am62xxsip-evm.cpp" "DEFINES += SOC_AM62_LP" ./ti-apps-launcher.pro ; make # For AM62xSIP SK
-         $ qmake "SOURCES += configs/beagleplay.cpp" "DEFINES += SOC_AM62" ./ti-apps-launcher.pro ; make # For Beagleplay
+         For Linux build
+
+         $ qmake "SOURCES += configs/am62xx-evm.cpp" "DEFINES += SOC_AM62" "DEFINES += RT_BUILD=0" ./ti-apps-launcher.pro ; make # For AM62x SK
+         $ qmake "SOURCES += configs/am62xx-lp-evm.cpp" "DEFINES += SOC_AM62_LP" "DEFINES += RT_BUILD=0" ./ti-apps-launcher.pro ; make # For AM62x LP SK
+         $ qmake "SOURCES += configs/am62xxsip-evm.cpp" "DEFINES += SOC_AM62_LP" "DEFINES += RT_BUILD=0" ./ti-apps-launcher.pro ; make # For AM62xSIP SK
+         $ qmake "SOURCES += configs/beagleplay.cpp" "DEFINES += SOC_AM62" "DEFINES += RT_BUILD=0" ./ti-apps-launcher.pro ; make # For Beagleplay
+
+         For RT-Linux build
+
+         $ qmake "SOURCES += configs/am62xx-evm.cpp" "DEFINES += SOC_AM62" "DEFINES += RT_BUILD=1" ./ti-apps-launcher.pro ; make # For AM62x SK
+         $ qmake "SOURCES += configs/am62xx-lp-evm.cpp" "DEFINES += SOC_AM62_LP" "DEFINES += RT_BUILD=1" ./ti-apps-launcher.pro ; make # For AM62x LP SK
+         $ qmake "SOURCES += configs/am62xxsip-evm.cpp" "DEFINES += SOC_AM62_LP" "DEFINES += RT_BUILD=1" ./ti-apps-launcher.pro ; make # For AM62xSIP SK
+         $ qmake "SOURCES += configs/beagleplay.cpp" "DEFINES += SOC_AM62" "DEFINES += RT_BUILD=1" ./ti-apps-launcher.pro ; make # For Beagleplay
 
       |
 

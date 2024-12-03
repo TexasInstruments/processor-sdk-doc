@@ -51,6 +51,7 @@ What's new
   - RT Kernel : Real-Time Linux Interrupt Latency numbers here - :ref:`RT Interrupt Latencies <RT-linux-performance>`
   - Support for streaming from multiple 0V5640 cameras with `Arducam V3Link (Fusion Mini) <https://www.arducam.com/product/arducam-v3link-camera-kit-for-ti-development-boards/>`_
   - Power Management: :ref:`I/O Only Plus DDR <pm_io_only_plus_ddr>` mode
+  - TI Apps Launcher: New Wi-Fi and Terminal Demo - :ref:`TI Apps Launcher <TI-Apps-Launcher-User-Guide-label>`
 
 
 **Component version:**
