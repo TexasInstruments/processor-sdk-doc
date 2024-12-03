@@ -152,6 +152,40 @@ The MACHINE can be set to |__SDK_BUILD_MACHINE__|, for example.
                   $ . conf/setenv
                   $ MACHINE=<machine> ARAGO_RT_ENABLE=1 bitbake -k tisdk-default-image
 
+      .. ifconfig:: CONFIG_part_variant in ('AM62X','AM62PX')
+
+         * The final command below will build the :file:`tisdk-jailhouse-image`, which is the
+           Processor SDK image with arago filesystem and Jailhouse support.
+
+         .. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+            * :file:`tisdk-jailhouse-image` is not applicable for am62xxsip-evm and beagleplay.
+
+         .. tabs::
+
+            .. tab:: Build Jailhouse Linux SD card Image
+
+               .. code-block:: console
+
+                  $ git clone https://git.ti.com/git/arago-project/oe-layersetup.git tisdk
+                  $ cd tisdk
+                  $ ./oe-layertool-setup.sh -f configs/processor-sdk/<oeconfig-file>
+                  $ cd build
+                  $ . conf/setenv
+                  $ echo 'TI_EXTRAS="tie-jailhouse"' >> conf/local.conf
+                  $ MACHINE=<machine> bitbake -k tisdk-jailhouse-image
+
+            .. tab:: Build Jailhouse RT-Linux SD card Image
+
+               .. code-block:: console
+
+                  $ git clone https://git.ti.com/git/arago-project/oe-layersetup.git tisdk
+                  $ cd tisdk
+                  $ ./oe-layertool-setup.sh -f configs/processor-sdk/<oeconfig-file>
+                  $ cd build
+                  $ . conf/setenv
+                  $ echo 'TI_EXTRAS="tie-jailhouse"' >> conf/local.conf
+                  $ MACHINE=<machine> ARAGO_RT_ENABLE=1 bitbake -k tisdk-jailhouse-image
 
 .. ifconfig:: CONFIG_sdk in ('JACINTO','j7_foundational')
 
