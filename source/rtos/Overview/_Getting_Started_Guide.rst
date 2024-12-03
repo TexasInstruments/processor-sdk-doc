@@ -277,7 +277,6 @@ download page for your platform (see links in below section).
    the software in the SDK and will provide the best user experience.
    Occasionally, there may be compatibility issues if different versions
    are used.
-|
 
 When installing CCS, you can choose to control what is installed for
 processor architecture.

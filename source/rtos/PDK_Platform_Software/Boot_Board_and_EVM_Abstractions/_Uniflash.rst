@@ -335,7 +335,7 @@ Follow below steps for downloading the flash programer over JTAG manually
 
 .. note:: Refer the `Platform Specific Information <index_board.html#platform-specific-information>`__ for more details on
           additional setup needed for CCS target configuration.
-|
+
 
  - Connect the JTAG port of the board to host PC running CCS.
  - Power ON the board
@@ -350,7 +350,7 @@ Follow below steps for downloading the flash programer over JTAG manually
  - After successful download of the flash programmer, `Program the flash device <index_board.html#programming-the-flash-device>`__
    or `Erase the flash device <index_board.html#erasing-the-flash-device>`__
    by following the steps described in the corresponding secions.
-|
+
 
 
 Programming the Flash Device

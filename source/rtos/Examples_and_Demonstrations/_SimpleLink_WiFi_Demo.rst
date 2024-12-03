@@ -28,9 +28,12 @@ Hardware
 -  Blue wires between CC3120 BP and AMIC110 ICE
 -  Serial UART cable (provided in EVM kit)
 -  Connection Diagram
-.. Image:: /images/sl_wifi_demo_connection.jpg
+
+   .. Image:: /images/sl_wifi_demo_connection.jpg
+
 -  Picture of connected EVMs
-.. Image:: /images/sl_wifi_demo_connected.jpg
+
+   .. Image:: /images/sl_wifi_demo_connected.jpg
 
 Software
 
@@ -205,11 +208,14 @@ To load and run SimpleLink WiFi Plugin Demo:
 #. Send the bootloader_boot_uart_a8host_debug.bin under
    pdk_<platform>_<version>/packages/ti/starterware/binary/bootloader/bin/am335x-evm/gcc
    using the XMODEM.
-.. Image:: /images/sl_uart_boot_1st.jpg
+
+   .. Image:: /images/sl_uart_boot_1st.jpg
+
 #. Upon completion,  then send the network_terminal.bin under
    processor_sdk_rtos_<platform>_<version>/demos/simplelink-wifi-demo/bin/am335x/a8/debug
    using the XMODEM.
-.. Image:: /images/sl_uart_boot_2nd.jpg
+
+   .. Image:: /images/sl_uart_boot_2nd.jpg
 
 Now the network terminal demo will run and print progress through the UART.
 

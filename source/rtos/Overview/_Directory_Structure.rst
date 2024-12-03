@@ -9,7 +9,6 @@ installer.
 
 .. note::
    Not all components are applicable on all platforms.
-|
 
 Software Component Directories
 ================================

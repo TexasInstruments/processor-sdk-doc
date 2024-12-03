@@ -765,7 +765,6 @@ TRM:
    because each descriptor in the first level translation table describes 1
    MiB of memory. If an access points to a descriptor that is not
    initialized, the MMU will behave in an unpredictable way.
-|
 
 .. rubric:: Changing Cortex M4 IPU Memory Map
    :name: changing-cortex-m4-ipu-memory-map
@@ -785,8 +784,6 @@ defined by the CMA carveout. To change this location, you must change
 the definition of the carveout. **The M4 carveouts are defined in the
 Linux dts file.** For example for the AM57xx EVM:
 
-|
-|
 linux/arch/arm/boot/dts/am57xx-beagle-x15-common.dtsi
 
 ::
@@ -807,14 +804,14 @@ linux/arch/arm/boot/dts/am57xx-beagle-x15-common.dtsi
 		};
 	};
 
-|
+
 You are able to change both the size and location. **Be careful not to
 overlap any other carveouts!**
 
 .. note::
    The **two** location entries for a given carveout
    must be identical!
-|
+
 Additionally, when you change the carveout location, there is a
 corresponding change that must be made to the resource table. For
 starters, if you're making a memory change you will need a **custom**
@@ -835,8 +832,6 @@ corresponding CMA.
     #elif defined (VAYU_IPU_2)
     #define PHYS_MEM_IPC_VRING      0x95800000
     #endif
-
-|
 
 .. note::
    The PHYS_MEM_IPC_VRING definition from the resource
@@ -886,9 +881,6 @@ ipc_3_43_02_04/examples/DRA7XX_linux_elf/ex02_messageq/ipu1/IpuAmmu.cfg
     AMMU.largePages[2].L1_cacheable = AMMU.CachePolicy_CACHEABLE;
     AMMU.largePages[2].L1_posted = AMMU.PostedPolicy_POSTED;
 
-|
-
-````
 
 +--------------+-----------------------+-----------------------+--------+-------------+
 | Page         | Cortex M4 Address     | Intermediate Address  | Size   | Comment     |
@@ -983,7 +975,7 @@ ipc/packages/ti/ipc/remoteproc/rsc_table_vayu_ipu.h
             IPU_MEM_IPC_DATA, 0,
             IPU_MEM_IPC_DATA_SIZE, 0, 0, "IPU_MEM_IPC_DATA",
         },
-|
+
 
 The 3 entries above from the resource table all come from the associated
 IPU CMA pool (i.e. as dictated by the TYPE_CARVEOUT). The second
@@ -1261,7 +1253,7 @@ Add the following to the beginning of your configuration file
 .. code-block:: javascript
 
     var Program = xdc.useModule('xdc.cfg.Program');
-|
+
 
 Comment out the Memory sections configuration as shown below
 

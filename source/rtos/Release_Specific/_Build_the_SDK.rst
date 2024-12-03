@@ -34,6 +34,7 @@ The pre-requisite compilers are provided in Code Compose Studio, see the
 |
 
 .. _Build-The-SDK-Setup-Environment-label:
+
 Setup Environment
 ====================
 
@@ -61,7 +62,7 @@ folder.
          links for instructions on how to setup OpensSSL using a particular distribution.
       -  For Linux : Execute the command "sudo apt-get install openssl" at the linux
          command prompt.
-|
+
 Windows
 ^^^^^^^^^
 From the RTOS SDK directory, enter

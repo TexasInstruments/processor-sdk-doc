@@ -696,7 +696,7 @@ setup to enable fast boot.
    TRM).Incorrect SYSBOOT configuration can causes long delays especially
    if peripheral boot is configured to be one of the preferred boot modes
    in the boot order
-|
+
 
 Reducing size of SBL and application
 """""""""""""""""""""""""""""""""""""

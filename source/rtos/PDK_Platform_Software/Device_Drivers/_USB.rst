@@ -454,6 +454,7 @@ platform supported.
 **OMAPL137 EVM**
 
 .. Image:: /images/Omapl137_usb_ac_setup.jpg
+
 **OMAPL138 LCDK**
 
 .. Image:: /images/Omapl138_usb_ac_setup.jpg
