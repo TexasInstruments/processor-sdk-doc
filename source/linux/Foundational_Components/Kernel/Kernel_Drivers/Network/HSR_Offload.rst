@@ -66,22 +66,14 @@ forwarding and Tx packet duplication offloaded
   ip=$4
   mac=$(ifconfig "$ifa" | grep ether | cut -d " " -f 10)
 
-  device="platform/"
-  device=${device}$(dmesg | grep "$ifa" | grep icssg-prueth | grep -m 1 "Link is Up" | awk '{print $4}')
-
   echo "ip=$ip"
   echo "if=$if"
   echo "mac=$mac"
   echo "slave-a=$ifa"
   echo "slave-b=$ifb"
-  echo "device=$device"
 
   ip link set hsr0 down
   ip link delete hsr0  2> /dev/null
-
-  ip link set "$ifa" down
-  ip link set "$ifb" down
-  sleep 1
 
   if [ "$1" = "hsr_hw" ]
   then
@@ -98,18 +90,10 @@ forwarding and Tx packet duplication offloaded
           ethtool -K "$ifb" hsr-tag-ins-offload on
           ethtool -K "$ifb" hsr-tag-rm-offload on
           ethtool -k "$ifb" | grep hsr
-
-          devlink dev param set "$device" name hsr_offload_mode value true cmode runtime
   fi
 
   ip link set dev "$ifa" address "$mac"
   ip link set dev "$ifb" address "$mac"
-
-  ip link set "$ifa" up
-  sleep 1
-
-  ip link set "$ifb" up
-  sleep 1
 
   ip link add name $if type hsr slave1 "$ifa" slave2 "$ifb" supervision 45 version 1
 
