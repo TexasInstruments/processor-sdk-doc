@@ -17,7 +17,7 @@ find a variety of help on this page.
    Foundational_Components/Tools/Pin_Mux_Tools
    Foundational_Components/Tools/Code_Composer_Studio
    Foundational_Components/Tools/SysConfig_Tools
-   Foundational_Components/Tools/Flash_via_DFU
+   Foundational_Components/Tools/Flash_via_Fastboot
    Foundational_Components/Tools/Flash_via_Ethernet
    Foundational_Components/Tools/Flash_via_UART
    Foundational_Components/Tools/GPIO_Tools

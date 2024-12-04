@@ -49,6 +49,7 @@ What's new
   - LTS Stable Kernel update to 6.6.58
   - Important Bug Fixes on top of Processor SDK 10.00.07.04 Release
   - RT Kernel : Real-Time Linux Interrupt Latency numbers here - :ref:`RT Interrupt Latencies <RT-linux-performance>`
+  - Snagfactory Support - :ref:`Snagfactory Tool <Flash-via-Fastboot>`
 
 
 **Component version:**
