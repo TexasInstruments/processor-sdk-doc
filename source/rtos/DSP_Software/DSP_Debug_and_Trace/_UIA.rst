@@ -13,7 +13,7 @@ visualization in Code Composer Studio.
 In a multi core system, data from all cores are correlated to a single
 timeline.
 
-.. Image:: ../images/SA.png
+.. Image:: /images/SA.png
 Unified Instrumentation Architecture (UIA)
 ------------------------------------------
 

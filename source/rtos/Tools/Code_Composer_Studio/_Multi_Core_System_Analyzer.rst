@@ -13,7 +13,7 @@ visualization in Code Composer Studio.
 In a multi core system, data from all cores are correlated to a single
 timeline.
 
-.. Image:: ../images/SA.png
+.. Image:: /images/SA.png
 .. rubric:: Unified Instrumentation Architecture (UIA)
    :name: unified-instrumentation-architecture-uia
 
@@ -201,7 +201,7 @@ MCSDK.
    xdc.PACKAGE_NOT_FOUND: can't locate the package 'ti.sysbios.knl'"*
 -  To overcome this, please unzip
 
-.. Image:: ../images/UIAMetaData.zip
+.. Image:: /images/UIAMetaData.zip
    <uia_1_00_04_35 install folder>/packages/ti/uia/runtime/ to update
    the UIAMetaData.xs file. Then delete the <Debug> folder from your
    project and rebuild.

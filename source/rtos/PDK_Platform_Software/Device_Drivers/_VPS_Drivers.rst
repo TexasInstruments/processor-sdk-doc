@@ -238,8 +238,8 @@ program expects the bgr888 file, please load
 frames. Below shows the first frame. If GP EVM is used, only the left
 upper corner of the video is displayed as it only has an 800x480 LCD.
 
-.. Image:: ../images/488px-Yuyv422.png
-.. Image:: ../images/488px-Gbr888.png
+.. Image:: /images/488px-Yuyv422.png
+.. Image:: /images/488px-Gbr888.png
 
 The test runs bunch of test cases as shown in the test example menu.
 

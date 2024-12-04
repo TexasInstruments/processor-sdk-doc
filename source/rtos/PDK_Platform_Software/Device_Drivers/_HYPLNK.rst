@@ -86,7 +86,7 @@ and the cable is also required. Below is a picture showing how a K2H EVM
 is connected to a 6678 EVM via breakout card and cable.
 
 
-.. Image:: ../images/K2-k1-hyplnk.jpg
+.. Image:: /images/K2-k1-hyplnk.jpg
 
 +-----------------+-----------------+-----------------+-----------------+
 | Name            | Description     | EVM             | Expected        |

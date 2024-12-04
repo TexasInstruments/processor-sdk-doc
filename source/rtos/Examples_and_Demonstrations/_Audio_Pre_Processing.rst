@@ -9,7 +9,7 @@ the integration of Beamforming (BF), Adaptive Spectral Noise Reduction
 (ASNR), Multiple Source Selection (MSS) and Dynamic Range Compression
 (DRC) components and provides a framework for application development.
 
-.. Image:: ../images/Aud_pre_processing_arch.png
+.. Image:: /images/Aud_pre_processing_arch.png
 
 The key functions in this use case include:
 
@@ -440,7 +440,7 @@ Import Raw Audio Data File using Adobe Audition
 -  File --> Import --> Raw Data...
 -  The following dialog will pop up
 
-.. Image:: ../images/Aud_pre_processing_import.png
+.. Image:: /images/Aud_pre_processing_import.png
 
 -  Select the raw audio file and input the correct parameters
 -  Click OK
@@ -450,11 +450,11 @@ Before and After Comparison
 
 -  Before audio pre-processing (t8/y16L7g3m7090_1.pcm)
 
-.. Image:: ../images/Aud_pre_processing_before.png
+.. Image:: /images/Aud_pre_processing_before.png
 
 -  After audio pre-processing (t8/fileOutput.bin)
 
-.. Image:: ../images/Aud_pre_processing_after.png
+.. Image:: /images/Aud_pre_processing_after.png
 
 |
 

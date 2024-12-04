@@ -12,10 +12,10 @@ the Sitara AMIC110 ARM Cortex-A8 processor SoC from Texas Instruments.™
 EVM Layout and Key Components
 ------------------------------
 
-.. Image:: ../../../images/ICEAMIC110TopLayout.PNG
+.. Image:: /images/ICEAMIC110TopLayout.PNG
 	:scale: 50%
 
-.. Image:: ../../../images/ICEAMIC110BottomLayout.PNG
+.. Image:: /images/ICEAMIC110BottomLayout.PNG
 	:scale: 50%
 
 Quick Start Guide
@@ -32,25 +32,25 @@ and connectors shown above.
 or the XDS200 emulators may be used for this purpose and can be purchased from
 the TI store: `XDS200 <https://store.ti.com/TMDSEMU200-U-XDS200-USB-Debug-Probe-P4281.aspx>`__ and `XDS110 <https://store.ti.com/TMDSEMU110-U-XDS110-JTAG-Debug-Probe-P51766.aspx>`__.
 
-.. Image:: ../../../images/ICEAMIC110JTAG.PNG
+.. Image:: /images/ICEAMIC110JTAG.PNG
 	:scale: 50%
 
 3. Connect the pin header connector of the included TTL-232R-3V3 serial cable to J3 on the ICE board. Ensure that pin 1 of the serial cable (black wire, marked with a triangle) is connected to pin 1 of J3, which is indicated by a dot on the silk screen. Connect the
 USB connector of the serial cable to a PC host port. The datasheet for this cable can found at http://www.ftdichip.com/Support/Documents/DataSheets/Cables/DS_TTL-232R_CABLES.pdf
 
-.. Image:: ../../../images/ICEAMIC110TTL.PNG
+.. Image:: /images/ICEAMIC110TTL.PNG
 	:scale: 50%
 
 4. Connect a CAT5 Ethernet cable from a PC running TwinCAT software to ECAT IN/PHY1 (J6) of the ICE board. If you have multiple ICE boards in a
 chain, please connect another CAT5 Ethernet cable from ECAT OUT/PHY2 (J7) to PHY1 of the next ICE board. PHY2 of the last ICE board in the chain is left open.
 
-.. Image:: ../../../images/ICEAMIC110ETHERNET.PNG
+.. Image:: /images/ICEAMIC110ETHERNET.PNG
 	:scale: 50%
 
 5. Connect the recommended power supply (CUI Inc. SMI18-5-V-P5, procurable at: http://www.digikey.com/product-detail/en/cui-inc/SMI18-5-V-P5/102-3571-ND/5415042) or equivalent (Output voltage/current: 5 Volts DC +/- 10% @ 1.2 Amps; Output connector: 2.1-mm ID, 5.5-mm OD barrel plug, center positive) power supply to J8 on the ICE board.
 Apply power to the power supply to power up the ICE board. Do not hot plug the 5-V supply into the ICE board.
 
-.. Image:: ../../../images/ICEAMIC1105V.PNG
+.. Image:: /images/ICEAMIC1105V.PNG
 	:scale: 50%
 
 Once the ICE board is powered on, the ON LED (D15) and LED4 (D19) will
@@ -59,7 +59,7 @@ turn on.
 6. The AMIC110 ICE can now be connected to from the host machine via
 UART. The serial port should be setup as shown below.
 
-.. Image:: ../../../images/Baudrate.jpg
+.. Image:: /images/Baudrate.jpg
 	:scale: 50%
 
 Boot Configuration
@@ -83,13 +83,13 @@ the appropriate emulator and the ICE\_AMIC110 as the target as shown below.
 
 .. Note:: If the ICE\_AMIC110 target is not listed, make sure the Sitara Device Support package v1.3.6 or greater is installed.
 
-.. Image:: ../../../images/ICEAMIC110TargetConfig.PNG
+.. Image:: /images/ICEAMIC110TargetConfig.PNG
 	:scale: 50%
 
 4. Click Save to save the target configuration. Then press Test Connection to test the connection. If successful, a message should be
 seen similar to the one below.
 
-.. Image:: ../../../images/ICEAMIC110Test.PNG
+.. Image:: /images/ICEAMIC110Test.PNG
 	:scale: 50%
 
 5. Launch the target configuration and

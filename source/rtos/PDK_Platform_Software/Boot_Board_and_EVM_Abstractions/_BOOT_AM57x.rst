@@ -104,7 +104,7 @@ The Am57xImageGen script uses out2rprc and multicoreImageGen format
 conversion tools to create the final application image. Graphical view
 of the multicore application image is provided below:
 
-.. Image:: ../images/Multicore_app_image.png
+.. Image:: /images/Multicore_app_image.png
 
 The script creates the bootable image in 2 steps
 
@@ -590,7 +590,7 @@ at $(TI_PDK_INSTALL_DIR)/packages/ti/boot/sbl/binary/[BOARD]/mmcsd)
 On Successful bootup you should see the following logs on the UART
 console for a AM572x based board.
 
-.. Image:: ../images/Sbl_example.jpg
+.. Image:: /images/Sbl_example.jpg
 
 .. note::
    MPU Core 0 example does a sequential check of mailbox messages sent from
@@ -618,7 +618,7 @@ memory utilization in the boot loader.
 
 The SBL memory map is shown below
 
-.. Image:: ../images/SBL_memory_map.png
+.. Image:: /images/SBL_memory_map.png
 
 ..  note::
    -  After the application boots and is running on the SOC, it is free to

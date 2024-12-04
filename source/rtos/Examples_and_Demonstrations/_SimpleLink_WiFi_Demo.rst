@@ -28,9 +28,9 @@ Hardware
 -  Blue wires between CC3120 BP and AMIC110 ICE
 -  Serial UART cable (provided in EVM kit)
 -  Connection Diagram
-.. Image:: ../images/sl_wifi_demo_connection.jpg
+.. Image:: /images/sl_wifi_demo_connection.jpg
 -  Picture of connected EVMs
-.. Image:: ../images/sl_wifi_demo_connected.jpg
+.. Image:: /images/sl_wifi_demo_connected.jpg
 
 Software
 
@@ -60,7 +60,7 @@ are providing the INT and RESET signals.
 
 The following diagram shows the overview of the demo:
 
-.. Image:: ../images/sl_wifi_demo_overview.jpg
+.. Image:: /images/sl_wifi_demo_overview.jpg
 
 
 The source files are organized as follows:
@@ -94,7 +94,7 @@ Please follow below step by step procedure to build the application.
 .. note::
    This will create executable binary under <CCS_Workspace>/network_terminal_AMIC110_ICE_RTOS_RTOS_ccs/Debug/network_terminal_AMIC110_ICE_RTOS_RTOS_ccs.out
 
-.. Image:: ../images/sl_wifi_demo_ccs_import.jpg
+.. Image:: /images/sl_wifi_demo_ccs_import.jpg
 
 
 How to Build the SimpleLink WiFi Plugin Demo using makefile on Windows
@@ -172,19 +172,19 @@ To load and run SimpleLink WiFi Plugin Demo:
 Now the network terminal demo will run and print progress through the UART.
 
 -  The inital display on the UART
-.. Image:: ../images/sl_wifi_demo_uart_init.jpg
+.. Image:: /images/sl_wifi_demo_uart_init.jpg
 
 -  Enter "help" at UART prompt
-.. Image:: ../images/sl_wifi_demo_uart_help.jpg
+.. Image:: /images/sl_wifi_demo_uart_help.jpg
 
 -  Enter "scan -n 10" at UART prompt
-.. Image:: ../images/sl_wifi_demo_uart_scan.jpg
+.. Image:: /images/sl_wifi_demo_uart_scan.jpg
 
 -  Enter " wlanconnect -s "dir645" -t WPA/WPA2 -p "12345678" " at UART prompt
-.. Image:: ../images/sl_wifi_demo_uart_wlanconnect.jpg
+.. Image:: /images/sl_wifi_demo_uart_wlanconnect.jpg
 
 -  Enter "ping 192.168.0.1" at UART prompt
-.. Image:: ../images/sl_wifi_demo_uart_ping.jpg
+.. Image:: /images/sl_wifi_demo_uart_ping.jpg
 
 .. note::
    This demo uses the D-Link DIR-645 wirless router with DHCP server. "dir645" is its SSID. "12345678" is its
@@ -205,28 +205,28 @@ To load and run SimpleLink WiFi Plugin Demo:
 #. Send the bootloader_boot_uart_a8host_debug.bin under
    pdk_<platform>_<version>/packages/ti/starterware/binary/bootloader/bin/am335x-evm/gcc
    using the XMODEM.
-.. Image:: ../images/sl_uart_boot_1st.jpg
+.. Image:: /images/sl_uart_boot_1st.jpg
 #. Upon completion,  then send the network_terminal.bin under
    processor_sdk_rtos_<platform>_<version>/demos/simplelink-wifi-demo/bin/am335x/a8/debug
    using the XMODEM.
-.. Image:: ../images/sl_uart_boot_2nd.jpg
+.. Image:: /images/sl_uart_boot_2nd.jpg
 
 Now the network terminal demo will run and print progress through the UART.
 
 -  The inital display on the UART
-.. Image:: ../images/sl_wifi_demo_uart_init.jpg
+.. Image:: /images/sl_wifi_demo_uart_init.jpg
 
 -  Enter "help" at UART prompt
-.. Image:: ../images/sl_wifi_demo_uart_help.jpg
+.. Image:: /images/sl_wifi_demo_uart_help.jpg
 
 -  Enter "scan -n 10" at UART prompt
-.. Image:: ../images/sl_wifi_demo_uart_scan.jpg
+.. Image:: /images/sl_wifi_demo_uart_scan.jpg
 
 -  Enter " wlanconnect -s "dir645" -t WPA/WPA2 -p "12345678" " at UART prompt
-.. Image:: ../images/sl_wifi_demo_uart_wlanconnect.jpg
+.. Image:: /images/sl_wifi_demo_uart_wlanconnect.jpg
 
 -  Enter "ping 192.168.0.1" at UART prompt
-.. Image:: ../images/sl_wifi_demo_uart_ping.jpg
+.. Image:: /images/sl_wifi_demo_uart_ping.jpg
 
 .. note::
    This demo uses the D-Link DIR-645 wirless router with DHCP server. "dir645" is its SSID. "12345678" is its

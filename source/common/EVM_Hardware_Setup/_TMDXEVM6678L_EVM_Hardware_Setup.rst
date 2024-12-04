@@ -15,13 +15,13 @@ Hardware Setup Overview
 The picture below shows the TMDXEVM6678L EVM and the locations of
 relevant switches and connectors.
 
-.. image:: ../images/TMDXEVM6678L-image.jpg
+.. image:: /images/TMDXEVM6678L-image.jpg
    :scale: 60 %
 
 |
 
 .. note:: Please refer to the following picture for the alpha/beta Lite EVM boards.
-.. image:: ../images/TMD6678L.jpg
+.. image:: /images/TMD6678L.jpg
 
 
 Hardware Setup Steps
@@ -54,7 +54,7 @@ boot device settings.
 
 |
 
-.. image:: ../images/TMD6678LSW3.png
+.. image:: /images/TMD6678LSW3.png
    :scale: 40 %
 
 
@@ -64,7 +64,7 @@ boot device settings.
 The boot mode settings below enable NOR boot by loading the boot loader
 from EEPROM address 0x51.
 
-.. image:: ../images/TMD6678LSW3-6.png
+.. image:: /images/TMD6678LSW3-6.png
    :scale: 40 %
 
 |
@@ -77,7 +77,7 @@ controlled by setting dip switch 2 of SW9.
 | User Switch 2 ON : DHCP
 | User Switch 2 OFF: Static IP
 
-.. image:: ../images/TMD6678LSW9.png
+.. image:: /images/TMD6678LSW9.png
    :scale: 50 %
 
 |
@@ -89,12 +89,12 @@ this on the platforms are set to use the USB by default. We recommend
 changing them to use the DB-9 as there are no known issues with this
 approach.
 
-.. image:: ../images/TMDXEVM6678L-shunts.jpg
+.. image:: /images/TMDXEVM6678L-shunts.jpg
 
 .. note:: If the USB serial port output does not work, ensure that the cable is connected directly to a USB port on the PC/laptop rather than going through an extender or USB hub.
 
 .. note:: For the shunts on the alpha/beta Lite EVM, please refer to the picture below for the setting
-.. image:: ../images/TMD6678LShunts.jpg
+.. image:: /images/TMD6678LShunts.jpg
 
 |
 | **7. Connect the power cable**

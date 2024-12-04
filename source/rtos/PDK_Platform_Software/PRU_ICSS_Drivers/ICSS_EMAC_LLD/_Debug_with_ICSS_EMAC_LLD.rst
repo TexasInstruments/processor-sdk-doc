@@ -78,7 +78,7 @@ ii. Restart the application by selecting Run->Restart
 9. Run the application by selecting Menu->Run->Resume. This will execute
 the application.
 
-.. Image:: ../images/De1.png
+.. Image:: /images/De1.png
 
 NOTE
 
@@ -412,7 +412,7 @@ ICSSEMAC_HwAttrs.
 
 For AM335x, the addresses are:
 
-.. Image:: ../images/Dramaddr.png
+.. Image:: /images/Dramaddr.png
 
 |
 | **Example:** For example, if storm prevention counter location needs
@@ -431,7 +431,7 @@ Hence enter 0x4a301f8c in the Memory Browser and check the content. If
 the value is 01, storm prevention functionality is enabled and if it is
 00, it is disabled.
 
-.. Image:: ../images/Stormprev.png
+.. Image:: /images/Stormprev.png
 
 |
 | Similarly, the value would be 0x4a302000 + 0x1f8c (DRAM base address
@@ -440,7 +440,7 @@ the value is 01, storm prevention functionality is enabled and if it is
 
 For AM437x, the DRAM base addresses are as follows:
 
-.. Image:: ../images/Dramaddram4.png
+.. Image:: /images/Dramaddram4.png
 
 |
 
@@ -456,7 +456,7 @@ Using ROV to Debug RTOS
 To view ROV tab, goto Tools -> RTOS Object View (ROV) and halt the debug
 session.
 
-.. Image:: ../images/Rov.png
+.. Image:: /images/Rov.png
 
 |
 
@@ -566,7 +566,7 @@ The network performance can be measured from the console output upon
 running the above tests. Consider the log when send.exe application is
 run for a few minutes till it stabilizes as below:
 
-.. Image:: ../images/Ndksend.png
+.. Image:: /images/Ndksend.png
 
 Here, 8192 bytes are being sent at 12800000 bytes/s. As NDK performance
 is measured at MBPS (Megabits per second), conversion is:

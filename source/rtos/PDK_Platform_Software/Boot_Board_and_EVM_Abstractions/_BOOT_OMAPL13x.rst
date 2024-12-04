@@ -206,7 +206,7 @@ Booting via SPI
 Below is an example of OMAPL137 SBL successfully booting the GPIO LED
 blink application
 
-.. Image:: ../images/Omapl137_boot_example.jpg
+.. Image:: /images/Omapl137_boot_example.jpg
 
 |
 
@@ -328,7 +328,7 @@ Booting via MMCSD
 Below is an example of OMAPL138 SBL successfully booting the GPIO LED
 blink application
 
-.. Image:: ../images/Omapl138_boot_example.png
+.. Image:: /images/Omapl138_boot_example.png
 
 |
 

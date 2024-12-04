@@ -121,7 +121,7 @@ the remotecores(DSP's and M4's) run a RTOS. In the normal operation,
 boot loader(U-Boot/SPL) boots and loads the A15 with the HLOS. The A15
 boots the DSP and the M4 cores.
 
-.. Image:: ../images/Normal-boot.png
+.. Image:: /images/Normal-boot.png
 
 In this sequence, the interval between the Power on Reset and the
 remotecores (i.e. the DSP's and the M4's) executing is dependent on the
@@ -136,7 +136,7 @@ The figure below illustrates how remoteproc/rpmsg driver from ARM Linux
 kernel communicates with IPC driver on slave processor (e.g. DSP, IPU,
 etc) running RTOS.
 
-.. Image:: ../images/LinuxIPC_with_RTOS_Slave.png
+.. Image:: /images/LinuxIPC_with_RTOS_Slave.png
 
 In order to setup IPC on slave cores, we provide some pre-built examples
 in IPC package that can be run from ARM Linux. The subsequent sections
@@ -463,7 +463,7 @@ its local EDMA. They both serve the same purpose of translating virtual
 addresses (i.e. the addresses as viewed by the DSP subsystem) into
 physical addresses (i.e. addresses as viewed from the L3 interconnect).
 
-.. Image:: ../images/LinuxIpcDspMmu.png
+.. Image:: /images/LinuxIpcDspMmu.png
 
 .. rubric:: DSP Physical Addresses
    :name: dsp-physical-addresses
@@ -740,7 +740,7 @@ The first column tells us whether the mapping is a Level 1 or Level 2
 descriptor. All the lines above are a first level descriptor, so we look
 at the associated format from the TRM:
 
-.. Image:: ../images/LinuxIpcPageTableDescriptor1.png
+.. Image:: /images/LinuxIpcPageTableDescriptor1.png
 
 The "da" ("device address") column reflects the virtual address. It is
 *derived* from the index into the table, i.e. there does not exist a
@@ -775,7 +775,7 @@ Subsystems, it's helpful to recognize that there are two
 distinct/independent levels of memory translation. Here's a snippet from
 the TRM to illustrate:
 
-.. Image:: ../images/LinuxIpcIpuMmu.png
+.. Image:: /images/LinuxIpcIpuMmu.png
 
 .. rubric:: Cortex M4 IPU Physical Addresses
    :name: cortex-m4-ipu-physical-addresses
@@ -1950,7 +1950,7 @@ examples setup the memory access using these MMUs which the users need
 to manage when integrating the components. This difference is
 highlighted below:
 
-.. Image:: ../images/IPU_MMU_Peripheral_access.png
+.. Image:: /images/IPU_MMU_Peripheral_access.png
 
 -  PDK examples use addresses (0x4X000000) to peripheral registers and
    use following MMU setting

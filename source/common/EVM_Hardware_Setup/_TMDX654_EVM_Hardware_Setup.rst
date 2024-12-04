@@ -7,7 +7,7 @@ EVM Layout and Key Components
 
 Refer to the image below which highlights the key components available on the AM65x EVM.
 
-.. image:: ../../../images/TMDX654_EVM_Hardware_Setup/AM65x_IDK_Diagram.png
+.. image:: /images/TMDX654_EVM_Hardware_Setup/AM65x_IDK_Diagram.png
 
 
 The complete feature set for the AM65x EVM is described in AM65x EVM User Manual. This section only provides description
@@ -25,20 +25,20 @@ For Lauterbach or emulators with MIPI60 or TI14 pin connector, an adapter must b
 
 .. Warning:: Do not connect an XDS560 emulator to the J16 application board connector. This may damage the EVM and the emulator pod.
 
-.. image:: ../../../images/TMDX654_EVM_Hardware_Setup/AM65x_JTAG.png
+.. image:: /images/TMDX654_EVM_Hardware_Setup/AM65x_JTAG.png
 		:width: 600px
 
 |
 
 If you are using an external emulator pod, you must select which connector sources the clock. The AM65x EVM can support the MIPI60 or cTI20 connector. The JTAG select jumper must be set correctly to specify the clock source as either the MIPI60 or the cTI20 connector.
 
-.. image:: ../../../images/TMDX654_EVM_Hardware_Setup/AM65x_Clock_Select.png
+.. image:: /images/TMDX654_EVM_Hardware_Setup/AM65x_Clock_Select.png
 
 
 BOOTMODE Switches
 ^^^^^^^^^^^^^^^^^^
 
-.. image:: ../../../images/TMDX654_EVM_Hardware_Setup/AM65x_Boot_Modes.png
+.. image:: /images/TMDX654_EVM_Hardware_Setup/AM65x_Boot_Modes.png
 
 **MCU BOOTMODE shown:**
 
@@ -63,7 +63,7 @@ BOOTMODE[18:0] = 000000000 0000000000  MCUBOOTMODE[8:0]= 000000011 (SLEEP BOOT)
 
 BOOTMODE[18:0] = 000000100 0000000110     MCUBOOTMODE[8:0]= 000000011 (SD BOOT)
 
-.. image:: ../../../images/TMDX654_EVM_Hardware_Setup/AM65x_Boot_Switches.png
+.. image:: /images/TMDX654_EVM_Hardware_Setup/AM65x_Boot_Switches.png
 
 For full details on supported boot modes, please refer to the table below.
 
@@ -136,7 +136,7 @@ UART Connection
  * Third COM port – Wakeup UART
  * Fourth COM port – SoC MAIN UART1
 
-.. image:: ../../../images/TMDX654_EVM_Hardware_Setup/AM65x_Tera_Term.png
+.. image:: /images/TMDX654_EVM_Hardware_Setup/AM65x_Tera_Term.png
 
 3. Open a serial console (e.g Tera Term) on host PC, connect to COM port on which EVM UART port is connected and set the following configuration.
 
@@ -199,7 +199,7 @@ http://processors.wiki.ti.com/index.php/Download_CCS
 
 Ensure that at least "Sitara AMx Processors" is selected:
 
- .. image:: ../../../images/TMDX654_EVM_Hardware_Setup/AM65x_CCS_Install.png
+ .. image:: /images/TMDX654_EVM_Hardware_Setup/AM65x_CCS_Install.png
 
 
 
@@ -209,12 +209,12 @@ Install the latest Emulation Package and Device Support Package
 1. In CCS, navigate to Help -> Check for Updates and select "Sitara device support"
 and "TI Emulators" and click Next.
 
- .. image:: ../../../images/TMDX654_EVM_Hardware_Setup/CCS_Check_for_Updates.PNG
+ .. image:: /images/TMDX654_EVM_Hardware_Setup/CCS_Check_for_Updates.PNG
 
 2. Click "Next" again, select "I accept the terms of the license agreements"
 and click Finish to begin the installation.
 
- .. image:: ../../../images/TMDX654_EVM_Hardware_Setup/CCS_Updating_Software.png
+ .. image:: /images/TMDX654_EVM_Hardware_Setup/CCS_Updating_Software.png
 
 3. You may be prompted to restart CCS for the updates to take effect. Click "Restart Now" when
 prompted to complete the installation.
@@ -249,12 +249,12 @@ Creating the Target Configuration
 
 3. Populate the Target Configuration File name, set the location, and click Finish.
 
- .. image:: ../../../images/TMDX654_EVM_Hardware_Setup/AM65x_Target_Configuration.png
+ .. image:: /images/TMDX654_EVM_Hardware_Setup/AM65x_Target_Configuration.png
 
 
 4. Select "Texas Instruments XDS110 USB Debug Probe" for the Connection and "GPEVM_AM65x" for the Board or Device.
 
- .. image:: ../../../images/TMDX654_EVM_Hardware_Setup/AM65x_Target_Configuration2.png
+ .. image:: /images/TMDX654_EVM_Hardware_Setup/AM65x_Target_Configuration2.png
 
 
 .. Note:: The GEL files are automatically populated in the Target Configuration when selecting an EVM instead of an SOC. The SOC option is generally used for custom board bring up or secondary boot debugging.
@@ -262,7 +262,7 @@ Creating the Target Configuration
 
 5. Navigate to the "Advanced" tab to ensure the GEL files are populated in the "initialization script" field for the various cores.
 
- .. image:: ../../../images/TMDX654_EVM_Hardware_Setup/AM65x_Target_Configuration3.png
+ .. image:: /images/TMDX654_EVM_Hardware_Setup/AM65x_Target_Configuration3.png
 
 The initialization script for the Cortex M3 will setup the MCU domain and Main domain PLL clocks, PSC registers, and bring the R5 and Cortex A53 cores out of reset.
 
@@ -270,7 +270,7 @@ The initialization script for the Cortex A53 and Cortex R5 will perform a simila
 
 6. Save the Target Configuration.
 
- .. image:: ../../../images/TMDX654_EVM_Hardware_Setup/AM65x_Target_Configuration4.png
+ .. image:: /images/TMDX654_EVM_Hardware_Setup/AM65x_Target_Configuration4.png
 
 
 Connecting to the Cores on AM65x
@@ -284,7 +284,7 @@ In CCS Editor View, go to View -> Target Configuration, and right click on the c
 
 .. Note:: When connecting to the M3 core for the first time, you may be prompted with a firmware update. Please click "Update" to update the emulator firmware.
 
-.. image:: ../../../images/TMDX654_EVM_Hardware_Setup/AM65x_FW_Update.png
+.. image:: /images/TMDX654_EVM_Hardware_Setup/AM65x_FW_Update.png
 
 On AM65x DMSC_Cortex_M3 is the boot master and is the first core that wakes up and starts the R5F ROM. Upon launching the target configuration, **connect to DMSC_Cortex_M3 first**, as this will automatically perform the PSC and PLL initialization. The following GEL output will appear in the CCS Console::
 
@@ -538,7 +538,7 @@ The following files are provided as part for the SciClient tools:
 
 AM65x Advanced Debug Script Flow
 
-.. image:: ../../../images/TMDX654_EVM_Hardware_Setup/AM65x_Advanced_Flow.png
+.. image:: /images/TMDX654_EVM_Hardware_Setup/AM65x_Advanced_Flow.png
 
 |
 
@@ -588,11 +588,11 @@ At the end of the setup, the R5F and A53 are in a clean state to load code and d
 
 In the debug view after completing the basic CCS setup, Click on Debug Configurations from the button as show below:
 
-.. image:: ../../../images/TMDX654_EVM_Hardware_Setup/CCS_Debug_Config.png
+.. image:: /images/TMDX654_EVM_Hardware_Setup/CCS_Debug_Config.png
 
 Select the CCXML file from the left-hand side and populate the path to the launch_am65xx.js file in the "Initialization Script" free form field and click on "Apply".
 
-.. image:: ../../../images/TMDX654_EVM_Hardware_Setup/CCS_Debug_XML.png
+.. image:: /images/TMDX654_EVM_Hardware_Setup/CCS_Debug_XML.png
 
 Once you Launch the CCXML file, the java script will automatically run and connect to R5F.
 

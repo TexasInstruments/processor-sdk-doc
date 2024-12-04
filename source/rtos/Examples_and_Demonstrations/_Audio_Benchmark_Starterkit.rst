@@ -44,7 +44,7 @@ release under the directory path
   the image below.
 
 Detailed description of the directory structure is given below:
-.. Image:: ../images/Audben_dirStructure.png
+.. Image:: /images/Audben_dirStructure.png
 
 -  prebuilt-binaries - directory contains prebuilt out files to run the benchmarks.
 -  bootimages - SD card boot files to run the benchmarks using SD boot.
@@ -157,7 +157,7 @@ For Other supported options, please type
 
 All available options are provided below:
 
-.. Image:: ../images/Make_help.png
+.. Image:: /images/Make_help.png
 
 Using CCS Projects
 ------------------
@@ -240,14 +240,14 @@ Description of arguments:
 Launch CCS and Import the CCS Project using the Project->Import Existing
 CCS Project and browse to the audio-benchmark-starterkit folder
 
-.. Image:: ../images/CCS_Project_Browse.png
+.. Image:: /images/CCS_Project_Browse.png
 
 **Step 4: Build Imported CCS Benchmark Projects**
 
 Right click on the Benchmark Project File and Build the project as shown
 below:
 
-.. Image:: ../images/Build_Benchmark.png
+.. Image:: /images/Build_Benchmark.png
 
 How to Run the Benchmarks
 =========================
@@ -344,7 +344,7 @@ on the SD card.
 Benchmark App output on UART console
 ====================================
 
-.. Image:: ../images/FFTbenchmark_sdBoot.png
+.. Image:: /images/FFTbenchmark_sdBoot.png
 
 Benchmark Starterkit Implementation
 -----------------------------------

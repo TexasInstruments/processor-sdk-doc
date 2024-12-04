@@ -14,7 +14,7 @@ Using the Ethernet cable supplied, connect one end of the cable to the
 Ethernet Port 0 (At bottom one) on the EVM and the other end to your PC.
 The below picture shows which Ethernet Port is port 0:
 
-.. image:: ../../../images/Evmk2e-image001.jpg
+.. image:: /images/Evmk2e-image001.jpg
 
 Connect the JTAG interface
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -37,7 +37,7 @@ K2E Set the boot mode switch SW1
      MSB                         LSB
      SW1 - 1(OFF) 2(OFF) 3(ON) 4(OFF)
 
-.. image:: ../../../images/Evmk2e-image002.jpg
+.. image:: /images/Evmk2e-image002.jpg
 
 .. note:: Here a switch on “ON” position should be considered as “1”.
 
@@ -50,7 +50,7 @@ K2E Set the boot mode switch SW1
      MSB                      LSB
      SW1 - 1(ON) 2(ON) 3(ON) 4(ON)
 
-.. image:: ../../../images/Evmk2e-image003.jpg
+.. image:: /images/Evmk2e-image003.jpg
 
 Attach the serial port cable to the SoC UART port
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -179,7 +179,7 @@ You can check the version by:
 #. At BMC prompt type 'ver' (no quotes).
 #. Check BMC version
 
-.. image:: ../../../images/Evmk2e-image005.jpg
+.. image:: /images/Evmk2e-image005.jpg
 
 If an in-field update is needed, downloaded the latest version
 `here <https://www.einfochips.com/index.php/partnerships/texas-instruments/k2e-evm.html#5-resources>`__
@@ -204,7 +204,7 @@ Prepare EVM for in-field update
    `here <http://www.ti.com/tool/lmflashprogrammer>`__) to update the
    firmware, as detailed in the steps below.
 
-.. image:: ../../../images/Evmk2e-image006.jpg
+.. image:: /images/Evmk2e-image006.jpg
 
 Perform in-field update
 """""""""""""""""""""""""""""""""""""""""""""""""
@@ -233,7 +233,7 @@ Perform in-field update
 #. If step 9 was done after power was applied, just type "ver" at BMC
    prompt.
 
-.. image:: ../../../images/Evmk2e-image007.jpg
+.. image:: /images/Evmk2e-image007.jpg
 
 UCD Power Management Update
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

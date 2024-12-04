@@ -79,27 +79,27 @@ Use the software for writing an image to disk to write the .img file to the SD c
 -  Launch the disk writer software. In the screenshots below, we are
    using *Win32 Disk Imager*.
 
-.. Image:: ../images/Win32_Disk_Imager_open.png
+.. Image:: /images/Win32_Disk_Imager_open.png
 
 -  Choose the image file for the SDK that you want to write.
 
-.. Image:: ../images/Win32_disk_imager_select_a_disk_image.png
+.. Image:: /images/Win32_disk_imager_select_a_disk_image.png
 
 -  Choose the SD card as the "Device".
 -  Write the image to the SD card by click "Write". You will likely get
    the below confirmation box. This command will overwrite whatever disk
    you point it to, please make sure and choose the correct disk.
 
-.. Image:: ../images/Win32_disk_imager_Confirm_overwrite.png
+.. Image:: /images/Win32_disk_imager_Confirm_overwrite.png
 
 -  You should see the following status bar as the image is being written
    to the disk:
 
-.. Image:: ../images/Win32_Disk_Imager_writing_to_disk.png
+.. Image:: /images/Win32_Disk_Imager_writing_to_disk.png
 
 -  When the write is complete, you will get the following notification:
 
-.. Image:: ../images/Win32_Disk_Imager_Complete.png
+.. Image:: /images/Win32_Disk_Imager_Complete.png
 
 -  You can now close the image writing program by click "Exit".
 
@@ -124,13 +124,13 @@ You can follow the instructions provide below:
 
 3. Run the SD Card Formatter 4.0 for SD/SDHC/SDXC Portable executable. The executable should automatically detect the SD card plugged via reader as a new 'removable disk' and populate the drive corresponding to the removable disk. Else you will need to manually point it to the new disk.
 
-.. Image:: ../images/SDFormatter_screenshot.png
+.. Image:: /images/SDFormatter_screenshot.png
 
 4. Choose default settings (as shown above)if it is new SD card and Click on 'Format'. For previously used SD cards, you can choose "FULL" by clicking on Options menu to erase and format the SD card.
 
 5. You should see a pop up window that indicates progress of the formatting tool. The Quick format option usually takes a few seconds. The following message will be displayed when the formatting is completed.
 
-.. Image:: ../images/SDF_Format_complete.png
+.. Image:: /images/SDF_Format_complete.png
 
 6. Copy the MLO (boot loader) to the formatted SD Card.
 
@@ -179,11 +179,11 @@ This method works with all the platforms. However, this method requires the PDK 
 
 | Here's an example using Windows 7:
 
-.. Image:: ../images/Win7_eject_disk.png
+.. Image:: /images/Win7_eject_disk.png
 
-.. Image:: ../images/Win7_eject_disk_detail.png
+.. Image:: /images/Win7_eject_disk_detail.png
 
-.. Image:: ../images/Win7_device_can_be_safely_removed.png
+.. Image:: /images/Win7_device_can_be_safely_removed.png
 
 |
 
@@ -202,9 +202,9 @@ installer, you will see
 
 -  AM335x/AM437x:
 
-.. Image:: ../images/AM437x-SD-Card-Example.png
+.. Image:: /images/AM437x-SD-Card-Example.png
 
 -  AM57x:
 
-.. Image:: ../images/AM57x-SD-Card-Example.png
+.. Image:: /images/AM57x-SD-Card-Example.png
 

@@ -19,7 +19,7 @@ ARM cortex A15 requires certain functions to be executed in the PL1
 privilege level. Boot monitor code provides this service.
 A high level architecture of the boot monitor software is shown below
 
-.. image:: ../images/Boot-kernel-arch.jpg
+.. image:: /images/Boot-kernel-arch.jpg
    :scale: 80%
 
 Boot monitor code is built as a standalone image and is loaded into

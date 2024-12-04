@@ -196,7 +196,7 @@ To do so:
 
 You should see the following screen when board is bootted with diagnostic binaries in SD card:
 
-.. Image:: ../images/Diag-screen1.jpg
+.. Image:: /images/Diag-screen1.jpg
 
 The framework diagnostic application should be loaded through SBL, and
 gives you the options:
@@ -207,11 +207,11 @@ gives you the options:
 
 Below is an example of running a diagnostic application:
 
-.. Image:: ../images/Diag-screen2.jpg
+.. Image:: /images/Diag-screen2.jpg
 
 Result of return from above run:
 
-.. Image:: ../images/Diag-screen3.png
+.. Image:: /images/Diag-screen3.png
 
 Loading through SPI Flash
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -246,7 +246,7 @@ SPI flash. To do so:
 
 Sample CCS output of SPI flash writer is shown below:
 
-.. Image:: ../images/Spi_flash_writer_output.jpg
+.. Image:: /images/Spi_flash_writer_output.jpg
 
 |
 
@@ -260,7 +260,7 @@ Sample CCS output of SPI flash writer is shown below:
 
 You should see the following screen:
 
-.. Image:: ../images/Amic110_ice_spi_boot_diag1.jpg
+.. Image:: /images/Amic110_ice_spi_boot_diag1.jpg
 
 |
 | The framework diagnostic application should be loaded through SBL, and
@@ -272,12 +272,12 @@ You should see the following screen:
 
 Below is an example of running a diagnostic application:
 
-.. Image:: ../images/Amic110_ice_spi_boot_diag2.jpg
+.. Image:: /images/Amic110_ice_spi_boot_diag2.jpg
 
 |
 | Result of return from above run:
 
-.. Image:: ../images/Amic110_ice_spi_boot_diag3.jpg
+.. Image:: /images/Amic110_ice_spi_boot_diag3.jpg
 
 |
 

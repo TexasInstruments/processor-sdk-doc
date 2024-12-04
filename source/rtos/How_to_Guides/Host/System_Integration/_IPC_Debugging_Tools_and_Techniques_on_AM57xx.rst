@@ -620,14 +620,14 @@ type of exception that occurred, but often provides a fault address to identify 
 
 A dump of the register contents at the time of the exception is also provided.
 
-.. image:: ../images/RegisterDump.PNG
+.. image:: /images/RegisterDump.PNG
 
 **Stack Trace**
 
 The stack trace is also provided (see Figure 6). This can be used in conjunction with the source code and
 the map file or CCS to get more information about what was executing at the time of the crash.
 
-.. image:: ../images/StackTraceDump.PNG
+.. image:: /images/StackTraceDump.PNG
 
 MMU Faults
 """"""""""
@@ -671,7 +671,7 @@ an access to an un-mapped area.
 
 Here is an example fault dump:
 
-.. image:: ../images/StackTraceDump2.PNG
+.. image:: /images/StackTraceDump2.PNG
 
 From the crash dump, the fault address is 0x96000000. The address will not be found in the resource
 table, which is why the fault occurred.
@@ -695,13 +695,13 @@ Find the corresponding function by looking this address up in the map file for t
 PC address is invalid due to an issue such as stack corruption, then this may not yield useful results. In
 this case, something useful is found:
 
-.. image:: ../images/SourceInsightCrashDump.PNG
+.. image:: /images/SourceInsightCrashDump.PNG
 
 Alternatively, use CCS to see the location of the fault. If CCS was already connected to the remote core
 before the fault happened, the core will have halted in the abort function. From here, directly set the PC
 address and see the line that caused the fault:
 
-.. image:: ../images/CCSFault.PNG
+.. image:: /images/CCSFault.PNG
 
 Use this technique at any time after booting the remote core to see what a PC address corresponds to. It
 will display the line that caused the error. This may, however, prevent proper execution because the

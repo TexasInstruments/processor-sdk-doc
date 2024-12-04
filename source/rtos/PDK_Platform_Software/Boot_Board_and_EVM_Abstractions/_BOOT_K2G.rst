@@ -141,7 +141,7 @@ Booting via SD Card
 | Below is an example of K2G SBL successfully booting the diagnostic
   application:
 
-.. Image:: ../images/K2g_boot_diag.jpg
+.. Image:: /images/K2g_boot_diag.jpg
 
 QSPI Boot Mode
 """"""""""""""""
@@ -219,7 +219,7 @@ SBL uses the last 0x40000 memory from MSMC RAM memory.
 
 The SBL memory map is shown below:
 
-.. Image:: ../images/SBL_mem_k2g.jpg
+.. Image:: /images/SBL_mem_k2g.jpg
 
 .. note::
    app should not have loadable sections residing in SBL memory region to

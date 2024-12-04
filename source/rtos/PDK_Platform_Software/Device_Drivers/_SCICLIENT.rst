@@ -124,13 +124,13 @@ Modify for J721E:
 
 - Connect the Javascript to the CCXML file with the steps shown below: (Note: this step needs to be repeated if you switch workspaces or clean your workspace).The Javascript is run on re-launch of the ccxml. If you would like to run the Javascript without relaunch then you can look ahead to the section: "Re-running the script once ccxml is already launched." Click on Debug Configurations from the button as follows:
 
-.. image:: ../images/sciclient_ccsLoad1.png
+.. image:: /images/sciclient_ccsLoad1.png
     :height: 300
     :width: 600
 
 - Select the CCXML file from the left-hand side and populate the path to the launch_am65xx.js file in the "Initialization Script" free form field and click on "Apply".
 
-.. image:: ../images/sciclient_ccsLoad2.png
+.. image:: /images/sciclient_ccsLoad2.png
     :height: 300
     :width: 600
 

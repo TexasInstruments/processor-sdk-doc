@@ -8,7 +8,7 @@ This demo implements and integrates audio I/O, framework, auto-detection, decodi
 processing (ASP) and encoding - the foundational building blocks of any performance audio application.
 The system block diagram below shows the structure of the demo.
 
-.. Image:: ../images/pa_k2g_layout.png
+.. Image:: /images/pa_k2g_layout.png
 	:scale: 100 %
 
 This demo utilizes Processor SDK features/components:
@@ -48,7 +48,7 @@ Hardware Setup
 -  Connect a COM port on PC to UART0 port on K2G EVM using a RS-232 cable.
 -  Connect XDS2xx USB Onboard Debug Probe to a PC USB port using the USB cable delivered with the EVM.
 
-.. Image:: ../images/pa_k2g_EVM_DC_setup.png
+.. Image:: /images/pa_k2g_EVM_DC_setup.png
 	:scale: 70 %
 
 Optional Setup for HDMI
@@ -68,7 +68,7 @@ Optional Setup for HDMI
    from HSR41P J8 “HDMI OUT”.
 -  Connect 5V AC to USB power supply to IFB power connector J1.
 
-.. Image:: ../images/pa_k2g_EVM_DC_HDMI_setup.png
+.. Image:: /images/pa_k2g_EVM_DC_HDMI_setup.png
 	:scale: 70 %
 
 Software and Tools Setup

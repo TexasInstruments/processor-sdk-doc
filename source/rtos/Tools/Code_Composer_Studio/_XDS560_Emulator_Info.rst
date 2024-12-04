@@ -81,12 +81,12 @@ Wiki page for more information and board requirements. Generally, in CCS
 3.3 Setup, you may need to select the create board option to enable the
 rev D capabilities. This can be seen in the screen shot below.
 
-.. Image:: ../images/Ccsetup-02.jpg
+.. Image:: /images/Ccsetup-02.jpg
 
 Once this is done, in the connnection properties, it is possible to
 select the "Adaptive Clocking" options.
 
-.. Image:: ../images/Ccsetup-04.jpg
+.. Image:: /images/Ccsetup-04.jpg
 
 For devices that support EMU Boot modes the XDS560 Rev D cable drives
 the selected EMU pin polarity on the rising edge of nTRST or TVD. The
@@ -96,7 +96,7 @@ Mode” selection options).To determine if your device supports boot
 modes, which modes are supported and the proper polarity for each boot
 mode see your device’s data sheet.
 
-.. Image:: ../images/Ccsetup-05.jpg
+.. Image:: /images/Ccsetup-05.jpg
 
 The XDS560 Rev D cable supports a remote system reset capability. The
 SYSRST signal from the 20-pin Emulator header on your board must be
@@ -317,7 +317,7 @@ TMDSADP1414
 
    <div class="floatnone">
 
-.. Image:: ../images/TMDSADP1414.jpg
+.. Image:: /images/TMDSADP1414.jpg
 
 .. raw:: html
 
@@ -335,7 +335,7 @@ TMDSADP1414-ISO
 
    <div class="floatnone">
 
-.. Image:: ../images/TMDSADP1414-ISO.jpg
+.. Image:: /images/TMDSADP1414-ISO.jpg
 
 .. raw:: html
 
@@ -353,7 +353,7 @@ TMDSADP1420
 
    <div class="floatnone">
 
-.. Image:: ../images/TMDSADP1420.jpg
+.. Image:: /images/TMDSADP1420.jpg
 
 .. raw:: html
 
@@ -371,7 +371,7 @@ TMDSADP1460
 
    <div class="floatnone">
 
-.. Image:: ../images/TMDSADP1460.jpg
+.. Image:: /images/TMDSADP1460.jpg
 
 .. raw:: html
 
@@ -389,7 +389,7 @@ TMDSADPEMU-20A
 
    <div class="floatnone">
 
-.. Image:: ../images/TMDSADPEMU-20A.png
+.. Image:: /images/TMDSADPEMU-20A.png
 
 .. raw:: html
 
@@ -407,7 +407,7 @@ TMDSADPEMU-20T
 
    <div class="floatnone">
 
-.. Image:: ../images/TMDSADPEMU-20T.png
+.. Image:: /images/TMDSADPEMU-20T.png
 
 .. raw:: html
 
@@ -426,7 +426,7 @@ MDL-ADA2
 
    <div class="floatnone">
 
-.. Image:: ../images/MDL-ADA2_cables.jpg
+.. Image:: /images/MDL-ADA2_cables.jpg
 
 .. raw:: html
 
@@ -479,12 +479,12 @@ Q: Does the XDS560 support ARM Adaptive clocking?
 -  A: For CCSv3.3 with Service Release 12 and above, you can setup for
    adaptive clocking as in the photo below:
 
-.. Image:: ../images/Ccsv33adaptive.jpg
+.. Image:: /images/Ccsv33adaptive.jpg
 
 -  A: For CCS v4.x, you can setup adaptive clocking as in the photo
    below:
 
-.. Image:: ../images/Ccsv4adaptive.jpg
+.. Image:: /images/Ccsv4adaptive.jpg
 
 Q: What is the difference between `XDS510 <http://processors.wiki.ti.com/index.php/XDS510>`__ and XDS560?
 ----------------------------------------------------------------------------
@@ -553,7 +553,7 @@ Q: Are there lower cost options?
 Q: Why does my Windows Device Manager show a warning for the TI XDS560 PCI Emulator?
 ------------------------------------------------------------------------------------
 
-.. Image:: ../images/560pcierror.jpg
+.. Image:: /images/560pcierror.jpg
 
 -  A: The Windows Device Manager is showing this error because a TI
    XDS560 PCI emulator is not installed. Windows cannot start the driver
@@ -608,7 +608,7 @@ Q: How do I get loopback in a Blackhawk XDS560 with a 20 pin cable (Rev D) cable
 
 -  In CCS v4.x, you need to select the loopback option.
 
-.. Image:: ../images/Bh560m-revd-loopbackenable.jpg
+.. Image:: /images/Bh560m-revd-loopbackenable.jpg
 
 Q: Can I use Boundary Scan with XDS560?
 ---------------------------------------

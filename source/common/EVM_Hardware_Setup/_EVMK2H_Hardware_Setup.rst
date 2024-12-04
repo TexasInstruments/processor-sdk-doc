@@ -69,7 +69,7 @@ to your PC.
 
 This picture shows which Ethernet Port is 0:
 
-.. image:: ../../../images/K2H_ENET0.jpg
+.. image:: /images/K2H_ENET0.jpg
 
 Connect the JTAG interface
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -193,7 +193,7 @@ application.**
 
 |
 
-.. image:: ../../../images/Bmc_ver_screenshot.JPG
+.. image:: /images/Bmc_ver_screenshot.JPG
 
 
 |
@@ -239,7 +239,7 @@ with the following steps.
 #. Set ‘Transfer Size’ to 60, and make sure ‘Disable Auto Baud Support’
    is unchecked. 
 
-   .. image::  ../../../images/LMflashProg_Config.png
+   .. image::  /images/LMflashProg_Config.png
 
 #. In the ‘Program’ tab, Browse to the location of the binary file
    containing the firmware update, and select it.
@@ -252,7 +252,7 @@ with the following steps.
 #. If step 9 was done after power was applied, just type "ver" at BMC
    prompt.
 
-.. image:: ../../../images/K2EVM.jpg
+.. image:: /images/K2EVM.jpg
 
 DIP Switch and Bootmode Configurations
 -----------------------------------------
@@ -502,7 +502,7 @@ Connect to EVMK2H using CCS
 Launch CCS on your host machine. Select View Tab and select the "Target
 configuration"
 
-.. image:: ../../../images/New_TargetConfig.png
+.. image:: /images/New_TargetConfig.png
 
 |
 
@@ -510,7 +510,7 @@ Create New Target configuration in CCS by selecting appropriate
 emulator. For Default on board emulator select "Texas instruments XDS2xx
 Debug Probe" and select the target device as 66AK2H12.
 
-.. image:: ../../../images/K2H_TargetConfig.png
+.. image:: /images/K2H_TargetConfig.png
 
 Go to the Advanced Tab where you will see all the cores on the SOC
 listed. In order to initialize the clocks and external DDR memory on the
@@ -519,12 +519,12 @@ populate the Gel Select A15\_0 and then hit Browse and locate the GEL in
 the CCS installation under the following path:
 CCS\_INSTALL/ccs\_base/emulation/boards/xtcievmk2x/gel
 
-.. image:: ../../../images/ARM_GEL.png
+.. image:: /images/ARM_GEL.png
 
 DSP developers, can also select C66x\_0 and populate the DSP GEL file
 that is found in the same location.
 
-.. image:: ../../../images/DSP_GEL.png
+.. image:: /images/DSP_GEL.png
 
 Going back to the Basic Tab, Save the configuration. For additional
 sanity check, you can also test connection.
@@ -537,9 +537,9 @@ Right click on the target configuration and Select "Launch Target
 configuration". Wait for CCS debug View to launch and display the eight
 C66x cores and 4 A15 cores.
 
-.. image:: ../../../images/Launch_TargetConfig.png
+.. image:: /images/Launch_TargetConfig.png
 
-.. image:: ../../../images/Connect_A15.png
+.. image:: /images/Connect_A15.png
 
 Start by connecting to A15\_0 and C66x\_0. when you connect to the
 cores, you will see the GEL script logs in the console window, which

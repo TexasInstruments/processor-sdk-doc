@@ -54,7 +54,7 @@ It can also be cloned using following git command:
 
 The file  and directory oraganization are as below.
 
- .. image:: ../images/ipclld_file_org.png
+ .. image:: /images/ipclld_file_org.png
                 :height: 944
                 :width: 435
 
@@ -170,7 +170,7 @@ Remote firmware can be loading using CCS or using uBoot SPL.
     * Run the script using following command (example below is for J721E, use the appropriate one for your target)
         - loadJSFile("PDK_INSTALL_DIR/packages/ti/drv/sciclient/tools/ccsLoadDmsc/j721e/launch.js")
 
-      .. image:: ../images/ipclld_LoadingSysFw_sciclient.png
+      .. image:: /images/ipclld_LoadingSysFw_sciclient.png
                 :height: 160
                 :width: 941
     * Connect the cores
@@ -181,7 +181,7 @@ Remote firmware can be loading using CCS or using uBoot SPL.
     * Run the cores.
     * After running the cores, the sample output should look something like below.
 
-      .. image:: ../images/ipclld_Sample_output_mpu.png
+      .. image:: /images/ipclld_Sample_output_mpu.png
                 :height: 377
                 :width: 672
 
@@ -221,13 +221,13 @@ In this section ipc_echo_test is used to demonstrate, but same instructions appl
 
      - modprobe rpmsg_client_sample count=5
 
-     .. image:: ../images/ipclld_Linux_Start.png
+     .. image:: /images/ipclld_Linux_Start.png
                 :height: 270
                 :width: 581
 
    3) After running the sample app, it should display something below
 
-    .. image:: ../images/ipclld_linux_output.png
+    .. image:: /images/ipclld_linux_output.png
                 :height: 796px
                 :width: 983px
 
@@ -257,7 +257,7 @@ Typical Data-Flow in IPCLLD communication between two cores
 
 Following picture illustrates the data flow between two cores using mailbox IP as transport.
 
-.. image:: ../images/ipclld_data_flow.png
+.. image:: /images/ipclld_data_flow.png
                 :height: 470
                 :width: 687
 

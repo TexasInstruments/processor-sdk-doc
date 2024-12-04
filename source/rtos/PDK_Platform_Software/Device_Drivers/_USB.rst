@@ -32,7 +32,7 @@ application. After the host PC enumerates this EVM-thumb drive, the PC
 will see a USB storage device. This EVM-thumb drive is not yet formatted
 with any file system and requires user to format it before use.
 
-.. Image:: ../images/USB_MSC_device.PNG
+.. Image:: /images/USB_MSC_device.PNG
 
 The following screen shots show what one would expect when running the
 device mode demo application and plugging in a USB cable from the EVM
@@ -40,14 +40,14 @@ USB port #0 to a PC running Windows
 
 Printout from demo application:
 
-.. Image:: ../images/Device_mode_printout.png
+.. Image:: /images/Device_mode_printout.png
 
 The MSC device is detected in Windows, and a FAT formatted USB drive
 named "PDK-USBDEV" should be seen in the "Window Explorer". The content
 of the drive is just a readme.txt file. This USB drive can be
 manipulated like any other removable USB drive.
 
-.. Image:: ../images/Windows_pdk_usb.png
+.. Image:: /images/Windows_pdk_usb.png
 
 Windows might show a message saying it should be scanned and fixed. We
 can just ignore it and just continue without scanning.
@@ -62,7 +62,7 @@ manipulate files on the attached MMCSD card on the EVM. This is how it looks.
 Its code is similar to that of the USB device MSC example but with the call back
 functions calling MMCSD API's instead of RamDisk APIs
 
-.. Image:: ../images/Usb_device_mmcsd.PNG
+.. Image:: /images/Usb_device_mmcsd.PNG
 
 |
 
@@ -75,14 +75,14 @@ interface via the EVM via UART for interaction with the example. The
 shell provides some basic commands to manipulate the content of the
 attached USB disk drive.
 
-.. Image:: ../images/USB_MSC_host.PNG
+.. Image:: /images/USB_MSC_host.PNG
 
 |
 
 Screenshot of a MSC host mode example running in RTOS after plugging in
 a USB thumb drive into USB port #1
 
-.. Image:: ../images/Host_shell_screen_shot.png
+.. Image:: /images/Host_shell_screen_shot.png
 
 |
 
@@ -99,7 +99,7 @@ mode of operation is currently supported on AM335X GP EVM, OMAP-L137 EVM
 and OMAP-L138 LCDK.
 
 |
-.. Image:: ../images/Am335x_usb_ac_bd.jpg
+.. Image:: /images/Am335x_usb_ac_bd.jpg
 
 |
 
@@ -121,12 +121,12 @@ The bulk demo application requires a host PC with USB host plugged to the USB de
 port on the EVM. Depending on the platform, the USB device port might be USB port #0
 or #1.
 
-.. Image:: ../images/USB_MSC_device.PNG
+.. Image:: /images/USB_MSC_device.PNG
 
 Please refer to PDK user guide for how to generate USB example projects. Once the demo
 application is loaded and run, the EVM UART console shows the following:
 
-.. Image:: ../images/usb_dev_bulk_console.png
+.. Image:: /images/usb_dev_bulk_console.png
 
 A Python host PC example application is provided in
 ti/drv/usb/example/usb_dev/bulk/usb_dev_bulk_host_application.py
@@ -146,7 +146,7 @@ It does the following:
 
 A screen shot of what the Python test script outputs
 
-.. Image:: ../images/usb_dev_bulk_host_tool_output.png
+.. Image:: /images/usb_dev_bulk_host_tool_output.png
 
 The USB bulk demo application configures the USB endpoints as high speed endpoints with 512B packet size.
 
@@ -218,13 +218,13 @@ Below diagram is the sequence of API calls that starts the USB device
 MSC application. All USB events are handled internally in the LLD and in
 the interrupt context.
 
-.. Image:: ../images/USB_MSC_device_API_flow.PNG
+.. Image:: /images/USB_MSC_device_API_flow.PNG
 
 User provided disk functions will be called from the LLD to handle the
 actual physical disk access. The overview of USB Device MSC example
 application:
 
-.. Image:: ../images/USB_MSC_device_example_blocks.PNG
+.. Image:: /images/USB_MSC_device_example_blocks.PNG
 
 The content of the file: usb_msc_structs.c can be replaced with customer
 USB device information (PID/VID, device names, etc.)
@@ -238,11 +238,11 @@ example can display and manipulate content of the USB device.
 
 The following is how the USB host MSC example demo is organized:
 
-.. Image:: ../images/USB_MSC_host_example_blocks.PNG
+.. Image:: /images/USB_MSC_host_example_blocks.PNG
 
 The following is the sequence of the APIs that were used:
 
-.. Image:: ../images/USB_MSC_host_API_flow.PNG
+.. Image:: /images/USB_MSC_host_API_flow.PNG
 
 |
 
@@ -258,7 +258,7 @@ Below diagram is the sequence of API calls that starts the USB device
 audio application. All USB events are handled internally in the LLD and
 in the interrupt context.
 
-.. Image:: ../images/USB_Audio_class_flowchart.jpg
+.. Image:: /images/USB_Audio_class_flowchart.jpg
 
 
 |
@@ -268,7 +268,7 @@ in the interrupt context.
 Sequence of API calls as long as what the example application looks like are
 described bellow
 
-.. Image:: ../images/usb_device_generic_bulk_example_application.png
+.. Image:: /images/usb_device_generic_bulk_example_application.png
 
 - Main APIs that are used to read/write from and to the USB bulk device are USBD_bulkRead() and USBD_bulkWrite().
 These two functions will block the caller until they finish their operation.
@@ -449,14 +449,14 @@ platform supported.
 
 **AM335x GP EVM**
 
-.. Image:: ../images/Am335x_usb_ac_setup.jpg
+.. Image:: /images/Am335x_usb_ac_setup.jpg
 
 **OMAPL137 EVM**
 
-.. Image:: ../images/Omapl137_usb_ac_setup.jpg
+.. Image:: /images/Omapl137_usb_ac_setup.jpg
 **OMAPL138 LCDK**
 
-.. Image:: ../images/Omapl138_usb_ac_setup.jpg
+.. Image:: /images/Omapl138_usb_ac_setup.jpg
 
 **How to Run the Demo**
 
@@ -475,18 +475,18 @@ platform supported.
 -  Run the program (loaded previously) by pressing F8
 -  The CCS ConsoleIO will display the following:
 
-.. Image:: ../images/CCS_console_output.png
+.. Image:: /images/CCS_console_output.png
 
 -  Right click on the "Speaker Icon" on the USB Host (right side of the
    toolbar), then select "Playback devices"
 -  Wait until the "Speakers USB Audio Device" shows up in the "Sound"
    dialog
 
-.. Image:: ../images/Sound.png
+.. Image:: /images/Sound.png
 
 -  Select the "Speakers USB Audio Device" in the "Sound" dialog, then
    click the "Configure"
-.. Image:: ../images/Speaker_setup.png
+.. Image:: /images/Speaker_setup.png
 
 -  Click the "Test" in "Speaker Setup", you should hear the testing tone
    in the headphone connected to the EVM

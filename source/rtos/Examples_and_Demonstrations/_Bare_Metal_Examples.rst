@@ -44,7 +44,7 @@ Click Finish after you are done to allow CCS to auto generate the
 project from the template.
 
 
-.. Image:: ../images/AM65x_Create_CCS_Project.png
+.. Image:: /images/AM65x_Create_CCS_Project.png
 
 
 6. The generated CCS project contains source file **main.c**, ARM assembly code **startup_ARMCA53.S** and a linker command file **AM65X.lds**.
@@ -106,7 +106,7 @@ After connecting to the M3, right click on **CortexA53_0_0** and connect to it.
 15. Load and run hello_world.out example file on the Cortex-A53.
 You should see a Hello_world string displayed in the CCS console window.
 
-.. Image:: ../images/AM65x_CCS_Hello_World.PNG
+.. Image:: /images/AM65x_CCS_Hello_World.PNG
 
 ARM Cortex-A15
 ==============
@@ -146,7 +146,7 @@ templates and examples, select **Basic Examples-> Hello World**
 Click Finish after you are done to allow CCS to auto generate the
 project from the template **Basic Examples-> Hello World**.
 
-.. Image:: ../images/NewCCSProject_Hello_world.png
+.. Image:: /images/NewCCSProject_Hello_world.png
 
 5. The generated CCS project contains source file **main.c**, ARM
 assembly code **startup_ARMCA15.S** and a linker command file
@@ -254,7 +254,7 @@ configurations --> AM572_DDR3_532MHz_config
 11. Load and run hello_world.out example file. You should see
 **Hello_world** string displayed on CCS console window.
 
-.. Image:: ../images/HelloWorldOutput.jpg
+.. Image:: /images/HelloWorldOutput.jpg
 
 .. note::
 
@@ -296,7 +296,7 @@ build **little** endian **ELF** binary for the A9 core. Click Finish
 after you are done to allow CCS to auto generate the project from the
 template **Basic Examples-> Hello World**.
 
-.. Image:: ../images/Bare-Metal_A9_templateselect.jpg
+.. Image:: /images/Bare-Metal_A9_templateselect.jpg
 
 5. The generated CCS project contains source file **main.c**, ARM
 assembly code **startup_ARMCA8.S** and a linker command file
@@ -382,7 +382,7 @@ in the GEL will initialize the clocks and DDR.
 10. Load and run hello_world_a9.out file. You should see **Hello
 World!** string displayed on CCS console window.
 
-.. Image:: ../images/Hello_world_a9.jpg
+.. Image:: /images/Hello_world_a9.jpg
 
 .. note::
    If the example does not load correctly in the first attempt, reload and
@@ -407,7 +407,7 @@ build **little** endian **ELF** binary for the A8 core. Click Finish
 after you are done to allow CCS to auto generate the project from the
 template **Basic Examples-> Hello World**.
 
-.. Image:: ../images/Bare-Metal_A8_templateselect.jpg
+.. Image:: /images/Bare-Metal_A8_templateselect.jpg
 
 5. The generated CCS project contains source file **hello.c**, ARM
 assembly code **startup_ARMCA8.S** and a linker command file
@@ -487,7 +487,7 @@ functionality in the GEL will initialize the clocks and DDR.
 10. Load and run hello_world_a8.out file. You should see **Hello
 World!** string displayed on CCS console window.
 
-.. Image:: ../images/Hello_world_a8.jpg
+.. Image:: /images/Hello_world_a8.jpg
 
 .. note::
    If the example does not load correctly in the first attempt, reload and
@@ -521,7 +521,7 @@ Under Project templates and examples, select **Basic Examples -> Hello World**
 Click Finish after you are done to allow CCS to auto generate the
 project from the template.
 
-.. Image:: ../images/AM65x_Create_CCS_Project_R5.png
+.. Image:: /images/AM65x_Create_CCS_Project_R5.png
 
 5. The generated CCS project contains source file **hello.c**,
 and linker command file **linker_r5.lds**.
@@ -553,7 +553,7 @@ After connecting to the M3, right click on **MCU_PULSAR_Cortex_R5_0** and connec
 11. Load and run hello_world.out example file on the Cortex-R5.
 You should see a Hello_world string displayed in the CCS console window.
 
-.. Image:: ../images/AM65x_CCS_Hello_World_R5.PNG
+.. Image:: /images/AM65x_CCS_Hello_World_R5.PNG
 
 |
 
@@ -575,7 +575,7 @@ The Default settings uses "TI ARM compiler 5.x.x" tool chain for cortex
 M4 and sets the build for **little** endian **ELF** binary for the M4
 core.
 
-.. Image:: ../images/Bare-Metal_M4_templateselect.jpg
+.. Image:: /images/Bare-Metal_M4_templateselect.jpg
 
 5. The generated CCS project contains only one source file **hello.c**.
 Ensure the main.c file contains the following code
@@ -678,7 +678,7 @@ You should see the following log in the Console
 Hello_Example_m4.out file. You should see **Hello World** string
 displayed on console window.
 
-.. Image:: ../images/Hello_world_m4.jpg
+.. Image:: /images/Hello_world_m4.jpg
 
 .. note::
 
@@ -699,14 +699,14 @@ As a sample we will use the OMAP-L138 device to describe the steps.
 
 3. Select Target as OMAP-L1x --> ARM9 and appropriate target board as shown in the image below.
 
-.. Image:: ../images/omapl13x_arm9_hello_nonos_ccs.png
+.. Image:: /images/omapl13x_arm9_hello_nonos_ccs.png
 
 
 4. In the ARM9 tab, provide a name for
 the project, such as "hello_world_arm9" and use the default settings for
 the project as shown in the image below. Ensure OMAPL138.cmd is selected for the linker command file.
 
-.. Image:: ../images/omapl13x_arm9_hello_nonos_ccs2.png
+.. Image:: /images/omapl13x_arm9_hello_nonos_ccs2.png
 
 5. Click Finish
 after you are done to allow CCS to auto generate the project from the
@@ -835,7 +835,7 @@ World**. The Default settings uses "TI CG Tools compiler 8.x.x" tool
 chain for C66x and sets the build for **little** endian **ELF** binary
 for the C66x core.
 
-.. Image:: ../images/Bare-Metal_C66x_templateselect.jpg
+.. Image:: /images/Bare-Metal_C66x_templateselect.jpg
 
 5. The generated CCS project contains only one source file **hello.c**.
 Ensure the main.c file contains the following code
@@ -940,7 +940,7 @@ You should see the following log in the Console
 10. Select and Connect to C66x_DSP1. Load and run hello_world_dsp.out
 file. You should see **Hello World** string displayed on console window.
 
-.. Image:: ../images/Hello_world_dsp.jpg
+.. Image:: /images/Hello_world_dsp.jpg
 
 |
 
@@ -973,7 +973,7 @@ World**. The Default settings uses "TI CG Tools compiler 8.x.x" tool
 chain for C674x and sets the build for **little** endian **ELF** binary
 for the C674x core.
 
-.. Image:: ../images/Baremetal_helloWorld_ProjectCreate_step1.png
+.. Image:: /images/Baremetal_helloWorld_ProjectCreate_step1.png
 
 5. The generated CCS project contains only one source file **hello.c**.
 Ensure the main.c file contains the following code
@@ -1102,7 +1102,7 @@ power up the DSP. You should see the following log in the console.
 11. Select and Connect to C674x. Load and run hello_world_dsp.out file.
 You should see **Hello World** string displayed on console window.
 
-.. Image:: ../images/Hello_world_dsp674x.png
+.. Image:: /images/Hello_world_dsp674x.png
 
 |
 

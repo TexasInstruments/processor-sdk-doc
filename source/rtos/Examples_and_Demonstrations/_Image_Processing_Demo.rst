@@ -244,41 +244,41 @@ The CCS is used to load the program and run on ARM-A15 (HOST), C66x Core
 -  Connect to CortexA15_0 (Host) [Push "Power" button right before
    connect to CortexA15_0]
 
-.. Image:: ../images/Am572x_connect_a15.jpg
+.. Image:: /images/Am572x_connect_a15.jpg
 
 -  Connect to C66xx_DSP1
 
-.. Image:: ../images/Am572x_connect_dsp1.jpg
+.. Image:: /images/Am572x_connect_dsp1.jpg
 
 -  Connect to C66xx_DSP2
 
-.. Image:: ../images/Am572x_connect_dsp2.jpg
+.. Image:: /images/Am572x_connect_dsp2.jpg
 
 -  Load image_processing_evmam572x_dsp1.out to C66xx_DSP1 using JTAG
 
-.. Image:: ../images/Am572x_load_dsp1.jpg
+.. Image:: /images/Am572x_load_dsp1.jpg
 
 -  Run image_processing_evmam572x_dsp1.out on C66xx_DSP1
 -  Load image_processing_evmam572x_dsp2.out to C66xx_DSP2 using JTAG
 
-.. Image:: ../images/Am572x_load_dsp2.jpg
+.. Image:: /images/Am572x_load_dsp2.jpg
 
 -  Run image_processing_evmam572x_dsp2.out on C66xx_DSP2
 -  Loaded image_processing_evmam572x_host.out to CortexA15_0
 
-.. Image:: ../images/Am572x_load_host.jpg
+.. Image:: /images/Am572x_load_host.jpg
 
 -  Run image_processing_evmc6678l_master.out on CortexA15_0
 -  The HOST will display the IP address on CCS CIO
 
-.. Image:: ../images/Am572x_cio.jpg
+.. Image:: /images/Am572x_cio.jpg
 
 -  Users can use internet browser to access this IP address
 -  The Image Processing Demo page will be displayed
 -  Provide values for the "Number of Cores" and "Select Image to
    Process" fields
 
-.. Image:: ../images/Am572x_web_1.jpg
+.. Image:: /images/Am572x_web_1.jpg
 
 The HOST will read the image via NDK, partition it according to the
 number of cores, send the messages to DSP cores (Slaves) via IPC
@@ -288,7 +288,7 @@ HOST will be notified by DSP cores via IPC MessageQ. Subsequently, the
 HOST will write the input and output images to the Image Processing Demo
 page using NDK.
 
-.. Image:: ../images/Am572x_web_2.jpg
+.. Image:: /images/Am572x_web_2.jpg
 
 |
 
@@ -318,7 +318,7 @@ below:
 -  Provide values for the "Number of Cores" and "Select Image to
    Process" fields
 
-.. Image:: ../images/Am572x_web_1.jpg
+.. Image:: /images/Am572x_web_1.jpg
 
 The HOST will read the image via NDK, partition it according to the
 number of cores, send the messages to DSP cores (Slaves) via IPC
@@ -328,7 +328,7 @@ HOST will be notified by DSP cores via IPC MessageQ. Subsequently, the
 HOST will write the input and output images to the Image Processing Demo
 page using NDK.
 
-.. Image:: ../images/Am572x_web_2.jpg
+.. Image:: /images/Am572x_web_2.jpg
 
 C6678 EVM or C6657 EVM
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -340,33 +340,33 @@ C665x.
 -  Launch CCS and connect to C6678 EVM using proper target configuration
 -  Connect to C66x Core 0 (Host)
 
-.. Image:: ../images/C6678_connect_core0.jpg
+.. Image:: /images/C6678_connect_core0.jpg
 
 -  Loaded image_processing_evmc6678l_master.out to C66x Core 0
 
-.. Image:: ../images/C6678_load_master.jpg
+.. Image:: /images/C6678_load_master.jpg
 
 -  Run image_processing_evmc6678l_master.out on C66xx_0
 -  Group C66x Core 1-N into a group (Group 1, Slave)
 -  Connect to Group 1
 
-.. Image:: ../images/C6678_connect_group1.jpg
+.. Image:: /images/C6678_connect_group1.jpg
 
 -  Load image_processing_evmc6678l_slave.out to Group 1 using JTAG
 
-.. Image:: ../images/C6678_load_slave.jpg
+.. Image:: /images/C6678_load_slave.jpg
 
 -  Run image_processing_evmc6678l_slave.out on Group 1
 -  The HOST will display the IP address on CCS CIO
 
-.. Image:: ../images/C6678_cio.jpg
+.. Image:: /images/C6678_cio.jpg
 
 -  Users can use internet browser to access this IP address
 -  The Image Processing Demo page will be displayed
 -  Provide values for the "Number of Cores" and "Select Image to
    Process" fields
 
-.. Image:: ../images/Demo_web_page_1.jpg
+.. Image:: /images/Demo_web_page_1.jpg
 
 The HOST will read the image via NDK, partition it according to the
 number of cores, send the messages to DSP cores (Slaves) via IPC
@@ -376,7 +376,7 @@ HOST will be notified by DSP cores via IPC MessageQ. Subsequently, the
 HOST will write the input and output images to the Image Processing Demo
 page using NDK.
 
-.. Image:: ../images/Demo_web_page_2.jpg
+.. Image:: /images/Demo_web_page_2.jpg
 
 K2H EVM
 ^^^^^^^
@@ -387,42 +387,42 @@ master and C66xx_0 - C66xx_7 will be configured as slaves.
 -  Launch CCS and connect to K2H EVM using proper target configuration
 -  Connect to arm_A15_0 (Host)
 
-.. Image:: ../images/K2h_connect_a15.jpg
+.. Image:: /images/K2h_connect_a15.jpg
 
 -  Group C66xx_0 to C66xx_7 into a group (Group 1, Slaves)
 
-.. Image:: ../images/K2h_from_group1.jpg
+.. Image:: /images/K2h_from_group1.jpg
 
 -  Connect to Group 1
 
-.. Image:: ../images/K2h_connect_group1.jpg
+.. Image:: /images/K2h_connect_group1.jpg
 
 -  Load image_processing_evmk2hk_slave.out to Group 1 using JTAG
 
-.. Image:: ../images/K2h_load_group1.jpg
+.. Image:: /images/K2h_load_group1.jpg
 
 -  Run image_processing_evmk2hk_slave.out on Group 1
 
-.. Image:: ../images/K2h_run_group1.jpg
+.. Image:: /images/K2h_run_group1.jpg
 
 -  Loaded image_processing_evmk2hk_master_arm.out to arm_A15_0
 
-.. Image:: ../images/K2h_load_a15.jpg
+.. Image:: /images/K2h_load_a15.jpg
 
 -  Run image_processing_evmk2hk_master_arm.out on arm_A15_0
 
-.. Image:: ../images/K2h_run_a15.jpg
+.. Image:: /images/K2h_run_a15.jpg
 
 -  The HOST will display the IP address on CCS CIO
 
-.. Image:: ../images/K2h_cio.jpg
+.. Image:: /images/K2h_cio.jpg
 
 -  Users can use internet browser to access this IP address
 -  The Image Processing Demo page will be displayed
 -  Provide values for the "Number of Cores" and "Select Image to
    Process" fields
 
-.. Image:: ../images/K2h_web_1.jpg
+.. Image:: /images/K2h_web_1.jpg
 
 The HOST will read the image via NDK, partition it according to the
 number of cores, send the messages to DSP cores (Slaves) via IPC
@@ -432,5 +432,5 @@ HOST will be notified by DSP cores via IPC MessageQ. Subsequently, the
 HOST will write the input and output images to the Image Processing Demo
 page using NDK.
 
-.. Image:: ../images/K2h_web_2.jpg
+.. Image:: /images/K2h_web_2.jpg
 

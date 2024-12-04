@@ -15,7 +15,7 @@ Software Component Directories
 ================================
 Here is a sample directory layout for the AM57x RTOS SDK:
 
-.. Image:: ../images/Processor-SDK-RTOS-directories.png
+.. Image:: /images/Processor-SDK-RTOS-directories.png
 
 |
 
@@ -33,7 +33,7 @@ The default SDK Install Path is ``C:\TI`` for Windows and
 This directory contains the following top-level directories and files;
 here is an example for AM57x:
 
-.. Image:: ../images/Processor-SDK-RTOS-directory-top.png
+.. Image:: /images/Processor-SDK-RTOS-directory-top.png
 
 These directories contain the collateral and tools applicable for RTOS:
 

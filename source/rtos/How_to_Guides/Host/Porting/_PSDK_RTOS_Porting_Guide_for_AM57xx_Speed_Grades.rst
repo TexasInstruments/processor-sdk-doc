@@ -37,12 +37,12 @@ Comparison of AM572x, AM571x and AM570x devices
 **Quick Feature Set comparison between devices in Sitara AM57xx
 family :**
 
-.. Image:: ../images/AM572x_AM571X_AM570x_Comparison.png
+.. Image:: /images/AM572x_AM571X_AM570x_Comparison.png
 
 |
 | **Supported OPP on AM57xx devices:**
 
-.. Image:: ../images/AM57xx_OPP.png
+.. Image:: /images/AM57xx_OPP.png
 
 Code Composer Studio (CCS) and Emulation support
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -78,13 +78,13 @@ IDK platform
 **Step 1: Select the AM570x part number that is populated on your custom
 platform:**
 
-.. Image:: ../images/AM5708_EVM_target_configurations.png
+.. Image:: /images/AM5708_EVM_target_configurations.png
 
 **Step 2: Setup the GEL files for the SOC** Go to the Advanced Tab as
 shown in the previous screenshot and update startup GEL file in the A15
 Core as shown in the screenshot below
 
-.. Image:: ../images/Advanced_settings_GEL_setup.png
+.. Image:: /images/Advanced_settings_GEL_setup.png
 
 Board Library Changes to Consider for Using Processor SDK RTOS
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -99,7 +99,7 @@ to setup the MPU to 1.5, 1.176 and 1GHz. For AM570x devices, we support
 the "J" and the "D" variant which support the following max speeds on
 the DPLLs:
 
-.. Image:: ../images/AM5706_Speed_Grades.png
+.. Image:: /images/AM5706_Speed_Grades.png
 
 When using the "J" speed grade, ensure that the DPLLs in the board set
 the DPLL to OPP_NOM and not for OPP_OD or OPP_HIGH.

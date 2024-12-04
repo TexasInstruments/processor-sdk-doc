@@ -22,7 +22,7 @@ by just using the supplied USB cable.
 .. rubric:: EVM Layout and key components
    :name: evm-layout-and-key-components
 
-.. Image:: ../../../images/AM572x_IDK_layout.png
+.. Image:: /images/AM572x_IDK_layout.png
 
 -  PRU1ETH0 and PRU2ETH0 are not enabled by default
 
@@ -56,7 +56,7 @@ designed to help you through the initial setup of the EVM.
 |                                                                          |
 |    <div class="magnify">                                                 |
 |                                                                          |
-| .. Image:: ../../../images/IDK_uSD.png                                   |
+| .. Image:: /images/IDK_uSD.png                                           |
 +--------------------------------------------------------------------------+
 
 +--------------------------------------------------------------------------+
@@ -79,7 +79,7 @@ designed to help you through the initial setup of the EVM.
 |                                                                          |
 |    <div class="magnify">                                                 |
 |                                                                          |
-| .. Image:: ../../../images/Power_cord_connect.png                        |
+| .. Image:: /images/Power_cord_connect.png                                |
 |                                                                          |
 +--------------------------------------------------------------------------+
 
@@ -113,7 +113,7 @@ VDE, CCC, PSE, etc.
 |                                                                          |
 |    <div class="magnify">                                                 |
 |                                                                          |
-| .. Image:: ../../../images/JTAGUSB_UART.png                              |
+| .. Image:: /images/JTAGUSB_UART.png                                      |
 +--------------------------------------------------------------------------+
 
 **Note:** The serial port will not show up on the host PC until you
@@ -138,7 +138,7 @@ power on the EVM.
 |                                                                          |
 |    <div class="magnify">                                                 |
 |                                                                          |
-| .. Image:: ../../../images/PowerON.png                                   |
+| .. Image:: /images/PowerON.png                                           |
 +--------------------------------------------------------------------------+
 
 After, you power on the EVM the Status, Industrial LED2, Industrial LED3
@@ -167,7 +167,7 @@ corresponding to FTDI UARTtoUSB will be turned on.
 |    class="thumbinner"                         |    class="thumbinner"                       |
 |    style="width:402px;">                      |    style="width:302px;">                    |
 |                                               |                                             |
-| .. Image:: ../../../images/Serial_connect.jpg | .. Image:: ../../../images/Baudrate.jpg     |
+| .. Image:: /images/Serial_connect.jpg         | .. Image:: /images/Baudrate.jpg             |
 |                                               |                                             |
 | .. raw:: html                                 | .. raw:: html                               |
 |                                               |                                             |
@@ -213,7 +213,7 @@ the Sitara Device support version 1.3.x package correctly
 
    </div>
 
-.. Image:: ../../../images/Target_configuration.png
+.. Image:: /images/Target_configuration.png
 
 |
 | **Step4:** In advance settings, Make sure that the corresponding IDK
@@ -297,7 +297,7 @@ connect to the core.
 
 |
 
-.. Image:: ../../../images/Multicore-Enable.jpg
+.. Image:: /images/Multicore-Enable.jpg
 
 .. rubric:: Related Links
    :name: related-links

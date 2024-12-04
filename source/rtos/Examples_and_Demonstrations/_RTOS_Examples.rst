@@ -73,7 +73,7 @@ Keystone 2 family of devices.
    -  The K2G, K2E and K2H devices, can be located under Unclassified
       devices in the Resource Explorer. Refer below Screenshot for Keystone II
 
-.. Image:: ../images/KSII_RS.png
+.. Image:: /images/KSII_RS.png
 
 1. Create a work space folder (\ti\am_572x_hello_workspace) under ti
 folder to be used for Hello Example project, and start CCS. You may be
@@ -85,14 +85,14 @@ Finish**
 3. On SYS/BIOS scroll down to AM572X --> Cortex A --> Generic Example
 --> click on Hello Example.
 
-.. Image:: ../images/Sys_bios_hello_example_screen_1.jpg
+.. Image:: /images/Sys_bios_hello_example_screen_1.jpg
 
 4. To import Hello Example, on the right window click on step 1. Import
 The Example to CCS Project.
 
 5. On New CCS Project window enter project name and then click Next.
 
-.. Image:: ../images/Sys_bios_hello_example_screen_2.jpg
+.. Image:: /images/Sys_bios_hello_example_screen_2.jpg
 
 6. On RSTC window select platform name: **ti.platforms.evmAM572X** and
 check that the target is set to **gnu.targets.arm.A15F**
@@ -157,14 +157,14 @@ Finish**
 3. On SYS/BIOS scroll down to AM4378 --> Cortex A --> Generic Example
 --> click on Hello Example.
 
-.. Image:: ../images/RTOS_CortexA9_HelloWorld.png
+.. Image:: /images/RTOS_CortexA9_HelloWorld.png
 
 4. To import Hello Example, on the right window click on step 1. Import
 The Example to CCS Project.
 
 5. On New CCS Project window enter project name and then click Next.
 
-.. Image:: ../images/HelloWorld_cortexA9.png
+.. Image:: /images/HelloWorld_cortexA9.png
 
 6. On RSTC window select platform name: **ti.platforms.evmAM437X** and
 check that the target is set to **gnu.targets.arm.A9F**
@@ -234,7 +234,7 @@ Resource Explorer (Examples).
 3. On SYS/BIOS scroll down to AM3352 --> Cortex A --> Generic Example
 --> click on Hello Example.
 
-.. Image:: ../images/RTOS_CortexA8_HelloWorld.png
+.. Image:: /images/RTOS_CortexA8_HelloWorld.png
 
 4. To import Hello Example, on the right window click on step 1. Import
 The Example to CCS Project.
@@ -242,7 +242,7 @@ The Example to CCS Project.
 5. On New CCS Project window enter project name and then
 click Next.
 
-.. Image:: ../images/HelloWorld_cortexA8.png
+.. Image:: /images/HelloWorld_cortexA8.png
 
 6. On RSTC window select platform name: **ti.platforms.evmAM335X** and
 check that the target is set to **gnu.targets.arm.A8F**
@@ -349,14 +349,14 @@ Finish**
 3. on SYS/BIOS scroll down to AM572X --> Cortex M --> Generic Example
 --> click on Hello Example.
 
-.. Image:: ../images/SYSBIOS_hello_world_M4_template.jpg
+.. Image:: /images/SYSBIOS_hello_world_M4_template.jpg
 
 4. To import Hello Example, on the right window click on step 1. Import
 The Example to CCS Project.
 
 5. Go to Project Explorer window and click on project properties.
 
-.. Image:: ../images/SYSBIOS_M4_platformSelect.jpg
+.. Image:: /images/SYSBIOS_M4_platformSelect.jpg
 
 6. On RSTC window select platform name: **ti.platforms.evmAM572X** and
 check that the target is set to **gnu.targets.arm.elf.M4**
@@ -396,14 +396,14 @@ Finish**
 3. On SYS/BIOS scroll down to OMAP-L1x --> LCDKOMAPL138 --> TI Target Examples --> Generic Examples
 --> click on Hello Example.
 
-.. Image:: ../images/omapl13x_arm9_hello_rtos_tirex.png
+.. Image:: /images/omapl13x_arm9_hello_rtos_tirex.png
 
 4. To import Hello Example, on the right window click on step 1. Import
 The Example to CCS Project.
 
 5. On New CCS Project window enter project name and then click Next.
 
-.. Image:: ../images/omapl13x_arm9_hello_rtos_ccs.png
+.. Image:: /images/omapl13x_arm9_hello_rtos_ccs.png
 
 6. On RSTC window select platform name: **ti.platforms.evmOMAPL138** and
 check that the target is set to **ti.targets.arm.elf.Arm9**
@@ -441,14 +441,14 @@ Keystone I and Keystone 2 family of devices.
       under C66x Multi-core DSP devies in the Resource Explorer. Refer
       below screenshot
 
-.. Image:: ../images/KSI_RS.png
+.. Image:: /images/KSI_RS.png
 
 .. note::
 
    -  The K2G, K2E and K2H devices, can be located under Unclassified
       devices in the Resource Explorer. Refer below screen shot
 
-.. Image:: ../images/KSII_RS.png
+.. Image:: /images/KSII_RS.png
 
 1. Create a work space folder (\ti\am_572x_hello_workspace) under ti
 folder to be used for Hello Example project, and start CCS. You may be
@@ -460,14 +460,14 @@ Finish**
 3. on SYS/BIOS scroll down to AM572X --> C66x --> Generic Example -->
 click on Hello Example.
 
-.. Image:: ../images/SYSBIOS_hello_world_dsp_template.jpg
+.. Image:: /images/SYSBIOS_hello_world_dsp_template.jpg
 
 4. To import Hello Example, on the right window click on step 1. Import
 The Example to CCS Project.
 
 5. On New CCS Project window enter project name and then click Next.
 
-.. Image:: ../images/SYSBIOS_DSP_platformSelect.jpg
+.. Image:: /images/SYSBIOS_DSP_platformSelect.jpg
 
 6. On RSTC window select platform name: **ti.platforms.evmAM572X** and
 check that the target is set to **ti.targets.elf.C66** (Auto populated)
@@ -521,19 +521,19 @@ described here:
 3. on SYS/BIOS scroll down to C6748 /OMAPL1x and select --> C674x -->
 Generic Example --> click on Hello Example.
 
-.. Image:: ../images/OMAPL138_SYSBIOS_TI_RTOS_CCSv7.png
+.. Image:: /images/OMAPL138_SYSBIOS_TI_RTOS_CCSv7.png
 
 4. To import Hello Example, on the right window click on step 1. Import
 The Example to CCS Project.
 
 5. On New CCS Project window enter project name and then click Next.
 
-.. Image:: ../images/Create_Project_Step1.png
+.. Image:: /images/Create_Project_Step1.png
 
 6. On RSTC window select platform name: **ti.platforms.evmc6748** and
 check that the target is set to **ti.targets.elf.C674** (Auto populated)
 
-.. Image:: ../images/Create_Project_Step2.png
+.. Image:: /images/Create_Project_Step2.png
 
 7. Click Finish. Your project should show up on Project Explorer window.
 
@@ -571,7 +571,7 @@ power up the DSP You should see the following log in the Console
 13. Connect to C674x_DSP1 Load and run Hello Example out file. You
 should see **Hello World** string displayed on console window.
 
-.. Image:: ../images/Hello_world_dsp674x_rtos.png
+.. Image:: /images/Hello_world_dsp674x_rtos.png
 
 |
 

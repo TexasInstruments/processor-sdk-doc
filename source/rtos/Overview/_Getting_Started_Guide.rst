@@ -258,7 +258,7 @@ http://www.freedownloadmanager.org/.
 Code Composer Studio
 -----------------------
 
-.. Image:: ../images/Ccsv7splash.jpg
+.. Image:: /images/Ccsv7splash.jpg
 
 The Processor-SDK RTOS uses *Code Composer Studio* as the host
 integrated development environment for development and debug. All
@@ -282,7 +282,7 @@ download page for your platform (see links in below section).
 When installing CCS, you can choose to control what is installed for
 processor architecture.
 
-.. Image:: ../images/Processor-SDK_CCSv7-Setup-Processor-Support.png
+.. Image:: /images/Processor-SDK_CCSv7-Setup-Processor-Support.png
 
 The minimum required for the SDK are the following items
 
@@ -318,7 +318,7 @@ The relevant update will be named
 
 For example, an update for Sitara devices will look like:
 
-.. Image:: ../images/Processor-SDK_CCS-Emu-Update.png
+.. Image:: /images/Processor-SDK_CCS-Emu-Update.png
 
 Processor-SDK for RTOS
 ------------------------

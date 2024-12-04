@@ -99,7 +99,7 @@ run using the SBL with UART or using CCS with UART or ROV (UART display
 for newer versions and ROV for older versions). To run using UART, hook
 up to the board using UART and run the .out file.
 
-.. Image:: ../images/Posix-demo-uart.PNG
+.. Image:: /images/Posix-demo-uart.PNG
 
 To run using CCS, use the following steps. Each binary has an associated
 \\*.rov.xs file located in the same directory--enabling the CCS ROV tool.
@@ -137,11 +137,11 @@ If using Processor-SDK 3.0 or later,
    SysMin module to inspect the output of the demo. If you see the below
    message, please specify the XDC and SYSBIOS versions:
 
-.. Image:: ../images/Use_rov_1.jpg
+.. Image:: /images/Use_rov_1.jpg
 
-.. Image:: ../images/Use_rov_2.png
+.. Image:: /images/Use_rov_2.png
 
-.. Image:: ../images/Posix-smp2.png
+.. Image:: /images/Posix-smp2.png
 
 The output buffer shown in the ROV contains the different stages of the
 demo's progression:

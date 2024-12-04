@@ -74,7 +74,7 @@ Target Configuration
 -  Specify a file name or use default.
 -  Select "Spectrum Digital XDS510USB Emulator" as Connection. **If using CCS 9.0 or later, you will need an external emulator as noted above.**
 
-.. Image:: ../images/OMAPL137_targetConfig.png
+.. Image:: /images/OMAPL137_targetConfig.png
 
 
 -  Check "OMAPL137" or "C6747" as Device and save. 

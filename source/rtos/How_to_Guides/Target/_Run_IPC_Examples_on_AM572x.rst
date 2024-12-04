@@ -125,7 +125,7 @@ variable name and its value.
 
 12. Suspend (halt) DSP1 to view test messages on ROV Viewable Modules -->LoggerBuf Refer below image of ROV log messages.
 
-.. Image:: ../images/Hello_dsp2.png
+.. Image:: /images/Hello_dsp2.png
 
 13. Suspend (halt) DSP2 and click on ROV icon to view log messages.
 
@@ -181,7 +181,7 @@ World example environment varaible settings for reference.
 
 12. Suspend (halt) ARM Cortex_A15 to view test messages on ROV Viewable Modules -->LoggerBuf Refer the following ROV message queue screenshot
 
-.. Image:: ../images/MesgQ_arm0.png
+.. Image:: /images/MesgQ_arm0.png
 
 13. Suspend (halt) DSP1 and click on ROV icon to view log messages.
 
@@ -240,7 +240,7 @@ wait on multiple input sources.
 
 12. Suspend (halt) ARM CortexA15_0 to view test messages on ROV Viewable Modules -->LoggerBuf. Refer the following image of ROV log messages
 
-.. Image:: ../images/Notify_peer_arm0.png
+.. Image:: /images/Notify_peer_arm0.png
 
 13. Suspend (halt) DSP2 and click on ROV icon to view log messages.
 
@@ -302,7 +302,7 @@ sure there is no space between variable name and its value.
 
 14. Halt DSP1 to view test messages on ROV Viewable Modules -->LoggerBuf Refer below image of ROV log messages
 
-.. Image:: ../images/Ping_dsp1.png
+.. Image:: /images/Ping_dsp1.png
 
 15. Suspend (halt) DSP2 and click on ROV icon to view log messages.
 

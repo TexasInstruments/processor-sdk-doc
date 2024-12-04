@@ -154,7 +154,7 @@ Manual loading of the flash programmer through CCS is required for few cases.
 Below diagram shows the execution steps for flashing the application images based on the Uniflash
 supported mode for downloading the flash programmer.
 
-.. Image:: ../images/Uniflash_Execution_Steps.png
+.. Image:: /images/Uniflash_Execution_Steps.png
     :width: 650px
     :align: center
     :height: 1000px

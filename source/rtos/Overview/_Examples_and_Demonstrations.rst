@@ -278,7 +278,7 @@ X
 The default SDK Install Path is ``C:\TI`` for Windows and
 ``/home/[user]/ti`` for Linux.
 
-.. Image:: ../images/Processor-SDK-RTOS-directory-top.png
+.. Image:: /images/Processor-SDK-RTOS-directory-top.png
 
 |
 

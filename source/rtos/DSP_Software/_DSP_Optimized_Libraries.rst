@@ -128,7 +128,7 @@ Using Libraries in Processor-SDK RTOS
 The following diagram illustrates the software stack of various
 components including libraries provided with the Processor-SDK RTOS.
 
-.. Image:: ../images/Lib_sw_stack_rtos.jpg
+.. Image:: /images/Lib_sw_stack_rtos.jpg
 
 Using Libraries in Processor-SDK Linux
 --------------------------------------
@@ -139,7 +139,7 @@ libraries on the host (ARM) side, and the actual computation may be
 executed on ARM or DSP according to configuration and problem size. This
 is explained in detail in each library's documentation page.
 
-.. Image:: ../images/Linalg.jpg
+.. Image:: /images/Linalg.jpg
 
 Delivery Format
 ===============

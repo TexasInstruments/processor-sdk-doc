@@ -18,7 +18,7 @@ CCS and SDK installed in same directory
 After installing the Processor-SDK RTOS, start CCS and it will
 automatically detect the newly installed components (*products*):
 
-.. Image:: ../images/CCS-discovered-products.png
+.. Image:: /images/CCS-discovered-products.png
 |
 CCS and SDK installed in different directories
 """""""""""""""""""""""""""""""""""""""""""""""
@@ -34,7 +34,7 @@ Go to product preference
 
 From CCS, select "Window -> Preferences":
 
-.. Image:: ../images/CCS-GP57x-EVM-Custom-Preferences.png
+.. Image:: /images/CCS-GP57x-EVM-Custom-Preferences.png
 |
 Enter path to SDK
 '''''''''''''''''''
@@ -43,7 +43,7 @@ In the Preferences window, select "Code Composer Studio -> RTSC ->
 Products" in the panel on the left. Then, press the "Add" button on the
 panel on the right:
 
-.. Image:: ../images/CCS-GP57x-EVM-Custom-Add.png
+.. Image:: /images/CCS-GP57x-EVM-Custom-Add.png
 |
 Verify components
 ''''''''''''''''''
@@ -51,7 +51,7 @@ Verify components
 Next, verify the newly discovered products. If everything is correct,
 press the "Finish" button on the bottom:
 
-.. Image:: ../images/CCS-GP57x-EVM-Custom-Finish.png
+.. Image:: /images/CCS-GP57x-EVM-Custom-Finish.png
 |
 Restart CCS
 ''''''''''''
@@ -59,7 +59,7 @@ Restart CCS
 When prompted, restart CCS for changes to take effect. You will see
 newly discovered products from the custom path.
 
-.. Image:: ../images/CCS-GP57x-EVM-Custom-Confirm.png
+.. Image:: /images/CCS-GP57x-EVM-Custom-Confirm.png
 |
 
 Install Latest Emulation Package and Sitara Device Support Package
@@ -67,12 +67,12 @@ Install Latest Emulation Package and Sitara Device Support Package
 1. In CCS, navigate to Help -> Check for Updates and select "Sitara device support"
 and "TI Emulators" and click Next.
 
- .. image:: ../images/TMDX654_EVM_Hardware_Setup/CCS_Check_for_Updates.PNG
+ .. image:: /images/TMDX654_EVM_Hardware_Setup/CCS_Check_for_Updates.PNG
 
 2. Click "Next" again, select "I accept the terms of the license agreements"
 and click Finish to begin the installation.
 
- .. image:: ../images/TMDX654_EVM_Hardware_Setup/CCS_Updating_Software.png
+ .. image:: /images/TMDX654_EVM_Hardware_Setup/CCS_Updating_Software.png
 
 3. You may be prompted to restart CCS for the updates to take effect. Click "Restart Now" when
 prompted to complete the installation.
@@ -122,7 +122,7 @@ Open new target configuration file
 
 From CCS, select "File -> New -> Target Configuration File":
 
-.. Image:: ../images/CCS-GP437x-EVM-New-Target.png
+.. Image:: /images/CCS-GP437x-EVM-New-Target.png
 |
 Select target configuration options
 ''''''''''''''''''''''''''''''''''''
@@ -133,7 +133,7 @@ MicroUSB AB connector. Select
 -  **Connection**: Texas Instruments XDS100v2 USB Debug Probe
 -  **Board or Device**: EVMAM437X
 
-.. Image:: ../images/CCS-GP437x-EVM-Configure-Target.png
+.. Image:: /images/CCS-GP437x-EVM-Configure-Target.png
 |
 **Useful Tip**
 
@@ -243,7 +243,7 @@ Save target configuration
 
 Next, save the target configuration by pressing the **Save** button:
 
-.. Image:: ../images/CCS-GP437x-EVM-Save-Target.png
+.. Image:: /images/CCS-GP437x-EVM-Save-Target.png
 |
 Test target configuration
 ''''''''''''''''''''''''''
@@ -252,14 +252,14 @@ Next, test the target configuration by pressing the **Test Connection**
 button. This will confirm that you have successfully created an emulator
 connection with your board.
 
-.. Image:: ../images/AM4-GP-test-connection.png
+.. Image:: /images/AM4-GP-test-connection.png
 |
 View target configurations
 '''''''''''''''''''''''''''
 
 From CCS, select "View -> Target Configurations":
 
-.. Image:: ../images/CCS-GP437x-EVM-View-Target.png
+.. Image:: /images/CCS-GP437x-EVM-View-Target.png
 |
 Launch target configuration
 ''''''''''''''''''''''''''''
@@ -267,7 +267,7 @@ Launch target configuration
 Open "User Defined" list and right click on the target configuration
 file that was just saved and select "Launch Selected Configuration":
 
-.. Image:: ../images/CCS-GP437x-EVM-Launch-Target.png
+.. Image:: /images/CCS-GP437x-EVM-Launch-Target.png
 |
 Connect target
 '''''''''''''''
@@ -275,7 +275,7 @@ Connect target
 After launch, you can connect to a core. For GP AM437x EVM, select
 **Cortex A9** and select "Connect Target":
 
-.. Image:: ../images/CCS-GP437x-EVM-Connnect-Target.png
+.. Image:: /images/CCS-GP437x-EVM-Connnect-Target.png
 
 |
 
@@ -286,7 +286,7 @@ After connecting to target, check the console for status. Typically, the
 end of the configuration will indicate success or failure. For GP AM437x
 EVM, you will see the message "AM437x GP EVM Initialization is Done":
 
-.. Image:: ../images/CCS-GP437x-EVM-Run-Target.png
+.. Image:: /images/CCS-GP437x-EVM-Run-Target.png
 |
 Additional Notes for AM57x
 """""""""""""""""""""""""""
@@ -310,7 +310,7 @@ MULTICORE Initialization** enable the corresponding sub system clock.
 For example, enable ``DSP11SSClkEnable_API`` for the first DSP core.
 After running the clock enable option, you can connect to the core.
 
-.. Image:: ../images/Multicore-Enable.jpg
+.. Image:: /images/Multicore-Enable.jpg
 |
 Timer Suspend Control Options for DSP
 '''''''''''''''''''''''''''''''''''''''
@@ -333,7 +333,7 @@ Due to this issue the SYS/BIOS developers will need to configure an
 additional CCS configuration check to connect the GPTimer suspend
 control signal to the DSP as shown in the image below:
 
-.. Image:: ../images/GPtimer5_DSPConnect.png
+.. Image:: /images/GPtimer5_DSPConnect.png
 
 |
 
