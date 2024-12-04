@@ -14,7 +14,7 @@ DTBOs can be enabled from U-Boot when extra peripherals are connected to the boa
 It's possible to change the ``adtbo_idx`` from the U-Boot shell.
 For example:
 
-.. code-block::
+.. code-block:: console
 
    => env set adtbo_idx 1
    => saveenv

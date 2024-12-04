@@ -207,7 +207,7 @@ Once the build is complete, follow the steps below to flash the images to eMMC.
 
        Ensure the default U-Boot environment is configured with:
 
-       .. code-block::
+       .. code-block:: console
 
           => env default -f -a; saveenv;
           ## Resetting to default environment
@@ -217,7 +217,7 @@ Once the build is complete, follow the steps below to flash the images to eMMC.
 
           If you build with ``TARGET_AVB_ENABLE=true`` or flash user images you need to run this:
 
-          .. code-block::
+          .. code-block:: console
 
              => setenv force_avb "1"; saveenv;
              Saving Environment to MMC... Writing to MMC(0)... OK
