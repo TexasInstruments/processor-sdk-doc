@@ -12,6 +12,7 @@ markdown-it-py==3.0.0
 MarkupSafe==3.0.2
 mdurl==0.1.2
 packaging==24.2
+pillow==11.0.0
 pydantic==2.10.2
 pydantic_core==2.27.1
 Pygments==2.18.0
