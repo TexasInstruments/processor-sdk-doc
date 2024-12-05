@@ -51,3 +51,4 @@ supported by the Linux kernel.
    #. Deep Sleep
    #. MCU Only Mode
    #. Partial I/O
+   #. I/O Only Plus DDR

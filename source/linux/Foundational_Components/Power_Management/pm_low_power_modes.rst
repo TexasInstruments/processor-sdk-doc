@@ -18,6 +18,7 @@ Texas Instruments has added support for the following low power modes:
 #. Deep Sleep
 #. MCU Only
 #. Partial I/O
+#. I/O Only Plus DDR
 
 TI SDK 10.0 (ti-linux-6.6.y kernel and 10.0 DM firmware) adds support for
 an updated LPM Software Architecture that seamlessly manages the various
@@ -100,7 +101,6 @@ For further confirmation, one can take a look at the PMIC_LPM_EN pin on the EVM
 
 Refer to the :ref:`Wakeup Sources<pm_wakeup_sources>` section for information on how to wakeup the device from
 Deep Sleep mode using one of the supported wakeup sources.
-
 
 ********
 MCU Only
@@ -289,6 +289,131 @@ system and it will go through a normal Linux boot process.
 
    The capability to detect whether system is resuming from Partial I/O
    or doing a normal cold boot will be added in future release.
+
+*****************
+I/O Only Plus DDR
+*****************
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+   This mode is not applicable for AM62X.
+
+.. ifconfig:: CONFIG_part_variant in ('AM62AX' , 'AM62PX')
+
+   This mode is similar to Partial I/O mode, with the major distinction being
+   that the DDR memory is kept in self refresh to save context. All the processor
+   power supplies are turned off except the LVCMOS I/O power supply while keeping
+   DDR in self-refresh.
+   The user can do system power state transitions, including power supply control,
+   by a single interface signal (PMIC_LPM_EN signal) with PMIC register programming.
+
+   The benefits of using I/O Only plus DDR in embedded devices:
+
+   #. Lowest power consumption: I/O Only Plus DDR mode can save a significant amount of power, especially in battery-powered
+      devices that are mostly idle or low activity most of the time with the full context being saved.
+   #. Better efficiency: I/O Only Plus DDR mode can help to improve the efficiency of embedded devices by
+      reducing the amount of time that the processor is idle. This is because the processor can
+      be kept in a low-power state when it is not needed.
+
+   .. ifconfig:: CONFIG_part_variant in ('AM62AX')
+
+      .. important:: Jumper J9 should be connected on SK to enable system to enter I/O Only plus DDR mode.
+
+   .. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+      .. important:: Jumper J12 should be connected on SK to enable system to enter I/O Only plus DDR mode.
+
+   The wakeup sources that can be used to wake the system from I/O Only Plus DDR are
+   mcu_uart0, mcu_mcan0, mcu_mcan1 and wkup_uart0. After Linux boots, direct register
+   writes can be used to enable wakeup.
+
+   .. rubric:: Following commands set the wakeup EN bit, enable receive for pad in PADCONFIG register and can
+               be used to enable wakeup from mcu_mcan0, mcu_mcan1, mcu_uart0 and wkup_uart0 pins respectively.
+
+   .. important::
+
+      The steps mentioned below are a workaround to enable wakeup as there are more driver level changes
+      required to enable the wakeup support.
+
+   .. code-block:: console
+
+      root@<machine>:~# devmem2 0x4084038 0x20050000  # MCU_PADCONFIG14 for mcu_mcan0
+      root@<machine>:~# devmem2 0x4084040 0x20050000  # MCU_PADCONFIG16 for mcu_mcan1
+      root@<machine>:~# devmem2 0x4084014 0x20050000  # MCU_PADCONFIG5 for mcu_uart0
+      root@<machine>:~# devmem2 0x4084024 0x20050000  # MCU_PADCONFIG9 for wkup_uart0
+
+   .. note::
+
+      Atleast one of the wakeup sources listed above must be enabled to wakeup from I/O Only Plus DDR mode.
+
+   .. rubric:: To enter I/O Only Plus DDR mode, first disable wakeup from RTC, USB0 and USB1 as these wakeup
+               sources are not supported for this mode.
+
+   .. ifconfig:: CONFIG_part_variant in ('AM62AX')
+
+      .. code-block:: console
+
+         root@am62axx-evm:~# echo disabled > /sys/class/rtc/rtc0/device/power/wakeup
+         root@am62axx-evm:~# echo disabled > /sys/devices/platform/bus@f0000/f900000.dwc3-usb/power/wakeup
+         root@am62axx-evm:~# echo disabled > /sys/devices/platform/bus@f0000/f910000.dwc3-usb/power/wakeup
+
+   .. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+      .. code-block:: console
+
+         root@am62pxx-evm:~# echo disabled > /sys/class/rtc/rtc0/device/power/wakeup
+         root@am62pxx-evm:~# echo disabled > /sys/devices/platform/bus@f0000/f900000.usb/power/wakeup
+         root@am62pxx-evm:~# echo disabled > /sys/devices/platform/bus@f0000/f910000.usb/power/wakeup
+
+   .. rubric:: Then, configure PMIC register bit to turn off only selected rails for this mode.
+
+   .. ifconfig:: CONFIG_part_variant in ('AM62AX')
+
+      .. code-block:: console
+
+         root@am62axx-evm:~# i2cset -f -y -m 0xFF -r -a 0 0x48 0x86 0x1
+
+      The register write has been done to enable PMIC to enter `PMIC S2R <https://www.ti.com/lit/ug/slvucm3/slvucm3.pdf>`_ .
+
+   .. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+      .. code-block:: console
+
+         root@am62pxx-evm:~# i2cset -f -y -m 0xFF -r -a 0 0x48 0x86 0x2
+
+   .. rubric:: Now, the SoC can be suspended using the following command:
+
+   .. code-block:: console
+
+      root@<machine>:~# echo mem > /sys/power/state
+      [   26.132900] PM: suspend entry (deep)
+      [   26.136759] Filesystems sync: 0.000 seconds
+      [   26.151748] Freezing user space processes
+      [   26.157256] Freezing user space processes completed (elapsed 0.001 seconds)
+      [   26.164239] OOM killer disabled.
+      [   26.167469] Freezing remaining freezable tasks
+      [   26.173168] Freezing remaining freezable tasks completed (elapsed 0.001 seconds)
+      [   26.180624] printk: Suspending console(s) (use no_console_suspend to debug)
+
+   This indicates that the device has partially completed the I/O Only plus DDR entry sequence.
+
+   .. ifconfig:: CONFIG_part_variant in ('AM62AX')
+
+         For further confirmation, one can take a look at the on board LED LD2 on the SK
+         (LED should turn off).
+
+   .. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+         For further confirmation, one can take a look at the on board LED LD1 on the SK
+         (LED should turn off).
+
+   The system has entered I/O Only plus DDR and can be woken up either with an
+   activity on the I/O pin programmed for wakeup or key press on wkup_uart0 (third serial port :file:`/dev/ttyUSB2`) or
+   mcu_uart0 (fourth serial port :file:`/dev/ttyUSB3`).
+
+   .. note::
+
+      The system will enter I/O Only plus DDR mode only if DM selects it based on existing constraints.
 
 ***********
 Limitations
