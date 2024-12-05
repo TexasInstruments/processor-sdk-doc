@@ -7,15 +7,49 @@ Wakeup Sources
 This section talks about the multiple ways in which we can wakeup the |__PART_FAMILY_DEVICE_NAMES__| SoC from Low Power modes like Deep Sleep or MCU only.
 The |__PART_FAMILY_DEVICE_NAMES__| SoC support various wakeup sources like GP Timers, RTC Timer, UART, I2C, WKUP GPIO, and I/O Daisy Chain.
 
-The following wakeup sources are supported in this SDK release:
+The table below lists the wakeup sources supported in this SDK release and whether that source is
+valid for given low power modes:
 
-#. Real-Time Clock (RTC)
-#. MCU (WKUP) GPIO
-#. Main I/O Daisy Chain (Main GPIO and Main UART)
-#. USB Wakeup
-#. WKUP UART
-#. MCU IPC (for MCU Only mode)
-#. CAN UART (for Partial I/O mode)
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+   +------------------------------------------------+------------+----------+-------------+
+   |  Wakeup Source                                 | Deep Sleep | MCU Only | Partial I/O |
+   +================================================+============+==========+=============+
+   | Real-Time Clock (RTC)                          | Yes        | Yes      | No          |
+   +------------------------------------------------+------------+----------+-------------+
+   | MCU (WKUP) GPIO                                | Yes        | Yes      | No          |
+   +------------------------------------------------+------------+----------+-------------+
+   | Main I/O Daisy Chain (Main GPIO and Main UART) | Yes        | Yes      | No          |
+   +------------------------------------------------+------------+----------+-------------+
+   | USB Wakeup                                     | Yes        | Yes      | No          |
+   +------------------------------------------------+------------+----------+-------------+
+   | WKUP UART                                      | Yes        | Yes      | No          |
+   +------------------------------------------------+------------+----------+-------------+
+   | MCU IPC (for MCU Only mode)                    | No         | Yes      | No          |
+   +------------------------------------------------+------------+----------+-------------+
+   | CAN UART I/O Daisy Chain                       | No         | No       | Yes         |
+   +------------------------------------------------+------------+----------+-------------+
+
+.. ifconfig:: CONFIG_part_variant in ('AM62AX', 'AM62PX')
+
+   +------------------------------------------------+-------+------+---------+----------+
+   |  Wakeup Source                                 | Deep  | MCU  | Partial | I/O Only |
+   |                                                | Sleep | Only | I/O     | Plus DDR |
+   +================================================+=======+======+=========+==========+
+   | Real-Time Clock (RTC)                          | Yes   | Yes  | No      | No       |
+   +------------------------------------------------+-------+------+---------+----------+
+   | MCU (WKUP) GPIO                                | Yes   | Yes  | No      | No       |
+   +------------------------------------------------+-------+------+---------+----------+
+   | Main I/O Daisy Chain (Main GPIO and Main UART) | Yes   | Yes  | No      | No       |
+   +------------------------------------------------+-------+------+---------+----------+
+   | USB Wakeup                                     | Yes   | Yes  | No      | No       |
+   +------------------------------------------------+-------+------+---------+----------+
+   | WKUP UART                                      | Yes   | Yes  | No      | No       |
+   +------------------------------------------------+-------+------+---------+----------+
+   | MCU IPC (for MCU Only mode)                    | No    | Yes  | No      | No       |
+   +------------------------------------------------+-------+------+---------+----------+
+   | CAN UART I/O Daisy Chain                       | No    | No   | Yes     | Yes      |
+   +------------------------------------------------+-------+------+---------+----------+
 
 *********************
 Real-Time Clock (RTC)
