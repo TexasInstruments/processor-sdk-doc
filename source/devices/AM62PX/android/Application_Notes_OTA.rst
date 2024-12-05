@@ -20,24 +20,24 @@ OTA via ``adb sideload``
 
 2. Build OTA package
 
-.. code-block:: console
+   .. code-block:: console
 
-   $ cd ${YOUR_PATH}/ti-aosp-15
-   $ source build/envsetup.sh
-   $ lunch <BUILD_TARGET>
-   $ export DIST_DIR=./dist_output
-   $ m dist
+      $ cd ${YOUR_PATH}/ti-aosp-15
+      $ source build/envsetup.sh
+      $ lunch <BUILD_TARGET>
+      $ export DIST_DIR=./dist_output
+      $ m dist
 
 3. `Enable adb debugging on your device <https://developer.android.com/studio/command-line/adb#Enabling>`__
 
 4. Reboot to recovery and apply OTA
 
-.. code-block:: console
+   .. code-block:: console
 
-   $ adb reboot sideload
-   $ adb wait-for-sideload
-   $ adb sideload $DIST_DIR/am62p-ota-eng.${USER}.zip
-   $ adb reboot
+      $ adb reboot sideload
+      $ adb wait-for-sideload
+      $ adb sideload $DIST_DIR/am62p-ota-eng.${USER}.zip
+      $ adb reboot
 
 
 .. _android-ota-update-engine:
