@@ -25,25 +25,25 @@ It's possible to use the SoC's internal RTC to wakeup the system using the comma
 
 .. code-block:: console
 
-    rtcwake
+   rtcwake
 
-    - Show whether an alarm is set or not:
-        rtcwake -m show -v
+   - Show whether an alarm is set or not:
+      rtcwake -m show -v
 
-    - Suspend to RAM and wakeup after 10 seconds:
-        rtcwake -m mem -s {{10}}
+   - Suspend to RAM and wakeup after 10 seconds:
+      rtcwake -m mem -s {{10}}
 
-    - Suspend to disk (higher power saving) and wakeup 15 minutes later:
-        rtcwake -m disk --date +{{15}}min
+   - Suspend to disk (higher power saving) and wakeup 15 minutes later:
+      rtcwake -m disk --date +{{15}}min
 
-    - Freeze the system (more efficient than suspend-to-RAM but version 3.9 or newer of the Linux kernel is required) and wakeup at a given date and time:
-        rtcwake -m freeze --date {{YYYYMMDDhhmm}}
+   - Freeze the system (more efficient than suspend-to-RAM but version 3.9 or newer of the Linux kernel is required) and wakeup at a given date and time:
+      rtcwake -m freeze --date {{YYYYMMDDhhmm}}
 
-    - Disable a previously set alarm:
-        rtcwake -m disable
+   - Disable a previously set alarm:
+      rtcwake -m disable
 
-    - Perform a dry run to wakeup the computer at a given time. (Press Ctrl + C to abort):
-        rtcwake -m on --date {{hh:ss}}
+   - Perform a dry run to wakeup the computer at a given time. (Press Ctrl + C to abort):
+      rtcwake -m on --date {{hh:ss}}
 
 For example, if you wish to wakeup from Deep Sleep or MCU Only mode in 10 seconds, use the command like this:
 
@@ -109,66 +109,130 @@ For example, if you wish to wakeup from Deep Sleep or MCU Only mode in 10 second
       [ 34.645777] PM: suspend exit
       root@am62xx-evm:~#
 
-.. ifconfig:: CONFIG_part_variant in ('AM62AX', 'AM62PX')
-
-    .. code-block:: console
-
-        root@<machine>:~# rtcwake -s 10 -m mem
-        rtcwake: wakeup from "mem" using rtc1 at Thu Jan  1 00:01:31 1970
-        [   73.746948] PM: suspend entry (deep)
-        [   73.750871] Filesystems sync: 0.000 seconds
-        [   73.775161] remoteproc remoteproc1: stopped remote processor 79000000.r5f
-        [   73.782461] Freezing user space processes
-        [   73.788375] Freezing user space processes completed (elapsed 0.001 seconds)
-        [   73.795379] OOM killer disabled.
-        [   73.798607] Freezing remaining freezable tasks
-        [   73.804381] Freezing remaining freezable tasks completed (elapsed 0.001 seconds)
-        [   73.811829] printk: Suspending console(s) (use no_console_suspend to debug)
-        [   73.833546] omap8250 2800000.serial: PM domain pd:146 will not be powered off
-        [   73.840117] Disabling non-boot CPUs ...
-        [   73.842096] psci: CPU1 killed (polled 0 ms)
-        [   73.844713] psci: CPU2 killed (polled 0 ms)
-        [   73.846454] psci: CPU3 killed (polled 0 ms)
-        [   73.847206] Enabling non-boot CPUs ...
-        [   73.847520] Detected VIPT I-cache on CPU1
-        [   73.847587] GICv3: CPU1: found redistributor 1 region 0:0x00000000018a0000
-        [   73.847639] CPU1: Booted secondary processor 0x0000000001 [0x410fd034]
-        [   73.848395] CPU1 is up
-        [   73.848618] Detected VIPT I-cache on CPU2
-        [   73.848657] GICv3: CPU2: found redistributor 2 region 0:0x00000000018c0000
-        [   73.848696] CPU2: Booted secondary processor 0x0000000002 [0x410fd034]
-        [   73.849255] CPU2 is up
-        [   73.849482] Detected VIPT I-cache on CPU3
-        [   73.849524] GICv3: CPU3: found redistributor 3 region 0:0x00000000018e0000
-        [   73.849563] CPU3: Booted secondary processor 0x0000000003 [0x410fd034]
-        [   73.850193] CPU3 is up
-        [   73.850730] ti-sci 44043000.system-controller: ti_sci_resume: wakeup source: 0x50
-        [   73.859380] am65-cpsw-nuss 8000000.ethernet: set new flow-id-base 19
-        [   73.873298] am65-cpsw-nuss 8000000.ethernet eth0: PHY [8000f00.mdio:00] driver [TI DP83867] (irq=POLL)
-        [   73.873320] am65-cpsw-nuss 8000000.ethernet eth0: configuring for phy/rgmii-rxid link mode
-        [   74.121919] OOM killer enabled.
-        [   74.125062] Restarting tasks ... done.
-        [   74.130925] random: crng reseeded on system resumption
-        [   74.136177] remoteproc remoteproc1: powering up 79000000.r5f
-        [   74.141903] remoteproc remoteproc1: Booting fw image am62a-mcu-r5f0_0-fw, size 52148
-        [   74.150715] rproc-virtio rproc-virtio.6.auto: assigned reserved memory node r5f-dma-memory@9b800000
-        [   74.160761] virtio_rpmsg_bus virtio1: rpmsg host is online
-        [   74.161014] virtio_rpmsg_bus virtio1: creating channel ti.ipc4.ping-pong addr 0xd
-        [   74.166372] rproc-virtio rproc-virtio.6.auto: registered virtio1 (type 7)
-        [   74.176785] virtio_rpmsg_bus virtio1: creating channel rpmsg_chrdev addr 0xe
-        [   74.180714] remoteproc remoteproc1: remote processor 79000000.r5f is now up
-        [   74.194846] PM: suspend exit
-
-    .. note::
-
-        The system will enter the mode selected by DM on the basis on existing constraints.
-
 .. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
-    .. note::
+   .. code-block:: console
 
-        AM62A requires additional -d rtc1 option as SoC's internal RTC gets
-        probed as rtc1.
+      root@am62axx-evm:~# rtcwake -s 10 -m mem
+      rtcwake: wakeup from "mem" using rtc1 at Thu Jan  1 00:01:31 1970
+      [   68.915144] PM: suspend entry (deep)
+      [   68.918851] Filesystems sync: 0.000 seconds
+      [   68.926581] Freezing user space processes
+      [   68.932192] Freezing user space processes completed (elapsed 0.001 seconds)
+      [   68.939174] OOM killer disabled.
+      [   68.942402] Freezing remaining freezable tasks
+      [   68.948218] Freezing remaining freezable tasks completed (elapsed 0.001 seconds)
+      [   68.955615] printk: Suspending console(s) (use no_console_suspend to debug)
+      [   68.967023] ti-sci 44043000.system-controller: ti_sci_cmd_set_device_constraint: device: 179: state: 1: ret 0
+      [   68.967177] ti-sci 44043000.system-controller: ti_sci_cmd_set_device_constraint: device: 178: state: 1: ret 0
+      [   68.975296] ti-sci 44043000.system-controller: ti_sci_cmd_set_device_constraint: device: 117: state: 1: ret 0
+      [   68.982165] remoteproc remoteproc0: stopped remote processor 7e000000.dsp
+      [   68.007805] remoteproc remoteproc1: stopped remote processor 79000000.r5f
+      [   68.010972] Disabling non-boot CPUs ...
+      [   68.013268] psci: CPU1 killed (polled 0 ms)
+      [   68.016262] psci: CPU2 killed (polled 4 ms)
+      [   68.019303] psci: CPU3 killed (polled 4 ms)
+      [   68.020139] Enabling non-boot CPUs ...
+      [   68.020472] Detected VIPT I-cache on CPU1
+      [   68.020515] GICv3: CPU1: found redistributor 1 region 0:0x00000000018a0000
+      [   68.020568] CPU1: Booted secondary processor 0x0000000001 [0x410fd034]
+      [   68.021670] CPU1 is up
+      [   68.021915] Detected VIPT I-cache on CPU2
+      [   68.021943] GICv3: CPU2: found redistributor 2 region 0:0x00000000018c0000
+      [   68.021982] CPU2: Booted secondary processor 0x0000000002 [0x410fd034]
+      [   68.022911] CPU2 is up
+      [   68.023158] Detected VIPT I-cache on CPU3
+      [   68.023188] GICv3: CPU3: found redistributor 3 region 0:0x00000000018e0000
+      [   68.023233] CPU3: Booted secondary processor 0x0000000003 [0x410fd034]
+      [   68.024279] CPU3 is up
+      [   68.024692] ti-sci 44043000.system-controller: ti_sci_resume: wakeup source: 0x50
+      [   68.037668] am65-cpsw-nuss 8000000.ethernet: set new flow-id-base 19
+      [   68.053755] am65-cpsw-nuss 8000000.ethernet eth0: PHY [8000f00.mdio:00] driver [TI DP83867] (irq=POLL)
+      [   68.053779] am65-cpsw-nuss 8000000.ethernet eth0: configuring for phy/rgmii-rxid link mode
+      [   68.214438] OOM killer enabled.
+      [   68.217581] Restarting tasks ... done.
+      [   68.222831] random: crng reseeded on system resumption
+      [   68.228121] k3-dsp-rproc 7e000000.dsp: Core is off in resume
+      [   68.233990] remoteproc remoteproc0: powering up 7e000000.dsp
+      [   68.239783] remoteproc remoteproc0: Booting fw image am62a-c71_0-fw, size 8391984
+      [   68.254785] k3-dsp-rproc 7e000000.dsp: booting DSP core using boot addr = 0x9a000000
+      [   68.262806] rproc-virtio rproc-virtio.7.auto: assigned reserved memory node c7x-dma-memory@99800000
+      [   68.273026] virtio_rpmsg_bus virtio0: rpmsg host is online
+      [   68.274647] virtio_rpmsg_bus virtio0: creating channel ti.ipc4.ping-pong addr 0xd
+      [   68.278683] rproc-virtio rproc-virtio.7.auto: registered virtio0 (type 7)
+      [   68.286349] virtio_rpmsg_bus virtio0: creating channel rpmsg_chrdev addr 0xe
+      [   68.292879] remoteproc remoteproc0: remote processor 7e000000.dsp is now up
+      [   68.307022] platform 79000000.r5f: Core is off in resume
+      [   68.312378] remoteproc remoteproc1: powering up 79000000.r5f
+      [   68.318064] remoteproc remoteproc1: Booting fw image am62a-mcu-r5f0_0-fw, size 53172
+      [   68.326761] rproc-virtio rproc-virtio.8.auto: assigned reserved memory node r5f-dma-memory@9b800000
+      [   68.336811] virtio_rpmsg_bus virtio1: rpmsg host is online
+      [   68.337372] virtio_rpmsg_bus virtio1: creating channel ti.ipc4.ping-pong addr 0xd
+      [   68.342463] rproc-virtio rproc-virtio.8.auto: registered virtio1 (type 7)
+      [   68.350242] virtio_rpmsg_bus virtio1: creating channel rpmsg_chrdev addr 0xe
+      [   68.356706] remoteproc remoteproc1: remote processor 79000000.r5f is now up
+      [   68.370906] PM: suspend exit
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+   .. code-block:: console
+
+      root@am62pxx-evm:~# rtcwake -s 10 -m mem
+      rtcwake: wakeup from "mem" using /dev/rtc0 at Thu Jan  1 00:01:06 1970
+      [   34.312057] PM: suspend entry (deep)
+      [   34.315781] Filesystems sync: 0.000 seconds
+      [   34.333057] Freezing user space processes
+      [   34.338700] Freezing user space processes completed (elapsed 0.001 seconds)
+      [   34.345697] OOM killer disabled.
+      [   34.348924] Freezing remaining freezable tasks
+      [   34.354679] Freezing remaining freezable tasks completed (elapsed 0.001 seconds)
+      [   34.362078] printk: Suspending console(s) (use no_console_suspend to debug)
+      [   34.377118] ti-sci 44043000.system-controller: ti_sci_cmd_set_device_constraint: device: 179: state: 1: ret 0
+      [   34.377267] ti-sci 44043000.system-controller: ti_sci_cmd_set_device_constraint: device: 178: state: 1: ret 0
+      [   34.378162] am65-cpsw-nuss 8000000.ethernet eth0: Link is Down
+      [   34.387141] omap8250 2800000.serial: PM domain pd:146 will not be powered off
+      [   34.387736] ti-sci 44043000.system-controller: ti_sci_cmd_set_device_constraint: device: 117: state: 1: ret 0
+      [   34.416958] remoteproc remoteproc0: stopped remote processor 79000000.r5f
+      [   34.420565] Disabling non-boot CPUs ...
+      [   34.422781] psci: CPU1 killed (polled 0 ms)
+      [   34.426363] psci: CPU2 killed (polled 0 ms)
+      [   34.429526] psci: CPU3 killed (polled 0 ms)
+      [   34.430459] Enabling non-boot CPUs ...
+      [   34.430798] Detected VIPT I-cache on CPU1
+      [   34.430841] GICv3: CPU1: found redistributor 1 region 0:0x00000000018a0000
+      [   34.430895] CPU1: Booted secondary processor 0x0000000001 [0x410fd034]
+      [   34.431987] CPU1 is up
+      [   34.432232] Detected VIPT I-cache on CPU2
+      [   34.432262] GICv3: CPU2: found redistributor 2 region 0:0x00000000018c0000
+      [   34.432306] CPU2: Booted secondary processor 0x0000000002 [0x410fd034]
+      [   34.433233] CPU2 is up
+      [   34.433485] Detected VIPT I-cache on CPU3
+      [   34.433515] GICv3: CPU3: found redistributor 3 region 0:0x00000000018e0000
+      [   34.433557] CPU3: Booted secondary processor 0x0000000003 [0x410fd034]
+      [   34.434504] CPU3 is up
+      [   34.434948] ti-sci 44043000.system-controller: ti_sci_resume: wakeup source: 0x50
+      [   34.447824] am65-cpsw-nuss 8000000.ethernet: set new flow-id-base 19
+      [   34.463954] am65-cpsw-nuss 8000000.ethernet eth0: PHY [8000f00.mdio:00] driver [TI DP83867] (irq=POLL)
+      [   34.463980] am65-cpsw-nuss 8000000.ethernet eth0: configuring for phy/rgmii-rxid link mode
+      [   34.477401] am65-cpsw-nuss 8000000.ethernet eth1: PHY [8000f00.mdio:01] driver [TI DP83867] (irq=POLL)
+      [   34.477414] am65-cpsw-nuss 8000000.ethernet eth1: configuring for phy/rgmii-rxid link mode
+      [   34.661705] OOM killer enabled.
+      [   34.664848] Restarting tasks ... done.
+      [   34.670624] random: crng reseeded on system resumption
+      [   34.676468] platform 79000000.r5f: Core is off in resume
+      [   34.681906] remoteproc remoteproc0: powering up 79000000.r5f
+      [   34.687692] remoteproc remoteproc0: Booting fw image am62p-mcu-r5f0_0-fw, size 58344
+      [   34.699283] rproc-virtio rproc-virtio.5.auto: assigned reserved memory node mcu-r5fss-dma-memory-region@9b800000
+      [   34.710642] virtio_rpmsg_bus virtio0: rpmsg host is online
+      [   34.716279] virtio_rpmsg_bus virtio0: creating channel ti.ipc4.ping-pong addr 0xd
+      [   34.717435] rproc-virtio rproc-virtio.5.auto: registered virtio0 (type 7)
+      [   34.724381] virtio_rpmsg_bus virtio0: creating channel rpmsg_chrdev addr 0xe
+      [   34.731147] remoteproc remoteproc0: remote processor 79000000.r5f is now up
+      [   34.754176] PM: suspend exit
+
+   .. note::
+
+      The system will enter the mode selected by DM on the basis on existing constraints.
 
 ********
 MCU GPIO
@@ -189,40 +253,40 @@ for details.
 
 .. code-block:: dts
 
-    compatible = "gpio-keys";
+   compatible = "gpio-keys";
 
 
 Set the desired pinctrl,
 
 .. code-block:: dts
 
-    pinctrl-names = "default";
-    pinctrl-0 = <&wake_mcugpio1_pins_default>;
+   pinctrl-names = "default";
+   pinctrl-0 = <&wake_mcugpio1_pins_default>;
 
 Setup the interrupt parent and interrupt as MCU_GPIO0,
 
 .. code-block:: dts
 
-    interrupt-parent = <&mcu_gpio0>;
-    interrupts = <16 IRQ_TYPE_EDGE_RISING>;
+   interrupt-parent = <&mcu_gpio0>;
+   interrupts = <16 IRQ_TYPE_EDGE_RISING>;
 
 Now, under the switch node we add the following:
 
 .. code-block:: dts
 
-    switch {
-                label = "MCUGPIO";
-                linux,code = <143>;
-                gpios = <&mcu_gpio0 16 GPIO_ACTIVE_LOW>;
-                wakeup-source;
-    };
+   switch {
+               label = "MCUGPIO";
+               linux,code = <143>;
+               gpios = <&mcu_gpio0 16 GPIO_ACTIVE_LOW>;
+               wakeup-source;
+   };
 
 #. The label is the descriptive name of the key. The string will reflect under /proc/interrupts as:
 
     .. code-block:: console
 
-        root@<machine>:~# cat /proc/interrupts | grep "MCUGPIO"
-        262:          0          0          0          0      GPIO  16 Edge    -davinci_gpio  MCUGPIO
+       root@<machine>:~# cat /proc/interrupts | grep "MCUGPIO"
+       262:          0          0          0          0      GPIO  16 Edge    -davinci_gpio  MCUGPIO
 
 #. linux,code: Keycode to emit.
 #. gpios: the gpio required to be used as the gpio-key.
@@ -266,9 +330,9 @@ Setting the 29th Bit in the desired padconfig register, allows the pad to act as
 triggering a wake irq to the DM R5 in deep sleep states.
 
 .. note::
-    |__PART_FAMILY_DEVICE_NAMES__| supports the ability to wakeup using pad based wake event ONLY in Deep Sleep or MCU Only Mode.
-    During active system usage, even if the wake_enable bit is set the system will be unresponsive to any wakeup
-    activity on that pad.
+   |__PART_FAMILY_DEVICE_NAMES__| supports the ability to wakeup using pad based wake event ONLY in Deep Sleep or MCU Only Mode.
+   During active system usage, even if the wake_enable bit is set the system will be unresponsive to any wakeup
+   activity on that pad.
 
 
 To demonstrate I/O daisy chain wakeup as part of |__PART_FAMILY_DEVICE_NAMES__| offering, two reference examples are provided:
@@ -285,9 +349,9 @@ main_uart0 node in `k3-am62x-sk-common.dtsi <https://git.ti.com/cgit/ti-linux-ke
 
 .. code-block:: dts
 
-    interrupts-extended = <&gic500 GIC_SPI 178 IRQ_TYPE_LEVEL_HIGH>,
+   interrupts-extended = <&gic500 GIC_SPI 178 IRQ_TYPE_LEVEL_HIGH>,
                 <&main_pmx0 0x1c8>; /* (D14) UART0_RXD PADCONFIG114 */
-    interrupt-names = "irq", "wakeup";
+   interrupt-names = "irq", "wakeup";
 
 Here, we chain the IRQ to the pinctrl driver using the second interrupts-extended entry.
 The wake IRQ framework in linux works in such a way that the second entry gets marked as a
@@ -298,34 +362,34 @@ To use main_uart0 as a wakeup source, ensure serial is a wake-irq in /proc/inter
 
 .. code-block:: console
 
-    root@<machine>:~# grep wakeup /proc/interrupts
-    231:          0          0          0          0   pinctrl 456 Edge 2800000.serial:wakeup
+   root@<machine>:~# grep wakeup /proc/interrupts
+   231:          0          0          0          0   pinctrl 456 Edge 2800000.serial:wakeup
 
 Then, run this script:
 
 .. code-block:: bash
 
-    #!/bin/bash -xe
+   #!/bin/bash -xe
 
-    # Detach kernel serial console
-    consoles=$(find /sys/bus/platform/devices/*.serial/ -name console)
-    for console in ${consoles}; do
-            echo -n N > ${console}
-    done
+   # Detach kernel serial console
+   consoles=$(find /sys/bus/platform/devices/*.serial/ -name console)
+   for console in ${consoles}; do
+           echo -n N > ${console}
+   done
 
-    # Configure PM runtime autosuspend
-    uarts=$(find /sys/bus/platform/devices/*.serial/power/ -type d)
-    for uart in $uarts; do
-            echo -n 3000 > $uart/autosuspend_delay_ms
-            echo -n enabled > $uart/wakeup
-            echo -n auto > $uart/control
-    done
+   # Configure PM runtime autosuspend
+   uarts=$(find /sys/bus/platform/devices/*.serial/power/ -type d)
+   for uart in $uarts; do
+           echo -n 3000 > $uart/autosuspend_delay_ms
+           echo -n enabled > $uart/wakeup
+           echo -n auto > $uart/control
+   done
 
-    # Configure wake-up from suspend
-    uarts=$(find /sys/class/tty/tty[SO]*/power/ -type d 2>/dev/null)
-    for uart in $uarts; do
-            echo -n enabled > $uart/wakeup
-    done
+   # Configure wake-up from suspend
+   uarts=$(find /sys/class/tty/tty[SO]*/power/ -type d 2>/dev/null)
+   for uart in $uarts; do
+           echo -n enabled > $uart/wakeup
+   done
 
 
 This will configure UART to act as deep sleep wakeup source, and
@@ -354,8 +418,8 @@ To use main_gpio as a wakeup source, ensure gpio is a wake-irq in /proc/interrup
 
 .. code-block:: console
 
-    root@<machine>:~# grep wakeup /proc/interrupts
-    531:          0          0          0          0   pinctrl 416 Edge      WKGPIO:wakeup
+   root@<machine>:~# grep wakeup /proc/interrupts
+   531:          0          0          0          0   pinctrl 416 Edge      WKGPIO:wakeup
 
 Once the system has entered Deep Sleep or MCU Only mode as shown in the
 :ref:`LPM section<lpm_modes>`, wakeup from MAIN GPIO1_10 can be triggered
@@ -480,7 +544,7 @@ below command on the Host system
 
 .. code-block:: console
 
-  HOST:~$ > lsusb -t
+   HOST:~$ > lsusb -t
 
 
 ********************
@@ -492,15 +556,15 @@ from the firmware side, please refer to the relevant documentation:
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-    `MCU+ SDK for AM62x <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62X/latest/exports/docs/api_guide_am62x/index.html>`__
+   `MCU+ SDK for AM62x <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62X/latest/exports/docs/api_guide_am62x/index.html>`__
 
 .. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
-    `MCU+ SDK for AM62Ax <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62AX/latest/exports/docs/api_guide_am62ax/index.html>`__
+   `MCU+ SDK for AM62Ax <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62AX/latest/exports/docs/api_guide_am62ax/index.html>`__
 
 .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
-    `MCU+ SDK for AM62Px <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62PX/latest/exports/docs/api_guide_am62px/index.html>`__
+   `MCU+ SDK for AM62Px <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62PX/latest/exports/docs/api_guide_am62px/index.html>`__
 
 To use MCU IPC based wakeup, system should be placed into MCU Only mode
 as shown in the :ref:`LPM section<pm_mcu_only>`.
@@ -510,16 +574,16 @@ on the MCU UART (in most cases it will be /dev/ttyUSB3)
 
 .. code-block:: text
 
-    [IPC RPMSG ECHO] Next MCU mode is 1
-    [IPC RPMSG ECHO] Suspend request to MCU-only mode received
-    [IPC RPMSG ECHO] Press a sinlge key on this terminal to resume the kernel from MCU only mode
+   [IPC RPMSG ECHO] Next MCU mode is 1
+   [IPC RPMSG ECHO] Suspend request to MCU-only mode received
+   [IPC RPMSG ECHO] Press a single key on this terminal to resume the kernel from MCU only mode
 
 Any *key press* on the same terminal should trigger a wakeup from MCU Only
 mode and the following message printed:
 
 .. code-block:: text
 
-    [IPC RPMSG ECHO] Main domain resumed due to MCU UART
+   [IPC RPMSG ECHO] Main domain resumed due to MCU UART
 
 
 ********************************
@@ -533,7 +597,7 @@ This wake reason is printed as part of the Linux suspend/resume log:
 
 .. code-block:: console
 
-    [   37.357109] CPU3 is up
-    [   37.357710] ti-sci 44043000.system-controller: ti_sci_resume: wakeup source: 0x50
+   [   37.357109] CPU3 is up
+   [   37.357710] ti-sci 44043000.system-controller: ti_sci_resume: wakeup source: 0x50
 
 In the above example, 0x50 means that WKUP_RTC0 is the wakeup source.

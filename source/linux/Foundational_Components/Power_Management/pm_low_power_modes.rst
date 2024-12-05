@@ -200,7 +200,7 @@ on the MCU UART (in most cases it will be /dev/ttyUSB3)
 
     [IPC RPMSG ECHO] Next MCU mode is 1
     [IPC RPMSG ECHO] Suspend request to MCU-only mode received
-    [IPC RPMSG ECHO] Press a sinlge key on this terminal to resume the kernel from MCU only mode
+    [IPC RPMSG ECHO] Press a single key on this terminal to resume the kernel from MCU only mode
 
 .. note::
 
