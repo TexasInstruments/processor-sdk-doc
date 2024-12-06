@@ -36,7 +36,7 @@ OTA via ``adb sideload``
 
          $ adb reboot sideload
          $ adb wait-for-sideload
-         $ adb sideload $DIST_DIR/am62x-ota-eng.${USER}.zip
+         $ adb sideload $DIST_DIR/am62x-ota-${USER}.zip
          $ adb reboot
 
 
@@ -78,7 +78,7 @@ OTA via Update Engine
          $ lunch <BUILD_TARGET>
          $ DIST_DIR=dist_output
          $ BOARD=am62x
-         $ bootable/recovery/updater_sample/tools/gen_update_config.py --ab_install NON_STREAMING $DIST_DIR/$BOARD-ota-eng.${USER}.zip $DIST_DIR/$BOARD-ota-eng.${USER}.json file:///data/user/0/com.example.android.systemupdatersample/files/packages/$BOARD-ota-eng.${USER}.zip
+         $ bootable/recovery/updater_sample/tools/gen_update_config.py --ab_install NON_STREAMING $DIST_DIR/$BOARD-ota-${USER}.zip $DIST_DIR/$BOARD-ota-${USER}.json file:///data/user/0/com.example.android.systemupdatersample/files/packages/$BOARD-ota-${USER}.zip
 
       .. warning::
 
@@ -99,8 +99,8 @@ OTA via Update Engine
          $ adb root
          $ adb shell mkdir /data/user/0/com.example.android.systemupdatersample/files/configs
          $ adb shell mkdir /data/user/0/com.example.android.systemupdatersample/files/packages
-         $ adb push $DIST_DIR/$BOARD-ota-eng.${USER}.json /data/user/0/com.example.android.systemupdatersample/files/configs/
-         $ adb push $DIST_DIR/$BOARD-ota-eng.${USER}.zip /data/user/0/com.example.android.systemupdatersample/files/packages/
+         $ adb push $DIST_DIR/$BOARD-ota-${USER}.json /data/user/0/com.example.android.systemupdatersample/files/configs/
+         $ adb push $DIST_DIR/$BOARD-ota-${USER}.zip /data/user/0/com.example.android.systemupdatersample/files/packages/
 
    #. Change SELinux label:
 
