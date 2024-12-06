@@ -58,6 +58,12 @@ OTA via ``adb sideload``
 OTA via Update Engine
 *********************
 
+   #. Install the python dependency for the google module
+
+      .. code-block:: console
+
+         $ pip install --user google-api-python-client
+
    #. Build the OTA package
 
       .. code-block:: console
