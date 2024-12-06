@@ -36,16 +36,16 @@ The PRU PWM Linux kernel driver depends on the PRU-ICSS kernel driver. So
 the following kernel Kconfig options should be enabled to use the PRU PWM
 module.
 
-.. code::
+.. code-block:: menuconfig
 
-  Device Drivers  --->
-  	SOC (System On Chip) specific Drivers  --->
-		[*] TI SOC drivers support  --->
-			<M>   TI PRU-ICSS Subsystem Platform drivers
+   Device Drivers  --->
+      SOC (System On Chip) specific Drivers  --->
+         [*] TI SOC drivers support  --->
+            <M> TI PRU-ICSS Subsystem Platform drivers
 
-  Device Drivers  --->
-  	Pulse-Width Modulation (PWM) Support  --->
-		PRU-ICSS PWM support
+   Device Drivers  --->
+      Pulse-Width Modulation (PWM) Support  --->
+         PRU-ICSS PWM support
 
 
 .. rubric:: PRU PWM Sysfs Usage

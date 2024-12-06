@@ -31,7 +31,7 @@ The scripts are hosted at https://github.com/TexasInstruments/ti-bdebstrap
 
 To clone the repository, run:
 
-.. code-block::
+.. code-block:: console
 
     git clone https://github.com/TexasInstruments/ti-bdebstrap.git
 
@@ -39,7 +39,7 @@ To clone the repository, run:
 Repository Structure
 --------------------
 
-.. code-block::
+.. code-block:: text
 
     tibdebstrap/
     ├── build.sh
@@ -108,13 +108,13 @@ Install Pre-requisite Packages
 
 First, ensure that your repositories are up-to-date:
 
-.. code-block::
+.. code-block:: console
 
     sudo apt update
 
 Then, install packages as follows:
 
-.. code-block::
+.. code-block:: console
 
     sudo apt install -y \
         pigz expect pv \
@@ -128,13 +128,13 @@ Then, install packages as follows:
 
 Ensure that all packages were correctly installed using:
 
-.. code-block::
+.. code-block:: console
 
     sudo apt install --fix-broken
 
 Finally, install ``toml-cli`` and ``yamllint``:
 
-.. code-block::
+.. code-block:: console
 
     pip3 install toml-cli
     pip3 install yamllint
@@ -182,7 +182,7 @@ Building the Image
 
 To build an image, you need to run the :file:`build.sh` script:
 
-.. code-block::
+.. code-block:: console
 
     sudo ./build.sh <build-name>
 
@@ -192,7 +192,7 @@ After the build, the RootFS, Boot partition and bsp_sources are stored in :file:
 
 Example: to build for ``trixie-am62pxx-evm``, run:
 
-.. code-block::
+.. code-block:: console
 
     sudo ./build.sh trixie-am62pxx-evm
 
@@ -205,13 +205,13 @@ This step can be skipped if you do not want to share the generated Image with an
 
 To generate an SD Card Image with the generated RootFS and Boot partition files, run:
 
-.. code-block::
+.. code-block:: console
 
    ./create-wic.sh <build-name>
 
 Example: to build for ``trixie-am62pxx-evm``, run:
 
-.. code-block::
+.. code-block:: console
 
    ./create-wic.sh trixie-am62pxx-evm
 
@@ -222,13 +222,13 @@ Flash Image to SD Card using Script
 
 To flash the SD card without generating a wic image, use the :file:`create-sdcard.sh` script. Run it using the below command and follow with the prompts.
 
-.. code-block::
+.. code-block:: console
 
     sudo ./create-sdcard.sh <build-name>
 
 For example, if the image is ``trixie-am62pxx-evm``, type:
 
-.. code-block::
+.. code-block:: console
 
     sudo ./create-sdcard.sh trixie-am62pxx-evm
 

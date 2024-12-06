@@ -42,16 +42,16 @@ in PRU R30 and R31.
 
 For details please refer to the kernel device tree binding doc:
 
-.. code::
+.. code-block:: text
 
-    Documentation/devicetree/bindings/serial/pru-suart.txt
+   Documentation/devicetree/bindings/serial/pru-suart.txt
 
 The Processor SDK Linux kernel also provides an device tree example for
 Beaglebone Black:
 
-.. code::
+.. code-block:: text
 
-    arch/arm/boot/dts/am335x-boneblack-prusuart.dts
+   arch/arm/boot/dts/am335x-boneblack-prusuart.dts
 
 This example defines the 3 UARTs on PRU0 without hardware flow control and 3
 UARTs on PRU1 with hardware flow control. All the UART pins are available on
@@ -64,16 +64,16 @@ The PRU Soft UART Linux kernel driver depends on the PRU-ICSS kernel driver. So
 the following kernel Kconfig options should be enabled to use the PRU Soft UART
 module.
 
-.. code::
+.. code-block:: menuconfig
 
-  Device Drivers  --->
-  	SOC (System On Chip) specific Drivers  --->
-		[*] TI SOC drivers support  --->
-			<M>   TI PRU-ICSS Subsystem Platform drivers
+   Device Drivers  --->
+      SOC (System On Chip) specific Drivers  --->
+         [*] TI SOC drivers support  --->
+            <M> TI PRU-ICSS Subsystem Platform drivers
 
-  Device Drivers  --->
-  	Character devices  --->
-		Serial drivers  --->
-			<M> TI PRU Software UART suppor
+   Device Drivers  --->
+      Character devices  --->
+         Serial drivers  --->
+            <M> TI PRU Software UART suppor
 
 

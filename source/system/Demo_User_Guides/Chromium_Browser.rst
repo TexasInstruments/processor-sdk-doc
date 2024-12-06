@@ -70,7 +70,7 @@ Graphics Feature Status
 To see the GPU features that are in use, enter :code:`chrome://gpu` into the Chromium URL/Navigation bar. A web page will be
 rendered with this information. The below example shows what is enabled/disabled when GPU acceleration is working correctly
 
-.. code-block::
+.. code-block:: text
 
     *   Canvas: Hardware accelerated
     *   Canvas out-of-process rasterization: Disabled
@@ -119,7 +119,7 @@ Pull in the meta-browser and meta-clang layer into a Scarthgap Yocto build.
 
 meta-browser should be pinned to commit:
 
-.. code-block::
+.. code-block:: text
 
     commit 1ed2254d72a4c25879014c98be287a7e3e22904c
     Author: Max Ihlenfeldt <max@igalia.com>
@@ -129,7 +129,7 @@ meta-browser should be pinned to commit:
 
 meta-clang needs to be pinned to HEAD commit of branch "scarthgap", as of the time of writing that equates to this commit:
 
-.. code-block::
+.. code-block:: text
 
     commit e7dceb1c92caf7f21ef1d7b49c85328c30cffd90 (HEAD -> scarthgap, origin/scarthgap)
     Author: Etienne Cordonnier <ecordonnier@snap.com>
@@ -176,7 +176,7 @@ Where <machine> is defined in the :ref:`Build Options section of "Building the S
 into by default.  If you want to build it into another image, then you would need to modify the .bb recipe for the image.  Or alternatively
 add the line:
 
-.. code-block:: console
+.. code-block:: text
     
     IMAGE_INSTALL:append = " chromium-ozone-wayland"
 
