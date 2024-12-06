@@ -1222,9 +1222,9 @@ Flash properties:
     u-boot.img over tftp and then flash it to OSPI NOR/NAND at respective
     addresses.
 
-    * OSPI NOR:
+      * OSPI NOR:
 
-        .. code-block:: console
+         .. code-block:: console
 
             => sf probe
             => tftp ${loadaddr} tiboot3.bin
@@ -1234,18 +1234,35 @@ Flash properties:
             => tftp ${loadaddr} u-boot.img
             => sf update $loadaddr 0x280000 $filesize
 
-    * OSPI NAND:
+      .. ifconfig:: CONFIG_part_variant in ('J742S2', 'J722S')
 
-        .. code-block:: console
+         * OSPI NAND:
 
-            => mtd list
-            => mtd erase spi-nand0
-            => tftp $loadaddr tiboot3.bin
-            => mtd write spi-nand0 $loadaddr 0x0 $filesize
-            => tftp $loadaddr tispl.bin
-            => mtd write spi-nand0 $loadaddr 0x80000 $filesize
-            => tftp $loadaddr u-boot.img
-            => mtd write spi-nand0 $loadaddr 0x280000 $filesize
+            .. code-block:: console
+
+               => mtd list
+               => mtd erase spi-nand0
+               => tftp $loadaddr tiboot3.bin
+               => mtd write spi-nand0 $loadaddr 0x0 $filesize
+               => tftp $loadaddr tispl.bin
+               => mtd write spi-nand0 $loadaddr 0x80000 $filesize
+               => tftp $loadaddr u-boot.img
+               => mtd write spi-nand0 $loadaddr 0x280000 $filesize
+
+      .. ifconfig:: CONFIG_part_variant in ('J784S4')
+
+         * OSPI NAND:
+
+            .. code-block:: console
+
+               => mtd list
+               => mtd erase spi-nand0
+               => tftp $loadaddr tiboot3.bin
+               => mtd write spi-nand0 $loadaddr 0x0 $filesize
+               => tftp $loadaddr tispl.bin
+               => mtd write spi-nand0 $loadaddr 0x100000 $filesize
+               => tftp $loadaddr u-boot.img
+               => mtd write spi-nand0 $loadaddr 0x300000 $filesize
 
     **PHY calibration**
 
