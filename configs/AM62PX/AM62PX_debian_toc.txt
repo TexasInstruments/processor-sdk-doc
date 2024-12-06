@@ -7,5 +7,7 @@ debian/Overview/Overview_Technical_Support
 devices/AM62PX/debian/Getting_Started_Guide
 debian/Building_Debian_Image
 debian/Building_Debian_Packages
+debian/How_to_Guides/index_How_to_Guides
+linux/How_to_Guides/Target/How_To_Enable_M2CC3301_in_linux
 debian/Demo_User_Guides/index_Demos
 debian/Demo_User_Guides/Chromium_Browser

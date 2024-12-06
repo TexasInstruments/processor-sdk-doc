@@ -36,7 +36,14 @@ M.2 card is held down by the screw. The end result should be as shown in the ima
 Enable DT Overlay for M.2-CC33x1
 ********************************
 
-After flashing the SD card with the :file:`tisdk-default-image`, mount the SD card onto a host computer, if not done already.
+.. ifconfig:: CONFIG_sdk in ('SITARA')
+
+    After flashing the SD card with the :file:`tisdk-default-image`, mount the SD card onto a host computer, if not done already.
+
+.. ifconfig:: CONFIG_sdk in ('DebianSDK')
+
+    After flashing the SD card with the :file:`tisdk-debian-trixie-image`, mount the SD card onto a host computer, if not done already.
+
 On the boot partition of the SD card, add one of the following variables, corresponding to the starter kit,
 into the :file:`uEnv.txt` file. This will let u-boot enable the m.2-cc33x1 devicetree overlay. The :file:`uEnv.txt` file can be found on the ``boot``
 partition of the SD card. 
@@ -74,12 +81,23 @@ Connect to Wi-Fi
 Using scripts provided in the SDK makes connecting to an Access Point or router straightforward.
 The following are steps to connect to a WPA password-secured Access Point. 
 
-.. code-block:: console
+.. ifconfig:: CONFIG_sdk in ('SITARA')
 
-    cd /usr/share/cc33xx
-    ./sta_start.sh
-    ./sta_connect.sh -s WPA-PSK -n <SSID> -p <PASSWORD>
-    udhcpc -i wlan0
+    .. code-block:: console
+
+        cd /usr/share/cc33xx
+        ./sta_start.sh
+        ./sta_connect.sh -s WPA-PSK -n <SSID> -p <PASSWORD>
+        udhcpc -i wlan0
+
+.. ifconfig:: CONFIG_sdk in ('DebianSDK')
+
+    .. code-block:: console
+
+        cd /usr/share/cc33xx
+        bash ./sta_start.sh
+        bash ./sta_connect.sh -s WPA-PSK -n <SSID> -p <PASSWORD>
+        udhcpc -i wlan0
 
 For more information on the Wi-Fi capabilities of the CC33xx devices, please 
 see the documentation that can be found in the `CC33xx SDK <https://www.ti.com/tool/CC33XX-SOFTWARE>`_.
