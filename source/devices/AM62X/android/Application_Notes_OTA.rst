@@ -64,8 +64,6 @@ OTA via Update Engine
       .. code-block:: console
 
          $ cd $ANDROID_BUILD_TOP
-         $ apex_manifest_pb2_path=$(find out -name 'apex_manifest_pb2.py' -print -quit)
-         $ PYTHONPATH=$ANDROID_BUILD_TOP/$(dirname ${apex_manifest_pb2_path}):$PYTHONPATH
          $ PYTHONPATH=$ANDROID_BUILD_TOP/build/make/tools/releasetools:$PYTHONPATH
          $ PYTHONPATH=$ANDROID_BUILD_TOP/system/apex/apexer/:$PYTHONPATH
          $ export PYTHONPATH
