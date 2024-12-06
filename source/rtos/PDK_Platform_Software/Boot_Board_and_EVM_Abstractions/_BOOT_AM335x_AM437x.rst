@@ -516,8 +516,8 @@ not requiring any additional headers. Following are steps for boot:
     Please transfer file:
     CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 
-  4.  As  a next step application binary (without header) can be sent
-via XMODEM which will lead to application start executing.
+#. As a next step application binary (without header) can be sent via XMODEM
+   which will lead to application start executing.
 
 Booting Via McSPI
 """""""""""""""""""
@@ -625,12 +625,12 @@ Booting from NAND involves two steps.
 -  If Option 1 is selected, enter image path to flash when prompted as
    shown below.
 
-::
+   ::
 
-    Enter image file path
+       Enter image file path
 
-    Provide the complete path (e.g.
-<PDK_INSTALL_DIR/packages/ti/starterware/binary/bootloader/bin/<am335x/am437x-evm>/<compiler>/bootloader_boot_nand_a8host_<debug/release>_ti.bin)
+   Provide the complete path (e.g.
+   <PDK_INSTALL_DIR/packages/ti/starterware/binary/bootloader/bin/<am335x/am437x-evm>/<compiler>/bootloader_boot_nand_a8host_<debug/release>_ti.bin)
 
 -  Enter offset when prompted as shown below.
 
@@ -648,16 +648,16 @@ Booting from NAND involves two steps.
 
 -  Select ECC for flashing.
 
-::
+   ::
 
-    Choose the ECC scheme from given options
-    Enter 1 ---> BCH 8 bit
-    Enter 2 ---> HAM
-    Enter 3 ---> T0 EXIT
-    Please enter ECC scheme type:
+       Choose the ECC scheme from given options
+       Enter 1 ---> BCH 8 bit
+       Enter 2 ---> HAM
+       Enter 3 ---> T0 EXIT
+       Please enter ECC scheme type:
 
-    Always select BCH8 for bootloader and application as ROM code and
-bootloader uses the BCH8 ECC scheme.
+   Always select BCH8 for bootloader and application as ROM code and
+   bootloader uses the BCH8 ECC scheme.
 
 -  Ensure that flash info displayed by tool matches NAND flash in EVM.
 -  After this tool should first erase the required region in flash and
