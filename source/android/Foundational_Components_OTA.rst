@@ -32,11 +32,23 @@ OTA via ``adb sideload``
 
    #. Reboot to recovery and apply OTA
 
+      .. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+         .. code-block:: console
+
+            $ BOARD=am62x
+
+      .. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+         .. code-block:: console
+
+            $ BOARD=am62p
+
       .. code-block:: console
 
          $ adb reboot sideload
          $ adb wait-for-sideload
-         $ adb sideload $DIST_DIR/am62x-ota-${USER}.zip
+         $ adb sideload $DIST_DIR/${BOARD}-ota-${USER}.zip
          $ adb reboot
 
 
@@ -70,12 +82,23 @@ OTA via Update Engine
 
    #. Update the ota config file. Feel free to change ``$DIST_DIR`` to match your developer environment.
 
+      .. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+         .. code-block:: console
+
+            $ BOARD=am62x
+
+      .. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+         .. code-block:: console
+
+            $ BOARD=am62p
+
       .. code-block:: console
 
          $ source build/envsetup.sh
          $ lunch <BUILD_TARGET>
          $ DIST_DIR=dist_output
-         $ BOARD=am62x
          $ bootable/recovery/updater_sample/tools/gen_update_config.py --ab_install NON_STREAMING $DIST_DIR/$BOARD-ota-${USER}.zip $DIST_DIR/$BOARD-ota-${USER}.json file:///data/user/0/com.example.android.systemupdatersample/files/packages/$BOARD-ota-${USER}.zip
 
       .. warning::

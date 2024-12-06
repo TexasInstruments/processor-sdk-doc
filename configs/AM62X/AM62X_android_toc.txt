@@ -9,7 +9,6 @@ devices/AM62X/android/Application_Notes_Android_Bootloader_SD_Card
 devices/AM62X/android/Application_Notes_Android_SD_CARD
 devices/AM62X/android/Application_Notes_Android_Dual_Screen
 devices/AM62X/android/Application_Notes_Android_Low_Power
-devices/AM62X/android/Application_Notes_OTA
 devices/AM62X/android/Application_Notes_Camera
 devices/AM62X/android/Application_Notes_Simple_UI_App
 devices/AM62X/android/Application_Notes_BeaglePlay
@@ -23,3 +22,4 @@ android/Overview_Flashing
 android/Foundational_Components
 android/Foundational_Components_Kernel
 android/Foundational_Components_Bootloaders
+android/Foundational_Components_OTA
