@@ -1,4 +1,4 @@
-.. _release-specific-release-notes:
+.. _Release-note-label:
 
 ************************************
 Release Notes
