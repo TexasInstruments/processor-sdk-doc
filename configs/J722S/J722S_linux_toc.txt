@@ -70,6 +70,7 @@ linux/Foundational_Components/Kernel/Kernel_Drivers/SPI
 linux/Foundational_Components/Kernel/Kernel_Drivers/Storage/NAND
 linux/Foundational_Components/Kernel/Kernel_Drivers/Storage/MMC-SD
 linux/Foundational_Components/Kernel/Kernel_Drivers/UART
+linux/Foundational_Components/Kernel/Kernel_Drivers/UBIFS
 linux/Foundational_Components/Kernel/Kernel_Drivers/PWM
 linux/Foundational_Components/Kernel/Kernel_Drivers/USB/CDNS3
 linux/Foundational_Components/Kernel/Kernel_Drivers/VTM
@@ -130,4 +131,3 @@ system/Demo_User_Guides/index_Demos
 system/Demo_User_Guides/Chromium_Browser
 
 linux/Documentation_Tarball
-
