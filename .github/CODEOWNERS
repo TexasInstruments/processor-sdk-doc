@@ -6,3 +6,8 @@
 # owners will be requested for review when someone opens a pull request.
 
 *    @cshilwant @StaticRocket @praneethbajjuri @uditkumarti
+
+# Android
+source/android                      @vishalmti @makohoek
+source/devices/AM62X/android        @vishalmti @makohoek
+source/devices/AM62PX/android       @vishalmti @makohoek
