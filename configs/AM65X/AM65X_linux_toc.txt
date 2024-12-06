@@ -33,7 +33,6 @@ linux/Foundational_Components/U-Boot/UG-NOR
 linux/Foundational_Components/U-Boot/UG-UART
 linux/Foundational_Components/U-Boot/UG-SATA
 linux/Foundational_Components/U-Boot/UG-UFS
-linux/Foundational_Components/U-Boot/UG-DDR3
 linux/Foundational_Components/U-Boot/UG-HyperBus
 linux/Foundational_Components/U-Boot/UG-RemoteProc
 linux/Foundational_Components/U-Boot/UG-AVS
@@ -42,7 +41,6 @@ linux/Foundational_Components/U-Boot/Apps-SPL-Debug
 linux/Foundational_Components/U-Boot/Apps-SPL-Debug-OpenOCD
 linux/Foundational_Components/U-Boot/Apps-Load-in-CCS
 linux/Foundational_Components/U-Boot/Apps-TroubleShooting
-linux/Foundational_Components_Boot_Monitor
 linux/Foundational_Components_Kernel
 linux/Foundational_Components_Kernel_Drivers
 linux/Foundational_Components/Kernel/Kernel_Drivers/ADC
@@ -68,8 +66,6 @@ linux/Foundational_Components/Kernel/Kernel_Drivers/UFS
 linux/Foundational_Components/Kernel/Kernel_Drivers/USB/DWC3
 linux/Foundational_Components/Kernel/Kernel_Drivers/VTM
 linux/Foundational_Components_Kernel_Users_Guide
-linux/Foundational_Components_Kernel_Release_Notes
-linux/Foundational_Components_Kernel_RT_Release_Notes
 linux/Foundational_Components_Kernel_LTP-DDT_Validation
 linux/Foundational_Components_Kernel_FAQs
 linux/Foundational_Components_Filesystem
@@ -117,17 +113,12 @@ linux/Industrial_Protocols_HSR_PRP
 linux/Industrial_Protocols_PTP
 linux/How_to_Guides
 linux/How_to_Guides_Developer_Notes
-linux/How_to_Guides/Host/Connect_to_an_EVM_via_Telnet
-linux/How_to_Guides/Host/How_to_Setup_a_Samba_Server
-linux/How_to_Guides/Host/Boot_Sequence
 linux/How_to_Guides/Host/Moving_Files_to_the_Target_System
-linux/How_to_Guides/Host/How_to_Flash_Linux_System_from_U-boot
 linux/How_to_Guides/Host/K3_Resource_Partitioning_Tool
 linux/How_to_Guides/Target/Processor_SDK_Linux_File_System_Optimization_Customization
 linux/How_to_Guides/Target/How_to_add_a_JVM
 linux/How_to_Guides/Target/How_to_use_a_Mouse_instead_of_the_Touchscreen_with_Matrix
 linux/How_to_Guides/Target/Update_U-Boot_Environment_Variables_stored_in_SPI_Flash_from_Linux
-linux/How_to_Guides/Target/How_to_Change_dtb_File
 linux/How_to_Guides/Target/How_to_Use_K3Conf_Tool
 linux/How_to_Guides/Target/How_to_Tune_Real_Time_Linux
 linux/How_to_Guides/FAQ/How_to_Integrate_Open_Source_Software

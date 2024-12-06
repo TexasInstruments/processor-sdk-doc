@@ -127,13 +127,8 @@ linux/Examples_and_Demos_Matrix_User_Guide
 linux/Examples_and_Demos_Sub-system_Demos
 linux/How_to_Guides
 linux/How_to_Guides_Host
-linux/How_to_Guides/Host/Connect_to_an_EVM_via_Telnet
-linux/How_to_Guides/Host/How_to_Setup_a_Samba_Server
-linux/How_to_Guides/Host/Boot_Sequence
 linux/How_to_Guides/Host/Moving_Files_to_the_Target_System
-linux/How_to_Guides/Host/How_to_Flash_Linux_System_from_U-boot
 linux/How_to_Guides/Host/Customizing_the_SDK_Splash_Screen
-linux/How_to_Guides/Host/How_to_Setup_Ubuntu_1404_Network_Boot
 linux/How_to_Guides/Host/Additional_How_to_Guide_Links
 linux/How_to_Guides/Host/AM335x_AM437x_Hardware_Migration_Guide
 linux/How_to_Guides_Target
