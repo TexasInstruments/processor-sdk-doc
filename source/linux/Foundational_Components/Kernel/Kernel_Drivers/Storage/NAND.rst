@@ -164,49 +164,11 @@ Information regarding NAND booting and booting the kernel and file
 system from NAND can be found in the U-boot User Guide NAND
 section.
 
+.. include::  ../QSPI.rst
+   :start-after: .. linux_ubifs_start
+   :end-before: .. linux_ubifs_end
 
-.. rubric:: **NAND Based File system**
-   :name: nand-based-file-system
-
-The bootloader and u-boot partitions don't use any filesystem. The
-images are flased directly to NAND flash.
-
-The Filesystem though uses UBIFS filesystem. NAND flash is prone to
-bit-flips. UBI + UBIFS takes care of the bit-flips issue and as well as
-many other things like wear leveling, bad-block management, etc.
-
-    .. rubric:: Required Software for UBI image creation
-       :name: required-software-ubifs
-
-    Building a UBI file system requires two applications, ubinize and
-    mkfs.ubifs. Both are both provided by mtd-utils package.
-    (sudo apt-get install mtd-utils).
-
-    .. rubric:: Building a UBI File system image
-       :name: building-ubi-file-system
-
-    When building a UBI file system you need to have a directory that
-    contains the exact files and directories layout that you plan to use for
-    your file system. This is similar to the files and directories layout
-    you will use to copy a file system onto a SD card for booting purposes.
-    It is important that your file system size is smaller than the file
-    system partition in the NAND.
-
-    Next you need a file named ubinize.cfg. Below contains the exact
-    contents of ubinize.cfg you should use. However, replace **<name>**
-    with a name of your choosing. e.g. rootfs
-
-    ubinize.cfg contents:
-
-    ::
-
-        [ubifs]
-         mode=ubi
-         image=<name>.ubifs
-         vol_id=0
-         vol_type=dynamic
-         vol_name=rootfs
-         vol_flags=autoresize
+Step 3:
 
     To build a UBI files system requires the below two commands. The
     symbol **<directory path>** should be replaced with the path to
@@ -217,12 +179,16 @@ many other things like wear leveling, bad-block management, etc.
     **<UBINIZE ARGS>** are board specific. Replace these values with the
     values seen in the below table based on the TI EVM you are using.
 
+      .. include::  ../QSPI.rst
+         :start-after: .. linux_args_detail_start
+         :end-before: .. linux_args_detail_end
+
     Commands to execute:
 
-    ::
+      .. code-block:: console
 
-        ~# mkfs.ubifs -r <directory path> -o <name>.ubifs <MKUBIFS ARGS>
-        ~# ubinize -o <name>.ubi <UBINIZE ARGS> ubinize.cfg
+         ~# mkfs.ubifs -r <directory path> -o <name>.ubifs <MKUBIFS ARGS>
+         ~# ubinize -o <name>.ubi <UBINIZE ARGS> ubinize.cfg
 
     Once these commands are executed <name>.ubi can then be flashed into
     the NAND's file-system partition.
@@ -526,4 +492,3 @@ http://www.linux-mtd.infradead.org/doc/ubi.html
 http://www.linux-mtd.infradead.org/doc/ubifs.html
 https://wiki.linaro.org/Flash%20memory
 https://lwn.net/Articles/428584/
-

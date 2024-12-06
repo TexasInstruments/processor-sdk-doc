@@ -420,11 +420,248 @@ or via command line arguments):
    $ dd if=/dev/mtd6 of=tmp_read.txt bs=num count=1 # read to num bytes to flash
    $ diff tmp_read.txt tmp_write.txt # should be NULL
 
+.. note::
+
+   Make sure UBIFS filesystem is enabled in the kernel (refer to `this
+   section <#enabling-qspi-driver-configurations>`__ for more information).
+
+.. linux_ubifs_start
+
+.. rubric:: Unsorted Block Image File System (UBIFS)
+   :name: linux-ubifs
+
+UBIFS is a flash file system for unmanaged flash memory devices. UBIFS works on
+top of an UBI layer, which is itself on top of MTD (Memory Technology Device)
+layer. UBI + UBIFS takes care of wear leveling, bad-block management, etc.
+
 .. rubric:: Using UBIFS on flash
    :name: using-ubifs-on-flash
 
-Make sure UBIFS filesystem is enabled in the kernel (refer to `this
-section <#enabling-qspi-driver-configurations>`__ for more information).
+.. rubric:: Required Software for UBI image creation
+   :name: linux-required-software-ubifs
+
+Building a UBI File System requires two applications, :command:`ubinize` and
+:command:`mkfs.ubifs`. Both are both provided by ``mtd-utils`` package.
+
+.. code-block:: console
+
+   $ sudo apt-get install mtd-utils
+
+.. rubric:: Building a UBI File System image
+   :name: linux-building-ubi-file-system
+
+Step 1: Create a directory containing the files and directories for the file
+system. It is important that the directory size is smaller than the ``rootfs``
+partition in the flash.
+
+Step 2: Create a file named :file:`ubinize.cfg` and add the contents below.
+
+   .. code-block:: text
+
+      [ubifs]
+      mode=ubi
+      image=rootfs.ubifs
+      vol_id=0
+      vol_type=dynamic
+      vol_name=rootfs
+      vol_flags=autoresize
+
+.. linux_ubifs_end
+
+.. linux_args_detail_start
+
+.. rubric:: mkfs.ubifs
+   :name: linux-mkfs-ubifs
+
+:command:`mkfs.ubifs` is used to create UBI File System image, which is
+specifically generated for a flash memory device, like Serial NOR, NAND and
+Parallel NAND.
+
+Syntax
+
+.. code-block:: console
+
+   mkfs.ubifs -r <root_dir> -o <output_image> [options]
+
+Some key options to use:
+
+1. ``-m <min_io_size>``: specifies the minimum I/O size (in bytes) of the flash
+   device.
+
+2. ``-e <leb_size>``: specifies the logical eraseblock (LEB) size, which is the
+   usable portion of an eraseblock in UBI (physical eraseblock - UBI overhead)
+
+3. ``-c <max_leb>``: specifies the maximum number of logical eraseblocks (LEBs) the
+   filesystem can use.
+
+4. ``-x <compression>``: specifies the compression method to use. Default is
+   ``zlib``
+
+5. ``-F``: used to force the filesystem to "fixup" all the free space which it
+   is going to use. Note, this flag makes the first mount very slow, because
+   the "free space fixup" procedure takes time.
+
+For more details:
+
+.. code-block:: console
+
+   mkfs.ubifs --help
+
+.. rubric:: ubinize
+   :name: linux-ubinize
+
+:command:`ubinize` is used to create UBI image for one or more UBIFS images.
+
+.. code-block:: console
+
+   ubinize [options] -o <output_image> <configuration_file>
+
+Some key options to use:
+
+1. ``-m <min_io_size>``: specifies the minimum I/O size (in bytes) of the flash
+   device.
+
+2. ``-p <peb_size>``: specifies the physical eraseblock size, which is the
+   total size of an eraseblock in the flash device.
+
+3. ``-s <sub_page_size>``: specifies the sub-page size. Usually equivalent to
+   the minimum I/O size.
+
+4. ``-O <vid_hdr_offset>``: specifies the offset of the VID (Volume Identifier)
+   header within the physical eraseblock.
+
+For more details:
+
+.. code-block:: console
+
+   ubinize --help
+
+.. linux_args_detail_end
+
+.. ifconfig:: CONFIG_part_variant in ('AM64X')
+
+   Step 3: Generate .ubifs image
+
+      .. code-block:: console
+
+         $ mkfs.ubifs -r /path/to/directory -o rootfs.ubifs -m 16 -e 262016 -c 219
+
+   Step 4: Generate .ubi image
+
+      .. code-block:: console
+
+         $ ubinize -o rootfs.ubi -m 16 -p 262144 -s 16 -O 64 ubinize.cfg
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+   Step 3: Generate .ubifs image
+
+      For OSPI NOR:
+
+         .. code-block:: console
+
+            $ mkfs.ubifs -r /path/to/directory -o rootfs.ubifs -m 16 -e 262016 -c 219
+
+      For OSPI NAND:
+
+         .. code-block:: console
+
+            $ mkfs.ubifs -r /path/to/directory -o rootfs.ubifs -m 2048 -e 126976 -c 743
+
+   Step 4: Generate .ubi image
+
+      For OSPI NOR:
+
+         .. code-block:: console
+
+            $ ubinize -o rootfs.ubi -m 16 -p 262144 -s 16 -O 64 ubinize.cfg
+
+      For OSPI NAND:
+
+         .. code-block:: console
+
+            $ ubinize -o rootfs.ubi -m 2048 -p 131072 -s 2048 -O 2048 ubinize.cfg
+
+.. ifconfig:: CONFIG_part_variant in ('AM62AX')
+
+   Step 3: Generate .ubifs image
+
+      .. code-block:: console
+
+         $ mkfs.ubifs -r /path/to/directory -o rootfs.ubifs -m 2048 -e 126976 -c 743
+
+   Step 4: Generate .ubi image
+
+      .. code-block:: console
+
+         $ ubinize -o rootfs.ubi -m 2048 -p 131072 -s 2048 -O 2048 ubinize.cfg
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX', 'J7200')
+
+   Step 3: Generate .ubifs image
+
+      .. code-block:: console
+
+         $ mkfs.ubifs -r /path/to/directory -o rootfs.ubifs -m 16 -e 262016 -c 219
+
+   Step 4: Generate .ubi image
+
+      .. code-block:: console
+
+         $ ubinize -o rootfs.ubi -m 16 -p 262144 -s 16 -O 64 ubinize.cfg
+
+.. ifconfig:: CONFIG_part_variant in ('J721E')
+
+   Step 3: Generate .ubifs image
+
+      .. code-block:: console
+
+         $ mkfs.ubifs -r /path/to/directory -o rootfs.ubifs <MKUBIFS ARGS>
+
+   Step 4: Generate .ubi image
+
+      .. code-block:: console
+
+         $ ubinize -o rootfs.ubi <UBINIZE ARGS> ubinize.cfg
+
+.. ifconfig:: CONFIG_part_variant in ('J721S2', 'J784S4', 'J742S2', 'J722S')
+
+   Step 3: Generate .ubifs image
+
+      For OSPI NOR:
+
+         .. code-block:: console
+
+            $ mkfs.ubifs -r /path/to/directory -o rootfs.ubifs -m 16 -e 262016 -c 219
+
+      For OSPI NAND:
+
+         .. code-block:: console
+
+            $ mkfs.ubifs -r /path/to/directory -o rootfs.ubifs -m 4096 -e 253952 -c 369
+
+   Step 4: Generate .ubi image
+
+      For OSPI NOR:
+
+         .. code-block:: console
+
+            $ ubinize -o rootfs.ubi -m 16 -p 262144 -s 16 -O 64 ubinize.cfg
+
+      For OSPI NAND:
+
+         .. code-block:: console
+
+            $ ubinize -o rootfs.ubi -m 16 -p 262144 -s 4096 -O 4096 ubinize.cfg
+
+Step 5: Flash rootfs.ubi to ``ospi.rootfs`` or ``ospi_nand.rootfs`` partition
+in the flash
+
+.. code-block:: console
+
+   # EVM Linux
+
+   $ ubiformat -f rootfs.ubi /dev/mtdX
 
 .. code-block:: console
 
