@@ -35,29 +35,29 @@ designed to help you through the initial setup of the EVM.
 
 |
 
-+--------------------------------------------------------------------------+
-| **1. Once you have received the TI-RTOS or Linux™ software from your TI  |
-| representative, create a bootable µSD card (using the included blank     |
-| µSD) and insert it into the EVM**                                        |
-+--------------------------------------------------------------------------+
-| .. raw:: html                                                            |
-|                                                                          |
-|    <div class="thumb tleft">                                             |
-|                                                                          |
-| .. raw:: html                                                            |
-|                                                                          |
-|    <div class="thumbinner" style="width:227px;">                         |
-|                                                                          |
-| .. raw:: html                                                            |
-|                                                                          |
-|    <div class="thumbcaption">                                            |
-|                                                                          |
-| .. raw:: html                                                            |
-|                                                                          |
-|    <div class="magnify">                                                 |
-|                                                                          |
-| .. Image:: /images/IDK_uSD.png                                           |
-+--------------------------------------------------------------------------+
++------------------------------------------------------------------------------+
+| **1. Once you have received the TI-RTOS or Linux™ software from your TI      |
+| representative, create a bootable |micro|\ SD card (using the included blank |
+| |micro|\ SD) and insert it into the EVM**                                    |
++------------------------------------------------------------------------------+
+| .. raw:: html                                                                |
+|                                                                              |
+|    <div class="thumb tleft">                                                 |
+|                                                                              |
+| .. raw:: html                                                                |
+|                                                                              |
+|    <div class="thumbinner" style="width:227px;">                             |
+|                                                                              |
+| .. raw:: html                                                                |
+|                                                                              |
+|    <div class="thumbcaption">                                                |
+|                                                                              |
+| .. raw:: html                                                                |
+|                                                                              |
+|    <div class="magnify">                                                     |
+|                                                                              |
+| .. Image:: /images/IDK_uSD.png                                               |
++------------------------------------------------------------------------------+
 
 +--------------------------------------------------------------------------+
 | **2. Connect the power cable to the power jack on the board and plug in  |
@@ -183,7 +183,7 @@ corresponding to FTDI UARTtoUSB will be turned on.
 .. rubric:: Connecting IDK EVM to Code Composer Studio
    :name: connecting-idk-evm-to-code-composer-studio
 
-**Step1 :** Download Code composer Studio and AM572x Sitara CSP package
+**Step1 :** Download Code composer Studio and AM572x Sitara CSP package
 as described in the wiki article mentioned below:
 
 `Install Code composer Studio for
@@ -285,11 +285,11 @@ is installed
     CortexA15_0: GEL Output: DEBUG: EMIF1 channel - Launch full levelling
     CortexA15_0: GEL Output: DEBUG: Setting LISA maps in non-interleaved dual-EMIF mode
     CortexA15_0: GEL Output: --->>> DDR3 Initialization is DONE! <<<---
-    CortexA15_0: GEL Output: --->>> AM572x Target Connect Sequence DONE !!!!!  <<<
+    CortexA15_0: GEL Output: --->>> AM572x Target Connect Sequence DONE !!!!!  <<<
 
 |
 
-**Step6** : To connect to the DSP, M4,PRUSS or to IVAHD go to Scripts
+**Step6** : To connect to the DSP, M4,PRUSS or to IVAHD go to Scripts
 menu and under AM572x MULTICORE Initialization enable the corresponding
 Sub system clock Enable API.For Eg. FOr DSP1 select
 DSP11SSClkEnable\_API. After running the clock enable option, you can

@@ -1,3 +1,5 @@
+.. include:: <isonum.txt>
+
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_TSIP
 
 Overview
@@ -18,7 +20,7 @@ serial clocks as redundant sources for all transmit and receive data
 signals, or one frame sync and serial clock for transmit and the second
 frame sync and clock for receive. The standard serial data rate for each
 TSIP transmit and receive data signal is 8.192 Mbps. The standard frame
-sync is a one or more bit wide pulse that occurs once every 125 µs or a
+sync is a one or more bit wide pulse that occurs once every 125 |micro|\ s or a
 minimum of one serial clock period every 1024 serial clocks.
 
 At the standard rate and default configuration there are eight transmit

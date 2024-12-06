@@ -16,14 +16,14 @@ to/from the CPU device through two-wire interface
 
 | Type of transfers
 
-   -   Read
-   -   Write
-   -   Write followed by read
+   -   Read
+   -   Write
+   -   Write followed by read
 
 | Operating modes
 
-   -   Blocking(interrupt or Non interrupt)
-   -   Callback mode(interrupt)
+   -   Blocking(interrupt or Non interrupt)
+   -   Callback mode(interrupt)
 
 | Supports only controller mode. Peripheral mode is not supported
 
@@ -44,14 +44,14 @@ Board_Init() API supports all initialization sequence for TI supported
 EVMs. In addition it initializes UART instance for Console/STDIO.Refer
 `Processor SDK RTOS Board
 Support <index_board.html#board-support>`__ for
-additional details.Once board specific configuration is complete 
-MMCSD_init() API can be called to initialize driver.
+additional details.Once board specific configuration is complete
+MMCSD_init() API can be called to initialize driver.
 
 .. rubric:: **MMCSD Configuration Structure**
    :name: mmcsd-configuration-structure
 
 The MMCSD_soc.c file binds driver with hardware attributes on the
-board through MMCSD_config structure. This structure must be 
+board through MMCSD_config structure. This structure must be
 initialized before the MMCSD_init() function is called and cannot be
 changed afterwards. For details about the individual fields of this
 structure, see the Doxygen help by opening

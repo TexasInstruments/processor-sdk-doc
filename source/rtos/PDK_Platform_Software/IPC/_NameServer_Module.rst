@@ -42,7 +42,7 @@ To create a NameServer instance statically, you can add statements similar to th
   var nameServerParams = new NameServer.Params;
   nameServerParams.maxRuntimeEntries = 10;
   nameServerParams.maxNameLen = 32;
-  var nameServer0 = NameServer.create("nameServer0", nameServerParams);
+  var nameServer0 = NameServer.create("nameServer0", nameServerParams);
 
 If you want to specify the heap to be used by the NameServer module and a NameServer instance, use configuration statements similar to the following:
 

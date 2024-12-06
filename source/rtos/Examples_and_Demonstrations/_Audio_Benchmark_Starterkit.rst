@@ -112,7 +112,7 @@ at both approaches.
 Using Makefile
 --------------
 
-**Step1 : Setup Processor SDK RTOS build Environment.**
+**Step1 : Setup Processor SDK RTOS build Environment.**
 
 Developers are required to setup the Processor SDK RTOS build
 environment as described in :ref:`Processor SDK RTOS Setup environment <Build-The-SDK-Setup-Environment-label>`
@@ -126,7 +126,7 @@ environment as described in :ref:`Processor SDK RTOS Setup environment <Build-Th
    :ref:`Setup environment when installing to a custom path <Processor-SDK-RTOS-Install-In-Custom-Path-label>`
 
 |
-**Step2 : Invoke Make from root directory**
+**Step2 : Invoke Make from root directory**
 
 The make file in the root director of the audio-starterkit can be used
 to build the entire package. To build the benchmark examples:
@@ -149,7 +149,7 @@ For Other supported options, please type
 
     gmake help
 
-**For Linux :**
+**For Linux :**
 
 ::
 
@@ -168,7 +168,7 @@ developer build environments. To create CCS Projects with the
 benchmarks, developers are required to run the BenchmarkProjectCreate
 script provided in the root directory of the starterkit.
 
-**Step1 : Setup Processor SDK RTOS build Environment.**
+**Step1 : Setup Processor SDK RTOS build Environment.**
 
 #. **set SDK_INSTALL_PATH = C:\\ti\\<Install directory>**
 #. **set TOOLS_INSTALL_PATH = C:\\ti\\<CCS Install directory>**
@@ -319,12 +319,12 @@ The syntax to run the create-sd script is as follows:
 
     create-sd.bat <EVM>
 
-**EVM** : refers to evaluation platfom on which the binaries are meant
+**EVM** : refers to evaluation platfom on which the binaries are meant
 to be run
 
 Eg: create-sd evmK2G - Creates SD bootable images for K2G EVM.
 
-**Step 2 : Format and copy the SD card binaries to the SD card**
+**Step 2 : Format and copy the SD card binaries to the SD card**
 
 Create an SD card using the procedure described in :ref:`Creating SD card in Windows <Tools-Create-SD-Card-Windows-label>`
 and :ref:`Create SD card in Linux <Tools-Create-SD-Card-Linux-label>`
@@ -392,7 +392,7 @@ elements are respectively stored at even and odd index locations.
 The API reference and the implementation details can found in the TI
 DSPLIB documentation included in the Processor SDK.
 
-.. rubric:: Single Precision IIR : tisigCascadeBiquadSP_2c_3s_kernel
+.. rubric:: Single Precision IIR : tisigCascadeBiquadSP_2c_3s_kernel
    (Cascade Biquad Filter for Multichannel input)
    :name: single-precision-iir-tisigcascadebiquadsp_2c_3s_kernel-cascade-biquad-filter-for-multichannel-input
 

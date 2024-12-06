@@ -69,7 +69,7 @@ Program. Here browse to the required executable and click OK
 
 8. After a successful load, the program is expected to be in suspended
 state and program counter is pointing to main function. If the program
-is not in suspended state :
+is not in suspended state :
 
 i. Suspend the application by selecting Run->Suspend
 
@@ -177,24 +177,24 @@ covers most of them (not exhaustively!)
 The first step is to identify the exact problem, to do that please
 perform these steps in order.
 
-#. **Check if Rx is disabled** : It's possible to disable Rx in firmware
+#. **Check if Rx is disabled** : It's possible to disable Rx in firmware
    through IOCTL. This is controlled through a location in ICSS memory.
    See `memory map <index_device_drv.html#memory-map>`__.
    Check this as a very first step. It's not a common error but it's
    possible that user is invoking the IOCTL by mistake.
-#. **Check if firmware is receiving packets** : See statistics `this <index_device_drv.html#statistics>`__
+#. **Check if firmware is receiving packets** : See statistics `this <index_device_drv.html#statistics>`__
    and `this <index_device_drv.html#check-statistics>`__
    and find out if PRU is receiving the frames. Failure to receive
    frames in firmware can indicate other issues like corrupted frames,
    link negotiation failure or PHY related issues.
-#. **Check if Rx interrupt is being asserted** : This can be one of the
+#. **Check if Rx interrupt is being asserted** : This can be one of the
    reasons why Host would not receive packets. Put a break point in
    **ICSS_EmacRxInterruptHandler** and send a single packet using any PC
    based tool. The ISR should get hit. Refer to this
    `section <index_device_drv.html#rx-interrupt>`__
    on how to configure the interrupt properly if interrupt is not being
    asserted.
-#. **Check if Packets are being copied in driver** : If the interrupt is
+#. **Check if Packets are being copied in driver** : If the interrupt is
    asserted but packets do not reach the application, check Host
    statistics to verify if packets are being received correctly in the
    driver. Refer to the
@@ -205,7 +205,7 @@ perform these steps in order.
    length is zero it indicates some data corruption in the receive
    queues or firmware behaving incorrectly, this scenario should not
    occur.
-#. **Check if NDK is receiving the frames** : If driver is receiving the
+#. **Check if NDK is receiving the frames** : If driver is receiving the
    frames and user cannot see frames in socket then it indicates issues
    with TCP/IP stack. Refer to `NDK User's
    guide <http://www.ti.com/lit/ug/spru523i/spru523i.pdf>`__ on correct
@@ -214,7 +214,7 @@ perform these steps in order.
    is known to work though. In addition to this check if NDK buffers
    have been allocated correctly. If you are using your own TCP/IP stack
    refer to the Porting Guide and double check.
-#. **Check if Storm prevention is enabled** : This is one of the most
+#. **Check if Storm prevention is enabled** : This is one of the most
    common reasons why throughput may get lowered or if the threshold is
    set incorrectly packets may not reach Host at all. Check if storm
    prevention module is enabled by checking the variable
@@ -222,17 +222,17 @@ perform these steps in order.
    `this <index_device_drv.html#id59>`__
    for more details. Additionally one should check the statistics to see
    if the PRU statistics **stormPrevCounter** is getting incremented.
-#. **Check Interface MAC** : The firmware compares the interface MAC
+#. **Check Interface MAC** : The firmware compares the interface MAC
    written to the PRU memory by the Host against the incoming packets
    destination MAC to verify if the packet must be forwarded to Host or
    cut-through. Please refer to the `memory
    map <index_device_drv.html#memory-map>`__
    and check if the MAC value is what you are expecting it to be.
-#. **Queue Overflow** : If too many packets are received on a single
+#. **Queue Overflow** : If too many packets are received on a single
    queue without Host emptying them out then overflow may occur, packets
    will be lost in such a scenario. This is somewhat related to
    throughput issues but may occur independently as well.
-#. **Check throughput** : This is applicable in case everything else
+#. **Check throughput** : This is applicable in case everything else
    appears to be correct but the number of packets reaching the Host is
    not 100% of the transmitted value. This can happen because of two
    reasons. 1. Data rate is too fast and interrupt pacing is disabled.
@@ -245,7 +245,7 @@ perform these steps in order.
    find the throughput by comparing the number of packets received on
    the Host vs that in the firmware.
 
-**More on Throughput** : If throughput is low then try to find out how
+**More on Throughput** : If throughput is low then try to find out how
 the Rx processing on Host can be sped up or if any other high priority
 task is blocking the execution of **RxTask**. The EMAC and switch are
 tested during release to cope with 100% throughput at line rate (960 IPG
@@ -263,9 +263,9 @@ classified into two types. See `Tx data
 path <index_device_drv.html#tx-data-path>`__ for
 more information.
 
-#. **Cut-through issues** : Packets received on one port and meant to go
+#. **Cut-through issues** : Packets received on one port and meant to go
    out of the opposite port. (Not applicable to EMAC)
-#. **Transmit from Host** : Packets sent out from the Host on any one
+#. **Transmit from Host** : Packets sent out from the Host on any one
    port.
 
 As a first step please check the statistics on firmware as well as Host
@@ -275,7 +275,7 @@ is by comparing transmit statistics for Host and firmware.
 The probable causes for transmit not working are listed below. This can
 also be used as a checklist for debugging.
 
-#. **Link down** : The link event is mapped to an ISR
+#. **Link down** : The link event is mapped to an ISR
    **ICSS_EmacLinkISR** which in turn calls another API
    **ICSS_EmacUpdatePhyStatus** to update the link status in firmware.
    If this is not done correctly then it's possible that firmware will
@@ -284,7 +284,7 @@ also be used as a checklist for debugging.
    The Tx API checks for link and will not transmit if the link is down
    so this issue is more relevant to cut-through/store-forward. More on
    Link status `here <index_device_drv.html#check-link-status>`__.
-#. **Incorrect speed** : The link ISR also checks for speed and
+#. **Incorrect speed** : The link ISR also checks for speed and
    duplexity values. The values are written to in the same ISR
    **ICSS_EmacUpdatePhyStatus**, if the speed is read incorrectly then
    it's possible that firmware will not send out packets or may send out
@@ -295,7 +295,7 @@ also be used as a checklist for debugging.
    at the offset mentioned in `memory map <index_device_drv.html#memory-map>`__, please
    verify the value (as mentioned in memory map) and compare with the
    actual interface speed.
-#. **Incorrect pinmux for Collision/Carrier Sense** : This is applicable
+#. **Incorrect pinmux for Collision/Carrier Sense** : This is applicable
    in case of developers using their custom boards, it's important that
    the collision and carrier sense signals be wired correctly (see ICEv2
    `layout <http://www.ti.com/tool/tmdsice3359#Technical%20Documents>`__)
@@ -304,16 +304,16 @@ also be used as a checklist for debugging.
    problems. If there is an issue with pinmuxing these two pins it's
    recommended that half duplex functionality be disabled. Half Duplex
    functionality is controlled by the variable **halfDuplexEnable**
-#. **Queue contention issues** : Looking at the QoS
+#. **Queue contention issues** : Looking at the QoS
    `scheme <index_device_drv.html#quality-of-service-and-queues>`__
    it's possible that there is a contention for the transmit queue when
    both Host and the opposite port are trying to transmit on the same
    port. In such cases if there are too many packets vying for the
    contention queue they will be dropped. Such conditions are rare.
-#. **Queue overflow** : As the name suggests if too many packets are
+#. **Queue overflow** : As the name suggests if too many packets are
    sent out on a single queue then overflow can happen and packets may
    get lost.
-#. **NDK transmit** : Issues with NDK buffers may cause issues with Tx,
+#. **NDK transmit** : Issues with NDK buffers may cause issues with Tx,
    in such cases put a breakpoint in **ICSS_EmacTxPacket** to see if NDK
    is calling it.
 
@@ -342,17 +342,17 @@ Getting the values
 
 Statistics are accessible in three ways
 
--  **IOCTL calls** : IOCTL calls (including an example) have been
+-  **IOCTL calls** : IOCTL calls (including an example) have been
    previously explained
    `here <index_device_drv.html#ioctl>`__ in
    developer guide.
--  **Reading directly in memory window** : (This applies only to PRU
+-  **Reading directly in memory window** : (This applies only to PRU
    based statistics). Use the statistics `memory
    map <index_device_drv.html#id63>`__ to find
    out the offset and look at the memory directly. Information on how to
    access the ICSS memory is provided
    `here <index_device_drv.html#accessing-memory>`__.
--  **In CCS watch window** : When using CCS the statistics can be read
+-  **In CCS watch window** : When using CCS the statistics can be read
    directly through the ICSS EMAC handle. Host statistics are available
    through **hostStat** while PRU statistics are available through
    **pruStat**. An example code snippet from **TxPacketEnqueue** API
@@ -366,7 +366,7 @@ Statistics are accessible in three ways
     hostStatPtr += (portNumber - 1);
     ICSS_EmacUpdateTxStats(macAddr,(unsigned int)lengthOfPacket, hostStatPtr);
 
-**NOTE :** Since they are void members they need to be typecast to
+**NOTE :** Since they are void members they need to be typecast to
 access the members in CCS watch window.
 
 Example Usage
@@ -544,7 +544,7 @@ not, copy it from \\ti_internal\examples\ethernet_switch\Tcp)
 resides in the test PC (e.g.,
 C:\ti\ndk_2_24_02_31\packages\ti\ndk\winapps).
 
-5. Enter this command: send.exe %DUT_IP_ADDRESS% 100
+5. Enter this command: send.exe %DUT_IP_ADDRESS% 100
 
 where,
 

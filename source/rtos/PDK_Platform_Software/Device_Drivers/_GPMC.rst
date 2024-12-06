@@ -76,7 +76,7 @@ API reference for application:
 
     #include <ti/drv/gpmc/GPMC.h>
 
- Sample code for initiating GPMC transaction:
+ Sample code for initiating GPMC transaction:
 
 .. code-block:: c
 
@@ -93,7 +93,7 @@ API reference for application:
     transferOK = GPMC_transfer(gpmc, &gpmcTransaction);
     if (!transferOK) {
     /* GPMC transaction failed */
-    } 
+    }
 
 Application
 ------------
@@ -123,7 +123,7 @@ Refer Release Note for GPMC support across different EVMs
 |                       |                       | All tests have        |
 |                       |                       | passed.               |
 +-----------------------+-----------------------+-----------------------+
-| GPMC NOR/NAND test    | | Driver Unit Test    | Following prints will |
+| GPMC NOR/NAND test    | | Driver Unit Test    | Following prints will |
 | application           |   application to test | come on console based |
 |                       |   GPMC NOR/NAND flash | on pass/fail          |
 |                       |   read/erase/write    | criteria:             |

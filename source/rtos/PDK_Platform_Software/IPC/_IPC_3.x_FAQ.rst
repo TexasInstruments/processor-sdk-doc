@@ -253,7 +253,7 @@ between the various slaves. Perhaps the dev_warn() should be changed to
 a dev_dbg().
 
 And yes, that's a typo - 'recepient' is really spelled 'recipient'.
-Submit a patch and get your initials into the Linux kernel.  :)
+Submit a patch and get your initials into the Linux kernel.  :)
 
 Disabling auto-recovery
 """"""""""""""""""""""""

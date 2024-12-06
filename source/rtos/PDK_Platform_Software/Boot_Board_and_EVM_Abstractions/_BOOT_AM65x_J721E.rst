@@ -165,22 +165,22 @@ Directory structure
     │       └── sbl_smp_r5.asm 					<= Provides dummy override function for __mpu_init for SMP testcase.
     │
     ├── binary							<= ROM bootable SBL images for each board/boot media
-    │   ├── [board]
-    │       └── [bootmedia]
-    │           └── bin
-    │               └── sbl_[bootmedia]_img_mcu1_0_release.tiimage
+    │   ├── [board]
+    │       └── [bootmedia]
+    │           └── bin
+    │               └── sbl_[bootmedia]_img_mcu1_0_release.tiimage
     │
     ├── lib							<= SBL lib for each boot media/board supported
-    │   ├── [bootmedia]
-    │   │   └── [board]
-    │   │       └── r5f
-    │   │           └── release
-    │   │               └── sbl_lib_[bootmedia].aer5f
-    │   └── cust
-    │       └── [board]
-    │           └── r5f
-    │               └── release
-    │                   └── sbl_lib_cust.aer5f
+    │   ├── [bootmedia]
+    │   │   └── [board]
+    │   │       └── r5f
+    │   │           └── release
+    │   │               └── sbl_lib_[bootmedia].aer5f
+    │   └── cust
+    │       └── [board]
+    │           └── r5f
+    │               └── release
+    │                   └── sbl_lib_cust.aer5f
     │
     ├── soc							<= SOC specific SBL code
     │   └── k3
@@ -813,8 +813,8 @@ EVM Setup for testing SBL
 For information on board specific requirements like power supply, UART console port
 connections refer the Hardware User guide of the respective boards.
 
-The configurations needed to setup UART console through a serial terminal 
-application on host PC are listed in the next section.
+The configurations needed to setup UART console through a serial terminal
+application on host PC are listed in the next section.
 
 **UART Console Setup**
 
@@ -822,7 +822,7 @@ PDK SBL prints messages on the UART Serial Console running on the host. Hence, a
 serial terminal application (like Tera Term/HyperTerminal/minicom) should be
 running on the host.
 
--  The host serial port must be configured at 115200 baud, no parity, 1  stop bit
+-  The host serial port must be configured at 115200 baud, no parity, 1  stop bit
    and no flow control.
 -  Please ensure that the local echo setting for the terminal is turned  off.
 -  All SBL prints are routed to the `MCU UART <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/index_how_to_guides.html#uart-connection>`__

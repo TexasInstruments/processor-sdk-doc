@@ -114,7 +114,7 @@ Examples
 +=================+=================+=================+=================+
 | PCIE_idkAM57[1\ | 2-device PCIe   | **IMPORTANT:**  | **AM572x/AM574x |
 | 24]x*ExamplePr\ | connection      | Cable must be   | or AM571x       |
-| oject           |                 | `MODIFIED`_     | EVM** : One     |
+| oject           |                 | `MODIFIED`_     | EVM** : One     |
 |                 |                 | in order to     | board is        |
 |                 |                 | avoid damaging  | EP/other is RC; |
 |                 |                 | the clock       | link is         |
@@ -191,7 +191,7 @@ Examples
 |                 |                 | ti/binary.      |                 |
 |                 |                 |                 |                 |
 +-----------------+-----------------+-----------------+-----------------+
-| PCIE_evmK2G*Ex\ | 2-device PCIe   | **IMPORTANT:**  | **K2G EVM** :   |
+| PCIE_evmK2G*Ex\ | 2-device PCIe   | **IMPORTANT:**  | **K2G EVM** :   |
 | ampleProject    | connection      | Cable must be   | One board is    |
 |                 |                 | `MODIFIED`_     | EP/other is RC; |
 |                 |                 | in order to     | link is         |
@@ -203,7 +203,7 @@ Examples
 |                 |                 |                 | console.        |
 |                 |                 |                 |                 |
 |                 |                 | Connect two     |                 |
-|                 |                 | K2G  EVMs J5    |                 |
+|                 |                 | K2G  EVMs J5    |                 |
 |                 |                 | using a         |                 |
 |                 |                 | `MODIFIED`_     |                 |
 |                 |                 | male-male       |                 |
@@ -239,7 +239,7 @@ Examples
 +-----------------+-----------------+-----------------+-----------------+
 | PCIE_idkAM571x\ | Packet Exchange | **IMPORTANT:**  | **AM571X        |
 | _*armEdmaPktEx\ | over PCIe       | Cable must be   | >=REV1.3A       |
-| ampleProject    | Benchmark       | `MODIFIED`_     | IDK** : One     |
+| ampleProject    | Benchmark       | `MODIFIED`_     | IDK** : One     |
 | *(Available     |                 | in order to     | board is        |
 | starting in     |                 | avoid damaging  | EP/other is RC; |
 | Processor-SDK   |                 | the clock       | link is         |
@@ -253,7 +253,7 @@ Examples
 |                 |                 | Connect two     | except EP also  |
 |                 |                 | like            | prints packet   |
 |                 |                 | >=REV1.3A       | exchange        |
-|                 |                 | AM571x  IDK     | benchmark       |
+|                 |                 | AM571x  IDK     | benchmark       |
 |                 |                 | EVMs J22        | results.        |
 |                 |                 | using a         |                 |
 |                 |                 | `MODIFIED`_     |                 |
@@ -275,7 +275,7 @@ Examples
 +-----------------+-----------------+-----------------+-----------------+
 | Remaining       | 2-device PCIe   | Connect two     | **6678, 6657,   |
 | PCIE_*ExampleP\ | connection      | like C66x/K2x   | K2E, K2H,       |
-| roject          |                 | (except K2G,    | K2L** : One     |
+| roject          |                 | (except K2G,    | K2L** : One     |
 |                 |                 | see previous    | board is        |
 |                 |                 | row) EVMs using | EP/other is RC; |
 |                 |                 | an AMC breakout | link is         |

@@ -109,22 +109,22 @@ Here are the key files that you should see after a successful build:
 ::
 
     ├── r5f-0
-    │   └── bin
-    │       ├── debug
-    │       │   └── server_r5f-0.xer5f
-    │       └── release
-    │       │   └── server_r5f-0.xer5f
+    │   └── bin
+    │       ├── debug
+    │       │   └── server_r5f-0.xer5f
+    │       └── release
+    │       │   └── server_r5f-0.xer5f
     ├── r5f-1
-    │   └── bin
-    │       ├── debug
-    │       │   └── server_r5f-1.xer5f
-    │       └── release
-    │       │   └── server_r5f-1.xer5f
+    │   └── bin
+    │       ├── debug
+    │       │   └── server_r5f-1.xer5f
+    │       └── release
+    │       │   └── server_r5f-1.xer5f
     ├── host
-    │       ├── debug
-    │       │   └── app_host
-    │       └── release
-    │           └── app_host
+    │       ├── debug
+    │       │   └── app_host
+    │       └── release
+    │           └── app_host
 
 
 |

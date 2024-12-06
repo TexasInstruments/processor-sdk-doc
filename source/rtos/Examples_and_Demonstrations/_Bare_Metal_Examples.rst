@@ -167,9 +167,9 @@ highlighted code lines and save main.c file.
       * hello.c
       */
       #include <stdio.h>
-     
+
       int main(void) {
-     
+
           printf("Hello_world\n");
           return 0;
      }
@@ -227,7 +227,7 @@ contains the following Memory configurations.
 
 ::
 
-       MSMC  :      o=0x0c000000,    l = 0x00600000  /* 6MB Muticore shared memory */
+       MSMC  :      o=0x0c000000,    l = 0x00600000  /* 6MB Muticore shared memory */
 
 .. note::
    The .lds file expects users to provide STACKSIZE and HEAPSIZE from
@@ -318,9 +318,9 @@ Ensure the main.c file contains the following code
       * hello.c
       */
       #include <stdio.h>
-     
+
       int main(void) {
-     
+
           printf("Hello_world\n");
           return 0;
      }
@@ -427,9 +427,9 @@ assembly code **startup_ARMCA8.S** and a linker command file
       * hello.c
       */
       #include <stdio.h>
-     
+
       int main(void) {
-     
+
           printf("Hello_world\n");
           return 0;
      }
@@ -594,9 +594,9 @@ Ensure the main.c file contains the following code
       * hello.c
       */
       #include <stdio.h>
-     
+
       int main(void) {
-     
+
           printf("Hello_world\n");
           return 0;
      }
@@ -721,9 +721,9 @@ template **Basic Examples-> Hello World**.
       * hello.c
       */
       #include <stdio.h>
-     
+
       int main(void) {
-     
+
           printf("Hello_world\n");
           return 0;
      }
@@ -854,9 +854,9 @@ Ensure the main.c file contains the following code
       * hello.c
       */
       #include <stdio.h>
-     
+
       int main(void) {
-     
+
           printf("Hello_world\n");
           return 0;
      }
@@ -909,7 +909,7 @@ The linker command file is designed to place code in OCMC memory.
 
 ::
 
-       MSMC  :      o=0x0c000000,    l = 0x00600000  /* 6MB Muticore shared memory */
+       MSMC  :      o=0x0c000000,    l = 0x00600000  /* 6MB Muticore shared memory */
 
 .. note::
    An optional step is to modify the section definition in linker command
@@ -992,9 +992,9 @@ Ensure the main.c file contains the following code
       * hello.c
       */
       #include <stdio.h>
-     
+
       int main(void) {
-     
+
           printf("Hello_world\n");
           return 0;
      }

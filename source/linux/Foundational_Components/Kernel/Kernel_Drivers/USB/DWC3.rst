@@ -33,7 +33,7 @@ DWC3 is integrated in AM65x, OMAP5, DRA7x and AM437x SoCs from TI.
     (drivers/extcon/extcon-palmas.c) notifies the events to OMAP glue driver
     (driver/usb/dwc3/dwc3-omap.c) via the extcon framework. The glue driver
     writes the events to the software mailbox present in DWC3 glue (SS USB
-    OTG controller  module in the diagram) which interrupts the core using
+    OTG controller  module in the diagram) which interrupts the core using
     UTMI+ signals.
 
     .. image:: /images/Omap5-dwc3.png
@@ -189,7 +189,7 @@ Kernel Configuration tool.
     ...
 
 
--  Select DesignWare USB3 DRD Core Support and Texas Instruments OMAP5
+-  Select DesignWare USB3 DRD Core Support and Texas Instruments OMAP5
    and similar Platforms
 
 ::
@@ -233,7 +233,7 @@ Kernel Configuration tool.
     <*> TI PIPE3 PHY Driver
     ...
 
--  Select 'xHCI HCD (USB 3.0) SUPPORT' from  menuconfig in 'USB support'
+-  Select 'xHCI HCD (USB 3.0) SUPPORT' from  menuconfig in 'USB support'
 
 ::
 
@@ -243,7 +243,7 @@ Kernel Configuration tool.
     <*>     xHCI HCD (USB 3.0) support
     ...
 
--  Select 'USB Gadget Support --->' from menuconfig in 'USB support' and
+-  Select 'USB Gadget Support --->' from menuconfig in 'USB support' and
    select the needed gadgets. (By default all gadgets are made as
    modules)
 
@@ -286,7 +286,7 @@ Kernel Configuration tool.
          EHCI Debug Device mode (serial)  --->
     <M>     USB Webcam Gadget
 
-.. rubric:: **Configuring DWC3 in gadget only** 
+.. rubric:: **Configuring DWC3 in gadget only**
    :name: configuring-dwc3-in-gadget-only
 
 .. ifconfig:: CONFIG_part_family in ('General_family')
@@ -425,7 +425,7 @@ Connecting a USB2.0 pendrive to the USB host port gives the following prints
     [ 479.437774] usb 1-1: ep 0x81 - rounding interval to 128 microframes, ep desc says 255 microframes
     [ 479.447454] usb 1-1: ep 0x2 - rounding interval to 128 microframes, ep desc says 255 microframes
     [ 479.458124] usb-storage 1-1:1.0: USB Mass Storage device detected
-    [ 479.465355] scsi1 : usb-storage 1-1:1.0
+    [ 479.465355] scsi1 : usb-storage 1-1:1.0
     [ 480.784475] scsi 1:0:0:0: Direct-Access Sony Storage Media 0100 PQ: 0 ANSI: 4
     [ 480.801677] sd 1:0:0:0: [sda] 61046784 512-byte logical blocks: (31.2 GB/29.1 GiB)
     [ 480.820740] sd 1:0:0:0: [sda] Write Protect is off
@@ -680,8 +680,8 @@ modes is through a USB Reset.
    :name: other-resources
 
 For general Linux USB subsystem
-- `Usbgeneralpage <http://processors.wiki.ti.com/index.php/Usbgeneralpage>`__
+- `Usbgeneralpage <http://processors.wiki.ti.com/index.php/Usbgeneralpage>`__
 
 USB Debugging
-- `elinux.org/images/1/17/USB\_Debugging\_and\_Profiling\_Techniques.pdf <http://elinux.org/images/1/17/USB_Debugging_and_Profiling_Techniques.pdf>`__
+- `elinux.org/images/1/17/USB\_Debugging\_and\_Profiling\_Techniques.pdf <http://elinux.org/images/1/17/USB_Debugging_and_Profiling_Techniques.pdf>`__
 

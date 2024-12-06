@@ -463,7 +463,7 @@ development.
       style="margin: 5px; padding: 5px 10px; background-color: #ffffec; border-left: 5px solid #ff6600;">
 
    **IMPORTANT**
-   Notice there is a red ! icon. Don't worry, lets add in the toolchain
+   Notice there is a red ! icon. Don't worry, lets add in the toolchain
    next and it should change to yellow.
 
    .. raw:: html
@@ -1333,7 +1333,7 @@ style sheets.
 
     QPushButton {
          /**font: bold 16pt;
-         color: white ;
+         color: white ;
 
          border-image: url(:/pushblueup.png);
          background-color: transparent;

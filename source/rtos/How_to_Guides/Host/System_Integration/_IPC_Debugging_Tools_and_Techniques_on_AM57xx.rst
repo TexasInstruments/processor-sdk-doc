@@ -1,3 +1,5 @@
+.. include:: <isonum.txt>
+
 .. http://processors.wiki.ti.com/index.php/Running_IPC_Examples_on_DRA7xx/AM572x
 
 The sections relevant to AM57xx have been pulled from the `Debugging Tools and Techniques With IPC3.x Application Note <http://www.ti.com/lit/an/sprac12/sprac12.pdf>`_ and placed here.
@@ -8,7 +10,7 @@ During development of software, it is common to encounter issues that must be de
 robust software offering. When developing software that uses the IPC3.x product for inter-processor
 communication, there are tools and techniques available to aid in the debugging process. These tools and
 techniques help to more quickly understand and debug the issue. This document addresses all three
-HLOS’s supported by IPC3.x: Android™ platform, Linux®, and QNX®. Where applicable, differences
+HLOS’s supported by IPC3.x: Android™ platform, Linux\ |reg|\ , and QNX\ |reg|\ . Where applicable, differences
 between the OS's are noted.
 This document aims to provide tools, techniques, and resources for debugging issues encountered when
 using the IPC3.x to communicate with remote core software.

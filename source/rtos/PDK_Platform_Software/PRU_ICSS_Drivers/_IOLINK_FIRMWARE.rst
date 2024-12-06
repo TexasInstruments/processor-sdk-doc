@@ -1,3 +1,5 @@
+.. include:: <isonum.txt>
+
 .. http://ap-fpdsp-swapps.dal.design.ti.com/index.php/Processor_SDK_RTOS_IOLINK_FIRMWARE
 
 Introduction
@@ -28,7 +30,7 @@ Following are high-level IOLINK FW features:
 +-----------------------------------+-----------------------------------+
 | Baud Rate                         | COM1/COM2/COM3                    |
 +-----------------------------------+-----------------------------------+
-| Minumum Cycle Time                | 400 µs                            |
+| Minumum Cycle Time                | 400 |micro|\ s                    |
 +-----------------------------------+-----------------------------------+
 | Maximum Cycle Time                | 132 ms                            |
 +-----------------------------------+-----------------------------------+

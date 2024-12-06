@@ -64,7 +64,7 @@ and deinterlacing:
 .. rubric:: Unsupported Features/Limitations
    :name: unsupported-featureslimitations
 
--  Following formats are not supported : YUV444, YVYU, VYUY, NV16, NV61,
+-  Following formats are not supported : YUV444, YVYU, VYUY, NV16, NV61,
    NV21, 16bit and Lower RGB formats are not supported.
 -  Passing of custom scaler and CSC coeffficients through user space are
    not supported.

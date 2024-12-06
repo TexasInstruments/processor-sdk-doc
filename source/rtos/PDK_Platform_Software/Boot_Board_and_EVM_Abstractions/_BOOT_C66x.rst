@@ -27,8 +27,8 @@ supported bootmodes:
 
 .. note::
    #. Support boot over I2C bus address 0x51
-   #. Support POST boot over I2C bus address 0x50
-   #. Only ELF and BBLOB images are supported for booting
+   #. Support POST boot over I2C bus address 0x50
+   #. Only ELF and BBLOB images are supported for booting
    #. IBL is using the first 128KB L2 local memory, any application booting
       from IBL should NOT use the first 128KB L2 memory, OR should only use
       the first 128KB L2 memory for uninitialized data section
@@ -273,16 +273,16 @@ elements of the NAND boot process.
 
 On reset the DSP starts execution with the bootrom which transfers
 execution to the secondary bootloader from EEPROM using the I2C target
-bus address 0x51. The secondary bootloader loads the application program
+bus address 0x51. The secondary bootloader loads the application program
 from NAND flash then transfers control to the application. To execute
 the NAND bootloader you must ensure the DIP switches for your platform
-are properly configured for I2C Master Boot and address 0x51, AND
-the boot parameter index dip switch should be set to 2 or 3.
+are properly configured for I2C Master Boot and address 0x51, AND
+the boot parameter index dip switch should be set to 2 or 3.
 
 NAND boot supports multiple images booting. Depending on the boot
-parameter index dip switch, maximum 2 boot images can be supported. By
+parameter index dip switch, maximum 2 boot images can be supported. By
 default NAND boot only supports a BBLOB image format, if the customer
-wants to boot an ELF image,  the IBL configuration table needs to be
+wants to boot an ELF image,  the IBL configuration table needs to be
 modified and re-programmed to EEPROM.
 
 |
@@ -301,11 +301,11 @@ execution to the secondary bootloader from EEPROM using the I2C target
 address 0x51. The secondary bootloader loads the application program
 from NOR flash then transfers control to the application. To execute the
 NOR bootloader you must ensure the DIP switches for your platform are
-properly configured for I2C Master Boot and address 0x51, AND the boot
+properly configured for I2C Master Boot and address 0x51, AND the boot
 parameter index switch should be set to 0 or 1.
 
 NOR boot supports multiple images booting. Depending on the boot
-parameter index dip switch, maximum 2 boot images can be supported.
+parameter index dip switch, maximum 2 boot images can be supported.
 
 |
 
@@ -320,11 +320,11 @@ elements of the EMAC boot process.
 
 On reset the DSP starts execution with the bootrom which transfers
 execution to the secondary bootloader from EEPROM using the I2C target
-address 0x51. The secondary bootloader loads the application program
+address 0x51. The secondary bootloader loads the application program
 from a remote TFTP server then transfers control to the application. To
 execute the EMAC bootloader you must ensure the DIP switches for your
-platform are properly configured for I2C Master Boot and address 0x51,
-AND the boot parameter index switch should be set to 4. By default EMAC
+platform are properly configured for I2C Master Boot and address 0x51,
+AND the boot parameter index switch should be set to 4. By default EMAC
 boot only supports a BBLOB image format, if the customer wants to boot
 an ELF image, the IBL configuration table needs to be modified and
 re-programmed to EEPROM.

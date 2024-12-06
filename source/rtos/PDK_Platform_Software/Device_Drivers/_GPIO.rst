@@ -6,7 +6,7 @@ Overview
 Introduction
 ^^^^^^^^^^^^
 
-GPIO module allows application to manage General Purpose I/O  instances
+GPIO module allows application to manage General Purpose I/O  instances
 and pins via simple portable APIs. Because of its simplicity, APIs are
 pin based and does not follow model of other drivers inside PDK which
 requires handle abstraction.
@@ -61,7 +61,7 @@ API reference for Application:
     #include <ti/drv/gpio/GPIO.h>
 
 Below sequence indicates API calling sequence for a simple use case of
-LED toggling
+LED toggling
 
 .. code-block:: c
 
@@ -92,35 +92,35 @@ Refer SDK Release Note for GPIO support across different EVMs.
 |                   | Toggling              | being used.           |    AM571x,          |                     |
 |                   |                       |                       |    AM572x,          |                     |
 |                   |                       || **AM335x             |    AM574x,          |                     |
-|                   |                       | ICEv2**:              |    k2g,             |                     |
-|                   |                       | USER  LED 1           |    k2hk,            |                     |
+|                   |                       | ICEv2**:              |    k2g,             |                     |
+|                   |                       | USER  LED 1           |    k2hk,            |                     |
 |                   |                       |                       |    k2l,             |                     |
 |                   |                       || **AM437x             |    k2e,             |                     |
-|                   |                       | EVM**:                |    c6657,           |                     |
-|                   |                       | USER  LED 1           |    c6678,           |                     |
+|                   |                       | EVM**:                |    c6657,           |                     |
+|                   |                       | USER  LED 1           |    c6678,           |                     |
 |                   |                       |                       |    omapl137,        |                     |
-|                   |                       || **AM572x IDK** :     |                     |                     |
+|                   |                       || **AM572x IDK** :     |                     |                     |
 |                   |                       | STATUS LED 1 Yellow   +---------------------+---------------------+
 |                   |                       | **AM572x GP           |    am65xx           | makefile            |
-|                   |                       | EVM** : USER LED1     |    j721e            |                     |
-|                   |                       | **AM574x IDK** :      |                     |                     |
+|                   |                       | EVM** : USER LED1     |    j721e            |                     |
+|                   |                       | **AM574x IDK** :      |                     |                     |
 |                   |                       | STATUS LED 1 Yellow   |                     |                     |
 |                   |                       | **AM572x GP           |                     |                     |
-|                   |                       | EVM** : USER LED1     |                     |                     |
-|                   |                       | **AM571x IDK** :      |                     |                     |
+|                   |                       | EVM** : USER LED1     |                     |                     |
+|                   |                       | **AM571x IDK** :      |                     |                     |
 |                   |                       | Industrial LED 3      |                     |                     |
 |                   |                       | Red                   |                     |                     |
 |                   |                       |                       |                     |                     |
-|                   |                       || **K2H EVM:**         |                     |                     |
+|                   |                       || **K2H EVM:**         |                     |                     |
 |                   |                       | USER LED 2 Blue       |                     |                     |
 |                   |                       |                       |                     |                     |
-|                   |                       || **K2E EVM:**         |                     |                     |
+|                   |                       || **K2E EVM:**         |                     |                     |
 |                   |                       | USER LED 1 Blue       |                     |                     |
 |                   |                       |                       |                     |                     |
-|                   |                       || **K2G EVM:**         |                     |                     |
+|                   |                       || **K2G EVM:**         |                     |                     |
 |                   |                       | USER LED 1 Yellow     |                     |                     |
 |                   |                       |                       |                     |                     |
-|                   |                       || **AM65xx EVM:**      |                     |                     |
+|                   |                       || **AM65xx EVM:**      |                     |                     |
 |                   |                       | USER LD16, LD17       |                     |                     |
 |                   |                       |                       |                     |                     |
 |                   |                       || **J721E EVM:**       |                     |                     |

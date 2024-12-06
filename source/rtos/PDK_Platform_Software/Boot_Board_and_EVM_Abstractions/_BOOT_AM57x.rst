@@ -24,7 +24,7 @@ Bootloader Execution Sequence
       I2C, MMCSD, SD/MMC, SPI, QSPI, Ethernet etc for reliable boot.
    -  The sequence depends on RBL execution flow and Sysboot pins.
    -  RBL gets image size and load address by checking TI Image Header
-      appended on bootloader binary(.bin). Check binary formats.
+      appended on bootloader binary(.bin). Check binary formats.
    -  Loads the binary to internal memory at the Load address fetched
       from TI Image Header
    -  Passes control to Secondary Bootloader(SBL)
@@ -48,9 +48,9 @@ Bootloader Execution Sequence
    -  Once Board Initialization is complete, it enables clocks to the
       target cores like C66x/DSP, IPU, etc and brings them out of reset.
    -  Parses Multicore Application image located in memory device and
-      copies it to DDR memory based on load address for different
+      copies it to DDR memory based on load address for different
       sections.
-   -  Once copy is successful it transfers control to application.
+   -  Once copy is successful it transfers control to application.
 
 -  **Application then starts executing from DDR**.
 
@@ -85,7 +85,7 @@ Tools and Binary Formats
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This section lists out the various tools and scripts used by SBL for
-different boot modes and those required to create a bootable application
+different boot modes and those required to create a bootable application
 image.
 
 **SBL/MLO image format:**
@@ -195,7 +195,7 @@ for more details on usage of this script and application image creation.
 
 SBL provides a CCS based qspi flash writer utility to flash image and
 multicore AppImage from a SD card to onboard QSPI device. It
-is located at *<PDK_INSTALL_DIR>/packages/ti/boot/sbl/tools/flashWriter/qspi*
+is located at *<PDK_INSTALL_DIR>/packages/ti/boot/sbl/tools/flashWriter/qspi*
 
 
 Building the SBL
@@ -232,8 +232,8 @@ To build the SBL components:
 #. **Run pdksetupenv script**
 #. **make all -C ti/boot/sbl BOARD=<BOARD_NAME> SOC=<SOC_NAME> BOOTMODE=<BOOTMEDIA>**
 
--  BOARD_NAME : idkAM572x, idkAM571x, evmAM572x, idkAM574x
--  SOC_NAME : AM572x, AM571x, AM574x
+-  BOARD_NAME : idkAM572x, idkAM571x, evmAM572x, idkAM574x
+-  SOC_NAME : AM572x, AM571x, AM574x
 
 SBL can be built for all the AM57x platforms using below command
 
@@ -276,7 +276,7 @@ Booting Via SD Card
 #. Preparing the SD card.
 #. Booting the target.
 
-Preparing the SD card 
+Preparing the SD card
 '''''''''''''''''''''''
 
 #. To boot the target the SD card should be bootable. Follow the steps
@@ -304,7 +304,7 @@ Booting Via eMMC
 #. Preparing the eMMC.
 #. Booting the target.
 
-Preparing the eMMC 
+Preparing the eMMC
 '''''''''''''''''''
 
 #. To format the eMMC of the target board, Run the following application on the target board
@@ -335,7 +335,7 @@ Booting Via QSPI
 """"""""""""""""""
 Booting from QSPI flash involves two steps-
 
-#. Flashing bootloader and app image to QSPI flash.
+#. Flashing bootloader and app image to QSPI flash.
 #. Booting the target.
 
 Preparing Flash Device
@@ -343,7 +343,7 @@ Preparing Flash Device
 
 Use the CCS based qspi_flash_writer.out utility provided in
 <*TI_PDK_INSTALL_DIR>/packages/ti/boot/sbl/tools/flashwriter/qspi/<Board>'*
-to flash the SBL image at offset 0 and application image at offset
+to flash the SBL image at offset 0 and application image at offset
 0x80000 to the QSPI device.
 
 QSPI device Memory Map:
@@ -362,8 +362,8 @@ below.
    and application image(app) generated using the Script into the SD
    card.
    Rename the bootloader file to 'boot' and application image to 'app'
-   with no extensions. 
-#. Copy 'config' file into the SD card, the config file should contain
+   with no extensions.
+#. Copy 'config' file into the SD card, the config file should contain
    names of the image to be flashed and the offset.
    A sample config file can be found at
    *<TI_PDK_INSTALL_DIR>/packages/ti/boot/sbl/tools/flashWriter/qspi/config*.
@@ -382,7 +382,7 @@ below.
 #. Run the QSPI flash writer application. You will see the following
    logs on the EVM's UART console.
 #. After the images have been flashed to the QSPI device disconnect from
-   CCS and do a power reset to boot from the QSPI memory. 
+   CCS and do a power reset to boot from the QSPI memory.
 
 ::
 
@@ -416,7 +416,7 @@ to validate the multi-core boot-up use case.
 
 Master application sends wake-up message to the DSP target cores & waits
 for acknowledgement message from the target cores in an infinite
-loop.Each target DSP core waits for wake-up message from the master core 
+loop.Each target DSP core waits for wake-up message from the master core
 responds back with an acknowledgement message.
 
 Application Image Creation
@@ -454,7 +454,7 @@ Example:
 To create the final bootable application image use the AM57xImageGen
 script and follow these steps
 
-1. Set the following environment variable in the shell.  BIN_PATH:
+1. Set the following environment variable in the shell.  BIN_PATH:
 Pointing to the path where the AppImage needs to be generated
 
 ::
@@ -462,7 +462,7 @@ Pointing to the path where the AppImage needs to be generated
     Ex: export BIN_PATH=$(TI_PDK_INSTALL_DIR)/packages/ti/boot/sbl/binary
 
 2. Edit the script file to point to the application elf files by setting
-the input application variables. 
+the input application variables.
 
 App_MPU_CPU0: Point to the path where the application .out for A15 MPU is located
 App_DSP1: Point to the path where the dsp core 1 application is located
@@ -522,7 +522,7 @@ script and follow these steps
 
 1. Set the following environment variable in windows command prompt
 
-BIN_PATH: Pointing to the path where the AppImage needs to be generated 
+BIN_PATH: Pointing to the path where the AppImage needs to be generated
 
 ::
 
@@ -560,8 +560,8 @@ For information on board specific requirements like power supply, UART
 console port connections refer the Hardware User guide of the respective
 boards.
 
-The configurations needed to setup UART console through a serial
-terminal application on host PC are listed in the next section.
+The configurations needed to setup UART console through a serial
+terminal application on host PC are listed in the next section.
 
 UART Console Setup
 '''''''''''''''''''
@@ -569,7 +569,7 @@ PDK SBL prints messages on the UART Serial Console running on the host.
 Hence, a serial terminal application (like Tera
 Term/HyperTerminal/minicom) should be running on the host.
 
-The host serial port must be configured at 115200 baud, no parity, 1
+The host serial port must be configured at 115200 baud, no parity, 1
 stop bit and no flow control.
 Please ensure that the local echo setting for the terminal is turned off.
 
@@ -579,7 +579,7 @@ Follow these steps to load the test application using a SD card on the
 target
 
 copy the MLO to your SD card (located
-at $(TI_PDK_INSTALL_DIR)/packages/ti/boot/sbl/binary/[BOARD]/mmcsd)
+at $(TI_PDK_INSTALL_DIR)/packages/ti/boot/sbl/binary/[BOARD]/mmcsd)
 
 #. copy the example app located at path pointed to by BIN_PATH to your
    SD card
@@ -605,7 +605,7 @@ Memory Map
 """"""""""""
 
 Table indicated below provides memory map details for SBL image in
-OCMC_RAM1.  For more details on pinmux and IO delay requirements refer
+OCMC_RAM1.  For more details on pinmux and IO delay requirements refer
 this link `Processor SDK Board
 Support <index_board.html#board-support>`__
 

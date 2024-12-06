@@ -38,7 +38,7 @@ API supports all initialization sequence for TI supported EVMs. In
 addition it initializes UART instance for Console/STDIO.Refer `Processor
 SDK RTOS Board Support <index_board.html#board-support>`__
 for additional details.Once board specific configuration is
-complete \ *SPI_init()* API should be called to initialize driver.
+complete \ *SPI_init()* API should be called to initialize driver.
 
 SoC Specific Configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -47,7 +47,7 @@ All SoC specific configurations (eg: SPI module registers base address,
 interrupt configurations, etc.) can be set using SPI_socSetInitCfg() SoC
 driver API before calling any SPI driver APIs. The default SoC specific
 configurations can be retrieved using SPI_socGetInitCfg() SoC driver
-API. 
+API.
 
 SPI Configuration Structure
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -59,9 +59,9 @@ called and cannot be changed afterwards. For details about individual
 fields of this structure, see Doxygen help by opening
 *PDK_INSTALL_DIR\packages\ti\drv\spi\docs\doxygen\html\index.html.*
 
-Driver  requires common *SPI_config[]*  to configure hardware attributes
-of MCSPI and QSPI/OSPI peripherals on SOC and board. First all MCSPI related
-hardware attributes is defined followed by QSPI/OSPI hardware attributes.
+Driver  requires common *SPI_config[]*  to configure hardware attributes
+of MCSPI and QSPI/OSPI peripherals on SOC and board. First all MCSPI related
+hardware attributes is defined followed by QSPI/OSPI hardware attributes.
 Application will need to include appropriate offset to instance while
 invoking *SPI_open()* API..
 
@@ -111,7 +111,7 @@ SPI IP V1 driver also supports multi-channel open API's:
 |
 At this point SPI driver is ready for data transfer in blocking mode
 on specific instance identified by handle. Pseudo/Sample code for
-SPI read/write transaction is included below. Refer example for
+SPI read/write transaction is included below. Refer example for
 additional details
 
 ::
@@ -159,7 +159,7 @@ SPI
 | Example application   | and write of data     | **Pass criteria:**    |    k2l,             |                     |
 |                       | to a NOR flash        |                       |    k2e,             |                     |
 |                       | device connected      | All tests have        |    c6657,           |                     |
-|                       | over SPI interface.   | passed.               |    c6678,           |                     |
+|                       | over SPI interface.   | passed.               |    c6678,           |                     |
 |                       | By default, write     |                       |    omapl137,        |                     |
 |                       | test is disabled,     |                       |                     |                     |
 |                       | user can enable       |                       |                     |                     |
@@ -171,8 +171,8 @@ SPI
 |                       |                       |                       |                     |                     |
 |                       | If write test is      |                       |                     |                     |
 |                       | enabled, write        |                       |                     |                     |
-|                       | transaction is        |                       |                     |                     |
-|                       | verified              |                       |                     |                     |
+|                       | transaction is        |                       |                     |                     |
+|                       | verified              |                       |                     |                     |
 |                       | for correctness by    |                       |                     |                     |
 |                       | reading contents      |                       |                     |                     |
 |                       | back.                 |                       |                     |                     |
@@ -226,7 +226,7 @@ QSPI
 |                       | connected over QSPI   | All tests have        |    k2g,             |                     |
 |                       | interface. Write      | passed.               |                     |                     |
 |                       | transaction is        |                       |                     |                     |
-|                       | verified  for         |                       |                     |                     |
+|                       | verified  for         |                       |                     |                     |
 |                       | correctness by        |                       |                     |                     |
 |                       | reading contents      |                       |                     |                     |
 |                       | back.                 |                       |                     |                     |
@@ -272,43 +272,43 @@ MCSPI
 |                 |                 | Configuration                             | Results             |                |                   |
 +=================+=================+===========================================+=====================+================+===================+
 | MCSPI_Serialize | Sample          | **AM57x IDK EVM:**                        | |                   |    AM335x,     | CCS project       |
-| r               | Application     |                                           | | ** **             |    AM437x,     |                   |
+| r               | Application     |                                           | | ** **             |    AM437x,     |                   |
 | Example         | demonstrating   |                                           |                     |    AM571x,     |                   |
 | application     | reading data    | Short pins 1  and 2 on header             | Following           |    AM572x,     |                   |
-|                 | generated from  | J37(Industrial I/O)                       | prints  on          |    AM574x,     |                   |
+|                 | generated from  | J37(Industrial I/O)                       | prints  on          |    AM574x,     |                   |
 |                 | industrial      |                                           | console             |                |                   |
-|                 | input module.   | **AM335x ICE v2:**                        | expected:           |                |                   |
+|                 | input module.   | **AM335x ICE v2:**                        | expected:           |                |                   |
 |                 | Application     | Short pins 1 and 2 on header              |                     |                |                   |
 |                 | uses GPIO pins  | J14(Industrial I/O)                       | **Pass              |                |                   |
 |                 | to assert load  |                                           | criteria:**         |                |                   |
 |                 | signal in order | **AM437x IDK EVM:**                       |                     |                |                   |
 |                 | to generate     | Short pins 1 and 2 on                     | All tests have      |                |                   |
-|                 | date from       | header J1(Industrial I/O)                 | passed.             |                |                   |
+|                 | date from       | header J1(Industrial I/O)                 | passed.             |                |                   |
 |                 | industrial      |                                           |                     |                |                   |
 |                 | input module.   |                                           |                     |                |                   |
 +-----------------+-----------------+-------------------------------------------+---------------------+----------------+-------------------+
 | MCSPI_Dma_Seria | Sample          | **AM57x IDK EVM:**                        | |                   |    AM437x,     | CCS project       |
-| lizer           | Application     | Short pins 1 and 2 on header              | | ** **             |    AM571x,     |                   |
+| lizer           | Application     | Short pins 1 and 2 on header              | | ** **             |    AM571x,     |                   |
 | Example         | demonstrating   | J37(Industrial I/O)                       |                     |    AM572x,     |                   |
 | application     | reading data    | |                                         | Following           |    AM574x,     |                   |
-|                 | generated from  | **AM437x IDK EVM:**                       | prints  on          |                |                   |
+|                 | generated from  | **AM437x IDK EVM:**                       | prints  on          |                |                   |
 |                 | industrial      | Short pins 1 and 2 on header              | console             |                |                   |
 |                 | input module    | J1(Industrial I/O)                        | expected:           |                |                   |
-|                 | through EDMA.   |                                           |                     |                |                   |
+|                 | through EDMA.   |                                           |                     |                |                   |
 |                 | Application     |                                           | **Pass              |                |                   |
 |                 | uses GPIO pins  |                                           | criteria:**         |                |                   |
 |                 | to assert load  |                                           |                     |                |                   |
 |                 | signal in order |                                           | All tests have      |                |                   |
-|                 | to generate     |                                           | passed.             |                |                   |
+|                 | to generate     |                                           | passed.             |                |                   |
 |                 | date from       |                                           |                     |                |                   |
 |                 | industrial      |                                           |                     |                |                   |
 |                 | input module.   |                                           |                     |                |                   |
 +-----------------+-----------------+-------------------------------------------+---------------------+----------------+-------------------+
 | MCSPI_SerialFla | Sample          | **AM335x GP EVM:**                        | |                   |    AM335x,     | CCS project       |
-| sh              | Application     | Set the EVM in profile 2                  | | ** **             |                |                   |
+| sh              | Application     | Set the EVM in profile 2                  | | ** **             |                |                   |
 |                 | demonstrating   | (SW8[1] = OFF,                            |                     |                |                   |
 |                 | writing and     |  SW8[2] = ON,                             | Following           |                |                   |
-|                 | reading data    |  SW8[3:4] = OFF)                          | prints  on          |                |                   |
+|                 | reading data    |  SW8[3:4] = OFF)                          | prints  on          |                |                   |
 |                 | from the serial |                                           | console             |                |                   |
 |                 | flash through   |                                           | expected:           |                |                   |
 |                 | MCSPI EDMA      |                                           |                     |                |                   |
@@ -319,7 +319,7 @@ MCSPI
 |                 |                 |                                           | passed.             |                |                   |
 +-----------------+-----------------+-------------------------------------------+---------------------+----------------+-------------------+
 | MCSPI_periphera | Application     | **Pin Connections:**                      | | **On              |    AM335x,     | CCS project       |
-| lmode example   | demonstrates    |                                           |   peripheral        |    AM437x,     |                   |
+| lmode example   | demonstrates    |                                           |   peripheral        |    AM437x,     |                   |
 | application     | peripheral      |                                           |   EVM console:      |    AM571x,     |                   |
 |                 | reciever and    | | **IDK AM571x,**                         |   **\ SPI           |    AM572x,     |                   |
 |                 | transmit        | | **IDK AM572x or IDK AM574x:**           |    initialized      |    AM574x,     |                   |
@@ -329,7 +329,7 @@ MCSPI
 |                 | case requires   | | J21-Pin28(MOSI)---J21-Pin26(MOSI)       |                     |    am65xx,     | makefile          |
 |                 | two EVMs. One   | | J21-Pin30(CS)------J21-Pin30(CS)        |                     |    j721e       |                   |
 |                 | acts as         | | J21-Pin22(DGND)--J21-Pin22(DGND)        | | **On Controller   |                |                   |
-|                 | Controller      | |                                         |   EVM console:      |                |                   |
+|                 | Controller      | |                                         |   EVM console:      |                |                   |
 |                 | and Another as  | | **IDK AM437x:**                         |                     |                |                   |
 |                 | peripheral.     | | EVM1(controller) ==== EVM2(peripheral)  |   initialized       |                |                   |
 |                 | McSPI           | | J16-Pin24(CLK)-----J16-Pin24(CLK)       | | Controller: PASS: |                |                   |
@@ -417,12 +417,12 @@ MCSPI
 |                 | on MCU1_0 core  |                                           |                     |                |                   |
 +-----------------+-----------------+-------------------------------------------+---------------------+----------------+-------------------+
 | MCSPI_SMP_Basic | Sample          |                                           | |                   |    AM572x-EVM  | CCS project       |
-| Example         | Application     |                                           | | ** **             |                |                   |
+| Example         | Application     |                                           | | ** **             |                |                   |
 | application     | demonstrating   |                                           |                     |                |                   |
 |                 | reading data    |                                           | Following           |                |                   |
-|                 | generated from  |                                           | prints  on          |                |                   |
+|                 | generated from  |                                           | prints  on          |                |                   |
 |                 | industrial      |                                           | console             |                |                   |
-|                 | input module.   |                                           | expected:           |                |                   |
+|                 | input module.   |                                           | expected:           |                |                   |
 |                 | Application     |                                           |                     |                |                   |
 |                 | uses GPIO pins  |                                           | **Pass              |                |                   |
 |                 | to assert load  |                                           | criteria:**         |                |                   |

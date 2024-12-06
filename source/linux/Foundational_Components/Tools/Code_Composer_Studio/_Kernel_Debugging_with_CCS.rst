@@ -99,7 +99,7 @@ Capabilities tab in the Preference dialog (select **Window** -->
 
 3. Click on the icon **New launch configuration** (Top left of the pane)
 
-4. Set the fields  **C/C++ Application:** and\ **Project:**
+4. Set the fields  **C/C++ Application:** and\ **Project:**
    respectively to the existing project in the workspace and the binary
    executable file
 
@@ -130,11 +130,11 @@ Capabilities tab in the Preference dialog (select **Window** -->
    being used, but it is possible to use also CodeSourcery or other
    toolchain.
 
-   Click browse next to "GDB command file" and browse to the .gdbinit
-   file in the SDK install directory.  When you try to browse to the
-   .gdbinit file, you will need
+   Click browse next to "GDB command file" and browse to the .gdbinit
+   file in the SDK install directory.  When you try to browse to the
+   .gdbinit file, you will need
 
-   to R-Click -> Show Hidden Files to see the file.   Click the Close
+   to R-Click -> Show Hidden Files to see the file.   Click the Close
    button and you are now ready to debug the application!
 
    -  In this example of the 06.00.00.00 SDK, the path is:
@@ -458,9 +458,9 @@ expected address (wrong library or version mismatch?)
 warning: .dynamic section for "/lib/libc.so.6" is not at the expected
 address (wrong library or version mismatch?)
 When SDKs setup.sh script, it should automatically generate a .gdbinit
-file for you in the base directory of the SDK. 
+file for you in the base directory of the SDK.
 
-The file will contain the line: set sysroot <SDK-PATH>/targetNFS.
+The file will contain the line: set sysroot <SDK-PATH>/targetNFS.
 
 An example would be
 

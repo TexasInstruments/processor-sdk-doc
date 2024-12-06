@@ -379,7 +379,7 @@ Important folders in the iio:deviceX directory are:
 
 -  in\_voltageX\_en: is this channel enabled?
 -  in\_voltageX\_index: index of this channel in the buffer's chunks
--  in\_voltageX\_type : How the ADC stores its data. Reading this file
+-  in\_voltageX\_type : How the ADC stores its data. Reading this file
    should return you a string something like below:
 
 ::

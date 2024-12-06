@@ -1,3 +1,5 @@
+.. include:: <isonum.txt>
+
 .. http://processors.wiki.ti.com/index.php/AM572x_GP_EVM_Hardware_Setup
 
 AM572x GP EVM Hardware Setup
@@ -7,7 +9,7 @@ AM572x GP EVM Hardware Setup
    :name: description
 
 The AM572x Evaluation Module provides an affordable platform to quickly
-start evaluation of Sitara™ ARM® Cortex®-A15 AM57x Processors (AM5728,
+start evaluation of Sitara™ ARM\ |reg| Cortex\ |reg|\ -A15 AM57x Processors (AM5728,
 AM5726, AM5718, AM5716) and accelerate development for HMI, machine
 vision, networking, medical imaging and many other industrial
 applications. It is a development platform based on the dual ARM
@@ -32,7 +34,7 @@ and dual ARM Cortex-M4 cores.
 
 **Other components:**
 
-- µSD card with Linux SDK
+- |micro|\ SD card with Linux SDK
 - USB-to-serial debug cable
 - HDMI cable for optional external display
 - LCD brackets
@@ -160,7 +162,7 @@ scenario, the SBL component provides the same functionality
 .. rubric:: CCS Setup
    :name: ccs-setup
 
-There are two scenarios while connecting to the EVM :
+There are two scenarios while connecting to the EVM :
 
 -  **Connect to EVM without a SD card boot image to boot the EVM**
 -  **Connect to EVM after booting an image from the SD card**.
@@ -207,7 +209,7 @@ provided below:
 .. rubric:: Connecting to target
    :name: connecting-to-target
 
-**Step1 :** Download Code composer Studio and AM572x Sitara CSP package
+**Step1 :** Download Code composer Studio and AM572x Sitara CSP package
 as described in the wiki article mentioned below:
 
 `Install Code composer Studio v6 for
@@ -301,7 +303,7 @@ in the previous section.
     CortexA15_0: GEL Output:        PHY_STATUSx registers
     CortexA15_0: GEL Output:        Two EMIFs in interleaved mode - (2GB total)
     CortexA15_0: GEL Output: --->>> DDR3 Initialization is DONE! <<<---
-    CortexA15_0: GEL Output: --->>> AM572x Target Connect Sequence DONE !!!!!  <<<---
+    CortexA15_0: GEL Output: --->>> AM572x Target Connect Sequence DONE !!!!!  <<<---
     CortexA15_0: GEL Output: --->>> IPU1SS Initialization is in progress ... <<<---
     CortexA15_0: GEL Output: --->>> IPU1SS Initialization is DONE! <<<---
     CortexA15_0: GEL Output: --->>> IPU2SS Initialization is in progress ... <<<---

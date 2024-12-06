@@ -1,4 +1,4 @@
-|
+.. include:: <isonum.txt>
 
 .. rubric:: **Boards Supported**
 
@@ -6,7 +6,7 @@
 
 .. rubric:: `AM65x evaluation module (EVM) <https://www.ti.com/tool/TMDX654GPEVM>`__
 
-The AM65x Evaluation Module provides a platform to quickly start evaluation of Sitara™ Arm® Cortex®-A53 AM65x Processors (AM6548, AM6546, AM6528, AM6527, AM6526) and accelerate development for HMI, networking, patient monitoring, and other industrial applications. It is a development platform based on the quad core Cortex-A53, dual Cortex-R5F processor that is integrated with ample connectivity such as PCIe, USB 3.0/2.0, Gigabit Ethernet,  PRU_ICSSG Ethernet, etc.
+The AM65x Evaluation Module provides a platform to quickly start evaluation of Sitara™ Arm\ |reg| Cortex\ |reg|\ -A53 AM65x Processors (AM6548, AM6546, AM6528, AM6527, AM6526) and accelerate development for HMI, networking, patient monitoring, and other industrial applications. It is a development platform based on the quad core Cortex-A53, dual Cortex-R5F processor that is integrated with ample connectivity such as PCIe, USB 3.0/2.0, Gigabit Ethernet,  PRU_ICSSG Ethernet, etc.
 
 On this platform one CPSW Ethernet port and two ICSSG2 Ethernet ports are available for use.
 
