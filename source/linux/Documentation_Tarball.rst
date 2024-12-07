@@ -1,9 +1,16 @@
+.. include:: /_replacevars.rst
+
 Documentation Tarball
 =====================
+.. ifconfig:: CONFIG_part_variant in ('AM62AX','J721E','J7200','J721S2','J784S4','AM68','AM69','J722S','AM67','J742S2','AM68A','AM67A','AM69A','TDA4VM')
 
-Please click the link below to download a snapshot of the entire documentation in HTML format.
+   Please download a snapshot of the entire documentation in HTML format from |__SDK_DOWNLOAD_URL__|.
 
-`Download processor-sdk-linux-docs.tar.gz <processor-sdk-linux-docs.tar.gz>`__
+.. ifconfig:: CONFIG_part_variant not in ('AM62AX','J721E','J7200','J721S2','J784S4','AM68','AM69','J722S','AM67','J742S2','AM68A','AM67A','AM69A','TDA4VM')
+
+   Please click the link below to download a snapshot of the entire documentation in HTML format.
+
+   `Download processor-sdk-linux-docs.tar.gz <processor-sdk-linux-docs.tar.gz>`__
 
 Unpack the tarball using the command below:
 

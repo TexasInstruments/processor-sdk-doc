@@ -109,6 +109,11 @@ U-Boot
 
    meta-tisdk Yocto layer may contains additional patches for U-Boot `here <https://git.ti.com/cgit/ti-sdk-linux/meta-tisdk/tree/recipes-bsp/u-boot?h=scarthgap>`__.
 
+.. ifconfig:: CONFIG_image_type in ('edgeai', 'adas')
+
+   .. note::
+
+      meta-edgeai Yocto layer contains additional patches for U-Boot `here <https://git.ti.com/cgit/edgeai/meta-edgeai/tree/recipes-bsp/u-boot?h=10.01.00.03>`__.
 
 .. _kernel-release-notes:
 
@@ -148,6 +153,12 @@ Kernel
 .. note::
 
    meta-tisdk Yocto layer may ontains additional patches for Linux Kernel `here <https://git.ti.com/cgit/ti-sdk-linux/meta-tisdk/tree/recipes-kernel/linux?h=h=scarthgap>`__.
+
+.. ifconfig:: CONFIG_image_type in ('edgeai', 'adas')
+
+   .. note::
+
+      meta-edgeai Yocto layer contains additional patches for Kernel `here <https://git.ti.com/cgit/edgeai/meta-edgeai/tree/recipes-kernel/linux?h=10.01.00.03>`__.
 
 .. _tf-a-release-notes:
 
@@ -221,6 +232,18 @@ Yocto
 | Branch: scarthgap
 | Release Tag: 10.01.06.01
 |
+
+.. ifconfig:: CONFIG_image_type in ('edgeai', 'adas')
+
+   .. rubric:: meta-edgeai
+
+   | Head Commit: 2ec01c8ec3dcaf8e725a3bf449193e0c1f3d37b6 linux-ti-staging: j742s2: Add patch to enable overlays
+   | Date: 2024-09-25
+
+   | Clone: git://git.ti.com/edgeai/meta-edgeai.git
+   | Branch: scarthgap
+   | Release Tag: 10.01.00.03
+   |
 
 Issues Tracker
 ==============

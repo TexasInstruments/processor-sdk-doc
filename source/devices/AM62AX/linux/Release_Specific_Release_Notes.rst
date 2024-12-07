@@ -35,10 +35,10 @@ found on the SDK download page or in the installed directory as indicated below.
 -  Linux Manifest:  "/docs/software_manifest.html"
 
 
-Release 10.00.00
+Release 10.01.00
 ================
 
-Released on March 2024
+Released on December 2024
 
 What's new
 ----------
@@ -86,6 +86,12 @@ U-Boot
 | Branch: ti-u-boot-2024.04
 | uBoot Tag: 10.00.07
 |
+
+.. ifconfig:: CONFIG_image_type in ('edgeai','adas')
+
+    .. note::
+
+       meta-edgeai Yocto layer contains additional patches for U-Boot `here <https://git.ti.com/cgit/edgeai/meta-edgeai/tree/recipes-bsp/u-boot?h=10.01.00.03>`__.
 
 .. _tf-a-release-notes:
 
@@ -152,6 +158,13 @@ Kernel
 | config-fragment=config-fragment=kernel/configs/ti_arm64_prune.config kernel/configs/ti_rt.config
 |
 
+.. ifconfig:: CONFIG_image_type in ('edgeai','adas')
+
+   .. note::
+
+      meta-edgeai Yocto layer contains additional patches for Kernel `here <https://git.ti.com/cgit/edgeai/meta-edgeai/tree/recipes-kernel/linux?h=10.01.00.03>`__.
+
+
 Yocto
 -----
 .. rubric:: meta-ti
@@ -186,6 +199,18 @@ Yocto
 | Branch: kirkstone
 | Release Tag: 09.01.00.08
 |
+
+.. ifconfig:: CONFIG_image_type in ('edgeai', 'adas')
+
+   .. rubric:: meta-edgeai
+
+   | Head Commit: c9351accf9c3ec152ffde84507c674901b7f23f1 [20240814] EDGEAI Auto Update
+   | Date: 2024-08-14
+
+   | Clone: git://git.ti.com/edgeai/meta-edgeai.git
+   | Branch: scarthgap
+   | Release Tag: 10.01.00.03
+   |
 
 Issues Tracker
 ==============

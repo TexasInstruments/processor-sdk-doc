@@ -1,3 +1,5 @@
+.. include:: /_replacevars.rst
+
 .. _yocto-layer-configuration:
 
 **************************
@@ -11,12 +13,12 @@ meta layers. These are the <config> used in the command:
 
 ``$ ./oe-layertool-setup.sh -f <config>``
 
-The following config files are located in the **configs/processor-sdk**
+The following config files are located in the **configs/processor-sdk-analytics**
 directory of the `oe-layersetup git repo <https://git.ti.com/cgit/arago-project/oe-layersetup/>`_.
 
-+----------------------------------------+-----------------------------------+------------------------------------------------------+
-| Config File                            | Description                       | Supported machines/platforms                         |
-+========================================+===================================+======================================================+
-| processor-sdk-08.06.00-config.txt      | Processor SDK 08.06.00.45 Release | am62axx-evm                                          |
-+----------------------------------------+-----------------------------------+------------------------------------------------------+
++----------------------------------------------------+------------------------------------------------+--------------------------------+
+|                    Description                     |      Config File                               | Supported yocto build machine  |
++====================================================+================================================+================================+
+| |__SDK_FULL_NAME__| : 10_01_00 Release             | processor-sdk-analytics-10_01_00-config.txt    | |__SDK_BUILD_MACHINE__|        |
++----------------------------------------------------+------------------------------------------------+--------------------------------+
 

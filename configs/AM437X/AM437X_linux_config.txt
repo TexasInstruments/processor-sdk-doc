@@ -28,12 +28,14 @@ Replacement Variables
 '__WINDOWS_SUPPORTED_LONG__'     : '7 (64-bit)'
 '__FEATURINGMATRIX__'            : 'featuring Matrix'
 '__SYSFW_CORE_NAME__'            : \
+'__IMAGE_TYPE__'                 : 'default'
 
 Configuration Values
 --------------------
 'CONFIG_part_family'      : 'AM437X_family'
 'CONFIG_part_variant'     : 'AM437X'
 'CONFIG_sdk'              : 'SITARA'
+'CONFIG_image_type'       : 'default'
 'CONFIG_icss_support'     : 'yes'
 'CONFIG_rt_linux_support' : 'yes'
 'CONFIG_gpu_ip'           : 'SGX'

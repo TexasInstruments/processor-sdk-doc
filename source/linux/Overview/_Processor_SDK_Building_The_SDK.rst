@@ -114,24 +114,24 @@ The MACHINE can be set to |__SDK_BUILD_MACHINE__|, for example.
 
             $ git clone https://git.ti.com/git/arago-project/oe-layersetup.git tisdk
             $ cd tisdk
-            $ ./oe-layertool-setup.sh -f configs/processor-sdk/processor-sdk-08.06.00-config.txt
+            $ ./oe-layertool-setup.sh -f configs/processor-sdk-analytics/processor-sdk-analytics-10.01.00-config.txt
             $ cd build
             $ . conf/setenv
-            $ git clone https://git.ti.com/git/security-development-tools/core-secdev-k3.git -b master
-            $ export TI_SECURE_DEV_PKG_K3=`pwd`/core-secdev-k3
+            $ echo 'ARAGO_BRAND = "edgeai"' >> conf/local.conf
             $ MACHINE=am62axx-evm bitbake -k tisdk-edgeai-image
 
+         Your tisdk-edgeai-image wic image will be generated in arago-tmp-[toolchain]/deploy directory. Use `Processor\_SDK\_Linux\_create\_SD\_card <Overview/Processor_SDK_Linux_create_SD_card.html>`__ to flash this image on the SD-Card.
 
       .. ifconfig:: CONFIG_part_variant not in ('AM62AX')
 
          The final command below will build the :file:`tisdk-default-image`, which is the
          Processor SDK image with arago filesystem.  See `Build Options`_ for a list of
          additional targets.
-         
+
          .. tabs::
-            
+
             .. tab:: Build Linux SD card Image
-               
+
                .. code-block:: console
 
                   $ git clone https://git.ti.com/git/arago-project/oe-layersetup.git tisdk
@@ -142,7 +142,7 @@ The MACHINE can be set to |__SDK_BUILD_MACHINE__|, for example.
                   $ MACHINE=<machine> bitbake -k tisdk-default-image
 
             .. tab:: Build RT-Linux SD card Image
-               
+
                .. code-block:: console
 
                   $ git clone https://git.ti.com/git/arago-project/oe-layersetup.git tisdk
@@ -168,14 +168,26 @@ The MACHINE can be set to |__SDK_BUILD_MACHINE__|, for example.
 
       cd <SDK INSTALL DIR>/yocto-build
 
-   Then run following commands to setup a yocto build for a specific release version and build the 'tisdk-default-image' target.
+   Then run following commands to setup a yocto build for a specific release version and build the 'tisdk-|__IMAGE_TYPE__|-image' target.
 
-   .. code-block:: console
+   .. ifconfig:: CONFIG_image_type in ('default')
 
-      ./oe-layertool-setup.sh -f configs/processor-sdk-linux/processor-sdk-linux-<version>.txt
-      cd build
-      . conf/setenv
-      MACHINE=<machine> bitbake -k tisdk-default-image
+      .. code-block:: console
+
+         ./oe-layertool-setup.sh -f configs/processor-sdk-linux/processor-sdk-linux-<version>.txt
+         cd build
+         . conf/setenv
+         MACHINE=<machine> bitbake -k tisdk-default-image
+
+   .. ifconfig:: CONFIG_image_type in ('edgeai', 'adas')
+
+      .. parsed-literal::
+
+         ./oe-layertool-setup.sh -f configs/processor-sdk-analytics/processor-sdk-analytics-<version>-config.txt
+         cd build
+         . conf/setenv
+         echo 'ARAGO_BRAND = \"|__IMAGE_TYPE__|\"' >> conf/local.conf
+         MACHINE="|__SDK_BUILD_MACHINE__|" bitbake -k tisdk-|__IMAGE_TYPE__|-image
 
 Your newly built wic image will be generated in deploy-ti directory. Use :ref:`Linux SD Card Creation Guide <processor-sdk-linux-create-sd-card>` to flash this image on the SD-Card.
 
@@ -366,6 +378,10 @@ The "Build Output" is given relative to the
    | tisdk-core-bundle            | images/<machine>/tisdk-core-bundle-<machine>.tar.xz           | Full SDK                   |
    +------------------------------+---------------------------------------------------------------+----------------------------+
    | tisdk-default-image          | images/<machine>/tisdk-default-image-<machine>.tar.xz         | Target Filesystem          |
+   +------------------------------+---------------------------------------------------------------+----------------------------+
+   | tisdk-edgeai-image           | images/<machine>/tisdk-edgeai-image-<machine>.tar.xz          | Target EdgeAI Filesystem   |
+   +------------------------------+---------------------------------------------------------------+----------------------------+
+   | tisdk-adas-image             | images/<machine>/tisdk-adas-image-<machine>.tar.xz            | Target Adas Filesystem     |
    +------------------------------+---------------------------------------------------------------+----------------------------+
    | tisdk-base-image             | images/<machine>/tisdk-base-image-<machine>.tar.xz            | Minimal Target Filesytem   |
    +------------------------------+---------------------------------------------------------------+----------------------------+

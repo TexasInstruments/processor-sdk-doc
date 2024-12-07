@@ -1,3 +1,4 @@
+.. include:: /_replacevars.rst
 
 .. _Edge-AI-Gallery-User-Guide-label:
 
@@ -7,14 +8,14 @@ Edge AI Gallery - User Guide
 Overview
 --------
 
-The AM62A SK board has a QT based Out of Box application setup so that user can test the prepackaged models, with sample images, videos and optionally with a connected camera. The Demo also allows users to add their custom models, images, and videos to extend the functionality.
+The |__PART_FAMILY_DEVICE_NAMES__| SK board has a QT based Out of Box application setup so that user can test the prepackaged models, with sample images, videos and optionally with a connected camera. The Demo also allows users to add their custom models, images, and videos to extend the functionality.
 
 All of the necessary equipment requirement and instructions are provided here.
 
 Hardware Prerequisites
 ----------------------
 
-- TI AM62A SK
+- TI |__PART_FAMILY_DEVICE_NAMES__| SK
 
 - PC (Windows or Linux, to use serial terminal console)
 
@@ -73,7 +74,7 @@ The edge AI gallery launches on Linux startup. Follow the below instructions to 
 
 |
 
-5. Select the 3 options as described above and click on ``Start`` to generate and start the pipeline.
+5. Select the 4 options as described above and click on ``Start`` to generate and start the pipeline.
 
    .. note:: As the note suggests, it might take a while for custom pipeline to start.
 
@@ -107,28 +108,42 @@ The edge AI gallery launches on Linux startup. Follow the below instructions to 
    - Models - /opt/model_zoo/
 
 
-10. To change the videos in the prebuilt pipelines used for ``Image Classification``, ``Object Detection`` & ``Semantic Segmentation``, you can replace the video files ``oob-gui-video*.h264`` under ``/opt/oob-demo-assets/``.
+10. To change the videos in the prebuilt pipelines used for ``Image Classification``, ``Object Detection``, ``Semantic Segmentation`` & ``Multi Channel``, you can replace the video files :file:`oob-gui-video*.h264` under :file:`/opt/oob-demo-assets/`.
 
-11. To add new models to the ``Model`` dropdown list in Custom popup menu, Add the names of the models in ``/opt/oob-demo-assets/allowedModels.txt``.
-
-   .. note:: For the above changes to take affect, close and relaunch the application.
-
-12. To relaunch the application, you should run
+11. To relaunch the application, you should run
    ::
 
         /etc/init.d/edgeai-launcher.sh start
 
-13. And to stop the application again, you should run
+12. And to stop the application again, you should run
    ::
 
         /etc/init.d/edgeai-launcher.sh stop
 
-14. For further information on edge AI, refer `Edge AI Documentation <https://software-dl.ti.com/jacinto7/esd/processor-sdk-linux-edgeai/AM62AX/08_06_00/exports/docs/devices/AM62AX/linux/index.html>`__
+.. ifconfig:: CONFIG_part_family in ('AM62AX_family')
+
+   13. To add new models to the ``Model`` dropdown list in Custom popup menu, Add the names of the models in :file:`/opt/oob-demo-assets/allowedModels.txt`.
+
+   .. note:: For the above changes to take affect, close and relaunch the application.
+
+   14. For more information on edge AI software stack, refer `Edge AI Documentation <https://software-dl.ti.com/jacinto7/esd/processor-sdk-linux-edgeai/AM62AX/10_01_00/exports/edgeai_docs/common/sdk_overview.html>`_
+
+.. ifconfig:: CONFIG_part_variant in ('J721E')
+
+   13. For more information on edge AI software stack, refer `Edge AI Documentation <https://software-dl.ti.com/jacinto7/esd/processor-sdk-linux-edgeai/TDA4VM/10_01_00/exports/docs/common/sdk_overview.html>`_
+
+.. ifconfig:: CONFIG_part_variant in ('J721S2')
+
+   13. For more information on edge AI software stack, refer `Edge AI Documentation <https://software-dl.ti.com/jacinto7/esd/processor-sdk-linux-edgeai/AM68A/10_01_00/exports/docs/common/sdk_overview.html>`_
+
+.. ifconfig:: CONFIG_part_variant in ('J784S4')
+
+   13. For more information on edge AI software stack, refer `Edge AI Documentation <https://software-dl.ti.com/jacinto7/esd/processor-sdk-linux-edgeai/AM69A/10_01_00/exports/docs/common/sdk_overview.html>`_
 
 Building the edge AI gallery
 ----------------------------
 
-The edge AI gallery application is enabled by default in yocto for AM62A Linux and RT-Linux.
+The edge AI gallery application is enabled by default in yocto for |__PART_FAMILY_DEVICE_NAMES__| Linux and RT-Linux.
 
 The source code is available at `edgeai-gui-app <https://git.ti.com/cgit/apps/edgeai-gui-app>`__ and can be recompiled with the following steps
 

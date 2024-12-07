@@ -26,6 +26,17 @@ A utility application ``modetest`` can be used to get the list of available drm
 blocks. All the information available for the device can be displayed by using
 it.
 
+.. ifconfig:: CONFIG_image_type in ('adas')
+
+    .. note::
+
+       For ADAS parts by default Display is disabled in linux via
+       k3-<soc>-vision-apps.dtso and enabled to be controlled by one of the
+       real time r5f core. So modetest, kmstest, weston will not work.
+       To enabled it you need to modify k3-<soc>-vision-apps.dtso, rebuild
+       linux-dtbs and install. Also need to disable Display in r5f, rebuild
+       r5f FW using PSDK RTOS.
+
 ********************
 Finding Connector ID
 ********************

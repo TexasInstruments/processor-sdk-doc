@@ -13,15 +13,15 @@
 
 Replacement Variables
 ---------------------
-'__PART_FAMILY_NAME__'           : 'J721S2'
-'__PART_FAMILY_DEVICE_NAMES__'   : 'J721S2'
+'__PART_FAMILY_NAME__'           : 'Jacinto 7 AHP'
+'__PART_FAMILY_DEVICE_NAMES__'   : 'AM69A'
 '__PRODUCT_LINE_NAME__'          : 'Jacinto'
-'__SDK_BUILD_MACHINE__'          : 'j721s2-evm'
-'__SDK_FULL_NAME__'              : 'Processor SDK Linux J721s2'
+'__SDK_BUILD_MACHINE__'          : 'am69-sk'
+'__SDK_FULL_NAME__'              : 'Processor SDK Linux AM69A'
 '__SDK_SHORT_NAME__'             : 'JACINTO'
-'__SDK_INSTALL_FILE__'           : 'ti-processor-sdk-linux-adas-j721s2-evm-<version>-Linux-x86-Install.bin'
-'__SDK_INSTALL_DIR__'            : 'ti-processor-sdk-linux-adas-j721s2-evm-<version>'
-'__SDK_DOWNLOAD_URL__'           : '`J721S2-Linux-SDK-Download-page <https://www.ti.com/tool/download/PROCESSOR-SDK-LINUX-J721S2/>`__'
+'__SDK_INSTALL_FILE__'           : 'ti-processor-sdk-linux-edgeai-j784s4-evm-<version>-Linux-x86-Install.bin'
+'__SDK_INSTALL_DIR__'            : 'ti-processor-sdk-linux-edgeai-j784s4-evm-<version>'
+'__SDK_DOWNLOAD_URL__'           : '`AM69A-Linux-SDK-Download-page <https://www.ti.com/tool/download/PROCESSOR-SDK-LINUX-AM69A>`__'
 '__LINUX_UBUNTU_VERSION_LONG__'  : '22.04 (64-bit)'
 '__LINUX_UBUNTU_VERSION_SHORT__' : '22.04'
 '__OPTEE_PLATFORM_FLAVOR__'      : 'j784s4'
@@ -29,17 +29,16 @@ Replacement Variables
 '__WINDOWS_SUPPORTED_LONG__'     : '7 (64-bit)'
 '__FEATURINGMATRIX__'            : \
 '__SYSFW_CORE_NAME__'            : 'TIFS'
-'__PCIE_BASE_ADDRESS__'          : '2910000'
-'__PCIE_DEVICE_ID__'             : '0xb00d'
-'__IMAGE_TYPE__'                 : 'adas'
+'__IMAGE_TYPE__'                 : 'edgeai'
 
 Configuration Values
 --------------------
 'CONFIG_part_family'      : 'J7_family'
-'CONFIG_part_variant'     : 'J721S2'
+'CONFIG_part_variant'     : 'J784S4'
 'CONFIG_sdk'              : 'JACINTO'
-'CONFIG_image_type'       : 'adas'
+'CONFIG_image_type'       : 'edgeai'
 'CONFIG_icss_support'     : 'no'
 'CONFIG_rt_linux_support' : 'yes'
 'CONFIG_gpu_ip'           : 'Rogue_BXS'
 'CONFIG_crypto'           : 'sa2ul'
+'CONFIG_demo'             : 'None'
