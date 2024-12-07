@@ -15,7 +15,7 @@ Downloading sources
     .. code-block:: console
 
        $ mkdir ${YOUR_PATH}/ti-kernel-aosp/ && cd $_
-       $ repo init -u https://git.ti.com/git/android/manifest.git -b android14-release -m releases/RLS_10_00_Kernel.xml
+       $ repo init -u https://git.ti.com/git/android/manifest.git -b android15-release -m releases/RLS_10_01_Kernel-6.6.xml
        $ repo sync
 
     .. tip::
@@ -24,13 +24,7 @@ Downloading sources
 
        .. code-block:: console
 
-          $ repo init -u https://git.ti.com/git/android/manifest.git -b android14-release -m releases/RLS_10_00_Kernel.xml --depth=1
-
-    A preview for the ``android15-6.6`` kernel is also available for testing via a dedicated manifest:
-
-    .. code-block:: console
-
-       $ repo init -u https://git.ti.com/git/android/manifest.git -b android14-release -m releases/RLS_10_00_Kernel-6.6.xml
+          $ repo init -u https://git.ti.com/git/android/manifest.git -b android15-release -m releases/RLS_10_01_Kernel-6.6.xml --depth=1
 
 .. _android-build-kernel:
 
@@ -50,13 +44,20 @@ Building everything from scratch
    .. code-block:: console
 
       $ cd ${YOUR_PATH}/ti-kernel-aosp/
-      $ export TARGET_KERNEL_USE="6.1" # or "6.6" for experimental kernel
-      $ export DIST_DIR=${YOUR_PATH}/ti-aosp-14/device/ti/am62x-kernel/kernel/${TARGET_KERNEL_USE}
+      $ export TARGET_KERNEL_USE="6.6"
+      $ export DIST_DIR=${YOUR_PATH}/ti-aosp-15/device/ti/am62x-kernel/kernel/${TARGET_KERNEL_USE}
       $ tools/bazel run //common:ti_dist -- --dist_dir=$DIST_DIR
 
-Android uses Kleaf, a Bazel-based build system to build the kernel.
-AOSP documentation can be found `here <https://source.android.com/docs/setup/build/building-kernels?hl=fr>`__ and
-Kleaf documentation `here  <https://android.googlesource.com/kernel/build/+/refs/heads/main/kleaf/README.md>`__
+   Android uses Kleaf, a Bazel-based build system to build the kernel.
+   AOSP documentation can be found `here <https://source.android.com/docs/setup/build/building-kernels?hl=fr>`__ and
+   Kleaf documentation `here  <https://android.googlesource.com/kernel/build/+/refs/heads/main/kleaf/README.md>`__
+
+   .. attention::
+
+      Kernel builds hangs when using the ``btrfs`` file system.
+      This is a known issue according to the `kleaf documentation <https://android.googlesource.com/kernel/build/+/refs/heads/main/kleaf/docs/errors.md#build-hangs-on-btrfs>`_
+      Make sure to pass the ``--workaround_btrfs_b292212788`` flag to bazel when using ``btrfs``.
+
 
 Rebuilding faster
 =================
@@ -66,8 +67,8 @@ Rebuilding faster
    .. code-block:: console
 
       $ cd ${YOUR_PATH}/ti-kernel-aosp/
-      $ export TARGET_KERNEL_USE="6.1" # or "6.6" for experimental kernel
-      $ export DIST_DIR=${YOUR_PATH}/ti-aosp-14/device/ti/am62x-kernel/kernel/${TARGET_KERNEL_USE}
+      $ export TARGET_KERNEL_USE="6.6"
+      $ export DIST_DIR=${YOUR_PATH}/ti-aosp-15/device/ti/am62x-kernel/kernel/${TARGET_KERNEL_USE}
       $ tools/bazel run --config=fast //common:ti_dist -- --dist_dir=$DIST_DIR
 
 
@@ -91,47 +92,6 @@ The usual (``make menuconfig``) is done via ``bazel`` command :
       Otherwise pre-built kernel images present in :file:`device/ti/am62x-kernel`
       will be used to create :file:`boot.img`
 
-
-Enabling new drivers
-====================
-
-Since the kernel is based on the
-`Generic Kernel Image <https://source.android.com/docs/core/architecture/kernel/generic-kernel-image>`_,
-new drivers should always be added as **modules**.
-
-To enable new modules:
-
-#. Run ``menuconfig`` as documented previously, Select ``=m`` for the driver.
-
-#. Edit :file:`${YOUR_PATH}/ti-kernel-aosp/BUILD.bazel` to add your new module.
-   Look for the following section:
-
-   .. code-block:: c
-
-      kernel_build(
-          name = "ti",
-
-          // [...]
-
-          module_outs = get_gki_modules_list("arm64") + [
-                # keep sorted
-                "crypto/af_alg.ko",
-
-
-#. In the ``module_outs`` array, add the path to your new kernel module.
-
-#. Rebuild the kernel as documented in :ref:`android-build-kernel`.
-
-#. If the driver module needs to be loaded early (in the ramdisk), edit
-   :file:`${YOUR_PATH}/ti-aosp-14/device/ti/am62x/BoardConfig-common.mk`
-   and add the path to your module:
-
-   .. code-block:: make
-
-      BOARD_VENDOR_RAMDISK_KERNEL_MODULES += \
-              device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/your_module.ko
-
-#. Finally, rebuild the Android images.
 
 Rebuild Android images
 ======================
@@ -161,3 +121,41 @@ Flashing instructions
       $ fastboot reboot
 
    The board should boot with the new kernel.
+
+********************
+Enabling new drivers
+********************
+
+Since the kernel is based on the
+`Generic Kernel Image <https://source.android.com/docs/core/architecture/kernel/generic-kernel-image>`_,
+new drivers should always be added as **modules**.
+
+To enable new modules:
+
+#. Run ``menuconfig`` as documented previously, Select ``=m`` for the driver.
+
+#. Edit :file:`${YOUR_PATH}/ti-kernel-aosp/BUILD.bazel` to add your new module.
+   Look for the following section:
+
+   .. code-block:: bash
+
+      _TI_MODULE_OUTS = [
+          # keep sorted
+          "crypto/af_alg.ko",
+          "crypto/algif_hash.ko",
+
+#. In the ``_TI_MODULE_OUTS`` array, add the path to your new kernel module.
+
+#. Rebuild the kernel as documented in :ref:`android-build-kernel`.
+
+#. If the driver module needs to be loaded early (in the ramdisk), edit
+   :file:`${YOUR_PATH}/ti-aosp-15/device/ti/am62x/BoardConfig-common.mk`
+   and add the path to your module:
+
+   .. code-block:: make
+
+      BOARD_VENDOR_RAMDISK_KERNEL_MODULES += \
+              device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/your_module.ko
+
+#. Finally, rebuild the Android images.
+
