@@ -20,16 +20,16 @@ Please refer to the software manifest, which outlines the licensing
 status for all packages included in the prebuilt binaries location.
 
 
-Release 10.00
+Release 10.01
 =============
 
-Released August 2024
+Released December 2024
 
 .. rubric:: What's New
    :name: whats-new
 
-**Processor SDK 10.00 Sitara Release supports the following platforms**
-  * tag: 10.00.07
+**Processor SDK 10.01 Sitara Release supports the following platforms**
+  * tag: 10.01.10
        * AM62Px (HS-FS)
        * AM62x ( GP, HS-FS, HS-SE)
        * AM62x LP (HS-FS, HS-SE)
@@ -37,50 +37,44 @@ Released August 2024
        * AM64x 2.0 (HS-FS)
        * AM62A (HS-FS, HS-SE)
 
-**Processor SDK 10.00 Sitara Release has following Major Updates**
-  * 2024 LTS Migration with
-      * Stable Kernel update from 6.1.83 to 6.6.32
-      * U-Boot from 2023.04 to 2024.04
-      * ATF to 2.10+
-      * OPTEE to 4.2.0
-      * Yocto Distribution from Kirkstone/4.0 to Scarthgap/5.0
-      * GCC to 13.3
-      * Graphics DDK from 23.3 to 24.1
+**Processor SDK 10.01 Sitara Release has following Major Updates**
+  * 2024 LTS Update with
+      * Stable Kernel from 6.6.32 to 6.6.58
+      * ATF from 2.10+ to 2.11+
+      * OPTEE from 4.2.0 to 4.4.0
   * Other Key Component Version updates
-      * SYSFW: v10.00.08
-      * DM: 10.00.00.08
-  * Important Bug and Stability fixes on top of 9.2 Release
+      * SYSFW: v10.01.08
+      * DM: 10.01.00.10
+  * Important Bug and Stability fixes on top of 10.0 Release
       * Review Issue Tracker Section for the new fixes.
 
 
 Build Information
-=====================================
+=================
 
 U-Boot
--------------------------
-| Head Commit: fda88f8bcea30590528930ff9441c6e958da86f5 clk: ti: clk-k3-pll: Add additional robustness steps to the PLL sequence
-| Date: 2024-07-28 10:37:17 -0500
+------
+| Head Commit: 29d0c23d67ee7b88e46fe1753cd020e2b04c2ef6 arm: mach-k3: common: Print TIFS context save addr on resume
 | uBoot Version: 2024.04
-| uBoot Description: RC Release 10.00.07
+| uBoot Description: RC Release 10.01.10
 | Clone: git://git.ti.com/ti-u-boot/ti-u-boot.git
 | Branch: ti-u-boot-2024.04
-| uBoot Tag: 10.00.07
+| uBoot Tag: 10.01.10
 |
 
 
 Kernel
--------------------------
+------
 .. rubric:: Linux Kernel
    :name: linux-kernel
 
-| Head Commit: 6de6e418c80edfbe08f4a5f851c721bd60c0123b net: ti: icssg_prueth: Enable 10M Link issue quirk for AM64x
-| Date: 2024-07-28 10:37:02 -0500
-| Kernel Version: 6.6.32
-| Kernel Description: RC Release 10.00.07
+| Head Commit: a7758da17c2807e5285d6546b6797aae1d34a7d6 driver core: fw_devlink: Stop trying to optimize cycle detection logic
+| Kernel Version: 6.6.58
+| Kernel Description: RC Release 10.01.10
 
 | Repo: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
 | Branch: ti-linux-6.6.y
-| Tag: 10.00.07
+| Tag: 10.01.10
 | use-kernel-config=defconfig
 | config-fragment=kernel/configs/ti_arm64_prune.config
 |
@@ -89,14 +83,13 @@ Kernel
 .. rubric:: Real Time (RT) Linux Kernel
    :name: real-time-rt-linux-kernel
 
-| Head Commit: 04a9ad081f0f255a046f398abf6faf1d4374267f Merge branch 'ti-linux-6.6.y-cicd' into ti-rt-linux-6.6.y-cicd
-| Date: 2024-07-28 10:37:05 -0500
-| Kernel Version: 6.6.32-rt32
-| Kernel Description: RC Release 10.00.07-rt
+| Head Commit: c79d7ef3a56ff61dd83d5527520b419a4f0e32e2 Merge branch 'ti-linux-6.6.y-cicd' of https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel into ti-rt-linux-6.6.y-cicd
+| Kernel Version: 6.6.58-rt45
+| Kernel Description: RC Release 10.01.10-rt
 
 | Repo: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
 | Branch: ti-rt-linux-6.6.y
-| Tag: 10.00.07-rt
+| Tag: 10.01.10-rt
 | use-kernel-config=defconfig
 | config-fragment=config-fragment=kernel/configs/ti_arm64_prune.config kernel/configs/ti_rt.config
 |
@@ -104,26 +97,24 @@ Kernel
 
 
 Yocto
-------------------------
+-----
 .. rubric:: meta-ti
    :name: meta-ti
 
-| Head Commit: 138077349667614f83637c98798c06249615a23e CI/CD Auto-Merger: cicd.scarthgap.202407271443
-| Date: 2024-07-28 10:37:17 -0500
+| Head Commit: 50acaea23568f72121020a97bf13869770929cb7 CI/CD Auto-Merger: cicd.scarthgap.202412030400
 
 | Clone: git://git.yoctoproject.org/meta-ti
 | Branch: scarthgap
-| Release Tag: 10.00.07
+| Release Tag: 10.01.10
 |
 
 .. rubric:: meta-arago
    :name: meta-arago
 
-| Head Commit: 82833bae8835e06301c23c8833642ae4c02d303a packagegroup-arago-tisdk-multimedia: Add ffmpeg package
-| Date: 2024-07-28 10:36:40 -0500
+| Head Commit: 2b1f8572ac54cd64ca5d5b40e344bb32b00a05f5 CI/CD Auto-Merger: cicd.scarthgap.202412030400
 
 | Clone: git://git.yoctoproject.org/meta-arago
 | Branch: scarthgap
-| Release Tag: 10.00.07
+| Release Tag: 10.01.10
 |
 
