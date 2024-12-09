@@ -1,5 +1,3 @@
-.. include:: /_replacevars.rst
-
 #############
 How to Guides
 #############
