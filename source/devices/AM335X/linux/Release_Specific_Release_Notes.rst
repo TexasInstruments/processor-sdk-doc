@@ -1,8 +1,8 @@
 .. _Release-note-label:
 
-************************
-Release Notes for AM335X
-************************
+#############
+Release Notes
+#############
 
 Overview
 ========
@@ -44,19 +44,21 @@ Documentation
    running the demonstration application that is loaded on flash. This
    document is provided as part of the EVM kit.
 
-Release 09.01.00
-================
+Release 09.03.05.02
+===================
 
-Released Oct 2023
+Released Dec 2024
 
 .. rubric:: What's New
    :name: whats-new
 
-.. note:: Generic PRU-ICSS Ethernet is descoped in 09.01.00 release.
+.. note:: Generic PRU-ICSS Ethernet is descoped in 09.03 release.
 
-Processor SDK 9.1 Release has following new features:
+Processor SDK 9.3 Release has following new features:
 
- - 2023 LTS Refresh with Stable Kernel 6.1, U-boot 2023.04, Yocto Kirkstone 4.0
+ - 2023 LTS Stable Update to 6.1.119
+ - Splash Screen Feature
+ - Important Bug Fixes
 
 |
 
@@ -68,13 +70,13 @@ Processor SDK 9.1 Release has following new features:
 +--------------------------+----------------------------+
 | Component                | Version                    |
 +==========================+============================+
-| Linux Kernel             | 6.1 (2023 LTS)             |
+| Linux Kernel             | 6.1.119 (2023 LTS)         |
 +--------------------------+----------------------------+
 | U-Boot                   | 2023.04                    |
 +--------------------------+----------------------------+
 | Yocto Project            | 4.0 (kirkstone)            |
 +--------------------------+----------------------------+
-| ARM Toolchain (gcc)      | 11.4                       |
+| ARM Toolchain (gcc)      | 11.5                       |
 +--------------------------+----------------------------+
 
 |
@@ -94,12 +96,11 @@ Build Information
 U-Boot
 ------
 
-| The U-Boot git repository, branch and commit id can be found below:
-| Based on version: 2023.04
-| URL: git.ti.com/ti-u-boot/ti-u-boot.git
-| Branch: ti-u-boot-2023.04
-| uBoot Tag: 09.01.00.001
+| Head Commit: 2a13324ec63cc488f5f578886d0cf6ece348dfda arm: dts: am335x: Use PWM for LCD backlight
 
+| Clone: git://git.ti.com/ti-u-boot/ti-u-boot.git
+| Branch: ti-u-boot-2023.04
+| Tag: 09.03.05
 |
 
 .. _release-specific-build-information-kernel:
@@ -112,12 +113,11 @@ Kernel
 .. rubric:: Linux Kernel
    :name: linux-kernel
 
-| The kernel git repository, branch and commit id can be found below:
-| Based on Version: 6.1
-| URL: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
-| Branch: ti-linux-6.1.y
-| Tag: 09.01.00.001
+| Head Commit: c490f4c0fe51281818c45159c0fbed94f852978e HACK: arm: dts: am57: disable late attach as default
 
+| Clone: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
+| Branch: ti-linux-6.1.y
+| Tag: 09.03.05
 |
 
 .. _release-specific-build-information-rt-linux-kernel:
@@ -125,14 +125,12 @@ Kernel
 .. rubric:: Real Time (RT) Linux Kernel
    :name: real-time-rt-linux-kernel
 
-| The RT kernel git repository, branch and commit id can be found below:
-| Based on Kernel Version: 6.1
-| URL: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
+| Head Commit: b0f9de804a162329bc81857ad50947311228dfb2 Merge branch 'ti-linux-6.1.y-cicd' into ti-rt-linux-6.1.y-cicd
+
+| Clone: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
 | Branch: ti-rt-linux-6.1.y
-| Tag: 09.01.00.001-rt
-
+| Tag: 09.03.05-rt
 |
-
 
 .. _release-specific-generic-kernel-release-notes:
 
@@ -151,37 +149,32 @@ Yocto
 .. rubric:: meta-ti
    :name: meta-ti
 
-| Head Commit: 59edb4e886df468edeb683355c36f06004b29925 linux-ti-staging_6.1: CI/CD Auto-Merger: cicd.kirkstone.202310191725
-| Date: 2023-10-20 08:11:47 -0500
+| Head Commit: 963140e3b5820d6ebf54a4418946a628e0fea2c6 CI/CD Auto-Merger: cicd.kirkstone.202412041235
 
 | Clone: git://git.yoctoproject.org/meta-ti
 | Branch: kirkstone
-| Release Tag: 09.01.00.001
+| Release Tag: 09.03.05
 |
 
 .. rubric:: meta-arago
    :name: meta-arago
 
-| Head Commit: a9dcc0583f44bd7a7d8780759c2091b85d280ec2 ltp-ddt: CI/CD Auto-Merger: cicd.kirkstone.202310191725
-| Date: 2023-10-20 08:11:26 -0500
+| Head Commit: f59caa5f47a625ef9eecada069ae6a74c70bcc47 CI/CD Auto-Merger: cicd.kirkstone.202412041235
 
 | Clone: git://git.yoctoproject.org/meta-arago
 | Branch: kirkstone
-| Release Tag: 09.01.00.001
+| Release Tag: 09.03.05
 |
 
-.. rubric:: meta-processor-sdk
-   :name: meta-processor-sdk
+.. rubric:: meta-tisdk
+   :name: meta-tisdk
 
-| Head Commit: 3cbe955ce03d9c25e59e3a401f378132163a3569 recipes-core: matrix: Handle systemd and sysvinit scripts separately
-| Date: 2023-10-31 03:48:05 -0500
+| Head Commit: 2ee8bead9d04afcb61234738e0d9a644395d27bf recipes-core: packagegroups: Drop SGX sources from am65xx
 
-| Clone: https://git.ti.com/git/processor-sdk/meta-processor-sdk.git
+| Clone: git://git.ti.com/ti-sdk-linux/meta-tisdk.git
 | Branch: kirkstone
-| Release Tag: 09.01.00.001
+| Release Tag: 09.03.05.02
 |
-
-
 
 Issues Tracker
 ==============
