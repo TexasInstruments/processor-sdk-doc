@@ -1,8 +1,8 @@
 .. _Release-note-label:
 
-************************************
+************************
 Release Notes for AM335X
-************************************
+************************
 
 Overview
 ========
@@ -30,7 +30,7 @@ download page or in the installed directory as indicated below. In
 addition, see :ref:`GPLv3 Disclaimer <overview-gplv3-disclaimer>`.
 
 Documentation
-===============
+=============
 -  :ref:`Processor SDK Linux Software Developer's Guide <linux-index>`: Provides information on features, functions, delivery package and,
    compile tools for the Processor SDK Linux release. This also provides
    detailed information regarding software elements and software
@@ -80,19 +80,19 @@ Processor SDK 9.1 Release has following new features:
 |
 
 Supported Platforms
-=====================================
+===================
 See :ref:`here <release-specific-supported-platforms-and-versions>` for a list of supported platforms and links to more information.
 
 |
 
 
 Build Information
-=====================================
+=================
 
 .. _u-boot-release-notes:
 
 U-Boot
--------------------------
+------
 
 | The U-Boot git repository, branch and commit id can be found below:
 | Based on version: 2023.04
@@ -105,7 +105,7 @@ U-Boot
 .. _release-specific-build-information-kernel:
 
 Kernel
--------------------------
+------
 
 .. _release-specific-build-information-linux-kernel:
 
@@ -147,7 +147,7 @@ Kernel
 |
 
 Yocto
-------------------
+-----
 .. rubric:: meta-ti
    :name: meta-ti
 
@@ -184,10 +184,10 @@ Yocto
 
 
 Issues Tracker
-=====================================
+==============
 
 Issues opened in previous releases that were closed on this release
----------------------------------------------------------------------
+-------------------------------------------------------------------
 .. csv-table::
    :header: "Record ID", "Title", "Platform"
    :widths: 15, 70, 20
@@ -215,7 +215,7 @@ Issues opened in previous releases that were closed on this release
 
 
 Issues found and closed on this release that may be applicable to prior releases
------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 .. csv-table::
    :header: "Record ID", "Title", "Platform"
    :widths: 15, 70, 20
@@ -237,7 +237,7 @@ Issues found and closed on this release that may be applicable to prior releases
 |
 
 SDK Known Issues
------------------
+----------------
 .. csv-table::
    :header: "Record ID", "Platform", "Title", "Workaround"
    :widths: 25, 30, 50, 600
@@ -251,7 +251,7 @@ SDK Known Issues
 .. _release-specific-u-boot-known-issues:
 
 U-Boot Known Issues
-------------------------
+-------------------
 .. csv-table::
    :header: "Record ID","Platform", "Title","Workaround"
    :widths: 15, 30, 70, 30
@@ -265,7 +265,7 @@ U-Boot Known Issues
 .. _release-specific-linux-kernel-known-issues:
 
 Linux Kernel Known Issues
----------------------------
+-------------------------
 .. csv-table::
    :header: "Record ID", "Platform", "Title", "Workaround"
    :widths: 5, 10, 70, 10
