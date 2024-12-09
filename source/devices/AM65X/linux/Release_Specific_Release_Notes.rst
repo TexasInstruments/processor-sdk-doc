@@ -1,9 +1,8 @@
 .. _Release-note-label:
 
-*************
+#############
 Release Notes
-*************
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_Release_Notes
+#############
 
 Overview
 ========
@@ -43,44 +42,42 @@ Documentation
    running the demonstration application that is loaded on flash. This
    document is provided as part of the EVM kit.
 
-Release 09.01.00
-================
+Release 09.03.05.02
+===================
 
-Released December 2023
+Released December 2024
 
 .. rubric:: What's New
    :name: whats-new
 
-Processor SDK 9.1 Release has following new features:
-
- - 2023 LTS Refresh with Stable Kernel 6.1, U-boot 2023.04, Yocto Kirkstone 4.0
-
 .. note:: As of Dec 2023, Linux SDK for AM65 is in long term maintenance mode. TI will support critical bug fixes and once a year LTS updates but no new development or new features are planned for this device SDK at this time. The SDK is supported and tested on TMDX654IDKEVM. TMDX654GPEVM is no longer supported.
 
-.. _release-specific-sdk-components-versions:
+**Processor SDK Linux AM65X Release has following new features:**
 
-.. rubric:: SDK Components & Versions
-   :name: sdk-components-versions
+  - LTS Stable Kernel update to 6.1.119
+  - Important Bug Fixes on top of Processor SDK 09.01.00.007 Release
 
-+--------------------------+----------------------------+
-| Component                | Version                    |
-+==========================+============================+
-| Linux Kernel             | 6.1 (2023 LTS)             |
-+--------------------------+----------------------------+
-| U-Boot                   | 2023.04                    |
-+--------------------------+----------------------------+
-| Yocto Project            | 4.0 (kirkstone)            |
-+--------------------------+----------------------------+
-| ARM Toolchain (gcc)      | 11.4                       |
-+--------------------------+----------------------------+
+
+**Component version:**
+
+  - Kernel 6.1.119
+  - RT Kernel 6.1.119-rt45
+  - U-Boot 2023.04
+  - Toolchain GCC 11.5
+  - ATF 2.10+
+  - OPTEE 4.1.0
+  - Graphics DDK 1.17
+  - SYSFW v10.01.08
+  - Yocto Kirkstone
+
 
 Supported Platforms
 ===================
 See :ref:`here <release-specific-supported-platforms-and-versions>` for a list of supported platforms and links to more information.
 
-|
 
 .. _release-specific-sdk-components-versions:
+
 
 Build Information
 =================
@@ -90,15 +87,43 @@ Build Information
 .. _tf-a-release-notes:
 .. _ti-linux-fw-release-notes:
 
+
 U-Boot
 ------
-| Head Commit: c1c2bdf272561724f531fe8e7a649ef687d1a67e board: ti: am62x/am62ax: Update MCU GPIO interrupt allocation in board config
-| Date: 2023-12-01 08:20:03 -0600
+
+| Head Commit: 2a13324ec63cc488f5f578886d0cf6ece348dfda arm: dts: am335x: Use PWM for LCD backlight
 | uBoot Version: 2023.04
-| uBoot Description: 09.01.00.007
 | Clone: git://git.ti.com/ti-u-boot/ti-u-boot.git
 | Branch: ti-u-boot-2023.04
-| uBoot Tag: 09.01.00.007
+| uBoot Tag: 09.03.05
+|
+
+
+TF-A
+----
+
+| Head Commit: 00f1ec6b8740ccd403e641131e294aabacf2a48b Merge changes from topic "revert-ti-dm-workaround" into integration
+| Repo: https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git
+| Branch: master
+| Tag: 2.10+
+|
+
+OP-TEE
+------
+
+| Head Commit: 012cdca49db398693903e05c42a254a3a0c0d8f2 plat-k3: drivers: sec_proxy: increment while reading trail bytes
+| Repo: https://github.com/OP-TEE/optee_os/
+| Branch: master
+| Tag: 4.1.0
+|
+
+ti-linux-firmware
+-----------------
+
+| Head Commit: 1eaf07dc4ec5cdeb98078f17a9d4635e88f43f75 ti-dm: Update display sharing firmware for am62px
+| Clone: https://git.ti.com/cgit/processor-firmware/ti-linux-firmware
+| Branch: ti-linux-firmware
+| Tag: 09.03.05
 |
 
 
@@ -107,30 +132,25 @@ Kernel
 .. rubric:: Linux Kernel
    :name: linux-kernel
 
-| Head Commit: 5da2f861d7d06b97ea386294469e1644b18666fc arm64: dts: ti: k3-am62p: add dll delay mapping for MMC1/MMC2
-| Date: 2023-12-01 08:19:54 -0600
-| Kernel Version: 6.1.46
-| Kernel Description: 09.01.00.007
+| Head Commit: c490f4c0fe51281818c45159c0fbed94f852978e HACK: arm: dts: am57: disable late attach as default
+| Kernel Version: 6.1.119
 
 | Repo: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
 | Branch: ti-linux-6.1.y
-| Tag: 09.01.00.007
+| Tag: 09.03.05
 | use-kernel-config=defconfig
 | config-fragment=kernel/configs/ti_arm64_prune.config
 |
 
-
 .. rubric:: Real Time (RT) Linux Kernel
    :name: real-time-rt-linux-kernel
 
-| Head Commit: b4f1767f9ebaadcb85e2b10eadc5b168a2a7cdb4 Merge branch 'ti-linux-6.1.y-cicd' into ti-rt-linux-6.1.y-cicd
-| Date: 2023-12-01 08:19:57 -0600
-| Kernel Version: 6.1.46-rt13
-| Kernel Description: 09.01.00.007-rt
+| Head Commit: b0f9de804a162329bc81857ad50947311228dfb2 Merge branch 'ti-linux-6.1.y-cicd' into ti-rt-linux-6.1.y-cicd
+| Kernel Version: 6.1.119-rt45
 
 | Repo: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
 | Branch: ti-rt-linux-6.1.y
-| Tag: 09.01.00.007-rt
+| Tag: 09.03.05-rt
 | use-kernel-config=defconfig
 | config-fragment=config-fragment=kernel/configs/ti_arm64_prune.config kernel/configs/ti_rt.config
 |
@@ -141,61 +161,37 @@ Yocto
 .. rubric:: meta-ti
    :name: meta-ti
 
-| Head Commit: 30d69054de6902a65d22e8e8da149099ddc0573f CI/CD Auto-Merger: cicd.kirkstone.202311301712
-| Date: 2023-12-01 08:20:04 -0600
+| Head Commit: 963140e3b5820d6ebf54a4418946a628e0fea2c6 CI/CD Auto-Merger: cicd.kirkstone.202412041235
 | Version: Kirkstone-4.0
 | Clone: git://git.yoctoproject.org/meta-ti
 | Branch: kirkstone
-| Release Tag: 09.01.00.007
+| Release Tag: 09.03.05
 |
 
 .. rubric:: meta-arago
    :name: meta-arago
 
-| Head Commit: ec4e55b66242388a4d7e91544e6b084409af97dd CI/CD Auto-Merger: cicd.kirkstone.202311301712
-| Date: 2023-12-01 08:19:42 -0600
+| Head Commit: f59caa5f47a625ef9eecada069ae6a74c70bcc47 CI/CD Auto-Merger: cicd.kirkstone.202412041235
 | Version: Kirkstone-4.0
 | Clone: git://git.yoctoproject.org/meta-arago
 | Branch: kirkstone
-| Release Tag: 09.01.00.007
+| Release Tag: 09.03.05
 |
 
 
-.. rubric:: meta-processor-sdk
+.. rubric:: meta-tisdk
 
-| Head Commit: 42754bc35ebc89ee4d4816247df00a23186f37f5 recipes-core: tisdk-core-bundle: Enable packaging GPU sources for AM62P
-| Date: 2023-11-06 00:22:59 -0600
+| Head Commit: 2ee8bead9d04afcb61234738e0d9a644395d27bf recipes-core: packagegroups: Drop SGX sources from am65xx
 | Version: Kirkstone-4.0
-| Clone:  https://git.ti.com/git/processor-sdk/meta-processor-sdk.git
+| Clone:  git://git.ti.com/ti-sdk-linux/meta-tisdk.git
 | Branch: kirkstone
-| Release Tag: 09.01.00.007-AM65X
+| Release Tag: 09.03.05.02
 |
 
 
 
 Issues Tracker
 ==============
-..
-   project = LCPD AND platform in (am654x-evm, am654x-hsevm) AND
-      issuetype = Bug AND
-      status = Closed AND
-      resolution = Done AND
-      component in (
-         "Audio & Display",
-         Baseport,
-         Connectivity,
-         IPC,
-         "Power & Thermal",
-         Graphics,
-         Multimedia,
-         Wireless,
-         "System Integration",
-         Security) AND
-      closedDate > 2021-12-10 AND
-      createdDate <= 2021-12-10 AND
-      (Labels not in (LCPD_K3.14_MAINT, MAINTENANCE) OR labels is EMPTY) AND
-      OS in (Linux, RT-linux)
-      ORDER BY priority DESC
 
 Errata Workarounds Available in this Release
 --------------------------------------------
@@ -345,7 +341,6 @@ environment, install the SDK and start your development.  It also includes User
 Composer Studio.
 
 |
-
 
 Host Support
 ============
