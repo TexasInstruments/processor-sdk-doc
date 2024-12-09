@@ -1,6 +1,6 @@
-***********************
-Linux Performance Guide
-***********************
+======================================
+ Linux 10.01 Performance Guide
+======================================
 
 .. rubric::  **Read This First**
 
@@ -22,4 +22,4 @@ This document provides performance data for each of the device drivers which are
 .. rubric::  If You Need Assistance
 
 For further information or to report any problems, contact
-http://e2e.ti.com/ or http://support.ti.com/
+https://e2e.ti.com/ or https://support.ti.com/
