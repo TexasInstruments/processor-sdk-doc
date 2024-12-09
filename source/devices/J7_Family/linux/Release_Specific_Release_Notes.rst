@@ -105,10 +105,6 @@ U-Boot
 | Compiler Information: arm-oe-eabi-gcc (GCC) 13.3.0, aarch64-oe-linux-gcc (GCC) 13.3.0
 |
 
-.. note::
-
-   meta-tisdk Yocto layer may contains additional patches for U-Boot `here <https://git.ti.com/cgit/ti-sdk-linux/meta-tisdk/tree/recipes-bsp/u-boot?h=scarthgap>`__.
-
 .. ifconfig:: CONFIG_image_type in ('edgeai', 'adas')
 
    .. note::
@@ -150,9 +146,6 @@ Kernel
 
 | Compiler Information: aarch64-oe-linux-gcc (GCC) 13.3.0, GNU ld (GNU Binutils) 2.42.0
 
-.. note::
-
-   meta-tisdk Yocto layer may ontains additional patches for Linux Kernel `here <https://git.ti.com/cgit/ti-sdk-linux/meta-tisdk/tree/recipes-kernel/linux?h=h=scarthgap>`__.
 
 .. ifconfig:: CONFIG_image_type in ('edgeai', 'adas')
 
@@ -225,12 +218,12 @@ Yocto
 
 .. rubric:: meta-tisdk
 
-| Head Commit: 	5c64329fab6980e1ab917df4623bacf0492ea22c recipes-demos: ti-apps-launcher: Bump up SRCREV
-| Date: 2024-11-12 01:04:23 -0600
+| Head Commit: d73e2e4482d812c1eb456eaaca7bd50d62361de1 ti-apps-launcher.bb: Update recipe and SRCREV for ti-apps-launcher
+| Date: 2024-11-27 03:21:18 -0600
 
 | Repo: git://git.ti.com/ti-sdk-linux/meta-tisdk.git
 | Branch: scarthgap
-| Release Tag: 10.01.06.01
+| Release Tag: REL.J7.10.01-01
 |
 
 .. ifconfig:: CONFIG_image_type in ('edgeai', 'adas')
