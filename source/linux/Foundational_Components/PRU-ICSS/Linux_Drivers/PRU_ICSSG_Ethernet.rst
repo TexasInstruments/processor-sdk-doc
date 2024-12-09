@@ -662,14 +662,7 @@ PPS Pulse Per Second support
 
 .. ifconfig:: CONFIG_part_variant in ('AM64X')
 
-  To enable PPS on AM64x, the hardware pin PRG0_IEP0EDC_SYNC_OUT0 needs to be enabled.
-
-  ::
-
-        icssg0_iep0_pins_default: icssg0-iep0-pins-default {
-            pinctrl-single,pins = <
-                    AM64X_IOPAD(0x01AC, PIN_OUTPUT, 2) /* (W1) PRG0_PRU0_GPO19.PRG0_IEP0_EDC_SYNC_OUT0 */
-           >;
+  To enable PPS on AM64x, the hardware pin PRG0_IEP0_EDC_SYNC_OUT0 needs to be enabled.
 
 PPS can be tested using `testptp.c <https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/plain/tools/testing/selftests/ptp/testptp.c>`__ tool.
 
@@ -691,7 +684,7 @@ To turn on PPS,
 
 .. ifconfig:: CONFIG_part_variant in ('AM64X')
 
-  This will generate PPS signal with 1 pulse per second which can be captured by oscilloscope.
+  This will generate PPS signal with 1 pulse per second which can be probed at J18 SYNC_OUT0 header on the EVM and capture using oscilloscope.
 
 To turn off PPS,
 
