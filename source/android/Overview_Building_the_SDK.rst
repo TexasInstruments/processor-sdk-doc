@@ -34,7 +34,7 @@ Downloading sources
 
     .. code-block:: console
 
-       $ mkdir ~/10_00_00 && cd $_
+       $ mkdir ~/10_01_00 && cd $_
        $ export YOUR_PATH=$PWD
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
@@ -43,8 +43,8 @@ Downloading sources
 
     .. code-block:: console
 
-       $ mkdir ${YOUR_PATH}/ti-aosp-14 && cd $_
-       $ repo init -u https://git.ti.com/git/android/manifest.git -b android14-release -m releases/RLS_10_00.xml
+       $ mkdir ${YOUR_PATH}/ti-aosp-15 && cd $_
+       $ repo init -u https://git.ti.com/git/android/manifest.git -b android15-release -m releases/RLS_10_01.xml
        $ repo sync
 
 .. tip::
@@ -69,7 +69,7 @@ Build Instructions
 
    .. code-block:: console
 
-      $ cd ${YOUR_PATH}/ti-aosp-14
+      $ cd ${YOUR_PATH}/ti-aosp-15
       $ source build/envsetup.sh
       $ lunch <BUILD_TARGET>
       $ m
@@ -83,26 +83,26 @@ Where ``<BUILD_TARGET>`` is listed in the table below :
     ============================= ============================
     Android Build type            Build target
     ============================= ============================
-    AM62X-SK Tablet userdebug       ``am62x-userdebug``
-    AM62X-SK Tablet user            ``am62x-user``
-    AM62X-SK Car userdebug          ``am62x_car-userdebug``
-    AM62X-SK Car user               ``am62x_car-user``
+    AM62X-SK Tablet userdebug       ``am62x-ap3a-userdebug``
+    AM62X-SK Tablet user            ``am62x-ap3a-user``
+    AM62X-SK Car userdebug          ``am62x_car-ap3a-userdebug``
+    AM62X-SK Car user               ``am62x_car-ap3a-user``
     ============================= ============================
 
-    The recommended ``<BUILD_TARGET>`` to use is ``am62x-userdebug``.
+    The recommended ``<BUILD_TARGET>`` to use is ``am62x-ap3a-userdebug``.
 
 .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
     ============================= ============================
     Android Build type            Build target
     ============================= ============================
-    AM62PX-SK Tablet userdebug       ``am62p-userdebug``
-    AM62PX-SK Tablet user            ``am62p-user``
-    AM62PX-SK Car userdebug          ``am62p_car-userdebug``
-    AM62PX-SK Car user               ``am62p_car-user``
+    AM62PX-SK Tablet userdebug       ``am62p-ap3a-userdebug``
+    AM62PX-SK Tablet user            ``am62p-ap3a-user``
+    AM62PX-SK Car userdebug          ``am62p_car-ap3a-userdebug``
+    AM62PX-SK Car user               ``am62p_car-ap3a-user``
     ============================= ============================
 
-    The recommended ``<BUILD_TARGET>`` to use is ``am62p-userdebug``.
+    The recommended ``<BUILD_TARGET>`` to use is ``am62p-ap3a-userdebug``.
 
 It's possible to customize the standard build (``m``), by passing build flags.
 For example, the following enables AVB on userdebug builds:
@@ -128,17 +128,11 @@ The following build flags are available. **Default** values are **highlighted**.
    * - ``TARGET_SDCARD_BOOT``
      - **false**/true
      - Boot from SD card instead of eMMC
-   * - ``TARGET_KERNEL_USE``
-     - **6.1**/6.6
-     - Pick kernel version. 6.6 is experimental
-   * - ``TARGET_BOOTLOADER_VERSION``
-     - **unset**/2024.04
-     - Pick U-Boot version (default: ``2023.04``). 2024.04 is experimental
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
 
    After building is complete, the necessary images will be available in
-   :file:`${YOUR_PATH}/ti-aosp-14/out/target/product/am62*/`.
+   :file:`${YOUR_PATH}/ti-aosp-15/out/target/product/am62*/`.
 
    To proceed to flash Android, see :ref:`android-flashing`.
 

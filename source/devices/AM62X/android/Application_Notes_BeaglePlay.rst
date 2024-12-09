@@ -13,8 +13,15 @@ Initial Flashing procedure
 
 Flashing Android the first time requires booting from DFU.
 
-First, make sure to install ``snagboot`` following
-the `official instructions <https://github.com/bootlin/snagboot>`_
+First, install snagboot 1.3.0 following the `official instructions <https://github.com/bootlin/snagboot>`_
+Make sure to install the udev rules as documented:
+
+.. code-block:: console
+
+   $ snagrecover --udev > 50-snagboot.rules
+   $ sudo cp 50-snagboot.rules /etc/udev/rules.d/
+   $ sudo udevadm control --reload-rules
+   $ sudo udevadm trigger
 
 Then, the following steps are required:
 

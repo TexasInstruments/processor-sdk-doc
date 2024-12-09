@@ -100,7 +100,7 @@ Once the build is complete, follow the steps below to flash the images to eMMC.
              (OR)
 
              # If you are using pre-built binaries from SDK download page
-             $ cd AM62x_10.00.00_emmc
+             $ cd AM62x_10.01.00_emmc
 
              # for AM62x SK EVM (GP)
              $ snagrecover -s am625 -f ./am62x-sk-evm.yaml
@@ -124,7 +124,7 @@ Once the build is complete, follow the steps below to flash the images to eMMC.
              (OR)
 
              # If you are using pre-built binaries from SDK download page
-             $ cd AM62Px_10.00.00_emmc
+             $ cd AM62Px_10.01.00_emmc
 
              $ snagrecover -s am625 -f ./am62px-sk-evm-hsfs.yaml
 
@@ -207,7 +207,7 @@ Once the build is complete, follow the steps below to flash the images to eMMC.
 
        Ensure the default U-Boot environment is configured with:
 
-       .. code-block::
+       .. code-block:: console
 
           => env default -f -a; saveenv;
           ## Resetting to default environment
@@ -217,7 +217,7 @@ Once the build is complete, follow the steps below to flash the images to eMMC.
 
           If you build with ``TARGET_AVB_ENABLE=true`` or flash user images you need to run this:
 
-          .. code-block::
+          .. code-block:: console
 
              => setenv force_avb "1"; saveenv;
              Saving Environment to MMC... Writing to MMC(0)... OK
@@ -248,7 +248,7 @@ Once the build is complete, follow the steps below to flash the images to eMMC.
              (OR)
 
              # If you are using pre-built binaries from SDK download page
-             $ cd AM62x_10.00.00_emmc
+             $ cd AM62x_10.01.00_emmc
 
              # for AM62x SK EVM (GP)
              $ sudo ./flashall.sh --board am62x-sk
@@ -280,7 +280,7 @@ Once the build is complete, follow the steps below to flash the images to eMMC.
              (OR)
 
              # If you are using pre-built binaries from SDK download page
-             $ cd AM62Px_10.00.00_emmc
+             $ cd AM62Px_10.01.00_emmc
 
              $ sudo ./flashall.sh --board am62px-sk
              board: am62px-sk

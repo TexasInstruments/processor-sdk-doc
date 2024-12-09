@@ -25,15 +25,15 @@ found on the SDK download page.
 
 
 ****************
-Release 10.00.00
+Release 10.01.00
 ****************
 
-Released on July 2024
+Released on December 2024
 
 What's new
 ==========
 
-* This is a Android 14 based release of Processor SDK Android
+* This is a Android 15 based release of Processor SDK Android
 
 
 Release Features
@@ -57,17 +57,17 @@ SDK Components and Versions
 +------------------------------------+-------------------------------------------------------------------------------+
 | **Component**                      |  **Version**                                                                  |
 +====================================+===============================================================================+
-| **Android**                        | Android 14 / Android 14 Car                                                   |
+| **Android**                        | Android 15 / Android 15 Car                                                   |
 +------------------------------------+-------------------------------------------------------------------------------+
-| **Linux Kernel**                   | Linux 6.1.78 (6.6.30 preview available)                                       |
+| **Linux Kernel**                   | Linux 6.6.56                                                                  |
 +------------------------------------+-------------------------------------------------------------------------------+
 | **Linux Kernel Toolchain**         | clang-r487747c                                                                |
 +------------------------------------+-------------------------------------------------------------------------------+
-| **U-boot**                         | 2023.04 (2024.04 preview available)                                           |
+| **U-boot**                         | 2024.04                                                                       |
 +------------------------------------+-------------------------------------------------------------------------------+
-| **GCC Toolchain**                  | GNU Toolchain for the A-profile Architecture 13.2 (rel1)                      |
+| **GCC Toolchain**                  | GNU Toolchain for the A-profile Architecture 13.3 (rel1)                      |
 +------------------------------------+-------------------------------------------------------------------------------+
-| **Base Linux SDK**                 | PROCESSOR-SDK-LINUX-AM62X 10.00.07                                            |
+| **Base Linux SDK**                 | PROCESSOR-SDK-LINUX-AM62X 10.01.08                                            |
 +------------------------------------+-------------------------------------------------------------------------------+
 | **Hardware Supported**             | AM62X-SK / AM62X-LP / AM62B-P1 / Beagle Play                                  |
 +------------------------------------+-------------------------------------------------------------------------------+
@@ -100,11 +100,6 @@ Known Issues
      - Description
      - Post Release Fix
      - Component
-
-   * - **SITSW-5071**
-     - U-Boot 2024.04 crashes with ``adtbo_idx=1``
-     - https://git.ti.com/cgit/ti-u-boot/ti-u-boot/commit/?h=ti-u-boot-2024.04&id=afd0e59eb7bfce8945635e36562ee03046cc489b
-     - N/A
 
    * - **SITSW-1387**
      - Mcasp: Buffer underflow console messages seen

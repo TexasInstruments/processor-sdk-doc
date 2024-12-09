@@ -18,7 +18,7 @@ devices/AM62AX/linux/Release_Specific_Supported_Platforms_and_Versions
 devices/AM62AX/linux/Release_Specific_QSG
 
 linux/Overview_Building_the_SDK
-linux/Overview/Top_Level_Makefile
+linux/Overview_Top_Level_Makefile
 linux/Overview_Directory_Structure_Overview
 linux/Overview_Technical_Support
 linux/Overview_GPLv3_Disclaimer

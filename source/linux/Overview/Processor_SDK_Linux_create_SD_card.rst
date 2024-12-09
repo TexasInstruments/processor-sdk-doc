@@ -54,7 +54,10 @@ Create SD Card using balenaEtcher
 ----------------------------------
 
 1.  Download the default bootable SD card image (WIC file) available on the release page as
-    :file:`tisdk-default-image-<machine>.wic.xz`
+
+    .. parsed-literal::
+
+       tisdk-|__IMAGE_TYPE__|-image-<machine>.wic.xz
 
 2.  Download and install the balenaEtcher tool
 
@@ -78,14 +81,21 @@ Create SD Card using balenaEtcher
 Create SD Card using bmap-tools
 ----------------------------------
 
+
 1.  Download the default bootable SD card image (WIC file) available on the release page as
-    :file:`tisdk-default-image-<machine>.wic.xz`
 
-2.  Decompress the :file:`tisdk-default-image-<machine>.wic.xz` to :file:`tisdk-default-image-<machine>.wic`
+    .. parsed-literal::
 
-      .. code-block:: console
+       tisdk-|__IMAGE_TYPE__|-image-<machine>.wic.xz
 
-          unxz tisdk-default-image-<machine>.wic.xz
+2. Decompress the tisdk-|__IMAGE_TYPE__|-image-<machine>.wic.xz to tisdk-|__IMAGE_TYPE__|-image-<machine>.wic
+
+    - For Linux:
+
+    .. parsed-literal::
+
+       cd <PSDK_PATH>/filesystem
+       unxz tisdk-|__IMAGE_TYPE__|-image-<machine>.wic.xz
 
 3.  Flash the WIC image to SD card
 
@@ -128,15 +138,15 @@ Create SD Card using bmap-tools
          Then generate a bmap file from the decompressed WIC image with the following command.
          This step can be skipped but the bmap file significantly reduces the time taken to flash the SD card.
 
-         .. code-block:: console
+         .. parsed-literal::
 
-             bmaptool create -o tisdk-default-image.bmap tisdk-default-image-<machine>.wic
+            bmaptool create -o tisdk-|__IMAGE_TYPE__|-image.bmap tisdk-|__IMAGE_TYPE__|-image-<machine>.wic
 
       c) Then write the WIC image to the SD card with the following command:
 
-         .. code-block:: console
+         .. parsed-literal::
 
-             sudo bmaptool copy --bmap tisdk-default-image.bmap tisdk-default-image-<machine>.wic /dev/sdx
+            sudo bmaptool copy --bmap tisdk-|__IMAGE_TYPE__|-image-<machine>.bmap tisdk-|__IMAGE_TYPE__|-image-<machine>.wic /dev/sdx
 
 
          .. danger::
@@ -146,11 +156,9 @@ Create SD Card using bmap-tools
          In the above example, the SD card is at /dev/sdc. In that case, the
          image write command would look like this:
 
-         .. code-block:: console
+         .. parsed-literal::
 
-             sudo bmaptool copy --bmap tisdk-default-image.bmap tisdk-default-image-<machine>.wic /dev/sdc
-
-
+            sudo bmaptool copy --bmap tisdk-|__IMAGE_TYPE__|-image-<machine>.bmap tisdk-|__IMAGE_TYPE__|-image-<machine>.wic /dev/sdc
 
 .. _processor-sdk-linux-create-sd-card-with-custom-images:
 

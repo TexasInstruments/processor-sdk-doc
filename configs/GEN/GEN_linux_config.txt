@@ -27,12 +27,14 @@ Replacement Variables
 '__RTOS_UBUNTU_VERSION_LONG__'   : '14.04 (64-bit), 16.04 (64-bit)'
 '__WINDOWS_SUPPORTED_LONG__'     : '7 (64-bit)'
 '__FEATURINGMATRIX__'            : 'featuring Matrix'
+'__IMAGE_TYPE__'                 : 'default'
 
 Configuration Values
 --------------------
 'CONFIG_part_family'      : 'General_family'
 'CONFIG_part_variant'     : 'Gen'
 'CONFIG_sdk'              : 'SITARA'
+'CONFIG_image_type'       : 'default'
 'CONFIG_icss_support'     : 'yes'
 'CONFIG_rt_linux_support' : 'yes'
 'CONFIG_gpu_ip'           : 'SGX'
