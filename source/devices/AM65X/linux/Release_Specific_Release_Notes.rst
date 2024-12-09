@@ -1,8 +1,8 @@
 .. _Release-note-label:
 
-************************************
+*************
 Release Notes
-************************************
+*************
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_Release_Notes
 
 Overview
@@ -29,7 +29,7 @@ download page or in the installed directory as indicated below. In
 addition, see :ref:`Processor SDK Linux GPLv3 Disclaimer <overview-gplv3-disclaimer>`.
 
 Documentation
-===============
+=============
 -  :ref:`Processor SDK Linux Software Developer's Guide <linux-index>`: Provides information on features, functions, delivery package and,
    compile tools for the Processor SDK Linux release. This also provides
    detailed information regarding software elements and software
@@ -44,7 +44,7 @@ Documentation
    document is provided as part of the EVM kit.
 
 Release 09.01.00
-==================
+================
 
 Released December 2023
 
@@ -75,7 +75,7 @@ Processor SDK 9.1 Release has following new features:
 +--------------------------+----------------------------+
 
 Supported Platforms
-=====================================
+===================
 See :ref:`here <release-specific-supported-platforms-and-versions>` for a list of supported platforms and links to more information.
 
 |
@@ -83,7 +83,7 @@ See :ref:`here <release-specific-supported-platforms-and-versions>` for a list o
 .. _release-specific-sdk-components-versions:
 
 Build Information
-=====================================
+=================
 
 .. _u-boot-release-notes:
 .. _optee-release-notes:
@@ -91,7 +91,7 @@ Build Information
 .. _ti-linux-fw-release-notes:
 
 U-Boot
--------------------------
+------
 | Head Commit: c1c2bdf272561724f531fe8e7a649ef687d1a67e board: ti: am62x/am62ax: Update MCU GPIO interrupt allocation in board config
 | Date: 2023-12-01 08:20:03 -0600
 | uBoot Version: 2023.04
@@ -103,7 +103,7 @@ U-Boot
 
 
 Kernel
--------------------------
+------
 .. rubric:: Linux Kernel
    :name: linux-kernel
 
@@ -137,7 +137,7 @@ Kernel
 
 
 Yocto
-------------------------
+-----
 .. rubric:: meta-ti
    :name: meta-ti
 
@@ -174,7 +174,7 @@ Yocto
 
 
 Issues Tracker
-=====================================
+==============
 ..
    project = LCPD AND platform in (am654x-evm, am654x-hsevm) AND
       issuetype = Bug AND
@@ -198,7 +198,7 @@ Issues Tracker
       ORDER BY priority DESC
 
 Errata Workarounds Available in this Release
-------------------------------------------------
+--------------------------------------------
 .. csv-table::
    :header: "Record ID", "Title", "Platform"
    :widths: 15, 30, 150
@@ -217,7 +217,7 @@ Errata Workarounds Available in this Release
 
 
 U-Boot Known Issues
-------------------------
+-------------------
 .. csv-table::
    :header: "Record ID", "Platform", "Title", "Workaround"
    :widths: 15, 30, 70, 30
@@ -234,7 +234,7 @@ U-Boot Known Issues
 |
 
 Linux Known Issues
----------------------------
+------------------
 .. csv-table::
    :header: "Record ID", "Platform", "Title", "Workaround"
    :widths: 5, 10, 70, 35
@@ -266,7 +266,7 @@ Linux Known Issues
 |
 
 Issues opened in previous releases that were closed on this release
----------------------------------------------------------------------
+-------------------------------------------------------------------
 
 .. csv-table::
    :header: "Record ID", "Title", "Platform"
@@ -307,7 +307,7 @@ Issues opened in previous releases that were closed on this release
 
 
 Issues found and closed on this release that may be applicable to prior releases
------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 .. csv-table::
    :header: "Record ID", "Title", "Platform"
    :widths: 15, 70, 20
