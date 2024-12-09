@@ -99,8 +99,7 @@ newline that separates the directive from the content block:
 There are a number of predefined variables available that are dynamically set
 based on the platform config. These variables should be used wherever possible.
 These variables can be found in the "Replacement Variables" section of the
-platform configs, or in the temporary file placed at `source/_replacevars.rst`
-during the build process.
+platform configs, or reported during the build in the `rst_prolog` section.
 
 ### Ifconfigs
 
