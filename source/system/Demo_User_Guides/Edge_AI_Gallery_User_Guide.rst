@@ -1,5 +1,3 @@
-.. include:: /_replacevars.rst
-
 .. _Edge-AI-Gallery-User-Guide-label:
 
 Edge AI Gallery - User Guide

@@ -1,5 +1,3 @@
-.. include:: /_replacevars.rst
-
 Documentation Tarball
 =====================
 .. ifconfig:: CONFIG_part_variant in ('AM62AX','J721E','J7200','J721S2','J784S4','AM68','AM69','J722S','AM67','J742S2','AM68A','AM67A','AM69A','TDA4VM')
