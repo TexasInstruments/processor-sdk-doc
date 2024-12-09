@@ -1,6 +1,6 @@
 
 ======================================
- Linux 10.00 Performance Guide
+ Linux 10.01 Performance Guide
 ======================================
 
 .. rubric::  **Read This First**
@@ -30,20 +30,18 @@ with drivers included in a particular release.
    :name: if-you-need-assistance-kernel-perf-guide
 
 For further information or to report any problems, contact
-http://e2e.ti.com/ or http://support.ti.com/
-
+https://e2e.ti.com/ or https://support.ti.com/
 
 System Benchmarks
 -------------------
-
 
 LMBench
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 LMBench is a collection of microbenchmarks of which the memory bandwidth 
 and latency related ones are typically used to estimate processor 
 memory system performance. More information about lmbench at
-http://lmbench.sourceforge.net/whatis_lmbench.html and
-http://lmbench.sourceforge.net/man/lmbench.8.html
+https://lmbench.sourceforge.net/whatis_lmbench.html and
+https://lmbench.sourceforge.net/man/lmbench.8.html
 
 **Latency**: lat_mem_rd-stride128-szN, where N is equal to or smaller than the cache
 size at given level measures the cache miss penalty. N that is at least
@@ -65,78 +63,78 @@ Execute the LMBench with the following:
 .. csv-table:: LMBench Benchmarks
     :header: "Benchmarks","am62pxx_sk-fs: perf"
 
-    "af_unix_sock_stream_latency (microsec)","25.35"
-    "af_unix_socket_stream_bandwidth (MBs)","1257.15"
-    "bw_file_rd-io-1mb (MB/s)","1340.26"
-    "bw_file_rd-o2c-1mb (MB/s)","792.08"
-    "bw_mem-bcopy-16mb (MB/s)","1972.39"
-    "bw_mem-bcopy-1mb (MB/s)","2141.74"
-    "bw_mem-bcopy-2mb (MB/s)","1789.55"
-    "bw_mem-bcopy-4mb (MB/s)","1689.43"
-    "bw_mem-bcopy-8mb (MB/s)","1703.76"
-    "bw_mem-bzero-16mb (MB/s)","8109.48"
-    "bw_mem-bzero-1mb (MB/s)","5128.58 (min 2141.74, max 8115.42)"
-    "bw_mem-bzero-2mb (MB/s)","4951.93 (min 1789.55, max 8114.31)"
-    "bw_mem-bzero-4mb (MB/s)","4900.83 (min 1689.43, max 8112.22)"
-    "bw_mem-bzero-8mb (MB/s)","4906.62 (min 1703.76, max 8109.48)"
-    "bw_mem-cp-16mb (MB/s)","980.63"
-    "bw_mem-cp-1mb (MB/s)","4667.98 (min 963.86, max 8372.09)"
-    "bw_mem-cp-2mb (MB/s)","4618.37 (min 976.72, max 8260.01)"
-    "bw_mem-cp-4mb (MB/s)","4589.77 (min 1007.94, max 8171.60)"
-    "bw_mem-cp-8mb (MB/s)","4585.55 (min 1027.22, max 8143.88)"
-    "bw_mem-fcp-16mb (MB/s)","1841.20"
-    "bw_mem-fcp-1mb (MB/s)","4979.88 (min 1844.34, max 8115.42)"
-    "bw_mem-fcp-2mb (MB/s)","4932.81 (min 1751.31, max 8114.31)"
-    "bw_mem-fcp-4mb (MB/s)","4950.97 (min 1789.71, max 8112.22)"
-    "bw_mem-fcp-8mb (MB/s)","4967.46 (min 1825.44, max 8109.48)"
-    "bw_mem-frd-16mb (MB/s)","2015.37"
-    "bw_mem-frd-1mb (MB/s)","1949.44 (min 1844.34, max 2054.54)"
-    "bw_mem-frd-2mb (MB/s)","1801.58 (min 1751.31, max 1851.85)"
-    "bw_mem-frd-4mb (MB/s)","1887.41 (min 1789.71, max 1985.11)"
-    "bw_mem-frd-8mb (MB/s)","1909.11 (min 1825.44, max 1992.78)"
-    "bw_mem-fwr-16mb (MB/s)","8127.33"
-    "bw_mem-fwr-1mb (MB/s)","5213.32 (min 2054.54, max 8372.09)"
-    "bw_mem-fwr-2mb (MB/s)","5055.93 (min 1851.85, max 8260.01)"
-    "bw_mem-fwr-4mb (MB/s)","5078.36 (min 1985.11, max 8171.60)"
-    "bw_mem-fwr-8mb (MB/s)","5068.33 (min 1992.78, max 8143.88)"
-    "bw_mem-rd-16mb (MB/s)","2065.32"
-    "bw_mem-rd-1mb (MB/s)","2133.24 (min 1956.60, max 2309.88)"
-    "bw_mem-rd-2mb (MB/s)","1910.09 (min 1769.60, max 2050.58)"
-    "bw_mem-rd-4mb (MB/s)","1968.89 (min 1872.37, max 2065.40)"
-    "bw_mem-rd-8mb (MB/s)","1992.38 (min 1915.71, max 2069.05)"
-    "bw_mem-rdwr-16mb (MB/s)","1992.78"
-    "bw_mem-rdwr-1mb (MB/s)","1423.73 (min 963.86, max 1883.59)"
-    "bw_mem-rdwr-2mb (MB/s)","1354.61 (min 976.72, max 1732.50)"
-    "bw_mem-rdwr-4mb (MB/s)","1438.84 (min 1007.94, max 1869.74)"
-    "bw_mem-rdwr-8mb (MB/s)","1480.03 (min 1027.22, max 1932.83)"
-    "bw_mem-wr-16mb (MB/s)","1968.75"
-    "bw_mem-wr-1mb (MB/s)","1920.10 (min 1883.59, max 1956.60)"
-    "bw_mem-wr-2mb (MB/s)","1751.05 (min 1732.50, max 1769.60)"
-    "bw_mem-wr-4mb (MB/s)","1871.06 (min 1869.74, max 1872.37)"
-    "bw_mem-wr-8mb (MB/s)","1924.27 (min 1915.71, max 1932.83)"
-    "bw_mmap_rd-mo-1mb (MB/s)","2253.81"
-    "bw_mmap_rd-o2c-1mb (MB/s)","736.11"
-    "bw_pipe (MB/s)","813.43"
-    "bw_unix (MB/s)","1257.15"
-    "lat_connect (us)","50.07"
-    "lat_ctx-2-128k (us)","6.47"
-    "lat_ctx-2-256k (us)","5.52"
-    "lat_ctx-4-128k (us)","5.96"
-    "lat_ctx-4-256k (us)","2.79"
-    "lat_fs-0k (num_files)","313.00"
-    "lat_fs-10k (num_files)","139.00"
-    "lat_fs-1k (num_files)","202.00"
-    "lat_fs-4k (num_files)","194.00"
-    "lat_mem_rd-stride128-sz1000k (ns)","29.33"
-    "lat_mem_rd-stride128-sz125k (ns)","5.57"
-    "lat_mem_rd-stride128-sz250k (ns)","5.84"
-    "lat_mem_rd-stride128-sz31k (ns)","4.19"
+    "af_unix_sock_stream_latency (microsec)","26.04"
+    "af_unix_socket_stream_bandwidth (MBs)","1242.15"
+    "bw_file_rd-io-1mb (MB/s)","1340.03"
+    "bw_file_rd-o2c-1mb (MB/s)","696.99"
+    "bw_mem-bcopy-16mb (MB/s)","1978.97"
+    "bw_mem-bcopy-1mb (MB/s)","2120.28"
+    "bw_mem-bcopy-2mb (MB/s)","1874.41"
+    "bw_mem-bcopy-4mb (MB/s)","1921.23"
+    "bw_mem-bcopy-8mb (MB/s)","1953.60"
+    "bw_mem-bzero-16mb (MB/s)","8112.22"
+    "bw_mem-bzero-1mb (MB/s)","5117.85 (min 2120.28, max 8115.42)"
+    "bw_mem-bzero-2mb (MB/s)","4990.07 (min 1874.41, max 8105.73)"
+    "bw_mem-bzero-4mb (MB/s)","5015.36 (min 1921.23, max 8109.48)"
+    "bw_mem-bzero-8mb (MB/s)","5029.49 (min 1953.60, max 8105.37)"
+    "bw_mem-cp-16mb (MB/s)","987.78"
+    "bw_mem-cp-1mb (MB/s)","4645.28 (min 963.39, max 8327.17)"
+    "bw_mem-cp-2mb (MB/s)","4594.23 (min 944.73, max 8243.73)"
+    "bw_mem-cp-4mb (MB/s)","4569.42 (min 965.83, max 8173.00)"
+    "bw_mem-cp-8mb (MB/s)","4596.80 (min 1051.11, max 8142.49)"
+    "bw_mem-fcp-16mb (MB/s)","1835.49"
+    "bw_mem-fcp-1mb (MB/s)","4971.12 (min 1826.82, max 8115.42)"
+    "bw_mem-fcp-2mb (MB/s)","4902.05 (min 1698.37, max 8105.73)"
+    "bw_mem-fcp-4mb (MB/s)","4917.06 (min 1724.63, max 8109.48)"
+    "bw_mem-fcp-8mb (MB/s)","4965.41 (min 1825.44, max 8105.37)"
+    "bw_mem-frd-16mb (MB/s)","2013.85"
+    "bw_mem-frd-1mb (MB/s)","1980.46 (min 1826.82, max 2134.09)"
+    "bw_mem-frd-2mb (MB/s)","1782.55 (min 1698.37, max 1866.72)"
+    "bw_mem-frd-4mb (MB/s)","1839.20 (min 1724.63, max 1953.76)"
+    "bw_mem-frd-8mb (MB/s)","1884.66 (min 1825.44, max 1943.87)"
+    "bw_mem-fwr-16mb (MB/s)","8138.35"
+    "bw_mem-fwr-1mb (MB/s)","5230.63 (min 2134.09, max 8327.17)"
+    "bw_mem-fwr-2mb (MB/s)","5055.23 (min 1866.72, max 8243.73)"
+    "bw_mem-fwr-4mb (MB/s)","5063.38 (min 1953.76, max 8173.00)"
+    "bw_mem-fwr-8mb (MB/s)","5043.18 (min 1943.87, max 8142.49)"
+    "bw_mem-rd-16mb (MB/s)","2075.50"
+    "bw_mem-rd-1mb (MB/s)","2173.92 (min 2036.31, max 2311.52)"
+    "bw_mem-rd-2mb (MB/s)","1942.69 (min 1860.75, max 2024.63)"
+    "bw_mem-rd-4mb (MB/s)","1988.88 (min 1912.35, max 2065.40)"
+    "bw_mem-rd-8mb (MB/s)","2004.14 (min 1949.08, max 2059.20)"
+    "bw_mem-rdwr-16mb (MB/s)","1988.57"
+    "bw_mem-rdwr-1mb (MB/s)","1458.43 (min 963.39, max 1953.47)"
+    "bw_mem-rdwr-2mb (MB/s)","1308.49 (min 944.73, max 1672.24)"
+    "bw_mem-rdwr-4mb (MB/s)","1428.10 (min 965.83, max 1890.36)"
+    "bw_mem-rdwr-8mb (MB/s)","1479.64 (min 1051.11, max 1908.17)"
+    "bw_mem-wr-16mb (MB/s)","1982.16"
+    "bw_mem-wr-1mb (MB/s)","1994.89 (min 1953.47, max 2036.31)"
+    "bw_mem-wr-2mb (MB/s)","1766.50 (min 1672.24, max 1860.75)"
+    "bw_mem-wr-4mb (MB/s)","1901.36 (min 1890.36, max 1912.35)"
+    "bw_mem-wr-8mb (MB/s)","1928.63 (min 1908.17, max 1949.08)"
+    "bw_mmap_rd-mo-1mb (MB/s)","2261.66"
+    "bw_mmap_rd-o2c-1mb (MB/s)","611.90"
+    "bw_pipe (MB/s)","816.85"
+    "bw_unix (MB/s)","1242.15"
+    "lat_connect (us)","56.89"
+    "lat_ctx-2-128k (us)","5.52"
+    "lat_ctx-2-256k (us)","4.50"
+    "lat_ctx-4-128k (us)","5.61"
+    "lat_ctx-4-256k (us)","4.42"
+    "lat_fs-0k (num_files)","245.00"
+    "lat_fs-10k (num_files)","127.00"
+    "lat_fs-1k (num_files)","171.00"
+    "lat_fs-4k (num_files)","170.00"
+    "lat_mem_rd-stride128-sz1000k (ns)","29.40"
+    "lat_mem_rd-stride128-sz125k (ns)","5.56"
+    "lat_mem_rd-stride128-sz250k (ns)","5.85"
+    "lat_mem_rd-stride128-sz31k (ns)","3.65"
     "lat_mem_rd-stride128-sz50 (ns)","2.15"
-    "lat_mem_rd-stride128-sz500k (ns)","11.26"
-    "lat_mem_rd-stride128-sz62k (ns)","5.23"
-    "lat_mmap-1m (us)","53.00"
+    "lat_mem_rd-stride128-sz500k (ns)","7.72"
+    "lat_mem_rd-stride128-sz62k (ns)","5.21"
+    "lat_mmap-1m (us)","59.00"
     "lat_ops-double-add (ns)","2.86"
-    "lat_ops-double-div (ns)","15.73"
+    "lat_ops-double-div (ns)","15.75"
     "lat_ops-double-mul (ns)","2.86"
     "lat_ops-float-add (ns)","2.86"
     "lat_ops-float-div (ns)","9.30"
@@ -144,45 +142,42 @@ Execute the LMBench with the following:
     "lat_ops-int-add (ns)","0.72"
     "lat_ops-int-bit (ns)","0.48"
     "lat_ops-int-div (ns)","4.29"
-    "lat_ops-int-mod (ns)","4.53"
+    "lat_ops-int-mod (ns)","4.54"
     "lat_ops-int-mul (ns)","3.07"
     "lat_ops-int64-add (ns)","0.72"
     "lat_ops-int64-bit (ns)","0.48"
     "lat_ops-int64-div (ns)","6.80"
     "lat_ops-int64-mod (ns)","5.25"
     "lat_ops-int64-mul (ns)","3.55"
-    "lat_pagefault (us)","1.25"
-    "lat_pipe (us)","21.96"
-    "lat_proc-exec (us)","764.14"
-    "lat_proc-fork (us)","593.33"
+    "lat_pagefault (us)","1.35"
+    "lat_pipe (us)","23.15"
+    "lat_proc-exec (us)","798.57"
+    "lat_proc-fork (us)","622.44"
     "lat_proc-proccall (us)","0.01"
-    "lat_select (us)","35.81"
-    "lat_sem (us)","1.80"
-    "lat_sig-catch (us)","5.29"
-    "lat_sig-install (us)","0.65"
-    "lat_sig-prot (us)","0.98"
-    "lat_syscall-fstat (us)","1.64"
+    "lat_select (us)","35.08"
+    "lat_sem (us)","2.34"
+    "lat_sig-catch (us)","5.79"
+    "lat_sig-install (us)","0.67"
+    "lat_sig-prot (us)","1.17"
+    "lat_syscall-fstat (us)","2.04"
     "lat_syscall-null (us)","0.46"
-    "lat_syscall-open (us)","145.68"
-    "lat_syscall-read (us)","0.77"
-    "lat_syscall-stat (us)","4.16"
-    "lat_syscall-write (us)","0.68"
+    "lat_syscall-open (us)","147.05"
+    "lat_syscall-read (us)","0.83"
+    "lat_syscall-stat (us)","5.13"
+    "lat_syscall-write (us)","0.74"
     "lat_tcp (us)","0.94"
-    "lat_unix (us)","25.35"
-    "latency_for_0.50_mb_block_size (nanosec)","11.26"
-    "latency_for_1.00_mb_block_size (nanosec)","14.66 (min 0.00, max 29.33)"
-    "pipe_bandwidth (MBs)","813.43"
-    "pipe_latency (microsec)","21.96"
+    "lat_unix (us)","26.04"
+    "latency_for_0.50_mb_block_size (nanosec)","7.72"
+    "latency_for_1.00_mb_block_size (nanosec)","14.70 (min 0.00, max 29.40)"
+    "pipe_bandwidth (MBs)","816.85"
+    "pipe_latency (microsec)","23.15"
     "procedure_call (microsec)","0.01"
-    "select_on_200_tcp_fds (microsec)","35.81"
-    "semaphore_latency (microsec)","1.80"
-    "signal_handler_latency (microsec)","0.65"
-    "signal_handler_overhead (microsec)","5.29"
-    "tcp_ip_connection_cost_to_localhost (microsec)","50.07"
+    "select_on_200_tcp_fds (microsec)","35.08"
+    "semaphore_latency (microsec)","2.34"
+    "signal_handler_latency (microsec)","0.67"
+    "signal_handler_overhead (microsec)","5.79"
+    "tcp_ip_connection_cost_to_localhost (microsec)","56.89"
     "tcp_latency_using_localhost (microsec)","0.94"
-
-
-
 
 Dhrystone
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -192,7 +187,6 @@ modern processors. It scales linearly with clock speed.
 Please take note, different run may produce different slightly results.
 This is advised to run this test multiple times in order to get maximum 
 performance numbers.
-
 
 Execute the benchmark with the following:
 
@@ -207,9 +201,6 @@ Execute the benchmark with the following:
     "dhrystone_per_mhz (DMIPS/MHz)","2.90"
     "dhrystone_per_second (DhrystoneP)","7142857.00"
 
-
-
-
 Whetstone
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Whetstone is a benchmark primarily measuring floating-point arithmetic performance.
@@ -223,10 +214,7 @@ Execute the benchmark with the following:
 .. csv-table:: Whetstone Benchmarks
     :header: "Benchmarks","am62pxx_sk-fs: perf"
 
-    "whetstone (MIPS)","5000.00"
-
-
-
+    "whetstone (MIPS)","10000.00"
 
 Linpack
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -236,10 +224,7 @@ solving a dense linear system.
 .. csv-table:: Linpack Benchmarks
     :header: "Benchmarks","am62pxx_sk-fs: perf"
 
-    "linpack (Kflops)","577128.00"
-
-
-
+    "linpack (Kflops)","577468.00"
 
 NBench
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -252,18 +237,15 @@ https://nbench.io/articles/index.html
 .. csv-table:: NBench Benchmarks
     :header: "Benchmarks","am62pxx_sk-fs: perf"
 
-    "assignment (Iterations)","14.47"
-    "fourier (Iterations)","22833.00"
-    "fp_emulation (Iterations)","215.65"
-    "huffman (Iterations)","1183.60"
-    "idea (Iterations)","3444.70"
-    "lu_decomposition (Iterations)","526.69"
-    "neural_net (Iterations)","8.66"
-    "numeric_sort (Iterations)","616.00"
+    "assignment (Iterations)","14.49"
+    "fourier (Iterations)","22832.00"
+    "fp_emulation (Iterations)","215.66"
+    "huffman (Iterations)","1184.10"
+    "idea (Iterations)","3444.90"
+    "lu_decomposition (Iterations)","527.85"
+    "neural_net (Iterations)","8.65"
+    "numeric_sort (Iterations)","623.80"
     "string_sort (Iterations)","163.93"
-
-
-
 
 Stream
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -286,13 +268,10 @@ Execute the benchmark with the following:
 .. csv-table:: Stream Benchmarks
     :header: "Benchmarks","am62pxx_sk-fs: perf"
 
-    "add (MB/s)","2891.10"
-    "copy (MB/s)","4048.10"
-    "scale (MB/s)","3716.50"
-    "triad (MB/s)","2541.40"
-
-
-
+    "add (MB/s)","1876.80"
+    "copy (MB/s)","3174.00"
+    "scale (MB/s)","2366.10"
+    "triad (MB/s)","1732.90"
 
 CoreMarkPro
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -302,41 +281,33 @@ While CoreMark stresses the CPU pipeline, CoreMark-Pro tests the entire processo
 adding comprehensive support for multicore technology, a combination of integer
 and floating-point workloads, and data sets for utilizing larger memory subsystems.
 
-
 .. csv-table:: CoreMarkPro Benchmarks
     :header: "Benchmarks","am62pxx_sk-fs: perf"
 
     "cjpeg-rose7-preset (workloads/)","42.02"
     "core (workloads/)","0.30"
-    "coremark-pro ()","944.14"
+    "coremark-pro ()","946.22"
     "linear_alg-mid-100x100-sp (workloads/)","14.68"
     "loops-all-mid-10k-sp (workloads/)","0.72"
     "nnet_test (workloads/)","1.09"
-    "parser-125k (workloads/)","8.93"
-    "radix2-big-64k (workloads/)","71.46"
+    "parser-125k (workloads/)","8.77"
+    "radix2-big-64k (workloads/)","74.22"
     "sha-test (workloads/)","81.97"
     "zip-test (workloads/)","22.22"
-
-
-
 
 .. csv-table:: CoreMarkProTwoCore Benchmarks
     :header: "Benchmarks","am62pxx_sk-fs: perf"
 
-    "cjpeg-rose7-preset (workloads/)","83.33"
-    "core (workloads/)","0.60"
-    "coremark-pro ()","1691.80"
-    "linear_alg-mid-100x100-sp (workloads/)","29.34"
-    "loops-all-mid-10k-sp (workloads/)","1.32"
-    "nnet_test (workloads/)","2.17"
-    "parser-125k (workloads/)","14.71"
-    "radix2-big-64k (workloads/)","72.98"
-    "sha-test (workloads/)","163.93"
-    "zip-test (workloads/)","43.48"
-
- 
- 
-
+    "cjpeg-rose7-preset (workloads/)","47.62"
+    "core (workloads/)","0.34"
+    "coremark-pro ()","997.73"
+    "linear_alg-mid-100x100-sp (workloads/)","16.74"
+    "loops-all-mid-10k-sp (workloads/)","0.78"
+    "nnet_test (workloads/)","1.24"
+    "parser-125k (workloads/)","8.47"
+    "radix2-big-64k (workloads/)","53.48"
+    "sha-test (workloads/)","93.46"
+    "zip-test (workloads/)","25.00"
 
 MultiBench
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -358,62 +329,46 @@ thread-enabled workloads to be tested.
 .. csv-table:: Multibench Benchmarks
     :header: "Benchmarks","am62pxx_sk-fs: perf"
 
-    "4m-check (workloads/)","436.61"
-    "4m-check-reassembly (workloads/)","127.55"
-    "4m-check-reassembly-tcp (workloads/)","61.12"
-    "4m-check-reassembly-tcp-cmykw2-rotatew2 (workloads/)","33.80"
-    "4m-check-reassembly-tcp-x264w2 (workloads/)","1.93"
-    "4m-cmykw2 (workloads/)","243.61"
-    "4m-cmykw2-rotatew2 (workloads/)","51.37"
-    "4m-reassembly (workloads/)","86.88"
-    "4m-rotatew2 (workloads/)","53.97"
-    "4m-tcp-mixed (workloads/)","118.52"
-    "4m-x264w2 (workloads/)","1.95"
-    "idct-4m (workloads/)","19.30"
-    "idct-4mw1 (workloads/)","19.30"
-    "ippktcheck-4m (workloads/)","435.46"
-    "ippktcheck-4mw1 (workloads/)","436.45"
-    "ipres-4m (workloads/)","116.28"
-    "ipres-4mw1 (workloads/)","116.55"
-    "md5-4m (workloads/)","29.34"
-    "md5-4mw1 (workloads/)","29.42"
-    "rgbcmyk-4m (workloads/)","62.93"
-    "rgbcmyk-4mw1 (workloads/)","62.81"
-    "rotate-4ms1 (workloads/)","24.17"
-    "rotate-4ms1w1 (workloads/)","24.08"
-    "rotate-4ms64 (workloads/)","24.47"
-    "rotate-4ms64w1 (workloads/)","24.41"
+    "4m-check (workloads/)","417.57"
+    "4m-check-reassembly (workloads/)","120.92"
+    "4m-check-reassembly-tcp (workloads/)","59.10"
+    "4m-check-reassembly-tcp-cmykw2-rotatew2 (workloads/)","33.50"
+    "4m-check-reassembly-tcp-x264w2 (workloads/)","1.91"
+    "4m-cmykw2 (workloads/)","247.22"
+    "4m-cmykw2-rotatew2 (workloads/)","49.75"
+    "4m-reassembly (workloads/)","81.37"
+    "4m-rotatew2 (workloads/)","53.19"
+    "4m-tcp-mixed (workloads/)","119.40"
+    "4m-x264w2 (workloads/)","1.96"
+    "idct-4m (workloads/)","19.25"
+    "idct-4mw1 (workloads/)","19.26"
+    "ippktcheck-4m (workloads/)","418.55"
+    "ippktcheck-4mw1 (workloads/)","418.48"
+    "ipres-4m (workloads/)","111.36"
+    "ipres-4mw1 (workloads/)","110.78"
+    "md5-4m (workloads/)","28.91"
+    "md5-4mw1 (workloads/)","29.00"
+    "rgbcmyk-4m (workloads/)","65.77"
+    "rgbcmyk-4mw1 (workloads/)","65.81"
+    "rotate-4ms1 (workloads/)","23.40"
+    "rotate-4ms1w1 (workloads/)","23.44"
+    "rotate-4ms64 (workloads/)","23.63"
+    "rotate-4ms64w1 (workloads/)","23.65"
     "x264-4mq (workloads/)","0.58"
     "x264-4mqw1 (workloads/)","0.58"
 
-
-
- 
- 
-
-
-
-|
-
 Boot-time Measurement
--------------------------
+---------------------
 
 Boot media: MMCSD
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^
 
-.. csv-table:: Boot time MMCSD
-    :header: "Boot Configuration","am62pxx_sk-fs: boot time (sec)"
+.. csv-table:: Linux boot time MMCSD
+    :header: "Boot Configuration","am62pxx_sk-fs: Boot time in seconds: avg(min,max)"
 
-    "Kernel boot time test when bootloader, kernel and sdk-rootfs are in mmc-sd","14.46 (min 14.10, max 14.85)"
-    "Kernel boot time test when init is /bin/sh and bootloader, kernel and sdk-rootfs are in mmc-sd","4.43 (min 4.38, max 4.48)"
-    "kernel boot time test when bootloader, kernel and sdk-rootfs are in mmc-sd","16.23 (min 16.08, max 16.43)"
+    "Linux boot time from SD with default rootfs (20 boot cycles)","15.73 (min 15.10, max 16.07)"
 
-
-
- 
- 
-
-
+Boot time numbers [avg, min, max] are measured from "Starting kernel" to Linux prompt across 20 boot cycles.
 
 |
 
@@ -425,39 +380,25 @@ ALSA SoC Audio Driver
 #. Format - S16\_LE
 #. Period size - 64
 
-
 .. csv-table:: Audio Capture
     :header: "Sampling Rate (Hz)","am62pxx_sk-fs: Throughput (bits/sec)","am62pxx_sk-fs: CPU Load (%)"
 
-    "8000","255997.00","0.09"
-    "11025","352797.00","0.14"
-    "16000","511997.00","0.09"
-    "22050","705595.00","0.25"
-    "24000","705593.00","0.23"
-    "32000","1023988.00","0.51"
-    "44100","1411184.00","0.41"
-    "48000","1535984.00","0.84"
-    "88200","2822368.00","0.74"
-    "96000","3071965.00","1.72"
-
-
-
- 
- 
-
-
-
- 
-
-
+    "8000","255997.00","0.10"
+    "11025","352797.00","0.13"
+    "16000","511996.00","0.09"
+    "22050","705595.00","0.24"
+    "24000","705594.00","0.24"
+    "32000","1023990.00","0.14"
+    "44100","1411186.00","0.38"
+    "48000","1535986.00","0.19"
+    "88200","2822372.00","0.82"
+    "96000","3071969.00","1.99"
 
 |
 
 Graphics SGX/RGX Driver
 -------------------------
  
-
-
 GFXBench
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Run GFXBench and capture performance reported (Score and Display rate in fps). All display outputs (HDMI, Displayport and/or LCD) are connected when running these tests
@@ -465,13 +406,10 @@ Run GFXBench and capture performance reported (Score and Display rate in fps). A
 .. csv-table:: GFXBench Performance
     :header: "Benchmark","am62pxx_sk-fs: Score","am62pxx_sk-fs: Fps"
 
-    " GFXBench 3.x gl_manhattan_off","918.13","14.81"
-    " GFXBench 3.x gl_trex_off","1590.73","28.41"
-    " GFXBench 4.x gl_4_off","263.52","4.46"
-    " GFXBench 5.x gl_5_high_off","113.87","1.77"
-
-
-
+    " GFXBench 3.x gl_manhattan_off","912.45","14.72"
+    " GFXBench 3.x gl_trex_off","1585.91","28.32"
+    " GFXBench 4.x gl_4_off","261.99","4.43"
+    " GFXBench 5.x gl_5_high_off","113.71","1.77"
 
 Glmark2
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -482,16 +420,7 @@ Run Glmark2 and capture performance reported (Score). All display outputs (HDMI,
     :header: "Benchmark","am62pxx_sk-fs: Score"
 
     "Glmark2-DRM","309.00"
-    "Glmark2-Wayland","794.00"
-
- 
- 
-
- 
-
- 
-
-
+    "Glmark2-Wayland","782.00"
 
 |
 
@@ -562,12 +491,10 @@ Running the following commands will trigger netperf clients to measure UDP burst
    netperf -H <DUT ip> -j -C -l 60 -t UDP_STREAM -b <burst_size> -w <wait_time> -- -m <UDP datagram size>
       -k DIRECTION,THROUGHPUT,MEAN_LATENCY,LOCAL_CPU_UTIL,REMOTE_CPU_UTIL,LOCAL_BYTES_SENT,REMOTE_BYTES_RECVD,LOCAL_SEND_SIZE 
 
-
 CPSW/CPSW2g/CPSW3g Ethernet Driver 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 - CPSW3g: AM62px
-
 
 .. rubric::  TCP Bidirectional Throughput 
    :name: CPSW2g-tcp-bidirectional-throughput
@@ -575,10 +502,7 @@ CPSW/CPSW2g/CPSW3g Ethernet Driver
 .. csv-table:: CPSW2g TCP Bidirectional Throughput
     :header: "Command Used","am62pxx_sk-fs: THROUGHPUT (Mbits/sec)","am62pxx_sk-fs: CPU Load % (LOCAL_CPU_UTIL)"
 
-    "netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_MAERTS","1772.82","58.57"
-
-
-
+    "netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_MAERTS","1731.05","62.00"
 
 .. rubric::  TCP Bidirectional Throughput Interrupt Pacing
    :name: CPSW2g-tcp-bidirectional-throughput-interrupt-pacing
@@ -586,41 +510,27 @@ CPSW/CPSW2g/CPSW3g Ethernet Driver
 .. csv-table:: CPSW2g TCP Bidirectional Throughput Interrupt Pacing
     :header: "Command Used","am62pxx_sk-fs: THROUGHPUT (Mbits/sec)","am62pxx_sk-fs: CPU Load % (LOCAL_CPU_UTIL)"
 
-    "netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_MAERTS","1854.00","37.39"
+    "netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_MAERTS","1840.85","37.62"
 
+.. rubric::  UDP Throughput
+   :name: CPSW2g-udp-throughput-0-loss
 
+.. csv-table:: CPSW2g UDP Egress Throughput 0 loss
+    :header: "Frame Size(bytes)","am62pxx_sk-fs: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am62pxx_sk-fs: THROUGHPUT (Mbits/sec)","am62pxx_sk-fs: Packets Per Second (kPPS)","am62pxx_sk-fs: CPU Load % (LOCAL_CPU_UTIL)"
 
-
-
-
-
- 
- 
-
- 
-
- 
- 
-
- 
-
- 
-
-
+    "64","18.00","16.16","112.00","39.62"
+    "128","82.00","72.51","111.00","39.64"
+    "256","210.00","184.86","110.00","39.48"
+    "1024","978.00","899.23","115.00","44.49"
+    "1518","1472.00","956.71","81.00","31.44"
 
 |
 
 Linux OSPI Flash Driver
 -------------------------
 
- 
-
- 
-
-
 AM62PXX-SK
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
 
 UBIFS
 """""""""""""""""""""""""""
@@ -628,13 +538,10 @@ UBIFS
 .. csv-table:: OSPI Flash Driver
     :header: "Buffer size (bytes)","am62pxx_sk-fs: Write UBIFS Throughput (Mbytes/sec)","am62pxx_sk-fs: Write UBIFS CPU Load (%)","am62pxx_sk-fs: Read UBIFS Throughput (Mbytes/sec)","am62pxx_sk-fs: Read UBIFS CPU Load (%)"
 
-    "102400","0.18 (min 0.13, max 0.28)","14.12 (min 13.22, max 14.70)","28.63","6.67"
-    "262144","0.16 (min 0.11, max 0.19)","13.98 (min 13.38, max 14.41)","28.56","12.50"
-    "524288","0.15 (min 0.11, max 0.19)","12.19 (min 11.31, max 13.62)","28.33","3.45"
-    "1048576","0.16 (min 0.11, max 0.19)","13.34 (min 11.79, max 14.39)","28.14","10.00"
-
-
-
+    "102400","0.18 (min 0.13, max 0.28)","13.09 (min 11.87, max 14.11)","28.67","6.90"
+    "262144","0.15 (min 0.11, max 0.19)","12.87 (min 11.47, max 14.01)","28.65","10.00"
+    "524288","0.15 (min 0.11, max 0.19)","13.33 (min 10.92, max 15.20)","28.61","12.50"
+    "1048576","0.15 (min 0.11, max 0.19)","13.52 (min 11.60, max 15.26)","28.34","10.00"
 
 RAW
 """""""""""""""""""""""""""
@@ -642,362 +549,162 @@ RAW
 .. csv-table:: OSPI Raw Flash Driver
     :header: "File size (Mbytes)","am62pxx_sk-fs: Raw Read Throughput (Mbytes/sec)"
 
-    "50","37.59"
-
- 
- 
-
- 
-
- 
-
- 
-
- 
-
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
-
-
-|
+    "50","37.88"
 
 EMMC Driver
--------------------------
+-----------
+.. important::
 
-.. warning::
-
-  **IMPORTANT**: The performance numbers can be severely affected if the media is
+  The performance numbers can be severely affected if the media is
   mounted in sync mode. Hot plug scripts in the filesystem mount
   removable media in sync mode to ensure data integrity. For performance
   sensitive applications, umount the auto-mounted filesystem and
   re-mount in async mode.
 
- 
-
- 
-
- 
-
- 
-
- 
-
-
- 
-
- 
-
-
-
-
-AM62PXX-SK
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+EMMC EXT4 FIO 1G
+^^^^^^^^^^^^^^^^
 
 .. csv-table:: EMMC EXT4 FIO 1G
     :header: "Buffer size (bytes)","am62pxx_sk-fs: Write EXT4 Throughput (Mbytes/sec)","am62pxx_sk-fs: Write EXT4 CPU Load (%)","am62pxx_sk-fs: Read EXT4 Throughput (Mbytes/sec)","am62pxx_sk-fs: Read EXT4 CPU Load (%)"
 
-    "1m","90.20","1.46","285.00","2.24"
-    "4m","96.40","1.03","287.00","2.10"
-    "4k","78.90","23.50","91.20","19.73"
-    "256k","90.30","1.77","288.00","3.76"
+    "1m","91.50","2.28","289.00","4.43"
+    "4m","97.50","1.64","288.00","3.63"
+    "4k","78.60","33.12","92.30","30.52"
+    "256k","91.30","2.80","287.00","5.93"
 
+EMMC RAW FIO 1G
+^^^^^^^^^^^^^^^
 
+.. csv-table:: EMMC RAW FIO 1G
+    :header: "Buffer size (bytes)","am62pxx_sk-fs: Write Raw Throughput (Mbytes/sec)","am62pxx_sk-fs: Write Raw CPU Load (%)","am62pxx_sk-fs: Read Raw Throughput (Mbytes/sec)","am62pxx_sk-fs: Read Raw CPU Load (%)"
 
- 
- 
+    "1m","91.40","1.46","293.00","2.84"
+    "4m","97.70","1.03","150.00","1.27"
+    "4k","73.20","10.75","74.50","10.06"
+    "256k","91.30","1.67","293.00","4.09"
 
- 
+EMMC EXT4
+^^^^^^^^^
 
+.. csv-table:: EMMC EXT4
+    :header: "Buffer size (bytes)","am62pxx_sk-fs: Write EXT4 Throughput (Mbytes/sec)","am62pxx_sk-fs: Write EXT4 CPU Load (%)","am62pxx_sk-fs: Read EXT4 Throughput (Mbytes/sec)","am62pxx_sk-fs: Read EXT4 CPU Load (%)"
 
+    "102400","68.60 (min 50.94, max 73.14)","4.85 (min 4.72, max 4.90)","131.58","7.81"
+    "262144","60.52 (min 42.63, max 73.77)","4.51 (min 2.94, max 6.97)","178.25","10.97"
+    "524288","61.34 (min 42.90, max 73.64)","4.53 (min 2.77, max 7.10)","101.57","5.81"
+    "1048576","61.38 (min 42.59, max 75.22)","4.48 (min 3.04, max 6.62)","127.76","6.13"
+    "5242880","61.57 (min 42.50, max 73.83)","4.57 (min 2.74, max 7.04)","133.97","7.30"
 
+EMMC VFAT
+^^^^^^^^^
 
+.. csv-table:: EMMC VFAT
+    :header: "Buffer size (bytes)","am62pxx_sk-fs: Write VFAT Throughput (Mbytes/sec)","am62pxx_sk-fs: Write VFAT CPU Load (%)","am62pxx_sk-fs: Read VFAT Throughput (Mbytes/sec)","am62pxx_sk-fs: Read VFAT CPU Load (%)"
 
-
-
-
-
-
-
- 
- 
-
-
-
-|
+    "102400","37.66 (min 11.58, max 47.12)","4.45 (min 3.35, max 4.95)","142.56","8.14"
+    "262144","43.19 (min 11.44, max 60.84)","5.96 (min 4.35, max 7.06)","263.29","16.88"
+    "524288","45.51 (min 12.51, max 64.59)","4.99 (min 3.85, max 6.03)","185.39","8.64"
+    "1048576","45.58 (min 12.18, max 65.61)","4.50 (min 3.37, max 5.51)","186.57","9.05"
+    "5242880","47.38 (min 12.30, max 69.10)","4.74 (min 3.33, max 6.00)","188.52","10.31"
 
 UBoot EMMC Driver
--------------------------
-
- 
-
-
-
-
-AM62PXX-SK
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-----------------
 
 .. csv-table:: UBOOT EMMC RAW
     :header: "File size (bytes in hex)","am62pxx_sk-fs: Write Throughput (Kbytes/sec)","am62pxx_sk-fs: Read Throughput (Kbytes/sec)"
 
-    "2000000","97814.93","270809.92"
-    "4000000","96518.41","281270.39"
+    "2000000","97523.81","248242.42"
+    "4000000","100207.95","267493.88"
 
+MMCSD
+-----
 
+.. important::
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
- 
-
- 
-
-
-
-|
-
-MMC/SD Driver
--------------------------
-
-.. warning::
-
-  **IMPORTANT**: The performance numbers can be severely affected if the media is
+  The performance numbers can be severely affected if the media is
   mounted in sync mode. Hot plug scripts in the filesystem mount
   removable media in sync mode to ensure data integrity. For performance
   sensitive applications, umount the auto-mounted filesystem and
   re-mount in async mode.
 
- 
-
- 
-
- 
-
- 
-
- 
-
-
-
-
-
- 
-
- 
-
-
-
-
-AM62PXX-SK
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+MMC EXT4 FIO 1G
+^^^^^^^^^^^^^^^
 
 .. csv-table:: MMC EXT4 FIO 1G
     :header: "Buffer size (bytes)","am62pxx_sk-fs: Write EXT4 Throughput (Mbytes/sec)","am62pxx_sk-fs: Write EXT4 CPU Load (%)","am62pxx_sk-fs: Read EXT4 Throughput (Mbytes/sec)","am62pxx_sk-fs: Read EXT4 CPU Load (%)"
 
-    "1m","42.60","0.96","84.90","0.87"
-    "4m","42.30","0.70","85.00","0.87"
-    "4k","2.82","1.49","13.60","4.19"
-    "256k","37.50","1.08","84.10","1.35"
+    "1m","40.80","1.02","85.10","1.21"
+    "4m","39.80","0.68","84.70","1.01"
+    "4k","2.81","1.40","13.70","4.53"
+    "256k","37.80","1.11","84.30","1.49"
 
+MMC RAW FIO 1G
+^^^^^^^^^^^^^^
 
+.. csv-table:: MMC RAW FIO 1G
+    :header: "Buffer size (bytes)","am62pxx_sk-fs: Write Raw Throughput (Mbytes/sec)","am62pxx_sk-fs: Write Raw CPU Load (%)","am62pxx_sk-fs: Read Raw Throughput (Mbytes/sec)","am62pxx_sk-fs: Read Raw CPU Load (%)"
 
+    "1m","43.20","1.33","88.10","1.87"
+    "4m","43.10","1.10","88.10","1.45"
+    "4k","3.56","2.40","16.60","7.99"
+    "256k","39.90","1.47","86.10","2.20"
 
+MMC EXT4
+^^^^^^^^
 
- 
+.. csv-table:: MMC EXT4
+    :header: "Buffer size (bytes)","am62pxx_sk-fs: Write Raw Throughput (Mbytes/sec)","am62pxx_sk-fs: Write Raw CPU Load (%)","am62pxx_sk-fs: Read Raw Throughput (Mbytes/sec)","am62pxx_sk-fs: Read Raw CPU Load (%)"
 
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
- 
-
- 
-
-
-
-
-
- 
+    "102400","9.88 (min 9.65, max 10.41)","0.77 (min 0.67, max 1.07)","11.09","0.69"
+    "262144","10.40 (min 10.14, max 10.83)","0.90 (min 0.70, max 1.39)","11.15","0.69"
+    "524288","10.60 (min 10.53, max 10.74)","0.81 (min 0.65, max 1.16)","11.25","0.54"
+    "1048576","10.32 (min 10.11, max 10.63)","0.81 (min 0.68, max 1.04)","11.06","0.61"
+    "5242880","11.00 (min 10.77, max 11.12)","0.83 (min 0.69, max 1.15)","12.01","0.57"
 
 The performance numbers were captured using the following:
 
--  SanDisk 8GB MicroSDHC Class 10 Memory Card
+-  SanDisk Max Endurance SD card (SDSQQVR-032G-GN6IA)
 -  Partition was mounted with async option
- 
 
+UBoot MMCSD
+-----------
 
-
-|
-
-UBoot MMC/SD Driver
--------------------------
-
-  
-
-
-
-
-AM62PXX-SK
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UBOOT MMCSD FAT
+^^^^^^^^^^^^^^^
 
 .. csv-table:: UBOOT MMCSD FAT
     :header: "File size (bytes in hex)","am62pxx_sk-fs: Write Throughput (Kbytes/sec)","am62pxx_sk-fs: Read Throughput (Kbytes/sec)"
 
-    "400000","37236.36","59362.32"
-    "800000","45765.36","72495.58"
-    "1000000","48617.21","81108.91"
+    "400000","37236.36","71859.65"
+    "800000","46022.47","81108.91"
+    "1000000","47216.14","86231.58"
 
+The performance numbers were captured using the following:
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
- 
-
-
+-  SanDisk Max Endurance SD card (SDSQQVR-032G-GN6IA)
 
 |
 
 USB Driver
 -------------------------
- 
-
 
 USB Device Controller
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-
-
-
-
-
-
-
-
-
 .. csv-table:: USBDEVICE HIGHSPEED SLAVE_READ_THROUGHPUT
     :header: "Number of Blocks","am62pxx_sk-fs: Throughput (MB/sec)"
 
-    "150","37.60"
-
-
-
+    "150","34.50"
 
 .. csv-table:: USBDEVICE HIGHSPEED SLAVE_WRITE_THROUGHPUT
     :header: "Number of Blocks","am62pxx_sk-fs: Throughput (MB/sec)"
 
-    "150","32.40"
-
-
-
-
-
- 
- 
- 
-
-
+    "150","28.10"
 
 |
 
 CRYPTO Driver
 -------------------------
-
 
 OpenSSL Performance
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1005,74 +712,68 @@ OpenSSL Performance
 .. csv-table:: OpenSSL Performance
     :header: "Algorithm","Buffer Size (in bytes)","am62pxx_sk-fs: throughput (KBytes/Sec)"
 
-    "aes-128-cbc","1024","25761.79"
-    "aes-128-cbc","16","468.65"
-    "aes-128-cbc","16384","87577.94"
-    "aes-128-cbc","256","7765.33"
-    "aes-128-cbc","64","2058.18"
-    "aes-128-cbc","8192","74989.57"
-    "aes-128-ecb","1024","26237.95"
-    "aes-128-ecb","16","475.15"
-    "aes-128-ecb","16384","90248.53"
-    "aes-128-ecb","256","8015.02"
-    "aes-128-ecb","64","2108.48"
-    "aes-128-ecb","8192","77111.30"
-    "aes-192-cbc","1024","25433.43"
-    "aes-192-cbc","16","461.86"
-    "aes-192-cbc","16384","78566.74"
-    "aes-192-cbc","256","7644.25"
-    "aes-192-cbc","64","1945.69"
-    "aes-192-cbc","8192","68698.11"
-    "aes-192-ecb","1024","25913.34"
-    "aes-192-ecb","16","474.18"
-    "aes-192-ecb","16384","81264.64"
-    "aes-192-ecb","256","7905.45"
-    "aes-192-ecb","64","2107.88"
-    "aes-192-ecb","8192","70653.27"
-    "aes-256-cbc","1024","24602.28"
-    "aes-256-cbc","16","467.03"
-    "aes-256-cbc","16384","71696.38"
-    "aes-256-cbc","256","7622.49"
-    "aes-256-cbc","64","2066.65"
-    "aes-256-cbc","8192","63457.96"
-    "aes-256-ecb","1024","25231.70"
-    "aes-256-ecb","16","476.09"
-    "aes-256-ecb","16384","74011.99"
-    "aes-256-ecb","256","7842.39"
-    "aes-256-ecb","64","2098.94"
-    "aes-256-ecb","8192","65126.40"
-    "sha256","1024","34277.72"
-    "sha256","16","573.53"
-    "sha256","16384","273716.57"
-    "sha256","256","8973.06"
-    "sha256","64","2288.19"
-    "sha256","8192","185611.61"
-    "sha512","1024","24480.09"
-    "sha512","16","564.82"
-    "sha512","16384","67807.91"
-    "sha512","256","8025.94"
-    "sha512","64","2264.26"
-    "sha512","8192","60511.57"
-
-
-
+    "aes-128-cbc","1024","17659.22"
+    "aes-128-cbc","16","294.87"
+    "aes-128-cbc","16384","77081.26"
+    "aes-128-cbc","256","5147.73"
+    "aes-128-cbc","64","1305.37"
+    "aes-128-cbc","8192","62117.21"
+    "aes-128-ecb","1024","17919.66"
+    "aes-128-ecb","16","300.60"
+    "aes-128-ecb","16384","79205.72"
+    "aes-128-ecb","256","5244.59"
+    "aes-128-ecb","64","1334.36"
+    "aes-128-ecb","8192","63589.03"
+    "aes-192-cbc","1024","17438.72"
+    "aes-192-cbc","16","295.00"
+    "aes-192-cbc","16384","70429.35"
+    "aes-192-cbc","256","5156.01"
+    "aes-192-cbc","64","1305.26"
+    "aes-192-cbc","8192","57969.32"
+    "aes-192-ecb","1024","17724.07"
+    "aes-192-ecb","16","299.00"
+    "aes-192-ecb","16384","72045.91"
+    "aes-192-ecb","256","5219.33"
+    "aes-192-ecb","64","1328.51"
+    "aes-192-ecb","8192","58829.48"
+    "aes-256-cbc","1024","17347.24"
+    "aes-256-cbc","16","294.71"
+    "aes-256-cbc","16384","64481.96"
+    "aes-256-cbc","256","5137.75"
+    "aes-256-cbc","64","1301.85"
+    "aes-256-cbc","8192","54061.74"
+    "aes-256-ecb","1024","17631.57"
+    "aes-256-ecb","16","299.74"
+    "aes-256-ecb","16384","66027.52"
+    "aes-256-ecb","256","5219.84"
+    "aes-256-ecb","64","1331.84"
+    "aes-256-ecb","8192","55323.31"
+    "sha256","1024","19539.63"
+    "sha256","16","325.38"
+    "sha256","16384","157750.61"
+    "sha256","256","5084.33"
+    "sha256","64","1286.27"
+    "sha256","8192","107025.75"
+    "sha512","1024","13944.49"
+    "sha512","16","319.83"
+    "sha512","16384","38677.16"
+    "sha512","256","4573.70"
+    "sha512","64","1279.77"
+    "sha512","8192","34559.32"
 
 .. csv-table:: OpenSSL CPU Load
     :header: "Algorithm","am62pxx_sk-fs: CPU Load"
 
-    "aes-128-cbc","34.00"
-    "aes-128-ecb","35.00"
-    "aes-192-cbc","33.00"
-    "aes-192-ecb","34.00"
-    "aes-256-cbc","33.00"
-    "aes-256-ecb","34.00"
-    "sha256","98.00"
-    "sha512","98.00"
+    "aes-128-cbc","38.00"
+    "aes-128-ecb","39.00"
+    "aes-192-cbc","38.00"
+    "aes-192-ecb","39.00"
+    "aes-256-cbc","37.00"
+    "aes-256-ecb","38.00"
+    "sha256","97.00"
+    "sha512","97.00"
 
-
-
-Listed for each algorithm are the code snippets used to run each
-  benchmark test.
+Listed for each algorithm are the code snippets used to run each benchmark test.
 
 ::
 
