@@ -1,5 +1,3 @@
-.. include:: /_replacevars.rst
-
 AM69 SK Hardware Setup
 ====================================================
 
@@ -30,7 +28,7 @@ To run the demos on AM69 SK you will require,
 
 Connect the components to the EVM as shown in the image.
 
-.. figure:: ../../../images/AM69_SK_Hardware_Setup/am69_sk.jpg
+.. figure:: /images/AM69_SK_Hardware_Setup/am69_sk.jpg
    :scale: 30
    :align: center
 
@@ -38,7 +36,7 @@ Connect the components to the EVM as shown in the image.
 
 Set the boot pins to SD boot mode as shown in the following image.
 
-.. figure:: ../../../images/AM69_SK_Hardware_Setup/am69_sk_bootpins.jpg
+.. figure:: /images/AM69_SK_Hardware_Setup/am69_sk_bootpins.jpg
    :scale: 20
    :align: center
 

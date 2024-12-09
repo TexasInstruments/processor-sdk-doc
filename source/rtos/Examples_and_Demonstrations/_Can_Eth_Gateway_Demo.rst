@@ -23,7 +23,7 @@ applications are used for transmitting & receiving the Ethernet frames from/to
 PC, similarly for CAN message reception & transmission, any compatible CAN tool
 can be used.
 
-.. Image:: ../images/can-eth-gateway.png
+.. Image:: /images/can-eth-gateway.png
    :height: 1000px
    :width: 1500px
    :scale: 50 %
@@ -177,7 +177,7 @@ AM65x EVM/IDK Board Set up
         * Carefully remove the IDK application board by removing the four screws and gently separating the board from the connectors.
         * On the top of the board, solder a 120 ohm resistor to the footprint for R252.
 
-        .. Image:: ../images/am65x_evm_idk_board_changes_for_mcan_interface1.png
+        .. Image:: /images/am65x_evm_idk_board_changes_for_mcan_interface1.png
           :height: 500px
           :width: 800px
           :scale: 50 %
@@ -186,7 +186,7 @@ AM65x EVM/IDK Board Set up
 
         * On the bottom of the board, solder a 120 ohm resistor to the footprint for R130.
 
-        .. Image:: ../images/am65x_evm_idk_board_changes_for_mcan_interface2.png
+        .. Image:: /images/am65x_evm_idk_board_changes_for_mcan_interface2.png
           :height: 500px
           :width: 800px
           :scale: 50 %
@@ -225,7 +225,7 @@ CAN FD adapter PCAN-USB FD allows the connection of CAN FD and CAN networks to a
                 * Bit rates may vary from use-case to use-case.
             * Click on Ok button.
 
-            .. Image:: ../images/pcan_view_device_selection.png
+            .. Image:: /images/pcan_view_device_selection.png
                :height: 500px
                :width: 500px
                :scale: 50 %
@@ -242,7 +242,7 @@ CAN FD adapter PCAN-USB FD allows the connection of CAN FD and CAN networks to a
                 * Cycle Time as ‘2000’
                 * Data: as use-case needs
 
-            .. Image:: ../images/CanEth_PCANViewTransmitMessageConfig.png
+            .. Image:: /images/CanEth_PCANViewTransmitMessageConfig.png
                :height: 500px
                :width: 600px
                :scale: 50 %
@@ -262,7 +262,7 @@ CAN FD adapter PCAN-USB FD allows the connection of CAN FD and CAN networks to a
         * Bit Rate text box shall show ‘5 Mbit/s’ after programming above values.
         * Click on ‘Ok’ and then again on ‘Ok’
 
-    .. Image:: ../images/CanEth_PCANViewBitRateConfig.png
+    .. Image:: /images/CanEth_PCANViewBitRateConfig.png
       :height: 500px
       :width: 800px
       :scale: 50 %

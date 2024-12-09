@@ -552,7 +552,7 @@ If Windows refuses to update the driver, they need to be fully removed.
 -  Repeat for *XDS100 Channel B*
 -  Do the procedure above to reinstall the drivers
 
-.. Image:: ../images/Xds100onWin10-sysdevices.png
+.. Image:: /images/Xds100onWin10-sysdevices.png
 
 .. rubric:: Roadmap
    :name: roadmap
@@ -950,7 +950,7 @@ for every action
 
    <div class="floatnone">
 
-.. Image:: ../images/Xds100v2_adaptiveb.jpg
+.. Image:: /images/Xds100v2_adaptiveb.jpg
 
 .. raw:: html
 
@@ -963,7 +963,7 @@ for every action
 
    <div class="floatnone">
 
-.. Image:: ../images/Xds100v2_dm365_timeout.jpg
+.. Image:: /images/Xds100v2_dm365_timeout.jpg
 
 .. raw:: html
 
@@ -1104,7 +1104,7 @@ emulators. Please see `Activating
 CCS#Generate_and_Install_a_License_File <http://processors.wiki.ti.com/index.php/Activating_CCS#Generate_and_Install_a_License_File>`__
 for details.
 
-.. Image:: ../images/CCSV4xds100license.jpg
+.. Image:: /images/CCSV4xds100license.jpg
 
 |
 
@@ -1272,7 +1272,7 @@ device manager will look like the image in
    v4 <http://processors.wiki.ti.com/index.php/Code_Composer_Studio_v4>`__
    :name: q-i-got-an-error-connecting-to-the-target-error-0x80000240-151-fatal-error-during-initialization-ocs-when-trying-to-connect-to-the-target-in-code-composer-studio-v4
 
-.. Image:: ../images/Xds100v1poderror.jpg
+.. Image:: /images/Xds100v1poderror.jpg
 
 -  A: This can occur for several reasons. With XDS100 systems, this can
    occur because the EEPROM was not programmed properly. Please check
@@ -1285,7 +1285,7 @@ device manager will look like the image in
    -151 SC_ERR_POD_OPEN error with `Dbgjtag <http://processors.wiki.ti.com/index.php/Dbgjtag>`__.
    :name: q-i-was-following-debugging-jtag-connectivity-problems-and-i-a--151-sc_err_pod_open-error-with-dbgjtag.
 
-.. Image:: ../images/Xds100v1nopiddbgjtagpodfail.jpg
+.. Image:: /images/Xds100v1nopiddbgjtagpodfail.jpg
 
 -  A: This can occur for several reasons. With XDS100 systems, this can
    occur because the EEPROM was not programmed properly. Please check
@@ -1453,7 +1453,7 @@ device manager will look like the image in
 FAQ <http://processors.wiki.ti.com/index.php/FAQ_-_CCSv5#Q:_I_can.27t_connect_to_my_BeagleBone_in_CCSv5._What_is_happening.3F>`__
 entry.
 
-.. Image:: ../images/Xd100damagedvidpid.jpg
+.. Image:: /images/Xd100damagedvidpid.jpg
 
 -  Expected XDS100 VID/PID should be as described in the sections `how
    to make an
@@ -1497,7 +1497,7 @@ section <http://processors.wiki.ti.com/index.php/XDS100#How_to_make_an_XDS100_.2
 #. Select Device->Program to program the correct settings
 #. Close MPROG
 
-.. Image:: ../images/MPROG_3.5.jpg
+.. Image:: /images/MPROG_3.5.jpg
 
 You should now be able to follow the directions
 `Here <http://processors.wiki.ti.com/index.php/XDS100#Q:_How_can_I_check_if_the_VID.2FPID_for_the_EEPROM_are_programmed_correctly.3F>`__

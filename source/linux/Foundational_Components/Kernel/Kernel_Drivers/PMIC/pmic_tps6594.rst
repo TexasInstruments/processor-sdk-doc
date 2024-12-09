@@ -1,7 +1,5 @@
 .. http://processors.wiki.ti.com/index.php/Linux_Core_PMIC_TPS6594_User%27s_Guide
 
-.. include:: /_replacevars.rst
-
 TPS6594 PMIC
 ---------------------------------
 

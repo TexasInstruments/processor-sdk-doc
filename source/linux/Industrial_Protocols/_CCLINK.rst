@@ -155,7 +155,7 @@ sample application: “Master\_sample
 The figure below shows the sample output from the console of the master
 station.
 
-.. Image:: ../images/Cclink_master_screeshot_linux.png
+.. Image:: /images/Cclink_master_screeshot_linux.png
 
 |
 

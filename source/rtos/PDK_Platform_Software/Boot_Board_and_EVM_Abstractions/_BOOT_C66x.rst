@@ -265,7 +265,7 @@ Boot Modes
 NAND Boot
 """"""""""""
 
-.. Image:: ../images/Nandboot.jpg
+.. Image:: /images/Nandboot.jpg
 
 NAND boot is a multi-stage process which is designed to boot an
 application from NAND flash after reset. Figure below illustrates the
@@ -290,7 +290,7 @@ modified and re-programmed to EEPROM.
 NOR Boot
 """"""""""""
 
-.. Image:: ../images/Norboot.jpg
+.. Image:: /images/Norboot.jpg
 
 NOR boot is a multi-stage process which is designed to boot an
 application from NOR flash after reset. Figure below illustrates the
@@ -312,7 +312,7 @@ parameter index dip switch, maximum 2 boot images can be supported.
 TFTP Boot
 """"""""""""
 
-.. Image:: ../images/Emacboot.jpg
+.. Image:: /images/Emacboot.jpg
 
 EMAC boot is a multi-stage process which is designed to boot an
 application from TFTP server after reset. Figure below illustrates the

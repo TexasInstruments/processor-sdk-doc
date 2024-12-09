@@ -7,7 +7,6 @@ Please click the link below to download a snapshot of the entire documentation i
 .. raw:: html
 
     <a href="processor-sdk-rtos-docs.tar.gz">Download processor-sdk-rtos-docs.tar.gz</a>
-|
 
 Unpack the tarball using the command below:
 

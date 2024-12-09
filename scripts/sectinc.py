@@ -155,7 +155,7 @@ def get_toctree_entries(app, toctreenodefile):
                 rststring = rstfilelocation[0]
                 if rststring:
                     # Append the found .rst file to the toctreesections list
-                    toctreesections.append(re.sub('\.rst$', '', rststring))
+                    toctreesections.append(re.sub(r'\.rst$', '', rststring))
                 else:
                     print("TOC Tree Entry is not a defined .rst file in current directory")
 

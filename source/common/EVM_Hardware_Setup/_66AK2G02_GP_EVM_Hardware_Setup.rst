@@ -54,7 +54,7 @@ features of EVM are:
 .. rubric:: EVM Layout and Key Components
    :name: evm-layout-and-key-components
 
-.. Image:: ../../../images/TI_K2GEVM.png
+.. Image:: /images/TI_K2GEVM.png
 
 .. rubric:: JTAG debug probes (aka Emulators) supported
    :name: jtag-debug-probes-aka-emulators-supported
@@ -83,13 +83,13 @@ mode.
 | **For EVM Out of box experience uses SD/MMC boot as shown in the
   image**:
 
-.. Image:: ../../../images/Boot_switch_SDboot.jpg
+.. Image:: /images/Boot_switch_SDboot.jpg
 
 |
 | **For Debugging over emulator use "No Boot/Sleep" Setting as shown
   below**:
 
-.. Image:: ../../../images/Boot_Switch_NoBoot.jpg
+.. Image:: /images/Boot_Switch_NoBoot.jpg
    :scale: 50%
 
 |
@@ -172,7 +172,7 @@ connector to the USB mini-B interface near to the audio line in on the
 EVM, and the USB connector to your PC. This enables XDS-2xx emulation
 and is directly useable by CCS.
 
-.. Image:: ../../../images/XDS200_connect.png
+.. Image:: /images/XDS200_connect.png
 
 |
 
@@ -258,7 +258,7 @@ this update.
 update the Keystone Device Support package by going into the Help->Check
 For Updates
 
-.. Image:: ../../../images/Check_for_Updates.png
+.. Image:: /images/Check_for_Updates.png
 
 **Step 2** Select Keystone2 device support package. Follow menu options
 to continue with the update
@@ -267,7 +267,7 @@ to continue with the update
 and check that Keystone2 device support package v1.1.5 or later are
 installed as shown below
 
-.. Image:: ../../../images/KeystoneII_device_support_package.png
+.. Image:: /images/KeystoneII_device_support_package.png
 
 **Note:** The package can be downloaded separately from the link below
 and manually unzipped into CCSv6 installation.
@@ -308,7 +308,7 @@ and manually unzipped into CCSv6 installation.
 Launch CCS and create new target configuration(File->New->Target
 Configuration file) as shown in the images below
 
-.. Image:: ../../../images/CCS_target_configuration.png
+.. Image:: /images/CCS_target_configuration.png
 
 Provide appropriate name to the configuration. Select Spectrum digital
 XDS200 emulator and target as K2G GPEVM.
@@ -318,7 +318,7 @@ installed the CCSv6.1.3 package or for CCSv6.1.2 and earlier ensure that
 you have done the software update correctly as shown in the how to
 section below.
 
-.. Image:: ../../../images/K2G_GPEVM_Target_configuration.jpg
+.. Image:: /images/K2G_GPEVM_Target_configuration.jpg
 
 In advance settings, make sure that the gel files are populated
 correctly. The following GEL files and their corresponding cores are
@@ -348,7 +348,7 @@ in the previous section ConfiguringTargetConfigFile_
 
 **Step5**: Launch Target configuration you just created.
 
-.. Image:: ../../../images/K2G_Launch_targetConfig.png
+.. Image:: /images/K2G_Launch_targetConfig.png
 
 **Step6**:K2G can be a DSP or an ARM master boot device so connect to
   the C66x or the A15\_0.
@@ -378,7 +378,7 @@ in the previous section ConfiguringTargetConfigFile_
 Launch CCS and create new target configuration(File->New->Target
 Configuration file) as shown in the images below
 
-.. Image:: ../../../images/CCS_target_configuration.png
+.. Image:: /images/CCS_target_configuration.png
 
 Provide appropriate name to the configuration. Select Spectrum digital
 XDS200 emulator and target as 66AK2G02.
@@ -388,7 +388,7 @@ installed the CCSv6.1.3 package or for CCSv6.1.2 and earlier ensure that
 you have done the software update correctly as shown in the how to
 section below.
 
-.. Image:: ../../../images/K2G_GPEVM_Target_configuration_alternate.jpg
+.. Image:: /images/K2G_GPEVM_Target_configuration_alternate.jpg
 
 In advance settings, make sure that the no gel files are populated.
 
@@ -404,7 +404,7 @@ in the previous section ConfiguringTargetConfigFile_
 
 **Step5**: Launch Target configuration you just created.
 
-.. Image:: ../../../images/K2G_Launch_targetConfig.png
+.. Image:: /images/K2G_Launch_targetConfig.png
 
 **Step6**:K2G will boot with ARM master boot from the SD card so
 connect to the A15\_0. There will be no output on the console when you
@@ -479,7 +479,7 @@ machine.
 the interface section, select ‘Serial (UART)’ from the drop-down box on
 the left.Refer to the image provided below:
 
-.. Image:: ../../../images/LMflashProg_Config.png
+.. Image:: /images/LMflashProg_Config.png
 
 
 **Step 7** Select the BMC COM Port and set the ‘Baud Rate’ to 115200.
@@ -491,7 +491,7 @@ the left.Refer to the image provided below:
    "Silicon Labs CP210x: USB to UART Bridge: Standard COM Port (COM##)"
    as shown below:
 
-.. Image:: ../../../images/BMCUARTPort.png
+.. Image:: /images/BMCUARTPort.png
 
 **Note:** BMC outputs boot logs to serial console when EVM is powered
 ON. Connect the ‘USB to SoC UART0’ port to standard serial console
@@ -503,7 +503,7 @@ Support’ is unchecked.
 **Step 9** In the 'Program' tab, select the binary image file
 bmc\_evmKS2\_K2G.bin in the section 'Select.bin file'.
 
-.. Image:: ../../../images/LMflashProg_program.png
+.. Image:: /images/LMflashProg_program.png
 
 **Step 10** Leave all other options as default, and press the ‘Program’
 button.
@@ -548,7 +548,7 @@ Steps to update the XDS200 firmware on the EVM are archived on the article
 -  Remove FB3 and connect a wire from R64.2 ‘rVCC\_VBUS\_XDS’ and R67.2
    ‘VCC5V0\_DCDC’ as shown in the image below:
 
-.. Image:: ../../../images/R64_to_R67_HWMod.png
+.. Image:: /images/R64_to_R67_HWMod.png
    :scale: 70%
 
 .. rubric:: Update the EVM for improved USB performance

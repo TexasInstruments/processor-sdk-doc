@@ -103,7 +103,7 @@ Known Issues
 
    * - **SITSW-5071**
      - U-Boot 2024.04 crashes with ``adtbo_idx=1``
-     - N/A
+     - https://git.ti.com/cgit/ti-u-boot/ti-u-boot/commit/?h=ti-u-boot-2024.04&id=afd0e59eb7bfce8945635e36562ee03046cc489b
      - N/A
 
    * - **SITSW-1387**
@@ -114,4 +114,9 @@ Known Issues
    * - **SITSW-1386**
      - Some commands don't work from native console, but work via adb shell
      - N/A
+     - N/A
+
+   * - `e2e 1410786 <https://e2e.ti.com/support/processors-group/processors/f/processors-forum/1410786/sk-am62p-lp-analog-input-microphone-connected-to-3-5mm-jack-not-working>`_
+     - Analog Input Microphone connected to 3.5mm jack not working
+     - Apply `this patch <https://gitlab.baylibre.com/baylibre/ti/android/aosp/external/tinyhal/-/commit/110fbd20bfd39fec96fcfecc87be3c497a2cb5c3>`_ in :file:`external/tinyhal`, `patch 1 <https://git.ti.com/cgit/android/device-ti-am62x/commit/?h=d-android14-release&id=15025d9dc1039469dd1260c837684edb17f991c1>`_ and `patch 2 <https://git.ti.com/cgit/android/device-ti-am62x/commit/?h=d-android14-release&id=61f86f096f71825df6665bb4e15110a5f5d74aea>`_ in :file:`device/ti/am62x`
      - N/A

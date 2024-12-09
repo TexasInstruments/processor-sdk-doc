@@ -91,7 +91,6 @@ linux/Foundational_Components_Virtualization
 linux/Foundational_Components/Virtualization/Docker
 linux/Foundational_Components_OPTEE
 linux/Foundational_Components_ATF
-linux/Foundational_Components_Multimedia_Other_Tools
 linux/Foundational_Components_Multimedia_wave5
 
 linux/Foundational_Components_Graphics
@@ -105,6 +104,7 @@ linux/Foundational_Components/Graphics/Common/Weston
 linux/Foundational_Components/Graphics/Rogue/Overview
 linux/Foundational_Components/Graphics/Rogue/Rogue_Debug_Info
 linux/Foundational_Components/Graphics/Rogue/Rogue_Power_Management_Info
+linux/Foundational_Components/Graphics/Rogue/Build_Guide
 
 linux/How_to_Guides
 linux/How_to_Guides_Developer_Notes

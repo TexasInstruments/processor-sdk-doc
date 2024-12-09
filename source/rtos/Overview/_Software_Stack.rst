@@ -16,7 +16,7 @@ quickly utilize different peripherals accessible from an SOC.
 Software Block Diagram
 ========================
 
-.. Image:: ../images/RTOS-Software-Architecture.png
+.. Image:: /images/RTOS-Software-Architecture.png
 
 |
 

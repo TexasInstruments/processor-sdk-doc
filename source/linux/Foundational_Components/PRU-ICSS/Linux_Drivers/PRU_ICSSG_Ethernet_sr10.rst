@@ -514,7 +514,7 @@ functionality is provided.
 On AM65X SR1.0 ICSS-G both IEP0 and IEP1 are available and assigned to the corresponding PRU Ethernet ports:
 IEP0 - MII0 and IEP1 - MII1, which require to use jbod mode in case of boundary cock with external synchronization (phc2sys).
 
-See `The Linux PTP Project <http://linuxptp.sourceforge.net#>`__ for
+See `The Linux PTP Project <https://linuxptp.sourceforge.net#>`__ for
 more details about linuxptp in general and `ptp4l(8) - Linux man
 page <https://man.cx/ptp4l>`__ about ptp4l configurations in particular.
 

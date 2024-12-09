@@ -102,7 +102,7 @@ Terminal Screenshot
 
 Below is a screenshot of the terminal after one simulation:
 
-.. Image:: ../images/Gravit-screenshot_version_01_00_00.png
+.. Image:: /images/Gravit-screenshot_version_01_00_00.png
 
 Display Output
 ==============
@@ -115,7 +115,7 @@ Display Output
 
 Below is an example display of a 500-particle simulation:
 
-.. Image:: ../images/Gravit-displayshot_version_01_00_00.jpg
+.. Image:: /images/Gravit-displayshot_version_01_00_00.jpg
 
 Useful References
 =================

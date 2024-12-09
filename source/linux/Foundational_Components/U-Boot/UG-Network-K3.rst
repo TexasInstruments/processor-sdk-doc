@@ -1,5 +1,3 @@
-.. include:: /_replacevars.rst
-
 .. _booting-over-ethernet:
 
 Booting over Ethernet (Ethernet RGMII)

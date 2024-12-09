@@ -32,6 +32,9 @@ jobs:
 
       - name: Run rstcheck
         run: |
+          # Disable color output
+          export NO_COLOR=true
+
           # Run the test
           bin/delta.sh -a master -b pr -- rstcheck -r source/
 

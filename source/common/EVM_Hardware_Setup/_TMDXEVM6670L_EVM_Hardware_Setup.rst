@@ -15,7 +15,7 @@ Hardware Setup Overview
 The picture below shows the TMDXEVM6670L EVM and the locations of
 relevant switches and connectors.
 
-.. image:: ../images/TMD6670L.jpg
+.. image:: /images/TMD6670L.jpg
 
 
 Hardware Setup Steps
@@ -35,21 +35,21 @@ Hardware Setup Steps
 | **3. Verify Endian mode in the SW3 settings**
 | The Endian mode should be set to Little Endian. SW3 also contains the boot device settings.
 
-.. image:: ../images/TMD6678LSW3.png
+.. image:: /images/TMD6678LSW3.png
    :scale: 40%
 
 |
 | **4. Verify boot mode in the SW3 - SW6 settings**
 | The boot mode settings below enable NOR boot by loading the boot loader from EEPROM address 0x51.
 
-.. image:: ../images/TMD6678LSW3-6.png
+.. image:: /images/TMD6678LSW3-6.png
    :scale: 40%
 
 |
 | **5. Set User Switch 2 for the demo application**
 | The application needs an IP address. It can use either a static IP address (pre-configured) or it can request one using DHCP. This is controlled by setting User Switch 2 to ON for DHCP and OFF for Static.  See SW9.
 
-.. image:: ../images/TMD6670LSW9.png
+.. image:: /images/TMD6670LSW9.png
 
 |
 | **6. Attach the serial port cable**
@@ -57,7 +57,7 @@ Hardware Setup Steps
 
 | To change the shunts refer to the picture below.
 
-.. image:: ../images/TMD6670LShunts.jpg
+.. image:: /images/TMD6670LShunts.jpg
 
 .. note:: If the USB serial port output does not work, ensure that the cable is connected directly to a USB port on the PC/laptop rather than going through an extender or USB hub.
 

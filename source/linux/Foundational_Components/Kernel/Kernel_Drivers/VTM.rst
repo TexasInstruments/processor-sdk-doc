@@ -1,5 +1,3 @@
-.. include:: /_replacevars.rst
-
 Voltage & Thermal Management (VTM)
 ----------------------------------
 

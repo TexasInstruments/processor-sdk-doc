@@ -94,7 +94,7 @@ simplicity.
 This is applicable if only one serializer and one timeslot is used. The
 samples are ordered in the order they received or sent.
 
-.. Image:: ../images/1SLOT_1SER.PNG
+.. Image:: /images/1SLOT_1SER.PNG
 
 .. rubric:: Mcasp_BufferFormat_1SER_MULTISLOT_INTERLEAVED
    :name: mcasp_bufferformat_1ser_multislot_interleaved
@@ -105,7 +105,7 @@ memory as below. Different timeslots' samples are denoted by different
 colors and are labelled t1,t2..tn according to the time they arrive at
 the serializer.
 
-.. Image:: ../images/1SER_MULTISLOT_INTERLEAVED.PNG
+.. Image:: /images/1SER_MULTISLOT_INTERLEAVED.PNG
 
 .. rubric:: Mcasp_BufferFormat_1SER_MULTISLOT_NON_INTERLEAVED
    :name: mcasp_bufferformat_1ser_multislot_non_interleaved
@@ -116,7 +116,7 @@ of the timeslot and stored in the memory as shown below. Different
 timeslots' samples are denoted by different colors and are labelled
 t1,t2..tn according to the time they arrive at the serializer.
 
-.. Image:: ../images/1SER_MULTISLOT_NON_INTERLEAVED.PNG
+.. Image:: /images/1SER_MULTISLOT_NON_INTERLEAVED.PNG
 
 NOTE: if the non-interleaved format is used, the Mcasp_ChanParams->
 hwFifoEventDMARatio must be set to 1.
@@ -131,7 +131,7 @@ below Different serializers' samples are denoted by different colors and
 are labelled S1,S2..Sn according to the time they arrive at the
 serializer.
 
-.. Image:: ../images/1SER_MULTISER_1SLOT_SER_INTERLEAVED_2.PNG
+.. Image:: /images/1SER_MULTISER_1SLOT_SER_INTERLEAVED_2.PNG
 
 |
 
@@ -145,7 +145,7 @@ as shown below Different serializers' samples are denoted by different
 colors and are labelled S1,S2..Sn according to the time they arrive at
 the serializer.
 
-.. Image:: ../images/1SER_MULTISER_1SLOT_SER_NON_INTERLEAVED.PNG
+.. Image:: /images/1SER_MULTISER_1SLOT_SER_NON_INTERLEAVED.PNG
 
 .. rubric:: Mcasp_BufferFormat_MULTISER_MULTISLOT_SEMI_INTERLEAVED_1
    :name: mcasp_bufferformat_multiser_multislot_semi_interleaved_1
@@ -157,7 +157,7 @@ example, there are 3 serializers and 2 timeslots per serializers whose
 samples are noted by Ln (left) and Rn (right). Different serializers'
 samples are denoted by different colors.
 
-.. Image:: ../images/1SER_MULTISER_MULTISLOT_SEMI_INTERLEAVED_1_UPDATED.PNG
+.. Image:: /images/1SER_MULTISER_MULTISLOT_SEMI_INTERLEAVED_1_UPDATED.PNG
 
 .. rubric:: Mcasp_BufferFormat_MULTISER_MULTISLOT_SEMI_INTERLEAVED_2
    :name: mcasp_bufferformat_multiser_multislot_semi_interleaved_2
@@ -169,7 +169,7 @@ shown below. In this example, there are 3 serializers and 2 timeslots
 per serializers whose samples are noted by Ln (left) and Rn
 (right).Different serializers' samples are denoted by different colors.
 
-.. Image:: ../images/1SER_MULTISER_MULTISLOT_SEMI_INTERLEAVED_2.PNG
+.. Image:: /images/1SER_MULTISER_MULTISLOT_SEMI_INTERLEAVED_2.PNG
 
 NOTE: if the non-interleaved format is used, the Mcasp_ChanParams->
 hwFifoEventDMARatio must be set to 1.
@@ -191,12 +191,12 @@ the Mcasp_wordBitsSelect_LSB option is used. On the receiving side, the
 serializer holds the 32 bit data whose LSB 16 bits are picked up and
 packed in to the system memory. The MSB 16 bits are ignored.
 
-.. Image:: ../images/WordSelect_LSB.PNG
+.. Image:: /images/WordSelect_LSB.PNG
 
 If the Mcasp_wordBitsSelect_MSB option is used, the serializer's
 MSB-16bits are packed in to the system memory. The LSBs are ignored.
 
-.. Image:: ../images/WordSelect_MSB.PNG
+.. Image:: /images/WordSelect_MSB.PNG
 
 .. rubric:: Priming
    :name: priming

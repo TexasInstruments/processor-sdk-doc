@@ -1,5 +1,3 @@
-.. include:: /_replacevars.rst
-
 How to verify IPC between Linux and MCU R5 in Keystone devices?
 ==================================================================
 

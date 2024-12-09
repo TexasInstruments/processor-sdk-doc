@@ -16,7 +16,7 @@ Hardware Setup Overview
 The picture below shows the TMDXEVM6657L EVM and the locations of
 relevant switches and connectors.
 
-.. image:: ../images/TMDSEVM6657L-image.jpg
+.. image:: /images/TMDSEVM6657L-image.jpg
 
 
 Hardware Setup Steps
@@ -40,7 +40,7 @@ CCS. If you are using a different JTAG, connect it now.
 The Endian mode should be set to Little Endian. SW3 also contains the
 boot device settings.
 
-.. image:: ../images/TMD6657LSW3.png
+.. image:: /images/TMD6657LSW3.png
    :scale: 60%
 
 |
@@ -49,7 +49,7 @@ boot device settings.
 The boot mode settings below enable NOR boot by loading the boot loader
 from EEPROM address 0x51.
 
-.. image:: ../images/TMD6657LSW3-6.png
+.. image:: /images/TMD6657LSW3-6.png
    :scale: 60%
 
 **5. Set User Switch for the demo application**
@@ -60,7 +60,7 @@ controlled by setting dip switch 2 of SW9.
 | User Switch 2 ON : DHCP
 |  User Switch 2 OFF: Static IP
 
-.. image:: ../images/TMD6678LSW9.png
+.. image:: /images/TMD6678LSW9.png
    :scale: 60%
 
 **6. Attach the serial port cable**
@@ -70,12 +70,12 @@ this on the platforms are set to use the USB by default. We recommend
 changing them to use the DB-9 as there are no known issues with this
 approach.
 
-.. image:: ../images/TMDXEVM6657L-shunts.jpg
+.. image:: /images/TMDXEVM6657L-shunts.jpg
    :scale: 70%
 
 |
 
-.. image:: ../images/TMDXEVM6657LCOMSEL.png
+.. image:: /images/TMDXEVM6657LCOMSEL.png
    :scale: 70%
 
 COM\_SEL1: Select UART over 3-Pin Header

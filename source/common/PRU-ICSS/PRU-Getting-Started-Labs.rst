@@ -125,10 +125,10 @@ Started Labs:
     The notation **<PSSP_PATH>** will be used throughout the labs to reference
     the PSSP installation location.
 
-* `Code Composer Studio (CCS) <http://www.ti.com/tool/CCSTUDIO>`__
+* `Code Composer Studio (CCS) <https://www.ti.com/tool/CCSTUDIO>`__
 
 * `PRU Code Generation
-  Tools <http://software-dl.ti.com/codegen/non-esd/downloads/download.htm#PRU>`__
+  Tools <https://software-dl.ti.com/codegen/non-esd/downloads/download.htm#PRU>`__
   (also available through the CCS App Center)
 
 .. note::

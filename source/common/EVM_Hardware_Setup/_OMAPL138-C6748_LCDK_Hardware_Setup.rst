@@ -79,7 +79,7 @@ Creating a Target Configuration File
 
 - For Board or Device, select LCDKC6748 or LCDKOMAPL138 as shown in the following image, and click Save.
 
-.. Image:: ../images/lcdk_targetConfig.png
+.. Image:: /images/lcdk_targetConfig.png
 
 |
 
@@ -87,12 +87,12 @@ Creating a Target Configuration File
 
 **OMAP-L138 LCDK GEL File:**
 
-.. Image:: ../images/lcdk_omapl138_gel.png
+.. Image:: /images/lcdk_omapl138_gel.png
 	:scale: 100%
 
 **C6748 LCDK GEL File:**
 
-.. Image:: ../images/lcdk_c6748_gel.png
+.. Image:: /images/lcdk_c6748_gel.png
 	:scale: 100%
 
 

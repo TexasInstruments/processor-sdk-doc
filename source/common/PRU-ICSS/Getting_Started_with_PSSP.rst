@@ -3,8 +3,6 @@
 Getting Started with PRU Software Support Package
 =================================================
 
-.. http://processors.wiki.ti.com/index.php/PRU-ICSS_Getting_Started_Guide
-
 .. rubric:: Overview
    :name: overview-pruss-getting-started
 
@@ -35,7 +33,7 @@ contains:
 .. rubric:: Things to Obtain
    :name: things-to-obtain
 
--  `Code Composer Studio <http://processors.wiki.ti.com/index.php/Download_CCS>`__
+-  `Code Composer Studio <https://www.ti.com/tool/CCSTUDIO>`__
 -  `PRU Code Generation
    Tools <https://www.ti.com/tool/PRU-CGT>`__
    (you can also get these tools through the CCS App Center)

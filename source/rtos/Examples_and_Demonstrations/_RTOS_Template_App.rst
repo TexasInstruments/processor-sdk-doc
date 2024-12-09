@@ -171,7 +171,7 @@ Preferences --> Code Composer Studio --> Products* menu. This menu will allow
 you define product discovery paths and rediscover, install, and unistall
 products.
 
-.. image:: ../images/install-discovered-products.png
+.. image:: /images/install-discovered-products.png
    :scale: 70 %
 
 For more info on setting up CCS. Check out
@@ -203,7 +203,7 @@ menu. Then click *Browse...* to locate the template app which can be found at:
 **processor_sdk_rtos_<platform>_<version>/demos/rtos_template_app/<soc_name>/<evm_name>/<core_name>**.
 This will create a copy of the project in your CCS workspace.
 
-.. image:: ../images/import-ccs-project.png
+.. image:: /images/import-ccs-project.png
    :scale: 70 %
 
 After project import is complete you will see the Template Application under
@@ -254,12 +254,12 @@ Example connections for the AM572x EVM are provided below:
 
 Front
 ^^^^^
-.. image:: ../images/am572x-evm-hw-setup-front.jpg
+.. image:: /images/am572x-evm-hw-setup-front.jpg
    :scale: 50 %
 
 Back
 ^^^^
-.. image:: ../images/am572x-evm-hw-setup-back.jpg
+.. image:: /images/am572x-evm-hw-setup-back.jpg
    :scale: 44 %
 
 Task 4 - Loading and Running the Template Application
@@ -279,7 +279,7 @@ the *board* is the name of your EVM (either *EVMAM3358*, *EVMAM437X*, or
 For example, here is the target configuration for the AM572x EVM using an
 XDS200 Debug Probe:
 
-.. image:: ../images/am572x-evm-target-config.png
+.. image:: /images/am572x-evm-target-config.png
    :scale: 70 %
 
 After setup is complete, clike the *Save* button to save your target
@@ -307,7 +307,7 @@ the target configuration that you created earlier and click *Launch Selected
 Configuration*. This action will switch CCS into the debug perspective. Your
 CCS instance should look similar to below:
 
-.. image:: ../images/ccs-debug-pers.png
+.. image:: /images/ccs-debug-pers.png
    :scale: 70 %
 
 In the top left corner of CCS you should see a list of all of the available
@@ -345,13 +345,13 @@ the *Browse project...* button and choose the
 **[rtos or baremetal]_template_app_<board>_<core>.out** executable. Then click *OK* to load
 the executable.
 
-.. image:: ../images/load-executable.png
+.. image:: /images/load-executable.png
 
 You should now see the **main.c** file open in CCS and the program halted at
 the beginning of the ``main()`` function. At this point you can click on the
 *Resume (F8)* |resume| button to start executing the Template Application.
 
-.. |resume| image:: ../images/resume-button.png
+.. |resume| image:: /images/resume-button.png
 
 The application will begin running and print progress over the UART. You should
 see the following text printed to your serial terminal::
@@ -400,7 +400,7 @@ Next, click the *Terminate* |terminate| button to disconnect from the target.
 At this point you have successfully imported, built, and run the Template
 Application.
 
-.. |terminate| image:: ../images/terminate-button.png
+.. |terminate| image:: /images/terminate-button.png
 
 Task 5 - Examining the Template Application
 ------------------------------------------------

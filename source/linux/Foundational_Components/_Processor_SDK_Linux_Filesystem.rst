@@ -1,5 +1,3 @@
-.. include:: /_replacevars.rst
-
 .. _List-of-filesystems-in-SDK:
 
 Filesystem

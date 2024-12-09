@@ -22,7 +22,7 @@ as TI’s Code Composer Studio by just using the supplied USB cable.
 EVM Layout and Key Components
 ------------------------------
 
-.. Image:: ../../../images/ICE_V2_marked.png
+.. Image:: /images/ICE_V2_marked.png
 	:scale: 50%
 
 Quick Start Guide
@@ -36,7 +36,7 @@ shown above.
 2. Connect the power cable to the power jack on the board and plug it
 into an AC power source.
 
-.. Image:: ../../../images/ICE335924V.png
+.. Image:: /images/ICE335924V.png
 	:scale: 50%
 
 Once powered on, the POWER ON LED (D16) and Industrial Output LEDs
@@ -48,7 +48,7 @@ Once powered on, the POWER ON LED (D16) and Industrial Output LEDs
 3. Connect the microUSB cable to the USB JTAG/Console port on the ICE board and connect to the USB on the host. Connect an Ethernet cable to
 ETH0 if network connectivity is required.
 
-.. Image:: ../../../images/ICE3359USB.png
+.. Image:: /images/ICE3359USB.png
 	:scale: 50%
 
 .. Note:: The serial port will not show up on the host PC until the board is powered on.
@@ -59,10 +59,10 @@ software baud rate to 115200 to view the log messages. Connecting to the
 target using the on-board emulator is discussed in the section below.
 
 
-.. Image:: ../../../images/Serial_connect.jpg
+.. Image:: /images/Serial_connect.jpg
 	:scale: 50%
 
-.. Image:: ../../../images/Baudrate.jpg
+.. Image:: /images/Baudrate.jpg
 	:scale: 50%
 
 Boot Configuration
@@ -90,14 +90,14 @@ Instruments XDS100v2 USB Debug Probe and the ICE\_AM3359 as shown below.
 
 .. Note:: If the ICE\_AM3359 target is not listed, make sure the latest Sitara Device Support package is installed by going to Help->Check for Updates.
 
-.. Image:: ../../../images/ICE3359TargetConfig.png
+.. Image:: /images/ICE3359TargetConfig.png
 	:scale: 50%
 
 4. Click Save to save the target configuration. Then press Test
 Connection to test the connection. If successful, a message should be
 seen similar to the one below.
 
-.. Image:: ../../../images/ICE3359Test.png
+.. Image:: /images/ICE3359Test.png
 	:scale: 50%
 
 5. Launch the target configuration and connect

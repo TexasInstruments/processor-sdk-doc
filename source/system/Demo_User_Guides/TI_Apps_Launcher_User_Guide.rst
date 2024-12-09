@@ -1,5 +1,3 @@
-.. include:: /_replacevars.rst
-
 .. _TI-Apps-Launcher-User-Guide-label:
 
 TI Apps Launcher - User Guide

@@ -1,5 +1,3 @@
-.. include:: /_replacevars.rst
-
 ##########
 Runtime PM
 ##########

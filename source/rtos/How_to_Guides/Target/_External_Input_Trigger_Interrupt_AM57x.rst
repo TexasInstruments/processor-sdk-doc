@@ -13,8 +13,8 @@ user guide <http://www.ti.com/lit/ug/sprui64c/sprui64c.pdf>`__, the card has 3 p
 
 •	The Pin 4 signal is labeled as GPMC_CS0 and is connected to AM572x chip ball T1 as shown in the schematic:
 
-.. Image:: ../images/J21_gpio_input.png
-.. Image:: ../images/gpmc_cs0_t1.png
+.. Image:: /images/J21_gpio_input.png
+.. Image:: /images/gpmc_cs0_t1.png
 
 •	From the AM5728 datasheet, T1 ball can be configured as GPMC_CS0 or GPIO2_19 based on different PINMUX modes.
 
@@ -34,12 +34,12 @@ The default PinMux file has to be modified for GPIO2_19 pin usage:
 •	Use the PinMux Utility to open the default PinMux file pdk_am57xx_1_0_x\\packages\\ti\\board\\src\\idkAM572x\\idkAM572x_SR2.0.pinmux (for the latest Rev 1.3B EVM)
 •	Select GPIO, then MyGPIO2:
 
-.. Image:: ../images/pinmux_gpio_1.png
+.. Image:: /images/pinmux_gpio_1.png
 
 •	Then, scroll down, set gpio2_19 with ball #T1, pull up and Rx direction.
 •	Finally, select Category filter as “SR2.0 – Platform Development Kit (PDK) and download the generated files.
 
-.. Image:: ../images/pinmux_gpio_2.png
+.. Image:: /images/pinmux_gpio_2.png
 
 •	Four new files should be generated, with the only difference  being a new pin configuration added in boardPadDelayInit.c file:
 
@@ -136,7 +136,7 @@ Test
 **Test Setup**
 The test setup using AM572x IDK EVM is depicted below:
 
-.. Image:: ../images/gpio_test.png
+.. Image:: /images/gpio_test.png
 
 •	The EVM is powered with a +5V power supply
 •	A micro USB cable is connected to the host PC for on-board XDS100v2 JTAG connection and UART console.

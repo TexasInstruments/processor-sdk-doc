@@ -1,5 +1,3 @@
-.. include:: /_replacevars.rst
-
 .. _Seva-Store-label:
 
 Seva Store - User Guide

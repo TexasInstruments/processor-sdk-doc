@@ -1,5 +1,3 @@
-.. include:: /_replacevars.rst
-
 How to visualize statistics data
 ================================
 

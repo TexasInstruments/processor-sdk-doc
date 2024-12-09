@@ -1,5 +1,3 @@
-.. include:: /_replacevars.rst
-
 .. role:: console(code)
   :language: console
   :class: highlight
@@ -14,17 +12,18 @@ Chromium Browser - User Guide
 Overview
 ********
 
-On TI devices with IMG Rogue class GPU's,The Chromium browser (available from https://chromium.googlesource.com/chromium/src/)
+On TI devices with IMG Rogue class GPUs, the Chromium browser (available from https://chromium.googlesource.com/chromium/src/)
 is accelerated using OpenGLES.
 
-The version of Chromium that is build can be obtained with this command:
+The version of Chromium that is built can be obtained with the following command:
 
 .. code-block:: console
 
-    $ chromium --version
-    Chromium 126.0.6478.126 built on Debian trixie/sid, running on Debian trixie/sid
+    root@am62xx-evm:~# chromium -version
+    Chromium 130.0.6723.116 built on Debian GNU/Linux trixie/sid
 
-The version of Chromium shown here is the one that GPU acceleration is verified to work with.
+
+The above version of Chromium has been verified to support GPU acceleration.
 
 **************************
 Launching Chromium Browser
@@ -38,39 +37,35 @@ Launching Chromium Browser
 
    ``--no-sandbox`` option is required only when running as root user.
 
-To launch the Chromium browser:
-
-Assuming you are logged in as the root user.
+The following is assuming that you are logged in as the root user. The syntax of the command is as follows:
 
 .. code-block:: console
 
     $ /usr/bin/chromium [url] --use-gl=angle --ozone-platform=wayland --no-sandbox [options]
 
-e.g.
+For example, the following command opens www.ti.com in a windowed browser on the Weston desktop.
 
 .. code-block:: console
 
     $ chromium https://www.ti.com --use-gl=angle --ozone-platform=wayland --no-sandbox
 
-Will open www.ti.com in a windowed browser on the Weston desktop.
+The following command opens the aquarium 3D benchmark in a fullscreen window on the Weston desktop, provided you have
+network connectivity to the internet from the TI platform. This benchmark uses WebGL/Javascript, and renders an
+animation of fish swimming in a fish bowl, using the 3D GPU.
 
 .. code-block:: console
 
     $ chromium https://webglsamples.org/aquarium/aquarium.html --use-gl=angle --ozone-platform=wayland --no-sandbox --start-fullscreen
 
-Will open the aquarium 3d benchmark in a fullscreen window on the Weston desktop.
 
-The :console:`--start-fullscreen` switch will make the chromium browser consume the entire screen including overwriting the Weston menu bar.
-
-This will start chromium and provided you have network connectivity to the internet from the TI platform it will
-connect to an example application that uses WebGL/Javascript and renders fish swimming in a fish bowl using the 3D GPU.
+The :console:`--start-fullscreen` switch makes the Chromium browser consume the entire screen, including the Weston menu bar.
 
 ***********************
 Graphics Feature Status
 ***********************
 
-To see the GPU features that are in use, enter :code:`chrome://gpu` into the Chromium URL/Navigation bar. A web page will be
-rendered with this information. The below example shows what is enabled/disabled when GPU acceleration is working correctly
+To see the GPU features in use, enter :code:`chrome://gpu` into the Chromium URL/Navigation bar. The example below shows
+what is enabled/disabled when GPU acceleration is working correctly:
 
 .. code-block:: text
 
@@ -92,7 +87,7 @@ rendered with this information. The below example shows what is enabled/disabled
     *   WebNN: Disabled
 
 
-If for some reason you suspect the GPU is rending something incorrectly, you can run chromium with GPU disabled
+If, for some reason, you suspect that the GPU is rendering something incorrectly, you can run Chromium with the GPU disabled
 using the :console:`--disable-gpu` flag:
 
 .. code-block:: console
@@ -100,7 +95,7 @@ using the :console:`--disable-gpu` flag:
     $ chromium https://webglsamples.org/aquarium/aquarium.html --start-fullscreen --disable-gpu
 
 
-To get raw performance numbers from the GPU, you may want to disable frame sync locking in Chromium. This will tell Chromium never to wait for VSYNC and render as fast as the GPU can achieve.
+To get raw performance numbers from the GPU, you may want to disable frame sync locking in Chromium. This will tell Chromium to never wait for VSYNC and render as fast as the GPU can.
 
 .. code-block:: console
 
@@ -112,7 +107,7 @@ Limitations
 ***********
 
 * Audio/video within the browser is not supported.
-* Hardware acceleration of video either decode or encode is not supported.
+* Hardware acceleration of video decode and/or encode is not supported.
 * Minimize and Maximize buttons for the Chromium window are not supported.
 
 ***********
@@ -122,7 +117,7 @@ Performance
 Performance of WebGL Aquarium
 =============================
 
-Standard WebGL benchmarks available at these URLS: https://webglsamples.org/aquarium/aquarium.html
+Standard WebGL benchmarks are available at https://webglsamples.org/aquarium/aquarium.html
 
 Run as the root user
 
@@ -154,7 +149,7 @@ Run as the root user
 Performance of MotionMark
 =========================
 
-Standard Javascript benchmarks available at these URLS: https://browserbench.org/MotionMark/
+Standard Javascript benchmarks are available at https://browserbench.org/MotionMark/
 
 Run as the root user
 

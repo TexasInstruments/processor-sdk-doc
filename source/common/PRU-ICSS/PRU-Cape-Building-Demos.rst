@@ -42,7 +42,7 @@ required:
    Code <https://git.ti.com/pru-software-support-package/pru-software-support-package/trees/master/pru_cape>`__
    *(available in the pru\_cape/pru\_demo and pru\_cape/pru\_fw
    directories of the PRU Software Support Package)*
--  `AM335x Starterware <http://www.ti.com/tool/starterware-sitara>`__
+-  `AM335x Starterware <https://www.ti.com/tool/starterware-sitara>`__
 -  `CCSv6 <https://software-dl.ti.com/ccs/esd/documents/ccs_downloads.html>`__
 -  PRU Code Generation Tools (through CCS App Center)
 

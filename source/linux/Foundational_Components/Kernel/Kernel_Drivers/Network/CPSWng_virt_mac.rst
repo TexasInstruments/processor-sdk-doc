@@ -1,5 +1,3 @@
-.. include:: /_replacevars.rst
-
 .. _cpswng_virt_mac:
 
 CPSWng virtual MAC (remoteproc)

@@ -1,5 +1,3 @@
-import os
-
 # write_replacevars
 # -----------------
 # Description:  Writes replacement variable array to source/${OS}/replacevars.rst.inc
@@ -8,14 +6,12 @@ import os
 #             replacevars  - Input hash table of replacevars that will be converted into
 #                            "replace" directives in the replacevars.rst.inc file
 
-def write_replacevars(app, replacevars):
-    replacevarsfile= os.environ.get('ROOTDIR') + "/source/" + "_replacevars.rst"
+def unpack_replacevars(replacevars):
     replacevarstext = ["\n"]
     for key, val in replacevars.items():
         if val == "\\":
             replacevarstext.append(f".. |{key}| unicode:: U+00000\n")
         else:
             replacevarstext.append(f".. |{key}| replace:: {val}\n")
-    with open(replacevarsfile, 'w', encoding='utf-8') as vars_file:
-        replacevarstext.append("\n")
-        vars_file.write("\n".join(replacevarstext))
+    replacevarstext.append("\n")
+    return ''.join(replacevarstext)

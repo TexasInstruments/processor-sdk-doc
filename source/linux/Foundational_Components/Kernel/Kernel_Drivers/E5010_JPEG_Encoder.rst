@@ -1,5 +1,3 @@
-.. include:: /_replacevars.rst
-
 ******************
 E5010 JPEG Encoder
 ******************

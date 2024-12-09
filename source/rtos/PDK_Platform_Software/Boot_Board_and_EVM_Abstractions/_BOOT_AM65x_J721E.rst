@@ -102,14 +102,14 @@ The SBL is in turn used by the board framework to load and start diagnostics
 Block Diagram
 ^^^^^^^^^^^^^^^^
 
-.. Image:: ../images/k3_sbl_arch_block_diag.png
+.. Image:: /images/k3_sbl_arch_block_diag.png
 
 .. _am655x-sbl-memory-usage:
 
 Memory Map
 ^^^^^^^^^^^
 
-.. Image:: ../images/k3_sbl_mem_usage.png
+.. Image:: /images/k3_sbl_mem_usage.png
 
 
 .. _am655x-sbl-directory-structure:
@@ -258,7 +258,7 @@ Two utilities - out2rprc and multicoreImageGen are used to convert an applicatio
 image(s) into an image loadable by the SBL. The structure of a multicore application
 image is provided below:
 
-.. Image:: ../images/Multicore_app_image.png
+.. Image:: /images/Multicore_app_image.png
 
 **RPRC File Header Format**
 

@@ -21,7 +21,7 @@ Architecture Overview
 The following block diagram shows the various functional blocks used in
 the example on the cores running TI-RTOS/BIOS.
 
-.. Image:: ../images/Big_Data_IPC_RTOS_Software_blocks.png
+.. Image:: /images/Big_Data_IPC_RTOS_Software_blocks.png
 
 For the small message IPC, sharedRegion and Heap, the modules in the
 Standard TI IPC package are used.
@@ -89,7 +89,7 @@ Architecture Updates for Linux
 The following block diagram shows the various functional blocks used in
 the example on the host running linux.
 
-.. Image:: ../images/Big_DATA_IPC_Linux_Software_blocks.png
+.. Image:: /images/Big_DATA_IPC_Linux_Software_blocks.png
 
 The SharedRegion and HeapMem modules are not currently supported for
 Linux in the TI Standard IPC package.
@@ -402,7 +402,7 @@ Parity= None, Flow Control= Off )
 The application will be loaded and run automatically and the "Host: Test
 Passed" message will be printed to the UART console.
 
-.. Image:: ../images/BigDataIPC_Rtos_Demo.png
+.. Image:: /images/BigDataIPC_Rtos_Demo.png
 
 K2H, K2K, K2L, K2E Boards
 ^^^^^^^^^^^^^^^^^^^^^^^^^

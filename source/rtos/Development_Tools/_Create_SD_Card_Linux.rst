@@ -155,9 +155,9 @@ installer, you will see
 
 -  AM335x/AM437x:
 
-.. Image:: ../images/AM437x-SD-Card-Example.png
+.. Image:: /images/AM437x-SD-Card-Example.png
 
 -  AM57x:
 
-.. Image:: ../images/AM57x-SD-Card-Example.png
+.. Image:: /images/AM57x-SD-Card-Example.png
 

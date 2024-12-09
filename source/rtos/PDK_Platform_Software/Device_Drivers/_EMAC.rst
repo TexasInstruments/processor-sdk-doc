@@ -140,7 +140,7 @@ Note that prior to running these tests on Maxwell with interposer card, please h
 .. rubric:: Interposer Layout
    :name: Interposer Layout
 
-.. Image:: ../images/Interposer.png
+.. Image:: /images/Interposer.png
 
 Example and Test Applications
 ------------------------------
@@ -530,7 +530,7 @@ EMAC Test applications demonstrates the key features of the driver.
 EMAC Test applications can also be run via SBL. To run via SBL, please following the instructions as specified in the following link:
 `SBL User Guide <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/index_Foundational_Components.html#am655x-compiling-apps-for-sbl>`__
 
-.. _files: :download:`<../images/Pcap.zip>`
+.. _files: :download:`</images/Pcap.zip>`
 
 Additional References
 ----------------------

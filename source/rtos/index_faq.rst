@@ -278,7 +278,6 @@ Components <Overview.html#top-level-makefile>`__.
 .. note::
    The SDK offers command line build for all the components. CCS projects
    are only supported for DSP libraries and PDK driver examples.
-|
 
 .. rubric:: Step 5: Generate and Run Peripheral Driver Examples
    :name: step-5-generate-and-run-peripheral-driver-examples
@@ -694,7 +693,6 @@ described in the article
    board name which is used to configure the board. When creating a custom
    platform if you don`t intend to use an EEPROM then we recommend removing
    code corresponding to Board_getIDInfo in your board library
-|
 
 .. rubric:: Do I need to do any post processing on PDK files generated
    by Pin Mux Utility?

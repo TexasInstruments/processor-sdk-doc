@@ -1,5 +1,3 @@
-.. include:: /_replacevars.rst
-
 .. _top-level-makefile:
 
 Simplified SDK Build Using Top-Level Makefile

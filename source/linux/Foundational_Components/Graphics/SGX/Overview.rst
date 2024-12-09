@@ -1,5 +1,3 @@
-.. include:: /_replacevars.rst
-.. include:: <isonum.txt>
 
 Introduction
 ============
@@ -59,6 +57,8 @@ The picture below shows the software architecture of Graphics in
 
    Graphics Software Stack
 
+Please see the :doc:`Build_Guide` for more information about integration of this
+software stack into other ecosystems.
 
 Graphics Demos
 ==============

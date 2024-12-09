@@ -39,7 +39,7 @@ The PRU Cape is shown below.
 Schematics/Design/Errata Files
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-`Design Files <http://www.ti.com/tool/prucape>`__ (located under
+`Design Files <https://www.ti.com/tool/prucape>`__ (located under
 Technical Documents), includes:
 
 - Schematic

@@ -1,5 +1,3 @@
-.. include:: /_replacevars.rst
-
 .. _processor-sdk-linux-create-sd-card:
 
 Create SD Card

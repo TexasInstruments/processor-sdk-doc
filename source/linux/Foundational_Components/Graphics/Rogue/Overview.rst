@@ -1,5 +1,3 @@
-.. include:: /_replacevars.rst
-.. include:: <isonum.txt>
 .. include:: <isopub.txt>
 
 ############
@@ -130,6 +128,9 @@ This is included by default in the SDK. The kernel module is located at:
 .. code-block:: console
 
    # /lib/modules/$(uname -r)/extra/pvrsrvkm.ko
+
+Please see the :doc:`Build_Guide` for more information about integration of
+this software stack into other ecosystems.
 
 Graphics Demos
 ==============

@@ -1211,7 +1211,7 @@ of acceptance/rejection.
 
 The mechanism is shown below in the diagram
 
-.. Image:: ../images/Storm_Prevention_architecture_Industrial.jpeg
+.. Image:: /images/Storm_Prevention_architecture_Industrial.jpeg
 
 The Storm prevention implementation is similar in both PRU's but
 implemented separately, so it's possible to turn it off selectively for

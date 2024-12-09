@@ -35,9 +35,9 @@ started demo are listed below.
 .. rubric::  Hardware
 
 -  BeagleBone or BeagleBone Black `(Can be ordered from
-   beagleboard.org) <http://beagleboard.org/Products>`__
+   beagleboard.org) <https://www.beagleboard.org/boards/beaglebone-black>`__
 -  BeagleBone PRU Cape `(Can be ordered from
-   ti.com) <http://www.ti.com/tool/PRUCAPE>`__
+   ti.com) <https://www.ti.com/tool/PRUCAPE>`__
 -  MicroSD card formatted as FAT32
 -  USB cable to power BeagleBone or BeagleBone Black
 -  FTDI cable for BeagleBone Black serial debug port *(not required for
