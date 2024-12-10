@@ -1,0 +1,88 @@
+---
+# Each component identified by its path prefix has a list of owners
+components:
+
+  # Ownership applies recursively to any file in a directory
+  source/linux/Foundational_Components/PRU-ICSS*: &pru_list
+    - Siddharth-Vadapalli-at-TI
+    - chintan013
+    - danish-ti
+  source/linux/Foundational_Components_PRU_Subsystem.rst: *pru_list
+  source/linux/Foundational_Components/Kernel/Kernel_Drivers/Network: *pru_list
+
+  source/android: &android_list
+    - glaroque
+    - makohoek
+    - vishalmti
+  source/devices/*/android: *android_list
+
+  source/system: &mpu_list
+    - TexasInstruments/sitara-mpu-linux-sdk
+  source/buildroot: *mpu_list
+  source/linux/Foundational_Components/Hypervisor: *mpu_list
+  source/linux/Foundational_Components/Tools: *mpu_list
+  source/linux/Foundational_Components/Virtualization: *mpu_list
+  source/debian: *mpu_list
+  source/devices/*/debian: *mpu_list
+
+  source/devices/AM335x/linux: &sitara_legacy_list
+    - jeevantelukula
+    - jmenti
+  source/devices/AM437x/linux: *sitara_legacy_list
+  source/devices/AM65X/linux: *sitara_legacy_list
+
+  source/devices/AM64X/linux: *mpu_list
+  source/devices/AM62X/linux:
+    - DhruvaG2000
+    - TexasInstruments/sitara-mpu-linux-sdk
+
+  source/devices/AM62AX/linux:
+    - TexasInstruments/sitara-mpu-linux-sdk
+
+  source/devices/AM62PX/linux:
+    - AashvijShenai
+    - TexasInstruments/sitara-mpu-linux-sdk
+
+  source/devices/AM62LX/linux:
+    - TexasInstruments/sitara-mpu-linux-sdk
+    - bryanbrattlof
+    - r-vignesh
+
+  source/linux/Overview:
+    - TexasInstruments/sitara-mpu-linux-sdk
+    - aniket-l
+
+  source/linux/Release_Specific:
+    - TexasInstruments/sitara-mpu-linux-sdk
+    - aniket-l
+    - praneethbajjuri
+    - uditkumarti
+
+  source/linux/Foundational_Components:
+    - devarsht
+    - praneethbajjuri
+    - r-vignesh
+    - uditkumarti
+
+  source/linux/Foundational_Components/IPC:
+    - 3V3RYONE
+    - h-nagalla
+    - jmenti
+
+  source/linux/Foundational_Components/U-Boot:
+    - bryanbrattlof
+    - jmenti
+
+  source/linux/Foundational_Components/Kernel:
+    - devarsht
+    - praneethbajjuri
+    - r-vignesh
+    - uditkumarti
+
+  source/linux/Foundational_Components/Power_Management:
+    - DhruvaG2000
+    - vishalmti
+
+  source/linux/Foundational_Components/Graphics:
+    - DarrenEtheridge
+    - StaticRocket

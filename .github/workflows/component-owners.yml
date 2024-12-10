@@ -1,0 +1,31 @@
+---
+name: "component-owners"
+
+on:
+  # It's insecure to use pull_request_target if you intend to check out code
+  # from that PR. This just reads the config file in the pull request base, and
+  # is not an issue currently. We will need to use this to comment on PRs coming
+  # from forked repositories.
+  pull_request_target:
+    branches: [master]
+
+permissions:
+  # Clamp permissions since pull_request_target workflows granted full
+  # read/write repository permission by default
+  contents: read
+  issues: write
+  pull-requests: write
+
+jobs:
+  component-owners:
+    name: Assign component owners
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Assign component owners
+        uses: dyladan/component-owners@main
+        with:
+          config-file: .github/component-owners.yml
+          repo-token: ${{ github.token }}
+          assign-owners: true
+          request-owner-reviews: true
