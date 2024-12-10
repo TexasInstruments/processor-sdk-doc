@@ -102,7 +102,7 @@ The source code are located in:
     to set up the build environment.
 
 |
-| **DSP RTOS :**
+| **DSP RTOS :**
 
 **1.** Install RTOS Proc SDK at the default location
 

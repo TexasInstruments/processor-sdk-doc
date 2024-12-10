@@ -191,7 +191,7 @@ N/A
 | **`TMDSADP1460 <http://processors.wiki.ti.com/index.php/JTAG_Adapters#TMDSADP1460>`__**
 | **14e_TI-60t_TI**\ :sup:`6`
 
- **`701282 <http://www.spectrumdigital.com/product_info.php?cPath=33&products_id=264&osCsid=0275b43739c81e0cb6aae06df25ced81>`__**\ :sup:`7`
+ **`701282 <http://www.spectrumdigital.com/product_info.php?cPath=33&products_id=264&osCsid=0275b43739c81e0cb6aae06df25ced81>`__**\ :sup:`7`
 
 N/A
 

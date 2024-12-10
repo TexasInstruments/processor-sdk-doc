@@ -494,7 +494,7 @@ sample code sets SemaphoreP/HwiP to be used from external memory block:
 
    /* Get the Hw Attrs */
    osal_ret = Osal_getHwAttrs(&hwAttrs);
-   if (osal_ret != osal_OK)
+   if (osal_ret != osal_OK)
    {
        return (false);
    }

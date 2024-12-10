@@ -45,8 +45,8 @@ pins are required before calling any driver APIs.By default Board_Init()
 API supports all initialization sequence for TI supported EVMs. In
 addition it initializes UART instance for Console/STDIO.Refer `Processor
 SDK RTOS Board Support <index_board.html#board-support>`__
-for additional details.Once board specific configuration is complete 
-FATFS_init() API can be called to initialize FATFS for the driver.
+for additional details.Once board specific configuration is complete
+FATFS_init() API can be called to initialize FATFS for the driver.
 
 
 .. rubric:: **FATFS Configuration Structure**

@@ -7,7 +7,7 @@ Demos available for the WL127x. Many of the demos are platform-agnostic,
 others apply specifically to a single platform.
 
 The WL127x's dual mode 802.11 b/g/n and *Bluetooth* transceiver
-gives users a robust selection of applications. A list of some basic use
+gives users a robust selection of applications. A list of some basic use
 cases preloaded on the EVMs can be seen below:
 
 |

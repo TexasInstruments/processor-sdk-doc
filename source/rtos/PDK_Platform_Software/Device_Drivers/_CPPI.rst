@@ -92,189 +92,189 @@ This came from k2k example:
     *******Test running on Core 0 *******************
     *******Test running on Core 2 *******************
     *******Test running on Core 3 *******************
-    Core 0 : L1D cache size 4. L2 cache size 0.
-    Core 2 : Starting BIOS...
-    Core 3 : Starting BIOS...
-    Core 0 : Starting BIOS...
-    Core 1 : Starting BIOS...
-    Core 0 : Created RM packet heap
-    Core 0 : Created IPC MessageQ heap
-    Core 0 : Created receive Q for Client1
-    Core 1 : Opened RM packet heap
-    Core 2 : Opened RM packet heap
-    Core 3 : Opened RM packet heap
-    Core 1 : Opened IPC MessageQ heap
-    Core 2 : Opened IPC MessageQ heap
-    Core 3 : Opened IPC MessageQ heap
-    Core 1 : Created receive Q for Server
-    Core 2 : Created receive Q for Server
-    Core 3 : Created receive Q for Server
-    Core 1 : Opened Server's receive Q
-    Core 1 : Waiting for QMSS to be initialized...
+    Core 0 : L1D cache size 4. L2 cache size 0.
+    Core 2 : Starting BIOS...
+    Core 3 : Starting BIOS...
+    Core 0 : Starting BIOS...
+    Core 1 : Starting BIOS...
+    Core 0 : Created RM packet heap
+    Core 0 : Created IPC MessageQ heap
+    Core 0 : Created receive Q for Client1
+    Core 1 : Opened RM packet heap
+    Core 2 : Opened RM packet heap
+    Core 3 : Opened RM packet heap
+    Core 1 : Opened IPC MessageQ heap
+    Core 2 : Opened IPC MessageQ heap
+    Core 3 : Opened IPC MessageQ heap
+    Core 1 : Created receive Q for Server
+    Core 2 : Created receive Q for Server
+    Core 3 : Created receive Q for Server
+    Core 1 : Opened Server's receive Q
+    Core 1 : Waiting for QMSS to be initialized...
 
-    Core 0 : Opened Client1's receive Q for Server
-    Core 0 : Created receive Q for Client2
-    Core 0 : Opened Client2's receive Q for Server
-    Core 0 : Created receive Q for Client3
-    Core 2 : Opened Server's receive Q
-    Core 2 : Waiting for QMSS to be initialized...
+    Core 0 : Opened Client1's receive Q for Server
+    Core 0 : Created receive Q for Client2
+    Core 0 : Opened Client2's receive Q for Server
+    Core 0 : Created receive Q for Client3
+    Core 2 : Opened Server's receive Q
+    Core 2 : Waiting for QMSS to be initialized...
 
-    Core 0 : Opened Client3's receive Q for Server
+    Core 0 : Opened Client3's receive Q for Server
 
-    Core 0 : QMSS initialization done
-
-
-    Core 3 : Opened Server's receive Q
-    Core 1 : QMSS initialization done
-    Core 2 : QMSS initialization done
-    Core 3 : Waiting for QMSS to be initialized...
+    Core 0 : QMSS initialization done
 
 
-    Core 3 : QMSS initialization done
+    Core 3 : Opened Server's receive Q
+    Core 1 : QMSS initialization done
+    Core 2 : QMSS initialization done
+    Core 3 : Waiting for QMSS to be initialized...
 
 
-    Core 0 : QMSS CPDMA Opened
-    Core 1 : QMSS CPDMA Opened
+    Core 3 : QMSS initialization done
 
 
-    Core 0 : Memory region 0 inserted
-    Core 0 : Number of descriptors requested : 8. Number of descriptors allocated : 8
-    Core 0 : Opened Rx channel : 0
-    Core 0 : Opened Tx channel : 0
-    Core 0 : Queue Number : 8192 opened
-    Core 0 : Queue Number : 8193 opened
-    Transmit Queue 8192 Entry Count : 1 Tx descriptor 0x@10853b20
-    Receive Queue 8193 Entry Count : 1 Rx descriptor 0x@10853b20
-    Transmit Queue 8192 Entry Count : 1 Tx descriptor 0x@10853b50
-    Receive Queue 8193 Entry Count : 1 Rx descriptor 0x@10853b50
-    Transmit Queue 8192 Entry Count : 1 Tx descriptor 0x@10853b80
-    Receive Queue 8193 Entry Count : 1 Rx descriptor 0x@10853b80
-    Transmit Queue 8192 Entry Count : 1 Tx descriptor 0x@10853bb0
-    Receive Queue 8193 Entry Count : 1 Rx descriptor 0x@10853bb0
-    Transmit Queue 8192 Entry Count : 1 Tx descriptor 0x@10853be0
-    Receive Queue 8193 Entry Count : 1 Rx descriptor 0x@10853be0
-    Transmit Queue 8192 Entry Count : 1 Tx descriptor 0x@10853c10
-    Receive Queue 8193 Entry Count : 1 Rx descriptor 0x@10853c10
-    Transmit Queue 8192 Entry Count : 1 Tx descriptor 0x@10853c40
-    Receive Queue 8193 Entry Count : 1 Rx descriptor 0x@10853c40
-    Transmit Queue 8192 Entry Count : 1 Tx descriptor 0x@10853c70
-    Receive Queue 8193 Entry Count : 1 Rx descriptor 0x@10853c70
-    Core 0 : Received host descriptor from Queue 897 Sucessfully
-    Core 0 : Tx Channel closed successfully. Ref count :0
-    Core 0 : Rx Channel closed successfully. Ref count :0
-    Core 0 : Rx queue closed successfully. Ref count :0
-    Core 0 : Tx queue closed successfully. Ref count :0
-    Core 0 : Free queue closed successfully. Ref count :0
-    Core 0 : Closing CPPI CPDMA Ref count : 3
-    Core 0 : CPPI CPDMA closed successfully
-    Core 1 : Memory region 1 inserted
+    Core 0 : QMSS CPDMA Opened
+    Core 1 : QMSS CPDMA Opened
 
 
-    Core 1 : Number of descriptors requested : 8. Number of descriptors allocated : 8
-    Core 2 : QMSS CPDMA Opened
-    Core 3 : QMSS CPDMA Opened
-    Core 1 : Opened Rx channel : 0
+    Core 0 : Memory region 0 inserted
+    Core 0 : Number of descriptors requested : 8. Number of descriptors allocated : 8
+    Core 0 : Opened Rx channel : 0
+    Core 0 : Opened Tx channel : 0
+    Core 0 : Queue Number : 8192 opened
+    Core 0 : Queue Number : 8193 opened
+    Transmit Queue 8192 Entry Count : 1 Tx descriptor 0x@10853b20
+    Receive Queue 8193 Entry Count : 1 Rx descriptor 0x@10853b20
+    Transmit Queue 8192 Entry Count : 1 Tx descriptor 0x@10853b50
+    Receive Queue 8193 Entry Count : 1 Rx descriptor 0x@10853b50
+    Transmit Queue 8192 Entry Count : 1 Tx descriptor 0x@10853b80
+    Receive Queue 8193 Entry Count : 1 Rx descriptor 0x@10853b80
+    Transmit Queue 8192 Entry Count : 1 Tx descriptor 0x@10853bb0
+    Receive Queue 8193 Entry Count : 1 Rx descriptor 0x@10853bb0
+    Transmit Queue 8192 Entry Count : 1 Tx descriptor 0x@10853be0
+    Receive Queue 8193 Entry Count : 1 Rx descriptor 0x@10853be0
+    Transmit Queue 8192 Entry Count : 1 Tx descriptor 0x@10853c10
+    Receive Queue 8193 Entry Count : 1 Rx descriptor 0x@10853c10
+    Transmit Queue 8192 Entry Count : 1 Tx descriptor 0x@10853c40
+    Receive Queue 8193 Entry Count : 1 Rx descriptor 0x@10853c40
+    Transmit Queue 8192 Entry Count : 1 Tx descriptor 0x@10853c70
+    Receive Queue 8193 Entry Count : 1 Rx descriptor 0x@10853c70
+    Core 0 : Received host descriptor from Queue 897 Sucessfully
+    Core 0 : Tx Channel closed successfully. Ref count :0
+    Core 0 : Rx Channel closed successfully. Ref count :0
+    Core 0 : Rx queue closed successfully. Ref count :0
+    Core 0 : Tx queue closed successfully. Ref count :0
+    Core 0 : Free queue closed successfully. Ref count :0
+    Core 0 : Closing CPPI CPDMA Ref count : 3
+    Core 0 : CPPI CPDMA closed successfully
+    Core 1 : Memory region 1 inserted
 
 
-    Core 1 : Opened Tx channel : 0
-    Core 2 : Memory region 2 inserted
-    Core 3 : Memory region 3 inserted
-    Core 1 : Queue Number : 0 opened
-    Core 2 : Number of descriptors requested : 8. Number of descriptors allocated : 8
-    Core 3 : Number of descriptors requested : 8. Number of descriptors allocated : 8
-    Core 1 : Queue Number : 1 opened
-    Core 2 : Opened Rx channel : 1
-    Core 3 : Opened Rx channel : 2
-    Transmit Queue 0 Entry Count : 1 Tx descriptor 0x@11853b20
-    Core 2 : Opened Tx channel : 1
-    Core 3 : Opened Tx channel : 2
-    Receive Queue 1 Entry Count : 1 Rx descriptor 0x@11853b20
-    Core 2 : Queue Number : 8192 opened
-    Core 3 : Queue Number : 8193 opened
-    Transmit Queue 0 Entry Count : 1 Tx descriptor 0x@11853b50
-    Core 2 : Queue Number : 8194 opened
-    Core 3 : Queue Number : 8195 opened
-    Receive Queue 1 Entry Count : 1 Rx descriptor 0x@11853b50
-    Transmit Queue 8192 Entry Count : 1 Tx descriptor 0x@12853b20
-    Transmit Queue 8193 Entry Count : 1 Tx descriptor 0x@13853b20
-    Transmit Queue 0 Entry Count : 1 Tx descriptor 0x@11853b80
-    Receive Queue 8194 Entry Count : 1 Rx descriptor 0x@12853b20
-    Receive Queue 8195 Entry Count : 1 Rx descriptor 0x@13853b20
-    Receive Queue 1 Entry Count : 1 Rx descriptor 0x@11853b80
-    Transmit Queue 8192 Entry Count : 1 Tx descriptor 0x@12853b50
-    Transmit Queue 8193 Entry Count : 1 Tx descriptor 0x@13853b50
-    Transmit Queue 0 Entry Count : 1 Tx descriptor 0x@11853bb0
-    Receive Queue 8194 Entry Count : 1 Rx descriptor 0x@12853b50
-    Receive Queue 8195 Entry Count : 1 Rx descriptor 0x@13853b50
-    Receive Queue 1 Entry Count : 1 Rx descriptor 0x@11853bb0
-    Transmit Queue 8192 Entry Count : 1 Tx descriptor 0x@12853b80
-    Transmit Queue 8193 Entry Count : 1 Tx descriptor 0x@13853b80
-    Transmit Queue 0 Entry Count : 1 Tx descriptor 0x@11853be0
-    Receive Queue 8194 Entry Count : 1 Rx descriptor 0x@12853b80
-    Receive Queue 8195 Entry Count : 1 Rx descriptor 0x@13853b80
-    Receive Queue 1 Entry Count : 1 Rx descriptor 0x@11853be0
-    Transmit Queue 8192 Entry Count : 1 Tx descriptor 0x@12853bb0
-    Transmit Queue 8193 Entry Count : 1 Tx descriptor 0x@13853bb0
-    Transmit Queue 0 Entry Count : 1 Tx descriptor 0x@11853c10
-    Receive Queue 8194 Entry Count : 1 Rx descriptor 0x@12853bb0
-    Receive Queue 8195 Entry Count : 1 Rx descriptor 0x@13853bb0
-    Receive Queue 1 Entry Count : 1 Rx descriptor 0x@11853c10
-    Transmit Queue 8192 Entry Count : 1 Tx descriptor 0x@12853be0
-    Transmit Queue 8193 Entry Count : 1 Tx descriptor 0x@13853be0
-    Transmit Queue 0 Entry Count : 1 Tx descriptor 0x@11853c40
-    Receive Queue 8194 Entry Count : 1 Rx descriptor 0x@12853be0
-    Receive Queue 8195 Entry Count : 1 Rx descriptor 0x@13853be0
-    Receive Queue 1 Entry Count : 1 Rx descriptor 0x@11853c40
-    Transmit Queue 8192 Entry Count : 1 Tx descriptor 0x@12853c10
-    Transmit Queue 8193 Entry Count : 1 Tx descriptor 0x@13853c10
-    Transmit Queue 0 Entry Count : 1 Tx descriptor 0x@11853c70
-    Receive Queue 8194 Entry Count : 1 Rx descriptor 0x@12853c10
-    Receive Queue 8195 Entry Count : 1 Rx descriptor 0x@13853c10
-    Receive Queue 1 Entry Count : 1 Rx descriptor 0x@11853c70
-    Transmit Queue 8192 Entry Count : 1 Tx descriptor 0x@12853c40
-    Transmit Queue 8193 Entry Count : 1 Tx descriptor 0x@13853c40
-    Core 1 : Received host descriptor from Queue 896 Sucessfully
-    Receive Queue 8194 Entry Count : 1 Rx descriptor 0x@12853c40
-    Receive Queue 8195 Entry Count : 1 Rx descriptor 0x@13853c40
-    Core 1 : Tx Channel closed successfully. Ref count :0
-    Transmit Queue 8192 Entry Count : 1 Tx descriptor 0x@12853c70
-    Transmit Queue 8193 Entry Count : 1 Tx descriptor 0x@13853c70
-    Core 1 : Rx Channel closed successfully. Ref count :0
-    Receive Queue 8194 Entry Count : 1 Rx descriptor 0x@12853c70
-    Receive Queue 8195 Entry Count : 1 Rx descriptor 0x@13853c70
-    Core 1 : Rx queue closed successfully. Ref count :0
-    Core 2 : Received host descriptor from Queue 9026 Sucessfully
-    Core 3 : Received host descriptor from Queue 898 Sucessfully
-    Core 1 : Tx queue closed successfully. Ref count :0
-    Core 2 : Tx Channel closed successfully. Ref count :0
-    Core 3 : Tx Channel closed successfully. Ref count :0
-    Core 1 : Free queue closed successfully. Ref count :0
-    Core 2 : Rx Channel closed successfully. Ref count :0
-    Core 3 : Rx Channel closed successfully. Ref count :0
-    Core 1 : Closing CPPI CPDMA Ref count : 2
-    Core 2 : Rx queue closed successfully. Ref count :0
-    Core 3 : Rx queue closed successfully. Ref count :0
-    Core 1 : CPPI CPDMA closed successfully
-    Core 2 : Tx queue closed successfully. Ref count :0
-    Core 3 : Tx queue closed successfully. Ref count :0
-    Core 2 : Free queue closed successfully. Ref count :0
-    Core 3 : Free queue closed successfully. Ref count :0
-    Core 2 : Closing CPPI CPDMA Ref count : 1
-    Core 3 : CPPI CPDMA closed successfully
-    Core 2 : CPPI CPDMA closed successfully
-    Core 2 : CPPI exit successful
+    Core 1 : Number of descriptors requested : 8. Number of descriptors allocated : 8
+    Core 2 : QMSS CPDMA Opened
+    Core 3 : QMSS CPDMA Opened
+    Core 1 : Opened Rx channel : 0
+
+
+    Core 1 : Opened Tx channel : 0
+    Core 2 : Memory region 2 inserted
+    Core 3 : Memory region 3 inserted
+    Core 1 : Queue Number : 0 opened
+    Core 2 : Number of descriptors requested : 8. Number of descriptors allocated : 8
+    Core 3 : Number of descriptors requested : 8. Number of descriptors allocated : 8
+    Core 1 : Queue Number : 1 opened
+    Core 2 : Opened Rx channel : 1
+    Core 3 : Opened Rx channel : 2
+    Transmit Queue 0 Entry Count : 1 Tx descriptor 0x@11853b20
+    Core 2 : Opened Tx channel : 1
+    Core 3 : Opened Tx channel : 2
+    Receive Queue 1 Entry Count : 1 Rx descriptor 0x@11853b20
+    Core 2 : Queue Number : 8192 opened
+    Core 3 : Queue Number : 8193 opened
+    Transmit Queue 0 Entry Count : 1 Tx descriptor 0x@11853b50
+    Core 2 : Queue Number : 8194 opened
+    Core 3 : Queue Number : 8195 opened
+    Receive Queue 1 Entry Count : 1 Rx descriptor 0x@11853b50
+    Transmit Queue 8192 Entry Count : 1 Tx descriptor 0x@12853b20
+    Transmit Queue 8193 Entry Count : 1 Tx descriptor 0x@13853b20
+    Transmit Queue 0 Entry Count : 1 Tx descriptor 0x@11853b80
+    Receive Queue 8194 Entry Count : 1 Rx descriptor 0x@12853b20
+    Receive Queue 8195 Entry Count : 1 Rx descriptor 0x@13853b20
+    Receive Queue 1 Entry Count : 1 Rx descriptor 0x@11853b80
+    Transmit Queue 8192 Entry Count : 1 Tx descriptor 0x@12853b50
+    Transmit Queue 8193 Entry Count : 1 Tx descriptor 0x@13853b50
+    Transmit Queue 0 Entry Count : 1 Tx descriptor 0x@11853bb0
+    Receive Queue 8194 Entry Count : 1 Rx descriptor 0x@12853b50
+    Receive Queue 8195 Entry Count : 1 Rx descriptor 0x@13853b50
+    Receive Queue 1 Entry Count : 1 Rx descriptor 0x@11853bb0
+    Transmit Queue 8192 Entry Count : 1 Tx descriptor 0x@12853b80
+    Transmit Queue 8193 Entry Count : 1 Tx descriptor 0x@13853b80
+    Transmit Queue 0 Entry Count : 1 Tx descriptor 0x@11853be0
+    Receive Queue 8194 Entry Count : 1 Rx descriptor 0x@12853b80
+    Receive Queue 8195 Entry Count : 1 Rx descriptor 0x@13853b80
+    Receive Queue 1 Entry Count : 1 Rx descriptor 0x@11853be0
+    Transmit Queue 8192 Entry Count : 1 Tx descriptor 0x@12853bb0
+    Transmit Queue 8193 Entry Count : 1 Tx descriptor 0x@13853bb0
+    Transmit Queue 0 Entry Count : 1 Tx descriptor 0x@11853c10
+    Receive Queue 8194 Entry Count : 1 Rx descriptor 0x@12853bb0
+    Receive Queue 8195 Entry Count : 1 Rx descriptor 0x@13853bb0
+    Receive Queue 1 Entry Count : 1 Rx descriptor 0x@11853c10
+    Transmit Queue 8192 Entry Count : 1 Tx descriptor 0x@12853be0
+    Transmit Queue 8193 Entry Count : 1 Tx descriptor 0x@13853be0
+    Transmit Queue 0 Entry Count : 1 Tx descriptor 0x@11853c40
+    Receive Queue 8194 Entry Count : 1 Rx descriptor 0x@12853be0
+    Receive Queue 8195 Entry Count : 1 Rx descriptor 0x@13853be0
+    Receive Queue 1 Entry Count : 1 Rx descriptor 0x@11853c40
+    Transmit Queue 8192 Entry Count : 1 Tx descriptor 0x@12853c10
+    Transmit Queue 8193 Entry Count : 1 Tx descriptor 0x@13853c10
+    Transmit Queue 0 Entry Count : 1 Tx descriptor 0x@11853c70
+    Receive Queue 8194 Entry Count : 1 Rx descriptor 0x@12853c10
+    Receive Queue 8195 Entry Count : 1 Rx descriptor 0x@13853c10
+    Receive Queue 1 Entry Count : 1 Rx descriptor 0x@11853c70
+    Transmit Queue 8192 Entry Count : 1 Tx descriptor 0x@12853c40
+    Transmit Queue 8193 Entry Count : 1 Tx descriptor 0x@13853c40
+    Core 1 : Received host descriptor from Queue 896 Sucessfully
+    Receive Queue 8194 Entry Count : 1 Rx descriptor 0x@12853c40
+    Receive Queue 8195 Entry Count : 1 Rx descriptor 0x@13853c40
+    Core 1 : Tx Channel closed successfully. Ref count :0
+    Transmit Queue 8192 Entry Count : 1 Tx descriptor 0x@12853c70
+    Transmit Queue 8193 Entry Count : 1 Tx descriptor 0x@13853c70
+    Core 1 : Rx Channel closed successfully. Ref count :0
+    Receive Queue 8194 Entry Count : 1 Rx descriptor 0x@12853c70
+    Receive Queue 8195 Entry Count : 1 Rx descriptor 0x@13853c70
+    Core 1 : Rx queue closed successfully. Ref count :0
+    Core 2 : Received host descriptor from Queue 9026 Sucessfully
+    Core 3 : Received host descriptor from Queue 898 Sucessfully
+    Core 1 : Tx queue closed successfully. Ref count :0
+    Core 2 : Tx Channel closed successfully. Ref count :0
+    Core 3 : Tx Channel closed successfully. Ref count :0
+    Core 1 : Free queue closed successfully. Ref count :0
+    Core 2 : Rx Channel closed successfully. Ref count :0
+    Core 3 : Rx Channel closed successfully. Ref count :0
+    Core 1 : Closing CPPI CPDMA Ref count : 2
+    Core 2 : Rx queue closed successfully. Ref count :0
+    Core 3 : Rx queue closed successfully. Ref count :0
+    Core 1 : CPPI CPDMA closed successfully
+    Core 2 : Tx queue closed successfully. Ref count :0
+    Core 3 : Tx queue closed successfully. Ref count :0
+    Core 2 : Free queue closed successfully. Ref count :0
+    Core 3 : Free queue closed successfully. Ref count :0
+    Core 2 : Closing CPPI CPDMA Ref count : 1
+    Core 3 : CPPI CPDMA closed successfully
+    Core 2 : CPPI CPDMA closed successfully
+    Core 2 : CPPI exit successful
     *******************************************************
     *************** CPPI LLD usage example Done ***********
     *******************************************************
-    Core 1 : CPPI exit successful
-    Core 3 : CPPI exit successful
+    Core 1 : CPPI exit successful
+    Core 3 : CPPI exit successful
     *******************************************************
     *******************************************************
     *************** CPPI LLD usage example Done ***********
     *************** CPPI LLD usage example Done ***********
     *******************************************************
     *******************************************************
-    Core 0 : CPPI exit successful
+    Core 0 : CPPI exit successful
     Core 0: exit QMSS
     Instance name: RM_Server
     Handle: 0x00849ee8
@@ -282,7 +282,7 @@ This came from k2k example:
 
     Resource Status:
 
-    Core 0 : All resources freed successfully
+    Core 0 : All resources freed successfully
     *******************************************************
     *************** CPPI LLD usage example Done ***********
     *******************************************************

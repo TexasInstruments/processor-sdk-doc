@@ -17,7 +17,7 @@ Create SD Card with Default Images
 |
 
 2.  The default bootable SD card image (WIC file) is available
-    at <PSDK\_PATH>/filesystem/tisdk-default-image-am64xx-evm.wic.xz
+    at <PSDK\_PATH>/filesystem/tisdk-default-image-am64xx-evm.wic.xz
 
 |
 

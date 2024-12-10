@@ -220,7 +220,7 @@ power supply connected to the DC power jack (J3). Internally, +12V input
 is converted into required voltage levels using local DC-DC converters
 
 Please note that a power supply is included with the 66AK2GX Evaluation
-Module. The power supply has the following specs :
+Module. The power supply has the following specs :
 
 -  12V DC output
 -  5A output
@@ -234,7 +234,7 @@ Module. The power supply has the following specs :
 This section describes the setup to connect to 66AK2GX GP EVM using
 Code composer Studio environment and an emulator.
 
-There are two scenarios while connecting to the EVM :
+There are two scenarios while connecting to the EVM :
 
 -  **Connect to EVM without a SD card boot image to boot the EVM**
 -  **Connect to EVM after booting an image from the SD card**.
@@ -330,7 +330,7 @@ provided below:
 .. rubric:: Connecting to target
    :name: connecting-to-target
 
-**Step1 :** Download Code composer Studio v6.1.3 or for CCSv6.1.2 and
+**Step1 :** Download Code composer Studio v6.1.3 or for CCSv6.1.2 and
 earlier, ensure it contains Keystone device support package version
 1.1.5 as described in the how to guide
 

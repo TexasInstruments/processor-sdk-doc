@@ -1,3 +1,5 @@
+.. include:: <isonum.txt>
+
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_Kernel_Performance_Guide
 
 
@@ -266,8 +268,8 @@ Table:  **Stream**
 
 CoreMarkPro
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-CoreMark®-Pro is a comprehensive, advanced processor benchmark that works with
-and enhances the market-proven industry-standard EEMBC CoreMark® benchmark.
+CoreMark\ |reg|\ -Pro is a comprehensive, advanced processor benchmark that works with
+and enhances the market-proven industry-standard EEMBC CoreMark\ |reg| benchmark.
 While CoreMark stresses the CPU pipeline, CoreMark-Pro tests the entire processor,
 adding comprehensive support for multicore technology, a combination of integer
 and floating-point workloads, and data sets for utilizing larger memory subsystems.

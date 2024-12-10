@@ -195,7 +195,7 @@ report a version mismatch in cygwin:
 ::
 
     C:/QNX650/host/win32/x86/usr/bin/make -j 1 -Cle.v7 -fMakefile install
-          1 [main] ? (5984) C:\QNX650\host\win32\x86\usr\photon\bin\find.exe: *** fa
+          1 [main] ? (5984) C:\QNX650\host\win32\x86\usr\photon\bin\find.exe: *** fa
     tal error - system shared memory version mismatch detected - 0x8A88009C/0x2D1E009C.
     This problem is probably due to using incompatible versions of the cygwin DLL.
     Search for cygwin1.dll using the Windows Start->Find/Search facility
@@ -349,7 +349,7 @@ should look similar to this:
 
 ::
 
-    Using numLoops: 10; procId : 1
+    Using numLoops: 10; procId : 1
     Entered MessageQApp_execute
     Local MessageQId: 0x1
     Remote queueId  [0x10000]

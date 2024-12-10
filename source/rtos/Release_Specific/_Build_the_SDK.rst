@@ -87,7 +87,7 @@ installed RTOS SDK.
 
      IPC_PLATFORM: DRA7XX
      IPC_ALT_PLATFORM: AM572X AM571X
-     PROC_SDK_INSTALL_PATH     : C:/ti/processor_sdk_rtos_[soc]_[version]
+     PROC_SDK_INSTALL_PATH     : C:/ti/processor_sdk_rtos_[soc]_[version]
      **************************************************************************
      Changing to short name to support directory names containing spaces
      current directory: C:/ti/processor_sdk_rtos_[soc]_[version]
@@ -115,7 +115,7 @@ SDK.
      ~/ti/processor_sdk_rtos_[soc>]_[version]$ source setupenv.sh
          IPC_PLATFORM: DRA7XX
          IPC_ALT_PLATFORM: AM572X AM571X
-         PROC_SDK_INSTALL_PATH     : /home/[user]/ti/processor_sdk_rtos_[soc]_[version]
+         PROC_SDK_INSTALL_PATH     : /home/[user]/ti/processor_sdk_rtos_[soc]_[version]
 
      PROCESSOR SDK BUILD ENVIRONMENT CONFIGURED
      *******************************************************************************

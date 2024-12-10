@@ -71,7 +71,7 @@ Boot Mode Dip Switch Settings
 -----------------------------
 
 The EVM supports booting image from various devices (EEPROM, NAND or
-NOR) via IBL, it also supports ROM Boot modes, such as Ethernet, SRIO,
+NOR) via IBL, it also supports ROM Boot modes, such as Ethernet, SRIO,
 PCIe, etc. Below is the table showing the boot mode dip switch settings
 for different boot mode that the EVM supports:
 
@@ -120,16 +120,16 @@ for different boot mode that the EVM supports:
 
 **Footnotes:**
 
-| 1. Pin 1 of SW3 is the endian pin, by default, it is set to off (Little Endian)
+| 1. Pin 1 of SW3 is the endian pin, by default, it is set to off (Little Endian)
 |
 
-| 2. Pin 2-4 of SW3 are the boot mode pins, by default it is set to I2C boot mode (off, on, off)
+| 2. Pin 2-4 of SW3 are the boot mode pins, by default it is set to I2C boot mode (off, on, off)
 |
 
 | 3. Pin 1-4 of SW4 and pin 1-2 of SW5 are the boot parameter index pins for I2C boot (paramter index 0/1 for NOR boot image 0/1, parameter index 2/3 for NAND boot image 0/1, parameter index 4 for TFTP boot). By default, image 0 is programmed to offset byte address 0x0 on NOR, and 0x4000 (block 1 start address) on NAND, image 1 is programmed to offset byte address 0xA00000 on NOR, and 0x2000000 on NAND.
 |
 
-| 4. Pin 4 of SW5 is the I2C address pin (off: 0x51, on: 0x50)  for I2C boot mode
+| 4. Pin 4 of SW5 is the I2C address pin (off: 0x51, on: 0x50)  for I2C boot mode
 |
 
 | 5. This will set the board to boot from SRIO boot mode, with reference clock at 250 MHz, data rate at 3.125 GBs, and lane setup 4-1x ports and DSP System PLL at 122.88 MHz.

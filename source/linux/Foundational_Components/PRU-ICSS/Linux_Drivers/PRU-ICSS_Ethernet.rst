@@ -1,3 +1,5 @@
+.. include:: <isonum.txt>
+
 .. _pru_icss_ethernet:
 
 PRU-ICSS Ethernet
@@ -28,7 +30,7 @@ Archives section at the bottom of this page.
 
 The AM3359 Industrial Communications Engine (ICE) is a development
 platform targeted for systems that specifically focus on the industrial
-communications capabilities of the Sitara AM335x ARM® Cortex™-A8
+communications capabilities of the Sitara AM335x ARM\ |reg| Cortex™-A8
 Processors
 
 The AM335x ARM Cortex-A8 Processors integrate the Programmable Real-time

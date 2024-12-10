@@ -44,11 +44,11 @@ Firmware Features Supported
    -  Duplicate discard table on Port to Port path (HSR)
    -  Data integrity (CRC) check during port to port forwarding, except cut through (HSR)
 
--  **QoS scheme** : 3-bit VLAN PCP
+-  **QoS scheme** : 3-bit VLAN PCP
 
-   -  No of levels supported : 8
-   -  Number of host queues : 2 \| 4 QoS levels per host queue
-   -  Number of port queues : 4 \| 2 QoS levels per port queue
+   -  No of levels supported : 8
+   -  Number of host queues : 2 \| 4 QoS levels per host queue
+   -  Number of port queues : 4 \| 2 QoS levels per port queue
    -  Number of host queues are configurable
 
 -  **Statistics**
@@ -66,4 +66,4 @@ Firmware Features Supported
    -  Single and Two step clock supported
    -  Peer delay Response is always sent as two-step
 
--  **Storm Prevention** : Yes. Configurable per port
+-  **Storm Prevention** : Yes. Configurable per port

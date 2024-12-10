@@ -131,7 +131,7 @@ Supported platforms with LTP-DDT
 .. rubric:: Host Platform Requirements
    :name: host-platform-requirements
 
-Linux host is required :
+Linux host is required :
 
 -  for compiling LTP-DDT.
 -  to host the NFS server to boot the EVM with NFS as root filesystem
@@ -221,7 +221,7 @@ and the platform (option -P) to use. For example:
     -D <options>: Run test under additional background load on Secondary storage
     -m <options>: Run test under additional background load on Main memory
     -i <options>: Run test under additional background load on IO Bus
-    -n          : Run test with network traffic in background.
+    -n          : Run test with network traffic in background.
 
 Please refer to README-DDT file section 8) for more details.
 

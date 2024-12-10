@@ -15,7 +15,7 @@ class protocols:
 -  USB device Audio Class
 -  USB generic bulk device class
 
-In rest of the page AM437x EVM is being refered as an example. Please
+In rest of the page AM437x EVM is being refered as an example. Please
 check Release Notes for list of supported EVMs for driver.
 
 .. rubric:: Modes of Operation

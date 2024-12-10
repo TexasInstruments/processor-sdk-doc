@@ -52,8 +52,8 @@ https://github.com/siemens/jailhouse.
 | *1) set u-boot environment variable optargs*: setenv optargs
   vmalloc=512M
 
-*2) use \ **am572x-evm-jailhouse.dtb** for AM572x-EVM
-or \ **am572x-idk-jailhouse.dtb** for AM572x-IDK
+*2) use \ **am572x-evm-jailhouse.dtb** for AM572x-EVM
+or \ **am572x-idk-jailhouse.dtb** for AM572x-IDK
 *
 
 |
@@ -162,7 +162,7 @@ Here are the steps to run the demo:
 ::
 
     root@am57xx-evm:~# jailhouse cell start 1
-    Hey, I'm working !!!!!!!!!!!
+    Hey, I'm working !!!!!!!!!!!
     timer id 4fff2b01
     timer value fffffc17; irq status 00000002; raw 00000002
     min 00000017; avr 0000001b; max 000002c1
@@ -222,7 +222,7 @@ binary and start it.
 .. rubric:: Running PDK led_test.bin example
    :name: running-pdk-led_test.bin-example
 
-After you enable hyprevisor, create a pdk cell  
+After you enable hyprevisor, create a pdk cell
 
 ::
 
@@ -269,7 +269,7 @@ You may see blinking leds, press "r" to repeat the test.
 | This example just demonstrates hypervisor's ability to run binaries
   that were built outside of jailhouse source tree. This and other RTOS
   examples were ported for this purpose. Look to RTOS SDK documentation
-  for description of the examples functionality.  
+  for description of the examples functionality.
 
 .. rubric:: Running the Demo on AM572x-IDK
    :name: running-the-demo-on-am572x-idk

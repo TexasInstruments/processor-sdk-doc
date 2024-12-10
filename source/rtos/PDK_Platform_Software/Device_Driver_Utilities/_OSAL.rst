@@ -27,7 +27,7 @@ APIs
 ^^^^
 
 Porting of OSAL component will enable extending PDK components to
-additional OS environment. Reference top level API header file 
+additional OS environment. Reference top level API header file
 includes:
 
 ::

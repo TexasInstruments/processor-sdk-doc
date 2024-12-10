@@ -60,7 +60,7 @@ features (Please check your vendor for hardware details):
 -  XDS100v1 emulators are only recommended for users who need to use
    Code Composer Studio v3.3, anyone using Code Composer Studio v4 or
    later should consider an XDS100v2 or later emulator due to the
-   increased performance.  Some of our 3rd Party partners have
+   increased performance.  Some of our 3rd Party partners have
    implemented XDS100v2 emulators that can also operate in v1 mode for
    compatibility with Code Composer Studio v3.3.
 -  XDS100v3 emulators are recommended for users who require support for
@@ -130,7 +130,7 @@ below features are supported:
 -  LED to indicate IEEE 1149.7 Class 4 operation.
 -  LED to indicate operation in adapter mode.
 
-.. rubric:: Features NOT supported 
+.. rubric:: Features NOT supported
    :name: features-not-supported
 
 -  It does not support `Real Time Data eXchange
@@ -169,7 +169,7 @@ XDS100v3 is needed.
 |    <div style="text-align: center">                                   |
 |                                                                       |
 | **Code Composer Studio v5.1.x Support** (XDS100v1, XDS100v2 and       |
-| XDS100v3 hardware)                                                    |
+| XDS100v3 hardware)                                                    |
 |                                                                       |
 | .. raw:: html                                                         |
 |                                                                       |
@@ -182,27 +182,27 @@ XDS100v3 is needed.
 |                 | Version**       | Release/Version |                 |
 |                 |                 | ***             |                 |
 +-----------------+-----------------+-----------------+-----------------+
-| TMS320C28xx     | v1, v2, v3      | `Code Composer  | Additional SW   |
-|                 |                 | Studio v5       | patch required  |
-|                 |                 | page <http://pr | for XDS100v3    |
-|                 |                 | ocessors.wiki.t | support         |
-|                 |                 | i.com/index.php |                 |
+| TMS320C28xx     | v1, v2, v3      | `Code Composer  | Additional SW   |
+|                 |                 | Studio v5       | patch required  |
+|                 |                 | page <http://pr | for XDS100v3    |
+|                 |                 | ocessors.wiki.t | support         |
+|                 |                 | i.com/index.php |                 |
 |                 |                 | /Category:Code_ |                 |
 |                 |                 | Composer_Studio |                 |
-|                 |                 | _v5>`__ and     |                 |
+|                 |                 | _v5>`__ and     |                 |
 |                 |                 | newer           |                 |
 +-----------------+-----------------+-----------------+-----------------+
-| TMS320C54xx     | v1, v2, v3      | - as above -    | - as above -    |
+| TMS320C54xx     | v1, v2, v3      | - as above -    | - as above -    |
 +-----------------+-----------------+-----------------+-----------------+
-| TMS320C55xx     | v1, v2, v3      | - as above -    | - as above -    |
+| TMS320C55xx     | v1, v2, v3      | - as above -    | - as above -    |
 +-----------------+-----------------+-----------------+-----------------+
 | TMS320C674x     | v1, v2, v3      | - as above -    | - as above -    |
 +-----------------+-----------------+-----------------+-----------------+
-| TMS320C64x+     | v1, v2, v3      | - as above -    | - as above -    |
+| TMS320C64x+     | v1, v2, v3      | - as above -    | - as above -    |
 +-----------------+-----------------+-----------------+-----------------+
-| TMS320C66x      | v1, v2, v3      | - as above -    | - as above -    |
+| TMS320C66x      | v1, v2, v3      | - as above -    | - as above -    |
 +-----------------+-----------------+-----------------+-----------------+
-| ARM9            | v2, v3          | - as above -    | - as above -    |
+| ARM9            | v2, v3          | - as above -    | - as above -    |
 +-----------------+-----------------+-----------------+-----------------+
 | ARM Cortex A9   | v2, v3          | - as above -    | - as above -    |
 +-----------------+-----------------+-----------------+-----------------+
@@ -211,13 +211,13 @@ XDS100v3 is needed.
 | ARM Cortex      | v2, v3          | - as above -    | - as above -    |
 | M3/M4           |                 |                 |                 |
 +-----------------+-----------------+-----------------+-----------------+
-| ARM Cortex R4   | v2, v3          | - as above -    | - as above -    |
+| ARM Cortex R4   | v2, v3          | - as above -    | - as above -    |
 +-----------------+-----------------+-----------------+-----------------+
 
 |
 
-A. Install Code Composer Studio 5.1.x (XDS100v1 and XDS100v2 support is
-included) as per the table above **before ** connecting XDS100 USB
+A. Install Code Composer Studio 5.1.x (XDS100v1 and XDS100v2 support is
+included) as per the table above **before ** connecting XDS100 USB
 hardware.
 
 B. Install the EmuPack with XDS100v3 support.
@@ -225,7 +225,7 @@ B. Install the EmuPack with XDS100v3 support.
 C. Connect the XDS100 hardware
 
 #. Make sure the Code Composer Studio 5.1.x and EmuPack with XDS100v3
-   support is installed FIRST **before** plugging in the XDS100 HW to
+   support is installed FIRST **before** plugging in the XDS100 HW to
    the PC.
 #. Connect USB cable from the PC to the XDS100 hardware. Connect the
    JTAG to the target board (be careful to plug it in correctly: pin 1
@@ -268,16 +268,16 @@ D. Setup Code Composer Studio v5.1.x
 |                 | Version**       | Release/Version |                 |
 |                 |                 | ***             |                 |
 +-----------------+-----------------+-----------------+-----------------+
-| TMS320C28xx     | v1,             | `Code Composer  | No additional   |
-|                 | v2              | Studio          | SW required for |
-|                 |                 | v4.1 </index.ph | XDS100 support  |
-|                 |                 | p/Download_CCS> |                 |
-|                 |                 | `__ and         |                 |
-|                 |                 | newer           |                 |
+| TMS320C28xx     | v1,             | `Code Composer  | No additional   |
+|                 | v2              | Studio          | SW required for |
+|                 |                 | v4.1 </index.ph | XDS100 support  |
+|                 |                 | p/Download_CCS> |                 |
+|                 |                 | `__ and         |                 |
+|                 |                 | newer           |                 |
 +-----------------+-----------------+-----------------+-----------------+
-| TMS320C54xx     | v1, v2          | - as above -    |                 |
+| TMS320C54xx     | v1, v2          | - as above -    |                 |
 +-----------------+-----------------+-----------------+-----------------+
-| TMS320C55xx     | v1, v2          | - as above -    |                 |
+| TMS320C55xx     | v1, v2          | - as above -    |                 |
 +-----------------+-----------------+-----------------+-----------------+
 | TMS320C674x     | v1, v2          | - as above -    |                 |
 +-----------------+-----------------+-----------------+-----------------+
@@ -302,8 +302,8 @@ D. Setup Code Composer Studio v5.1.x
 
 |
 
-A. Install Code Composer Studio 4.x (XDS100 SW support is included) as
-per the table above **before ** connecting XDS100 USB hardware.
+A. Install Code Composer Studio 4.x (XDS100 SW support is included) as
+per the table above **before ** connecting XDS100 USB hardware.
 
 B. Connect the XDS100 hardware
 
@@ -372,8 +372,8 @@ C. Setup Code Composer Studio v4.x
 |                 |                 | C2000 DSK       | included in CCS |
 |                 |                 | Version         | Installation.   |
 |                 |                 | (version        | No additional   |
-|                 |                 | #3.3.81.28, 3.3 | SW required.    |
-|                 |                 | .83.16 or       |                 |
+|                 |                 | #3.3.81.28, 3.3 | SW required.    |
+|                 |                 | .83.16 or       |                 |
 |                 |                 | newer)          |                 |
 +-----------------+-----------------+-----------------+-----------------+
 | TMS320C674x     | v1              | CCS v3.3        | Included with   |
@@ -814,7 +814,7 @@ stick and "Target Connect" worked afetr re-starting CCSv4
    available from TI
    `here <http://focus.ti.com/dsp/docs/thirdparty/catalog/devtoolsproductfolder.tsp?actionPerformed=productFolder&productId=3158>`__.
 -  A: TMS320C674x: The Blackhawk `XDS560 <http://processors.wiki.ti.com/index.php/XDS560>`__\ (TI
-   part #TMDSEMU560U  for USB and TI part #TMDSEMU560PCI for PCI) are
+   part #TMDSEMU560U  for USB and TI part #TMDSEMU560PCI for PCI) are
    available from TI
    `here <http://focus.ti.com/docs/toolsw/folders/print/xds560.html>`__.
    The Spectrum Digital `XDS510 <http://processors.wiki.ti.com/index.php/XDS510>`__\ (TI part
@@ -879,7 +879,7 @@ for every action
 -  With CCS v4.1 (with the XDS100v2 SW) and above you can plug more than
    one XDS100 on a single PC. This is not supported with CCSv3.3.
 -  Each XDS100 must have a unique serial number. Run xds100serial.exe
-   installed under CCSv4.1 "<install_dir>/ccsv4/common/uscif/utility" to
+   installed under CCSv4.1 "<install_dir>/ccsv4/common/uscif/utility" to
    get the serial number of each connected XDS100 emulator. Create
    Target Configuration for 2 emulators, Under “connection properties”,
    change “emulator selection” to “select by serial number” option.
@@ -1544,13 +1544,13 @@ now be able to use your XDS100 with CCS.
 -  Please note that this CPLD update is designed for use with CCS v4.1.1
    and newer.
 
-.. rubric:: Q: How do I perform a system reset (SRST) using
-   the XDS100v3?
+.. rubric:: Q: How do I perform a system reset (SRST) using
+   the XDS100v3?
    :name: q-howdo-iperform-a-system-reset-srstusing-thexds100v3
 
-| A: There is an issue in the FPGA VHDL released in the XDS100v3 Design
-  Kit v1.0 on 1 June 2011 which inadvertently disables this feature.  It
-  will be corrected in the next XDS100v3 Design Kit update. 
+| A: There is an issue in the FPGA VHDL released in the XDS100v3 Design
+  Kit v1.0 on 1 June 2011 which inadvertently disables this feature.  It
+  will be corrected in the next XDS100v3 Design Kit update.
 
 .. rubric:: Older Versions
    :name: older-versions

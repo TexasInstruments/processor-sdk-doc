@@ -128,11 +128,11 @@ The source files are organized as follows::
 
     └── template_app
         ├── baremetal
-        │   ├── app.c --> Application tasks are here
-        │   ├── app.h --> Application header file
-        │   ├── baremetal_template_app_am572x_a15_evmAM572X.projectspec --> Project spec file
+        │   ├── app.c --> Application tasks are here
+        │   ├── app.h --> Application header file
+        │   ├── baremetal_template_app_am572x_a15_evmAM572X.projectspec --> Project spec file
         |   ├── main.c --> Main file which has board and driver init code
-        │   ├── lnk_a15.cmd --> Linker command file.
+        │   ├── lnk_a15.cmd --> Linker command file.
         ├── GPIO_board.h --> Gpio board header
         ├── GPIO_evmAM572x_board.c --> Gpio board configuration
         └── rtos

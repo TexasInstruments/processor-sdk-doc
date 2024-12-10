@@ -200,10 +200,10 @@ runtime performance of IPC applications:
        GateMP_Params gateParams;
        GateMP_Handle gateHandle;
        HeapBufMP_Params heapParams;
-        
+
        GateMP_Params_init(&gateParams);
        gateHandle = GateMP_create(&gateParams);
-        
+
        HeapBufMP_Params_init(&heapParams);
        heapParams.gate = gateHandle;
 
@@ -243,10 +243,10 @@ runtime performance of IPC applications:
 
        HeapBufMP_Params heapParams;
        HeapBufMP_Handle heapHandle;
-        
+
        HeapBufMP_Params_init(&heapParams);
        heapParams.regionId = 1;
-        
+
        heapHandle = HeapBufMP_create(&heapParams);
 
    This heap can be used by either of the Cortex M3 cores on an

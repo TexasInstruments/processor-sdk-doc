@@ -87,7 +87,7 @@ API reference for application:
 
     #include <ti/drv/i2c/I2C.h>
 
- Sample code for initiating I2C transaction:
+ Sample code for initiating I2C transaction:
 
 ::
 
@@ -109,9 +109,9 @@ API reference for application:
     ...
     ...
     transferOK = I2C_transfer(i2c, &i2cTransaction);
-    if (transferOK != I2C_STS_SUCCESS) {
+    if (transferOK != I2C_STS_SUCCESS) {
     /* I2C transaction failed */
-    } 
+    }
 
 Application
 ------------
@@ -135,7 +135,7 @@ Refer Release Note for I2C support across different EVMs
 |                       |                       |   All tests have      |    omapl137,        |                     |
 |                       |                       |   passed.             |                     |                     |
 +-----------------------+-----------------------+-----------------------+---------------------+---------------------+
-| I2C_TestApplication   || Driver Unit Test     || Following prints will|    AM335x,          | CCS project         |
+| I2C_TestApplication   || Driver Unit Test     || Following prints will|    AM335x,          | CCS project         |
 |                       | application for       |  come on console based|    AM437x,          |                     |
 |                       | additional I2C        |  on pass/fail         |    AM571x,          |                     |
 |                       | speed and other tests |  criteria:            |    AM572x,          |                     |
@@ -154,7 +154,7 @@ Refer Release Note for I2C support across different EVMs
 |                       |                       || All tests have       |                     |                     |
 |                       |                       |  passed.              |                     |                     |
 +-----------------------+-----------------------+-----------------------+---------------------+---------------------+
-| I2C_SMP_Test          || Driver Unit Test     || Following prints will|   am572x-evm        | CCS project         |
+| I2C_SMP_Test          || Driver Unit Test     || Following prints will|   am572x-evm        | CCS project         |
 | Application           | application for       |  come on console based|                     |                     |
 |                       | additional I2C        |  on pass/fail         |                     |                     |
 |                       | speed and other tests |  criteria:            |                     |                     |

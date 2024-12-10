@@ -216,7 +216,7 @@ Table:  **Shared RAM Memory Map**
 
 +--------------------------+--------------------------+--------------------------+
 | Name of Offset           | Description              | Offset in Shared RAM     |
-|                          | Refer to                 | (base : 0x140)           |
+|                          | Refer to                 | (base : 0x140)           |
 |                          | *hsr\_prp\_firmware.h*   |                          |
 +==========================+==========================+==========================+
 | LRE\_CNT\_TX\_A          | Number of frames         | *4*                      |

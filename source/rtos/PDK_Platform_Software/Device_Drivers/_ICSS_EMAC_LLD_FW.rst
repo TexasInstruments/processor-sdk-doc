@@ -56,7 +56,7 @@ Driver Configuration
   for TI supported EVMs. In addition it initializes UART instance for
   Console/STDIO.Refer `Processor SDK RTOS Board
   Support <index_board.html#board-support>`__ for
-  additional details.Once board specific configuration is complete 
+  additional details.Once board specific configuration is complete
   driver APIS can be invoked.
 
 |
@@ -162,7 +162,7 @@ different EVMs.
 | ICSS_EMAC_Basic | EMAC Loopback   | 10/100 Mb/s     | Unit Test will  |
 | Example         | test at         | loopback cable  | print ^All      |
 |                 | PRU-ICSS        |                 | tests have      |
-|                 | EMAC PHY.       |                 | passed^ via     |
+|                 | EMAC PHY.       |                 | passed^ via     |
 |                 |                 |                 | UART console.   |
 |                 | | Example       |                 |                 |
 |                 |   demonstrates  |                 |                 |
@@ -206,7 +206,7 @@ different EVMs.
 | ICSS_EMAC_Switc | Switch Loopback | 100 Mb/s        | Unit Test will  |
 | hExample        | test at         | loopback cable  | print ^All      |
 |                 | PRU-ICSS        |                 | tests have      |
-|                 | EMAC PHY.       |                 | passed^ via     |
+|                 | EMAC PHY.       |                 | passed^ via     |
 |                 |                 |                 | UART console.   |
 |                 | | Example       |                 |                 |
 |                 |   demonstrates  |                 |                 |

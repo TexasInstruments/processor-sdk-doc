@@ -1,6 +1,8 @@
+.. include:: <isonum.txt>
+
 .. http://processors.wiki.ti.com/index.php/Processor-sdk-MultiWay-of-ARM-DSP-Communication
 
-This document describes the ways of communication on TI multicore devices. The individual cores in an applicatioin can assume the roles of Host/Device or Master/Slave. This discussion here assumes the Host/Master is ARM® cluster running SMP/Linux and the Device/Slave is the C6xx DSP cluster running TI-RTOS.
+This document describes the ways of communication on TI multicore devices. The individual cores in an applicatioin can assume the roles of Host/Device or Master/Slave. This discussion here assumes the Host/Master is ARM\ |reg| cluster running SMP/Linux and the Device/Slave is the C6xx DSP cluster running TI-RTOS.
 
 .. rubric:: OpenCL
    :name: opencl

@@ -319,8 +319,8 @@ many other things like wear leveling, bad-block management, etc.
 .. rubric:: **Board specific configurations**
    :name: board-specific-configurations
 
-| Following table gives details about NAND devices present on various
-  EVM boards
+| Following table gives details about NAND devices present on various
+  EVM boards
 
 +----------+----------+----------+----------+----------+----------+----------+----------+----------+
 | EVM      | NAND     | Size     | Bus-Widt | Block-Si | Page-Siz | OOB-Size | ECC      | Hardware |
@@ -400,7 +400,7 @@ BCH16. So BCH8 ECC Scheme has been used on this board.
 .. rubric:: Configurations (GPMC Specific)
    :name: configurations-gpmc-specific
 
-.. rubric:: **How to enable GPMC NAND driver in Linux Kernel ?**
+.. rubric:: **How to enable GPMC NAND driver in Linux Kernel ?**
    :name: how-to-enable-gpmc-nand-driver-in-linux-kernel
 
 .. ifconfig:: CONFIG_part_family in ('AM62X_family')
@@ -412,7 +412,7 @@ BCH16. So BCH8 ECC Scheme has been used on this board.
        =>  setenv name_overlays ti/k3-am62x-lp-sk-nand.dtbo
 
 GPMC NAND driver can be enabled/disabled via *Linux Kernel
-Configuration* tool. Enable below Configs to enable MTD Support along
+Configuration* tool. Enable below Configs to enable MTD Support along
 with MTD NAND driver support
 
 ::

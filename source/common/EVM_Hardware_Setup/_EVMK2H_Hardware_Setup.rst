@@ -18,7 +18,7 @@ of the emulator daughter card. The driver can be downloaded from here
 
 .. note:: Before testing the usb connection, make sure that the mini-usb cable is plugged into the port on the base board. (and not connected to the daughter card).
 
-After installing the driver and connecting the USB cable, two COM ports
+After installing the driver and connecting the USB cable, two COM ports
 should be visible in the list of COM ports available to connect to in
 the PC Host terminal console. The lower COM port corresponds to the SoC
 UART and the higher one corresponds to the MCU UART.
@@ -237,7 +237,7 @@ with the following steps.
 #. Select the BMC COM Port (the same COM port used to issue the ver
    command earlier), and set the ‘Baud Rate’ to 115200.
 #. Set ‘Transfer Size’ to 60, and make sure ‘Disable Auto Baud Support’
-   is unchecked. 
+   is unchecked.
 
    .. image::  /images/LMflashProg_Config.png
 
@@ -652,5 +652,5 @@ Connecting Target...
     arm_A15_0: GEL Output: A15 non secure mode entered
 
 Users can now load and run code on the cores by using Run -> Load
-Program. Happy Debugging !!
+Program. Happy Debugging !!
 

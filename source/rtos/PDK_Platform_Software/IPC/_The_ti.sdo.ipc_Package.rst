@@ -151,23 +151,23 @@ need to include different XDC, IPC, and SYS/BIOS header files.
 
     #include <xdc/std.h>
     #include <string.h>
-     
+
     /* ---- XDC.RUNTIME module Headers   */
     #include <xdc/runtime/Memory.h>
     #include <xdc/runtime/System.h>
     #include <xdc/runtime/IHeap.h>
-     
+
     /* ----- IPC module Headers          */
     #include <ti/ipc/GateMP.h>
     #include <ti/ipc/Ipc.h>
     #include <ti/ipc/MessageQ.h>
     #include <ti/ipc/HeapBufMP.h>
     #include <ti/ipc/MultiProc.h>
-     
+
     /* ---- BIOS6 module Headers         */
     #include <ti/sysbios/BIOS.h>
     #include <ti/sysbios/knl/Task.h>
-     
+
     /* ---- Get globals from .cfg Header */
     #include <xdc/cfg/global.h>
 
@@ -235,7 +235,7 @@ provided status constants. For example:
     MessageQ_Msg     msg;
     MessageQ_Handle  messageQ;
     Int              status;
-     
+
     ...
     status = MessageQ_get(messageQ, &msg, MessageQ_FOREVER);
         if (status < 0) {

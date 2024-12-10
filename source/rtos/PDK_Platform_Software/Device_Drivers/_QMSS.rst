@@ -108,207 +108,207 @@ This came from K2K multicore example:
     ************ QMSS Multicore Example **************
     **************************************************
     **************************************************
-    Core 1 : Starting BIOS...
-    Core 2 : Starting BIOS...
-    Core 3 : Starting BIOS...
-    Core 0 : Starting BIOS...
-    Core 0 : Created RM packet heap
-    Core 0 : Created IPC MessageQ heap
-    Core 0 : Created receive Q for Client1
-    Core 1 : Opened RM packet heap
-    Core 2 : Opened RM packet heap
-    Core 3 : Opened RM packet heap
-    Core 1 : Opened IPC MessageQ heap
-    Core 2 : Opened IPC MessageQ heap
-    Core 3 : Opened IPC MessageQ heap
-    Core 1 : Created receive Q for Server
-    Core 2 : Created receive Q for Server
-    Core 3 : Created receive Q for Server
-    Core 1 : Opened Server's receive Q
-    Core 1 : Waiting for QMSS to be initialized...
+    Core 1 : Starting BIOS...
+    Core 2 : Starting BIOS...
+    Core 3 : Starting BIOS...
+    Core 0 : Starting BIOS...
+    Core 0 : Created RM packet heap
+    Core 0 : Created IPC MessageQ heap
+    Core 0 : Created receive Q for Client1
+    Core 1 : Opened RM packet heap
+    Core 2 : Opened RM packet heap
+    Core 3 : Opened RM packet heap
+    Core 1 : Opened IPC MessageQ heap
+    Core 2 : Opened IPC MessageQ heap
+    Core 3 : Opened IPC MessageQ heap
+    Core 1 : Created receive Q for Server
+    Core 2 : Created receive Q for Server
+    Core 3 : Created receive Q for Server
+    Core 1 : Opened Server's receive Q
+    Core 1 : Waiting for QMSS to be initialized...
 
-    Core 0 : Opened Client1's receive Q for Server
-    Core 0 : Created receive Q for Client2
-    Core 0 : Opened Client2's receive Q for Server
-    Core 0 : Created receive Q for Client3
-    Core 2 : Opened Server's receive Q
-    Core 2 : Waiting for QMSS to be initialized...
+    Core 0 : Opened Client1's receive Q for Server
+    Core 0 : Created receive Q for Client2
+    Core 0 : Opened Client2's receive Q for Server
+    Core 0 : Created receive Q for Client3
+    Core 2 : Opened Server's receive Q
+    Core 2 : Waiting for QMSS to be initialized...
 
-    Core 0 : Opened Client3's receive Q for Server
+    Core 0 : Opened Client3's receive Q for Server
 
     -----------------------Initializing---------------------------
-    Core 0 : L1D cache size 4. L2 cache size 0.
-    Core 0 : Memory region 0 inserted
-    Core 0 : Memory region 1 inserted
-    Core 0 : Tx Completion Queue Number     : 897 opened
-    Core 0 : Number of Tx descriptors requested : 32. Number of descriptors allocated : 32
-    Core 0 : Number of Rx descriptors requested : 32. Number of descriptors allocated : 32
-    Core 0 : Number of Sync free descriptors requested : 32. Number of descriptors allocated : 32
-    Core 0 : Sync Queue Number              : 9025 opened
-    Core 0 : Sync Cfg Queue Number          : 9026 opened
-    Core 0 : Sync Free Queue Number         : 898 opened
-    Core 0 : Receive Free Queue Number      : 736 opened
-    Core 0 : Transmit Free Queue Number     : 8928 opened
-    Core 0 : System initialization completed: 8928
-    Core 0 : Publishing RM nameserver names for shared queues
+    Core 0 : L1D cache size 4. L2 cache size 0.
+    Core 0 : Memory region 0 inserted
+    Core 0 : Memory region 1 inserted
+    Core 0 : Tx Completion Queue Number     : 897 opened
+    Core 0 : Number of Tx descriptors requested : 32. Number of descriptors allocated : 32
+    Core 0 : Number of Rx descriptors requested : 32. Number of descriptors allocated : 32
+    Core 0 : Number of Sync free descriptors requested : 32. Number of descriptors allocated : 32
+    Core 0 : Sync Queue Number              : 9025 opened
+    Core 0 : Sync Cfg Queue Number          : 9026 opened
+    Core 0 : Sync Free Queue Number         : 898 opened
+    Core 0 : Receive Free Queue Number      : 736 opened
+    Core 0 : Transmit Free Queue Number     : 8928 opened
+    Core 0 : System initialization completed: 8928
+    Core 0 : Publishing RM nameserver names for shared queues
 
     --------------------Queue status CORE 0----------------------
                         After Initialization
 
-    Tx Free Queue 8928 Entry Count            : 32
-    Rx Free Queue 736 Entry Count            : 32
-    Tx completion Queue 897 Entry Count     : 0
-    Sync Queue 9025 Entry Count              : 0
-    Sync free Queue 898 Entry Count         : 32
-    Sync Cfg Queue 9026 Entry Count          : 0
+    Tx Free Queue 8928 Entry Count            : 32
+    Rx Free Queue 736 Entry Count            : 32
+    Tx completion Queue 897 Entry Count     : 0
+    Sync Queue 9025 Entry Count              : 0
+    Sync free Queue 898 Entry Count         : 32
+    Sync Cfg Queue 9026 Entry Count          : 0
     -------------------------------------------------------------
 
-    Core 0 : Registering High Priority interrupt channel : 0 eventId : 48 queue Number : 704
+    Core 0 : Registering High Priority interrupt channel : 0 eventId : 48 queue Number : 704
 
 
-    Core 3 : Opened Server's receive Q
-    Core 1 : QMSS initialization done.
-    Core 2 : QMSS initialization done.
-    Core 3 : Waiting for QMSS to be initialized...
+    Core 3 : Opened Server's receive Q
+    Core 1 : QMSS initialization done.
+    Core 2 : QMSS initialization done.
+    Core 3 : Waiting for QMSS to be initialized...
 
 
 
 
-    Core 3 : QMSS initialization done.
+    Core 3 : QMSS initialization done.
 
-    Core 1 : Rx Free Queue Number       : 736 opened
-    Core 2 : Rx Free Queue Number       : 736 opened
-    Core 3 : Rx Free Queue Number       : 736 opened
-    Core 1 : Tx Free Queue Number       : 8928 opened
-    Core 2 : Tx Free Queue Number       : 8928 opened
-    Core 3 : Tx Free Queue Number       : 8928 opened
-    Core 1 : Tx Completion Queue Number : 897 opened
-    Core 2 : Tx Completion Queue Number : 897 opened
-    Core 3 : Tx Completion Queue Number : 897 opened
-    Core 1 : Sync Queue Number          : 9025 opened
-    Core 2 : Sync Queue Number          : 9025 opened
-    Core 3 : Sync Queue Number          : 9025 opened
-    Core 1 : Sync Free Queue Number     : 898 opened
-    Core 2 : Sync Free Queue Number     : 898 opened
-    Core 3 : Sync Free Queue Number     : 898 opened
-    Core 1 : Sync Cfg Queue Number      : 9026 opened
-    Core 2 : Sync Cfg Queue Number      : 9026 opened
-    Core 3 : Sync Cfg Queue Number      : 9026 opened
-    Core 1 : Registering High Priority interrupt channel : 1 eventId : 48 queue Number : 705
-    Core 2 : Registering High Priority interrupt channel : 2 eventId : 48 queue Number : 706
-    Core 3 : Registering High Priority interrupt channel : 3 eventId : 48 queue Number : 707
-    Core 1 : Waiting for sync signal
-    Core 2 : Waiting for sync signal
-    Core 3 : Waiting for sync signal
-    Core 0 : Opened Tx channel      : 0
-    Core 0 : Opened Rx channel      : 0
-    Core 0 : Transmit Queue Number  : 800
-    Core 0 : Receive Queue Number   : 704
-    Core 0 : Opened Rx flow         : 0
-    Core 0 : High priority accumulator programmed for channel : 0 queue : 704
+    Core 1 : Rx Free Queue Number       : 736 opened
+    Core 2 : Rx Free Queue Number       : 736 opened
+    Core 3 : Rx Free Queue Number       : 736 opened
+    Core 1 : Tx Free Queue Number       : 8928 opened
+    Core 2 : Tx Free Queue Number       : 8928 opened
+    Core 3 : Tx Free Queue Number       : 8928 opened
+    Core 1 : Tx Completion Queue Number : 897 opened
+    Core 2 : Tx Completion Queue Number : 897 opened
+    Core 3 : Tx Completion Queue Number : 897 opened
+    Core 1 : Sync Queue Number          : 9025 opened
+    Core 2 : Sync Queue Number          : 9025 opened
+    Core 3 : Sync Queue Number          : 9025 opened
+    Core 1 : Sync Free Queue Number     : 898 opened
+    Core 2 : Sync Free Queue Number     : 898 opened
+    Core 3 : Sync Free Queue Number     : 898 opened
+    Core 1 : Sync Cfg Queue Number      : 9026 opened
+    Core 2 : Sync Cfg Queue Number      : 9026 opened
+    Core 3 : Sync Cfg Queue Number      : 9026 opened
+    Core 1 : Registering High Priority interrupt channel : 1 eventId : 48 queue Number : 705
+    Core 2 : Registering High Priority interrupt channel : 2 eventId : 48 queue Number : 706
+    Core 3 : Registering High Priority interrupt channel : 3 eventId : 48 queue Number : 707
+    Core 1 : Waiting for sync signal
+    Core 2 : Waiting for sync signal
+    Core 3 : Waiting for sync signal
+    Core 0 : Opened Tx channel      : 0
+    Core 0 : Opened Rx channel      : 0
+    Core 0 : Transmit Queue Number  : 800
+    Core 0 : Receive Queue Number   : 704
+    Core 0 : Opened Rx flow         : 0
+    Core 0 : High priority accumulator programmed for channel : 0 queue : 704
 
-    Core 0 : Transmitting 8 packets..........
-
-    *************************************************************
-    Core 0 : Opened Tx channel      : 0
-    Core 0 : Opened Rx channel      : 0
-    Core 0 : Transmit Queue Number  : 800
-    Core 0 : Receive Queue Number   : 705
-    Core 0 : Opened Rx flow         : 0
-    Core 0 : High priority accumulator programmed for channel : 1 queue : 705
-
-    Core 0 : Transmitting 8 packets..........
+    Core 0 : Transmitting 8 packets..........
 
     *************************************************************
-    Core 0 : Opened Tx channel      : 0
-    Core 0 : Opened Rx channel      : 0
-    Core 0 : Transmit Queue Number  : 800
-    Core 0 : Receive Queue Number   : 706
-    Core 0 : Opened Rx flow         : 0
-    Core 0 : High priority accumulator programmed for channel : 2 queue : 706
+    Core 0 : Opened Tx channel      : 0
+    Core 0 : Opened Rx channel      : 0
+    Core 0 : Transmit Queue Number  : 800
+    Core 0 : Receive Queue Number   : 705
+    Core 0 : Opened Rx flow         : 0
+    Core 0 : High priority accumulator programmed for channel : 1 queue : 705
 
-    Core 0 : Transmitting 8 packets..........
-
-    *************************************************************
-    Core 0 : Opened Tx channel      : 0
-    Core 0 : Opened Rx channel      : 0
-    Core 0 : Transmit Queue Number  : 800
-    Core 0 : Receive Queue Number   : 707
-    Core 0 : Opened Rx flow         : 0
-    Core 0 : High priority accumulator programmed for channel : 3 queue : 707
-
-    Core 0 : Transmitting 8 packets..........
+    Core 0 : Transmitting 8 packets..........
 
     *************************************************************
-    Core 0 : Waiting for sync signal
-    Core 0 : Got sync signal
+    Core 0 : Opened Tx channel      : 0
+    Core 0 : Opened Rx channel      : 0
+    Core 0 : Transmit Queue Number  : 800
+    Core 0 : Receive Queue Number   : 706
+    Core 0 : Opened Rx flow         : 0
+    Core 0 : High priority accumulator programmed for channel : 2 queue : 706
+
+    Core 0 : Transmitting 8 packets..........
+
+    *************************************************************
+    Core 0 : Opened Tx channel      : 0
+    Core 0 : Opened Rx channel      : 0
+    Core 0 : Transmit Queue Number  : 800
+    Core 0 : Receive Queue Number   : 707
+    Core 0 : Opened Rx flow         : 0
+    Core 0 : High priority accumulator programmed for channel : 3 queue : 707
+
+    Core 0 : Transmitting 8 packets..........
+
+    *************************************************************
+    Core 0 : Waiting for sync signal
+    Core 0 : Got sync signal
     *************************************************************
 
 
     --------------------Queue status CORE 0----------------------
                         After packet processing
 
-    Tx Free Queue 8928 Entry Count            : 0
-    Rx Free Queue 736 Entry Count            : 32
-    Tx completion Queue 897 Entry Count     : 32
-    Sync Queue 9025 Entry Count              : 4
-    Sync free Queue 898 Entry Count         : 27
-    Sync Cfg Queue 9026 Entry Count          : 1
+    Tx Free Queue 8928 Entry Count            : 0
+    Rx Free Queue 736 Entry Count            : 32
+    Tx completion Queue 897 Entry Count     : 32
+    Sync Queue 9025 Entry Count              : 4
+    Sync free Queue 898 Entry Count         : 27
+    Sync Cfg Queue 9026 Entry Count          : 1
     -------------------------------------------------------------
 
-    Core 0 : Waiting for other cores to ack sync signal
-    Core 1 : Got sync signal
-    Core 2 : Got sync signal
-    Core 3 : Got sync signal
+    Core 0 : Waiting for other cores to ack sync signal
+    Core 1 : Got sync signal
+    Core 2 : Got sync signal
+    Core 3 : Got sync signal
     *************************************************************
     *************************************************************
     *************************************************************
 
 
 
-    Core 0 : acks found
+    Core 0 : acks found
 
     --------------------Deinitializing---------------------------
 
     --------------------Queue status CORE 0----------------------
                         Before exit
 
-    Tx Free Queue 8928 Entry Count            : 0
-    Rx Free Queue 736 Entry Count            : 32
-    Tx completion Queue 897 Entry Count     : 32
-    Sync Queue 9025 Entry Count              : 0
-    Sync free Queue 898 Entry Count         : 28
-    Sync Cfg Queue 9026 Entry Count          : 4
+    Tx Free Queue 8928 Entry Count            : 0
+    Rx Free Queue 736 Entry Count            : 32
+    Tx completion Queue 897 Entry Count     : 32
+    Sync Queue 9025 Entry Count              : 0
+    Sync free Queue 898 Entry Count         : 28
+    Sync Cfg Queue 9026 Entry Count          : 4
     -------------------------------------------------------------
 
-    Core 0 : Receive free queue closed successfully. Ref count : 0
-    Core 0 : Transmit completion queue closed successfully. Ref count : 3
-    Core 0 : Transmit free queue closed successfully. Ref count : 3
-    Core 0 : Sync queue closed successfully. Ref count : 3
-    Core 0 : Sync free queue closed successfully. Ref count : 3
-    Core 0 : Sync queue closed successfully. Ref count : 3
-    Core 0 : CPPI CPDMA closed successfully
-    Core 0 : CPPI exit successful
+    Core 0 : Receive free queue closed successfully. Ref count : 0
+    Core 0 : Transmit completion queue closed successfully. Ref count : 3
+    Core 0 : Transmit free queue closed successfully. Ref count : 3
+    Core 0 : Sync queue closed successfully. Ref count : 3
+    Core 0 : Sync free queue closed successfully. Ref count : 3
+    Core 0 : Sync queue closed successfully. Ref count : 3
+    Core 0 : CPPI CPDMA closed successfully
+    Core 0 : CPPI exit successful
     Core 0: Cleaning regions
     Core 0: exit QMSS
-    Core 1 : Receive free queue closed successfully. Ref count : 3
-    Core 2 : Receive free queue closed successfully. Ref count : 2
-    Core 3 : Receive free queue closed successfully. Ref count : 1
-    Core 1 : Transmit completion queue closed successfully. Ref count : 2
-    Core 2 : Transmit completion queue closed successfully. Ref count : 1
-    Core 3 : Transmit completion queue closed successfully. Ref count : 0
-    Core 1 : Transmit free queue closed successfully. Ref count : 2
-    Core 2 : Transmit free queue closed successfully. Ref count : 1
-    Core 3 : Transmit free queue closed successfully. Ref count : 0
-    Core 1 : Sync queue closed successfully. Ref count : 2
-    Core 2 : Sync queue closed successfully. Ref count : 1
-    Core 3 : Sync queue closed successfully. Ref count : 0
-    Core 1 : Sync free queue closed successfully. Ref count : 2
-    Core 2 : Sync free queue closed successfully. Ref count : 1
-    Core 3 : Sync free queue closed successfully. Ref count : 0
-    Core 1 : Sync queue closed successfully. Ref count : 2
-    Core 2 : Sync queue closed successfully. Ref count : 1
-    Core 3 : Sync queue closed successfully. Ref count : 0
+    Core 1 : Receive free queue closed successfully. Ref count : 3
+    Core 2 : Receive free queue closed successfully. Ref count : 2
+    Core 3 : Receive free queue closed successfully. Ref count : 1
+    Core 1 : Transmit completion queue closed successfully. Ref count : 2
+    Core 2 : Transmit completion queue closed successfully. Ref count : 1
+    Core 3 : Transmit completion queue closed successfully. Ref count : 0
+    Core 1 : Transmit free queue closed successfully. Ref count : 2
+    Core 2 : Transmit free queue closed successfully. Ref count : 1
+    Core 3 : Transmit free queue closed successfully. Ref count : 0
+    Core 1 : Sync queue closed successfully. Ref count : 2
+    Core 2 : Sync queue closed successfully. Ref count : 1
+    Core 3 : Sync queue closed successfully. Ref count : 0
+    Core 1 : Sync free queue closed successfully. Ref count : 2
+    Core 2 : Sync free queue closed successfully. Ref count : 1
+    Core 3 : Sync free queue closed successfully. Ref count : 0
+    Core 1 : Sync queue closed successfully. Ref count : 2
+    Core 2 : Sync queue closed successfully. Ref count : 1
+    Core 3 : Sync queue closed successfully. Ref count : 0
     *******************************************************
     *******************************************************
     *******************************************************
@@ -318,14 +318,14 @@ This came from K2K multicore example:
     *******************************************************
     *******************************************************
     *******************************************************
-    Core 0 : Deleting RM nameserver names for shared queues
+    Core 0 : Deleting RM nameserver names for shared queues
     Instance name: RM_Server
     Handle: 0x00854578
     Type:   Server
 
     Resource Status:
 
-    Core 0 : All resources freed successfully
+    Core 0 : All resources freed successfully
     *******************************************************
     ******** QMSS Multicore (0) Example Done (PASS) *******
     *******************************************************

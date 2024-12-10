@@ -450,7 +450,7 @@ The expected output on the Linux-side should be:
 
 ::
 
-    Using numLoops: 100; procId : 1
+    Using numLoops: 100; procId : 1
     Entered MessageQApp_execute
     Local MessageQId: 0x1
     Remote queueId  [0x10000]

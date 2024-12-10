@@ -1075,11 +1075,11 @@ Below commands will be redirected to the phy driver:
 
 ::
 
-       [ speed %d ]
+       [ speed %d ]
        [ duplex half|full ]
        [ autoneg on|off ]
        [ wol p|u|m|b|a|g|s|d... ]
-       [ sopass %x:%x:%x:%x:%x:%x ]
+       [ sopass %x:%x:%x:%x:%x:%x ]
 
 .. note::
 
@@ -1096,7 +1096,7 @@ Sets the driver message type flags by name or number
 
 ::
 
-           [ msglvl %d | msglvl type on|off ... ]
+           [ msglvl %d | msglvl type on|off ... ]
            # ethtool -s eth0 msglvl drv off
            # ethtool -s eth0 msglvl ifdown off
            # ethtool -s eth0 msglvl ifup off

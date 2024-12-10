@@ -33,11 +33,11 @@ does the following things:
    :name: how-to-run-the-setup-script
 
 The Setup Script (**setup.sh**) is located in the |__SDK_FULL_NAME__| installation
-directory.  By default, this directory has a name that has the form
+directory.  By default, this directory has a name that has the form
 |__SDK_INSTALL_DIR__|.
 
 
-Change to that ti-processor-sdk-linux install directory.
+Change to that ti-processor-sdk-linux install directory.
 Then run the script:
 
 **./setup.sh**
@@ -87,7 +87,7 @@ packages may vary for different releases:
 .. note::
     This part requires you to have administrator priviliges (sudo access).
 
-This step is required for users using Ubuntu 12.04+. By default the
+This step is required for users using Ubuntu 12.04+. By default the
 user does not have the proper permissions to access a serial device ( ex
 ttyS0, ttyUSB0, etc...). A user must be apart of a "dialout" group to
 access these serial device without root privileges.

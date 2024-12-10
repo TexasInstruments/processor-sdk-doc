@@ -24,13 +24,13 @@ Hardware Prerequisites
 
     -  TI AM64x GP EVM and power supply
 
-    -  TI FSI serial interface (FSI) adapter board: `TMDSFSIADAPEVM <https://www.ti.com/tool/TMDSFSIADAPEVM>`_
+    -  TI FSI serial interface (FSI) adapter board: `TMDSFSIADAPEVM <https://www.ti.com/tool/TMDSFSIADAPEVM>`_
 
 - 3x Seconary Nodes, for each Seconary Node:
 
     -  TI F280049 Launchpad: `LAUNCHXL-F280049C <https://www.ti.com/tool/LAUNCHXL-F280049C>`_
 
-    -  TI FSI serial interface (FSI) adapter board: `TMDSFSIADAPEVM <https://www.ti.com/tool/TMDSFSIADAPEVM>`_
+    -  TI FSI serial interface (FSI) adapter board: `TMDSFSIADAPEVM <https://www.ti.com/tool/TMDSFSIADAPEVM>`_
 
     -  TI GaNFET BoosterPack: `BOOSTXL-3PHGANINV <https://www.ti.com/tool/BOOSTXL-3PHGANINV>`_
 
@@ -835,7 +835,7 @@ Directory Contents
 The source code can be found at `[this link] <https://git.ti.com/cgit/processor-sdk/sitara-apps/>`__.
 
 +----+------------------------------------------------------+-------------------------------+
-|    | **Directory Name**                                   | **Description**               |
+|    | **Directory Name**                                   | **Description**               |
 +====+======================================================+===============================+
 | 1  | apps/servo_drive_demo/c2000_slave/                   | Contains a README, C2000      |
 |    |                                                      | binary for the F28004x        |

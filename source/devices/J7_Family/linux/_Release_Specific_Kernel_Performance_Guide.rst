@@ -1,3 +1,4 @@
+.. include:: <isonum.txt>
 
 ======================================
  Linux 10.01 Performance Guide
@@ -310,8 +311,8 @@ Execute the benchmark with the following:
 
 CoreMarkPro
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-CoreMark®-Pro is a comprehensive, advanced processor benchmark that works with
-and enhances the market-proven industry-standard EEMBC CoreMark® benchmark.
+CoreMark\ |reg|\ -Pro is a comprehensive, advanced processor benchmark that works with
+and enhances the market-proven industry-standard EEMBC CoreMark\ |reg| benchmark.
 While CoreMark stresses the CPU pipeline, CoreMark-Pro tests the entire processor,
 adding comprehensive support for multicore technology, a combination of integer
 and floating-point workloads, and data sets for utilizing larger memory subsystems.

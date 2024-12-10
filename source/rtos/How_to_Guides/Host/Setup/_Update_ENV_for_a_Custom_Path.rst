@@ -48,7 +48,7 @@ installed somewhere other than the default C:\\ti location.
 
 For example, environment configuration assuming CCS is installed to
 [os_base]\\ti_temp and SDK RTOS has been installed to default path,
-[os_base]\\ti :
+[os_base]\\ti :
 
 -  Windows
 
@@ -68,30 +68,30 @@ Gives the output:
 
 ::
 
-    Optional parameter not configured : CG_XML_BIN_INSTALL_PATH
+    Optional parameter not configured : CG_XML_BIN_INSTALL_PATH
     REQUIRED for xdc release build
     Example: set CG_XML_BIN_INSTALL_PATH=C:/ti/cg_xml/bin
-    Optional parameter not configured : DOXYGEN_INSTALL_PATH
+    Optional parameter not configured : DOXYGEN_INSTALL_PATH
     REQUIRED for xdc release build
     Example: set DOXYGEN_INSTALL_PATH=C:/ti/Doxygen/doxygen/1.5.1-p1/bin
     **************************************************************************
     Environment Configuration:
-        PDK Directory             : /ti/PDK_AM~3/packages/
-        CGTOOL INSTALL Directory  : C:/ti_temp/ccsv6/tools/compiler/ti-cgt-c6000_[version]
-        TOOLCHAIN A15 Directory   : C:/ti_temp/ccsv6/tools/compiler/gcc-arm-none-eabi-[version]
-        TOOLCHAIN A8 Directory    : C:/ti_temp/ccsv6/tools/compiler/gcc-arm-none-eabi-[version]
-        TOOLCHAIN A9 Directory    : C:/ti_temp/ccsv6/tools/compiler/gcc-arm-none-eabi-[version]
-        TOOLCHAIN M4 Directory    : C:/ti_temp/ccsv6/tools/compiler/ti-cgt-arm_[version]
-        FPULIB_PATH               : C:/ti_temp/ccsv6/tools/compiler/gcc-arm-none-eabi-[version]/lib/gcc/arm-none-eabi/[version]/fpu
-        CROSS_TOOL_PRFX           : arm-none-eabi-
-        XDC_INSTALL_PATH          : C:/ti/xdctools_[version]_core
-        BIOS_INSTALL_PATH         : C:/ti/bios_[version]
-        IPC_INSTALL_PATH          : C:/ti/ipc_[version]
-        EDMA3LLD_BIOS6_INSTALLDIR : C:/ti/edma3_lld_[version]
-        NDK_INSTALL_PATH          : C:/ti/ndk_[version]
-        IMGLIB_INSTALL_PATH       : C:/ti/imglib_c66x_[version]
-        UIA_INSTALL_PATH          : C:/ti/uia_[version]
-        PROC_SDK_INSTALL_PATH     : C:/ti/processor_sdk_rtos_[soc]_[version]
+        PDK Directory             : /ti/PDK_AM~3/packages/
+        CGTOOL INSTALL Directory  : C:/ti_temp/ccsv6/tools/compiler/ti-cgt-c6000_[version]
+        TOOLCHAIN A15 Directory   : C:/ti_temp/ccsv6/tools/compiler/gcc-arm-none-eabi-[version]
+        TOOLCHAIN A8 Directory    : C:/ti_temp/ccsv6/tools/compiler/gcc-arm-none-eabi-[version]
+        TOOLCHAIN A9 Directory    : C:/ti_temp/ccsv6/tools/compiler/gcc-arm-none-eabi-[version]
+        TOOLCHAIN M4 Directory    : C:/ti_temp/ccsv6/tools/compiler/ti-cgt-arm_[version]
+        FPULIB_PATH               : C:/ti_temp/ccsv6/tools/compiler/gcc-arm-none-eabi-[version]/lib/gcc/arm-none-eabi/[version]/fpu
+        CROSS_TOOL_PRFX           : arm-none-eabi-
+        XDC_INSTALL_PATH          : C:/ti/xdctools_[version]_core
+        BIOS_INSTALL_PATH         : C:/ti/bios_[version]
+        IPC_INSTALL_PATH          : C:/ti/ipc_[version]
+        EDMA3LLD_BIOS6_INSTALLDIR : C:/ti/edma3_lld_[version]
+        NDK_INSTALL_PATH          : C:/ti/ndk_[version]
+        IMGLIB_INSTALL_PATH       : C:/ti/imglib_c66x_[version]
+        UIA_INSTALL_PATH          : C:/ti/uia_[version]
+        PROC_SDK_INSTALL_PATH     : C:/ti/processor_sdk_rtos_[soc]_[version]
     **************************************************************************
     Changing to short name to support directory names containing spaces
     current directory: C:/ti/processor_sdk_rtos_[soc]_[version]
@@ -116,30 +116,30 @@ Gives the output:
 
 ::
 
-    Optional parameter not configured : CG_XML_BIN_INSTALL_PATH
+    Optional parameter not configured : CG_XML_BIN_INSTALL_PATH
     REQUIRED for xdc release build
     Example: export CG_XML_BIN_INSTALL_PATH="~/ti/cg_xml/bin"
-    Optional parameter not configured : DOXYGEN_INSTALL_PATH
+    Optional parameter not configured : DOXYGEN_INSTALL_PATH
     REQUIRED for xdc release build
     Example: export DOXYGEN_INSTALL_PATH="~/ti/Doxygen/doxygen/1.5.1-p1/bin"
     **************************************************************************
     Environment Configuration:
-        PDK Directory             : /home/[user]/ti/pdk_[soc]_[version]/packages
-        CGTOOL INSTALL Directory  : /home/[user]/ti_temp/ccsv6/tools/compiler/ti-cgt-c6000_[version]
-        TOOLCHAIN A15 Directory   : /home/[user]/ti_temp/ccsv6/tools/compiler/gcc-arm-none-eabi-[version]
-        TOOLCHAIN A8 Directory    : /home/[user]/ti_temp/ccsv6/tools/compiler/gcc-arm-none-eabi-[version]
-        TOOLCHAIN A9 Directory    : /home/[user]/ti_temp/ccsv6/tools/compiler/gcc-arm-none-eabi-[version]
-        TOOLCHAIN M4 Directory    : /home/[user]/ti_temp/ccsv6/tools/compiler/ti-cgt-arm_[version]
-        FPULIB_PATH               : /home/[user]/ti_temp/ccsv6/tools/compiler/gcc-arm-none-eabi-[version]/lib/gcc/arm-none-eabi/[version]/fpu
-        CROSS_TOOL_PRFX           : arm-none-eabi-
-        XDC_INSTALL_PATH          : /home/[user]/ti/xdctools_[version]_core
-        BIOS_INSTALL_PATH         : /home/[user]/ti/bios_[version]
-        IPC_INSTALL_PATH          : /home/[user]/ti/ipc_[version]
-        EDMA3LLD_BIOS6_INSTALLDIR : /home/[user]/ti/edma3_lld_[version]
-        NDK_INSTALL_PATH          : /home/[user]/ti/ndk_[version]
-        IMGLIB_INSTALL_PATH       : /home/[user]/ti/imglib_c66x_[version]
-        UIA_INSTALL_PATH          : /home/[user]/ti/uia_[version]
-        PROC_SDK_INSTALL_PATH     : /home/[user]/ti/processor_sdk_rtos_[soc]_[version]
+        PDK Directory             : /home/[user]/ti/pdk_[soc]_[version]/packages
+        CGTOOL INSTALL Directory  : /home/[user]/ti_temp/ccsv6/tools/compiler/ti-cgt-c6000_[version]
+        TOOLCHAIN A15 Directory   : /home/[user]/ti_temp/ccsv6/tools/compiler/gcc-arm-none-eabi-[version]
+        TOOLCHAIN A8 Directory    : /home/[user]/ti_temp/ccsv6/tools/compiler/gcc-arm-none-eabi-[version]
+        TOOLCHAIN A9 Directory    : /home/[user]/ti_temp/ccsv6/tools/compiler/gcc-arm-none-eabi-[version]
+        TOOLCHAIN M4 Directory    : /home/[user]/ti_temp/ccsv6/tools/compiler/ti-cgt-arm_[version]
+        FPULIB_PATH               : /home/[user]/ti_temp/ccsv6/tools/compiler/gcc-arm-none-eabi-[version]/lib/gcc/arm-none-eabi/[version]/fpu
+        CROSS_TOOL_PRFX           : arm-none-eabi-
+        XDC_INSTALL_PATH          : /home/[user]/ti/xdctools_[version]_core
+        BIOS_INSTALL_PATH         : /home/[user]/ti/bios_[version]
+        IPC_INSTALL_PATH          : /home/[user]/ti/ipc_[version]
+        EDMA3LLD_BIOS6_INSTALLDIR : /home/[user]/ti/edma3_lld_[version]
+        NDK_INSTALL_PATH          : /home/[user]/ti/ndk_[version]
+        IMGLIB_INSTALL_PATH       : /home/[user]/ti/imglib_c66x_[version]
+        UIA_INSTALL_PATH          : /home/[user]/ti/uia_[version]
+        PROC_SDK_INSTALL_PATH     : /home/[user]/ti/processor_sdk_rtos_[soc]_[version]
 
     PROCESSOR SDK BUILD ENVIRONMENT CONFIGURED
     *******************************************************************************
@@ -179,30 +179,30 @@ Gives the output:
 
 ::
 
-    Optional parameter not configured : CG_XML_BIN_INSTALL_PATH
+    Optional parameter not configured : CG_XML_BIN_INSTALL_PATH
     REQUIRED for xdc release build
     Example: set CG_XML_BIN_INSTALL_PATH=C:/ti/cg_xml/bin
-    Optional parameter not configured : DOXYGEN_INSTALL_PATH
+    Optional parameter not configured : DOXYGEN_INSTALL_PATH
     REQUIRED for xdc release build
     Example: set DOXYGEN_INSTALL_PATH=C:/ti/Doxygen/doxygen/1.5.1-p1/bin
     **************************************************************************
     Environment Configuration:
-        PDK Directory             : /ti_temp/PDK_AM~3/packages/
-        CGTOOL INSTALL Directory  : C:/ti/ccsv6/tools/compiler/ti-cgt-c6000_[version]
-        TOOLCHAIN A15 Directory   : C:/ti/ccsv6/tools/compiler/gcc-arm-none-eabi-[version]
-        TOOLCHAIN A8 Directory    : C:/ti/ccsv6/tools/compiler/gcc-arm-none-eabi-[version]
-        TOOLCHAIN A9 Directory    : C:/ti/ccsv6/tools/compiler/gcc-arm-none-eabi-[version]
-        TOOLCHAIN M4 Directory    : C:/ti/ccsv6/tools/compiler/ti-cgt-arm_[version]
-        FPULIB_PATH               : C:/ti/ccsv6/tools/compiler/gcc-arm-none-eabi-[version]/lib/gcc/arm-none-eabi/[version]/fpu
-        CROSS_TOOL_PRFX           : arm-none-eabi-
-        XDC_INSTALL_PATH          : C:/ti_temp/xdctools_[version]_core
-        BIOS_INSTALL_PATH         : C:/ti_temp/bios_[version]
-        IPC_INSTALL_PATH          : C:/ti_temp/ipc_[version]
-        EDMA3LLD_BIOS6_INSTALLDIR : C:/ti_temp/edma3_lld_[version]
-        NDK_INSTALL_PATH          : C:/ti_temp/ndk_[version]
-        IMGLIB_INSTALL_PATH       : C:/ti_temp/imglib_c66x_[version]
-        UIA_INSTALL_PATH          : C:/ti_temp/uia_[version]
-        PROC_SDK_INSTALL_PATH     : C:/ti_temp/processor_sdk_rtos_[soc]_[version]
+        PDK Directory             : /ti_temp/PDK_AM~3/packages/
+        CGTOOL INSTALL Directory  : C:/ti/ccsv6/tools/compiler/ti-cgt-c6000_[version]
+        TOOLCHAIN A15 Directory   : C:/ti/ccsv6/tools/compiler/gcc-arm-none-eabi-[version]
+        TOOLCHAIN A8 Directory    : C:/ti/ccsv6/tools/compiler/gcc-arm-none-eabi-[version]
+        TOOLCHAIN A9 Directory    : C:/ti/ccsv6/tools/compiler/gcc-arm-none-eabi-[version]
+        TOOLCHAIN M4 Directory    : C:/ti/ccsv6/tools/compiler/ti-cgt-arm_[version]
+        FPULIB_PATH               : C:/ti/ccsv6/tools/compiler/gcc-arm-none-eabi-[version]/lib/gcc/arm-none-eabi/[version]/fpu
+        CROSS_TOOL_PRFX           : arm-none-eabi-
+        XDC_INSTALL_PATH          : C:/ti_temp/xdctools_[version]_core
+        BIOS_INSTALL_PATH         : C:/ti_temp/bios_[version]
+        IPC_INSTALL_PATH          : C:/ti_temp/ipc_[version]
+        EDMA3LLD_BIOS6_INSTALLDIR : C:/ti_temp/edma3_lld_[version]
+        NDK_INSTALL_PATH          : C:/ti_temp/ndk_[version]
+        IMGLIB_INSTALL_PATH       : C:/ti_temp/imglib_c66x_[version]
+        UIA_INSTALL_PATH          : C:/ti_temp/uia_[version]
+        PROC_SDK_INSTALL_PATH     : C:/ti_temp/processor_sdk_rtos_[soc]_[version]
     **************************************************************************
     Changing to short name to support directory names containing spaces
     current directory: C:/ti_temp/processor_sdk_rtos_[soc]_[version]
@@ -227,30 +227,30 @@ Gives the output:
 
 ::
 
-    Optional parameter not configured : CG_XML_BIN_INSTALL_PATH
+    Optional parameter not configured : CG_XML_BIN_INSTALL_PATH
     REQUIRED for xdc release build
     Example: export CG_XML_BIN_INSTALL_PATH="~/ti/cg_xml/bin"
-    Optional parameter not configured : DOXYGEN_INSTALL_PATH
+    Optional parameter not configured : DOXYGEN_INSTALL_PATH
     REQUIRED for xdc release build
     Example: export DOXYGEN_INSTALL_PATH="~/ti/Doxygen/doxygen/1.5.1-p1/bin"
     **************************************************************************
     Environment Configuration:
-        PDK Directory             : /home/[user]/ti_temp/pdk_[soc]_[version]/packages
-        CGTOOL INSTALL Directory  : /home/[user]/ti/ccsv6/tools/compiler/ti-cgt-c6000_[version]
-        TOOLCHAIN A15 Directory   : /home/[user]/ti/ccsv6/tools/compiler/gcc-arm-none-eabi-[version]
-        TOOLCHAIN A8 Directory    : /home/[user]/ti/ccsv6/tools/compiler/gcc-arm-none-eabi-[version]
-        TOOLCHAIN A9 Directory    : /home/[user]/ti/ccsv6/tools/compiler/gcc-arm-none-eabi-[version]
-        TOOLCHAIN M4 Directory    : /home/[user]/ti/ccsv6/tools/compiler/ti-cgt-arm_[version]
-        FPULIB_PATH               : /home/[user]/ti/ccsv6/tools/compiler/gcc-arm-none-eabi-[version]/lib/gcc/arm-none-eabi/[version]/fpu
-        CROSS_TOOL_PRFX           : arm-none-eabi-
-        XDC_INSTALL_PATH          : /home/[user]/ti_temp/xdctools_[version]_core
-        BIOS_INSTALL_PATH         : /home/[user]/ti_temp/bios_[version]
-        IPC_INSTALL_PATH          : /home/[user]/ti_temp/ipc_[version]
-        EDMA3LLD_BIOS6_INSTALLDIR : /home/[user]/ti_temp/edma3_lld_[version]
-        NDK_INSTALL_PATH          : /home/[user]/ti_temp/ndk_[version]
-        IMGLIB_INSTALL_PATH       : /home/[user]/ti_temp/imglib_c66x_[version]
-        UIA_INSTALL_PATH          : /home/[user]/ti_temp/uia_[version]
-        PROC_SDK_INSTALL_PATH     : /home/[user]/ti_temp/processor_sdk_rtos_[soc]_[version]
+        PDK Directory             : /home/[user]/ti_temp/pdk_[soc]_[version]/packages
+        CGTOOL INSTALL Directory  : /home/[user]/ti/ccsv6/tools/compiler/ti-cgt-c6000_[version]
+        TOOLCHAIN A15 Directory   : /home/[user]/ti/ccsv6/tools/compiler/gcc-arm-none-eabi-[version]
+        TOOLCHAIN A8 Directory    : /home/[user]/ti/ccsv6/tools/compiler/gcc-arm-none-eabi-[version]
+        TOOLCHAIN A9 Directory    : /home/[user]/ti/ccsv6/tools/compiler/gcc-arm-none-eabi-[version]
+        TOOLCHAIN M4 Directory    : /home/[user]/ti/ccsv6/tools/compiler/ti-cgt-arm_[version]
+        FPULIB_PATH               : /home/[user]/ti/ccsv6/tools/compiler/gcc-arm-none-eabi-[version]/lib/gcc/arm-none-eabi/[version]/fpu
+        CROSS_TOOL_PRFX           : arm-none-eabi-
+        XDC_INSTALL_PATH          : /home/[user]/ti_temp/xdctools_[version]_core
+        BIOS_INSTALL_PATH         : /home/[user]/ti_temp/bios_[version]
+        IPC_INSTALL_PATH          : /home/[user]/ti_temp/ipc_[version]
+        EDMA3LLD_BIOS6_INSTALLDIR : /home/[user]/ti_temp/edma3_lld_[version]
+        NDK_INSTALL_PATH          : /home/[user]/ti_temp/ndk_[version]
+        IMGLIB_INSTALL_PATH       : /home/[user]/ti_temp/imglib_c66x_[version]
+        UIA_INSTALL_PATH          : /home/[user]/ti_temp/uia_[version]
+        PROC_SDK_INSTALL_PATH     : /home/[user]/ti_temp/processor_sdk_rtos_[soc]_[version]
 
     PROCESSOR SDK BUILD ENVIRONMENT CONFIGURED
     *******************************************************************************
@@ -286,7 +286,7 @@ be set to the custom install path **prior to running** the environment
 setup script.
 
 For example, environment configuration assuming CCS and the SDK have
-been installed to [os_base]\\new_sdk_release\\ :
+been installed to [os_base]\\new_sdk_release\\ :
 
 -  Windows
 
@@ -307,30 +307,30 @@ Gives the output:
 
 ::
 
-    Optional parameter not configured : CG_XML_BIN_INSTALL_PATH
+    Optional parameter not configured : CG_XML_BIN_INSTALL_PATH
     REQUIRED for xdc release build
     Example: set CG_XML_BIN_INSTALL_PATH=C:/ti/cg_xml/bin
-    Optional parameter not configured : DOXYGEN_INSTALL_PATH
+    Optional parameter not configured : DOXYGEN_INSTALL_PATH
     REQUIRED for xdc release build
     Example: set DOXYGEN_INSTALL_PATH=C:/ti/Doxygen/doxygen/1.5.1-p1/bin
     **************************************************************************
     Environment Configuration:
-        PDK Directory             : /NEW_SD~1/PDK_AM~1/packages/
-        CGTOOL INSTALL Directory  : C:/new_sdk_release/ccsv6/tools/compiler/ti-cgt-c6000_[version]
-        TOOLCHAIN A15 Directory   : C:/new_sdk_release/ccsv6/tools/compiler/gcc-arm-none-eabi-[version]
-        TOOLCHAIN A8 Directory    : C:/new_sdk_release/ccsv6/tools/compiler/gcc-arm-none-eabi-[version]
-        TOOLCHAIN A9 Directory    : C:/new_sdk_release/ccsv6/tools/compiler/gcc-arm-none-eabi-[version]
-        TOOLCHAIN M4 Directory    : C:/new_sdk_release/ccsv6/tools/compiler/ti-cgt-arm_[version]
-        FPULIB_PATH               : C:/new_sdk_release/ccsv6/tools/compiler/gcc-arm-none-eabi-[version]/lib/gcc/arm-none-eabi/[version]/fpu
-        CROSS_TOOL_PRFX           : arm-none-eabi-
-        XDC_INSTALL_PATH          : C:/new_sdk_release/xdctools_[version]_core
-        BIOS_INSTALL_PATH         : C:/new_sdk_release/bios_[version]
-        IPC_INSTALL_PATH          : C:/new_sdk_release/ipc_[version]
-        EDMA3LLD_BIOS6_INSTALLDIR : C:/new_sdk_release/edma3_lld_[version]
-        NDK_INSTALL_PATH          : C:/new_sdk_release/ndk_[version]
-        IMGLIB_INSTALL_PATH       : C:/new_sdk_release/imglib_c66x_[version]
-        UIA_INSTALL_PATH          : C:/new_sdk_release/uia_[version]
-        PROC_SDK_INSTALL_PATH     : C:/new_sdk_release/processor_sdk_rtos_[soc]_[version]
+        PDK Directory             : /NEW_SD~1/PDK_AM~1/packages/
+        CGTOOL INSTALL Directory  : C:/new_sdk_release/ccsv6/tools/compiler/ti-cgt-c6000_[version]
+        TOOLCHAIN A15 Directory   : C:/new_sdk_release/ccsv6/tools/compiler/gcc-arm-none-eabi-[version]
+        TOOLCHAIN A8 Directory    : C:/new_sdk_release/ccsv6/tools/compiler/gcc-arm-none-eabi-[version]
+        TOOLCHAIN A9 Directory    : C:/new_sdk_release/ccsv6/tools/compiler/gcc-arm-none-eabi-[version]
+        TOOLCHAIN M4 Directory    : C:/new_sdk_release/ccsv6/tools/compiler/ti-cgt-arm_[version]
+        FPULIB_PATH               : C:/new_sdk_release/ccsv6/tools/compiler/gcc-arm-none-eabi-[version]/lib/gcc/arm-none-eabi/[version]/fpu
+        CROSS_TOOL_PRFX           : arm-none-eabi-
+        XDC_INSTALL_PATH          : C:/new_sdk_release/xdctools_[version]_core
+        BIOS_INSTALL_PATH         : C:/new_sdk_release/bios_[version]
+        IPC_INSTALL_PATH          : C:/new_sdk_release/ipc_[version]
+        EDMA3LLD_BIOS6_INSTALLDIR : C:/new_sdk_release/edma3_lld_[version]
+        NDK_INSTALL_PATH          : C:/new_sdk_release/ndk_[version]
+        IMGLIB_INSTALL_PATH       : C:/new_sdk_release/imglib_c66x_[version]
+        UIA_INSTALL_PATH          : C:/new_sdk_release/uia_[version]
+        PROC_SDK_INSTALL_PATH     : C:/new_sdk_release/processor_sdk_rtos_[soc]_[version]
     **************************************************************************
     Changing to short name to support directory names containing spaces
     current directory: C:/new_sdk_release/processor_sdk_rtos_[soc]_[version]
@@ -356,30 +356,30 @@ Gives the output:
 
 ::
 
-    Optional parameter not configured : CG_XML_BIN_INSTALL_PATH
+    Optional parameter not configured : CG_XML_BIN_INSTALL_PATH
     REQUIRED for xdc release build
     Example: export CG_XML_BIN_INSTALL_PATH="~/ti/cg_xml/bin"
-    Optional parameter not configured : DOXYGEN_INSTALL_PATH
+    Optional parameter not configured : DOXYGEN_INSTALL_PATH
     REQUIRED for xdc release build
     Example: export DOXYGEN_INSTALL_PATH="~/ti/Doxygen/doxygen/1.5.1-p1/bin"
     **************************************************************************
     Environment Configuration:
-        PDK Directory             : /home/[user]/new_sdk_release/pdk_[soc]_[version]/packages
-        CGTOOL INSTALL Directory  : /home/[user]/new_sdk_release/ccsv6/tools/compiler/ti-cgt-c6000_[version]
-        TOOLCHAIN A15 Directory   : /home/[user]/new_sdk_release/ccsv6/tools/compiler/gcc-arm-none-eabi-[version]
-        TOOLCHAIN A8 Directory    : /home/[user]/new_sdk_release/ccsv6/tools/compiler/gcc-arm-none-eabi-[version]
-        TOOLCHAIN A9 Directory    : /home/[user]/new_sdk_release/ccsv6/tools/compiler/gcc-arm-none-eabi-[version]
-        TOOLCHAIN M4 Directory    : /home/[user]/new_sdk_release/ccsv6/tools/compiler/ti-cgt-arm_[version]
-        FPULIB_PATH               : /home/[user]/new_sdk_release/ccsv6/tools/compiler/gcc-arm-none-eabi-[version]/lib/gcc/arm-none-eabi/[version]/fpu
-        CROSS_TOOL_PRFX           : arm-none-eabi-
-        XDC_INSTALL_PATH          : /home/[user]/new_sdk_release/xdctools_[version]_core
-        BIOS_INSTALL_PATH         : /home/[user]/new_sdk_release/bios_[version]
-        IPC_INSTALL_PATH          : /home/[user]/new_sdk_release/ipc_[version]
-        EDMA3LLD_BIOS6_INSTALLDIR : /home/[user]/new_sdk_release/edma3_lld_[version]
-        NDK_INSTALL_PATH          : /home/[user]/new_sdk_release/ndk_[version]
-        IMGLIB_INSTALL_PATH       : /home/[user]/new_sdk_release/imglib_c66x_[version]
-        UIA_INSTALL_PATH          : /home/[user]/new_sdk_release/uia_[version]
-        PROC_SDK_INSTALL_PATH     : /home/[user]/new_sdk_release/processor_sdk_rtos_[soc]_[version]
+        PDK Directory             : /home/[user]/new_sdk_release/pdk_[soc]_[version]/packages
+        CGTOOL INSTALL Directory  : /home/[user]/new_sdk_release/ccsv6/tools/compiler/ti-cgt-c6000_[version]
+        TOOLCHAIN A15 Directory   : /home/[user]/new_sdk_release/ccsv6/tools/compiler/gcc-arm-none-eabi-[version]
+        TOOLCHAIN A8 Directory    : /home/[user]/new_sdk_release/ccsv6/tools/compiler/gcc-arm-none-eabi-[version]
+        TOOLCHAIN A9 Directory    : /home/[user]/new_sdk_release/ccsv6/tools/compiler/gcc-arm-none-eabi-[version]
+        TOOLCHAIN M4 Directory    : /home/[user]/new_sdk_release/ccsv6/tools/compiler/ti-cgt-arm_[version]
+        FPULIB_PATH               : /home/[user]/new_sdk_release/ccsv6/tools/compiler/gcc-arm-none-eabi-[version]/lib/gcc/arm-none-eabi/[version]/fpu
+        CROSS_TOOL_PRFX           : arm-none-eabi-
+        XDC_INSTALL_PATH          : /home/[user]/new_sdk_release/xdctools_[version]_core
+        BIOS_INSTALL_PATH         : /home/[user]/new_sdk_release/bios_[version]
+        IPC_INSTALL_PATH          : /home/[user]/new_sdk_release/ipc_[version]
+        EDMA3LLD_BIOS6_INSTALLDIR : /home/[user]/new_sdk_release/edma3_lld_[version]
+        NDK_INSTALL_PATH          : /home/[user]/new_sdk_release/ndk_[version]
+        IMGLIB_INSTALL_PATH       : /home/[user]/new_sdk_release/imglib_c66x_[version]
+        UIA_INSTALL_PATH          : /home/[user]/new_sdk_release/uia_[version]
+        PROC_SDK_INSTALL_PATH     : /home/[user]/new_sdk_release/processor_sdk_rtos_[soc]_[version]
 
     PROCESSOR SDK BUILD ENVIRONMENT CONFIGURED
     *******************************************************************************

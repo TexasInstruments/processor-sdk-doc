@@ -478,7 +478,7 @@ detailed description is given below.
 .. code-block:: c
 
     /*Read till all queues are empty*/
-    while(allQueuesEempty != 1 && numPacketsInLoop <= ((((ICSSEMAC_Object*)icssEmacHandle->object)->emacInitcfg)->pacingThreshold))
+    while(allQueuesEempty != 1 && numPacketsInLoop <= ((((ICSSEMAC_Object*)icssEmacHandle->object)->emacInitcfg)->pacingThreshold))
     {
          /*This API reads the queues and gets the queue and port number for each packet*/
          pLength = ICSS_EmacRxPktInfo(icssEmacHandle, &port_number, &queue_number);
@@ -493,7 +493,7 @@ detailed description is given below.
               else
               {
                    /*Protocol specific callback*/
-                   if(((((ICSSEMAC_Object*)icssEmacHandle->object)->callBackHandle)->rxRTCallBack)->callBack != NULL)
+                   if(((((ICSSEMAC_Object*)icssEmacHandle->object)->callBackHandle)->rxRTCallBack)->callBack != NULL)
                    {
                         ((((ICSSEMAC_Object*)icssEmacHandle->object)->callBackHandle)->rxRTCallBack)->callBack(&queue_number,
                         ((((ICSSEMAC_Object*)icssEmacHandle->object)->callBackHandle)->rxRTCallBack)->userArg);
@@ -594,9 +594,9 @@ API directly calls the underlying API. To avoid confusion developers
 must always call the API **ICSS_EmacTxPacket** (NOT
 [STRIKEOUT:**ICSS_EmacTxPacketEnqueue**]) with **portNumber** as
 
--  *ICSS_EMAC_PORT_0* : If they do not know the port number on which to
+-  *ICSS_EMAC_PORT_0* : If they do not know the port number on which to
    transmit.
--  *ICSS_EMAC_PORT_1* or *ICSS_EMAC_PORT_2* : If they know the port
+-  *ICSS_EMAC_PORT_1* or *ICSS_EMAC_PORT_2* : If they know the port
    number
 
 .. note::
@@ -740,7 +740,7 @@ two interrupts (no time triggered send in Switch mode).
 
 The eight interrupts are:
 
-#. Rx interrupt x 2 : One for each port, both mapping to same ISR. These
+#. Rx interrupt x 2 : One for each port, both mapping to same ISR. These
    are used by PRU to tell ARM about the presence of a packet. For Port
    0 this is interrupt number (ARM) 20 on AM335x and for Port 1 it is
    21. In the mapping these are indicated by **PRU_ARM_EVENT0** and
@@ -774,7 +774,7 @@ The eight interrupts are:
 
 There are two types of interrupts:
 
--  ***ICSS Interrupts*** : These are interrupts that are routed through
+-  ***ICSS Interrupts*** : These are interrupts that are routed through
    the ICSS Interrupt controller to the Host (Refer to section 4.4.2 of
    `AM335x TRM <http://www.ti.com/lit/ug/spruh73l/spruh73l.pdf>`__). It
    consists of interrupts asserted by the PRU as well as interrupts
@@ -936,7 +936,7 @@ porting other operating systems etc.
 
 |
 
--  ***Host Interrupts*** : Host interrupts are interrupts that are not
+-  ***Host Interrupts*** : Host interrupts are interrupts that are not
    coming via ICSS Interrupt controller. These include peripherals,
    EDMA, timers etc. A full list is present inside the Interrupt section
    of any TRM. On AM335x a total of 128 interrupts are available through
@@ -967,11 +967,11 @@ critical packets need to be serviced immediately, it's possible that
 some delay may occur. Pacing is enabled in the driver using the variable
 **intrPacingMode**. There are two pacing modes in driver.
 
--  **INTR_PACING_MODE1** : This is entirely ARM based, i.e. interrupts
+-  **INTR_PACING_MODE1** : This is entirely ARM based, i.e. interrupts
    are disabled only on the Host. This does not require any firmware
    support. This is the scheme supported with Ethernet MAC and Ethernet
    IP Adapter.
--  **INTR_PACING_MODE1** : In this scheme interrupts are disabled on the
+-  **INTR_PACING_MODE1** : In this scheme interrupts are disabled on the
    PRU. This requires firmware support. Only supported in Profinet right
    now.
 
@@ -1097,7 +1097,7 @@ use corresponding `IOCTL <index_device_drv.html#ioctl>`__
 calls. The IOCTL command for Learning/FDB modules is
 ***ICSS_EMAC_IOCTL_LEARNING_CTRL***
 
-***Adding A MAC address*** : The corresponding API for this is
+***Adding A MAC address*** : The corresponding API for this is
 
 ::
 
@@ -1107,7 +1107,7 @@ The API is integrated inside **ICSS_EmacRxPktGet** so developer need not
 call it separately, if at all it is required please use the IOCTL call
 for this. IOCTL Param value is *ICSS_EMAC_LEARN_CTRL_UPDATE_TABLE*
 
-***Looking up an Entry*** : The corresponding API for this is
+***Looking up an Entry*** : The corresponding API for this is
 
 ::
 
@@ -1116,7 +1116,7 @@ for this. IOCTL Param value is *ICSS_EMAC_LEARN_CTRL_UPDATE_TABLE*
 Integrated with driver inside **ICSS_EmacTxPacket**, use IOCTL Param
 value *ICSS_EMAC_LEARN_CTRL_FIND_MAC*
 
-***Removing a MAC address*** : The corresponding API for this is
+***Removing a MAC address*** : The corresponding API for this is
 
 ::
 
@@ -1125,7 +1125,7 @@ value *ICSS_EMAC_LEARN_CTRL_FIND_MAC*
 Entries are removed automatically upon ageing, if forced removal is
 required use IOCTL Param value *ICSS_EMAC_LEARN_CTRL_REMOVE_MAC*
 
-***Ageing an Entry*** : The driver already implements this inside the
+***Ageing an Entry*** : The driver already implements this inside the
 periodic task which is called every 100 NDK Ticks ***\_HwPktPoll()***
 but users can call it as well. IOCTL Param value
 *ICSS_EMAC_LEARN_CTRL_INC_COUNTER*
@@ -1136,7 +1136,7 @@ The corresponding API for this is
 
     void incrementCounter(HashTable_t *tablePtr)
 
-***Removing an Aged Entry*** : The corresponding API for this is
+***Removing an Aged Entry*** : The corresponding API for this is
 
 ::
 
@@ -1144,7 +1144,7 @@ The corresponding API for this is
 
 Integrated with driver. IOCTL Param value *ICSS_EMAC_LEARN_CTRL_AGEING*
 
-***Changing Port State*** : Change the port state to appropriate value.
+***Changing Port State*** : Change the port state to appropriate value.
 This is useful in the implementation of requirements specified by IEEE
 802.1D.
 
@@ -1160,7 +1160,7 @@ entries to simulate passage of time). Not integrated with driver,
 application must do it. IOCTL Param value
 *ICSS_EMAC_LEARN_CTRL_SET_PORTSTATE*
 
-***Flushing/Clearing the entire Table*** : The corresponding API for
+***Flushing/Clearing the entire Table*** : The corresponding API for
 this is
 
 ::
@@ -1240,7 +1240,7 @@ use corresponding `IOCTL <index_device_drv.html#ioctl>`__
 calls. The IOCTL command for Learning/FDB modules is
 ***ICSS_EMAC_IOCTL_STORM_PREV_CTRL***
 
-***Enabling Storm Prevention***  : The corresponding API for this is
+***Enabling Storm Prevention***  : The corresponding API for this is
 
 .. code-block:: c
 
@@ -1248,7 +1248,7 @@ calls. The IOCTL command for Learning/FDB modules is
 
 Corresponding IOCTL Param value is *ICSS_EMAC_STORM_PREV_CTRL_ENABLE*
 
-***Disabling Storm Prevention*** : Similar to enablement, variable set
+***Disabling Storm Prevention*** : Similar to enablement, variable set
 to False. The corresponding API for this is
 
 ::
@@ -1257,7 +1257,7 @@ to False. The corresponding API for this is
 
 IOCTL Param value is *ICSS_EMAC_STORM_PREV_CTRL_DISABLE*
 
-***Resetting the counters*** : This is called inside **\_HwPktPoll**
+***Resetting the counters*** : This is called inside **\_HwPktPoll**
 which is the NDK tick function. The time period of this tick function
 (default 100ms) in combination with **credits** value decides the rate
 at which Storm Prevention works. This is called by default inside the
@@ -1271,7 +1271,7 @@ The corresponding API for this is
 
 IOCTL Param value is *ICSS_EMAC_STORM_PREV_CTRL_RESET*
 
-***Changing the rate*** : To change how many packets are accepted or
+***Changing the rate*** : To change how many packets are accepted or
 rejected change the value in the structure. At every iteration these
 values are written to the data RAM by the
 **ICSS_EmacResetStormPreventionCounter** API. The scheme through which
@@ -1292,12 +1292,12 @@ Most often Storm Prevention is the main reason for users not being able
 to receive a packet, esp if the rate is configured incorrectly. So first
 verify if it is enabled for that port. This can be done by
 
--  Checking structure variable : See the value of **suppressionEnabled**
+-  Checking structure variable : See the value of **suppressionEnabled**
    variable in the structure.
--  Checking memory : See the memory offset STORM_PREVENTION_OFFSET in
+-  Checking memory : See the memory offset STORM_PREVENTION_OFFSET in
    the corresponding data RAM. The first bit of the byte location tells
    you whether the logic is enabled on the port.
--  Disabling Storm Prevention : This is the easiest and preferable for
+-  Disabling Storm Prevention : This is the easiest and preferable for
    someone not using an emulator. Use the corresponding IOCTL call.
 
 To quickly verify if the logic is indeed dropping packets, try sending
@@ -1319,24 +1319,24 @@ Design
 
 The Statistics are divided into
 
--  ***Statistics on PRU*** : Since the LLD functionality is implemented
+-  ***Statistics on PRU*** : Since the LLD functionality is implemented
    on the PRU's the majority of statistics are implemented on them. The
    count for each port is stored on the respective Data RAM's starting
    at the offset STATISTICS_OFFSET. The map is shown below
--  ***Statistics on Host*** : The packets coming to the Host are counted
+-  ***Statistics on Host*** : The packets coming to the Host are counted
    once again, this is useful for debugging purposes and to measure
    throughput (from the PRU to Host) if required. Some statistics like
    "Unknown protocol type" are only implemented on the Host.
 
 Functionally the statistics are classified into
 
--  ***Rx/Tx related statistics*** : This includes count of broadcast,
+-  ***Rx/Tx related statistics*** : This includes count of broadcast,
    multicast and unicast packets and their derivatives. Only valid
    packets are part of this which means that an Rx packet which has been
    dropped because of storm prevention will not be counted.
--  ***Error Counters*** : This includes statistics such as Dropped
+-  ***Error Counters*** : This includes statistics such as Dropped
    frames, Rx/Tx errors etc.
--  ***Other statistics*** : Includes statistics related to 802.1
+-  ***Other statistics*** : Includes statistics related to 802.1
    CSMA/CD, number of link breaks etc.
 
 A description of PRU statistics along with corresponding memory map is
@@ -1660,7 +1660,7 @@ use corresponding `IOCTL <index_device_drv.html#ioctl>`__
 calls. The IOCTL command for Statistics module is
 ***ICSS_EMAC_IOCTL_STATS_CTRL***
 
-***Reading PRU Statistics***  : To fetch PRU statistics an M2M copy is
+***Reading PRU Statistics***  : To fetch PRU statistics an M2M copy is
 done from the PRU Data RAM to the PRU statistics structure on DDR. To
 get the values correctly the memory layout on both sides should be
 identical. Developers should not modify the member order in
@@ -1679,7 +1679,7 @@ The corresponding API for this is
 
 IOCTL Param value is *ICSS_EMAC_IOCTL_STAT_CTRL_GET*
 
-***Clearing PRU and Host Statistics***  : To clear the values do memory
+***Clearing PRU and Host Statistics***  : To clear the values do memory
 write to the structure memory, PRU data RAM and initialize to 0.
 
 The corresponding API for this is
@@ -1908,14 +1908,14 @@ The primary IOCTL call is through the API **ICSS_EmacIoctl** which is
 implemented in the file icss_emacFwInit.c An IOCTL call uses two
 parameters to find out which driver API to call
 
-#. **ioctlCommand** : Is used to locate the module (Statistics/ Port
+#. **ioctlCommand** : Is used to locate the module (Statistics/ Port
    control etc) which should be called.
-#. **ioctlParams** : Is used to give module specific instructions
+#. **ioctlParams** : Is used to give module specific instructions
 
 ***ioctlParams*** consists of
 
--  **command** : Indicates which specific API to execute
--  **ioctlVal** : Sometimes the API may require specific input, this is
+-  **command** : Indicates which specific API to execute
+-  **ioctlVal** : Sometimes the API may require specific input, this is
    used to provide that.
 
 For example to disable receive functionality on a port the following
@@ -1956,56 +1956,56 @@ There is only one API for IOCTL. It's defined below
 
 The possible values for ***ioctlCommand*** are
 
--  *ICSS_EMAC_IOCTL_PORT_CTRL* : Select Port Control Operations.
+-  *ICSS_EMAC_IOCTL_PORT_CTRL* : Select Port Control Operations.
    Enable/Disable Rx for the specified port.
--  *ICSS_EMAC_IOCTL_LEARNING_CTRL* : Select Learning/FDB module.
--  *ICSS_EMAC_IOCTL_STORM_PREV_CTRL* : Select Storm Prevention module.
--  *ICSS_EMAC_IOCTL_STATS_CTRL* : Select Statistics module.
--  *ICSS_EMAC_IOCTL_TTS_CTRL* : Select Time Triggered Send Configuration
+-  *ICSS_EMAC_IOCTL_LEARNING_CTRL* : Select Learning/FDB module.
+-  *ICSS_EMAC_IOCTL_STORM_PREV_CTRL* : Select Storm Prevention module.
+-  *ICSS_EMAC_IOCTL_STATS_CTRL* : Select Statistics module.
+-  *ICSS_EMAC_IOCTL_TTS_CTRL* : Select Time Triggered Send Configuration
    module. Enable/Disable TTS for the specified port.
--  *ICSS_EMAC_IOCTL_TTS_STATUS_CTRL* : Select Time Triggered Send Query
+-  *ICSS_EMAC_IOCTL_TTS_STATUS_CTRL* : Select Time Triggered Send Query
    module. Get TTS status and other details for the specified port from
    PRU firmware.
 
 Possible values for ***ioctlParams*** are
 
--  **ICSS_EMAC_IOCTL_LEARNING_CTRL** : Refer to Learning/FDB API's
+-  **ICSS_EMAC_IOCTL_LEARNING_CTRL** : Refer to Learning/FDB API's
 
-   -  *ICSS_EMAC_LEARN_CTRL_UPDATE_TABLE* : Add an entry to the Hash
+   -  *ICSS_EMAC_LEARN_CTRL_UPDATE_TABLE* : Add an entry to the Hash
       table.
-   -  *ICSS_EMAC_LEARN_CTRL_CLR_TABLE* : Clear the Learning Table for
+   -  *ICSS_EMAC_LEARN_CTRL_CLR_TABLE* : Clear the Learning Table for
       the specified port.
-   -  *ICSS_EMAC_LEARN_CTRL_AGEING* : Age out old entries from the
+   -  *ICSS_EMAC_LEARN_CTRL_AGEING* : Age out old entries from the
       table.
-   -  *ICSS_EMAC_LEARN_CTRL_FIND_MAC* : Find the port number given a MAC
+   -  *ICSS_EMAC_LEARN_CTRL_FIND_MAC* : Find the port number given a MAC
       ID.
-   -  *ICSS_EMAC_LEARN_CTRL_REMOVE_MAC* : Remove a MAC ID from the
+   -  *ICSS_EMAC_LEARN_CTRL_REMOVE_MAC* : Remove a MAC ID from the
       Learning Table
-   -  *ICSS_EMAC_LEARN_CTRL_INC_COUNTER* : Age the entries with time by
+   -  *ICSS_EMAC_LEARN_CTRL_INC_COUNTER* : Age the entries with time by
       calling this periodically
-   -  *ICSS_EMAC_LEARN_CTRL_INIT_TABLE* : Initialize the learning table
-   -  *ICSS_EMAC_LEARN_CTRL_SET_PORTSTATE* : Set the Port state to value
+   -  *ICSS_EMAC_LEARN_CTRL_INIT_TABLE* : Initialize the learning table
+   -  *ICSS_EMAC_LEARN_CTRL_SET_PORTSTATE* : Set the Port state to value
       defined by the enum type **portState**
 
--  **ICSS_EMAC_IOCTL_STATS_CTRL** : Refer to Statistics API's
+-  **ICSS_EMAC_IOCTL_STATS_CTRL** : Refer to Statistics API's
 
-   -  *ICSS_EMAC_IOCTL_STAT_CTRL_GET* : Get the statistics
-   -  *ICSS_EMAC_IOCTL_STAT_CTRL_CLEAR* : Clear all stat counters
+   -  *ICSS_EMAC_IOCTL_STAT_CTRL_GET* : Get the statistics
+   -  *ICSS_EMAC_IOCTL_STAT_CTRL_CLEAR* : Clear all stat counters
 
--  **ICSS_EMAC_IOCTL_STORM_PREV_CTRL** : Refer to Storm prevention API's
+-  **ICSS_EMAC_IOCTL_STORM_PREV_CTRL** : Refer to Storm prevention API's
 
-   -  *ICSS_EMAC_STORM_PREV_CTRL_ENABLE* : Enable Storm Prevention
-   -  *ICSS_EMAC_STORM_PREV_CTRL_DISABLE* : Disable Storm Prevention
-   -  *ICSS_EMAC_STORM_PREV_CTRL_SET_CREDITS* : Set how many BC/MC
+   -  *ICSS_EMAC_STORM_PREV_CTRL_ENABLE* : Enable Storm Prevention
+   -  *ICSS_EMAC_STORM_PREV_CTRL_DISABLE* : Disable Storm Prevention
+   -  *ICSS_EMAC_STORM_PREV_CTRL_SET_CREDITS* : Set how many BC/MC
       packets are allowed in a period of 100 NDK Ticks (Time period of
       **\_HwPktPoll()**)
-   -  *ICSS_EMAC_STORM_PREV_CTRL_INIT* : Initialize Storm Prevention
-   -  *ICSS_EMAC_STORM_PREV_CTRL_RESET* : Renew the storm prevention
+   -  *ICSS_EMAC_STORM_PREV_CTRL_INIT* : Initialize Storm Prevention
+   -  *ICSS_EMAC_STORM_PREV_CTRL_RESET* : Renew the storm prevention
       counters, this allows more packets to come through once existing
       credits have expired. This must be called periodically in
       **\_HwPktPoll()**
 
--  **ICSS_EMAC_IOCTL_PORT_CTRL** : For Rx Enable/Disable operations.
+-  **ICSS_EMAC_IOCTL_PORT_CTRL** : For Rx Enable/Disable operations.
    There are no sub-commands here. Whether to enable or disable is
    decided by the value of ***ioctlVal***
 
