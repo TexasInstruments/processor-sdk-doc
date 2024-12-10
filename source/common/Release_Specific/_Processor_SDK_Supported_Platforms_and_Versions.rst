@@ -1,8 +1,8 @@
 .. _release-specific-supported-platforms-and-versions:
 
-************************************
+********************************
 Supported Platforms and Versions
-************************************
+********************************
 
 .. rubric:: Supported Host Operating Systems
    :name: supported-host-operating-systems

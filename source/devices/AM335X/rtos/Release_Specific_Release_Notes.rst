@@ -1,13 +1,11 @@
 .. _processor-sdk-rtos-release-notes:
 
-************************************
+*************
 Release Notes
-************************************
-
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Release_Notes
+*************
 
 Overview
-==========
+========
 
 The **Processor Software Development Kit (Processor-SDK)** provides the
 core foundation and building blocks that facilitate application software
@@ -17,7 +15,7 @@ the Real-time operating system (RTOS).
 |
 
 Licensing
-===========
+=========
 
 Please refer to the software manifest, which outlines the licensing
 status for all packages included in this release. The manifest can be
@@ -27,7 +25,7 @@ indicated below.
 |
 
 Documentation
-===============
+=============
 
 -  :ref:`Getting Started Guide <Processor-SDK-RTOS-Getting-Started-Guide-label>`:
    Provides information on getting the software and running basic
@@ -51,7 +49,7 @@ Documentation
 |
 
 Processor SDK v06.03.00
-========================
+=======================
 
 Released Apr 2020
 
@@ -165,7 +163,7 @@ in the *Getting Started Guide* for options to select for Processor-SDK.
 
 
 Fixed Issues
-==============
+============
 
 .. csv-table::
    :header: "Record ID","Board/s", "Component/s", "Summary"
@@ -195,7 +193,7 @@ Fixed Issues
 	PRSDK-8114,c6657-evm,Networking,C6657 NIMU ping test failure for packet size greater than 1510 bytes
 
 Known Issues
-==============
+============
 
 This section contains the list of known issues at the time of making the
 release and any known workaround.
@@ -247,10 +245,10 @@ release and any known workaround.
 .. _RN-Supported-Platforms-label:
 
 Supported Platforms
-=====================
+===================
 
 Devices
----------
+-------
 
 The following table lists all supported devices for a given installer.
 
@@ -381,20 +379,20 @@ The following table lists all supported devices for a given installer.
 .. _C6748: http://www.ti.com/product/tms320c6748
 
 Evaluation Modules
---------------------
+------------------
 
 See :ref:`Processor SDK Supported Platforms <RTOS-SDK-Supported-Platforms>`
 page for a list of supported EVMs per platform and links to more
 information.
 
 Demonstrations
-----------------
+--------------
 
 See :ref:`Examples and Demonstrations <index-examples-demos>`
 page for a list of demonstrations per platform and EVM.
 
 Drivers
----------
+-------
 
 The following tables show RTOS driver availability per platform and EVM.
 A shaded box implies that the feature is not applicable for that
@@ -593,7 +591,7 @@ platform/EVM.
 +----------------+---------+---------+
 
 Other Features
-----------------
+--------------
 
 The following table shows other feature availability per platform and
 EVM:
@@ -682,7 +680,7 @@ EVM:
 +--------------+---------+---------+-------------+-------+--------+
 
 Installation and Usage
-========================
+======================
 
 The :ref:`Getting Started Guide <Processor-SDK-RTOS-Getting-Started-Guide-label>` provides
 instructions on how to setup up your development environment, install
@@ -695,7 +693,7 @@ components do not modify the Windows registry.
 |
 
 Technical Support and Product Updates
-=======================================
+=====================================
 
 For further information or to report any problems, contact:
 -  `TI E2E Processor Support <https://e2e.ti.com/support/processors/>`__ for all supported platforms
@@ -704,7 +702,7 @@ For further information or to report any problems, contact:
 |
 
 Archived
-==========
+========
 -  `Processor-SDK RTOS
    6.1.0 <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/06_01_00_08/rtos/Release_Specific.html#processor-sdk-rtos-release-notes>`__
 -  `Processor-SDK RTOS
