@@ -13,6 +13,15 @@ of the Processor SDK Linux AM64X.
 Processor SDK Linux AM64X 10.xx Releases
 ****************************************
 
+Processor SDK 10.01.10.04
+=========================
+- This is the final release on the 2024 LTS stream 6.6 kernel, 2024.04 U-Boot and Yocto Scarthgap/5.0
+- ATF 2.11+
+- OPTEE 4.4.0
+- Yocto Scarthgap/5.0
+- Platforms Supported : AM64x 2.0 (HS-FS) : `EVM <https://www.ti.com/tool/TMDS64EVM>`__ , `SK <https://www.ti.com/tool/SK-AM64B>`__
+
+
 Processor SDK 10.00.07.04
 =========================
 - This is the first release on the 2024 LTS stream 6.6 kernel, 2024.04 U-Boot and Yocto Scarthgap/5.0
