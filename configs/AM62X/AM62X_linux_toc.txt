@@ -90,6 +90,8 @@ linux/Foundational_Components/Power_Management/pm_wakeup_sources
 linux/Foundational_Components/Power_Management/pm_sw_arch
 linux/Foundational_Components/Power_Management/pm_debug
 
+linux/Foundational_Components/System_Security/SELinux
+
 linux/Foundational_Components_PRU_Subsystem
 linux/Foundational_Components/PRU-ICSS-Linux-Drivers
 linux/Foundational_Components/PRU-ICSS/Linux_Drivers/RemoteProc
