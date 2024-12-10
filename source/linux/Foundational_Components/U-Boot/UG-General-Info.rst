@@ -729,6 +729,13 @@ Build U-Boot
          * tiboot3-j722s-hs-fs-evm.bin from <output directory>/r5
          * tispl.bin, u-boot.img from <output directory>/a53
 
+.. ifconfig:: CONFIG_part_variant in ('AM65X', 'J721E', 'J7200', 'AM64X', 'AM62X', 'AM62AX', 'AM62PX', 'J721S2', 'J784S4','J742S2', 'J722S')
+
+   .. warning::
+
+      Rename :file:`tiboot3-<board>-evm.bin` to :file:`tiboot3.bin` in order for the device to load this binary from the SD card boot partition.
+      Also, (For GP devices only) rename :file:`tispl.bin_unsigned` to :file:`tispl.bin` and :file:`u-boot.img_unsigned` to :file:`u-boot.img` as well.
+
 Image Formats
 ^^^^^^^^^^^^^^^
 
