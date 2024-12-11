@@ -76,7 +76,7 @@ linux/Foundational_Components_Migration_Guide
 linux/Foundational_Components_Secure_Boot
 linux/Foundational_Components_Filesystem
 linux/Foundational_Components_Tools
-linux/Foundational_Components/Tools/Flash_via_DFU
+linux/Foundational_Components/Tools/Flash_via_Fastboot
 linux/Foundational_Components/Tools/Flash_via_Ethernet
 linux/Foundational_Components/Tools/Flash_via_UART
 linux/Foundational_Components_IPC64x
