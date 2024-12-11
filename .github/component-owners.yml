@@ -3,12 +3,12 @@
 components:
 
   # Ownership applies recursively to any file in a directory
-  source/linux/Foundational_Components/PRU-ICSS*: &pru_list
+  source/linux/Foundational_Components/Kernel/Kernel_Drivers/Network: &linux_net_list
     - Siddharth-Vadapalli-at-TI
     - chintan013
     - danish-ti
-  source/linux/Foundational_Components_PRU_Subsystem.rst: *pru_list
-  source/linux/Foundational_Components/Kernel/Kernel_Drivers/Network: *pru_list
+  source/linux/Foundational_Components/PRU-ICSS*: *linux_net_list
+  source/linux/Foundational_Components_PRU_Subsystem.rst: *linux_net_list
 
   source/android: &android_list
     - glaroque
