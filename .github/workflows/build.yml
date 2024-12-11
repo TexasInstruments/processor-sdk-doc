@@ -1,0 +1,87 @@
+---
+name: "build"
+
+on:
+  push:
+    branches: [master]
+
+concurrency:
+  group: ${{ github.ref_name }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  build:
+    name: Build Linux Documents
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/texasinstruments/processor-sdk-doc:latest
+      options: --entrypoint /bin/bash
+    strategy:
+      matrix:
+        os: [linux]
+        device:
+          - AM335X
+          - AM437X
+          - AM57X
+          - AM62AX
+          - AM62PX
+          - AM62X
+          - AM64X
+          - AM65X
+          - AM67
+          - AM68
+          - AM69
+          - CORESDK
+          - DRA821A
+          - GEN
+          - J7200
+          - J721E
+          - J721S2
+          - J722S
+          - J742S2
+          - J784S4
+        include:
+          - os: android
+            device: AM62PX
+          - os: android
+            device: AM62X
+          - os: android
+            device: GEN
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build ${{ matrix.device }}
+        run: |
+          make DEVFAMILY=${{ matrix.device }} OS=${{ matrix.os }} \
+          VERSION=${{ github.ref_name }}
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.device }}-${{ matrix.os }}
+          path: build/
+          retention-days: 1
+
+  agregate:
+    name: Agregate build artifacts
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: build
+          merge-multiple: true
+
+      - name: Upload static files as single artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: build

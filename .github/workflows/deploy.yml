@@ -1,0 +1,21 @@
+---
+name: "deploy"
+
+on:
+  workflow_run:
+    workflows:
+      - build
+    types:
+      - completed
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+
+    steps:
+      - name: Update github page deployment
+        uses: actions/deploy-pages@v4
