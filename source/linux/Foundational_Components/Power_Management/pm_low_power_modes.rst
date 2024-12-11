@@ -112,7 +112,7 @@ Similar to Deep Sleep, with the major distinction being that the MCU core is kep
 The benefits of using MCU Only mode:
 
 #. Low power consumption: MCU Only mode can save a significant amount of power, especially in battery-powered
-   devices. This is because The rest of the SoC status is the same as Deep Sleep and DDR is in self-refresh.
+   devices. This is because the rest of the SoC status is the same as Deep Sleep and DDR is in self-refresh.
 #. Run background tasks: This mode can be used to run background tasks that do not require the full power of the system.
    For example, you could use the firmware on the MCU core to run a watchdog timer, a sensor polling loop,
    or a network communication task.

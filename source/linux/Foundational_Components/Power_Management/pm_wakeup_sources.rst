@@ -262,7 +262,7 @@ a specific way to be configured as wakeup sources.
 
 For detailed information and sequence please refer to
 I/O Power Management and Daisy Chaining section in the TRM. To briefly explain,
-Setting the 29th Bit in the desired padconfig register, allows the pad to act as a wakeup source by
+setting the 29th Bit in the desired padconfig register, allows the pad to act as a wakeup source by
 triggering a wake irq to the DM R5 in deep sleep states.
 
 .. note::
@@ -480,7 +480,7 @@ below command on the Host system
 
 .. code-block:: console
 
-  HOST:~$ > lsusb -t
+  HOST:~$ lsusb -t
 
 
 ********************

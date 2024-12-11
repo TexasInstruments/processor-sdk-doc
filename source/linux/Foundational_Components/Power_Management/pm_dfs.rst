@@ -332,6 +332,7 @@ table.
                                 };
 
         To disable any of the above OPP's one can simply add
+
         .. code-block:: dts
 
                 status = "disabled";

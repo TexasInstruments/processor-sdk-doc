@@ -11,12 +11,12 @@ Overview
 TI AM62 family of devices support multiple Suspend-to-RAM modes, including Deep Sleep
 and MCU Only as described in :ref:`Low Power Modes<lpm_modes>` section.
 The SoC consumes very low power overall yet it is not completely shut off in these modes.
-For example, During Deep Sleep, Certain IPs
+For example, during Deep Sleep, certain IPs
 (depending on the power domain to which then belong) will lose context on suspend.
 S/W should save and restore the context as required across state transitions. DDR is in self-
 refresh to allow context saving.
 
-This section explains the high-level Software Flow of low power modes in AM62 family of devices.
+This section explains the high-level software flow of low power modes in AM62 family of devices.
 It also introduces the LPM constraints framework that enables seamless management of
 multiple Suspend-to-RAM modes.
 
@@ -27,26 +27,26 @@ System diagram and components
 .. Image:: /images/AM62x_Deep_Sleep_Flow.png
 
 
-Above diagram has software sequence for how deep sleep (ie. Suspend to RAM) works on
+Above diagram has software sequence for how Deep Sleep (ie. Suspend to RAM) works on
 SK-AM62 ( Read more on the Starter Kit `here <https://www.ti.com/tool/SK-AM62>`__ ).
 
 Deep Sleep Entry
 ================
 
-#. The user first instructs the System to Suspend. This triggers a suspend
-   sequence from linux side (which runs on the A53 cluster of the SoC).
+#. The user first instructs the system to suspend. This triggers a suspend
+   sequence from Linux side (which runs on the A53 cluster of the SoC).
 
 #. As part of the TI_SCI driver's suspend hook, I/O isolation is invoked which
    isolates all the pads from their respective pinmuxed controllers. Refer to
    :ref:`Wakeup sources Documentation<pm_wakeup_sources>` to understand more on this.
 
 #. Linux then suspends all the drivers in the order that they are probed.
-   After ensuring that there were no faults in suspending the drivers, linux
+   After ensuring that there were no faults in suspending the drivers, Linux
    then issues core system suspend which ultimately is a PSCI system
    suspend call. Read more about PSCI `here <https://developer.arm.com/Architectures/Power%20State%20Coordination%20Interface>`__
 
 #. At this point only ATF is running on A53 cores and it does the job of
-   sending a TISCI Message to the TIFS Core telling it to enter deep sleep
+   sending a TISCI Message to the TIFS Core telling it to enter Deep Sleep
    and then it puts A53 into standby.
 
 #. The TIFS Core then encrypts and writes the contents of it's own SRAM to DDR.
@@ -54,7 +54,7 @@ Deep Sleep Entry
 #. Further it stops tick timer, disables interrupts that are not needed, and suspends local drivers.
    After the above steps it sends TISCI To DM for Suspend Finish and enters WFI.
 
-#. The DM (Device Manager) is the final entity in this entire deep sleep sequence. It does the following:
+#. The DM (Device Manager) is the final entity in this entire Deep Sleep sequence. It does the following:
 
    a. Saves own context to DDR
    b. Disables Security IP LPSCs, such as LPSC_SAUL.
@@ -217,7 +217,7 @@ Otherwise, the mode selection is done as described below:
 
 Above diagram shows the mode selection if constraints are set on MCU_WAKEUP devgroup devices.
 As shown, if the constraints are set on WAKEUP Domain devices or Always ON MCU domain devices,
-deep sleep mode will be selected. Otherwise, MCU Only mode will be selected.
+Deep Sleep mode will be selected. Otherwise, MCU Only mode will be selected.
 
 If constraint is put on MAIN devgroup devices, then no low power mode is possible.
 
@@ -225,7 +225,7 @@ If constraint is put on MAIN devgroup devices, then no low power mode is possibl
 
    USB devices are an exception in MAIN devgroup as there is extra hardware logic preventing
    reset of USB devices in Deep Sleep and MCU Only mode.
-   If constraints are set on USB devices, deep sleep mode will be selected even though it's
+   If constraints are set on USB devices, Deep Sleep mode will be selected even though it's
    technically part of MAIN devgroup.
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
