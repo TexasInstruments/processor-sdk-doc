@@ -48,7 +48,7 @@ supported by the Linux kernel.
 
    The static power management features on |__PART_FAMILY_DEVICE_NAMES__| are:
 
-   #. Deep Sleep
-   #. MCU Only Mode
    #. Partial I/O
    #. I/O Only Plus DDR
+   #. Deep Sleep
+   #. MCU Only Mode
