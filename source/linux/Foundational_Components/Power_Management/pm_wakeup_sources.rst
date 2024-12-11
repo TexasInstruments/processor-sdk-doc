@@ -222,7 +222,7 @@ Now, under the switch node we add the following:
     .. code-block:: console
 
         root@<machine>:~# cat /proc/interrupts | grep "MCUGPIO"
-        262:          0          0          0          0      GPIO  16 Edge    -davinci_gpio  MCUGPIO
+        273:          0          0          0          0      GPIO  4 Edge    -davinci_gpio  MCUGPIO
 
 #. linux,code: Keycode to emit.
 #. gpios: the gpio required to be used as the gpio-key.
@@ -242,8 +242,8 @@ MCU GPIO wakeup can only be tested when
 overlay is loaded. Please refer to :ref:`How to enable DT overlays<howto_dt_overlays>` for more details.
 
 Once the system has entered Deep Sleep or MCU Only mode as shown in the
-:ref:`LPM section<lpm_modes>`, wakeup from MCU GPIO0_16 can be triggered
-by grounding Pin 11 on J8 MCU Header.
+:ref:`LPM section<lpm_modes>`, wakeup from MCU_SPI0_D1 can be triggered
+by grounding Pin 4 on J8 MCU Header.
 
 ********************
 Main I/O Daisy Chain
@@ -262,7 +262,7 @@ a specific way to be configured as wakeup sources.
 
 For detailed information and sequence please refer to
 I/O Power Management and Daisy Chaining section in the TRM. To briefly explain,
-Setting the 29th Bit in the desired padconfig register, allows the pad to act as a wakeup source by
+setting the 29th Bit in the desired padconfig register, allows the pad to act as a wakeup source by
 triggering a wake irq to the DM R5 in deep sleep states.
 
 .. note::
@@ -480,7 +480,7 @@ below command on the Host system
 
 .. code-block:: console
 
-  HOST:~$ > lsusb -t
+  HOST:~$ lsusb -t
 
 
 ********************
