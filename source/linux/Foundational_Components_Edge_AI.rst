@@ -10,16 +10,16 @@ Edge AI
 
 .. ifconfig:: CONFIG_part_family in ('AM62AX_family')
 
-   For more information on edge AI software stack, refer `Edge AI Documentation <https://software-dl.ti.com/processor-sdk-linux/esd/AM62AX/10_01_00/exports/edgeai-docs/common/sdk_overview.html#>`_
+   For more information on edge AI software stack, refer `Edge AI Documentation <https://software-dl.ti.com/processor-sdk-linux/esd/AM62AX/latest/exports/edgeai-docs/common/sdk_overview.html#>`_
 
 .. ifconfig:: CONFIG_part_variant in ('J721E')
 
-   For more information on edge AI software stack, refer `Edge AI Documentation <https://software-dl.ti.com/jacinto7/esd/processor-sdk-linux-sk-tda4vm/10_01_00/exports/edgeai-docs/common/sdk_overview.html>`_
+   For more information on edge AI software stack, refer `Edge AI Documentation <https://software-dl.ti.com/jacinto7/esd/processor-sdk-linux-sk-tda4vm/latest/exports/edgeai-docs/common/sdk_overview.html>`_
 
 .. ifconfig:: CONFIG_part_variant in ('J721S2')
 
-   For more information on edge AI software stack, refer `Edge AI Documentation <https://software-dl.ti.com/jacinto7/esd/processor-sdk-linux-am68a/10_01_00/exports/edgeai-docs/common/sdk_overview.html>`_
+   For more information on edge AI software stack, refer `Edge AI Documentation <https://software-dl.ti.com/jacinto7/esd/processor-sdk-linux-am68a/latest/exports/edgeai-docs/common/sdk_overview.html>`_
 
 .. ifconfig:: CONFIG_part_variant in ('J784S4')
 
-   For more information on edge AI software stack, refer `Edge AI Documentation <https://software-dl.ti.com/jacinto7/esd/processor-sdk-linux-am69a/10_01_00/exports/edgeai-docs/common/sdk_overview.html>`_
+   For more information on edge AI software stack, refer `Edge AI Documentation <https://software-dl.ti.com/jacinto7/esd/processor-sdk-linux-am69a/latest/exports/edgeai-docs/common/sdk_overview.html>`_
