@@ -30,14 +30,16 @@ Create SD Card using balenaEtcher
 *********************************
 
 1.  Download the default bootable SD card image available on the release page as
-    :file:`sdcard.img`
+    :file:`tisdk-buildroot-sdcard-image-am62xx-evm-<version>.img` for Linux image
+    or :file:`tisdk-buildroot-sdcard-image-rt-am62xx-evm-<version>.img` for RT-Linux
+    image.
 
 2.  Download and install the balenaEtcher tool:
 
         Balena Etcher is an open-source utility that can be installed on both Linux and Windows.
         Download the tool from `this link <https://www.balena.io/etcher/>`__ and install it.
 
-3.  Flash the WIC image to the SD card:
+3.  Flash the SD Card image to the SD card:
 
         Insert a micro SD card into the USB SD card reader and start Etcher. Choose the sdcard
         image to be flashed, choose the USB SD card reader as the target, and then click "Flash".

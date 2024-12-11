@@ -34,8 +34,8 @@ To set up and use the `buildroot-external-ti` external tree, follow these steps:
 
 .. code-block:: console
 
-    $ git clone -b 2024.05.1 https://github.com/buildroot/buildroot
-    $ git clone -b 10.00.07 https://github.com/TexasInstruments/buildroot-external-TI.git
+    $ git clone -b 2024.05.3 https://github.com/buildroot/buildroot
+    $ git clone -b 10.01.10.04 https://github.com/TexasInstruments/buildroot-external-TI.git
  
 2. Configure Buildroot to use the external tree and choose a configuration file
 
@@ -80,7 +80,7 @@ the necessary components and creates the root filesystem, kernel, and bootloader
 
 .. code-block:: console
 
-    $ make TI_K3_BOOT_FIRMWARE_VERSION=10.00.07
+    $ make TI_K3_BOOT_FIRMWARE_VERSION=10.01.10
 
 The build process can take some time, depending on your system's resources and
 the complexity of the configuration.
@@ -107,7 +107,7 @@ Example for SD card:
 
 .. code-block:: console
 
-    $ sudo dd if=output/images/rootfs.ext2 of=/dev/sdX bs=4M
+    $ sudo dd if=output/images/sdcard.img of=/dev/sdX
     $ sync
     Replace /dev/sdX with the appropriate device identifier for your SD card.
 
@@ -128,9 +128,6 @@ terminal window:
 
 .. code-block:: console
 
-    U-Boot SPL 2024.04 (Aug 02 2024 - 09:56:18 +0000)
-    SYSFW ABI: 4.0 (firmware rev 0x000a '10.0.8--v10.00.08 (Fiery Fox)')
-    SPL initial stack usage: 13392 bytes
     Trying to boot from MMC2
     Authentication passed
     Authentication passed
@@ -152,8 +149,7 @@ terminal window:
 
     Welcome to Buildroot
     buildroot login: root
-    # uname -a
-    Linux buildroot 6.6.32 #1 SMP PREEMPT Tue Aug  6 11:40:07 UTC 2024 aarch64 GNU/Linux
+    #
 
 *************
 Going further
