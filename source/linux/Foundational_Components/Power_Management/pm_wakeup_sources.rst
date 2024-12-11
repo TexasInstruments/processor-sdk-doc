@@ -302,7 +302,7 @@ Setup the interrupt parent and interrupt as MCU_GPIO0,
 .. code-block:: dts
 
    interrupt-parent = <&mcu_gpio0>;
-   interrupts = <16 IRQ_TYPE_EDGE_RISING>;
+   interrupts = <4 IRQ_TYPE_EDGE_RISING>;
 
 Now, under the switch node we add the following:
 
@@ -311,7 +311,7 @@ Now, under the switch node we add the following:
    switch {
                label = "MCUGPIO";
                linux,code = <143>;
-               gpios = <&mcu_gpio0 16 GPIO_ACTIVE_LOW>;
+               gpios = <&mcu_gpio0 4 GPIO_ACTIVE_LOW>;
                wakeup-source;
    };
 
@@ -319,8 +319,8 @@ Now, under the switch node we add the following:
 
     .. code-block:: console
 
-       root@<machine>:~# cat /proc/interrupts | grep "MCUGPIO"
-       262:          0          0          0          0      GPIO  16 Edge    -davinci_gpio  MCUGPIO
+        root@<machine>:~# cat /proc/interrupts | grep "MCUGPIO"
+        273:          0          0          0          0      GPIO  4 Edge    -davinci_gpio  MCUGPIO
 
 #. linux,code: Keycode to emit.
 #. gpios: the gpio required to be used as the gpio-key.
@@ -340,8 +340,8 @@ MCU GPIO wakeup can only be tested when
 overlay is loaded. Please refer to :ref:`How to enable DT overlays<howto_dt_overlays>` for more details.
 
 Once the system has entered Deep Sleep or MCU Only mode as shown in the
-:ref:`LPM section<lpm_modes>`, wakeup from MCU GPIO0_16 can be triggered
-by grounding Pin 11 on J8 MCU Header.
+:ref:`LPM section<lpm_modes>`, wakeup from MCU_SPI0_D1 can be triggered
+by grounding Pin 4 on J8 MCU Header.
 
 ********************
 Main I/O Daisy Chain
