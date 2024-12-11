@@ -923,28 +923,28 @@ Low Power Performance
 Table:  **Deep sleep**
 
 .. csv-table::
-    :header: "Rail name","Rail voltage(V)","Power (mW)"
+   :header: "Rail name","Rail voltage(V)","Power (mW)"
 
-    "vdd_core","0.85","7.95"
-    "vddr_core","0.85","n/a"
-    "soc_dvdd_3v3","3.30","6.20"
-    "soc_dvdd_1v8","1.80","1.98"
-    "vdda_1v8","1.80","1.80"
-    "vdd_lpddr4/vdd_ddr4","1.10","7.50"
-    "Total"," ","25.43"
+   "vdd_core","0.85","9.79"
+   "vddr_core","0.85","n/a"
+   "soc_dvdd_3v3","3.30","7.20"
+   "soc_dvdd_1v8","1.80","1.98"
+   "vdda_1v8","1.80","1.98"
+   "vdd_lpddr4/vdd_ddr4","1.10","8.78"
+   "Total"," ","29.75"
 
 Table:  **MCU only**
 
 .. csv-table::
-    :header: "Rail name","Rail voltage(V)","Power (mW)"
+   :header: "Rail name","Rail voltage(V)","Power (mW)"
 
-    "vdd_core","0.85","121.81"
-    "vddr_core","0.85","n/a"
-    "soc_dvdd_3v3","3.30","12.72"
-    "soc_dvdd_1v8","1.80","1.62"
-    "vdda_1v8","1.80","10.71"
-    "vdd_lpddr4/vdd_ddr4","1.10","7.74"
-    "Total"," ","154.61"
+   "vdd_core","0.85","110.46"
+   "vddr_core","0.85","n/a"
+   "soc_dvdd_3v3","3.30","13.98"
+   "soc_dvdd_1v8","1.80","1.62"
+   "vdda_1v8","1.80","11.30"
+   "vdd_lpddr4/vdd_ddr4","1.10","8.16"
+   "Total"," ","145.88"
 
 Partial I/O Data
 - All voltage rails were measured to be near 0V
