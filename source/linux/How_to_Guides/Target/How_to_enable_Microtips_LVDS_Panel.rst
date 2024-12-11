@@ -55,3 +55,25 @@ is supported on platforms:
 		root@am62xx-evm:~# modprobe ili210x
 
 After re-initializing the module, the touch IC should now be registered as an input and touch should be functional.
+
+**Note**: The following steps are only applicable on AM625 SK EVM revision B/B-P1 board
+
+#. Run the following command
+
+        .. code-block:: bash
+
+                root@am62xx-evm:~# modprobe -r ili210x
+
+#. Power off the LVDS panel by disconnecting the 12V barrel jack (do not power off the SK EVM)
+#. Power on the LVDS panel
+#. Run the following command
+
+        .. code-block:: bash
+
+                root@am62xx-evm:~# modprobe ili210x
+
+After re-initializing the module, the touch IC should now be registered as an input and touch should be functional.
+
+.. note::
+
+        ``i2ctransfer`` not required for AM625 SK EVM B/B-P1 revision
