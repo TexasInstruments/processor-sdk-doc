@@ -107,8 +107,8 @@ install the sources using installer are:
 
 .. code-block:: console
 
-    chmod +x ./ti-processor-sdk-linux-<machine>-<version>-Linux-x86-Install.bin
-    ./ti-processor-sdk-linux-<machine>-<version>-Linux-x86-Install.bin
+   $ chmod +x ./ti-processor-sdk-linux-<machine>-<version>-Linux-x86-Install.bin
+   $ ./ti-processor-sdk-linux-<machine>-<version>-Linux-x86-Install.bin
 
 
 Create an SD card with prepackaged filesystem image by following instructions from
@@ -127,18 +127,18 @@ build.
 
 .. code-block:: console
 
-    sudo apt-get install device-tree-compiler python3-dev
+   $ sudo apt-get install device-tree-compiler python3-dev
 
     Python package:
-    pip3 install Mako
+   $ pip3 install Mako
 
 The exact commands are:
 
 .. code-block:: console
 
-    make jailhouse_clean
-    make jailhouse
-    make jailhouse_install DESTDIR=<root partition of target>
+   $ make jailhouse_clean
+   $ make jailhouse
+   $ make jailhouse_install DESTDIR=<root partition of target>
 
 These commands can be used to install Jailhouse kernel module, firmware and
 management tools in the target filesystem.
@@ -153,8 +153,8 @@ filesystem.
 
 .. code-block:: console
 
-    make linux-extras
-    make linux-extras_install DESTDIR=<root partition of target>
+   $ make linux-extras
+   $ make linux-extras_install DESTDIR=<root partition of target>
 
 
 Below commands can be used to install bootloader binaries to the boot partition
@@ -162,8 +162,8 @@ of target.
 
 .. code-block:: console
 
-    make u-boot-extras
-    make u-boot-extras_install DESTDIR=<boot partition of target>
+   $ make u-boot-extras
+   $ make u-boot-extras_install DESTDIR=<boot partition of target>
 
 ************************************
 Generate SD Card Image for Jailhouse
@@ -194,9 +194,6 @@ on the EVM then power on the board, the following logs can be observed on the te
 
     .. code-block:: console
 
-        U-Boot SPL 2024.04-ti-g6301979bc99c (Jul 29 2024 - 09:10:51 +0000)
-        SYSFW ABI: 4.0 (firmware rev 0x000a '10.0.8--v10.00.08 (Fiery Fox)')
-        SPL initial stack usage: 13384 bytes
         Trying to boot from MMC2
         Authentication passed
         Authentication passed
@@ -213,19 +210,16 @@ on the EVM then power on the board, the following logs can be observed on the te
         |__|__|_| |__,|_  |___|  |__|  |_| |___|_| |___|___|_|
               |___|                    |___|
 
-        Arago Project am62xx-evm -
+        Arago Project <machine> -
 
-        Arago 2023.10 am62xx-evm -
+        Arago 2023.10 <machine> -
 
-        am62xx-evm login:
+        <machine> login:
 
 .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
    .. code-block:: console
 
-        U-Boot SPL 2024.04-ti-g6301979bc99c (Jul 29 2024 - 09:10:51 +0000)
-        SYSFW ABI: 4.0 (firmware rev 0x000a '10.0.8--v10.00.08 (Fiery Fox)')
-        SPL initial stack usage: 13384 bytes
         Trying to boot from MMC2
         Authentication passed
         Authentication passed
@@ -257,13 +251,13 @@ on the EVM then power on the board, the following logs can be observed on the te
 
         .. code-block:: console
 
-            am62xx-evm@ modprobe jailhouse
+            root@<machine>: modprobe jailhouse
 
     .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
         .. code-block:: console
 
-            am62pxx-evm@ modprobe jailhouse
+            root@am62pxx-evm: modprobe jailhouse
 
 ***************************************
 Pre-built components in Jailhouse Image
@@ -295,7 +289,7 @@ below:
 
     .. code-block:: console
 
-        root@am62xx-evm: jailhouse cell enable <root cell config>
+        root@<machine>: jailhouse cell enable <root cell config>
 
 .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
@@ -309,7 +303,7 @@ below:
 
     .. code-block:: console
 
-        root@am62xx-evm: jailhouse cell create <inmate cell config>
+        root@<machine>: jailhouse cell create <inmate cell config>
 
 .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
@@ -323,7 +317,7 @@ below:
 
     .. code-block:: console
 
-        root@am62xx-evm: jailhouse cell list
+        root@<machine>: jailhouse cell list
 
 .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
@@ -337,7 +331,7 @@ below:
 
     .. code-block:: console
 
-        root@am62xx-evm: jailhouse cell shutdown <id or name of inmate cell>
+        root@<machine>: jailhouse cell shutdown <id or name of inmate cell>
 
 .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
@@ -351,7 +345,7 @@ below:
 
     .. code-block:: console
 
-        root@am62xx-evm: jailhouse cell destroy <id or name of inmate cell>
+        root@<machine>: jailhouse cell destroy <id or name of inmate cell>
 
 .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
@@ -365,7 +359,7 @@ below:
 
     .. code-block:: console
 
-        root@am62xx-evm: jailhouse disable
+        root@<machine>: jailhouse disable
 
 .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
@@ -380,7 +374,7 @@ Running Jailhouse Demos on |__PART_FAMILY_DEVICE_NAMES__|
 Host Setup
 ==========
 
-Flash tisdk-jailhouse-image-|__SDK_BUILD_MACHINE__|.wic.xz to SD card using balena
+Flash tisdk-jailhouse-image-|__SDK_BUILD_MACHINE__|.rootfs.wic.xz to SD card using balena
 and boot |__PART_FAMILY_DEVICE_NAMES__| from the SD card. As we will be running 
 two instances ,two terminals are required. Connect one terminal to the primary 
 UART (e.g. :file:`/dev/ttyUSB0`) and the other to the secondary UART (e.g. :file:`/dev/ttyUSB1`).
@@ -399,7 +393,7 @@ the demo are:
 
     .. code-block:: console
 
-        root@am62xx-evm: jailhouse enable /usr/share/jailhouse/cells/k3-am625-sk.cell
+        root@<machine>: jailhouse enable /usr/share/jailhouse/cells/k3-am625-sk.cell
 
 .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
@@ -413,7 +407,7 @@ the demo are:
 
     .. code-block:: console
 
-        root@am62xx-evm: jailhouse cell create /usr/share/jailhouse/cells/k3-am625-sk-linux-demo.cell
+        root@<machine>: jailhouse cell create /usr/share/jailhouse/cells/k3-am625-sk-linux-demo.cell
 
 .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
@@ -427,14 +421,14 @@ the demo are:
 
     .. code-block:: console
 
-        root@am62xx-evm: jailhouse cell load k3-am625-sk-linux-demo /usr/libexec/jailhouse/linux-loader.bin -a 0x0 -s "kernel=0xe0200000 dtb=0xe0000000" -a 0x1000 /boot/Image -a 0xe0200000 /boot/tisdk-jailhouse-inmate-am62xx-evm.rootfs.cpio -a 0xe28d4000 /usr/share/jailhouse/inmate-k3-am625-sk.dtb -a 0xe0000000
+        root@<machine>: jailhouse cell load k3-am625-sk-linux-demo /usr/libexec/jailhouse/linux-loader.bin -a 0x0 -s "kernel=0xe0200000 dtb=0xe0000000" -a 0x1000 /boot/Image -a 0xe0200000 /boot/tisdk-jailhouse-inmate-am62xx-evm.rootfs.cpio -a 0xe2a5e000 /usr/share/jailhouse/inmate-k3-am625-sk.dtb -a 0xe0000000
 
     linux-loader.bin is a small application provided and built by Jailhouse source
     tree to run inmates. As you can see (-a 0x0) it is loaded to virtual address 0x0.
     "-s "kernel=0xe0200000 dtb=0xe0000000" -a 0x1000" - is the linux_loader argument
     loaded as string to virtual address 0x1000, which instructs the linux-loader to
     branch to the those addresses. Kernel Image is loaded to the virtual address
-    0xe0200000, jailhouse inmate ramfs to 0xe28d4000 and device tree for inmate to 0xe0000000.
+    0xe0200000, jailhouse inmate ramfs to 0xe2a5e000 and device tree for inmate to 0xe0000000.
 
 .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
@@ -443,11 +437,11 @@ the demo are:
     "-s "kernel=0x9e0200000 dtb=0x9e0000000" -a 0x1000" - is the linux_loader argument
     loaded as string to virtual address 0x1000, which instructs the linux-loader to
     branch to the those addresses. Kernel Image is loaded to the virtual address
-    0x9e0200000, jailhouse inmate ramfs to 0x9e28d4000 and device tree for inmate to 0x9e0000000.
+    0x9e0200000, jailhouse inmate ramfs to 0x9e2a5e000 and device tree for inmate to 0x9e0000000.
 
     .. code-block:: console
 
-        root@am62pxx-evm: jailhouse cell load k3-am62p5-sk-linux-demo /usr/libexec/jailhouse/linux-loader.bin -a 0x0 -s "kernel=0x9e0200000 dtb=0x9e0000000" -a 0x1000 /boot/Image -a 0x9e0200000 /boot/tisdk-jailhouse-inmate-am62pxx-evm.rootfs.cpio -a 0x9e28d4000 /usr/share/jailhouse/inmate-k3-am62p5-sk.dtb -a 0x9e0000000
+        root@am62pxx-evm: jailhouse cell load k3-am62p5-sk-linux-demo /usr/libexec/jailhouse/linux-loader.bin -a 0x0 -s "kernel=0x9e0200000 dtb=0x9e0000000" -a 0x1000 /boot/Image -a 0x9e0200000 /boot/tisdk-jailhouse-inmate-am62pxx-evm.rootfs.cpio -a 0x9e2a5e000 /usr/share/jailhouse/inmate-k3-am62p5-sk.dtb -a 0x9e0000000
 
 -  Start inmate cell
 
@@ -455,7 +449,7 @@ the demo are:
 
     .. code-block:: console
 
-        root@am62xx-evm: jailhouse cell start k3-am625-sk-linux-demo
+        root@<machine>: jailhouse cell start k3-am625-sk-linux-demo
 
 .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
@@ -478,11 +472,11 @@ the demo are:
         |__|__|_| |__,|_  |___|  |__|  |_| |___|_| |___|___|_|
               |___|                    |___|
 
-        Arago Project am62xx-evm -
+        Arago Project <machine> -
 
-        Arago 2023.10 am62xx-evm -
+        Arago 2023.10 <machine> -
 
-        am62xx-evm login: root
+        <machine> login: root
 
 .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
@@ -525,19 +519,19 @@ To start crash test after linux demo
 
 .. code-block:: console
 
-    ./usr/share/jailhouse/linux-demo.sh -c
+   root@<machine>: ./usr/share/jailhouse/linux-demo.sh -c
 
 To start crash test in background mode
 
 .. code-block:: console
 
-    ./usr/share/jailhouse/linux-demo.sh -c -b
+   root@<machine>: ./usr/share/jailhouse/linux-demo.sh -c -b
 
 To skip crash test and only start linux demo
 
 .. code-block:: console
 
-    ./usr/share/jailhouse/linux-demo.sh
+   root@<machine>: ./usr/share/jailhouse/linux-demo.sh
 
 Adding custom demos or applications in Inmate Filesystem
 ========================================================
@@ -581,8 +575,8 @@ linux inmate are is started to check whether the device node exists run
 
 .. code-block:: console
 
-    ls /dev/uio0
-    cat /proc/interrupts | grep uio.
+   root@<machine>: ls /dev/uio0
+   root@<machine>: cat /proc/interrupts | grep uio.
 
 Run ivshmem-demo on both root and inmate cell
 
@@ -592,7 +586,7 @@ Run ivshmem-demo on both root and inmate cell
 
     .. code-block:: console
 
-        root@am62xx-evm:/usr/share/jailhouse# ivshmem-demo
+        root@<machine>:/usr/share/jailhouse# ivshmem-demo
         ID = 0
         Maximum peers = 3
         state[0] = 1
@@ -667,7 +661,7 @@ Run ivshmem-demo on both root and inmate cell
 
     .. code-block:: console
 
-        root@am62xx-evm:/home# ./ivshmem-demo
+        root@<machine>:/home# ./ivshmem-demo
         main program startedID = 2
         Maximum peers = 3
         state[0] = 0
@@ -807,13 +801,13 @@ inmate cell and ping.
 
 .. code-block:: console
 
-    $ ifconfig enp0s1 192.168.0.2
+   root@<machine>: ifconfig enp0s1 192.168.0.2
 
 - In root cell
 
 .. code-block:: console
 
-    $ ifconfig enP1p0s1 192.168.0.3
+   root@<machine>: ifconfig enP1p0s1 192.168.0.3
 
 Ping enp0s1 using enP1p0s1 #ping 192.168.0.2 in root cell or ping enP1p0s1 using enp0s1
 ping 192.168.0.3 in inmate cell.
@@ -822,14 +816,10 @@ Ex. ping to inmate cell from root cell
 
 .. code-block:: console
 
-    $ ping 192.168.0.2
-    PING 192.168.0.2 (192.168.0.2): 56 data bytes
-    64 bytes from 192.168.0.2: seq=0 ttl=64 time=0.707 ms
-    64 bytes from 192.168.0.2: seq=1 ttl=64 time=0.373 ms
-    64 bytes from 192.168.0.2: seq=2 ttl=64 time=0.355 ms
-    64 bytes from 192.168.0.2: seq=3 ttl=64 time=0.308 ms
-    64 bytes from 192.168.0.2: seq=4 ttl=64 time=0.285 ms
-    64 bytes from 192.168.0.2: seq=5 ttl=64 time=0.352 ms
+   root@<machine>: ping 192.168.0.2
+   PING 192.168.0.2 (192.168.0.2): 56 data bytes
+   64 bytes from 192.168.0.2: seq=0 ttl=64 time=0.707 ms
+   64 bytes from 192.168.0.2: seq=1 ttl=64 time=0.373 ms
 
 Running Baremetal Demos
 =======================
@@ -848,7 +838,7 @@ Running UART Demo
 
     .. code-block:: console
 
-        root@am62xx-evm: jailhouse enable /usr/share/jailhouse/cells/k3-am625-sk.cell
+        root@<machine>: jailhouse enable /usr/share/jailhouse/cells/k3-am625-sk.cell
 
 .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
@@ -862,7 +852,7 @@ Running UART Demo
 
     .. code-block:: console
 
-        root@am62xx-evm: jailhouse cell create /usr/share/jailhouse/cells/k3-am625-sk-inmate-demo.cell
+        root@<machine>: jailhouse cell create /usr/share/jailhouse/cells/k3-am625-sk-inmate-demo.cell
 
 .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
@@ -876,7 +866,7 @@ Running UART Demo
 
     .. code-block:: console
 
-        root@am62xx-evm: jailhouse cell load inmate-demo /usr/share/jailhouse/inmates/uart-demo.bin
+        root@<machine>: jailhouse cell load inmate-demo /usr/share/jailhouse/inmates/uart-demo.bin
 
 .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
@@ -890,7 +880,7 @@ Running UART Demo
 
     .. code-block:: console
 
-        root@am62xx-evm: jailhouse cell start inmate-demo
+        root@<machine>: jailhouse cell start inmate-demo
 
 .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
@@ -920,7 +910,7 @@ Running GIC Demo
 
     .. code-block:: console
 
-        root@am62xx-evm: jailhouse enable /usr/share/jailhouse/cells/k3-am625-sk.cell
+        root@<machine>: jailhouse enable /usr/share/jailhouse/cells/k3-am625-sk.cell
 
 .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
@@ -934,7 +924,7 @@ Running GIC Demo
 
     .. code-block:: console
 
-        root@am62xx-evm: jailhouse cell create /usr/share/jailhouse/cells/k3-am625-sk-inmate-demo.cell
+        root@<machine>: jailhouse cell create /usr/share/jailhouse/cells/k3-am625-sk-inmate-demo.cell
 
 .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
@@ -949,7 +939,7 @@ Running GIC Demo
 
     .. code-block:: console
 
-        root@am62xx-evm: jailhouse cell load inmate-demo /usr/share/jailhouse/inmates/gic-demo.bin
+        root@<machine>: jailhouse cell load inmate-demo /usr/share/jailhouse/inmates/gic-demo.bin
 
 .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
@@ -963,7 +953,7 @@ Running GIC Demo
 
     .. code-block:: console
 
-        root@am62xx-evm: jailhouse cell start inmate-demo
+        root@<machine>: jailhouse cell start inmate-demo
 
 .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
@@ -1296,7 +1286,7 @@ system activities.
 
     .. code-block:: console
 
-        root@am62xx-evm:/usr/share/jailhouse# dd if=/dev/zero of=large_file bs=1M count=2000
+        root@<machine>:/usr/share/jailhouse# dd if=/dev/zero of=large_file bs=1M count=2000
         2000+0 records in
         2000+0 records out
         2097152000 bytes (2.1 GB, 2.0 GiB) copied, 55.4181 s, 37.8 MB/s
@@ -1305,7 +1295,7 @@ system activities.
 
     .. code-block:: console
 
-        root@am62xx-evm:~# perf stat -B -e cache-references,cache-misses,cycles,instructions,branches,faults,migrations sleep 5
+        root@<machine>:~# perf stat -B -e cache-references,cache-misses,cycles,instructions,branches,faults,migrations sleep 5
 
         Performance counter stats for 'sleep 5':
 
@@ -1322,7 +1312,7 @@ system activities.
         0.000000000 seconds user
         0.004632000 seconds sys
 
-        root@am62xx-evm:~# perf stat -B -e cache-references,cache-misses,cycles,instructions,branches,faults,migrations sleep 5
+        root@<machine>:~# perf stat -B -e cache-references,cache-misses,cycles,instructions,branches,faults,migrations sleep 5
 
         Performance counter stats for 'sleep 5':
 
@@ -1355,7 +1345,7 @@ system activities.
 
     .. code-block:: console
 
-        root@am62xx-evm:~# perf stat -B -e cache-references,cache-misses,cycles,instructions,branches,faults,migrations sleep 5
+        root@am62pxx-evm:~# perf stat -B -e cache-references,cache-misses,cycles,instructions,branches,faults,migrations sleep 5
 
         Performance counter stats for 'sleep 5':
 
