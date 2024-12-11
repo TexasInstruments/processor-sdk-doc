@@ -7,6 +7,8 @@ components:
     - Siddharth-Vadapalli-at-TI
     - chintan013
     - danish-ti
+  source/linux/Foundational_Components/Kernel/Kernel_Drivers/PCIe: *linux_net_list
+  source/linux/Foundational_Components/Kernel/Kernel_Drivers/USB: *linux_net_list
   source/linux/Foundational_Components/PRU-ICSS*: *linux_net_list
   source/linux/Foundational_Components_PRU_Subsystem.rst: *linux_net_list
 
