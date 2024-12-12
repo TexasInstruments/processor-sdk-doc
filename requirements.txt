@@ -19,7 +19,7 @@ Pygments==2.18.0
 requests==2.32.3
 rich==13.9.4
 rstcheck==6.2.4
-rstcheck-core==1.2.1
+git+https://github.com/StaticRocket/rstcheck-core.git@dev/psdk
 shellingham==1.5.4
 snowballstemmer==2.2.0
 Sphinx==8.1.3
