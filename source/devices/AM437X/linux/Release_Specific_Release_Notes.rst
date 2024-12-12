@@ -176,90 +176,11 @@ Yocto
 Issues Tracker
 ==============
 
-Issues opened in previous releases that were closed on this release
--------------------------------------------------------------------
-.. csv-table::
-   :header: "Record ID", "Title", "Platform"
-   :widths: 15, 70, 20
+.. note::
 
-   "SITSW-706","Top level makefile broken in AM335x & AM437x","am437x-idk,am437x-sk"
-   "LCPD-25313","HDMI Audio playback tests are failing for all the frequencies ","am43xx-gpevm"
-   "LCPD-25277","NAND rootfs as ubifs mount, read, write and delete test Fails","am43xx-gpevm"
-   "LCPD-24853","USBDEV msc_mmc g_mass_storage.ko module not available ","am43xx-gpevm"
-   "LCPD-24826","Power Manager Runtime is not suspending SERIAL","am43xx-gpevm"
-   "LCPD-24820","HW SHA crypto acceleration error getting irq for crypto","am43xx-gpevm"
-   "LCPD-24811","LTP test fail- No Timers","am43xx-gpevm"
-   "LCPD-24239","IPC performance  test","am43xx-gpevm"
-   "LCPD-23019","OPTEE tests are failing (Impact 5)","am43xx-hsevm"
-   "LCPD-22828","Convert tps62360-regulator.txt: ""ti,tps62363"" to yaml","am437x-idk"
-   "LCPD-21523","alpha blending test failure","am43xx-gpevm"
-   "LCPD-20673","packaging: ipsec: command not found","am43xx-gpevm"
-   "LCPD-19858","OE: OPTEE label used in SDK is old and wrong","am43xx-gpevm,am43xx-hsevm,am437x-idk,am437x-sk"
-   "LCPD-19838","Cryptodev not building against 5.10 kernel","am43xx-gpevm,am43xx-hsevm,am437x-idk,am437x-sk"
-   "LCPD-19279","openssl_perf.sh functionality to be included in rootfs (decouple from matrixgui)","am43xx-gpevm"
-   "LCPD-18643","U-Boot: AM335x/AM473x: Both SPI CS signals get asserted","am43xx-gpevm,am43xx-hsevm,am437x-idk,am437x-sk"
-   "LCPD-17817","Images created with Proc-SECDEV grow with number of times SECDEV has been used","am43xx-hsevm"
-   "LCPD-7025","System takes more than 10 seconds to go from login prompt to system prompt","am43xx-gpevm"
+    - Release Specific Issues including details will be published through Software Incident Report (SIR) portal
 
-
-|
-
-
-Issues found and closed on this release that may be applicable to prior releases
---------------------------------------------------------------------------------
-.. csv-table::
-   :header: "Record ID", "Title", "Platform"
-   :widths: 15, 70, 20
-
-   "SITSW-3404","installer-scripts: Version not auto updated for installer","am437x-idk,am437x-sk,am43xx-gpevm,am43xx-hsevm"
-   "SITSW-3378","systemd-networkd-wait-online service timeouts ","am437x-idk,am437x-sk,am43xx-gpevm,am43xx-hsevm"
-   "SITSW-1649","Create-sdcard.sh: Displays command not found error","am437x-sk,am43xx-gpevm,am43xx-hsevm"
-   "LCPD-36626","am335x: am43xx: Display and Touchscreen is not functional","am43xx-gpevm,am43xx-hsevm"
-   "LCPD-34652","AM437x: Failing POWERMGR_S_FUNC_CPUFREQ_BASIC test","am43xx-gpevm,am43xx-hsevm,am437x-sk"
-   "LCPD-29650","AM437x: kernel init routine execution time regression","am43xx-gpevm"
-   "LCPD-26692","Hardware + Software IPSec Performance Test Failures","am43xx-gpevm"
-
-|
-
-
-.. _release-specific-u-boot-known-issues:
-
-U-Boot Known Issues
--------------------
-.. csv-table::
-   :header: "Record ID","Platform", "Title","Workaround"
-   :widths: 15, 30, 70, 30
-
-
-|
-
-.. _release-specific-linux-kernel-known-issues:
-
-Linux Kernel Known Issues
--------------------------
-.. csv-table::
-   :header: "Record ID", "Platform", "Title", "Workaround"
-   :widths: 5, 10, 70, 10
-
-   "LCPD-26730","am43xx-gpevm","Stack Exception observed while modetest command in HDMI tests ",""
-   "LCPD-25498","am43xx-gpevm","Test to validate poweroff voltage on all voltage domains fails",""
-   "LCPD-25272","am43xx-gpevm","Crypto_M_PERF_openssl_perf_software test Fails",""
-   "LCPD-24728","am43xx-gpevm","Power measurement with Standby/Suspend/Resume failure",""
-   "LCPD-24650","am43xx-gpevm","VPFE sensor capture fails",""
-   "LCPD-24505","am43xx-gpevm","KMS properties test failed",""
-   "LCPD-24456","am43xx-gpevm,am43xx-hsevm,am437x-idk,am437x-sk","Move IPC validation source from github to git.ti.com",""
-   "LCPD-24302","am43xx-gpevm","The speed test built in to OpenSSL - cryptographic",""
-   "LCPD-24182","am43xx-gpevm","Powermgr_xs_func_simple_suspend/standby resume tests",""
-   "LCPD-17673","am43xx-gpevm","No software documentation for the Timer module",""
-   "LCPD-17449","am43xx-gpevm,am43xx-hsevm,am437x-idk,am437x-sk","libasan_preinit.o is missing in devkit",""
-   "LCPD-10974","am43xx-gpevm","am43xx-gpevm - usb camera gadget shows halting frames","None"
-   "LCPD-9254","am43xx-hsevm","Kernel warnings in boot for am437x-hsevm",""
-   "LCPD-7955","am43xx-gpevm","Uncorrectable Bitflip errors seen after switch to SystemD","Workaround to erase the NAND flash completely if flashed with an incompatible flash writer. SystemD tries to mount all partitions and that is the reason this is being seen now."
-   "LCPD-1207","am43xx-gpevm","AM43XX/AM57XX/DRA7: CONNECTIVITY: dwc3_omap on am43xx and xhci_plat_hcd on dra7 - removal results in segmentation fault",""
-
-
-|
-
+    - Further Information can be found at `SIR Portal <https://sir.ext.ti.com/>`_
 
 
 .. rubric:: Installation and Usage
