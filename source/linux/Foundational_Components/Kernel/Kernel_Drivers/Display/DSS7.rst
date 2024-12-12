@@ -387,7 +387,7 @@ libdrm is included in TI releases and its sources can be found from: ::
 
     https://gitlab.freedesktop.org/mesa/drm
 
-libdrm also contains 'modetest' tool, which can be used to get basic information about DRM state, and to show a test pattern on a display. Refer to the section `Testing tidss properties with modetest` below for some examples.
+libdrm also contains 'modetest' tool, which can be used to get basic information about DRM state, and to show a test pattern on a display. Refer to the section :ref:`Testing tidss properties with modetest and kmstest` below for some examples.
 
 Another option is kms++, a C++11 library for kernel mode setting which includes a bunch of test utilities and also V4L2 classes and Python bindings for DRM and V4L2. Some kms++ tools are included in TI releases. kms++ can be found from: ::
 
@@ -490,8 +490,9 @@ tidss supports configuration via DRM properties. These are standard DRM properti
 | GAMMA_LUT_SIZE     | crtc     | Number of elements in gammma lookup table.                                                           |
 +--------------------+----------+------------------------------------------------------------------------------------------------------+
 
-Testing tidss properties with modetest
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. _Testing tidss properties with modetest and kmstest:
+Testing tidss properties with modetest and kmstest
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 As the name suggests, ``modetest`` is DRM based mode setting test program available along with libdrm.
 It is an easy-to-use tool to test different features provided by display HWs. The DRM driver for,
@@ -663,6 +664,58 @@ The following example was run on DSS7-UL and hence the pipe with scaling capabil
 
 Note that the ``*2`` at the end of ``-P 41@38:400x400*2`` is the scaling factor.
 
+- **Cropping**
+
+``kmstest`` utility can be used to demonstrate cropping in a video frame using a test pattern.
+User can specify the video frame size ``w x h`` with an input color format ``cf`` using option ``-f``, then to specify the source rectangle i.e. to create cropped portion of video frame, it can be done using ``-v`` argument which specify ``w1 x h1`` source rectangle starting at coordinates ``x1,y1`` w.r.t the video frame. The destination rectangle i.e. on the screen where this needs to be displayed can be specified using ``-p`` option with the desired dimensions i.e. ``w2 x h2`` to be displayed starting at coordinates ``x2,y2``.
+
+.. code-block:: console
+
+   $ kmstest -p <plane_number>:<x-coordinate>,<ycoordinate>-<plane_width>x<plane_height> -f <frame_width>x<frame_height>-<color-format> -v <view_number>:<x-coordinate>,<ycoordinate>-<view_width>x<view_height>
+
+   $ kmstest -p 0:x2,y2-w2xh2 -f wxh-cf -v x1,y1-w1xh1
+
+.. code-block:: console
+
+   $ kmstest -c hdmi -p 0:0,0-1000x1000 -f 1000x1000-XR24 -v 0,0-1000x1000
+   Connector 1/@50: HDMI-A-1
+   Crtc 1/@48: 1920x1080@59.93 138.500 1920/48/32/80/+ 1080/3/5/23/- 60 (59.93) 0x9 0x48
+   Plane 0/@31: 0,0-1000x1000
+   Fb 55 1000x1000-XR24
+
+The above example displays a ``1000x1000`` video frame on the screen at coordinates ``0,0``.
+
+.. figure:: /images/DSS_cropping_example_1.jpg
+   :height: 600
+   :width: 1020
+
+.. code-block:: console
+
+   $ kmstest -c hdmi -p 0:0,0-800x800 -f 1000x1000 -v 0,0-800x800
+   Connector 1/@50: HDMI-A-1
+   Crtc 1/@48: 1920x1080@59.93 138.500 1920/48/32/80/+ 1080/3/5/23/- 60 (59.93) 0x9 0x48
+   Plane 0/@31: 0,0-800x800
+   Fb 55 1000x1000-XR24
+
+Taking as an input a video frame of dimensions ``1000x1000``,the example creates a cropped source rectangle of dimensions ``800x800``, starting at coordinates ``0,0`` and displays it on screen at coordinates ``0,0``.
+
+.. figure:: /images/DSS_cropping_example_2.jpg
+   :height: 600
+   :width: 1020
+
+.. code-block:: console
+
+   $ kmstest -c hdmi -p 0:500,200-800x800 -f 1000x1000 -v 200,100-800x800                                                                                                                     
+   Connector 1/@50: HDMI-A-1
+   Crtc 1/@48: 1920x1080@59.93 138.500 1920/48/32/80/+ 1080/3/5/23/- 60 (59.93) 0x9 0x48
+   Plane 0/@31: 500,200-800x800
+   Fb 54 1000x1000-XR24
+
+Taking as an input a video frame of dimensions ``1000x1000``, this example creates a cropped source rectangle of dimensions ``800x800``, starting at coordinates ``500,200`` and displays it on screen at coordinates ``200,100`` keeping the same dimensions as source rectangle i.e ``800x800`` without scaling. 
+
+.. figure:: /images/DSS_cropping_example_3.jpg
+   :height: 600
+   :width: 1020
 
 Buffers
 -------
