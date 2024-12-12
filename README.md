@@ -56,12 +56,17 @@ Example build commands:
 
     $ make DEVFAMILY=AM62X OS=android
 
+ - Build debian documentation for AM62PX
+
+    $ make DEVFAMILY=AM62PX OS=debian
+
 ### HTML Page Output
 
 Open the index page in a web browser
 
     linux:   ./build/processor-sdk-linux-<FAMILY>/esd/docs/[version]/index.html
     android: ./build/processor-sdk-android-<FAMILY>/esd/docs/[version]/index.html
+    debian: ./build/processor-sdk-debian-<FAMILY>/esd/docs/[version]/index.html
 
 ## Tips and Tricks
 
