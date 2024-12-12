@@ -67,21 +67,3 @@ jobs:
           name: ${{ matrix.device }}-${{ matrix.os }}
           path: build/
           retention-days: 1
-
-  agregate:
-    name: Agregate build artifacts
-    runs-on: ubuntu-latest
-    needs: build
-
-    steps:
-      - name: Download all artifacts
-        uses: actions/download-artifact@v4
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          path: build
-          merge-multiple: true
-
-      - name: Upload static files as single artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: build
