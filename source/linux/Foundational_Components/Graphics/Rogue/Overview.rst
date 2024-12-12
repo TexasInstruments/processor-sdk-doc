@@ -1,3 +1,4 @@
+.. include:: <isonum.txt>
 .. include:: <isopub.txt>
 
 ############
