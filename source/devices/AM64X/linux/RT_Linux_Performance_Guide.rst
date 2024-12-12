@@ -485,7 +485,7 @@ AM64xx-EVM
 
 - Filesize used is: 10G
 - FIO command options: --ioengine=libaio --iodepth=4 --numjobs=1 --direct=1 --runtime=60 --time_based 
-- Platform: Speed 8GT/s, Width x1
+- Platform: Speed 5GT/s, Width x1
 - SSD being used: Lite-On Technology Corporation M8Pe Series NVMe SSD [14a4:22f1] (rev 01)
 
 |
