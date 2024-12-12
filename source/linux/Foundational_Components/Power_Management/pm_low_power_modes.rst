@@ -106,6 +106,8 @@ system and it will go through a normal Linux boot process.
    The capability to detect whether system is resuming from Partial I/O
    or doing a normal cold boot will be added in future release.
 
+.. _pm_io_only_plus_ddr:
+
 *****************
 I/O Only Plus DDR
 *****************
