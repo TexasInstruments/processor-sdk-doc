@@ -52,10 +52,6 @@ Example build commands:
 
     $ make DEVFAMILY=AM335X OS=linux
 
- - Build rtos documentation AM57X
-
-    $ make DEVFAMILY=AM57X OS=rtos
-
  - Build android documentation for AM62X
 
     $ make DEVFAMILY=AM62X OS=android
@@ -65,7 +61,6 @@ Example build commands:
 Open the index page in a web browser
 
     linux:   ./build/processor-sdk-linux-<FAMILY>/esd/docs/[version]/index.html
-    rtos:    ./build/processor-sdk-rtos-<FAMILY>/esd/docs/[version]/index.html
     android: ./build/processor-sdk-android-<FAMILY>/esd/docs/[version]/index.html
 
 ## Tips and Tricks
