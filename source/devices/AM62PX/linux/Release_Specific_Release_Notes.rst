@@ -49,8 +49,8 @@ What's new
   - LTS Stable Kernel update to 6.6.58
   - Important Bug Fixes on top of Processor SDK 10.00.07.04 Release
   - RT Kernel : Real-Time Linux Interrupt Latency numbers here - :ref:`RT Interrupt Latencies <RT-linux-performance>`
-  - Power Management: DeepSleep, MCU-Only and Partial IO mode - :ref:`Power Management Overview <Power-Management>`
   - Support for streaming from multiple 0V5640 cameras with `Arducam V3Link (Fusion Mini) <https://www.arducam.com/product/arducam-v3link-camera-kit-for-ti-development-boards/>`_
+  - Power Management: :ref:`I/O Only Plus DDR <pm_io_only_plus_ddr>` mode
 
 
 **Component version:**
@@ -183,12 +183,12 @@ Yocto
 .. rubric:: meta-edgeai
    :name: meta-edgeai
 
-| Head Commit: 836b1a3aa89d087474495ab4f77fc7a06ffcef0f edgeai-test-data.bb: edgeai-tidl-models.bb: Updated EDGEAI_SDK_VERSION
-| Date: 2024-07-30 05:58:20 -0500
+| Head Commit: 4cba875d5173dee6b4ca34bd41d5a8b47891e0c7 ti-tidl: Update concerto SRC_REV
+| Date: 2024-12-04 12:21:41 -0600
 
 | Clone: https://git.ti.com/git/edgeai/meta-edgeai.git
 | Branch: scarthgap
-| Release Tag: 10.00.00.04
+| Release Tag: 10.01.10.04
 |
 
 
