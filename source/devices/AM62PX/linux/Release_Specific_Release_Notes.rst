@@ -183,12 +183,12 @@ Yocto
 .. rubric:: meta-edgeai
    :name: meta-edgeai
 
-| Head Commit: 836b1a3aa89d087474495ab4f77fc7a06ffcef0f edgeai-test-data.bb: edgeai-tidl-models.bb: Updated EDGEAI_SDK_VERSION
-| Date: 2024-07-30 05:58:20 -0500
+| Head Commit: 4cba875d5173dee6b4ca34bd41d5a8b47891e0c7 ti-tidl: Update concerto SRC_REV
+| Date: 2024-12-04 12:21:41 -0600
 
 | Clone: https://git.ti.com/git/edgeai/meta-edgeai.git
 | Branch: scarthgap
-| Release Tag: 10.00.00.04
+| Release Tag: 10.01.10.04
 |
 
 
