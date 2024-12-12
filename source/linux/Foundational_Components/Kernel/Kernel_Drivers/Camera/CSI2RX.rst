@@ -220,6 +220,12 @@ Enabling camera sensors
     |__PART_FAMILY_NAME__| SK supports the following 15-pin FFC compatible
     camera modules with **OV5640** sensor:
 
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+    Arducam V3Link (Fusion Mini) board can also be used to connect these camera modules to SK-AM62P over FPDLink cable.
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X','AM62PX')
+
         1. TEVI-OV5640-\*-RPI
         2. Digilent PCam5C
         3. ALINX AN5641
@@ -240,6 +246,20 @@ Enabling camera sensors
         # For Technexion TEVI-OV5640
         => setenv name_overlays ti/k3-am62x-sk-csi2-tevi-ov5640.dtbo
         => boot
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+    .. code-block:: text
+
+        # For connecting Digilent PCam5C or ALINX AN5641 on V3Link fusion's RX Port 0:
+        => setenv name_overlays ti/k3-am62x-sk-csi2-v3link-fusion.dtbo ti/k3-v3link-ov5640-0-0.dtbo
+        => boot
+
+        # For connecting Technexion TEVI-OV5640 on V3Link fusion's RX Port 0:
+        => setenv name_overlays ti/k3-am62x-sk-csi2-v3link-fusion.dtbo ti/k3-v3link-tevi-ov5640-0-0.dtbo
+        => boot
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X','AM62PX')
 
     Once the overlay is applied, you can confirm that the sensor is being
     probed by checking the output of :command:`lsmod` or the media graph:
@@ -435,6 +455,43 @@ Enabling camera sensors
     To re-build the kernel with above changes you can refer to the
     :ref:`Users Guide <users-guide-kernel-config>`.
 
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+    CSI2RX testing details
+    ======================
+
+    Following sensors have been tested with the latest SDK.
+
+        +------------------------------------+----------------------------+----------------------+------------+
+        | Sensor                             | Media Bus Format           | Video Format         | Resolution |
+        +====================================+============================+======================+============+
+        | IMX219 RPi Camera                  | MEDIA_BUS_FMT_SRGGB8_1X8   | V4L2_PIX_FMT_SRGGB8  | 1920x1080  |
+        +------------------------------------+----------------------------+----------------------+------------+
+        | OV5640 MIPI CSI Camera             | MEDIA_BUS_FMT_YUYV8_1X16   | V4L2_PIX_FMT_YUYV    | 640x480    |
+        +------------------------------------+----------------------------+----------------------+------------+
+
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+    CSI2RX testing details
+    ======================
+
+    Following sensors and daughter cards have been tested with the latest SDK.
+
+        +------------------------------------+----------------------------+----------------------+------------+
+        | Sensor                             | Media Bus Format           | Video Format         | Resolution |
+        +====================================+============================+======================+============+
+        | IMX219 RPi Camera                  | MEDIA_BUS_FMT_SRGGB8_1X8   | V4L2_PIX_FMT_SRGGB8  | 1920x1080  |
+        +------------------------------------+----------------------------+----------------------+------------+
+        | OV5640 MIPI CSI Camera             | MEDIA_BUS_FMT_YUYV8_1X16   | V4L2_PIX_FMT_YUYV    | 640x480    |
+        +------------------------------------+----------------------------+----------------------+------------+
+
+        +------------------------------------+----------------------------+----------------------+------------+
+        | Daughter Board + Sensor            | Media Bus Format           | Video Format         | Resolution |
+        +====================================+============================+======================+============+
+        | V3Link (Fusion Mini) board, OV5640 | MEDIA_BUS_FMT_YUYV8_1X16   | V4L2_PIX_FMT_YUYV    | 640x480    |
+        +------------------------------------+----------------------------+----------------------+------------+
+
 .. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
     SK-AM62A supports the following FPDLink cameras using fusion board: **IMX390,
@@ -464,6 +521,10 @@ Enabling camera sensors
 
         # For OV2312 connected on Fusion board RX Port 0:
         => setenv name_overlays ti/k3-am62a7-sk-fusion.dtbo ti/k3-fpdlink-ov2312-0-0.dtbo
+        => boot
+
+        # For OV2312 connected on DS90UB954-Q1 RX Port 0:
+        => setenv name_overlays ti/k3-am62a7-sk-ub954-evm.dtbo ti/k3-fpdlink-ov2312-0-0.dtbo
         => boot
 
         # For RCM IMX390 connected on Fusion board RX Port 0:
@@ -669,6 +730,33 @@ Enabling camera sensors
         sink_0::startx="<0>" sink_0::starty="<0>" sink_0::widths="<640>" sink_0::heights="<480>" \
         sink_1::startx="<640>" sink_1::starty="<480>" sink_1::widths="<640>" sink_1::heights="<480>" ! \
         queue ! kmssink driver-name=tidss plane-properties=s,zpos=1
+
+    CSI2RX testing details
+    ======================
+
+    Following sensors and daughter cards have been tested with the latest SDK.
+
+        +------------------------------------+----------------------------+----------------------+------------+
+        | Sensor                             | Media Bus Format           | Video Format         | Resolution |
+        +====================================+============================+======================+============+
+        | IMX219 RPi Camera                  | MEDIA_BUS_FMT_SRGGB8_1X8   | V4L2_PIX_FMT_SRGGB8  | 1920x1080  |
+        +------------------------------------+----------------------------+----------------------+------------+
+
+        +------------------------------------+----------------------------+----------------------+------------+
+        | Daughter Board + Sensor            | Media Bus Format           | Video Format         | Resolution |
+        +====================================+============================+======================+============+
+        | FPDLink fusion EVM, IMX390         | MEDIA_BUS_FMT_SRGGB12_1X12 | V4L2_PIX_FMT_SRGGB12 | 1936x1100  |
+        +------------------------------------+----------------------------+----------------------+------------+
+        | FPDLink fusion EVM, OV2312         | MEDIA_BUS_FMT_SBGGI10_1X10 | V4L2_PIX_FMT_SBGGI10 | 1600x1300  |
+        +------------------------------------+----------------------------+----------------------+------------+
+        | V3Link (Fusion Mini) board, IMX219 | MEDIA_BUS_FMT_SRGGB8_1X8   | V4L2_PIX_FMT_SRGGB8  | 1920x1080  |
+        +------------------------------------+----------------------------+----------------------+------------+
+        | V3Link (Fusion Mini) board, IMX390 | MEDIA_BUS_FMT_SRGGB12_1X12 | V4L2_PIX_FMT_SRGGB12 | 1936x1100  |
+        +------------------------------------+----------------------------+----------------------+------------+
+        | V3Link (Fusion Mini) board, OV2312 | MEDIA_BUS_FMT_SBGGI10_1X10 | V4L2_PIX_FMT_SBGGI10 | 1600x1300  |
+        +------------------------------------+----------------------------+----------------------+------------+
+        | DS90UB954-Q1 EVM, OV2312           | MEDIA_BUS_FMT_SBGGI10_1X10 | V4L2_PIX_FMT_SBGGI10 | 1600x1300  |
+        +------------------------------------+----------------------------+----------------------+------------+
 
 .. ifconfig:: CONFIG_part_variant in ('J721E')
 
