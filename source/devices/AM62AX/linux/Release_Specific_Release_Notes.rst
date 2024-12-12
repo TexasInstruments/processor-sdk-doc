@@ -48,6 +48,7 @@ What's new
   - LTS Stable Kernel update to 6.6.58
   - Important Bug Fixes on top of Processor SDK 10.00.07.04 Release
   - RT Kernel : Real-Time Linux Interrupt Latency numbers here :ref:`RT Interrupt Latencies <RT-linux-performance>`
+  - Support for streaming from OV2312 camera with `DS90UB954-Q1EVM <https://www.ti.com/tool/DS90UB954-Q1EVM>`_
 
 **Component version:**
 

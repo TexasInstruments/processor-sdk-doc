@@ -50,6 +50,7 @@ What's new
   - Important Bug Fixes on top of Processor SDK 10.00.07.04 Release
   - RT Kernel : Real-Time Linux Interrupt Latency numbers here - :ref:`RT Interrupt Latencies <RT-linux-performance>`
   - Power Management: DeepSleep, MCU-Only and Partial IO mode - :ref:`Power Management Overview <Power-Management>`
+  - Support for streaming from multiple 0V5640 cameras with `Arducam V3Link (Fusion Mini) <https://www.arducam.com/product/arducam-v3link-camera-kit-for-ti-development-boards/>`_
 
 
 **Component version:**
