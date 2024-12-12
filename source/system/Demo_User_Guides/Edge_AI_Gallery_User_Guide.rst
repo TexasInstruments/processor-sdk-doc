@@ -109,11 +109,13 @@ The edge AI gallery launches on Linux startup. Follow the below instructions to 
 10. To change the videos in the prebuilt pipelines used for ``Image Classification``, ``Object Detection``, ``Semantic Segmentation`` & ``Multi Channel``, you can replace the video files :file:`oob-gui-video*.h264` under :file:`/opt/oob-demo-assets/`.
 
 11. To relaunch the application, you should run
+
    ::
 
         /etc/init.d/edgeai-launcher.sh start
 
 12. And to stop the application again, you should run
+
    ::
 
         /etc/init.d/edgeai-launcher.sh stop
