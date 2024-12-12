@@ -13,16 +13,225 @@ device. If your application requires inactive power management, you must determi
 low power mode described below satisfies your requirements. Each mode must be evaluated
 based on power consumption and latency (the time it takes to wakeup to Active mode) requirements. Specific
 values are detailed in the device-specific data sheet. As part of this SDK offering,
-Texas Instruments has added support for the following low power modes:
+Texas Instruments has added support for the following low power modes (ordered from lowest power consumption
+to highest power consumption):
 
+#. Partial I/O
+#. I/O Only Plus DDR
 #. Deep Sleep
 #. MCU Only
-#. Partial I/O
 
 TI SDK 10.0 (ti-linux-6.6.y kernel and 10.0 DM firmware) adds support for
 an updated LPM Software Architecture that seamlessly manages the various
 Suspend-to-RAM modes supported by AM62 family of devices. More details about
 this architecture can be found in :ref:`LPM constraints framework<pm_constraints_fwk>` section.
+
+***********
+Partial I/O
+***********
+
+In Partial I/O, only the I/O pins and a small digital logic in the CANUART I/O
+Bank are active, while the rest of the SoC is turned off. The user can
+use the I/O pins to aggregate multiple I/O wakeup events and toggle
+PMIC_LPM_EN pin to enable PMIC or discrete power solution when an I/O
+wakeup event is triggered.
+
+.. note::
+
+   The system looses nearly all its state as DDR is also turned-off.
+   Partial I/O is comparable with a Linux poweroff state.
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+   .. important::
+
+      Only AM62 LP-SK EVM supports Partial I/O mode.
+
+The reference implementation in this SDK implements Partial I/O as a
+poweroff state. On poweroff, Linux ti_sci driver checks the potential
+Partial I/O wakeup sources for being enabled. If one of the wakeup
+sources is found to be enabled, Partial I/O is entered instead of poweroff.
+
+The following wakeup sources have been configured for Partial I/O:
+mcu_uart0, mcu_mcan0, and mcu_mcan1. Partial I/O mode can only be tested
+when `k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=10.00.07>`__
+overlay is loaded. Please refer to :ref:`How to enable DT overlays<howto_dt_overlays>` for more details.
+
+After Linux boots, the MCAN wakeup for Partial I/O is enabled using the
+wake on PHY activity option of ethtool. For example, the following
+command enables mcu_mcan0 wakeup:
+
+.. code-block:: console
+
+   root@<machine>:~# ethtool -s mcu_mcan0 wol p
+
+.. rubric:: To enable mcu_mcan1 wakeup:
+
+.. code-block:: console
+
+   root@<machine>:~# ethtool -s mcu_mcan1 wol p
+
+.. rubric:: To enable UART wakeup:
+
+.. code-block:: console
+
+   root@<machine>:~# echo enabled > /sys/class/tty/ttyS0/device/power/wakeup
+
+.. note::
+
+   UART wakeup from Partial I/O is currently being debugged on the EVM.
+
+With at least one of the wakeup sources enabled, Partial I/O mode can be
+entered with the following command:
+
+.. code-block:: console
+
+   root@<machine>:~# poweroff
+
+At this point, Linux kernel will go through its poweroff process and
+the console output will stop at the following lines:
+
+.. code-block:: text
+
+   [   51.698039] systemd-shutdown[1]: Powering off.
+   [   51.769478] reboot: Power down
+
+The system has entered Partial I/O and can only be woken up with an
+activity on the I/O pin programmed for wakeup. For example, if mcu_mcan0
+wakeup was enabled, grounding Pin 22 of J8 MCU Header will wakeup the
+system and it will go through a normal Linux boot process.
+
+.. note::
+
+   The capability to detect whether system is resuming from Partial I/O
+   or doing a normal cold boot will be added in future release.
+
+.. _pm_io_only_plus_ddr:
+
+*****************
+I/O Only Plus DDR
+*****************
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+   This mode is not applicable for AM62X.
+
+.. ifconfig:: CONFIG_part_variant in ('AM62AX' , 'AM62PX')
+
+   This mode is similar to Partial I/O mode, with the major distinction being
+   that the DDR memory is kept in self refresh to save context. All the processor
+   power supplies are turned off except the LVCMOS I/O power supply while keeping
+   DDR in self-refresh.
+   The user can do system power state transitions, including power supply control,
+   by a single interface signal (PMIC_LPM_EN signal) with PMIC register programming.
+
+   The benefits of using I/O Only plus DDR in embedded devices:
+
+   #. Lowest power consumption: I/O Only Plus DDR mode can save a significant amount of power, especially in battery-powered
+      devices that are mostly idle or low activity most of the time with the full context being saved.
+   #. Better efficiency: I/O Only Plus DDR mode can help to improve the efficiency of embedded devices by
+      reducing the amount of time that the processor is idle. This is because the processor can
+      be kept in a low-power state when it is not needed.
+
+   .. ifconfig:: CONFIG_part_variant in ('AM62AX')
+
+      .. important:: Jumper J9 should be connected on SK to enable system to enter I/O Only plus DDR mode.
+
+   .. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+      .. important:: Jumper J12 should be connected on SK to enable system to enter I/O Only plus DDR mode.
+
+   The wakeup sources that can be used to wake the system from I/O Only Plus DDR are
+   mcu_uart0, mcu_mcan0, mcu_mcan1 and wkup_uart0. After Linux boots, direct register
+   writes can be used to enable wakeup.
+
+   .. rubric:: Following commands set the wakeup EN bit, enable receive for pad in PADCONFIG register and can
+               be used to enable wakeup from mcu_mcan0, mcu_mcan1, mcu_uart0 and wkup_uart0 pins respectively.
+
+   .. important::
+
+      The steps mentioned below are a workaround to enable wakeup as there are more driver level changes
+      required to enable the wakeup support.
+
+   .. code-block:: console
+
+      root@<machine>:~# devmem2 0x4084038 0x20050000  # MCU_PADCONFIG14 for mcu_mcan0
+      root@<machine>:~# devmem2 0x4084040 0x20050000  # MCU_PADCONFIG16 for mcu_mcan1
+      root@<machine>:~# devmem2 0x4084014 0x20050000  # MCU_PADCONFIG5 for mcu_uart0
+      root@<machine>:~# devmem2 0x4084024 0x20050000  # MCU_PADCONFIG9 for wkup_uart0
+
+   .. note::
+
+      Atleast one of the wakeup sources listed above must be enabled to wakeup from I/O Only Plus DDR mode.
+
+   .. rubric:: To enter I/O Only Plus DDR mode, first disable wakeup from RTC, USB0 and USB1 as these wakeup
+               sources are not supported for this mode.
+
+   .. ifconfig:: CONFIG_part_variant in ('AM62AX')
+
+      .. code-block:: console
+
+         root@am62axx-evm:~# echo disabled > /sys/class/rtc/rtc0/device/power/wakeup
+         root@am62axx-evm:~# echo disabled > /sys/devices/platform/bus@f0000/f900000.dwc3-usb/power/wakeup
+         root@am62axx-evm:~# echo disabled > /sys/devices/platform/bus@f0000/f910000.dwc3-usb/power/wakeup
+
+   .. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+      .. code-block:: console
+
+         root@am62pxx-evm:~# echo disabled > /sys/class/rtc/rtc0/device/power/wakeup
+         root@am62pxx-evm:~# echo disabled > /sys/devices/platform/bus@f0000/f900000.usb/power/wakeup
+         root@am62pxx-evm:~# echo disabled > /sys/devices/platform/bus@f0000/f910000.usb/power/wakeup
+
+   .. rubric:: Then, configure PMIC register bit to turn off only selected rails for this mode.
+
+   .. ifconfig:: CONFIG_part_variant in ('AM62AX')
+
+      .. code-block:: console
+
+         root@am62axx-evm:~# i2cset -f -y -m 0xFF -r -a 0 0x48 0x86 0x1
+
+      The register write has been done to enable PMIC to enter `PMIC S2R <https://www.ti.com/lit/ug/slvucm3/slvucm3.pdf>`_ .
+
+   .. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+      .. code-block:: console
+
+         root@am62pxx-evm:~# i2cset -f -y -m 0xFF -r -a 0 0x48 0x86 0x2
+
+   .. rubric:: Now, the SoC can be suspended using the following command:
+
+   .. code-block:: console
+
+      root@<machine>:~# echo mem > /sys/power/state
+      [   26.132900] PM: suspend entry (deep)
+      [   26.136759] Filesystems sync: 0.000 seconds
+      [   26.151748] Freezing user space processes
+      [   26.157256] Freezing user space processes completed (elapsed 0.001 seconds)
+      [   26.164239] OOM killer disabled.
+      [   26.167469] Freezing remaining freezable tasks
+      [   26.173168] Freezing remaining freezable tasks completed (elapsed 0.001 seconds)
+      [   26.180624] printk: Suspending console(s) (use no_console_suspend to debug)
+
+   This indicates that the device has partially completed the I/O Only plus DDR entry sequence.
+
+   .. ifconfig:: CONFIG_part_variant in ('AM62AX')
+
+         For further confirmation, one can take a look at the on board LED LD2 on the SK
+         (LED should turn off).
+
+   .. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+         For further confirmation, one can take a look at the on board LED LD1 on the SK
+         (LED should turn off).
+
+   The system has entered I/O Only plus DDR and can be woken up either with an
+   activity on the I/O pin programmed for wakeup or key press on wkup_uart0 (third serial port :file:`/dev/ttyUSB2`) or
+   mcu_uart0 (fourth serial port :file:`/dev/ttyUSB3`).
+
+   .. note::
+
+      The system will enter I/O Only plus DDR mode only if DM selects it based on existing constraints.
 
 **********
 Deep Sleep
@@ -101,12 +310,11 @@ For further confirmation, one can take a look at the PMIC_LPM_EN pin on the EVM
 Refer to the :ref:`Wakeup Sources<pm_wakeup_sources>` section for information on how to wakeup the device from
 Deep Sleep mode using one of the supported wakeup sources.
 
+.. _pm_mcu_only:
 
 ********
 MCU Only
 ********
-
-.. _pm_mcu_only:
 
 Similar to Deep Sleep, with the major distinction being that the MCU core is kept alive to run applications.
 The benefits of using MCU Only mode:
@@ -200,7 +408,7 @@ on the MCU UART (in most cases it will be /dev/ttyUSB3)
 
     [IPC RPMSG ECHO] Next MCU mode is 1
     [IPC RPMSG ECHO] Suspend request to MCU-only mode received
-    [IPC RPMSG ECHO] Press a sinlge key on this terminal to resume the kernel from MCU only mode
+    [IPC RPMSG ECHO] Press a single key on this terminal to resume the kernel from MCU only mode
 
 .. note::
 
@@ -208,87 +416,6 @@ on the MCU UART (in most cases it will be /dev/ttyUSB3)
 
 Refer to the :ref:`Wakeup Sources<pm_wakeup_sources>` section for information on how to wakeup the device from
 MCU Only mode using one of the supported wakeup sources.
-
-
-***********
-Partial I/O
-***********
-
-In Partial I/O, only the I/O pins and a small digital logic in the CANUART I/O
-Bank are active, while the rest of the SoC is turned off. The user can
-use the I/O pins to aggregate multiple I/O wakeup events and toggle
-PMIC_LPM_EN pin to enable PMIC or discrete power solution when an I/O
-wakeup event is triggered.
-
-.. note::
-
-   The system looses nearly all its state as DDR is also turned-off.
-   Partial I/O is comparable with a Linux poweroff state.
-
-.. ifconfig:: CONFIG_part_variant in ('AM62X')
-
-   .. important::
-
-      Only AM62 LP-SK EVM supports Partial I/O mode.
-
-The reference implementation in this SDK implements Partial I/O as a
-poweroff state. On poweroff, Linux ti_sci driver checks the potential
-Partial I/O wakeup sources for being enabled. If one of the wakeup
-sources is found to be enabled, Partial I/O is entered instead of poweroff.
-
-The following wakeup sources have been configured for Partial I/O:
-mcu_uart0, mcu_mcan0, and mcu_mcan1. Partial I/O mode can only be tested
-when `k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=10.00.07>`__
-overlay is loaded. Please refer to :ref:`How to enable DT overlays<howto_dt_overlays>` for more details.
-
-After Linux boots, the MCAN wakeup for Partial I/O is enabled using the
-wake on PHY activity option of ethtool. For example, the following
-command enables mcu_mcan0 wakeup:
-
-.. code-block:: console
-
-   root@<machine>:~# ethtool -s mcu_mcan0 wol p
-
-.. rubric:: To enable mcu_mcan1 wakeup:
-
-.. code-block:: console
-
-   root@<machine>:~# ethtool -s mcu_mcan1 wol p
-
-.. rubric:: To enable UART wakeup:
-
-.. code-block:: console
-
-   root@<machine>:~# echo enabled > /sys/class/tty/ttyS0/device/power/wakeup
-
-.. note::
-
-   UART wakeup from Partial I/O is currently being debugged on the EVM.
-
-With at least one of the wakeup sources enabled, Partial I/O mode can be
-entered with the following command:
-
-.. code-block:: console
-
-   root@<machine>:~# poweroff
-
-At this point, Linux kernel will go through its poweroff process and
-the console output will stop at the following lines:
-
-.. code-block:: text
-
-   [   51.698039] systemd-shutdown[1]: Powering off.
-   [   51.769478] reboot: Power down
-
-The system has entered Partial I/O and can only be woken up with an
-activity on the I/O pin programmed for wakeup. For example, if mcu_mcan0
-wakeup was enabled, grounding Pin 22 of J8 MCU Header will wakeup the
-system and it will go through a normal Linux boot process.
-
-.. note::
-
-   The capability to detect whether system is resuming from Partial I/O
-   or doing a normal cold boot will be added in future release.
 
 ***********
 Limitations
