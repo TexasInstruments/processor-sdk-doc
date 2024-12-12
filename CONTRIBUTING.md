@@ -11,6 +11,13 @@ not strictly enforced.
 Please see the following for additional resources on commit formatting:
 https://www.conventionalcommits.org/en/v1.0.0/
 
+> [!NOTE]
+> This entire project is documentation. Using the docs tag for all changes is
+> not helpful. Please reserve usage of the docs tag for changes to this projects
+> documentation, such as the README or CONTRIBUTING documents. If the change is
+> adding information it should be treated as a feat, if it is changing incorrect
+> information it should be a fix.
+
 ## Project structure
 
 This project uses reStructuredText (reST or RST) for generating standard HTML
