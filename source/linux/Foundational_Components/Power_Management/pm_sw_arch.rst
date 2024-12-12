@@ -151,8 +151,8 @@ Specifically, checking of constraints is done at two levels:
 
 The code enabling the constraints framework can be found in:
 
-#. TISCI PM Domain driver: https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/drivers/pmdomain/ti/ti_sci_pm_domains.c?h=10.00.07
-#. TISCI driver: https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/drivers/pmdomain/ti/ti_sci_pm_domains.c?h=10.00.07
+#. TISCI PM Domain driver: https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/drivers/pmdomain/ti/ti_sci_pm_domains.c?h=10.01.10
+#. TISCI driver: https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/drivers/firmware/ti_sci.c?h=10.01.10
 
 Examples of adding constraints from the remote core side are being implemented and will
 be enabled in future release.
@@ -198,7 +198,7 @@ The various modes and their latencies are documented here: https://downloads.ti.
 If a device wants to put a constraint to not be powered-off, it can use the Linux
 QoS framework and set the ``DEV_PM_QOS_RESUME_LATENCY`` equal to 0.
 An example is shown in the following RemoteProc driver:
-https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/drivers/remoteproc/ti_k3_r5_remoteproc.c?h=10.00.07#n535
+https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/drivers/remoteproc/ti_k3_r5_remoteproc.c?h=10.01.10#n523
 
 .. note::
 
