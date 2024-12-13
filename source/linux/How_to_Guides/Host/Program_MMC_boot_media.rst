@@ -313,8 +313,6 @@ Now that the flash image has been created we can now flash the SK
 
 .. ifconfig:: CONFIG_part_variant in ('J784S4','J742S2')
 
-   * For creating eMMC boot partiton refer :ref:`here <partitioning-eMMC-from-uboot>`
-
    * For writing bootloaders into eMMC boot partition
 
       .. code-block:: text
