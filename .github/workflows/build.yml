@@ -56,6 +56,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Add directory to safe dir overrides
+        run: |
+          git config --global --add safe.directory "$PWD"
+
       - name: Build ${{ matrix.device }}
         run: |
           make DEVFAMILY=${{ matrix.device }} OS=${{ matrix.os }} \
