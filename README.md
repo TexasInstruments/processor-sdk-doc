@@ -68,6 +68,17 @@ Open the index page in a web browser
     android: ./build/processor-sdk-android-<FAMILY>/esd/docs/[version]/index.html
     debian: ./build/processor-sdk-debian-<FAMILY>/esd/docs/[version]/index.html
 
+## Live Preview on GitHub Pages
+
+GitHub Pages are now live for all `DEVFAMILY` and `OS` supported by this repository.
+This means that for every pull request merged into the master branch, an equivalent
+preview will be available on GitHub Pages immediately.
+
+You can access the latest bleeding-edge documentation at the following link:
+    - [Processor SDK Documentation](https://texasinstruments.github.io/processor-sdk-doc/)
+
+Please treat GitHub Pages as the most up-to-date source of documentation.
+
 ## Tips and Tricks
 
 Add the following to your `init.vim` to automatically use the standard
