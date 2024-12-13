@@ -1,6 +1,3 @@
-conf.py
-!python-scripts/conf.py
 *.swp
 *.pyc
 build/
-source/_replacevars.rst
