@@ -5,5 +5,5 @@
 
 find configs/ -name '*_toc.txt' -print0 | 
 	while IFS= read -r -d '' file_name; do 
-		grep -Pi '.*/_[^\/]*' "$file_name"
+		rg -i '.*/_[^\/]*' "$file_name"
 	done
