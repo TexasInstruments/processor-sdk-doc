@@ -225,7 +225,6 @@ and DSP processors in a multi-processor environment.
   <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/
   rtos/index_Foundational_Components.html#ipc>`__
 
-|
 .. rubric:: User Cases
    :name: user-cases
 
