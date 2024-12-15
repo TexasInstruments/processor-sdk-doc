@@ -1847,7 +1847,7 @@ Procedure
 ~~~~~~~~~
 
 The script file
-`setup\_hsr.sh <http://processors.wiki.ti.com/images/1/18/Setup_hsr.pdf>`_
+`setup\_hsr.sh <http://processors.wiki.ti.com/images/1/18/Setup_hsr.pdf>`__
 and clock configuration files e.g. dut_1_hsr_oc.cfg, dut_2_hsr_oc.cfg,
 dut_3_hsr_oc.cfg (each identical, same as listed in
 `PTP Redundancy <Industrial_Protocols_PTP.html#redundancy-hsr-prp>`__
@@ -1876,7 +1876,7 @@ section for HSR) will be used in the setup of the tests.
 
 -  Boot IDK into kernel prompt.
 
--  Modify the top fields in `setup\_hsr.sh <http://processors.wiki.ti.com/images/1/18/Setup_hsr.pdf>`_
+-  Modify the top fields in `setup\_hsr.sh <http://processors.wiki.ti.com/images/1/18/Setup_hsr.pdf>`__
    to reflect the HSR slave
    ports' MAC addresses and IP address of the DUT's HSR interface. The
    **ETHA** or **ETHB** fields may also need to be modified if an ICSS
