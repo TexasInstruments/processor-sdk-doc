@@ -350,11 +350,11 @@ can be enable as follows:
 -  echo 3 >/sys/class/video4linux/video1/dev\_debug
 
    This allows V4L2 ioctl calls to be logged.
-|
+
 -  echo 3 > /sys/module/videobuf2\_core/parameters/debug
 
    This allows VB2 buffers operation to be logged.
-|
+
 In addition ti-cal also has specific debug log which can be enabled as
 follows:
 
