@@ -203,6 +203,7 @@ boot using the PPS device tree file.
 the relevant boot command (e.g. 'bootcmd', mmcboot' or 'netboot')
 
 2. Set the device tree file to be used.
+
 ::
 
  setenv fdtfile <PPS dtb>
@@ -432,6 +433,7 @@ configuration file:
 (where eth2/eth3 are the slave interfaces used for the HSR/PRP interface)
 
 HSR:
+
 ::
 
     [global]
@@ -488,6 +490,7 @@ HSR:
     fault_reset_interval         0
 
 PRP:
+
 ::
 
     [global]
@@ -552,6 +555,7 @@ configured using a configuration file similar to the one below:
 (Note: only supported on PRU-ICSS ports using DualEMAC, and supports slave side only)
 
 Telecom:
+
 ::
 
     # Telecom Profile (G.8275.x) PTP Config File
@@ -1363,6 +1367,7 @@ Refer to the sample linuxptp BC configuration files bc.cfg, bc_hsr.cfg and bc_pr
 as described below:
 
 bc.cfg: BC with GMAC and four ICSS ports
+
 ::
 
     [global]
@@ -1422,6 +1427,7 @@ bc.cfg: BC with GMAC and four ICSS ports
     fault_reset_interval         0
 
 bc_prp.cfg: BC with GMAC and two PRP ports:
+
 ::
 
     [global]
@@ -1509,6 +1515,7 @@ bc_prp.cfg: BC with GMAC and two PRP ports:
 
 
 bc_hsr.cfg: BC with GMAC and two HSR ports:
+
 ::
 
     [global]

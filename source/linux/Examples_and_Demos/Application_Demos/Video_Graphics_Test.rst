@@ -50,6 +50,7 @@ The APIs required to achieve scaling, overlaying and alpha-blending using the DS
 Running the Test
 ----------------
 In order for the users to run the video graphics test, please type the following commands on the EVM:
+
 ::
 
     target # insmod /lib/modules/<kernel_version>/extra/galcore.ko baseAddress=0x80000000 physSize=0x80000000

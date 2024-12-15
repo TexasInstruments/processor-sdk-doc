@@ -147,6 +147,7 @@ print will be displayed on console:
    :name: sorte-sample-log-from-am572x-idk
 
 **Master**
+
 ::
 
   root@am57xx-evm:~# pruss_app_sorte_master_am572x.out
@@ -156,6 +157,7 @@ print will be displayed on console:
   sorte master: 2 SLAVE devices connected
 
 **Slave**
+
 ::
 
   root@am57xx-evm:~# pruss_app_sorte_slave_am572x.out

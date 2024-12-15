@@ -18,6 +18,7 @@ and PRU-ICSS ports are eth1/eth2):
 (This acts as a 2 node ring for HSR, or a 2 node point-to-point for PRP)
 
 2 ) Configure ports to have the same MAC address
+
 ::
 
     ifconfig eth1 0.0.0.0 down && ifconfig eth2 0.0.0.0 down
@@ -26,6 +27,7 @@ and PRU-ICSS ports are eth1/eth2):
 3 ) Configure offload feature, and create HSR/PRP interface
 
 (for HSR)
+
 ::
 
     ethtool -K eth1 hsr-rx-offload on && ethtool -K eth2 hsr-rx-offload on
@@ -34,6 +36,7 @@ and PRU-ICSS ports are eth1/eth2):
     ifconfig hsr0 192.168.2.20
 
 (for PRP)
+
 ::
 
     ethtool -K eth1 prp-rx-offload on && ethtool -K eth2 prp-rx-offload on

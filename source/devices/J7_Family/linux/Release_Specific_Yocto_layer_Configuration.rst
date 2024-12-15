@@ -27,6 +27,7 @@ Yocto Layer Configuration
       ./oe-layertool-setup.sh -f configs/processor-sdk-linux/<Config File>
 
 The Linux SDK package also has the above tool cloned at the top level. If you have it installed:
+
 ::
 
     cd <SDK INSTALL DIR>/yocto-build
