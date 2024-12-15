@@ -70,7 +70,6 @@ DRA7x boards communicate with each other using J721E as backplane.
    :name: backplane-configuration
 
 .. rubric:: *Backplane DTS Overlay File*
-   :name: backplane-configuration
 
 The following DTS overlay file configures the PCIe controller in EP mode and
 also contains a device tree node to create a NTB function device:
