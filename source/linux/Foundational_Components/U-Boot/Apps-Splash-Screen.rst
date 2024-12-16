@@ -57,7 +57,7 @@ To test the display and video driver in U-Boot, run the following commands at U-
    #To display image
    =>  bmp display $loadaddr m m
 
-The above command will display an image at the centre of the screen as below
+The above command will display an image at the center of the screen as shown below
 
 .. Image:: /images/AM335x_evm_uboot_splash_screen.jpg
    :width: 600
