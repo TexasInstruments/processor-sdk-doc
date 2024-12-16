@@ -734,6 +734,7 @@ M / (2^S \* D) = 5000 / (2^10 \* 3)
 hence
 
 M = 5000, S = 10, D = 3
+
 |
 
 Note 3: cpts driver keeps a table of M/S/D for some common frequencies

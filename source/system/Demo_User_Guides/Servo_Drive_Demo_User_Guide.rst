@@ -24,13 +24,13 @@ Hardware Prerequisites
 
     -  TI AM64x GP EVM and power supply
 
-    -  TI FSI serial interface (FSI) adapter board: `TMDSFSIADAPEVM <https://www.ti.com/tool/TMDSFSIADAPEVM>`_
+    -  TI FSI serial interface (FSI) adapter board: `TMDSFSIADAPEVM <https://www.ti.com/tool/TMDSFSIADAPEVM>`__
 
 - 3x Seconary Nodes, for each Seconary Node:
 
     -  TI F280049 Launchpad: `LAUNCHXL-F280049C <https://www.ti.com/tool/LAUNCHXL-F280049C>`_
 
-    -  TI FSI serial interface (FSI) adapter board: `TMDSFSIADAPEVM <https://www.ti.com/tool/TMDSFSIADAPEVM>`_
+    -  TI FSI serial interface (FSI) adapter board: `TMDSFSIADAPEVM <https://www.ti.com/tool/TMDSFSIADAPEVM>`__
 
     -  TI GaNFET BoosterPack: `BOOSTXL-3PHGANINV <https://www.ti.com/tool/BOOSTXL-3PHGANINV>`_
 
