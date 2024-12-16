@@ -200,3 +200,63 @@ Issues Tracker
 
     - Further Information can be found at `SIR Portal <https://sir.ext.ti.com/>`_
 
+Errata Resolved
+---------------
+.. csv-table::
+   :header: "Record ID", "Title"
+   :widths: 15, 70
+
+   "EXT_EP-12128","USB2 PHY locks up due to short suspend"
+   "EXT_EP-12123","USART: Erroneous clear/trigger of timeout interrupt"
+   "EXT_EP-12124","BCDMA: RX Channel can lockup in certain scenarios"
+   "EXT_EP-12125","i2327: RTC: Hardware wakeup event limitation"
+
+Errata Open
+-----------
+.. csv-table::
+   :header: "Record ID", "Title"
+   :widths: 15, 70
+
+   "EXT_EP-12114","MMCSD: HS200 and SDR104 Command Timeout Window Too Small"
+
+Issues Resolved
+---------------
+.. csv-table::
+   :header: "Record ID", "Title"
+   :widths: 15, 70
+
+   "EXT_EP-12108","audit for potential bugs with 6.6.44 stable merge "
+   "EXT_EP-12098","Uboot docs: document renaming tiboot3-<evm>.bin file"
+   "EXT_SITMPUSW-29","TI Debian SDK: Docker not working"
+   "EXT_SITMPUSW-31","IPC Firmwares missing from base images."
+   "EXT_EP-12061","Single Link LVDS is broken with 10.0"
+   "EXT_EP-12103","PHY configs not restored after suspend-resume"
+   "EXT_EP-12058","rcu_preempt self-detected stall on CPU while running DSS usecases"
+   "EXT_EP-12102","Linux: AM62 USB interoperability broken as LPM is enabled"
+   "EXT_EP-12062","OSPI NAND Flash write issues with SK-AM62-LP"
+   "EXT_EP-12083","GPIO doesn't maintain state during suspend/resume"
+   "EXT_EP-12096","AM62*: CAN: mcu_mcan0 regression"
+   "EXT_EP-12094","AM62x: incorrect PRUSS clock ID in device tree"
+   "EXT_EP-12093","GPIO glitch observed while resuming from DeepSleep"
+   "EXT_EP-12056","8250_omap: incorrect handling of dma->rx_running flag"
+   "EXT_EP-12086","copying files to eMMC causes kernel crash"
+
+Issues Open
+-----------
+.. csv-table::
+   :header: "Record ID", "Title"
+   :widths: 15, 70
+
+   "EXT_EP-12111","Linux SDK v10.0: TI-added support for W25N01JW SPI NAND breaks other existing Flash support"
+   "EXT_EP-12075","U-boot gets stuck when DDR size changed to 512 MB"
+   "EXT_EP-12051","AM64x: Linux hangs on repetitive probe/removal of gadget zero"
+   "EXT_EP-12066","CPSW EST schedule triggers netdev watchdog"
+   "EXT_EP-12065","CPSW Ethernet EST schedule is not taken down on link down"
+   "EXT_EP-12071","sdk-doc: missing SK-AM64B information in CDNS3 USB page"
+   "EXT_EP-12076","copying files to eMMC triggers cqe error"
+   "EXT_EP-12074","ti-rpmsg-char: Squash resource leaks"
+   "EXT_EP-12072","misleading GPMC message in kernel log"
+   "EXT_EP-12112","Add Timer PWM documentation and other infrastructure as needed"
+   "EXT_EP-12060","AM64x: Lower core count on variant devices no supported"
+   "EXT_EP-12081","AM62x: Make ""Debugging SPL"" doc specific to AM62x"
+
