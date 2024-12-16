@@ -48,6 +48,8 @@ jobs:
             device: AM62PX
           - os: android
             device: AM62X
+          - os: buildroot
+            device: AM62X
 
     steps:
       - name: Checkout
