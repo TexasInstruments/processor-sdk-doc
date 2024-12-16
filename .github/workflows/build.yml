@@ -37,7 +37,6 @@ jobs:
           - AM69
           - CORESDK
           - DRA821A
-          - GEN
           - J7200
           - J721E
           - J721S2
@@ -49,8 +48,6 @@ jobs:
             device: AM62PX
           - os: android
             device: AM62X
-          - os: android
-            device: GEN
 
     steps:
       - name: Checkout
