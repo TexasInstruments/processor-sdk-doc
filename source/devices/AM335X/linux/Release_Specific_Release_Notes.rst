@@ -186,6 +186,31 @@ Issues Tracker
     - Further Information can be found at `SIR Portal <https://sir.ext.ti.com/>`_
 
 
+Issues Resolved
+---------------
+.. csv-table::
+   :header: "Record ID", "Title"
+   :widths: 15, 70
+
+   "EXT_EP-12097","AM335x GPMC-NAND boot issue"
+   "EXT_EP-12085","AM335x: UART and GPIO Wakeup from Deepsleep Failed"
+   "EXT_EP-12056","8250_omap: incorrect handling of dma->rx_running flag"
+   "EXT_EP-12091","AM335x: rtcwake : suspend/resume failed"
+   "EXT_EP-12090","gpio-omap: gpio irq storm causes Linux unresponsive"
+   "EXT_EP-12089","AM335x/AM437x PRU Remoteproc broken in SDK 9.1"
+   "EXT_EP-12088","AM335x GPMC-NAND timing parameter configuration in u-boot"
+
+Issues Open
+-----------
+.. csv-table::
+   :header: "Record ID", "Title"
+   :widths: 15, 70
+
+   "EXT_EP-12079","AM335x: UART and GPIO Wakeup from Standby Failed"
+   "EXT_EP-12067","AM335x/AM437x PRU Ethernet slowdown from kernel 4.19 -> 5.4/5.10"
+   "EXT_EP-12100","PTP broken with PRU-ETH on AM335x ICEv2"
+   "EXT_EP-12084","Netconsole output corrupted when CONFIG_NETCONSOLE_BUFFER_SIZE >= 281"
+
 
 .. rubric:: Installation and Usage
    :name: installation-and-usage
