@@ -16,7 +16,7 @@ All the code related to u-boot splash screen support is based on Processor Linux
 
 For AM335x, splash screen is enabled in u-boot which uses the LCDC driver.
 On AM335x evm, the LCD backlight is controlled using enhanced Auxiliary(eCAP0) PWM.
-To use this, enable following configurations in configs/am335x_evm_defconfig.
+To use this, enable following configurations in :file:`configs/am335x_evm_defconfig`.
 
 .. code-block:: kconfig
 
