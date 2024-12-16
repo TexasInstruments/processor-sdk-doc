@@ -216,14 +216,14 @@ To enable splash screen on custom board based on |__PART_FAMILY_DEVICE_NAMES__| 
  2. Enable the A53 SPL splash screen related configurations in the |__PART_FAMILY_DEVICE_NAMES__| defconfig by referring to below patches and files:
 
   * `configs: am62px: Enable A53 splashscreen <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/commit/?h=ti-u-boot-2024.04&id=82c3fa8a15602248df035e423059236e00a01519>`_
-  * `Splash screen config fragment for AM62x and AM62P  <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/tree/configs/am62x_a53_splashscreen.config?h=10.00.07>`_
+  * `Splash screen config fragment for AM62x and AM62P  <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/tree/configs/am62x_a53_splashscreen.config?h=10.01.10>`_
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
  2. Enable the A53 SPL splash screen related configurations in the |__PART_FAMILY_DEVICE_NAMES__| defconfig by referring to below patches and files:
 
   * `configs: am62x_evm_a53_defconfig: Enable A53 splashscreen at U-Boot SPL <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/commit/?h=ti-u-boot-2024.04&id=aed6660b3edf348c91208322d8ff9cd530def7fa>`_
-  * `Splash screen config fragment for AM62x and AM62P  <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/tree/configs/am62x_a53_splashscreen.config?h=10.00.07>`_
+  * `Splash screen config fragment for AM62x and AM62P  <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/tree/configs/am62x_a53_splashscreen.config?h=10.01.10>`_
 
 .. note::
 
@@ -396,8 +396,8 @@ Flicker free display across boot stages and Linux Kernel
 
 .. note::
 
-  More information regarding simple-framebuffer can be found in `the simple-framebuffer device-tree binding doc <https://github.com/torvalds/linux/blob/master/Documentation/devicetree/bindings/display/simple-framebuffer.yaml>`_
-  Even if a non-Linux based custom bootloader is used to display the splash screen before transitioning to Linux, the framebuffer-related information can be updated in aforementioned device-tree nodes to enable seamless and flicker-free transition during operating system bootup along with reduced memory footprint.
+   More information regarding simple-framebuffer can be found in `the simple-framebuffer device-tree binding doc <https://github.com/torvalds/linux/blob/master/Documentation/devicetree/bindings/display/simple-framebuffer.yaml>`_
+   Even if a non-Linux based custom bootloader is used to display the splash screen before transitioning to Linux, the framebuffer-related information can be updated in aforementioned device-tree nodes to enable seamless and flicker-free transition during operating system bootup along with reduced memory footprint.
 
 
 Flicker free and persistent display until display server

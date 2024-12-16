@@ -243,6 +243,6 @@ M4F and R5F external memory section sizes in their respective linker mapfiles.
 .. warning:: Be careful not to overlap carveouts!
 
 .. note:: The DT fragments are provided as a reference and subject to change between releases. For latest memory reservations, please refer to the kernel device tree repository :
-          'https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-common.dtsi?h=10.00.07'
+          'https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-common.dtsi?h=10.01.10'
 
 .. include:: Foundational_Components/IPC/_RPMsg_char_driver.rst
