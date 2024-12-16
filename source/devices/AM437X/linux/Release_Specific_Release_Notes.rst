@@ -182,6 +182,35 @@ Issues Tracker
 
     - Further Information can be found at `SIR Portal <https://sir.ext.ti.com/>`_
 
+Errata Resolved
+---------------
+.. csv-table::
+   :header: "Record ID", "Title"
+   :widths: 15, 70
+
+   "EXT_EP-12116","i897: USB Stop Endpoint doesnt work in certain circumstances"
+   "EXT_EP-12117","i896: USB Port disable doesnt work"
+
+
+Issues Resolved
+---------------
+.. csv-table::
+   :header: "Record ID", "Title"
+   :widths: 15, 70
+
+   "EXT_EP-12092","MPU_DPLL miscalculation in AM335x Linux kernel clock drivers"
+   "EXT_EP-12089","AM335x/AM437x PRU Remoteproc broken in SDK 9.1"
+   "EXT_EP-12087","AM437x: AUTOIDLE bit shouldn't be set in all UART device tree nodes"
+   "EXT_EP-12089","AM335x/AM437x PRU Remoteproc broken in SDK 9.1"
+
+Issues Open
+-----------
+.. csv-table::
+   :header: "Record ID", "Title"
+   :widths: 15, 70
+
+   "EXT_EP-12067","AM335x/AM437x PRU Ethernet slowdown from kernel 4.19 -> 5.4/5.10"
+
 
 .. rubric:: Installation and Usage
    :name: installation-and-usage
