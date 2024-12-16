@@ -64,7 +64,7 @@ Launching and Using the TI Apps Launcher
 
 The TI Apps Launcher launches on Linux startup. Follow the below instructions to use it.
 
-1. Flash an SD card with the :file:`tisdk-default-image`. User can download the :file:`tisdk-default-image` wic image from |__SDK_DOWNLOAD_URL__|. Please follow the instructions from here to `Flash an SD card <../../linux/Overview/Processor_SDK_Linux_create_SD_card.html>`__.
+1. Flash an SD card with the :file:`tisdk-default-image`. User can download the :file:`tisdk-default-image` wic image from |__SDK_DOWNLOAD_URL__|. Please follow the instructions from here to :ref:`Flash an SD card <processor-sdk-linux-create-sd-card>`.
 
 .. note::
 
@@ -130,7 +130,7 @@ ________________________
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
 
-    1. Ensure you have enabled the camera sensors which you have connected to SK-EVM. Refer `this <../../linux/Foundational_Components/Kernel/Kernel_Drivers/Camera/CSI2RX.html#enabling-camera-sensors>`__ to know the list of camera modules supported and how to enable the sensor overlays for them.
+    1. Ensure you have enabled the camera sensors which you have connected to SK-EVM. Refer :ref:`this <enabling-camera-sensors>` to know the list of camera modules supported and how to enable the sensor overlays for them.
 
     2. To launch the Live Camera demo, click on the `Live Camera` button on the left panel.
 

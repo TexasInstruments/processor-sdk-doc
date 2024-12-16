@@ -35,7 +35,7 @@ mention, a new Operating System (OS) for many), is getting an
 environment set up where you can build and debug code on hardware. The
 SDK attacks this problem with providing everything you need to do
 development, and it is validated on standard TI hardware platforms
-(EVMs) (see `here <../Release_Specific_Supported_Platforms_and_Versions.html>`__ for more details).
+(EVMs) (see :ref:`here <release-specific-supported-platforms-and-versions>` for more details).
 It wraps all of this up into one simple installer that helps get
 everything you need in the right place to do development. For example,
 you can start off with simply re-building the Linux Embedded System
@@ -59,7 +59,7 @@ What would you like to do with the SDK?
 As described above, the SDK has a lot to it. Let’s break it down to two
 pieces to simplify things a bit:
 
--  The example `Embedded Linux System <../Overview_Software_Stack.html>`__.
+-  The example :ref:`Embedded Linux System <linux-software-stack>`.
    Essentially, a working bootloader (U-Boot), Linux
    kernel, and filesystem that can be put on an SD card and ran on a TI
    EVMs.
@@ -126,7 +126,7 @@ something, check out the next section which shares how to play with the
 embedded Linux system |__FEATURINGMATRIX__|, the first piece of the SDK
 mentioned earlier. All you’ll need is access to a Linux
 computer, a SD card, a SD card reader, some free, open-source software,
-and a supported `Hardware Platform <../Release_Specific_Supported_Platforms_and_Versions.html>`__.
+and a supported :ref:`Hardware Platform <release-specific-supported-platforms-and-versions>`.
 
 .. ifconfig:: CONFIG_sdk in ('SITARA')
 
@@ -143,7 +143,7 @@ presentations gets old fast. So, if you want to see an example of what
 you can build with the SDK and actually hold it in your hands and play
 with it (or show it to someone else that needs help understanding what
 you want to do with it), with minimal effort, you can simply run the
-SDK Embedded Linux System |__FEATURINGMATRIX__| on a supported `Hardware platform <../Release_Specific_Supported_Platforms_and_Versions.html>`__.
+SDK Embedded Linux System |__FEATURINGMATRIX__| on a supported :ref:`Hardware platform <release-specific-supported-platforms-and-versions>`.
 This will allow you to poke and prod and interact. It’s a powerful way
 to get the imagination active and engaged.
 

@@ -211,6 +211,8 @@ I2C2 and CSI-RX Port 0:
        status = "okay";
    };
 
+.. _enabling-camera-sensors:
+
 ***********************
 Enabling camera sensors
 ***********************

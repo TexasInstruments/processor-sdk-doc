@@ -1,3 +1,5 @@
+.. _foundational-components-linux:
+
 ############################
 Foundational Components
 ############################
