@@ -50,6 +50,12 @@ jobs:
             device: AM62X
           - os: buildroot
             device: AM62X
+          - os: debian
+            device: AM62X
+          - os: debian
+            device: AM62PX
+          - os: debian
+            device: AM64X
 
     steps:
       - name: Checkout
