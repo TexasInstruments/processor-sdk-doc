@@ -187,3 +187,47 @@ Issues Tracker
 
     - Further Information can be found at `SIR Portal <https://sir.ext.ti.com/>`
 
+Errata Resolved
+---------------
+.. csv-table::
+   :header: "Record ID", "Title"
+   :widths: 15, 70
+
+   "EXT_EP-12122","USB2 PHY locks up due to short suspend"
+   "EXT_EP-12123","USART: Erroneous clear/trigger of timeout interrupt"
+
+Issues Resolved
+---------------
+.. csv-table::
+   :header: "Record ID", "Title"
+   :widths: 15, 70
+
+   "EXT_EP-12108","audit for potential bugs with 6.6.44 stable merge "
+   "EXT_EP-12050","AM642-EVM: PCIe0 EP node is not defined"
+   "EXT_EP-12098","Uboot docs: document renaming tiboot3-<evm>.bin file"
+   "EXT_SITMPUSW-29","TI Debian SDK: Docker not working"
+   "EXT_SITMPUSW-31","IPC Firmwares missing from base images."
+   "EXT_EP-12055","ICSSG HSR offload Multicast packets with VLAN IDs not filter classified"
+   "EXT_EP-12054","ICSSG interfaces in switch mode running linuxptp not functional"
+   "EXT_EP-12095","Watchdog reset not functional: ESM interrupts are wrong"
+   "EXT_EP-12082","AM64 Processor SDK UG: Invalid eMMC Programming Steps in U-Boot Section"
+   "EXT_EP-12068","AM64x dts file calls SYNC2_OUT the wrong name"
+   "EXT_EP-12110","am64xx-evm : OSPI NOR boot fails"
+   "EXT_EP-12049","AM64X EVM: Fastboot is not functional"
+   "EXT_EP-12104","AM64x NAND dtso file missing in kernel 6.6"
+
+
+Issues Open
+-----------
+.. csv-table::
+   :header: "Record ID", "Title"
+   :widths: 15, 70
+
+   "EXT_EP-12111","Linux SDK v10.0: TI-added support for W25N01JW SPI NAND breaks other existing Flash support"
+   "EXT_EP-12075","U-boot gets stuck when DDR size changed to 512 MB"
+   "EXT_EP-12051","AM64x: Linux hangs on repetitive probe/removal of gadget zero"
+   "EXT_EP-12066","CPSW EST schedule triggers netdev watchdog"
+   "EXT_EP-12065","CPSW Ethernet EST schedule is not taken down on link down"
+   "EXT_EP-12071","sdk-doc: missing SK-AM64B information in CDNS3 USB page"
+   "EXT_EP-12060","AM64x: Lower core count on variant devices no supported"
+
