@@ -366,7 +366,7 @@ To aid your debugging efforts, the following resources are available:
    (wiki article)
 -  `AM335x Low Power Design
    Guide <http://www.ti.com/lit/an/sprac74a/sprac74a.pdf>`__
--  `E2E support forums <http://e2e.ti.com>`__
+-  `E2E support forums <https://e2e.ti.com>`__
 
 |
 

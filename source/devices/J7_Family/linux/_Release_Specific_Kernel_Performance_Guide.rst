@@ -44,7 +44,7 @@ with drivers included in a particular release.
    :name: if-you-need-assistance-kernel-perf-guide
 
 For further information or to report any problems, contact
-http://e2e.ti.com/ or http://support.ti.com/
+https://e2e.ti.com/ or https://support.ti.com/
 
 
 System Benchmarks
