@@ -12,7 +12,7 @@ U-Boot Splash Screen
 
 A splash screen is an introductory screen the user sees over the display when the device boots up. Splash screens are typically used to provide feedback to the user that the board is booting up and to showcase
 the vendor logo which helps with branding and identification of which boot image is being used for the bootup.
-All the code related to u-boto splash screen support is based on Processor Linux SDK 09.03.05.02.
+All the code related to u-boot splash screen support is based on Processor Linux SDK 09.03.05.02.
 
 For AM335x, splash screen is enabled in u-boot which uses the LCDC driver.
 On AM335x evm, the LCD backlight is controlled using enhanced Auxiliary(eCAP0) PWM.
