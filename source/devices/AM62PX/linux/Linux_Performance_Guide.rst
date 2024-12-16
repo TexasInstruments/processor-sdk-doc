@@ -787,30 +787,35 @@ Low Power Performance
 Table:  **Deep sleep**
 
 .. csv-table::
-    :header: "Rail name","Rail voltage(V)","Power (mW)"
+   :header: "Rail name","Rail voltage(V)","Power (mW)"
 
-    "vdd_core","0.85","10.06"
-    "vddr_core","0.85","0.92"
-    "soc_dvdd_3v3","3.30","6.63"
-    "soc_dvdd_1v8","1.80","2.78"
-    "vdda_1v8","1.80","72.19"
-    "vdd_lpddr4/vdd_ddr4","1.10","4.40"
-    "Total"," ","96.98"
+   "vdd_core","0.85","12.98"
+   "vddr_core","0.85","1.01"
+   "soc_dvdd_3v3","3.30","5.65"
+   "soc_dvdd_1v8","1.80","2.76"
+   "vdda_1v8","1.80","72.23"
+   "vdd_lpddr4/vdd_ddr4","1.10","3.75"
+   "Total"," ","98.37"
 
 Table:  **MCU only**
 
 .. csv-table::
-    :header: "Rail name","Rail voltage(V)","Power (mW)"
+   :header: "Rail name","Rail voltage(V)","Power (mW)"
 
-    "vdd_core","0.85","207.60"
-    "vddr_core","0.85","2.46"
-    "soc_dvdd_3v3","3.30","6.56"
-    "soc_dvdd_1v8","1.80","2.63"
-    "vdda_1v8","1.80","80.23"
-    "vdd_lpddr4/vdd_ddr4","1.10","4.05"
-    "Total"," ","303.53"
+   "vdd_core","0.85","203.98"
+   "vddr_core","0.85","2.44"
+   "soc_dvdd_3v3","3.30","5.55"
+   "soc_dvdd_1v8","1.80","2.68"
+   "vdda_1v8","1.80","81.25"
+   "vdd_lpddr4/vdd_ddr4","1.10","4.33"
+   "Total"," ","300.24"
 
 Partial I/O Data
 - All voltage rails were measured to be near 0V
+
+.. note::
+
+   The power consumption on the vdda_1v8 rail is not indicitive of the SoC's power consumption due to an oscillator on the rail
+   that has significant current consumption.
 
 Further optimizations are possible for these low power modes. Please refer to the AM62x Power Consumption App Note (https://www.ti.com/lit/pdf/spradg1)

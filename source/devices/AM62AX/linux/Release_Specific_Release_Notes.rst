@@ -87,7 +87,7 @@ U-Boot
 
     .. note::
 
-       meta-edgeai Yocto layer contains additional patches for U-Boot `here <https://git.ti.com/cgit/edgeai/meta-edgeai/tree/recipes-bsp/u-boot?h=10.01.00.03>`__.
+       meta-edgeai Yocto layer contains additional patches for U-Boot `here <https://git.ti.com/cgit/edgeai/meta-edgeai/tree/recipes-bsp/u-boot?h=10.01.00.05>`__.
 
 
 .. _tf-a-release-notes:
@@ -155,7 +155,7 @@ Kernel
 
    .. note::
 
-      meta-edgeai Yocto layer contains additional patches for Kernel `here <https://git.ti.com/cgit/edgeai/meta-edgeai/tree/recipes-kernel/linux?h=10.01.00.03>`__.
+      meta-edgeai Yocto layer contains additional patches for Kernel `here <https://git.ti.com/cgit/edgeai/meta-edgeai/tree/recipes-kernel/linux?h=10.01.00.05>`__.
 
 
 Yocto
@@ -193,26 +193,14 @@ Yocto
 .. rubric:: meta-edgeai
    :name: meta-edgeai
 
-| Head Commit: 836b1a3aa89d087474495ab4f77fc7a06ffcef0f edgeai-test-data.bb: edgeai-tidl-models.bb: Updated EDGEAI_SDK_VERSION
-| Date: 2024-07-30 05:58:20 -0500
+| Head Commit: bccfd706c87e0017360e75bdf9803679fe24db13 [20241210] EDGEAI Auto Update
+| Date: 2024-12-10 10:21:16 -0600
 
 | Clone: https://git.ti.com/git/edgeai/meta-edgeai.git
 | Branch: scarthgap
-| Release Tag: 10.00.00.04
+| Release Tag: 10.01.00.05
 |
 
-
-.. ifconfig:: CONFIG_image_type in ('edgeai', 'adas')
-
-   .. rubric:: meta-edgeai
-
-   | Head Commit: c9351accf9c3ec152ffde84507c674901b7f23f1 [20240814] EDGEAI Auto Update
-   | Date: 2024-08-14
-
-   | Clone: git://git.ti.com/edgeai/meta-edgeai.git
-   | Branch: scarthgap
-   | Release Tag: 10.01.00.03
-   |
 
 Issues Tracker
 ==============

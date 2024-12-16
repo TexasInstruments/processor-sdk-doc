@@ -217,4 +217,4 @@ Once you have your Demo Docker Image hosted on a Docker Registry, you can refer 
 Contact Us
 ----------
 
-If you need any further assistance, reach out to us on `E2E <http://e2e.ti.com/>`__.
+If you need any further assistance, reach out to us on `E2E <https://e2e.ti.com/>`__.

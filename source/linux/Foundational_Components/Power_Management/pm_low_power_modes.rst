@@ -54,7 +54,7 @@ sources is found to be enabled, Partial I/O is entered instead of poweroff.
 
 The following wakeup sources have been configured for Partial I/O:
 mcu_uart0, mcu_mcan0, and mcu_mcan1. Partial I/O mode can only be tested
-when `k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=10.00.07>`__
+when `k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=10.01.10>`__
 overlay is loaded. Please refer to :ref:`How to enable DT overlays<howto_dt_overlays>` for more details.
 
 After Linux boots, the MCAN wakeup for Partial I/O is enabled using the
@@ -250,7 +250,7 @@ The benefits of using deep sleep in embedded devices:
    reducing the amount of time that the processor is idle. This is because the processor can
    be kept in a low-power state when it is not needed.
 
-In order to enter deep sleep, use the following command:
+In order to enter Deep Sleep, use the following command:
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
@@ -298,7 +298,7 @@ In order to enter deep sleep, use the following command:
       [  230.292413] psci: CPU2 killed (polled 4 ms)
       [  230.295457] psci: CPU3 killed (polled 0 ms)
 
-This partially indicates that linux has finished it's deep sleep sequence.
+This partially indicates that Linux has finished it's Deep Sleep suspend sequence.
 For further confirmation, one can take a look at the PMIC_LPM_EN pin on the EVM
 (after programming the PMCTRL_SYS register (0x43018080) to 0x15). Here, if the pin is 3.3V when active and
 0V when in deep sleep.
@@ -320,7 +320,7 @@ Similar to Deep Sleep, with the major distinction being that the MCU core is kep
 The benefits of using MCU Only mode:
 
 #. Low power consumption: MCU Only mode can save a significant amount of power, especially in battery-powered
-   devices. This is because The rest of the SoC status is the same as Deep Sleep and DDR is in self-refresh.
+   devices. This is because the rest of the SoC status is the same as Deep Sleep and DDR is in self-refresh.
 #. Run background tasks: This mode can be used to run background tasks that do not require the full power of the system.
    For example, you could use the firmware on the MCU core to run a watchdog timer, a sensor polling loop,
    or a network communication task.

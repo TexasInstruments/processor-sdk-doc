@@ -387,7 +387,7 @@ libdrm is included in TI releases and its sources can be found from: ::
 
     https://gitlab.freedesktop.org/mesa/drm
 
-libdrm also contains 'modetest' tool, which can be used to get basic information about DRM state, and to show a test pattern on a display. Refer to the section `Testing tidss properties with modetest` below for some examples.
+libdrm also contains 'modetest' tool, which can be used to get basic information about DRM state, and to show a test pattern on a display. Refer to the section :ref:`testing_tidss_properties` below for some examples.
 
 Another option is kms++, a C++11 library for kernel mode setting which includes a bunch of test utilities and also V4L2 classes and Python bindings for DRM and V4L2. Some kms++ tools are included in TI releases. kms++ can be found from: ::
 
@@ -490,8 +490,10 @@ tidss supports configuration via DRM properties. These are standard DRM properti
 | GAMMA_LUT_SIZE     | crtc     | Number of elements in gammma lookup table.                                                           |
 +--------------------+----------+------------------------------------------------------------------------------------------------------+
 
-Testing tidss properties with modetest
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. _testing_tidss_properties:
+
+Testing tidss properties with modetest and kmstest
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 As the name suggests, ``modetest`` is DRM based mode setting test program available along with libdrm.
 It is an easy-to-use tool to test different features provided by display HWs. The DRM driver for,
@@ -663,6 +665,52 @@ The following example was run on DSS7-UL and hence the pipe with scaling capabil
 
 Note that the ``*2`` at the end of ``-P 41@38:400x400*2`` is the scaling factor.
 
+- **Cropping**
+
+``kmstest`` utility can be used to demonstrate cropping in a video frame using a test pattern.
+The user can specify the main video frame size and an input color format using the ``-f`` argument. Then the source region, also known as a view region, can be specified using the ``-v`` argument. This takes a secondary width and height to create a rectangle starting at a given coordinate. The destination region, or plane region, for the view can be specified using ``-p`` argument. This takes a third width, height and coordinate position to place an overlay with the associated view region's content.
+
+.. code-block:: console
+
+   $ kmstest -c hdmi -p 0:0,0-1000x1000 -f 1000x1000-XR24 -v 0,0-1000x1000
+   Connector 1/@50: HDMI-A-1
+   Crtc 1/@48: 1920x1080@59.93 138.500 1920/48/32/80/+ 1080/3/5/23/- 60 (59.93) 0x9 0x48
+   Plane 0/@31: 0,0-1000x1000
+   Fb 55 1000x1000-XR24
+
+The above example displays a ``1000x1000`` video frame on the screen at coordinates ``0,0``.
+
+.. figure:: /images/DSS_cropping_example_1.jpg
+   :height: 600
+   :width: 1020
+
+.. code-block:: console
+
+   $ kmstest -c hdmi -p 0:0,0-800x800 -f 1000x1000 -v 0,0-800x800
+   Connector 1/@50: HDMI-A-1
+   Crtc 1/@48: 1920x1080@59.93 138.500 1920/48/32/80/+ 1080/3/5/23/- 60 (59.93) 0x9 0x48
+   Plane 0/@31: 0,0-800x800
+   Fb 55 1000x1000-XR24
+
+Taking as an input a video frame of dimensions ``1000x1000``,the example creates a cropped source rectangle of dimensions ``800x800``, starting at coordinates ``0,0`` and displays it on screen at coordinates ``0,0``.
+
+.. figure:: /images/DSS_cropping_example_2.jpg
+   :height: 600
+   :width: 1020
+
+.. code-block:: console
+
+   $ kmstest -c hdmi -p 0:500,200-800x800 -f 1000x1000 -v 200,100-800x800                                                                                                                     
+   Connector 1/@50: HDMI-A-1
+   Crtc 1/@48: 1920x1080@59.93 138.500 1920/48/32/80/+ 1080/3/5/23/- 60 (59.93) 0x9 0x48
+   Plane 0/@31: 500,200-800x800
+   Fb 54 1000x1000-XR24
+
+Taking as an input a video frame of dimensions ``1000x1000``, this example creates a cropped source rectangle of dimensions ``800x800``, starting at coordinates ``500,200`` and displays it on screen at coordinates ``200,100`` keeping the same dimensions as source rectangle i.e ``800x800`` without scaling. 
+
+.. figure:: /images/DSS_cropping_example_3.jpg
+   :height: 600
+   :width: 1020
 
 Buffers
 -------

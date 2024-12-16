@@ -42,5 +42,5 @@ fi
 if [ "$(id -u)" == "$(id -u abc)" ]; then
 	exec dumb-init -- "$@"
 else
-	exec dumb-init -- gosu abc "$@"
+	exec dumb-init -- su-exec abc:abc "$@"
 fi

@@ -16,7 +16,7 @@ Processor SDK Linux Software Developer's Guide
    /devices/AM62AX/linux/Overview
    /devices/AM62AX/linux/Release_Specific
    /linux/Foundational_Components
-   index_Edge_AI
+   /linux/index_Edge_AI
    index_RTOS
    /linux/How_to_Guides
    index_Applications
@@ -32,6 +32,6 @@ it is very appreciated. Please post your ideas to the Linux
 forum listed at :ref:`Technical Support <overview-technical-support>`.
 
 
-+--------------------------------+--------------------------------------------------------------------------------------------------+
-| .. Image:: /images/E2e.jpg     | For technical support please post your questions at `http://e2e.ti.com <http://e2e.ti.com/>`__.  |
-+--------------------------------+--------------------------------------------------------------------------------------------------+
++--------------------------------+---------------------------------------------------------------------------------------------------+
+| .. Image:: /images/E2e.jpg     | For technical support please post your questions at `https://e2e.ti.com <https://e2e.ti.com/>`__. |
++--------------------------------+---------------------------------------------------------------------------------------------------+

@@ -17,8 +17,8 @@ Processor SDK AM62x support GNU make based build system.
 
 Refer the respective user guides to build Linux and other RTOS/NO-RTOS packages
 
--  For Linux Kernel, u-boot & DTB     `[Use Link] <../../../../linux/Foundational_Components.html>`__
--  For RTOS/NO-RTOS source (MCU+ SDK) `[Use Link] <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62X/09_02_00_38/exports/docs/api_guide_am62x/index.html>`__
+-  For Linux Kernel, u-boot & DTB - :ref:`[Use Link] <foundational-components-linux>`
+-  For RTOS/NO-RTOS source (MCU+ SDK) - `[Use Link] <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62X/09_02_00_38/exports/docs/api_guide_am62x/index.html>`__
 
 
 

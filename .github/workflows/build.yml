@@ -37,7 +37,6 @@ jobs:
           - AM69
           - CORESDK
           - DRA821A
-          - GEN
           - J7200
           - J721E
           - J721S2
@@ -49,17 +48,26 @@ jobs:
             device: AM62PX
           - os: android
             device: AM62X
-          - os: android
-            device: GEN
+          - os: buildroot
+            device: AM62X
+          - os: debian
+            device: AM62X
+          - os: debian
+            device: AM62PX
+          - os: debian
+            device: AM64X
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Add directory to safe dir overrides
+        run: |
+          git config --global --add safe.directory "$PWD"
+
       - name: Build ${{ matrix.device }}
         run: |
-          make DEVFAMILY=${{ matrix.device }} OS=${{ matrix.os }} \
-          VERSION=${{ github.ref_name }}
+          make DEVFAMILY=${{ matrix.device }} OS=${{ matrix.os }}
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4

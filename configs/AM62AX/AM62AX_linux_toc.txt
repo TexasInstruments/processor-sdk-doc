@@ -1,6 +1,5 @@
 devices/AM62AX/index
 devices/AM62AX/index_RTOS
-devices/AM62AX/index_Edge_AI
 devices/AM62AX/index_Applications
 devices/AM62AX/linux/Overview
 devices/AM62AX/linux/Overview_Getting_Started_Guide
@@ -27,6 +26,7 @@ linux/Overview/Processor_SDK_Linux_create_SD_card
 linux/Overview/Processor_SDK_Building_The_SDK
 
 linux/Foundational_Components
+linux/index_Edge_AI
 linux/Foundational_Components_U-Boot
 linux/Foundational_Components/U-Boot/Release-Notes
 linux/Foundational_Components/U-Boot/Users-Guide
@@ -88,6 +88,8 @@ linux/Foundational_Components/Power_Management/pm_wakeup_sources
 linux/Foundational_Components/Power_Management/pm_sw_arch
 linux/Foundational_Components/Power_Management/pm_debug
 
+linux/Foundational_Components/System_Security/SELinux
+
 linux/Foundational_Components_Kernel_Users_Guide
 linux/Foundational_Components_Kernel_LTP-DDT_Validation
 linux/Foundational_Components_Kernel_FAQs
@@ -100,7 +102,6 @@ linux/Foundational_Components/Tools/Pin_Mux_Tools
 linux/Foundational_Components/Tools/Flash_via_DFU
 linux/Foundational_Components/Tools/Flash_via_UART
 linux/Foundational_Components_IPC62ax
-linux/Foundational_Components_Edge_AI
 linux/Foundational_Components_OPTEE
 linux/Foundational_Components_ATF
 linux/Foundational_Components_Multimedia_wave5

@@ -1,5 +1,3 @@
-.. _foundational-components-edge-ai:
-
 *******
 Edge AI
 *******
@@ -23,3 +21,7 @@ Edge AI
 .. ifconfig:: CONFIG_part_variant in ('J784S4')
 
    For more information on edge AI software stack, refer `Edge AI Documentation <https://software-dl.ti.com/jacinto7/esd/processor-sdk-linux-am69a/10_01_00/exports/edgeai-docs/common/sdk_overview.html>`_
+
+.. ifconfig:: CONFIG_part_variant in ('J722S')
+
+   For more information on edge AI software stack, refer `Edge AI Documentation <https://software-dl.ti.com/jacinto7/esd/processor-sdk-linux-am67a/10_01_00/exports/edgeai-docs/common/sdk_overview.html>`_

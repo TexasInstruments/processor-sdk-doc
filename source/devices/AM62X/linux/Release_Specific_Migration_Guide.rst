@@ -43,8 +43,7 @@ Processor SDK 10.00.07.04
       instructions<Build-U-Boot-label>` for the updated steps.
 
     - For Linux builds, generic ``defconfig`` is used instead of custom
-      fragments. Please refer to `linux users guide
-      <../../../linux/Foundational_Components_Kernel_Users_Guide.html#preparing-to-build>`__
+      fragments. Please refer to :ref:`Linux Kernel User Guide <preparing-to-build>`
       for build instructions.
 
 .. include:: /linux/Release_Specific/_AM62_Enable_UHS_MMCSD.rst

@@ -19,5 +19,5 @@ all: Dockerfile setup
 
 setup: requirements.txt
 
-requirements.txt:
+requirements.txt: ../requirements.txt
 	cp -ar ../requirements.txt .

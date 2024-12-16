@@ -274,10 +274,10 @@ MCU GPIO
 
 One of the most common ways to wakeup a system is by using some I/O activity. MCU GPIOs allow us to do this
 by configuring the MCU GPIO controller as a wakeup source.
-In ideal scenarios, The firmware running on MCU core is responsible for configuring MCU GPIO's as a wakeup source.
+In ideal scenarios, the firmware running on MCU core is responsible for configuring MCU GPIO's as a wakeup source.
 However, if the application design doesn't rely too much on the MCU firmware then
-linux can be used to configure the MCU GPIOs as a wakeup source. You can refer to the mcu_gpio_key node in
-`k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=10.00.07>`__
+Linux can be used to configure the MCU GPIOs as a wakeup source. You can refer to the mcu_gpio_key node in
+`k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=10.01.10>`__
 and use it as a template to configure the MCU GPIO of your choice as a wakeup capable GPIO.
 
 A brief guide to configuring an MCU GPIO as wakeup:
@@ -302,7 +302,7 @@ Setup the interrupt parent and interrupt as MCU_GPIO0,
 .. code-block:: dts
 
    interrupt-parent = <&mcu_gpio0>;
-   interrupts = <16 IRQ_TYPE_EDGE_RISING>;
+   interrupts = <4 IRQ_TYPE_EDGE_RISING>;
 
 Now, under the switch node we add the following:
 
@@ -311,7 +311,7 @@ Now, under the switch node we add the following:
    switch {
                label = "MCUGPIO";
                linux,code = <143>;
-               gpios = <&mcu_gpio0 16 GPIO_ACTIVE_LOW>;
+               gpios = <&mcu_gpio0 4 GPIO_ACTIVE_LOW>;
                wakeup-source;
    };
 
@@ -319,8 +319,8 @@ Now, under the switch node we add the following:
 
     .. code-block:: console
 
-       root@<machine>:~# cat /proc/interrupts | grep "MCUGPIO"
-       262:          0          0          0          0      GPIO  16 Edge    -davinci_gpio  MCUGPIO
+        root@<machine>:~# cat /proc/interrupts | grep "MCUGPIO"
+        273:          0          0          0          0      GPIO  4 Edge    -davinci_gpio  MCUGPIO
 
 #. linux,code: Keycode to emit.
 #. gpios: the gpio required to be used as the gpio-key.
@@ -336,12 +336,12 @@ source and send a wakeup interrupt to the Device Manager. To understand the role
 please refer to :ref:`S/W Architecture of System Suspend<pm_sw_arch>`
 
 MCU GPIO wakeup can only be tested when
-`k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=10.00.07>`__
+`k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=10.01.10>`__
 overlay is loaded. Please refer to :ref:`How to enable DT overlays<howto_dt_overlays>` for more details.
 
 Once the system has entered Deep Sleep or MCU Only mode as shown in the
-:ref:`LPM section<lpm_modes>`, wakeup from MCU GPIO0_16 can be triggered
-by grounding Pin 11 on J8 MCU Header.
+:ref:`LPM section<lpm_modes>`, wakeup from MCU_SPI0_D1 can be triggered
+by grounding Pin 4 on J8 MCU Header.
 
 ********************
 Main I/O Daisy Chain
@@ -352,16 +352,16 @@ Main UART, GPIO, I2C, etc. The question then arises how to wakeup the SoC from p
 to these controllers (for example main UART)? Here's where the role of I/O Daisy Chaining comes in.
 At the hardware level, all the pads in an SoC have to be pinmuxed to dedicated controllers like UART or GPIO.
 
-For example, If a key press on Main UART (which is used for linux console logs)
-were to wakeup the system from deep sleep then simply configuring the Main UART controller as a
+For example, If a key press on Main UART (which is used for Linux console logs)
+were to wakeup the system from Deep Sleep then simply configuring the Main UART controller as a
 wakeup source wouldn't suffice. This is because the UART controller is powered off and wouldn't be able to
 register any key press as such. However, at the "pad" level we are still connected, and the pads have
 a specific way to be configured as wakeup sources.
 
 For detailed information and sequence please refer to
 I/O Power Management and Daisy Chaining section in the TRM. To briefly explain,
-Setting the 29th Bit in the desired padconfig register, allows the pad to act as a wakeup source by
-triggering a wake irq to the DM R5 in deep sleep states.
+setting the 29th bit in the desired padconfig register, allows the pad to act as a wakeup source by
+triggering a wake irq to the DM R5 in Deep Sleep states.
 
 .. note::
    |__PART_FAMILY_DEVICE_NAMES__| supports the ability to wakeup using pad based wake event ONLY in Deep Sleep or MCU Only Mode.
@@ -371,7 +371,7 @@ triggering a wake irq to the DM R5 in deep sleep states.
 
 To demonstrate I/O daisy chain wakeup as part of |__PART_FAMILY_DEVICE_NAMES__| offering, two reference examples are provided:
 
-#. main_uart0 is used where a key press on the linux console can wakeup the system.
+#. main_uart0 is used where a key press on the Linux console can wakeup the system.
 #. main_gpio is used where activity on configured GPIO pin can wakeup the system.
 
 
@@ -379,7 +379,7 @@ Main UART
 =========
 
 The way to configure UART as an I/O daisy chain wakeup, refer to the
-main_uart0 node in `k3-am62x-sk-common.dtsi <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-common.dtsi?h=10.00.07>`_
+main_uart0 node in `k3-am62x-sk-common.dtsi <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-common.dtsi?h=10.01.10>`_
 
 .. code-block:: dts
 
@@ -388,7 +388,7 @@ main_uart0 node in `k3-am62x-sk-common.dtsi <https://git.ti.com/cgit/ti-linux-ke
    interrupt-names = "irq", "wakeup";
 
 Here, we chain the IRQ to the pinctrl driver using the second interrupts-extended entry.
-The wake IRQ framework in linux works in such a way that the second entry gets marked as a
+The wake IRQ framework in Linux works in such a way that the second entry gets marked as a
 wakeup source, and then the pinctrl driver is informed that the pad 0x1c8 in this case is to
 be configured as a wakeup pad when system enters deep sleep.
 
@@ -427,7 +427,7 @@ Then, run this script:
 
 
 This will configure UART to act as deep sleep wakeup source, and
-then a *key press* on same terminal should trigger a wakeup from deep sleep.
+then a *key press* on same terminal should trigger a wakeup from Deep Sleep.
 
 Any other pad can be chosen as per application requirements depending on which pad is required
 to wakeup the system.
@@ -442,10 +442,10 @@ configuration and working of these frameworks have been covered under
 the MCU GPIO and Main UART sections.
 
 The reference configuration for Main GPIO wakeup can be found under
-gpio_key node in `k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=10.00.07#n21>`__
+gpio_key node in `k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=10.01.10#n21>`__
 
 Main GPIO wakeup can only be tested when
-`k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=10.00.07>`__
+`k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=10.01.10>`__
 overlay is loaded. Please refer to :ref:`How to enable DT overlays<howto_dt_overlays>` for more details.
 
 To use main_gpio as a wakeup source, ensure gpio is a wake-irq in /proc/interrupts:
@@ -469,7 +469,7 @@ Sleep and MCU Only modes.
 In order to use WKUP UART as a wakeup source, it needs to be configured
 in a generic way using the ti-sysc interconnect target module driver.
 The reference configuration can be found under target-module in
-`k3-am62-wakeup.dtsi <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62-wakeup.dtsi?h=10.00.07#n36>`__
+`k3-am62-wakeup.dtsi <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62-wakeup.dtsi?h=10.01.10#n36>`__
 
 WKUP UART is generally available on the third serial port
 (/dev/ttyUSB2) and by default it only shows output from DM R5.
@@ -516,7 +516,7 @@ Plug in a USB device to one of the port on the board and check that the device i
 Follow the steps described in :ref:`LPM section<lpm_modes>` to put the system in Low Power Mode via Deep Sleep or MCU only method.
 
 Once the system is suspended, disconnect the USB device from the board and this should wakeup the system.
-And device would not show up in list of USB enumerated devices. This can be verified by executing
+The device will not show up in list of USB enumerated devices. This can be verified by executing
 
 .. code-block:: console
 
@@ -541,13 +541,13 @@ It should show "suspended", indicating that the keyboard has entered into suspen
 
 .. code-block:: console
 
-  # cat /sys/bus/usb/devices/1-1/power/runtime_status
+   # cat /sys/bus/usb/devices/1-1/power/runtime_status
 
 Now press a key on the keyboard and check the runtime power status and it would come back to "active".
 
 .. code-block:: console
 
-  # cat /sys/bus/usb/devices/1-1/power/runtime_status
+   # cat /sys/bus/usb/devices/1-1/power/runtime_status
 
 Follow the steps described in :ref:`LPM section<lpm_modes>` to put the system in Low Power Mode via Deep Sleep or MCU only method.
 
@@ -556,7 +556,7 @@ And USB keyboard would still be present in the system's list of USB enumerated d
 
 .. code-block:: console
 
-  # lsusb -t
+   # lsusb -t
 
 Device Mode Wakeup Events
 =========================
@@ -568,17 +568,17 @@ Load a USB gadget driver such as g_zero
 
 .. code-block:: console
 
-  # modprobe g_zero
+   # modprobe g_zero
 
 Follow the steps described in :ref:`LPM section<lpm_modes>` to put the system in Low Power Mode via Deep Sleep or MCU only method.
 
 Once the system has entered the suspend state, plug a cable from a different Host system to the board's USB DRP port.
-This should wakeup the system and gadget would be enumerated on the Host. Enumeration of the gadget on the Host system can be verified by executing the
+This should wakeup the system and gadget will be enumerated on the Host. Enumeration of the gadget on the Host system can be verified by executing the
 below command on the Host system
 
 .. code-block:: console
 
-   HOST:~$ > lsusb -t
+   HOST:~$ lsusb -t
 
 
 ********************

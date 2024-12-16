@@ -56,7 +56,6 @@ help:
 
 clean:
 	rm -rf "$(BUILDDIR)"
-	rm -f source/_replacevars.rst
 
 lint:
 	rstcheck -r "$(SOURCEDIR)"

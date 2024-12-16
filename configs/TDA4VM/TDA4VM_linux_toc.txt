@@ -19,6 +19,7 @@ devices/J7_Family/linux/Release_Specific_Performance_Guide
 devices/J7_Family/linux/Release_Specific_Supported_Platforms_and_Versions
 devices/J7_Family/linux/Release_Specific_QSG
 linux/Foundational_Components
+linux/index_Edge_AI
 linux/Foundational_Components_U-Boot
 linux/Foundational_Components/U-Boot/Release-Notes
 linux/Foundational_Components/U-Boot/Users-Guide
@@ -98,7 +99,6 @@ linux/Foundational_Components/Virtualization/Docker
 linux/Foundational_Components_OPTEE
 linux/Foundational_Components_ATF
 linux/Foundational_Components_Multimedia_D5520_VXE384
-linux/Foundational_Components_Edge_AI
 linux/How_to_Guides
 linux/How_to_Guides_Developer_Notes
 linux/How_to_Guides/Host/Connect_to_an_EVM_via_Telnet

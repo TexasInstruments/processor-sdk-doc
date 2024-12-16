@@ -1,10 +1,9 @@
-# write_replacevars
+# unpack_replacevars
 # -----------------
-# Description:  Writes replacement variable array to source/${OS}/replacevars.rst.inc
+# Description: Creates a valid RST replacement variable list from the given variable dictionary
 #
-# Parameters: app          - Application calling this Python function
-#             replacevars  - Input hash table of replacevars that will be converted into
-#                            "replace" directives in the replacevars.rst.inc file
+# Parameters: replacevars  - Input hash table of replacevars that will be converted into
+#                            "replace" directives
 
 def unpack_replacevars(replacevars):
     replacevarstext = ["\n"]

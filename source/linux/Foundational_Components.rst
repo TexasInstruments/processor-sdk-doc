@@ -1,3 +1,5 @@
+.. _foundational-components-linux:
+
 ############################
 Foundational Components
 ############################
@@ -36,7 +38,6 @@ Foundational Components
    Foundational_Components_Hypervisor
    Foundational_Components_Virtualization
    Foundational_Components_Machine_Learning
-   Foundational_Components_Edge_AI
    Foundational_Components_ATF
    Foundational_Components_OPTEE
    Foundational_Components/Sysfw

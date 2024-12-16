@@ -109,7 +109,7 @@ U-Boot
 
    .. note::
 
-      meta-edgeai Yocto layer contains additional patches for U-Boot `here <https://git.ti.com/cgit/edgeai/meta-edgeai/tree/recipes-bsp/u-boot?h=10.01.00.03>`__.
+      meta-edgeai Yocto layer contains additional patches for U-Boot `here <https://git.ti.com/cgit/edgeai/meta-edgeai/tree/recipes-bsp/u-boot?h=10.01.00.04>`__.
 
 .. _kernel-release-notes:
 
@@ -151,7 +151,7 @@ Kernel
 
    .. note::
 
-      meta-edgeai Yocto layer contains additional patches for Kernel `here <https://git.ti.com/cgit/edgeai/meta-edgeai/tree/recipes-kernel/linux?h=10.01.00.03>`__.
+      meta-edgeai Yocto layer contains additional patches for Kernel `here <https://git.ti.com/cgit/edgeai/meta-edgeai/tree/recipes-kernel/linux?h=10.01.00.04>`__.
 
 .. _tf-a-release-notes:
 
@@ -230,12 +230,12 @@ Yocto
 
    .. rubric:: meta-edgeai
 
-   | Head Commit: 2ec01c8ec3dcaf8e725a3bf449193e0c1f3d37b6 linux-ti-staging: j742s2: Add patch to enable overlays
-   | Date: 2024-09-25
+   | Head Commit: bccfd706c87e0017360e75bdf9803679fe24db13 [20241210] EDGEAI Auto Update
+   | Date: 2024-12-10
 
    | Clone: git://git.ti.com/edgeai/meta-edgeai.git
    | Branch: scarthgap
-   | Release Tag: 10.01.00.03
+   | Release Tag: 10.01.00.04
    |
 
 Issues Tracker

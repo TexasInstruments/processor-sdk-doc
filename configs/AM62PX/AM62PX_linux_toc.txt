@@ -91,6 +91,8 @@ linux/Foundational_Components/Power_Management/pm_wakeup_sources
 linux/Foundational_Components/Power_Management/pm_sw_arch
 linux/Foundational_Components/Power_Management/pm_debug
 
+linux/Foundational_Components/System_Security/SELinux
+
 linux/Foundational_Components_Kernel_Users_Guide
 linux/Foundational_Components_Kernel_LTP-DDT_Validation
 linux/Foundational_Components_Kernel_FAQs

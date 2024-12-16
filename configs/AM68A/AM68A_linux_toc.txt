@@ -18,6 +18,7 @@ devices/J7_Family/linux/Release_Specific_Performance_Guide
 devices/J7_Family/linux/Release_Specific_Supported_Platforms_and_Versions
 devices/J7_Family/linux/Release_Specific_QSG
 linux/Foundational_Components
+linux/index_Edge_AI
 linux/Foundational_Components_U-Boot
 linux/Foundational_Components/U-Boot/Release-Notes
 linux/Foundational_Components/U-Boot/Users-Guide
@@ -90,7 +91,6 @@ linux/Foundational_Components/Virtualization/Docker
 linux/Foundational_Components_OPTEE
 linux/Foundational_Components_ATF
 linux/Foundational_Components_Multimedia_wave5
-linux/Foundational_Components_Edge_AI
 linux/Foundational_Components_Graphics
 linux/Foundational_Components/Graphics/Common/Display
 linux/Foundational_Components/Graphics/Common/GTK+_Graphics_Framework

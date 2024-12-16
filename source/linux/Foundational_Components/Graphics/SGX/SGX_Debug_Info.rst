@@ -205,4 +205,4 @@ information:
 
 These two outputs will help in debugging common issues.
 
-.. _E2E forums: http://e2e.ti.com/
+.. _E2E forums: https://e2e.ti.com/

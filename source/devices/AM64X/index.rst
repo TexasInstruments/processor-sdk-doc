@@ -29,6 +29,6 @@ it is very appreciated. Please post your ideas to the Linux
 forum listed at `Technical Support <../../linux/Overview_Technical_Support.html>`__.
 
 
-+------------------------------+--------------------------------------------------------------------------------------------------+
-| .. Image:: /images/E2e.jpg   | For technical support please post your questions at `http://e2e.ti.com <http://e2e.ti.com/>`__.  |
-+------------------------------+--------------------------------------------------------------------------------------------------+
++------------------------------+---------------------------------------------------------------------------------------------------+
+| .. Image:: /images/E2e.jpg   | For technical support please post your questions at `https://e2e.ti.com <https://e2e.ti.com/>`__. |
++------------------------------+---------------------------------------------------------------------------------------------------+
