@@ -199,6 +199,40 @@ Issues Tracker
 
     - Further Information can be found at `SIR Portal <https://sir.ext.ti.com/>`_
 
+Errata Resolved
+---------------
+.. csv-table::
+   :header: "Record ID", "Title"
+   :widths: 15, 70
+
+   "EXT_EP-12052","PRU_ICSSG: DOC: Undefined labels"
+   "EXT_EP-12118","PCI-Express: GEN3 (8GT/s) Operation Not Supported."
+   "EXT_EP-12121","USB: USB2PHY Charger Detect is enabled by default without VBUS presence"
+   "EXT_EP-12120","DSS : DSS Does Not Support YUV Pixel Data Formats"
+   "EXT_EP-12119","USB:  SuperSpeed USB Non-Functional"
+
+Issues Resolved
+---------------
+.. csv-table::
+   :header: "Record ID", "Title"
+   :widths: 15, 70
+
+   "EXT_EP-12108","audit for potential bugs with 6.6.44 stable merge "
+   "EXT_EP-12050","AM642-EVM: PCIe0 EP node is not defined"
+   "EXT_EP-12098","Uboot docs: document renaming tiboot3-<evm>.bin file"
+   "EXT_EP-12053","AM65x documentation several major issues no CPSW, incorrect ICSS section"
+   "EXT_SITMPUSW-31","IPC Firmwares missing from base images."
+
+Issues Open
+-----------
+.. csv-table::
+   :header: "Record ID", "Title"
+   :widths: 15, 70
+
+   "EXT_EP-12111","Linux SDK v10.0: TI-added support for W25N01JW SPI NAND breaks other existing Flash support"
+   "EXT_EP-12080","AM654x: USB MSC boot mode fails"
+   "EXT_EP-12048","am654x-idk DFU boot is failing"
+
 
 Installation and Usage
 ======================
