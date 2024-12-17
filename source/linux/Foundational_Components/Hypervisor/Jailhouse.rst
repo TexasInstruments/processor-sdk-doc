@@ -750,7 +750,7 @@ the values using
 
 .. code-block:: console
 
-    target# cat /proc/interrupts | grep uio
+   root@<machine>:~# cat /proc/interrupts | grep uio
 
 Below changes in :file:`ivshmem-demo.c` can be done to send characters from root to inmate
 and vice versa.

@@ -46,10 +46,10 @@ in this case if you already have a pointercal file on the SD card you
 will need to export the **TSLIB\_CALIBFILE** variable to point to that
 location before you run **ts\_calibrate**. i.e.
 
-::
+.. code-block:: console
 
-    target# export TSLIB_CALIBFILE=/run/media/mmcblk0p1/pointercal
-    target# ts_calibrate
+   root@<machine>:~# export TSLIB_CALIBFILE=/run/media/mmcblk0p1/pointercal
+   root@<machine>:~# ts_calibrate
 
 **NOTE:** If you have Matrix or any other GUI application already
 running you should stop that application (`How to Stop
@@ -111,9 +111,9 @@ Alternatively, you may delete the above listed files directly from the
 EVM's console by issuing the following commands at EVM's Linux prompt,
 and reboot the EVM to allow recalibration of the LCD.
 
-::
+.. code-block:: console
 
-     rm /etc/udev/rules.d/ws-calibrate.rules
-     rm /run/media/mmcblk0p1/ws-calibrate.rules
-     reboot
+   root@<machine>:~# rm /etc/udev/rules.d/ws-calibrate.rules
+   root@<machine>:~# rm /run/media/mmcblk0p1/ws-calibrate.rules
+   root@<machine>:~# reboot
 

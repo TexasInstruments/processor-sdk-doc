@@ -76,7 +76,7 @@ on the target to verify that you are using the newly-built Linux kernel.
 
 .. code-block:: console
 
-    target# cat /proc/version
+   root@<machine>:~# cat /proc/version
 
 The output should indicate the build date, host PC name, etc. This verifies
 that your SDK has been setup correctly, enabling you to start development.

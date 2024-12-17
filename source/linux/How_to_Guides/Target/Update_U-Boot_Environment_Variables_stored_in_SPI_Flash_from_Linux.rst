@@ -53,9 +53,9 @@ SPI MTD partitioning.
 Please note that the CROSS\_COMPILE flag is not used by the u-boot
 makefile here, the HOSTCC= variable must be set.
 
-::
+.. code-block:: console
 
-    host# make HOSTCC=arm-arago-linux-gnueabi-gcc env
+   host# make HOSTCC=arm-arago-linux-gnueabi-gcc env
 
 This command is issued from the top of the u-boot source directory.
 Please be sure to see that the cross compiler was actually called and
@@ -100,14 +100,14 @@ will run in.
 The executable fw\_printenv will dump the entire environment space,
 individual variables can be read by:
 
-::
+.. code-block:: console
 
-    target# ./fw_printenv autoload
+   root@<machine>:~# ./fw_printenv autoload
 
 To set an environment variable use fw\_setenv . This example will set
 the variable autoload to no, use fw\_printenv to read back the change.
 
-::
+.. code-block:: console
 
-    target# ./fw_setenv autoload no
+   root@<machine>:~# ./fw_setenv autoload no
 

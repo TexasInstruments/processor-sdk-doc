@@ -24,14 +24,14 @@ by :command:`opkg` by running the following command on the target device:
 
 .. code-block:: console
 
-    target# opkg
+   root@<machine>:~# opkg
 
 To check the version of :command:`opkg` packaged in filesystem,
 
 .. code-block:: console
 
-    target# opkg --version
-    opkg version 0.6.3 (libsolv 0.7.28)
+   root@<machine>:~# opkg --version
+   opkg version 0.6.3 (libsolv 0.7.28)
 
 Show all installed packages
 ===========================
@@ -41,7 +41,7 @@ each package you can run the following command on the target device:
 
 .. code-block:: console
 
-    target# opkg list-installed
+   root@<machine>:~# opkg list-installed
 
 .. important::
 
@@ -58,7 +58,7 @@ this you can use the following command:
 
 .. code-block:: console
 
-    target# opkg files <pkgname>
+   root@<machine>:~# opkg files <pkgname>
 
 Where <pkgname> is the name of the package as given in the *opkg
 list-installed* output. This command will produce a list of all the
@@ -73,7 +73,7 @@ following command:
 
 .. code-block:: console
 
-    target# opkg search <file>
+   root@<machine>:~# opkg search <file>
 
 This command will find which package installed the given file. This may
 be useful later when you want to remove an particular file because this
@@ -89,7 +89,7 @@ find the longer list of dependencies using:
 
 .. code-block:: console
 
-    target# opkg whatdepends <pkgname>
+   root@<machine>:~# opkg whatdepends <pkgname>
 
 This command will print the list of packages the depend on the package
 you entered, as well as the packages that depend on those packages, and
@@ -104,7 +104,7 @@ pre-built packages). Removing a package is often as simple as:
 
 .. code-block:: console
 
-    target# opkg remove <pkgname>
+   root@<machine>:~# opkg remove <pkgname>
 
 However, sometimes a package is a DEPENDENCY of another package. In this
 case you have the following options:
@@ -131,7 +131,7 @@ case you have the following options:
 
 .. code-block:: console
 
-    target# opkg remove --force-removal-of-dependent-packages <pkgname>
+   root@<machine>:~# opkg remove --force-removal-of-dependent-packages <pkgname>
 
 .. tip::
 
