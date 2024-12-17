@@ -201,3 +201,36 @@ Issues Tracker
 
     - Further Information can be found at `SIR Portal <https://sir.ext.ti.com/>`_
 
+Errata Resolved
+---------------
+.. csv-table::
+   :header: "Record ID", "Title"
+   :widths: 15, 70
+
+   "EXT_EP-12128","USB2 PHY locks up due to short suspend"
+   "EXT_EP-12124","BCDMA: RX Channel can lockup in certain scenarios"
+
+Issues Resolved
+---------------
+.. csv-table::
+   :header: "Record ID", "Title"
+   :widths: 15, 70
+
+   "EXT_EP-12109","Multi Instance Hang with Reduced CPU load patch"
+   "EXT_EP-12108","audit for potential bugs with 6.6.44 stable merge "
+   "EXT_EP-12107","Running camera pipelines causes kernel crash on all platforms"
+   "EXT_EP-12061","Single Link LVDS is broken with 10.0"
+   "EXT_EP-12106","higher latency metrics with Wave5"
+   "EXT_EP-12058","rcu_preempt self-detected stall on CPU while running DSS usecases"
+   "EXT_EP-12063","Update the DDR configuration with DDR syscfg 9.09+"
+   "EXT_EP-12098","Uboot docs: document renaming tiboot3-<evm>.bin file"
+
+Issues Open
+-----------
+.. csv-table::
+   :header: "Record ID", "Title"
+   :widths: 15, 70
+
+   "EXT_EP-12111","Linux SDK v10.0: TI-added support for W25N01JW SPI NAND breaks other existing Flash support"
+   "EXT_EP-12112","Add Timer PWM documentation and other infrastructure as needed"
+
