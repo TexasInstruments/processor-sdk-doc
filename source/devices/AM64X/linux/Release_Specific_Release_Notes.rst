@@ -215,7 +215,8 @@ Issues Resolved
    "EXT_EP-12110","am64xx-evm : OSPI NOR boot fails"
    "EXT_EP-12049","AM64X EVM: Fastboot is not functional"
    "EXT_EP-12104","AM64x NAND dtso file missing in kernel 6.6"
-
+   "SYSFW-6426","Ownership of a firewall region can be transferred to an invalid host"
+   "SYSFW-6432","Set device API doesn't return Error when PD is in transition state"
 
 Issues Open
 -----------
@@ -230,4 +231,7 @@ Issues Open
    "EXT_EP-12065","CPSW Ethernet EST schedule is not taken down on link down"
    "EXT_EP-12071","sdk-doc: missing SK-AM64B information in CDNS3 USB page"
    "EXT_EP-12060","AM64x: Lower core count on variant devices no supported"
+   "SYSFW-4518","Security handover does not enable use of all SA2UL threads"
+   "SYSFW-6621","No available region to configure for Firewall ID 24"
+   "SYSFW-7781","Get device API does not return error when the LPSC is in transition state"
 
