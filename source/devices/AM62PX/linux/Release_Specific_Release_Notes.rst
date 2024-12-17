@@ -50,6 +50,7 @@ What's new
   - Important Bug Fixes on top of Processor SDK 10.00.07.04 Release
   - RT Kernel : Real-Time Linux Interrupt Latency numbers here - :ref:`RT Interrupt Latencies <RT-linux-performance>`
   - Support for streaming from multiple 0V5640 cameras with `Arducam V3Link (Fusion Mini) <https://www.arducam.com/product/arducam-v3link-camera-kit-for-ti-development-boards/>`_
+  - TISCI: A53 hosts default priv_id value updated to 1 from 4 (to match all other SOCs)
   - Power Management: :ref:`I/O Only Plus DDR <pm_io_only_plus_ddr>` mode
 
 
@@ -224,6 +225,17 @@ Issues Resolved
    "EXT_EP-12058","rcu_preempt self-detected stall on CPU while running DSS usecases"
    "EXT_EP-12063","Update the DDR configuration with DDR syscfg 9.09+"
    "EXT_EP-12098","Uboot docs: document renaming tiboot3-<evm>.bin file"
+   "SITSW-4773","DM is ignoring the exact flags sent in TISCI message"
+   "SYSFW-5992","Unable to set exact pixel clock for OLDI LCD display / HDMI Pixel clock"
+   "SYSFW-6426","Ownership of a firewall region can be transferred to an invalid host"
+   "SYSFW-6432","Set device API doesn't return Error when PD is in transition state"
+   "SYSFW-7571","Device IDs higher than 255 does not work with set device constraint API"
+   "SYSFW-7602","RTC count value not getting updated after DeepSleep exit"
+   "SYSFW-7614","Unable to configure DSS clock below 15.625MHz"
+   "SYSFW-7617","LPM mode selection logic does not check for constraints on all the hosts/devices"
+   "SYSFW-7739","LPM constraint messages received by TIFS not forwarded to DM"
+   "SYSFW-7740","Only the last latency constraint value passed from a host considered in LPM selection"
+   "SYSFW-7753","A53 privid is set to 4 and does not match other SOCs value of 1"
 
 Issues Open
 -----------
@@ -233,4 +245,12 @@ Issues Open
 
    "EXT_EP-12111","Linux SDK v10.0: TI-added support for W25N01JW SPI NAND breaks other existing Flash support"
    "EXT_EP-12112","Add Timer PWM documentation and other infrastructure as needed"
+   "SYSFW-7622","DeepSleep resume failure when RTC wake is set for 1 second"
+   "SYSFW-7781","Get device API does not return error when the LPSC is in transition state"
+   "SYSFW-7831","DMA Resources used by ROM are not cleaned up when resuming from IO Only + DDR mode"
+   "SYSFW-7884","There is an additional divide by 4 on all clocks of WKUP/MCU GPIO clock mux"
+   "SYSFW-7887","DeepSleep fails if entered immediately after bootup"
+   "SYSFW-7897","Partial I/O mode fails after few hundred iterations"
+   "SYSFW-7899","LPM configuration is not enabled in HS-SE firmware"
+   "SYSFW-7903","Processor ownership info is not part of minimal TIFS context in IO only + DDR mode"
 
