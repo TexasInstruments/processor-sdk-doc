@@ -13,7 +13,6 @@ devices/AM62X/linux/Release_Specific_Kernel_Performance_Guide
 devices/AM62X/linux/Linux_Performance_Guide
 devices/AM62X/linux/RT_Linux_Performance_Guide
 devices/AM62X/linux/Release_Specific_Supported_Platforms_and_Versions
-devices/AM62X/linux/Release_Specific_QSG
 
 linux/Overview_Building_the_SDK
 linux/Overview/Top_Level_Makefile
@@ -22,11 +21,9 @@ linux/Overview_Technical_Support
 linux/Overview_GPLv3_Disclaimer
 linux/Overview/GCC_ToolChain
 linux/Overview/Processor_SDK_Linux_create_SD_card
-linux/Overview/Processor_SDK_Building_The_SDK
 
 linux/Foundational_Components
 linux/Foundational_Components_U-Boot
-linux/Foundational_Components/U-Boot/Release-Notes
 linux/Foundational_Components/U-Boot/Users-Guide
 linux/Foundational_Components/U-Boot/UG-General-Info
 linux/Foundational_Components/U-Boot/UG-DFU
