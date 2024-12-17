@@ -240,6 +240,17 @@ Issues Resolved
    "EXT_EP-12093","GPIO glitch observed while resuming from DeepSleep"
    "EXT_EP-12056","8250_omap: incorrect handling of dma->rx_running flag"
    "EXT_EP-12086","copying files to eMMC causes kernel crash"
+   "SITSW-5794","TISCI Messages from A53_4 are not receiving a response"
+   "SITSW-4773","DM is ignoring the exact flags sent in TISCI message"
+   "SYSFW-5992","Unable to set exact pixel clock for OLDI LCD display / HDMI Pixel clock"
+   "SYSFW-6426","Ownership of a firewall region can be transferred to an invalid host"
+   "SYSFW-6432","Set device API doesn't return Error when PD is in transition state"
+   "SYSFW-7571","Device IDs higher than 255 does not work with set device constraint API"
+   "SYSFW-7602","RTC count value not getting updated after DeepSleep exit"
+   "SYSFW-7614","Unable to configure DSS clock below 15.625MHz"
+   "SYSFW-7617","LPM mode selection logic does not check for constraints on all the hosts/devices"
+   "SYSFW-7739","LPM constraint messages received by TIFS not forwarded to DM"
+   "SYSFW-7740","Only the last latency constraint value passed from a host considered in LPM selection"
 
 Issues Open
 -----------
@@ -259,4 +270,9 @@ Issues Open
    "EXT_EP-12112","Add Timer PWM documentation and other infrastructure as needed"
    "EXT_EP-12060","AM64x: Lower core count on variant devices no supported"
    "EXT_EP-12081","AM62x: Make ""Debugging SPL"" doc specific to AM62x"
+   "SYSFW-7622","DeepSleep resume failure when RTC wake is set for 1 second"
+   "SYSFW-7781","Get device API does not return error when the LPSC is in transition state"
+   "SYSFW-7887","DeepSleep fails if entered immediately after bootup"
+   "SYSFW-7884","There is an additional divide by 4 on all clocks of WKUP/MCU GPIO clock mux"
+   "SYSFW-7898","Switching between MCU-Only and DeepSleep mode fails after some iterations"
 
