@@ -67,12 +67,6 @@ It's possible to use the SoC's internal RTC to wakeup the system using the comma
    - Suspend to RAM and wakeup after 10 seconds:
       rtcwake -m mem -s {{10}}
 
-   - Suspend to disk (higher power saving) and wakeup 15 minutes later:
-      rtcwake -m disk --date +{{15}}min
-
-   - Freeze the system (more efficient than suspend-to-RAM but version 3.9 or newer of the Linux kernel is required) and wakeup at a given date and time:
-      rtcwake -m freeze --date {{YYYYMMDDhhmm}}
-
    - Disable a previously set alarm:
       rtcwake -m disable
 
