@@ -167,9 +167,9 @@ will then be displayed on the GUI every second.     
 Build Baremetal Demos and Update SD card
 ----------------------------------------
 
-1. Install MCU+ SDK `[Use Link] <https://software-dl.ti.com/mcu-plus-sdk/esd/AM64X/08_05_00_24/exports/docs/api_guide_am64x/SDK_DOWNLOAD_PAGE.html>`__.
+1. Install MCU+ SDK `[Use Link] <https://software-dl.ti.com/mcu-plus-sdk/esd/AM64X/10_01_00_32/exports/docs/api_guide_am64x/SDK_DOWNLOAD_PAGE.html>`__.
    Refer MCU+ SDK benchmark demo user guide
-   `[Use Link] <https://software-dl.ti.com/mcu-plus-sdk/esd/AM64X/08_05_00_24/exports/docs/api_guide_am64x/EXAMPLE_MOTORCONTROL_BENCHMARKDEMO.html>`__
+   `[Use Link] <https://software-dl.ti.com/mcu-plus-sdk/esd/AM64X/10_01_00_32/exports/docs/api_guide_am64x/EXAMPLE_MOTORCONTROL_BENCHMARKDEMO.html>`__
    on how to build demos.
    Generated binaries will be in  <MCU+ SDK>/examples/motor_control/benchmark_demo/am64x-evm/system_nortos
 

@@ -30,7 +30,7 @@ Prerequisites
    Please be sure that you have the same version number
    for both Processor SDK RTOS and Linux.
 
-`Please refer to the MCU+SDK IPC documentation for R5F and M4F IPC architecture and builds: <https://software-dl.ti.com/mcu-plus-sdk/esd/AM64X/08_05_00_24/exports/docs/api_guide_am64x/IPC_GUIDE.html>`__
+`Please refer to the MCU+SDK IPC documentation for R5F and M4F IPC architecture and builds: <https://software-dl.ti.com/mcu-plus-sdk/esd/AM64X/10_01_00_32/exports/docs/api_guide_am64x/IPC_GUIDE.html>`__
 
 Typical Boot Flow on AM64x for ARM Linux users
 ----------------------------------------------

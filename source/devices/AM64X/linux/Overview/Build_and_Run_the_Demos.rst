@@ -29,9 +29,9 @@ Below is a list of build targets supported by processor SDK AM64x:
 Refer the respective user guides to build Linux and other RTOS/NO-RTOS packages
 
 -  For Linux Kernel, u-boot & DTB     `[Use Link] <../../../linux/Foundational_Components.html>`__
--  For RTOS/NO-RTOS source (MCU+ SDK) `[Use Link] <https://software-dl.ti.com/mcu-plus-sdk/esd/AM64X/08_05_00_24/exports/docs/api_guide_am64x/index.html>`__
--  For Industrial Protocols (ECAT)    `[Use Link] <https://software-dl.ti.com/mcu-plus-sdk/esd/AM64X/08_05_00_24/exports/docs/api_guide_am64x/INDUSTRIAL_COMMS.html>`__
--  For Industrial Drives (EnDAT,HDSL) `[Use Link] <https://software-dl.ti.com/mcu-plus-sdk/esd/AM64X/08_05_00_24/exports/docs/api_guide_am64x/EXAMPLES_MOTORCONTROL.html>`__
+-  For RTOS/NO-RTOS source (MCU+ SDK) `[Use Link] <https://software-dl.ti.com/mcu-plus-sdk/esd/AM64X/10_01_00_32/exports/docs/api_guide_am64x/index.html>`__
+-  For Industrial Protocols (ECAT)    `[Use Link] <https://software-dl.ti.com/mcu-plus-sdk/esd/AM64X/10_01_00_32/exports/docs/api_guide_am64x/INDUSTRIAL_COMMS.html>`__
+-  For Industrial Drives (EnDAT,HDSL) `[Use Link] <https://software-dl.ti.com/mcu-plus-sdk/esd/AM64X/10_01_00_32/exports/docs/api_guide_am64x/EXAMPLES_MOTORCONTROL.html>`__
 
 
 

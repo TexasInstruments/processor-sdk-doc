@@ -123,22 +123,22 @@ Reducing bootloader time
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-    You can track current performance numbers here: `AM62X <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62X/10_00_00_14/exports/docs/api_guide_am62x/DATASHEET_AM62X_EVM.html#autotoc_md105>`_
+    You can track current performance numbers here: `AM62X <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62X/10_01_00_33/exports/docs/api_guide_am62x/DATASHEET_AM62X_EVM.html#autotoc_md105>`_
 
 .. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
-    You can track current performance numbers here: `AM62AX <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62AX/10_00_00_14/exports/docs/api_guide_am62ax/DATASHEET_AM62AX_EVM.html#autotoc_md75>`_
+    You can track current performance numbers here: `AM62AX <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62AX/10_01_00_33/exports/docs/api_guide_am62ax/DATASHEET_AM62AX_EVM.html#autotoc_md75>`_
 
 .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
-    You can track current performance numbers here: `AM62PX <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62PX/10_00_00_14/exports/docs/api_guide_am62px/DATASHEET_AM62PX_EVM.html#autotoc_md47>`_
+    You can track current performance numbers here: `AM62PX <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62PX/10_01_00_33/exports/docs/api_guide_am62px/DATASHEET_AM62PX_EVM.html#autotoc_md47>`_
 
 
 - Flashing binaries:
 
     .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-        - `UART flashing tool AM62X <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62X/10_00_00_14/exports/docs/api_guide_am62x/TOOLS_FLASH.html>`_
+        - `UART flashing tool AM62X <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62X/10_01_00_33/exports/docs/api_guide_am62x/TOOLS_FLASH.html>`_
 
         - `U-Boot eMMC flashing tool AM62X <https://software-dl.ti.com/processor-sdk-linux/esd/AM62X/latest/exports/docs/linux/Foundational_Components/U-Boot/UG-General-Info.html#u-boot-environment>`_
 
@@ -146,7 +146,7 @@ Reducing bootloader time
 
     .. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
-        - `UART flashing tool AM62AX <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62AX/10_00_00_14/exports/docs/api_guide_am62ax/TOOLS_FLASH.html>`_
+        - `UART flashing tool AM62AX <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62AX/10_01_00_33/exports/docs/api_guide_am62ax/TOOLS_FLASH.html>`_
 
         - `U-Boot eMMC flashing tool AM62AX <https://software-dl.ti.com/processor-sdk-linux/esd/AM62AX/latest/exports/docs/linux/Foundational_Components/U-Boot/UG-General-Info.html#u-boot-environment>`_
 
@@ -154,7 +154,7 @@ Reducing bootloader time
 
     .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
-        - `UART flashing tool AM62PX <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62PX/10_00_00_14/exports/docs/api_guide_am62px/TOOLS_FLASH.html>`_
+        - `UART flashing tool AM62PX <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62PX/10_01_00_33/exports/docs/api_guide_am62px/TOOLS_FLASH.html>`_
 
         - `U-Boot eMMC flashing tool AM62PX <https://software-dl.ti.com/processor-sdk-linux/esd/AM62PX/latest/exports/docs/linux/Foundational_Components/U-Boot/UG-General-Info.html#u-boot-environment>`_
 
@@ -164,27 +164,27 @@ Secondary Boot Loader (SBL)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-    The following section will reference `AM62X MCU+ SDK's SBL examples <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62X/10_00_00_14/exports/docs/api_guide_am62x/EXAMPLES_DRIVERS_SBL.html>`_.
+    The following section will reference `AM62X MCU+ SDK's SBL examples <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62X/10_01_00_33/exports/docs/api_guide_am62x/EXAMPLES_DRIVERS_SBL.html>`_.
 
 .. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
-    The following section will reference `AM62AX MCU+ SDK's SBL examples <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62AX/10_00_00_14/exports/docs/api_guide_am62ax/EXAMPLES_DRIVERS_SBL.html>`_.
+    The following section will reference `AM62AX MCU+ SDK's SBL examples <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62AX/10_01_00_33/exports/docs/api_guide_am62ax/EXAMPLES_DRIVERS_SBL.html>`_.
 
 .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
-    The following section will reference `AM62PX MCU+ SDK's SBL examples <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62PX/10_00_00_14/exports/docs/api_guide_am62px/EXAMPLES_DRIVERS_SBL.html>`_.
+    The following section will reference `AM62PX MCU+ SDK's SBL examples <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62PX/10_01_00_33/exports/docs/api_guide_am62px/EXAMPLES_DRIVERS_SBL.html>`_.
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-    - `AM62X Falcon Mode <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62X/10_00_00_14/exports/docs/api_guide_am62x/TOOLS_BOOT.html#LINUX_APPIMAGE_GEN_TOOL>`_
+    - `AM62X Falcon Mode <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62X/10_01_00_33/exports/docs/api_guide_am62x/TOOLS_BOOT.html#LINUX_APPIMAGE_GEN_TOOL>`_
 
 .. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
-    - `AM62AX Falcon Mode <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62AX/10_00_00_14/exports/docs/api_guide_am62ax/TOOLS_BOOT.html#LINUX_APPIMAGE_GEN_TOOL>`_
+    - `AM62AX Falcon Mode <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62AX/10_01_00_33/exports/docs/api_guide_am62ax/TOOLS_BOOT.html#LINUX_APPIMAGE_GEN_TOOL>`_
 
 .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
-    - `AM62PX Falcon Mode <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62PX/10_00_00_14/exports/docs/api_guide_am62px/TOOLS_BOOT.html#LINUX_APPIMAGE_GEN_TOOL>`_
+    - `AM62PX Falcon Mode <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62PX/10_01_00_33/exports/docs/api_guide_am62px/TOOLS_BOOT.html#LINUX_APPIMAGE_GEN_TOOL>`_
 
 - Removing unnecessary prints
 
@@ -233,7 +233,7 @@ Secondary Boot Loader (SBL)
 
                 It is not possible to assign the first 2 channels to DM R5, the next 2 to A53, next 4 again to DM R5 and so on.
 
-        - Rebuild the boardcfg : `BOARCFG_GEN <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62PX/10_00_00_14/exports/docs/api_guide_am62px/TOOLS_SYSFW.html#BOARCFG_GEN>`_
+        - Rebuild the boardcfg : `BOARCFG_GEN <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62PX/10_01_00_33/exports/docs/api_guide_am62px/TOOLS_SYSFW.html#BOARCFG_GEN>`_
 
         - Flash the binaries
 

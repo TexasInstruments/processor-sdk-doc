@@ -91,8 +91,8 @@ by double clicking on it within your Linux host PC.
 .. note::
    Processor SDK Linux AM62x contains only the Linux specific source and application intended
    to runs on A53/Linux core. For R5F and RTOS/NO-RTOS side source and applications, refer **MCU+ SDK**
-   package `[Use Link] <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62X/09_02_00_38/exports/docs/api_guide_am62x/index.html>`__.
+   package `[Use Link] <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62X/10_01_00_33/exports/docs/api_guide_am62x/index.html>`__.
 
 **Instructions to set-up CCS**
 
--  Refer `[Use Link] <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62X/09_02_00_38/exports/docs/api_guide_am62x/CCS_SETUP_PAGE.html>`__
+-  Refer `[Use Link] <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62X/10_01_00_33/exports/docs/api_guide_am62x/CCS_SETUP_PAGE.html>`__

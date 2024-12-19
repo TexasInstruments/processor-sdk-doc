@@ -45,8 +45,8 @@ The PRU Getting Started Labs demonstrate:
       "MCU-PLUS-SDK" or "PROCESSOR-SDK-LINUX".
 
    #. Select "Download options" -> "Documentation". Click the link to the
-      latest SDK documentation. (AM64x example for MCU+ SDK 8.2:
-      https://software-dl.ti.com/mcu-plus-sdk/esd/AM64X/08_05_00_24/exports/docs/api_guide_am64x/index.html)
+      latest SDK documentation. (AM64x example for MCU+ SDK 10.1:
+      https://software-dl.ti.com/mcu-plus-sdk/esd/AM64X/10_01_00_32/exports/docs/api_guide_am64x/index.html)
 
    #. If using an SDK that is not the latest SDK, it is suggested to use that
       release's SDK documentation instead of the latest SDK documentation.
