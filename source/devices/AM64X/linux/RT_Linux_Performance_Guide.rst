@@ -51,18 +51,23 @@ It is one of the most frequently used tools for evaluating the relative performa
 Some performance tests which use Cyclictest are System benchmarking, Latency debugging with tracing and
 approximating application performance.
 
-Test command for running stress-ng and cyclictest together
+Test commands used for running stress-ng and cyclictest together
 
-``stress-ng --cpu-method=all -c 4 &``
+.. code:: console
 
-``cyclictest -m -Sp98 -D6h -h400 -i200 -q``
+   stress-ng --cpu-method=all -c 4 &
+   cyclictest -m -Sp80 -D6h -h400 -i200 -M -q
+
+The latencies observed with this DK are summarized below:
 
 .. csv-table::
-    :header: "Latencies", "am64xx-hsevm:per-core"
+   :header: "Latencies","CPU 0","CPU 1"
 
-    "Minimum (usec)","6,6"
-    "Average (usec)","8,9"
-    "Maximum (usec)","49,66"
+   "Minimum (usec)","6","6"
+   "Average (usec)","8","8"
+   "Maximum (usec)","77","105"
+
+.. image:: img/rt-cpu-method-all-latency-histogram.png
 
 |
 
@@ -472,9 +477,6 @@ PCIe-ETH
 PCIe-NVMe-SSD
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-AM64xx-EVM
-"""""""""""""""""""""""""""
-
 .. csv-table:: PCIE SSD EXT4 FIO 10G
     :header: "Buffer size (bytes)","am64xx-hsevm: Write EXT4 Throughput (Mbytes/sec)","am64xx-hsevm: Write EXT4 CPU Load (%)","am64xx-hsevm: Read EXT4 Throughput (Mbytes/sec)","am64xx-hsevm: Read EXT4 CPU Load (%)"
 
@@ -493,11 +495,8 @@ AM64xx-EVM
 OSPI Flash Driver
 -------------------------
 
-AM64XX-EVM
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
 RAW
-"""""""""""""""""""""""""""
+^^^
 
 .. csv-table:: OSPI Raw Flash Driver
     :header: "File size (Mbytes)","am64xx-hsevm: Raw Read Throughput (Mbytes/sec)"
