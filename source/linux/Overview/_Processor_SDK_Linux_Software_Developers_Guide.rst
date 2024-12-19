@@ -111,7 +111,7 @@ suggestions at `E2E <https://e2e.ti.com/>`__.
 
 .. ifconfig:: CONFIG_sdk in ('SITARA')
 
-    .. ifconfig:: CONFIG_part_variant not in ('AM62X', 'AM62AX', 'AM62PX')
+    .. ifconfig:: CONFIG_part_variant not in ('AM62X', 'AM62AX', 'AM62PX', 'AM335X', 'AM437X', 'AM65X')
 
         +-----------------+------------------------+------------------+-----------------------------------+
         | **PRU-ICSS / PRU_ICSSG Protocols** (more information on each piece of the distribution)         |
