@@ -26,6 +26,10 @@ Installing Snagfactory
 
     $ python3 -m pip install --user snagboot
 
+.. note::
+
+   At the time of 10.1 release, the corresponding Snagfactory version was v2.0.
+
 *****************************************
 Building bootloader binaries for Recovery
 *****************************************
@@ -97,6 +101,13 @@ images will be used for recovery and to start flashing the images. The bootloade
 images after make can be found in :file:`board-support/built-images`.
 
 For more details regarding USB DFU refer :ref:`usb-device-firmware-upgrade-label`.
+
+.. note::
+
+   ``CONFIG_FASTBOOT_BUF_SIZE`` is defined in :file:`am6x_a53_snagfactory.config`
+   and specifies the maximum buffer size for flashing files. Its value must be equal
+   or greater than the largest file size being flashed. If smaller, non-sparse
+   images will not flash correctly due to issues with chunked processing.
 
 ***********
 Connections
