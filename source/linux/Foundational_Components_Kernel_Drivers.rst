@@ -41,6 +41,7 @@ Kernel Drivers
    Foundational_Components/Kernel/Kernel_Drivers/Storage/NAND
    Foundational_Components/Kernel/Kernel_Drivers/Storage/MMC-SD
    Foundational_Components/Kernel/Kernel_Drivers/UART
+   Foundational_Components/Kernel/Kernel_Drivers/UBIFS
    Foundational_Components/Kernel/Kernel_Drivers/UFS
    Foundational_Components/Kernel/Kernel_Drivers/USB/MUSB
    Foundational_Components/Kernel/Kernel_Drivers/USB/DWC3

@@ -69,6 +69,7 @@ linux/Foundational_Components/Kernel/Kernel_Drivers/Storage/SATA
 linux/Foundational_Components/Kernel/Kernel_Drivers/Storage/NAND
 linux/Foundational_Components/Kernel/Kernel_Drivers/Storage/MMC-SD
 linux/Foundational_Components/Kernel/Kernel_Drivers/UART
+linux/Foundational_Components/Kernel/Kernel_Drivers/UBIFS
 linux/Foundational_Components/Kernel/Kernel_Drivers/USB/DWC3
 linux/Foundational_Components/Kernel/Kernel_Drivers/VPE
 linux/Foundational_Components_Kernel_Users_Guide
