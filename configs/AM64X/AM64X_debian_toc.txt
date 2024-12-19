@@ -1,9 +1,6 @@
 devices/AM64X/debian/index
 
 debian/Overview
-debian/Overview/Overview_Getting_Started_Guide
-debian/Overview/Overview_Debian_vs_Yocto
-debian/Overview/Overview_Technical_Support
 devices/AM64X/debian/Getting_Started_Guide
 debian/Building_Debian_Image
 debian/Building_Debian_Packages

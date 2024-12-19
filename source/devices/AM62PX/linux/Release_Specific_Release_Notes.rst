@@ -238,6 +238,11 @@ Issues Resolved
    "SYSFW-7739","LPM constraint messages received by TIFS not forwarded to DM"
    "SYSFW-7740","Only the last latency constraint value passed from a host considered in LPM selection"
    "SYSFW-7753","A53 privid is set to 4 and does not match other SOCs value of 1"
+   "EXT_SITMPUSW-33", "Resolve GPU crash caused by Display cluster demo"
+   "EXT_SITMPUSW-32", "SDK Makefile: Fix logic to pick key directory for mkimage"
+   "EXT_SITMPUSW-31", "IPC Firmwares missing from base images."
+   "EXT_SITMPUSW-30", "Debian: Deepsleep doesn't work on AM62P"
+   "EXT_SITMPUSW-29", "TI Debian SDK: Docker not working"
 
 Issues Open
 -----------

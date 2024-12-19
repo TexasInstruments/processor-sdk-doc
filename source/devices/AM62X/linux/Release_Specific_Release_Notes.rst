@@ -254,6 +254,7 @@ Issues Resolved
    "SYSFW-7617","LPM mode selection logic does not check for constraints on all the hosts/devices"
    "SYSFW-7739","LPM constraint messages received by TIFS not forwarded to DM"
    "SYSFW-7740","Only the last latency constraint value passed from a host considered in LPM selection"
+   "EXT_SITMPUSW-32", "SDK Makefile: Fix logic to pick key directory for mkimage"
 
 Issues Open
 -----------

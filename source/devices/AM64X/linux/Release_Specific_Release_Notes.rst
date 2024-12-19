@@ -218,6 +218,7 @@ Issues Resolved
    "EXT_EP-12104","AM64x NAND dtso file missing in kernel 6.6"
    "SYSFW-6426","Ownership of a firewall region can be transferred to an invalid host"
    "SYSFW-6432","Set device API doesn't return Error when PD is in transition state"
+   "EXT_SITMPUSW-32", "SDK Makefile: Fix logic to pick key directory for mkimage"
 
 Issues Open
 -----------

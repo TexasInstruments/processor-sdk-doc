@@ -37,7 +37,7 @@ Downloading sources
    .. code-block:: console
 
       $ mkdir ${YOUR_PATH}/ti-bootloader-aosp/ && cd $_
-      $ repo init -u https://git.ti.com/git/android/manifest.git -b android15-release -m bootloaders.xml
+      $ repo init -u https://git.ti.com/git/android/manifest.git -b android15-release -m releases/RLS_10_01_Bootloader.xml
       $ repo sync
 
    For more information about ``repo``, visit `Android's official
