@@ -1,5 +1,3 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_U-Boot_Splash_Screen
-.. highlight:: c
 
 U-Boot Splash Screen
 ==========================
@@ -20,26 +18,42 @@ To use this, enable following configurations in :file:`configs/am335x_evm_defcon
 
 .. code-block:: kconfig
 
-    CONFIG_SPLASH_SCREEN=y
-    CONFIG_SPLASH_SOURCE=y
-    CONFIG_SPLASH_SCREEN_ALIGN=y
-    CONFIG_HIDE_LOGO_VERSION=y
-    CONFIG_AM335X_LCD=y
-    CONFIG_VIDEO_BMP_GZIP=y
-    CONFIG_BMP_24BPP=y
-    CONFIG_BMP_32BPP=y
-    CONFIG_BMP=y
-    CONFIG_VIDEO=y
-    CONFIG_CMD_BMP=y
-    CONFIG_SYSCON=y
-    CONFIG_REGMAP=y
-    CONFIG_CLK_CCF=y
-    CONFIG_CLK_TI_AM3_DPLL=y
-    CONFIG_CLK_TI_DIVIDER=y
-    CONFIG_CLK_TI_MUX=y
-    CONFIG_DM_PWM=y
-    CONFIG_BACKLIGHT_PWM=y
-    CONFIG_PWM_TI_ECAP=y
+   CONFIG_SPLASH_SCREEN=y
+   CONFIG_SPLASH_SOURCE=y
+   CONFIG_SPLASH_SCREEN_ALIGN=y
+   CONFIG_HIDE_LOGO_VERSION=y
+   CONFIG_AM335X_LCD=y
+   CONFIG_VIDEO_BMP_GZIP=y
+   CONFIG_BMP_24BPP=y
+   CONFIG_BMP_32BPP=y
+   CONFIG_BMP=y
+   CONFIG_VIDEO=y
+   CONFIG_CMD_BMP=y
+   CONFIG_SYSCON=y
+   CONFIG_REGMAP=y
+   CONFIG_CLK_CCF=y
+   CONFIG_CLK_TI_AM3_DPLL=y
+   CONFIG_CLK_TI_DIVIDER=y
+   CONFIG_CLK_TI_MUX=y
+   CONFIG_DM_PWM=y
+   CONFIG_BACKLIGHT_PWM=y
+   CONFIG_PWM_TI_ECAP=y
+
+If user is using enhanced High Resolution PWM(eHRPWM) to control the display backlight,
+enable following config.
+
+
+.. code-block:: kconfig
+
+   CONFIG_CLK_TI_GATE=y
+
+.. rubric:: Features supported
+
+The following features are supported and validated on am335x EVM:
+
+#. Supports 32, 24, and 8 bits per pixel BMP image.
+#. Supports displaying only BMP and compressed BMP images(gzip).
+#. Supports MMC as bmp image sources.
 
 .. rubric:: Display Image using U-Boot command line
    :name: Display Image
