@@ -420,11 +420,12 @@ or via command line arguments):
    $ dd if=/dev/mtd6 of=tmp_read.txt bs=num count=1 # read to num bytes to flash
    $ diff tmp_read.txt tmp_write.txt # should be NULL
 
-.. rubric:: Using UBIFS on flash
-   :name: using-ubifs-on-flash
+.. note::
 
-Make sure UBIFS filesystem is enabled in the kernel (refer to `this
-section <#enabling-qspi-driver-configurations>`__ for more information).
+   Make sure UBIFS filesystem is enabled in the kernel (refer to :ref:`this <enabling-qspi-driver-configurations>`
+   section for more information).
+
+Refer :ref:`here <linux-ubifs>` for UBIFS.
 
 .. code-block:: console
 
