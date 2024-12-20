@@ -49,15 +49,21 @@ It is one of the most frequently used tools for evaluating the relative performa
 Some performance tests which use Cyclictest are System benchmarking, Latency debugging with tracing and
 approximating application performance.
 
-Test command for running stress-ng and cyclictest together
+Test commands used for running stress-ng and cyclictest together
 
-``stress-ng --cpu-method=all -c 4 &``
+.. code:: console
 
-``cyclictest -m -Sp98 -D6h -h400 -i200 -q``
+   stress-ng --cpu-method=all -c 4 &
+   cyclictest -m -Sp80 -D6h -h400 -i200 -M -q
+
+The latencies where observed with this SDK are summarized below:
 
 .. csv-table::
-    :header: "Latencies","am62axx_sk-fs:per-core"
+   :header: "Latencies","CPU 0","CPU 1","CPU 2","CPU 3"
 
-    "Minimum (usec)","5,5,5,5"
-    "Average (usec)","6,6,6,6"
-    "Maximum (usec)","34,40,48,37"
+   "Minimum (us)","5","5","5","5"
+   "Average (us)","5","6","6","5"
+   "Maximum (us)","68","31","34","28"
+
+.. image:: img/rt-cpu-method-all-latency-histogram.png
+
