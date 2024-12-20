@@ -219,6 +219,14 @@ Issues Resolved
    "SYSFW-6426","Ownership of a firewall region can be transferred to an invalid host"
    "SYSFW-6432","Set device API doesn't return Error when PD is in transition state"
    "EXT_SITMPUSW-32", "SDK Makefile: Fix logic to pick key directory for mkimage"
+   "PINDSW-7087","Ethernet: IET: Frame preemption MAC verify fails"
+   "PINDSW-8229","Ethernet: FDB: FDB entries missing with link up/down activity"
+   "PINDSW-8187","Ethernet: FDB: MC frame is not received when only specific port bit is set in FID_C2 (Applicable only for DUAL MAC mode)"
+   "PINDSW-8086","Ethernet: FDB: Port blocked/disabled use case for special frame"
+   "PINDSW-8022","Ethernet: TAPRIO: Moved base time usage into the firmware"
+   "PINDSW-7988","Ethernet: CT: Cut-thru can not be verified (Missing PA statistics)"
+   "PINDSW-8273","Ethernet: 10M: Link Status Valid flag is not set in case of 100M/1G"
+   "PINDSW-8073","ICSSG Switch: PTP: Interrupt is coming on the other port"
 
 Issues Open
 -----------
