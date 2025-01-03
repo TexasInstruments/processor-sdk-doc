@@ -13,7 +13,8 @@ Before compiling any of the sources referenced in this document, set the cross c
 
       host# export CROSS_COMPILE_32="${SDK_INSTALL_DIR}/linux-devkit/sysroots/x86_64-arago-linux/usr/bin/arm-oe-linux-gnueabi/arm-oe-linux-gnueabi-"
       host# export SYSROOT_32="${SDK_INSTALL_DIR}/linux-devkit/sysroots/armv7at2hf-neon-oe-linux-gnueabi"
-      host# export CC_32="${CROSS_COMPILE_32}gcc --sysroot=${SYSROOT_32}"
+      host# export CFLAGS="-march=armv7-a -mthumb -mfpu=neon -mfloat-abi=hard"
+      host# export CC_32="${CROSS_COMPILE_32}gcc ${CFLAGS} --sysroot=${SYSROOT_32}"
 
 .. ifconfig:: CONFIG_part_variant not in ('AM335X', 'AM437X', 'AM57X')
 
@@ -33,9 +34,17 @@ If the Processor SDK is not installed, the Arm GNU toolchains can be downloaded 
 Yocto-built SDK Toolchains
 --------------------------
 
-The |__SDK_FULL_NAME__| package contains cross compile toolchains for the ARMv8
-(:ref:`linux-devkit`) and ARMv7 (:ref:`k3r5-devkit`) architectures. These toolchains
-are used by the :ref:`top level makefile <top-level-makefile>` when
+.. ifconfig:: CONFIG_part_variant in ('AM335X', 'AM437X', 'AM57X')
+
+   The |__SDK_FULL_NAME__| package contains cross compile toolchain for the ARMv7
+   (:ref:`linux-devkit`) architecture.
+
+.. ifconfig:: CONFIG_part_variant not in ('AM335X', 'AM437X', 'AM57X')
+
+   The |__SDK_FULL_NAME__| package contains cross compile toolchains for the ARMv8
+   (:ref:`linux-devkit`) and ARMv7 (:ref:`k3r5-devkit`) architectures.
+
+These toolchains are used by the :ref:`top level makefile <top-level-makefile>` when
 compiling the binaries for the target. These also package an environment setup
 script that, when sourced, sets all the right variables to compile binaries for
 the target architecture. The toolchain installers are built through the yocto
@@ -65,13 +74,13 @@ referred to using the first column in the following sections.
         - Description
       * - CROSS_COMPILE_32
         - linux-devkit/sysroots/x86_64-arago-linux/usr/bin/arm-oe-linux-gnueabi/arm-oe-linux-gnueabi-
-        - Cross compiler toolchain for the ARMv8 architecture
+        - Cross compiler toolchain for the ARMv7 architecture
       * - SYSROOT_32
         - linux-devkit/sysroots/armv7at2hf-neon-oe-linux-gnueabi/
-        - Sysroot with the cross compiled libraries and headers for the ARMv8 architecture with Linux OS
+        - Sysroot with the cross compiled libraries and headers for the ARMv7 architecture with Linux OS
       * - ENV_SETUP_32
         - linux-devkit/environment-setup-armv7at2hf-neon-oe-linux-gnueabi
-        - Shell script that sets environment variables to compile binaries for the ARMv8 linux target
+        - Shell script that sets environment variables to compile binaries for the ARMv7 linux target
 
 .. ifconfig:: CONFIG_part_variant not in ('AM335X', 'AM437X', 'AM57X')
 
@@ -98,23 +107,35 @@ referred to using the first column in the following sections.
 The toolchain within the Linux SDK contains more than just the
 cross-compiler, it also contains pre-built libraries that can be used
 in your applications without requiring you to cross-compile them
-yourself. These libraries include packages from alsa to zlib.
-or a list of the
-libraries you can refer to the software manifest found in the **<SDK
-INSTALL DIR>/manifest** directory or look at the list of libraries
-available in the **<SYSROOT_64>/usr/lib** directory. You will
-also find the header files corresponding to these libraries in the
-**<SYSROOT_64>/usr/include** directory. As
-an example if your application wants access to the alsa asound library
-then you can now do the following command:
+yourself.
 
 .. ifconfig:: CONFIG_part_variant in ('AM335X', 'AM437X', 'AM57X')
+
+   These libraries include packages from alsa to zlib.
+   or a list of the
+   libraries you can refer to the software manifest found in the **<SDK
+   INSTALL DIR>/manifest** directory or look at the list of libraries
+   available in the **<SYSROOT_32>/usr/lib** directory. You will
+   also find the header files corresponding to these libraries in the
+   **<SYSROOT_32>/usr/include** directory. As
+   an example if your application wants access to the alsa asound library
+   then you can now do the following command:
 
    .. code-block:: console
 
       host# ${CROSS_COMPILE_32}gcc -lasound app.c -o app.out
 
 .. ifconfig:: CONFIG_part_variant not in ('AM335X', 'AM437X', 'AM57X')
+
+   These libraries include packages from alsa to zlib.
+   or a list of the
+   libraries you can refer to the software manifest found in the **<SDK
+   INSTALL DIR>/manifest** directory or look at the list of libraries
+   available in the **<SYSROOT_64>/usr/lib** directory. You will
+   also find the header files corresponding to these libraries in the
+   **<SYSROOT_64>/usr/include** directory. As
+   an example if your application wants access to the alsa asound library
+   then you can now do the following command:
 
    .. code-block:: console
 
@@ -194,7 +215,7 @@ libraries.
 
         .. code-block:: console
 
-           host# ${CROSS_COMPILE_32}gcc --sysroot=${SYSROOT_32} helloworld.c -o helloworld
+           host# ${CROSS_COMPILE_32}gcc -march=armv7-a -mthumb -mfpu=neon -mfloat-abi=hard --sysroot=${SYSROOT_32} helloworld.c -o helloworld
 
      .. ifconfig:: CONFIG_part_variant not in ('AM335X', 'AM437X', 'AM57X')
 
@@ -227,10 +248,19 @@ libraries.
    simple way to check this is to run the "file" command. It should
    return an output similar to below:
 
-   .. code-block:: console
+   .. ifconfig:: CONFIG_part_variant in ('AM335X', 'AM437X', 'AM57X')
 
-      host# file helloworld
-      helloworld: ELF 64-bit LSB executable, ARM aarch64, version 1 (SYSV), dynamically linked, interpreter /lib/ld-linux-aarch64.so.1, BuildID[sha1]=bb96180ad71bd44e07fc148015a55c844134f30d, for GNU/Linux 3.14.0, with debug_info, not stripped
+      .. code-block:: console
+
+         host# file helloworld
+         helloworld: ELF 32-bit LSB executable, ARM, EABI5 version 1 (SYSV), dynamically linked, interpreter /lib/ld-linux-armhf.so.3, BuildID[sha1]=f163acd736f827b9743b27d9a94e431d63990711, for GNU/Linux 3.2.0, with debug_info, not stripped
+
+   .. ifconfig:: CONFIG_part_variant not in ('AM335X', 'AM437X', 'AM57X')
+
+      .. code-block:: console
+
+         host# file helloworld
+         helloworld: ELF 64-bit LSB executable, ARM aarch64, version 1 (SYSV), dynamically linked, interpreter /lib/ld-linux-aarch64.so.1, BuildID[sha1]=bb96180ad71bd44e07fc148015a55c844134f30d, for GNU/Linux 3.14.0, with debug_info, not stripped
 
 |
 
@@ -299,4 +329,5 @@ commands of the Foundational Components in this document.
    host# export CROSS_COMPILE_64=$COMPILER_PATH/arm-gnu-toolchain-11.3.rel1-x86_64-aarch64-none-linux-gnu/bin/aarch64-none-linux-gnu-
    host# export CROSS_COMPILE_32=$COMPILER_PATH/arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-linux-gnueabihf/bin/arm-none-linux-gnueabihf-
    host# export CC_64="${CROSS_COMPILE_64}gcc"
+   host# export CC_32="${CROSS_COMPILE_32}gcc"
 
