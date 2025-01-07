@@ -132,30 +132,30 @@ new drivers should always be added as **modules**.
 
 To enable new modules:
 
-#. Run ``menuconfig`` as documented previously, Select ``=m`` for the driver.
+   #. Run ``menuconfig`` as documented previously, Select ``=m`` for the driver.
 
-#. Edit :file:`${YOUR_PATH}/ti-kernel-aosp/BUILD.bazel` to add your new module.
-   Look for the following section:
+   #. Edit :file:`${YOUR_PATH}/ti-kernel-aosp/BUILD.bazel` to add your new module.
+      Look for the following section:
 
-   .. code-block:: bash
+      .. code-block:: bash
 
-      _TI_MODULE_OUTS = [
-          # keep sorted
-          "crypto/af_alg.ko",
-          "crypto/algif_hash.ko",
+         _TI_MODULE_OUTS = [
+             # keep sorted
+             "crypto/af_alg.ko",
+             "crypto/algif_hash.ko",
 
-#. In the ``_TI_MODULE_OUTS`` array, add the path to your new kernel module.
+   #. In the ``_TI_MODULE_OUTS`` array, add the path to your new kernel module.
 
-#. Rebuild the kernel as documented in :ref:`android-build-kernel`.
+   #. Rebuild the kernel as documented in :ref:`android-build-kernel`.
 
-#. If the driver module needs to be loaded early (in the ramdisk), edit
-   :file:`${YOUR_PATH}/ti-aosp-15/device/ti/am62x/BoardConfig-common.mk`
-   and add the path to your module:
+   #. If the driver module needs to be loaded early (in the ramdisk), edit
+      :file:`${YOUR_PATH}/ti-aosp-15/device/ti/am62x/BoardConfig-common.mk`
+      and add the path to your module:
 
-   .. code-block:: make
+      .. code-block:: make
 
-      BOARD_VENDOR_RAMDISK_KERNEL_MODULES += \
-              device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/your_module.ko
+         BOARD_VENDOR_RAMDISK_KERNEL_MODULES += \
+                 device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/your_module.ko
 
-#. Finally, rebuild the Android images.
+   #. Finally, rebuild the Android images.
 
