@@ -159,3 +159,102 @@ To enable new modules:
 
    #. Finally, rebuild the Android images.
 
+********************
+Device tree overlays
+********************
+
+Mapping ``adtbo_idx`` with filenames
+====================================
+
+Device tree overlays can be used to configure additional hardware peripherals.
+These overlays are stored in the :file:`dtbo.img`. This image is generated when
+building the Android kernel as documented in :ref:`android-build-kernel`.
+
+As listed in :ref:`android-dtbo`, we can configure an overlay to be applied
+from U-Boot by setting the ``adtbo_idx`` variable.
+
+To view how the ``adtbo_idx`` maps with the dtbo file, we can inspect the :file:`BUILD.bazel`
+from the `kernel source code <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/BUILD.bazel?h=ti-android-linux-6.6.y#n953>`__.
+Looking at the ``kernel_images()`` macro, we can see:
+
+.. code-block:: bazel
+
+   kernel_images(
+    name = "ti_images",
+    build_dtbo = True,
+    build_initramfs = True,
+    dtbo_srcs = [
+        ":ti/k3-am62x-sk-hdmi-audio.dtbo",
+        ":ti/k3-am62x-sk-csi2-ov5640.dtbo",
+        ":ti/k3-am62x-sk-csi2-tevi-ov5640.dtbo",
+        ":ti/k3-am625-sk-microtips-mf101hie-panel.dtbo",
+        ":ti/k3-am62x-sk-lpm-wkup-sources.dtbo",
+        ":ti/k3-am62-lp-sk-microtips-mf101hie-panel.dtbo",
+        ":ti/k3-am625-beagleplay-csi2-ov5640.dtbo",
+        ":ti/k3-am625-beagleplay-csi2-tevi-ov5640.dtbo",
+        ":ti/k3-am625-beagleplay-lincolntech-lcd185-panel.dtbo",
+        ":ti/k3-am62p5-sk-mcan.dtbo",
+        ":ti/k3-am62p5-sk-microtips-mf101hie-panel.dtbo",
+        ":ti/k3-am625-sk-m2-cc3301.dtbo",
+        ":ti/k3-am62p5-sk-m2-cc3301.dtbo",
+        ":ti/k3-am625-sk-wl1837.dtbo",
+
+The ``dtbo_srcs`` array order dicates the index. For example:
+
+.. list-table::
+   :header-rows: 1
+
+   * - filename
+     - index
+
+   * - :file:`ti/k3-am62x-sk-hdmi-audio.dtbo`
+     - 0
+
+   * - :file:`ti/k3-am62x-sk-csi2-ov5640.dtbo`
+     - 1
+
+
+Adding more :file:`.dtbo` files to the :file:`dtbo.img`
+=======================================================
+
+In this section, we will see how to add more :file:`.dtbo` files to the :file:`dtbo.img`.
+Let's see how to add :file:`ti/k3-am62p5-sk-dsi-rpi-7inch-panel.dtbo` for example:
+
+   #. Edit :file:`${YOUR_PATH}/ti-kernel-aosp/BUILD.bazel`.
+      Look for the following section:
+
+      .. code-block:: bazel
+
+         kernel_build(
+             name = "ti",
+             outs = [
+                 "Image",
+                 "System.map",
+                 "k3-am62-lp-sk.dtb",
+                 "k3-am62-lp-sk-microtips-mf101hie-panel.dtbo",
+
+   #. In the ``kernel_build()`` section, add ``k3-am62p5-sk-dsi-rpi-7inch-panel.dtbo`` to the ``outs`` array.
+
+   #. Still in ``kernel_build()``, look for the ``make_goals`` array and add ``ti/k3-am62p5-sk-dsi-rpi-7inch-panel.dtbo``.
+
+   #. Now look for the following section:
+
+      .. code-block:: bazel
+
+         kernel_images(
+             name = "ti_images",
+             build_dtbo = True,
+             build_initramfs = True,
+             dtbo_srcs = [
+                 ":ti/k3-am62x-sk-hdmi-audio.dtbo",
+                 ":ti/k3-am62x-sk-csi2-ov5640.dtbo",
+                 ":ti/k3-am62x-sk-csi2-tevi-ov5640.dtbo",
+
+   #. In the ``kernel_images()``, add ``:ti/k3-am62p5-sk-dsi-rpi-7inch-panel.dtbo`` at the end of the array.
+
+      .. important::
+
+         Make sure to add the it at the **end** of the array. The order in ``dtbo_srcs`` will determine
+         the ``adtbo_idx`` to be used.
+
+   #. Rebuild the kernel as documented in :ref:`android-build-kernel`.
