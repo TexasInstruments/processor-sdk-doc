@@ -1846,12 +1846,54 @@ each clock plays in this test is as follows:
 Procedure
 ~~~~~~~~~
 
-The script file
-`setup\_hsr.sh <http://processors.wiki.ti.com/images/1/18/Setup_hsr.pdf>`__
-and clock configuration files e.g. dut_1_hsr_oc.cfg, dut_2_hsr_oc.cfg,
-dut_3_hsr_oc.cfg (each identical, same as listed in
-`PTP Redundancy <Industrial_Protocols_PTP.html#redundancy-hsr-prp>`__
+The script file :ref:`setup-hsr` and clock configuration files e.g.
+dut_1_hsr_oc.cfg, dut_2_hsr_oc.cfg, dut_3_hsr_oc.cfg (each identical, same as
+listed in `PTP Redundancy <Industrial_Protocols_PTP.html#redundancy-hsr-prp>`__
 section for HSR) will be used in the setup of the tests.
+
+.. code-block:: bash
+   :caption: setup_hsr.sh
+   :name: setup-hsr
+
+   #!/bin/bash
+
+   ETHA=eth2
+   MACA=70:FF:76:1C:18:09
+   ETHB=eth3
+   MACB=70:FF:76:1C:18:0A
+   RED_IP=192.168.8.3
+
+   ########################################################
+   # Do not modify below
+   ########################################################
+   HSR=hsr0
+   echo "ifconfig $ETHA hw ether $MACA"
+   ifconfig $ETHA hw ether $MACA
+   sleep 1
+   echo "ifconfig $ETHB hw ether $MACA"
+   ifconfig $ETHB hw ether $MACA
+   sleep 1
+   echo "ethtool -K $ETHA hsr-rx-offload on"
+   ethtool -K $ETHA hsr-rx-offload on
+   sleep 1
+   echo "ethtool -K $ETHB hsr-rx-offload on"
+   ethtool -K $ETHB hsr-rx-offload on
+   sleep 1
+   echo "ifconfig $ETHA up"
+   ifconfig $ETHA up
+   sleep 1
+   echo "ifconfig $ETHB up"
+   ifconfig $ETHB up
+   sleep 1
+   echo "ip link add name $HSR type hsr slave1 $ETHA slave2 $ETHB supervision 45 version 1"
+   ip link add name $HSR type hsr slave1 $ETHA slave2 $ETHB supervision 45 version 1
+   sleep 1
+   echo "ifconfig $HSR $RED_IP"
+   ifconfig $HSR $RED_IP
+   sleep 1
+   ifconfig $HSR
+   echo
+   echo "configured $HSR on $ETHA $ETHB"
 
 -  For each DUT-X, copy the setup script setup\_hsr.sh and the clock
    configuration file dut\_X\_hsr\_oc.cfg into the target filesystem of
