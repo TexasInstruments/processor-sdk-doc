@@ -13,7 +13,6 @@ Application Notes
    Application_Notes_Android_SD_CARD
    Application_Notes_Android_Dual_Screen
    Application_Notes_Android_Low_Power
-   Application_Notes_OTA
    Application_Notes_Camera
    Application_Notes_Simple_UI_App
    Application_Notes_BeaglePlay
