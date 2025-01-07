@@ -6,13 +6,25 @@ The supported Wayland/Weston version brings in the multiple display support in
 extended desktop mode and the ability to drag-and-drop windows from one display
 to the other.
 
+Weston has support for multiple backends. By default it will use the ``drm``
+backend unless the ``WAYLAND_DISPLAY`` environment variable is set. This backend
+will register the compositor as the controller of the kms interface and will
+pick up human interface device (HID) input using evdev.
+
+If the ``WAYLAND_DISPLAY`` variable is set, Weston will attempt to use the
+``wayland`` backend for nested composition. This is useful for development, but
+is normally not what you want for standard composition use. See
+:ref:`starting-weston-manually` or `the upstream weston documentation`_ for more
+information.
+
 .. ifconfig:: CONFIG_part_variant in ('AM62PX', 'J722S')
 
    The |__PART_FAMILY_NAME__| group of devices actually utilizes two separate
    DSS modules enumerated under two different :file:`/dev/dri/card*` devices.
 
    Weston versions newer than ``11.0.91`` can specify additional card devices
-   via the ``--additional-devices`` command line parameter.
+   via the ``--additional-devices`` command line parameter when using the
+   ``drm`` backend.
 
    To launch Weston using both card0 and card1, you can use the following
    command:
@@ -59,12 +71,13 @@ To inspect the systemd service and socket status, do the following:
 
    # systemctl status weston.service weston.socket
 
+.. _starting-weston-manually:
 
 ************************
 Starting Weston Manually
 ************************
 
-To launch Weston manually, do the following:
+To launch Weston manually with the DRM backend, do the following:
 
 On the target console:
 
