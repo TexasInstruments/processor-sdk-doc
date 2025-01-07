@@ -1,7 +1,7 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_LINUX_PTP
 
 Overview
-===========
+========
 
 The Precision Time Protocol (PTP), defined in IEEE 1588, is a protocol
 used to synchronize clocks throughout a network. Many applications in
@@ -55,7 +55,7 @@ Processor SDK.
 .. Image:: /images/Software-arch-v1.jpg
 
 Software Components
---------------------
+-------------------
 
 -  PRUETH driver – Kernel driver abstracts PRU hardware/firmware
 -  PRUPTP driver – Kernel driver abstracts PRU-ICSS based PTP support
@@ -133,7 +133,7 @@ OC slaves) for a total of 2 ports since each PRU-ICSS functions as a single PTP
 clock entity.
 
 GMAC
------
+----
 
 GMAC interface can be configured to run at either 100 Mbps or 1 Gbps.
 CPTS hardware block helps with timestamping of packets. Refer to
@@ -141,7 +141,7 @@ CPTS hardware block helps with timestamping of packets. Refer to
 for details.
 
 PRU-ICSS
----------
+--------
 
 The processing load is shared between firmware (PRU) and Host (ARM) with
 the firmware doing most of the time critical activities. The IEP
@@ -210,7 +210,7 @@ the relevant boot command (e.g. 'bootcmd', mmcboot' or 'netboot')
 
 
 PRU-ICSS IEP
--------------
+------------
 
 IEP has an additional hardware to generate a programmable sync output
 which is tied to the IEP counter. This is called the SYNC unit. For this
@@ -262,7 +262,7 @@ assigned PTP ports.
     measure jitter.
 
 GMAC
-------
+----
 
 The GMAC/CPTS does not support a programmable sync output. Instead, the
 GP Timer16 can be programmed to generate an output pulse every 100ms or
@@ -716,7 +716,7 @@ ingressLatency in the sample ptp4l configuration file oc.cfg in the
 ptp4l example above.
 
 Limitations
-^^^^^^^^^^^^^
+^^^^^^^^^^^
 
 Although there are two Ethernet ports available on each ICSS-PRU
 present, ICSS-PRU PTP OC can only be supported on at most **ONE** such
@@ -724,7 +724,7 @@ port. It cannot provide PTP OC functionality on both Ethernet ports on
 the same ICSS-PRU simultaneously.
 
 PTP Ordinary Clock on GMAC
----------------------------
+--------------------------
 Refer to `here <Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW.html#common-platform-time-sync-cpts>`__
 for more details about the CPTS driver and how to run **linuxptp** over the CPSW GMAC port
 for providing the PTP OC functionality.
@@ -807,7 +807,7 @@ slave mode:
 |
 
 PHY Delay Compensation for AM57xx IDK
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The theoretical values to use for GMAC PHY, which is KSZ9031RN, on
 AM57xx IDKs, are not yet available. The following experimental values
