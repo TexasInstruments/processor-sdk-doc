@@ -5,7 +5,7 @@ Overview
 
 This document will cover the basic steps for building the Linux kernel.
 
-.. ifconfig:: CONFIG_part_family not in ('General_family', 'AM335X_family', 'AM437X_family')
+.. ifconfig:: CONFIG_part_family not in ('General_family', 'AM335X_family', 'AM437X_family', 'AM57X_family')
 
    .. rubric:: Install host dependencies
 
@@ -56,7 +56,7 @@ Compiler
 
 ..
   [comment] instructions for 32 bit processors
-.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family')
+.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family', 'AM57X_family')
 
    Before compiling the kernel or kernel modules the SDK's toolchain needs
    to be added to the PATH environment variable
@@ -67,7 +67,7 @@ Compiler
 
 ..
   [comment] instructions for 64 bit processors
-.. ifconfig:: CONFIG_part_family not in ('General_family', 'AM335X_family', 'AM437X_family')
+.. ifconfig:: CONFIG_part_family not in ('General_family', 'AM335X_family', 'AM437X_family', 'AM57X_family')
 
    .. include:: Overview/GCC_ToolChain.rst
       :start-after: .. start_include_yocto_toolchain_host_setup
@@ -94,7 +94,7 @@ The command to clean the kernel is:
 
 ..
   [comment] instructions for 32 bit processors
-.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family')
+.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family', 'AM57X_family')
 
     .. code-block:: console
 
@@ -102,7 +102,7 @@ The command to clean the kernel is:
 
 ..
   [comment] instructions for 64 bit processors
-.. ifconfig:: CONFIG_part_family not in ('General_family', 'AM335X_family', 'AM437X_family')
+.. ifconfig:: CONFIG_part_family not in ('General_family', 'AM335X_family', 'AM437X_family', 'AM57X_family')
 
     .. code-block:: console
 
@@ -127,7 +127,7 @@ a command of the form:
 
 ..
   [comment] instructions for 32 bit processors
-.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family')
+.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family', 'AM57X_family')
 
     .. code-block:: console
 
@@ -135,7 +135,7 @@ a command of the form:
 
 ..
   [comment] instructions for 64 bit processors
-.. ifconfig:: CONFIG_part_family not in ('General_family', 'AM335X_family', 'AM437X_family')
+.. ifconfig:: CONFIG_part_family not in ('General_family', 'AM335X_family', 'AM437X_family', 'AM57X_family')
 
     .. code-block:: console
 
@@ -150,7 +150,7 @@ as a starting point).
 
 ..
   [comment] instructions for 32 bit processors
-.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family')
+.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family', 'AM57X_family')
 
     platformName is am335x-evm for AM335x, am437x-evm for AM437x, am57xx-evm for
     AM57xx, k2hk-evm for K2H/K2K, k2e-evm for K2E, k2l-evm for K2L, k2g-evm for
@@ -173,7 +173,7 @@ as a starting point).
 
 ..
   [comment] instructions for 64 bit processors
-.. ifconfig:: CONFIG_part_family not in ('General_family', 'AM335X_family', 'AM437X_family')
+.. ifconfig:: CONFIG_part_family not in ('General_family', 'AM335X_family', 'AM437X_family', 'AM57X_family')
 
     For example, to apply the recommended kernel configuration for K3 devices, use:
 
@@ -209,7 +209,7 @@ To invoke the kernel configuration you simply use a command like:
 
 ..
   [comment] instructions for 32 bit processors
-.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family')
+.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family', 'AM57X_family')
 
     .. code-block:: console
 
@@ -223,7 +223,7 @@ To invoke the kernel configuration you simply use a command like:
 
 ..
   [comment] instructions for 64 bit processors
-.. ifconfig:: CONFIG_part_family not in ('General_family', 'AM335X_family', 'AM437X_family')
+.. ifconfig:: CONFIG_part_family not in ('General_family', 'AM335X_family', 'AM437X_family', 'AM57X_family')
 
     .. code-block:: console
 
@@ -250,7 +250,7 @@ Compiling the Kernel
 
 ..
   [comment] instructions for 32 bit processors
-.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family')
+.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family', 'AM57X_family')
 
     Once the kernel has been configured it must be compiled to generate the
     bootable kernel image as well as any dynamic kernel modules that were
@@ -269,7 +269,7 @@ Compiling the Kernel
 
 ..
   [comment] instructions for 64 bit processors
-.. ifconfig:: CONFIG_part_family not in ('General_family', 'AM335X_family', 'AM437X_family')
+.. ifconfig:: CONFIG_part_family not in ('General_family', 'AM335X_family', 'AM437X_family', 'AM57X_family')
 
     By default U-boot expects to boot kernel `Image`, DTB, and DTOs found in root/boot of the
     SD card if using SD/MMC boot. The exception is for HS-SE (High Security - Security Enforced)
@@ -297,7 +297,7 @@ Compiling the Device Tree Binaries
 
 ..
   [comment] instructions for 32 bit processors
-.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family')
+.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family', 'AM57X_family')
 
     Starting with the 3.8 kernel each TI evm has an unique device tree
     binary file required by the kernel. Therefore, you will need to build
@@ -370,7 +370,7 @@ Compiling the Device Tree Binaries
 
 ..
   [comment] instructions for 64 bit processors
-.. ifconfig:: CONFIG_part_family not in ('General_family', 'AM335X_family', 'AM437X_family')
+.. ifconfig:: CONFIG_part_family not in ('General_family', 'AM335X_family', 'AM437X_family', 'AM57X_family')
 
     Each TI evm has an unique device tree
     binary file required by the kernel. Therefore, you will need to build
@@ -439,7 +439,7 @@ Compiling the Kernel Modules
 
 ..
   [comment] instructions for 32 bit processors
-.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family')
+.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family', 'AM57X_family')
 
     By default the majority of the Linux drivers used in the sdk are not
     integrated into the kernel image file (zImage). These drivers are built as
@@ -451,7 +451,7 @@ Compiling the Kernel Modules
 
 ..
   [comment] instructions for 64 bit processors
-.. ifconfig:: CONFIG_part_family not in ('General_family', 'AM335X_family', 'AM437X_family')
+.. ifconfig:: CONFIG_part_family not in ('General_family', 'AM335X_family', 'AM437X_family', 'AM57X_family')
 
     By default the majority of the Linux drivers used in the sdk are not
     integrated into the kernel image file (Image). These drivers are built as
@@ -483,10 +483,19 @@ But developers may want to deploy and test new Kernel and DTB without going
 through the standard build system. For the specific purpose, board specific
 fitImage.its will be present in the prebuilt-images directory.
 
-Pre-requisites ( Already part of SDK installations ):
+.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family', 'AM57X_family')
 
-- Uboot build directory for ARMV8
-- Linux Image and DTB
+   Pre-requisites ( Already part of SDK installations ):
+
+   - Uboot build directory for ARMV7
+   - Linux Image and DTB
+
+.. ifconfig:: CONFIG_part_family not in ('General_family', 'AM335X_family', 'AM437X_family', 'AM57X_family')
+
+   Pre-requisites ( Already part of SDK installations ):
+
+   - Uboot build directory for ARMV8
+   - Linux Image and DTB
 
 .. note::
 
@@ -626,9 +635,17 @@ Generating the fitImage
 This step will embed the public key in the u-boot.dtb file that was already
 built during the initial u-boot build.
 
-.. code-block:: console
+.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family', 'AM57X_family')
 
-    mkimage -r -f fitImage.its -k $UBOOT_PATH/arch/arm/mach-k3/keys -K $UBOOT_PATH/build/$ARMV8/dts/dt.dtb fitImage
+   .. code-block:: console
+
+      mkimage -r -f fitImage.its -k $UBOOT_PATH/board/ti/keys -K $UBOOT_PATH/build/$ARMV7/dts/dt.dtb fitImage
+
+.. ifconfig:: CONFIG_part_family not in ('General_family', 'AM335X_family', 'AM437X_family', 'AM57X_family')
+
+   .. code-block:: console
+
+      mkimage -r -f fitImage.its -k $UBOOT_PATH/arch/arm/mach-k3/keys -K $UBOOT_PATH/build/$ARMV8/dts/dt.dtb fitImage
 
 .. note::
 
@@ -639,8 +656,15 @@ built during the initial u-boot build.
 Build uboot again
 ^^^^^^^^^^^^^^^^^
 
-The updated u-boot.dtb needs to be packed in u-boot.img for authentication
-so rebuild uboot ARMV8 without changing any parameters.
+.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family', 'AM57X_family')
+
+   The updated u-boot.dtb needs to be packed in u-boot.img for authentication
+   so rebuild uboot ARMV7 without changing any parameters.
+
+.. ifconfig:: CONFIG_part_family not in ('General_family', 'AM335X_family', 'AM437X_family', 'AM57X_family')
+
+   The updated u-boot.dtb needs to be packed in u-boot.img for authentication
+   so rebuild uboot ARMV8 without changing any parameters.
 
 Refer to :ref:`top-level-makefile`
 
@@ -658,7 +682,7 @@ Installing the Kernel Image and Device Tree Binaries
 
 ..
   [comment] instructions for 32 bit processors
-.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family')
+.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family', 'AM57X_family')
 
     .. code-block:: console
 
@@ -678,7 +702,7 @@ Installing the Kernel Image and Device Tree Binaries
 
 ..
   [comment] instructions for 64 bit processors
-.. ifconfig:: CONFIG_part_family not in ('General_family', 'AM335X_family', 'AM437X_family')
+.. ifconfig:: CONFIG_part_family not in ('General_family', 'AM335X_family', 'AM437X_family', 'AM57X_family')
 
     .. code-block:: console
 
@@ -714,7 +738,7 @@ file system. The general format of the command is:
 
 ..
   [comment] instructions for 32 bit processors
-.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family')
+.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family', 'AM57X_family')
 
     .. code-block:: console
 
@@ -729,7 +753,7 @@ file system. The general format of the command is:
 
 ..
   [comment] instructions for 64 bit processors
-.. ifconfig:: CONFIG_part_family not in ('General_family', 'AM335X_family', 'AM437X_family')
+.. ifconfig:: CONFIG_part_family not in ('General_family', 'AM335X_family', 'AM437X_family', 'AM57X_family')
 
     .. code-block:: console
 

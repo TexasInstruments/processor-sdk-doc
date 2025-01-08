@@ -9,21 +9,41 @@ directories and files
 
 .. ifconfig:: CONFIG_sdk in ('SITARA')
 
-    .. code-block:: console
+   .. ifconfig:: CONFIG_part_variant in ('AM335X', 'AM437X', 'AM57X')
 
-        ./
-        ├── bin/
-        ├── board-support/
-        ├── example-applications/
-        ├── filesystem/
-        ├── k3r5-devkit/
-        ├── licenses/
-        ├── linux-devkit/
-        ├── Makefile
-        ├── makerules/
-        ├── manifest/
-        ├── Rules.make
-        └── setup.sh*
+      .. code-block:: console
+
+         ./
+         ├── bin/
+         ├── board-support/
+         ├── example-applications/
+         ├── external-toolchain-dir/
+         ├── filesystem/
+         ├── licenses/
+         ├── linux-devkit/
+         ├── Makefile
+         ├── makerules/
+         ├── manifest/
+         ├── Rules.make
+         └── setup.sh*
+
+   .. ifconfig:: CONFIG_part_variant not in ('AM335X', 'AM437X', 'AM57X')
+
+      .. code-block:: console
+
+         ./
+         ├── bin/
+         ├── board-support/
+         ├── example-applications/
+         ├── filesystem/
+         ├── k3r5-devkit/
+         ├── licenses/
+         ├── linux-devkit/
+         ├── Makefile
+         ├── makerules/
+         ├── manifest/
+         ├── Rules.make
+         └── setup.sh*
 
 .. ifconfig:: CONFIG_sdk in ('JACINTO','j7_foundational')
 
@@ -61,10 +81,21 @@ Processor SDK devices.
 -  **filesystem** - Contains the reference file systems. These include
    the smaller base file system as well as the full-featured SDK file
    system.
--  **linux-devkit** - Contains the tools and libraries to speed
-   development for the target device for the ARMV8 architechture
--  **k3r5-devkit** - Contains the tools and libraries to speed
-   development for the target device for the ARMV7 architechture
+
+.. ifconfig:: CONFIG_part_variant in ('AM335X', 'AM437X', 'AM57X')
+
+   -  **linux-devkit** - Contains the tools and libraries to speed
+      development for the target device for the ARMV7 architechture
+   -  **external-toolchain-dir** - Contains the external ARM GNU toolchain
+      to speed development for the target device for the ARMV7 architechture
+
+.. ifconfig:: CONFIG_part_variant not in ('AM335X', 'AM437X', 'AM57X')
+
+   -  **linux-devkit** - Contains the tools and libraries to speed
+      development for the target device for the ARMV8 architechture
+   -  **k3r5-devkit** - Contains the tools and libraries to speed
+      development for the target device for the ARMV7 architechture
+
 -  **Makefile** - Provides build targets for many of the SDK components
    from the top-level of the SDK.
 -  **makerules** - Make rules for all the topLevel Makefile build targets

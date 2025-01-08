@@ -111,8 +111,7 @@ yourself.
 
 .. ifconfig:: CONFIG_part_variant in ('AM335X', 'AM437X', 'AM57X')
 
-   These libraries include packages from alsa to zlib.
-   or a list of the
+   These libraries include packages from ALSA to zlib, for a list of the
    libraries you can refer to the software manifest found in the **<SDK
    INSTALL DIR>/manifest** directory or look at the list of libraries
    available in the **<SYSROOT_32>/usr/lib** directory. You will
@@ -127,8 +126,7 @@ yourself.
 
 .. ifconfig:: CONFIG_part_variant not in ('AM335X', 'AM437X', 'AM57X')
 
-   These libraries include packages from alsa to zlib.
-   or a list of the
+   These libraries include packages from ALSA to zlib, for a list of the
    libraries you can refer to the software manifest found in the **<SDK
    INSTALL DIR>/manifest** directory or look at the list of libraries
    available in the **<SYSROOT_64>/usr/lib** directory. You will
