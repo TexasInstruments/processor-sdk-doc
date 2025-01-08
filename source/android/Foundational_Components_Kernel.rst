@@ -137,7 +137,7 @@ To enable new modules:
    #. Edit :file:`${YOUR_PATH}/ti-kernel-aosp/BUILD.bazel` to add your new module.
       Look for the following section:
 
-      .. code-block:: bash
+      .. code-block:: bazel
 
          _TI_MODULE_OUTS = [
              # keep sorted
