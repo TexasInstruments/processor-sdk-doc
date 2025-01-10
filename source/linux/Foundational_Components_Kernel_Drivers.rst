@@ -40,6 +40,7 @@ Kernel Drivers
    Foundational_Components/Kernel/Kernel_Drivers/Storage/SATA
    Foundational_Components/Kernel/Kernel_Drivers/Storage/NAND
    Foundational_Components/Kernel/Kernel_Drivers/Storage/MMC-SD
+   Foundational_Components/Kernel/Kernel_Drivers/DM-Timer
    Foundational_Components/Kernel/Kernel_Drivers/UART
    Foundational_Components/Kernel/Kernel_Drivers/UBIFS
    Foundational_Components/Kernel/Kernel_Drivers/UFS

@@ -46,6 +46,7 @@ linux/Foundational_Components_Kernel
 linux/Foundational_Components_Kernel_Drivers
 linux/Foundational_Components/Kernel/Kernel_Drivers/ADC
 linux/Foundational_Components/Kernel/Kernel_Drivers/Crypto
+linux/Foundational_Components/Kernel/Kernel_Drivers/DM-Timer
 linux/Foundational_Components/Kernel/Kernel_Drivers/MCAN
 linux/Foundational_Components/Kernel/Kernel_Drivers/GPIO
 linux/Foundational_Components/Kernel/Kernel_Drivers/I2C
