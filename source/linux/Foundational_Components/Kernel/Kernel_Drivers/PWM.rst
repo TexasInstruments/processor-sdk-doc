@@ -46,6 +46,8 @@ of the Pulse-Width Modulation Subsystem (PWMSS).
 .. rubric:: Driver Usage
    :name: driver-usage-pwm
 
+.. _Using-PWM-with-sysfs:
+
 .. rubric:: Using PWM with the sysfs interface
    :name: using-pwm-with-sysfs-interface
 

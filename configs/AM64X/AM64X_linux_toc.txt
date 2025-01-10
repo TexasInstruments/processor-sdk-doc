@@ -64,6 +64,7 @@ linux/Foundational_Components/Kernel/Kernel_Drivers/SERDES/SERDES
 linux/Foundational_Components/Kernel/Kernel_Drivers/QSPI
 linux/Foundational_Components/Kernel/Kernel_Drivers/Storage/MMC-SD
 linux/Foundational_Components/Kernel/Kernel_Drivers/Storage/NAND
+linux/Foundational_Components/Kernel/Kernel_Drivers/DM-Timer
 linux/Foundational_Components/Kernel/Kernel_Drivers/UART
 linux/Foundational_Components/Kernel/Kernel_Drivers/UBIFS
 linux/Foundational_Components/Kernel/Kernel_Drivers/USB/CDNS3
