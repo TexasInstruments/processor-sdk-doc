@@ -7,18 +7,18 @@ Moving Files to the Target System
 This guide discusses how applications or other files can be moved to the
 target file system of the EVM.
 
-.. rubric:: File System on SD card
+.. rubric:: File System on SD card
    :name: file-systemon-sd-card
 
 The SD card wic image which comes with the TI SDK has a Linux ext4 partition that is used as the target file system.
 This partition is readable from a Linux host. In Ubuntu |__LINUX_UBUNTU_VERSION_LONG__| this partition will be mounted on
-:file`/media/$USER/rootfs` when the card is used with an SD card reader inserted into a USB port on the Ubuntu host. 
+:file`/media/$USER/rootfs` when the card is used with an SD card reader inserted into a USB port on the Ubuntu host.
 
-When the SD card is mounted with a card reader in the Linux host it is possible to perform :command:`cp` commands from the host into sub-directories
+When the SD card is mounted with a card reader in the Linux host it is possible to perform :command:`cp` commands from the host into sub-directories
 under :file:`/media/$USER/rootfs` or just use a browser window to drag and drop the files from the host to the SD card.
 
 Switching the SD card back and forth from the EVM to the SD card reader
-is time consuming during development.  Using a NFS during development is
+is time consuming during development.  Using a NFS during development is
 the preferred method and makes moving files between the host and target
 trivial.
 
@@ -26,8 +26,8 @@ trivial.
    :name: file-system-on-network-file-system-nfs
 
 When the target file system is served from the Linux development host
-machine it is trivial to move files between the host and target.  The
-NFS directory is set up on the host machine by the SDK installer.  The
+machine it is trivial to move files between the host and target.  The
+NFS directory is set up on the host machine by the SDK installer.  The
 default location in the SDK environment is :file:`${PSDK_PATH}/targetNFS`
 This could vary depending on the version of the SDK and how it was installed.
 An :command:`ls -l` of this directory in the host system will show what will be the root
@@ -59,13 +59,13 @@ directory of the target when it boots up.
     drwxr-xr-x  9 root root 4096 Mar  9  2018 var
 
 So from the perspective of the host, the target filesystem is just a
-sub-directory of the host.  If the file is in :file:`./targetNFS` on the host,
+sub-directory of the host.  If the file is in :file:`./targetNFS` on the host,
 then the same file will show up in the root directory of the target
-after the target boots into the NFS.  And if the file is in a
+after the target boots into the NFS.  And if the file is in a
 subdirectory of :file:`./targetNFS` (example :file:`./targetNFS/{sub-dir}/`) then it will
 show up in the /sub-dir directory of the target after the target boots
 into the NFS.
 
-The top level makefile of the TI SDK supports an install target that
+The top level makefile of the TI SDK supports an install target that
 will copy applications into the NFS of the SDK. See the README file at
-the top level of the SDK for information about the install target.
+the top level of the SDK for information about the install target.

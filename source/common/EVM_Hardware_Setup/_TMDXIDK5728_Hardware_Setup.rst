@@ -183,7 +183,7 @@ corresponding to FTDI UARTtoUSB will be turned on.
 .. rubric:: Connecting IDK EVM to Code Composer Studio
    :name: connecting-idk-evm-to-code-composer-studio
 
-**Step1 :** Download Code composer Studio and AM572x Sitara CSP package
+**Step1 :** Download Code composer Studio and AM572x Sitara CSP package
 as described in the wiki article mentioned below:
 
 `Install Code composer Studio for
@@ -285,11 +285,11 @@ is installed
     CortexA15_0: GEL Output: DEBUG: EMIF1 channel - Launch full levelling
     CortexA15_0: GEL Output: DEBUG: Setting LISA maps in non-interleaved dual-EMIF mode
     CortexA15_0: GEL Output: --->>> DDR3 Initialization is DONE! <<<---
-    CortexA15_0: GEL Output: --->>> AM572x Target Connect Sequence DONE !!!!!  <<<
+    CortexA15_0: GEL Output: --->>> AM572x Target Connect Sequence DONE !!!!!  <<<
 
 |
 
-**Step6** : To connect to the DSP, M4,PRUSS or to IVAHD go to Scripts
+**Step6** : To connect to the DSP, M4,PRUSS or to IVAHD go to Scripts
 menu and under AM572x MULTICORE Initialization enable the corresponding
 Sub system clock Enable API.For Eg. FOr DSP1 select
 DSP11SSClkEnable\_API. After running the clock enable option, you can

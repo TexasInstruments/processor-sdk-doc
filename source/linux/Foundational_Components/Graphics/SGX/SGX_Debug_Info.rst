@@ -161,7 +161,7 @@ You can print the SGX clock rate in a debug build as below:
 .. code-block:: c
 
    IMG_UINT32 rate = clk_get_rate(psSysSpecData->psSGX_FCK);
-   PVR_TRACE(("Sgx clock is %dMHz", HZ_TO_MHZ(rate)));
+   PVR_TRACE(("Sgx clock is %dMHz", HZ_TO_MHZ(rate)));
 
 Depending on the TI platform used, this will vary from 200 to 532 MHz. Ensure
 that SGX is running at the right clock.

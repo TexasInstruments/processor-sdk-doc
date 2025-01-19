@@ -93,7 +93,7 @@ can move on to the next step.
 
 ::
 
-    Would you like to re-partition the drive anyways [y/n] :
+    Would you like to re-partition the drive anyways [y/n] :
 
 -  Options:
 
@@ -115,7 +115,7 @@ many partitions you want to create for the SD card.
 
 ::
 
-    Number of partitions needed [2/3] :
+    Number of partitions needed [2/3] :
 
 -  Options:
 
@@ -358,7 +358,7 @@ After the SD card has been partitioned you will be prompted to:
 
 ::
 
-    Enter path where SD card tarballs were downloaded :
+    Enter path where SD card tarballs were downloaded :
 
 Point to the directory containing the following tarball files:
 

@@ -80,7 +80,7 @@ Kernel Configuration tool.
     ...
 
 
--  Select DesignWare USB3 DRD Core Support and Texas Instruments AM62
+-  Select DesignWare USB3 DRD Core Support and Texas Instruments AM62
    Platforms
 
 ::
@@ -93,7 +93,7 @@ Kernel Configuration tool.
     <M>     Texas Instruments AM62 Platforms
     ...
 
--  Select 'xHCI HCD (USB 3.0) SUPPORT' from  menuconfig in 'USB support'
+-  Select 'xHCI HCD (USB 3.0) SUPPORT' from  menuconfig in 'USB support'
 
 ::
 
@@ -103,7 +103,7 @@ Kernel Configuration tool.
     <*>     xHCI HCD (USB 3.0) support
     ...
 
--  Select 'USB Gadget Support --->' from menuconfig in 'USB support' and
+-  Select 'USB Gadget Support --->' from menuconfig in 'USB support' and
    select the needed gadgets. (By default all gadgets are made as
    modules)
 

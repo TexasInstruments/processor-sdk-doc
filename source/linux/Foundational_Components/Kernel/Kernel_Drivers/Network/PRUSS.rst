@@ -131,7 +131,7 @@ the supplied firmware.
 .. rubric:: Kernel configuration
    :name: kernel-configuration
 
-To enable/disable PRU Ethernet driver support, start the Linux Kernel Configuration tool:
+To enable/disable PRU Ethernet driver support, start the Linux Kernel Configuration tool:
 
 ::
 

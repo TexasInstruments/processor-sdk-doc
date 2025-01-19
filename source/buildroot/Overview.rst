@@ -51,14 +51,14 @@ Repository structure
     ├── external.mk
     ├── Config.in 
     ├── board
-    │   ├── ti
-    │   │   ├── am62x-sk
-    │   │   ├── common
+    │   ├── ti
+    │   │   ├── am62x-sk
+    │   │   ├── common
     ├── COPYING
     ├── README.md
     ├── configs
-    │   ├── ti_release_am62x_sk_defconfig
-    │   └── ti_release_am62x_sk_rt_defconfig
+    │   ├── ti_release_am62x_sk_defconfig
+    │   └── ti_release_am62x_sk_rt_defconfig
 
 :file:`external.desc`: contains name and description of br2-external tree.
 

@@ -331,15 +331,15 @@ space conversion.
 ::
 
       1. Decode-> Scale->Display
-         target # gst-launch-1.0 -v filesrc location=example_h264.mp4 ! qtdemux ! h264parse ! \
-     ducatih264dec ! vpe ! 'video/x-raw, format=(string)NV12, width=(int)720, height=(int)480' ! kmssink
+         target # gst-launch-1.0 -v filesrc location=example_h264.mp4 ! qtdemux ! h264parse ! \
+     ducatih264dec ! vpe ! 'video/x-raw, format=(string)NV12, width=(int)720, height=(int)480' ! kmssink
 
 ::
 
       2. Color space conversion:
-         target # gst-launch-1.0 -v videotestsrc ! 'video/x-raw, format=(string)YUY2, width= \
-     (int)1280, height=(int)720' ! vpe ! 'video/x-raw, format=(string)NV12, width=(int)720, height=(int)480' \
-     ! kmssink
+         target # gst-launch-1.0 -v videotestsrc ! 'video/x-raw, format=(string)YUY2, width= \
+     (int)1280, height=(int)720' ! vpe ! 'video/x-raw, format=(string)NV12, width=(int)720, height=(int)480' \
+     ! kmssink
 
 .. note::
    1. While using playbin for playing the stream, vpe plugin is automatically picked up. However vpe cannot be used
@@ -353,18 +353,18 @@ respectively.
 ::
 
     Capture and Display Fullscreen
-      target #  gst-launch-1.0 v4l2src device=/dev/video1 num-buffers=1000 io-mode=4 ! 'video/x-raw, \
-    format=(string)YUY2, width=(int)1280, height=(int)720' ! vpe num-input-buffers=8 ! queue ! kmssink
+      target #  gst-launch-1.0 v4l2src device=/dev/video1 num-buffers=1000 io-mode=4 ! 'video/x-raw, \
+    format=(string)YUY2, width=(int)1280, height=(int)720' ! vpe num-input-buffers=8 ! queue ! kmssink
 
 ::
 
     Note:
      The following pipelines can also be used for NV12 capture-display usecase.
      Dmabuf is allocated by v4l2src if io-mode=4 and by kmssink and imported by v4l2src if io-mode=5
-     target # gst-launch-1.0 v4l2src device=/dev/video1 num-buffers=1000 io-mode=4 ! 'video/x-raw, \
-    format=(string)NV12, width=(int)1280, height=(int)720' ! kmssink
-     target # gst-launch-1.0 v4l2src device=/dev/video1 num-buffers=1000 io-mode=5 ! 'video/x-raw, \
-    format=(string)NV12, width=(int)1280, height=(int)720' ! kmssink
+     target # gst-launch-1.0 v4l2src device=/dev/video1 num-buffers=1000 io-mode=4 ! 'video/x-raw, \
+    format=(string)NV12, width=(int)1280, height=(int)720' ! kmssink
+     target # gst-launch-1.0 v4l2src device=/dev/video1 num-buffers=1000 io-mode=5 ! 'video/x-raw, \
+    format=(string)NV12, width=(int)1280, height=(int)720' ! kmssink
 
 |
 
@@ -372,8 +372,8 @@ respectively.
 
     Capture and Display to a window in wayland
       1. refer Wayland/Weston to start the weston
-      2. target #  gst-launch-1.0 v4l2src device=/dev/video1 num-buffers=1000 io-mode=4 ! 'video/x-raw, \
-    format=(string)YUY2, width=(int)1280, height=(int)720' ! vpe num-input-buffers=8 ! queue ! waylandsink
+      2. target #  gst-launch-1.0 v4l2src device=/dev/video1 num-buffers=1000 io-mode=4 ! 'video/x-raw, \
+    format=(string)YUY2, width=(int)1280, height=(int)720' ! vpe num-input-buffers=8 ! queue ! waylandsink
 
 ::
 
@@ -382,34 +382,34 @@ respectively.
      if io-mode=4 and by waylandsink and imported by v4l2src if io-mode=5.
      Waylandsink supports both shm and drm. A new property use-drm is added to specify drm allocator based bufferpool to be used.
      When using ducati or vpe plugins, use-drm is set in caps as true.
-     target # gst-launch-1.0 v4l2src device=/dev/video1 num-buffers=1000 io-mode=4 ! 'video/x-raw, \
-    format=(string)NV12, width=(int)1280, height=(int)720' ! waylandsink use-drm=true
-     target # gst-launch-1.0 v4l2src device=/dev/video1 num-buffers=1000 io-mode=5 ! 'video/x-raw, \
-    format=(string)NV12, width=(int)1280, height=(int)720' ! waylandsink use-drm=true
+     target # gst-launch-1.0 v4l2src device=/dev/video1 num-buffers=1000 io-mode=4 ! 'video/x-raw, \
+    format=(string)NV12, width=(int)1280, height=(int)720' ! waylandsink use-drm=true
+     target # gst-launch-1.0 v4l2src device=/dev/video1 num-buffers=1000 io-mode=5 ! 'video/x-raw, \
+    format=(string)NV12, width=(int)1280, height=(int)720' ! waylandsink use-drm=true
 
 |
 
 ::
 
     Capture and Encode into a MP4 file.
-      target #  gst-launch-1.0 -e v4l2src device=/dev/video1 num-buffers=1000 io-mode=4 ! 'video/x-raw, \
-    format=(string)YUY2, width=(int)1280, height=(int)720, framerate=(fraction)30/1' ! vpe num-input-buffers=8 ! \
-    queue ! ducatimpeg4enc bitrate=4000 ! queue ! mpeg4videoparse ! qtmux ! filesink location=x.mp4
+      target #  gst-launch-1.0 -e v4l2src device=/dev/video1 num-buffers=1000 io-mode=4 ! 'video/x-raw, \
+    format=(string)YUY2, width=(int)1280, height=(int)720, framerate=(fraction)30/1' ! vpe num-input-buffers=8 ! \
+    queue ! ducatimpeg4enc bitrate=4000 ! queue ! mpeg4videoparse ! qtmux ! filesink location=x.mp4
 
 ::
 
     Note:
       The following pipeline can be used in usecases where vpe processing is not required.
-      target # gst-launch-1.0 -e v4l2src device=/dev/video1 num-buffers=1000 io-mode=5 ! 'video/x-raw, \
-    format=(string)NV12, width=(int)1280, height=(int)720, framerate=(fraction)30/1' ! ducatimpeg4enc bitrate=4000 ! \
-    queue ! mpeg4videoparse ! qtmux ! filesink location=x.mp4
+      target # gst-launch-1.0 -e v4l2src device=/dev/video1 num-buffers=1000 io-mode=5 ! 'video/x-raw, \
+    format=(string)NV12, width=(int)1280, height=(int)720, framerate=(fraction)30/1' ! ducatimpeg4enc bitrate=4000 ! \
+    queue ! mpeg4videoparse ! qtmux ! filesink location=x.mp4
 
 ::
 
     Capture and Encode and Display in parallel.
-      target #  gst-launch-1.0 -e v4l2src device=/dev/video1 num-buffers=1000 io-mode=4 ! 'video/x-raw, \
-    format=(string)YUY2, width=(int)1280, height=(int)720, framerate=(fraction)30/1' ! vpe num-input-buffers=8 ! tee name=t  ! \
-     queue ! ducatimpeg4enc bitrate=4000 ! queue ! mpeg4videoparse ! qtmux ! filesink location=x.mp4 t. ! queue ! kmssink
+      target #  gst-launch-1.0 -e v4l2src device=/dev/video1 num-buffers=1000 io-mode=4 ! 'video/x-raw, \
+    format=(string)YUY2, width=(int)1280, height=(int)720, framerate=(fraction)30/1' ! vpe num-input-buffers=8 ! tee name=t  ! \
+     queue ! ducatimpeg4enc bitrate=4000 ! queue ! mpeg4videoparse ! qtmux ! filesink location=x.mp4 t. ! queue ! kmssink
 
 Below provides more gstreamer pipeline examples.
 
@@ -417,7 +417,7 @@ Below provides more gstreamer pipeline examples.
 
 ::
 
-    target #  gst-launch-1.0 filesrc location=waterfall-352-288-nv12-inp.yuv ! videoparse width=352 height=288 format=nv12 ! video/x-raw, width=352, height=288 ! ducatih264enc ! filesink location=waterfall-352-288-nv12-inp_gst.h264
+    target #  gst-launch-1.0 filesrc location=waterfall-352-288-nv12-inp.yuv ! videoparse width=352 height=288 format=nv12 ! video/x-raw, width=352, height=288 ! ducatih264enc ! filesink location=waterfall-352-288-nv12-inp_gst.h264
 
 The cap filter of "video/x-raw, width=352, height=288" is needed in this
 pipeline to specify the width and height. Otherwise, variable width and
@@ -429,7 +429,7 @@ corrupted.
 
 ::
 
-    target #  gst-launch-1.0 filesrc location= 4k.nv12 ! videoparse width=3840 height=2160 format=nv12 framerate=12/1 ! video/x-raw, width=3840, height=2160 ! ducatih264enc level=51 profile=100 bitrate=16000 ! filesink location=4k.h264
+    target #  gst-launch-1.0 filesrc location= 4k.nv12 ! videoparse width=3840 height=2160 format=nv12 framerate=12/1 ! video/x-raw, width=3840, height=2160 ! ducatih264enc level=51 profile=100 bitrate=16000 ! filesink location=4k.h264
 
 .. rubric:: Full HD at 60fps Encoding
     :name: full-hd-at-60fps-encoding
@@ -474,13 +474,13 @@ corrupted.
 
 ::
 
-    target #  gst-launch-1.0 filesrc location=<file>.265 ! 'video/x-raw, format=(string)NV12, framerate=(fraction)24/1, width=(int)1280, height=(int)720'  ! h265dec threads=2 !  vpe ! kmssink
+    target #  gst-launch-1.0 filesrc location=<file>.265 ! 'video/x-raw, format=(string)NV12, framerate=(fraction)24/1, width=(int)1280, height=(int)720'  ! h265dec threads=2 !  vpe ! kmssink
 
 .. rubric:: DSP offloaded image processing pipeline
 
 ::
 
-    target #  gst-launch-1.0 filesrc location=<file>.265 ! 'video/x-raw, format=(string)NV12, framerate=(fraction)24/1, width=(int)1280, height=(int)720'  ! h265dec threads=1 ! videoconvert ! dsp66videokernel kerneltype=1 filtersize=9 lum-only=1 ! videoconvert ! vpe ! 'video/x-raw, format=(string)NV12, width=(int)640, height=(int)480' ! kmssink
+    target #  gst-launch-1.0 filesrc location=<file>.265 ! 'video/x-raw, format=(string)NV12, framerate=(fraction)24/1, width=(int)1280, height=(int)720'  ! h265dec threads=1 ! videoconvert ! dsp66videokernel kerneltype=1 filtersize=9 lum-only=1 ! videoconvert ! vpe ! 'video/x-raw, format=(string)NV12, width=(int)640, height=(int)480' ! kmssink
 
 This pipeline decodes an H265 clip on ARM A15, offloads the image
 processing task (Sobel 3x3 kernel) to DSP, and the processed clip is
@@ -716,14 +716,14 @@ downloaded and installed. For example, the tool versions used in IPUMM
 
 ::
 
-      XDCVERSION      ?= xdctools_3_31_02_38_core
-      BIOSVERSION     ?= bios_6_42_02_29
-      IPCVERSION      ?= ipc_3_40_01_08
-      CEVERSION       ?= codec_engine_3_24_00_08
-      FCVERSION       ?= framework_components_3_40_01_04
-      XDAISVERSION    ?= xdais_7_24_00_04
+      XDCVERSION      ?= xdctools_3_31_02_38_core
+      BIOSVERSION     ?= bios_6_42_02_29
+      IPCVERSION      ?= ipc_3_40_01_08
+      CEVERSION       ?= codec_engine_3_24_00_08
+      FCVERSION       ?= framework_components_3_40_01_04
+      XDAISVERSION    ?= xdais_7_24_00_04
       # TI Compiler Settings
-      export TMS470CGTOOLPATH ?= $(BIOSTOOLSROOT)/ccsv6/tools/compiler/ti-cgt-arm_5.2.5
+      export TMS470CGTOOLPATH ?= $(BIOSTOOLSROOT)/ccsv6/tools/compiler/ti-cgt-arm_5.2.5
 
 Below are direct download links and install instructions for IPUMM
 3.00.09.01 build tools. When installing the tools, it is preferable to
@@ -925,7 +925,7 @@ shown below.
 ::
 
     FW_NAMES="dra7-dsp1-fw.xe66 dra7-dsp2-fw.xe66 dra7-ipu1-fw.xem4 dra7-ipu2-fw.xem4"
-    for FW in $FW_NAMES ; do
+    for FW in $FW_NAMES ; do
         echo 1 > /sys/class/firmware/$FW/loading
         cat /lib/firmware/$FW > /sys/class/firmware/$FW/data
         echo 0 > /sys/class/firmware/$FW/loading

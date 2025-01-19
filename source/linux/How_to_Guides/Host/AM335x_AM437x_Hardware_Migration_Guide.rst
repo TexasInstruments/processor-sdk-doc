@@ -12,7 +12,7 @@ This document explains the differences between the TI AM335x processor and the T
 Basic Feature Comparison
 #########################
 
-The figure and table below show a comparison of the basic features of the AM335x and the AM437x. The remainder of the document presents a comparison of these features in greater detail, and also provides references to the appropriate documentation for further information.
+The figure and table below show a comparison of the basic features of the AM335x and the AM437x. The remainder of the document presents a comparison of these features in greater detail, and also provides references to the appropriate documentation for further information.
 
 	.. Image:: /images/AM335x_AM437x_1.png
 
@@ -189,7 +189,7 @@ Memory Subsystem
 General Purpose Memory Controller
 -----------------------------------
 
-Both AM335x and AM437x support 7 chip selects.
+Both AM335x and AM437x support 7 chip selects.
 
 External Memory Interface
 --------------------------
@@ -333,7 +333,7 @@ Table: **AM437x Voltage Rails**
 +------------------------+------------------------------------------------+-------------------+
 | VDDS\_RTC              | RTC domain                                     | 1.8V              |
 +------------------------+------------------------------------------------+-------------------+
-| VDDS\_DDR              | DDR IO domain (DDR2 / DDR3)                    | 1.2V - 1.5V       |
+| VDDS\_DDR              | DDR IO domain (DDR2 / DDR3)                    | 1.2V - 1.5V       |
 +------------------------+------------------------------------------------+-------------------+
 | VDDS                   | Dual voltage IO domains                        | 1.8V              |
 +------------------------+------------------------------------------------+-------------------+
@@ -379,7 +379,7 @@ Table: **AM437x Voltage Rails**
 +------------------------+------------------------------------------------+-------------------+
 | VDDSHV9                | Dual Voltage IO domain (1.8V/3.3V operation)   | 1.8V/3.3V         |
 +------------------------+------------------------------------------------+-------------------+
-| VDDSHV10               | Dual Voltage IO domain (1.8V/3.3V operation)   | 1.8V/3.3V         |
+| VDDSHV10               | Dual Voltage IO domain (1.8V/3.3V operation)   | 1.8V/3.3V         |
 +------------------------+------------------------------------------------+-------------------+
 | VDDSHV11               | Dual Voltage IO domain (1.8V/3.3V operation)   | 1.8V/3.3V         |
 +------------------------+------------------------------------------------+-------------------+
@@ -427,7 +427,7 @@ Table: **AM437x Input Clocks**
 +------------------+------------------------------------------------------------------------------+---------------------------------------------------+
 | CLK\_32K\_RTC    | External 32768 Hz crystal with internal 32K Osc or external 32768 Hz clock   | 32768 Hz Precise                                  |
 +------------------+------------------------------------------------------------------------------+---------------------------------------------------+
-| CLK\_32K\_MOSC   | Divide down of Master Oscillator Crystal Frequency                           | Precise 32768 Hz only when using 26 MHz crystal   |
+| CLK\_32K\_MOSC   | Divide down of Master Oscillator Crystal Frequency                           | Precise 32768 Hz only when using 26 MHz crystal   |
 +------------------+------------------------------------------------------------------------------+---------------------------------------------------+
 
 
@@ -573,7 +573,7 @@ Bootmodes
 |          |          |             |from an SPI EEPROM|
 |          |          |             |or SPI Flash.     |
 |          |          |             |                  |
-|          |          |             |For both AM335x   |
+|          |          |             |For both AM335x   |
 |          |          |             |and AM437x, the   |
 |          |          |             |SPI device should |
 |          |          |             |be connected to   |
@@ -851,8 +851,8 @@ This table lists different bandwidth restrictions that are needed based on what 
 Communication Interfaces
 *************************
 
-MMC/SD 
--------
+MMC/SD
+------
 
 The MMC/SD modules are binary compatible between the two devices. Except, the CLK32 debounce clock is created by dividing the 96-MHz (48-MHz in AM437x) clock in the PRCM by two and then dividing the resulting 48-MHz (24-MHz in AM437x) clock by a fixed 732.4219 in the Control Module to get a 32-kHz clock.
 
@@ -895,8 +895,8 @@ Real-Time Clock (RTC)
 
 The RTC module is identical between the two devices, except for the interface clock source -- AM335x uses CORE\_CLKOUTM4/2, providing a max frequency of 100 MHz. AM437x uses CLK\_M\_OSC, providing a max frequency of 26 MHz.
 
-Ethernet 
----------
+Ethernet
+--------
 
 There are small differences between the AM335x and AM437x Ethernet module.
 
@@ -904,22 +904,22 @@ The AM437x module adds support for multi core split processing, connecting the C
 
 In AM437x, the cpts\_rft\_clk (IEEE 1588v2 clock) adds DISP\_PLL\_CLK as a third source option.
 
-McSPI 
-------
+McSPI
+-----
 
 AM335x includes 2 McSPI ports, each with two chip select signals. All McSPI have 4 DMA requests to EDMA.
 
 AM437x includes 5 McSPI ports. McSPI[0-2] support 4 chip select signals and 8 DMA requests to the eDMA. McSPI[3-4] only support 2 CS signals and 4 DMA requests to the eDMA.
 
-PWM Subsystem (PWMSS) 
-----------------------
+PWM Subsystem (PWMSS)
+---------------------
 
 The PWM Subsystem contains PWM, eCAP, and eQEP submodules. AM335x has 3 PWMSS instances. AM437x has 6 PWMSS instances, but eCAP3-5 and eQEP3-5 are not used.
 
 The PWMSS synchronization of the PWM and eCAP submodules is also different between AM335x and AM437x.
 
-PRU-ICSS - Programmable Real-time Unit Subsystem and Industrial Communications Subsystem 
-------------------------------------------------------------------------------------------
+PRU-ICSS - Programmable Real-time Unit Subsystem and Industrial Communications Subsystem
+----------------------------------------------------------------------------------------
 
 AM335x has one PRU-ICSS and AM437x has two PRU-ICSS. The PRU-ICSS on AM437x is backwards compatible with the subsystem on AM335x. The table below summarizes the differences between the PRU-ICSS instances on each device.
 

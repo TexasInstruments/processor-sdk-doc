@@ -607,7 +607,7 @@ any modifications) into the device. Following points to keep in mind –
             .vpdma_fmt = { &vpdma_raw_fmts[VPDMA_DATA_FMT_RAW8],
                       },
         },
-     
+
     const struct vpdma_data_format vpdma_raw_fmts[] = {
         [VPDMA_DATA_FMT_RAW8] = {
             .type      = VPDMA_DATA_FMT_TYPE_YUV,

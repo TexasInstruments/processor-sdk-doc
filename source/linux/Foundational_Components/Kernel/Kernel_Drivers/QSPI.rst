@@ -431,9 +431,9 @@ Refer :ref:`here <linux-ubifs>` for UBIFS.
 
    root~# ubiformat /dev/mtd9
    ubiformat: mtd9 (nor), size 23199744 bytes (22.1 MiB), 354 eraseblocks of 65536 bytes (64.0 KiB), min. I/O size 1 bytes
-   libscan: scanning eraseblock 353 -- 100 % complete
+   libscan: scanning eraseblock 353 -- 100% complete
    ubiformat: 354 eraseblocks are supposedly empty
-   ubiformat: formatting eraseblock 353 -- 100 % complete
+   ubiformat: formatting eraseblock 353 -- 100% complete
    root:~# ubiattach -p /dev/mtd9
    [  270.874428] ubi0: attaching mtd9
    [  270.914131] ubi0: scanning is finished
