@@ -194,6 +194,7 @@ Display custom logo as splash screen
       CONFIG_BMP_32BPP=y
       CONFIG_BMP=y
       CONFIG_VIDEO_BMP_GZIP=y
+      CONFIG_VIDEO_LOGO=y
 
 Enabling splash screen on custom board based on |__PART_FAMILY_DEVICE_NAMES__| SoC
 -----------------------------------------------------------------------------------
@@ -246,6 +247,7 @@ To enable splash screen on custom board based on |__PART_FAMILY_DEVICE_NAMES__| 
        CONFIG_BMP_32BPP=y
        CONFIG_BMP=y
        CONFIG_VIDEO_BMP_GZIP=y
+       CONFIG_VIDEO_LOGO=y
 
 3. To enable different boot media for splash, define splash file locations struct in the board file present at :file:`board/ti/<platform>/evm.c`
 4. If a different boot media other than mmc is used for storing splash, then update the splash-related env variables in board.env file present at :file:`board/ti/<platform>/<platform>.env`
