@@ -31,6 +31,14 @@ provided with Qt. By default EGLFS will use the ``eglfs_kms`` backend.
 The default ``eglfs_kms`` configuration file for Qt5 is located at
 :file:`/etc/qt5/eglfs_kms_cfg.json`.
 
+Please note that EGLFS backend is not smart enough to select a display device
+automatically. One must be specified in the config file using the ``device``
+key. If one is not specified, :file:`/dev/dri/card0` will be used, which can
+either point at the GPU or the Display device depending on the order in which
+the devices were initialized. We recommend using the :file:`/dev/dri/by-path/*`
+path for a persistent device path. If an incorrect device was chosen, an error
+like the following can appear: ``Failed to create display device (err=19)``.
+
 For more information about Qt's EGLFS and using Qt5 in embedded
 applications see:
 
