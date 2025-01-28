@@ -526,9 +526,8 @@ When using the XDS510 USB emulator, why does the PRU Program Counter not increme
 
 There is a known bug associated with PRU debug in the XDS510 USB class
 driver, and a different emulator should be used to debug the PRU. Two
-good alternatives are the XDS200 or the XDS560v2 emulators. Comparative
-benchmarks for various classes of XDS emulators are available at
-`XDS_Performance_comparison </index.php/XDS_Performance_comparison>`__.
+good alternatives are the `XDS200 <https://www.ti.com/tool/TMDSEMU200-U>`_
+or the `XDS560v2 <https://www.ti.com/tool/TMDSEMU560V2STM-U>`_ emulators.
 
 Why are no MMRs outside the PRU subsystem visible from the PRU perspective memory browser window in CCS?
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
