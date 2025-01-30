@@ -722,6 +722,11 @@ Build U-Boot
          * tiboot3-am62px-hs-fs-evm.bin from <output directory>/r5
          * tispl.bin, u-boot.img from <output directory>/a53
 
+       * HS-SE
+
+         * tiboot3-am62px-hs-evm.bin from <output directory>/r5
+         * tispl.bin, u-boot.img from <output directory>/a53
+
 .. ifconfig:: CONFIG_part_variant in ('J722S')
 
        * HS-FS
