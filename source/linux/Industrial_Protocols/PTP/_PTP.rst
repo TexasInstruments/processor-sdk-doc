@@ -203,6 +203,7 @@ boot using the PPS device tree file.
 the relevant boot command (e.g. 'bootcmd', mmcboot' or 'netboot')
 
 2. Set the device tree file to be used.
+
 ::
 
  setenv fdtfile <PPS dtb>
@@ -432,6 +433,7 @@ configuration file:
 (where eth2/eth3 are the slave interfaces used for the HSR/PRP interface)
 
 HSR:
+
 ::
 
     [global]
@@ -488,6 +490,7 @@ HSR:
     fault_reset_interval         0
 
 PRP:
+
 ::
 
     [global]
@@ -552,6 +555,7 @@ configured using a configuration file similar to the one below:
 (Note: only supported on PRU-ICSS ports using DualEMAC, and supports slave side only)
 
 Telecom:
+
 ::
 
     # Telecom Profile (G.8275.x) PTP Config File
@@ -1363,6 +1367,7 @@ Refer to the sample linuxptp BC configuration files bc.cfg, bc_hsr.cfg and bc_pr
 as described below:
 
 bc.cfg: BC with GMAC and four ICSS ports
+
 ::
 
     [global]
@@ -1422,6 +1427,7 @@ bc.cfg: BC with GMAC and four ICSS ports
     fault_reset_interval         0
 
 bc_prp.cfg: BC with GMAC and two PRP ports:
+
 ::
 
     [global]
@@ -1509,6 +1515,7 @@ bc_prp.cfg: BC with GMAC and two PRP ports:
 
 
 bc_hsr.cfg: BC with GMAC and two HSR ports:
+
 ::
 
     [global]
@@ -1839,12 +1846,54 @@ each clock plays in this test is as follows:
 Procedure
 ~~~~~~~~~
 
-The script file
-`setup\_hsr.sh <http://processors.wiki.ti.com/images/1/18/Setup_hsr.pdf>`_
-and clock configuration files e.g. dut_1_hsr_oc.cfg, dut_2_hsr_oc.cfg,
-dut_3_hsr_oc.cfg (each identical, same as listed in
-`PTP Redundancy <Industrial_Protocols_PTP.html#redundancy-hsr-prp>`__
+The script file :ref:`setup-hsr` and clock configuration files e.g.
+dut_1_hsr_oc.cfg, dut_2_hsr_oc.cfg, dut_3_hsr_oc.cfg (each identical, same as
+listed in `PTP Redundancy <Industrial_Protocols_PTP.html#redundancy-hsr-prp>`__
 section for HSR) will be used in the setup of the tests.
+
+.. code-block:: bash
+   :caption: setup_hsr.sh
+   :name: setup-hsr
+
+   #!/bin/bash
+
+   ETHA=eth2
+   MACA=70:FF:76:1C:18:09
+   ETHB=eth3
+   MACB=70:FF:76:1C:18:0A
+   RED_IP=192.168.8.3
+
+   ########################################################
+   # Do not modify below
+   ########################################################
+   HSR=hsr0
+   echo "ifconfig $ETHA hw ether $MACA"
+   ifconfig $ETHA hw ether $MACA
+   sleep 1
+   echo "ifconfig $ETHB hw ether $MACA"
+   ifconfig $ETHB hw ether $MACA
+   sleep 1
+   echo "ethtool -K $ETHA hsr-rx-offload on"
+   ethtool -K $ETHA hsr-rx-offload on
+   sleep 1
+   echo "ethtool -K $ETHB hsr-rx-offload on"
+   ethtool -K $ETHB hsr-rx-offload on
+   sleep 1
+   echo "ifconfig $ETHA up"
+   ifconfig $ETHA up
+   sleep 1
+   echo "ifconfig $ETHB up"
+   ifconfig $ETHB up
+   sleep 1
+   echo "ip link add name $HSR type hsr slave1 $ETHA slave2 $ETHB supervision 45 version 1"
+   ip link add name $HSR type hsr slave1 $ETHA slave2 $ETHB supervision 45 version 1
+   sleep 1
+   echo "ifconfig $HSR $RED_IP"
+   ifconfig $HSR $RED_IP
+   sleep 1
+   ifconfig $HSR
+   echo
+   echo "configured $HSR on $ETHA $ETHB"
 
 -  For each DUT-X, copy the setup script setup\_hsr.sh and the clock
    configuration file dut\_X\_hsr\_oc.cfg into the target filesystem of
@@ -1869,7 +1918,7 @@ section for HSR) will be used in the setup of the tests.
 
 -  Boot IDK into kernel prompt.
 
--  Modify the top fields in `setup\_hsr.sh <http://processors.wiki.ti.com/images/1/18/Setup_hsr.pdf>`_
+-  Modify the top fields in `setup\_hsr.sh <http://processors.wiki.ti.com/images/1/18/Setup_hsr.pdf>`__
    to reflect the HSR slave
    ports' MAC addresses and IP address of the DUT's HSR interface. The
    **ETHA** or **ETHB** fields may also need to be modified if an ICSS

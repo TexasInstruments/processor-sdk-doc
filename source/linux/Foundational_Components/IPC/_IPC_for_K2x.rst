@@ -562,8 +562,6 @@ So we will need to add the following lines to place the trace buffer and resourc
 	var Resource = xdc.useModule('ti.ipc.remoteproc.Resource');
 	Resource.loadSegment = "L2SRAM"
 
-::
-
 Now follow the steps in `Running the Bundled IPC Examples`_.
 
 
