@@ -8,20 +8,16 @@ The toolchains are automatically downloaded by the build scripts.
 
 **Install OPTEE-OS build dependencies**
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
-
-  Check OPTEE-OS docs to know list of dependencies needed to be installed :
-  https://optee.readthedocs.io/en/latest/building/prerequisites.html
+Check OPTEE-OS docs to know list of dependencies needed to be installed :
+https://optee.readthedocs.io/en/latest/building/prerequisites.html
 
 
 **Install additional dependencies**
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
+.. code-block:: console
 
-   .. code-block:: console
-
-      $ sudo apt install bc bison build-essential curl u-boot-tools flex git libssl-dev python3 python3-pip wget -y
-      $ pip3 install pycryptodome pyelftools shyaml --user
+   $ sudo apt install bc bison build-essential curl u-boot-tools flex git libssl-dev python3 python3-pip wget -y
+   $ pip3 install pycryptodome pyelftools shyaml --user
 
 
 .. _android-download-bootloaders:
@@ -30,18 +26,16 @@ The toolchains are automatically downloaded by the build scripts.
 Downloading sources
 *******************
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
+Fetch the code using ``repo``:
 
-   Fetch the code using ``repo``:
+.. code-block:: console
 
-   .. code-block:: console
+   $ mkdir ${YOUR_PATH}/ti-bootloader-aosp/ && cd $_
+   $ repo init -u https://git.ti.com/git/android/manifest.git -b android15-release -m releases/RLS_10_01_Bootloader.xml
+   $ repo sync
 
-      $ mkdir ${YOUR_PATH}/ti-bootloader-aosp/ && cd $_
-      $ repo init -u https://git.ti.com/git/android/manifest.git -b android15-release -m releases/RLS_10_01_Bootloader.xml
-      $ repo sync
-
-   For more information about ``repo``, visit `Android's official
-   documentation <https://source.android.com/setup/build/downloading>`__
+For more information about ``repo``, visit `Android's official
+documentation <https://source.android.com/setup/build/downloading>`__
 
 .. _android-build-bootloaders:
 

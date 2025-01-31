@@ -28,24 +28,20 @@ To install it, please refer to this webpage : https://source.android.com/setup/d
 Downloading sources
 *******************
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
+Create a folder for downloading all sources
 
-    Create a folder for downloading all sources
+.. code-block:: console
 
-    .. code-block:: console
+   $ mkdir ~/10_01_00 && cd $_
+   $ export YOUR_PATH=$PWD
 
-       $ mkdir ~/10_01_00 && cd $_
-       $ export YOUR_PATH=$PWD
+Fetch the code using ``repo``:
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
+.. code-block:: console
 
-    Fetch the code using ``repo``:
-
-    .. code-block:: console
-
-       $ mkdir ${YOUR_PATH}/ti-aosp-15 && cd $_
-       $ repo init -u https://git.ti.com/git/android/manifest.git -b android15-release -m releases/RLS_10_01.xml
-       $ repo sync
+   $ mkdir ${YOUR_PATH}/ti-aosp-15 && cd $_
+   $ repo init -u https://git.ti.com/git/android/manifest.git -b android15-release -m releases/RLS_10_01.xml
+   $ repo sync
 
 .. tip::
 
@@ -65,16 +61,14 @@ Downloading sources
 Build Instructions
 ******************
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
+.. code-block:: console
 
-   .. code-block:: console
-
-      $ cd ${YOUR_PATH}/ti-aosp-15
-      $ source build/envsetup.sh
-      $ lunch <BUILD_TARGET>
-      $ m
-      [...]
-      #### build completed successfully (49:14 (mm:ss)) ####
+   $ cd ${YOUR_PATH}/ti-aosp-15
+   $ source build/envsetup.sh
+   $ lunch <BUILD_TARGET>
+   $ m
+   [...]
+   #### build completed successfully (49:14 (mm:ss)) ####
 
 Where ``<BUILD_TARGET>`` is listed in the table below :
 
@@ -129,22 +123,20 @@ The following build flags are available. **Default** values are **highlighted**.
      - **false**/true
      - Boot from SD card instead of eMMC
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
+After building is complete, the necessary images will be available in
+:file:`${YOUR_PATH}/ti-aosp-15/out/target/product/am62*/`.
 
-   After building is complete, the necessary images will be available in
-   :file:`${YOUR_PATH}/ti-aosp-15/out/target/product/am62*/`.
+To proceed to flash Android, see :ref:`android-flashing`.
 
-   To proceed to flash Android, see :ref:`android-flashing`.
+.. tip::
 
-   .. tip::
+   As stated previously, Android build contains **pre-built binaries**
+   for both the kernel and the bootloaders.
+   These are ready to be used as-is with the EVM boards.
+   For customization, it's possible to rebuild them.
 
-      As stated previously, Android build contains **pre-built binaries**
-      for both the kernel and the bootloaders.
-      These are ready to be used as-is with the EVM boards.
-      For customization, it's possible to rebuild them.
-
-      - See :ref:`android-build-kernel` for the kernel
-      - See :ref:`android-build-bootloaders` for the bootloaders
+   - See :ref:`android-build-kernel` for the kernel
+   - See :ref:`android-build-bootloaders` for the bootloaders
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 

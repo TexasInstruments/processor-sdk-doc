@@ -8,23 +8,21 @@ Android Kernel
 Downloading sources
 *******************
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X' 'AM62PX')
+Fetch the code using ``repo``:
 
-    Fetch the code using ``repo``:
+.. code-block:: console
 
-    .. code-block:: console
+   $ mkdir ${YOUR_PATH}/ti-kernel-aosp/ && cd $_
+   $ repo init -u https://git.ti.com/git/android/manifest.git -b android15-release -m releases/RLS_10_01_Kernel-6.6.xml
+   $ repo sync
 
-       $ mkdir ${YOUR_PATH}/ti-kernel-aosp/ && cd $_
-       $ repo init -u https://git.ti.com/git/android/manifest.git -b android15-release -m releases/RLS_10_01_Kernel-6.6.xml
-       $ repo sync
+.. tip::
 
-    .. tip::
+   To save some disk space, pass the ``--depth=1`` option to ``repo init``:
 
-       To save some disk space, pass the ``--depth=1`` option to ``repo init``:
+   .. code-block:: console
 
-       .. code-block:: console
-
-          $ repo init -u https://git.ti.com/git/android/manifest.git -b android15-release -m releases/RLS_10_01_Kernel-6.6.xml --depth=1
+      $ repo init -u https://git.ti.com/git/android/manifest.git -b android15-release -m releases/RLS_10_01_Kernel-6.6.xml --depth=1
 
 .. _android-build-kernel:
 
@@ -39,24 +37,22 @@ Building everything from scratch
 
     The kernel is compatible with all AM62x boards, such as the SK EVM and the Beagle Play.
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
+.. code-block:: console
 
-   .. code-block:: console
+   $ cd ${YOUR_PATH}/ti-kernel-aosp/
+   $ export TARGET_KERNEL_USE="6.6"
+   $ export DIST_DIR=${YOUR_PATH}/ti-aosp-15/device/ti/am62x-kernel/kernel/${TARGET_KERNEL_USE}
+   $ tools/bazel run //common:ti_dist -- --dist_dir=$DIST_DIR
 
-      $ cd ${YOUR_PATH}/ti-kernel-aosp/
-      $ export TARGET_KERNEL_USE="6.6"
-      $ export DIST_DIR=${YOUR_PATH}/ti-aosp-15/device/ti/am62x-kernel/kernel/${TARGET_KERNEL_USE}
-      $ tools/bazel run //common:ti_dist -- --dist_dir=$DIST_DIR
+Android uses Kleaf, a Bazel-based build system to build the kernel.
+AOSP documentation can be found `here <https://source.android.com/docs/setup/build/building-kernels?hl=fr>`__ and
+Kleaf documentation `here  <https://android.googlesource.com/kernel/build/+/refs/heads/main/kleaf/README.md>`__
 
-   Android uses Kleaf, a Bazel-based build system to build the kernel.
-   AOSP documentation can be found `here <https://source.android.com/docs/setup/build/building-kernels?hl=fr>`__ and
-   Kleaf documentation `here  <https://android.googlesource.com/kernel/build/+/refs/heads/main/kleaf/README.md>`__
+.. attention::
 
-   .. attention::
-
-      Kernel builds hangs when using the ``btrfs`` file system.
-      This is a known issue according to the `kleaf documentation <https://android.googlesource.com/kernel/build/+/refs/heads/main/kleaf/docs/errors.md#build-hangs-on-btrfs>`_
-      Make sure to pass the ``--workaround_btrfs_b292212788`` flag to bazel when using ``btrfs``.
+   Kernel builds hangs when using the ``btrfs`` file system.
+   This is a known issue according to the `kleaf documentation <https://android.googlesource.com/kernel/build/+/refs/heads/main/kleaf/docs/errors.md#build-hangs-on-btrfs>`_
+   Make sure to pass the ``--workaround_btrfs_b292212788`` flag to bazel when using ``btrfs``.
 
 
 Defconfig/menuconfig changes
@@ -64,50 +60,42 @@ Defconfig/menuconfig changes
 
 The usual (``make menuconfig``) is done via ``bazel`` command :
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
+.. code-block:: console
 
-   .. code-block:: console
+   $ cd ${YOUR_PATH}/ti-kernel-aosp/
+   $ tools/bazel run //common:ti_config -- menuconfig
 
-      $ cd ${YOUR_PATH}/ti-kernel-aosp/
-      $ tools/bazel run //common:ti_config -- menuconfig
+.. note::
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
-
-   .. note::
-
-      Users must have built the android kernel image prior to building the Android file system.
-      Otherwise pre-built kernel images present in :file:`device/ti/am62x-kernel`
-      will be used to create :file:`boot.img`
+   Users must have built the android kernel image prior to building the Android file system.
+   Otherwise pre-built kernel images present in :file:`device/ti/am62x-kernel`
+   will be used to create :file:`boot.img`
 
 
 Rebuild Android images
 ======================
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
-
-   We should re-generate the Android images to include the newly build kernel.
-   Follow the Android :ref:`android-build-aosp` to do so.
+We should re-generate the Android images to include the newly build kernel.
+Follow the Android :ref:`android-build-aosp` to do so.
 
 *********************
 Flashing instructions
 *********************
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
+In order to flash a new kernel, several images should be flashed:
 
-   In order to flash a new kernel, several images should be flashed:
+.. code-block:: console
 
-   .. code-block:: console
+   $ adb reboot fastboot
+   < Wait for fastbootd reboot >
 
-      $ adb reboot fastboot
-      < Wait for fastbootd reboot >
+   $ cd <PATH/TO/IMAGES>
+   $ fastboot flash boot boot.img
+   $ fastboot flash vendor_boot vendor_boot.img
+   $ fastboot flash vendor_dlkm vendor_dlkm.img
+   $ fastboot reboot
 
-      $ cd <PATH/TO/IMAGES>
-      $ fastboot flash boot boot.img
-      $ fastboot flash vendor_boot vendor_boot.img
-      $ fastboot flash vendor_dlkm vendor_dlkm.img
-      $ fastboot reboot
-
-   The board should boot with the new kernel.
+The board should boot with the new kernel.
 
 ********************
 Enabling new drivers
