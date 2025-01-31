@@ -722,11 +722,21 @@ Build U-Boot
          * tiboot3-am62px-hs-fs-evm.bin from <output directory>/r5
          * tispl.bin, u-boot.img from <output directory>/a53
 
+       * HS-SE
+
+         * tiboot3-am62px-hs-evm.bin from <output directory>/r5
+         * tispl.bin, u-boot.img from <output directory>/a53
+
 .. ifconfig:: CONFIG_part_variant in ('J722S')
 
        * HS-FS
 
          * tiboot3-j722s-hs-fs-evm.bin from <output directory>/r5
+         * tispl.bin, u-boot.img from <output directory>/a53
+
+       * HS-SE
+
+         * tiboot3-j722s-hs-evm.bin from <output directory>/r5
          * tispl.bin, u-boot.img from <output directory>/a53
 
 .. ifconfig:: CONFIG_part_variant in ('AM65X', 'J721E', 'J7200', 'AM64X', 'AM62X', 'AM62AX', 'AM62PX', 'J721S2', 'J784S4','J742S2', 'J722S')
