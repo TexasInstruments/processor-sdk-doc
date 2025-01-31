@@ -59,19 +59,6 @@ Building everything from scratch
       Make sure to pass the ``--workaround_btrfs_b292212788`` flag to bazel when using ``btrfs``.
 
 
-Rebuilding faster
-=================
-
-.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
-
-   .. code-block:: console
-
-      $ cd ${YOUR_PATH}/ti-kernel-aosp/
-      $ export TARGET_KERNEL_USE="6.6"
-      $ export DIST_DIR=${YOUR_PATH}/ti-aosp-15/device/ti/am62x-kernel/kernel/${TARGET_KERNEL_USE}
-      $ tools/bazel run --config=fast //common:ti_dist -- --dist_dir=$DIST_DIR
-
-
 Defconfig/menuconfig changes
 ============================
 
