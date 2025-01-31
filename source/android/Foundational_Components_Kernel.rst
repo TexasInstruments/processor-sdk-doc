@@ -2,6 +2,16 @@
 Android Kernel
 ##############
 
+Android is built around a Linux kernel. By default, Android's
+``boot.img`` is build from a binary kernel Image located in:
+
+.. code-block:: text
+
+   ${YOUR_PATH}/ti-aosp-15/device/ti/am62x-kernel/kernel/6.6
+
+This guide describes how to rebuild and customize a Linux kernel for
+Android.
+
 .. _android-download-kernel:
 
 *******************
@@ -30,6 +40,13 @@ Fetch the code using ``repo``:
 Build Instructions
 ******************
 
+In this section, we will assume that we already have an Android source
+tree which has been fully build and is located in:
+
+.. code-block:: text
+
+   ${YOUR_PATH}/ti-aosp-15/
+
 Building everything from scratch
 ================================
 
@@ -43,6 +60,8 @@ Building everything from scratch
    $ export TARGET_KERNEL_USE="6.6"
    $ export DIST_DIR=${YOUR_PATH}/ti-aosp-15/device/ti/am62x-kernel/kernel/${TARGET_KERNEL_USE}
    $ tools/bazel run //common:ti_dist -- --dist_dir=$DIST_DIR
+
+Re-running this command will rebuild incrementally.
 
 Android uses Kleaf, a Bazel-based build system to build the kernel.
 AOSP documentation can be found `here <https://source.android.com/docs/setup/build/building-kernels?hl=fr>`__ and
@@ -64,6 +83,8 @@ The usual (``make menuconfig``) is done via ``bazel`` command :
 
    $ cd ${YOUR_PATH}/ti-kernel-aosp/
    $ tools/bazel run //common:ti_config -- menuconfig
+
+This will automatically update the :file:`arch/arm64/configs/ti_gki.fragment`.
 
 .. note::
 
