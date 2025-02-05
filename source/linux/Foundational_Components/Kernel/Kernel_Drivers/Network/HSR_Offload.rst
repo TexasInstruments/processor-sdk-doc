@@ -115,7 +115,7 @@ All multi-cast addresses not registered will be filtered out.
 
 Multicast MAC address can be added/deleted using ip maddr commands or Linux socket ioctl SIOCADDMULTI/SIOCDELMULTI.
 
-.. rubric:: Show muliticast address
+.. rubric:: Show multicast address
 
 Show current list of multicast address for the HSR interface
 
@@ -145,7 +145,7 @@ Example:
           inet6 ff02::1
           inet6 ff01::1
 
-.. rubric:: Add muliticast address
+.. rubric:: Add multicast address
 
 Add a multicast address
 
@@ -217,7 +217,7 @@ Example: To add a multicast address and display the list in HSR and slave ports
           inet6 ff02::1 users 2
           inet6 ff01::1
 
-.. rubric:: Delete muliticast address
+.. rubric:: Delete multicast address
 
 Delete a multicast address
 
@@ -287,6 +287,46 @@ slave intefaces.
           inet6 ff02::1:ff1e:e810
           inet6 ff02::1 users 2
           inet6 ff01::1
+
+.. rubric:: *Multicast Filtering for VLAN Interfaces*
+
+Multicast filtering for VLAN interfaces is also supported.
+
+Show current list of multicast address for the HSR VLAN interface
+
+.. code-block:: console
+
+   ip maddr show dev <hsr_vlan_intf>
+
+Example:
+
+.. code-block:: console
+
+   # ip maddr show dev hsr0.5
+
+Add multicast address for the HSR VLAN interface
+
+.. code-block:: console
+
+   ip maddr add <multicast_mac_addr> dev <hsr_vlan_intf>
+
+Example:
+
+.. code-block:: console
+
+   # ip maddr add 01:80:c4:00:00:0e dev hsr0.5
+
+Delete multicast address for the HSR VLAN interface
+
+.. code-block:: console
+
+   ip maddr del <multicast_mac_addr> dev <hsr_vlan_intf>
+
+Example:
+
+.. code-block:: console
+
+   # ip maddr del 01:80:c4:00:00:0e dev hsr0.5
 
 .. rubric:: Performance
 

@@ -48,6 +48,7 @@ Features supported
 - XDP Native Mode and XDP Generic Mode
 - Cut Through forwarding
 - PHY Interrupt mode for ICSSG2
+- Multicast filtering support for VLAN interfaces
 
 .. rubric:: **Features not supported**
 
@@ -497,6 +498,28 @@ socket ioctl SIOCADDMULTI/SIOCDELMULTI.
 ::
 
     # ip maddr del 01:00:5e:00:00:05 dev eth1
+
+.. rubric:: **Multicast + VLAN**
+
+Multicast MAC address can be added/deleted using *ip maddr* commands for vlan interfaces.
+
+*Show multicast address for vlan interface*
+
+.. code-block:: console
+
+   ~# ip maddr show eth1.5
+
+*Add multicast address for vlan interface*
+
+.. code-block:: console
+
+   ~# ip maddr add 01:00:5e:00:00:05 dev eth1.5
+
+*Delete multicast address for vlan interface*
+
+.. code-block:: console
+
+   ~# ip maddr del 01:00:5e:00:00:05 dev eth1.5
 
 |
 
