@@ -60,7 +60,7 @@ USB there are some additional steps required.
    theoretically any system properly ported and configured for AM335x/AM437x.
 #. Install the necessary services using a terminal on the Linux box.
 
-   .. code::
+   .. code-block:: console
 
       sudo apt-get install isc-dhcp-server atftpd xinetd
 
@@ -71,38 +71,37 @@ USB there are some additional steps required.
 
    Edit /etc/dhcp/dhcpd.conf
 
-   .. code::
+   .. code-block:: text
 
       subnet 192.168.2.0 netmask 255.255.255.0
       {
          range dynamic-bootp 192.168.2.2 192.168.2.100;
          if substring (option vendor-class-identifier, 0, 10) = "AM335x ROM"
-        {
-            filename "u-boot-spl-restore.bin";
-        }
-        elsif substring (option vendor-class-identifier, 0, 10) = "DM814x ROM"
-        {
-            filename "u-boot-spl-restore.bin";
-        }
-        elsif substring (option vendor-class-identifier, 0, 10) = "AM43xx ROM"
-        {
-	        filename "u-boot-restore.img";
-        }
-	    elsif substring (option vendor-class-identifier, 0, 17) = "AM335x U-Boot SPL"
-	    {
-            filename "u-boot-restore.img";
-        }
-	    elsif substring (option vendor-class-identifier, 0, 10) = "AM43xx U-B"
-	    {
-	        filename "u-boot-restore.img";
-        }
-	    else
-	    {
-	        filename "zImage";
-        }
-
+         {
+             filename "u-boot-spl-restore.bin";
+         }
+         elsif substring (option vendor-class-identifier, 0, 10) = "DM814x ROM"
+         {
+             filename "u-boot-spl-restore.bin";
+         }
+         elsif substring (option vendor-class-identifier, 0, 10) = "AM43xx ROM"
+         {
+             filename "u-boot-restore.img";
+         }
+         elsif substring (option vendor-class-identifier, 0, 17) = "AM335x U-Boot SPL"
+         {
+             filename "u-boot-restore.img";
+         }
+         elsif substring (option vendor-class-identifier, 0, 10) = "AM43xx U-B"
+         {
+             filename "u-boot-restore.img";
+         }
+         else
+         {
+             filename "zImage";
+         }
          range 192.168.2.101 192.168.2.199;
-    }
+      }
 
    .. note::
       This configuration creates a subnet, 192.168.2.0, with a bootp IP Address range of 2 - 100. The isc-dhcp-server will use this
@@ -120,27 +119,27 @@ USB there are some additional steps required.
 
    Edit /etc/default/atftpd (create the file if necessary) with:
 
-   ..  code::
+   .. code-block:: text
 
-       USE_INETD=false
-       OPTIONS="--tftpd-timeout 300 --retry-timeout 5 --maxthread 100 --verbose=5 --logfile /var/log/atftpd.log --port 69 /tftpboot"
+      USE_INETD=false
+      OPTIONS="--tftpd-timeout 300 --retry-timeout 5 --maxthread 100 --verbose=5 --logfile /var/log/atftpd.log --port 69 /tftpboot"
 
-   ..  note:: This is an example configuration and it can certainly be modified for specific situations.
+   .. note:: This is an example configuration and it can certainly be modified for specific situations.
 
 #. Create directory to store TFTP files (/tftpboot used here)
 
-   .. code::
+   .. code-block:: console
 
-    sudo mkdir /tftpboot
-    sudo chmod -R 777 /tftpboot
-    sudo chown -R nobody /tftpboot
+      sudo mkdir /tftpboot
+      sudo chmod -R 777 /tftpboot
+      sudo chown -R nobody /tftpboot
 
    Make sure the server is configured to look at the port that you are
    using. Edit /etc/default/isc-dhcp-server and add the appropriate port
    (ex. usb0 or eth1) to the INTERFACES option. The example below includes
    eth0, eth1, and usb0.
 
-   .. code::
+   .. code-block:: text
 
       INTERFACES="eth0 eth1 usb0"
 
@@ -148,7 +147,8 @@ USB there are some additional steps required.
       Check the interfaces in your PC by using  `ip addr`  and find the appropriate interface and its IP address.
 
 #. Restart the services to pick-up the configuration changes
-.. code::
+
+   .. code-block:: console
 
       sudo service isc-dhcp-server restart
       sudo service atftpd restart
@@ -191,7 +191,7 @@ USB there are some additional steps required.
 
       -  As root, create /etc/NetworkManager/dispatcher.d/99am-usb-dhcp-server
 
-         .. code::
+         .. code-block:: sh
 
            #!/bin/sh
 
@@ -229,7 +229,7 @@ USB there are some additional steps required.
    A) Configure /etc/network/interfaces by adding the below structure for
       usb0:
 
-      .. code::
+      .. code-block:: text
 
          allow-hotplug usb0
          iface usb0 inet static
@@ -245,7 +245,7 @@ USB there are some additional steps required.
       /etc/network/interfaces). This script restarts the DHCP/BOOTP server
       automatically.
 
-      .. code::
+      .. code-block:: sh
 
          #!/bin/sh
 
@@ -263,7 +263,7 @@ USB there are some additional steps required.
       managed by /etc/network/interfaces by adding the below code to
       /etc/NetworkManager/NetworkManager.conf:
 
-      .. code::
+      .. code-block:: ini
 
          [main]
          plugins=ifupdown
