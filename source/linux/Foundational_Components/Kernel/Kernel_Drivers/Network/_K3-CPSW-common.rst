@@ -83,6 +83,39 @@ The Driver enables RX checksum offload by default. It can be disabled/enabled by
 
    ethtool -K <dev> rx-checksum on|off
 
+.. rubric:: TX checksum offload
+   :name: k3-tx-csum-offload
+
+The Driver enables TX checksum offload by default. It can be disabled/enabled by using ``ethtool -K`` command:
+
+.. code-block:: console
+
+   # ethtool -k <dev>
+   ....
+   tx-checksumming: on
+
+.. code-block:: console
+
+   ethtool -K <dev> tx-checksum on|off
+
+A zero checksum is **not** inverted. It is possible to invert a zero checksum for all packets by
+updating the :file:`am65-cpsw-nuss.c` driver with the following change:
+
+.. code-block:: diff
+
+   diff --git a/drivers/net/ethernet/ti/am65-cpsw-nuss.c b/drivers/net/ethernet/ti/am65-cpsw-nuss.c
+   index 3d378920e65c..89329ddbb231 100644
+   --- a/drivers/net/ethernet/ti/am65-cpsw-nuss.c
+   +++ b/drivers/net/ethernet/ti/am65-cpsw-nuss.c
+   @@ -1745,7 +1745,8 @@ static netdev_tx_t am65_cpsw_nuss_ndo_slave_xmit(struct sk_buff *skb,
+                   cs_offset = cs_start + skb->csum_offset;
+                   /* HW numerates bytes starting from 1 */
+                   psdata[2] = ((cs_offset + 1) << 24) |
+   -                           ((cs_start + 1) << 16) | (skb->len - cs_start);
+   +                           ((cs_start + 1) << 16) | (skb->len - cs_start)
+   +                           | BIT(15); // BIT(15) enables csum inversion for zero csum
+                   dev_dbg(dev, "%s tx psdata:%#x\n", __func__, psdata[2]);
+
 .. ifconfig:: CONFIG_part_variant in ('AM65X')
 
    .. note::
