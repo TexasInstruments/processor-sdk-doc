@@ -11,26 +11,26 @@ suggestions at `E2E <https://e2e.ti.com/>`__.
     +------------------------------------------------------------------------+-------------------------------------------------------------------------------+
     | **Processor SDK Linux**                                                                                                                                |
     +========================================================================+===============================================================================+
-    | |__Getting Started Guide__|  <-- **Start Here**                        | |__How To Guides__|                                                           |
+    | |___Getting Started Guide___|  <-- **Start Here**                      | |___How To Guides___|                                                         |
     +------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-    | |__Supported Platforms and Versions__|                                 | |__Building the SDK__|                                                        |
+    | |___Supported Platforms and Versions___|                               | |___Building the SDK___|                                                      |
     +------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-    | |__Directory Structure Overview__|                                     | |__GPLv3 Disclaimer__|                                                        |
+    | |___Directory Structure Overview___|                                   | |___GPLv3 Disclaimer___|                                                      |
     +------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-    | |__Release Notes__|                                                    | |__Migration Guide__|                                                         |
+    | |___Release Notes___|                                                  | |___Migration Guide___|                                                       |
     +------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-    | |__Technical Support__|                                                | `Training <https://training.ti.com/processor-sdk-training-series>`__          |
+    | |___Technical Support___|                                              | `Training <https://training.ti.com/processor-sdk-training-series>`__          |
     +------------------------------------------------------------------------+-------------------------------------------------------------------------------+
 
-    .. |__Getting Started Guide__| replace:: :ref:`Getting Started Guide <overview-getting-started>`
-    .. |__Directory Structure Overview__| replace:: :ref:`Directory Structure Overview <overview-directory-structure>`
-    .. |__Building the SDK__| replace:: :ref:`Building the SDK with Yocto <overview-building-the-sdk>`
-    .. |__GPLv3 Disclaimer__| replace:: :ref:`GPLv3 Disclaimer <overview-gplv3-disclaimer>`
-    .. |__Technical Support__| replace:: :ref:`Technical Support <overview-technical-support>`
-    .. |__Supported Platforms and Versions__| replace:: :ref:`Supported Platforms and Versions <release-specific-supported-platforms-and-versions>`
-    .. |__Migration Guide__| replace:: :ref:`Migration Guide <release-specific-migration-guide>`
-    .. |__How To Guides__| replace:: :ref:`How To Guides <how-to-guides>`
-    .. |__Release Notes__| replace:: :ref:`Release Notes <Release-note-label>`
+    .. |___Getting Started Guide___| replace:: :ref:`Getting Started Guide <overview-getting-started>`
+    .. |___Directory Structure Overview___| replace:: :ref:`Directory Structure Overview <overview-directory-structure>`
+    .. |___Building the SDK___| replace:: :ref:`Building the SDK with Yocto <overview-building-the-sdk>`
+    .. |___GPLv3 Disclaimer___| replace:: :ref:`GPLv3 Disclaimer <overview-gplv3-disclaimer>`
+    .. |___Technical Support___| replace:: :ref:`Technical Support <overview-technical-support>`
+    .. |___Supported Platforms and Versions___| replace:: :ref:`Supported Platforms and Versions <release-specific-supported-platforms-and-versions>`
+    .. |___Migration Guide___| replace:: :ref:`Migration Guide <release-specific-migration-guide>`
+    .. |___How To Guides___| replace:: :ref:`How To Guides <how-to-guides>`
+    .. |___Release Notes___| replace:: :ref:`Release Notes <Release-note-label>`
 
 
 .. ifconfig:: CONFIG_sdk in ('JACINTO','j7_foundational')
@@ -111,7 +111,7 @@ suggestions at `E2E <https://e2e.ti.com/>`__.
 
 .. ifconfig:: CONFIG_sdk in ('SITARA')
 
-    .. ifconfig:: CONFIG_part_variant not in ('AM62X', 'AM62AX', 'AM62PX', 'AM335X', 'AM437X', 'AM65X')
+    .. ifconfig:: CONFIG_part_variant not in ('AM62L', 'AM62X', 'AM62AX', 'AM62PX', 'AM335X', 'AM437X', 'AM65X')
 
         +-----------------+------------------------+------------------+-----------------------------------+
         | **PRU-ICSS / PRU_ICSSG Protocols** (more information on each piece of the distribution)         |

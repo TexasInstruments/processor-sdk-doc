@@ -32,6 +32,7 @@ of directories listed under `configs/`. For example:
  * "AM62X" (representing AM62X family)
  * "AM62AX" (representing AM62AX family)
  * "AM62PX" (representing AM62PX family)
+ * "AM62L" (representing AM62L family)
  * "AM65X" (representing AM65X family)
  * "DRA821A" (representing DRA821A)
  * "J721E" (representing Jacinto 7 ES)

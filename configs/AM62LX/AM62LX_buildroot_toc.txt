@@ -1,0 +1,6 @@
+devices/AM62LX/buildroot/index
+devices/AM62LX/buildroot/Getting_Started_Guide
+
+buildroot/Overview
+buildroot/Building_Buildroot_Image
+buildroot/Building_Buildroot_Packages
