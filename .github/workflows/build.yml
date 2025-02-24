@@ -50,8 +50,6 @@ jobs:
           - os: android
             device: AM62X
           - os: buildroot
-            device: AM62LX
-          - os: buildroot
             device: AM62X
           - os: debian
             device: AM62X
