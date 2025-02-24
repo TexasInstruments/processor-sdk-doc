@@ -57,11 +57,6 @@ Features supported
 - Different MII modes for Real-Time Ethernet ports (MII_G_RT1 and MII_G_RT2) on a single PRU_ICSSG instance. For example, MII_G_RT1=MII and MII_G_RT2=RGMII.
 - XDP with Zero-copy mode
 
-.. rubric:: **Limitations**
-
-Both MIIx ports have to be enabled in DT even if one of them is not used (no Ethernet PHY wired) for proper PRU_ICSSG Ethernet driver work.
-Use fixed-link for unused port as workaround.
-
 Driver Configuration
 ####################
 
@@ -826,24 +821,32 @@ MII Support
       setenv bootcmd 'run findfdt; run envboot; run init_${boot}; run get_kern_${boot}; run get_fdt_${boot};
       setenv name_overlays ti/k3-am642-evm-icssg1-dualemac-mii.dtbo; run get_overlay_${boot}; run run_kern'
 
+   .. rubric:: **Limitations**
+
+   Both MIIx ports have to be enabled in DT even if one of them is not used (no Ethernet PHY wired) for proper PRU_ICSSG Ethernet driver to work.
+   Use fixed-link for unused port as workaround.
+
 
 CPSW / PRU Ethernet Selection
 #############################
 
 .. ifconfig:: CONFIG_part_variant in ('AM64X')
 
-    On AM64x EVM (`TMDS64EVM <https://www.ti.com/tool/TMDS64EVM>`__ & `TMDS64GPEVM <https://www.ti.com/tool/TMDS64GPEVM>`__), one Ethernet port is connected to CPSW, one Ethernet port is connected to PRU Ethernet, and one Ethernet port can be muxed to either CPSW or PRU Ethernet depending on the device tree settings.
-    The Ethernet port is muxed to CPSW by default in the AM64x EVM device tree file k3-am642-evm.dts. In order to mux the Ethernet port to PRU Ethernet, override the mux settings by applying one of these two overlay files in uboot:
-    k3-am642-evm-icssg1-dualemac.dtbo (both PRU Ethernet PHYs set to RGMII)
-    k3-am642-evm-icssg1-dualemac-mii.dtbo (both PRU Ethernet PHYs set to MII)
+   Driver supports two Ethernet port modes, "Single EMAC" and "Dual EMAC" based on how many ports will be operated for a given ICSSG instance, for both MII and RGMII mode.
 
-    To use RGMII interface the k3-am642-evm-icssg1-dualemac.dtbo overlay file has to be applied using the following command in uboot.
+   - Single EMAC: 1 Ethernet port on a single PRU_ICSSG instance
+   - Dual EMAC: 2 Ethernet ports on a single PRU_ICSSG instance
+
+   On AM64x EVM (`TMDS64EVM <https://www.ti.com/tool/TMDS64EVM>`__ & `TMDS64GPEVM <https://www.ti.com/tool/TMDS64GPEVM>`__), one Ethernet port is connected to CPSW, one Ethernet port is connected to PRU Ethernet, and one Ethernet port can be muxed to either CPSW or PRU Ethernet depending on the device tree settings.
+   The Ethernet port is muxed to CPSW by default in the AM64x EVM device tree :file:`k3-am642-evm.dts`, disabling this port for ICSSG (Single EMAC).
+
+   To use RGMII interface in Dual EMAC mode the :file:`k3-am642-evm-icssg1-dualemac.dtbo` overlay file has to be applied using the following command in u-boot.
 
     ::
 
       setenv bootcmd 'run findfdt; run envboot;run init_${boot}; run get_kern_${boot}; run get_fdt_${boot};setenv name_overlays ti/k3-am642-evm-icssg1-dualemac.dtbo; run get_overlay_${boot}; run run_kern'
 
-    To use MII interface the k3-am642-evm-icssg1-dualemac-mii.dtbo overlay file has to be applied using the following command in uboot.
+   To use MII interface in Dual EMAC mode the :file:`k3-am642-evm-icssg1-dualemac-mii.dtbo` overlay file has to be applied using the following command in u-boot.
 
     ::
 
