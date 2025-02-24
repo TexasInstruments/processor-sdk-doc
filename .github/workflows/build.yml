@@ -28,6 +28,7 @@ jobs:
           - AM437X
           - AM57X
           - AM62AX
+          - AM62LX
           - AM62PX
           - AM62X
           - AM64X
@@ -48,6 +49,8 @@ jobs:
             device: AM62PX
           - os: android
             device: AM62X
+          - os: buildroot
+            device: AM62LX
           - os: buildroot
             device: AM62X
           - os: debian
