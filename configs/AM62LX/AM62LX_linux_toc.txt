@@ -121,5 +121,6 @@ linux/How_to_Guides/FAQ/How_to_Integrate_Open_Source_Software
 linux/How_to_Guides_Hardware_Setup_with_CCS
 linux/How_to_Guides/Hardware_Setup_with_CCS/AM62L_EVM_Hardware_Setup
 
+system/Demo_User_Guides/TI_LVGL_Demo_User_Guide
 
 linux/Documentation_Tarball
