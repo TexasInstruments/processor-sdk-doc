@@ -12,13 +12,14 @@ Find more information about the `CC3301 here <https://www.ti.com/product/CC3301>
 
 Because the AM6x starter kits now feature an M.2 Key-E connector, an M.2 card has been
 developed for evaluation purposes. `Order the M.2-CC3301 board from here <https://www.ti.com/tool/M2-CC3301>`_.
-The M.2-CC3351 is also interchangeable and uses the exact same instructions below. 
+The M.2-CC3351 is also interchangeable and uses the exact same instructions below.
 
 By default, the Processor SDK includes support for the M.2-CC33x1 on the following starter kits:
 
 * SK-AM62B-P1
 * SK-AM62A-LP
 * SK-AM62P-LP
+* AM62L-EVM
 
 *********************
 Hardware Installation
@@ -46,29 +47,33 @@ Enable DT Overlay for M.2-CC33x1
 
 On the boot partition of the SD card, add one of the following variables, corresponding to the starter kit,
 into the :file:`uEnv.txt` file. This will let u-boot enable the m.2-cc33x1 devicetree overlay. The :file:`uEnv.txt` file can be found on the ``boot``
-partition of the SD card. 
+partition of the SD card.
 
-For SK-AM62B-P1: 
-
-    .. code-block:: console
-
-        name_overlays=ti/k3-am625-sk-m2-cc3301.dtbo
-
-For SK-AM62A-LP: 
+For SK-AM62B-P1:
 
     .. code-block:: console
 
-        name_overlays=ti/k3-am62a7-sk-m2-cc3301.dtbo
+        name_overlays=ti/k3-am625-sk-m2-cc3351.dtbo
 
-For SK-AM62P-LP: 
+For SK-AM62A-LP:
 
     .. code-block:: console
 
-        name_overlays=ti/k3-am62p5-sk-m2-cc3301.dtbo
+        name_overlays=ti/k3-am62a7-sk-m2-cc3351.dtbo
 
+For SK-AM62P-LP:
 
+    .. code-block:: console
 
-.. note:: 
+        name_overlays=ti/k3-am62p5-sk-m2-cc3351.dtbo
+
+For AM62L-EVM:
+
+   .. code-block:: console
+
+         name_overlays=ti/k3-am62l3-evm-m2-cc3351.dtbo
+
+.. note::
 
     Though the name of the file ends with `m2-cc3301.dtbo`, the same file applies for the M.2-CC3351 board.
     Do not change the name of this file in the :file:`uEnv.txt` regardless of which M.2 card that is being used.
@@ -79,7 +84,7 @@ Connect to Wi-Fi
 ****************
 
 Using scripts provided in the SDK makes connecting to an Access Point or router straightforward.
-The following are steps to connect to a WPA password-secured Access Point. 
+The following are steps to connect to a WPA password-secured Access Point.
 
 .. ifconfig:: CONFIG_sdk in ('SITARA')
 
@@ -99,5 +104,5 @@ The following are steps to connect to a WPA password-secured Access Point.
         bash ./sta_connect.sh -s WPA-PSK -n <SSID> -p <PASSWORD>
         udhcpc -i wlan0
 
-For more information on the Wi-Fi capabilities of the CC33xx devices, please 
+For more information on the Wi-Fi capabilities of the CC33xx devices, please
 see the documentation that can be found in the `CC33xx SDK <https://www.ti.com/tool/CC33XX-SOFTWARE>`_.
