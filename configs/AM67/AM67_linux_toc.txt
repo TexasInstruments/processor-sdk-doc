@@ -95,6 +95,7 @@ linux/Foundational_Components/Graphics/Common/PVR_Tools
 linux/Foundational_Components/Graphics/Common/QT_Graphics_Framework
 linux/Foundational_Components/Graphics/Common/Vulkan
 linux/Foundational_Components/Graphics/Common/Weston
+linux/Foundational_Components/Graphics/Common/OpenCL
 linux/Foundational_Components/Graphics/Rogue/Overview
 linux/Foundational_Components/Graphics/Rogue/Rogue_Debug_Info
 linux/Foundational_Components/Graphics/Rogue/Rogue_Power_Management_Info

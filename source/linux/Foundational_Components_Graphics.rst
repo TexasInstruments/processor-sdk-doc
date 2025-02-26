@@ -33,6 +33,7 @@ the details on the features supported by these hardware blocks.
 
    Foundational_Components/Graphics/Common/OpenGL_ES.rst
    Foundational_Components/Graphics/Common/Vulkan.rst
+   Foundational_Components/Graphics/Common/OpenCL.rst
 
    Foundational_Components/Graphics/Common/QT_Graphics_Framework.rst
    Foundational_Components/Graphics/Common/GTK+_Graphics_Framework.rst
