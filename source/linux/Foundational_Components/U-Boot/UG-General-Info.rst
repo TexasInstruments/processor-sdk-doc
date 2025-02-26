@@ -12,7 +12,7 @@ General Information
 
       sudo apt install git xz-utils build-essential autoconf flex bison libssl-dev bc libncurses-dev \
       python3 python3-setuptools python3-dev python3-yaml python3-jsonschema python3-pyelftools \
-      swig yamllint
+      swig yamllint libgnutls28-dev
 
 .. note::
 
