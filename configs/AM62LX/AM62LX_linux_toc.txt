@@ -42,7 +42,6 @@ linux/Foundational_Components/U-Boot/Apps-SPL-Debug-OpenOCD
 linux/Foundational_Components_Kernel
 linux/Foundational_Components_Kernel_Drivers
 linux/Foundational_Components/Kernel/Kernel_Drivers/Audio
-linux/Foundational_Components/Kernel/Kernel_Drivers/Camera/CSI2RX
 linux/Foundational_Components/Kernel/Kernel_Drivers/Crypto
 linux/Foundational_Components/Kernel/Kernel_Drivers/Display/DSS7
 linux/Foundational_Components/Kernel/Kernel_Drivers/EQEP
@@ -79,7 +78,7 @@ linux/Foundational_Components/Power_Management/pm_wakeup_sources
 linux/Foundational_Components/Power_Management/pm_sw_arch
 linux/Foundational_Components/Power_Management/pm_debug
 
-linux/Foundational_Components/System_Security/SELinux
+#linux/Foundational_Components/System_Security/SELinux
 
 linux/Foundational_Components_Kernel_Users_Guide
 linux/Foundational_Components_Kernel_LTP-DDT_Validation
@@ -95,9 +94,8 @@ linux/Foundational_Components/Tools/Flash_via_Ethernet
 linux/Foundational_Components/Tools/Flash_via_UART
 linux/Foundational_Components/Tools/GPIO_Tools
 linux/Foundational_Components_IPC62l
-linux/Foundational_Components_OPTEE
+#linux/Foundational_Components_OPTEE
 linux/Foundational_Components_ATF
-linux/Foundational_Components_Multimedia_wave5
 linux/Foundational_Components_Virtualization
 linux/Foundational_Components/Virtualization/Docker
 linux/Foundational_Components_Hypervisor
@@ -105,15 +103,14 @@ linux/Foundational_Components/Hypervisor/Jailhouse
 
 linux/How_to_Guides
 linux/How_to_Guides_Developer_Notes
-linux/How_to_Guides/Host/K3_Resource_Partitioning_Tool
+#linux/How_to_Guides/Host/K3_Resource_Partitioning_Tool
 linux/How_to_Guides/Host/How_to_Setup_and_Debug_using_Lauterbach
 linux/How_to_Guides/Host/SYSFW_Trace_Parser
-linux/How_to_Guides/Target/Processor_SDK_Linux_File_System_Optimization_Customization
-linux/How_to_Guides/Target/How_to_test_MCAN_on_AM62x
+#linux/How_to_Guides/Target/Processor_SDK_Linux_File_System_Optimization_Customization
+#linux/How_to_Guides/Target/How_to_test_MCAN_on_AM62x
 linux/How_to_Guides/Target/How_to_enable_DT_overlays_in_linux
 linux/How_to_Guides/Target/How_to_playback_audio_over_HDMI
-linux/How_to_Guides/Target/How_to_enable_display_sharing_between_remotecore_and_Linux
-linux/How_to_Guides/Target/How_to_boot_quickly
+#linux/How_to_Guides/Target/How_to_boot_quickly
 linux/How_to_Guides/Target/How_To_Enable_M2CC3301_in_linux
 linux/How_to_Guides/Target/Runtime_debug_unlock_on_secure_device
 linux/How_to_Guides/FAQ/How_to_Check_Device_Tree_Info
