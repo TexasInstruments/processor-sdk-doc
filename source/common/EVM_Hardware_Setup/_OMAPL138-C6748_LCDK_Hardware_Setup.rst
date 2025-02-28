@@ -111,6 +111,7 @@ Connecting to Target and Loading/Running Program
 The following GEL outputs should appear in the CCS Console view.
 
 **OMAP-L138 LCDK:**
+
 ::
 
 	ARM9_0: Output: 	Target Connected.
@@ -131,6 +132,7 @@ The following GEL outputs should appear in the CCS Console view.
 	ARM9_0: Output: 	---------------------------------------------
 
 **C6748 LCDK:**
+
 ::
 
 	C674X_0: Output: 	Target Connected.
