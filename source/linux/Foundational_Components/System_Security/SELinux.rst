@@ -170,3 +170,30 @@ This guide serves as a reference implementation and will not be diving into cust
       Policy deny_unknown status:     allowed
       Memory protection checking:     actual (secure)
       Max kernel policy version:      31
+
+Integrating into Yocto for production
+*************************************
+
+The above steps are useful during development but unusable in a production environment. The following are pointers to help build a final image which does not require the above steps.
+
+1. ``security=selinux`` can be added into :file:`sources/meta-arago/meta-arago-distro/recipes-tisdk/tisdk-uenv/tisdk-uenv/uEnv.txt` to make it default.
+
+2. To relabel on first boot, add ``FIRST_BOOT_RELABEL="1"`` in :file:`local.conf`
+
+3. To set the default selinux mode, add ``DEFAULT_ENFORCING="<mode>"`` in :file:`local.conf`, where <mode> is disabled/permissive/enforcing.
+
+4. Once the policy has been created, there are multiple ways to install it. This post_install section can be added into your recipe, myPolicy.pp is the policy that is placed in the meta-selinux directory:
+
+   .. code-block:: console
+
+      SRC_URI += "file://myPolicy.pp"
+
+      do_install:append() {
+         install -d ${D}/etc/selinux/targeted/modules/active/modules
+         install -m 0644 ${WORKDIR}/myPolicy.pp ${D}/etc/selinux/targeted/modules/active/modules/
+      }
+
+      pkg_postinst_ontarget:${PN}() {
+         #!/bin/bash
+         /usr/sbin/semodule -i /etc/selinux/targeted/modules/active/modules/myPolicy.pp
+      }
