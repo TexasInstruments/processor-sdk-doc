@@ -25,32 +25,18 @@ protected by it. 1-bit error is correctable by ECC, but multi-bit and
 multiple 1-bit errors are not correctable and will be treated as an
 uncorrectable error. Any uncorrectable error will cause a bus abort.
 
-DDRSS ECC handling
-==================
+DDRSS inline ECC handling
+=========================
 
 .. note::
 
-   The ECC feature of DDRSS is not enabled by default in U-Boot.
+   The inline ECC feature of DDRSS is not enabled by default in U-Boot.
 
-Enabling ECC
-------------
+Enabling inline ECC
+-------------------
 
-The ECC feature of DDRSS can be enabled by the following two steps:
-
-   1. Add ``ti,ecc-enable`` boolean property to the ``memorycontroller`` node
-
-      .. code-block:: dts
-
-         // u-boot/arch/arm/dts/k3-*-ddr.dtsi
-
-         &memorycontroller {
-            power-domains = <&k3_pds 170 TI_SCI_PD_SHARED>,
-                            <&k3_pds 55 TI_SCI_PD_SHARED>;
-            clocks = <&k3_clks 170 0>, <&k3_clks 16 4>;
-            ti,ecc-enable;
-         };
-
-   2. Re-build U-Boot with ``CONFIG_K3_INLINE_ECC`` enabled
+The inline ECC feature of DDRSS can be enabled by adding the
+``CONFIG_K3_INLINE_ECC`` config to the R5 defconfig:
 
       .. code-block:: kconfig
 
@@ -64,6 +50,8 @@ The ECC feature of DDRSS can be enabled by the following two steps:
          CONFIG_REMOTEPROC_TI_K3_ARM64=y
          CONFIG_RESET_TI_SCI=y
 
+This enables inline ECC for the entire region of the DDR.
+
 Priming with BIST Engine
 ------------------------
 
@@ -72,4 +60,21 @@ known data before functional reads and writes are performed. During the ECC
 initialization, the R5 SPL fills the entire memory with zeros using the BIST
 engine in the DDR controller. The BIST engine method allows priming the entire
 region with zeros in much less time.
+
+Enabling inline ECC for a partial region of the DDR
+---------------------------------------------------
+
+Instead of defaulting to enable inline ECC for the entire DDR region, a partial
+range can also be selected.
+
+In this case, the DDRSS driver expects such a node within the memory node, in
+the absence of which it resorts to enabling for the entire DDR region:
+
+   .. code-block:: dts
+
+      inline_ecc: protected@9e780000 {
+            device_type = "ecc";
+            reg = <0x9e780000 0x0080000>;
+            bootph-all;
+      };
 
