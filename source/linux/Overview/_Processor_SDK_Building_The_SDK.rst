@@ -152,7 +152,7 @@ The MACHINE can be set to |__SDK_BUILD_MACHINE__|, for example.
                   $ . conf/setenv
                   $ MACHINE=<machine> ARAGO_RT_ENABLE=1 bitbake -k tisdk-default-image
 
-      .. ifconfig:: CONFIG_part_variant in ('AM62X','AM62PX')
+      .. ifconfig:: CONFIG_part_variant in ('AM62X','AM62PX','AM62LX')
 
          * The final command below will build the :file:`tisdk-jailhouse-image`, which is the
            Processor SDK image with arago filesystem and Jailhouse support.
