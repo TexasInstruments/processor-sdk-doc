@@ -24,6 +24,48 @@ General Information
 
       pip install dataclasses pyelftools jsonschema yamllint importlib-resources
 
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+   Getting the BL1 Source Code
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   AM62L devices use TF-A BL1 boot loader to configure LPDDR4 to 
+   enable secondary program loader.
+   The easiest way to get access to the BL1 source code is by
+   downloading and installing the Processor SDK Linux. Once installed,
+   the BL1 source code is included in the SDK at the path ``<path to tisdk>/board-support``.
+   For your convenience the sources also includes the BL1's
+   git repository including commit history.
+
+   Alternatively, BL1 sources can directly be fetched from GIThub. The GIT
+   repo URL, branch and commit id can be found in the :ref:`u-boot-release-notes`
+   section of the release notes.
+   
+   .. _Build-BL1-label:
+
+   Build BL1
+   ^^^^^^^^^
+   .. note::
+    The following commands are intended to be run from the root of the
+    TF-A tree unless otherwise specified. The root of the TF-A tree is
+    the top-level directory and can be identified by looking for the
+    "licenses" directory.
+   
+   .. rubric:: Setting up the toolchain paths
+
+   .. include:: ../../Overview/GCC_ToolChain.rst
+      :start-after: .. start_include_yocto_toolchain_host_setup
+      :end-before: .. end_include_yocto_toolchain_host_setup
+      
+   .. code-block:: console
+
+         $ cd <path to tf-a dir>
+
+         $ make CROSS_COMPILE="$CROSS_COMPILE_64" ARCH=aarch64 PLAT=k3 TARGET_BOARD=am62l am62l_bl1 
+
+         <or to build bl1 and bl31 binaries from TF-A repo>  
+        
+	 $ make CROSS_COMPILE="$CROSS_COMPILE_64" ARCH=aarch64 PLAT=k3 TARGET_BOARD=am62l 
+
 Getting the U-Boot Source Code
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -147,7 +189,7 @@ Build U-Boot
 
 .. ifconfig:: CONFIG_part_family not in ('General_family', 'AM335X_family', 'AM437X_family')
 
-   .. ifconfig:: CONFIG_part_variant not in ('AM65X', 'AM64X')
+   .. ifconfig:: CONFIG_part_variant not in ('AM65X', 'AM64X', 'AM62LX')
 
       .. note:: Note about HSM Rearchitecture
 
@@ -158,7 +200,7 @@ Build U-Boot
          requires SPL to re-implement device and clock control. This support is not
          present in Uboot R5 SPL due to memory constraints on the existing 64-bit TI devices.
 
-   .. ifconfig:: CONFIG_part_variant not in ('AM65X')
+   .. ifconfig:: CONFIG_part_variant not in ('AM65X', 'AM62LX')
 
       .. note::
          As of Processor SDK 9.0, compilation of bootloader images will no longer require
@@ -184,9 +226,11 @@ Build U-Boot
       :start-after: .. start_include_yocto_toolchain_host_setup
       :end-before: .. end_include_yocto_toolchain_host_setup
 
-   .. rubric:: Compiling R5 and ARM64 images
+   .. ifconfig:: CONFIG_part_variant not in ('AM62LX')
 
-   Use the following table to determine what defconfig to use to configure with:
+      .. rubric:: Compiling R5 and ARM64 images
+
+      Use the following table to determine what defconfig to use to configure with:
 
    .. ifconfig:: CONFIG_part_variant in ('AM65X')
 
@@ -540,8 +584,41 @@ Build U-Boot
          $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" am62px_evm_a53_defconfig O=$UBOOT_DIR/out/a53
          $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" CC="$CC_64" BL31=$TFA_DIR/build/k3/lite/release/bl31.bin TEE=$OPTEE_DIR/out/arm-plat-k3/core/tee-pager_v2.bin O=$UBOOT_DIR/out/a53 BINMAN_INDIRS=$TI_LINUX_FW_DIR
 
+   .. ifconfig:: CONFIG_part_variant in ('AM62LX')
 
-.. ifconfig:: CONFIG_part_variant not in ('AM64X', 'AM62X', 'AM62AX')
+      +-------------+----------------------------------+----------------------------------------------------------+
+      |  Board      |            SD Boot               |                       USB DFU                            |
+      +=============+==================================+==========================================================+
+      |  AM62LX EVM |   ``am62lx_evm_defconfig``       |             ``am62lx_evm_defconfig``                     |
+      +-------------+----------------------------------+----------------------------------------------------------+
+
+      .. note::
+
+         Where to get the sources:
+
+         - ti-u-boot version: :ref:`u-boot-release-notes`
+         - ti-linux-firmware version: :ref:`ti-linux-fw-release-notes`
+         - TF-A version: :ref:`tf-a-release-notes`
+
+      .. code-block:: console
+
+         $ export UBOOT_DIR=<path-to-ti-u-boot>
+         $ export TI_LINUX_FW_DIR=<path-to-ti-linux-firmware>
+         $ export TFA_DIR=<path-to-arm-trusted-firmware>
+
+      .. note::
+
+         The instructions below assume all binaries are built manually. For instructions to build bl31.bin go to: :ref:`foundational-components-optee`.
+         For instructions to build tee-pager_v2.bin (bl32.bin) go to: :ref:`foundational-components-atf`. BINMAN_INDIRS can point to
+         <path-to-tisdk>/board-support/prebuilt-images to use the pre-built binaries that come in the pre-built SDK (bl31.bin for BL31, bl32.bin for TEE).
+
+      .. code-block:: console
+
+         To build tiboot.bin, tispl.bin and u-boot.img. Saved in $UBOOT_DIR/out/a53. Requires bl1.bin, bl31.bin.
+         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" am62lx_evm_defconfig O=$UBOOT_DIR/out/a53
+         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" CC="$CC_64" BL1=$TFA_DIR/build/k3/am62l/release/bl1.bin BL31=$TFA_DIR/build/k3/am62l/release/bl31.bin O=$UBOOT_DIR/out/a53 BINMAN_INDIRS=$TI_LINUX_FW_DIR
+
+.. ifconfig:: CONFIG_part_variant not in ('AM64X', 'AM62X', 'AM62AX', 'AM62LX')
 
      .. note::
 
@@ -552,6 +629,12 @@ Build U-Boot
      .. note::
 
       BINMAN_INDIRS is used to fetch the DM binary from <path to ti-linux-firmware>/ti-dm/ and SYSFW binaries from <path to ti-linux-firmware>/ti-sysfw/. If using the SDK, BINMAN_INDIRS can point to <path to SDK>/board-support/prebuilt-images. Else any folder where DM is located in <path to folder>/ti-dm/ and SYSFW binaries are present in <path to folder>/ti-sysfw/ can be used. Please make sure to use the absolute path.
+
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+     .. note::
+
+      BINMAN_INDIRS is used to fetch the SYSFW binaries from <path to ti-linux-firmware>/ti-sysfw/. If using the SDK, BINMAN_INDIRS can point to <path to SDK>/board-support/prebuilt-images. Else any folder where SYSFW binaries are present in <path to folder>/ti-sysfw/ can be used. Please make sure to use the absolute path.
 
 .. ifconfig:: CONFIG_part_variant in ('J721E', 'J7200', 'AM62X', 'AM62AX', 'AM62PX', 'J721S2', 'J784S4','J742S2', 'J722S')
 
