@@ -10,7 +10,7 @@ following Evaluation Modules unless otherwise specified.**
 +----------------+--------------------------------------------------------------------------------------------------------+
 | Name           | Description                                                                                            |
 +================+========================================================================================================+
-| AM62L EVM      | AM62L Starter Kit / Evaluation Module  rev E1-1 with ARM running at 400MHz, LPDDR4 data rate 1100 MT/S |
+| AM62L EVM      | AM62L Starter Kit / Evaluation Module rev E1-1 with ARM running at 1250MHz, LPDDR4 data rate 1600 MT/S |
 +----------------+--------------------------------------------------------------------------------------------------------+
 
 Table:  Evaluation Modules
@@ -58,3 +58,11 @@ Test commands used for running stress-ng and cyclictest together
 
 The latencies observed with this SDK are summarized below:
 
+.. csv-table::
+   :header: "Latencies","CPU 0","CPU 1"
+
+   "Minimum (us)","5","5"
+   "Average (us)","8","7"
+   "Maximum (us)","52","44"
+
+.. image:: img/rt-cpu-method-all-latency-histogram.png
