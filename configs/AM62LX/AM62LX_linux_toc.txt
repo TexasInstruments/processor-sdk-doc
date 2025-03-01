@@ -89,9 +89,6 @@ linux/Foundational_Components_Filesystem
 linux/Foundational_Components_Tools
 linux/Foundational_Components/Tools/Development_Tools
 linux/Foundational_Components/Tools/Pin_Mux_Tools
-linux/Foundational_Components/Tools/Flash_via_Fastboot
-linux/Foundational_Components/Tools/Flash_via_Ethernet
-linux/Foundational_Components/Tools/Flash_via_UART
 linux/Foundational_Components/Tools/GPIO_Tools
 linux/Foundational_Components_IPC62l
 #linux/Foundational_Components_OPTEE
