@@ -14,6 +14,16 @@ it sets up itself as the EL3 monitor handler. Following that, it installs the se
 world software (OP-TEE) and passes execution on to either the Linux kernel or U-Boot
 in the non-secure world.
 
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+   .. rubric:: Power and Clock Management using SCMI
+
+   The AM62Lx System-on-Chip (SoC) utilizes the System Control and Management Interface
+   (SCMI) protocol to manage clocks and power domains. SCMI is a standardized interface for
+   system control and management, providing a common way to access and control system resources.
+   The SCMI IDs used in the AM62L TF-A implementation are documented in the
+   `TF-A documentation <https://github.com/TexasInstruments/arm-trusted-firmware/blob/ti-master/docs/plat/ti-am62l.rst>`__.
+
 |
 
 .. rubric:: Getting the ATF Source Code
@@ -25,7 +35,7 @@ If it is not possible to use pre-build binary, use the following:
 
 .. code-block:: console
 
-    $ git clone https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git
+    $ git clone https://github.com/TexasInstruments/arm-trusted-firmware.git
     $ git checkout <hash>
 
 Where <hash> is the commit shown here: :ref:`tf-a-release-notes`.
@@ -40,7 +50,7 @@ Where <hash> is the commit shown here: :ref:`tf-a-release-notes`.
 
 .. rubric:: Building ATF
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX', 'AM64X', 'J722S')
+.. ifconfig:: CONFIG_part_variant in ('AM62LX', 'AM62X', 'AM62AX', 'AM62PX', 'AM64X', 'J722S')
 
     .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX', 'AM64X', 'J722S')
 
@@ -49,6 +59,16 @@ Where <hash> is the commit shown here: :ref:`tf-a-release-notes`.
                 $ export TFA_DIR=<path-to-arm-trusted-firmware>
                 $ cd $TFA_DIR
                 $ make ARCH=aarch64 CROSS_COMPILE="$CROSS_COMPILE_64" PLAT=k3 TARGET_BOARD=lite SPD=opteed
+
+    .. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+        *Without OP-TEE enabled:*
+
+            .. code-block:: console
+
+                $ export TFA_DIR=<path-to-arm-trusted-firmware>
+                $ cd $TFA_DIR
+                $ make ARCH=aarch64 CROSS_COMPILE="$CROSS_COMPILE_64" PLAT=k3 TARGET_BOARD=am62l
 
 .. ifconfig:: CONFIG_part_variant in ('J721S2')
 
@@ -62,7 +82,7 @@ Where <hash> is the commit shown here: :ref:`tf-a-release-notes`.
 
         $ make CROSS_COMPILE="$CROSS_COMPILE_64" ARCH=aarch64 PLAT=k3 TARGET_BOARD=j784s4 SPD=opteed K3_USART=0x8
 
-.. ifconfig:: CONFIG_part_variant not in ('AM64X', 'AM62X', 'AM62AX', 'AM62PX', 'J721S2', 'J784S4','J742S2')
+.. ifconfig:: CONFIG_part_variant not in ('AM64X', 'AM62X', 'AM62LX', 'AM62AX', 'AM62PX', 'J721S2', 'J784S4','J742S2')
 
     .. code-block:: console
 
@@ -86,7 +106,21 @@ Where <hash> is the commit shown here: :ref:`tf-a-release-notes`.
         | DTB                       | 0x82000000 |
         +---------------------------+------------+
 
-.. ifconfig:: CONFIG_part_family not in ('AM64X_family')
+.. ifconfig:: CONFIG_part_family in ('AM62LX_family')
+
+    .. code-block:: text
+
+        +---------------------------+------------+
+        | ATF image                 | 0x80000000 |
+        +---------------------------+------------+
+        | OP-TEE image              | 0x80200000 |
+        +---------------------------+------------+
+        | U-Boot/Linux kernel image | 0x80080000 |
+        +---------------------------+------------+
+        | DTB                       | 0x82000000 |
+        +---------------------------+------------+
+
+.. ifconfig:: CONFIG_part_family not in ('AM64X_family', 'AM62LX_family')
 
     .. code-block:: text
 
