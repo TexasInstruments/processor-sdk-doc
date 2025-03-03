@@ -8,7 +8,7 @@ AM69 SK is a low cost, small form factor board designed
 to bring smart cameras, robots and intelligent machines to life.
 For more information related to the board, full list of peripherals supported,
 pin settings for boot modes and more
-visit AM69 SK `User guide <https://www.ti.com/lit/pdf/spruj70>`_
+visit AM69 SK `User guide <https://www.ti.com/lit/pdf/spruj70>`__
 
 To run the demos on AM69 SK you will require,
 
@@ -23,7 +23,7 @@ To run the demos on AM69 SK you will require,
 
         a. Nominal Output Voltage: 5-20VDC
         b. Maximum Output Current: 5000 mA
-        c. Refer to AM69 SK `User guide <https://www.ti.com/lit/pdf/spruj70>`_
+        c. Refer to AM69 SK `User guide <https://www.ti.com/lit/pdf/spruj70>`__
            for more details.
 
 Connect the components to the EVM as shown in the image.

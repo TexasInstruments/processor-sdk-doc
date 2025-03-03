@@ -44,7 +44,7 @@ to github repository.
 Repository structure
 ====================
 
-.. code-block::
+.. code-block:: text
 
    buildroot-external-TI
    ├── external.desc

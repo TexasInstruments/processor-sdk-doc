@@ -676,6 +676,7 @@ PTP with Transparent Clock (Switch mode)
 Use the following ptp config file on the device that acts as the transparent clock:
 
 **tc-ptp.cfg**
+
 ::
 
     [global]
