@@ -785,10 +785,7 @@ Board-specific instructions
         amixer sset 'Right PGA Mixer Mic3R' on
         amixer sset PGA 90%
 
-    To switch to using HDMI for playback you can refer to the `How to playback
-    audio over HDMI
-    <../../../How_to_Guides/Target/How_to_playback_audio_over_HDMI.html>`__
-    guide.
+    To switch to using HDMI for playback you can refer to: :ref:`hdmi-audio`.
 
 .. ifconfig:: CONFIG_part_variant in ('AM62LX')
 
@@ -819,6 +816,7 @@ Board-specific instructions
     .. rubric:: User space
        :name: user-space-9
 
+.. _hdmi_audio:
     The hardware defaults are correct for audio playback, the routing is OK
     and the volume is 'adequate' but in case the volume is not correct:
 
@@ -835,10 +833,7 @@ Board-specific instructions
         amixer sset 'Right PGA Mixer Mic3R' on
         amixer sset PGA 90%
 
-    To switch to using HDMI for playback you can refer to the `How to playback
-    audio over HDMI
-    <../../../How_to_Guides/Target/How_to_playback_audio_over_HDMI.html>`__
-    guide.
+    To switch to using HDMI for playback you can refer to: :ref:`hdmi-audio`.
 
 Potential issues
 ^^^^^^^^^^^^^^^^
