@@ -25,11 +25,11 @@ Run make menuconfig to enable the packages you have added in the Buildroot confi
 
 .. code-block:: console
 
-    $ make menuconfig
+   $ make menuconfig
 
 .. figure:: /images/buildroot_menuconfig.png
-    :height: 600
-    :width: 800
+   :height: 600
+   :width: 800
 
 Navigate to the relevant package categories and enable the desired packages.
 For **nano** and :command:`htop`, you would typically find them under the Target packages menu.
@@ -47,7 +47,7 @@ compile, and include the specified packages in the build process.
 
 .. code-block:: console
 
-    $ make
+   $ make
 
 The build process can take some time, depending on your system's resources and
 the complexity of the configuration.
@@ -61,8 +61,8 @@ filesystem.
 
 .. code-block:: console
 
-    $ find output/target -name nano
-    $ find output/target -name htop
+   $ find output/target -name nano
+   $ find output/target -name htop
 
 You should see the paths to your package binaries, indicating that they were
 successfully included in the build.
@@ -95,8 +95,8 @@ For example, if you want to add a package named myapp:
 
 .. code-block:: console
 
-    $ cd buildroot-external-TI/
-    $ mkdir -p package/myapp
+   $ cd buildroot-external-TI/
+   $ mkdir -p package/myapp
 
 Create the Package Files
 ========================
@@ -110,28 +110,28 @@ Example Config.in:
 
 .. code-block:: console
 
-    config BR2_PACKAGE_MYAPP
-    bool "myapp"
-    help
-      MyApp is an example application.
+   config BR2_PACKAGE_MYAPP
+   bool "myapp"
+   help
+    MyApp is an example application.
 
 Example myapp.mk
 
 .. code-block:: console
 
-    MYAPP_VERSION = 1.0
-    MYAPP_SITE = http://example.com/downloads
-    MYAPP_SOURCE = myapp-$(MYAPP_VERSION).tar.gz
+   MYAPP_VERSION = 1.0
+   MYAPP_SITE = http://example.com/downloads
+   MYAPP_SOURCE = myapp-$(MYAPP_VERSION).tar.gz
 
-    define MYAPP_BUILD_CMDS
-    $(MAKE) -C $(@D)
-    endef
+   define MYAPP_BUILD_CMDS
+   $(MAKE) -C $(@D)
+   endef
 
-    define MYAPP_INSTALL_TARGET_CMDS
-    $(INSTALL) -D -m 0755 $(@D)/myapp $(TARGET_DIR)/usr/bin/myapp
-    endef
+   define MYAPP_INSTALL_TARGET_CMDS
+   $(INSTALL) -D -m 0755 $(@D)/myapp $(TARGET_DIR)/usr/bin/myapp
+   endef
 
-    $(eval $(generic-package))
+   $(eval $(generic-package))
 
 Add the Package to Buildroot Configuration
 ==========================================
@@ -141,7 +141,7 @@ new package. Add the following line:
 
 .. code-block:: console
 
-    $ source "$BR2_EXTERNAL_TI_PATH/package/myapp/Config.in"
+   $ source "$BR2_EXTERNAL_TI_PATH/package/myapp/Config.in"
 
 Also edit external.mk to include package mk file
 
@@ -157,15 +157,15 @@ Buildroot configuration.
 
 .. code-block:: console
 
-    $ cd buildroot/
-    $ make menuconfig
+   $ cd buildroot/
+   $ make menuconfig
 
 Navigate to your package in the External Options menu and enable it. Save and exit
 the menuconfig interface.
 
 .. figure:: /images/buildroot_custom_package.png
-    :height: 600
-    :width: 800
+   :height: 600
+   :width: 800
 
 Build the Package
 =================
@@ -175,7 +175,7 @@ compile, and include your new package in the build process.
 
 .. code-block:: console
 
-    $ make
+   $ make
 
 Verify the Package
 ==================
@@ -186,7 +186,7 @@ filesystem.
 
 .. code-block:: console
 
-    $ find output/target -name myapp
+   $ find output/target -name myapp
 
 You should see the path to your package's binary, indicating that it was
 successfully included in the build.

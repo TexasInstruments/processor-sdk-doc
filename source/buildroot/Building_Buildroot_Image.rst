@@ -17,7 +17,7 @@ the following command:
 
 .. code-block:: console
 
-    $ sudo apt install debianutils sed make binutils build-essential gcc g++ bash patch gzip bzip2 perl tar cpio unzip rsync file bc git
+   $ sudo apt install debianutils sed make binutils build-essential gcc g++ bash patch gzip bzip2 perl tar cpio unzip rsync file bc git
 
 ************************
 Steps to Build the Image
@@ -34,18 +34,18 @@ To set up and use the `buildroot-external-ti` external tree, follow these steps:
 
 .. code-block:: console
 
-    $ git clone -b 2024.05.3 https://github.com/buildroot/buildroot
-    $ git clone -b 10.01.10.04 https://github.com/TexasInstruments/buildroot-external-TI.git
+   $ git clone -b 2024.11.1 https://github.com/buildroot/buildroot
+   $ git clone -b 11.00.05.02 https://github.com/TexasInstruments/buildroot-external-TI.git
  
 2. Configure Buildroot to use the external tree and choose a configuration file
 
 .. code-block:: console
 
-    $ cd buildroot
-    During configuration
-    $ make BR2_EXTERNAL=<path to external tree>/buildroot-external-TI <configuration file>
-    OR
-    export BR2_EXTERNAL=<path to external tree>/buildroot-external-TI
+   $ cd buildroot
+   During configuration
+   $ make BR2_EXTERNAL=<path to external tree>/buildroot-external-TI <configuration file>
+   OR
+   export BR2_EXTERNAL=<path to external tree>/buildroot-external-TI
 
 Select the Build Configuration
 ==============================
@@ -57,10 +57,10 @@ configuration file for your target device.
 
 .. code-block:: console
 
-    $ cd buildroot
-    $ make <defconfig>
-    For example, for AM62X-SK Linux build use ti_release_am62x_sk_defconfig
-    $ make ti_release_am62x_sk_defconfig
+   $ cd buildroot
+   $ make <defconfig>
+   For example, for AM62LX-evm Linux build use ti_release_am62lx_evm_defconfig
+   $ make ti_release_am62lx_evm_defconfig
 
 Customize the Configuration
 ===========================
@@ -70,7 +70,7 @@ interface. This step is optional but useful if you need to make specific adjustm
 
 .. code-block:: console
 
-    $ make menuconfig
+   $ make menuconfig
 
 Build the Image
 ===============
@@ -80,7 +80,7 @@ the necessary components and creates the root filesystem, kernel, and bootloader
 
 .. code-block:: console
 
-    $ make TI_K3_BOOT_FIRMWARE_VERSION=10.01.10
+   $ make TI_K3_BOOT_FIRMWARE_VERSION=11.00.05
 
 The build process can take some time, depending on your system's resources and
 the complexity of the configuration.
@@ -107,9 +107,9 @@ Example for SD card:
 
 .. code-block:: console
 
-    $ sudo dd if=output/images/sdcard.img of=/dev/sdX
-    $ sync
-    Replace /dev/sdX with the appropriate device identifier for your SD card.
+   $ sudo dd if=output/images/sdcard.img of=/dev/sdX
+   $ sync
+   Replace /dev/sdX with the appropriate device identifier for your SD card.
 
 Booting the SD Card Image
 =========================
@@ -119,7 +119,7 @@ After the image is flashed to SD Card. Change the boot mode pins in
 
 .. code-block:: console
 
-    SW1[1:8] = 11000010 and SW2[1:8] = 01000000
+   SW1[1:8] = 11000010 and SW2[1:8] = 01000000
 
 Insert the SD Card in SD Card slot in |__PART_FAMILY_DEVICE_NAMES__| board. Use a
 USB Micro-B cable to connect the host PC to the USB Micro-B interface for UART
@@ -128,28 +128,25 @@ terminal window:
 
 .. code-block:: console
 
-    Trying to boot from MMC2
-    Authentication passed
-    Authentication passed
-    Authentication passed
-    ...
-    ...
-    ...
-    Starting network: [    2.823578] am65-cpsw-nuss 8000000.ethernet eth0: PHY [8000f00.mdio:00] driver [TI DP83867] (irq=POLL)
-    [    2.823635] am65-cpsw-nuss 8000000.ethernet eth0: configuring for phy/rgmii-rxid link mode
-    udhcpc: started, v1.36.1
-    udhcpc: broadcasting discover
-    udhcpc: no lease, forking to background
-    [    5.944022] am65-cpsw-nuss 8000000.ethernet eth1: PHY [8000f00.mdio:01] driver [TI DP83867] (irq=POLL)
-    [    5.944130] am65-cpsw-nuss 8000000.ethernet eth1: configuring for phy/rgmii-rxid link mode
-    udhcpc: started, v1.36.1
-    udhcpc: broadcasting discover
-    udhcpc: no lease, forking to background
-    OK
+   Trying to boot from MMC2
+   ...
+   ...
+   ...
+   Starting network: [    2.823578] am65-cpsw-nuss 8000000.ethernet eth0: PHY [8000f00.mdio:00] driver [TI DP83867] (irq=POLL)
+   [    2.823635] am65-cpsw-nuss 8000000.ethernet eth0: configuring for phy/rgmii-rxid link mode
+   udhcpc: started, v1.36.1
+   udhcpc: broadcasting discover
+   udhcpc: no lease, forking to background
+   [    5.944022] am65-cpsw-nuss 8000000.ethernet eth1: PHY [8000f00.mdio:01] driver [TI DP83867] (irq=POLL)
+   [    5.944130] am65-cpsw-nuss 8000000.ethernet eth1: configuring for phy/rgmii-rxid link mode
+   udhcpc: started, v1.36.1
+   udhcpc: broadcasting discover
+   udhcpc: no lease, forking to background
+   OK
 
-    Welcome to Buildroot
-    buildroot login: root
-    #
+   Welcome to Buildroot
+   buildroot login: root
+   #
 
 *************
 Going further

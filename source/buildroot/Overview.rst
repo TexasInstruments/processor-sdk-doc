@@ -46,19 +46,23 @@ Repository structure
 
 .. code-block::
 
-    buildroot-external-TI
-    ├── external.desc
-    ├── external.mk
-    ├── Config.in 
-    ├── board
-    │   ├── ti
-    │   │   ├── am62x-sk
-    │   │   ├── common
-    ├── COPYING
-    ├── README.md
-    ├── configs
-    │   ├── ti_release_am62x_sk_defconfig
-    │   └── ti_release_am62x_sk_rt_defconfig
+   buildroot-external-TI
+   ├── external.desc
+   ├── external.mk
+   ├── Config.in
+   ├── board
+   │   ├── ti
+   │   │   ├── am62x-sk
+   │   │   ├── am62lx-evm
+   │   │   ├── common
+   ├── COPYING
+   ├── README.md
+   ├── configs
+   │   ├─ ti_release_am62x_sk_defconfig
+   │   ├─ ti_release_am62x_sk_rt_defconfig
+   │   ├─ ti_release_am62lx_evm_defconfig
+   │   ├─ ti_release_am62lx_evm_rt_defconfig
+   ├── package
 
 :file:`external.desc`: contains name and description of br2-external tree.
 
@@ -69,6 +73,8 @@ Repository structure
 :file:`external.mk`: used to define package recipes.
 
 :file:`Config.in`: used to define package recipes.
+
+:file:`package`: used to add package.
 
 .. _technical-support:
 

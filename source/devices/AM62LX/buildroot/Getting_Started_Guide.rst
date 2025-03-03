@@ -46,8 +46,8 @@ Create SD Card using balenaEtcher
         Etcher will decompress the image and write it to the SD card, as shown below:
 
 .. figure:: /images/balena_etcher.png
-    :height: 600
-    :width: 800
+   :height: 600
+   :width: 800
 
 ********************************
 Set the EVM to SD card Boot mode
@@ -55,13 +55,13 @@ Set the EVM to SD card Boot mode
 
 The simplest way to run Linux on the EVM is through an SD card. For that, the
 EVM will need to be configured for SD card boot.
-Refer to `AM62L EVM User's Guide <https://www.ti.com/tool/EVM-AM62L>`__ for
+Refer to `AM62L EVM User's Guide <https://www.ti.com/tool/TMDS62LEVM>`__ for
 detailed information about boot mode configurations. For quick reference,
 the figure below shows the boot mode switch setting for SD card boot.
 
-.. figure:: /images/AM62x_SD_boot.jpg
-    :height: 600
-    :width: 800
+.. figure:: /images/AM62LX_SD_boot.jpg
+   :height: 600
+   :width: 800
 
 ***************************
 Boot and Validate Buildroot
@@ -73,7 +73,7 @@ Insert the SD Card in the board and Power ON the EVM.
 After few seconds the booting prompt will appear.
 
 .. figure:: /images/buildroot_homescreen.png
-    :height: 600
-    :width: 800
+   :height: 600
+   :width: 800
 
 You've successfully booted Buildroot on AM62L.
