@@ -69,13 +69,30 @@ Hardware Prerequisites
 Launching the TI LVGL Demo
 **************************
 
-The demo will auto launch upon Linux booting on the EVM. Follow the below instructions to flash the SD card:
+.. ifconfig:: CONFIG_sdk in ('SITARA')
 
-1. Flash an SD card with the :file:`tisdk-default-image`. User can download the :file:`tisdk-default-image` wic image from |__SDK_DOWNLOAD_URL__|.
+   The demo will auto launch upon Linux booting on the EVM. Follow the below instructions to flash the SD card:
+
+   1. Flash an SD card with the :file:`tisdk-default-image`. User can download the :file:`tisdk-default-image` wic image from |__SDK_DOWNLOAD_URL__|.
    Please follow the instructions from here to :ref:`Flash an SD card <processor-sdk-linux-create-sd-card>`.
 
-2. Insert the flashed SD card to the board, connect the display, mouse/touch-input, ethernet cable, aux cable, jumper wire and power on the EVM.
+   2. Insert the flashed SD card to the board, connect the display, mouse/touch-input, ethernet cable, aux cable, jumper wire and power on the EVM.
    The TI LVGL Demo will launch automatically when the device is fully booted.
+
+.. ifconfig:: CONFIG_sdk in ('DebianSDK')
+
+   Upon booting the EVM, Weston is launched automatically. To launch the LVGL demo, refer the following
+   instructions:
+
+   1. Flash an SD card with the :file:`tisdk-debian-trixie` wic image. User can download the wic image from |__SDK_DOWNLOAD_URL__|.
+   Please follow the instructions from here to :ref:`Flash an SD card <processor-sdk-debian-create-sd-card>`.
+
+   2. Insert the flashed SD card to the board, connect the display, mouse/touch-input, ethernet cable, aux cable, jumper wire and power the EVM on.
+
+   3. Weston is launched on boot. Shut it down with `systemctl stop weston`.
+
+   4. Launch the demo by typing `/usr/bin/lvglsim` into the UART command prompt.
+
 
 **********************
 Using the TI LVGL Demo
@@ -176,16 +193,29 @@ To launch the Smart Home HMI demo, click on the `Smart Home` widget in the apps 
 
    .. note::
 
-      By default CC33xx is configured at boot, so here are the steps that can be followed to enable it:
+      By default CC33xx is configured at boot, so here are the steps that can be followed to enable it. If you are running as non-root user, run the following using `sudo`:
 
-      .. code-block:: console
+      .. ifconfig:: CONFIG_sdk in ('SITARA')
 
-         $ systemctl stop ti-lvgl-demo
-         $ cd /usr/share/cc33xx
-         $ ./sta_start.sh
-         $ ./sta_connect.sh -s WPA-PSK -n <SSID> -p <PASSWORD>
-         $ udhcpc -i wlan0
-         $ systemctl start ti-lvgl-demo
+         .. code-block:: console
+
+            root@<machine>:~ systemctl stop ti-lvgl-demo
+            root@<machine>:~  cd /usr/share/cc33xx
+            root@<machine>:~  ./sta_start.sh
+            root@<machine>:~  ./sta_connect.sh -s WPA-PSK -n <SSID> -p <PASSWORD>
+            root@<machine>:~  udhcpc -i wlan0
+            root@<machine>:~  systemctl start ti-lvgl-demo
+
+      .. ifconfig:: CONFIG_sdk in ('DebianSDK')
+
+         .. code-block:: console
+
+            root@<machine>:~  systemctl stop ti-lvgl-demo
+            root@<machine>:~  cd /usr/share/cc33xx
+            root@<machine>:~  bash ./sta_start.sh
+            root@<machine>:~  bash ./sta_connect.sh -s WPA-PSK -n <SSID> -p <PASSWORD>
+            root@<machine>:~  udhcpc -i wlan0
+            root@<machine>:~  systemctl start ti-lvgl-demo
 
       For more details on how to enable CC33xx and connect to WiFi, visit :ref:`How to Enable M.2-CC33x1 in Linux <enable_m2cc3301>`
 
@@ -193,70 +223,70 @@ To launch the Smart Home HMI demo, click on the `Smart Home` widget in the apps 
 
 *Widget#1: Climate Control*
 
- .. note::
+.. note::
 
-      This feature will work on platforms that have on-chip ADC. Following is supported on AM62Lx
+   This feature will work on platforms that have on-chip ADC. Following is supported on AM62Lx
 
- - The indoor temperature in this widget displays the digital data obtained from ADC and display (data/10) on the widget.
- - The outdoor temperature below the indoor temperature shows the value of (data/10)-6.5, if it is positive, else, shows zero.
- - The indoor temperature is sent over SSL-encrypted MQTT messages under the topic `SmartHome/temp`
- - This demo uses channel 0 for ADC input. To change the channel being used, modify the following in
+- The indoor temperature in this widget displays the digital data obtained from ADC and display (data/10) on the widget.
+- The outdoor temperature below the indoor temperature shows the value of (data/10)-6.5, if it is positive, else, shows zero.
+- The indoor temperature is sent over SSL-encrypted MQTT messages under the topic `SmartHome/temp`
+- This demo uses channel 0 for ADC input. To change the channel being used, modify the following in
    `ti-lvgl-demo/lv_port_linux/lvgl/demos/high_res/adc.c <https://github.com/TexasInstruments/ti-lvgl-demo.git/>`__
 
-      .. code-block:: c
+.. code-block:: c
 
-         FILE *fp = popen("cat /sys/bus/iio/devices/iio\:device0/in_voltage0_raw", "r");
+   FILE *fp = popen("cat /sys/bus/iio/devices/iio\:device0/in_voltage0_raw", "r");
 
 *Widget#2: Charging*
 
- - The data shown in this widget is the same that is shown in the EV Charging HMI app.
- - This percentage completion data is also sent over SSL-encrypted MQTT messages under the topic `SmartHome/evCharge`
+- The data shown in this widget is the same that is shown in the EV Charging HMI app.
+- This percentage completion data is also sent over SSL-encrypted MQTT messages under the topic `SmartHome/evCharge`
 
 *Widget#3: Lock*
 
-   .. note::
+.. note::
 
-      Lock screen feature has only been enabled on AM62L
+   Lock screen feature has only been enabled on AM62L
 
-   - Sliding the lock to the right will lock the screen (disable all screen input)
-   - To unlock, press the SW5: User Button on the TMDS62LEVM
+- Sliding the lock to the right will lock the screen (disable all screen input)
+- To unlock, press the SW5: User Button on the TMDS62LEVM
 
-         .. Image:: /images/ti-lvgl-demo-tmds62levm-usr-button.png
-            :height: 200
+   .. Image:: /images/ti-lvgl-demo-tmds62levm-usr-button.png
+      :height: 200
 
 *Widget#4: Speaker*
 
-   - The play/pause button will play noise in the McASP device.
-   - Custom audio filecan also be played by making necessary changes as shown below in
-     `ti-lvgl-demo/lv_port_linux/lvgl/demos/high_res/audio.c <https://github.com/TexasInstruments/ti-lvgl-demo.git/>`__
+- The play/pause button will play noise in the McASP device.
+- Custom audio filecan also be played by making necessary changes as shown below in
+   `ti-lvgl-demo/lv_port_linux/lvgl/demos/high_res/audio.c <https://github.com/TexasInstruments/ti-lvgl-demo.git/>`__
 
-      .. code-block:: c
+   .. code-block:: c
 
-         /* Copy the audio file in the SD file system */
-         /* In audio_play() function in audio.c */
+      /* Copy the audio file in the SD file system */
+      /* In audio_play() function in audio.c */
 
-         //Modify the following as per the specification of the audio file
-         rate     = 48000; //in Hz
-         channels = 1;     //1: mono, 2:stereo
-         seconds  = 1;     //duration of audio
-         :
-         :
-         //Replace "/usr/share/sounds/alsa/Noise.wav" with the path of the audio file
-         char *filename_wav = "/usr/share/sounds/alsa/Noise.wav";
+      //Modify the following as per the specification of the audio file
+      rate     = 48000; //in Hz
+      channels = 1;     //1: mono, 2:stereo
+      seconds  = 1;     //duration of audio
+      :
+      :
+      //Replace "/usr/share/sounds/alsa/Noise.wav" with the path of the audio file
+      char *filename_wav = "/usr/share/sounds/alsa/Noise.wav";
 
-   - Volume can be controlled from the vertical slider on the right-side of the widget.
-   - Volume can also be set by sending values between 1 to 100 over MQTT topic `SmartHome/volume` from remote device over internet.
+- Volume can be controlled from the vertical slider on the right-side of the widget.
+- Volume can also be set by sending values between 1 to 100 over MQTT topic `SmartHome/volume` from remote device over internet.
 
 *Widget#5: Main Light*
 
-   - The `Light temperature` slider will increase/decrease the User LED blinking frequency.
-   - The left-end of slider (0 K) toggles LED every 250ms and the right-end of slider (20000 K) toggles LED every 20ms.
-   - `Light temperature` can also be set by sending values between 0 to 20000 over MQTT topic `SmartHome/led` from remote device over internet.
-   - In HMI, the slider `Light temperature` is not associated with any functionality but can be programmed be user to perform any function.
+- The `Light temperature` slider will increase/decrease the User LED blinking frequency.
+- The left-end of slider (0 K) toggles LED every 250ms and the right-end of slider (20000 K) toggles LED every 20ms.
+- `Light temperature` can also be set by sending values between 0 to 20000 over MQTT topic `SmartHome/led` from remote device over internet.
+- In HMI, the slider `Light temperature` is not associated with any functionality but can be programmed be user to perform any function.
 
 *Widget#6: Sensor Controls*
 
-   - The buttons/sliders in this widget are not associated with any functionality but can be programmed by the user to perform any function.
+- The buttons/sliders in this widget are not associated with any functionality but can be programmed by the user to perform any function.
 
 Launching the Smart Meter HMI
 =============================
@@ -290,11 +320,27 @@ This widget contains a slide-show on Application Processor Security for AM6X dev
 Building the TI LVGL Demo from Sources
 **************************************
 
-The TI LVGL Demo is enabled in :file:`tisdk-default-image` yocto filesystem for |__PART_FAMILY_DEVICE_NAMES__| by default. Note, that
-the binary itself does not have asset images and slides built in it. :file:`tisdk-default-image` contains the required assets within
-:file:`/usr/share/ti-lvgl-demo/*`. Place any additional assets here while making any modifications. Yocto recipe for
-building this demo can be found at
-`github: ti-lvgl-demo.bb <https://github.com/TexasInstruments/meta-tisdk/blob/scarthgap/recipes-demos/ti-lvgl-demo/ti-lvgl-demo.bb>`__
+.. ifconfig:: CONFIG_sdk in ('SITARA')
+
+   The TI LVGL Demo is enabled in :file:`tisdk-default-image` yocto filesystem for |__PART_FAMILY_DEVICE_NAMES__| by default.
+
+.. ifconfig:: CONFIG_sdk in ('DebianSDK')
+
+   The TI LVGL Demo is packaged in :file:`tisdk-debian-trixie` wic image for |__PART_FAMILY_DEVICE_NAMES__| by default.
+
+Note, that the binary itself does not have asset images and slides built in it.
+The image contains the required assets within :file:`/usr/share/ti-lvgl-demo/`. Place any additional
+assets here while making any modifications.
+
+.. ifconfig:: CONFIG_sdk in ('SITARA')
+
+   Yocto recipe for building this demo can be found at
+   `github: ti-lvgl-demo.bb <https://github.com/TexasInstruments/meta-tisdk/blob/scarthgap/recipes-demos/ti-lvgl-demo/ti-lvgl-demo.bb>`__
+
+.. ifconfig:: CONFIG_sdk in ('DebianSDK')
+
+   Debian package for building this demo can be found at
+   `github: ti-lvgl-demo debian package <https://github.com/TexasInstruments/debian-repos/blob/master/ti-lvgl-demo/suite/trixie/debian/>`__
 
 The source code is available at `TI LVGL Demo <https://github.com/TexasInstruments/ti-lvgl-demo.git/>`__ and can be re-compiled with the
 following steps:
