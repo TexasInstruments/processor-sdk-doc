@@ -1,4 +1,4 @@
-# General family replacement variables and configuration values for Buildroot build
+# General family replacement variables and configuration values for Linux build
 
 # This file is processed by Python scripts to define both replacement
 # variable and configuration values for a device family build.
@@ -17,8 +17,8 @@ Replacement Variables
 '__PART_FAMILY_DEVICE_NAMES__'   : 'AM62LX'
 '__PRODUCT_LINE_NAME__'          : 'Sitara MPU'
 '__SDK_BUILD_MACHINE__'          : 'am62lxx-evm'
-'__SDK_FULL_NAME__'              : 'Buildroot for AM62L'
-'__SDK_SHORT_NAME__'             : 'Buildroot'
+'__SDK_FULL_NAME__'              : 'Debian for AM62L'
+'__SDK_SHORT_NAME__'             : 'Debian'
 '__SDK_DOWNLOAD_URL__'           : '`AM62L-SDK-Download-page <https://www.ti.com/tool/AM62L-PROCESSOR-SDK>`__'
 '__LINUX_UBUNTU_VERSION_LONG__'  : '22.04 (64-bit)'
 '__LINUX_UBUNTU_VERSION_SHORT__' : '22.04'
@@ -27,4 +27,4 @@ Configuration Values
 --------------------
 'CONFIG_part_family'      : 'AM62LX_family'
 'CONFIG_part_variant'     : 'AM62LX'
-'CONFIG_sdk'              : 'BuildrootSDK'
+'CONFIG_sdk'              : 'DebianSDK'
