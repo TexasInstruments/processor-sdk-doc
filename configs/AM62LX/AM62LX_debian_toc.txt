@@ -7,3 +7,4 @@ debian/Building_Debian_Packages
 debian/How_to_Guides/index_How_to_Guides
 linux/How_to_Guides/Target/How_To_Enable_M2CC3301_in_linux
 debian/Demo_User_Guides/index_Demos
+system/Demo_User_Guides/TI_LVGL_Demo_User_Guide
