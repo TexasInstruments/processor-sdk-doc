@@ -859,35 +859,6 @@ Potential issues
 -  Try to use application which uses threads for interacting with ALSA
    and with the filesystem
 
-.. rubric:: In case of CPU stalls (when recording)
-   :name: in-case-of-cpu-stalls-when-recording
-
-| **No longer relevant** as DMA driver does a force teardown of the channel.
-| On some platforms, recording audio on high sample rates may work fine the
-  first time, but due to issues with channel cleanup it may cause CPU stalls
-  when recording the second time, requiring a reboot to fix.
-| In such scenarios, use smaller period sizes (64 to 256) while recording. For
-  example:
-
-.. code-block:: text
-
-    arecord -Dplughw:0,0 -r 48000 -t wav --period-size=64 <path to wav file>
-
-.. rubric:: ALSA period size must be aligned with the FIFO depth (tx/rx
-   numevt)
-   :name: alsa-period-size-must-be-aligned-with-the-fifo-depth-txrx-numevt
-
-| **No longer relevant** as the kernel side takes care of the AFIFO
-  depth vs period size issue.
-| To decrease audio-caused stress on the system, the AFIFO is enabled and
-  the depth is set to 32 for McASP.
-| If the ALSA period size is not aligned with this FIFO setting, a constant
-  'trrrrr' can be heard on the output. This is caused by the eDMA not being able
-  to handle a fragment size that is not aligned with burst size (AFIFO depth).
-| Application needs to make sure that **period\_size / FIFO depth** is
-  even number.
-|
-
 Additional Information
 ^^^^^^^^^^^^^^^^^^^^^^
 
