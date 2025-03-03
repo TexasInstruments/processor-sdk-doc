@@ -42,19 +42,7 @@ Where <hash> is the commit shown here: :ref:`tf-a-release-notes`.
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX', 'AM64X', 'J722S')
 
-    .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX', 'J722S')
-
-        *With Low Power Modes enabled (default):*
-
-            .. code-block:: console
-
-                $ export TFA_DIR=<path-to-arm-trusted-firmware>
-                $ cd $TFA_DIR
-                $ make ARCH=aarch64 CROSS_COMPILE="$CROSS_COMPILE_64" PLAT=k3 K3_PM_SYSTEM_SUSPEND=1 TARGET_BOARD=lite SPD=opteed
-
     .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX', 'AM64X', 'J722S')
-
-        *Without Low Power Modes enabled:*
 
             .. code-block:: console
 
