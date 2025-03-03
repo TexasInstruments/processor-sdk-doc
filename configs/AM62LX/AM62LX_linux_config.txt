@@ -13,8 +13,8 @@
 
 Replacement Variables
 ---------------------
-'__PART_FAMILY_NAME__'           : 'AM62L'
-'__PART_FAMILY_DEVICE_NAMES__'   : 'AM62L'
+'__PART_FAMILY_NAME__'           : 'AM62LX'
+'__PART_FAMILY_DEVICE_NAMES__'   : 'AM62LX'
 '__PRODUCT_LINE_NAME__'          : 'Sitara MPU'
 '__SDK_BUILD_MACHINE__'          : 'am62lxx-evm'
 '__SDK_FULL_NAME__'              : 'AM62L-Linux-SDK'
@@ -34,8 +34,8 @@ Replacement Variables
 
 Configuration Values
 --------------------
-'CONFIG_part_family'      : 'AM62L_family'
-'CONFIG_part_variant'     : 'AM62L'
+'CONFIG_part_family'      : 'AM62LX_family'
+'CONFIG_part_variant'     : 'AM62LX'
 'CONFIG_sdk'              : 'SITARA'
 'CONFIG_image_type'       : 'default'
 'CONFIG_icss_support'     : 'yes'
