@@ -338,7 +338,7 @@ The "Build Output" is given relative to the
       | meta-toolchain-arago-tisdk   | sdk/arago-<arago-version>-<architecture>.sh                          | Devkit                     |
       +------------------------------+----------------------------------------------------------------------+----------------------------+
 
-   .. ifconfig:: CONFIG_part_variant in ('AM62X')
+   .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62LX')
 
       +------------------------------+----------------------------------------------------------------+----------------------------+
       | Target                       | Build Output                                                   | Description                |
@@ -611,6 +611,14 @@ The "Build Output" is given relative to the
       | am65xx-evm    | AM65x Evaluation Module, AM65x Industrial Development Kit, DRA80xM Evaluation Module    |
       +---------------+-----------------------------------------------------------------------------------------+
 
+   .. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+      +---------------+-----------------------------------------------+
+      | **MACHINE**   | **Supported EVMs**                            |
+      +---------------+-----------------------------------------------+
+      | am62lxx-evm   | AM62L EVM - HS-FS                             |
+      +---------------+-----------------------------------------------+
+
    .. ifconfig:: CONFIG_part_variant in ('Gen')
 
       +---------------+---------------------------------------------------------------------------------------+
@@ -697,6 +705,14 @@ The "Build Output" is given relative to the
       +---------------+-----------------------------------------------------------------------------------------+
       | am65xx-evm    | AM65x Evaluation Module, AM65x Industrial Development Kit, DRA80xM Evaluation Module    |
       +---------------+-----------------------------------------------------------------------------------------+
+
+   .. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+      +---------------+-----------------------------------------------+
+      | **MACHINE**   | **Supported EVMs**                            |
+      +---------------+-----------------------------------------------+
+      | am62lxx-evm   | AM62L EVM - HS-FS                             |
+      +---------------+-----------------------------------------------+
 
    .. ifconfig:: CONFIG_part_variant in ('Gen')
 

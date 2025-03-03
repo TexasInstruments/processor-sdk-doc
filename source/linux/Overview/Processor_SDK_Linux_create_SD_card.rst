@@ -57,7 +57,7 @@ Create SD Card using balenaEtcher
 
     .. parsed-literal::
 
-       tisdk-|__IMAGE_TYPE__|-image-<machine>.wic.xz
+       tisdk-|__IMAGE_TYPE__|-image-<machine>-<version>.rootfs.wic.xz
 
 2.  Download and install the balenaEtcher tool
 
@@ -86,16 +86,16 @@ Create SD Card using bmap-tools
 
     .. parsed-literal::
 
-       tisdk-|__IMAGE_TYPE__|-image-<machine>.wic.xz
+       tisdk-|__IMAGE_TYPE__|-image-<machine>-<version>.rootfs.wic.xz
 
-2. Decompress the tisdk-|__IMAGE_TYPE__|-image-<machine>.wic.xz to tisdk-|__IMAGE_TYPE__|-image-<machine>.wic
+2. Decompress the tisdk-|__IMAGE_TYPE__|-image-<machine>-<version>.rootfs.wic.xz to tisdk-|__IMAGE_TYPE__|-image-<machine>-<version>.rootfs.wic
 
     - For Linux:
 
     .. parsed-literal::
 
        cd <PSDK_PATH>/filesystem
-       unxz tisdk-|__IMAGE_TYPE__|-image-<machine>.wic.xz
+       unxz tisdk-|__IMAGE_TYPE__|-image-<machine>-<version>.rootfs.wic.xz
 
 3.  Flash the WIC image to SD card
 
@@ -140,13 +140,13 @@ Create SD Card using bmap-tools
 
          .. parsed-literal::
 
-            bmaptool create -o tisdk-|__IMAGE_TYPE__|-image.bmap tisdk-|__IMAGE_TYPE__|-image-<machine>.wic
+            bmaptool create -o tisdk-|__IMAGE_TYPE__|-image-<machine>-<version>.rootfs.bmap tisdk-|__IMAGE_TYPE__|-image-<machine>-<version>.rootfs.wic
 
       c) Then write the WIC image to the SD card with the following command:
 
          .. parsed-literal::
 
-            sudo bmaptool copy --bmap tisdk-|__IMAGE_TYPE__|-image-<machine>.bmap tisdk-|__IMAGE_TYPE__|-image-<machine>.wic /dev/sdx
+            sudo bmaptool copy --bmap tisdk-|__IMAGE_TYPE__|-image-<machine>-<version>.rootfs.bmap tisdk-|__IMAGE_TYPE__|-image-<machine>-<version>.rootfs.wic /dev/sdx
 
 
          .. danger::
@@ -158,7 +158,7 @@ Create SD Card using bmap-tools
 
          .. parsed-literal::
 
-            sudo bmaptool copy --bmap tisdk-|__IMAGE_TYPE__|-image-<machine>.bmap tisdk-|__IMAGE_TYPE__|-image-<machine>.wic /dev/sdc
+            sudo bmaptool copy --bmap tisdk-|__IMAGE_TYPE__|-image-<machine>-<version>.rootfs.bmap tisdk-|__IMAGE_TYPE__|-image-<machine>-<version>.rootfs.wic /dev/sdc
 
 .. _processor-sdk-linux-create-sd-card-with-custom-images:
 
