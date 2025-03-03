@@ -32,6 +32,24 @@ with drivers included in a particular release.
 For further information or to report any problems, contact
 https://e2e.ti.com/ or https://support.ti.com/
 
+Linux QSPI/OSPI Driver
+----------------------
+
+.. csv-table::
+    :header: "Flash","File Size","Read Throughput","Write Throughput"
+
+    "OSPI NOR","50 MB","205 MB/s","403 KB/s"
+    "QSPI NAND","50 MB","18.6 MB/s","4.9 MB/s"
+
+U-Boot QSPI/OSPI Driver
+-----------------------
+
+.. csv-table::
+    :header: "Flash","File Size","Read Throughput","Write Throughput"
+
+    "OSPI NOR","50 MB","303 MB/s","167 KB/s"
+    "QSPI NAND","50 MB","25.7 MB/s","5.5 MB/s"
+
 Low Power Performance
 ---------------------
 
