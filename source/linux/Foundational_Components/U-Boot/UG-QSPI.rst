@@ -31,6 +31,16 @@ controllers work only in master mode.
    | AM62x LP SK | OSPI NAND  | :file:`drivers/spi/cadence_qspi.c` |
    +-------------+------------+------------------------------------+
 
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+   +-------------+------------+------------------------------------+
+   | SoC Family  | Capability | Driver                             |
+   +=============+============+====================================+
+   |             | OSPI NOR   | :file:`drivers/spi/cadence_qspi.c` |
+   + AM62Lx EVM  +------------+------------------------------------+
+   |             | QSPI NAND  | :file:`drivers/spi/cadence_qspi.c` |
+   +-------------+------------+------------------------------------+
+
 .. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
    +------------+------------+------------------------------------+
@@ -179,6 +189,85 @@ This driver also supports QSPI version of the same IP.
             reg = <0x0>;
             spi-tx-bus-width = <8>;
             spi-rx-bus-width = <8>;
+            spi-max-frequency = <25000000>;
+            cdns,tshsl-ns = <60>;
+            cdns,tsd2d-ns = <60>;
+            cdns,tchsh-ns = <60>;
+            cdns,tslch-ns = <60>;
+            cdns,read-delay = <2>;
+
+            partitions {
+               compatible = "fixed-partitions";
+               #address-cells = <1>;
+               #size-cells = <1>;
+
+               partition@0 {
+                  label = "ospi_nand.tiboot3";
+                  reg = <0x0 0x80000>;
+               };
+
+               partition@80000 {
+                  label = "ospi_nand.tispl";
+                  reg = <0x80000 0x200000>;
+               };
+
+               // other partitions
+            };
+         };
+      };
+
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+   The following is an example device-tree node for an OSPI NOR device
+
+   .. code-block:: dts
+
+      &ospi0 {
+
+         flash@0{
+            compatible = "jedec,spi-nor";
+            reg = <0x0>;
+            spi-tx-bus-width = <8>;
+            spi-rx-bus-width = <8>;
+            spi-max-frequency = <25000000>;
+            cdns,tshsl-ns = <60>;
+            cdns,tsd2d-ns = <60>;
+            cdns,tchsh-ns = <60>;
+            cdns,tslch-ns = <60>;
+            cdns,read-delay = <4>;
+
+            partitions {
+               compatible = "fixed-partitions";
+               #address-cells = <1>;
+               #size-cells = <1>;
+               bootph-all;
+
+               partition@0 {
+                  label = "ospi.tiboot3";
+                  reg = <0x00 0x80000>;
+               };
+
+               partition@80000 {
+                  label = "ospi.tispl";
+                  reg = <0x80000 0x200000>;
+               };
+
+               // other partitions
+            };
+         };
+      };
+
+   The following is an example device-tree node for an QSPI NAND device
+
+   .. code-block:: dts
+
+      &ospi0 {
+
+         flash@0 {
+            compatible = "spi-nand";
+            reg = <0x0>;
+            spi-tx-bus-width = <4>;
+            spi-rx-bus-width = <4>;
             spi-max-frequency = <25000000>;
             cdns,tshsl-ns = <60>;
             cdns,tsd2d-ns = <60>;
@@ -842,6 +931,130 @@ Flash properties:
        |   ospi_nand.phypattern   |
        |   (256k)                 |
        +--------------------------+
+
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+    **OSPI NOR (Boot media)**
+
+    AM62Lx EVM has a Cypress S28HS512T OSPI NOR flash and SYSFW is bundled with
+    :file:`tiboot3.bin`.
+
+    Below are two methods which can be used to flash the OSPI NOR device. For
+    all methods, we will load the bootloaders into memory and then flash each
+    to OSPI NOR at the respective addresses.
+
+    **Flashing Images to OSPI NOR using TFTP server**
+
+    In this example, we'll use the ``tftp-hpa`` package from Ubuntu for our
+    tftp server. Assume bootloader names are :file:`tiboot3.bin`,
+    :file:`tispl.bin`, :file:`u-boot.img`. Verify ethernet connection between
+    AM62Lx EVM and host machine before proceeding.
+
+    1. Setup TFTP server in Host machine
+
+       .. code-block:: console
+
+          # For complete instructions refer to: https://help.ubuntu.com/community/TFTP
+          $ sudo apt install tftp-hpa
+          $ sudo vi /etc/default/tftpd-hpa # optional to change tftp directory and other options
+          $ sudo chown -R tftp /tftp # change owner/group of new directory /tftp
+          $ sudo systemctl restart tftpd-hpa # restart server
+
+    2. Setup U-boot environment for AM62Lx EVM
+
+       .. code-block:: console
+
+          # Boot to U-boot prompt using a working boot method
+          => setenv ipaddr <ip-address-of-am62lx-evm>
+          => setenv serverip <ip-address-of-tftp-server>
+
+    3. Use tftp command to load the bootloaders into memory and flash to OSPI
+       NOR
+
+       .. code-block:: console
+
+          => sf probe
+          => tftp ${loadaddr} tiboot3.bin
+          => sf update $loadaddr 0x0 $filesize
+          => tftp ${loadaddr} tispl.bin
+          => sf update $loadaddr 0x80000 $filesize
+          => tftp ${loadaddr} u-boot.img
+          => sf update $loadaddr 0x280000 $filesize
+
+    4. Change boot mode pins to OSPI boot mode and reboot AM62Lx EVM
+
+    **Flashing images to OSPI NOR using SD card**
+
+    In this example, load binaries from SD card. Assume bootloader names are
+    :file:`tiboot3.bin`, :file:`tispl.bin`, :file:`u-boot.img`. Boot via SD
+    card boot and stop at U-boot prompt before procceeding.
+
+    1. Use fatload command to load the bootloaders into memory and flash to
+       OSPI NOR
+
+       .. code-block:: console
+
+          => sf probe
+          => fatload mmc 1 ${loadaddr} tiboot3.bin
+          => sf update $loadaddr 0x0 $filesize
+          => fatload mmc 1 ${loadaddr} tispl.bin
+          => sf update $loadaddr 0x80000 $filesize
+          => fatload mmc 1 ${loadaddr} u-boot.img
+          => sf update $loadaddr 0x280000 $filesize
+
+    2. Change boot mode pins to OSPI boot mode and reboot AM62Lx EVM
+
+    **OSPI Boot Mode**
+
+    Please refer to the AM62Lx TRM Section 5.4 for more information.
+
+    **Phy Calibration**
+
+    Phy Calibration allows for higher read performance. To enable phy, the phy
+    calibration pattern must be flashed to OSPI at the start of the last erase
+    sector. For the Cypress S28HS512T flash, this lies at the address 0x3FC0000.
+    The partition name should be 'ospi.phypattern' as the driver looks for it
+    before PHY Calibration.
+
+    Download the binary file containing the phy pattern from :download:`here </files/ospi_phy_pattern>`.
+    The commands below can be used to flash the phy pattern, with the location
+    of the pattern depending on which flash is being used:
+
+    .. code-block:: console
+
+       => sf probe
+       => tftp ${loadaddr} ospi_phy_pattern
+       => sf update $loadaddr 0x3fc0000 $filesize
+
+    **Flash layout for OSPI NOR**
+
+    .. code-block:: text
+
+       +---------------------+ 0x0
+       |   ospi.tiboot3      |
+       |   (512k)            |
+       +---------------------+ 0x80000
+       |   ospi.tispl        |
+       |   (2m)              |
+       +---------------------+ 0x280000
+       |   ospi.u-boot       |
+       |   (4m)              |
+       +---------------------+ 0x680000
+       |   ospi.env          |
+       |   (256k)            |
+       +---------------------+ 0x6C0000
+       |   ospi.env.backup   |
+       |   (256k)            |
+       +---------------------+ 0x700000
+       |   padding           |
+       |   (1m)              |
+       +---------------------+ 0x800000
+       |   ospi.rootfs       |
+       |   (55m)(ubifs)      |
+       +---------------------+ 0x3FC0000
+       |   ospi.phypattern   |
+       |   (256k)            |
+       +---------------------+
 
 .. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
