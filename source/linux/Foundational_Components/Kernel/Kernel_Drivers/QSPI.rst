@@ -31,6 +31,16 @@ controllers work only in master mode.
    | AM62x LP SK | OSPI NAND  | :file:`drivers/spi/spi-cadence-quadspi.c` |
    +-------------+------------+-------------------------------------------+
 
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+   +-------------+------------+------------------------------------+
+   | SoC Family  | Capability | Driver                             |
+   +=============+============+====================================+
+   |             | OSPI NOR   | :file:`drivers/spi/cadence_qspi.c` |
+   + AM62Lx EVM  +------------+------------------------------------+
+   |             | QSPI NAND  | :file:`drivers/spi/cadence_qspi.c` |
+   +-------------+------------+------------------------------------+
+
 .. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
    +------------+------------+-------------------------------------------+
@@ -297,6 +307,85 @@ refer to :file:`Documentation/devicetree/bindings/mtd/jedec,spi-nor.yaml`,
             reg = <0x0>;
             spi-tx-bus-width = <8>;
             spi-rx-bus-width = <8>;
+            spi-max-frequency = <25000000>;
+            cdns,tshsl-ns = <60>;
+            cdns,tsd2d-ns = <60>;
+            cdns,tchsh-ns = <60>;
+            cdns,tslch-ns = <60>;
+            cdns,read-delay = <2>;
+
+            partitions {
+               compatible = "fixed-partitions";
+               #address-cells = <1>;
+               #size-cells = <1>;
+
+               partition@0 {
+                  label = "ospi_nand.tiboot3";
+                  reg = <0x0 0x80000>;
+               };
+
+               partition@80000 {
+                  label = "ospi_nand.tispl";
+                  reg = <0x80000 0x200000>;
+               };
+
+               // other partitions
+            };
+         };
+      };
+
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+   The following is an example device-tree node for an OSPI NOR device
+
+   .. code-block:: dts
+
+      &ospi0 {
+
+         flash@0{
+            compatible = "jedec,spi-nor";
+            reg = <0x0>;
+            spi-tx-bus-width = <8>;
+            spi-rx-bus-width = <8>;
+            spi-max-frequency = <25000000>;
+            cdns,tshsl-ns = <60>;
+            cdns,tsd2d-ns = <60>;
+            cdns,tchsh-ns = <60>;
+            cdns,tslch-ns = <60>;
+            cdns,read-delay = <4>;
+
+            partitions {
+               compatible = "fixed-partitions";
+               #address-cells = <1>;
+               #size-cells = <1>;
+               bootph-all;
+
+               partition@0 {
+                  label = "ospi.tiboot3";
+                  reg = <0x00 0x80000>;
+               };
+
+               partition@80000 {
+                  label = "ospi.tispl";
+                  reg = <0x80000 0x200000>;
+               };
+
+               // other partitions
+            };
+         };
+      };
+
+   The following is an example device-tree node for an QSPI NAND device
+
+   .. code-block:: dts
+
+      &ospi0 {
+
+         flash@0 {
+            compatible = "spi-nand";
+            reg = <0x0>;
+            spi-tx-bus-width = <4>;
+            spi-rx-bus-width = <4>;
             spi-max-frequency = <25000000>;
             cdns,tshsl-ns = <60>;
             cdns,tsd2d-ns = <60>;
