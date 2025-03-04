@@ -135,10 +135,9 @@ clock entity.
 GMAC
 ----
 
-GMAC interface can be configured to run at either 100 Mbps or 1 Gbps.
-CPTS hardware block helps with timestamping of packets. Refer to
-`here <Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW.html#common-platform-time-sync-cpts>`__
-for details.
+GMAC interface can be configured to run at either 100 Mbps or 1 Gbps. CPTS
+hardware block helps with timestamping of packets. Refer to
+:ref:`common-platform-time-sync-cpts` for details.
 
 PRU-ICSS
 --------
@@ -422,11 +421,13 @@ PTP/OC in slave mode:
 
 |
 
+.. _redundancy-hsr-prp:
+
 Redundancy (HSR/PRP)
 ^^^^^^^^^^^^^^^^^^^^
 
 To set up PTP OC over HSR/PRP redundant interface, first setup HSR/PRP interface
-as detailed in `HSR/PRP Linux Software <Industrial_Protocols_HSR_PRP.html#linux-software>`__.
+as detailed in :ref:`hsr-prp-overview-and-setup`.
 
 Start PTP with the same command listed above, but using a different
 configuration file:
@@ -725,9 +726,10 @@ the same ICSS-PRU simultaneously.
 
 PTP Ordinary Clock on GMAC
 --------------------------
-Refer to `here <Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW.html#common-platform-time-sync-cpts>`__
-for more details about the CPTS driver and how to run **linuxptp** over the CPSW GMAC port
-for providing the PTP OC functionality.
+
+Refer to :ref:`common-platform-time-sync-cpts` for more details about the CPTS
+driver and how to run **linuxptp** over the CPSW GMAC port for providing the PTP
+OC functionality.
 
 For example, once the AM57xx IDK is boot into Linux kernel prompt and
 the CPSW GMAC ports are properly configured, to run linuxptp over the
@@ -1848,8 +1850,8 @@ Procedure
 
 The script file :ref:`setup-hsr` and clock configuration files e.g.
 dut_1_hsr_oc.cfg, dut_2_hsr_oc.cfg, dut_3_hsr_oc.cfg (each identical, same as
-listed in `PTP Redundancy <Industrial_Protocols_PTP.html#redundancy-hsr-prp>`__
-section for HSR) will be used in the setup of the tests.
+listed in :ref:`redundancy-hsr-prp` section for HSR) will be used in the setup
+of the tests.
 
 .. code-block:: bash
    :caption: setup_hsr.sh
