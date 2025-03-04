@@ -19,7 +19,7 @@ components:
   source/devices/*/android: *android_list
 
   source/system: &mpu_list
-    - TexasInstruments/sitara-mpu-linux-sdk
+    - texasinstruments/sitara-mpu-linux-sdk
   source/buildroot: *mpu_list
   source/linux/Foundational_Components/Hypervisor: *mpu_list
   source/linux/Foundational_Components/Tools: *mpu_list
@@ -36,26 +36,26 @@ components:
   source/devices/AM64X/linux: *mpu_list
   source/devices/AM62X/linux:
     - DhruvaG2000
-    - TexasInstruments/sitara-mpu-linux-sdk
+    - texasinstruments/sitara-mpu-linux-sdk
 
   source/devices/AM62AX/linux:
-    - TexasInstruments/sitara-mpu-linux-sdk
+    - texasinstruments/sitara-mpu-linux-sdk
 
   source/devices/AM62PX/linux:
     - AashvijShenai
-    - TexasInstruments/sitara-mpu-linux-sdk
+    - texasinstruments/sitara-mpu-linux-sdk
 
   source/devices/AM62LX/linux:
-    - TexasInstruments/sitara-mpu-linux-sdk
+    - texasinstruments/sitara-mpu-linux-sdk
     - bryanbrattlof
     - r-vignesh
 
   source/linux/Overview:
-    - TexasInstruments/sitara-mpu-linux-sdk
+    - texasinstruments/sitara-mpu-linux-sdk
     - aniket-l
 
   source/linux/Release_Specific:
-    - TexasInstruments/sitara-mpu-linux-sdk
+    - texasinstruments/sitara-mpu-linux-sdk
     - aniket-l
     - praneethbajjuri
     - uditkumarti
