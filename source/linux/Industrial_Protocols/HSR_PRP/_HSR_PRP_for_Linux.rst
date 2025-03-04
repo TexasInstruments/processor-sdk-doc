@@ -103,6 +103,8 @@ The driver source code is located under net/hsr-prp folder of the Linux
 source tree. To build kernel with this driver, set Kconfig option
 CONFIG\_HSR=y in the dotconfig or enable it from the menu.
 
+.. _hsr-prp-overview-and-setup:
+
 Linux HSR/PRP Driver
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
