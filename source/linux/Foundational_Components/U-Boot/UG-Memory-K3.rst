@@ -362,11 +362,17 @@ Then transfer each desired binary from the host to the device:
    .. code-block:: console
 
       $ sudo dfu-util -R -a tiboot3.bin.raw -D tiboot3.bin
+      $ sudo dfu-util -R -a tispl.bin.raw -D tispl.bin
+      $ sudo dfu-util -R -a u-boot.img.raw -D u-boot.img
 
 - Device:
 
    .. code-block:: console
 
+      ##DOWNLOAD ... OK
+      Ctrl+C to exit ...
+      ##DOWNLOAD ... OK
+      Ctrl+C to exit ...
       ##DOWNLOAD ... OK
       Ctrl+C to exit ...
 
