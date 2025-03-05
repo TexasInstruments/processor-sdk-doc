@@ -481,16 +481,28 @@ Driver Configuration
 
 |
 
-.. _create-partitions-in-emmc-uda-from-linux:
+Listing MMC devices from Linux
+******************************
+eMMC and SD cards are registered to the MMC subsystem and availiable as a block device
+as :file:`/dev/mmcblk{n}`. To find which device index **n** corresponds to eMMC device,
+check which device includes :file:`mmcblk{n}boot0` and :file:`mmcblk{n}boot1`. Here,
+mmcblk0 is eMMC.
 
-Create software partitions in eMMC UDA
-**************************************
+.. code-block:: console
 
-In eMMC, the User Data Area (UDA) HW partition is the primary storage
-space generally used to flash the rootfs. To prepare the UDA, use
-the :command:`fdisk` command. For ex: :samp:`fdisk /dev/mmcblkN` in
-which **N** is 0 or 1. To find which device index is eMMC use the command
-:command:`lsblk`, like so:
+   root@<machine>:~# ls -l /dev/mmcblk*
+   brw-rw---- 1 root disk 179,  0 Jan  1 00:10 /dev/mmcblk0
+   brw-rw---- 1 root disk 179, 32 Jan  8  2025 /dev/mmcblk0boot0
+   brw-rw---- 1 root disk 179, 64 Jan  8  2025 /dev/mmcblk0boot1
+   brw-rw---- 1 root disk 179,  1 Jan  1 00:14 /dev/mmcblk0p1
+   crw------- 1 root root 239,  0 Jan  1 00:00 /dev/mmcblk0rpmb
+   brw-rw---- 1 root disk 179, 96 Jan  8  2025 /dev/mmcblk1
+   brw-rw---- 1 root disk 179, 97 Jan  1 00:00 /dev/mmcblk1p1
+   brw-rw---- 1 root disk 179, 98 Jan  8  2025 /dev/mmcblk1p2
+
+The software partitions for each MMC device are displayed as :file:`/dev/mmcblk{n}p{x}`,
+to see what software partitions exist for an eMMC device and if they are mounted, use  the
+command :command:`lsblk`, like so:
 
 .. code-block:: console
 
@@ -503,51 +515,256 @@ which **N** is 0 or 1. To find which device index is eMMC use the command
    |-mmcblk1p1  179:97   0  128M  0 part /run/media/boot-mmcblk1p1
    `-mmcblk1p2  179:98   0  1.9G  0 part /
 
-Where the eMMC will have hardware partitions :file:`mmcblkNboot0`
-and :file:`mmcblkNboot1`. The :file:`mmcblkN` is the eMMC device.
+Use the :command:`umount` and :command:`mount` commands to mount and unmount software partitions
+if they are formated, usally to vfat or ext4 types.
 
-Now we use :samp:`fdisk /dev/mmcblk0` to create one software partition
-in UDA. For documentation on using fdisk, please go to:
-`fdisk how-to <https://tldp.org/HOWTO/Partition/fdisk_partitioning.html>`__.
+.. _create-partitions-in-emmc-uda-from-linux:
+
+Create software partitions in eMMC UDA
+**************************************
+
+In eMMC, the User Data Area (UDA) HW partition is the primary storage space generally used
+to flash the rootfs. To create logical paritions in UDA, use the :command:`fdisk` command.
+For ex: :samp:`fdisk /dev/mmcblk{n}` in which **n** is typically 0 or 1. In the example above,
+eMMC is :samp:`fdisk /dev/mmcblk0`.
+
+For documentation on using fdisk, please go to: `fdisk how-to <https://tldp.org/HOWTO/Partition/fdisk_partitioning.html>`__.
+
+.. _create-boot-partition-in-emmc-uda-from-linux:
+
+Create "boot" partition
+=======================
+
+In this example create a "boot" partition of size 400 MiB which can be formatted to vfat type
+and will store the bootloader binaries.
+
+.. code-block:: console
+
+   root@<machine>:~# fdisk /dev/mmcblk0
+
+   Welcome to fdisk (util-linux 2.39.3).
+   Changes will remain in memory only, until you decide to write them.
+   Be careful before using the write command.
+
+   Command (m for help): n
+   Partition type
+   p   primary (0 primary, 0 extended, 4 free)
+   e   extended (container for logical partitions)
+   Select (default p):
+
+   Using default response p.
+   Partition number (1-4, default 1):
+   First sector (2048-31080447, default 2048):
+   Last sector, +/-sectors or +/-size{K,M,G,T,P} (2048-31080447, default 31080447): +400M
+
+   Created a new partition 1 of type 'Linux' and of size 400 MiB.
+   Partition #1 contains a vfat signature.
+
+   Do you want to remove the signature? [Y]es/[N]o: y
+
+   The signature will be removed by a write command.
+
+   Command (m for help): a
+   Selected partition 1
+   The bootable flag on partition 1 is enabled now.
+
+   Command (m for help): t
+   Selected partition 1
+   Hex code or alias (type L to list all): c
+   Changed type of partition 'Linux' to 'W95 FAT32 (LBA)'.
+
+   Command (m for help): w
+   The partition table has been altered.
+   [  644.818358]  mmcblk0: p1
+   Calling ioctl() to re-read partition table.
+   Syncing disks.
+   root@<machine>:~# fatlabel /dev/mmcblk0p1 boot
+
+Make sure bootable flag is set for "boot" partition, ROM may not boot from this patitition
+if bootable flag is not set.
+
+.. _create-root-partition-in-emmc-uda-from-linux:
+
+Create "root" partition
+=======================
+
+In this example create a "root" partition which can be formatted to ext4 type and will store
+Linux kernel Image, DTB, and the rootfs.
+
+.. code-block:: console
+
+   root@<machine>:~# fdisk /dev/mmcblk0
+
+   Welcome to fdisk (util-linux 2.39.3).
+   Changes will remain in memory only, until you decide to write them.
+   Be careful before using the write command.
+
+   This disk is currently in use - repartitioning is probably a bad idea.
+   It's recommended to umount all file systems, and swapoff all swap
+   partitions on this disk.
+
+
+   Command (m for help): n
+   Partition type
+   p   primary (1 primary, 0 extended, 3 free)
+   e   extended (container for logical partitions)
+   Select (default p):
+
+   Using default response p.
+   Partition number (2-4, default 2):
+   First sector (821248-31080447, default 821248):
+   Last sector, +/-sectors or +/-size{K,M,G,T,P} (821248-31080447, default 31080447):
+
+   Created a new partition 2 of type 'Linux' and of size 14.4 GiB.
+
+   Command (m for help): t
+   Partition number (1,2, default 2): 2
+   Hex code or alias (type L to list all): 83
+
+   Changed type of partition 'Linux' to 'Linux'.
+
+   Command (m for help): w
+   The partition table has been altered.
+   Syncing disks.
+   root@<machine>:~# e2label /dev/mmcblk0p2 root
+
+**Verify partitions**
+
+   Verify :file:`mmcblk0p1` and :file:`mmcblk0p2` now exist using :command:`lsblk` command.
+
+   .. code-block:: console
+
+      root@<machine>:~# lsblk -o name,mountpoint,label,size,uuid
+      NAME         MOUNTPOINT                LABEL  SIZE UUID
+      mmcblk0                                      14.8G
+      |-mmcblk0p1                            boot   400M E4D4-4879
+      `-mmcblk0p2                            root  14.4G 74d40075-07e4-4bce-9401-6fccef68e934
+      mmcblk0boot0                                 31.5M
+      mmcblk0boot1                                 31.5M
+      mmcblk1                                      29.7G
+      |-mmcblk1p1  /run/media/boot-mmcblk1p1 boot   128M 681F-55DD
+      `-mmcblk1p2  /                         root   8.7G ead4c8bb-fa37-4c4d-9ba3-47a1f3824764
 
 .. _formatting-mmc-partition-from-linux:
 
 Formatting eMMC partitions from Linux
 *************************************
 
-After creating a partition/s, the partition can be formated with
-the :command:`mkfs` command. For ex: :samp:`mkfs -t ext4 /dev/mmcblkN`
-where **mmcblkN** is the MMC device with the software partition to format.
-The general syntax for formatting disk partitions in Linux is:
+After creating a partition/s, the partition can be formated with the :command:`mkfs` command.
+For ex: :samp:`mkfs -t ext4 /dev/mmcblk{n}` where **mmcblk{n}** is the MMC device with the new
+software partitions to format. The general syntax for formatting disk partitions in Linux is:
 
 .. code-block:: console
 
    mkfs [options] [-t type fs-options] device [size]
 
-For example, to format a partition in eMMC UDA to ext4 file system:
+.. _format-partition-vfat:
+
+Format to vfat
+==============
+
+In this example, format the first created partition to type vfat.
+
+.. code-block:: console
+
+   root@<machine>:~# mkfs -t vfat /dev/mmcblk0p1
+
+.. _format-partition-ext4:
+
+Format to ext4
+==============
+
+In this example, format the first created partition to type ext4.
+
+.. code-block:: console
+
+   root@<machine>:~# mkfs -t ext4 /dev/mmcblk0p2
+
+.. _flash-emmc-mmcsd-boot-uda-fs:
+
+Flash eMMC for MMCSD boot from eMMC UDA in FS mode
+**************************************************
+
+In this example, we show one simple method for flashing to eMMC for MMCSD boot from
+eMMC UDA in FS mode. Please know this is not the only method for flashing the eMMC
+for this bootmode.
+
+This example assumes the current bootmode is MMCSD boot from SD (FS mode)
+
+Flash to eMMC "boot" software partition
+=======================================
+
+.. code-block:: console
+
+   root@<machine>:~# mkdir eboot sdboot
+   root@<machine>:~# mount /dev/mmcblk0p1 eboot
+   root@<machine>:~# mount /dev/mmcblk1p1 sdboot
+
+Verify the partitions are mounted to the correct folders using :command:`lsblk` command in the
+column labeled :file:`MOUNTPOINTS`.
 
 .. code-block:: console
 
    root@<machine>:~# lsblk
    NAME         MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
    mmcblk0      179:0    0 14.8G  0 disk
-   `-mmcblk0p1  179:1    0 14.8G  0 part /run/media/mmcblk0p1
+   |-mmcblk0p1  179:1    0  400M  0 part /root/eboot
+   `-mmcblk0p2  179:2    0 14.4G  0 part
    mmcblk0boot0 179:32   0 31.5M  1 disk
    mmcblk0boot1 179:64   0 31.5M  1 disk
-   mmcblk1      179:96   0 14.8G  0 disk
-   |-mmcblk1p1  179:97   0  128M  0 part /run/media/boot-mmcblk1p1
-   `-mmcblk1p2  179:98   0  8.8G  0 part /
-   root@<machine>:~# umount /run/media/mmcblk0p1
-   [   43.648532] EXT4-fs (mmcblk0p1): unmounting filesystem f8ecc7b8-ab1a-4240-ab4b-470d242c0539.
-   root@<machine>:~# mkfs -t ext4 /dev/mmcblk0p1
-   mke2fs 1.47.0 (5-Feb-2023)
-   Discarding device blocks: done
-   Creating filesystem with 3884800 4k blocks and 972944 inodes
-   Filesystem UUID: 842929dd-4e57-47b6-afa1-c03abc3100b1
-   Superblock backups stored on blocks:
-      32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632, 2654208
+   mmcblk1      179:96   0 29.7G  0 disk
+   |-mmcblk1p1  179:97   0  128M  0 part /root/sdboot
+   |                                     /run/media/boot-mmcblk1p1
+   `-mmcblk1p2  179:98   0  8.7G  0 part /
 
-   Allocating group tables: done
-   Writing inode tables: done
-   Creating journal (16384 blocks): done
-   Writing superblocks and filesystem accounting information: done
+Now we can copy bootloader binaries to eMMC and umount the partitions when writes finish.
+
+.. code-block:: console
+
+   root@<machine>:~# cd sdboot/
+   root@<machine>:~# ls
+   tiboot3.bin  tispl.bin	u-boot.img  uEnv.txt
+   root@<machine>:~# cp tiboot3.bin tispl.bin u-boot.img ../eboot/
+   root@<machine>:~# cd ../ && umount sd* && umount e*
+
+.. _flash-emmc-mmcsd-boot-uda-fs-root:
+
+Flash to eMMC "root" software partition
+=======================================
+
+.. code-block:: console
+
+   root@<machine>:~# mkdir eroot sdroot
+   root@<machine>:~# mount /dev/mmcblk0p2 eroot
+   [69229.982452] EXT4-fs (mmcblk0p2): mounted filesystem 74d40075-07e4-4bce-9401-6fccef68e934 r/w with ordered data mode. Quota mode: none.
+   root@<machine>:~# mount /dev/mmcblk1p2 sdroot
+
+Verify the partitions are mounted to the correct folders using :command:`lsblk` command in the
+column labeled :file:`MOUNTPOINTS`.
+
+.. code-block:: console
+
+   root@<machine>:~# lsblk
+   NAME         MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+   mmcblk0      179:0    0 14.8G  0 disk
+   |-mmcblk0p1  179:1    0  400M  0 part
+   `-mmcblk0p2  179:2    0 14.4G  0 part /root/eroot
+   mmcblk0boot0 179:32   0 31.5M  1 disk
+   mmcblk0boot1 179:64   0 31.5M  1 disk
+   mmcblk1      179:96   0 29.7G  0 disk
+   |-mmcblk1p1  179:97   0  128M  0 part
+   |                                     /run/media/boot-mmcblk1p1
+   `-mmcblk1p2  179:98   0  8.7G  0 part /root/sdroot
+                                         /
+
+Now we can copy rootfs to eMMC and umount the partitions when writes finish.
+
+.. code-block:: console
+
+   root@<machine>:~# cd sdroot
+   root@<machine>:~# ls
+   bin   dev  home  lost+found  mnt  proc	run   srv  tmp	var
+   boot  etc  lib	 media	     opt  root	sbin  sys  usr
+   root@<machine>:~# cp -r ./* ../eroot/
+   root@<machine>:~# cd ../ && umount sd* && umount e*
+   [70154.205154] EXT4-fs (mmcblk0p2): unmounting filesystem 74d40075-07e4-4bce-9401-6fccef68e934.
