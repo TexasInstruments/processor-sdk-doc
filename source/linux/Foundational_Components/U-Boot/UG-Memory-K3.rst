@@ -32,11 +32,28 @@ The device index "**0**" for eMMC will be used when flashing to the eMMC device
 In u-boot environment, usually **mmcdev=n** is used to selct which MMC device to boot
 Linux from, where **n** is the device index.
 
+MMC HW partitions
+=================
+
+This sections includes a summary of MMC hardware partitions.
+
+**eMMC**
+
+   Normally eMMC is divided into 4 areas (aka HW partitions):
+
+   - UDA (User Data Area): Used to store user data such as a file system. This partition can divided into several partitions
+   - Boot0/1: Used to store firmware and data needed during boot
+   - RPMB (Replay-protected memory-block area): Used to store secure data
+
+**SD**
+
+   SD card memory is not divided into sections like eMMC, but acts like UDA in eMMC where user can
+   create partitions in software allowing to logically divide the storage space into multiple sections.
 
 .. _uboot-selecting-mmc-device-and-partitions:
 
-Selecting MMC device and paritions
-==================================
+Selecting MMC device and partitions
+===================================
 
 To selct an MMC device in u-boot, the command: :command:`mmc dev` could be used.
 The general syntax is:
@@ -52,11 +69,11 @@ and partitions according to the example in: :ref:`uboot-listing-mmc-devices`.
 
 .. code-block:: console
 
-   => mmc dev 0 0 # select eMMC user HW partition (UDA)
-   => mmc dev 0 1 # select eMMC boot0 HW partition
-   => mmc dev 0 2 # select eMMC boot1 HW partition
-   => mmc dev 1 1 # select SD "boot" partition
-   => mmc dev 1 2 # select SD "root" partition
+   => mmc dev 0 0 # select eMMC UDA
+   => mmc dev 0 1 # select eMMC Boot0
+   => mmc dev 0 2 # select eMMC Boot1
+   => mmc dev 1 1 # select SD first partition (typically named 'boot')
+   => mmc dev 1 2 # select SD second partition (typically named 'root')
 
 View MMC partition contents
 ===========================
@@ -72,7 +89,7 @@ boot the device.
    :ref:`formatting-mmc-partition-from-linux` before proceeding to look at the
    eMMC partition contents.
 
-To verify partitions in any MMC device from u-boot prompt, use the
+To list software created partitions for any MMC device from u-boot prompt, use the
 command: :command:`mmc part`.
 
 .. code-block:: console
@@ -202,7 +219,7 @@ eMMC layout
       +----------------------------------+0x3900   |                         |
       |   backup environment (128 KB)    |         |                         |
       +----------------------------------+0x3A00   +-------------------------+
-            boot0 HW partition (8 MB)                     user partition
+                   Boot0 (8 MB)                              UDA
 
 .. ifconfig:: CONFIG_part_variant in ('J721S2', 'AM62X', 'AM62PX', 'AM62AX', 'AM62LX')
 
@@ -219,7 +236,7 @@ eMMC layout
       +----------------------------------+0x3500   |                         |
       |   backup environment (128 KB)    |         |                         |
       +----------------------------------+0x3600   +-------------------------+
-            boot0 HW partition (8 MB)                     user partition
+                   Boot0 (8 MB)                              UDA
 
 .. ifconfig:: CONFIG_part_variant not in ('AM64X', 'J7200', 'J721S2', 'AM62X', 'AM62PX', 'AM62AX', 'AM62LX')
 
@@ -239,7 +256,7 @@ eMMC layout
       +----------------------------------+0x3600   |                         |
       |          sysfw (1 MB)            |         |                         |
       +----------------------------------+0x3E00   +-------------------------+
-            boot0 HW partition (8 MB)                     user partition
+                   Boot0 (8 MB)                              UDA
 
 eMMC boot configuration
 -----------------------
@@ -258,26 +275,30 @@ set using the :command:`mmc bootbus` and :command:`mmc partconf` commands.
 
 Where <dev> is MMC device index.
 
-**Boot from boot0 HW partition of eMMC:**
+.. _uboot-emmc-boot0-config:
+
+Boot from Boot0
+```````````````
 
 .. code-block:: console
 
    => mmc partconf 0 1 1 1
    => mmc bootbus 0 2 0 0
 
-**Boot from boot1 HW hardware partition of eMMC:**
+.. _uboot-emmc-boot1-config:
+
+Boot from Boot1
+```````````````
 
 .. code-block:: console
 
    => mmc partconf 0 1 2 1
    => mmc bootbus 0 2 0 0
 
-.. note::
+.. _uboot-emmc-uda-config:
 
-   When booting from boot1 HW partition, make sure to flash the partition using:
-   :samp:`mmc dev 0 2`.
-
-**Boot from UDA HW partition of eMMC:**
+Boot from UDA
+`````````````
 
 .. code-block:: console
 
@@ -322,7 +343,7 @@ To boot Linux from eMMC, use the following commands after flashing rootfs to UDA
 Flashing an MMC device using USB-DFU
 ====================================
 
-To flash the eMMC device (boot0 HW partition) using USB-DFU, the device should
+To flash the eMMC device (Boot0) using USB-DFU, the device should
 be booted to u-boot prompt and a USB cable connected from the host machine
 to the device USB port configured to USB peripheral mode.
 
@@ -333,8 +354,10 @@ From u-boot prompt execute the following:
    => setenv dfu_alt_info ${dfu_alt_info_emmc}
    => dfu 0 mmc 0
 
-and on the host machine have the bootloader binaries ready to flash
-to eMMC boot0 HW partition. Execute the :command:`dfu-util` to transfer
+This comands assumes eMMC device exists and is mmc device 0.
+
+On the host machine have the bootloader binaries ready to flash
+to eMMC Boot0. Execute the :command:`dfu-util` to transfer
 files to the device. The general syntax for dfu-util command is:
 
 .. code-block:: console
