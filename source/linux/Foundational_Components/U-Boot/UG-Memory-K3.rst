@@ -65,7 +65,7 @@ The general syntax is:
 Where [dev] is the MMC device index.
 
 The following lists examples and their explanation for each MMC device
-and partitions according to the example in: :ref:`uboot-listing-mmc-devices`.
+and partitions according to the example :ref:`here <uboot-listing-mmc-devices>`.
 
 .. code-block:: console
 
@@ -83,11 +83,10 @@ boot the device.
 
 .. note::
 
-   For eMMC, typically, the device ships without a partition table If there is
-   a need to create a partition in UDA (to flash the rootfs), please go to:
-   :ref:`create-partitions-in-emmc-uda-from-linux` and format the partition:
-   :ref:`formatting-mmc-partition-from-linux` before proceeding to look at the
-   eMMC partition contents.
+   For eMMC, typically, the device ships without a partition table If there is a need to
+   create a partition in UDA, please go :ref:`here <create-partitions-in-emmc-uda-from-linux>`
+   and to format the partition go :ref:`here <formatting-mmc-partition-from-linux>` before
+   proceeding.
 
 To list software created partitions for any MMC device from u-boot prompt, use the
 command: :command:`mmc part`.
@@ -345,6 +344,8 @@ set using the :command:`mmc bootbus` and :command:`mmc partconf` commands.
 
 Where <dev> is MMC device index.
 
+- For more information on these commands, please go `here <https://docs.u-boot.org/en/latest/usage/cmd/mmc.html//>`__.
+
 .. _uboot-emmc-boot0-config:
 
 Boot from Boot0
@@ -377,11 +378,11 @@ Boot from UDA
 
 **Enable warm reset**
 
-On eMMC devices, warm reset will not work if EXT_CSD[162] bit is unset since the
-reset input signal will be ignored. Warm reset is required to be enabled in order
-for the eMMC to be in a "clean state" on power-on reset so that ROM can do a clean
-enumeration. To set the EXT_CSD[162] bit, stop at u-boot prompt and execute the
-following command:
+   On eMMC devices, warm reset will not work if EXT_CSD[162] bit is unset since the
+   reset input signal will be ignored. Warm reset is required to be enabled in order
+   for the eMMC to be in a "clean state" on power-on reset so that ROM can do
+   a clean enumeration. To set the EXT_CSD[162] bit, stop at u-boot prompt and execute
+   the following command:
 
 .. code-block:: console
 
@@ -390,7 +391,7 @@ following command:
 .. warning::
 
    This is a write-once field. For more information, please refer to the u-boot
-   doc: `MMC CMD <https://docs.u-boot.org/en/latest/usage/cmd/mmc.html//>`__.
+   doc found `here <https://docs.u-boot.org/en/latest/usage/cmd/mmc.html//>`__.
 
 Boot Linux from eMMC
 ====================

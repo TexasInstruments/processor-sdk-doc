@@ -250,11 +250,11 @@ Driver Configuration
       :name: building-into-kernel-mmcsd
 
    Ensure that the following config options are set to 'y':
-	* CONFIG_MMC
-	* CONFIG_MMC_BLOCK
-	* CONFIG_MMC_SDHCI
-	* CONFIG_MMC_SDHCI_OMAP  (for DRA7XX and AM57XX devices)
-	* CONFIG_MMC_OMAP        (for AM335X and AM437X devices)
+   * CONFIG_MMC
+   * CONFIG_MMC_BLOCK
+   * CONFIG_MMC_SDHCI
+   * CONFIG_MMC_SDHCI_OMAP  (for DRA7XX and AM57XX devices)
+   * CONFIG_MMC_OMAP        (for AM335X and AM437X devices)
 
    .. rubric:: **Building as Loadable Kernel Module**
 
@@ -438,7 +438,7 @@ Driver Configuration
             pinctrl-0 = <&main_mmc1_pins_default>;
             ti,driver-strength-ohm = <50>;
             disable-wp;
-            sdhci-caps-mask = <0x00000006 0x00000000>; /* Limiting to SDR50 speed mode */
+            sdhci-caps-mask = <0x00000003 0x00000000>; /* Limiting to DDR50 speed mode */
          };
 
       Limiting to SD HS speed mode can also be done by using the property
