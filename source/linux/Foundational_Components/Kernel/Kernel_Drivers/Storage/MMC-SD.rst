@@ -489,7 +489,7 @@ Create software partitions in eMMC UDA
 In eMMC, the User Data Area (UDA) HW partition is the primary storage
 space generally used to flash the rootfs. To prepare the UDA, use
 the :command:`fdisk` command. For ex: :samp:`fdisk /dev/mmcblkN` in
-which **N** is 0 or 1. To find which integer is eMMC use the command
+which **N** is 0 or 1. To find which device index is eMMC use the command
 :command:`lsblk`, like so:
 
 .. code-block:: console

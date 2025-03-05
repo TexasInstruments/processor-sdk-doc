@@ -16,9 +16,9 @@ Listing MMC devices
 ===================
 
 Usually in all the platforms there will be two MMC instances of which one
-would be SD and the other would be eMMC. The index of them can vary from
-one class of platforms to the other. For a given platform, the device
-number: **mmcdev=[0:1]** can be found in the following way:
+would be SD and the other would be eMMC. The device index of them can vary from
+one class of platforms to the other. For a given platform, the device index
+can be found in the following way:
 
 .. code-block:: console
 
@@ -26,8 +26,12 @@ number: **mmcdev=[0:1]** can be found in the following way:
    sdhci@fa10000: 0 (eMMC)
    sdhci@fa00000: 1 (SD)
 
-The device number "**0**" for eMMC will be needed when flashing to the eMMC device
-in: :ref:`flash-and-boot-to-uboot-prompt`.
+The device index "**0**" for eMMC will be used when flashing to the eMMC device
+:ref:`here <uboot-emmc-flash-and-boot-to-uboot-prompt>` using :command:`mmc dev` command.
+
+In u-boot environment, usually **mmcdev=n** is used to selct which MMC device to boot
+Linux from, where **n** is the device index.
+
 
 .. _uboot-selecting-mmc-device-and-partitions:
 
@@ -40,6 +44,8 @@ The general syntax is:
 .. code-block:: console
 
    => mmc dev [dev] [partition]
+
+Where [dev] is the MMC device index.
 
 The following lists examples and their explanation for each MMC device
 and partitions according to the example in: :ref:`uboot-listing-mmc-devices`.
@@ -250,7 +256,7 @@ set using the :command:`mmc bootbus` and :command:`mmc partconf` commands.
 
    $ mmc partconf <dev> [[varname] | [<boot_ack> <boot_partition> <partition_access>]]
 
-- For more information on these commands, please refer to: `MMC CMD <https://docs.u-boot.org/en/latest/usage/cmd/mmc.html//>`__.
+Where <dev> is MMC device index.
 
 **Boot from boot0 HW partition of eMMC:**
 
