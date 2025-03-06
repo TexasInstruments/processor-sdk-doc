@@ -158,7 +158,7 @@ them to the eMMC boot0 HW partition:
       => fatload mmc 1 ${loadaddr} u-boot.img
       => mmc write ${loadaddr} 0x1800 0x2000
 
-.. ifconfig:: CONFIG_part_variant in ('J721S2', 'AM62X', 'J784S4','J742S2', 'J722S')
+.. ifconfig:: CONFIG_part_variant in ('J721S2', 'AM62X', 'J784S4','J742S2', 'J722S', 'AM62PX', 'AM62AX', 'AM62LX')
 
    .. code-block:: console
 
@@ -170,7 +170,7 @@ them to the eMMC boot0 HW partition:
       => fatload mmc 1 ${loadaddr} u-boot.img
       => mmc write ${loadaddr} 0x1400 0x2000
 
-.. ifconfig:: CONFIG_part_variant not in ('AM64X', 'J7200', 'J721S2', 'AM62X', 'J784S4','J742S2', 'J722S')
+.. ifconfig:: CONFIG_part_variant not in ('AM64X', 'J7200', 'J721S2', 'AM62X', 'J784S4','J742S2', 'J722S', 'AM62PX', 'AM62AX', 'AM62LX')
 
    .. code-block:: console
 
@@ -204,7 +204,7 @@ eMMC layout
       +----------------------------------+0x3A00   +-------------------------+
             boot0 HW partition (8 MB)                     user partition
 
-.. ifconfig:: CONFIG_part_variant in ('J721S2', 'AM62X')
+.. ifconfig:: CONFIG_part_variant in ('J721S2', 'AM62X', 'AM62PX', 'AM62AX', 'AM62LX')
 
    .. code-block:: text
 
@@ -221,7 +221,7 @@ eMMC layout
       +----------------------------------+0x3600   +-------------------------+
             boot0 HW partition (8 MB)                     user partition
 
-.. ifconfig:: CONFIG_part_variant not in ('AM64X', 'J7200', 'J721S2', 'AM62X')
+.. ifconfig:: CONFIG_part_variant not in ('AM64X', 'J7200', 'J721S2', 'AM62X', 'AM62PX', 'AM62AX', 'AM62LX')
 
    .. code-block:: text
 
