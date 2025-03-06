@@ -78,7 +78,7 @@ Features
    - Support for both built-in and module mode
    - ext2/ext3/ext4 file system support
 
-.. ifconfig:: CONFIG_part_family in ('AM62X_family', 'AM62AX_family', 'AM64X_family')
+.. ifconfig:: CONFIG_part_family in ('AM62X_family', 'AM62AX_family', 'AM64X_family', 'AM62LX_family')
 
    The SD/MMC driver supports the following features:
 
@@ -208,7 +208,7 @@ SD: Supported High Speed Modes
 
    J721e-sk and AM68-sk does not support eMMC.
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM64X', 'AM62PX' )
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM64X', 'AM62PX' ,'AM62LX')
 
    * SD
 
@@ -220,6 +220,7 @@ SD: Supported High Speed Modes
       AM62ax, Y, Y, Y, Y, Y
       am64x, Y, Y, Y, Y, Y
       am62px, Y, Y, Y, Y, Y
+      am62lx, Y, Y, Y, Y, Y
 
    * eMMC
 
@@ -231,6 +232,7 @@ SD: Supported High Speed Modes
       AM62ax, Y, Y, N
       am64x, Y, Y, N
       am62px, Y, Y, Y
+      am62lx, Y, Y, N
 
 Driver Configuration
 ********************
@@ -278,7 +280,7 @@ Driver Configuration
    modules will be loaded and any valid filesystem will be automatically mounted
    if they exist on the card.
 
-.. ifconfig:: CONFIG_part_family in ('J7_family', 'AM62X_family', 'AM64X_family', 'AM62AX_family', 'AM62PX_family')
+.. ifconfig:: CONFIG_part_family in ('J7_family', 'AM62X_family', 'AM64X_family', 'AM62AX_family', 'AM62PX_family', 'AM62LX_family')
 
    The default kernel configuration enables support for MMC/SD driver as
    built-in to kernel. TI SDHCI driver is used. Following options need to be
