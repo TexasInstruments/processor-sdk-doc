@@ -69,13 +69,30 @@ Hardware Prerequisites
 Launching the TI LVGL Demo
 **************************
 
-The demo will auto launch upon Linux booting on the EVM. Follow the below instructions to flash the SD card:
+.. ifconfig:: CONFIG_sdk in ('SITARA')
 
-1. Flash an SD card with the :file:`tisdk-default-image`. User can download the :file:`tisdk-default-image` wic image from |__SDK_DOWNLOAD_URL__|.
-   Please follow the instructions from here to :ref:`Flash an SD card <processor-sdk-linux-create-sd-card>`.
+    The demo will auto launch upon Linux booting on the EVM. Follow the below instructions to flash the SD card:
 
-2. Insert the flashed SD card to the board, connect the display, mouse/touch-input, ethernet cable, aux cable, jumper wire and power on the EVM.
-   The TI LVGL Demo will launch automatically when the device is fully booted.
+    1. Flash an SD card with the :file:`tisdk-default-image`. User can download the :file:`tisdk-default-image` wic image from |__SDK_DOWNLOAD_URL__|.
+    Please follow the instructions from here to :ref:`Flash an SD card <processor-sdk-linux-create-sd-card>`.
+
+    2. Insert the flashed SD card to the board, connect the display, mouse/touch-input, ethernet cable, aux cable, jumper wire and power on the EVM.
+    The TI LVGL Demo will launch automatically when the device is fully booted.
+
+.. ifconfig:: CONFIG_sdk in ('DebianSDK')
+
+   Upon booting the EVM, Weston is launched automatically. To launch the LVGL OOB demo, follow the following
+   instructions:
+
+    1. Flash an SD card with the :file:`tisdk-debian-trixie` wic image. User can download the wic image from |__SDK_DOWNLOAD_URL__|.
+    Please follow the instructions from here to :ref:`Flash an SD card <processor-sdk-debian-create-sd-card>`.
+
+    2. Insert the flashed SD card to the board, connect the display, mouse/touch-input, ethernet cable, aux cable, jumper wire and power the EVM on.
+
+    3. Weston is launched on boot. Shut it down with `systemctl stop weston`.
+
+    4. Lauch the demo by typing `lvglsim` into the UART command prompt.
+
 
 **********************
 Using the TI LVGL Demo
@@ -178,14 +195,27 @@ To launch the Smart Home HMI demo, click on the `Smart Home` widget in the apps 
 
       By default CC33xx is configured at boot, so here are the steps that can be followed to enable it:
 
-      .. code-block:: console
+      .. ifconfig:: CONFIG_sdk in ('SITARA')
 
-         $ systemctl stop ti-lvgl-demo
-         $ cd /usr/share/cc33xx
-         $ ./sta_start.sh
-         $ ./sta_connect.sh -s WPA-PSK -n <SSID> -p <PASSWORD>
-         $ udhcpc -i wlan0
-         $ systemctl start ti-lvgl-demo
+          .. code-block:: console
+
+             $ systemctl stop ti-lvgl-demo
+             $ cd /usr/share/cc33xx
+             $ ./sta_start.sh
+             $ ./sta_connect.sh -s WPA-PSK -n <SSID> -p <PASSWORD>
+             $ udhcpc -i wlan0
+             $ systemctl start ti-lvgl-demo
+
+      .. ifconfig:: CONFIG_sdk in ('DebianSDK')
+
+           .. code-block:: console
+
+             $ systemctl stop ti-lvgl-demo
+             $ cd /usr/share/cc33xx
+             $ bash ./sta_start.sh
+             $ bash ./sta_connect.sh -s WPA-PSK -n <SSID> -p <PASSWORD>
+             $ udhcpc -i wlan0
+             $ systemctl start ti-lvgl-demo
 
       For more details on how to enable CC33xx and connect to WiFi, visit :ref:`How to Enable M.2-CC33x1 in Linux <enable_m2cc3301>`
 
@@ -290,11 +320,22 @@ This widget contains a slide-show on Application Processor Security for AM6X dev
 Building the TI LVGL Demo from Sources
 **************************************
 
-The TI LVGL Demo is enabled in :file:`tisdk-default-image` yocto filesystem for |__PART_FAMILY_DEVICE_NAMES__| by default. Note, that
-the binary itself does not have asset images and slides built in it. :file:`tisdk-default-image` contains the required assets within
-:file:`/usr/share/ti-lvgl-demo/*`. Place any additional assets here while making any modifications. Yocto recipe for
-building this demo can be found at
-`github: ti-lvgl-demo.bb <https://github.com/TexasInstruments/meta-tisdk/blob/scarthgap/recipes-demos/ti-lvgl-demo/ti-lvgl-demo.bb>`__
+.. ifconfig:: CONFIG_sdk in ('SITARA')
+
+    The TI LVGL Demo is enabled in :file:`tisdk-default-image` yocto filesystem for |__PART_FAMILY_DEVICE_NAMES__| by default. Note, that
+    the binary itself does not have asset images and slides built in it. :file:`tisdk-default-image` contains the required assets within
+    :file:`/usr/share/ti-lvgl-demo/`. Place any additional assets here while making any modifications. Yocto recipe for
+    building this demo can be found at
+    `github: ti-lvgl-demo.bb <https://github.com/TexasInstruments/meta-tisdk/blob/scarthgap/recipes-demos/ti-lvgl-demo/ti-lvgl-demo.bb>`__
+
+.. ifconfig:: CONFIG_sdk in ('DebianSDK')
+
+    The TI LVGL Demo is installed in :file:`tisdk-debian-trixie` wic image for |__PART_FAMILY_DEVICE_NAMES__| by default. Note, that
+    the binary itself does not have asset images and slides built in it. :file:`tisdk-debian-trixie` contains the required assets within
+    :file:`/usr/share/ti-lvgl-demo/`. Place any additional assets here while making any modifications. Debian package
+    files for building this demo can be found at
+    `github: ti-lvgl-demo debian package <https://github.com/TexasInstruments/debian-repos/blob/master/ti-lvgl-demo/suite/trixie/debian/>`__
+
 
 The source code is available at `TI LVGL Demo <https://github.com/TexasInstruments/ti-lvgl-demo.git/>`__ and can be re-compiled with the
 following steps:
