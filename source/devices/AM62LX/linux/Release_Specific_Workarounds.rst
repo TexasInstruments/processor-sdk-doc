@@ -1,3 +1,5 @@
+.. _am62l_suspend_workarounds:
+
 ###############################
 System Suspend Mode Workarounds
 ###############################
