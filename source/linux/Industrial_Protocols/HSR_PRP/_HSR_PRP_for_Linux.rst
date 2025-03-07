@@ -103,6 +103,8 @@ The driver source code is located under net/hsr-prp folder of the Linux
 source tree. To build kernel with this driver, set Kconfig option
 CONFIG\_HSR=y in the dotconfig or enable it from the menu.
 
+.. _hsr-prp-overview-and-setup:
+
 Linux HSR/PRP Driver
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -181,12 +183,14 @@ You can also check which PRU-ICSS an ethernet interface belongs to via command
 line, e.g. eth2 on different platforms:
 
 AM571x:
+
 ::
 
  root@am57xx-evm:~# ls -l /sys/class/net/eth2 | grep device
  lrwxrwxrwx    1 root     root             0 Jun 10 11:29 device -> ../../../pruss1_eth
 
 AM572x:
+
 ::
 
  root@am57xx-evm:~# ls -l /sys/class/net/eth2 | grep device
