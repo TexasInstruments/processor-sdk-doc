@@ -36,6 +36,17 @@ The dynamic power management features enabled on |__PART_FAMILY_DEVICE_NAMES__| 
    #. CPUIdle
    #. Runtime PM
 
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+   #. Dynamic Frequency Scaling
+   #. Runtime PM
+   #. CPUIdle
+
+   .. note::
+
+      Dynamic Frequency Scaling and runtime PM are not fully supported on |__PART_FAMILY_DEVICE_NAMES__| as of today,
+      and shall be enabled in a future release.
+
 .. rubric:: Static Power Management
 
 Static Power Management ensures the SoC is drawing minimum power when
@@ -52,3 +63,10 @@ supported by the Linux kernel.
    #. I/O Only Plus DDR
    #. Deep Sleep
    #. MCU Only Mode
+
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+   The static power management features on |__PART_FAMILY_DEVICE_NAMES__| are:
+
+   #. RTC Only Plus DDR
+   #. Deep Sleep

@@ -50,7 +50,7 @@ What's new
   - ATF Based Device Manager including SCMI
   - U-Boot: Legacy Boot Flow, Boot modes (UART, MMCSD, OSPI), CPSW, DMA
   - Kernel: DMA, GPIO, I2C, UART, MMCSD, OSPI NOR, eCAP, eQEP, CPSW, McASP/Audio, DSS, DSI
-  - Power Management: Basic Deep Sleep and RTC+DDR mode
+  - :ref:`Power Management <am62lx-power-management>`: DeepSleep and RTC+DDR low power modes.
   - RT Kernel : Real-Time Linux Interrupt Latency numbers here - :ref:`RT Interrupt Latencies <RT-linux-performance>`
   - Support for Wifi with M2 CC33xx cards - :ref:`How to Enable M.2-CC33xx in Linux <enable_m2cc3301>`
   - Out-of-Box experience based on LVGL (Light and Versatile Graphics Library) - :ref:`TI LVGL Demo - User Guide <TI-LVGL-Demo-User-Guide-label>`
