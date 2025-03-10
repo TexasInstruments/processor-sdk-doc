@@ -1,7 +1,7 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_LINUX_PTP
 
 Overview
-===========
+========
 
 The Precision Time Protocol (PTP), defined in IEEE 1588, is a protocol
 used to synchronize clocks throughout a network. Many applications in
@@ -55,7 +55,7 @@ Processor SDK.
 .. Image:: /images/Software-arch-v1.jpg
 
 Software Components
---------------------
+-------------------
 
 -  PRUETH driver – Kernel driver abstracts PRU hardware/firmware
 -  PRUPTP driver – Kernel driver abstracts PRU-ICSS based PTP support
@@ -133,15 +133,14 @@ OC slaves) for a total of 2 ports since each PRU-ICSS functions as a single PTP
 clock entity.
 
 GMAC
------
+----
 
-GMAC interface can be configured to run at either 100 Mbps or 1 Gbps.
-CPTS hardware block helps with timestamping of packets. Refer to
-`here <Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW.html#common-platform-time-sync-cpts>`__
-for details.
+GMAC interface can be configured to run at either 100 Mbps or 1 Gbps. CPTS
+hardware block helps with timestamping of packets. Refer to
+:ref:`common-platform-time-sync-cpts` for details.
 
 PRU-ICSS
----------
+--------
 
 The processing load is shared between firmware (PRU) and Host (ARM) with
 the firmware doing most of the time critical activities. The IEP
@@ -203,13 +202,14 @@ boot using the PPS device tree file.
 the relevant boot command (e.g. 'bootcmd', mmcboot' or 'netboot')
 
 2. Set the device tree file to be used.
+
 ::
 
  setenv fdtfile <PPS dtb>
 
 
 PRU-ICSS IEP
--------------
+------------
 
 IEP has an additional hardware to generate a programmable sync output
 which is tied to the IEP counter. This is called the SYNC unit. For this
@@ -261,7 +261,7 @@ assigned PTP ports.
     measure jitter.
 
 GMAC
-------
+----
 
 The GMAC/CPTS does not support a programmable sync output. Instead, the
 GP Timer16 can be programmed to generate an output pulse every 100ms or
@@ -421,17 +421,20 @@ PTP/OC in slave mode:
 
 |
 
+.. _redundancy-hsr-prp:
+
 Redundancy (HSR/PRP)
 ^^^^^^^^^^^^^^^^^^^^
 
 To set up PTP OC over HSR/PRP redundant interface, first setup HSR/PRP interface
-as detailed in `HSR/PRP Linux Software <Industrial_Protocols_HSR_PRP.html#linux-software>`__.
+as detailed in :ref:`hsr-prp-overview-and-setup`.
 
 Start PTP with the same command listed above, but using a different
 configuration file:
 (where eth2/eth3 are the slave interfaces used for the HSR/PRP interface)
 
 HSR:
+
 ::
 
     [global]
@@ -488,6 +491,7 @@ HSR:
     fault_reset_interval         0
 
 PRP:
+
 ::
 
     [global]
@@ -552,6 +556,7 @@ configured using a configuration file similar to the one below:
 (Note: only supported on PRU-ICSS ports using DualEMAC, and supports slave side only)
 
 Telecom:
+
 ::
 
     # Telecom Profile (G.8275.x) PTP Config File
@@ -712,7 +717,7 @@ ingressLatency in the sample ptp4l configuration file oc.cfg in the
 ptp4l example above.
 
 Limitations
-^^^^^^^^^^^^^
+^^^^^^^^^^^
 
 Although there are two Ethernet ports available on each ICSS-PRU
 present, ICSS-PRU PTP OC can only be supported on at most **ONE** such
@@ -720,10 +725,11 @@ port. It cannot provide PTP OC functionality on both Ethernet ports on
 the same ICSS-PRU simultaneously.
 
 PTP Ordinary Clock on GMAC
----------------------------
-Refer to `here <Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW.html#common-platform-time-sync-cpts>`__
-for more details about the CPTS driver and how to run **linuxptp** over the CPSW GMAC port
-for providing the PTP OC functionality.
+--------------------------
+
+Refer to :ref:`common-platform-time-sync-cpts` for more details about the CPTS
+driver and how to run **linuxptp** over the CPSW GMAC port for providing the PTP
+OC functionality.
 
 For example, once the AM57xx IDK is boot into Linux kernel prompt and
 the CPSW GMAC ports are properly configured, to run linuxptp over the
@@ -803,7 +809,7 @@ slave mode:
 |
 
 PHY Delay Compensation for AM57xx IDK
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The theoretical values to use for GMAC PHY, which is KSZ9031RN, on
 AM57xx IDKs, are not yet available. The following experimental values
@@ -1363,6 +1369,7 @@ Refer to the sample linuxptp BC configuration files bc.cfg, bc_hsr.cfg and bc_pr
 as described below:
 
 bc.cfg: BC with GMAC and four ICSS ports
+
 ::
 
     [global]
@@ -1422,6 +1429,7 @@ bc.cfg: BC with GMAC and four ICSS ports
     fault_reset_interval         0
 
 bc_prp.cfg: BC with GMAC and two PRP ports:
+
 ::
 
     [global]
@@ -1509,6 +1517,7 @@ bc_prp.cfg: BC with GMAC and two PRP ports:
 
 
 bc_hsr.cfg: BC with GMAC and two HSR ports:
+
 ::
 
     [global]
@@ -1839,12 +1848,54 @@ each clock plays in this test is as follows:
 Procedure
 ~~~~~~~~~
 
-The script file
-`setup\_hsr.sh <http://processors.wiki.ti.com/images/1/18/Setup_hsr.pdf>`_
-and clock configuration files e.g. dut_1_hsr_oc.cfg, dut_2_hsr_oc.cfg,
-dut_3_hsr_oc.cfg (each identical, same as listed in
-`PTP Redundancy <Industrial_Protocols_PTP.html#redundancy-hsr-prp>`__
-section for HSR) will be used in the setup of the tests.
+The script file :ref:`setup-hsr` and clock configuration files e.g.
+dut_1_hsr_oc.cfg, dut_2_hsr_oc.cfg, dut_3_hsr_oc.cfg (each identical, same as
+listed in :ref:`redundancy-hsr-prp` section for HSR) will be used in the setup
+of the tests.
+
+.. code-block:: bash
+   :caption: setup_hsr.sh
+   :name: setup-hsr
+
+   #!/bin/bash
+
+   ETHA=eth2
+   MACA=70:FF:76:1C:18:09
+   ETHB=eth3
+   MACB=70:FF:76:1C:18:0A
+   RED_IP=192.168.8.3
+
+   ########################################################
+   # Do not modify below
+   ########################################################
+   HSR=hsr0
+   echo "ifconfig $ETHA hw ether $MACA"
+   ifconfig $ETHA hw ether $MACA
+   sleep 1
+   echo "ifconfig $ETHB hw ether $MACA"
+   ifconfig $ETHB hw ether $MACA
+   sleep 1
+   echo "ethtool -K $ETHA hsr-rx-offload on"
+   ethtool -K $ETHA hsr-rx-offload on
+   sleep 1
+   echo "ethtool -K $ETHB hsr-rx-offload on"
+   ethtool -K $ETHB hsr-rx-offload on
+   sleep 1
+   echo "ifconfig $ETHA up"
+   ifconfig $ETHA up
+   sleep 1
+   echo "ifconfig $ETHB up"
+   ifconfig $ETHB up
+   sleep 1
+   echo "ip link add name $HSR type hsr slave1 $ETHA slave2 $ETHB supervision 45 version 1"
+   ip link add name $HSR type hsr slave1 $ETHA slave2 $ETHB supervision 45 version 1
+   sleep 1
+   echo "ifconfig $HSR $RED_IP"
+   ifconfig $HSR $RED_IP
+   sleep 1
+   ifconfig $HSR
+   echo
+   echo "configured $HSR on $ETHA $ETHB"
 
 -  For each DUT-X, copy the setup script setup\_hsr.sh and the clock
    configuration file dut\_X\_hsr\_oc.cfg into the target filesystem of
@@ -1869,7 +1920,7 @@ section for HSR) will be used in the setup of the tests.
 
 -  Boot IDK into kernel prompt.
 
--  Modify the top fields in `setup\_hsr.sh <http://processors.wiki.ti.com/images/1/18/Setup_hsr.pdf>`_
+-  Modify the top fields in `setup\_hsr.sh <http://processors.wiki.ti.com/images/1/18/Setup_hsr.pdf>`__
    to reflect the HSR slave
    ports' MAC addresses and IP address of the DUT's HSR interface. The
    **ETHA** or **ETHB** fields may also need to be modified if an ICSS
