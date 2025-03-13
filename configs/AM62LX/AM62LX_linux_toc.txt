@@ -72,6 +72,7 @@ linux/Foundational_Components/Power_Management/pm_cpuidle
 linux/Foundational_Components/Power_Management/pm_am62lx_low_power_modes
 
 #linux/Foundational_Components/System_Security/SELinux
+linux/Foundational_Components/System_Security/Auth_boot
 
 linux/Foundational_Components_Kernel_Users_Guide
 linux/Foundational_Components_Kernel_LTP-DDT_Validation
