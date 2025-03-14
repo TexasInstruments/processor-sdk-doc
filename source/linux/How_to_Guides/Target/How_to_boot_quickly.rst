@@ -39,7 +39,7 @@ This guide uses 10.0 Processor SDK as reference.
     - `PROCESSOR-SDK-LINUX-AM62AX <https://www.ti.com/tool/download/PROCESSOR-SDK-LINUX-AM62A>`_
 
     - `MCU+ SDK AM62AX <https://www.ti.com/tool/download/MCU-PLUS-SDK-AM62A>`_
-    
+
 .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
     - `PROCESSOR-SDK-LINUX-AM62PX <https://www.ti.com/tool/download/PROCESSOR-SDK-LINUX-AM62P>`_
@@ -82,7 +82,7 @@ This section details the Out-Of-Box boot sequence:
 
 **TF-A** (Trusted Firmware - Arm) provides a reference trusted code base for the Armv8 architecture. It implements various ARM interface standards. The binary is typically included in the bootloader binary. It starts in the early stages of U-Boot. Without ATF, the kernel cannot setup the services which need to be executed in the Secure World environment
 
-**OPTEE** (Trusted Execution Environment) is designed as a companion to a non-secure Linux kernel running on Arm; Cortex-A cores using the TrustZone technology. 
+**OPTEE** (Trusted Execution Environment) is designed as a companion to a non-secure Linux kernel running on Arm; Cortex-A cores using the TrustZone technology.
 
 **U-boot** proper is the second stage bootloader. It offers a flexible way to load and start the Linux Kernel and provides a minimal set of tools to interact with the board’s hardware via a command line interface. It runs from DRAM, initializing additional hardware devices (network, USB, DSI/CSI, etc.). Then, it loads and prepares the device tree (FDT). The main task handled by the U-Boot is the loading and starting of the kernel image itself.
 
@@ -188,8 +188,8 @@ Secondary Boot Loader (SBL)
 
 - Removing unnecessary prints
 
-    The default examples contain a large number of prints that impact boot time and need to be removed. 
-    
+    The default examples contain a large number of prints that impact boot time and need to be removed.
+
     - Navigate to the main.c of your example and remove calls to the following functions
         - ``Bootloader_profileAddCore``
         - ``Bootloader_profileAddProfilePoint``
@@ -252,7 +252,7 @@ Secondary Boot Loader (SBL)
             - :download:`OSPI-NOR @166MHz </files/fastxspi_pattern_am62p_166MHz.bin>`
 
 .. ifconfig:: CONFIG_part_variant in ('AM62PX')
-    
+
     - Use DDR in single rank configuration
 
         The number of ranks on any DIMM is the number of independent sets of DRAMs that can be accessed for the full data bit-width of the DIMM. Dual rank gives us access to a bigger memory bank but consumes twice the tuning time. By default, DDR is in dual rank configuration and takes ~35ms that is visible in ``System_init`` in the SBL logs.
@@ -297,13 +297,13 @@ Reducing Linux kernel boot time
 
 - Using a smaller kernel system
 
-    -  By default, the kernel image contains a lot of drivers and filesystems to enable the functionality supported for the board but are not necessary for early boot. Trim kernel capabilities by using 
-    
-        - `ti_arm64_prune.config` - removes irrelevant platform drivers 
+    -  By default, the kernel image contains a lot of drivers and filesystems to enable the functionality supported for the board but are not necessary for early boot. Trim kernel capabilities by using
+
+        - `ti_arm64_prune.config` - removes irrelevant platform drivers
         - `ti_early_display.config` - converts the majority of functionality into loadable modules
 
     Usage:
-    
+
     .. code-block:: console
 
         kernel$ make ARCH=arm64 CROSS_COMPILE=<path-to-compiler>/aarch64-none-linux-gnu- defconfig ti_arm64_prune.config ti_early_display.config
@@ -334,21 +334,21 @@ In order to package the filesystem as initramfs into the kernel, follow these st
 
 2. Edit the kernel config:
 
-    .config: 
-    
+    .config:
+
     .. code-block:: kconfig
 
         CONFIG_INITRAMFS_SOURCE="/path/to/filesystem"
-    
+
     or using :code:`menuconfig`:
 
     .. code-block:: kconfig
 
         kernel$ make ARCH=arm64 CROSS_COMPILE=<path-to-compiler>/aarch64-none-linux-gnu- menuconfig
 
-        General setup -> 
-            Initial RAM filesystem and RAM disk (initramfs/initrd) support -> 
-                Initramfs source file(s) 
+        General setup ->
+            Initial RAM filesystem and RAM disk (initramfs/initrd) support ->
+                Initramfs source file(s)
                     /path/to/filesystem
 
 3. Rebuild the kernel
@@ -380,7 +380,7 @@ The time taken to boot filesystem is measured from Process ID 1(PID1) to login p
         host$ rm -r <filesystem>/usr/lib/opkg
         host$ rm <filesystem>/etc/issue
         host$ cd <filesystem>/dev
-        host$ mknod -m 0600 null c 1 3 
+        host$ mknod -m 0600 null c 1 3
 
     This removes 52ms from the boot up time.
 
@@ -443,7 +443,7 @@ The following section displays the time taken by each stage to start and end. Fo
 
 
 | Range 3 (SBL_start to SBL_end):
-| This range measures the time the bootloader takes to configure the DDR, load + start the default HSM core, MCU core and Application Core. The GPIO that was set to LOW for SBL_start can be set to HIGH by copying the above code section and using `GPIO_pinWriteHigh`. 
+| This range measures the time the bootloader takes to configure the DDR, load + start the default HSM core, MCU core and Application Core. The GPIO that was set to LOW for SBL_start can be set to HIGH by copying the above code section and using `GPIO_pinWriteHigh`.
 
 .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
@@ -513,6 +513,45 @@ In the `&main_uart0` node, connect the GPIO by adding
 
     test-gpios = <&main_gpio0 39 GPIO_ACTIVE_HIGH>;
 
+Update the :file:`drivers/tty/serial/8250/8250_omap.c` driver. Add the following section before the `omap8250_probe` function:
+
+.. code-block:: C
+
+    static struct gpio_desc *gpio;
+
+    void test_gpio_on(void)
+    {
+	    gpiod_direction_output(gpio, 1);
+	    gpiod_set_value(gpio, 1);
+    }
+    EXPORT_SYMBOL_GPL(test_gpio_on);
+    void test_gpio_off(void)
+    {
+	    gpiod_direction_output(gpio, 0);
+	    gpiod_set_value(gpio, 0);
+
+    }
+    EXPORT_SYMBOL_GPL(test_gpio_off);
+
+and the following in the `omap8250_probe` function:
+
+.. code-block:: C
+
+    gpio = devm_gpiod_get(&pdev->dev, "test", GPIOD_OUT_LOW);
+	 if (IS_ERR(gpio)) {
+		 return PTR_ERR(gpio);
+	 }
+
+To measure the instance when the filesystem starts, navigate to :file:`init/main.c` and toggle the GPIO:
+
+.. code-block:: C
+
+       /* Declare test_gpio somewhere before the kernel_init function */
+       void test_gpio_on(void);
+
+       /* Inside the kernel_init function and before ramdisk_execute_command, place this*/
+       test_gpio_on();
+
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
     .. Image:: /images/am62x_ospi_boot_analyser.png
@@ -522,7 +561,7 @@ In the `&main_uart0` node, connect the GPIO by adding
 
         [2024-03-29 11:52:40.318] NOTICE:  BL31: v2.10.0(release):v2.10.0-367-g00f1ec6b87-dirty
         [2024-03-29 11:52:40.318] NOTICE:  BL31: Built : 16:09:05, Feb  9 2024
-        [2024-03-29 11:52:41.098] 
+        [2024-03-29 11:52:41.098]
         [2024-03-29 11:52:41.098] am62xx-evm login:
 
     +-------------------+-----------+
@@ -545,15 +584,15 @@ In the `&main_uart0` node, connect the GPIO by adding
 
     .. Image:: /images/am62ax_ospi_boot_analyser.png
      :align: center
-    
+
     -622ms includes SBL C7x image load
 
     .. code-block:: console
 
         [2024-03-29 13:02:19.196] NOTICE:  BL31: v2.10.0(release):v2.10.0-367-g00f1ec6b87-dirty
         [2024-03-29 13:02:19.196] NOTICE:  BL31: Built : 16:09:05, Feb  9 2024
-        [2024-03-29 13:02:19.991] 
-        [2024-03-29 13:02:19.991] am62xx-evm login: 
+        [2024-03-29 13:02:19.991]
+        [2024-03-29 13:02:19.991] am62xx-evm login:
 
     +--------------------+-----------+
     |       Stage        | Time (ms) |
@@ -580,8 +619,8 @@ In the `&main_uart0` node, connect the GPIO by adding
 
         [2024-03-29 14:31:25.265] NOTICE:  BL31: v2.10.0(release):v2.10.0-367-g00f1ec6b87-dirty
         [2024-03-29 14:31:25.265] NOTICE:  BL31: Built : 16:09:05, Feb  9 2024
-        [2024-03-29 14:31:26.117] 
-        [2024-03-29 14:31:26.117] am62xx-evm login: 
+        [2024-03-29 14:31:26.117]
+        [2024-03-29 14:31:26.117] am62xx-evm login:
 
     +-----------------+-----------+
     |      Stage      | Time (ms) |
@@ -610,7 +649,7 @@ Additional notes
 
         Ensure that you are not affecting your host computer when making the changes detailed below
 
-    - This statically compiled :download:`modetest </files/modetest>` can be added to the filesystem to test out display at boot on an OLDI panel. 
+    - This statically compiled :download:`modetest </files/modetest>` can be added to the filesystem to test out display at boot on an OLDI panel.
 
         - `init` is a symbolic link to /sbin/init. Remove the file sbin/init
 
@@ -618,7 +657,7 @@ Additional notes
 
                 rm <filesystem>/sbin/init
 
-        - Create a new sbin/init and add the following. 
+        - Create a new sbin/init and add the following.
 
              .. code-block:: sh
 
@@ -646,7 +685,7 @@ Additional notes
 
 
 .. ifconfig:: CONFIG_part_variant in ('AM62AX')
-    
+
     - While AM62A ships with OSPI-NAND, it can be replaced with the OSPI-NOR flash with ease. NAND flash support needs to be replaced with NOR flash support
 
         - SPL:
