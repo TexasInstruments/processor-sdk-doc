@@ -200,6 +200,7 @@ properly configure the DPHY.
 .. seealso:: `MIPI CSI-2 Kernel API reference <https://www.kernel.org/doc/Documentation/media/kapi/csi2.rst>`_
 
 As you can see in the above link, typically the pixel rate is calculated as follows:
+
 ::
 
    pixel_rate = link_freq * 2 * nr_of_lanes / bits_per_sample
@@ -210,6 +211,7 @@ therefore sensor dependent. This is also the most accurate method.
 Alternatively, if you trust that your sensor is configured correctly for a
 specific resolution/pixel format and frame interval then the pixel rate can
 be calculated using this simplified formula:
+
 ::
 
    pixel_rate = total horizontal width * total vertical lines * frame per second
@@ -218,6 +220,7 @@ Here total horizontal width and total vertical lines includes blanking.
 This information is also sensor dependent or at least configuration dependent.
 
 For example if we take a look at the ov5640 configuration for 1920x1080\@30 fps:
+
 ::
 
    total horizontal width = 2500
@@ -347,11 +350,11 @@ can be enable as follows:
 -  echo 3 >/sys/class/video4linux/video1/dev\_debug
 
    This allows V4L2 ioctl calls to be logged.
-|
+
 -  echo 3 > /sys/module/videobuf2\_core/parameters/debug
 
    This allows VB2 buffers operation to be logged.
-|
+
 In addition ti-cal also has specific debug log which can be enabled as
 follows:
 
