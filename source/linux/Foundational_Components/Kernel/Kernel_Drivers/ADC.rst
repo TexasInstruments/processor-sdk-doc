@@ -229,7 +229,7 @@ You can find the source code for ADC in the kernel sources at
 ``drivers/iio/adc/ti_am335x_adc.c``.
 
 .. rubric:: **Usage**
-   :name: usage
+   :name: adc-usage
 
 To test ADC, Connect a DC voltage supply to each of the AIN0 through
 AIN7 pins (based on your channel configuration), and vary voltage

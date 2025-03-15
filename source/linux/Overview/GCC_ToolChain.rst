@@ -185,7 +185,7 @@ is as simple as:
 
 
 .. rubric:: Example usage
-   :name: usage
+   :name: linux-devkit-usage
 
 In the simplest case the cross-compiler can be used to compile simple
 applications that just need access to standard libraries. The
