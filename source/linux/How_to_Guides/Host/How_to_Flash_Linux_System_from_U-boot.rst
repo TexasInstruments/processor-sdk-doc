@@ -108,7 +108,7 @@ How to Flash from U-boot Shell
 
     All of the following commands are performed at the u-boot prompt.
 
-      These commands are actually a series of u-boot commands that are
+    These commands are actually a series of u-boot commands that are
     connected together with semicolons.  The individual commands can be
     entered separately or simple pasted from here.
 
@@ -135,7 +135,7 @@ How to Flash from U-boot Shell
     .. rubric:: Put the EVM in NAND boot mode
        :name: put-the-evm-in-nandboot-mode
 
-     With the EVM in NAND boot mode and the images flashed in NAND as
+    With the EVM in NAND boot mode and the images flashed in NAND as
     detailed above, the SD card does not need to be in the EVM at boot up.
     X-loader and u-boot will run from NAND.  In order to also pull the Linux
     kernel (uImage) from NAND it will be necessary to halt the boot process
