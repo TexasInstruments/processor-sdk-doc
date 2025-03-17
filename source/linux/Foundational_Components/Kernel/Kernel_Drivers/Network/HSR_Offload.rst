@@ -4,15 +4,19 @@ HSR Offload
 
 .. rubric:: **Introduction**
 
-HSR framework in linux allows offloading below functionalities to the
-device
-hsr-fwd-offload: For forwarding HSR frames one port to another i.e port-to-port
-forwarding
+Redundant and reliable communication is necessary for the highly critical nature of grid infrastructure where network failures can lead to a disruption in electricity distribution. The international standard IEC 61850 addresses this importance and defines communication protocols that provide this redundancy and reliability needed within these grid substations. High-availability Seamless Redundancy (HSR) and Parallel Redundancy Protocol (PRP) are communication protocols defined by this standard, and they are the preferred protocols in today’s industry because there is no downtime or packet loss when a link failure occurs. In terms of current offload support, HSR will be the main focus. As mentioned in the HSR PRP Non-offload Section of these release notes, HSR is a protocol that supports redundant network connections, usually configured as a ring with Ethernet frames being sent in both directions. If one path around the ring fails, the other duplicated packet will still reach the intended destination. 
 
-hsr-dup-offload: Duplicate the outgoing HSR frame
+When implementing HSR solutions in grid substations, traditionally, FPGAs and ASICs were used to support the HSR standard, but with modern processors and hardware accelerators, the AM64x provides a more cost-effective solution for implementing substation requirements, including HSR. Offloading is the process of transferring tasks away from the CPU to another processing unit. In the case of the AM64x Sitara Processor, HSR tasks can be offloaded from the A53 cores to the PRU_ICSSG. 
 
-The ICSSG HSR firmware supports port-to-port forwarding, Tx packet duplication
-and this allows to offload these capabilities from HSR driver in software to the PRU-ICSSG.
+.. rubric:: **Linux HSR Offload Support**
+HSR framework in Linux allows offloading below functionalities to the device:
+   •  hsr-fwd-offload: For forwarding HSR frames one port to another i.e. port-to-port forwarding 
+   •	hsr-dup-offload: Duplicate the outgoing HSR frame
+   •	hsr-tag-ins-offload: Unique tag to identify HSR frames
+   •	hsr-tag-rm-offload: Removes the HSR tags
+
+The ICSSG HSR firmware supports these features which offloads these capabilities from the HSR driver in software to the PRU-ICSSG. Cut-through switching improves HSR latency but would need to be implemented separately. 
+
 
 To enable offloading using below commands
 To enable port-to-port offload
