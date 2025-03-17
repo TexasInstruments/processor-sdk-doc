@@ -361,7 +361,7 @@ Enabling camera sensors
       $ gst-launch-1.0 v4l2src device="/dev/video0" ! video/x-raw, width=640, height=480, format=UYVY ! autovideosink
 
       # Direct KMS Sink
-      $ systemctl stop weston
+      $ systemctl stop emptty
       $ gst-launch-1.0 v4l2src device="/dev/video0" ! video/x-raw, width=640, height=480, format=UYVY ! queue ! kmssink driver-name=tidss plane-properties=s,zpos=1
 
    You can also replace v4l2src with libcamerasrc above if you want to test
@@ -682,12 +682,11 @@ Enabling camera sensors
    auto-exposure/auto-white-balance algorithms and other pre-processing
    blocks.
 
-   You may have to stop the display server (weston) before running the below
-   pipelines:
+   You may have to stop the display manager before running the below pipelines:
 
    .. code-block:: console
 
-      $ systemctl stop weston.service
+      $ systemctl stop emptty
 
    Use the following pipeline for IMX219 1920x1080 RAW8 mode:
 
