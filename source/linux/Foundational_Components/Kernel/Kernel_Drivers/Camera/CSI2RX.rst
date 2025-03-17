@@ -889,6 +889,10 @@ Enabling camera sensors
       => setenv name_overlays ti/k3-j721s2-evm-fusion.dtbo ti/k3-fpdlink-imx390-rcm-0-0.dtbo
       => boot
 
+      # For single RCM IMX390 connected to port 0 on FPDLink IV Fusion 2 board on J784S4/J742S2 EVM:
+      => setenv name_overlays ti/k3-j784s4-evm-fpdlink-iv-fusion.dtbo ti/k3-fpdlink-imx390-rcm-0-0.dtbo
+      => boot
+
       # For single RCM IMX390 connected to RX port 0 on Fusion board EVM on AM69A SK:
       => setenv name_overlays ti/k3-j721e-sk-fpdlink-fusion.dtbo ti/k3-fpdlink-imx390-rcm-0-0.dtbo
       => boot
@@ -916,6 +920,8 @@ Enabling camera sensors
       | J784S4       | LI OV5640 MIPI CSI Camera             | YUYV8_1X16/1280x720 at 30 fps     |
       +--------------+---------------------------------------+-----------------------------------+
       | J784S4       | FPDLink fusion 1 EVM, IMX390          | SRGGB12_1X12/1936x1100 at 30 fps  |
+      +--------------+---------------------------------------+-----------------------------------+
+      | J784S4       | FPDLink fusion 2 EVM, IMX390          | SRGGB12_1X12/1936x1100 at 30 fps  |
       +--------------+---------------------------------------+-----------------------------------+
       | AM69A        | IMX219 RPi Camera                     | SRGGB8_1X8/1920x1080 at 30 fps    |
       +--------------+---------------------------------------+-----------------------------------+
