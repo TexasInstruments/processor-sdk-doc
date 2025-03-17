@@ -34,42 +34,43 @@ information.
       # weston --drm-device=card0 --additional-devices=card1
 
    You may also modify the weston service to have systemd do this automatically
-   on launch by using ``systemctl edit weston`` and inserting the following:
+   on launch by editing :file:`/usr/share/wayland-sessions/weston.desktop` and
+   modifying the ``Exec`` line:
 
    .. code-block:: ini
 
-      [Serivce]
-      ExecStart=/usr/bin/weston --modules=systemd-notify.so --drm-device=card0 --additional-devices=card1
+      [Desktop Entry]
+      Exec=weston --drm-device=card0 --additional-devices=card1
 
    Please note, however, that Weston cannot use by-path identifiers and
    consistent naming of DRI devices is not the default behavior.
 
-****************************
-Starting Weston with Systemd
-****************************
+***************************
+Starting Weston with Emptty
+***************************
 
-Starting with Weston 10, the preferred way to start Weston is with the
-``weston`` user using the systemd service. If you need to interact with this
-instance using any other user then make sure that user is in the ``wayland`` or
-``root`` group and direct them to interact with that instance using the global
-socket at ``/run/wayland-0``.
+Starting with SDK 11.0, the preferred way to start Weston is with the ``weston``
+user using the display manager ``emptty``. Emptty is a console based display
+manager that coordinates the loading of devices with the initialization of any
+specified graphical environment. By default, it is configured to automatically
+start ``weston`` under the weston user on device startup.
 
-This global socket is special in that it will automatically launch Weston when
-a GUI application attempts to connect to it. A profile script in
-``/etc/profile.d`` will automatically set the ``WAYLAND_DISPLAY`` environment
-variable if the user has sufficient permission to interact with the socket.
+If you need to interact with this instance using any other user then make sure
+that user is capable of interacting with the wayland socket :file:`wayland-1`
+under the weston user's ``XDG_RUNTIME_DIR``, :file:`/run/user/1000/`. We do not
+recommend running graphical applications as root.
 
 To start the systemd service manually, do the following:
 
 .. code-block:: console
 
-   # systemctl start weston
+   # systemctl start emptty
 
-To inspect the systemd service and socket status, do the following:
+To inspect the systemd service status, do the following:
 
 .. code-block:: console
 
-   # systemctl status weston.service weston.socket
+   # systemctl status emptty
 
 .. _starting-weston-manually:
 
@@ -78,12 +79,6 @@ Starting Weston Manually
 ************************
 
 To launch Weston manually with the DRM backend, do the following:
-
-On the target console:
-
-.. code-block:: console
-
-   # unset WAYLAND_DISPLAY
 
 On the default display:
 
@@ -142,12 +137,12 @@ Stopping Weston
 Terminate all Weston clients before exiting Weston. If you have invoked
 Weston from the serial console, exit Weston by pressing Ctrl-C.
 
-If Weston was started automatically by the init system then it can be stopped
-with:
+If Weston was started automatically by the display manager then it can be
+stopped with:
 
 .. code-block:: console
 
-   # systemctl stop weston
+   # systemctl stop emptty
 
 It is also possible to invoke Weston from the native console, exit
 Weston by pressing Ctrl-Alt-Backspace.
@@ -208,11 +203,11 @@ line).
    shell=ivi-shell.so
 
 After the above configuration is completed, we can restart Weston by
-running the following command
+running the following command:
 
 .. code-block:: console
 
-   # systemctl restart weston
+   # systemctl restart emptty
 
 .. note::
 
