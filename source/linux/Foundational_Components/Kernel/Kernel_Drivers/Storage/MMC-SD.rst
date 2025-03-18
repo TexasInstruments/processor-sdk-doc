@@ -69,7 +69,7 @@ Features
    -  SD cards including SD High Speed and SDHC cards
    -  Uses block bounce buffer to aggregate scattered blocks
 
-.. ifconfig:: CONFIG_part_family in ('J7_family', 'AM62PX_family')
+.. ifconfig:: CONFIG_part_family in ('J7_family')
 
    The SD/MMC driver supports the following features:
 
@@ -78,7 +78,7 @@ Features
    - Support for both built-in and module mode
    - ext2/ext3/ext4 file system support
 
-.. ifconfig:: CONFIG_part_family in ('AM62X_family', 'AM62AX_family', 'AM64X_family', 'AM62LX_family')
+.. ifconfig:: CONFIG_part_family in ('AM62X_family', 'AM62AX_family', 'AM64X_family', 'AM62LX_family', 'AM62PX_family')
 
    The SD/MMC driver supports the following features:
 
@@ -86,6 +86,8 @@ Features
    - HS200 speed mode
    - Support for both built-in and module mode
    - ext2/ext3/ext4 file system support
+
+.. _mmc-sd-supported-hs-modes:
 
 SD: Supported High Speed Modes
 ******************************
@@ -231,7 +233,7 @@ SD: Supported High Speed Modes
       AM62*, Y, Y, N
       AM62ax, Y, Y, N
       am64x, Y, Y, N
-      am62px, Y, Y, Y
+      am62px, Y, Y, N
       am62lx, Y, Y, N
 
 Driver Configuration
@@ -480,6 +482,43 @@ Driver Configuration
          };
 
          sdhci2: mmc@fa20000 {
+
+eMMC HS400 support in Linux
+===========================
+
+.. ifconfig:: CONFIG_part_family in ('AM62PX_family')
+
+   For 11.0 SDK, am62px device does not support eMMC HS400 mode due to errata i2458.
+   If support for HS400 is anyways required, please add the following DT attributes to sdhci0 node:
+
+   .. code-block:: diff
+
+      diff --git a/arch/arm64/boot/dts/ti/k3-am62p-j722s-common-main.dtsi b/arch/arm64/boot/dts/ti/k3-am62p-j722s-common-main.dtsi
+      index 3e5ca8a3eb86..a05b22a6e5a2 100644
+      --- a/arch/arm64/boot/dts/ti/k3-am62p-j722s-common-main.dtsi
+      +++ b/arch/arm64/boot/dts/ti/k3-am62p-j722s-common-main.dtsi
+      @@ -593,12 +593,16 @@ sdhci0: mmc@fa10000 {
+                      bus-width = <8>;
+                      mmc-ddr-1_8v;
+                      mmc-hs200-1_8v;
+      +               mmc-hs400-1_8v;
+                      ti,clkbuf-sel = <0x7>;
+                      ti,trm-icp = <0x8>;
+      +               ti,strobe-sel = <0x55>;
+                      ti,otap-del-sel-legacy = <0x1>;
+                      ti,otap-del-sel-mmc-hs = <0x1>;
+                      ti,otap-del-sel-ddr52 = <0x6>;
+                      ti,otap-del-sel-hs200 = <0x8>;
+      +               ti,otap-del-sel-hs400 = <0x5>; // at 0.85V VDD_CORE
+      +               //ti,otap-del-sel-hs400 = <0x7>; // at 0.75V VDD_CORE
+                      ti,itap-del-sel-legacy = <0x10>;
+                      ti,itap-del-sel-mmc-hs = <0xa>;
+                      ti,itap-del-sel-ddr52 = <0x3>;
+
+.. ifconfig:: CONFIG_part_family not in ('AM62PX_family')
+
+	eMMC HS400 is not suppported, refer to :ref:`this <mmc-sd-supported-hs-modes>` table for the list of modes supported in Linux
+	for |__PART_FAMILY_NAME__| SoC.
 
 |
 
