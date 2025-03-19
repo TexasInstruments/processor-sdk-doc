@@ -211,10 +211,19 @@ Build U-Boot
 
    Several prebuilt images are required from the TI Processor SDK for building U-Boot on K3 based platforms.
 
-   - TF-A (BL31): Refer to :ref:`foundational-components-atf` for more information
-   - OP-TEE (TEE): Refer to :ref:`foundational-components-optee` for more information
-   - ti-linux-firmware (BINMAN_INDIRS): Prebuilt binaries for DM and SYSFW available `here
-     <https://git.ti.com/cgit/processor-firmware/ti-linux-firmware/log/?h=ti-linux-firmware>`_.
+   .. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+      - TF-A (**BL1** and **BL31**): Refer to :ref:`foundational-components-atf`
+        for more information
+      - ti-linux-firmware (**BINMAN_INDIRS**): Prebuilt TIFS binaries are
+        available in `ti-linux-firmware <https://git.ti.com/cgit/processor-firmware/ti-linux-firmware/?h=ti-linux-firmware>`__.
+
+   .. ifconfig:: CONFIG_part_variant not in ('AM62LX')
+
+      - TF-A (BL31): Refer to :ref:`foundational-components-atf` for more information
+      - OP-TEE (TEE): Refer to :ref:`foundational-components-optee` for more information
+      - ti-linux-firmware (BINMAN_INDIRS): Prebuilt binaries for DM and SYSFW available `here
+        <https://git.ti.com/cgit/processor-firmware/ti-linux-firmware/log/?h=ti-linux-firmware>`__.
 
    All of these are available in the SDK at ``<path to tisdk>/board-support/prebuilt-images>``
 
@@ -586,11 +595,12 @@ Build U-Boot
 
    .. ifconfig:: CONFIG_part_variant in ('AM62LX')
 
-      +-------------+----------------------------------+----------------------------------------------------------+
-      |  Board      |            SD Boot               |                       USB DFU                            |
-      +=============+==================================+==========================================================+
-      |  AM62LX EVM |   ``am62lx_evm_defconfig``       |             ``am62lx_evm_defconfig``                     |
-      +-------------+----------------------------------+----------------------------------------------------------+
+   .. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+      .. csv-table::
+         :header: "Board","SD/eMMC UART OSPI USB-DFU USB-MSC"
+
+         "AM62LX EVM", "am62lx_evm_defconfig"
 
       .. note::
 
@@ -602,21 +612,26 @@ Build U-Boot
 
       .. code-block:: console
 
-         $ export UBOOT_DIR=<path-to-ti-u-boot>
          $ export TI_LINUX_FW_DIR=<path-to-ti-linux-firmware>
          $ export TFA_DIR=<path-to-arm-trusted-firmware>
 
       .. note::
 
-         The instructions below assume all binaries are built manually. For instructions to build bl31.bin go to: :ref:`foundational-components-optee`.
-         For instructions to build tee-pager_v2.bin (bl32.bin) go to: :ref:`foundational-components-atf`. BINMAN_INDIRS can point to
-         <path-to-tisdk>/board-support/prebuilt-images to use the pre-built binaries that come in the pre-built SDK (bl31.bin for BL31, bl32.bin for TEE).
+         The instructions below assume all binaries are built manually.
+         For instructions to build :file:bl1.bin or :file:bl31.bin go
+         to: :ref:`foundational-components-atf`.
+
+         **BINMAN_INDIRS** can point to
+         :file:`<path-to-tisdk>/board-support/prebuilt-images` to use
+         the pre-built binaries that come in the pre-built SDK.
 
       .. code-block:: console
 
-         To build tiboot.bin, tispl.bin and u-boot.img. Saved in $UBOOT_DIR/out/a53. Requires bl1.bin, bl31.bin.
-         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" am62lx_evm_defconfig O=$UBOOT_DIR/out/a53
-         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" CC="$CC_64" BL1=$TFA_DIR/build/k3/am62l/release/bl1.bin BL31=$TFA_DIR/build/k3/am62l/release/bl31.bin O=$UBOOT_DIR/out/a53 BINMAN_INDIRS=$TI_LINUX_FW_DIR
+         $ make CROSS_COMPILE="$CROSS_COMPILE_64" am62lx_evm_defconfig
+         $ make CROSS_COMPILE="$CROSS_COMPILE_64" \
+            BL1=$TFA_DIR/build/k3/lite/release/bl1.bin \
+            BL31=$TFA_DIR/build/k3/lite/release/bl31.bin \
+            BINMAN_INDIRS=$TI_LINUX_FW_DIR
 
 .. ifconfig:: CONFIG_part_variant not in ('AM64X', 'AM62X', 'AM62AX', 'AM62LX')
 
@@ -634,7 +649,13 @@ Build U-Boot
 
      .. note::
 
-      BINMAN_INDIRS is used to fetch the SYSFW binaries from <path to ti-linux-firmware>/ti-sysfw/. If using the SDK, BINMAN_INDIRS can point to <path to SDK>/board-support/prebuilt-images. Else any folder where SYSFW binaries are present in <path to folder>/ti-sysfw/ can be used. Please make sure to use the absolute path.
+      BINMAN_INDIRS is used to fetch the TIFS binaries from
+      :file:`<path to ti-linux-firmware>/ti-sysfw/`. If using the SDK,
+      BINMAN_INDIRS can point to
+      :file:`<path to SDK>/board-support/prebuilt-images`. Else any
+      folder where SYSFW binaries are present in
+      :file:`<path to folder>/ti-sysfw/` can be used. Please make sure
+      to use the absolute path.
 
 .. ifconfig:: CONFIG_part_variant in ('J721E', 'J7200', 'AM62X', 'AM62AX', 'AM62PX', 'J721S2', 'J784S4','J742S2', 'J722S')
 
@@ -642,7 +663,7 @@ Build U-Boot
 
       It is also possible to pick up a custom DM binary by adding TI_DM argument pointing to the file. If not provided, it defaults to picking up the DM binary from BINMAN_INDIRS. This is only applicable to devices that utilize split firmware.
 
-.. ifconfig:: CONFIG_part_variant in ('AM65X', 'J721E', 'J7200', 'AM64X', 'AM62X', 'AM62AX', 'AM62PX', 'J721S2', 'J784S4','J742S2', 'J722S')
+.. ifconfig:: CONFIG_part_variant in ('AM65X', 'J721E', 'J7200', 'AM64X', 'AM62X', 'AM62AX', 'AM62LX', 'AM62PX', 'J721S2', 'J784S4','J742S2', 'J722S')
 
    .. rubric:: Target Images
       :name: target-images
@@ -822,7 +843,15 @@ Build U-Boot
          * tiboot3-j722s-hs-evm.bin from <output directory>/r5
          * tispl.bin, u-boot.img from <output directory>/a53
 
-.. ifconfig:: CONFIG_part_variant in ('AM65X', 'J721E', 'J7200', 'AM64X', 'AM62X', 'AM62AX', 'AM62PX', 'J721S2', 'J784S4','J742S2', 'J722S')
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+       * **HS-FS**
+
+         * tiboot3-am62lx-hs-fs-evm.bin
+         * tispl.bin
+         * u-boot.img
+
+.. ifconfig:: CONFIG_part_variant in ('AM65X', 'J721E', 'J7200', 'AM64X', 'AM62X', 'AM62AX', 'AM62PX', 'J721S2', 'J784S4','J742S2', 'J722S', 'AM62LX')
 
    .. warning::
 
@@ -832,7 +861,7 @@ Build U-Boot
 Image Formats
 ^^^^^^^^^^^^^^^
 
-    .. ifconfig:: CONFIG_part_variant not in ('J7200', 'AM64X', 'J721S2', 'J721E', 'AM62X', 'AM62AX', 'J784S4','J742S2', 'J722S')
+    .. ifconfig:: CONFIG_part_variant not in ('J7200', 'AM64X', 'J721S2', 'J721E', 'AM62X', 'AM62AX', 'AM62LX', 'J784S4','J742S2', 'J722S')
 
        - tiboot3.bin
 
@@ -1164,6 +1193,48 @@ Image Formats
             | +-------------------+ |
             +-----------------------+
 
+    .. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+       - tiboot3.bin
+
+       .. code-block:: text
+
+              TIBOOT3
+          ┌─────────────┐
+          │    X.509    │
+          │ Certificate │
+          │┌───────────┐│
+          ││   BL-1    ││
+          │├───────────┤│
+          ││   TIFS    ││
+          │├───────────┤│
+          ││ TIFS CERT ││
+          │└───────────┘│
+          └─────────────┘
+
+       - tispl.bin
+
+       .. code-block:: text
+
+               TISPL
+          ┌─────────────┐
+          │    X.509    │
+          │ Certificate │
+          │┌───────────┐│
+          ││   BL-31   ││
+          │├───────────┤│
+          ││   TIFS    ││
+          │├───────────┤│
+          ││ TIFS CERT ││
+          │├───────────┤│
+          ││ BRD + SEC ││
+          ││  CONFIGS  ││
+          │├───────────┤│
+          ││  U-BOOT   ││
+          ││    SPL    ││
+          │└───────────┘│
+          └─────────────┘
+
 Boot Flow
 ^^^^^^^^^
 .. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family')
@@ -1241,7 +1312,7 @@ Boot Flow
     specific device tree blob (DTB) as an argument to U-Boot's **bootz**
     command that will extract and start the actual kernel.
 
-.. ifconfig:: CONFIG_part_family not in ('General_family', 'AM335X_family', 'AM437X_family')
+.. ifconfig:: CONFIG_part_family not in ('General_family', 'AM335X_family', 'AM437X_family', 'AM62LX_family')
 
     On K3 architecture based devices, ROM supports boot only via MCU(R5). This means that
     bootloader has to run on R5 core. In order to meet this constraint, keeping
@@ -1651,6 +1722,116 @@ Boot Flow
     Here |__SYSFW_CORE_NAME__| acts as master and provides all the critical services. R5/ARM64
     requests |__SYSFW_CORE_NAME__| to get these services done as shown in the above diagram.
 
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+   Unlike with most other K3 SoCs the AM62LX does not have an Cortext-R5
+   MCU core which ROM uses to initialize the SoC therefore uses a 2
+   phase ROM boot. The first phase will load the tiboot3.bin image which
+   contains Trusted-Firmware-A's BL1 loader along with the typical X.509
+   certificate to authenticate and validate the image which is used to
+   intialize the console and DDR for the next phase.
+
+   .. code-block:: text
+
+      ┌───────────────────┐┌───────────────────┐
+      │    Secure ROM     ││    Public ROM     │
+      │     SMS (M4)      ││   (Cortex-A53)    │
+      │                   ││                   │
+      │┌─────────────────┐││                   │
+      ││  Reset Release  │││                   │
+      │└────────┬────────┘││                   │
+      │         │         ││                   │
+      │┌────────▼────────┐││                   │
+      ││    ROM Init     │││                   │
+      │└────────┬────────┘││                   │
+      │         │         ││                   │
+      │┌────────▼────────┐││┌─────────────────┐│
+      ││   Release A53   ┼┼┼►   Release A53   ││
+      │└─────────────────┘││└────────┬────────┘│
+      │                   ││         │         │
+      │  Validate Image   ││┌────────▼────────┐│
+      │┌─────────────────┐│││    ROM Init     ││
+      ││ Integrity Check ◄┼┼┼   (1st Phase)   ││
+      │├─────────────────│││└────────┬────────┘│
+      ││ Authentication  │││         │         │
+      │├─────────────────┤││┌────────▼────────┐│
+      ││    Decryption   ││││       WFI       ││
+      │└────────┬────────┘││└─────────────────┘│
+      │         │         ││                   │
+      │┌────────▼────────┐││    End of ROM     │
+      ││  Wait for WFI   │││~~~~~~~~~~~~~~~~~~~│
+      ││  on Cortex-A53  │││     Start of      │
+      │└────────┬────────┘││       BL-1        │
+      │         │         ││                   │
+      │┌────────▼────────┐││┌─────────────────┐│
+      ││    Start BL-1   ┼┼┼►    DDR Init     ││
+      │└────────┬────────┘││└────────┬────────┘│
+      │         │         ││         │         │
+      │┌────────▼────────┐││┌────────▼────────┐│
+      ││  Wait for BL-1  ◄┼┼┼  Send BL 1 Done ││
+      ││     Done Msg    │││└────────┬────────┘│
+      │└─────────────────┘││         │         │
+      │                   ││┌────────▼────────┐│
+      │                   │││       WFI       ││
+      │                   ││└─────────────────┘│
+      └───────────────────┘└───────────────────┘
+
+   After the BL1 sends a message back to the Secure ROM to indicate it
+   has completed, the Secure ROM will reset the A53 back into Public ROM
+   to begin the 2nd ROM boot phase to load the tispl.bin into the SoC.
+
+   .. code-block:: text
+
+      ┌───────────────────┐┌───────────────────┐
+      │    Secure ROM     ││    Public ROM     │
+      │     SMS (M4)      ││   (Cortex-A53)    │
+      │                   ││                   │
+      │┌─────────────────┐││                   │
+      ││  Program Reset  │││┌─────────────────┐│
+      ││   Vector And    ┼┼┼►   Release A53   ││
+      ││    Reset A53    │││└────────┬────────┘│
+      │└─────────────────┘││         │         │
+      │                   ││         │         │
+      │   Validate Image  ││┌────────▼────────┐│
+      │┌─────────────────┐│││    ROM Init     ││
+      ││ Integrity Check ◄┼┼┼   (2nd Phase)   ││
+      │├─────────────────┤││└────────┬────────┘│
+      ││ Authentication  │││         │         │
+      │├─────────────────┤││┌────────▼────────┐│
+      ││   Decryption    ││││       WFI       ││
+      │└────────┬────────┘││└─────────────────┘│
+      │         │         ││                   │
+      │┌────────▼────────┐││     End of ROM    │
+      ││  Wait for WFI   │││~~~~~~~~~~~~~~~~~~~│
+      ││  on Cortex-A53  │││                   │
+      │└────────┬────────┘││                   │
+      │         │         ││                   │
+      │┌────────▼────────┐││                   │
+      ││  Program Reset  │││┌─────────────────┐│
+      ││   Vector And    ┼┼┼►   TF-A (BL-31)  ││
+      ││    Reset A53    │││└────────┬────────┘│
+      │└────────┬────────┘││         │         │
+      │         │         ││┌────────▼────────┐│
+      │┌────────▼────────┐│││    U-Boot SPL   ││
+      ││  Prep M4 Reset  │││└────────┬────────┘│
+      │└────────┬────────┘││         │         │
+      │         │         ││┌────────▼────────┐│
+      │┌────────▼────────┐│││     U-Boot      ││
+      ││    Boot TI-FS   │││└────────┬────────┘│
+      │└────────┬────────┘││         │         │
+      │         │         ││         │         │
+      │     End of ROM    ││         │         │
+      │~~~~~~~~~~~~~~~~~~~││         │         │
+      │         │         ││┌────────▼────────┐│
+      │┌────────▼────────┐│││                 ││
+      ││                 ││││                 ││
+      ││      TI-FS      ││││      Linux      ││
+      └┴─────────────────┴┘└┴─────────────────┴┘
+
+   From there TIFS, TF-A and U-Boot will has completed their
+   initialization routines which can begin loading the operating system
+   and complete the boot process.
+
 U-Boot Environment
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -1789,8 +1970,8 @@ to be loaded from the same media as the kernel, and from the same relative path.
 
 .. _AM64-SRAM-Layout-label:
 
-SRAM memory Layout during R5 SPL bootloader stage
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+SRAM memory Layout during initial bootloader stage
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The SRAM memory layout explains the memory used for Bootloader's operation.
 
@@ -1983,3 +2164,36 @@ The SRAM memory layout explains the memory used for Bootloader's operation.
             │    + Extended boot info (3.5 KB)     │
             │                                      │
             └──────────────────────────────────────┘0x43C7F290
+
+
+    .. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+        .. code-block:: text
+
+           ┌────────────────────┐ 0x7081_8000         ┬
+           │   Debug Buffers    │                     │
+           ├────────────────────┤ 0x7081_6000         │
+           │  TIFS ->  A53 IPC  │                     │
+           ├────────────────────┤ 0x7081_5000         │
+           │  A53  -> TIFS IPC  │                     │
+           ├────────────────────┤ 0x7081_4000         │
+           │                    │                     │
+           │    *Free Space*    │                     │
+           │                    │                     │
+           ├────────────────────┤ 0x7081_0000  ┬      │
+           │ Translation Table  │              │      │
+           ├────────────────────┤ 0x7080_D000  │      │
+           │        BSS         │              │      │  MSRAM (96k)
+           ├────────────────────┤ 0x7080_B9C0  │      │
+           │       Stack        │              │      │
+           ├────────────────────┤ 0x7080_B1C0  │ BL-1 │
+           │        Data        │              │      │
+           ├────────────────────┤ 0x7080_B000  │      │
+           │      RO-Data       │              │      │
+           ├────────────────────┤ 0x7080_6000  │      │
+           │        Code        │              │      │
+           ├────────────────────┤ 0x7080_0000  ┘     ─┤
+           │                    │                     │
+           │      ROM Data      │                     │ PSRAM (64k)
+           │                    │                     │
+           └────────────────────┘ 0x707F_0000         ┴
