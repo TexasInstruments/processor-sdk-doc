@@ -26,24 +26,24 @@ General Information
 
 .. ifconfig:: CONFIG_part_variant in ('AM62LX')
 
-   Getting the BL1 Source Code
-   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-   AM62L devices use TF-A BL1 boot loader to configure LPDDR4 to
+   Getting the BL-1 Source Code
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   AM62L devices use TF-A BL-1 boot loader to configure LPDDR4 to
    enable secondary program loader.
-   The easiest way to get access to the BL1 source code is by
+   The easiest way to get access to the BL-1 source code is by
    downloading and installing the Processor SDK Linux. Once installed,
-   the BL1 source code is included in the SDK at the path ``<path to tisdk>/board-support``.
-   For your convenience the sources also includes the BL1's
+   the BL-1 source code is included in the SDK at the path ``<path to tisdk>/board-support``.
+   For your convenience the sources also includes the BL-1's
    git repository including commit history.
 
-   Alternatively, BL1 sources can directly be fetched from GIThub. The GIT
+   Alternatively, BL-1 sources can directly be fetched from GIThub. The GIT
    repo URL, branch and commit id can be found in the :ref:`u-boot-release-notes`
    section of the release notes.
 
    .. _Build-BL1-label:
 
-   Build BL1
-   ^^^^^^^^^
+   Build BL-1
+   ^^^^^^^^^^
    .. note::
     The following commands are intended to be run from the root of the
     TF-A tree unless otherwise specified. The root of the TF-A tree is
@@ -62,7 +62,7 @@ General Information
 
          $ make CROSS_COMPILE="$CROSS_COMPILE_64" ARCH=aarch64 PLAT=k3 TARGET_BOARD=am62l am62l_bl1
 
-         <or to build bl1 and bl31 binaries from TF-A repo>
+         <or to build bl-1 and bl-31 binaries from TF-A repo>
 
 	 $ make CROSS_COMPILE="$CROSS_COMPILE_64" ARCH=aarch64 PLAT=k3 TARGET_BOARD=am62l
 
@@ -213,14 +213,14 @@ Build U-Boot
 
    .. ifconfig:: CONFIG_part_variant in ('AM62LX')
 
-      - TF-A (**BL1** and **BL31**): Refer to :ref:`foundational-components-atf`
+      - TF-A (**BL-1** and **BL-31**): Refer to :ref:`foundational-components-atf`
         for more information
       - ti-linux-firmware (**BINMAN_INDIRS**): Prebuilt TIFS binaries are
         available in `ti-linux-firmware <https://git.ti.com/cgit/processor-firmware/ti-linux-firmware/?h=ti-linux-firmware>`__.
 
    .. ifconfig:: CONFIG_part_variant not in ('AM62LX')
 
-      - TF-A (BL31): Refer to :ref:`foundational-components-atf` for more information
+      - TF-A (BL-31): Refer to :ref:`foundational-components-atf` for more information
       - OP-TEE (TEE): Refer to :ref:`foundational-components-optee` for more information
       - ti-linux-firmware (BINMAN_INDIRS): Prebuilt binaries for DM and SYSFW available `here
         <https://git.ti.com/cgit/processor-firmware/ti-linux-firmware/log/?h=ti-linux-firmware>`__.
@@ -1727,7 +1727,7 @@ Boot Flow
    Unlike with most other K3 SoCs the AM62LX does not have an Cortext-R5
    MCU core which ROM uses to initialize the SoC therefore uses a 2
    phase ROM boot. The first phase will load the tiboot3.bin image which
-   contains Trusted-Firmware-A's BL1 loader along with the typical X.509
+   contains Trusted-Firmware-A's BL-1 loader along with the typical X.509
    certificate to authenticate and validate the image which is used to
    intialize the console and DDR for the next phase.
 
@@ -1768,7 +1768,7 @@ Boot Flow
       │└────────┬────────┘││└────────┬────────┘│
       │         │         ││         │         │
       │┌────────▼────────┐││┌────────▼────────┐│
-      ││  Wait for BL-1  ◄┼┼┼  Send BL 1 Done ││
+      ││  Wait for BL-1  ◄┼┼┼  Send BL-1 Done ││
       ││     Done Msg    │││└────────┬────────┘│
       │└─────────────────┘││         │         │
       │                   ││┌────────▼────────┐│
@@ -1776,7 +1776,7 @@ Boot Flow
       │                   ││└─────────────────┘│
       └───────────────────┘└───────────────────┘
 
-   After the BL1 sends a message back to the Secure ROM to indicate it
+   After the BL-1 sends a message back to the Secure ROM to indicate it
    has completed, the Secure ROM will reset the A53 back into Public ROM
    to begin the 2nd ROM boot phase to load the tispl.bin into the SoC.
 
