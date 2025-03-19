@@ -28,7 +28,7 @@ General Information
 
    Getting the BL1 Source Code
    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-   AM62L devices use TF-A BL1 boot loader to configure LPDDR4 to 
+   AM62L devices use TF-A BL1 boot loader to configure LPDDR4 to
    enable secondary program loader.
    The easiest way to get access to the BL1 source code is by
    downloading and installing the Processor SDK Linux. Once installed,
@@ -39,7 +39,7 @@ General Information
    Alternatively, BL1 sources can directly be fetched from GIThub. The GIT
    repo URL, branch and commit id can be found in the :ref:`u-boot-release-notes`
    section of the release notes.
-   
+
    .. _Build-BL1-label:
 
    Build BL1
@@ -49,22 +49,22 @@ General Information
     TF-A tree unless otherwise specified. The root of the TF-A tree is
     the top-level directory and can be identified by looking for the
     "licenses" directory.
-   
+
    .. rubric:: Setting up the toolchain paths
 
    .. include:: ../../Overview/GCC_ToolChain.rst
       :start-after: .. start_include_yocto_toolchain_host_setup
       :end-before: .. end_include_yocto_toolchain_host_setup
-      
+
    .. code-block:: console
 
          $ cd <path to tf-a dir>
 
-         $ make CROSS_COMPILE="$CROSS_COMPILE_64" ARCH=aarch64 PLAT=k3 TARGET_BOARD=am62l am62l_bl1 
+         $ make CROSS_COMPILE="$CROSS_COMPILE_64" ARCH=aarch64 PLAT=k3 TARGET_BOARD=am62l am62l_bl1
 
-         <or to build bl1 and bl31 binaries from TF-A repo>  
-        
-	 $ make CROSS_COMPILE="$CROSS_COMPILE_64" ARCH=aarch64 PLAT=k3 TARGET_BOARD=am62l 
+         <or to build bl1 and bl31 binaries from TF-A repo>
+
+	 $ make CROSS_COMPILE="$CROSS_COMPILE_64" ARCH=aarch64 PLAT=k3 TARGET_BOARD=am62l
 
 Getting the U-Boot Source Code
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
