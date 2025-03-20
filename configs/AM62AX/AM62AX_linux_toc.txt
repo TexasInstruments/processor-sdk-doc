@@ -115,6 +115,8 @@ linux/How_to_Guides/Host/K3_Resource_Partitioning_Tool
 linux/How_to_Guides/Host/SYSFW_Trace_Parser
 linux/How_to_Guides/Target/Processor_SDK_Linux_File_System_Optimization_Customization
 linux/How_to_Guides/Target/How_to_boot_quickly
+linux/How_to_Guides/Target/How_to_emmc_boot
+linux/How_to_Guides/Target/How_to_mmcsd_boot_emmc_uda
 linux/How_to_Guides/Target/How_to_test_MCAN_on_AM62x
 linux/How_to_Guides/Target/How_to_enable_DT_overlays_in_linux
 linux/How_to_Guides/Target/How_To_Enable_M2CC3301_in_linux
