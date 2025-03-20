@@ -215,14 +215,14 @@ SD: Supported High Speed Modes
    * SD
 
    .. csv-table::
-      :header: "Platform", "SDR104", "DDR50", "SDR50", "SDR25", "SDR12"
+      :header: "Platform", "SDR12", "SDR25", "SDR50", "DDR50", "SDR104"
       :widths: auto
 
       AM62*, Y, Y, Y, Y, Y
       AM62ax, Y, Y, Y, Y, Y
       am64x, Y, Y, Y, Y, Y
       am62px, Y, Y, Y, Y, Y
-      am62lx, Y, Y, Y, Y, Y
+      am62lx, N, N, N, N, N
 
    * eMMC
 
