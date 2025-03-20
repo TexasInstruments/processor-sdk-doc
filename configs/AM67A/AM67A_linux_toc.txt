@@ -113,7 +113,8 @@ linux/How_to_Guides/Host/K3_Resource_Partitioning_Tool
 linux/How_to_Guides/Target/Processor_SDK_Linux_File_System_Optimization_Customization
 linux/How_to_Guides/Target/How_to_Change_dtb_File
 linux/How_to_Guides/Target/How_to_enable_DT_overlays_in_linux
-linux/How_to_Guides/Target/How_to_manually_flash_emmc_device
+linux/How_to_Guides/Target/How_to_emmc_boot
+linux/How_to_Guides/Target/How_to_mmcsd_boot_emmc_uda
 linux/How_to_Guides/Target/How_to_visualize_statistics_data
 linux/How_to_Guides/Target/How_to_Use_K3Conf_Tool
 linux/How_to_Guides/Target/How_to_Tune_Real_Time_Linux

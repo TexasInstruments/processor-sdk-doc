@@ -102,6 +102,8 @@ linux/How_to_Guides/Host/SYSFW_Trace_Parser
 linux/How_to_Guides/Target/How_to_enable_DT_overlays_in_linux
 linux/How_to_Guides/Target/How_to_playback_audio_over_HDMI
 #linux/How_to_Guides/Target/How_to_boot_quickly
+linux/How_to_Guides/Target/How_to_emmc_boot
+linux/How_to_Guides/Target/How_to_mmcsd_boot_emmc_uda
 linux/How_to_Guides/Target/How_To_Enable_M2CC3301_in_linux
 linux/How_to_Guides/Target/Runtime_debug_unlock_on_secure_device
 linux/How_to_Guides/FAQ/How_to_Check_Device_Tree_Info
