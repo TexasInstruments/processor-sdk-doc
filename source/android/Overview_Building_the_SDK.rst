@@ -77,26 +77,26 @@ Where ``<BUILD_TARGET>`` is listed in the table below :
     ============================= ============================
     Android Build type            Build target
     ============================= ============================
-    AM62X-SK Tablet userdebug       ``am62x-ap3a-userdebug``
-    AM62X-SK Tablet user            ``am62x-ap3a-user``
-    AM62X-SK Car userdebug          ``am62x_car-ap3a-userdebug``
-    AM62X-SK Car user               ``am62x_car-ap3a-user``
+    AM62X-SK Tablet userdebug       ``am62x-ap4a-userdebug``
+    AM62X-SK Tablet user            ``am62x-ap4a-user``
+    AM62X-SK Car userdebug          ``am62x_car-ap4a-userdebug``
+    AM62X-SK Car user               ``am62x_car-ap4a-user``
     ============================= ============================
 
-    The recommended ``<BUILD_TARGET>`` to use is ``am62x-ap3a-userdebug``.
+    The recommended ``<BUILD_TARGET>`` to use is ``am62x-ap4a-userdebug``.
 
 .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
     ============================= ============================
     Android Build type            Build target
     ============================= ============================
-    AM62PX-SK Tablet userdebug       ``am62p-ap3a-userdebug``
-    AM62PX-SK Tablet user            ``am62p-ap3a-user``
-    AM62PX-SK Car userdebug          ``am62p_car-ap3a-userdebug``
-    AM62PX-SK Car user               ``am62p_car-ap3a-user``
+    AM62PX-SK Tablet userdebug       ``am62p-ap4a-userdebug``
+    AM62PX-SK Tablet user            ``am62p-ap4a-user``
+    AM62PX-SK Car userdebug          ``am62p_car-ap4a-userdebug``
+    AM62PX-SK Car user               ``am62p_car-ap4a-user``
     ============================= ============================
 
-    The recommended ``<BUILD_TARGET>`` to use is ``am62p-ap3a-userdebug``.
+    The recommended ``<BUILD_TARGET>`` to use is ``am62p-ap4a-userdebug``.
 
 It's possible to customize the standard build (``m``), by passing build flags.
 For example, the following enables ADB on user builds:
