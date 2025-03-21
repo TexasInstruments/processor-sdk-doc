@@ -99,11 +99,11 @@ Where ``<BUILD_TARGET>`` is listed in the table below :
     The recommended ``<BUILD_TARGET>`` to use is ``am62p-ap3a-userdebug``.
 
 It's possible to customize the standard build (``m``), by passing build flags.
-For example, the following enables AVB on userdebug builds:
+For example, the following enables ADB on user builds:
 
 .. code-block:: console
 
-  $ TARGET_AVB_ENABLE=true m
+  $ TARGET_ADB_USER_ENABLE=true m
 
 The following build flags are available. **Default** values are **highlighted**.
 
@@ -113,9 +113,6 @@ The following build flags are available. **Default** values are **highlighted**.
    * - Flag
      - Possible values
      - Description
-   * - ``TARGET_AVB_ENABLE``
-     - **false**/true
-     - Forces AVB feature on userdebug
    * - ``TARGET_ADB_USER_ENABLE``
      - **false**/true
      - Forces enable ADB on user builds (**NOT for production builds**)

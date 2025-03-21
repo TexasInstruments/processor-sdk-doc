@@ -213,15 +213,6 @@ Once the build is complete, follow the steps below to flash the images to eMMC.
           ## Resetting to default environment
           Saving Environment to MMC... Writing to MMC(0)... OK
 
-       .. note::
-
-          If you build with ``TARGET_AVB_ENABLE=true`` or flash user images you need to run this:
-
-          .. code-block:: console
-
-             => setenv force_avb "1"; saveenv;
-             Saving Environment to MMC... Writing to MMC(0)... OK
-
        .. tip::
 
           By default, no Device-Tree Overlays are selected.
