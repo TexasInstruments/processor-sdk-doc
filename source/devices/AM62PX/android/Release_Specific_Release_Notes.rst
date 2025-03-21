@@ -24,10 +24,10 @@ status for all packages included in this release. The manifest can be
 found on the SDK download page.
 
 ****************
-Release 10.01.00
+Release 10.01.01
 ****************
 
-Released on December 2024
+Released on March 2025
 
 What's new
 ==========
@@ -43,12 +43,13 @@ Following features are enabled/tested in this release for AM62Px Android:
 * **Boot:** eMMC boot, fastboot based flashing, A/B partition
 * **Security:** Keymint and gatekeeper implementation with OP-TEE
 * **Platform:** SELinux enforced mode with user build, ADB over USB
-* **Connectivity:** Ethernet, USB touch, CC33XX M.2 Module Wi-Fi support
+* **Connectivity:** Ethernet, USB touch, basic USB NCM, CC33XX M.2 Module Wi-Fi support
 * **Graphics:** GPU accelerated UI with drm_hwcomposer
 * **Audio:** HDMI output and jack audio output/input
 * **Multimedia:** :ref:`HW video decode (h264, hevc) encode (h264) <Android Multimedia Wave5>`, USB camera, :ref:`CSI camera <android-csi-camera>`
 * **Android Baseport:** Support of Generic System Image
 * **Display:** Support for LVDS panel and dual display (mirroring and extended)
+* **Display;** Support for the RPI 7Inch touchscreen DSI panel.
 
 SDK Components and Versions
 ===========================

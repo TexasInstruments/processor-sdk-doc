@@ -25,10 +25,10 @@ found on the SDK download page.
 
 
 ****************
-Release 10.01.00
+Release 10.01.01
 ****************
 
-Released on December 2024
+Released on March 2025
 
 What's new
 ==========
@@ -44,7 +44,7 @@ Following features are enabled/tested in this release for AM62x Android:
 * **Boot:** eMMC boot, fastboot based flashing, A/B partition
 * **Security:** Keymint and gatekeeper implementation with OP-TEE
 * **Platform:** SELinux enforced mode with user build, ADB over USB
-* **Connectivity:** Ethernet, USB touch, CC33XX M.2 Module Wi-Fi support
+* **Connectivity:** Ethernet, USB touch, basic USB NCM, CC33XX M.2 Module Wi-Fi support
 * **Graphics:** GPU accelerated UI with drm_hwcomposer
 * **Audio:** HDMI output and jack audio output/input
 * **Multimedia:** SW video decode/encode, USB camera, :ref:`CSI camera <android-csi-camera>`
