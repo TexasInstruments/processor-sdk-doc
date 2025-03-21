@@ -716,17 +716,55 @@ Taking as an input a video frame of dimensions ``1000x1000``,the example creates
 
 .. code-block:: console
 
-   $ kmstest -c hdmi -p 0:500,200-800x800 -f 1000x1000 -v 200,100-800x800                                                                                                                     
+   $ kmstest -c hdmi -p 0:500,200-800x800 -f 1000x1000 -v 200,100-800x800
    Connector 1/@50: HDMI-A-1
    Crtc 1/@48: 1920x1080@59.93 138.500 1920/48/32/80/+ 1080/3/5/23/- 60 (59.93) 0x9 0x48
    Plane 0/@31: 500,200-800x800
    Fb 54 1000x1000-XR24
 
-Taking as an input a video frame of dimensions ``1000x1000``, this example creates a cropped source rectangle of dimensions ``800x800``, starting at coordinates ``500,200`` and displays it on screen at coordinates ``200,100`` keeping the same dimensions as source rectangle i.e ``800x800`` without scaling. 
+Taking as an input a video frame of dimensions ``1000x1000``, this example creates a cropped source rectangle of dimensions ``800x800``, starting at coordinates ``500,200`` and displays it on screen at coordinates ``200,100`` keeping the same dimensions as source rectangle i.e ``800x800`` without scaling.
 
 .. figure:: /images/DSS_cropping_example_3.jpg
    :height: 600
    :width: 1020
+
+- **Gamma Correction**
+
+Gamma correction or gamma is used to adjust the brightness and color of images on a display. It is applied to ensure that the image appears as intended, with accurate brightness and color representation. Displays, such as LCDs and OLEDs, do not respond linearly to input signals. This means that the display's brightness does not increase linearly with the input voltage. Gamma correction compensates for this non-linear response by applying a non-linear transformation to the input signal. Gamma correction is typically applied using a look-up table (LUT) or a mathematical formula. The LUT or formula maps the input pixel values to output values that have been adjusted to compensate for the display’s non-linear response. DSS7 uses a look-up table for gamma correction. The gamma correction curve is usually represented by a power-law function, where the output value is proportional to the input value raised to a power.
+
+.. math::
+
+   V_{out} = AV_{in}^\gamma
+
+To show the effects of Gamma Correction, we have used a script(`<https://github.com/tomba/kmsxx/blob/master/py/tests/gamma.py>`__) that can be used directly from user-space. The script creates and sets the gamma look-up table using gamma value as 2.2. To use the script, first weston/display-manager should be stopped, see :ref:`stopping-weston`.
+
+Now, save the script and run it.
+
+.. code-block:: console
+
+   $ python3 gamma.py
+      press enter to apply gamma
+
+      press enter to remove gamma
+
+      press enter to exit
+
+Below is the test pattern image with gamma correction applied
+
+.. figure:: /images/DSS_example_with_gamma.jpg
+   :height: 670
+   :width: 1020
+
+Below is the test pattern image without gamma correction
+
+.. figure:: /images/DSS_example_without_gamma.jpg
+   :height: 670
+   :width: 1020
+
+For further information on gamma correction:
+
+*  `<https://www.w3.org/TR/PNG-GammaAppendix.html>`__
+*  `<https://www.benq.com/en-us/knowledge-center/knowledge/gamma-monitor.html>`__
 
 Buffers
 -------
