@@ -128,6 +128,8 @@ linux/How_to_Guides/Host/K3_Resource_Partitioning_Tool
 linux/How_to_Guides/Host/How_to_Setup_and_Debug_using_Lauterbach
 linux/How_to_Guides/Host/SYSFW_Trace_Parser
 linux/How_to_Guides/Host/Program_MMC_boot_media
+linux/How_to_Guides/Target/How_to_emmc_boot
+linux/How_to_Guides/Target/How_to_mmcsd_boot_emmc_uda
 linux/How_to_Guides/Hardware_Setup_with_CCS/AM64x_EVM_Hardware_Setup
 linux/How_to_Guides/FAQ/How_to_Verify_Ipc_Linux_R5
 linux/How_to_Guides/FAQ/How_to_Check_Device_Tree_Info
