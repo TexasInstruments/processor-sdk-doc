@@ -10,8 +10,8 @@ Kernel Drivers
    Foundational_Components/Kernel/Kernel_Drivers/Camera/VIP
    Foundational_Components/Kernel/Kernel_Drivers/Camera/CAL
    Foundational_Components/Kernel/Kernel_Drivers/Camera/CSI2RX
-   Foundational_Components/Kernel/Kernel_Drivers/Crypto
-   Foundational_Components/Kernel/Kernel_Drivers/DTHEv2
+   Foundational_Components/Kernel/Kernel_Drivers/Crypto/DTHEv2
+   Foundational_Components/Kernel/Kernel_Drivers/Crypto/SA2UL_OMAP
    Foundational_Components/Kernel/Kernel_Drivers/MCAN
    Foundational_Components/Kernel/Kernel_Drivers/MCRC64
    Foundational_Components/Kernel/Kernel_Drivers/DCAN
