@@ -26,6 +26,7 @@ User's Guide
     UG-DDRSS-J7
     UG-HyperBus
     UG-RemoteProc
+    UG-HSM
     UG-AVS
     UG-Thermal
     UG-Splash-Screen
