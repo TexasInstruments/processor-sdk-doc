@@ -49,3 +49,4 @@ Developer Notes
    How_to_Guides/Host/Program_MMC_boot_media
    How_to_Guides/FAQ/Tda4_Latest_FAQs
    How_to_Guides/FAQ/How_to_run_BIST_on_a_core
+   How_to_Guides/Target/How_To_Carve_Out_CMA
