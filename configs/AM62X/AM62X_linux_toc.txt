@@ -115,7 +115,15 @@ linux/Foundational_Components/Tools/Flash_via_Fastboot
 linux/Foundational_Components/Tools/Flash_via_Ethernet
 linux/Foundational_Components/Tools/Flash_via_UART
 linux/Foundational_Components_IPC62x
+
 linux/Foundational_Components_Machine_Learning
+linux/Foundational_Components/Machine_Learning/arm_compute_library
+linux/Foundational_Components/Machine_Learning/armnn
+linux/Foundational_Components/Machine_Learning/nnstreamer
+linux/Foundational_Components/Machine_Learning/onnxrt
+linux/Foundational_Components/Machine_Learning/tflite
+linux/Foundational_Components/Machine_Learning/tflite_j7
+
 linux/Foundational_Components_OPTEE
 linux/Foundational_Components_ATF
 linux/Foundational_Components_Virtualization

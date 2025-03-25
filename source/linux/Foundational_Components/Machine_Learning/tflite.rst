@@ -1,3 +1,5 @@
+
+
 TensorFlow Lite
 ==============================
 
@@ -5,13 +7,12 @@ Introduction
 -------------
 
 Processor SDK Linux has integrated open source `TensorFlow Lite <https://www.tensorflow.org/lite>`__ for deep learning inference at the edge.
-TensorFlow Lite runs on Arm for Sitara devices (AM3/AM4/AM5/AM6). For AM5729 and AM5749 devices, Tensorflow Lite heterogeneous execution is
-supported by utilizing TIDL compute offload with EVEs and DSPs.
+TensorFlow Lite runs on Arm for Sitara devices (AM3/AM4/AM5/AM6).
 
 Supported version
 ------------------
 
-  - TensorFlow Lite 1.15
+  - TensorFlow Lite 1.18
 
 TensorFlow Lite example applications
 -------------------------------------
@@ -383,10 +384,6 @@ for partial offload (mobilenet_v1_1.0_224_tidl_am5.tflite) with subgraph0.cfg ab
                             -i ../examples/grace_hopper.bmp -l ../examples/labels.txt -p 1
 
 
-More details about the design and implementation of Tensorflow Lite heterogeneous execution with TIDL compute offload
-can be found :download:`here </linux/Foundational_Components/Machine_Learning/files/HeterogeneousTFLiteWithTIDL_ti.pdf>`.
-
-
 Helper scripts for out of box experience
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Helper scripts are provided at "/usr/share/tensorflow-lite/demos" to demonstrate the offline TIDL compilation and run-time Tensorflow
@@ -403,19 +400,6 @@ and partial TIDL offload (heterogeneous execution).
     # ./run_tidl_compiler1.sh [This is creating mobilenet_v1_1.0_224_tidl_am5.tflite, .bin files, and subgraph0.cfg for partial TIDL offload,]
                               [specifying MobilenetV1/MobilenetV1/Conv2d_13_pointwise/Relu6 as the output tensor of the TIDL subgraph]
     # ./run_classification.sh [This runs Arm only classification first, and then with partial TIDL offload]
-
-
-Rebuild Tensorflow Lite demos with TIDL offload
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The Tensorflow Lite demo binaries on the AM5 filesystem has the TIDL offload support already. When there is a need
-to rebuild the demo binaries supporting the TIDL offload, follow the same procedure in
-`Rebuild the Tensorflow Lite demos <tflite.html#rebuild-the-tensorflow-lite-demos>`__
-and export two more environment variables as shown below before running "make".
-
-.. code-block:: bash
-
-    export TIDL_ACC=yes
-    export TIDL_API_DIR="$SDK_PATH_TARGET/usr/share/ti/tidl"
 
 
 Limitations

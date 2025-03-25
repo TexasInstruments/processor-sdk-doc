@@ -1,3 +1,5 @@
+.. _PdM_Anomaly_Detection:
+
 Predictive Maintenance Demo
 ===========================
 

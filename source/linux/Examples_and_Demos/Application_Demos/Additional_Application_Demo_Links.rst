@@ -40,9 +40,3 @@ TIDL Demo
 
     Refer to various TI DeepLearning demos documented at
     :ref:`TIDL Examples and Demos <tidl-examples-and-demos>`.
-
-Arm NN Classification Demo
-==========================
-
-Refer to :ref:`arm-nn-mobilenet-demo`.
-
