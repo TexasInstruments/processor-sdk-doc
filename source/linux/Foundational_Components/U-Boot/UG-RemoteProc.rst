@@ -80,134 +80,137 @@ A running remotecore can be stopped using the following command.
 Make sure all the commands are run in the above given sequence. Currently IPC
 is not supported in U-boot.
 
-Lockstep and Split mode
-^^^^^^^^^^^^^^^^^^^^^^^
-.. ifconfig:: CONFIG_part_variant in ('J722S')
+.. ifconfig:: CONFIG_sdk not in ('SITARA')
 
-    .. note::
+	Lockstep and Split mode
+	^^^^^^^^^^^^^^^^^^^^^^^
+	.. ifconfig:: CONFIG_part_variant in ('J722S')
 
-        This platform does not have split cores for R5F so below information is just for show.
+	    .. note::
 
-Cortex-R5F can be used in both lockstep (both cores run same code) and split
-mode (each core runs independently).
+		This platform does not have split cores for R5F so below information is just for show.
 
-To set lockstep/split mode for R5 remote cores, use :code:`ti,cluster-mode`
-property in the u-boot SoC device tree source. :code:`ti,cluster-mode` value
-should be set to 1 for lockstep and 0 for split mode.
 
-Furthermore, for setting lockstep/split mode for boot cores (which is MCU R5
-in Jacinto platforms), an additional property named :code:`core-opts` in binman
-dtsi needs to be updated. This is because the lockstep/split mode for boot
-MCU R5 on Jacinto platforms is set by the ROM code itself, based on core-opts
-value in the x509 certificate. :code:`core-opts` value in binman dtsi should be
-set to 2 for split-mode, and 0 for lockstep mode for boot MCU R5 on Jacinto
-platforms.
+	Cortex-R5F can be used in both lockstep (both cores run same code) and split
+	mode (each core runs independently).
 
-Refer to the below example on K3 J784S4 SoC.
+	To set lockstep/split mode for R5 remote cores, use :code:`ti,cluster-mode`
+	property in the u-boot SoC device tree source. :code:`ti,cluster-mode` value
+	should be set to 1 for lockstep and 0 for split mode.
 
-.. rubric:: Lockstep configuration
+	Furthermore, for setting lockstep/split mode for boot cores (which is MCU R5
+	in Jacinto platforms), an additional property named :code:`core-opts` in binman
+	dtsi needs to be updated. This is because the lockstep/split mode for boot
+	MCU R5 on Jacinto platforms is set by the ROM code itself, based on core-opts
+	value in the x509 certificate. :code:`core-opts` value in binman dtsi should be
+	set to 2 for split-mode, and 0 for lockstep mode for boot MCU R5 on Jacinto
+	platforms.
 
-* MAIN R5F:
+	Refer to the below example on K3 J784S4 SoC.
 
-    arch/arm/dts/k3-j784s4-main.dtsi
+	.. rubric:: Lockstep configuration
 
-    .. code-block:: dts
+	* MAIN R5F:
 
-        main_r5fss0: r5fss@5c00000 {
-            compatible = "ti,j721s2-r5fss";
-            ti,cluster-mode = <1>; # set to lockstep-mode
-            #address-cells = <1>;
-            #size-cells = <1>;
-            ranges = <0x5c00000 0x00 0x5c00000 0x20000>,
-                <0x5d00000 0x00 0x5d00000 0x20000>;
-            power-domains = <&k3_pds 336 TI_SCI_PD_EXCLUSIVE>;
-            ...
+	    arch/arm/dts/k3-j784s4-main.dtsi
 
-* Boot MCU R5F:
+	    .. code-block:: dts
 
-    arch/arm/dts/k3-j784s4-mcu-wakeup.dtsi
+		main_r5fss0: r5fss@5c00000 {
+		    compatible = "ti,j721s2-r5fss";
+		    ti,cluster-mode = <1>; # set to lockstep-mode
+		    #address-cells = <1>;
+		    #size-cells = <1>;
+		    ranges = <0x5c00000 0x00 0x5c00000 0x20000>,
+			<0x5d00000 0x00 0x5d00000 0x20000>;
+		    power-domains = <&k3_pds 336 TI_SCI_PD_EXCLUSIVE>;
+		    ...
 
-    .. code-block:: dts
+	* Boot MCU R5F:
 
-        mcu_r5fss0: r5fss@41000000 {
-            compatible = "ti,j721s2-r5fss";
-            ti,cluster-mode = <1>; # set to lockstep-mode
-            #address-cells = <1>;
-            #size-cells = <1>;
-            ranges = <0x41000000 0x00 0x41000000 0x20000>,
-            ...
+	    arch/arm/dts/k3-j784s4-mcu-wakeup.dtsi
 
-    arch/arm/dts/k3-j784s4-binman.dtsi
+	    .. code-block:: dts
 
-    .. code-block:: dts
+		mcu_r5fss0: r5fss@41000000 {
+		    compatible = "ti,j721s2-r5fss";
+		    ti,cluster-mode = <1>; # set to lockstep-mode
+		    #address-cells = <1>;
+		    #size-cells = <1>;
+		    ranges = <0x41000000 0x00 0x41000000 0x20000>,
+		    ...
 
-        &binman {
-            tiboot3-j784s4-gp-evm.bin { # In the case of GP boards
-                filename = "tiboot3-j784s4-gp-evm.bin";
-                symlink = "tiboot3.bin";
-                ti-secure-rom {
-                    content = <&u_boot_spl_unsigned>, <&ti_fs_gp>,
-                        <&combined_tifs_cfg_gp>, <&combined_dm_cfg_gp>;
-                    combined;
-                    dm-data;
-                    core-opts = <0>; # core-opts value should be set to 0 for lockstep-mode on boot core
-                    content-sbl = <&u_boot_spl_unsigned>;
-                    load = <0x41c00000>;
-                    ...
+	    arch/arm/dts/k3-j784s4-binman.dtsi
 
-.. rubric:: Split-mode configuration
+	    .. code-block:: dts
 
-* MAIN R5F:
+		&binman {
+		    tiboot3-j784s4-gp-evm.bin { # In the case of GP boards
+			filename = "tiboot3-j784s4-gp-evm.bin";
+			symlink = "tiboot3.bin";
+			ti-secure-rom {
+			    content = <&u_boot_spl_unsigned>, <&ti_fs_gp>,
+				<&combined_tifs_cfg_gp>, <&combined_dm_cfg_gp>;
+			    combined;
+			    dm-data;
+			    core-opts = <0>; # core-opts value should be set to 0 for lockstep-mode on boot core
+			    content-sbl = <&u_boot_spl_unsigned>;
+			    load = <0x41c00000>;
+			    ...
 
-    arch/arm/dts/k3-j784s4-main.dtsi
+	.. rubric:: Split-mode configuration
 
-    .. code-block:: dts
+	* MAIN R5F:
 
-        main_r5fss0: r5fss@5c00000 {
-            compatible = "ti,j721s2-r5fss";
-            ti,cluster-mode = <0>; # set to split-mode
-            #address-cells = <1>;
-            #size-cells = <1>;
-            ranges = <0x5c00000 0x00 0x5c00000 0x20000>,
-                <0x5d00000 0x00 0x5d00000 0x20000>;
-            power-domains = <&k3_pds 336 TI_SCI_PD_EXCLUSIVE>;
-            ...
+	    arch/arm/dts/k3-j784s4-main.dtsi
 
-* Boot MCU R5:
+	    .. code-block:: dts
 
-    arch/arm/dts/k3-j784s4-mcu-wakeup.dtsi
+		main_r5fss0: r5fss@5c00000 {
+		    compatible = "ti,j721s2-r5fss";
+		    ti,cluster-mode = <0>; # set to split-mode
+		    #address-cells = <1>;
+		    #size-cells = <1>;
+		    ranges = <0x5c00000 0x00 0x5c00000 0x20000>,
+			<0x5d00000 0x00 0x5d00000 0x20000>;
+		    power-domains = <&k3_pds 336 TI_SCI_PD_EXCLUSIVE>;
+		    ...
 
-    .. code-block:: dts
+	* Boot MCU R5:
 
-        mcu_r5fss0: r5fss@41000000 {
-            compatible = "ti,j721s2-r5fss";
-            ti,cluster-mode = <0>; # set to split-mode
-            #address-cells = <1>;
-            #size-cells = <1>;
-            ranges = <0x41000000 0x00 0x41000000 0x20000>,
-            ...
+	    arch/arm/dts/k3-j784s4-mcu-wakeup.dtsi
 
-    arch/arm/dts/k3-j784s4-binman.dtsi
+	    .. code-block:: dts
 
-    .. code-block:: dts
+		mcu_r5fss0: r5fss@41000000 {
+		    compatible = "ti,j721s2-r5fss";
+		    ti,cluster-mode = <0>; # set to split-mode
+		    #address-cells = <1>;
+		    #size-cells = <1>;
+		    ranges = <0x41000000 0x00 0x41000000 0x20000>,
+		    ...
 
-        &binman {
-            tiboot3-j784s4-gp-evm.bin { # In the case of GP boards
-                filename = "tiboot3-j784s4-gp-evm.bin";
-                symlink = "tiboot3.bin";
-                ti-secure-rom {
-                    content = <&u_boot_spl_unsigned>, <&ti_fs_gp>,
-                        <&combined_tifs_cfg_gp>, <&combined_dm_cfg_gp>;
-                    combined;
-                    dm-data;
-                    core-opts = <2>; # core-opts value should be set to 2 for split-mode on boot core
-                    content-sbl = <&u_boot_spl_unsigned>;
-                    load = <0x41c00000>;
-                    ...
+	    arch/arm/dts/k3-j784s4-binman.dtsi
 
-.. note::
+	    .. code-block:: dts
 
-    From SDK 9.1 onward, default mode is split mode for boot cores.
+		&binman {
+		    tiboot3-j784s4-gp-evm.bin { # In the case of GP boards
+			filename = "tiboot3-j784s4-gp-evm.bin";
+			symlink = "tiboot3.bin";
+			ti-secure-rom {
+			    content = <&u_boot_spl_unsigned>, <&ti_fs_gp>,
+				<&combined_tifs_cfg_gp>, <&combined_dm_cfg_gp>;
+			    combined;
+			    dm-data;
+			    core-opts = <2>; # core-opts value should be set to 2 for split-mode on boot core
+			    content-sbl = <&u_boot_spl_unsigned>;
+			    load = <0x41c00000>;
+			    ...
+
+	.. note::
+
+	    From SDK 9.1 onward, default mode is split mode for boot cores.
 
 HS Devices
 ^^^^^^^^^^
