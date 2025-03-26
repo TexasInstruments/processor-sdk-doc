@@ -86,36 +86,3 @@ Host Support
 
 The Processor SDK is developed, built and verified on Ubuntu 20.04 and 22.04. For all other
 versions of host support refer to Android documentation.
-
-
-************
-Known Issues
-************
-
-.. list-table::
-   :header-rows: 1
-   :widths: 10 40 40 10
-
-   * - Issues
-     - Description
-     - Post Release Fix
-     - Component
-
-   * - **SITSW-1387**
-     - Mcasp: Buffer underflow console messages seen
-     - N/A
-     - N/A
-
-   * - **SITSW-1386**
-     - Some commands don't work from native console, but work via adb shell
-     - N/A
-     - N/A
-
-   * - **LCPD-42548**
-     - Can't override kernel cmdline in U-Boot
-     - `969cb05aea9 <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/commit/?id=969cb05aea9>`__
-       `dca2919115b <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/commit/?id=dca2919115b>`__
-       `c095b62dfaf <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/commit/?id=c095b62dfaf>`__
-       `547cdd9aebd <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/commit/?id=547cdd9aebd>`__
-       `9d802d798ac <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/commit/?id=9d802d798ac>`__
-     - N/A
