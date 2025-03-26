@@ -28,7 +28,7 @@ General Information
 
    Getting the BL-1 Source Code
    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-   AM62L devices use TF-A BL-1 boot loader to configure LPDDR4 to
+   AM62L devices use TF-A BL-1 boot loader to configure LPDDR4/DDR4 to
    enable secondary program loader.
    The easiest way to get access to the BL-1 source code is by
    downloading and installing the Processor SDK Linux. Once installed,
