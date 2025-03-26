@@ -102,25 +102,11 @@ Known Issues
      - Component
 
    * - **SITSW-4268**
-     - Android: Seek operation not functional
+     - Android: Seek operation not functional during playback
      - N/A
      - N/A
 
-   * - **SITSW-1387**
-     - Mcasp: Buffer underflow console messages seen
+   * - **SITSW-6901**
+     - Android: In middle of video playback relaunching another video results in crash
      - N/A
-     - N/A
-
-   * - **SITSW-1386**
-     - Some commands don't work from native console, but work via adb shell
-     - N/A
-     - N/A
-
-   * - **LCPD-42548**
-     - Can't override kernel cmdline in U-Boot
-     - `969cb05aea9 <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/commit/?id=969cb05aea9>`__
-       `dca2919115b <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/commit/?id=dca2919115b>`__
-       `c095b62dfaf <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/commit/?id=c095b62dfaf>`__
-       `547cdd9aebd <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/commit/?id=547cdd9aebd>`__
-       `9d802d798ac <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/commit/?id=9d802d798ac>`__
      - N/A
