@@ -313,6 +313,31 @@ of crop rectangle to the application using ``VIDIOC_S_SELECTION`` ioctl as shown
    else
          printf("cropped rectangle: %dx%d\n", sel.r.width, sel.r.height);
 
+Support for cropping the input frame is now available in Gstreamer as well. The ``v4l2jpegenc`` element exposes
+a new property called crop-bounds. This property takes in an array of parameters as follows: <x, y, width, height>.
+The (X, Y) pair is used to reference where the region of interest begins. X represents the horizontal direction to
+the right, and Y represents the vertical direction down - (0,0) represents the top left corner of the image.
+Width and height also need to set as this will specify the resulting resolution of the cropped region.
+Please see the examples below on how to properly use this property.
+
+.. code-block:: console
+
+   gst-launch-1.0 videotestsrc num-buffers=200 ! video/x-raw, width=640, height=480, format=NV12 ! v4l2jpegenc 'crop-bounds=<400,80,240,400>' ! filesink location=small.jpeg
+
+   gst-launch-1.0 videotestsrc num-buffers=200 ! video/x-raw, width=640, height=480, format=NV12 ! v4l2jpegenc 'crop-bounds=<100,40,540,440>' ! filesink location=medium.jpeg
+
+   gst-launch-1.0 videotestsrc num-buffers=200 ! video/x-raw, width=640, height=480, format=NV12 ! v4l2jpegenc 'crop-bounds=<0,0,540,440>' ! filesink location=top_corner.jpeg
+
+The examples above will create cropped images of varying sizes. In the last example, it can be seen that the (X, Y)
+pair begins at (0, 0). This means that the region of interest will begin in the top left corner of the raw image.
+Whereas the first pipeline will make a cropped imaged starting at (400, 80), resulting in a final size of 240x400.
+
+.. note::
+
+   The JPEG Encoder does have hardware alignment requirements. This meaning that the resuling image size may not match
+   the exact resolution input into the property. The ``VIDIOC_S_SELECTION`` ioctl implemented in the driver will
+   handle adjusting these parameters to meet the hardware requirements.
+
 For more information on passing up the cropping rectangle referred information to application, please refer below link :
 
 - `ioctl VIDIOC_G_SELECTION, VIDIOC_S_SELECTION
