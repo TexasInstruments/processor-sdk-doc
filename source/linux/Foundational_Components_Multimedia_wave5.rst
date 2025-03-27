@@ -967,3 +967,64 @@ Buffer import on decoder can be tested by setting the ``capture-io-mode`` to ``5
          the V4L2 interface. See compliance data for what is available.
       #. Current driver supports 8 channel 1080p Encode and 8ch 1080p Decode
          owing to the default CMA Memory configuration.
+
+
+***********************
+Improving Video Quality
+***********************
+
+Picking the right parameters for a specific use case is very important - especially if the use case is resource constrained.
+Resource constraints can take many forms: network bandwidth, memory limitations, and so on. There will be times when the default
+parameters don't match the desired parameters of the use case. As a result, the quality of the video can be negatively impacted.
+Please refer to the following command:
+
+.. code-block:: text
+
+   Encoder: v4l2-ctl -d 1 -l
+
+Using this, the entire set of encode parameters, as well as their ranges and default values, supported by the Wave5 can be seen. It
+is very complex to explain each and every one of the parameters and near impossible to offer every possible combination of them. However,
+there are a few that are important to address.
+
+Firstly, lets start with profile and level configuration. As mentioned earlier in this document, the encoder supports a range of profiles
+and levels for both H.264 and H.265 codecs. The driver for the encoder will select a default level that may be too small for the particular
+resolution and framerate trying to be encoded. It is important that the level being used matches the use case. Please refer to the specification
+for the codec being used to get the approrpiate level. There are some examples below to change the profile and level.
+
+
+.. code-block:: console
+
+   target # gst-launch-1.0 filesrc location=/<path_to_file>  ! rawvideoparse width=1920 height=1080 format=i420 framerate=30/1 colorimetry=bt709 ! v4l2h264enc ! 'video/x-h264,level=(string)4,profile=high' ! filesink location=/<path_to_file>  sync=true
+
+
+.. code-block:: console
+
+   target # gst-launch-1.0 filesrc location=/<path_to_file>  ! rawvideoparse width=1920 height=1080 format=i420 framerate=30/1 colorimetry=bt709 ! v4l2h265enc ! video/x-h265,level='(string)4.1' ! filesink location=/<path_to_file>  sync=true
+
+Another set of parameters to consider are those that handle rate control (RC). The Wave5 encoder supports both variable bitrate (VBR) and constant 
+bitrate (CBR) modes. Default is always set to CBR. RC is essential in streaming cases when network bandwidth can vary or the stream needs to be
+restricted to certain bitrate so that it does not exceed the limit of the available network bandwidth. An example of setting bitrate can be seen
+below.
+
+- CBR:
+
+   .. code-block:: console
+
+      target # gst-launch-1.0 filesrc location=/<path_to_file>  ! rawvideoparse width=1920 height=1080 format=i420 framerate=30/1 colorimetry=bt709 ! v4l2h265enc extra-contorls="enc,frame_level_rate_control_enable=1,video_bitrate=8000000,video_bitrate_mode=1,vbv_buffer_size=10" ! filesink location=/<path_to_file> sync=true
+
+- VBR:
+
+   .. code-block:: console
+
+      target # gst-launch-1.0 filesrc location=/<path_to_file>  ! rawvideoparse width=1920 height=1080 format=i420 framerate=30/1 colorimetry=bt709 ! v4l2h265enc extra-contorls="enc,frame_level_rate_control_enable=1,video_bitrate=8000000,video_bitrate_mode=0" ! filesink location=/<path_to_file> sync=true
+
+The two pipelines above provide a good overview on how RC parameters need to be set. First and foremost, if changes to the set of RC parameters are
+going to be changed, ``frame_level_rate_control_enable=1`` has to be set. From there, ``video_bitrate`` and ``video_bitrate_mode`` can be set accordingly.
+As mentioned earlier, the default is going to be CBR. So having the first pipeline explicity set it is a bit redundant, but it does show that CBR corresponds
+to 1, whereas VBR corresponds to 0. Most importantly in the first pipeline, ``vbv_buffer_size`` is used. The issue with bitrate is that it can vary throughout
+the stream even if CBR is being used. Setting the ``vbv_buffer_size`` allows control over how much tolerance the encoder will give so that a certain bitrate is
+not significantly exceeded. This value should be played with a bit to determine which is best for a particular use case. Setting to 10, as seen in the example,
+will keep the video very constrained, but could occasionally come at a cost to quality when videos become more complex and the encoder needs more bits. Through
+experiments, setting to 200 has proven to be the best balance, but the driver defaults the size to 1000 as the assumption is made that quality is more important than
+anything. Furthermore, it can be seen in the VBR pipeline that ``vbv_buffer_size`` is not used. This is because regardless of what it's set to, the driver will
+override and set to 3000 - the max value. VBR needs this much tolerance to function properly and their is no way around this. 
