@@ -1,43 +1,28 @@
-************************************
+*****************************
 CoreSDK Linux Migration Guide
-************************************
+*****************************
 
 .. rubric:: Overview
 
 This page covers migration information for applications built on top
 of the Processor SDK for Linux.
 
-Processor CoreSDK 10.xx Releases
+Processor CoreSDK 11.xx Releases
 ================================
 
-Processor CoreSDK Sitara 10.01
+Processor CoreSDK Sitara 11.00
 ------------------------------
 
-- Tag Info: 10.01.10
-- This is the final release in the 2024 LTS stream, with new stable versions of Kernel, U-boot, toolchain and Yocto Distribution.
-- Platforms Supported : AM62Px (HS-FS, HS-SE), AM62x ( GP, HS-FS, HS-SE), AM62x LP (HS-FS, HS-SE), AM62SIP ( HS-FS, HS-SE), AM64x 2.0 (HS-FS), AM62A (HS-FS, HS-SE)
-- Kernel 6.6.58
-- U-Boot 2024.04
-- ATF 2.11+
-- OPTEE 4.4.0
+- Tag Info: 11.00.09
+- This is the First Reference release in the 2025 LTS stream, with new stable versions of Kernel, U-boot, toolchain and Yocto Distribution.
+- Platforms Supported : AM62Px (HS-FS, HS-SE), AM62x ( GP, HS-FS, HS-SE), AM62x LP (HS-FS, HS-SE), AM64x 2.0 (HS-FS), AM62A (HS-FS, HS-SE)
+- Kernel 6.12.17
+- U-Boot 2025.01
+- ATF 2.12+
+- OPTEE 4.5.0
 - Toolchain GCC 13.3
 - Yocto Scarthgap/5.0
-- Graphics DDK 24.1
-
-
-Processor CoreSDK Sitara 10.00
-------------------------------
-
-- Tag Info: 10.00.07
-- This is the first release in the 2024 LTS stream, with new stable versions of Kernel, U-boot, toolchain and Yocto Distribution.
-- Platforms Supported : AM62Px (HS-FS, HS-SE), AM62x ( GP, HS-FS, HS-SE), AM62x LP (HS-FS, HS-SE), AM62SIP ( HS-FS, HS-SE), AM64x 2.0 (HS-FS), AM62A (HS-FS, HS-SE)
-- Kernel 6.6.32
-- U-Boot 2024.04
-- ATF 2.10+
-- OPTEE 4.2.0
-- Toolchain GCC 13.2
-- Yocto Scarthgap/5.0
-- Graphics DDK 24.1
+- Graphics DDK 24.2
 
 
 .. note::
