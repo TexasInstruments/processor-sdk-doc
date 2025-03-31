@@ -17,7 +17,7 @@ directory of the `oe-layersetup git repo <https://git.ti.com/cgit/arago-project/
 +-------------------------------------------------------------------+-----------------------------------+------------------------------------------+
 | Config File                                                       | Description                       | Supported machines/platforms             |
 +===================================================================+===================================+==========================================+
-| processor-sdk-scarthgap-chromium-10.01.10.04-config.txt           | Processor SDK 10.01.10.04 Release | am62xx-evm, am62xx-lp-evm, beagleplay    |
+| processor-sdk-scarthgap-chromium-11.00.09.04-config.txt           | Processor SDK 11.00.09.04 Release | am62xx-evm, am62xx-lp-evm, beagleplay    |
 +-------------------------------------------------------------------+-----------------------------------+------------------------------------------+
-| processor-sdk-scarthgap-10.01.10.04-config.txt                    | Processor SDK 10.01.10.04 Release | am62xxsip-evm                            |
+| processor-sdk-scarthgap-11.00.09.04-config.txt                    | Processor SDK 11.00.09.04 Release | am62xx-evm, am62xx-lp-evm, beagleplay    |
 +-------------------------------------------------------------------+-----------------------------------+------------------------------------------+
