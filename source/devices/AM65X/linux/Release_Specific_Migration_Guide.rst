@@ -1,5 +1,3 @@
-.. _release-specific-migration-guide:
-
 *************************
 Migration Guide for AM65X
 *************************
