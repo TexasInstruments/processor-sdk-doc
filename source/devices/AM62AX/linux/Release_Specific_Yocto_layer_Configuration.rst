@@ -17,6 +17,6 @@ directory of the `oe-layersetup git repo <https://git.ti.com/cgit/arago-project/
 +----------------------------------------------------+------------------------------------------------+--------------------------------+
 |                    Description                     |      Config File                               | Supported yocto build machine  |
 +====================================================+================================================+================================+
-| |__SDK_FULL_NAME__| : 10_01_00 Release             | processor-sdk-analytics-10_01_00-config.txt    | |__SDK_BUILD_MACHINE__|        |
+| |__SDK_FULL_NAME__| : 11_00_09_04 Release          | processor-sdk-analytics-11_00_09-config.txt    | |__SDK_BUILD_MACHINE__|        |
 +----------------------------------------------------+------------------------------------------------+--------------------------------+
 
