@@ -379,6 +379,29 @@ Enabling camera sensors
 
       $ gst-launch-1.0 libcamerasrc ! video/x-raw, width=1024, height=768, format=UYVY ! autovideosink
 
+   .. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+      You can also run mosaic camera to display stream from 4 OV5640 connected to the SK-AM62P using V3Link fusion mini board.
+
+      .. note::
+
+         Arm neon accelerated TI elements for video mosaicing and color format conversion namely ``timosaic`` and ``ticolorconvert`` are not present in AM62P SDK 11.00.
+         To run the below pipeline, AM62P SDK 10.01 should be used with the SDK 11.00 kernel installed from `here <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/log/?h=ti-linux-6.12.y>`__.
+
+      .. code-block:: console
+
+         $ gst-launch-1.0 \
+         v4l2src device=/dev/video-ov5640-cam0 ! video/x-raw, width=640,height=480, format=YUY2 ! ticolorconvert ! queue ! mosaic.sink_0 \
+         v4l2src device=/dev/video-ov5640-cam1 ! video/x-raw, width=640,height=480, format=YUY2 ! ticolorconvert ! queue ! mosaic.sink_1 \
+         v4l2src device=/dev/video-ov5640-cam2 ! video/x-raw, width=640,height=480, format=YUY2 ! ticolorconvert ! queue ! mosaic.sink_2 \
+         v4l2src device=/dev/video-ov5640-cam3 ! video/x-raw, width=640,height=480, format=YUY2 ! ticolorconvert ! queue ! mosaic.sink_3 \
+         timosaic name=mosaic \
+         sink_0::startx=300 sink_0::starty=0 sink_0::width=640 sink_0::height=480 \
+         sink_1::startx=980 sink_1::starty=0 sink_1::width=640 sink_1::height=480  \
+         sink_2::startx=300 sink_2::starty=500 sink_2::width=640 sink_2::height=480 \
+         sink_3::startx=980 sink_3::starty=500 sink_3::width=640 sink_3::height=480 ! \
+         video/x-raw, width=1920, height=1080, format=NV12 ! queue ! kmssink driver-name=tidss sync=false force-modesetting=true
+
    Suspend to RAM
    ==============
 
@@ -395,6 +418,11 @@ Enabling camera sensors
 
    The system will automatically wake-up after 5 seconds, and camera streaming
    should resume from where it left (as long as the sensor supports it).
+
+   .. attention::
+
+      Only TEVI OV5640 and IMX219 are known to work reliably when system is suspended with capture running.
+
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
