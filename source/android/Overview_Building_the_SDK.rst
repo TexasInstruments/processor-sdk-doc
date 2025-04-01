@@ -40,7 +40,7 @@ Fetch the code using ``repo``:
 .. code-block:: console
 
    $ mkdir ${YOUR_PATH}/ti-aosp-15 && cd $_
-   $ repo init -u https://git.ti.com/git/android/manifest.git -b android15-release -m releases/RLS_10_01.xml
+   $ repo init -u https://git.ti.com/git/android/manifest.git -b android15-release -m releases/RLS_10_01_01.xml
    $ repo sync
 
 .. tip::
