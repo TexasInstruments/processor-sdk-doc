@@ -413,3 +413,7 @@ If the user wants to keep the boot animation alive until the display server star
 .. note::
 
    The above option is enabled by default in the SDK, The user will need to disable it manually if they desire a persistent splash screen and they are not using the DRM fbdev emulation feature.
+
+Disabling splash screen
+-----------------------
+To disable splash screen use `configs/am62x_evm_prune_splashscreen.config <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/tree/configs/am62x_evm_prune_splashscreen.config?h=ti-u-boot-2025.01>`__ fragment while building u-boot with corresponding a53 defconfig.
