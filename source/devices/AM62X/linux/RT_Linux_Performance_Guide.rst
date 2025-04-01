@@ -1,8 +1,9 @@
 ======================================
- RT-linux 10.01 Performance Guide
+ RT-linux 11.00 Performance Guide
 ======================================
 
 .. rubric::  **Read This First**
+   :name: read-this-first-kernel-perf-guide
 
 **All performance numbers provided in this document are gathered using
 following Evaluation Modules unless otherwise specified.**
@@ -18,8 +19,6 @@ following Evaluation Modules unless otherwise specified.**
 +----------------+----------------------------------------------------------------------------------------------------------------+
 
 Table:  Evaluation Modules
-
-|
 
 .. rubric::  About This Manual
    :name: about-this-manual-rt-kernel-perf-guide
