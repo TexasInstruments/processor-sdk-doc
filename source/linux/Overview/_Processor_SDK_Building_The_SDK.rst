@@ -590,8 +590,6 @@ The "Build Output" is given relative to the
       +------------------+--------------------------------------------+
       | am62xx-lp-evm    | AM62x LP Starter Kit (SK) - HS-FS, HS-SE   |
       +------------------+--------------------------------------------+
-      | am62xxsip-evm    | AM62x-SIP Starter Kit (SK) - HS-FS, HS-SE  |
-      +------------------+--------------------------------------------+
       | beagleplay-ti    | BEAGL-PLAY-SBC - GP                        |
       +------------------+--------------------------------------------+
 
@@ -692,8 +690,6 @@ The "Build Output" is given relative to the
       | am62xx-evm       | AM62x Starter Kit (SK) - GP, HS-FS, HS-SE  |
       +------------------+--------------------------------------------+
       | am62xx-lp-evm    | AM62x LP Starter Kit (SK) - HS-FS, HS-SE   |
-      +------------------+--------------------------------------------+
-      | am62xxsip-evm    | AM62x-SIP Starter Kit (SK) - HS-FS, HS-SE  |
       +------------------+--------------------------------------------+
       | beagleplay-ti    | BEAGL-PLAY-SBC - GP                        |
       +------------------+--------------------------------------------+

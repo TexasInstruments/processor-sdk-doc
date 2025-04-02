@@ -13,8 +13,6 @@ to start Linux development on the TI microprocessor.
 +----------------------------------------------+----------------------------------------------------------------------+
 | PSDK Linux AM62x Installer (Linux version)   | ti-processor-sdk-linux-am62xx-evm-<version>-Linux-x86-Install.bin    |
 +----------------------------------------------+----------------------------------------------------------------------+
-| PSDK Linux AM62SIP Installer (Linux version) | ti-processor-sdk-linux-am62xxsip-evm-<version>-Linux-x86-Install.bin |
-+----------------------------------------------+----------------------------------------------------------------------+
 
 Use Linux installer for complete source package, tools, prebuilt-image, filesystems,
 etc for product development.
@@ -68,10 +66,6 @@ window and change directories to where the installer is located
     # For AM62x (am62xx-evm and am62xx-lp-evm) Installer
     chmod +x ./ti-processor-sdk-linux-am62xx-evm-<version>-Linux-x86-Install.bin
     ./ti-processor-sdk-linux-am62xx-evm-<version>-Linux-x86-Install.bin
-
-    # For AM62SIP (am62xxsip-evm) Installer
-    chmod +x ./ti-processor-sdk-linux-am62xxsip-evm-<version>-Linux-x86-Install.bin
-    ./ti-processor-sdk-linux-am62xxsip-evm-<version>-Linux-x86-Install.bin
 
 Alternatively, you can give execute permissions and run the SDK Installer
 by double clicking on it within your Linux host PC.
