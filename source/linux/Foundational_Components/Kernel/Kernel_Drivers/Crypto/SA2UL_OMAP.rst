@@ -6,10 +6,9 @@ Crypto
 Introduction
 ************
 
-The Crypto API Driver is a set of Linux drivers that provide access to
-the hardware cryptographic accelerators available on
-AM335x/AM437x/AM57x/DRA7/AM65/J721E/J721S2/J784S4/AM62 devices. These drivers are
-available built-in in the kernel in the current SDK release.
+The Crypto API Driver is a set of Linux drivers that provide access to the
+hardware cryptographic accelerators. These drivers are available built-in
+in the kernel in the current SDK release.
 
 Following are the Hardware accelerators supported on the following
 devices:
