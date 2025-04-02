@@ -159,7 +159,7 @@ The MACHINE can be set to |__SDK_BUILD_MACHINE__|, for example.
 
          .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-            * :file:`tisdk-jailhouse-image` is not applicable for am62xxsip-evm and beagleplay.
+            * :file:`tisdk-jailhouse-image` is not applicable for am62xxsip-evm and beagleplay-ti.
 
          .. tabs::
 
@@ -592,7 +592,7 @@ The "Build Output" is given relative to the
       +------------------+--------------------------------------------+
       | am62xxsip-evm    | AM62x-SIP Starter Kit (SK) - HS-FS, HS-SE  |
       +------------------+--------------------------------------------+
-      | beagleplay       | BEAGL-PLAY-SBC - GP                        |
+      | beagleplay-ti    | BEAGL-PLAY-SBC - GP                        |
       +------------------+--------------------------------------------+
 
    .. ifconfig:: CONFIG_part_variant in ('AM62AX')
@@ -695,7 +695,7 @@ The "Build Output" is given relative to the
       +------------------+--------------------------------------------+
       | am62xxsip-evm    | AM62x-SIP Starter Kit (SK) - HS-FS, HS-SE  |
       +------------------+--------------------------------------------+
-      | beagleplay       | BEAGL-PLAY-SBC - GP                        |
+      | beagleplay-ti    | BEAGL-PLAY-SBC - GP                        |
       +------------------+--------------------------------------------+
 
    .. ifconfig:: CONFIG_part_variant in ('AM65X')
