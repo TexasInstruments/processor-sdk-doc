@@ -33,7 +33,7 @@ Please refer to the software manifests, which outlines the licensing
 status for all packages included in this release. The manifest can be
 found on the SDK download page or in the installed directory as indicated below.
 
--  Linux Manifest:  :file:`<PSDK_PATH>/docs/software_manifest.html`
+-  Linux Manifest:  :file:`<PSDK_PATH>/manifest/software_manifest.htm`
 
 
 Release 11.00.09.04
