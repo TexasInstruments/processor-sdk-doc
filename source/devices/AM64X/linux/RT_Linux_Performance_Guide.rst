@@ -261,10 +261,10 @@ resulting in a score that is double the bandwidth LMBench will show.
 .. csv-table:: Stream Benchmarks
     :header: "Benchmarks","am64xx-hsevm: perf"
 
-    "add (MB/s)","1626.90"
-    "copy (MB/s)","2112.60"
-    "scale (MB/s)","2263.80"
-    "triad (MB/s)","1625.90"
+    "add (MB/s)","1619.70"
+    "copy (MB/s)","2019.30"
+    "scale (MB/s)","2250.40"
+    "triad (MB/s)","1615.70"
 
 CoreMarkPro
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -475,36 +475,6 @@ ICSSG Ethernet Driver
 
 |
 
-PCIe Driver
--------------------------
-
-PCIe-ETH
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. csv-table:: PCIe Ethernet performance
-    :header: "TCP Window Size(Kbytes)","am64xx-hsevm: Bandwidth (Mbits/sec)"
-
-    "8","0.00"
-    "16","0.00"
-
-PCIe-NVMe-SSD
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. csv-table:: PCIE SSD EXT4 FIO 10G
-    :header: "Buffer size (bytes)","am64xx-hsevm: Write EXT4 Throughput (Mbytes/sec)","am64xx-hsevm: Write EXT4 CPU Load (%)","am64xx-hsevm: Read EXT4 Throughput (Mbytes/sec)","am64xx-hsevm: Read EXT4 CPU Load (%)"
-
-    "1m","373.00","19.47","398.00","13.84"
-    "4m","364.00","16.00","398.00","12.77"
-    "4k","78.30","51.37","90.40","46.75"
-    "256k","375.00","21.93","397.00","15.57"
-
-- Filesize used is: 10G
-- FIO command options: --ioengine=libaio --iodepth=4 --numjobs=1 --direct=1 --runtime=60 --time_based 
-- Platform: Speed 5GT/s, Width x1
-- SSD being used: Lite-On Technology Corporation M8Pe Series NVMe SSD [14a4:22f1] (rev 01)
-
-|
-
 OSPI Flash Driver
 -------------------------
 
@@ -686,12 +656,3 @@ Listed for each algorithm are the code snippets used to run each benchmark test.
 ::
 
     time -v openssl speed -elapsed -evp aes-128-cbc
-
-IPSec Software Performance
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. csv-table:: IPSec Software Performance
-    :header: "Algorithm","am64xx-hsevm: Throughput (Mbps)","am64xx-hsevm: Packets/Sec","am64xx-hsevm: CPU Load"
-
-    "3des","52.80","4.00","52.54"
-    "aes128","0.00","0.00","51.14"
