@@ -63,7 +63,7 @@ What's new
   - ATF 2.12+
   - OPTEE 4.5.0
   - Graphics DDK 24.2
-  - TIFS Firmware v11.00.07
+  - TIFS Firmware / SYSFW `v11.00.07 <https://software-dl.ti.com/tisci/esd/11_00_07/release_notes/release_notes.html>`__ (Click on the link for more information)
   - DM Firmware 11.00.00.06
   - Yocto scarthgap 5.0
 

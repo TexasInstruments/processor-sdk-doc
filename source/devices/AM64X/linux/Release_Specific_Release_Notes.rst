@@ -62,7 +62,7 @@ What's new
   - Toolchain GCC 13.3
   - ATF 2.12+
   - OPTEE 4.5.0
-  - TIFS Firmware v11.00.07
+  - TIFS Firmware `v11.00.07 <https://software-dl.ti.com/tisci/esd/11_00_07/release_notes/release_notes.html>`__ (Click on the link for more information)
   - Yocto scarthgap 5.0
 
 
