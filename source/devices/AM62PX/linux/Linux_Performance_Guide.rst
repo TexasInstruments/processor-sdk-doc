@@ -676,9 +676,9 @@ UBOOT MMCSD FAT
 .. csv-table:: UBOOT MMCSD FAT
     :header: "File size (bytes in hex)","am62pxx_sk-fs: Write Throughput (Kbytes/sec)","am62pxx_sk-fs: Read Throughput (Kbytes/sec)"
 
-    "400000","37236.36","71859.65"
-    "800000","46022.47","81108.91"
-    "1000000","47216.14","86231.58"
+    "400000","40156.86","81920.00"
+    "800000","45765.36","87148.94"
+    "1000000","47627.91","90021.98"
 
 The performance numbers were captured using the following:
 
