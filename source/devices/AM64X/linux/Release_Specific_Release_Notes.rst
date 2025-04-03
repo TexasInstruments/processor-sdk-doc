@@ -188,22 +188,15 @@ Issues Resolved
    :header: "Record ID", "Title"
    :widths: 15, 70
 
-   "EXT_EP-12108","audit for potential bugs with 6.6.44 stable merge "
-   "EXT_EP-12050","AM642-EVM: PCIe0 EP node is not defined"
-   "EXT_EP-12098","Uboot docs: document renaming tiboot3-<evm>.bin file"
-   "EXT_SITMPUSW-29","TI Debian SDK: Docker not working"
-   "EXT_SITMPUSW-31","IPC Firmwares missing from base images."
-   "EXT_EP-12055","ICSSG HSR offload Multicast packets with VLAN IDs not filter classified"
-   "EXT_EP-12054","ICSSG interfaces in switch mode running linuxptp not functional"
-   "EXT_EP-12095","Watchdog reset not functional: ESM interrupts are wrong"
-   "EXT_EP-12082","AM64 Processor SDK UG: Invalid eMMC Programming Steps in U-Boot Section"
-   "EXT_EP-12068","AM64x dts file calls SYNC2_OUT the wrong name"
-   "EXT_EP-12110","am64xx-evm : OSPI NOR boot fails"
-   "EXT_EP-12049","AM64X EVM: Fastboot is not functional"
-   "EXT_EP-12104","AM64x NAND dtso file missing in kernel 6.6"
-   "SYSFW-6426","Ownership of a firewall region can be transferred to an invalid host"
-   "SYSFW-6432","Set device API doesn't return Error when PD is in transition state"
-   "EXT_SITMPUSW-32", "SDK Makefile: Fix logic to pick key directory for mkimage"
+   "EXT_EP-12315","eMMC High Speed SDR mode is not configured correctly in the U-Boot"
+   "EXT_EP-12311","AM64x: Software Build Sheet needs update at SOC level SW readiness"
+   "EXT_EP-12111","Linux SDK v10.0: TI-added support for W25N01JW SPI NAND breaks other existing Flash support"
+   "EXT_EP-12051","AM64x: Linux hangs on repetitive probe/removal of gadget zero"
+   "EXT_EP-12071","sdk-doc: missing SK-AM64B information in CDNS3 USB page"
+   "EXT_EP-12337","ICSSG: TAPRIO - Firmware can’t handle base-time which is not a multiple of cycle-time."
+   "EXT_EP-12338","ICSSG: PA_STATS are not sequenced properly"
+   "EXT_EP-12339","Switch/MAC/HSR firmware does not drop corrupted packets"
+
 
 Issues Open
 -----------
@@ -211,14 +204,10 @@ Issues Open
    :header: "Record ID", "Title"
    :widths: 15, 70
 
-   "EXT_EP-12111","Linux SDK v10.0: TI-added support for W25N01JW SPI NAND breaks other existing Flash support"
+   "EXT_EP-12310","Resource Table generating wrong format for rm-cfg.yaml"
+   "EXT_EP-12285","SK-AM64B: Deferred probe of i2c bus warning"
+   "EXT_EP-12300","ICSSG: Ethernet: Promiscuous mode is always enabled in bridge mode"
    "EXT_EP-12075","U-boot gets stuck when DDR size changed to 512 MB"
-   "EXT_EP-12051","AM64x: Linux hangs on repetitive probe/removal of gadget zero"
-   "EXT_EP-12066","CPSW EST schedule triggers netdev watchdog"
-   "EXT_EP-12065","CPSW Ethernet EST schedule is not taken down on link down"
-   "EXT_EP-12071","sdk-doc: missing SK-AM64B information in CDNS3 USB page"
    "EXT_EP-12060","AM64x: Lower core count on variant devices no supported"
-   "SYSFW-4518","Security handover does not enable use of all SA2UL threads"
-   "SYSFW-6621","No available region to configure for Firewall ID 24"
-   "SYSFW-7781","Get device API does not return error when the LPSC is in transition state"
+   "EXT_EP-12336","Last 1B of payload missing in forwarding scenario"
 
