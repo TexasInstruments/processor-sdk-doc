@@ -190,6 +190,7 @@ Errata Resolved
 
    "EXT_EP-12128","USB2 PHY locks up due to short suspend"
    "EXT_EP-12124","BCDMA: RX Channel can lockup in certain scenarios"
+   "EXT_EP-12294","MMCHS: eMMC HS400 tDCD timing marginal to JEDEC spec"
 
 Issues Resolved
 ---------------
@@ -197,30 +198,16 @@ Issues Resolved
    :header: "Record ID", "Title"
    :widths: 15, 70
 
-   "EXT_EP-12109","Multi Instance Hang with Reduced CPU load patch"
-   "EXT_EP-12108","audit for potential bugs with 6.6.44 stable merge "
-   "EXT_EP-12107","Running camera pipelines causes kernel crash on all platforms"
-   "EXT_EP-12061","Single Link LVDS is broken with 10.0"
-   "EXT_EP-12106","higher latency metrics with Wave5"
-   "EXT_EP-12058","rcu_preempt self-detected stall on CPU while running DSS usecases"
-   "EXT_EP-12063","Update the DDR configuration with DDR syscfg 9.09+"
-   "EXT_EP-12098","Uboot docs: document renaming tiboot3-<evm>.bin file"
-   "SITSW-4773","DM is ignoring the exact flags sent in TISCI message"
-   "SYSFW-5992","Unable to set exact pixel clock for OLDI LCD display / HDMI Pixel clock"
-   "SYSFW-6426","Ownership of a firewall region can be transferred to an invalid host"
-   "SYSFW-6432","Set device API doesn't return Error when PD is in transition state"
-   "SYSFW-7571","Device IDs higher than 255 does not work with set device constraint API"
-   "SYSFW-7602","RTC count value not getting updated after DeepSleep exit"
-   "SYSFW-7614","Unable to configure DSS clock below 15.625MHz"
-   "SYSFW-7617","LPM mode selection logic does not check for constraints on all the hosts/devices"
-   "SYSFW-7739","LPM constraint messages received by TIFS not forwarded to DM"
-   "SYSFW-7740","Only the last latency constraint value passed from a host considered in LPM selection"
-   "SYSFW-7753","A53 privid is set to 4 and does not match other SOCs value of 1"
-   "EXT_SITMPUSW-33", "Resolve GPU crash caused by Display cluster demo"
-   "EXT_SITMPUSW-32", "SDK Makefile: Fix logic to pick key directory for mkimage"
-   "EXT_SITMPUSW-31", "IPC Firmwares missing from base images."
-   "EXT_SITMPUSW-30", "Debian: Deepsleep doesn't work on AM62P"
-   "EXT_SITMPUSW-29", "TI Debian SDK: Docker not working"
+   "EXT_SITMPUSW-75","Update OTAP values to match the latest datasheet updates"
+   "EXT_EP-12063","Update the DDR configuration with DDR syscfg 10.03"
+   "EXT_EP-12293","Update OTAP values for HS400 to match the latest datasheet updates"
+   "EXT_EP-12111","Linux SDK v10.0: TI-added support for W25N01JW SPI NAND breaks other existing Flash support"
+   "EXT_EP-12112","Add Timer PWM documentation and other infrastructure as needed"
+   "EXT_EP-12268","alloc space exhausted error at u-boot for display cluster"
+   "EXT_EP-12284","Partial I/O not resuming from mcan"
+   "EXT_EP-12288","Graphics driver fails to suspend"
+   "EXT_EP-12289","Unable to boot kernel from eMMC"
+   "EXT_EP-12295","IO Only + DDR Resume Failure: platform 79000000.r5f: ti-sci processor set_config failed"
 
 Issues Open
 -----------
@@ -228,14 +215,5 @@ Issues Open
    :header: "Record ID", "Title"
    :widths: 15, 70
 
-   "EXT_EP-12111","Linux SDK v10.0: TI-added support for W25N01JW SPI NAND breaks other existing Flash support"
-   "EXT_EP-12112","Add Timer PWM documentation and other infrastructure as needed"
-   "SYSFW-7622","DeepSleep resume failure when RTC wake is set for 1 second"
-   "SYSFW-7781","Get device API does not return error when the LPSC is in transition state"
-   "SYSFW-7831","DMA Resources used by ROM are not cleaned up when resuming from IO Only + DDR mode"
-   "SYSFW-7884","There is an additional divide by 4 on all clocks of WKUP/MCU GPIO clock mux"
-   "SYSFW-7887","DeepSleep fails if entered immediately after bootup"
-   "SYSFW-7897","Partial I/O mode fails after few hundred iterations"
-   "SYSFW-7899","LPM configuration is not enabled in HS-SE firmware"
-   "SYSFW-7903","Processor ownership info is not part of minimal TIFS context in IO only + DDR mode"
+   "None", "TODO"
 
