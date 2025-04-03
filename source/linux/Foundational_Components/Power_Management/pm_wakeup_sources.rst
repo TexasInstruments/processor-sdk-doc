@@ -27,7 +27,7 @@ valid for given low power modes:
    +------------------------------------------------+------------+----------+-------------+
    | MCU IPC (for MCU Only mode)                    | No         | Yes      | No          |
    +------------------------------------------------+------------+----------+-------------+
-   | CAN UART I/O Daisy Chain                       | No         | No       | Yes         |
+   | CAN UART I/O Daisy Chain                       | Yes        | Yes      | Yes         |
    +------------------------------------------------+------------+----------+-------------+
 
 .. ifconfig:: CONFIG_part_variant in ('AM62AX', 'AM62PX')
@@ -48,7 +48,7 @@ valid for given low power modes:
    +------------------------------------------------+-------+------+---------+----------+
    | MCU IPC (for MCU Only mode)                    | No    | Yes  | No      | No       |
    +------------------------------------------------+-------+------+---------+----------+
-   | CAN UART I/O Daisy Chain                       | No    | No   | Yes     | Yes      |
+   | CAN UART I/O Daisy Chain                       | Yes   | Yes  | Yes     | Yes      |
    +------------------------------------------------+-------+------+---------+----------+
 
 *********************
@@ -612,6 +612,65 @@ mode and the following message printed:
 .. code-block:: text
 
    [IPC RPMSG ECHO] Main domain resumed due to MCU UART
+
+
+************************
+CAN UART I/O Daisy Chain
+************************
+
+It is possible to wakeup the system from CAN UART pins in all supported low
+power modes. This is possible once CAN UART is configured.
+
+To set CAN UART as a wakeup source, a pinctrl state called "wakeup" needs to be
+added to the device tree. The "wakeup" pinctrl state will set the  WKUP_EN flag
+on the desired padconfig register. When the WKUP_EN flag (29th bit) is set, it
+allows the pad to act as a wakeup source. If CAN UART has the "wakeup" pinctrl
+state defined, then the Linux mcan driver is able to switch to the pinctrl
+"wakeup" state during suspend which enables CAN UART wakeup.
+
+The mcan_uart0 and mcan_uart1 nodes in
+`k3-am62x-sk-lpm-io-ddr-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-io-ddr-wkup-sources.dtso?h=11.00.09>`__
+can be used as a reference for enabling CAN UART wakeup.
+
+.. code-block:: text
+
+   &mcu_pmx0 {
+        mcu_mcan0_tx_pins_default: mcu-mcan0-tx-pins-default {
+                pinctrl-single,pins = <
+                        AM62X_IOPAD(0x034, PIN_OUTPUT, 0) /* (D6) MCU_MCAN0_TX */
+                >;
+        };
+
+        mcu_mcan0_rx_pins_default: mcu-mcan0-rx-pins-default {
+                pinctrl-single,pins = <
+                        AM62X_IOPAD(0x038, PIN_INPUT, 0) /* (B3) MCU_MCAN0_RX */
+                >;
+        };
+
+        mcu_mcan0_rx_pins_wakeup: mcu-mcan0-rx-pins-wakeup {
+                pinctrl-single,pins = <
+                        AM62X_IOPAD(0x038, PIN_INPUT | WKUP_EN, 0) /* (B3) MCU_MCAN0_RX */
+                >;
+        };
+   };
+
+   &mcu_mcan0 {
+        pinctrl-names = "default", "wakeup";
+        pinctrl-0 = <&mcu_mcan0_tx_pins_default>, <&mcu_mcan0_rx_pins_default>;
+        pinctrl-1 = <&mcu_mcan0_tx_pins_default>, <&mcu_mcan0_rx_pins_wakeup>;
+        status = "okay";
+   };
+
+CAN UART wakeup can be tested by using either the
+`k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=11.00.09>`__ 
+or
+`k3-am62x-sk-lpm-io-ddr-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-io-ddr-wkup-sources.dtso?h=11.00.09>`__
+overlays. Please refer to :ref:`How to enable DT overlays<howto_dt_overlays>`
+for more details.
+
+Once the system has entered any low power mode as shown in the
+:ref:`LPM section<lpm_modes>`, wakeup from MCU_GPIO0_16 or MCU_MCAN0_RX can be
+triggered by grounding Pin 11 or Pin 22 on J8 MCU Header, respectively.
 
 
 ********************************
