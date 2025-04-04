@@ -420,8 +420,8 @@ Run Glmark2 and capture performance reported (Score). All display outputs (HDMI,
 .. csv-table:: Glmark2 Performance
     :header: "Benchmark","am62pxx_sk-fs: Score"
 
-    "Glmark2-DRM","309.00"
-    "Glmark2-Wayland","782.00"
+    "Glmark2-DRM","355.00"
+    "Glmark2-Wayland","737.00"
 
 |
 

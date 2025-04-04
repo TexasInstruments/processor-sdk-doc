@@ -427,11 +427,11 @@ Glmark2
 Run Glmark2 and capture performance reported (Score). All display outputs (HDMI, Displayport and/or LCD) are connected when running these tests
 
 .. csv-table:: Glmark2 Performance
-    :header: "Benchmark","am62xx_lp_sk-fs: Score","am62xx_sk-fs: Score","am62xxsip_sk-fs: Score"
+    :header: "Benchmark","am62xx_lp_sk-fs: Score","am62xx_sk-fs: Score"
 
     "Glmark2-DRM","51.00","61.00"
-    "Glmark2-Wayland","200.00","218.00","209.00"
-    "Glmark2-Wayland 1920x1080","62.00","67.00"
+    "Glmark2-Wayland","203.00","216.00"
+    "Glmark2-Wayland 1920x1080","63.00","67.00"
 
 |
 
