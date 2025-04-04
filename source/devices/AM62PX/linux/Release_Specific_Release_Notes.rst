@@ -165,7 +165,7 @@ Yocto
 .. rubric:: meta-tisdk
    :name: meta-tisdk
 
-| Head Commit: e5820fc658978e74bf9270e911e966c417105650 meta-ti-foundational: emptty: Move disabling weston logic to emptty recipe
+| Head Commit: 2f497ac1090c5b256878d803b96901d73a285840 meta-ti-foundational: powervr-drivers: Add ti-img-rogue-driver bbappend
 
 | Clone: https://github.com/TexasInstruments/meta-tisdk.git
 | Branch: scarthgap
