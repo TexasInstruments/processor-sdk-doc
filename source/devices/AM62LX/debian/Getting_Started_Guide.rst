@@ -24,6 +24,8 @@ In addition to the EVM itself, the following hardware is needed:
 6. USB mouse and Keyboard (For controlling the UI)
 7. Ethernet cable (For network access)
 
+.. _processor-sdk-debian-create-sd-card:
+
 Create SD Card using balenaEtcher
 ---------------------------------
 
