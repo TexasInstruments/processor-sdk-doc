@@ -221,9 +221,9 @@ Additional Resources
       - GPIO on Sitara: https://www.ti.com/lit/ab/spradk0/spradk0.pdf
       - https://e2e.ti.com/support/processors-group/processors/f/processors-forum/1398198/faq-am62x-how-to-allocate-use-gpios-from-different-device-domains
       - https://support.criticallink.com/redmine/projects/mitysom_am62x/wiki/Example\_-_User_level_GPIO_Access
-      - https://software-dl.ti.com/processor-sdk-linux/esd/AM64X/10_01_10_04/exports/docs/linux/How_to_Guides/FAQ/How_to_Check_Device_Tree_Info.html
+      - https://software-dl.ti.com/processor-sdk-linux/esd/AM64X/latest/exports/docs/linux/How_to_Guides/FAQ/How_to_Check_Device_Tree_Info.html
       - https://docs.kernel.org/devicetree/usage-model.html
-      - (*Note: AM62P-specific, but similar to AM62x*): https://software-dl.ti.com/processor-sdk-linux/esd/AM62PX/09_02_01_09/exports/docs/linux/Foundational_Components/Tools/GPIO_Tools.html
+      - (*Note: AM62P-specific, but similar to AM62x*): https://software-dl.ti.com/processor-sdk-linux/esd/AM62PX/latest/exports/docs/linux/Foundational_Components/Tools/GPIO_Tools.html
 
 .. rubric:: Consuming Drivers
    :name: consuming-drivers

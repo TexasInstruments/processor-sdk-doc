@@ -28,7 +28,7 @@ Prerequisites
    Please be sure that you have the same version number
    for both Processor SDK RTOS and Linux.
 
-Please refer to `Understanding inter-processor communication (IPC) <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62X/09_02_01_06/exports/docs/api_guide_am62x/IPC_GUIDE.html>`__ section from MCU+ SDK documentation for M4F IPC architecture and builds.
+Please refer to `Understanding inter-processor communication (IPC) <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62X/latest/exports/docs/api_guide_am62x/IPC_GUIDE.html>`__ section from MCU+ SDK documentation for M4F IPC architecture and builds.
 
 Typical Boot Flow on AM62x for ARM Linux users
 ----------------------------------------------
@@ -158,7 +158,7 @@ System memory is carved out for each remote processor core for IPC and for the
 remote processor's code/data section needs. The default
 memory carveouts (DMA pools) are shown below.
 
-See the devicetree bindings documentation for more details: `Documentation/devicetree/bindings/remoteproc/ti,k3-r5f-rproc.yaml <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/Documentation/devicetree/bindings/remoteproc/ti,k3-r5f-rproc.yaml?h=ti-linux-6.6.y>`__
+See the devicetree bindings documentation for more details: `Documentation/devicetree/bindings/remoteproc/ti,k3-r5f-rproc.yaml <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/Documentation/devicetree/bindings/remoteproc/ti,k3-r5f-rproc.yaml?h=ti-linux-6.12.y>`__
 
 +------------------+--------------------+---------+----------------------------+
 | Memory Section   | Physical Address   | Size    | Description                |
@@ -243,6 +243,6 @@ M4F and R5F external memory section sizes in their respective linker mapfiles.
 .. warning:: Be careful not to overlap carveouts!
 
 .. note:: The DT fragments are provided as a reference and subject to change between releases. For latest memory reservations, please refer to the kernel device tree repository :
-          'https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-common.dtsi?h=10.01.10'
+          'https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-common.dtsi?h=11.00.09'
 
 .. include:: Foundational_Components/IPC/_RPMsg_char_driver.rst

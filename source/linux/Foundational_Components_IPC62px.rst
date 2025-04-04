@@ -184,7 +184,7 @@ See the devicetree bindings documentation for more details: `Documentation/devic
    The reserved memory sizes listed above are provided as a reference only and
    subject to change between releases. For latest memory reservations, please
    refer to the kernel device tree repository :
-   'https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62p5-sk.dts?h=ti-linux-6.6.y'
+   'https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62p5-sk.dts?h=ti-linux-6.12.y'
 
 By default the first 1MB of each pool is used for the Virtio and Vring buffers
 used to communicate with the remote processor core. The remaining carveout is
@@ -252,6 +252,6 @@ M4F and R5F external memory section sizes in their respective linker mapfiles.
    The reserved memory sizes listed above are provided as a reference only and
    subject to change between releases. For latest memory reservations, please
    refer to the kernel device tree repository :
-   'https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62p5-sk.dts?h=10.01.10'
+   'https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62p5-sk.dts?h=11.00.09'
 
 .. include:: Foundational_Components/IPC/_RPMsg_char_driver.rst
