@@ -28,7 +28,7 @@ Installing Snagfactory
 
 .. note::
 
-   At the time of 10.1 release, the corresponding Snagfactory version was v2.0.
+   At the time of 11.0 release, the corresponding Snagfactory version was v2.2.
 
 *****************************************
 Building bootloader binaries for Recovery
