@@ -790,26 +790,26 @@ Table:  **Deep sleep**
 .. csv-table::
    :header: "Rail name","Rail voltage(V)","Power (mW)"
 
-   "vdd_core","0.85","12.98"
-   "vddr_core","0.85","1.01"
-   "soc_dvdd_3v3","3.30","5.65"
-   "soc_dvdd_1v8","1.80","2.76"
+   "vdd_core","0.85","11.23"
+   "vddr_core","0.85","0.90"
+   "soc_dvdd_3v3","3.30","6.51"
+   "soc_dvdd_1v8","1.80","2.69"
    "vdda_1v8","1.80","72.23"
-   "vdd_lpddr4/vdd_ddr4","1.10","3.75"
-   "Total"," ","98.37"
+   "vdd_lpddr4","1.10","0.33"
+   "Total"," ","93.89"
 
 Table:  **MCU only**
 
 .. csv-table::
    :header: "Rail name","Rail voltage(V)","Power (mW)"
 
-   "vdd_core","0.85","203.98"
-   "vddr_core","0.85","2.44"
-   "soc_dvdd_3v3","3.30","5.55"
-   "soc_dvdd_1v8","1.80","2.68"
-   "vdda_1v8","1.80","81.25"
-   "vdd_lpddr4/vdd_ddr4","1.10","4.33"
-   "Total"," ","300.24"
+   "vdd_core","0.85","209.16"
+   "vddr_core","0.85","2.53"
+   "soc_dvdd_3v3","3.30","6.97"
+   "soc_dvdd_1v8","1.80","2.70"
+   "vdda_1v8","1.80","80.10"
+   "vdd_lpddr4","1.10","0.31"
+   "Total"," ","301.77"
 
 Partial I/O Data
 - All voltage rails were measured to be near 0V
@@ -818,5 +818,9 @@ Partial I/O Data
 
    The power consumption on the vdda_1v8 rail is not indicitive of the SoC's power consumption due to an oscillator on the rail
    that has significant current consumption.
+
+.. note::
+
+   The measurements shown are from an AM62Px SK rev E1-1. Results may vary based off of the board revision being used.
 
 Further optimizations are possible for these low power modes. Please refer to the AM62x Power Consumption App Note (https://www.ti.com/lit/pdf/spradg1)
