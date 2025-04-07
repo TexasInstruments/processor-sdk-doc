@@ -317,7 +317,7 @@ The benefits of using MCU Only mode:
    or a network communication task.
 #. Respond to interrupts: This allows the system to still respond to external events, while it is in a low-power state.
 
-To enter MCU Only mode, set :code:`100000 usec` resume latency for CPU0 in linux:
+To enter MCU Only mode, set :code:`100 msec` resume latency for CPU0 in Linux:
 
 .. code-block:: console
 

@@ -180,7 +180,8 @@ Resume Latency Constraint
 This constraint is exposed to the user-level through the existing sysfs PM QoS interface for CPU Cores.
 Default constraint is "no constraint", but it can be changed as shown in the examples below:
 
-   a. To set 100000 usec resume latency for the SoC, a constraint can be placed for CPU0 (or any other CPU core):
+   a. To set 100 msec resume latency for the SoC, a constraint can be placed for
+   CPU0 (or any other CPU core):
 
    .. code:: console
 
