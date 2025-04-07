@@ -677,14 +677,20 @@ triggered by grounding Pin 11 or Pin 22 on J8 MCU Header, respectively.
 Confirming the Wakeup event type
 ********************************
 
-When the SoC wakes up from any Low Power Mode, the Device Manager logs the wake reason.
-This wake reason can be queried by Linux using the `TISCI LPM API <https://downloads.ti.com/tisci/esd/latest/2_tisci_msgs/pm/lpm.html>`__.
+When the SoC wakes up from any Low Power Mode, the Device Manager logs the wake
+reason, the pin number that triggered the wakeup, and the last low power mode
+entered. This wake reason and low power mode can be queried by Linux using the
+`TISCI LPM API <https://downloads.ti.com/tisci/esd/latest/2_tisci_msgs/pm/lpm.html>`__.
+The wakeup pin can be found in the datasheet by converting the pin number from
+hex to decimal and finding the corresponding PADCONFIG register.
 
 This wake reason is printed as part of the Linux suspend/resume log:
 
 .. code-block:: console
 
-   [   37.357109] CPU3 is up
-   [   37.357710] ti-sci 44043000.system-controller: ti_sci_resume: wakeup source: 0x50
+   [  249.471725] CPU3 is up
+   [  249.472314] ti-sci 44043000.system-controller: ti_sci: wakeup source:0x80, pin:0x72, mode:0x1
 
-In the above example, 0x50 means that WKUP_RTC0 is the wakeup source.
+In the above example, the wakeup source of 0x80 is MAIN_IO. The 0x72 pin refers
+to PADCONFIG114. This means the cause of the wakeup event is UART0_RXD. The
+mode of 0x1 is the last low power mode entered which was MCU_ONLY.
