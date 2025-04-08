@@ -196,11 +196,6 @@ Default constraint is "no constraint", but it can be changed as shown in the exa
 Setting a resume latency constraint impacts the deepest low power mode system can enter.
 The various modes and their latencies are documented here: https://downloads.ti.com/tisci/esd/latest/2_tisci_msgs/pm/lpm.html#tisci-msg-lpm-set-latency-constraint
 
-If a device wants to put a constraint to not be powered-off, it can use the Linux
-QoS framework and set the ``DEV_PM_QOS_RESUME_LATENCY`` equal to 0.
-An example is shown in the following RemoteProc driver:
-https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/drivers/remoteproc/ti_k3_r5_remoteproc.c?h=11.00.09#n549
-
 .. note::
 
    The constraints need to be set before each system suspend as DM firmware clears all
