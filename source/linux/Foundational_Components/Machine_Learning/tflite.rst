@@ -7,10 +7,10 @@ Introduction
 ************
 
 LiteRT, formerly known as TensorFlow Lite, is an open-source library designed for running machine learning models on mobile and embedded devices.
-|__SDK_FULL_NAME__| has integrated open source `TensorFlow Lite <https://www.tensorflow.org/lite>`__ for deep learning inference at the edge.
+|__SDK_FULL_NAME__| has integrated open-source `TensorFlow Lite <https://www.tensorflow.org/lite>`__ for deep learning inference at the edge.
 TensorFlow Lite runs on Arm for Sitara devices (AM3/AM4/AM5/AM6).
 
-It supports on-device inference with low latency and a compact binary size. You can find more information at https://www.tensorflow.org/lite
+It supports on-device inference with low latency and a compact binary size. You can find more information at `TensorFlow Lite <https://www.tensorflow.org/lite>`__
 
 ********
 Features
@@ -56,14 +56,14 @@ This library offers optimized implementations for a subset of TensorFlow Lite op
 
 .. note::
 
-   XNNPACK delegate is not supported for ARMv7 based platforms like AM335x & AM437x.
+   The XNNPACK delegate is not supported for ARMv7-based platforms like AM335x and AM437x.
    Refer `XNNPACK supported architectures <https://github.com/google/XNNPACK?tab=readme-ov-file#supported-architectures>`__ for more details.
 
 *******************************
 Benchmark Tool for TFLite Model
 *******************************
 
-The :file:`tisdk-default-image` wic image from |__SDK_DOWNLOAD_URL__| by default contains a pre-installed benchmarking application named as :command:`benchmark_model`.
+The :file:`tisdk-default-image` wic image from |__SDK_DOWNLOAD_URL__| by default contains a pre-installed benchmarking application named :command:`benchmark_model`.
 It's a C++ binary designed to benchmark a TFLite model and its individual operators. It takes a TFLite model, generates random inputs, and repeatedly runs the model
 for a specified number of runs. After running the benchmark, it reports aggregate latency statistics.
 
@@ -80,7 +80,7 @@ To execute the benchmark using CPU for computation, use the following command:
 
    root@<machine>:~# /opt/tensorflow-lite/tools/benchmark_model --graph=/usr/share/oob-demo-assets/models/ssd_mobilenet_v2_coco.tflite --use_xnnpack=false
 
-The output of the benchmarking application should be similar to,
+The output of the benchmarking application should be similar to:
 
 .. code-block:: console
 
