@@ -50,56 +50,30 @@ binaries files to be sent over TFTP are listed in the table below.
         - Disable link info Bootmode pin so that ROM can identify the PHY and establishes link with the supported speed and duplex mode.
         - Please note that due to MDIO corruption (Errata i2329), booting over Ethernet is not recommended for production purposes.
 
-.. ifconfig:: CONFIG_part_variant in ('AM64X')
+.. ifconfig:: CONFIG_part_variant in ('AM64X','AM62X')
 
-  If using ISC dhcpd an example host entry would look like this:
+   If using ISC dhcpd an example host entry would look like this:
 
-  .. code-block:: text
-
-      subnet 10.0.0.0 netmask 255.0.0.0
-      {
-        range dynamic-bootp 10.0.0.2 10.0.0.16;
-        if substring (option vendor-class-identifier, 0, 16) = "TI K3 Bootp Boot"
-        {
-          filename "tiboot3.bin";
-        } elsif substring (option vendor-class-identifier, 0, 20) = "AM64X U-Boot R5 SPL"
-        {
-          filename "tispl.bin";
-        } elsif substring (option vendor-class-identifier, 0, 21) = "AM64X U-Boot A53 SPL"
-        {
-          filename "u-boot.img";
-        }
-
-        range 10.0.0.17 10.0.0.25;
-        default-lease-time 60000;
-        max-lease-time 720000;
-        next-server 10.0.0.1;
-      }
-
-.. ifconfig:: CONFIG_part_variant in ('AM62X')
-
-  If using ISC dhcpd an example host entry would look like this:
-
-  .. code-block:: text
+   .. parsed-literal::
 
       subnet 10.0.0.0 netmask 255.0.0.0
       {
-        range dynamic-bootp 10.0.0.2 10.0.0.16;
-        if substring (option vendor-class-identifier, 0, 16) = "TI K3 Bootp Boot"
-        {
-          filename "tiboot3.bin";
-        } elsif substring (option vendor-class-identifier, 0, 20) = "AM62X U-Boot R5 SPL"
-        {
-          filename "tispl.bin";
-        } elsif substring (option vendor-class-identifier, 0, 21) = "AM62X U-Boot A53 SPL"
-        {
-          filename "u-boot.img";
-        }
+         range dynamic-bootp 10.0.0.2 10.0.0.16;
+         if substring (option vendor-class-identifier, 0, 16) = "TI K3 Bootp Boot"
+         {
+            filename "tiboot3.bin";
+         } elsif substring (option vendor-class-identifier, 0, |__SPL_VCI_STRING_LEN__|) = "|__SPL_VCI_STRING__|"
+         {
+            filename "tispl.bin";
+         } elsif substring (option vendor-class-identifier, 0, |__UBOOT_VCI_STRING_LEN__|) = "|__UBOOT_VCI_STRING__|"
+         {
+            filename "u-boot.img";
+         }
 
-        range 10.0.0.17 10.0.0.25;
-        default-lease-time 60000;
-        max-lease-time 720000;
-        next-server 10.0.0.1;
+         range 10.0.0.17 10.0.0.25;
+         default-lease-time 60000;
+         max-lease-time 720000;
+         next-server 10.0.0.1;
       }
 
 A walk through of these steps to setup isc-dhcp-server on Ubuntu can be found at `here
