@@ -152,7 +152,7 @@ linux/How_to_Guides/Host/How_to_Setup_and_Debug_using_Lauterbach
 linux/How_to_Guides/Host/SYSFW_Trace_Parser
 linux/How_to_Guides/Host/Minimal_Platform_Development
 linux/How_to_Guides/Target/Processor_SDK_Linux_File_System_Optimization_Customization
-linux/How_to_Guides/Target/How_to_boot_quickly
+#linux/How_to_Guides/Target/How_to_boot_quickly
 linux/How_to_Guides/Target/How_to_emmc_boot
 linux/How_to_Guides/Target/How_to_mmcsd_boot_emmc_uda
 linux/How_to_Guides/Target/How_to_suspend_to_ram_on_AM62x
