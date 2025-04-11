@@ -162,7 +162,7 @@ def register_rst_filters(source, destination):
         """Replace old include and image/figure statements"""
         ref_destination = (
             ' '
-            + destination.relative_to(kwargs["file"], walk_up=True).as_posix()
+            + destination.relative_to(kwargs["file"].parent, walk_up=True).as_posix()
             + "\n"
         )
 
@@ -182,7 +182,7 @@ def register_rst_filters(source, destination):
         ref_destination = (
             "`"
             + destination.with_suffix("")
-            .relative_to(kwargs["file"], walk_up=True)
+            .relative_to(kwargs["file"].parent, walk_up=True)
             .as_posix()
             + "`"
         )
