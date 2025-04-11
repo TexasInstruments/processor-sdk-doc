@@ -28,7 +28,7 @@ Foundational Components
    Foundational_Components_IPC64x
    Foundational_Components_IPCLLD
    Foundational_Components_CMEM
-   Foundational_Components_Graphics
+   Foundational_Components/Graphics/index
    Foundational_Components_Multimedia_IVAHD
    Foundational_Components_Multimedia_D5520_VXE384
    Foundational_Components_Multimedia_wave5

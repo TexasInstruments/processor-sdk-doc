@@ -121,7 +121,7 @@ linux/Foundational_Components/Virtualization/Docker
 linux/Foundational_Components_Hypervisor
 linux/Foundational_Components/Hypervisor/Jailhouse
 
-linux/Foundational_Components_Graphics
+linux/Foundational_Components/Graphics/index
 linux/Foundational_Components/Graphics/Common/Display
 linux/Foundational_Components/Graphics/Common/GTK+_Graphics_Framework
 linux/Foundational_Components/Graphics/Common/OpenGL_ES

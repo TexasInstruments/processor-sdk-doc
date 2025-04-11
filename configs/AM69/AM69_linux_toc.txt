@@ -93,7 +93,7 @@ linux/Foundational_Components_OPTEE
 linux/Foundational_Components_ATF
 linux/Foundational_Components_Multimedia_wave5
 
-linux/Foundational_Components_Graphics
+linux/Foundational_Components/Graphics/index
 linux/Foundational_Components/Graphics/Common/Display
 linux/Foundational_Components/Graphics/Common/GTK+_Graphics_Framework
 linux/Foundational_Components/Graphics/Common/OpenGL_ES

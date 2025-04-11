@@ -16,7 +16,7 @@ Refer to various GStreamer pipelines documented at `Multimedia <Foundational_Com
 
 Graphics and Display
 ====================
-Refer to various SGX 3D demos and other Graphics applications at `Graphics & Display <Foundational_Components_Graphics.html>`__ chapter.
+Refer to various SGX 3D demos and other Graphics applications at :doc:`Foundational_Components/Graphics/index` chapter.
 
 DSP offload with OpenCL
 =======================

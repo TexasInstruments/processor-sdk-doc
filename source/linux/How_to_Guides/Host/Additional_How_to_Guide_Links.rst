@@ -1,6 +1,6 @@
 How to Develop with 3D Graphics
 ===============================
-Please refer to `Graphics & Display <../../Foundational_Components_Graphics.html>`__ chapter for details.
+Please refer to :doc:`../../Foundational_Components/Graphics/index` chapter for details.
 
 How to Develop accelerated Multimedia using GStreamer on AM57xx
 ===============================================================

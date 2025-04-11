@@ -437,7 +437,7 @@ show how to playback to kmssink and waylandsink without playbin.
                 demux.audio_0 ! queue ! decodebin ! alsasink
 
 The following pipelines show playback to waylandsink. Please refer
-`Wayland/Weston <Foundational_Components_Graphics.html#wayland-weston>`__
+:doc:`Foundational_Components/Graphics/index`
 to start Weston before running the pipelines.
 
 .. code-block:: text

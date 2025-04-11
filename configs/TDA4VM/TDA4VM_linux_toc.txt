@@ -91,7 +91,7 @@ linux/Foundational_Components/Tools/Flash_Tools
 linux/Foundational_Components/Tools/Pin_Mux_Tools
 linux/Foundational_Components/Tools/Code_Composer_Studio
 linux/Foundational_Components_IPC_J721E
-linux/Foundational_Components_Graphics
+linux/Foundational_Components/Graphics/index
 linux/Foundational_Components/Graphics/Graphics_and_Display
 linux/Foundational_Components/Graphics/Rogue_Debug_Info
 linux/Foundational_Components/Graphics/Rogue_Power_Management_Info

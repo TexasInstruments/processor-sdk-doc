@@ -96,7 +96,7 @@ linux/Foundational_Components/Machine_Learning/tidl
 linux/Foundational_Components/Machine_Learning/tflite
 linux/Foundational_Components/Machine_Learning/tvm
 
-linux/Foundational_Components_Graphics
+linux/Foundational_Components/Graphics/index
 linux/Foundational_Components/Graphics/Common/Display
 linux/Foundational_Components/Graphics/Common/GTK+_Graphics_Framework
 linux/Foundational_Components/Graphics/Common/OpenGL_ES
