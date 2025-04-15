@@ -32,11 +32,27 @@ To set up and use the `buildroot-external-ti` external tree, follow these steps:
 
 1. Clone the Buildroot and external tree repositories:
 
+Buildroot tags for Platforms supported are as follws:
+
+.. list-table::
+
+   * - Repo
+     - AM62LX
+     - AM62X
+   * - https://github.com/buildroot/buildroot
+     - 2024.11.1
+     - 2024.11.1
+   * - https://github.com/TexasInstruments/buildroot-external-TI.git
+     - 11.00.05.02
+     - 11.00.09.04
+
+You can fetch the repos with an explicit tag using:
+
 .. code-block:: console
 
-   $ git clone -b 2024.11.1 https://github.com/buildroot/buildroot
-   $ git clone -b 11.00.05.02 https://github.com/TexasInstruments/buildroot-external-TI.git
- 
+   $ git clone -b <tag> https://github.com/buildroot/buildroot
+   $ git clone -b <tag> https://github.com/TexasInstruments/buildroot-external-TI.git
+
 2. Configure Buildroot to use the external tree and choose a configuration file
 
 .. code-block:: console
@@ -55,12 +71,24 @@ use for the build. The buildroot-external-TI repository should provide one or mo
 configuration files tailored to a specific board. Select the appropriate
 configuration file for your target device.
 
-.. code-block:: console
+   Use the following table to determine what defconfig to use to configure with:
 
-   $ cd buildroot
-   $ make <defconfig>
-   For example, for AM62LX-evm Linux build use ti_release_am62lx_evm_defconfig
-   $ make ti_release_am62lx_evm_defconfig
+      +----------------------------+---------------------------------------------+
+      |  Board                     |            Configuration file               |
+      +============================+=============================================+
+      |    AM62X-SK evm            |   ti\_release\_am62x\_sk\_defconfig         |
+      +----------------------------+---------------------------------------------+
+      |    AM62LX-evm              |   ti\_release\_am62lx\_evm\_defconfig       |
+      +----------------------------+---------------------------------------------+
+
+
+   .. code-block:: console
+
+         $ cd buildroot
+         $ make <defconfig>
+         For example,
+         $ make ti_release_am62x_sk_defconfig
+
 
 Customize the Configuration
 ===========================
@@ -78,9 +106,24 @@ Build the Image
 With the configuration set, you can now build the image. This process compiles
 the necessary components and creates the root filesystem, kernel, and bootloader.
 
+TI_K3_BOOT_FIRMWARE_VERSION will be as follows:
+
+.. list-table::
+
+   * - Platform
+     - version_tag
+   * - AM62X
+     - 11.00.09
+   * - AM62LX
+     - 11.00.05
+
+
 .. code-block:: console
 
-   $ make TI_K3_BOOT_FIRMWARE_VERSION=11.00.05
+   $ make TI_K3_BOOT_FIRMWARE_VERSION=<version_tag>
+
+   For Example, version_tag will be 11.00.09 or 10.01.10
+   $ make TI_K3_BOOT_FIRMWARE_VERSION=11.00.09
 
 The build process can take some time, depending on your system's resources and
 the complexity of the configuration.
