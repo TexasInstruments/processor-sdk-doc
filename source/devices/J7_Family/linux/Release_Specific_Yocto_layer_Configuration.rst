@@ -40,7 +40,7 @@ Use below in place of <Config File>, to setup the meta layers for the current re
    +----------------------------------------------------+-------------------------------------+--------------------------------+
    |                    Description                     |      Config File                    | Supported yocto build machine  |
    +====================================================+=====================================+================================+
-   | |__SDK_FULL_NAME__| : 10_01 Release                | processor-sdk-linux-10_01_08_01.txt | |__SDK_BUILD_MACHINE__|        |
+   | |__SDK_FULL_NAME__| : 11_00 Release                | processor-sdk-linux-11_00_10_01.txt | |__SDK_BUILD_MACHINE__|        |
    +----------------------------------------------------+-------------------------------------+--------------------------------+
 
 .. ifconfig:: CONFIG_image_type in ('edgeai', 'adas')
