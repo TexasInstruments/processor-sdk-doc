@@ -427,11 +427,11 @@ Glmark2
 Run Glmark2 and capture performance reported (Score). All display outputs (HDMI, Displayport and/or LCD) are connected when running these tests
 
 .. csv-table:: Glmark2 Performance
-    :header: "Benchmark","am62xx_lp_sk-fs: Score","am62xx_sk-fs: Score","am62xxsip_sk-fs: Score"
+    :header: "Benchmark","am62xx_lp_sk-fs: Score","am62xx_sk-fs: Score"
 
     "Glmark2-DRM","51.00","61.00"
-    "Glmark2-Wayland","200.00","218.00","209.00"
-    "Glmark2-Wayland 1920x1080","62.00","67.00"
+    "Glmark2-Wayland","203.00","216.00"
+    "Glmark2-Wayland 1920x1080","63.00","67.00"
 
 |
 
@@ -799,28 +799,32 @@ Table:  **Deep sleep**
 .. csv-table::
    :header: "Rail name","Rail voltage(V)","Power (mW)"
 
-   "vdd_core","0.85","9.79"
+   "vdd_core","0.85","9.61"
    "vddr_core","0.85","n/a"
-   "soc_dvdd_3v3","3.30","7.20"
-   "soc_dvdd_1v8","1.80","1.98"
-   "vdda_1v8","1.80","1.98"
-   "vdd_lpddr4/vdd_ddr4","1.10","8.78"
-   "Total"," ","29.75"
+   "soc_dvdd_3v3","3.30","7.03"
+   "soc_dvdd_1v8","1.80","2.43"
+   "vdda_1v8","1.80","1.80"
+   "vdd_ddr4","1.10","8.73"
+   "Total"," ","29.60"
 
 Table:  **MCU only**
 
 .. csv-table::
    :header: "Rail name","Rail voltage(V)","Power (mW)"
 
-   "vdd_core","0.85","110.46"
+   "vdd_core","0.85","109.78"
    "vddr_core","0.85","n/a"
-   "soc_dvdd_3v3","3.30","13.98"
-   "soc_dvdd_1v8","1.80","1.62"
-   "vdda_1v8","1.80","11.30"
-   "vdd_lpddr4/vdd_ddr4","1.10","8.16"
-   "Total"," ","145.88"
+   "soc_dvdd_3v3","3.30","14.48"
+   "soc_dvdd_1v8","1.80","1.94"
+   "vdda_1v8","1.80","10.94"
+   "vdd_ddr4","1.10","8.76"
+   "Total"," ","145.90"
 
 Partial I/O Data
 - All voltage rails were measured to be near 0V
+
+.. note::
+
+   The measurements shown are from an SK-AM62B-P1. Results may vary based off of the board variant being used.
 
 Further optimizations are possible for these low power modes. Please refer to the AM62x Power Consumption App Note (https://www.ti.com/lit/pdf/spradg1)

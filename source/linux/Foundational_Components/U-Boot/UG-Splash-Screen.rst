@@ -135,7 +135,7 @@ Display custom logo as splash screen
    However, user needs to enable the required kconfigs and device-tree nodes manually, The below commit can be used as
    a reference for making such changes.
 
-   * `arm: dts: k3-am625-sk-u-boot: Add panel device-tree node  <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/commit/?h=ti-u-boot-2024.04&id=9328edb265e25a3fdfbad5d8b11678869fe8eea7>`_
+   * `arm: dts: k3-am625-sk-u-boot: Add panel device-tree node  <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/commit/?h=ti-u-boot-2025.01&id=073bea998eb95d26c01e336a7b533c9e9fdbe767>`_
 
    A53 SPL
    ^^^^^^^
@@ -204,27 +204,27 @@ To enable splash screen on custom board based on |__PART_FAMILY_DEVICE_NAMES__| 
 
  1. Add video driver and panel node in the dts file by referring following patches:
 
-  * `arm: dts: k3-am62p5-sk-u-boot: Add panel device-tree node <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/commit/?h=ti-u-boot-2024.04&id=e777f5abdd3da2fd3de4a84a83ac2dc7660ca10c>`_
+  * `arm: dts: k3-am62p5-sk-u-boot: Add panel device-tree node <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/commit/?h=ti-u-boot-2025.01&id=1cdea8def9297ae52c6434146d4909c330a212f2>`_
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
  1. Add video driver and panel node in the dts file by referring following patches:
 
-  * `arm: dts: k3-am625-sk-u-boot: Add panel device-tree node  <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/commit/?h=ti-u-boot-2024.04&id=9328edb265e25a3fdfbad5d8b11678869fe8eea7>`_
+  * `arm: dts: k3-am625-sk-u-boot: Add panel device-tree node  <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/commit/?h=ti-u-boot-2025.01&id=073bea998eb95d26c01e336a7b533c9e9fdbe767>`_
 
 .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
  2. Enable the A53 SPL splash screen related configurations in the |__PART_FAMILY_DEVICE_NAMES__| defconfig by referring to below patches and files:
 
-  * `configs: am62px: Enable A53 splashscreen <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/commit/?h=ti-u-boot-2024.04&id=82c3fa8a15602248df035e423059236e00a01519>`_
-  * `Splash screen config fragment for AM62x and AM62P  <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/tree/configs/am62x_a53_splashscreen.config?h=10.01.10>`_
+  * `configs: am62px: Enable A53 splashscreen <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/commit/?h=ti-u-boot-2025.01&id=4dacc20b3fd78ac5f61de8096a376afb2fcfd089>`_
+  * `Splash screen config fragment for AM62x and AM62P  <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/tree/configs/am62x_a53_splashscreen.config?h=11.00.09>`_
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
  2. Enable the A53 SPL splash screen related configurations in the |__PART_FAMILY_DEVICE_NAMES__| defconfig by referring to below patches and files:
 
-  * `configs: am62x_evm_a53_defconfig: Enable A53 splashscreen at U-Boot SPL <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/commit/?h=ti-u-boot-2024.04&id=aed6660b3edf348c91208322d8ff9cd530def7fa>`_
-  * `Splash screen config fragment for AM62x and AM62P  <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/tree/configs/am62x_a53_splashscreen.config?h=10.01.10>`_
+  * `configs: am62x_evm_a53_defconfig: Enable A53 splashscreen at U-Boot SPL <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/commit/?h=ti-u-boot-2025.01&id=a53de9902936442fa17b26cb17e639ecafccaa4d>`_
+  * `Splash screen config fragment for AM62x and AM62P  <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/tree/configs/am62x_a53_splashscreen.config?h=11.00.09>`_
 
 .. note::
 

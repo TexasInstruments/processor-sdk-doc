@@ -54,22 +54,10 @@ sources is found to be enabled, Partial I/O is entered instead of poweroff.
 
 The following wakeup sources have been configured for Partial I/O:
 mcu_uart0, mcu_mcan0, and mcu_mcan1. Partial I/O mode can only be tested
-when `k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=10.01.10>`__
+when `k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=11.00.09>`__
 overlay is loaded. Please refer to :ref:`How to enable DT overlays<howto_dt_overlays>` for more details.
 
-After Linux boots, the MCAN wakeup for Partial I/O is enabled using the
-wake on PHY activity option of ethtool. For example, the following
-command enables mcu_mcan0 wakeup:
-
-.. code-block:: console
-
-   root@<machine>:~# ethtool -s mcu_mcan0 wol p
-
-.. rubric:: To enable mcu_mcan1 wakeup:
-
-.. code-block:: console
-
-   root@<machine>:~# ethtool -s mcu_mcan1 wol p
+After Linux boots, the MCAN wakeup for Partial I/O is enabled.
 
 .. rubric:: To enable UART wakeup:
 
@@ -141,22 +129,25 @@ I/O Only Plus DDR
 
       .. important:: Jumper J12 should be connected on SK to enable system to enter I/O Only plus DDR mode.
 
-   The wakeup sources that can be used to wake the system from I/O Only Plus DDR are
-   mcu_uart0, mcu_mcan0, mcu_mcan1 and wkup_uart0. After Linux boots, direct register
-   writes can be used to enable wakeup.
+   The wakeup sources that can be used to wake the system from I/O Only Plus
+   DDR are mcu_uart0, mcu_mcan0, mcu_mcan1 and wkup_uart0. To use the mcu_mcan0
+   and mcu_mcan1 wakeup sources, apply the
+   `k3-am62x-sk-lpm-io-ddr-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-io-ddr-wkup-sources.dtso?h=11.00.09>`__
+   overlay. Please refer to :ref:`How to enable DT overlays<howto_dt_overlays>`
+   for more details. To use the mcu_uart0 and wkup_uart0 wakeup sources, direct
+   register writes can be used to enable wakeup after Linux boots.
 
    .. rubric:: Following commands set the wakeup EN bit, enable receive for pad in PADCONFIG register and can
-               be used to enable wakeup from mcu_mcan0, mcu_mcan1, mcu_uart0 and wkup_uart0 pins respectively.
+               be used to enable wakeup from mcu_uart0 and wkup_uart0 pins respectively.
 
    .. important::
 
-      The steps mentioned below are a workaround to enable wakeup as there are more driver level changes
-      required to enable the wakeup support.
+      The steps mentioned below are a workaround to enable wakeup for mcu_uart0
+      and wkup_uart0 as there are more driver level changes required to enable
+      the wakeup support.
 
    .. code-block:: console
 
-      root@<machine>:~# devmem2 0x4084038 0x20050000  # MCU_PADCONFIG14 for mcu_mcan0
-      root@<machine>:~# devmem2 0x4084040 0x20050000  # MCU_PADCONFIG16 for mcu_mcan1
       root@<machine>:~# devmem2 0x4084014 0x20050000  # MCU_PADCONFIG5 for mcu_uart0
       root@<machine>:~# devmem2 0x4084024 0x20050000  # MCU_PADCONFIG9 for wkup_uart0
 
@@ -326,11 +317,11 @@ The benefits of using MCU Only mode:
    or a network communication task.
 #. Respond to interrupts: This allows the system to still respond to external events, while it is in a low-power state.
 
-To enter MCU Only mode, set :code:`100 usec` resume latency for CPU0 in linux:
+To enter MCU Only mode, set :code:`100 msec` resume latency for CPU0 in Linux:
 
 .. code-block:: console
 
-   root@<machine>:~# echo 100 > /sys/devices/system/cpu/cpu0/power/pm_qos_resume_latency_us
+   root@<machine>:~# echo 100000 > /sys/devices/system/cpu/cpu0/power/pm_qos_resume_latency_us
 
 .. important::
 

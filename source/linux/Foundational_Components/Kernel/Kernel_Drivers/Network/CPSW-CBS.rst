@@ -44,6 +44,7 @@ In this example Rate Limiting is enabled only for Host port TX channels.
 
    ip link set dev eth0 down
    ethtool -L eth0 tx 8
+   ethtool --set-priv-flags eth0 p0-rx-ptype-rrobin off
    ip link set dev eth0 up
 
    tc qdisc replace dev eth0 handle 100: parent root mqprio num_tc 3 \
@@ -123,6 +124,7 @@ In this example Rate Limiting is enabled for Host port TX channels and External 
 
    ip link set dev eth0 down
    ethtool -L eth0 tx 8
+   ethtool --set-priv-flags eth0 p0-rx-ptype-rrobin off
    ip link set dev eth0 up
 
    tc qdisc add dev eth0 parent root handle 100: mqprio num_tc 3 \
@@ -186,6 +188,7 @@ Connect eth0 of AM625-SK to eth1 of J7VCL.
     ifconfig eth0 down
     ifconfig eth1 down
     ethtool -L eth0 tx 8
+    ethtool --set-priv-flags eth0 p0-rx-ptype-rrobin off
     ifconfig eth0 up
     ifconfig eth0 192.168.1.1
 
@@ -276,6 +279,7 @@ Connect eth1 of J7VCL to eth0 of AM625-SK.
     ifconfig eth3 down
     ifconfig eth4 down
     ethtool -L eth1 tx 8
+    ethtool --set-priv-flags eth1 p0-rx-ptype-rrobin off
     ifconfig eth1 up
     ifconfig eth1 192.168.1.1
 
@@ -364,6 +368,7 @@ Connect eth0 of AM625-SK to eth1 of J7VCL.
     ifconfig eth0 down
     ifconfig eth1 down
     ethtool -L eth0 tx 8
+    ethtool --set-priv-flags eth0 p0-rx-ptype-rrobin off
     ifconfig eth0 up
     ifconfig eth0 192.168.1.1
 
@@ -446,6 +451,7 @@ Connect eth1 of J7VCL to eth0 of AM625-SK.
     ifconfig eth3 down
     ifconfig eth4 down
     ethtool -L eth1 tx 8
+    ethtool --set-priv-flags eth1 p0-rx-ptype-rrobin off
     ifconfig eth1 up
     ifconfig eth1 192.168.1.1
 
@@ -573,6 +579,7 @@ eth1.
     ifconfig eth0 down
     ifconfig eth1 down
     ethtool -L eth0 tx 8
+    ethtool --set-priv-flags eth0 p0-rx-ptype-rrobin off
     ifconfig eth0 up
     sleep 5
 
@@ -689,6 +696,7 @@ Connect AM64-SK's eth0 to J7VCL's eth1 and AM625-SK's eth0 to J7VCL's eth2.
     ifconfig eth0 down
     ifconfig eth1 down
     ethtool -L eth0 tx 8
+    ethtool --set-priv-flags eth0 p0-rx-ptype-rrobin off
     ifconfig eth0 up
     sleep 5
 

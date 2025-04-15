@@ -151,8 +151,8 @@ Specifically, checking of constraints is done at two levels:
 
 The code enabling the constraints framework can be found in:
 
-#. TISCI PM Domain driver: https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/drivers/pmdomain/ti/ti_sci_pm_domains.c?h=10.01.10
-#. TISCI driver: https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/drivers/firmware/ti_sci.c?h=10.01.10
+#. TISCI PM Domain driver: https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/drivers/pmdomain/ti/ti_sci_pm_domains.c?h=11.00.09
+#. TISCI driver: https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/drivers/firmware/ti_sci.c?h=11.00.09
 
 Examples of adding constraints from the remote core side are being implemented and will
 be enabled in future release.
@@ -180,11 +180,12 @@ Resume Latency Constraint
 This constraint is exposed to the user-level through the existing sysfs PM QoS interface for CPU Cores.
 Default constraint is "no constraint", but it can be changed as shown in the examples below:
 
-   a. To set 100 usec resume latency for the SoC, a constraint can be placed for CPU0 (or any other CPU core):
+   a. To set 100 msec resume latency for the SoC, a constraint can be placed for
+   CPU0 (or any other CPU core):
 
    .. code:: console
 
-      root@evm:~# echo 100 > /sys/devices/system/cpu/cpu0/power/pm_qos_resume_latency_us
+      root@evm:~# echo 100000 > /sys/devices/system/cpu/cpu0/power/pm_qos_resume_latency_us
 
    b. To clear the constraint, 0 has to be written to the same parameter:
 
@@ -194,11 +195,6 @@ Default constraint is "no constraint", but it can be changed as shown in the exa
 
 Setting a resume latency constraint impacts the deepest low power mode system can enter.
 The various modes and their latencies are documented here: https://downloads.ti.com/tisci/esd/latest/2_tisci_msgs/pm/lpm.html#tisci-msg-lpm-set-latency-constraint
-
-If a device wants to put a constraint to not be powered-off, it can use the Linux
-QoS framework and set the ``DEV_PM_QOS_RESUME_LATENCY`` equal to 0.
-An example is shown in the following RemoteProc driver:
-https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/drivers/remoteproc/ti_k3_r5_remoteproc.c?h=10.01.10#n523
 
 .. note::
 

@@ -594,50 +594,6 @@ It should be the name of the file containing the keys.
 Generating the fitImage
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-.. note::
-
-    For signing a secondary platform like SK boards, you'll require
-    additional steps
-
-    - Change the CONFIG_DEFAULT_DEVICE_TREE
-
-        For e.g
-
-        .. code-block:: diff
-
-            diff --git a/configs/j721e_evm_a72_defconfig b/configs/j721e_evm_a72_defconfig
-            index a5c1df7e0054..6d0126d955ef 100644
-            --- a/configs/j721e_evm_a72_defconfig
-            +++ b/configs/j721e_evm_a72_defconfig
-            @@ -13,7 +13,7 @@ CONFIG_CUSTOM_SYS_INIT_SP_ADDR=0x80480000
-             CONFIG_ENV_SIZE=0x20000
-             CONFIG_DM_GPIO=y
-             CONFIG_SPL_DM_SPI=y
-            -CONFIG_DEFAULT_DEVICE_TREE="k3-j721e-common-proc-board"
-            +CONFIG_DEFAULT_DEVICE_TREE="k3-j721e-sk"
-             CONFIG_SPL_TEXT_BASE=0x80080000
-             CONFIG_DM_RESET=y
-             CONFIG_SPL_MMC=y
-
-    - Change the binman nodes to package u-boot.dtb for the correct set of platform
-
-        For e.g
-
-        .. code-block:: diff
-
-            diff --git a/arch/arm/dts/k3-j721e-binman.dtsi b/arch/arm/dts/k3-j721e-binman.dtsi
-            index 673be646b1e3..752fa805fe8d 100644
-            --- a/arch/arm/dts/k3-j721e-binman.dtsi
-            +++ b/arch/arm/dts/k3-j721e-binman.dtsi
-            @@ -299,8 +299,8 @@
-            #define SPL_J721E_SK_DTB "spl/dts/k3-j721e-sk.dtb"
-
-            #define UBOOT_NODTB "u-boot-nodtb.bin"
-            -#define J721E_EVM_DTB "u-boot.dtb"
-            -#define J721E_SK_DTB "arch/arm/dts/k3-j721e-sk.dtb"
-            +#define J721E_EVM_DTB "arch/arm/dts/k3-j721e-common-proc-board.dtb"
-            +#define J721E_SK_DTB "u-boot.dtb"
-
 This step will embed the public key in the u-boot.dtb file that was already
 built during the initial u-boot build.
 

@@ -85,6 +85,12 @@ linux/Foundational_Components/Tools/Development_Tools
 linux/Foundational_Components/Tools/Pin_Mux_Tools
 #linux/Foundational_Components/Tools/GPIO_Tools
 linux/Foundational_Components_IPC62l
+linux/Foundational_Components_Machine_Learning
+linux/Foundational_Components/Machine_Learning/arm_compute_library
+linux/Foundational_Components/Machine_Learning/armnn
+linux/Foundational_Components/Machine_Learning/nnstreamer
+linux/Foundational_Components/Machine_Learning/onnxrt
+linux/Foundational_Components/Machine_Learning/tflite
 #linux/Foundational_Components_OPTEE
 linux/Foundational_Components_ATF
 linux/Foundational_Components_Virtualization

@@ -122,7 +122,6 @@ linux/Foundational_Components/Machine_Learning/armnn
 linux/Foundational_Components/Machine_Learning/nnstreamer
 linux/Foundational_Components/Machine_Learning/onnxrt
 linux/Foundational_Components/Machine_Learning/tflite
-linux/Foundational_Components/Machine_Learning/tflite_j7
 
 linux/Foundational_Components_OPTEE
 linux/Foundational_Components_ATF

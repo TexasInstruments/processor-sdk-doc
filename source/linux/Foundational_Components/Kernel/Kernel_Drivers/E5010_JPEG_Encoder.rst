@@ -13,7 +13,7 @@ in both TI SDK and upstream at below paths:
 - `E5010 JPEG encoder source code in Upstream Linux kernel
   <https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/media/platform/imagination>`__
 - `E5010 JPEG encoder source code in TI Linux kernel
-  <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/drivers/media/platform/imagination/e5010/e5010-jpeg-enc.c?h=10.01.10>`__
+  <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/drivers/media/platform/imagination/e5010-jpeg-enc.c?h=11.00.09>`__
 
 Hardware Specification
 ======================
