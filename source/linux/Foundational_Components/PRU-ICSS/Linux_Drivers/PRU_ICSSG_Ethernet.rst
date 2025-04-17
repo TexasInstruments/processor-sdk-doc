@@ -741,6 +741,8 @@ The existing TI Ethernet PHYs DT bindings:
 | `ti,dp83869.yaml <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/Documentation/devicetree/bindings/net/ti,dp83869.yaml?h=ti-linux-5.10.y>`__
 |
 
+.. _fixed-link:
+
 Fixed link
 **********
 
@@ -823,8 +825,10 @@ MII Support
 
    .. rubric:: **Limitations**
 
-   Both MIIx ports have to be enabled in DT even if one of them is not used (no Ethernet PHY wired) for proper PRU_ICSSG Ethernet driver to work.
-   Use fixed-link for unused port as workaround.
+   - In order to implement single EMAC mode with RGMII port, disable the unused port in the devicetree, which is the default configuration.
+
+   - In order to implement single EMAC mode with an MII port, both MIIx ports must be enabled in the devicetree. The driver requires both the MII ports to be enabled, even if one of the ports is unused (No Ethernet PHY wired).
+     Use fixed-link for the unused port. Refer :ref:`Add fixed link support for a given ICSSG port<fixed-link>` for more details.
 
 
 CPSW / PRU Ethernet Selection
@@ -840,13 +844,13 @@ CPSW / PRU Ethernet Selection
    On AM64x EVM (`TMDS64EVM <https://www.ti.com/tool/TMDS64EVM>`__ & `TMDS64GPEVM <https://www.ti.com/tool/TMDS64GPEVM>`__), one Ethernet port is connected to CPSW, one Ethernet port is connected to PRU Ethernet, and one Ethernet port can be muxed to either CPSW or PRU Ethernet depending on the device tree settings.
    The Ethernet port is muxed to CPSW by default in the AM64x EVM device tree :file:`k3-am642-evm.dts`, disabling this port for ICSSG (Single EMAC).
 
-   To use RGMII interface in Dual EMAC mode the :file:`k3-am642-evm-icssg1-dualemac.dtbo` overlay file has to be applied using the following command in u-boot.
+   To use **RGMII** interface in **Dual EMAC** mode the :file:`k3-am642-evm-icssg1-dualemac.dtbo` overlay file has to be applied using the following command in u-boot.
 
     ::
 
       setenv bootcmd 'run findfdt; run envboot;run init_${boot}; run get_kern_${boot}; run get_fdt_${boot};setenv name_overlays ti/k3-am642-evm-icssg1-dualemac.dtbo; run get_overlay_${boot}; run run_kern'
 
-   To use MII interface in Dual EMAC mode the :file:`k3-am642-evm-icssg1-dualemac-mii.dtbo` overlay file has to be applied using the following command in u-boot.
+   To use **MII** interface in **Dual EMAC** mode the :file:`k3-am642-evm-icssg1-dualemac-mii.dtbo` overlay file has to be applied using the following command in u-boot.
 
     ::
 
