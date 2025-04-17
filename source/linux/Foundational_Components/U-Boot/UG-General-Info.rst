@@ -66,6 +66,8 @@ General Information
 
 	 $ make CROSS_COMPILE="$CROSS_COMPILE_64" ARCH=aarch64 PLAT=k3 TARGET_BOARD=am62l
 
+.. _Getting the U-Boot Source Code-label:
+
 Getting the U-Boot Source Code
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -1234,6 +1236,8 @@ Image Formats
           ││    SPL    ││
           │└───────────┘│
           └─────────────┘
+
+.. _Boot-Flow-label:
 
 Boot Flow
 ^^^^^^^^^
