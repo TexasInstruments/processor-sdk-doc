@@ -1671,7 +1671,16 @@ MMC RAW FIO 1G
 
  
 
+
+.. csv-table:: MMC RAW FIO 1G
+    :header: "Buffer size (bytes)","j742s2_evm-fs: Write Raw Throughput (Mbytes/sec)","j742s2_evm-fs: Write Raw CPU Load (%)","j742s2_evm-fs: Read Raw Throughput (Mbytes/sec)","j742s2_evm-fs: Read Raw CPU Load (%)"
+
+    "1m","19.00","0.43","87.50","0.51"
+    "4m","19.40","0.52","87.40","0.46"
+    "4k","3.93","1.73","13.60","4.08"
+    "256k","18.10","0.49","82.90","0.75"
  
+
 
 
 .. csv-table:: MMC RAW FIO 1G
