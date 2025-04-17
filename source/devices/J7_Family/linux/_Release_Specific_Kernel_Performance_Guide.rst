@@ -1029,6 +1029,16 @@ J721E-IDK-GW
 
 
 
+J7200-EVM
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. csv-table:: UBOOT QSPI or OSPI
+    :header: "File size (bytes in hex)","j7200-evm: Write Throughput (Kbytes/sec)","j7200-evm: Read Throughput (Kbytes/sec)"
+
+    "400000","373.38","215578.94"
+    "800000","374.23","256000"
+    "1000000","374.06","282482.75"
+    "2000000","368.17","303407.40"
 
 
 
@@ -1075,11 +1085,44 @@ J742S2-EVM
 
 
 
+J722S-EVM
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. csv-table:: UBOOT QSPI or OSPI
+   :header: "File size (bytes in hex)","j742s2_evm-fs: Write Throughput (Kbytes/sec)","j742s2_evm-fs: Read Throughput (Kbytes/sec)"
+
+   "400000","378.97","215574.95"
+   "800000","381.7","256000"
+   "1000000","386.5","287438"
+   "2000000","390.09","303407.47"
 
 
 
 
+AM68-SK
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. csv-table:: UBOOT QSPI or OSPI
+   :header: "File size (bytes in hex)","am68-sk: Write Throughput (Kbytes/sec)","am68-sk: Read Throughput (Kbytes/sec)"
+
+   "400000","378.97","215578.95"
+   "800000","381.7","256000"
+   "1000000","386.5","287438"
+   "2000000","390.09","303407"
+
+
+
+
+AM69-SK
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. csv-table:: UBOOT QSPI or OSPI
+   :header: "File size (bytes in hex)","am69-sk: Write Throughput (Kbytes/sec)","am69-sk: Read Throughput (Kbytes/sec)"
+
+   "400000","359.80","215578.94"
+   "800000","360.8","256000"
+   "1000000","364.33","282482.75"
+   "2000000","360.88","303407"
 
 
 
