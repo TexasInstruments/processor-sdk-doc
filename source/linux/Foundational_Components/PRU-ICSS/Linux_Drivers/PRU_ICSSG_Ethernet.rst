@@ -729,16 +729,16 @@ Ethernet PHYs/MDIO bindings
 
 The PRU_ICSSG Ethernet driver follows standard Linux DT bindings for MDIO bus, Ethernet controlers and PHYs which can be found at:
 
-| `ethernet-controller.yaml <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/Documentation/devicetree/bindings/net/ethernet-controller.yaml?h=ti-linux-5.10.y>`__
-| `mdio.yaml <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/Documentation/devicetree/bindings/net/mdio.yaml?h=ti-linux-5.10.y>`__
-| `ethernet-phy.yaml <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/Documentation/devicetree/bindings/net/ethernet-phy.yaml?h=ti-linux-5.10.y>`__
+| `ethernet-controller.yaml <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/Documentation/devicetree/bindings/net/ethernet-controller.yaml?h=ti-linux-6.12.y>`__
+| `mdio.yaml <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/Documentation/devicetree/bindings/net/mdio.yaml?h=ti-linux-6.12.y>`__
+| `ethernet-phy.yaml <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/Documentation/devicetree/bindings/net/ethernet-phy.yaml?h=ti-linux-6.12.y>`__
 |
 
 The existing TI Ethernet PHYs DT bindings:
 
-| `ti,dp83822.yaml <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/Documentation/devicetree/bindings/net/ti,dp83822.yaml?h=ti-linux-5.10.y>`__
-| `ti,dp83867.yaml <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/Documentation/devicetree/bindings/net/ti,dp83867.yaml?h=ti-linux-5.10.y>`__
-| `ti,dp83869.yaml <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/Documentation/devicetree/bindings/net/ti,dp83869.yaml?h=ti-linux-5.10.y>`__
+| `ti,dp83822.yaml <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/Documentation/devicetree/bindings/net/ti,dp83822.yaml?h=ti-linux-6.12.y>`__
+| `ti,dp83867.yaml <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/Documentation/devicetree/bindings/net/ti,dp83867.yaml?h=ti-linux-6.12.y>`__
+| `ti,dp83869.yaml <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/Documentation/devicetree/bindings/net/ti,dp83869.yaml?h=ti-linux-6.12.y>`__
 |
 
 .. _fixed-link:
