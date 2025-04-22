@@ -165,7 +165,7 @@ Yocto
 .. rubric:: meta-tisdk
    :name: meta-tisdk
 
-| Head Commit: 2f497ac1090c5b256878d803b96901d73a285840 meta-ti-foundational: powervr-drivers: Add ti-img-rogue-driver bbappend
+| Head Commit: c1f4a8eaf9b0779e9dfa66d2e4de0ac4173772c4 meta-ti-foundational: seva: Make service file work with emptty
 
 | Clone: https://github.com/TexasInstruments/meta-tisdk.git
 | Branch: scarthgap
