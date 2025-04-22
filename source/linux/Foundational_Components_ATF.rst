@@ -82,7 +82,7 @@ Where <hash> is the commit shown here: :ref:`tf-a-release-notes`.
 
         $ make CROSS_COMPILE="$CROSS_COMPILE_64" ARCH=aarch64 PLAT=k3 TARGET_BOARD=j784s4 SPD=opteed K3_USART=0x8
 
-.. ifconfig:: CONFIG_part_variant not in ('AM64X', 'AM62X', 'AM62LX', 'AM62AX', 'AM62PX', 'J721S2', 'J784S4','J742S2')
+.. ifconfig:: CONFIG_part_variant not in ('AM64X', 'AM62X', 'AM62LX', 'AM62AX', 'AM62PX', 'J721S2', 'J784S4', 'J742S2', 'J722S')
 
     .. code-block:: console
 
