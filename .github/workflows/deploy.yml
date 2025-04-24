@@ -38,7 +38,7 @@ jobs:
           EOF
 
           for path in build/*/; do
-            root_index=$(find "$path" -name index.html | sort -u | tail -1)
+            root_index=$(find "$path" -name index.html -print -quit)
             if [ -n "$root_index" ]; then
               text=$(basename "$path")
               relative_path=$(realpath "$root_index" --relative-to=build)
