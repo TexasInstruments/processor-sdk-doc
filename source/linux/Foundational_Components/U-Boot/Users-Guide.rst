@@ -32,3 +32,4 @@ User's Guide
     UG-Splash-Screen
     UG-Key-Writer-Lite
     UG-Programming-OTPs
+    UG-Falcon-Mode
