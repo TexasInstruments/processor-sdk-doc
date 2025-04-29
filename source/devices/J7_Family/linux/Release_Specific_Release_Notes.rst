@@ -360,8 +360,8 @@ U-Boot Known Issues
 Linux Known Issues
 ------------------
 .. csv-table::
-  :header: "Record ID", "Title", "Platform", "Workaround"
-  :widths: 5, 10, 70, 35
+  :header: "External Link", "Record ID", "Title", "Platform", "Workaround"
+  :widths: 5, 5, 10, 70, 35
 
   "LCPD-43625","Test: USB audio class client device tests are failing","j7200-evm",""
   "LCPD-43624","Test: USB video class client device tests are failing","j7200-evm",""
