@@ -135,9 +135,9 @@ linux/How_to_Guides/Target/How_To_Carve_Out_CMA
 
 linux/Documentation_Tarball
 
-system/Demo_User_Guides/index_Demos
-system/Demo_User_Guides/TI_Apps_Launcher_User_Guide
-system/Demo_User_Guides/Seva_Store
-system/Demo_User_Guides/Chromium_Browser
+linux/Demo_User_Guides/index_Demos
+linux/Demo_User_Guides/TI_Apps_Launcher_User_Guide
+linux/Demo_User_Guides/Seva_Store
+linux/Demo_User_Guides/Chromium_Browser
 
 linux/How_to_Guides/Host/Program_MMC_boot_media

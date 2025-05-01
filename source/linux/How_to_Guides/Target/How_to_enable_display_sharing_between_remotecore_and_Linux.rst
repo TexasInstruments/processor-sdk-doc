@@ -57,7 +57,7 @@ This scheme is useful for scenario where both Linux and remote core want to disp
 .. note::
    There is an out of box example available which uses this configuration to demonstrate display sharing between Linux and RTOS using display supported RTOS firmware and Linux devicetree overlay file `k3-am62p5-sk-dss-shared-mode.dtbo <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62p5-sk-dss-shared-mode.dtso?h=09.01.00.008>`_
 
-   For more details please refer `Display Cluster User Guide <../../../system/Demo_User_Guides/Display_Cluster_User_Guide.html>`__
+   For more details please refer :ref:`display-cluster-user-guide`
 
 Linux owning one full pipeline
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -16,7 +16,7 @@ Processor SDK AM64X Software Developer's Guide
    /linux/Foundational_Components
    /linux/How_to_Guides
    /devices/AM64X/index_RTOS
-   /devices/AM64X/index_Applications
+   /linux/Demo_User_Guides/index_Demos
    /linux/Documentation_Tarball
 
 |

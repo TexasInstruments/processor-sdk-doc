@@ -19,7 +19,7 @@ Processor SDK Linux Software Developer's Guide
    /linux/index_Edge_AI
    index_RTOS
    /linux/How_to_Guides
-   index_Applications
+   /linux/Demo_User_Guides/index_Demos
 
 |
 

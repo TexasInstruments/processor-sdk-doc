@@ -17,7 +17,7 @@ Linux SDK Software Developer's Guide
    /devices/AM62LX/linux/Release_Specific
    /linux/Foundational_Components
    /linux/How_to_Guides
-   /devices/AM62LX/index_Applications
+   /linux/Demo_User_Guides/index_Demos
    /linux/Documentation_Tarball
 
 |

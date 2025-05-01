@@ -325,9 +325,9 @@ Launching the Chromium Browser
 
       .. Image:: /images/chromium-browser-am62p.png
          :height: 400
-      
-3. Refer :ref:`Chromium Browser - User Guide <Chromium_Browser-label>` to know more about Chromium Browser.
-  
+
+3. Refer :ref:`Chromium_Browser-label` to know more about Chromium Browser.
+
 Launching the 3D Demo
 ^^^^^^^^^^^^^^^^^^^^^
 

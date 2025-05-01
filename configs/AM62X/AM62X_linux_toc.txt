@@ -1,6 +1,5 @@
 devices/AM62X/index
 devices/AM62X/index_RTOS
-devices/AM62X/index_Applications
 devices/AM62X/linux/Overview
 devices/AM62X/linux/Overview_Getting_Started_Guide
 devices/AM62X/linux/Overview/Download_and_Install_the_SDK
@@ -169,9 +168,10 @@ linux/How_to_Guides/FAQ/How_to_Integrate_Open_Source_Software
 linux/How_to_Guides_Hardware_Setup_with_CCS
 linux/How_to_Guides/Hardware_Setup_with_CCS/AM62x_EVM_Hardware_Setup
 
-system/Demo_User_Guides/TI_Apps_Launcher_User_Guide
-system/Demo_User_Guides/Seva_Store
-system/Demo_User_Guides/Chromium_Browser
+linux/Demo_User_Guides/index_Demos
+linux/Demo_User_Guides/TI_Apps_Launcher_User_Guide
+linux/Demo_User_Guides/Seva_Store
+linux/Demo_User_Guides/Chromium_Browser
 
 common/PRU-ICSS/Getting_Started_with_PSSP
 common/PRU-ICSS/Header_Files

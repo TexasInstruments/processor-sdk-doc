@@ -9,11 +9,13 @@ The SDK supports the following Out-Of-Box demo-applications
 .. toctree::
    :maxdepth: 1
 
-   /system/Demo_User_Guides/Edge_AI_Gallery_User_Guide
-   /system/Demo_User_Guides/TI_Apps_Launcher_User_Guide
-   /system/Demo_User_Guides/Seva_Store
-   /system/Demo_User_Guides/WiFi_OOB_Demo_User_Guide
-   /system/Demo_User_Guides/Chromium_Browser
+   Edge_AI_Gallery_User_Guide
+   TI_Apps_Launcher_User_Guide
+   Seva_Store
+   Chromium_Browser
+   Benchmark_Demo_User_Guide
+   Display_Cluster_User_Guide
+   TI_LVGL_Demo_User_Guide
 
 .. ifconfig:: CONFIG_sdk in ('j7_foundational')
 

@@ -131,7 +131,7 @@ linux/How_to_Guides_Hardware_Setup_with_CCS
 linux/How_to_Guides/Hardware_Setup_with_CCS/J722S_EVM_Hardware_Setup
 linux/How_to_Guides/Target/How_To_Carve_Out_CMA
 
-system/Demo_User_Guides/index_Demos
-system/Demo_User_Guides/Chromium_Browser
+linux/Demo_User_Guides/index_Demos
+linux/Demo_User_Guides/Chromium_Browser
 
 linux/Documentation_Tarball

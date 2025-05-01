@@ -1,6 +1,5 @@
 devices/AM62PX/index
 devices/AM62PX/index_RTOS
-devices/AM62PX/index_Applications
 devices/AM62PX/linux/Overview
 devices/AM62PX/linux/Overview_Getting_Started_Guide
 devices/AM62PX/linux/Overview/Download_and_Install_the_SDK
@@ -164,9 +163,10 @@ linux/How_to_Guides_Hardware_Setup_with_CCS
 linux/How_to_Guides/Hardware_Setup_with_CCS/AM62Px_EVM_Hardware_Setup
 linux/How_to_Guides/Target/How_To_Carve_Out_CMA
 
-system/Demo_User_Guides/TI_Apps_Launcher_User_Guide
-system/Demo_User_Guides/Seva_Store
-system/Demo_User_Guides/Display_Cluster_User_Guide
-system/Demo_User_Guides/Chromium_Browser
+linux/Demo_User_Guides/index_Demos
+linux/Demo_User_Guides/TI_Apps_Launcher_User_Guide
+linux/Demo_User_Guides/Seva_Store
+linux/Demo_User_Guides/Display_Cluster_User_Guide
+linux/Demo_User_Guides/Chromium_Browser
 
 linux/Documentation_Tarball
