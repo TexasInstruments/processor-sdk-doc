@@ -519,7 +519,7 @@ OpenCL extensions (intrinsics and EDMAmgr).
 Supported Platforms
 --------------------
 
-See `here <Release_Specific_Supported_Platforms_and_Versions.html>`__ for a list
+See :ref:`release-specific-supported-platforms-and-versions` for a list
 of supported platforms and links to more information.
 OpenCL dispatch is available only on platforms with DSP C66 core, like
 AM5728 (2 C66 cores).

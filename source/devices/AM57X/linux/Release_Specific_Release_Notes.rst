@@ -95,7 +95,7 @@ Released June 2022
 
 Supported Platforms
 =====================================
-See `here <Release_Specific_Supported_Platforms_and_Versions.html>`__ for a list of supported platforms and links to more information.
+See :ref:`release-specific-supported-platforms-and-versions` for a list of supported platforms and links to more information.
 
 |
 
