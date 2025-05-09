@@ -20,7 +20,7 @@ requests==2.32.3
 rich==13.9.4
 roman-numerals-py==3.1.0
 rstcheck==6.2.4
-rstcheck-core @ git+https://github.com/StaticRocket/rstcheck-core.git@b7bdfd920a023e24ffe5e560c706954656c366f0
+rstcheck-core==1.2.1
 shellingham==1.5.4
 snowballstemmer==2.2.0
 Sphinx==8.2.3
