@@ -7,10 +7,6 @@ sdk_product = 'general'
 # The master toctree document.
 master_doc = 'linux/index'
 
-# List of patterns, relative to source directory, that match files and
-# directories to ignore when looking for source files.
-exclude_patterns = ['rtos', 'android', 'devices']
-
 # Output file base name for HTML help builder.
 htmlhelp_basename = 'ProcessorSDKLinuxdoc'
 

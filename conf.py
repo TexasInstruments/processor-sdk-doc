@@ -260,9 +260,6 @@ suppress_warnings = ['toc.excluded']
 
 # -- Tag file loader ------------------------------------------------------
 
-# Defaults
-exclude_patterns = []
-
 FAMILY = os.environ.get("DEVFAMILY", "")
 OS = os.environ.get("OS", "")
 try:
@@ -276,6 +273,9 @@ except ModuleNotFoundError as exc:
 family_tocfiles = [f"{FAMILY}/{FAMILY}_{OS}_toc.txt"]
 # Family Configuration file to use
 family_config_inputfile = f"{FAMILY}/{FAMILY}_{OS}_config.txt"
+
+# Set document exclusion list from the tocfiles
+exclude_patterns = sectinc.generate_exclude_patterns(family_tocfiles)
 
 # Hash table for Replacement Variables and Config Values
 family_replacevars, family_configvals = interpretvalues.read_familyvals(family_config_inputfile)
@@ -298,16 +298,6 @@ def setup(app):
     print(family_replacevars)
     print("family_configvals = ")
     print(family_configvals)
-
-    # Determine which sections need to be excluded
-    sectinc.find_all_rst_files(app, exclude_patterns)
-    sectinc.fill_docs_to_keep(app, family_tocfiles, 0)
-    sectinc.set_excluded_docs(app, exclude_patterns)
-    print(FAMILY + " exclude_patterns is:")
-    print('[')
-    for elem in exclude_patterns:
-        print(elem)
-    print(']')
 
     # Load family config values into application context
     for key, value in family_configvals.items():
