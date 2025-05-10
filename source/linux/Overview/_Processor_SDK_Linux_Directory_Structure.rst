@@ -27,7 +27,7 @@ directories and files
          ├── Rules.make
          └── setup.sh*
 
-   .. ifconfig:: CONFIG_part_variant not in ('AM335X', 'AM437X', 'AM57X')
+   .. ifconfig:: CONFIG_part_variant not in ('AM335X', 'AM437X', 'AM57X', 'AM62LX')
 
       .. code-block:: console
 
@@ -37,6 +37,23 @@ directories and files
          ├── example-applications/
          ├── filesystem/
          ├── k3r5-devkit/
+         ├── licenses/
+         ├── linux-devkit/
+         ├── Makefile
+         ├── makerules/
+         ├── manifest/
+         ├── Rules.make
+         └── setup.sh*
+
+   .. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+      .. code-block:: console
+
+         ./
+         ├── bin/
+         ├── board-support/
+         ├── example-applications/
+         ├── filesystem/
          ├── licenses/
          ├── linux-devkit/
          ├── Makefile
@@ -93,6 +110,9 @@ Processor SDK devices.
 
    -  **linux-devkit** - Contains the tools and libraries to speed
       development for the target device for the ARMV8 architechture
+
+.. ifconfig:: CONFIG_part_variant not in ('AM62LX')
+
    -  **k3r5-devkit** - Contains the tools and libraries to speed
       development for the target device for the ARMV7 architechture
 

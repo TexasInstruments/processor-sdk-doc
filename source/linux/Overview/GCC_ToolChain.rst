@@ -268,13 +268,13 @@ libraries.
 k3r5-devkit
 ^^^^^^^^^^^
 
-.. ifconfig:: CONFIG_part_variant in ('AM335X', 'AM437X', 'AM57X')
+.. ifconfig:: CONFIG_part_variant in ('AM335X', 'AM437X', 'AM57X', 'AM62LX')
 
    .. attention::
 
-      The Processor SDK LINUX package for AM335x, AM437x and AM57X devices does not support k3r5-devkit toolchain.
+      The Processor SDK LINUX package for |__PART_FAMILY_NAME__| devices do not support k3r5-devkit toolchain.
 
-.. ifconfig:: CONFIG_part_variant not in ('AM335X', 'AM437X', 'AM57X')
+.. ifconfig:: CONFIG_part_variant not in ('AM335X', 'AM437X', 'AM57X', 'AM62LX')
 
    .. rubric:: Overview
 
