@@ -33,8 +33,7 @@ linux/Foundational_Components/U-Boot/UG-QSPI
 linux/Foundational_Components/U-Boot/UG-UART
 
 linux/Foundational_Components/U-Boot/Applications
-#linux/Foundational_Components/U-Boot/Apps-SPL-Debug
-#linux/Foundational_Components/U-Boot/Apps-SPL-Debug-OpenOCD
+linux/Foundational_Components/U-Boot/Apps-SPL-Debug-OpenOCD
 
 linux/Foundational_Components_Kernel
 linux/Foundational_Components_Kernel_Drivers

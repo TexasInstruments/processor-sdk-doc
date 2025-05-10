@@ -38,7 +38,6 @@ linux/Foundational_Components/U-Boot/UG-Splash-Screen
 linux/Foundational_Components/U-Boot/UG-RemoteProc
 
 linux/Foundational_Components/U-Boot/Applications
-linux/Foundational_Components/U-Boot/Apps-SPL-Debug
 linux/Foundational_Components/U-Boot/Apps-SPL-Debug-OpenOCD
 #linux/Foundational_Components/U-Boot/Apps-Load-in-CCS
 #linux/Foundational_Components/U-Boot/Apps-TroubleShooting
