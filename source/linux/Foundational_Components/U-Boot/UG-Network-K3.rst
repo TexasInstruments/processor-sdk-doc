@@ -50,6 +50,24 @@ binaries files to be sent over TFTP are listed in the table below.
         - Disable link info Bootmode pin so that ROM can identify the PHY and establishes link with the supported speed and duplex mode.
         - Please note that due to MDIO corruption (Errata i2329), booting over Ethernet is not recommended for production purposes.
 
+.. ifconfig:: CONFIG_part_variant in ('J722S')
+
+   +------------------+--------------------------------------+-----------------------+------------------------+---------------------------+----------------------------+
+   | Board            | Defconfigs                           | Supported interfaces  | ROM                    | R5 SPL                    | A53 SPL                    |
+   +==================+======================================+=======================+========================+===========================+============================+
+   | J722s EVM        | ``j722s_evm_r5_ethboot_defconfig``   | CPSW NUSS Ethernet    | VCI:  TI K3 Bootp Boot | VCI: J722S U-Boot R5 SPL  | VCI: J722S U-Boot A53 SPL  |
+   |                  | ``j722s_evm_a53_ethboot_defconfig``  |                       | :file:`tiboot3.bin`    | :file:`tispl.bin`         | :file:`u-boot.img`         |
+   +------------------+--------------------------------------+-----------------------+------------------------+---------------------------+----------------------------+
+
+   Build tiboot3.bin using ``j722s_evm_r5_ethboot_defconfig``. Build tispl.bin and u-boot.img using ``j722s_evm_a53_ethboot_defconfig``. For instructions to build the bootloader images please refer to :ref:`Build-U-Boot-label`.
+
+    .. important::
+
+        - Ethernet RGMII boot is supported over RGMII on J722s SoC.
+        - CPSW PHYs should be strapped as per ROM's expectation described in part's TRM.
+        - When the link info Bootmode pin is enabled, this means no auto-negotiation or reading of the Ethernet PHY is needed since the ROM will assume the link is up at 1Gbps, full duplex mode.
+        - Disable link info Bootmode pin so that ROM can identify the PHY and establishes link with the supported speed and duplex mode.
+
 .. ifconfig:: CONFIG_part_variant in ('AM64X')
 
   If using ISC dhcpd an example host entry would look like this:
@@ -92,6 +110,32 @@ binaries files to be sent over TFTP are listed in the table below.
         {
           filename "tispl.bin";
         } elsif substring (option vendor-class-identifier, 0, 21) = "AM62X U-Boot A53 SPL"
+        {
+          filename "u-boot.img";
+        }
+
+        range 10.0.0.17 10.0.0.25;
+        default-lease-time 60000;
+        max-lease-time 720000;
+        next-server 10.0.0.1;
+      }
+
+.. ifconfig:: CONFIG_part_variant in ('J722S')
+
+   If using ISC dhcpd an example host entry would look like this:
+
+   .. code-block:: text
+
+      subnet 10.0.0.0 netmask 255.0.0.0
+      {
+        range dynamic-bootp 10.0.0.2 10.0.0.16;
+        if substring (option vendor-class-identifier, 0, 16) = "TI K3 Bootp Boot"
+        {
+          filename "tiboot3.bin";
+        } elsif substring (option vendor-class-identifier, 0, 20) = "J722S U-Boot R5 SPL"
+        {
+          filename "tispl.bin";
+        } elsif substring (option vendor-class-identifier, 0, 21) = "J722S U-Boot A53 SPL"
         {
           filename "u-boot.img";
         }
