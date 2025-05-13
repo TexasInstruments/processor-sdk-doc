@@ -183,11 +183,11 @@ platform that support USB Peripheral boot mode.
 
 .. ifconfig:: CONFIG_part_variant in ('J722S')
 
-  #. Build the bootloader images using default "j722s_evm_r5_defconfig"
-     and the config fragment j722s_evm_r5_usbdfu.config
-     and "j722s_evm_a53_defconfig" config files. The configs required for
-     DFU boot as well as DFU in U-Boot are already enabled. For instructions
-     to build the bootloader images please refer to :ref:`Build-U-Boot-label`.
+  #. Build :program:`tiboot3.bin` using :file:`j722s_evm_r5_defconfig` along
+     with :file:`am62x_r5_usbdfu.config` fragment. Build :program:`tispl.bin`
+     and :program:`u-boot.img` using :file:`j722s_evm_a53_defconfig`.
+     For instructions to build the bootloader images please refer to
+     :ref:`Build-U-Boot-label`.
   #. Load the bootloader images tiboot3.bin, tispl.bin and u-boot.img using
      the dfu-util from host PC.
   #. Once the U-Boot is up, use DFU command from u-boot to flash the
