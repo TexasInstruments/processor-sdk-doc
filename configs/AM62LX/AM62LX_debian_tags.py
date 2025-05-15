@@ -2,8 +2,6 @@
 fam_name = 'AM62LX'
 
 # Project name and HTML title
-sdk_product = 'null' #todo: remove after the new structure is used for all device families
-
 project = u'Debian for AM62LX'
 html_title = 'Debian AM62LX Documentation'
 

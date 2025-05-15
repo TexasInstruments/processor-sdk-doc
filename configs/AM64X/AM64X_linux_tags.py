@@ -2,8 +2,6 @@
 fam_name = 'AM64X'
 
 # Project name and HTML title
-sdk_product = 'null' #todo: remove after the new structure is used for all device families
-
 project = u'Processor SDK Linux for AM64X'
 html_title = 'Processor SDK AM64X Documentation'
 

@@ -2,7 +2,6 @@
 fam_name = 'TDA4VM'
 
 # Project name and HTML title
-sdk_product = 'null' #todo: remove after the new structure is used for all device families
 project = u'Processor SDK Linux for TDA4VM'
 html_title = 'Processor SDK Linux for TDA4VM Documentation'
 

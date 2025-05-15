@@ -2,7 +2,6 @@
 fam_name = 'J784S4'
 
 # Project name and HTML title
-sdk_product = 'null' #todo: remove after the new structure is used for all device families
 project = u'Processor SDK Linux for J784s4'
 html_title = 'Processor SDK Linux for J784s4 Documentation'
 
