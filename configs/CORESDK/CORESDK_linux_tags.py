@@ -5,7 +5,6 @@ fam_name = 'CORESDK'
 
 # The master toctree document.
 master_doc = 'linux/index'
-
 # Output file base name for HTML help builder.
 htmlhelp_basename = 'ProcessorSDKLinuxdoc'
 
@@ -41,5 +40,3 @@ texinfo_documents = [
    'Miscellaneous'),
 ]
 
-# OS for the build. Sphinx uses source/{sdk_os} when looking for doc inputs
-sdk_os = 'linux'

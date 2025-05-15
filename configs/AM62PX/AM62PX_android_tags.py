@@ -7,8 +7,3 @@ html_title = 'Processor SDK AM62Px Documentation'
 
 # The master toctree document.
 master_doc = 'devices/AM62PX/android/index'
-
-# OS for the build. Sphinx uses source/{sdk_os} when looking for doc inputs
-sdk_os = 'android'
-
-
