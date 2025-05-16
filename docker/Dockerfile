@@ -13,6 +13,7 @@ RUN apk add --no-cache \
 		ripgrep \
 		shadow \
 		su-exec \
+		vale \
 		zip \
 	&& echo "**** create abc user and make our folders ****" \
 	&& useradd -u 1000 -U -d /config -s /bin/false abc \
