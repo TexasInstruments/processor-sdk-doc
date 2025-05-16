@@ -6,4 +6,4 @@ project = u'Processor SDK Linux for J742s2'
 html_title = 'Processor SDK Linux for J742s2 Documentation'
 
 # The master toctree document.
-master_doc = 'devices/J7_Family/linux/index'
+master_doc = 'devices/J742S2/linux/index'

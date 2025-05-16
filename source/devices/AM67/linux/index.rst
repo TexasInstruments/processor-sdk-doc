@@ -24,7 +24,7 @@ Processor SDK Linux Software Developer's Guide
 
 |
 
-.. include:: /devices/J7_Family/linux/_Release_Specific_QSG.rst
+.. include:: _Release_Specific_QSG.rst
 
 .. rubric:: Feedback
 
