@@ -2201,3 +2201,10 @@ The SRAM memory layout explains the memory used for Bootloader's operation.
            │      ROM Data      │                     │ PSRAM (64k)
            │                    │                     │
            └────────────────────┘ 0x707F_0000         ┴
+
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+   OTP Key Writer Lite
+   ^^^^^^^^^^^^^^^^^^^
+   The OTP (One Time Programmable) key writer lite guide to populate customer
+   keys in eFuses of the SoC can be found :ref:`here <key-writer-lite-label>`.
