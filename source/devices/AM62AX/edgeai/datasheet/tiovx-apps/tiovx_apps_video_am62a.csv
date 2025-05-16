@@ -1,0 +1,5 @@
+Model Name,MPU Load (%) ,C7x_0 Load (%) ,  MSC0 Load (%) ,  MSC1 Load (%) ,DDR Read BW (MB/s),DDR Write BW (MB/s),DDR Total BW (MB/s),FPS,Inference time (ms),
+ ONR-OD-8200-yolox-nano-lite-mmdet-coco-416x416, 9.82, 54.55, 52.47, 24.12,   1546,    743,   2289, 60, 8.985
+ TFL-OD-2020-ssdLite-mobDet-DSP-coco-320x320, 7.28, 82.35, 49.82, 23.77,   1566,    757,   2323, 60, 13.618
+ ONR-CL-6360-regNetx-200mf, 5.65, 29.29, 65.78, 26.15,   1081,    592,   1673, 60, 4.788
+ TFL-CL-0000-mobileNetV1-mlperf, 8.58, 26.08, 65.46, 26.14,   1050,    605,   1655, 60, 4.251
