@@ -1,0 +1,40 @@
+---
+name: "vale"
+
+on: [pull_request]
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  vale:
+    name: vale
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/staticrocket/processor-sdk-doc:latest
+      options: --entrypoint /bin/bash
+
+    steps:
+      - name: Prepare GitHub workdir
+        run: |
+          mkdir -p /github/home/
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v46
+        with:
+          files: |
+            **.rst
+            **.md
+
+      - name: Run vale checks on modified files
+        uses: StaticRocket/vale-action@d377866f2e3305ae80ef6ce6516370a7ec4ea55a
+        if: steps.changed-files.outputs.any_changed == 'true'
+        with:
+          fail_on_error: false  # to be changed when upstream addresses 84
+          files: ${{ steps.changed-files.outputs.all_changed_files }}
+          version: none

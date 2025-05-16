@@ -180,6 +180,22 @@ Copyright (C) 2024 Texas Instruments Incorporated - https://www.ti.com
 All other files inherit the generic CC-BY-SA-4.0 license and do not require an
 explicit license / copyright notice.
 
+## Vale grammar, spelling and prose checking
+
+This project currently uses [Vale](https://vale.sh/) for grammar spelling and
+prose checking. We operate on a loose version of [Red Hat's documentation style
+guidelines](https://github.com/redhat-documentation/vale-at-red-hat).
+
+If there are words it detects as misspellings, add those words to the custom
+vocabulary entry in
+[accept.txt](.github/styles/config/vocabularies/PSDK/accept.txt). If there are
+words you see that you think do not constitute usage here, add those words to
+the [reject.txt](.github/styles/config/vocabularies/PSDK/reject.txt). Ensure the
+contents of these files are alphabetically sorted after any modifications.
+
+Information about the formatting of these files is available
+[upstream](https://vale.sh/docs/keys/vocab#file-format).
+
 ## Fighting workflows
 
 The workflows are here to help, but occasionally they can raise false positives.
