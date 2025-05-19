@@ -103,7 +103,6 @@ linux/Foundational_Components/Graphics/Common/OpenGL_ES
 linux/Foundational_Components/Graphics/Common/PVR_Tools
 linux/Foundational_Components/Graphics/Common/QT_Graphics_Framework
 linux/Foundational_Components/Graphics/Common/Weston
-linux/Foundational_Components/Graphics/SGX/Migration_From_Prior_Releases
 linux/Foundational_Components/Graphics/SGX/OMAP_DRM
 linux/Foundational_Components/Graphics/SGX/Overview
 linux/Foundational_Components/Graphics/SGX/SGX_Debug_Info
