@@ -48,12 +48,12 @@ Introduction
 
 For more information about OpenGL\ |reg| ES see :doc:`../Common/OpenGL_ES`.
 
-These devices do not utilize static memory carveouts. The only reservations
-made in device tree are for control registers. Memory is instead dynamically
-allocated at runtime depending on the task and will scale accordingly.
-Buffers are allocated from CMA and other runtime memory allocations are made
-from standard pages. See the kernel module memory management subsystem for
-more information.
+These devices do not use static memory carve-outs. The only reservations made in
+device tree are for control registers. Memory is instead dynamically allocated
+at runtime depending on the task and will scale as needed. Scanout buffers come
+from the Contiguous Memory Allocation (CMA) pool. Other runtime memory
+allocations are from standard pages. See the kernel module memory management
+subsystem for more information.
 
 .. note::
 
@@ -61,7 +61,8 @@ more information.
    `<https://git.ti.com/cgit/graphics/ti-img-rogue-umlibs/>`_
 
 
-Other features of the Rogue series of GPUs include bilinear and trilinear filtering.
+Other features of the Rogue series of GPUs include bilinear and trilinear
+filtering.
 
 Support for the following pixel formats:
 
@@ -108,10 +109,10 @@ Support for OS controlled Active Power Management, enabled by default.
    :doc:`/linux/How_to_Guides/Target/How_to_suspend_to_ram_on_AM62x` for more
    info.
 
-Software Architecture
+Software architecture
 =====================
 
-The picture below shows the software architecture of Graphics in
+The following picture shows the software architecture of Graphics in
 |__SDK_FULL_NAME__|.
 
 .. figure:: /images/rogue-graphics-software-stack.png
@@ -119,12 +120,12 @@ The picture below shows the software architecture of Graphics in
 
    PSDK Linux Rogue Graphics Software Stack
 
-Please note that RGX-KM in this context refers to the pvrsrvkm kernel module,
-which is currently provided at:
+Please note that the Rogue Graphics Kernel Module (RGX-KM) in this context
+refers to ``pvrsrvkm``, which is currently provided at:
 
    - `<https://git.ti.com/cgit/graphics/ti-img-rogue-driver>`_
 
-This is included by default in the SDK. The kernel module is located at:
+The SDK includes this by default. The kernel module is at:
 
 .. code-block:: console
 
@@ -133,14 +134,14 @@ This is included by default in the SDK. The kernel module is located at:
 Please see the :doc:`Build_Guide` for more information about integration of
 this software stack into other ecosystems.
 
-Graphics Demos
+Graphics demos
 ==============
 
-Along with the graphics driver and userspace libraries, the SDK also includes
-example applications. Some of the demos are based on the IMG
-Native_SDK examples.
+Along with the graphics driver and user space libraries, the SDK also includes
+example applications. Some demos are from on the Imagination (IMG) Native_SDK
+examples.
 
-The following 3D Graphics demos are available. The table below provides a
+The following 3D Graphics demos are available. The following table provides a
 list of these demos, with a brief description.
 
 .. list-table:: Demos
@@ -149,17 +150,17 @@ list of these demos, with a brief description.
 
    * - Demo Name
      - Details
-   * - ChameleonMan
+   * - ``ChameleonMan``
      - This demo shows a matrix skinned character in combination with bump
        mapping.
-   * - CoverFlow
+   * - ``CoverFlow``
      - This is a demonstration of a coverflow style effect
-   * - ExampleUI
+   * - ``ExampleUI``
      - This demo shows how to efficiently render sprites and interface
        elements.
-   * - Navigation
+   * - ``Navigation``
      - This is a demonstration of how to implement rendering algorithms for
        Navigation software.
-   * - Kmscube
+   * - ``Kmscube``
      - This demo shows how to render and display multi-colored spinning cube
 

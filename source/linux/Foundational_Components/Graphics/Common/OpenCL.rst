@@ -4,11 +4,11 @@
 OpenCL
 ######
 
-The OpenCL\ |trade| libraries are packaged with the |__SDK_FULL_NAME__| and are
-used by compute centric libraries for offloading tasks to the GPU without the
-overhead of managing displays or creating a offscreen context. The drivers run
-on an ARM core and programs the firmware running inside a GPU core with commands
-submitted by the user applications.
+The OpenCL\ |trade| libraries in the |__SDK_FULL_NAME__| allow offloading tasks
+to the GPU for compute centric libraries without the GPU or CPU usage incurred
+by managing displays or creating a offscreen context. The drivers run on an ARM
+core and programs the firmware running inside a GPU core with commands submitted
+by the user applications.
 
 OpenCL\ |trade| differs from OpenGL\ |reg| in that it makes use of a predefined
 Installable Client Driver (ICD) Loader to allow applications to query and pick
@@ -19,16 +19,15 @@ an ICD loader library instead of directly using a specific library.
 
 .. note::
 
-   Tools may choose to dynamically load their respective OpenCL\ |trade| library
-   at runtime using dlopen, which may fail in Yocto based environments. This is
+   Some tools dynamically load their respective OpenCL\ |trade| library at
+   runtime by using dlopen, which can fail in Yocto based environments. This is
    usually the result of a clash in philosophies between Yocto and Application
-   developers over the usage of devlinks (also know in Yocto as "dev-so"s). It's
-   Yocto's belief that, for the most part, applications should not attempt to
-   use dev links directly and should instead open the specific version of the
-   library they need. You may choose to patch the application to do this or
-   create the devlink from :file:`/usr/lib/libOpenCL.so` to
-   :file:`/usr/lib/libOpenCL.so.1` manually. Tools provided by Yocto will be
-   patched accordingly already.
+   developers over the usage of devlinks (also know in Yocto as "dev-so"s). It
+   is Yocto's belief that, for the most part, applications should not try to use
+   dev links directly and should instead open the specific version of the
+   library they need. You can patch the application to do this or create the
+   devlink from :file:`/usr/lib/libOpenCL.so` to :file:`/usr/lib/libOpenCL.so.1`
+   manually. Tools provided by Yocto will are already patched.
 
 A useful tool for debugging OpenCL\ |trade| ICD Loaders and devices is
 :command:`clinfo`. This command, when run without any arguments will present a

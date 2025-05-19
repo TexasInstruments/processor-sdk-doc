@@ -2,29 +2,28 @@
 Display
 #######
 
-TI SoCs are equipped with Display SubSystem (DSS) hardware to provide hardware
-acceleration for alpha blending of overlays and color conversion. The DSS
-hardware is exposed to the software drm API available through ``libdrm`` module.
-Through this drm interface, a user space program can perform *mode setting* of
-the display.
+TI SoCs with Display Sub-System (DSS) hardware offer hardware acceleration for
+alpha blending of overlays and color conversion. The ``libdrm`` module exposes
+DSS hardware through the software Direct Render Management (DRM) API. Through
+this DRM interface, a user space program can perform *mode setting* of the
+display.
 
-The drm module models the display hardware as a series of abstract hardware
+The DRM module models the display hardware as a series of abstract hardware
 blocks and manages them through the API. The blocks are:
 
    - CRTC\ [#f1]_\: represents a scanout engine that generates video timing
      signal from the data pointed to by the scanout buffer
 
-   - Connector: represents where the video timing signal is sent across to the
-     display
+   - Connector: represents where the video timing signal goes and how it gets
+     there
 
-   - Encoder: transforms the video timing signal from CRTC to a format that is
-     suitable for sending across the connector
+   - Encoder: transforms the video timing signal from the CRTC to a format that
+     is suitable for sending to the connector
 
-   - Plane: represents the overlay buffer that a CRTC can be fed with
+   - Plane: represents the overlay buffer that will feed a CRTC
 
-A utility application ``modetest`` can be used to get the list of available drm
-blocks. All the information available for the device can be displayed by using
-it.
+The list of available DRM blocks is viewable using the application
+:command:`modetest`.
 
 .. ifconfig:: CONFIG_image_type in ('adas')
 
@@ -37,11 +36,13 @@ it.
        linux-dtbs and install. Also need to disable Display in r5f, rebuild
        r5f FW using PSDK RTOS.
 
-********************
-Finding Connector ID
-********************
+.. _finding_the_connector_id:
 
-Run the below ``modetest`` command:
+************************
+Finding the connector ID
+************************
+
+Run the following ``modetest`` command:
 
 .. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family')
 
@@ -55,8 +56,8 @@ Run the below ``modetest`` command:
 
       # modetest -M tidss -c
 
-Look for the display device for which the connector ID is required -
-such as HDMI, LCD etc.
+Look for the required display device's connector ID - such as High-Definition
+Multimedia Interface (HDMI), DisplayPort (DP), and so on.
 
 .. code-block:: text
 
@@ -75,9 +76,9 @@ such as HDMI, LCD etc.
 The modes displayed are the various resolutions supported by the connected
 display.
 
-****************
-Finding Plane ID
-****************
+********************
+Finding the plane ID
+********************
 
 To find the Plane ID, run the ``modetest`` command:
 
@@ -93,7 +94,7 @@ To find the Plane ID, run the ``modetest`` command:
 
       # modetest -M tidss -p
 
-Which should show something like below:
+Which should show something similar to the following:
 
 .. code-block:: text
 
@@ -108,43 +109,44 @@ Which should show something like below:
     props:
     ...
 
-*******************************
-Using Connector ID and Plane ID
-*******************************
+***********************************
+Using the connector ID and plane ID
+***********************************
 
-The above information may be used with some userspace applications to control
-which displays are rendered to. These applications are using what is known as
-kernel mode setting (kms). For more information about kernel mode setting see
-the `upstream kms documentation`_. In this section you only need to keep 2
-things in mind:
+The earlier information is useful when attempting to select what display to
+render to. Some user space applications have command line switches to easily
+show this. These applications are using Kernel Mode Setting (KMS). For more
+information about KMS see the `upstream kms documentation`_. For now, you only
+need to keep 2 things in mind:
 
-   #. Applications that intend to interact with the kms interface usually don't
-      need any user input. They can query device info through the interface and
-      will normally pick the first connected display automatically.
+   #. Applications that intend to interact with the KMS interface usually do not
+      need any user input. They can query device info through the interface
+      and will normally pick the first connected display automatically.
 
-   #. Only one application can manage the kms interface at a time. Weston is
-      normally the first graphical application started out of the box and as
-      such it will prevent you from starting any other kms applications. See
-      :ref:`stopping-weston` if you want to use another kms application.
+   #. Only one application can manage the KMS interface at a time. Weston is
+      normally the first graphical application started by default and as such
+      it will prevent you from starting any other KMS applications. See
+      :ref:`stopping-weston` if you want to use another KMS application.
 
 .. _upstream kms documentation: https://www.kernel.org/doc/html/latest/gpu/drm-kms.html
 
-That being said, if you wish to change rendering behavior for an application
-check with that applications documentation for a way to specify connector,
-plane, and / or crtc information. One kms application we include is ``kmscube``.
-Below are some examples on how to alter it's default behavior.
+If you want to change rendering behavior for an application check with that
+applications documentation for a way to specify a connector, plane, and / or
+CRTC information. One KMS application we include is :command:`kmscube`. Below
+are some examples on how to avoid the default behavior of automatically choosing
+a display to render to.
 
-Run kmscube on the default display:
+Run :command:`kmscube` on the default display:
 
 .. code-block:: console
 
    # kmscube
 
-Run kmscube on the secondary display:
+Run :command:`kmscube` on the secondary display:
 
 .. code-block:: console
 
-   # kmscube -n <connector-id>
+   # kmscube -n <connector_id>
 
 For example, if the connector id for the secondary display is 16:
 
@@ -154,7 +156,7 @@ For example, if the connector id for the secondary display is 16:
 
 .. [#f1]
 
-   CRTC stands for cathode-ray tube controller, a throw back to the old
+   CRTC stands for Cathode-Ray Tube Controller, a throw back to the old
    `cathode-ray tubes TV's <https://en.wikipedia.org/wiki/Cathode-ray_tube>`_
    which had a controller that generated video timings based on the data it is
-   being fed by a buffer.
+   receiving from a buffer.

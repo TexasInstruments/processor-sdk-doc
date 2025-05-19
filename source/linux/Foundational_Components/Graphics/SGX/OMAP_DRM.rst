@@ -1,29 +1,25 @@
-################
-DSS Applications
-################
+###############################
+Display sub-system applications
+###############################
 
-DSS applications are omapdrm based. These will demonstrate the clone
-mode, extended mode, overlay window, z-order and alpha blending
-features. To demonstrate clone and extended mode, HDMI display must be
-connected to board. 
+Display sub-system (DSS) applications are ``omapdrm`` based. These will show the
+clone mode, extended mode, overlay window, z-order and alpha blending features.
+To show the clone and extended mode, an HDMI display must be present.
 
-************************
-Running DSS Applications
-************************
-
-These applications require the supported mode information
-of connected displays and plane ids. One can get these information by
-running the *modetest* application in the filesystem.
+These applications require the supported mode information of connected displays
+and plane ids. One can get these information by running the :command:`modetest`
+application in the filesystem.
 
 .. code-block:: console
 
    # modetest
 
-Running drmclone
-================
+********
+drmclone
+********
 
 This displays the same test pattern on both LCD and HDMI (clone). Overlay
-windows are also displayed on LCD. To test clone mode, execute the following
+windows are also displayed on LCD. To test clone mode, run the following
 command:
 
 .. code-block:: console
@@ -36,14 +32,15 @@ For example:
 
    # drmclone -l 1280x800 -p 320x240:0+0 -h 640x480
 
-We can change position of overlay window by changing x+y values. eg.
-240+120 will show @ center
+We can change position of overlay window by changing x+y values. For example,
+240+120 will display this at the center.
 
-Running drmextended
-===================
+***********
+drmextended
+***********
 
 This displays different test pattern on LCD and HDMI. Overlay windows are also
-displayed on LCD. To test extended mode, execute the following command:
+displayed on LCD. To test extended mode, run the following command:
 
 .. code-block:: console
 
@@ -55,15 +52,16 @@ For example:
 
    # drmextended -l 1280x800 -p 320x240:0+0 -h 640x480
 
-Running drmzalpha
-=================
+*********
+drmzalpha
+*********
 
 This displays alpha blended patters on the given display. To use it the
-following paramters must be specified:
+following parameters are mandatory:
 
 **Z-order**:
 
-It determines, which overlay window appears on top of the other.
+It determines, which overlay window is displayed on top of the other.
 
 Range: 0 to 3
    - lowest value for bottom
@@ -71,19 +69,19 @@ Range: 0 to 3
 
 **Alpha Blend**:
 
-It determines transparency level of image as a result of both global
-alpha & pre multiplied alpha value.
+It determines transparency level of image as a result of both global alpha and
+pre-multiplied alpha value.
 
 Global alpha range: 0 to 255
    - 0 - fully transparent
    - 127 - semi transparent
    - 255 - fully opaque
 
-Pre multipled alpha value: 0 or 1
-   - 0 - source is not premultiply with alpha
-   - 1 - source is premultiply with alpha
+Pre-multipled alpha value: 0 or 1
+   - 0 - source is not pre-multiply with alpha
+   - 1 - source is pre-multiply with alpha
 
-To test ``drmzalpha``, execute the following command:
+To test ``drmzalpha``, run the following command:
 
 .. code-block:: console
 

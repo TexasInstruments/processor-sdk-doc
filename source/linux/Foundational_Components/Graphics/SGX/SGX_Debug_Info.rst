@@ -1,7 +1,7 @@
 .. http://processors.wiki.ti.com/index.php/SGXDbgInfo
 
 ##############
-SGX Debug Info
+SGX debug info
 ##############
 
 ************
@@ -9,15 +9,14 @@ Introduction
 ************
 
 The TI OMAP/AM/DM SGX Graphics Driver is closely tied to the environment it is
-running under and the configuration it is built with. This article mentions
-debugging methods specific to Linux.
+running under and the build configuration. This article mentions debugging
+methods specific to Linux.
 
-*********************************************
-Baselining the current SGX driver environment
-*********************************************
+**********************************************
+Baselin-ing the current SGX driver environment
+**********************************************
 
-The current SGX driver environment on the target can be observed using
-the below script:
+The the following script shows the current SGX driver environment on the target:
 
 .. code-block:: sh
    :caption: gfx_check.sh
@@ -48,39 +47,36 @@ the below script:
    echo "Linux Kernel version"
    uname -a
 
-***********************************************
-Run-time checks/configuration of the SGX driver
-***********************************************
+**************************************************
+Runtime checks and configuration of the SGX driver
+**************************************************
 
 One can confirm whether the SGX drivers have been properly installed by
 checking the following:
 
    - One should have seen the message on serial console: ``Initializing the
-     graphics driver ...`` just before getting the Linux command prompt.
+     graphics driver ...`` just before getting the Linux shell prompt
 
    - The ``lsmod`` command shows ``pvrsrvkm`` module inserted successfully
      without any error messages on console.
 
-The SGX driver can be configured at run-time on the target using a configuration
-file.
+The SGX driver supports some runtime configuration on the target by using a
+configuration file. The optional configuration file is present in the Processor
+SDK at :file:`/etc/powervr.ini`.
 
-The optional configuration file is installed by the Processor SDK installer at
-:file:`/etc/powervr.ini`.
-
-Configuration items are specified using the below syntax
+Configuration items use the following syntax:
 
 .. code-block:: text
 
    KeyWord=ParamValue
 
-Important configuration parameters are mentioned below.
-
+The following sections go over some important configuration parameters.
 
 WindowSystem
 ============
 
 This configuration item controls the low level window system that the EGL
-implementation should hook it up. This item takes the below values:
+implementation should hook it up. This item takes the following values:
 
    - ``libpvrDRMWSEGL.so`` (DRM-based WS for VSync synchronised writes to
      Framebuffer - slower, but avoids tearing)
@@ -91,7 +87,8 @@ implementation should hook it up. This item takes the below values:
 DisableHWTextureUpload
 ======================
 
-This configuration item enables/disables the use of SGX Transfer queue hardware.
+This configuration item enables or disables the use of SGX Transfer queue
+hardware.
 
 If set to 1, the driver uses software upload (copying from driver to SGX) of
 textures, rather than transfer queue (using the SGX hardware).
@@ -110,53 +107,53 @@ If one wants to configure the default pixel format, then edit
 
    DefaultPixelFormat=ARGB8888
 
-For AM3 Beagle Bone Black EVM:
+For AM3 Beagle Bone Black evaluation module (EVM):
 
 .. code-block:: text
 
    DefaultPixelFormat=RGB565
 
 ***************************************
-SGX Driver Failure Modes (Installation)
+SGX driver failure modes (installation)
 ***************************************
 
 Unable to install the kernel modules (pvrsrvkm.ko)
 ==================================================
 
-1. The Linux kernel has to be built with "modules" support.
+1. The Linux kernel must have "modules" support.
 
-2. The kernel module for the Graphics driver have to be built against a version
-   of the kernel that will be run on the target.
+2. The kernel module for the Graphics driver must use a kernel source that
+   matches what is running on the target.
 
 3. If the services kernel module (``pvrsrvkm.ko``) does not load, it is likely
    because of mismatches between user mode binaries and kernel module. If the
-   kernel module is built correctly, post the issue on the E2E forum with the
+   kernel module built correctly, post the issue on the E2E forum with the
    output of the :ref:`gfx-check-sh` script.
 
-***********************************
-SGX Driver Failure Modes (Run time)
-***********************************
+**********************************
+SGX driver failure modes (runtime)
+**********************************
 
-Vertical Tearing / Artifacts / Clipping issues / Missing objects
+Vertical tearing, artifacts, clipping issues, or missing objects
 ================================================================
 
-This could be due to an incorrect usage of OpenGL or an issue in the driver.
-Note that the deferred rendering mode of the SGX hardware will cause different
-behaviour compared to the immediate renderers found on desktops.
+This could be due to a wrong usage of OpenGL or an issue in the driver. Note
+that the deferred rendering mode of the SGX hardware will cause different
+behaviour compared to the immediate rendering used on desktops.
 
 Please contact TI through the Linux `E2E forums`_.
 
-Demos are not running at required speed, How to check SGX clock rate?
-=====================================================================
+Demos are not running at required speed or How to check SGX clock rate
+======================================================================
 
 If the demos are running slower than expected, check and ensure that the clock
-frequency set for the SGX driver is correct. This can be done using the
-following code in the KM kernel driver:
+frequency set for the SGX driver is correct. Use the following code in the KM
+kernel driver:
 
 | File - :file:`eurasia_km/services4/system/omap/sysutils_linux.c`
 | Function - ``EnableSGXClocks()``
 
-You can print the SGX clock rate in a debug build as below:
+You can print the SGX clock rate in a debug build by using the following:
 
 .. code-block:: c
 
@@ -167,23 +164,23 @@ Depending on the TI platform used, this will vary from 200 to 532 MHz. Ensure
 that SGX is running at the right clock.
 
 If the clock values are correct and demos are still not running with expected
-performance, then application specific optimization will be required.
+performance, then application specific optimization is necessary.
 
-Qt demos do not work when PowerVR is enabled
-============================================
+Qt demos do not work with PowerVR
+=================================
 
 1. Confirm that the GLES2 demos provided in the Graphics SDK are running
    properly with default SDK configuration of the window system.
 
 2. Confirm that kernel module ``pvrsrvkm.ko`` is successfully loaded.
 
-3. Confirm that the alpha value is non-zero using the ``fbset`` command. If not,
-   set it to the appropriate value using ``fbset``. QT supports 16 and 32 bpp,
-   but it expects a non-zero alpha value when using 32 bpp.
+3. Confirm that the alpha value is nonzero using the ``fbset`` command. If not,
+   set it to the appropriate value using ``fbset``. QT supports 16 and 32 bits
+   per pixel (BPP), but it expects a nonzero alpha value when using 32 BPP.
 
-If above has been confirmed and there are still issues, post to E2E forum with
-the output of the :ref:`gfx-check-sh` script. Also attach the console log, with
-the below environment variable set:
+If there are still issues, post to E2E forum with the output of the
+:ref:`gfx-check-sh` script. Also attach the console log, with the following
+environment variable set:
 
 .. code-block:: console
 
@@ -194,8 +191,7 @@ Posting to E2E forum
 ********************
 
 For suggestions or recommendations or bug reports, post details of your
-application as below to the `E2E forums`_, with below
-information:
+application to the `E2E forums`_ with following information:
 
    - Output of GFX environment baseline script :ref:`gfx-check-sh`.
 

@@ -3,20 +3,20 @@
 Introduction
 ============
 
-TI SOCs like AM335x, AM437x, AM57xx and AM65xx are enabled with 3D cores,
-capable of accelerating 3D operations with dedicated hardware. The
-dedicated hardware is based on SGX series of devices from Imagination
-Technologies. The graphics cores only accelerate graphics operations,
-and do not perform video decode operations. For video acceleration,
-refer to respective Technical Reference Manuals for the SOCs.
+TI SOCs such as AM335x, AM437x, AM57xx and AM65xx have 3D cores capable of
+accelerating 3D operations with dedicated hardware. The dedicated hardware is
+using the SGX series of devices from Imagination Technologies (IMG). The
+graphics cores only accelerate graphics operations, and do not perform video
+decode operations. For video acceleration, see the Technical Reference Manuals
+for the associated SoC.
 
-Below table lists the various TI families supported by this SDK, and the
-SGX core information
+The following table lists the various TI families supported by this SDK, and the
+SGX core information:
 
 .. list-table:: TI System on Chips, and SGX cores
    :header-rows: 1
 
-   * - TI SOC Name
+   * - TI SoC Name
      - SGX Core
      - SGX Core Revision
      - Max SGX Core Frequency (MHz)
@@ -40,17 +40,17 @@ SGX core information
 The SGX cores in AM family support OpenGL\ |reg| ES 1.1 and OpenGL\ |reg| ES
 2.0 APIs.
 
-These devices do not utilize static memory carveouts. The only reservations
-made in device tree are for control registers. Memory is instead dynamically
-allocated at runtime depending on the task and will scale accordingly.
-Buffers are allocated from CMA and other runtime memory allocations are made
-from standard pages. See the kernel module memory management subsystem for
-more information.
+These devices do not use static memory carve-outs. The only reservations made in
+device tree are for control registers. Memory is instead dynamically allocated
+at runtime depending on the task and will scale as needed. Scanout buffers come
+from the Contiguous Memory Allocation (CMA) pool and other runtime memory
+allocations come from standard pages. See the kernel module memory management
+subsystem for more information.
 
-Software Architecture
+Software architecture
 =====================
 
-The picture below shows the software architecture of Graphics in
+The following picture shows the software architecture of Graphics in
 |__SDK_FULL_NAME__|.
 
 .. figure:: /images/Graphic_software_stacks_DRM.png
@@ -61,12 +61,11 @@ The picture below shows the software architecture of Graphics in
 Please see the :doc:`Build_Guide` for more information about integration of this
 software stack into other ecosystems.
 
-Graphics Demos
+Graphics demos
 ==============
 
-Along with the graphics driver and userspace libraries, the SDK also includes
-example applications. Some of the demos are based on the IMG
-Native_SDK examples.
+Along with the graphics driver and user space libraries, the SDK also includes
+example applications. Some of the demos are from the IMG Native_SDK examples.
 
 The following demos are available to run under the Wayland windowing system.
 
@@ -82,18 +81,16 @@ The following demos are available to run under the Wayland windowing system.
    # /usr/bin/SGX/demos/Wayland/OpenGLESNavigation3D
    # /usr/bin/SGX/demos/Wayland/OpenGLESParticleSystem
 
-Running demos in Null Window system mode
+Running demos in null window system mode
 ----------------------------------------
 
-The graphics demos can also be run in null-window system mode outside of Wayland
-windowing system as full screen applications. In order to do so, exit Weston by
-pressing Ctrl-Alt-Backspace from the keyboard which connects to the EVM. Then,
-if the LCD screen stays in "Please wait...", press Ctrl-Alt-F1 to go to the
-command line on LCD console. After that, the command line can be used from
-serial console, SSH console, or LCD console.
+The graphics demos can also run in null-window system mode outside of Wayland
+windowing system as full screen applications. To do so, :ref:`stop Weston
+<stopping-weston>`. After that, access the command line from serial console, SSH
+console, or LCD console.
 
-Please make sure the board is connected to at least one display before
-running these demos.
+Please make sure the board has at least one display connected before running
+these demos.
 
 .. code-block:: console
 
@@ -102,10 +99,10 @@ running these demos.
    # /usr/bin/SGX/demos/DRM/OGLES2ExampleUI
    # /usr/bin/SGX/demos/DRM/OGLES2Navigation
 
-After you see the output on the display interface, hit *q* to terminate
-the application.
+After you see the output on the display interface, press *q* to exit the
+application.
 
 Some of the demos under null windowing system require the user to pass in
-the drm connector id. For information on how to get connector id please
-refer to the :doc:`../Common/Display` section.
+the DRM connector id. For information about how to get connector id,
+see the :ref:`finding_the_connector_id` section.
 

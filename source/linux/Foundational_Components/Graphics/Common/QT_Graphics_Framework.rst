@@ -2,7 +2,7 @@
     This subsection provides details on the QT graphics frameworks
 
 #####################
-Qt Graphics Framework
+Qt graphics framework
 #####################
 
 Qt is a powerful C++ toolkit for writing cross-platform graphics
@@ -12,15 +12,15 @@ well on Windows and embedded platforms,
 Please refer `<https://www.qt.io/>`__ for additional details on Qt.
 
 The PSDK target file system includes the pre-built Qt libraries under
-:file:`/usr/lib` and a rich set of QT demo applications under
+:file:`/usr/lib` and a rich set of Qt demo applications under
 :file:`/usr/share/examples`.
 
 *****
 Demos
 *****
 
-Demos using the Null Window System / KMS / DRM / EGLFS are
-provided with Qt. By default EGLFS will use the ``eglfs_kms`` backend.
+Qt provides demos for the Null Window System / KMS / DRM / EGL Full Screen
+(EGLFS) backends. By default EGLFS will use the ``eglfs_kms`` backend.
 
 .. code-block:: console
 
@@ -28,24 +28,24 @@ provided with Qt. By default EGLFS will use the ``eglfs_kms`` backend.
    $ /usr/share/examples/opengl/2dpainting/bin/2dpainting -platform eglfs
    $ /usr/share/examples/opengl/openglwindow/bin/openglwindow -platform eglfs
 
-For more information about Qt's EGLFS and using Qt6 in embedded
-applications see:
+For more information about the EGLFS platform abstraction and using Qt6 in
+embedded applications see:
 
    - https://doc.qt.io/qt-6/embedded-linux.html
 
-******
-Qt QPA
-******
+***********************
+Qt platform abstraction
+***********************
 
-The Qt6 within PSDK is prebuilt with Wayland enabled and therefore
-wayland-egl is the default QPA. Hence all Qt applications should be run
-on top of Weston. To run Qt application without Weston, the user can use
-``-platform`` option to specify the desired QPA as ``linuxfb`` or ``eglfs``.
+The Qt6 within PSDK is prebuilt with Wayland enabled and therefore wayland-egl
+is the default Qt Platform Abstraction (QPA). Therefore all Qt applications
+should run on top of Weston. To run Qt application without Weston, the user can
+use ``-platform`` option to specify the desired QPA as ``linuxfb`` or ``eglfs``.
 
 .. note::
 
-   The ``linuxfb`` inteface is deprecated and requires switching the display
-   into legacy fb mode.
+   The ``linuxfb`` interface is deprecated and requires switching the display
+   into "legacy" framebuffer mode.
 
 For example:
 
@@ -53,12 +53,12 @@ For example:
 
    $ /usr/share/examples/opengl/2dpainting/bin/2dpainting -platform eglfs
 
-*************************************************
-Running Qt Applications with the Weston IVI shell
-*************************************************
+*********************************************************************
+Running Qt applications with the Weston In-Vehicle Infotainment shell
+*********************************************************************
 
-To run the QT application with ivi-shell, set the
-``QT_WAYLAND_SHELL_INTEGRATION`` environment variable to ivi-shell.
+To run the Qt application with In-Vehicle Infotainment (IVI) shell, set the
+following environment variable, ``QT_WAYLAND_SHELL_INTEGRATION=ivi-shell``.
 
 .. code-block:: console
 
