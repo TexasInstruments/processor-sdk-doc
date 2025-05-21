@@ -203,11 +203,11 @@ Yocto
 
 .. rubric:: meta-tisdk
 
-| Head Commit: 2f497ac1090c5b256878d803b96901d73a285840 meta-ti-foundational: powervr-drivers: Add ti-img-rogue-driver bbappend
+| Head Commit: 73aae47bf953dd4cf06e448367135b1cac0869a1 meta-ti-foundational: ti-apps-launcher: Update SRCREV
 
 | Repo: https://github.com/TexasInstruments/meta-tisdk.git
 | Branch: scarthgap
-| Release Tag: 11.00.09.04
+| Release Tag: REL.J7.11.00-01
 |
 
 .. ifconfig:: CONFIG_image_type in ('edgeai', 'adas')
