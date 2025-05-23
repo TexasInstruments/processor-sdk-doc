@@ -223,7 +223,6 @@ Issues Open
    :widths: 15, 70
 
    "EXT_EP-12299","AM62x large number of TCP packets with TX checksum errors"
-   "EXT_EP-12076","copying files to eMMC triggers cqe error"
    "EXT_EP-12074","ti-rpmsg-char: Squash resource leaks"
    "EXT_EP-12072","misleading GPMC message in kernel log"
    "EXT_EP-12081","AM62x: Make Debugging SPL doc specific to AM62x"
