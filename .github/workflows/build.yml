@@ -61,6 +61,8 @@ jobs:
             device: AM64X
           - os: debian
             device: AM62LX
+          - os: edgeai
+            device: AM62AX
 
     steps:
       - name: Checkout
