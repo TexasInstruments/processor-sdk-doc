@@ -46,6 +46,13 @@ MDIO signals are not pinned out) are not supported.
 
 Devices offering the PRU-SS capability include AM62x.
 
+.. warning::
+
+   While am62 SoC supports PRU-SS, the automotive variants of this SoC do not and therefore
+   `AM62 LP SK <https://www.ti.com/tool/SK-AM62-LP>`__ does not support PRU-SS.
+   PRU-SS is now disabled in u-boot source: :file:`arch/arm/mach-k3/am62x/am625_fdt.c`
+   and might not be explicitly disabled with `status = "disabled"` in Linux kernel DT.
+
 |
 
 The PRU subsystem hardware can be used for two categories of applications:
