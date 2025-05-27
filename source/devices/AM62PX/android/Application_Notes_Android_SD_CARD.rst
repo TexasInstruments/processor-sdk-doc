@@ -81,8 +81,8 @@ Flashing SD Card
      :header-rows: 1
 
      * - Switch Label
-       - SW2: 12345678
-       - SW3: 12345678
+       - SW5: 12345678
+       - SW4: 12345678
 
      * - SD
        - 01000000

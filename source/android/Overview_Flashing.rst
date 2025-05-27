@@ -58,17 +58,33 @@ Once the build is complete, follow the steps below to flash the images to eMMC.
 
 1. Change the boot mode DIP switches to DFU mode:
 
-   .. list-table::
-      :widths: 16 16 16
-      :header-rows: 1
+   .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-      * - Switch Label
-        - SW2: 12345678
-        - SW3: 12345678
+      .. list-table::
+         :widths: 16 16 16
+         :header-rows: 1
 
-      * - USB DFU
-        - 00000000
-        - 11001010
+         * - Switch Label
+           - SW2: 12345678
+           - SW3: 12345678
+
+         * - USB DFU
+           - 00000000
+           - 11001010
+
+   .. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+      .. list-table::
+         :widths: 16 16 16
+         :header-rows: 1
+
+         * - Switch Label
+           - SW5: 12345678
+           - SW4: 12345678
+
+         * - USB DFU
+           - 00000000
+           - 11001010
 
 2. Ensure the device is plugged in with USB host and debug UART/serial debug
 
@@ -320,17 +336,33 @@ Once the build is complete, follow the steps below to flash the images to eMMC.
 
 6. Change boot mode DIP switches to boot from eMMC user partitions and power cycle the board:
 
-   .. list-table::
-      :widths: 16 16 16
-      :header-rows: 1
+   .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-      * - Switch Label
-        - SW2: 12345678
-        - SW3: 12345678
+      .. list-table::
+         :widths: 16 16 16
+         :header-rows: 1
 
-      * - EMMC (with UDA)
-        - 00000000
-        - 11000010
+         * - Switch Label
+           - SW2: 12345678
+           - SW3: 12345678
+
+         * - EMMC (with UDA)
+           - 00000000
+           - 11000010
+
+   .. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+      .. list-table::
+         :widths: 16 16 16
+         :header-rows: 1
+
+         * - Switch Label
+           - SW5: 12345678
+           - SW4: 12345678
+
+         * - EMMC (with UDA)
+           - 00000000
+           - 11000010
 
 
 7. Board should boot the Android images now.
