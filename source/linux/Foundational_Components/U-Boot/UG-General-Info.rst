@@ -1728,8 +1728,8 @@ Boot Flow
 
 .. ifconfig:: CONFIG_part_variant in ('AM62LX')
 
-   Unlike with most other K3 SoCs the AM62LX does not have an Cortext-R5
-   MCU core which ROM uses to initialize the SoC therefore uses a 2
+   Unlike with most other K3 SoCs, the AM62LX does not have an Cortext-R5
+   MCU core which ROM uses to initialize the SoC. Therefore it uses a 2
    phase ROM boot. The first phase will load the tiboot3.bin image which
    contains Trusted-Firmware-A's BL-1 loader along with the typical X.509
    certificate to authenticate and validate the image which is used to
