@@ -41,6 +41,10 @@ components:
   source/devices/AM62AX/linux:
     - texasinstruments/sitara-mpu-linux-sdk
 
+  source/devices/AM62AX/edgeai:
+    - cshilwant
+    - jeevantelukula
+
   source/devices/AM62PX/linux:
     - AashvijShenai
     - texasinstruments/sitara-mpu-linux-sdk
