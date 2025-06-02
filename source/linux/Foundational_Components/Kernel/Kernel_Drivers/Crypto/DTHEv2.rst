@@ -1,3 +1,5 @@
+.. _DTHEv2-Crypto-Accelerator:
+
 ######
 Crypto
 ######
