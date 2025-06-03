@@ -66,7 +66,7 @@ What's new
   - U-Boot 2025.01
   - Toolchain GCC 13.3
   - ATF 2.12+
-  - TIFS Firmware v11.00.12
+  - TIFS Firmware `v11.00.12 <https://software-dl.ti.com/tisci/esd/11_00_12/release_notes/release_notes.html>`__ (Click on the link for more information)
   - Yocto scarthgap 5.0
   - Debian 13 (Trixie)
   - Buildroot 2024.11.1
