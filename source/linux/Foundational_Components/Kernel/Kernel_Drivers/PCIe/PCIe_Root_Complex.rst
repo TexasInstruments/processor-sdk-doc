@@ -668,6 +668,17 @@ Following is a brief explanation of layers shown in the diagram:
     <value> is the resulting value to be written with "EC" bit of the
     register set.
 
+    .. rubric:: **64-Bit Address Space with 4 GB Size**
+       :name: 64-bit-address-space
+
+    The PCIe Controller support for 64-Bit addressing in the System's
+    Address Space with 4 GB Size is enabled in the device-tree.
+    The 4 GB region is split as:
+
+    1. 4 KB ECAM region for Configuration Accesses
+    2. 1 MB IO region
+    3. Remaining region (4 GB - 1 MB - 4 KB) as 32-bit Non-Prefetchable MEM
+
     .. rubric:: **Testing Details**
        :name: testing-details
 
