@@ -12,8 +12,8 @@ Introduction
 The CPSW Proxy Client driver in Linux interfaces with Ethernet Switch Firmware (EthFw)
 via RPMsg using the Linux Remoteproc framework. The CPSW Ethernet Switch on the SoC
 is configured by EthFw which acts as the Server and provides services to Clients on
-remote cores with the Linux Client on A72 core being the CPSW Proxy Client and the
-driver corresponding to it located at:
+remote cores with the Linux Client on A53 / A72 core being the CPSW Proxy Client and
+the driver corresponding to it located at:
 drivers/net/ethernet/ti/cpsw-proxy-client.c
 in the SDK's Linux Source.
 
@@ -89,23 +89,29 @@ overlay at U-Boot prompt.
 
 To enable Linux CPSW Proxy Client functionality, save the following command in uEnv.txt:
 
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+   .. code-block:: text
+
+      name_overlays="ti/k3-am62p5-sk-ethfw.dtbo"
+
 .. ifconfig:: CONFIG_part_variant in ('J721E')
 
-    .. code-block:: text
+   .. code-block:: text
 
-        name_overlays="ti/k3-j721e-evm-ethfw.dtbo"
+      name_overlays="ti/k3-j721e-evm-ethfw.dtbo"
 
 .. ifconfig:: CONFIG_part_variant in ('J7200')
 
-    .. code-block:: text
+   .. code-block:: text
 
-        name_overlays="ti/k3-j7200-evm-ethfw.dtbo"
+      name_overlays="ti/k3-j7200-evm-ethfw.dtbo"
 
 .. ifconfig:: CONFIG_part_variant in ('J784S4','J742S2')
 
-    .. code-block:: text
+   .. code-block:: text
 
-        name_overlays="ti/k3-j784s4-evm-ethfw.dtbo"
+      name_overlays="ti/k3-j784s4-evm-ethfw.dtbo"
 
 .. note::
 
@@ -140,14 +146,14 @@ Interpreting the boot logs
 
 The CPSW Proxy Client driver logs can be filtered using the command:
 
-.. code-block:: bash
+.. code-block:: console
 
    dmesg | grep ti_cpsw_proxy_client
 
 If the driver is probed successfully, something similar to the following content will show up in the filtered logs
 based on the configuration performed on EthFw for the allocation of Virtual Ports to the Linux Client:
 
-.. code-block:: bash
+.. code-block:: console
 
    ti_cpsw_proxy_client virtio2.ti.ethfw.ethdevice.-1.101: 1 Virtual Switch Port(s), 1 Virtual MAC Only P
    ti_cpsw_proxy_client virtio2.ti.ethfw.ethdevice.-1.101: Virt Port: 0, Type: Switch Port, Iface: eth1, Num TX: 2, Num RX: 1, Token: 0
@@ -168,13 +174,13 @@ Fetching/Setting IP Address
 
 Each interface can either get an IP address dynamically allocated to it by a DHCP server using the command:
 
-.. code-block:: bash
+.. code-block:: console
 
    udhcpc -i <ethX>
 
 Or it can be assigned a Static IP address manually using the command:
 
-.. code-block:: bash
+.. code-block:: console
 
    ifconfig <ethX> <IP-Address>
 
@@ -183,7 +189,7 @@ Setting MAC Address
 
 MAC Address can be assigned to interfaces using the commands:
 
-.. code-block:: bash
+.. code-block:: console
 
    ifconfig <ethX> down
    ifconfig <ethX> hw ether <MAC-Address>
@@ -221,7 +227,7 @@ by EthFw.
 
 Multicast MAC addresses can be added/deleted using the *ip maddr* command:
 
-.. code-block:: bash
+.. code-block:: console
 
     # Add Multicast address <Multicast-Address>
     ip maddr add <Multicast-Address> dev <ethX>
@@ -260,7 +266,7 @@ Consider the example of the interface eth1 having 2 TX DMA Channels. For the map
 
 the corresponding "tc" command to be run in userspace is:
 
-.. code-block:: bash
+.. code-block:: console
 
    tc qdisc add dev eth1 handle 100: parent root mqprio num_tc 2 \
    map 0 0 0 0 1 1 1 1 0 0 0 0 0 0 0 0 queues 1@0 1@1 hw 0

@@ -24,15 +24,25 @@ in managed or learning mode between each of the individual MAC ports.
 
 Depending on the SoC, the value of n in CPSWng varies as follows:
 
-+-----------+----------------+-----------------------------------+
-| SoC       | n in CPSWng    | Number of Ports                   |
-+===========+================+===================================+
-| J7200     | n = 5 (CPSW5g) | 5 (1 host port, 4 external ports) |
-+-----------+----------------+-----------------------------------+
-| J721e     | n = 9 (CPSW9g) | 9 (1 host port, 8 external ports) |
-+-----------+----------------+-----------------------------------+
-| J784S4    | n = 9 (CPSW9g) | 9 (1 host port, 8 external ports) |
-+-----------+----------------+-----------------------------------+
+.. ifconfig:: CONFIG_part_family in ('J7_family')
+
+   +-----------+----------------+-----------------------------------+
+   | SoC       | n in CPSWng    | Number of Ports                   |
+   +===========+================+===================================+
+   | J7200     | n = 5 (CPSW5g) | 5 (1 host port, 4 external ports) |
+   +-----------+----------------+-----------------------------------+
+   | J721e     | n = 9 (CPSW9g) | 9 (1 host port, 8 external ports) |
+   +-----------+----------------+-----------------------------------+
+   | J784S4    | n = 9 (CPSW9g) | 9 (1 host port, 8 external ports) |
+   +-----------+----------------+-----------------------------------+
+
+.. ifconfig:: CONFIG_part_family in ('AM62PX_family')
+
+   +-----------+----------------+-----------------------------------+
+   | SoC       | n in CPSWng    | Number of Ports                   |
+   +===========+================+===================================+
+   | AM62P     | n = 3 (CPSW3g) | 3 (1 host port, 2 external ports) |
+   +-----------+----------------+-----------------------------------+
 
 The SDK provides support to use the CPSWng ports in two different
 configurations:
@@ -44,11 +54,23 @@ configurations:
     The two configurations are mutually exclusive. Only one of the two
     can be enabled for a build.
 
-.. note::
-    | Enabling the CPSW Proxy Client configuration or the CPSWng Native Ethernet configuration
-    | requires applying a Linux device-tree overlay at U-Boot using the **name_overlays** U-Boot environment variable.
-    | For details regarding applying CPSW Proxy Client overlay, refer :ref:`cpsw_proxy_client_enable`.
-    | For details regarding applying CPSWng Native Ethernet overlay, refer :ref:`cpswng_native_eth_overlays`.
+.. ifconfig:: CONFIG_part_family in ('J7_family')
+
+   .. note::
+
+      | Enabling the CPSW Proxy Client configuration or the CPSWng Native Ethernet configuration
+      | requires applying a Linux device-tree overlay at U-Boot using the **name_overlays** U-Boot environment variable.
+      | For details regarding applying CPSW Proxy Client overlay, refer :ref:`cpsw_proxy_client_enable`.
+      | For details regarding applying CPSWng Native Ethernet overlay, refer :ref:`cpswng_native_eth_overlays`.
+
+
+.. ifconfig:: CONFIG_part_family in ('AM62PX_family')
+
+   .. note::
+
+      | Enabling the CPSW Proxy Client configuration requires applying a Linux device-tree overlay
+      | at U-Boot using the **name_overlays** U-Boot environment variable.
+      | For details regarding applying CPSW Proxy Client overlay, refer :ref:`cpsw_proxy_client_enable`.
 
 CPSW Proxy Client
 """""""""""""""""
@@ -73,7 +95,13 @@ with other cores.
 
 This configuration supports MAC mode, Switch mode and TSN features on Linux.
 
-For further details, refer :ref:`cpswng_native_ethernet`
+.. ifconfig:: CONFIG_part_family in ('J7_family')
+
+   For further details, refer :ref:`cpswng_native_ethernet`
+
+.. ifconfig:: CONFIG_part_family in ('AM62PX_family')
+
+   For further details, refer :ref:`cpsw3g`
 
 .. toctree::
     :hidden:

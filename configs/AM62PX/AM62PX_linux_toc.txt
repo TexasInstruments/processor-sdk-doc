@@ -57,6 +57,8 @@ linux/Foundational_Components/Kernel/Kernel_Drivers/MCAN
 linux/Foundational_Components/Kernel/Kernel_Drivers/MCRC64
 linux/Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW-Ethernet
 linux/Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW3g
+linux/Foundational_Components/Kernel/Kernel_Drivers/Network/CPSWng
+linux/Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW-Proxy-Client
 linux/Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW-TSN
 linux/Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW-PTP
 linux/Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW-EST
