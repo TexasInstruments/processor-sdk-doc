@@ -31,3 +31,4 @@ User's Guide
     UG-Thermal
     UG-Splash-Screen
     UG-Key-Writer-Lite
+    UG-Programming-OTPs
