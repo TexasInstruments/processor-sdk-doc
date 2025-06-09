@@ -13,6 +13,7 @@ User's Guide
     UG-Network
     UG-Network-K3
     UG-NAND
+    UG-Memory
     UG-Memory-K3
     UG-Memory-OMAP
     UG-SPI

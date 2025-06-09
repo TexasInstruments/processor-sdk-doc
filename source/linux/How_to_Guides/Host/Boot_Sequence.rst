@@ -9,12 +9,12 @@ Boot Sequence
     Please refer back to the particular U-boot component branch and version information for this release:
     :ref:`u-boot-release-notes`
 
-.. ifconfig:: CONFIG_part_family in ('General_family')
+.. ifconfig:: CONFIG_part_family in ('AM57X_family')
 
     .. rubric:: Introduction
        :name: introduction-boot-sequence
 
-    This page describes the boot sequence of an OMAP3 EVM.
+    This page describes the boot sequence of an AM57X EVM.
 
     .. rubric:: General Boot Sequence (Linux system)
        :name: general-boot-sequence-linux-system
@@ -28,20 +28,20 @@ Boot Sequence
 
     |
 
-    At power-up an OMAP3 device begins booting from internal Boot ROM.  This
+    At power-up an AM57X device begins booting from internal Boot ROM. This
     code is fixed during the manufacturing process and cannot be altered.
-    The Boot ROM reads boot configuration pins (SW4 on the OMAP3 EVM) which
-    tell the Boot ROM where to look for the first external bootloader.  The
-    choices include NAND, UART, and SD/MMC Card.  Control is then passed to
-    this first external bootloader called x-loader.  The x-loader
+    The Boot ROM reads boot configuration pins (SW4 on the AM57X EVM) which
+    tell the Boot ROM where to look for the first external bootloader. The
+    choices include NAND, UART, and SD/MMC Card. Control is then passed to
+    this first external bootloader called x-loader. The x-loader
     application is included in the Linux PSP provided by TI and can be
-    modified by the end user.  The x-loader application passes control to
-    u-boot.  U-boot is also a bootloader and is considered the second
+    modified by the end user. The x-loader application passes control to
+    u-boot. U-boot is also a bootloader and is considered the second
     external bootloader in this case.
 
     |
 
-    U-boot is the application which passes control to the Linux system.  The
+    U-boot is the application which passes control to the Linux system. The
     main goal of u-boot is to retrieve the Linux kernel and provide the
     kernel with information about the location of the Linux filesystem.
     U-boot can be configured to retrieve the kernel from NAND, SD/MMC Card,
@@ -58,11 +58,11 @@ Boot Sequence
        Booting TI SDK
        :name: booting-ti-sdk
 
-    The OMAP3 EVM which includes the TI SDK will come with an SD card.  This
+    The AM57X EVM which includes the TI SDK will come with an SD card. This
     card has been formatted and partition in such a way that the entire
-    system comes from this card.  There is a bootable FAT partition which
+    system comes from this card. There is a bootable FAT partition which
     contains x-loader (MLO), u-boot (u-boot.bin )and the Linux kernel
-    (uImage).  There is a separate ext3 partition which contains the Linux
+    (uImage). There is a separate ext3 partition which contains the Linux
     root filesystem.
 
     A tutorial for making this SD card can be found
@@ -87,7 +87,7 @@ Boot Sequence
 
     |
 
-    When booting from an SD card, the OMAP3 Boot ROM code will search the SD
+    When booting from an SD card, the AM57X Boot ROM code will search the SD
     card for the filename "MLO" when looking for x-loader.
 
     To boot from this SD card, the switches on SW4 should be set to SD/MMC
@@ -98,42 +98,36 @@ Boot Sequence
 
     | A UART terminal application connect to UART 1/2 of the EVM will
       display output as the board boots up.  The first section shows output
-      from x-loader as it boots from the SD/MMC card.
+      from U-boot SPL as it boots from the SD/MMC card.
 
     ::
 
-        Texas Instruments X-Loader 1.45 (Mar 19 2010 - 19:44:19)
-        Starting X-loader on MMC
-        Reading boot sector
+        U-Boot SPL 2023.04-gc1c2bdf272 (Nov 30 2023 - 18:17:44 +0000)
+        DRA752-GP ES2.0
+        Trying to boot from MMC1
+        no pinctrl state for default mode
+        Loading Environment from FAT...
 
-        212504 Bytes Read from MMC
-        Starting OS Bootloader from MMC...
-        Starting OS Bootloader...
-
-    X-loader then passes control to u-boot.  U-boot expects to find
-    "environment variables" in NAND flash.  When a board is booted for the
+    SPL then passes control to u-boot. U-boot expects to find
+    "environment variables" in NAND flash. When a board is booted for the
     first time or if the NAND has been erased, u-boot will indicate a
-    Warning about bad NAND.  U-boot will write a default environment that it
+    Warning about bad NAND. U-boot will write a default environment that it
     will then use to continue the boot process.
 
     ::
 
-        U-Boot 2009.11 (May 06 2010 - 16:57:54)
+        U-Boot 2023.04-gc1c2bdf272 (Nov 30 2023 - 18:17:44 +0000)
 
-        OMAP34xx/35xx-GP ES1.0, CPU-OPP2 L3-165MHz
-        OMAP3 EVM board + LPDDR/NAND
-        I2C: ready
-        DRAM: 128 MB
-        NAND: 256 MiB
-        *** Warning - bad CRC or NAND, using default environment
+        CPU  : DRA752-GP ES2.0
+        Model: TI AM5728 BeagleBoard-X15
+        Board: AM572x EVM REV A.3A
+        DRAM:  2 GiB
+        Core:  65 devices, 21 uclasses, devicetree: separate
+        MMC:   OMAP SD/MMC: 0, OMAP SD/MMC: 1
+        *** Warning - bad env area, using default environment
 
-        In: serial
-        Out: serial
-        Err: serial
-        Read back SMSC id 0x92200000
-        Die ID #731c0000000000000156087c0a023021
-        Net: smc911x-0
-        Hit any key to stop autoboot: 0
+        Net:   eth2: ethernet@48484000
+        Hit any key to stop autoboot:  0
 
     The default environment is designed to boot the Linux system from the SD
     card, so it is not necessary to stop the boot process.  And the next
@@ -146,15 +140,15 @@ Boot Sequence
 
     ::
 
-        OMAP3_EVM #
+        AM57X_EVM #
 
     There are several useful commands to remember here.  To display the
     environment variables, type "**printenv**" or just "**pri**".
 
     ::
 
-        OMAP3_EVM #
-        OMAP3_EVM # printenv
+        AM57X_EVM #
+        AM57X_EVM # printenv
         bootcmd=if mmc init; then if run loadbootscript; then run bootscript; else if run loaduimage; then run mmcboot; else run nandboot; f
         i; fi; else run nandboot; fi
         bootdelay=2
@@ -177,7 +171,7 @@ Boot Sequence
         ethact=smc911x-0
 
         Environment size: 873/131068 bytes
-        OMAP3_EVM #
+        AM57X_EVM #
 
     | The environment variables shown above are the default variables that
       are included with u-boot from the TI SDK.  These will be re-written
@@ -193,7 +187,7 @@ Boot Sequence
 
     ::
 
-        OMAP3_EVM # boot
+        AM57X_EVM # boot
         ## Booting kernel from Legacy Image at 80000000 ...
         Image Name: Linux-2.6.32
         Image Type: ARM Linux Kernel Image (uncompressed)

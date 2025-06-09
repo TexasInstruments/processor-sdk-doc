@@ -2,9 +2,11 @@ How to Develop with 3D Graphics
 ===============================
 Please refer to :doc:`../../Foundational_Components/Graphics/index` chapter for details.
 
-How to Develop accelerated Multimedia using GStreamer on AM57xx
-===============================================================
-Please refer to `Multimedia <../../Foundational_Components_Multimedia_IVAHD.html>`__ chapter for details.
+.. ifconfig:: CONFIG_part_family not in ('AM57X_family')
+
+        How to Develop accelerated Multimedia using GStreamer on AM57xx
+        ===============================================================
+        Please refer to `Multimedia <../../Foundational_Components_Multimedia_IVAHD.html>`__ chapter for details.
 
 Preventing BeagleBone board reset on JTAG Connect
 =================================================

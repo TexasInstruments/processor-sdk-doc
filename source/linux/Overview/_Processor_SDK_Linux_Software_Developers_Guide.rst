@@ -108,6 +108,26 @@ suggestions at `E2E <https://e2e.ti.com/>`__.
     .. |__Examples & Demos__| replace:: :ref:`Examples, Demos <examples-and-demos>`
     .. |__PRU Subsystem__| replace:: :ref:`PRU Subsystem <foundational-components-pru-subsystem>`
 
+..
+   comment: Removing PRU Subsystem from AM57X
+
+.. ifconfig:: CONFIG_part_family in ('AM57X_family')
+
+    +--------------------------+------------------------+----------------------------+-------------+
+    | **Foundational Components** (more information on each piece of the distribution)             |
+    +==========================+========================+============================+=============+
+    | |__U-Boot__|             | |__Kernel__|           | |__Filesystem__|           | |__Tools__| |
+    +--------------------------+------------------------+----------------------------+-------------+
+    | |__Graphics & Display__| | |__Examples & Demos__| |                            |             |
+    +--------------------------+------------------------+----------------------------+-------------+
+
+   .. |__U-Boot__| replace:: :ref:`U-Boot <foundational-components-u-boot>`
+   .. |__Kernel__| replace:: :ref:`Kernel <foundational-components-kernel>`
+   .. |__Filesystem__| replace:: :ref:`Filesystem <foundational-components-filesystem>`
+   .. |__Tools__| replace:: :ref:`Tools <foundational-components-tools>`
+   .. |__Graphics & Display__| replace:: :ref:`Graphics & Display <foundational-components-graphics-and-display>`
+   .. |__Examples & Demos__| replace:: :ref:`Examples, Demos <examples-and-demos>`
+
 
 .. ifconfig:: CONFIG_sdk in ('SITARA')
 

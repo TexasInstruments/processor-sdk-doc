@@ -35,9 +35,9 @@ Configuration Values
 --------------------
 'CONFIG_part_family'      : 'AM57X_family'
 'CONFIG_part_variant'     : 'AM57X'
-'CONFIG_sdk'              : 'JACINTO'
+'CONFIG_sdk'              : 'SITARA'
 'CONFIG_image_type'       : 'default'
-'CONFIG_icss_support'     : 'yes'
+'CONFIG_icss_support'     : 'no'
 'CONFIG_rt_linux_support' : 'yes'
 'CONFIG_gpu_ip'           : 'SGX'
-'CONFIG_crypto'           : ''
+'CONFIG_crypto'           : 'crypto'

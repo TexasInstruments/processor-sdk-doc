@@ -2,6 +2,11 @@
 
 USB Device Firmware Upgrade (DFU)
 -----------------------------------
+ 
+.. ifconfig:: CONFIG_part_family in ('AM57X_family')
+
+    .. note::
+        DFU is not supported in AM57X PLSDK.
 
 When working with USB Device Firmware Upgrade (DFU), regardless of the
 medium to be written to and of the board being used, there are some
@@ -62,7 +67,7 @@ platform that support USB Peripheral boot mode.
 
        host$ make
 
-.. ifconfig:: CONFIG_part_family in ('General_family')
+.. ifconfig:: CONFIG_part_family in ('General_family', 'AM57X_family')
 
    -  Set SYSBOOT SW2 switch to USB Peripheral boot mode
 
@@ -194,7 +199,7 @@ platform that support USB Peripheral boot mode.
      binary images from Host PC (using dfu-utils tool) to the eMMC, QSPI
      or OPSI to fresh/factory boards.
 
-.. ifconfig:: CONFIG_part_family not in ('AM62X_family', 'AM62AX_family', 'AM62PX_family')
+.. ifconfig:: CONFIG_part_family not in ('AM62X_family', 'AM62AX_family', 'AM62PX_family', 'AM57X_family')
 
     .. rubric:: USB Peripheral boot mode on |__PART_FAMILY_DEVICE_NAMES__| EVM (SPL-DFU boot mode)
 
