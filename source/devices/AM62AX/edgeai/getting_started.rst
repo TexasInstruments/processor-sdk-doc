@@ -99,7 +99,7 @@ firmly to keep the connector cable in place.
    by specifying the dtb overlay file in
    ``/run/media/BOOT-mmcblk1p1/uEnv.txt`` as below,
 
-   ``name_overlays=ti/k3-am62x-sk-csi2-imx219.dtbo``
+   ``name_overlays=ti/k3-am62x-sk-csi2-imx219.dtbo ti/k3-am62a7-sk-edgeai.dtbo``
 
    Reboot the board after editing and saving the file. Dtb files can be found
    under /boot/dtb/ti.
@@ -160,7 +160,7 @@ firmly to keep the connector cable in place.
    file in ``/run/media/BOOT-mmcblk1p1/uEnv.txt``. Let's take an example of
    single IMX219 camera connected to Mini fusion board at Port 0.
 
-   ``name_overlays=ti/k3-am62x-sk-csi2-v3link-fusion.dtbo ti/k3-v3link-imx219-0-0.dtbo``
+   ``name_overlays=ti/k3-am62x-sk-csi2-v3link-fusion.dtbo ti/k3-v3link-imx219-0-0.dtbo ti/k3-am62a7-sk-edgeai.dtbo``
 
    Similarly for camera connected to other port, dtbo can be appended above.
    Reboot the board after editing and saving the file. Dtb files can be found
