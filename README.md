@@ -66,6 +66,10 @@ Example build commands:
 
        $ make DEVFAMILY=AM62PX OS=debian
 
+ - Build EdgeAI documentation for AM62AX
+
+       $ make DEVFAMILY=AM62AX OS=edgeai
+
 ### HTML Page Output
 
 Open the index page in a web browser
@@ -73,6 +77,7 @@ Open the index page in a web browser
     linux:   ./build/processor-sdk-linux-<FAMILY>/esd/docs/[version]/index.html
     android: ./build/processor-sdk-android-<FAMILY>/esd/docs/[version]/index.html
     debian:  ./build/processor-sdk-debian-<FAMILY>/esd/docs/[version]/index.html
+    edgeai:  ./build/processor-sdk-edgeai-<FAMILY>/esd/docs/[version]/index.html
 
 ## Live Preview on GitHub Pages
 
