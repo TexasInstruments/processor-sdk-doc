@@ -49,7 +49,7 @@ What's new
   - New 2-Stage A53 Boot Flow
   - ATF Based Device Manager including SCMI
   - U-Boot: Legacy Boot Flow, Boot modes (UART, MMCSD, OSPI), GPMC NAND, CPSW, DMA
-  - U-Boot: User and Reduced Bootmode OTP Programming
+  - U-Boot: :ref:`User and Reduced Bootmode OTP Programming  <programming-user-otp-fuses-label>`
   - U-Boot: :ref:`Key writer lite Programming <key-writer-lite-label>`
   - Kernel: DMA, GPIO, I2C, UART, MMCSD, OSPI NOR, eCAP, eQEP, CPSW, McASP/Audio, DSS, DSI
   - Kernel: :ref:`DTHEv2 Crypto Accelerator <DTHEv2-Crypto-Accelerator>`
