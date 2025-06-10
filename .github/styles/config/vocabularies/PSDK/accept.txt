@@ -22,3 +22,6 @@ Zink
 [Ss]carthgap
 [Tt]oolchain
 balenaEtcher
+Armbian
+Debian
+Weston

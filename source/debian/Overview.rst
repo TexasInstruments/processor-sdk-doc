@@ -2,19 +2,34 @@
 Overview
 ########
 
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+   Armbian is a highly-optimized **base operating system** (i.e. an extensive build framework) for building Debian-based images for Single-Board Computers (SBCs).
+
+
 Debian, also known as Debian GNU/Linux, is a Linux distribution composed of free and open-source software, developed by the community-supported Debian Project.
 
-The Linux Debian distribution is enabled for TI's AM62Lx, AM62Px, AM62x and AM64x platforms. Few key highlights of this project are:
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+   The Linux Debian distribution, built using Armbian, is enabled for TI's AM62Lx platform. Few key highlights of this project are:
+
+.. ifconfig:: CONFIG_part_variant not in ('AM62LX')
+
+   The Linux Debian distribution is enabled for TI's AM62Px, AM62x and AM64x platforms. Few key highlights of this project are:
 
 - The Debian filesystem image requires standard packages from debian.org and TI's customizations as .deb packages. The deb packages for the components owned by TI are built using the public sources hosted on respective git repositories and the deb packages are hosted on TI's official PPA repository maintained on `Github/TexasInstruments <https://github.com/TexasInstruments/ti-debpkgs>`__.
 
-- The entire Debian build process is made easy with a build script, the script "ti-bdebstrap" is hosted on `TI Debian Github <https://github.com/TexasInstruments/ti-bdebstrap>`__.
+.. ifconfig:: CONFIG_part_variant not in ('AM62LX')
+
+   - The entire Debian build process is made easy with a build script, the script "ti-bdebstrap" is hosted on `TI Debian Github <https://github.com/TexasInstruments/ti-bdebstrap>`__.
 
 - This document also provides the required steps and instructions to customize the TI's components for AM62Lx, AM62Px, AM62x and AM64x SOCs and create the corresponding deb packages.
 
 - The entire project is made public and we accept community contributions as pull requests to github repositories.
 
-- Github actions are enabled for the buildscripts workflow. So, any change in the config files, package additions or modifications in build scripts will result in auto generation of a new debian filesystem that reflects these changes. The new builds will store the filesystem image as an artifact hosted on the same repo, allowing other users to test the change without making a new build. These images are available via github for 90 days after which they may be purged to save disk space.
+.. ifconfig:: CONFIG_part_variant not in ('AM62LX')
+
+   - Github actions are enabled for the buildscripts workflow. So, any change in the config files, package additions or modifications in build scripts will result in auto generation of a new debian filesystem that reflects these changes. The new builds will store the filesystem image as an artifact hosted on the same repo, allowing other users to test the change without making a new build. These images are available via github for 90 days after which they may be purged to save disk space.
 
 
 Debian vs Yocto

@@ -4,7 +4,7 @@
 Getting Started with Debian
 ***************************
 
-The SD card Image tisdk-debian-trixie-<machine>-<version>.wic.xz provided on the |__SDK_DOWNLOAD_URL__| is all you need to get started and explore Debian on TI microprocessors.
+The SD card Image ti_debian_trixie_<machine>-<armbian-version>.img provided on the |__SDK_DOWNLOAD_URL__| is all you need to get started and explore Debian on TI microprocessors.
 
 The Debian Image provided has all the basic packages required to boot with weston as default window manager. The user can install any new package using inbuilt 'apt' utility
 and customize the filesystem as required.
@@ -59,7 +59,7 @@ Boot and Validate Debian
 ------------------------
 Make sure to connect the Ethernet cable, HDMI Display, Mouse and Keyboard to the EVM. Insert the SD Card in the board and Power ON the EVM.
 
-After a few seconds, the boot prompt will appear. After boot, the weston homescreen will appear.
+After a few seconds, a setup script will run. This script guides the user through setting up user account, root password, date and so on. Once the setup ends, reboot the board. Weston screen will appear on the display.
 
 .. Image:: /images/debian_homescreen.png
 
