@@ -165,11 +165,11 @@ Yocto
 .. rubric:: meta-tisdk
    :name: meta-tisdk
 
-| Head Commit: e0fd39e02bf37233d51a7f7840a5e35900735179 jailhouse: Update SRCREV for 11.00.05 tag
+| Head Commit: 7dd7103397637911b7ca709ce2981ff049b0d9a1 meta-ti-foundational: Update Jailhouse SRCREV for 11.00.15
 
 | Clone: https://github.com/TexasInstruments/meta-tisdk.git
 | Branch: scarthgap
-| Release Tag: 11.00.05.02
-| Tag Description: Processor SDK Tag for AM62L APL release
+| Release Tag: 11.00.15.05
+| Tag Description: SITARA MPU Processor SDK 11.00 Release Tag for AM62L
 |
 
