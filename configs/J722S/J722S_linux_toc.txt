@@ -15,7 +15,7 @@ devices/J7_Family/linux/Release_Specific
 devices/J7_Family/linux/Release_Specific_Release_Notes
 devices/J7_Family/linux/Release_Specific_Yocto_layer_Configuration
 devices/J7_Family/linux/Release_Specific_Migration_Guide
-devices/J7_Family/linux/Release_Specific_Performance_Guide
+devices/J7_Family/linux/Release_Specific_Kernel_Performance_Guide
 devices/J7_Family/linux/Release_Specific_Supported_Platforms_and_Versions
 devices/J7_Family/linux/Release_Specific_QSG
 linux/Foundational_Components
