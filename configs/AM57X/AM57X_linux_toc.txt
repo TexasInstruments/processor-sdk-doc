@@ -80,7 +80,7 @@ linux/Foundational_Components/Tools/Development_Tools
 linux/Foundational_Components/Tools/Flash_Tools
 linux/Foundational_Components/Tools/Pin_Mux_Tools
 linux/Foundational_Components/Tools/Code_Composer_Studio
-linux/Foundational_Components_PRU-ICSS_PRU_ICSSG
+linux/Foundational_Components_PRU_Subsystem
 linux/Foundational_Components/PRU-ICSS-Linux-Drivers
 linux/Foundational_Components/PRU-ICSS/Linux_Drivers/RemoteProc
 linux/Foundational_Components/PRU-ICSS/Linux_Drivers/RPMsg
