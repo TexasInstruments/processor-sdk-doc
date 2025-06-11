@@ -1,5 +1,4 @@
 devices/AM62LX/index
-devices/AM62LX/index_RTOS
 devices/AM62LX/linux/Overview
 devices/AM62LX/linux/Overview_Getting_Started_Guide
 devices/AM62LX/linux/Overview/Download_and_Install_the_SDK
@@ -84,7 +83,6 @@ linux/Foundational_Components_Tools
 linux/Foundational_Components/Tools/Development_Tools
 linux/Foundational_Components/Tools/Pin_Mux_Tools
 #linux/Foundational_Components/Tools/GPIO_Tools
-linux/Foundational_Components_IPC62l
 linux/Foundational_Components_Machine_Learning
 linux/Foundational_Components/Machine_Learning/arm_compute_library
 linux/Foundational_Components/Machine_Learning/armnn
