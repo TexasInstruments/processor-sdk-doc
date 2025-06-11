@@ -60,8 +60,8 @@ linux/Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW-CBS
 linux/Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW-IET
 linux/Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW-TSN-Tuning
 linux/Foundational_Components/Kernel/Kernel_Drivers/PCIe/PCIe_Root_Complex
-linux/Foundational_Components/Kernel/Kernel_Drivers/Power_Management
-linux/Foundational_Components/Kernel/Kernel_Drivers/Power_Management/pm_dfs
+linux/Foundational_Components_Power_Management
+linux/Foundational_Components/Power_Management/pm_dfs
 linux/Foundational_Components/Kernel/Kernel_Drivers/QSPI
 linux/Foundational_Components/Kernel/Kernel_Drivers/SERDES/SERDES
 linux/Foundational_Components/Kernel/Kernel_Drivers/SPI
