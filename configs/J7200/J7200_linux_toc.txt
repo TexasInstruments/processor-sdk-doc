@@ -82,7 +82,6 @@ linux/Foundational_Components/Tools/Development_Tools
 linux/Foundational_Components/Tools/Flash_Tools
 linux/Foundational_Components/Tools/SysConfig_Tools
 linux/Foundational_Components/Tools/Code_Composer_Studio
-linux/Foundational_Components/PRU-ICSS-Linux-User-Space
 linux/Foundational_Components_IPC_J7200
 linux/Foundational_Components_OPTEE
 linux/Foundational_Components_ATF
