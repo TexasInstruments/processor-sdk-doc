@@ -15,7 +15,6 @@ devices/DRA821A/linux/Release_Specific
 devices/DRA821A/linux/Release_Specific_Release_Notes
 devices/DRA821A/linux/Release_Specific_Yocto_layer_Configuration
 devices/DRA821A/linux/Release_Specific_Supported_Platforms_and_Versions
-devices/DRA821A/linux/Release_Specific_QSG
 linux/Foundational_Components
 linux/Foundational_Components_U-Boot
 linux/Foundational_Components/U-Boot/Release-Notes

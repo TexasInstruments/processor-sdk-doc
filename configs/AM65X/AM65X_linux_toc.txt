@@ -17,7 +17,6 @@ devices/AM65X/linux/Release_Specific_Yocto_layer_Configuration
 devices/AM65X/linux/Release_Specific_Migration_Guide
 devices/AM65X/linux/Release_Specific_Performance_Guide
 devices/AM65X/linux/Release_Specific_Supported_Platforms_and_Versions
-devices/AM65X/linux/Release_Specific_QSG
 linux/Foundational_Components
 linux/Foundational_Components_U-Boot
 linux/Foundational_Components/U-Boot/Release-Notes
