@@ -43,7 +43,7 @@ linux/Foundational_Components/Kernel/Kernel_Drivers/MCAN
 linux/Foundational_Components/Kernel/Kernel_Drivers/GPIO
 linux/Foundational_Components/Kernel/Kernel_Drivers/I2C
 linux/Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW2g
-linux/Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW-TSN-Testing
+linux/Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW-TSN
 linux/Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW-PTP
 linux/Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW-EST
 linux/Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW-CBS
