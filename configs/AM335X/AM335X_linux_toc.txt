@@ -91,9 +91,7 @@ linux/Foundational_Components_Virtualization
 linux/Foundational_Components/Virtualization/Docker
 linux/Foundational_Components_Machine_Learning
 linux/Foundational_Components/Machine_Learning/armnn
-linux/Foundational_Components/Machine_Learning/tidl
 linux/Foundational_Components/Machine_Learning/tflite
-linux/Foundational_Components/Machine_Learning/tvm
 
 linux/Foundational_Components/Graphics/index
 linux/Foundational_Components/Graphics/Common/Display
