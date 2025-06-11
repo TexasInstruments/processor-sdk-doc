@@ -1,13 +1,5 @@
 android/index
 android/Overview
 android/Overview_Getting_Started_Guide
-android/Overview_Directory_Structure
 android/Overview_Building_the_SDK
-android/Overview_Software_Stack
 android/Overview_Technical_Support
-android/Overview_GPLv3_Disclaimer
-android/Release_Specific
-android/Release_Specific_Release_Notes
-android/Release_Specific_Supported_Platforms_and_Versions
-android/Release_Specific_Migration_Guide
-android/Documentation_Tarball
