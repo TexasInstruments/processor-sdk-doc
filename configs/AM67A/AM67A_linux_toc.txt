@@ -84,7 +84,6 @@ linux/Foundational_Components_Virtualization
 linux/Foundational_Components/Virtualization/Docker
 linux/Foundational_Components_OPTEE
 linux/Foundational_Components_ATF
-linux/Foundational_Components_Multimedia_Other_Tools
 linux/Foundational_Components_Multimedia_wave5
 linux/Foundational_Components/Graphics/index
 linux/Foundational_Components/Graphics/Common/Display
