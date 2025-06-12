@@ -465,6 +465,9 @@ ICSSG Ethernet Driver
 
     "netperf -H 192.168.2.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.2.1 -j -c -C -l 60 -t TCP_MAERTS","359.51","53.51"
 
+.. rubric:: UDP Ingress Throughput
+   :name: ICSSG-udp-ingress-throughput
+
 .. csv-table:: ICSSG UDP Ingress Throughput 0 loss
     :header: "Frame Size(bytes)","am64xx-hsevm: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am64xx-hsevm: THROUGHPUT (Mbits/sec)","am64xx-hsevm: Packets Per Second (kPPS)","am64xx-hsevm: CPU Load %"
 
