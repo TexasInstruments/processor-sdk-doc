@@ -41,7 +41,7 @@ EVM
     USB2 controller is not present on J721E SoC so micro-AB 3.0 connector is not
     usable.
 
-.. ifconfig:: CONFIG_part_variant in ('J784S4')
+.. ifconfig:: CONFIG_part_variant in ('J784S4, J742S2')
 
    The following diagram depicts USB integration in |__PART_FAMILY_DEVICE_NAMES__| EVM.
 
