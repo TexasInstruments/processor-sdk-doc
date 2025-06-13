@@ -41,6 +41,25 @@ EVM
     USB2 controller is not present on J721E SoC so micro-AB 3.0 connector is not
     usable.
 
+.. ifconfig:: CONFIG_part_variant in ('J784S4')
+
+   The following diagram depicts USB integration in |__PART_FAMILY_DEVICE_NAMES__| EVM.
+
+   .. image:: /images/usb_j784s4_j742s2_evm.png
+
+   The EVM supports one USB3.1 Gen1 Type C interface, which can function as DFP, UFP,
+   or DRP.
+
+   .. note::
+
+      The Type-C config DIP switch (SW2) must be set for DRP (Dual-role-Port)
+      operation. SW2.3 = ON, SW2.4 = OFF.
+
+   The EVM supports two USB2.0 Type A interfaces via an on-board USB hub. These ports
+   can only function as Host. The processor supports a single USB interface. Therefore,
+   the user must configure for either the USB3.1 Type C interface or the USB2.0 Type A
+   interface. Both cannot be operated simultaneously.
+
 .. ifconfig:: CONFIG_part_family in ('AM64X_family')
 
    **AM64X_EVM**
