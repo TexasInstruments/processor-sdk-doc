@@ -60,6 +60,25 @@ EVM
    the user must configure for either the USB3.1 Type C interface or the USB2.0 Type A
    interface. Both cannot be operated simultaneously.
 
+.. ifconfig:: CONFIG_part_variant in ('J721S2')
+
+   The following diagram depicts USB integration in |__PART_FAMILY_DEVICE_NAMES__| EVM.
+
+   .. image:: /images/usb_j721s2_evm.png
+
+   The EVM supports one USB3.1 Gen1 Type C interface, which can function as DFP, UFP, or
+   DRP. The EVM supports two USB2.0 Type A interfaces via an on-board USB hub. These
+   ports can only function as Host.
+
+   .. note::
+
+      The Type-C config DIP switch (SW3) must be set for DRP (Dual-role-Port)
+      operation. SW3.3 = OFF, SW3.4 = ON.
+
+   The processor supports a single USB interface. Therefore, the user must configure
+   for either the USB3.1 Type C interface or the USB2.0 Type A interface. Both cannot
+   be operated simultaneously.
+
 .. ifconfig:: CONFIG_part_family in ('AM64X_family')
 
    **AM64X_EVM**
