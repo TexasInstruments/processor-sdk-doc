@@ -79,6 +79,31 @@ EVM
    for either the USB3.1 Type C interface or the USB2.0 Type A interface. Both cannot
    be operated simultaneously.
 
+.. ifconfig:: CONFIG_part_variant in ('J7200')
+
+   The following diagram depicts USB integration in |__PART_FAMILY_DEVICE_NAMES__| EVM.
+
+   .. image:: /images/usb_j7200_evm.png
+
+   The EVM supports one USB3.1 Gen1 Type C interface, which can function as DFP, UFP,
+   or DRP.  USB Super speed signals from SERDES0 port of J7200 SoC are connected to
+   USB Type C interface.  The EVM also supports two USB2.0 Type A interfaces via an
+   on-board four port USB hub. These ports can only function as Host.
+
+   .. note::
+
+      The Type-C config DIP switch (SW3) must be set for DRP (Dual-role-Port)
+      operation. SW3.3 = OFF, SW3.4 = ON.
+
+   Ports of the HUB are connected as below.
+
+   - Two USB ports are terminated to Type A Stacked Connector
+   - One USB port is connected to 4 Pin Header (PCIe Card - Wi-Fi®/BT)
+   - One USB port is connected to EVM Expansion connector
+
+   J7200 EVM only supports single USB interface, so the USB3.1 and USB2.0 cannot be
+   supported simultaneously.
+
 .. ifconfig:: CONFIG_part_family in ('AM64X_family')
 
    **AM64X_EVM**
