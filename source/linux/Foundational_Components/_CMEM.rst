@@ -4,6 +4,12 @@
 CMEM
 *******************
 
+.. ifconfig:: CONFIG_part_family in ('AM57X_family')
+
+    .. note::
+        CMEM library is deprecated and it is added as part of SDK for reference.
+        Check the `Release Notes <../../../../../devices/AM57X/linux/Release_Specific_Release_Notes.html#sdk-features-descoped-from-9-2-release>`__ for more details
+
 .. rubric:: Introduction
    :name: introduction-linux-cmem
 

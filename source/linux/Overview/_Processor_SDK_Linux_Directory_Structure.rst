@@ -7,7 +7,7 @@ Directory Structure Overview
 The Processor SDK for Linux contains the following top-level
 directories and files
 
-.. ifconfig:: CONFIG_sdk in ('SITARA')
+.. ifconfig:: CONFIG_sdk in ('SITARA', 'JACINTO')
 
    .. ifconfig:: CONFIG_part_variant in ('AM335X', 'AM437X', 'AM57X')
 
@@ -111,7 +111,7 @@ Processor SDK devices.
    -  **linux-devkit** - Contains the tools and libraries to speed
       development for the target device for the ARMV8 architechture
 
-.. ifconfig:: CONFIG_part_variant not in ('AM62LX')
+.. ifconfig:: CONFIG_part_variant not in ('AM62LX', 'AM57X')
 
    -  **k3r5-devkit** - Contains the tools and libraries to speed
       development for the target device for the ARMV7 architechture

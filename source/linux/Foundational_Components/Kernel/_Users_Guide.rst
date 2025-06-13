@@ -5,7 +5,7 @@ Overview
 
 This document will cover the basic steps for building the Linux kernel.
 
-.. ifconfig:: CONFIG_part_family not in ('General_family', 'AM335X_family', 'AM437X_family', 'AM57X_family')
+.. ifconfig:: CONFIG_part_family not in ('General_family', 'AM335X_family', 'AM437X_family')
 
    .. rubric:: Install host dependencies
 
@@ -553,43 +553,74 @@ The Kernel FIT Image that we have has Kernel Image, DTB and the DTBOs
             };
     };
 
+.. ifconfig:: CONFIG_part_family in ('AM57X_family')
+
+	.. code-block:: dts
+
+		kernel-1 {
+		       description = "Linux kernel";
+		       data = /incbin/("linux.bin.sec");
+		       type = "kernel";
+		       arch = "arm";
+		       os = "linux";
+		       compression = "none";
+		       load = <0x82000000>;
+		       entry = <0x82000000>;
+		};
+		am5729-beagleboneai.dtb {
+		       description = "Flattened Device Tree blob";
+		       data = /incbin/("arch/arm/boot/dts/am5729-beagleboneai.dtb.sec");
+		       type = "flat_dt";
+		       arch = "arm";
+		       compression = "none";
+		};
+		am57xx-beagle-x15.dtb {
+		       description = "Flattened Device Tree blob";
+		       data = /incbin/("arch/arm/boot/dts/am57xx-beagle-x15.dtb.sec");
+		       type = "flat_dt";
+		       arch = "arm";
+		       compression = "none";
+		};
+
 Change the path in data variables to point to the respective files in your
 local machine.
 
 For e.g change "linux.bin" to
 "<path-to-tisdk>/board-support/prebuilt-images/Image".
 
-The new addition to the FIT from 8.6 to 9.0 is the FIT Signature.
+.. ifconfig:: CONFIG_part_family not in ('General_family', 'AM335X_family', 'AM437X_family', 'AM57X_family')
 
-.. code-block:: dts
+        The new addition to the FIT from 8.6 to 9.0 is the FIT Signature.
 
-    conf-ti_k3-j721e-common-proc-board.dtb {
-            description = "Linux kernel, FDT blob";
-            fdt = "fdt-ti_k3-j721e-common-proc-board.dtb";
-            kernel = "kernel-1";
-            signature-1 {
-                    algo = "sha512,rsa4096";
-                    key-name-hint = "custMpk";
-                    sign-images = "kernel", "fdt";
-            };
-    };
+        .. code-block:: dts
+
+                conf-ti_k3-j721e-common-proc-board.dtb {
+                        description = "Linux kernel, FDT blob";
+                        fdt = "fdt-ti_k3-j721e-common-proc-board.dtb";
+                        kernel = "kernel-1";
+                        signature-1 {
+                                algo = "sha512,rsa4096";
+                                key-name-hint = "custMpk";
+                                sign-images = "kernel", "fdt";
+                        };
+                };
 
 
-Specify all images you need the signature to authenticate as a part of
-sign-images. The key-name-hint needs to be changed if you are using some
-other key other than the TI dummy key that we are using for this example.
-It should be the name of the file containing the keys.
+        Specify all images you need the signature to authenticate as a part of
+        sign-images. The key-name-hint needs to be changed if you are using some
+        other key other than the TI dummy key that we are using for this example.
+        It should be the name of the file containing the keys.
 
-.. note::
+        .. note::
 
-    Generating new set of keys:
+                Generating new set of keys:
 
-    .. code-block:: console
+        .. code-block:: console
 
-        $ mkdir keys
-        $ openssl genpkey -algorithm RSA -out keys/dev.key \
-        -pkeyopt rsa_keygen_bits:4096 -pkeyopt rsa_keygen_pubexp:65537
-        $ openssl req -batch -new -x509 -key keys/dev.key -out keys/dev.crt
+                $ mkdir keys
+                $ openssl genpkey -algorithm RSA -out keys/dev.key \
+                -pkeyopt rsa_keygen_bits:4096 -pkeyopt rsa_keygen_pubexp:65537
+                $ openssl req -batch -new -x509 -key keys/dev.key -out keys/dev.crt
 
 Generating the fitImage
 ^^^^^^^^^^^^^^^^^^^^^^^

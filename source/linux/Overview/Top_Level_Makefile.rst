@@ -65,7 +65,9 @@ Rules.make file.
    such as the Linux kernel use the variable CROSS\_COMPILE to prepend
    the proper prefix to commands such as *gcc* to invoke the ARM
    cross-compiler.
--  **ENV\_SETUP** - This points to the
+.. ifconfig:: CONFIG_part_variant not in ('AM57X')
+
+  -  **ENV\_SETUP** - This points to the
    `environment-setup <GCC_ToolChain.html#environment-setup-script>`__
    script in the linux-devkit directory used by many components to
    configure for a cross-compilation build.
