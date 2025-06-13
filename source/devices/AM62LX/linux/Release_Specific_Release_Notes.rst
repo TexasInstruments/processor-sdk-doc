@@ -173,3 +173,37 @@ Yocto
 | Tag Description: SITARA MPU Processor SDK 11.00 Release Tag for AM62L
 |
 
+Issues Tracker
+==============
+
+.. note::
+
+    - Release Specific Issues including details will be published through Software Incident Report (SIR) portal
+
+    - Further Information can be found at `SIR Portal <https://sir.ext.ti.com/>`_
+
+
+Issues Resolved
+---------------
+.. csv-table::
+   :header: "Record ID", "Title"
+   :widths: 15, 70
+
+   "`EXT_EP-12673 <https://sir.ext.ti.com/jira/browse/EXT_EP-12673>`_","AM62L NETDEV WATCHDOG timeout when only one core enabled"
+   "`EXT_EP-12674 <https://sir.ext.ti.com/jira/browse/EXT_EP-12674>`_","AM62L: Enabling wkup uart causes Linux console (main_uart0) garbled"
+   "`EXT_EP-12667 <https://sir.ext.ti.com/jira/browse/EXT_EP-12667>`_","AM62L: nfsroot fails if the CPUs are limited to 1"
+   "`EXT_EP-12668 <https://sir.ext.ti.com/jira/browse/EXT_EP-12668>`_","AM62L DMA: udma_stop not functional for cyclic packets"
+   "`EXT_EP-12669 <https://sir.ext.ti.com/jira/browse/EXT_EP-12669>`_","AM62L DMA: Disabling CONFIG_TI_K3_UDMA causes build failures"
+   "`EXT_EP-12670 <https://sir.ext.ti.com/jira/browse/EXT_EP-12670>`_","AM62L: bl31 setup: Failed to get response error messages"
+   "`EXT_EP-12671 <https://sir.ext.ti.com/jira/browse/EXT_EP-12671>`_","AM62L: CPU hotplug is failing"
+   "`EXT_EP-12672 <https://sir.ext.ti.com/jira/browse/EXT_EP-12672>`_","AM62L: LPM: RTC+DDR: suspend-resume fails with 2 cores enabled"
+   "`EXT_EP-12676 <https://sir.ext.ti.com/jira/browse/EXT_EP-12676>`_","AM62L DMA: McASP is disabled when CONFIG_TI_K3_UDMA is disabled"
+
+Issues Open
+-----------
+.. csv-table::
+   :header: "Record ID", "Title"
+   :widths: 15, 70
+
+   "`EXT_EP-12340 <https://sir.ext.ti.com/jira/browse/EXT_EP-12340>`_","Suspend-to-RAM failure: tps65219: device creates a circular dependency and device fails to enter suspend"
+
