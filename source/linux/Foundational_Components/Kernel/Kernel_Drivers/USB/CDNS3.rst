@@ -19,7 +19,7 @@ The USB subsystem is integrated in TI |__PART_FAMILY_DEVICE_NAMES__| devices.
 EVM
 ***
 
-.. ifconfig:: CONFIG_part_family in ('J7_family')
+.. ifconfig:: CONFIG_part_variant in ('J721E')
 
     The following diagram depicts USB integration in J721E EVM.
 
@@ -29,6 +29,7 @@ EVM
     a Type-C connector.
 
     .. note::
+
        The Type-C config DIP switch (SW3) must be set for DRP (Dual-role-Port)
        operation. SW3.3 = OFF, SW3.4 = ON.
 
