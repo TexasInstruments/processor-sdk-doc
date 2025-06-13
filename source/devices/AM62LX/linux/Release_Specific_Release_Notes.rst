@@ -57,6 +57,7 @@ What's new
   - Support for Wifi with M2 CC33xx cards - :ref:`How to Enable M.2-CC33xx in Linux <enable_m2cc3301>`
   - Out-of-Box experience based on LVGL (Light and Versatile Graphics Library) - :ref:`TI LVGL Demo - User Guide <TI-LVGL-Demo-User-Guide-label>`
   - Jailhouse with Kernel 6.12
+  - Debian distribution based on Armbian
   - Support for multiple Linux distributions, such as Yocto, Debian and Buildroot
 
 **Component version:**
@@ -67,7 +68,7 @@ What's new
   - ATF 2.12+
   - TIFS Firmware `v11.00.12 <https://software-dl.ti.com/tisci/esd/11_00_12/release_notes/release_notes.html>`__ (Click on the link for more information)
   - Yocto scarthgap 5.0
-  - Debian 13 (Trixie)
+  - Armbian-based Debian 13 (Trixie)
   - Buildroot 2024.11.1
 
 
