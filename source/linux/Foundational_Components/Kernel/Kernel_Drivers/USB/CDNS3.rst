@@ -104,6 +104,28 @@ EVM
    J7200 EVM only supports single USB interface, so the USB3.1 and USB2.0 cannot be
    supported simultaneously.
 
+.. ifconfig:: CONFIG_part_variant in ('J722S')
+
+   The following diagram depicts USB integration in |__PART_FAMILY_DEVICE_NAMES__| EVM.
+
+   .. image:: /images/usb_j722s_evm.png
+
+   .. note::
+
+      The Type-C config DIP switch (SW2) must be set for DRP (Dual-role-Port)
+      operation. SW2.2 = OFF, SW2.3 = OFF.
+
+   The EVM supports up to four USB3.0 Gen1 interfaces, three Type A ports plus
+   one USB3.0 Gen1 port on the Type C port. The USB3.0 ports are connected to
+   on-board USB hub and support only DFP mode. The Type C port has option
+   (and defaults) to support USB2.0 multiple roles (DFP/UFP/DRP). This provides
+   support for the USB boot modes of the processor.
+
+   Type C port can be configured using IO expander port P05 USB2.0_MUX_SEL.
+
+   - USB2.0_MUX_SEL = 0 ( USB2.0 (DFP/UFP/DRP) )
+   - USB2.0_MUX_SEL = 1 ( USB3.0 (DFP) )
+
 .. ifconfig:: CONFIG_part_family in ('AM64X_family')
 
    **AM64X_EVM**
