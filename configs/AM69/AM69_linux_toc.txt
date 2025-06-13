@@ -16,10 +16,8 @@ devices/J7_Family/linux/Release_Specific_Yocto_layer_Configuration
 devices/J7_Family/linux/Release_Specific_Migration_Guide
 devices/J7_Family/linux/Release_Specific_Kernel_Performance_Guide
 devices/J7_Family/linux/Release_Specific_Supported_Platforms_and_Versions
-devices/J7_Family/linux/Release_Specific_QSG
 linux/Foundational_Components
 linux/Foundational_Components_U-Boot
-linux/Foundational_Components/U-Boot/Release-Notes
 linux/Foundational_Components/U-Boot/Users-Guide
 linux/Foundational_Components/U-Boot/UG-General-Info
 linux/Foundational_Components/U-Boot/UG-DFU
@@ -65,8 +63,8 @@ linux/Foundational_Components/Kernel/Kernel_Drivers/PCIe/PCIe_End_Point
 linux/Foundational_Components/Kernel/Kernel_Drivers/PCIe/PCIe_Backplane
 linux/Foundational_Components/Kernel/Kernel_Drivers/PCIe/PCIe_Root_Complex
 linux/Foundational_Components/Kernel/Kernel_Drivers/PMIC/pmic_tps6594
-linux/Foundational_Components/Kernel/Kernel_Drivers/Power_Management
-linux/Foundational_Components/Kernel/Kernel_Drivers/Power_Management/pm_dfs
+linux/Foundational_Components_Power_Management
+linux/Foundational_Components/Power_Management/pm_dfs
 linux/Foundational_Components/Kernel/Kernel_Drivers/QSPI
 linux/Foundational_Components/Kernel/Kernel_Drivers/SERDES/SERDES
 linux/Foundational_Components/Kernel/Kernel_Drivers/SPI

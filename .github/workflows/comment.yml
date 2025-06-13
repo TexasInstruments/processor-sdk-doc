@@ -5,6 +5,7 @@ on:
   workflow_run:
     workflows:
       - rstcheck
+      - check_toc_txt
     types:
       - completed
 

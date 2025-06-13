@@ -17,11 +17,9 @@ devices/J7_Family/linux/Release_Specific_Yocto_layer_Configuration
 devices/J7_Family/linux/Release_Specific_Migration_Guide
 devices/J7_Family/linux/Release_Specific_Kernel_Performance_Guide
 devices/J7_Family/linux/Release_Specific_Supported_Platforms_and_Versions
-devices/J7_Family/linux/Release_Specific_QSG
 linux/Foundational_Components
 linux/index_Edge_AI
 linux/Foundational_Components_U-Boot
-linux/Foundational_Components/U-Boot/Release-Notes
 linux/Foundational_Components/U-Boot/Users-Guide
 linux/Foundational_Components/U-Boot/UG-General-Info
 linux/Foundational_Components/U-Boot/UG-DFU
@@ -68,9 +66,8 @@ linux/Foundational_Components/Kernel/Kernel_Drivers/PCIe/PCIe_End_Point
 linux/Foundational_Components/Kernel/Kernel_Drivers/PCIe/PCIe_Backplane
 linux/Foundational_Components/Kernel/Kernel_Drivers/PCIe/PCIe_Root_Complex
 linux/Foundational_Components/Kernel/Kernel_Drivers/PMIC/pmic_tps6594
-linux/Foundational_Components/Kernel/Kernel_Drivers/Power_Management
-linux/Foundational_Components/Kernel/Kernel_Drivers/Power_Management/pm_dfs
-linux/Foundational_Components_Kernel_Drivers_Power_Management
+linux/Foundational_Components_Power_Management
+linux/Foundational_Components/Power_Management/pm_dfs
 linux/Foundational_Components/Kernel/Kernel_Drivers/QSPI
 linux/Foundational_Components/Kernel/Kernel_Drivers/SERDES/SERDES
 linux/Foundational_Components/Kernel/Kernel_Drivers/SPI
@@ -92,9 +89,9 @@ linux/Foundational_Components/Tools/Pin_Mux_Tools
 linux/Foundational_Components/Tools/Code_Composer_Studio
 linux/Foundational_Components_IPC_J721E
 linux/Foundational_Components/Graphics/index
-linux/Foundational_Components/Graphics/Graphics_and_Display
-linux/Foundational_Components/Graphics/Rogue_Debug_Info
-linux/Foundational_Components/Graphics/Rogue_Power_Management_Info
+linux/Foundational_Components/Graphics/Common/Display
+linux/Foundational_Components/Graphics/Rogue/Rogue_Debug_Info
+linux/Foundational_Components/Graphics/Rogue/Rogue_Power_Management_Info
 linux/Foundational_Components_Virtualization
 linux/Foundational_Components/Virtualization/Docker
 linux/Foundational_Components_OPTEE
@@ -126,4 +123,3 @@ linux/Documentation_Tarball
 
 linux/Demo_User_Guides/index_Demos
 linux/Demo_User_Guides/Edge_AI_Gallery_User_Guide
-system/Demo_User_Guides/WiFi_OOB_Demo_User_Guide
