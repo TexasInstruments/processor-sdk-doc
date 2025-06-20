@@ -650,7 +650,7 @@ Installing the Kernel Image and Device Tree Binaries
 
         cd <kernel sources dir>
         sudo cp arch/arm/boot/zImage <rootfs path>/boot
-        sudo cp arch/arm/boot/dts/<dt file>.dtb <rootfs path>/boot
+        sudo cp arch/arm/boot/dts/<dt file>.dtb <rootfs path>/boot/dtb
 
     For example, if you wanted to copy the kernel image and BeagleBone
     Black device tree file to the rootfs partition of a SD card you would
@@ -670,7 +670,7 @@ Installing the Kernel Image and Device Tree Binaries
 
         cd <kernel sources dir>
         sudo cp arch/arm64/boot/Image <rootfs path>/boot
-        sudo cp arch/arm64/boot/dts/ti/<dt file>.dtb <rootfs path>/boot
+        sudo cp arch/arm64/boot/dts/ti/<dt file>.dtb <rootfs path>/boot/dtb/ti
 
     For example, if you wanted to copy the kernel image and AM64x EVM
     device tree file to the rootfs partition of a SD card you would
@@ -680,7 +680,7 @@ Installing the Kernel Image and Device Tree Binaries
 
          cd <kernel sources dir>
          sudo cp arch/arm64/boot/Image /media/rootfs/boot
-         sudo cp arch/arm64/boot/dts/ti/k3-am642-evm.dtb /media/rootfs/boot
+         sudo cp arch/arm64/boot/dts/ti/k3-am642-evm.dtb /media/rootfs/boot/dtb/ti
 
 Starting with U-boot 2013.10, the kernel and device tree binaries are read from
 the root file system's boot directory when booting from MMC/EMMC. (NOT from the

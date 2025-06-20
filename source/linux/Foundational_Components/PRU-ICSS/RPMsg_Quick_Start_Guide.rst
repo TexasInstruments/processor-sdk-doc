@@ -247,7 +247,7 @@ the previous section. Let's do that now.
 
 #. Copy the new device tree binary to the SD card
 
-   -   sudo cp arch/arm/boot/dts/am335x-boneblack.dtb /media/user/rootfs/boot/
+   -   sudo cp arch/arm/boot/dts/am335x-boneblack.dtb /media/user/rootfs/boot/dtb/
 
    **Once again the example .dtb given above is for the BeagleBone
    Black. Check

@@ -105,12 +105,11 @@ as master and at least two EVMs running as slave (slave1/slave2).
 Prior to running the applications, connect master Port0 to slave1 Port0,
 and slave1 Port1 to slave2 Port0.
 
-On the filesystem under /boot directory, link <platfrom>-pru-excl-uio.dtb
-as the default dtb file, and then reboot the EVM. For AM571x IDK, ensure
-that Jumper J51 is not placed. That selects between LCD
-function (J51 placed) and ICSS1 Ethernet (J51 removed). This also
-indicates that ICSS-EMAC unit test cannot run with LCD connected on the
-AM571x IDK board.
+On the filesystem under :file:`/boot/dtb/` directory, link
+:file:`<platfrom>-pru-excl-uio.dtb` as the default dtb file, and then reboot the
+EVM. For AM571x IDK, ensure that Jumper J51 is not placed. That selects between
+LCD function (J51 placed) and ICSS1 Ethernet (J51 removed). This also indicates
+that ICSS-EMAC unit test cannot run with LCD connected on the AM571x IDK board.
 
 After the EVMs are rebooted with the PRU UIO dtb files, run slave2 first,
 then slave1, and lastly master. Note that the master device will wait until
