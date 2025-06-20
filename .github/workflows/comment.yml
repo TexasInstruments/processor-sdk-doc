@@ -6,6 +6,7 @@ on:
     workflows:
       - rstcheck
       - check_toc_txt
+      - check-files
     types:
       - completed
 
