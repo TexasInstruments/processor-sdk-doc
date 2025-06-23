@@ -99,7 +99,7 @@ makefile targets.
 
    .. important::
 
-        * AM62x installer supports ``am62xx-evm`` and ``am62xx-lp-evm`` platforms. ``am62xx-evm`` is the default platform for the Toplevel Makefile. To build for ``am62xx-lp-evm``, pass ``PLATFORM=am62xx-lp-evm`` as argument to make.
+        * AM62x installer supports ``am62xx-evm`` and ``am62xx-lp-evm`` platforms. ``am62xx-evm`` is the default platform for the Toplevel Makefile. To build for ``am62xx-lp-evm``, pass ``PLATFORM=am62xx-lp-evm`` and ``YOCTO_MACHINE=am62xx-lp-evm`` as arguments to make.
         * No special arguments are needed to build for ``am62xxsip-evm`` in AM62xSIP Installer.
 
 .. ifconfig:: CONFIG_part_variant not in ('AM62X', 'AM64X', 'AM62PX', 'AM335X', 'AM437X', 'AM65X', 'AM57X')
@@ -307,17 +307,17 @@ the Makefile from the top-level of the SDK.
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
     - To build Linux kernel and FitImage for ``am62xx-lp-evm``, pass ``PLATFORM=am62xx-lp-evm``
-      argument to make.
+      and ``YOCTO_MACHINE=am62xx-lp-evm`` arguments to make.
 
       .. code-block:: console
 
-          host# PLATFORM=am62xx-lp-evm make linux
+          host# PLATFORM=am62xx-lp-evm YOCTO_MACHINE=am62xx-lp-evm make linux
 
     - make linux_install for ``am62xx-lp-evm``
 
       .. code-block:: console
 
-          host# sudo DESTDIR=/media/$USER/rootfs PLATFORM=am62xx-lp-evm make linux_install
+          host# sudo DESTDIR=/media/$USER/rootfs PLATFORM=am62xx-lp-evm YOCTO_MACHINE=am62xx-lp-evm make linux_install
 
     - To Build GPU kernel module
 
@@ -482,19 +482,19 @@ the Makefile from the top-level of the SDK.
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
     To build u-boot binaries for ``am62xx-lp-evm``, pass ``PLATFORM=am62xx-lp-evm``
-    argument to make.
+    and ``YOCTO_MACHINE=am62xx-lp-evm`` arguments to make.
 
     - Build u-boot for ``am62xx-lp-evm``
 
       .. code-block:: console
 
-          host# make u-boot PLATFORM=am62xx-lp-evm
+          host# make u-boot PLATFORM=am62xx-lp-evm YOCTO_MACHINE=am62xx-lp-evm
 
     - Install boot-binaries to SD card boot partition for ``am62xx-lp-evm``
 
       .. code-block:: console
 
-          host# sudo DESTDIR=/media/$USER/boot PLATFORM=am62xx-lp-evm make u-boot_install
+          host# sudo DESTDIR=/media/$USER/boot PLATFORM=am62xx-lp-evm YOCTO_MACHINE=am62xx-lp-evm make u-boot_install
 
     Similar argument can be added to all u-boot targets discussed above.
 
