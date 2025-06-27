@@ -901,3 +901,67 @@ SRAM Required for each ICSSG instance (per two ports) is as below.
 
 For each ICSSG instance, the SRAM required needs to be contiguous.
 PRUETH only uses the required amount of SRAM from the SRAM/MSMC pool. If PRUETH doesn't get the required amount of SRAM, the prueth_probe() API will return with -ENOMEM error.
+
+Firmware name handling
+######################
+
+Starting from Processor SDK v11.01, the ICSSG PRUETH driver reads firmware names from the device tree instead of using hard-coded values. This change improves flexibility and maintainability, especially when supporting different SoCs or firmware versions.
+
+**How driver reads firmware names:**
+
+- Specify the firmware names for each core (PRU, RTU, TX_PRU) and for each slice (MAC port) using the device tree property `firmware-name`.
+- The device tree specifies only the EMAC (Ethernet MAC) firmware names.
+- The driver reads these names at probe time and stores them internally.
+
+- For other supported modes (SWITCH, HSR and PRP), the driver generates the firmware names dynamically by replacing the string in the EMAC firmware name:
+
+   - The driver replaces `"eth"` with `"sw"` for SWITCH mode.
+   - The driver replaces `"eth"` with `"hsr"` for HSR mode.
+   - The driver replaces `"eth"` with `"prp"` for PRP mode.
+
+
+**Device tree example:**
+
+.. ifconfig:: CONFIG_part_variant in ('AM65X')
+
+  .. code-block:: dts
+
+      icssg2_eth: icssg2-eth@... {
+         ...
+         firmware-name =
+               "ti-pruss/am65x-sr2-pru0-prueth-fw.elf",
+               "ti-pruss/am65x-sr2-rtu0-prueth-fw.elf",
+               "ti-pruss/am65x-sr2-txpru0-prueth-fw.elf",
+               "ti-pruss/am65x-sr2-pru1-prueth-fw.elf",
+               "ti-pruss/am65x-sr2-rtu1-prueth-fw.elf",
+               "ti-pruss/am65x-sr2-txpru1-prueth-fw.elf";
+         ...
+      };
+
+.. ifconfig:: CONFIG_part_variant in ('AM64X')
+
+  .. code-block:: dts
+
+      icssg1_eth: icssg1-eth@... {
+         ...
+         firmware-name =
+               "ti-pruss/am64x-sr2-pru0-prueth-fw.elf",
+               "ti-pruss/am64x-sr2-rtu0-prueth-fw.elf",
+               "ti-pruss/am64x-sr2-txpru0-prueth-fw.elf",
+               "ti-pruss/am64x-sr2-pru1-prueth-fw.elf",
+               "ti-pruss/am64x-sr2-rtu1-prueth-fw.elf",
+               "ti-pruss/am64x-sr2-txpru1-prueth-fw.elf";
+         ...
+      };
+
+.. note::
+
+   - This approach is compatible with earlier versions as the existing device
+     trees already provide the ``firmware-name`` property.
+   - To use a different firmware version, simply update the
+     ``firmware-name`` property in your device tree.
+   - The driver will automatically handle the correct firmware names for all
+     supported modes.
+
+For more details, refer to the upstream commit:
+https://patch.msgid.link/20250613064547.44394-1-danishanwar@ti.com
