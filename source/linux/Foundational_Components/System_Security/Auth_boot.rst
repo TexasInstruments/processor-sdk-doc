@@ -130,8 +130,15 @@ The following steps describe how to build user-space tools and configuration on 
 
    .. code-block:: console
 
+      # Extract command
+      cpio -iv < <path to .cpio>
+
       # Create a random pass key
       tr -dc '[:alnum:]' </dev/urandom | head -c64 > <initramfs_root>/home/pass_key
+
+      # Create cpio from initramfs folder
+      cd <initramfs_root>
+      find . | sort | cpio --reproducible -o -H newc -R root:root > ../<name>.cpio
 
 #. Package the initramfs into the kernel by using the :code:`menuconfig` and build the kernel.
 
@@ -140,7 +147,7 @@ The following steps describe how to build user-space tools and configuration on 
         General setup ->
             Initial RAM filesystem and RAM disk (initramfs/initrd) support ->
                 Initramfs source file(s)
-                    /path/to/initramfs
+                    /path/to/initramfs.cpio
 
 #. Replace the :file:`root/boot/Image` with the updated Image and boot.
 
@@ -148,28 +155,56 @@ The following steps describe how to build user-space tools and configuration on 
 
    .. code-block:: console
 
-      # Unmount encrypted partitions
+      # Unmount encrypted partitions if already mounted
       umount /dev/mmcblk1p3
       umount /dev/mmcblk1p4
+
+      # Create the mount paths
+      mkdir /old_mnt
+      mkdir /mnt
 
       # Mount default root
       mount /dev/mmcblk1p2 /old_mnt
 
       # Setup the encrypted partition
       # The default cipher at the time of writing this guide is aes-xts-plain64
-      # To use the hardware accelerator, use --cipher aes-cbc-plain --key-size 256 --hash 256
+      # Hardware acceleration for dm-crypt is not tested
 
       cryptsetup luksFormat /dev/mmcblk1p3 --key-file=/home/pass_key --batch-mode
       cryptsetup luksOpen /dev/mmcblk1p3 crypt_root --key-file=/home/pass_key
 
+      # Use following commands to verify the status of the LUKS device
+      cryptsetup -v status crypt_root    #Status Check
+      cryptsetup luksDump /dev/mmcblk1p3 #Dump Headers
+
       # Format and copy rootfs inside encrypted partition
       mkfs.ext4 /dev/mapper/crypt_root
+
+      # If command is successful you should see below output
+      root@am62xx-evm:~# mkfs.ext4 /dev/mapper/crypt_root
+      mkfs.ext4 /dev/mapper/crypt_root
+      mke2fs 1.47.0 (5-Feb-2023)
+      Creating filesystem with 2952704 4k blocks and 738192 inodes
+      Filesystem UUID: 8cc1c02e-7b0a-4d57-82f0-f3a4c35e0f00
+      Superblock backups stored on blocks:
+          32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632, 2654208
+
+      Allocating group tables: done
+      Writing inode tables: done
+      Creating journal (16384 blocks): done
+      Writing superblocks and filesystem accounting information: done
+
+      # Mount the encrypted partition
       mount /dev/mapper/crypt_root /mnt
-      cp -r /old_mnt /mnt
+      cp -ar /old_mnt/. /mnt
       umount /mnt
 
       # Setup verity
-      veritysetup format /dev/mapper/crypt_root /dev/mmcblk1p4 > /home/verity.hash
+      veritysetup format /dev/mapper/crypt_root /dev/mmcblk1p4
+
+      # Output will have a Root hash, copy that hash as it will be used in next step
+      ...
+      Root hash: 4392712ba01368efdf14b05c76f9e4df0d53664630b5d48632ed17a137f39076
 
 #. Back on the host machine, add this init file at the root of the initramfs:
 
@@ -189,8 +224,8 @@ The following steps describe how to build user-space tools and configuration on 
       # If the cipher was previously changed, add --cipher aes-cbc-plain
       /sbin/cryptsetup luksOpen --key-file=/home/pass_key /dev/mmcblk1p3 crypt_root
 
-      #Verify
-      /sbin/veritysetup open /dev/mapper/crypt_root verity_root /dev/mmcblk1p4 $(cat /home/verity.hash)
+      # Verify (use the root hash from the previous ``veritysetup format`` command)
+      /sbin/veritysetup open /dev/mapper/crypt_root verity_root /dev/mmcblk1p4 4392712ba01368efdf14b05c76f9e4df0d53664630b5d48632ed17a137f39076
 
       mount -o ro /dev/mapper/verity_root /mnt
 
