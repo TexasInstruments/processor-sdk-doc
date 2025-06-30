@@ -96,8 +96,7 @@ firmly to keep the connector cable in place.
 .. note::
 
    By default IMX219 is disabled. After connecting the camera you can enable it
-   by specifying the dtb overlay file in
-   ``/run/media/BOOT-mmcblk1p1/uEnv.txt`` as below,
+   by specifying the dtb overlay file in :file:`/run/media/BOOT-mmcblk1p1/uEnv.txt` as below,
 
    ``name_overlays=ti/k3-am62x-sk-csi2-imx219.dtbo ti/k3-am62a7-sk-edgeai.dtbo``
 
@@ -105,7 +104,7 @@ firmly to keep the connector cable in place.
    under /boot/dtb/ti.
 
    Config file to run analytics pipeline with IMX219 camera is present under
-   ``/opt/edgeai-gst-apps/configs/imx219_cam_example.yaml``. Please refer
+   :file:`/opt/edgeai-gst-apps/configs/imx219_cam_example.yaml`. Please refer
    :ref:`pub_edgeai_sample_apps` to use the file.
 
 Please refer :ref:`pub_edgeai_camera_sources` to know how to list all the cameras
@@ -131,7 +130,7 @@ required:
       mv /opt/imaging/imx219/linear/dcc_2a_10b_1920x1080.bin /opt/imaging/imx219/linear/dcc_2a.bin
       mv /opt/imaging/imx219/linear/dcc_viss_10b_1920x1080.bin /opt/imaging/imx219/linear/dcc_viss.bin
 
-   - Set the input format in the ``/opt/edgeai-gst-apps/configs/imx219_cam_example.yaml`` as ``rggb10``
+   - Set the input format in the :file:`/opt/edgeai-gst-apps/configs/imx219_cam_example.yaml` as ``rggb10``
 
 .. _pub_edgeai_fusion_mini:
 
@@ -171,7 +170,7 @@ firmly to keep the connector cable in place.
    ``source /opt/edgeai-gst-apps/scripts/setup_cameras_v3link.sh``
 
    Config file to run analytics pipeline with IMX219 camera is present under
-   ``/opt/edgeai-gst-apps/configs/imx219_cam_example.yaml``. Please refer
+   :file:`/opt/edgeai-gst-apps/configs/imx219_cam_example.yaml`. Please refer
    :ref:`pub_edgeai_sample_apps` to use the file.
 
 
@@ -282,7 +281,7 @@ https://learn.sparkfun.com/tutorials/terminal-basics/tera-term-windows
 
 .. _pub_edgeai_getting_started_init_script:
 
-As part of the linux systemd ``/opt/edgeai-gst-apps/init_script.sh`` is executed
+As part of the linux systemd :file:`/opt/edgeai-gst-apps/init_script.sh` is executed
 which does the below,
 
    - This sets up necessary environment variables.

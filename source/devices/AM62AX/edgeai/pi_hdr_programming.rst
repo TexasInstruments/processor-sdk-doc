@@ -11,7 +11,7 @@ TI GPIO Library packages. The libraries have the same API as the RPi.GPIO
 library for Raspberry Pi in order to provide an easy way to move applications
 running on the Raspberry Pi to the TI board.
 
-TI GPIO Libraries are packaged under ``/opt`` directory. Run the below script
+TI GPIO Libraries are packaged under :file:`/opt` directory. Run the below script
 to build and install the gpio libraries
 
 .. code-block:: bash
@@ -19,8 +19,8 @@ to build and install the gpio libraries
    /opt/edgeai-gst-apps# ./scripts/install_ti_gpio_libs.sh
 
 By default, the 40-pin header is not enabled on AM69A SK board. This can be enabled by
-specifying the dtb overlay file ``k3-am62a7-sk-rpi-hdr-ehrpwm.dtbo`` in
-``/run/media/BOOT-mmcblk1p1/uEnv.txt`` as given below.
+specifying the dtb overlay file :file:`k3-am62a7-sk-rpi-hdr-ehrpwm.dtbo` in
+:file:`/run/media/BOOT-mmcblk1p1/uEnv.txt` as given below.
 
 ``name_overlays=ti/k3-am62a7-sk-rpi-hdr-ehrpwm.dtbo ti/k3-am62a7-sk-edgeai.dtbo``
 
