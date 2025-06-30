@@ -22,7 +22,9 @@ By default, the 40-pin header is not enabled on AM69A SK board. This can be enab
 specifying the dtb overlay file :file:`k3-am62a7-sk-rpi-hdr-ehrpwm.dtbo` in
 :file:`/run/media/BOOT-mmcblk1p1/uEnv.txt` as given below.
 
-``name_overlays=ti/k3-am62a7-sk-rpi-hdr-ehrpwm.dtbo ti/k3-am62a7-sk-edgeai.dtbo``
+.. code-block:: text
+
+   name_overlays=ti/k3-am62a7-sk-rpi-hdr-ehrpwm.dtbo ti/k3-am62a7-sk-edgeai.dtbo
 
 Reboot the board after editing and saving the file.
 

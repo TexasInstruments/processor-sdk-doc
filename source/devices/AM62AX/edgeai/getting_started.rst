@@ -98,10 +98,12 @@ firmly to keep the connector cable in place.
    By default IMX219 is disabled. After connecting the camera you can enable it
    by specifying the dtb overlay file in :file:`/run/media/BOOT-mmcblk1p1/uEnv.txt` as below,
 
-   ``name_overlays=ti/k3-am62x-sk-csi2-imx219.dtbo ti/k3-am62a7-sk-edgeai.dtbo``
+   .. code-block:: text
+
+      name_overlays=ti/k3-am62x-sk-csi2-imx219.dtbo ti/k3-am62a7-sk-edgeai.dtbo
 
    Reboot the board after editing and saving the file. Dtb files can be found
-   under /boot/dtb/ti.
+   under :file:`/boot/dtb/ti`.
 
    Config file to run analytics pipeline with IMX219 camera is present under
    :file:`/opt/edgeai-gst-apps/configs/imx219_cam_example.yaml`. Please refer
@@ -156,14 +158,16 @@ firmly to keep the connector cable in place.
 .. note::
 
    After connecting the camera you can enable it by specifying the dtb overlay
-   file in ``/run/media/BOOT-mmcblk1p1/uEnv.txt``. Let's take an example of
+   file in :file:`/run/media/BOOT-mmcblk1p1/uEnv.txt`. Let's take an example of
    single IMX219 camera connected to Mini fusion board at Port 0.
 
-   ``name_overlays=ti/k3-am62x-sk-csi2-v3link-fusion.dtbo ti/k3-v3link-imx219-0-0.dtbo ti/k3-am62a7-sk-edgeai.dtbo``
+   .. code-block:: text
+
+      name_overlays=ti/k3-am62x-sk-csi2-v3link-fusion.dtbo ti/k3-v3link-imx219-0-0.dtbo ti/k3-am62a7-sk-edgeai.dtbo
 
    Similarly for camera connected to other port, dtbo can be appended above.
    Reboot the board after editing and saving the file. Dtb files can be found
-   under /boot/dtb/ti.
+   under :file:`/boot/dtb/ti`.
 
    Run the script to setup the cameras.
 
@@ -246,7 +250,7 @@ You can also view the boot log by connecting the UART cable to your PC and
 use a serial port communications program. 4 serial ports will come up on your
 PC, you should connect to port 0 to get the boot logs
 
-For Linux OS minicom** works well.
+For **Linux OS minicom** works well.
 Please refer to the below documentation on 'minicom' for more details.
 
 https://help.ubuntu.com/community/Minicom
