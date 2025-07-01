@@ -3,6 +3,8 @@
 Boot Monitor Release Notes
 ==============================
 
+.. _release-specific-build-information:
+
 .. rubric:: Build Information
    :name: build-information
 

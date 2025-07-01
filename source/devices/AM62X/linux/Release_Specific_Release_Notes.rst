@@ -72,6 +72,7 @@ What's new
   - DM Firmware 11.01.00.05
   - Yocto scarthgap 5.0
 
+.. _release-specific-build-information:
 
 Build Information
 =================

@@ -3,6 +3,8 @@
 Kernel Release Notes
 ======================
 
+.. _release-specific-build-information:
+
 Build Information
 -------------------
 

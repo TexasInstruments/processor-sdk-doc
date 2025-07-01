@@ -22,8 +22,14 @@ linux/Release_Specific_Yocto_layer_Configuration
 linux/Release_Specific_Supported_Platforms_and_Versions
 linux/Foundational_Components
 linux/Foundational_Components_U-Boot
+linux/Foundational_Components/U-Boot/Build-Guide-OMAP
+linux/Foundational_Components/U-Boot/BG-Setup-OMAP
+linux/Foundational_Components/U-Boot/BG-Build-OMAP
+linux/Foundational_Components/U-Boot/BG-Target-Images-OMAP
+linux/Foundational_Components/U-Boot/BG-Bootflow-OMAP
+linux/Foundational_Components/U-Boot/BG-Environment-OMAP
+linux/Foundational_Components/U-Boot/BG-Ram-Device-Trees-OMAP
 linux/Foundational_Components/U-Boot/Users-Guide
-linux/Foundational_Components/U-Boot/UG-General-Info
 linux/Foundational_Components/U-Boot/UG-DFU
 linux/Foundational_Components/U-Boot/UG-Network
 linux/Foundational_Components/U-Boot/UG-NAND

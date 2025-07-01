@@ -140,7 +140,7 @@ Reducing bootloader time
 
         - `UART flashing tool AM62X <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62X/latest/exports/docs/api_guide_am62x/TOOLS_FLASH.html>`_
 
-        - `U-Boot eMMC flashing tool AM62X <https://software-dl.ti.com/processor-sdk-linux/esd/AM62X/latest/exports/docs/linux/Foundational_Components/U-Boot/UG-General-Info.html#u-boot-environment>`_
+        - U-Boot eMMC flashing tool AM62X: :ref:`u-boot-build-guide-environment-k3`
 
         - `U-Boot SPI flashing tool AM62X <https://software-dl.ti.com/processor-sdk-linux/esd/AM62X/latest/exports/docs/linux/Foundational_Components/U-Boot/UG-SPI.html#spi>`_
 
@@ -148,7 +148,7 @@ Reducing bootloader time
 
         - `UART flashing tool AM62AX <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62AX/11_01_00_16/exports/docs/api_guide_am62ax/TOOLS_FLASH.html>`_
 
-        - `U-Boot eMMC flashing tool AM62AX <https://software-dl.ti.com/processor-sdk-linux/esd/AM62AX/11_01_00_16/exports/docs/linux/Foundational_Components/U-Boot/UG-General-Info.html#u-boot-environment>`_
+        - U-Boot eMMC flashing tool AM62AX: :ref:`u-boot-build-guide-environment-k3`
 
         - `U-Boot SPI flashing tool AM62AX <https://software-dl.ti.com/processor-sdk-linux/esd/AM62AX/11_01_00_16/exports/docs/linux/Foundational_Components/U-Boot/UG-SPI.html#spi>`_
 
@@ -156,7 +156,7 @@ Reducing bootloader time
 
         - `UART flashing tool AM62PX <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62PX/latest/exports/docs/api_guide_am62px/TOOLS_FLASH.html>`_
 
-        - `U-Boot eMMC flashing tool AM62PX <https://software-dl.ti.com/processor-sdk-linux/esd/AM62PX/latest/exports/docs/linux/Foundational_Components/U-Boot/UG-General-Info.html#u-boot-environment>`_
+        - U-Boot eMMC flashing tool AM62PX: :ref:`u-boot-build-guide-environment-k3`
 
         - `U-Boot SPI flashing tool AM62PX <https://software-dl.ti.com/processor-sdk-linux/esd/AM62PX/latest/exports/docs/linux/Foundational_Components/U-Boot/UG-SPI.html#spi>`_
 
@@ -680,7 +680,7 @@ Additional notes
 
         - SPL:
 
-            Rebuild `U-Boot <https://software-dl.ti.com/processor-sdk-linux/esd/AM62AX/latest/exports/docs/linux/Foundational_Components/U-Boot/UG-General-Info.html#build-u-boot>`_ with OSPI NOR support.
+            Rebuild :ref:`Build-U-Boot-label` with OSPI NOR support.
 
         - SBL:
 

@@ -85,6 +85,8 @@ Processor SDK 11.00 Release has following new features:
   * HMAC support added in crypto driver
   * MCU_1_1 in split mode support added
 
+.. _release-specific-build-information:
+
 Build Information
 =================
 

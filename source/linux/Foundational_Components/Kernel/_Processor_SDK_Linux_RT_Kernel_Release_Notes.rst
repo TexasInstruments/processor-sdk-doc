@@ -3,6 +3,8 @@
 RT Kernel Release Notes
 ========================
 
+.. _release-specific-build-information:
+
 Build Information
 -------------------
 Please refer to the :ref:`release-specific-build-information-rt-linux-kernel` section of the release notes for details.

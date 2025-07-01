@@ -78,15 +78,12 @@ See :ref:`here <release-specific-supported-platforms-and-versions>` for a list o
 
 .. _release-specific-sdk-components-versions:
 
+.. _release-specific-build-information:
 
 Build Information
 =================
 
 .. _u-boot-release-notes:
-.. _optee-release-notes:
-.. _tf-a-release-notes:
-.. _ti-linux-fw-release-notes:
-
 
 U-Boot
 ------
@@ -98,6 +95,7 @@ U-Boot
 | uBoot Tag: 09.03.05
 |
 
+.. _tf-a-release-notes:
 
 TF-A
 ----
@@ -108,6 +106,8 @@ TF-A
 | Tag: 2.10+
 |
 
+.. _optee-release-notes:
+
 OP-TEE
 ------
 
@@ -116,6 +116,8 @@ OP-TEE
 | Branch: master
 | Tag: 4.1.0
 |
+
+.. _ti-linux-fw-release-notes:
 
 ti-linux-firmware
 -----------------
