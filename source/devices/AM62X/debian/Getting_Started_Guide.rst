@@ -59,15 +59,11 @@ Boot and Validate Debian
 ------------------------
 Make sure to connect the Ethernet cable, HDMI Display, Mouse and Keyboard to the EVM. Insert the SD Card in the board and Power ON the EVM.
 
-After approximately 20 seconds, the board should boot to weston home screen.
+After a few seconds, a setup script will run. This script guides the user through setting up user account, root password, date and so on. Once the setup ends, reboot the board. Weston screen will appear on the display.
 
 .. Image:: /images/debian_homescreen.png
 
 You've successfully booted Debian on AM62x.
-
-To verify the distro, try running ``neofetch`` on the terminal. Click on the terminal icon on the top-left corner to open the weston-terminal and run neofetch. The output of the command can be observed on the screen as shown below.
-
-.. Image:: /images/debian_neofetch.png
 
 If the board is connected to a private network, setup the proxy to be able to access the Internet.
 For more info, refer to `apt.conf(5) man page <https://manpages.debian.org/bookworm/apt/apt.conf.5.en.html>`__
