@@ -44,6 +44,7 @@ jobs:
           - J722S
           - J742S2
           - J784S4
+          - AM62DX
         include:
           - os: android
             device: AM62PX
