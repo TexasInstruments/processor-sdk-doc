@@ -2,7 +2,7 @@ devices/AM62LX/debian/index
 
 debian/Overview
 devices/AM62LX/debian/Getting_Started_Guide
-devices/AM62LX/debian/Building_Debian_Image
+debian/Building_Debian_Image
 debian/Building_Debian_Packages
 debian/How_to_Guides/index_How_to_Guides
 linux/How_to_Guides/Target/How_To_Enable_M2CC3301_in_linux

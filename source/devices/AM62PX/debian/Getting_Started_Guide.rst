@@ -6,7 +6,7 @@ Getting Started with Debian
 
 The SD card Image tisdk-debian-bookworm-<machine> provided on the |__SDK_DOWNLOAD_URL__| is all you need to get started and explore Debian on TI microprocessors.
 
-The Debian Image provided has all the basic packages required to boot with weston as default window manager. The user can install any new package using inbuilt 'apt' utility
+The Debian Image provided has all the basic packages required to boot with weston as default window manager. The user can install any new package by using inbuilt 'apt' utility
 and customize the filesystem as required.
 
 Follow the steps mentioned in this page to create an SD Card.
@@ -14,7 +14,7 @@ Follow the steps mentioned in this page to create an SD Card.
 Hardware Setup
 --------------
 
-In addition to the SK EVM itself, the following hardware is needed:
+In addition to the SK Evaluation Module (EVM) itself, use the following hardware:
 
 1. USB Type-C 5V - 15V and 3A power supply
 2. Micro-SD card reader
@@ -43,7 +43,7 @@ Create SD Card using balenaEtcher
 
         Insert a micro SD card into the USB SD card reader and start Etcher. Choose the debian wic
         image to be flashed, choose the USB SD card reader as the target, and then click "Flash".
-        Etcher will decompress the image and write it to the SD card, as shown below:
+        Etcher will decompress the image and write it to the SD card, as shown in the following:
 
     .. Image:: /images/balena_etcher.png
 
@@ -51,7 +51,7 @@ Create SD Card using balenaEtcher
 
 Set the EVM to SD card Boot mode
 --------------------------------
-The simplest way to run Linux on the SK EVM is through an SD card. For that, the EVM will need to be configured for SD card boot. Refer to `AM62Px SK EVM User's Guide <https://www.ti.com/tool/SK-AM62P-LP>`__ for detailed information about boot mode configurations. For quick reference, the figure below shows the boot mode switch setting for SD card boot.
+The simplest way to run Linux on the SK EVM is through an SD card. For that, configure the EVM in SD card boot mode. Refer to `AM62Px SK EVM User's Guide <https://www.ti.com/tool/SK-AM62P-LP>`__ for detailed information about boot mode configurations. For quick reference, the following figure shows the boot mode switch setting for SD card boot.
 
 .. Image:: /images/AM62x_SD_boot.jpg
 
@@ -59,15 +59,14 @@ Boot and Validate Debian
 ------------------------
 Make sure to connect the Ethernet cable, HDMI Display, Mouse and Keyboard to the EVM. Insert the SD Card in the board and Power ON the EVM.
 
-After approximately 20 seconds, the board should boot to weston home screen.
+After a few moments, a configuration script will start running. This script will walk you through creating
+a user account, setting a root password, configuring the date and other initial setup options. When
+the setup finishes, restart the board. Upon reboot, the weston wallpaper should appear on your
+display.
 
 .. Image:: /images/debian_homescreen.png
 
-You've successfully booted Debian on AM62Px.
-
-To verify the distro, try running ``neofetch`` on the terminal. Click on the terminal icon on the top-left corner to open the weston-terminal and run neofetch. The output of the command can be observed on the screen as shown below.
-
-.. Image:: /images/debian_neofetch.png
+You've successfully booted Debian on AM62x.
 
 If the board is connected to a private network, setup the proxy to be able to access the Internet.
 For more info, refer to `apt.conf(5) man page <https://manpages.debian.org/bookworm/apt/apt.conf.5.en.html>`__
