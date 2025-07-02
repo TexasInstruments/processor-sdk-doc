@@ -6,15 +6,14 @@ Getting Started with Debian
 
 The SD card Image tisdk-debian-bookworm-<machine> provided on the |__SDK_DOWNLOAD_URL__| is all you need to get started and explore Debian on TI microprocessors.
 
-The Debian Image provided has all the basic packages required to boot with weston as default window manager. The user can install any new package using inbuilt 'apt' utility
-and customize the filesystem as required.
+The user can install any new package by using inbuilt 'apt' utility and customize the filesystem as required.
 
 Follow the steps mentioned in this page to create an SD Card.
 
 Hardware Setup
 --------------
 
-In addition to the EVM itself, the following hardware is needed:
+In addition to the Evaluation Module (EVM) or the Starter Kit itself, use the following hardware:
 
 1. Barrel jack power supply
 2. Micro-SD card reader
@@ -41,7 +40,7 @@ Create SD Card using balenaEtcher
 
         Insert a micro SD card into the USB SD card reader and start Etcher. Choose the debian wic
         image to be flashed, choose the USB SD card reader as the target, and then click "Flash".
-        Etcher will decompress the image and write it to the SD card, as shown below:
+        Etcher will decompress the image and write it to the SD card, as shown in the following:
 
     .. Image:: /images/balena_etcher.png
 
@@ -49,7 +48,7 @@ Create SD Card using balenaEtcher
 
 Set the EVM to SD card Boot mode
 --------------------------------
-The simplest way to run Linux on the SK EVM is through an SD card. For that, the EVM will need to be configured for SD card boot. Refer to `AM64x SK EVM User's Guide <https://www.ti.com/tool/TMDS64GPEVM>`__ for detailed information about boot mode configurations. For quick reference, the figure below shows the boot mode switch setting for SD card boot.
+The simplest way to run Linux on the SK EVM is through an SD card. For that, configure the EVM in SD card boot mode. Refer to `AM64x SK EVM User's Guide <https://www.ti.com/tool/SK-AM64B>`__ or the `TMDS64EVM User's Guide <https://www.ti.com/tool/TMDS64EVM>`__ (depending on the device) for detailed information about boot mode configurations. For quick reference, the following figure shows the boot mode switch setting for SD card boot.
 
 .. Image:: /images/AM64x_SD_boot.jpg
 
