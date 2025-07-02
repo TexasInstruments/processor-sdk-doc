@@ -85,6 +85,8 @@ See :ref:`here <release-specific-supported-platforms-and-versions>` for a list o
 
 |
 
+.. _release-specific-build-information:
+
 Build Information
 =================
 

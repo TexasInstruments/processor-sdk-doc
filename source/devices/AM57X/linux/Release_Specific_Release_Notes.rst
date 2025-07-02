@@ -99,6 +99,7 @@ See :ref:`release-specific-supported-platforms-and-versions` for a list of suppo
 
 |
 
+.. _release-specific-build-information:
 
 Build Information
 =====================================

@@ -65,6 +65,7 @@ What's new
   - TIFS Firmware `v11.00.07 <https://software-dl.ti.com/tisci/esd/11_00_07/release_notes/release_notes.html>`__ (Click on the link for more information)
   - Yocto scarthgap 5.0
 
+.. _release-specific-build-information:
 
 Build Information
 =================
