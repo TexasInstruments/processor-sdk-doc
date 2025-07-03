@@ -12,6 +12,15 @@ The network interface can be configured automatically depending on root file sys
 
    ifconfig eth0 <ip> netmask <mask> up
 
+.. ifconfig:: CONFIG_part_variant in ('AM64X')
+
+   .. note::
+
+      The DP83869 PHY associated with one of the CPSW interface("eth1" by default) for AM642-EVM or
+      any board in general, does not have it's driver as a built-in module in the kernel, and not
+      getting probed during boot up. Therefore, the "eth1" interface must be brought up using the
+      commands provided above.
+
 .. rubric:: Get driver information
    :name: k3-ethtool-i-driver
 
