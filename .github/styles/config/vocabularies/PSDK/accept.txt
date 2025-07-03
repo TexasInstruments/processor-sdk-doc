@@ -25,3 +25,6 @@ balenaEtcher
 Armbian
 Debian
 Weston
+Trixie
+mmdebstrap
+bdebstrap
