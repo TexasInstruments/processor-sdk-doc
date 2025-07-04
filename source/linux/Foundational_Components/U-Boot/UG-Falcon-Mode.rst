@@ -186,6 +186,8 @@ Boot time comparisons:
 Removing A-core SPL and U-Boot from the boot process leads to ~60% reduction in
 time to kernel. Saving about 1-2 seconds during boot depending on the platform.
 
-**Falcon Mode (Left) vs Regular Boot (Right):**
+.. figure:: /images/U-Boot_Falcon_Comparison.gif
+   :alt: falcon mode and regular boot mode comparison
+   :align: center
 
-  .. Image:: /images/U-Boot_Falcon_Comparison.gif
+   Falcon Mode (Left) vs Regular Boot (Right)
