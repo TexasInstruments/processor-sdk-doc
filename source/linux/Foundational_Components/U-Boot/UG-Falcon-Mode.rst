@@ -68,10 +68,10 @@ authenticating on the R5 core.
 Extra Configuration
 *******************
 
-.. ifconfig:: CONFIG_part_variant not in ('AM62AX')
+OSPI boot:
+==========
 
-   OSPI boot:
-   ==========
+.. ifconfig:: CONFIG_part_variant not in ('AM62AX')
 
    For OSPI boot, the ``tiboot3.bin`` and ``tifalcon.bin`` files should be
    flashed to the same addresses in flash as regular boot flow but the DTB and
@@ -83,11 +83,15 @@ Extra Configuration
 
    .. code-block:: console
 
-      => sf probe
-      => tftp ${loadaddr} tiboot3.bin
-      => sf update $loadaddr 0x0 $filesize
-      => tftp ${loadaddr} tifalcon.bin
-      => sf update $loadaddr 0x80000 $filesize
+     => sf probe
+     => tftp ${loadaddr} tiboot3.bin
+     => sf update $loadaddr 0x0 $filesize
+     => tftp ${loadaddr} tifalcon.bin
+     => sf update $loadaddr 0x80000 $filesize
+
+.. ifconfig:: CONFIG_part_variant in ('AM62AX')
+
+   This section is not applicable for this platform.
 
 eMMC Boot:
 ==========
