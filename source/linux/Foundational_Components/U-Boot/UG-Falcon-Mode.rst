@@ -3,16 +3,16 @@ U-Boot Falcon Mode
 ==================
 
 U-Boot's falcon mode on |__PART_FAMILY_DEVICE_NAMES__| bypasses the A-core SPL
-and U-Boot stage, which allows for booting straight to linux kernel after OP-TEE
+and U-Boot stage, which allows for booting straight to Linux kernel after OP-TEE
 and ATF.
 
 **Normal boot flow:**
 
-* R5 SPL -> ATF -> OP-TEE -> *Cortex-A SPL* -> *U-Boot* -> Kernel
+* R5 SPL -> ATF -> OP-TEE -> *Cortex-A SPL* -> *U-Boot* -> Linux
 
 **With falcon mode:**
 
-* R5 SPL -> ATF -> OP-TEE -> Kernel
+* R5 SPL -> ATF -> OP-TEE -> Linux
 
 Falcon boot support is added by the ``ti-falcon`` yocto override which can be
 enabled before :ref:`building the SDK <building-the-sdk-with-yocto>` as follows:
@@ -30,28 +30,28 @@ Changes made by *ti-falcon* override:
 ATF:
 ----
 
-To meet the 2MiB alignment requirement for the linux kernel's load address,
-the ``K3_HW_CONFIG_BASE`` *(kernel address)* and ``PRELOADED_BL33_BASE``
-*(DTB address)* for ATF are modified from K3 defaults to ``0x82000000`` and
-``0x88000000`` respectively.
+To meet the 2MiB alignment requirement for the Linux kernel's load address,
+the ``K3_HW_CONFIG_BASE`` *(kernel address)* is modified to ``0x82000000``
+and ``PRELOADED_BL33_BASE`` *(DTB address)* is modified from the K3 default to
+``0x88000000``.
 
-TISPL:
-------
+TI-SPL:
+-------
 
 Falcon mode makes use of a cut down variant of the tispl binary called
-``tifalcon.bin`` with the Cortex-A SPL and it’s corresponding DTB removed.
+``tifalcon.bin`` with the Cortex-A SPL and it's corresponding DTB removed.
 This file is deployed to the boot directory inside rootfs so it can be picked by
 the R5 SPL at boot time.
 
 R5 SPL:
 -------
 
-The R5 SPL is used for loading the kernel ``fitImage`` as well as the
-``tifalcon.bin`` file, though the ``fitImage`` for falcon boot is signed
-using an x509 certificate with TIFS keys instead of making use of signature
-nodes and keys present in the DT. This allows for faster authentication since
-TIFS uses the security accelerator for authentication which is much faster than
-doing the same on R5 core.
+The R5 SPL is used for loading the kernel ``fitImage`` and ``tifalcon.bin``
+file, though the ``fitImage`` for falcon boot is signed by using an x509
+certificate with TIFS keys instead of making use of signature nodes and keys
+present in the DT. This allows for faster authentication since TIFS uses the
+security accelerator for authentication, which is much faster than doing the
+same on R5 core.
 
 This support depends on the U-Boot's ``k3_r5_falcon.config`` fragment, which is
 built alongside the standard R5 defconfig when ``ti-falcon`` is enabled.
@@ -61,7 +61,7 @@ fitImage:
 
 The resulting ``fitImage`` file in the boot directory of rootfs is produced
 with the constituent binaries pre-signed with x509 certificates. This file is
-authenticated from TIFS at boot time which allows for a lower boot time than
+authenticated from TIFS at boot time, which allows for a lower boot time than
 authenticating on the R5 core.
 
 -------------------
@@ -157,15 +157,15 @@ core-secdev-k3 source:
        configurations {
            default = "conf-falcon";
            conf-falcon {
-               description = "Presigned Kernel and DTB";
+               description = "Presigned Linux kernel and DTB";
                kernel = "kernel-1";
                fdt = "falcon.dtb";
            };
        };
    };
 
-Sign the kernel and dtb using ``secure-binary-image.sh`` and create the
-``fitImage`` using mkimage:
+Sign the kernel and dtb with ``secure-binary-image.sh`` and create the
+``fitImage`` by using mkimage:
 
 .. code-block:: console
 
