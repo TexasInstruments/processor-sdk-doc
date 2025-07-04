@@ -14,7 +14,7 @@ Enabling Switch mode
 
 Example assuming ETH1 and ETH2 as ICSSG0 interfaces:
 
-::
+.. code-block:: console
 
  ip link add name br0 type bridge
  ip link set dev eth1 master br0
@@ -25,7 +25,7 @@ Example assuming ETH1 and ETH2 as ICSSG0 interfaces:
 Going back to Dual EMAC mode
 """"""""""""""""""""""""""""
 
-::
+.. code-block:: console
 
  ip link set dev br0 down
  ip link set dev eth1 nomaster
@@ -35,14 +35,14 @@ Going back to Dual EMAC mode
 Turn On/Off Spanning Tree Protocol (STP)
 """"""""""""""""""""""""""""""""""""""""
 
-::
+.. code-block:: console
 
 	ip link set dev br0 type bridge stp_state 1/0
 
 VLAN configuration
 """"""""""""""""""
 
-::
+.. code-block:: console
 
   bridge vlan add dev br0 vid 1 pvid untagged self <---- add cpu port to VLAN 1
 

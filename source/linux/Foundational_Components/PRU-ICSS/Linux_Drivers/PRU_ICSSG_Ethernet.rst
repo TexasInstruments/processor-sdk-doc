@@ -29,7 +29,6 @@ Supported platforms
 
   .. include:: AM65X_PRU_ICSSG_boards.rst
 
-
 Features supported
 ##################
 
@@ -63,7 +62,7 @@ Driver Configuration
 The TI Processor SDK has ICSSG driver enabled by default on supported platforms.
 In case of custom builds, please ensure following configs are enabled.
 
-::
+.. code-block:: text
 
     CONFIG_TI_PRUSS
     CONFIG_REMOTEPROC
@@ -94,7 +93,7 @@ Bringing Up interface
 
 The network interface can be configured automatically depending on root file system or configured manually. Manual configuration:
 
-::
+.. code-block:: console
 
     ip addr add 192.168.1.1/24 dev eth1
     ip link set dev eth1 up
@@ -102,8 +101,6 @@ The network interface can be configured automatically depending on root file sys
     < or >
 
     ifconfig eth1 <ip> netmask <mask> up
-
-|
 
 Get information (ethtool)
 *************************
@@ -114,62 +111,62 @@ Get driver information
 The interface can be identified by using ``ethtool -i|--driver DEVNAME`` command.
 It also provides some information about supported features.
 
-::
+.. code-block:: console
 
-	~# ethtool -i eth1
-	driver: icssg-prueth
-	version:
-	firmware-version:
-	expansion-rom-version:
-	bus-info: pruss2_eth
-	supports-statistics: yes
-	supports-test: no
-	supports-eeprom-access: no
-	supports-register-dump: no
-	supports-priv-flags: no
+   ~# ethtool -i eth1
+   driver: icssg-prueth
+   version:
+   firmware-version:
+   expansion-rom-version:
+   bus-info: pruss2_eth
+   supports-statistics: yes
+   supports-test: no
+   supports-eeprom-access: no
+   supports-register-dump: no
+   supports-priv-flags: no
 
 Display standard information about device/link
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Run ``ethtool DEVNAME`` command without parameters.
 
-::
+.. code-block:: console
 
-	~# ethtool eth1
-	Settings for eth1:
-		Supported ports: [ TP MII ]
-		Supported link modes:   100baseT/Full
-					1000baseT/Full
-		Supported pause frame use: No
-		Supports auto-negotiation: Yes
-		Supported FEC modes: Not reported
-		Advertised link modes:  100baseT/Full
-					1000baseT/Full
-		Advertised pause frame use: No
-		Advertised auto-negotiation: Yes
-		Advertised FEC modes: Not reported
-		Link partner advertised link modes:  10baseT/Half 10baseT/Full
-						     100baseT/Half 100baseT/Full
-						     1000baseT/Full
-		Link partner advertised pause frame use: Symmetric Receive-only
-		Link partner advertised auto-negotiation: Yes
-		Link partner advertised FEC modes: Not reported
-		Speed: 1000Mb/s
-		Duplex: Full
-		Port: MII
-		PHYAD: 0
-		Transceiver: internal
-		Auto-negotiation: on
-		Current message level: 0x00007fff (32767)
-				       drv probe link timer ifdown ifup rx_err tx_err tx_queued intr tx_done rx_status pktdata hw wol
-		Link detected: yes
+   ~# ethtool eth1
+   Settings for eth1:
+      Supported ports: [ TP MII ]
+      Supported link modes:   100baseT/Full
+                              1000baseT/Full
+      Supported pause frame use: No
+      Supports auto-negotiation: Yes
+      Supported FEC modes: Not reported
+      Advertised link modes:  100baseT/Full
+                              1000baseT/Full
+      Advertised pause frame use: No
+      Advertised auto-negotiation: Yes
+      Advertised FEC modes: Not reported
+      Link partner advertised link modes:  10baseT/Half 10baseT/Full
+                                           100baseT/Half 100baseT/Full
+                                           1000baseT/Full
+      Link partner advertised pause frame use: Symmetric Receive-only
+      Link partner advertised auto-negotiation: Yes
+      Link partner advertised FEC modes: Not reported
+      Speed: 1000Mb/s
+      Duplex: Full
+      Port: MII
+      PHYAD: 0
+      Transceiver: internal
+      Auto-negotiation: on
+      Current message level: 0x00007fff (32767)
+                              drv probe link timer ifdown ifup rx_err tx_err tx_queued intr tx_done rx_status pktdata hw wol
+      Link detected: yes
 
 Display time stamping capabilities
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The interface time stamping capabilities can be retrieved by using  ``ethtool -T|--show-time-stamping DEVNAME`` command.
 
-::
+.. code-block:: console
 
    ethtool -T eth2
    Time stamping parameters for eth2:
@@ -193,7 +190,7 @@ Show permanent hardware address
 
 The interface permanent hardware address can be retrieved by using ``ethtool -P|--show-permaddr DEVNAME`` command.
 
-::
+.. code-block:: console
 
    ~# ethtool -P eth1
    Permanent address: 70:ff:76:1d:5c:64
@@ -203,7 +200,7 @@ Query Channels information
 
 The interface DMA Channels information can be retrieved by using ``ethtool-l|--show-channels DEVNAME`` command.
 
-::
+.. code-block:: console
 
    # ethtool -l eth1
    Channel parameters for eth1:
@@ -223,10 +220,11 @@ Show adapter statistics
 
 The interface statistics are divided into several parts. Different statistics can be retrieved using the commands as mentioned below.
 
-Standard Netdev Staticstics
-"""""""""""""""""""""""""""
+Standard netdev statistics
+""""""""""""""""""""""""""
 
-Standard netdev staticstics such as RX / TX bytes / packet count can be retrieved using the command ``ip -s -s link show dev DEVNAME``. Fore more details refer `Standard interface statistics <https://docs.kernel.org/networking/statistics.html#standard-interface-statistics>`__
+You can retrieve standard netdev statistics such as RX / TX bytes / packet counts by using the command ``ip -s -s link show dev DEVNAME``.
+For more details, see `Standard interface statistics <https://docs.kernel.org/networking/statistics.html#standard-interface-statistics>`__.
 
 .. code-block:: console
 
@@ -245,7 +243,7 @@ Standard netdev staticstics such as RX / TX bytes / packet count can be retrieve
 Protocol-specific statistics
 """"""""""""""""""""""""""""
 
-Protocol specific staticstics such as packet counts for different octet sizes can be retrieved using the command ``ethtool -S DEVNAME --groups rmon``. Fore more details refer `Protocol specific statistics <https://docs.kernel.org/networking/statistics.html#protocol-specific-statistics>`__
+You can retrieve protocol specific statistics such as packet counts for different octet sizes by using the command ``ethtool -S DEVNAME --groups rmon``. For more details refer `Protocol specific statistics <https://docs.kernel.org/networking/statistics.html#protocol-specific-statistics>`__
 
 .. code-block:: console
 
@@ -333,7 +331,7 @@ Show EEE settings
 
 The interface EEE settings can be retrieved by using ``ethtool --show-eee DEVNAME`` command.
 
-::
+.. code-block:: console
 
    ethtool --show-eee eth1
    EEE Settings for eth1:
@@ -354,7 +352,7 @@ VLAN can be added/deleted using ``ip`` or ``vconfig`` utility.
 
 *VLAN Add*
 
-::
+.. code-block:: console
 
     ip link add link eth1 name eth1.5 type vlan id 5
 
@@ -364,7 +362,7 @@ VLAN can be added/deleted using ``ip`` or ``vconfig`` utility.
 
 *VLAN del*
 
-::
+.. code-block:: console
 
     ip link del eth1.5
 
@@ -381,7 +379,7 @@ using ``ip`` or ``ifconfig``.
 Once VLAN is added, it will create a new entry in Ethernet interfaces
 like eth1.5, below is an example how it check the vlan interface
 
-::
+.. code-block:: console
 
     ip addr add 10.0.0.5/24 dev eth1.5
 
@@ -413,7 +411,7 @@ Interrupt pacing
 
 The Interrupt pacing (IRQ coalescing) based on hrtimers for RX / TX data path separately can be enabled by ethtool commands (min value is 20us):
 
-::
+.. code-block:: console
 
   ethtool -C ethX rx-usecs N # Enable RX coalescing
   ethtool -C ethX tx-usecs N # Enable TX coalescing for TX0 by default.
@@ -423,7 +421,7 @@ The Interrupt pacing (IRQ coalescing) based on hrtimers for RX / TX data path se
 
 The Interrupt pacing (IRQ coalescing) configuration can be retrieved by commands:
 
-::
+.. code-block:: console
 
   ethtool -c ethX # Show RX coalescing and TX coalescing for TX0
   ethtool -Q ethX queue_mask 1 --show-coalesce # Show coalescing configuration for TX0
@@ -441,7 +439,7 @@ socket ioctl SIOCADDMULTI/SIOCDELMULTI.
 
 *Show muliticast address*
 
-::
+.. code-block:: console
 
 	~# ip maddr show eth1
 	3:      eth1
@@ -465,7 +463,7 @@ socket ioctl SIOCADDMULTI/SIOCDELMULTI.
 
 *Add muliticast address*
 
-::
+.. code-block:: console
 
 	~# ip maddr add 01:00:5e:00:00:05 dev eth1
 	~# ip maddr show dev eth1
@@ -490,7 +488,7 @@ socket ioctl SIOCADDMULTI/SIOCDELMULTI.
 
 *Delete muliticast address*
 
-::
+.. code-block:: console
 
     # ip maddr del 01:00:5e:00:00:05 dev eth1
 
@@ -526,7 +524,7 @@ the below command.
 Please note running a tool like tcpdump will itself enable promiscous
 mode.
 
-::
+.. code-block:: console
 
      ip link set eth0 promisc on
 
@@ -541,7 +539,7 @@ The main purpose of this command is to configure physical link settings (PHY) li
 
 Below commands will be redirected to the phy driver:
 
-::
+.. code-block:: console
 
        # ethtool -s <dev>
        [ speed %d ]
@@ -557,7 +555,7 @@ Below commands will be redirected to the phy driver:
 
 Below is an example of forcing link speed to 100M and duplexity to full:
 
-::
+.. code-block:: console
 
 	# ethtool -s eth1 duplex full speed 100
 	[   74.768324] icssg-prueth pruss2_eth eth1: Link is Down
@@ -569,7 +567,7 @@ Restart N-WAY (PHY) negotiation
 
 The interface PHY auto-negotiation can be restarted by using ``ethtool -r|--negotiate DEVNAME`` command.
 
-::
+.. code-block:: console
 
 	# ethtool -r eth1
 	[  273.151655] icssg-prueth pruss2_eth eth1: Link is Down
@@ -582,7 +580,7 @@ The interface DMA channels parameters can be set by using ``ethtool -L\|--set-ch
 It allows to control number of TX channels driver is allowed to work with at DMA level. The maximum number of TX channels is 4.
 Supported options ``[ tx N ]``:
 
-::
+.. code-block:: console
 
       # ethtool -L eth1 tx 4
 
@@ -601,7 +599,7 @@ The IEP1 is used for Firmware purposes.
 
 The PTP Ordinary Clock (OC) implementation is provided by the linuxptp application.
 
-::
+.. code-block:: console
 
     ptp4l -f oc.cfg
 
@@ -609,7 +607,7 @@ oc.cfg is a ptp4l configuration file.
 
 Example oc.cfg for OC,
 
-::
+.. code-block:: text
 
     [global]
     tx_timestamp_timeout 10
@@ -631,7 +629,7 @@ page <https://man.cx/ptp4l>`__ about ptp4l configurations in particular.
 Here is a sample screen display of ptp4l for PRU-ICSS Ethernet port as
 PTP/OC in slave mode:
 
-::
+.. code-block:: console
 
 	# ptp4l -f oc.cfg -s -m
 	ptp4l[1255.613]: selected /dev/ptp2 as PTP clock
@@ -690,7 +688,7 @@ To find out the PTP device number i.e. PTP Hardware Clock, use ``ethtool -T DEVN
 
 To turn on PPS,
 
-::
+.. code-block:: console
 
        # ip link set dev eth1 up
        # ./testptp -d /dev/ptp2 -P 1
@@ -706,7 +704,7 @@ To turn on PPS,
 
 To turn off PPS,
 
-::
+.. code-block:: console
 
        # ./testptp -d /dev/ptp2 -P 0
        pps for system time request okay
@@ -754,7 +752,9 @@ which can be defined following standard :ref:`Ethernet Controller Generic Bindin
     Fixed link is use-case specific and got limited testing, so should be considered experimental.
 
 
-Example::
+Example
+
+.. code-block:: dts
 
    icssg2_emac1: ethernet-mii1 {
       phy-mode = "rgmii-rxid";
@@ -781,7 +781,7 @@ To indicate that HW supports HD the DT "ti,half-duplex-capable" property shell b
 
 For example:
 
-::
+.. code-block:: dts
 
   icssg0_eth: icssg0-eth {
   ...
@@ -818,7 +818,7 @@ MII Support
   On AM64x-evm the DP83869HM are strapped to RGMII configuration by default. To use MII interface the
   k3-am642-evm-icssg1-dualemac-mii.dtbo overlay file has to be applied using the following command in uboot.
 
-    ::
+    .. code-block:: console
 
       setenv bootcmd 'run findfdt; run envboot; run init_${boot}; run get_kern_${boot}; run get_fdt_${boot};
       setenv name_overlays ti/k3-am642-evm-icssg1-dualemac-mii.dtbo; run get_overlay_${boot}; run run_kern'
@@ -846,13 +846,13 @@ CPSW / PRU Ethernet Selection
 
    To use **RGMII** interface in **Dual EMAC** mode the :file:`k3-am642-evm-icssg1-dualemac.dtbo` overlay file has to be applied using the following command in u-boot.
 
-    ::
+    .. code-block:: console
 
       setenv bootcmd 'run findfdt; run envboot;run init_${boot}; run get_kern_${boot}; run get_fdt_${boot};setenv name_overlays ti/k3-am642-evm-icssg1-dualemac.dtbo; run get_overlay_${boot}; run run_kern'
 
    To use **MII** interface in **Dual EMAC** mode the :file:`k3-am642-evm-icssg1-dualemac-mii.dtbo` overlay file has to be applied using the following command in u-boot.
 
-    ::
+    .. code-block:: console
 
       setenv bootcmd 'run findfdt; run envboot;run init_${boot}; run get_kern_${boot}; run get_fdt_${boot};setenv name_overlays ti/k3-am642-evm-icssg1-dualemac-mii.dtbo; run get_overlay_${boot}; run run_kern'
 
