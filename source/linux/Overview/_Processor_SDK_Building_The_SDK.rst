@@ -318,6 +318,8 @@ The "Build Output" is given relative to the
       +------------------------------+---------------------------------------------------------------+----------------------------+
       | meta-toolchain-arago-tisdk   | sdk/arago-<arago-version>-<architecture>.sh                   | Devkit                     |
       +------------------------------+---------------------------------------------------------------+----------------------------+
+      | mc:k3r5:meta-toolchain-arago | sdk/arago-<arago-version>-<architecture>.sh                   | K3R5 baremetal toolchain   |
+      +------------------------------+---------------------------------------------------------------+----------------------------+
 
    .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
@@ -337,8 +339,29 @@ The "Build Output" is given relative to the
       +------------------------------+----------------------------------------------------------------------+----------------------------+
       | meta-toolchain-arago-tisdk   | sdk/arago-<arago-version>-<architecture>.sh                          | Devkit                     |
       +------------------------------+----------------------------------------------------------------------+----------------------------+
+      | mc:k3r5:meta-toolchain-arago | sdk/arago-<arago-version>-<architecture>.sh                          | K3R5 baremetal toolchain   |
+      +------------------------------+----------------------------------------------------------------------+----------------------------+
 
-   .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62LX')
+   .. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+      +------------------------------+----------------------------------------------------------------+----------------------------+
+      | Target                       | Build Output                                                   | Description                |
+      +==============================+================================================================+============================+
+      | tisdk-default-image          | images/<machine>/tisdk-default-image-<machine>.rootfs.tar.xz   | Target Filesystem          |
+      +------------------------------+----------------------------------------------------------------+----------------------------+
+      | tisdk-jailhouse-image        | images/<machine>/tisdk-jailhouse-image-<machine>.rootfs.tar.xz | Jailhouse Filesystem       |
+      +------------------------------+----------------------------------------------------------------+----------------------------+
+      | tisdk-base-image             | images/<machine>/tisdk-base-image-<machine>.rootfs.tar.xz      | Minimal Target Filesytem   |
+      +------------------------------+----------------------------------------------------------------+----------------------------+
+      | tisdk-thinlinux-image        | images/<machine>/tisdk-thinlinux-image-<machine>.rootfs.tar.xz | Minimal Target Filesytem   |
+      |                              |                                                                | with docker enabled        |
+      +------------------------------+----------------------------------------------------------------+----------------------------+
+      | meta-toolchain-arago-tisdk   | sdk/arago-<arago-version>-<architecture>.sh                    | Devkit                     |
+      +------------------------------+----------------------------------------------------------------+----------------------------+
+      | mc:k3r5:meta-toolchain-arago | sdk/arago-<arago-version>-<architecture>.sh                    | K3R5 baremetal toolchain   |
+      +------------------------------+----------------------------------------------------------------+----------------------------+
+
+   .. ifconfig:: CONFIG_part_variant in ('AM62LX')
 
       +------------------------------+----------------------------------------------------------------+----------------------------+
       | Target                       | Build Output                                                   | Description                |
@@ -368,6 +391,8 @@ The "Build Output" is given relative to the
       |                              |                                                                | with docker enabled        |
       +------------------------------+----------------------------------------------------------------+----------------------------+
       | meta-toolchain-arago-tisdk   | sdk/arago-<arago-version>-<architecture>.sh                    | Devkit                     |
+      +------------------------------+----------------------------------------------------------------+----------------------------+
+      | mc:k3r5:meta-toolchain-arago | sdk/arago-<arago-version>-<architecture>.sh                    | K3R5 baremetal toolchain   |
       +------------------------------+----------------------------------------------------------------+----------------------------+
 
    .. ifconfig:: CONFIG_part_variant in ('AM335X', 'AM437X', 'AM65X')
