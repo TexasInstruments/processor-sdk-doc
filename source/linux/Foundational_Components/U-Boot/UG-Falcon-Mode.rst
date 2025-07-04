@@ -1,6 +1,6 @@
-==================
+##################
 U-Boot Falcon Mode
-==================
+##################
 
 U-Boot's falcon mode on |__PART_FAMILY_DEVICE_NAMES__| bypasses the A-core SPL
 and U-Boot stage, which allows for booting straight to Linux kernel after OP-TEE
@@ -23,12 +23,12 @@ enabled before :ref:`building the SDK <building-the-sdk-with-yocto>` as follows:
    $ # build the SDK
    $ MACHINE=<machine> bitbake -k tisdk-default-image
 
--------------------------------------
+*************************************
 Changes made by *ti-falcon* override:
--------------------------------------
+*************************************
 
 ATF:
-----
+====
 
 To meet the 2MiB alignment requirement for the Linux kernel's load address,
 the ``K3_HW_CONFIG_BASE`` *(kernel address)* is modified to ``0x82000000``
@@ -36,7 +36,7 @@ and ``PRELOADED_BL33_BASE`` *(DTB address)* is modified from the K3 default to
 ``0x88000000``.
 
 TI-SPL:
--------
+=======
 
 Falcon mode makes use of a cut down variant of the tispl binary called
 ``tifalcon.bin`` with the Cortex-A SPL and it's corresponding DTB removed.
@@ -44,7 +44,7 @@ This file is deployed to the boot directory inside rootfs so it can be picked by
 the R5 SPL at boot time.
 
 R5 SPL:
--------
+=======
 
 The R5 SPL is used for loading the kernel ``fitImage`` and ``tifalcon.bin``
 file, though the ``fitImage`` for falcon boot is signed by using an x509
@@ -57,21 +57,21 @@ This support depends on the U-Boot's ``k3_r5_falcon.config`` fragment, which is
 built alongside the standard R5 defconfig when ``ti-falcon`` is enabled.
 
 fitImage:
----------
+=========
 
 The resulting ``fitImage`` file in the boot directory of rootfs is produced
 with the constituent binaries pre-signed with x509 certificates. This file is
 authenticated from TIFS at boot time, which allows for a lower boot time than
 authenticating on the R5 core.
 
--------------------
+*******************
 Extra Configuration
--------------------
+*******************
 
 .. ifconfig:: CONFIG_part_variant not in ('AM62AX')
 
    OSPI boot:
-   ----------
+   ==========
 
    For OSPI boot, the ``tiboot3.bin`` and ``tifalcon.bin`` files should be
    flashed to the same addresses in flash as regular boot flow but the DTB and
@@ -90,7 +90,7 @@ Extra Configuration
       => sf update $loadaddr 0x80000 $filesize
 
 eMMC Boot:
-----------
+==========
 
 In eMMC boot mode, the ``tiboot3.bin`` file should be flashed to the hardware
 boot partition whereas ``tifalcon.bin`` and the ``fitImage`` are read from
@@ -111,7 +111,7 @@ For more information check: :ref:`How to flash eMMC and boot with eMMC Boot
 <how-to-emmc-boot>`.
 
 Custom fitImage creation:
--------------------------
+=========================
 
 Clone the `core-secdev-k3 source <https://git.ti.com/cgit/security-development-tools/core-secdev-k3>`__:
 
@@ -174,9 +174,9 @@ Sign the kernel and dtb with ``secure-binary-image.sh`` and create the
    $ ./scripts/secure-binary-image.sh falcon.dtb falcon.dtb.sec
    $ mkimage -f fitImage.its fitImage
 
-----------------------
+**********************
 Boot time comparisons:
-----------------------
+**********************
 
 Removing A-core SPL and U-Boot from the boot process leads to ~60% reduction in
 time to kernel. Saving about 1-2 seconds during boot depending on the platform.
