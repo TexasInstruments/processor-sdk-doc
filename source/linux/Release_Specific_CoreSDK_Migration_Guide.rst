@@ -10,6 +10,21 @@ of the Processor SDK for Linux.
 Processor CoreSDK 11.xx Releases
 ================================
 
+Processor CoreSDK Sitara 11.01
+------------------------------
+
+- Tag Info: 11.01.05
+- This is the Second Reference release in the 2025 LTS stream, with new stable versions of Kernel, U-boot, toolchain and Yocto Distribution.
+- Platforms Supported : AM62Px (HS-FS, HS-SE), AM62x ( GP, HS-FS, HS-SE), AM62x LP (HS-FS, HS-SE), AM64x 2.0 (HS-FS), AM62A (HS-FS, HS-SE), AM62SIP (HS-FS, HS-SE) , AM62D (HS-FS)
+- Kernel 6.12.35
+- U-Boot 2025.01
+- ATF 2.13+
+- OPTEE 4.6.0
+- Toolchain GCC 13.4
+- Yocto Scarthgap/5.0
+- Graphics DDK 24.2
+
+
 Processor CoreSDK Sitara 11.00
 ------------------------------
 
