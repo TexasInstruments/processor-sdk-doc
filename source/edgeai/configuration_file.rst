@@ -182,7 +182,7 @@ properties specific to given use cases like shown below.
          model_path: /opt/model_zoo/ONR-CL-6360-regNetx-200mf
          topN: 5                                                                     #Number of top N classes (optional)
       model2:
-         model_path: /opt/model_zoo/ONR-SS-8610-deeplabv3lite-mobv2-ade20k32-512x512
+         model_path: /opt/model_zoo/ONR-SS-8690-fpnlite-aspp-regnetx400mf-ade20k32-384x384
          alpha: 0.4                                                                  #alpha for blending segmentation mask (optional)
 
 

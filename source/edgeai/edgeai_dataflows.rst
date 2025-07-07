@@ -168,9 +168,9 @@ GStreamer pipeline:
 	split_02. ! queue ! video/x-raw, width=640, height=360 ! post_2.sink \
 	tidlpostproc name=post_2 model=/opt/model_zoo/ONR-CL-6360-regNetx-200mf alpha=0.400000 viz-threshold=0.500000 top-N=5 display-model=true ! queue ! mosaic_0. \
 	\
-	split_02. ! queue ! video/x-raw, width=512, height=512 ! tiovxdlpreproc model=/opt/model_zoo/ONR-SS-8610-deeplabv3lite-mobv2-ade20k32-512x512  out-pool-size=4 ! application/x-tensor-tiovx ! tidlinferer target=1  model=/opt/model_zoo/ONR-SS-8610-deeplabv3lite-mobv2-ade20k32-512x512 ! post_3.tensor \
+	split_02. ! queue ! video/x-raw, width=384, height=384 ! tiovxdlpreproc model=/opt/model_zoo/ONR-SS-8690-fpnlite-aspp-regnetx400mf-ade20k32-384x384 out-pool-size=4 ! application/x-tensor-tiovx ! tidlinferer target=1  model=/opt/model_zoo/ONR-SS-8690-fpnlite-aspp-regnetx400mf-ade20k32-384x384 ! post_3.tensor \
 	split_02. ! queue ! video/x-raw, width=640, height=360 ! post_3.sink \
-	tidlpostproc name=post_3 model=/opt/model_zoo/ONR-SS-8610-deeplabv3lite-mobv2-ade20k32-512x512 alpha=0.400000 viz-threshold=0.500000 top-N=5 display-model=true ! queue ! mosaic_0. \
+	tidlpostproc name=post_3 model=/opt/model_zoo/ONR-SS-8690-fpnlite-aspp-regnetx400mf-ade20k32-384x384 alpha=0.400000 viz-threshold=0.500000 top-N=5 display-model=true ! queue ! mosaic_0. \
 	\
 	\
 	tiovxmosaic name=mosaic_0 target=1 src::pool-size=4 \
@@ -216,9 +216,9 @@ GStreamer pipeline:
 	split_11. ! queue ! video/x-raw, width=640, height=360 ! post_2.sink \
 	tidlpostproc name=post_2 model=/opt/model_zoo/ONR-CL-6360-regNetx-200mf alpha=0.400000 viz-threshold=0.500000 top-N=5 display-model=true ! queue ! mosaic_0. \
 	\
-	split_11. ! queue ! video/x-raw, width=512, height=512 ! tiovxdlpreproc model=/opt/model_zoo/ONR-SS-8610-deeplabv3lite-mobv2-ade20k32-512x512  out-pool-size=4 ! application/x-tensor-tiovx ! tidlinferer target=1  model=/opt/model_zoo/ONR-SS-8610-deeplabv3lite-mobv2-ade20k32-512x512 ! post_3.tensor \
+	split_11. ! queue ! video/x-raw, width=384, height=384 ! tiovxdlpreproc model=/opt/model_zoo/ONR-SS-8690-fpnlite-aspp-regnetx400mf-ade20k32-384x384 out-pool-size=4 ! application/x-tensor-tiovx ! tidlinferer target=1  model=/opt/model_zoo/ONR-SS-8690-fpnlite-aspp-regnetx400mf-ade20k32-384x384 ! post_3.tensor \
 	split_11. ! queue ! video/x-raw, width=640, height=360 ! post_3.sink \
-	tidlpostproc name=post_3 model=/opt/model_zoo/ONR-SS-8610-deeplabv3lite-mobv2-ade20k32-512x512 alpha=0.400000 viz-threshold=0.500000 top-N=5 display-model=true ! queue ! mosaic_0. \
+	tidlpostproc name=post_3 model=/opt/model_zoo/ONR-SS-8690-fpnlite-aspp-regnetx400mf-ade20k32-384x384 alpha=0.400000 viz-threshold=0.500000 top-N=5 display-model=true ! queue ! mosaic_0. \
 	\
 	\
 	tiovxmosaic name=mosaic_0 target=1 src::pool-size=4 \
