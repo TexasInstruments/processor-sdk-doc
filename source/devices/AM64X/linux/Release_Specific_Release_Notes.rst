@@ -36,18 +36,19 @@ found on the SDK download page or in the installed directory as indicated below.
 -  Linux Manifest:  :file:`<PSDK_PATH>/manifest/software_manifest.htm`
 
 
-Release 11.00.09.04
+Release 11.01.05.03
 ===================
 
-Released on April 2025
+Released on July 2025
 
 What's new
 ----------
 
 **Processor SDK Linux AM64X Release has following new features:**
 
-- First 2025 LTS Reference Release Including RT combined branch model
-  - Important Bug Fixes on top of Processor SDK 10.01.10.04 Release
+- Second 2025 LTS Reference Release Including RT combined branch model
+  - Kernel: PRU HW UART
+  - Important Bug Fixes on top of Processor SDK 11.00.09.04 Release
   - Review Issue Tracker Section for the new fixes.
 
 **Key Release References:**
@@ -57,12 +58,12 @@ What's new
 
 **Component version:**
 
-  - Kernel 6.12.17
+  - Kernel 6.12.35
   - U-Boot 2025.01
-  - Toolchain GCC 13.3
-  - ATF 2.12+
-  - OPTEE 4.5.0
-  - TIFS Firmware `v11.00.07 <https://software-dl.ti.com/tisci/esd/11_00_07/release_notes/release_notes.html>`__ (Click on the link for more information)
+  - Toolchain GCC 13.4
+  - ATF 2.13+
+  - OPTEE 4.6.0
+  - TIFS Firmware `v11.01.02 <https://software-dl.ti.com/tisci/esd/11_01_02/release_notes/release_notes.html>`__ (Click on the link for more information)
   - Yocto scarthgap 5.0
 
 
@@ -77,42 +78,42 @@ U-Boot
 .. rubric:: u-boot
    :name: u-boot
 
-| Head Commit: cd91d73601810374d16a1f17505ab2e72e31f75d PENDING: mmc: am654_sdhci: Unset HIGH_SPEED_ENA for MMC_HS_52
+| Head Commit: d2a72467939e169210bcd8e57de4b3e6ce2ef149 TI: dts: arm64: ti: sync dtbs from ti-linux-6.12.y upto e3e551586dfa
 | uBoot Version: 2025.01
-| uBoot Description: RC Release 11.00.09
+| uBoot Description: RC Release 11.01.05
 | Clone: git://git.ti.com/ti-u-boot/ti-u-boot.git
 | Branch: ti-u-boot-2025.01
-| uBoot Tag: 11.00.09
+| uBoot Tag: 11.01.05
 |
 
 .. _tf-a-release-notes:
 
 TF-A
 ----
-| Head Commit: b11beb2b6bd30b75c4bfb0e9925c0e72f16ca53f PENDING: feat(ti): Update DDR Configurations
-| Repo: https://github.com/TexasInstruments/arm-trusted-firmware.git
-| Branch: ti-master
-| Tag: (2.12 based): 11.00.09
+| Head Commit: e0c4d3903b382bf34f552af53e6d955fae5283ab Merge changes from topic "xlnx_fix_gen_con_datatype" into integration
+| Repo: https://git.trustedfirmware.org/plugins/gitiles/TF-A/trusted-firmware-a.git/
+| Branch: master
+| Tag: (2.13 based)
 |
 
 .. _optee-release-notes:
 
 OP-TEE
 ------
-| Head Commit: ef1ebdc23034a804a72da2207f1a825ce96a1464 plat-k3: Add initial support for AM62Lx SoC
+| Head Commit: 71785645fa6ce42db40dbf5a54e0eaedc4f61591 Update CHANGELOG for 4.6.0
 | Repo: https://github.com/OP-TEE/optee_os/
 | Branch: master
-| Tag: 4.5.0+
+| Tag: 4.6.0
 |
 
 .. _ti-linux-fw-release-notes:
 
 ti-linux-firmware
 -----------------
-| Head Commit: 27003b6bff61a55dd1fff2cc777e5e07b092b1f7 ti-eth: j721e/j784s4/j7200: update firmware to version 11.00.02
+| Head Commit: 33bec0e2ea9a25362c0c8243b2f1ed392dbc5b02 Merge branch 'main' of git://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware into ti-linux-firmware-next
 | Clone: https://git.ti.com/cgit/processor-firmware/ti-linux-firmware
 | Branch: ti-linux-firmware
-| Tag: 11.00.09
+| Tag: 11.01.05
 |
 
 Kernel
@@ -120,49 +121,49 @@ Kernel
 .. rubric:: Linux Kernel
    :name: linux-kernel
 
-| Head Commit: c85877d40f8e70e1e201eca2ae1648781f238a37 PENDING: can: m_can: Support pinctrl wakeup state for Partial I/O
-| Kernel Version: v6.12.17
-| Kernel Description: RC Release 11.00.09
+| Head Commit: e3e551586dfad357550da433969d6d9f458e06ce PENDING: arm64: dts: ti: k3-am62d2: Enable heartbeat led
+| Kernel Version: v6.12.35
+| Kernel Description: RC Release 11.01.05
 
 | Repo: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
 | Branch: ti-linux-6.12.y
-| Tag: 11.00.09
+| Tag: 11.01.05
 | use-kernel-config=defconfig
 | non-rt-config-fragment=kernel/configs/ti_arm64_prune.config
 | rt-config-fragment=config-fragment=kernel/configs/ti_arm64_prune.config kernel/configs/ti_rt.config
+|
 
 Yocto
 -----
 .. rubric:: meta-ti
    :name: meta-ti
 
-| Head Commit: 5385fb9231e8d48c30ddd965c4cc623a1f004e3e CI/CD Auto-Merger: cicd.scarthgap.202503251551
+| Head Commit: 59354be6c2362b9f7d0a3cd2c017f2f3c6ab7f2e CI/CD Auto-Merger: cicd.scarthgap.202507011953
 
 | Clone: git://git.yoctoproject.org/meta-ti
 | Branch: scarthgap
-| Release Tag: 11.00.09
+| Release Tag: 11.01.05
 |
 
 .. rubric:: meta-arago
    :name: meta-arago
 
-| Head Commit: 4ec7ae427f9a6aeb7d0b98ac7251bfc2436dbae2 CI/CD Auto-Merger: cicd.scarthgap.202503251551
+| Head Commit: 0a9d75bc9eab472baa1eef57e1166954c557550a CI/CD Auto-Merger: cicd.scarthgap.202506261626
 
 | Clone: git://git.yoctoproject.org/meta-arago
 | Branch: scarthgap
-| Release Tag: 11.00.09
+| Release Tag: 11.01.05
 |
 
 .. rubric:: meta-tisdk
    :name: meta-tisdk
 
-| Head Commit: c1f4a8eaf9b0779e9dfa66d2e4de0ac4173772c4 meta-ti-foundational: seva: Make service file work with emptty
+| Head Commit: 60969f56929e61855d2c581a329e98d8428fc35d meta-ti-foundational: recipes-demos: dsp offload: update SRCREV
 
 | Clone: https://github.com/TexasInstruments/meta-tisdk.git
 | Branch: scarthgap
-| Release Tag: 11.00.09.04
+| Release Tag: 11.01.05.03
 |
-
 
 Issues Tracker
 ==============
