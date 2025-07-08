@@ -117,7 +117,6 @@ The MACHINE can be set to |__SDK_BUILD_MACHINE__|, for example.
             $ ./oe-layertool-setup.sh -f configs/processor-sdk-analytics/processor-sdk-analytics-10.01.00-config.txt
             $ cd build
             $ . conf/setenv
-            $ echo 'ARAGO_BRAND = "edgeai"' >> conf/local.conf
             $ MACHINE=am62axx-evm bitbake -k tisdk-edgeai-image
 
          Your tisdk-edgeai-image wic image will be generated in arago-tmp-[toolchain]/deploy directory. Use `Processor\_SDK\_Linux\_create\_SD\_card <Overview/Processor_SDK_Linux_create_SD_card.html>`__ to flash this image on the SD-Card.
