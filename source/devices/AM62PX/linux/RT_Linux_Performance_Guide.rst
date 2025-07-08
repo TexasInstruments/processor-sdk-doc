@@ -1,6 +1,6 @@
-======================================
- RT-linux 11.00 Performance Guide
-======================================
+=================================
+ RT-linux 11.01 Performance Guide
+=================================
 
 .. rubric::  **Read This First**
    :name: read-this-first-kernel-perf-guide
@@ -34,7 +34,7 @@ https://e2e.ti.com/ or https://support.ti.com/
 |
 
 System Benchmarks
--------------------------
+-----------------
 
 Stress-ng and Cyclic Test
 
