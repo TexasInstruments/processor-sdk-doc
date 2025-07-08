@@ -36,10 +36,10 @@ found on the SDK download page or in the installed directory as indicated below.
 -  Linux Manifest:  :file:`<PSDK_PATH>/manifest/software_manifest.htm`
 
 
-Release 11.00.09.04
+Release 11.01.05.03
 ===================
 
-Released on April 2025
+Released on July 2025
 
 What's new
 ----------
