@@ -1,3 +1,5 @@
+.. _U-Boot-Falcon-Mode:
+
 ##################
 U-Boot Falcon Mode
 ##################

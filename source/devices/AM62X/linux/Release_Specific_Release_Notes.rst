@@ -45,8 +45,8 @@ What's new
 
 **Processor SDK Linux AM62X Release has following new features:**
 
-- Second 2025 LTS Reference Release Including RT combined branch model
-  - Falcon mode through R5 SPL
+  - Second 2025 LTS Reference Release Including RT combined branch model
+  - Falcon mode through R5 SPL :ref:`U-Boot Falcon Mode <U-Boot-Falcon-Mode>`
   - Important Bug Fixes on top of Processor SDK 11.00.09.04 Release
   - Review Issue Tracker Section for the new fixes.
 
