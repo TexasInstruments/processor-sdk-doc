@@ -40,6 +40,5 @@ Configuration Values
 'CONFIG_image_type'       : 'edgeai'
 'CONFIG_icss_support'     : 'yes'
 'CONFIG_rt_linux_support' : 'yes'
-'CONFIG_gpu_ip'           : 'Rogue_AXE'
 'CONFIG_crypto'           : 'sa2ul'
 'CONFIG_mcrc64'           : 'mcrc64'

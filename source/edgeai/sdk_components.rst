@@ -103,10 +103,9 @@ Source code and documentation: `TI Edge AI TIOVX Apps <https://github.com/TexasI
 Foundation Linux
 ================
 The Edge AI app stack is built on top of foundation Linux components which
-includes, uBoot, Linux kernels, device drivers, multimedia codecs, GPU drivers
-and a lot more. The Foundation Linux is built using the Yocto project and sources
-publicly available to build the entire image completely from scratch. We also
-provide an installer, which packages pre-built Linux filesystem, board support
+includes, u-boot, Linux kernels, device drivers, multimedia codecs and many more.
+Developers use the Yocto project and publicly available sources to build Foundation Linux entirely from scratch.
+We also offer an installer, which packages pre-built Linux filesystem, board support
 package and tools to customize Linux layers of the software stack.
 
 .. ifconfig:: CONFIG_part_variant in ('AM62AX')
