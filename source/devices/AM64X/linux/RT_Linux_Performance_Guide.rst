@@ -60,14 +60,22 @@ Test commands used for running stress-ng and cyclictest together
 
 The latencies observed with this DK are summarized below:
 
+.. note::
+
+   A known issue in this SDK release is affecting this benchmark.
+   Applying `this patch`_ on Yocto's meta-ti layer will restore the
+   context switch latencies to the values you see below.
+
 .. csv-table::
    :header: "Latencies","CPU 0","CPU 1"
 
    "Minimum (usec)","6","6"
-   "Average (usec)","8","8"
-   "Maximum (usec)","77","105"
+   "Average (usec)","10","9"
+   "Maximum (usec)","77","52"
 
 .. image:: img/rt-cpu-method-all-latency-histogram.png
+
+.. _this patch: https://lists.yoctoproject.org/g/meta-ti/message/19089
 
 |
 
@@ -791,8 +799,8 @@ RP Message Inter-Processor Communication (IPC) Latency
 RP Message latency Performance
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-RP Message latency is the delay measured from sending a round trip echo message from 
-a Linux application to a remote processor and back. The following measurements use 
+RP Message latency is the delay measured from sending a round trip echo message from
+a Linux application to a remote processor and back. The following measurements use
 a RP message length of 1 byte and 490 bytes for comparison.
 
 The Linux user space application `rpmsg_char_benchmark <https://git.ti.com/cgit/rpmsg/ti-rpmsg-char/>`__ captures these latency values.
