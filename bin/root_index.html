@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PSDK Documentation Landing Page</title>
+  </head>
+  <body>
+    <main>
+      <h1>PSDK Documentation Landing Page</h1>
+      <p>
+        The following documentation is currently available:
+      </p>
+      <ul>
+        {% for path in path_list -%}
+        <li>
+          <a href="{{ path }}">{{ path.parts[0] }}</a>
+        </li>
+        {%- endfor %}
+      </ul>
+    </main>
+  </body>
+</html>
