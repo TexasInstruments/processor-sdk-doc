@@ -975,26 +975,26 @@ Table:  **Deep sleep**
 .. csv-table::
    :header: "Rail name","Rail voltage(V)","Power (mW)"
 
-   "vdd_core","0.85","11.23"
-   "vddr_core","0.85","0.90"
-   "soc_dvdd_3v3","3.30","6.51"
-   "soc_dvdd_1v8","1.80","2.69"
-   "vdda_1v8","1.80","72.23"
-   "vdd_lpddr4","1.10","0.33"
-   "Total"," ","93.89"
+   "vdd_core","0.85","8.95"
+   "vddr_core","0.85","0.84"
+   "soc_dvdd_3v3","3.30","7.16"
+   "soc_dvdd_1v8","1.80","2.59"
+   "vdda_1v8","1.80","68.66"
+   "vdd_lpddr4","1.10","0.46"
+   "Total"," ","88.66"
 
 Table:  **MCU only**
 
 .. csv-table::
    :header: "Rail name","Rail voltage(V)","Power (mW)"
 
-   "vdd_core","0.85","209.16"
-   "vddr_core","0.85","2.53"
-   "soc_dvdd_3v3","3.30","6.97"
-   "soc_dvdd_1v8","1.80","2.70"
-   "vdda_1v8","1.80","80.10"
-   "vdd_lpddr4","1.10","0.31"
-   "Total"," ","301.77"
+   "vdd_core","0.85","211.34"
+   "vddr_core","0.85","2.51"
+   "soc_dvdd_3v3","3.30","6.81"
+   "soc_dvdd_1v8","1.80","2.63"
+   "vdda_1v8","1.80","77.43"
+   "vdd_lpddr4","1.10","0.42"
+   "Total"," ","301.14"
 
 Partial I/O Data
 - All voltage rails were measured to be near 0V
