@@ -158,6 +158,7 @@ core-secdev-k3 source:
                arch = "arm64";
                compression = "none";
                load = <0x88000000>;
+               entry = <0x88000000>;
            };
        };
 
