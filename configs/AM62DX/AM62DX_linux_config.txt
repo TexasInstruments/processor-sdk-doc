@@ -27,7 +27,7 @@ Replacement Variables
 '__OPTEE_PLATFORM_FLAVOR__'      : 'am62dxx'
 '__RTOS_UBUNTU_VERSION_LONG__'   : '22.04 (64-bit), 16.04 (64-bit)'
 '__FAMILY_NAME__'                : 'am62dxx'
-'__WINDOWS_SUPPORTED_LONG__'     : '10 (64-bit)'
+'__WINDOWS_SUPPORTED_LONG__'     : '11 (64-bit)'
 '__FEATURINGMATRIX__'            : \
 '__SYSFW_CORE_NAME__'            : 'TIFS'
 '__IMAGE_TYPE__'                 : 'default'

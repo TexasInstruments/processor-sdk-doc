@@ -16,6 +16,7 @@ The SDK supports the following Out-Of-Box demo-applications
    Benchmark_Demo_User_Guide
    Display_Cluster_User_Guide
    TI_LVGL_Demo_User_Guide
+   AM62D_Dsp_Offload_User_Guide.rst
 
 .. ifconfig:: CONFIG_sdk in ('j7_foundational')
 
