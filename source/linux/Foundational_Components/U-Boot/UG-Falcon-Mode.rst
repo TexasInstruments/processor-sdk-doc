@@ -62,7 +62,39 @@ security accelerator for authentication, which is much faster than doing the
 same on R5 core.
 
 This support depends on the U-Boot's ``k3_r5_falcon.config`` fragment, which is
-built alongside the standard R5 defconfig when ``ti-falcon`` is enabled.
+built alongside the standard R5 defconfig when ``ti-falcon`` is enabled. This
+updates the R5 memory map at U-Boot SPL stage to the following:
+
+
+.. code-block::
+
+   0x80000000 +===============================+ Start of DDR
+     512KiB   |   ATF reserved memory space   | CONFIG_K3_ATF_LOAD_ADDR
+   0x80080000 +-------------------------------+
+    31.5MiB   |            Unused             |
+   0x82000000 +-------------------------------+ PRELOADED_BL33_BASE in ATF
+              |                               | CONFIG_SYS_LOAD_ADDR
+      57MiB   |   Kernel + initramfs Image    | CONFIG_SPL_LOAD_FIT_ADDRESS
+              |                               |
+   0x85900000 +-------------------------------+
+              |                               |
+              |  R5 U-Boot SPL Stack + Heap   |
+      39MiB   |       (size defined by        |
+              | SPL_STACK_R_MALLOC_SIMPLE_LEN)|
+              |                               |
+   0x88000000 +-------------------------------+ CONFIG_SPL_STACK_R_ADDR
+              |                               | K3_HW_CONFIG_BASE in ATF
+      16MiB   |          Kernel DTB           | CONFIG_SPL_PAYLOAD_ARGS_ADDR
+              |                               |
+   0x89000000 +-------------------------------+
+     331MiB   | Device Manager (DM) Load Addr |
+   0x9db00000 +-------------------------------+
+      12MiB   |          DM Reserved          |
+   0x9e700000 +-------------------------------+
+       1MiB   |            Unused             |
+   0x9e800000 +-------------------------------+ BL32_BASE in ATF
+      24MiB   |             OPTEE             |
+   0xa0000000 +===============================+ End of DDR (512MiB)
 
 fitImage:
 =========
