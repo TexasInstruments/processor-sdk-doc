@@ -75,4 +75,7 @@ linux/How_to_Guides/FAQ/How_to_Integrate_Open_Source_Software
 linux/How_to_Guides_Hardware_Setup_with_CCS
 linux/How_to_Guides/Hardware_Setup_with_CCS/AM62DX_EVM_Hardware_Setup
 
+linux/Demo_User_Guides/index_Demos
+linux/Demo_User_Guides/AM62D_Dsp_Offload_User_Guide
+
 linux/Documentation_Tarball
