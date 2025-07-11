@@ -64,8 +64,8 @@ The latencies observed with this DK are summarized below:
    :header: "Latencies","CPU 0","CPU 1"
 
    "Minimum (usec)","6","6"
-   "Average (usec)","8","8"
-   "Maximum (usec)","77","105"
+   "Average (usec)","10","8"
+   "Maximum (usec)","85","64"
 
 .. image:: img/rt-cpu-method-all-latency-histogram.png
 
