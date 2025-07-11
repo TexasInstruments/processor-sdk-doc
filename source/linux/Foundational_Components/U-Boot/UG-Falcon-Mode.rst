@@ -25,6 +25,12 @@ enabled before :ref:`building the SDK <building-the-sdk-with-yocto>` as follows:
    $ # build the SDK
    $ MACHINE=<machine> bitbake -k tisdk-default-image
 
+The following set of patches are also required since they are **not** part of the
+``11.01`` SDK release:
+
+   * `meta-ti <https://patchwork.yoctoproject.org/project/ti/list/?series=36071>`__
+   * `U-Boot <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/commit/?h=ti-u-boot-2025.01-next&id=80f8ea010e3ef61277b7ab94ac4aeb85499c3ca5>`__
+
 *************************************
 Changes made by *ti-falcon* override:
 *************************************
