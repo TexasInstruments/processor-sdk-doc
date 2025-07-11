@@ -2,43 +2,37 @@
 Overview
 ########
 
-.. ifconfig:: CONFIG_part_variant in ('AM62LX')
+Debian, also known as Debian GNU/Linux, is a Linux distribution composed of free and open source
+software. Community-supported Debian Project develops and maintains it. It offers a vast repository
+of software packages, which the ``apt`` package manager can install.
 
-   Armbian is a highly-optimized **base operating system** (i.e. an extensive build framework) for building Debian-based images for Single-Board Computers (SBCs).
+TI creates Debian images by using the popular project called **Armbian**. Armbian is a highly-optimized
+**base operating system** (i.e. an extensive build framework) for building Debian-based images for
+Single-Board Computers. Unlike other tools, such as mmdebstrap and bdebstrap, which are often
+used for creating Debian images, Armbian focuses on creating images for Single-Board Computers.
 
+TI's AM62LX, AM62Px, AM62x and AM64x platforms offer the Debian distribution. Few key highlights of
+this project are:
 
-Debian, also known as Debian GNU/Linux, is a Linux distribution composed of free and open-source software, developed by the community-supported Debian Project.
+- The Debian filesystem image requires standard packages from debian.org and TI's customizations as
+  ``.deb`` packages. TI's package build infrastructure uses public sources of git repositories to build
+  deb packages. TI's official repository maintained on `Github/TexasInstruments/ti-debpkgs
+  <https://github.com/TexasInstruments/ti-debpkgs>`__ hosts these packages.
 
-.. ifconfig:: CONFIG_part_variant in ('AM62LX')
+- This document also provides the required steps and instructions to customize the TI's components
+  for AM62Lx, AM62Px, AM62x and AM64x Systems-on-Chip and create the corresponding deb packages.
 
-   The Linux Debian distribution, built using Armbian, is enabled for TI's AM62Lx platform. Few key highlights of this project are:
-
-.. ifconfig:: CONFIG_part_variant not in ('AM62LX')
-
-   The Linux Debian distribution is enabled for TI's AM62Px, AM62x and AM64x platforms. Few key highlights of this project are:
-
-- The Debian filesystem image requires standard packages from debian.org and TI's customizations as .deb packages. The deb packages for the components owned by TI are built using the public sources hosted on respective git repositories and the deb packages are hosted on TI's official PPA repository maintained on `Github/TexasInstruments <https://github.com/TexasInstruments/ti-debpkgs>`__.
-
-.. ifconfig:: CONFIG_part_variant not in ('AM62LX')
-
-   - The entire Debian build process is made easy with a build script, the script "ti-bdebstrap" is hosted on `TI Debian Github <https://github.com/TexasInstruments/ti-bdebstrap>`__.
-
-- This document also provides the required steps and instructions to customize the TI's components for AM62Lx, AM62Px, AM62x and AM64x SOCs and create the corresponding deb packages.
-
-- The entire project is made public and we accept community contributions as pull requests to github repositories.
-
-.. ifconfig:: CONFIG_part_variant not in ('AM62LX')
-
-   - Github actions are enabled for the buildscripts workflow. So, any change in the config files, package additions or modifications in build scripts will result in auto generation of a new debian filesystem that reflects these changes. The new builds will store the filesystem image as an artifact hosted on the same repo, allowing other users to test the change without making a new build. These images are available via github for 90 days after which they may be purged to save disk space.
-
+- The entire project is public and we accept community contributions as pull requests to GitHub
+  repositories.
 
 Debian vs Yocto
 ===============
 
-TI provides both Debian and OpenEmbedded/Yocto based images as their Linux offering. Here's a quick comparision between both to let you choose which one to get started with.
+TI provides both Debian and OpenEmbedded/Yocto based images as their Linux offering. Here's a quick
+comparison between both to decide the one to start with:
 
-Comparision
------------
+Comparison
+----------
 
 +-------------------+--------------------------------------+---------------------------------------+
 |  **File System**  |              **Debian**              |    **OpenEmbedded/Yocto (Arago)**     |
@@ -65,7 +59,7 @@ Comparision
 Acknowledgements
 ================
 
-    - `beagleboard/image-builder <https://github.com/beagleboard/image-builder.git>`__
+    - `armbian/build <https://github.com/armbian/build/>`__
     - `beagleboard/repos-arm64 <https://git.beagleboard.org/beagleboard/repos-arm64>`__
 
 

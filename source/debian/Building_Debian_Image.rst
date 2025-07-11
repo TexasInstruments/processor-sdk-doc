@@ -1,236 +1,106 @@
-======================
-Building Debian Images
-======================
+====================================
+Building Debian Images Using Armbian
+====================================
 
 Introduction
 ============
 
-Building a Debian Image requires:
+Texas Instruments uses the **Armbian** build framework to generate Debian images for its platforms.
+*Armbian* describes itself to be a "base operating system"; that is, a build framework used to build
+Linux images optimized for Single-Board Computers.
 
-    1. Generating a chroot environment for the target architecture (Arm), if the host environment is on x86.
-    2. Installing all the necessary packages
-    3. Customizing configuration scripts if needed
-    4. Building Bootloader
-    5. Flashing the generated RootFS and Boot binaries to SD Card
+|__SDK_DOWNLOAD_URL__| provides Debian images, but users can also build these, especially if users
+require something custom (such as different kernel configurations or default desktop environments).
 
-There are several opensource tools available for generating the RootFS in a chroot environment. Such as debootstrap (now deprecated), mmdebstrap (complex), bdebstrap (simple wrapper on top of mmdebstrap).
+Armbian Usage
+=============
 
-`ti-bdebstrap <https://github.com/TexasInstruments/ti-debpkgs>`__ is a set of scripts that builds upon the ``bdebstrap`` tool to create custom Debian images for TI platforms. This includes creating the ``bdebstrap`` chroot environment itself, installing essential and useful TI and non-TI packages, setting up the configuations, Building the U-Boot etc.
+This document provides high-level information about how to build Debian images for TI platforms,
+using Armbian. For a full list of options available for users to configure these images at build
+time, see `Armbian Documentation <https://docs.armbian.com/>`__.
 
-In other words, ``ti-bdebstrap`` offers users an easy way to create a full-fledged Debian image for supported TI platforms, using a single command. Once the image is built, the user can directly flash it onto a SD card.
-
-TI currently supports building Debian images for AM62Lx, AM62Px, AM62x and AM64x platforms.
-
-Usage
-=====
-
-Get Scripts
+Get Armbian
 -----------
 
-The scripts are hosted at https://github.com/TexasInstruments/ti-bdebstrap
-
-To clone the repository, run:
+For the time being, TI's fork of Armbian maintains support for TI platforms. Therefore, the first
+step is to fetch TI's fork:
 
 .. code-block:: console
 
-    git clone https://github.com/TexasInstruments/ti-bdebstrap.git
-
+   git clone https://github.com/TexasInstruments/armbian-build.git
 
 Repository Structure
 --------------------
 
-.. code-block:: text
+There are 4 files and directories of relevance to this high-level overview:
 
-    tibdebstrap/
-    ├── build.sh
-    ├── builds.toml
-    ├── configs
-    │   ├── bdebstrap_configs
-    │   │   ├── bookworm
-    │   │   │   ├── bookworm-<machine>.yaml
-    │   │   │   └── bookworm-rt-<machine>.yaml
-    │   │   └── trixie
-    │   │       ├── trixie-<machine>.yaml
-    │   │       └── trixie-rt-<machine>.yaml
-    │   ├── bsp_sources.toml
-    │   └── machines
-    │       ├── 09.02.00.010.toml
-    │       └── 11.00.05.02.toml
-    ├── create-sdcard.sh
-    ├── create-wic.sh
-    ├── LICENSE
-    ├── README.md
-    ├── scripts
-    │   ├── build_bsp.sh
-    │   ├── build_distro.sh
-    │   ├── common.sh
-    │   └── setup.sh
-    └── target --> Custom files to deploy in target.
+- :file:`configs/`: This directory has configurations for boards, families, kernel configurations,
+  desktop or CLI environments and so on. To find configuration files relevant to TI, see:
 
-``build.sh``: the "main" script that the user should run to generate Debian images.
+   - :file:`configs/sources/families/k3.conf`
+   - :file:`configs/kernel/linux-k3-current.conf`
+   - :file:`configs/kernel/linux-k3-rt-current.conf`
 
-``configs/``: contains details, configuration options and values for machines, bsp_sources and distro-variants (see below for details).
+- :file:`compile.sh`: This is the script that the user should run for building Armbian images.
 
-``scripts/``: contains helper scripts for ``build.sh``.
+- :file:`lib/`: This directory stores the scripts that do most of the work in building Armbian images.
 
-``target/``: contains files for target configs, like ``weston.service`` for the **weston** target.
+- :file:`extensions/`: This directory has files that define **extension hooks**. In Armbian, *extension
+  hooks* are function signatures, which the build framework calls in the process of building an
+  image. However, the build framework does not define these in ``lib/``. Users can define these
+  functions and integrate custom steps in the build process. TI has ``extensions/ti-debpkgs.sh``
+  extension file. To customize the build process, create a new file in this directory, and define
+  your extension hooks there. Once the file is created, be sure to add the following line to
+  board/family config file:
 
-``builds.toml``: contains list of all valid builds along with their definitions (see below for details).
+   .. code-block:: console
 
-Build Configurations
---------------------
+      enable_extension <extension_name>
 
-A ``build config`` represents an image with certain values for the ``machine``, ``rt_linux`` and ``distro_codename`` parameters.
-
-The ``builds.toml`` file contains a list of all valid builds in the ``builds[]`` list. Each ``build`` is then defined underneath.
-
-Values of ``machine`` and ``distro_codename`` must be defined in :file:`configs/machines.toml`, :file:`configs/bdebstrap_configs/<distro>/<distro>-<machine>.yaml` and :file:`configs/bsp_sources.toml` files. If any of these is missing, the build will fail.
-
-So long as you conform to the rule above, you may also define your own builds.
+- :file:`userpatches/`: This directory stores files that define build parameters, user patches and so on.
 
 Building Images
 ---------------
 
-All valid builds are listed in the :file:`builds.toml` file. To build an image, one of these must be chosen and supplied to the :file:`build.sh` command. :file:`build.sh` commences the build process.
-The images are finally stored in the :file:`build/` directory. Each build also produces a log file inside :file:`log/`.
-
-Building images using ``ti-bdebstrap`` involves the following steps:
-
-    1. install the pre-requisite packages
-    2. get the scripts using ``git clone``
-    3. checkout to the SDK release version tag that you want to build
-    4. run the :file:`build.sh` script and with required build config as argument.
-    5. creating a wic image using :file:`create-wic.sh`.
-    6. flashing the image into a SD card
-
-Install Pre-requisite Packages
-------------------------------
-
-First, ensure that your repositories are up-to-date:
+Armbian supports an interactive build process. To build interactively, go to TI's Armbian fork you
+cloned, and use the following command:
 
 .. code-block:: console
 
-    sudo apt update
+   ./compile.sh
 
-Then, install packages as follows:
+The build framework will then display dialog boxes. The user can use this to select the board, CLI
+or desktop environment, kernel configurations and so on.
 
-.. code-block:: console
-
-    sudo apt install -y \
-        pigz expect pv \
-        binfmtc binfmt-support \
-        qemu-user qemu-user-static qemu-system-arm \
-        debian-archive-keyring bdebstrap \
-        build-essential autoconf automake \
-        bison flex libssl-dev \
-        bc u-boot-tools swig python3-pyelftools
-
-
-Ensure that all packages were correctly installed using:
+To build the image non-interactively, specify all required **Build Switches** in the command:
 
 .. code-block:: console
 
-    sudo apt install --fix-broken
+   ./compile.sh [command] [switch...] [command...]
 
-Finally, install ``toml-cli`` and ``yamllint``:
+A full list of build switches is available at `Build Switches <https://docs.armbian.com/Developer-Guide_Build-Switches/>`__.
 
-.. code-block:: console
-
-    pip3 install toml-cli
-    pip3 install yamllint
-
-.. note::
-
-   Since the build script is run as ``root`` user, ``toml-cli`` and ``yamllint`` should also be installed with ``sudo`` for ``root`` user to be able to access it.
-
-.. note::
-
-   The scripts internally handle toolchain downloads based on Host architecture. So the same steps can be followed on both ``arm`` and ``x86_64`` hosts.
-
-Checkout to the Correct Release Tag
------------------------------------
-
-ti-bdebstrap repository has tags corresponding to each release.
-
-Before building the image, it is important to ensure that you are on the correct release tag. First, view all the tags
-using:
+For example, the following command builds the minimal non-RT Trixie image:
 
 .. code-block:: console
 
-   git tag
+   ./compile.sh build BOARD=<target> BRANCH=current BUILD_MINIMAL=yes KERNEL_CONFIGURE=no RELEASE=trixie SKIP_ARMBIAN_REPO=yes
 
-Then, select a release tag and checkout to it:
+For a list of targets corresponding to each board, refer:
 
-.. code-block:: console
+      +------------------------------+--------------+
+      | Board                        | Target       |
+      +==============================+==============+
+      | AM62P                        | sk-am62p     |
+      +------------------------------+--------------+
+      | AM62x                        | sk-am62b     |
+      +------------------------------+--------------+
+      | AM62-LP                      | sk-am62-lp   |
+      +------------------------------+--------------+
+      | AM62SIP                      | sk-am62-sip  |
+      +------------------------------+--------------+
+      | AM64x                        | sk-am64b     |
+      +------------------------------+--------------+
 
-   git checkout <tag-name>
 
-For example, to checkout to the `10.01.10.04-release` tag, use the following command:
-
-.. code-block:: console
-
-   git checkout 10.01.10.04-release
-
-The :file:`builds.toml` and other config files will now support building images corresponding to the `10.01.10.04` release.
-
-Building the Image
--------------------
-
-.. note::
-
-   If you are behind a proxy, since the build is run with sudo, make sure to set the proxy for root user (preferably in :file:`/etc/environment`).
-
-To build an image, you need to run the :file:`build.sh` script:
-
-.. code-block:: console
-
-    sudo ./build.sh <build-name>
-
-The ``<build-name>`` must be one present inside :file:`builds.toml` file.
-
-After the build, the RootFS, Boot partition and bsp_sources are stored in :file:`build/<build-name>`. The logs will be stored in :file:`logs/<build-name>.log`.
-
-Example: to build for ``trixie-am62pxx-evm``, run:
-
-.. code-block:: console
-
-    sudo ./build.sh trixie-am62pxx-evm
-
-The RootFS, Boot partition and bsp_sources are then stored in :file:`build/trixie-am62pxx-evm`. The build log is saved as :file:`logs/trixie-am62pxx-evm.log`.
-
-Generate an SD Card Image
--------------------------
-
-This step can be skipped if you do not want to share the generated Image with anyone and want to proceed with testing with an SD card.
-
-To generate an SD Card Image with the generated RootFS and Boot partition files, run:
-
-.. code-block:: console
-
-   ./create-wic.sh <build-name>
-
-Example: to build for ``trixie-am62pxx-evm``, run:
-
-.. code-block:: console
-
-   ./create-wic.sh trixie-am62pxx-evm
-
-The wic image is generated under :file:`build/trixie-am62pxx-evm`. This can be used to flash an SD card using standard tools like balena-etcher.
-
-Flash Image to SD Card using Script
------------------------------------
-
-To flash the SD card without generating a wic image, use the :file:`create-sdcard.sh` script. Run it using the below command and follow with the prompts.
-
-.. code-block:: console
-
-    sudo ./create-sdcard.sh <build-name>
-
-For example, if the image is ``trixie-am62pxx-evm``, type:
-
-.. code-block:: console
-
-    sudo ./create-sdcard.sh trixie-am62pxx-evm
-
-This script will partition the SD Card and copy the contents of RootFS and Boot partitions that are generated to the SD Card.
-
+``output/images/`` stores the built images. These images have a ``.img`` extension.
