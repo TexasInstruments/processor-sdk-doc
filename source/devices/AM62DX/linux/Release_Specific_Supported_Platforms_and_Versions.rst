@@ -23,7 +23,7 @@ The following platforms and EVMs are supported with Processor SDK.
 | **Platform** | **EVM**   | **Tested  | **Document**          | **Processor SDK   | **Processor SDK  | **Processor SDK  |
 |              |           | Version** |                       | Linux**           | RT Linux**       | RTOS**           |
 +--------------+-----------+-----------+-----------------------+-------------------+------------------+------------------+
-| AM62D-EVM    | AM62D-EVM |   E1      | Hardware User's Guide |        Y          |        Y         |        Y         |
+| AM62D-EVM    | AM62D-EVM |   E2      | Hardware User's Guide |        Y          |        Y         |        Y         |
 +--------------+-----------+-----------+-----------------------+-------------------+------------------+------------------+
 
 

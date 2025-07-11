@@ -601,10 +601,10 @@ To measure the instance when the filesystem starts, navigate to :file:`init/main
 
     .. code-block:: console
 
-        [2025-03-28 18:04:41.581] NOTICE:  BL31: v2.12.0(release):11.00.08-1-gb11beb2b6-dirty
-        [2025-03-28 18:04:41.581] NOTICE:  BL31: Built : 12:35:58, Mar 24 2025
-        [2025-03-28 18:04:42.430]
-        [2025-03-28 18:04:42.430] am62xx-evm login:
+        [2025-07-10 17:37:54.176] NOTICE:  BL31: v2.13.0(release):v2.13.0-240-gd90bb650fe-dirty
+        [2025-07-10 17:37:41.176] NOTICE:  BL31: Built : 21:37:18, Jun 23 2025
+        [2025-07-10 17:37:42.972]
+        [2025-07-10 17:37:42.972] am62xx-evm login:
 
     +-----------------+-----------+
     |      Stage      | Time (ms) |
@@ -613,13 +613,13 @@ To measure the instance when the filesystem starts, navigate to :file:`init/main
     +-----------------+-----------+
     |       ROM       |     30    |
     +-----------------+-----------+
-    |       SBL       |    188    |
+    |       SBL       |    186    |
     +-----------------+-----------+
-    |  Linux Kernel   |    587    |
+    |  Linux Kernel   |    548    |
     +-----------------+-----------+
-    |     Tiny FS     |    262    |
+    |     Tiny FS     |    248    |
     +-----------------+-----------+
-    |           Total |   1082    |
+    |           Total |   1027    |
     +-----------------+-----------+
 
 Bootloader loads HSM binary (9KB), MCU/DSP image (50KB) and Kernel+FS image (22MB) in the above measurements
