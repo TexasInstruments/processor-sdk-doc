@@ -9,7 +9,7 @@ directories and files
 
 .. ifconfig:: CONFIG_sdk in ('SITARA')
 
-   .. ifconfig:: CONFIG_part_variant in ('AM335X', 'AM437X', 'AM57X')
+   .. ifconfig:: CONFIG_part_variant in ('AM335X', 'AM437X')
 
       .. code-block:: console
 
@@ -26,6 +26,24 @@ directories and files
          ├── manifest/
          ├── Rules.make
          └── setup.sh*
+.. ifconfig:: CONFIG_part_variant in ('AM57X')
+
+    .. code-block:: console
+
+        ./
+        ├── bin/
+        ├── board-support/
+        ├── example-applications/
+        ├── filesystem/
+        ├── licenses/
+        ├── linux-devkit/
+        ├── Makefile
+        ├── makerules/
+        ├── manifest/
+        ├── Rules.make
+        ├── setup.sh*
+        └── yocto-build/
+
 
    .. ifconfig:: CONFIG_part_variant not in ('AM335X', 'AM437X', 'AM57X', 'AM62LX')
 

@@ -9,12 +9,12 @@ Boot Sequence
     Please refer back to the particular U-boot component branch and version information for this release:
     :ref:`u-boot-release-notes`
 
-.. ifconfig:: CONFIG_part_family in ('General_family')
+.. ifconfig:: CONFIG_part_family in ('General_family', 'AM57X_family')
 
     .. rubric:: Introduction
        :name: introduction-boot-sequence
 
-    This page describes the boot sequence of an OMAP3 EVM.
+    This page describes the boot sequence of an OMAP3 and AM57X EVM. In this page, OMAP3 EVM is used for OMAP3 and AM57 EVM.
 
     .. rubric:: General Boot Sequence (Linux system)
        :name: general-boot-sequence-linux-system
@@ -118,22 +118,18 @@ Boot Sequence
 
     ::
 
-        U-Boot 2009.11 (May 06 2010 - 16:57:54)
+        U-Boot 2023.04-gc1c2bdf272 (Nov 30 2023 - 18:17:44 +0000)
 
-        OMAP34xx/35xx-GP ES1.0, CPU-OPP2 L3-165MHz
-        OMAP3 EVM board + LPDDR/NAND
-        I2C: ready
-        DRAM: 128 MB
-        NAND: 256 MiB
-        *** Warning - bad CRC or NAND, using default environment
+        CPU  : DRA752-GP ES2.0
+        Model: TI AM5728 BeagleBoard-X15
+        Board: AM572x EVM REV A.3A
+        DRAM:  2 GiB
+        Core:  65 devices, 21 uclasses, devicetree: separate
+        MMC:   OMAP SD/MMC: 0, OMAP SD/MMC: 1
+        *** Warning - bad env area, using default environment
 
-        In: serial
-        Out: serial
-        Err: serial
-        Read back SMSC id 0x92200000
-        Die ID #731c0000000000000156087c0a023021
-        Net: smc911x-0
-        Hit any key to stop autoboot: 0
+        Net:   eth2: ethernet@48484000
+        Hit any key to stop autoboot:  0
 
     The default environment is designed to boot the Linux system from the SD
     card, so it is not necessary to stop the boot process.  And the next
