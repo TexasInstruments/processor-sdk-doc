@@ -16,6 +16,8 @@ This user guide applies to kernel v4.19 and higher.
    :name: supported-devices-ufs
 
 -  J721E EVM
+-  J742S2 EVM
+-  J784S4 EVM
 
 .. rubric:: Hardware features
    :name: hardware-features-ufs
@@ -265,8 +267,8 @@ device using:
  re-provisioned or re-partitioned. Also, this setup is non-volatile and
  persists across Power-On-Resets and needs to be done only once.
 
-For J721E EVM, pre populated configuration descriptor binary file can be
-found below. So, to provision UFS flash on J721e EVM:
+EVM users can find the pre-populated configuration descriptor binary
+file at the following link. To provision UFS flash on EVM:
 
 - Download the :download:`file </files/config_desc_data_ind_0>`
 - Execute below command to flash descriptor and reboot the board to see
