@@ -42,21 +42,24 @@ Note for AM57x and DRA7x platforms:
     U-Boot # fatload mmc 0 ${loadaddr} zImage
     U-Boot # sf write ${loadaddr} ${spisrcaddr} ${filesize}
 
-Note for Keystone-2 (K2H/K/E/L/G) platforms:
 
--  From the U-Boot build, the **u-boot-spi.gph** file is the one to be
-   written.
--  We load the file from a tftp server via netowrk in this example.
--  The series commands burns the u-boot image to the SPI NOR flash
+.. ifconfig:: CONFIG_part_family not in ('AM57X_family')
 
-::
+   Note for Keystone-2 (K2H/K/E/L/G) platforms:
 
-    U-Boot # env default -f -a
-    U-Boot # setenv serverip <ip address of tftp server>
-    U-Boot # setenv tftp_root <tftp root directory>
-    U-Boot # setenv name_uboot u-boot-spi.gph
-    U-Boot # run get_uboot_net
-    U-Boot # run burn_uboot_spi
+   -  From the U-Boot build, the **u-boot-spi.gph** file is the one to be
+      written.
+   -  We load the file from a tftp server via netowrk in this example.
+   -  The series commands burns the u-boot image to the SPI NOR flash
+
+   ::
+
+      U-Boot # env default -f -a
+      U-Boot # setenv serverip <ip address of tftp server>
+      U-Boot # setenv tftp_root <tftp root directory>
+      U-Boot # setenv name_uboot u-boot-spi.gph
+      U-Boot # run get_uboot_net
+      U-Boot # run burn_uboot_spi
 
 |
 

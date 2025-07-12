@@ -87,11 +87,13 @@ controllers work only in master mode.
    |               | 1x OSPI NAND | :file:`drivers/spi/cadence_qspi.c` |
    +---------------+--------------+------------------------------------+
 
-.. note::
+.. ifconfig:: CONFIG_part_variant not in ('AM57X')
 
-    Not all OSPI flashes can be supported. Users are recommended to check
-    whether or not the OSPI flash part chosen for custom board designs meets all
-    the criteria listed at https://e2e.ti.com/support/processors/f/791/t/946418
+   .. note::
+
+      Not all OSPI flashes can be supported. Users are recommended to check
+      whether or not the OSPI flash part chosen for custom board designs meets all
+      the criteria listed at https://e2e.ti.com/support/processors/f/791/t/946418
 
 .. rubric:: Driver Features
 
