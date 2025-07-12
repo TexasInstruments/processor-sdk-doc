@@ -15,6 +15,7 @@ linux/Overview/GCC_ToolChain
 
 devices/AM64X/linux/Release_Specific
 devices/AM64X/linux/Release_Specific_Release_Notes
+devices/AM64X/linux/Release_Specific_Build_Sheet
 devices/AM64X/linux/Release_Specific_Yocto_layer_Configuration
 devices/AM64X/linux/Release_Specific_Migration_Guide
 devices/AM64X/linux/Release_Specific_Kernel_Performance_Guide
