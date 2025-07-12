@@ -45,7 +45,6 @@ installed at the following location:
     ├── docs
     ├── example-applications
     ├── filesystem
-    ├── ipc-build.txt
     ├── linux-devkit
     ├── Makefile
     ├── Rules.make
