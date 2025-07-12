@@ -94,24 +94,21 @@ suggestions at `E2E <https://e2e.ti.com/>`__.
         -
 
 
-.. ifconfig:: CONFIG_sdk in ('SITARA')
+.. ifconfig:: CONFIG_part_variant in ('AM64X')
 
-   .. ifconfig:: CONFIG_part_variant not in ('AM62LX', 'AM62X', 'AM62AX', 'AM62PX', 'AM335X', 'AM437X', 'AM65X')
+   .. list-table::
+      :header-rows: 1
 
-      .. list-table::
-         :header-rows: 1
-
-         * - PRU-ICSS / PRU_ICSSG Protocols
-           -
-           -
-           -
-         * - :ref:`DUAL_EMAC <industrial-protocols-dual-emac>`
-           - :ref:`HSR_PRP <industrial-protocols-hsr-prp>`
-           - :ref:`PTP <industrial-protocols-ptp>`
-           - :ref:`RSTP <industrial-protocols-rstp>`
-         * - :ref:`CCLINK <industrial-protocols-cclink>`
-           - :ref:`SORTE <industrial-protocols-sorte>`
-           - :ref:`OPC/UA <industrial-protocols-opcua>`
-           -
-
+      * - PRU-ICSS / PRU_ICSSG Protocols
+        -
+        -
+        -
+      * - :ref:`DUAL_EMAC <industrial-protocols-dual-emac>`
+        - :ref:`HSR_PRP <industrial-protocols-hsr-prp>`
+        - :ref:`PTP <industrial-protocols-ptp>`
+        - :ref:`RSTP <industrial-protocols-rstp>`
+      * - :ref:`CCLINK <industrial-protocols-cclink>`
+        - :ref:`SORTE <industrial-protocols-sorte>`
+        - :ref:`OPC/UA <industrial-protocols-opcua>`
+        -
 
