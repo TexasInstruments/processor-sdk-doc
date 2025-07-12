@@ -22,11 +22,10 @@ Replacement Variables
 '__SDK_INSTALL_FILE__'           : 'ti-processor-sdk-linux-am57xx-evm-<version>-Linux-x86-Install.bin'
 '__SDK_INSTALL_DIR__'            : 'ti-processor-sdk-linux-am57xx-evm-<version>'
 '__SDK_DOWNLOAD_URL__'           : '`AM57X-Linux-SDK-Download-page <http://software-dl.ti.com/processor-sdk-linux/esd/AM57X/latest/index_FDS.html>`__'
-'__LINUX_UBUNTU_VERSION_LONG__'  : '18.04 (64-bit)'
-'__LINUX_UBUNTU_VERSION_SHORT__' : '18.04'
+'__LINUX_UBUNTU_VERSION_LONG__'  : '22.04 (64-bit)'
+'__LINUX_UBUNTU_VERSION_SHORT__' : '22.04'
 '__OPTEE_PLATFORM_FLAVOR__'      : 'am57xx'
-'__RTOS_UBUNTU_VERSION_LONG__'   : '18.04 (64-bit)'
-'__WINDOWS_SUPPORTED_LONG__'     : '7 (64-bit)'
+'__RTOS_UBUNTU_VERSION_LONG__'   : '22.04'
 '__FEATURINGMATRIX__'            : \
 '__SYSFW_CORE_NAME__'            : \
 '__IMAGE_TYPE__'                 : 'default'
