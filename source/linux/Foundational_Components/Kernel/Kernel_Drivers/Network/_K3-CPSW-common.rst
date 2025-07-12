@@ -12,6 +12,50 @@ The network interface can be configured automatically depending on root file sys
 
    ifconfig eth0 <ip> netmask <mask> up
 
+.. ifconfig:: CONFIG_part_variant in ('AM64X')
+
+   .. note::
+
+      The DP83869 PHY (associated with the eth1 CPSW interface for AM642-EVM) is not built into the kernel image. It is not available during early boot as a result, and must be brought up by adding a systemctl service as below:
+
+   Assuming the root directory of the file system is ``/``.
+
+   Create a service file named ``network_up.service`` in the directory ``/etc/systemd/system/`` and add the following into that file:
+
+   .. code-block:: console
+
+      [Unit]
+      Description=Service to bring up network interfaces
+
+      [Service]
+      ExecStart=/bin/sh /usr/bin/network_up.sh
+
+      [Install]
+      WantedBy=default.target
+
+   Create a shell script file named ``network_up.sh`` in the directory ``/usr/bin/`` and add the following into that file:
+
+   .. code-block:: console
+
+      #!/bin/sh
+      ETH1_DIR=/sys/class/net/eth1
+      while [ ! -d "$ETH1_DIR" ]
+      do
+         sleep 1;
+      done
+      if_state=$(ifconfig eth1 up |& grep ERROR)
+      while [ -n $if_state ]
+      do
+         if_state=$(ifconfig eth1 up |& grep ERROR)
+         sleep 1;
+      done
+
+   Now run the below command to enable the service, and from the next boot, interface will be UP automatically.
+
+   .. code-block:: console
+
+      systemctl enable network_up.service
+
 .. rubric:: Get driver information
    :name: k3-ethtool-i-driver
 
