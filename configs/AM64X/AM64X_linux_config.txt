@@ -17,7 +17,7 @@ Replacement Variables
 '__PART_FAMILY_DEVICE_NAMES__'   : 'AM64x'
 '__PRODUCT_LINE_NAME__'          : 'Sitara MPU'
 '__SDK_BUILD_MACHINE__'          : 'am64xx-evm'
-'__SDK_FULL_NAME__'              : 'Processor SDK'
+'__SDK_FULL_NAME__'              : 'Processor SDK AM64x'
 '__SDK_SHORT_NAME__'             : 'PSDK'
 '__SDK_INSTALL_FILE__'           : 'ti-processor-sdk-linux-am64xx-evm-<version>-Linux-x86-Install.bin'
 '__SDK_INSTALL_DIR__'            : 'ti-processor-sdk-linux-am64xx-evm-<version>'

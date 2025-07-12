@@ -5,6 +5,7 @@ devices/AM62DX/linux/Overview/Download_and_Install_the_SDK
 linux/Overview/Run_Setup_Scripts
 devices/AM62DX/linux/Release_Specific
 devices/AM62DX/linux/Release_Specific_Release_Notes
+devices/AM62DX/linux/Release_Specific_Build_Sheet
 devices/AM62DX/linux/Release_Specific_Yocto_layer_Configuration
 devices/AM62DX/linux/Release_Specific_Migration_Guide
 devices/AM62DX/linux/Release_Specific_Kernel_Performance_Guide
