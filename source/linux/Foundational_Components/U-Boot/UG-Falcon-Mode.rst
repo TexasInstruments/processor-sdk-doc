@@ -47,24 +47,22 @@ TI-SPL:
 =======
 
 Falcon mode makes use of a cut down variant of the tispl binary called
-``tifalcon.bin`` with the Cortex-A SPL and it's corresponding DTB removed.
-This file is deployed to the boot directory inside rootfs so it can be picked by
-the R5 SPL at boot time.
+:file:`tifalcon.bin` with the Cortex-A SPL and its corresponding device-tree
+removed. This file is deployed to the boot directory inside the root filesystem
+so it can be picked by the R5 SPL at boot time.
 
 R5 SPL:
 =======
 
-The R5 SPL is used for loading the kernel ``fitImage`` and ``tifalcon.bin``
-file, though the ``fitImage`` for falcon boot is signed by using an x509
-certificate with TIFS keys instead of making use of signature nodes and keys
-present in the DT. This allows for faster authentication since TIFS uses the
-security accelerator for authentication, which is much faster than doing the
-same on R5 core.
+The R5 SPL loads the kernel :file:`fitImage` and :file:`tifalcon.bin` file. An
+x509 certificate with TIFS keys verifies the :file:`fitImage` for falcon boot
+instead of making use of signature nodes and keys present in the DT. This allows
+for faster authentication since TIFS uses the security accelerator for
+authentication, which is much faster than doing the same on R5 core.
 
-This support depends on the U-Boot's ``k3_r5_falcon.config`` fragment, which is
-built alongside the standard R5 defconfig when ``ti-falcon`` is enabled. This
-updates the R5 memory map at U-Boot SPL stage to the following:
-
+This support is present alongside the standard R5 ``defconfig`` when ``ti-falcon``
+is enabled due to U-Boot's :file:`k3_r5_falcon.config` fragment. This updates
+the R5 memory map at U-Boot SPL stage to the following:
 
 .. code-block::
 
@@ -99,10 +97,10 @@ updates the R5 memory map at U-Boot SPL stage to the following:
 fitImage:
 =========
 
-The resulting ``fitImage`` file in the boot directory of rootfs is produced
-with the constituent binaries pre-signed with x509 certificates. This file is
-authenticated from TIFS at boot time, which allows for a lower boot time than
-authenticating on the R5 core.
+The system produces the resulting :file:`fitImage` file in the boot directory
+of the root filesystem. This file has its constituent binaries pre-signed with
+x509 certificates. At boot time, TIFS authenticates this file, which allows for
+a lower boot time compared to authenticating on the R5 core.
 
 *******************
 Extra Configuration
@@ -113,13 +111,13 @@ OSPI boot:
 
 .. ifconfig:: CONFIG_part_variant not in ('AM62AX')
 
-   For OSPI boot, the ``tiboot3.bin`` and ``tifalcon.bin`` files should be
+   For OSPI boot, the :file:`tiboot3.bin` and :file:`tifalcon.bin` files should be
    flashed to the same addresses in flash as regular boot flow but the
-   ``fitImage`` is read from the rootfs's boot directory. The MMC device is
-   selected by the ``mmcdev`` env variable for R5 SPL.
+   :file:`fitImage` is read from the root filesystem's boot directory. The MMC
+   device is selected by the ``mmcdev`` env variable for R5 SPL.
 
-   Below U-Boot commands can be used to download ``tiboot3.bin`` and
-   ``tifalcon.bin`` over tftp and then flash those to OSPI at their respective
+   Below U-Boot commands can be used to download :file:`tiboot3.bin` and
+   :file:`tifalcon.bin` over tftp and then flash those to OSPI at their respective
    addresses.
 
    .. code-block:: console
@@ -137,10 +135,11 @@ OSPI boot:
 eMMC Boot:
 ==========
 
-In eMMC boot mode, the ``tiboot3.bin`` file should be flashed to the hardware
-boot partition whereas ``tifalcon.bin`` and the ``fitImage`` are read from
-the rootfs inside UDA. Use the U-Boot commands below to set the correct boot
-partition and write ``tiboot3.bin`` to the correct offset.
+In eMMC boot mode, the :file:`tiboot3.bin` file should be flashed to the
+hardware boot partition whereas :file:`tifalcon.bin` and the :file:`fitImage`
+are read from the root filesystem inside UDA. Use the U-Boot commands below
+to set the correct boot partition and write :file:`tiboot3.bin` to the correct
+offset.
 
 .. code-block:: console
 
@@ -166,10 +165,10 @@ Clone the `core-secdev-k3 source <https://git.ti.com/cgit/security-development-t
 
    $ git clone https://git.ti.com/cgit/security-development-tools/core-secdev-k3
 
-Copy the required kernel image renamed to ``Image`` and the DTB renamed to
-``falcon.dtb`` inside the core-secdev-k3 source directory.
+Copy the required kernel image renamed to :file:`Image` and the device-tree
+renamed to :file:`falcon.dtb` inside the `core-secdev-k3` source directory.
 
-Copy the following contents to a file named ``fitImage.its`` inside
+Copy the following contents to a file named :file:`fitImage.its` inside
 core-secdev-k3 source:
 
 .. code-block:: dts
@@ -212,8 +211,8 @@ core-secdev-k3 source:
        };
    };
 
-Sign the kernel and dtb with ``secure-binary-image.sh`` and create the
-``fitImage`` by using mkimage:
+Sign the kernel and device-tree with :file:`secure-binary-image.sh` and create the
+:file:`fitImage` by using ``mkimage``:
 
 .. code-block:: console
 
@@ -226,20 +225,20 @@ Sign the kernel and dtb with ``secure-binary-image.sh`` and create the
 Non-Yocto Users:
 ****************
 
-Following are the steps to build ``tiboot3.bin``, ``tifalcon.bin`` and the
-``fitImage`` required for falcon mode:
+Following are the steps to build :file:`tiboot3.bin`, :file:`tifalcon.bin` and the
+:file:`fitImage` required for falcon mode:
 
 #. For :ref:`ATF build <foundational-components-atf>`, use the following
    arguments to update the ATF's jump address for the kernel and the
    device-tree: ``PRELOADED_BL33_BASE=0x82000000 K3_HW_CONFIG_BASE=0x88000000``.
 
 #. For :ref:`R5 U-Boot build <Build-U-Boot-label>`, use the
-   ``k3_r5_falcon.config`` fragment to enable flacon support at the R5 SPL
+   :file:`k3_r5_falcon.config` fragment to enable flacon support at the R5 SPL
    stage.
 
 #. Refer to the :ref:`fitImage creation step
    <u-boot_falcon_mode_fitImage_creation>` above for preparing a bootable
-   ``fitImage`` with an appropriate kernel and DTB.
+   :file:`fitImage` with an appropriate kernel and device-tree.
 
 #. Copy the files generated to correct path on SD/eMMC as in the table below:
 
@@ -252,26 +251,26 @@ Following are the steps to build ``tiboot3.bin``, ``tifalcon.bin`` and the
         - Partition
         - Description
 
-      * - ``tiboot3.bin``
-        - ``/tiboot3.bin``
+      * - :file:`tiboot3.bin`
+        - :file:`/tiboot3.bin`
         - boot (fat)
         - R5 SPL with falcon support
 
-      * - ``tifalcon.bin``
-        - ``/boot/tifalcon.bin``
-        - rootfs (ext4)
-        - tispl binary without SPL for the A core and DTB
+      * - :file:`tifalcon.bin`
+        - :file:`/boot/tifalcon.bin`
+        - root filesystem (ext4)
+        - tispl binary without SPL for the A core and device-tree
 
-      * - ``fitImage``
-        - ``/boot/fitImage``
-        - rootfs (ext4)
-        - kernel and dtb fitImage with pre-signed binaries
+      * - :file:`fitImage`
+        - :file:`/boot/fitImage`
+        - root filesystem (ext4)
+        - :file:`fitImage` with pre-signed kernel and device-tree
 
 .. note::
 
-   The ``tifalcon.bin`` binary is generated by default for all falcon
+   The :file:`tifalcon.bin` binary is generated by default for all falcon
    supported platforms at the A-Core U-Boot build step and can be found
-   alongside the existing ``tispl.bin`` file in U-Boot build's output directory.
+   alongside the existing :file:`tispl.bin` file in U-Boot build's output directory.
 
 **********************
 Boot time comparisons:
