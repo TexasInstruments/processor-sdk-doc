@@ -377,6 +377,7 @@ Linux Known Issues
   "","LCPD-43465","TIDEC_GST_filesink_rush_hour_p1920x1080_cbr_10mbps.264 test fails","j721s2-evm,j742s2_evm-fs,j784s4-evm",""
   "","LCPD-43464","TIDEC_GST_filesink_pedestrian_1920x1080_vbr_10mbps.264 fails","j721s2-evm,j742s2_evm-fs,j784s4-evm",""
   "`EXT_EP-12394 <https://sir.ext.ti.com/jira/browse/EXT_EP-12394>`_","LCPD-43463","OpenCL-CTS Failures","am62pxx_sk-fs,am62xx_lp_sk-fs,am62xx_sk-fs,am68_sk-fs,am69_sk-fs,j721e-idk-gw,j721s2-evm,j722s_evm-fs,j742s2_evm-fs,j784s4-evm",""
+  "`EXT_EP-12395 <https://sir.ext.ti.com/jira/browse/EXT_EP-12395>`_","LCPD-43661","OpenCL-CTS Failures","j721e-idk-gw",""
   "","LCPD-43419","DFU boot fails on J784S4","j784s4-evm",""
   "","LCPD-43411","lsof: Kernel abort : Causing uart unit tests to fail","am62pxx_sk-fs,am62xx_lp_sk-fs,am62xx_sk-fs,j722s_evm-fs",""
   "","LCPD-43407","IPC Graceful Shutdown on C7x cores","j721e-idk-gw,j721s2-evm,j722s_evm-fs,j784s4-evm",""
