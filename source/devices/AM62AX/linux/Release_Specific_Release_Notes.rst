@@ -53,7 +53,7 @@ What's new
 
   - RT Kernel : Real-Time Linux Interrupt Latency numbers here :ref:`RT Interrupt Latencies <RT-linux-performance>`
   - Support for streaming from OV2312 camera with `DS90UB954-Q1EVM <https://www.ti.com/tool/DS90UB954-Q1EVM>`_
-  - Power Management: :ref:`I/O Only Plus DDR <pm_io_only_plus_ddr>` mode
+  - How standby power mode works - :ref:`CPUIdle Documentation <cpuidle-guide>`
 
 **Component version:**
 

@@ -56,6 +56,7 @@ What's new
   - Snagfactory Support - :ref:`Snagfactory Tool <Flash-via-Fastboot>`
   - Support for M2 CC33xx cards on Debian - `How to Enable M.2-CC33x1 in Linux <https://software-dl.ti.com/processor-sdk-linux/esd/AM62X/10_01_10_04_Debian/exports/docs/linux/How_to_Guides/Target/How_To_Enable_M2CC3301_in_linux.html>`__
   - How to Enable PRU RPMsg - `Read FAQ <https://e2e.ti.com/support/processors-group/processors/f/791/t/1494495>`__
+  - How standby power mode works - :ref:`CPUIdle Documentation <cpuidle-guide>`
 
 **Component version:**
 

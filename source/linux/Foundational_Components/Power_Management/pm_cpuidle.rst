@@ -1,3 +1,5 @@
+.. _cpuidle-guide:
+
 #######
 CPUIdle
 #######
