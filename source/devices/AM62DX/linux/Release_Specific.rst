@@ -5,6 +5,7 @@ Release Specific
 .. toctree::
    :maxdepth: 5
 
+   Release_Specific_Release_Notes
    Release_Specific_Build_Sheet
    Release_Specific_Yocto_layer_Configuration
    Release_Specific_Migration_Guide
