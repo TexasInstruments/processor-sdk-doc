@@ -31,6 +31,20 @@ transition to the selected state.
 
     .. rubric:: Enable Standby
 
+    .. attention::
+       
+       For this release, in order to enable Standby, it is required for this
+       `patch <https://github.com/ARM-software/arm-trusted-firmware/commit/7f5ff95b39cc64ea70206fa58fd3e5aae0c33e7d>`__
+       to be applied to ARM Trusted Firmware.
+
+       After applying the patch, ATF will need to be re-built and then
+       re-packaged in the :file:`tispl.bin` file to ensure the changes take
+       effect. U-Boot provides the :file:`tispl.bin` file, so U-Boot will need
+       to be re-built after TF-A. To learn more about TF-A and how to rebuild
+       it, please refer to :ref:`foundational-components-atf`. For rebuilding
+       U-Boot and generating the new :file:`tispl.bin` follow
+       :ref:`Build-U-Boot-label`.
+
     In order to enable Standby the `k3-am62x-sk-lpm-standby.dtso
     <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-standby.dtso?h=11.01.05>`__
     overlay should be applied. Refer to :ref:`How to enable DT overlays
