@@ -1,3 +1,7 @@
+.. note::
+
+   To list all the network interfaces available on the system, use the command ``ifconfig -a`` or ``ip link show``.
+
 .. rubric:: Bringing Up interface
    :name: k3-bringing-up-interfaces
 
