@@ -24,14 +24,17 @@ frequency. The following governors are available within the kernel:
 -  **userspace**: This governor allows the user to set the desired OPP
    using any value found within scaling\_available\_frequencies by
    echoing it into scaling\_setspeed.
+-  **schedutil**: This governor uses the Linux kernel scheduler utilization
+   data to set the frequency.
 
 More in depth documentation about each governor can be found in the
 linux kernel documentation here:
 https://www.kernel.org/doc/Documentation/cpu-freq/governors.txt
 
-By default, cpufreq, the cpufreq driver, and all of the standard
-governors are enabled with the ondemand governor selected as the default
-governor. To make changes, follow the instructions below.
+The kernel enables to cpufreq driver, and the ondemand, performance, and
+userspace governors by default. The kernel enables the conservative and
+powersave governors as modules. To make changes, use the following
+instructions.
 
 .. rubric:: Source Location
 
@@ -51,41 +54,39 @@ Select CPU Power Management from the main menu.
 
 .. code-block:: text
 
-       ...
-       ...
-       Boot options --->
-       CPU Power Management --->
-       Floating point emulation --->
-       ...
+   ...
+   Boot options --->
+   Power management options  --->
+   CPU Power Management --->
+   ACPI (Advanced Configuration and Power Interface) Support  ----
+   ...
 
 Select CPU Frequency Scaling as shown here:
 
 .. code-block:: text
 
-       ...
-       ...
-           CPU Frequency Scaling --->
-       [*] CPU idle PM support
-       ...
+   CPU Idle  --->
+   CPU Frequency scaling  --->
 
 All relevant options are listed below:
 
 .. code-block:: text
 
-        [*] CPU Frequency scaling
-        <*>   CPU frequency translation statistics
-        [*]     CPU frequency translation statistics details
-              Default CPUFreq governor (userspace)  --->
-        <*>   'performance' governor
-        <*>   'powersave' governor
-        -*-   'userspace' governor for userspace frequency scaling
-        <*>   'ondemand' cpufreq policy governor
-        <*>   'conservative' cpufreq governor
-              *** CPU frequency scaling drivers ***
-        <M>   Generic DT based cpufreq driver
-        <M>   Generic DT based cpufreq driver using clk notifiers
-        <*>    Texas Instruments CPUFreq support
-       ...
+   [*] CPU Frequency scaling
+   [*]   CPU frequency transition statistics
+         Default CPUFreq governor (performance)  --->
+   -*-   'performance' governor
+   <M>   'powersave' governor
+   <*>   'userspace' governor for userspace frequency scaling
+   <*>   'ondemand' cpufreq policy governor
+   <M>   'conservative' cpufreq governor
+   [ ]   'schedutil' cpufreq policy governor
+   *** CPU frequency scaling drivers ***
+   <*>   Generic DT based cpufreq driver
+   -*-   Generic DT based cpufreq platdev driver
+   <*>   SCMI based CPUfreq driver
+   [*]   Texas Instruments CPUFreq support
+      ...
 
 .. ifconfig:: CONFIG_part_variant in ('J7200')
 
