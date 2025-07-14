@@ -50,6 +50,9 @@ What's new
   - Important Bug Fixes on top of Processor SDK 10.01.10.04 Release
   - Review Issue Tracker Section for the new fixes.
 
+- This release adds support for PRP Offload to the ICSSG prueth-driver. This allows to offload PRP functionality
+  to the ICSSG hardware, which helps in reducing load on the A53 cores.
+
 **Key Release References:**
 
   - RT Kernel : Real-Time Linux Interrupt Latency numbers here - :ref:`RT Interrupt Latencies <RT-linux-performance>`
@@ -193,9 +196,15 @@ Issues Resolved
    "EXT_EP-12111","Linux SDK v10.0: TI-added support for W25N01JW SPI NAND breaks other existing Flash support"
    "EXT_EP-12051","AM64x: Linux hangs on repetitive probe/removal of gadget zero"
    "EXT_EP-12071","sdk-doc: missing SK-AM64B information in CDNS3 USB page"
+   "EXT_EP-12336","Last 1B of payload missing in forwarding scenario"
    "EXT_EP-12337","ICSSG: TAPRIO - Firmware can’t handle base-time which is not a multiple of cycle-time."
    "EXT_EP-12338","ICSSG: PA_STATS are not sequenced properly"
    "EXT_EP-12339","Switch/MAC/HSR firmware does not drop corrupted packets"
+   "EXT_EP-12715","Local injection (TX) - Transmission failure due ""TX Pkt not available"""
+   "EXT_EP-12716","PRU - Task Manager disable during firmware init"
+   "EXT_EP-12717","Packets reception failure: 10Mbps speed"
+   "EXT_EP-12718","Non-recoverable TX underflow with Bidirectional traffic in 100M MII mode"
+   "EXT_EP-12719","Throughput drop: Software buffer pool implementation @1G speed"
 
 
 Issues Open
@@ -209,5 +218,4 @@ Issues Open
    "EXT_EP-12300","ICSSG: Ethernet: Promiscuous mode is always enabled in bridge mode"
    "EXT_EP-12075","U-boot gets stuck when DDR size changed to 512 MB"
    "EXT_EP-12060","AM64x: Lower core count on variant devices no supported"
-   "EXT_EP-12336","Last 1B of payload missing in forwarding scenario"
 
