@@ -18,10 +18,6 @@ transition to the selected state.
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX', 'J722S')
 
-    The A53 cores on |__PART_FAMILY_DEVICE_NAMES__| currently support only the Wait for Interrupt (WFI)
-    C-state. This state gets enabled by default in the CPUIdle driver without
-    requiring any additional DT configuration.
-
     .. rubric:: Standby Mode
 
     On |__PART_FAMILY_DEVICE_NAMES__| platforms, "Standby" mode is implemented through the Linux CPUIdle
@@ -32,6 +28,14 @@ transition to the selected state.
 
     When your device appears inactive, it is actually cycling in and out of this standby state
     many times per second, seamlessly managing power while remaining responsive.
+
+    .. rubric:: Enable Standby
+
+    In order to enable Standby the `k3-am62x-sk-lpm-standby.dtso
+    <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-standby.dtso?h=11.01.05>`__
+    overlay should be applied. Refer to :ref:`How to enable DT overlays
+    <howto_dt_overlays>` for more details. More information on what the overlay
+    does is in the :ref:`linux-device-tree-label` section.
 
     .. rubric:: Standby Implementation Architecture
 
@@ -101,6 +105,37 @@ transition to the selected state.
     **TF-A Side** (not part of Linux kernel):
 
     - :file:`plat/ti/k3/common/k3_psci.c` - PSCI implementation for K3 platforms
+
+    .. _linux-device-tree-label:
+
+    .. rubric:: Linux Device Tree Implementation
+
+    In order to implement Standby in Linux, an idle-states node has to be added
+    and then referenced by the CPU node. The `k3-am62x-sk-lpm-standby.dtso
+    <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-standby.dtso?h=11.01.05>`__
+    can be used as a reference.
+
+    .. code-block:: dts
+
+       idle-states {
+                entry-method = "psci";
+
+                CPU_SLEEP_0: stby {
+                        compatible = "arm,idle-state";
+                        idle-state-name = "standby";
+                        arm,psci-suspend-param = <0x00000001>;
+                        entry-latency-us = <100>;
+                        exit-latency-us = <50>;
+                        min-residency-us = <1000>;
+                };
+        };
+
+
+    The ``entry-latency-us``, ``exit-latency-us``, and ``min-residency-us``
+    properties are explained in depth `here
+    <https://www.kernel.org/doc/Documentation/devicetree/bindings/arm/idle-states.txt>`__.
+    The ``min-residency-us`` can be fine tuned to change the minimum amount of
+    time Linux is in idle which can change the power savings.
 
     .. rubric:: Driver Usage
 
