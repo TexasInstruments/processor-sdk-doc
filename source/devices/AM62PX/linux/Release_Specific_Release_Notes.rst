@@ -167,7 +167,7 @@ Yocto
 .. rubric:: meta-tisdk
    :name: meta-tisdk
 
-| Head Commit: 60969f56929e61855d2c581a329e98d8428fc35d meta-ti-foundational: recipes-demos: dsp offload: update SRCREV
+| Head Commit: 3265fc78d1dddd1642c112a2f3f42507bfa176d9 meta-ti-foundational: ti-apps-launcher: Update SRCREV
 
 | Clone: https://github.com/TexasInstruments/meta-tisdk.git
 | Branch: scarthgap
