@@ -83,26 +83,38 @@ For AM62L-EVM:
 Connect to Wi-Fi
 ****************
 
-Using scripts provided in the SDK makes connecting to an Access Point or router straightforward.
-The following are steps to connect to a WPA password-secured Access Point.
-
 .. ifconfig:: CONFIG_sdk in ('SITARA')
 
-    .. code-block:: console
+   Using scripts provided in the SDK makes connecting to an Access Point or router straightforward.
+   The following are steps to connect to a WPA password-secured Access Point.
 
-        cd /usr/share/cc33xx
-        ./sta_start.sh
-        ./sta_connect.sh -s WPA-PSK -n <SSID> -p <PASSWORD>
-        udhcpc -i wlan0
+   .. code-block:: console
+
+      cd /usr/share/cc33xx
+      ./sta_start.sh
+      ./sta_connect.sh -s WPA-PSK -n <SSID> -p <PASSWORD>
+      udhcpc -i wlan0
 
 .. ifconfig:: CONFIG_sdk in ('DebianSDK')
 
-    .. code-block:: console
+   TI's Debian SDK uses NetworkManager to connect to wifi. To connect, ensure that NetworkManager.service is running
+   with the following command:
 
-        cd /usr/share/cc33xx
-        bash ./sta_start.sh
-        bash ./sta_connect.sh -s WPA-PSK -n <SSID> -p <PASSWORD>
-        udhcpc -i wlan0
+   .. code-block:: console
+
+      systemctl status NetworkManager.service
+
+   It should show status as "active". If it isn't active, activate it by running the following:
+
+   .. code-block:: console
+
+      systemctl restart NetworkManager.service
+
+   Then, to actually connect to wifi, use `nmcli` as follows:
+
+   .. code-block:: console
+
+      nmcli device wifi connect "<SSID>" password "<password>"
 
 For more information on the Wi-Fi capabilities of the CC33xx devices, please
 see the documentation that can be found in the `CC33xx SDK <https://www.ti.com/tool/CC33XX-SOFTWARE>`_.
