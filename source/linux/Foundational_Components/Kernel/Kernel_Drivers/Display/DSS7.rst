@@ -309,7 +309,7 @@ Note: this is not a comprehensive list of features supported/not supported, and 
 .. ifconfig:: CONFIG_part_variant in ('AM62PX', 'J722S')
 
  More detailed description of these properties can be found at:
- `Display device-tree file <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/Documentation/devicetree/bindings/display/ti/ti,am65x-dss.yaml?h=09.01.00.008>`__
+ :ti-linux-kernel-binding:`Display device-tree file <display/ti/ti,am65x-dss.yaml`
  Also there is a how-to guide available for dss sharing which walks through different examples for resource paritioning using these device-tree properties :
  `How to enable dss sharing between remote core and Linux <../../../../How_to_Guides/Target/How_to_enable_display_sharing_between_remotecore_and_Linux.html>`__
 

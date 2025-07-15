@@ -163,7 +163,7 @@ R5F subsystems are operating in Split mode. If an R5F subsystem is run in
 Single-CPU mode, then R5F Core0 continues to use memory carveouts. However,
 R5F Core1 is unused in Single-CPU mode, so the Core1 memory carveouts can be
 reallocated to other cores. See the devicetree bindings documentation for more
-details: `Documentation/devicetree/bindings/remoteproc/ti,k3-r5f-rproc.yaml <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/Documentation/devicetree/bindings/remoteproc/ti,k3-r5f-rproc.yaml?h=ti-linux-5.10.y>`__
+details: :ti-linux-kernel-binding:`remoteproc/ti,k3-r5f-rproc.yaml`
 
 ::
 

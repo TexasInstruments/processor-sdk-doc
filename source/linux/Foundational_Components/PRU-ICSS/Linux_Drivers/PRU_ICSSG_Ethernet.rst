@@ -81,9 +81,8 @@ Device tree bindings
 
 The DT bindings description can be found at:
 
-| `Documentation/devicetree/bindings/net/ti,icssg-prueth.yaml <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/Documentation/devicetree/bindings/net/ti,icssg-prueth.yaml?h=ti-linux-6.6.y>`__
-| `Documentation/devicetree/bindings/net/ti,davinci-mdio.yaml <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/Documentation/devicetree/bindings/net/ti,davinci-mdio.yaml?h=ti-linux-6.6.y>`__
-|
+:ti-linux-kernel-binding:`net/ti,icssg-prueth.yaml`
+:ti-linux-kernel-binding:`net/ti,davinci-mdio.yaml`
 
 User guide
 ##########
