@@ -59,18 +59,7 @@ overlay is loaded. Please refer to :ref:`How to enable DT overlays<howto_dt_over
 
 After Linux boots, the MCAN wakeup for Partial I/O is enabled.
 
-.. rubric:: To enable UART wakeup:
-
-.. code-block:: console
-
-   root@<machine>:~# echo enabled > /sys/class/tty/ttyS0/device/power/wakeup
-
-.. note::
-
-   UART wakeup from Partial I/O is currently being debugged on the EVM.
-
-With at least one of the wakeup sources enabled, Partial I/O mode can be
-entered with the following command:
+Enter Partial I/O mode with the following command:
 
 .. code-block:: console
 
@@ -88,11 +77,6 @@ The system has entered Partial I/O and can only be woken up with an
 activity on the I/O pin programmed for wakeup. For example, if mcu_mcan0
 wakeup was enabled, grounding Pin 22 of J8 MCU Header will wakeup the
 system and it will go through a normal Linux boot process.
-
-.. note::
-
-   The capability to detect whether system is resuming from Partial I/O
-   or doing a normal cold boot will be added in future release.
 
 .. _pm_io_only_plus_ddr:
 
@@ -322,27 +306,6 @@ To enter MCU Only mode, set :code:`100 msec` resume latency for CPU0 in Linux:
 .. code-block:: console
 
    root@<machine>:~# echo 100000 > /sys/devices/system/cpu/cpu0/power/pm_qos_resume_latency_us
-
-.. important::
-
-   Note that the step below to set "enabled" won't work for current SDK
-   and will be supported in future release
-
-.. ifconfig:: CONFIG_part_variant in ('AM62X')
-
-   To enter MCU Only mode, enable MCU M4 core as a wakeup source in linux:
-
-   .. code-block:: console
-
-      root@am62xx-evm:~# echo enabled > /sys/bus/platform/devices/5000000.m4fss/power/wakeup
-
-.. ifconfig:: CONFIG_part_variant in ('AM62AX', 'AM62PX')
-
-   To enter MCU Only mode, enable MCU R5 core as a wakeup source in linux:
-
-   .. code-block:: console
-
-      root@<machine>:~# echo enabled > /sys/bus/platform/devices/79000000.r5f/power/wakeup
 
 Now, the SoC can be suspended using the following command:
 
