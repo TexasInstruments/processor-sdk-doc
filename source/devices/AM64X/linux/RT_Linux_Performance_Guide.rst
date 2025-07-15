@@ -456,7 +456,7 @@ ICSSG Ethernet Driver
 .. csv-table:: ICSSG TCP Bidirectional Throughput
     :header: "Command Used","am64xx-hsevm: THROUGHPUT (Mbits/sec)","am64xx-hsevm: CPU Load % (LOCAL_CPU_UTIL)"
 
-    "netperf -H 192.168.2.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.2.1 -j -c -C -l 60 -t TCP_MAERTS","889.39 (min 356.03, max 1078.23)","85.19 (min 72.62, max 99.42)"
+    "netperf -H 192.168.2.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.2.1 -j -c -C -l 60 -t TCP_MAERTS","1178","99.98"
 
 
 
@@ -467,7 +467,7 @@ ICSSG Ethernet Driver
 .. csv-table:: ICSSG TCP Bidirectional Throughput Interrupt Pacing
     :header: "Command Used","am64xx-hsevm: THROUGHPUT (Mbits/sec)","am64xx-hsevm: CPU Load % (LOCAL_CPU_UTIL)"
 
-    "netperf -H 192.168.2.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.2.1 -j -c -C -l 60 -t TCP_MAERTS","640.11 (min 185.59, max 1029.32)","55.82 (min 28.49, max 79.66)"
+    "netperf -H 192.168.2.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.2.1 -j -c -C -l 60 -t TCP_MAERTS","1198","99.41"
 
 
 
@@ -476,13 +476,13 @@ ICSSG Ethernet Driver
    :name: udp-egress-throughput-0-loss
 
 .. csv-table:: ICSSG UDP Egress Throughput 0 loss
-    :header: "Frame Size(bytes)","am64xx-hsevm: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am64xx-hsevm: THROUGHPUT (Mbits/sec)","am64xx-hsevm: Packets Per Second (kPPS)","am64xx-hsevm: CPU Load % (LOCAL_CPU_UTIL)"
+    :header: "UDP Datagram Size(bytes)","am64xx-hsevm: THROUGHPUT (Mbits/sec)","am64xx-hsevm: Packets Per Second (kPPS)","am64xx-hsevm: CPU Load % (LOCAL_CPU_UTIL)"
 
-    "64","18.00","13.33 (min 6.27, max 22.35)","55.67 (min 44.00, max 79.00)","68.09 (min 58.78, max 86.60)"
-    "128","82.00","55.06 (min 29.23, max 79.35)","62.20 (min 43.00, max 77.00)","77.28 (min 60.07, max 89.36)"
-    "256","210.00","123.93 (min 70.38, max 154.02)","63.00 (min 42.00, max 75.00)","78.99 (min 58.73, max 89.81)"
-    "1024","978.00","292.51 (min 21.12, max 581.33)","36.75 (min 3.00, max 71.00)","46.82 (min 2.71, max 91.06)"
-    "1518","1472.00","685.55 (min 585.79, max 792.91)","57.25 (min 48.00, max 67.00)","87.26 (min 84.56, max 89.28)"
+    "64","41.45","48.87","77.24"
+    "128","81.40","59.85","76.77"
+    "256","156.24","65.53","76.00"
+    "1024","592.23","69.44","74.74"
+    "1472","834.46","68.89","74.10"
 
 
 
@@ -491,13 +491,13 @@ ICSSG Ethernet Driver
    :name: udp-ingress-throughput-0-loss
 
 .. csv-table:: ICSSG UDP Ingress Throughput 0 loss
-    :header: "Frame Size(bytes)","am64xx-hsevm: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am64xx-hsevm: THROUGHPUT (Mbits/sec)","am64xx-hsevm: Packets Per Second (kPPS)","am64xx-hsevm: CPU Load %"
+    :header: "UDP Datagram Size(bytes)","am64xx-hsevm: THROUGHPUT (Mbits/sec)","am64xx-hsevm: Packets Per Second (kPPS)","am64xx-hsevm: CPU Load %"
 
-    "64","","1.44 (min 1.33, max 1.54)","3.00","0.10"
-    "128","82.00","1.97","3.00","3.07 (min 2.68, max 3.46)"
-    "256","210.00","9.27 (min 8.06, max 10.24)","5.00","3.87 (min 0.20, max 7.68)"
-    "1024","978.00","39.84 (min 37.56, max 40.96)","5.00","5.38 (min 2.89, max 7.92)"
-    "1472","1472.00","167.00 (min 56.52, max 374.79)","14.25 (min 5.00, max 32.00)","17.31 (min 0.25, max 49.37)"
+    "64","1.54","3.00","0.10"
+    "128","4.81","5.00","0.23"
+    "256","10.24","5.00","7.35"
+    "1024","40.14","5.00","3.28"
+    "1472","374.79","32","49.37"
 
 
 
