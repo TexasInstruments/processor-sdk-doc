@@ -1,224 +1,278 @@
 K3 Resource Partitioning Tool
 =============================
 
-Keystone3 Resource Partitioning tool is used for partitioning various system
-level resources to different software components in a multi core SoC.
-This tool is based on Texas Instrument's SysConfig tool.
+The Keystone3 Resource Partitioning tool partitions various system
+resources among different software components in a multi-core SoC.
+Texas Instruments developed this tool based on their SysConfig tool.
 
-Typical usage for this tool is for system integrator, where one would be
-able to partition **various resources** across different software components.
-These resources include DMA channels, NAVSS rings, proxies, interrupts, etc.
-Apart from this, the tool supports configuration of Quality of Service (QoS)
-and firewall parameters which helps in ensuring partitioning of
-**peripheral devices** across different software components.
+System integrators typically use this tool to assign **resources**
+to different software parts. These resources include Direct Memory
+Access (DMA) channels, rings, proxies, interrupts, and more.
+
+The tool also supports Quality of Service (QoS) and firewall
+settings to help partition **peripheral devices** for different
+software components.
 
 Getting started
 ---------------
 
-To start using this tool, follow these instructions:
+The K3 Resource Partitioning Tool is available on the TI Developer Zone
+as K3 Resource Configuration. You can use the tool online and locally
+within the SDK.
 
-- Download the SysConfig tool from `SysConfig release download link <https://www.ti.com/tool/download/SYSCONFIG>`__
-- Install the sysconfig tool and note the path where it is installed.
-- Go to the **k3-respart-tool** packaged in the SDK installation
-- Open the SysConfig tool GUI from the desktop shortcut and select the **software product**
-  by navigating to the path where the **k3-respart-tool** is available.
-
-  .. Image:: /images/sysconfig_k3_respart_tool.png
-     :scale: 70%
-     :align: center
-- Lastly, click on **Browse** button to open existing design for the platform that
-  you are interested in. Navigate to the **out/** directory and you will find
-  baseline files for your platform.
-
-  .. Image:: /images/k3_respart_tool_load_design.png
-     :scale: 70%
-     :align: center
-- Use this as the starting point for any customization. We do not recommend you
-  to start from scratch, always load the baseline file **out/XYZ-platform-name.syscfg**
+Accessing the tool online
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. note::
 
-  For devices that are not yet officially supported by the latest SysConfig tool,
-  K3 Resource Partitioning tool may provide patch files to support the device in
-  SysConfig.
+   We recommend using this method.
 
-  Run the **sysconfig-deviceData-update script**
-  ``./scripts/sysconfig-deviceData-update.sh <soc>
-  --sysconfig_dir=/path/to/sysconfig/installation`` to patch the SysConfig tool.
+To access the tool, follow these steps:
+
+1. **Open the Tool**: Go to https://dev.ti.com/sysconfig/?product=K3-RESOURCE-CONFIGURATION
+   to open the tool. Log in to your TI account if needed.
+
+   .. figure:: /images/k3_resource_config_startpage.png
+      :scale: 75%
+      :align: center
+
+2. **Select Your Device**: Choose your device from the list.
+
+   .. figure:: /images/k3_resource_config_device_selection.png
+      :scale: 75%
+      :align: center
+
+3. **Start Configuring Resources**: Click ``Latest Baseline Design`` to set
+   up resources using the latest baseline for your device. Or pick a
+   Processor SDK version-specific Baseline Design to match a specific SDK
+   release.
+
+   .. figure:: /images/k3_resource_config_device_selected.png
+      :scale: 75%
+      :align: center
+
+   .. figure:: /images/am62px_respart_tool_main.png
+      :scale: 70%
+      :align: center
+
+Accessing the tool locally
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To use the tool locally, follow these instructions:
+
+1. **Download and Install SysConfig**: Download and install the latest
+   SysConfig tool from the `SysConfig release download link
+   <https://www.ti.com/tool/download/SYSCONFIG>`__
+2. **Locate the Tool**: Find the **k3-respart-tool** folder in your SDK.
+3. **Open SysConfig GUI**: Start the SysConfig. In the GUI, select the
+   **software product** by browsing to your **k3-respart-tool** location.
+
+   .. figure:: /images/k3_resource_config_product_selection_local.png
+      :scale: 75%
+      :align: center
+
+   .. figure:: /images/k3_resource_config_product_selected_local.png
+      :scale: 75%
+      :align: center
+
+4. **Select Your Device**: Pick your target device from the list.
+
+   .. figure:: /images/k3_resource_config_device_selection_local.png
+      :scale: 75%
+      :align: center
+
+5. **Start Configuring Resources**: Click ``Latest Baseline Design`` to set
+   up resources using the latest baseline for your device. Or pick a
+   Processor SDK version-specific Baseline Design to match a specific SDK
+   release.
+
+   .. figure:: /images/k3_resource_config_device_selected_local.png
+      :scale: 75%
+      :align: center
+
+   .. figure:: /images/am62px_respart_tool_main_local.png
+      :scale: 70%
+      :align: center
 
 Usage
 -----
 
-Once you have loaded the product in the SysConfig, and opened the baseline file,
-you can accomplish following things.
+After the design loads, you can use the Resource Partitioning, Bandwidth (BW)
+Limiter, and Quality of Service (QoS) Configuration modules.
 
-NAVSS resource partitioning
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Resource partitioning
+^^^^^^^^^^^^^^^^^^^^^
 
-This module allows to partition or allocate Navigator Subsystem (NAVSS) resources
-across different hosts in the system. A **host** is any software component which
-has a dedicated context for communication with **System firmware** (SYSFW).
-A **Resource Management board config** file describes how these resources are
-partitioned. This board config is passed by the bootloader to System firmware as
-part of the boot up sequence. This module allows user to automatically generate
-this file in an attempt to ease the NAVSS resource partitioning.
+The resource partitioning module divides resources among different hosts in
+the system. A **host** is a software part that communicates with **System
+Firmware** (SYSFW) using its own context. The module create a **Resource
+Management Board Configuration** file, which defines the resource partitioning.
+The boot loader passes this file to System Firmware during boot.
 
-In the left pane of GUI, you will see different hosts available and each host
-describes the resources allocated to it. All the NAVSS resources are organized
-in different **groups**, where user can specify the required **count** for each
-resource. The tool automatically allocates the resources taking into consideration
-all the counts for all the hosts. Apart from the resource allocation, the tool
-also has an option to configure different **host capabilities**. Click on the **?**
-sign next to the host name to read the detailed documentation for that host module.
+In the left pane of GUI, you see the available hosts and what resources each
+one has. There are different resource **groups**, where you set the required
+**count** for each resource. The tool assigns resources based on the counts
+you set for all hosts. Besides allocating resources, you can configure
+different **host capabilities**. Click the **?** next to a host's name to read
+the detailed documentation for that host module.
+
+.. _resource_totals:
 
 Review resource allocation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-At any point, user can review the current resource allocation done by the tool.
-Select the pane **Resource Allocation Table** from the three dots shown at the
-top right corner of the tool. Here, it presents an HTML table which shows the
-exact range of resources allocated for each host. Each column describes the
-resource ranges assigned for a certain host. Each row describes how different
-hosts consume the given resource.
+You can check the current resource split at any time. Select the **Resource
+Allocation Table** from the three dots at the top right of the tool. This
+section shows an HTML table of hosts and their allocated resources.
+Each row shows a certain resource. Each column shows the resource ranges
+assigned to a certain host.
 
-Bandwidth Limiters configuration
+Resource totals
+^^^^^^^^^^^^^^^
+
+The last column, labeled ``ALL``, represents the total number of
+resources available to all hosts. This column is for the ``HOST_ID_ALL``
+value.
+
+Certain hardware have some resources, such as ``GPIO interrupts`` and ``Virtual
+interrupts``, tied to them. For example, ``DMASS Interrupt Aggregator
+Virtual Interrupts`` connect directly to specific cores, so those interrupts
+cannot go to just any core. The tool only assign resources in ways that match
+the hardware.
+
+The tool does not adjust the ``ALL`` column for host-specific resources.
+
+Bandwidth limiters configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This module allows the user to generate the date required for configuring the various
-rate limiters available for the SOC. Each rate limiter is expected to be
-connected direcly to a single source VBUSM interface that is being limited. The
-limiter allows the user to impose bandwidth limits for reads or writes, as well
-as limit the maximum outstanding transactions for reads or writes. These limits
-are orthogonal to one another and can be programmed independently.
+This BW limiters configuration module helps you set up rate limiters for the SoC.
+Each rate limiter connects to a source VBUSM interface. You can set limits for
+reads, writes, and outstanding transactions. You can set these limits separately.
 
-In the GUI, the user should select a device and enable bandwidth and/or transaction
-limits. The tool will autogenerate a simple address-value pair data structure in
-the **qos_data.c** output file. Then the corresponding registers can be programmed
-with the required limits. This can be used by any software, though it is typically
-handled by the bootloader.
+In the GUI, pick a device and turn on bandwidth or transaction limits as needed.
+The tool creates an address-value pair data structure in the **<soc>_qos_uboot.c**
+file. Software (usually the boot loader) uses this file to set the limits in the
+correct registers.
 
-QoS configuration
-^^^^^^^^^^^^^^^^^
+Quality of service configuration
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. note::
+This QoS configuration module helps you set up Central Bus Architecture Subsystem
+(CBASS) QoS endpoints. QoS configuration includes two types of parameters. QoS
+settings include parameters that tune DMA performance in the interconnect and set
+up Input/Output Memory Management Unit (IOMMU) paths for masters. Each device can
+use different Channel IDs for DMA requests. You can set a unique QoS for each channel.
 
-    Currently the generated QoS files cannot be integrated into u-boot directly.
-    The QoS support in u-boot is not added officially.
-
-This module allows to generate the data required for configuring CBASS QoS
-endpoints. QoS configuration includes two types of parameters. Few parameters
-are used for tuning the performance of the DMA transactions in the interconnect,
-and others are used for setting up the IOMMU paths for the masters. For each
-device, there are multiple master ports using which, DMA requests are made.
-Each device is capable of driving different values of channel_id along with the
-DMA request. For every channel, a unique QoS configuration can be programmed.
-
-In the GUI, User should select a device, choose the endpoints, and select a list
-of channels for which QoS should be programmed. Note that it is possible to add
-multiple instances of QoS module with same device as long as the endpoints and
-channels do not overlap. The tool auto generates a simple address-value pair
-data structure in the **qos-config.c** output file. This can be used by any
-software (typically bootloader) to program all the QoS settings.
+In the GUI, pick a device, endpoints, and channels to set their QoS. You can add
+more than one QoS module for the same device provided that endpoints and channels
+do not overlap. The tool creates a simple address-value pair data structure in the
+**<soc>_qos_uboot.c** file. Software (such as the boot loader) uses this file to set
+all QoS settings.
 
 Firewall configuration
 ^^^^^^^^^^^^^^^^^^^^^^
 
 .. note::
 
-    Currently the generated firewall files cannot be integrated into u-boot directly.
-    The firewall support in u-boot is not added officially.
+   Currently u-boot cannot use the generated firewall files directly.
+   The firewall support in u-boot is not added officially.
 
-This module allows to generate the data required for firewall configuration.
-This is very much useful to ensure peripheral partitioning across CPU cores.
-User can describe if a certain peripheral needs to be accessible ONLY from a
-list of certain hosts. Each peripheral is protected by a set of firewalls.
-User can select what all firewalls need to be programmed. Each firewall has
-different numbers of regions available. The region describes the address range
-where the filter rules are applicable. Each region can be programmed to define
-access rules for upto 3 permission slots. Multiple CPUs can have the same
-priv_id and this would means one slot should be sufficient. The permission slot
-describes if a transaction from a CPU core with selected priv_id is allowed
-or not. User can define this for different values of security, privilege level
-and transaction types. e.g. allow Secure writes, Secure reads, but do not allow
-non secure writes from A72 to MMC.
+The Firewall configuration module creates the data you need to control firewalls.
+Firewalls control a host's access to a peripheral. Each firewall has a region.
+Pick a firewall and set the address range for the rules. Each region can have up
+to three permission slots. Each slot takes a name, Priv ID, and permissions. Many
+CPUs can share a Priv ID, so one slot can cover several CPUs. These slots decide
+what each CPU can do based on security level, privilege, and transaction type. For
+example, allow secure reads and writes but block insecure writes from A72 to
+Multimedia Card (MMC).
 
-By default, the tool will automatically set the required start/end addresses
-to be configured in the region, optionally allowing the user to define custom
-region if required. Also, the tool allows to select a host_id and populates the
-priv_id automatically. Using these data, it generates an array of data TISCI
-message data structure that can be directly passed to SYSFW for firewall
-configuration.
+By default, the tool sets the start and end addresses in the region, but you can
+set a custom region if needed. You can also pick a host's name and the tool fills
+in the Priv ID. With this data, the tool creates an array of Texas Instruments
+System Controller Interface (TISCI) message data to send to SYSFW for firewall
+setup.
 
 Generating output files
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-This tool generates different files which have the RM board config data, QoS
-configuration and firewall configuration. Following table describes how to use
-these files:
+The tool creates different files with RM board config data, QoS settings, and
+firewall settings. Here is how you use these files:
 
-+--------------------------------+---------------+--------------------------------------+----------------------------------------------------------------------------+
-|            Filename            |    Used by    |       Output destination             |                                Comments                                    |
-+================================+===============+======================================+============================================================================+
-| rm-cfg.c                       | U-boot        | soc/<soc>/<profile>/                 | e.g. - k3-image-gen/soc/j721e/evm/rm-cfg.c                                 |
-+--------------------------------+---------------+--------------------------------------+----------------------------------------------------------------------------+
-| tifs-rm-cfg.c                  | U-boot        | soc/<soc>/<profile>/                 | e.g. - k3-image-gen/soc/j784s4/evm/tifs-rm-cfg.c                           |
-+--------------------------------+---------------+--------------------------------------+----------------------------------------------------------------------------+
-| sysfw_img_cfg.h                | U-boot        | soc/<soc>/<profile>                  | e.g. - k3-image-gen/soc/j721e/evm/sysfw_img_cfg.h                          |
-+--------------------------------+---------------+--------------------------------------+----------------------------------------------------------------------------+
-+--------------------------------+---------------+--------------------------------------+----------------------------------------------------------------------------+
-| <soc>-qos-config.c             | U-boot        | Not yet supported                    |                                                                            |
-+--------------------------------+---------------+--------------------------------------+----------------------------------------------------------------------------+
-| <soc>-qos-config.c             | SBL           | Not yet supported                    |                                                                            |
-+--------------------------------+---------------+--------------------------------------+----------------------------------------------------------------------------+
-| <soc>-firewall-config.c        | U-boot        | Not yet supported                    |                                                                            |
-+--------------------------------+---------------+--------------------------------------+----------------------------------------------------------------------------+
-| <soc>-firewall-config.c        | SBL           | Not yet supported                    |                                                                            |
-+--------------------------------+---------------+--------------------------------------+----------------------------------------------------------------------------+
-+--------------------------------+---------------+--------------------------------------+----------------------------------------------------------------------------+
-| sciclient_defaultBoardcfg.c    | PDK sciclient | packages/ti/drv/sciclient/soc/V<X>/  | e.g. - pdk/packages/ti/drv/sciclient/soc/V1/sciclient_defaultBoardcfg.c    |
-+--------------------------------+---------------+--------------------------------------+----------------------------------------------------------------------------+
-| sciclient_defaultBoardcfg_rm.c | PDK sciclient | packages/ti/drv/sciclient/soc/V<X>/  | e.g. - pdk/packages/ti/drv/sciclient/soc/V1/sciclient_defaultBoardcfg_rm.c |
-+--------------------------------+---------------+--------------------------------------+----------------------------------------------------------------------------+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 15 30 35
+
+   * - Filename
+     - Used by
+     - Output destination
+     - Comments
+   * - :file:`rm-cfg.c`
+     - k3-image-gen
+     - :file:`soc/<soc>/<profile>/`
+     - e.g. - :file:`k3-image-gen/soc/j721e/evm/rm-cfg.c`
+   * - :file:`sciclient_defaultBoardcfg_rm.c`
+     - PDK sciclient
+     - :file:`packages/ti/drv/sciclient/soc/V<X>/`
+     - e.g. - :file:`pdk/packages/ti/drv/sciclient/soc/V1/sciclient_defaultBoardcfg_rm.c`
+   * - :file:`sciclient_defaultBoardcfg_rm_mcusdk.c`
+     - MCU+ SDK sciclient
+     - :file:`source/drivers/sciclient/sciclient_default_boardcfg/am62x/`
+     - e.g. - :file:`mcu_plus_sdk/source/drivers/sciclient/sciclient_default_boardcfg/am62x/sciclient_defaultBoardcfg_rm.c` (Drop :file:`_mcusdk` from filename)
+   * - :file:`sciclient_defaultBoardcfg_tifs_rm.c`
+     - PDK sciclient
+     - :file:`packages/ti/drv/sciclient/soc/V<X>/`
+     - e.g. - :file:`pdk/packages/ti/drv/sciclient/soc/V2/sciclient_defaultBoardcfg_tifs_rm.c`
+   * - :file:`tifs-rm-cfg.c`
+     - k3-image-gen
+     - :file:`soc/<soc>/<profile>/`
+     - e.g. - :file:`k3-image-gen/soc/j721e/evm/tifs-rm-cfg.c`
+   * - :file:`<soc>_qos.h`
+     - U-boot
+     - :file:`ti-u-boot/arch/arm/mach-k3/r5/<soc>/<soc>_qos.h`
+     - e.g. - :file:`ti-u-boot/arch/arm/mach-k3/r5/am62ax/am62a_qos.h`
+   * - :file:`<soc>_qos_uboot.c`
+     - U-boot
+     - :file:`ti-u-boot/arch/arm/mach-k3/r5/<soc>/`
+     - e.g. - :file:`ti-u-boot/arch/arm/mach-k3/r5/am62ax/am62a_qos_uboot.c`
+   * - :file:`<soc>_qos_data.c`
+     - MCU+ SDK / PDK QoS
+     - :file:`source/drivers/qos/v0/soc/<soc>/qos_data.h` and :file:`packages/ti/boot/sbl/soc/k3/<soc>_qos_data.c`
+     - e.g. - :file:`source/drivers/qos/v0/soc/am62ax/qos_data.h` and :file:`packages/ti/boot/sbl/soc/k3/j721s2_qos_data.c`
+   * - :file:`<soc>-firewall-config.c`
+     - U-boot
+     - Not yet supported
+     -
+   * - :file:`<soc>-firewall-config.c`
+     - SBL
+     - Not yet supported
+     -
+   * - :file:`sciclient_defaultBoardcfg.c`
+     - PDK sciclient
+     - :file:`packages/ti/drv/sciclient/soc/V<X>/`
+     - e.g. - :file:`pdk/packages/ti/drv/sciclient/soc/V1/sciclient_defaultBoardcfg.c`
+   * - :file:`sysfw_img_cfg.h`
+     - k3-image-gen
+     - :file:`soc/<soc>/<profile>/`
+     - e.g. - :file:`k3-image-gen/soc/j721e/evm/sysfw_img_cfg.h`
+   * - :file:`rm-cfg.yaml`
+     - U-boot
+     - :file:`ti-u-boot/board/ti/<soc>/`
+     - e.g. - :file:`ti-u-boot/board/ti/am62ax/rm-cfg.yaml`
+   * - :file:`tifs-rm-cfg.yaml`
+     - U-boot
+     - :file:`ti-u-boot/board/ti/<soc>/`
+     - e.g. - :file:`ti-u-boot/board/ti/am62ax/tifs-rm-cfg.yaml`
 
 Troubleshooting
 ---------------
 
-- If you get an error like **No product with name "K3-Respart-Tool" and version 0.5 found**,
-  Most likely you have missed the step to select the **software product**.
-- If you are not able to see the HTML table and getting error **ommitted HTML**,
-  Most likely you may have missed / failed to run the **setup script**.
-- If you see error **XYZ is not generated when configuration errors exist**,
-  It means your resource allocation has few errors. Please adjust the allocation
-  to fix the errors and then you can generate the output files.
-
-Developer notes
----------------
-
-This section is useful only for those willing to modify the tool. Some of the
-files may not be available in the SDK. Ignore this section if you do not have
-the additional files required to generate the backend data.
-
-Directory structure
-^^^^^^^^^^^^^^^^^^^
-
-- **.metadata/product.json** - This file describes all the components that need
-  to be loaded by the SysConfig tool. It also describes the supported platforms.
-  `product.json` describes the components and the components describe the list
-  of modules and templates that are applicable for the selected device.
-- **modules** - This contains the UI module definition for different configurables,
-  their grouping, organization, and the JavaScript files for handling onChange
-  events and validations.
-- **templates** - This contains the xdt files which describe the output file formats
-  and small code snippets to generate the data using templates. It also has few
-  views to  describe the data in a more visual format like a Markdown table
-  or HTML table.
-- **scripts** - These are the JavaScript files for parsing different input data
-  files which generate the SoC specific JSON objects for the usage in the modules.
-  It also implements few utility functions which are frequently called by modules
-  and templates.
-- **data** - This contains the JSON objects that the tool uses to populate the
-  UI items with SoC specific data. Many of these are auto generated using the
-  parsing scripts.
-- **deviceData** - This contains SysConfig patch files for devices that are
-  not yet officially supported in the SysConfig Tool.
+- If you see **No product with name "K3-Respart-Tool" and version 1.0.0 found**,
+  you likely missed the step to select the **software product**.
+- If you get error ``XYZ`` **is not generated when configuration errors exist**,
+  your resource split has errors. Adjust the allocation to fix them, then generate
+  the output files.
+- If you remove resources from a core and the ``ALL`` column in the "Resource
+  Allocation Table" does not change, those resources belong only to that core.
+  :ref:`See "Resource Totals" under "Review Resource Allocation" for more details
+  <resource_totals>`.
 
