@@ -274,9 +274,12 @@ In order to enter Deep Sleep, use the following command:
       [  230.295457] psci: CPU3 killed (polled 0 ms)
 
 This partially indicates that Linux has finished it's Deep Sleep suspend sequence.
-For further confirmation, one can take a look at the PMIC_LPM_EN pin on the EVM
-(after programming the PMCTRL_SYS register (0x43018080) to 0x15). Here, if the pin is 3.3V when active and
-0V when in deep sleep.
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+   For further confirmation, program the PMCTRL_SYS register (0x43018080) to
+   0x15. The PMIC_LPM_EN pin on the EVM is 3.3V when active and 0V when in 
+   DeepSleep.
 
 .. note::
 
