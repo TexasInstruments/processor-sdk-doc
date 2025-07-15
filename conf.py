@@ -16,6 +16,7 @@
 import sys
 import os
 import importlib
+import json
 from datetime import datetime
 
 # If extensions (or modules to document with autodoc) are in another directory,
@@ -36,6 +37,7 @@ from scripts import interpretvalues, sectinc, replacevars
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+    'sphinx.ext.extlinks',
     'sphinx.ext.intersphinx',
     'sphinx.ext.todo',
     'sphinx.ext.mathjax',
@@ -257,6 +259,10 @@ latex_elements = {
 
 # Suppress warnings about excluded documents because every device gets a different toc tree
 suppress_warnings = ['toc.excluded']
+
+# Load extlinks config
+with open(os.path.join(rootdir, 'extlinks.json'), 'r', encoding='utf-8') as extconf:
+    extlinks = json.load(extconf)
 
 # -- Tag file loader ------------------------------------------------------
 

@@ -1,0 +1,6 @@
+{
+  "ti-linux-kernel-binding": [
+    "https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/Documentation/devicetree/bindings/%s?h=ti-linux-6.12.y",
+    "Documentation/devicetree/bindings/%s"
+  ]
+}
