@@ -139,27 +139,3 @@ The edge AI gallery launches on Linux startup. Follow the below instructions to 
 .. ifconfig:: CONFIG_part_variant in ('J784S4')
 
    13. For more information on edge AI software stack, refer `Edge AI Documentation <https://software-dl.ti.com/jacinto7/esd/processor-sdk-linux-edgeai/AM69A/10_01_00/exports/docs/common/sdk_overview.html>`_
-
-Building the edge AI gallery
-----------------------------
-
-The edge AI gallery application is enabled by default in yocto for |__PART_FAMILY_DEVICE_NAMES__| Linux and RT-Linux.
-
-The source code is available at `edgeai-gui-app <https://git.ti.com/cgit/apps/edgeai-gui-app>`__ and can be recompiled with the following steps
-
-1. To setup the environment, from the root of the SDK installation directory, source `environment-setup` script.
-   ::
-
-        $ source linux-devkit/environment-setup
-
-2. Go to the root of edgeai-gui-app repository and run the following command to build the application.
-   ::
-
-        $ qmake; make
-
-3. Copy the compiled binary to /usr/bin directory of the device
-   ::
-
-        $ scp edgeai-gui-app root@<ip-addr-of-device>:/usr/bin/
-
-
