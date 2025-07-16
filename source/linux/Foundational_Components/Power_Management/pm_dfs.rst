@@ -48,7 +48,9 @@ based on the governors.
 The driver can be built into the kernel as a static module, dynamic
 module, or both.
 
-$ make menuconfig
+.. code-block:: console
+
+   $ make menuconfig
 
 Select CPU Power Management from the main menu.
 
