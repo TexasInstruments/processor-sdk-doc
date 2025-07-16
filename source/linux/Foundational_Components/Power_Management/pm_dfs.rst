@@ -90,67 +90,67 @@ All relevant options are listed below:
 
 .. ifconfig:: CONFIG_part_variant in ('J7200')
 
-        .. rubric:: DT Configuration
+   .. rubric:: DT Configuration
 
-        The clock information and the operating-points table need to be added as
-        given in the example below.
+   The clock information and the operating-points table need to be added as
+   given in the example below.
 
-        .. code-block:: dts
+   .. code-block:: dts
 
-            /* From arch/arm64/boot/dts/ti/k3-j7200.dtsi */
+      /* From arch/arm64/boot/dts/ti/k3-j7200.dtsi */
 
-            cpus {
-                        #address-cells = <1>;
-                        #size-cells = <0>;
-                        cpu-map {
-                                cluster0: cluster0 {
-                                        core0 {
-                                                cpu = <&cpu0>;
-                                        };
-
-                                        core1 {
-                                                cpu = <&cpu1>;
-                                        };
+      cpus {
+                #address-cells = <1>;
+                #size-cells = <0>;
+                cpu-map {
+                        cluster0: cluster0 {
+                                core0 {
+                                        cpu = <&cpu0>;
                                 };
 
+                                core1 {
+                                        cpu = <&cpu1>;
+                                };
                         };
 
-                        cpu0: cpu@0 {
-                                compatible = "arm,cortex-a72";
-                                reg = <0x000>;
-                                device_type = "cpu";
-                                enable-method = "psci";
-                                i-cache-size = <0xc000>;
-                                i-cache-line-size = <64>;
-                                i-cache-sets = <256>;
-                                d-cache-size = <0x8000>;
-                                d-cache-line-size = <64>;
-                                d-cache-sets = <256>;
-                                next-level-cache = <&L2_0>;
-                                clocks = <&k3_clks 202 2>;
-                                clock-names = "cpu";
-                                operating-points-v2 = <&cpu0_opp_table>;
-                                #cooling-cells = <2>; /* min followed by max */
-                        };
-
-                        cpu1: cpu@1 {
-                                compatible = "arm,cortex-a72";
-                                reg = <0x001>;
-                                device_type = "cpu";
-                                enable-method = "psci";
-                                i-cache-size = <0xc000>;
-                                i-cache-line-size = <64>;
-                                i-cache-sets = <256>;
-                                d-cache-size = <0x8000>;
-                                d-cache-line-size = <64>;
-                                d-cache-sets = <256>;
-                                next-level-cache = <&L2_0>;
-                                operating-points-v2 = <&cpu0_opp_table>;
-                                #cooling-cells = <2>; /* min followed by max */
-                                clocks = <&k3_clks 203 0>;
-                                clock-names = "cpu";
-                        };
                 };
+
+                cpu0: cpu@0 {
+                        compatible = "arm,cortex-a72";
+                        reg = <0x000>;
+                        device_type = "cpu";
+                        enable-method = "psci";
+                        i-cache-size = <0xc000>;
+                        i-cache-line-size = <64>;
+                        i-cache-sets = <256>;
+                        d-cache-size = <0x8000>;
+                        d-cache-line-size = <64>;
+                        d-cache-sets = <256>;
+                        next-level-cache = <&L2_0>;
+                        clocks = <&k3_clks 202 2>;
+                        clock-names = "cpu";
+                        operating-points-v2 = <&cpu0_opp_table>;
+                        #cooling-cells = <2>; /* min followed by max */
+                };
+
+                cpu1: cpu@1 {
+                        compatible = "arm,cortex-a72";
+                        reg = <0x001>;
+                        device_type = "cpu";
+                        enable-method = "psci";
+                        i-cache-size = <0xc000>;
+                        i-cache-line-size = <64>;
+                        i-cache-sets = <256>;
+                        d-cache-size = <0x8000>;
+                        d-cache-line-size = <64>;
+                        d-cache-sets = <256>;
+                        next-level-cache = <&L2_0>;
+                        operating-points-v2 = <&cpu0_opp_table>;
+                        #cooling-cells = <2>; /* min followed by max */
+                        clocks = <&k3_clks 203 0>;
+                        clock-names = "cpu";
+                };
+      };
 
 .. rubric:: Driver Usage
 
@@ -163,44 +163,44 @@ To view available governors,
 
 .. code-block:: console
 
-    $ cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors
-    conservative userspace powersave ondemand performance
+   $ cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors
+   conservative userspace powersave ondemand performance
 
 To view current governor,
 
 .. code-block:: console
 
-    $ cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
-    ondemand
+   $ cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+   ondemand
 
 To set a governor,
 
 .. code-block:: console
 
-    $ echo userspace > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+   $ echo userspace > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
 
 To view current OPP (frequency in kHz)
 
 .. code-block:: console
 
-    $ cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq
-    2000000000
+   $ cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq
+   2000000000
 
 To view supported OPP's (frequency in kHz),
 
 .. ifconfig:: CONFIG_part_variant in ('J7200')
 
-        .. code-block:: console
+   .. code-block:: console
 
-            $ cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies
-            750000000 1000000000 1500000000 2000000000
+      $ cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies
+      750000000 1000000000 1500000000 2000000000
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX', 'J722S')
 
-        .. code-block:: console
+   .. code-block:: console
 
-                $ cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies
-                200000 400000 600000 800000 1000000 1250000 1400000
+      $ cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies
+      200000 400000 600000 800000 1000000 1250000 1400000
 
 To change OPP (can be done only for userspace governor. If governors
 like ondemand is used, OPP change happens automatically based on the
@@ -208,7 +208,7 @@ system load)
 
 .. code-block:: console
 
-    $ echo 1000000000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_setspeed
+   $ echo 1000000000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_setspeed
 
 |
 
@@ -222,138 +222,137 @@ table.
 
 .. ifconfig:: CONFIG_part_variant in ('J7200')
 
-        .. code-block:: dts
+   .. code-block:: dts
 
-            /* From arch/arm64/boot/dts/ti/k3-j7200.dtsi */
+      /* From arch/arm64/boot/dts/ti/k3-j7200.dtsi */
 
-                cpu0_opp_table: opp-table {
-                        compatible = "operating-points-v2";
+      cpu0_opp_table: opp-table {
+              compatible = "operating-points-v2";
 
-                        opp4-2000000000 {
-                                opp-hz = /bits/ 64 <2000000000>;
-                        };
+              opp4-2000000000 {
+                      opp-hz = /bits/ 64 <2000000000>;
+              };
 
-                        opp3-1500000000 {
-                                opp-hz = /bits/ 64 <1500000000>;
-                        };
+              opp3-1500000000 {
+                      opp-hz = /bits/ 64 <1500000000>;
+              };
 
-                        opp2-1000000000 {
-                                opp-hz = /bits/ 64 <1000000000>;
-                        };
+              opp2-1000000000 {
+                      opp-hz = /bits/ 64 <1000000000>;
+              };
 
-                        opp1-750000000 {
-                                opp-hz = /bits/ 64 <750000000>;
-                        };
-                };
-
+              opp1-750000000 {
+                      opp-hz = /bits/ 64 <750000000>;
+              };
+      };
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX')
 
-        The OPP table defined in the following files
-        allows defining of a different set of OPPs for each different SoC:
+   The OPP table defined in the following files
+   allows defining of a different set of OPPs for each different SoC:
 
-        .. ifconfig:: CONFIG_part_variant in ('AM62X')
+   .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-                arch/arm64/boot/dts/ti/k3-am625.dtsi
+      arch/arm64/boot/dts/ti/k3-am625.dtsi
 
-        .. ifconfig:: CONFIG_part_variant in ('AM62AX')
+   .. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
-                arch/arm64/boot/dts/ti/k3-am62a7.dtsi
+      arch/arm64/boot/dts/ti/k3-am62a7.dtsi
 
-        .. ifconfig:: CONFIG_part_variant in ('AM62PX')
+   .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
-                arch/arm64/boot/dts/ti/k3-am62p5.dtsi
+      arch/arm64/boot/dts/ti/k3-am62p5.dtsi
 
-        .. code-block:: dts
+   .. code-block:: dts
 
-                a53_opp_table: opp-table {
-                        compatible = "operating-points-v2-ti-cpu";
-                        opp-shared;
-                        syscon = <&wkup_conf>;
+      a53_opp_table: opp-table {
+              compatible = "operating-points-v2-ti-cpu";
+              opp-shared;
+              syscon = <&wkup_conf>;
 
-                        opp-200000000 {
-                                opp-hz = /bits/ 64 <200000000>;
-                                opp-supported-hw = <0x01 0x0007>;
-                                clock-latency-ns = <6000000>;
-                        };
+              opp-200000000 {
+                      opp-hz = /bits/ 64 <200000000>;
+                      opp-supported-hw = <0x01 0x0007>;
+                      clock-latency-ns = <6000000>;
+              };
 
-                        opp-400000000 {
-                                opp-hz = /bits/ 64 <400000000>;
-                                opp-supported-hw = <0x01 0x0007>;
-                                clock-latency-ns = <6000000>;
-                        };
+              opp-400000000 {
+                      opp-hz = /bits/ 64 <400000000>;
+                      opp-supported-hw = <0x01 0x0007>;
+                      clock-latency-ns = <6000000>;
+              };
 
-                        opp-600000000 {
-                                opp-hz = /bits/ 64 <600000000>;
-                                opp-supported-hw = <0x01 0x0007>;
-                                clock-latency-ns = <6000000>;
-                        };
+              opp-600000000 {
+                      opp-hz = /bits/ 64 <600000000>;
+                      opp-supported-hw = <0x01 0x0007>;
+                      clock-latency-ns = <6000000>;
+              };
 
-                        opp-800000000 {
-                                opp-hz = /bits/ 64 <800000000>;
-                                opp-supported-hw = <0x01 0x0007>;
-                                clock-latency-ns = <6000000>;
-                        };
+              opp-800000000 {
+                      opp-hz = /bits/ 64 <800000000>;
+                      opp-supported-hw = <0x01 0x0007>;
+                      clock-latency-ns = <6000000>;
+              };
 
-                        opp-1000000000 {
-                                opp-hz = /bits/ 64 <1000000000>;
-                                opp-supported-hw = <0x01 0x0006>;
-                                clock-latency-ns = <6000000>;
-                        };
+              opp-1000000000 {
+                      opp-hz = /bits/ 64 <1000000000>;
+                      opp-supported-hw = <0x01 0x0006>;
+                      clock-latency-ns = <6000000>;
+              };
 
-                        opp-1250000000 {
-                                opp-hz = /bits/ 64 <1250000000>;
-                                opp-supported-hw = <0x01 0x0004>;
-                                clock-latency-ns = <6000000>;
-                                opp-suspend;
-                        };
-                };
+              opp-1250000000 {
+                      opp-hz = /bits/ 64 <1250000000>;
+                      opp-supported-hw = <0x01 0x0004>;
+                      clock-latency-ns = <6000000>;
+                      opp-suspend;
+              };
+      };
 
-        .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
+   .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
 
-                The maximum OPP for A53 requires VDD_CORE to be at 0.85V.
-                It is enabled in the board-specific dts file:
+      The maximum OPP for A53 requires VDD_CORE to be at 0.85V.
+      It is enabled in the board-specific dts file:
 
-                .. ifconfig:: CONFIG_part_variant in ('AM62X')
+      .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-                        arch/arm64/boot/dts/ti/k3-am625-sk.dts
+         arch/arm64/boot/dts/ti/k3-am625-sk.dts
 
-                .. ifconfig:: CONFIG_part_variant in ('AM62PX')
+      .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
-                        arch/arm64/boot/dts/ti/k3-am62p5-sk.dts
+         arch/arm64/boot/dts/ti/k3-am62p5-sk.dts
 
-                .. code-block:: dts
+      .. code-block:: dts
 
-                        opp-table {
-                                        opp-1400000000 {
-                                                opp-hz = /bits/ 64 <1400000000>;
-                                                opp-supported-hw = <0x01 0x0004>;
-                                                clock-latency-ns = <6000000>;
-                                        };
-                                };
+          opp-table {
+                          opp-1400000000 {
+                                  opp-hz = /bits/ 64 <1400000000>;
+                                  opp-supported-hw = <0x01 0x0004>;
+                                  clock-latency-ns = <6000000>;
+                          };
+                  };
 
-        To disable any of the above OPP's one can simply add
+   To disable any of the above OPP's one can simply add
 
-        .. code-block:: dts
+   .. code-block:: dts
 
-           status = "disabled";
+      status = "disabled";
 
-        to the corresponding DT Node.
+   to the corresponding DT Node.
 
 .. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
-        To enable maximum clock rates for A53 and C7x on AM62A7-SK Rev E3
-        board, an overlay has to be used as shown below:
+   To enable maximum clock rates for A53 and C7x on AM62A7-SK Rev E3
+   board, an overlay has to be used as shown below:
 
-        .. code-block:: console
+   .. code-block:: console
 
-                setenv name_overlays ti/k3-am62a7-sk-e3-max-opp.dtbo
+      setenv name_overlays ti/k3-am62a7-sk-e3-max-opp.dtbo
 
-        This overlay adds the 1.4 GHz OPP for A53 cores and disables all
-        the lower OPPs. It also overrides the clock rate for C7x to 1 GHz.
+   This overlay adds the 1.4 GHz OPP for A53 cores and disables all
+   the lower OPPs. It also overrides the clock rate for C7x to 1 GHz.
 
-        **Please note: This overlay is meant only for AM62A7-SK Rev E3 boards
-        that have VDD_CORE at 0.85V. Board Rev E1 and E2 do not meet this
-        requirement.** Any other boards based on this design should verify
-        that they have the right silicon variant and the right power tree
-        before booting with this overlay.
+   **Please note: This overlay is meant only for AM62A7-SK Rev E3 boards
+   that have VDD_CORE at 0.85V. Board Rev E1 and E2 do not meet this
+   requirement.** Any other boards based on this design should verify
+   that they have the right silicon variant and the right power tree
+   before booting with this overlay.
