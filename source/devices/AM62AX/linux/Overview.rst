@@ -13,7 +13,6 @@ solutions.
 
    Overview_Getting_Started_Guide
    /linux/Overview_Building_the_SDK
-   /linux/Overview_Top_Level_Makefile
    /linux/Overview_Directory_Structure_Overview
    /linux/Overview_Software_Stack
    /linux/Overview_Technical_Support

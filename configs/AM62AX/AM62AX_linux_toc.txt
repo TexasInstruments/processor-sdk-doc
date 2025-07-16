@@ -4,7 +4,7 @@ devices/AM62AX/linux/Overview
 devices/AM62AX/linux/Overview_Getting_Started_Guide
 devices/AM62AX/linux/Overview/Build_and_Run_the_Demos
 devices/AM62AX/linux/Overview/Download_and_Install_the_SDK
-devices/AM62AX/linux/Overview/Run_Setup_Scripts
+linux/Overview/Run_Setup_Scripts
 devices/AM62AX/linux/Release_Specific
 devices/AM62AX/linux/Release_Specific_Release_Notes
 devices/AM62AX/linux/Release_Specific_Yocto_layer_Configuration
@@ -15,7 +15,7 @@ devices/AM62AX/linux/RT_Linux_Performance_Guide
 devices/AM62AX/linux/Release_Specific_Supported_Platforms_and_Versions
 
 linux/Overview_Building_the_SDK
-linux/Overview_Top_Level_Makefile
+linux/Overview/Top_Level_Makefile
 linux/Overview_Directory_Structure_Overview
 linux/Overview_Technical_Support
 linux/Overview_GPLv3_Disclaimer
