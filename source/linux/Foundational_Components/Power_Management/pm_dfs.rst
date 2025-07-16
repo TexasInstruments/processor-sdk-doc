@@ -38,7 +38,7 @@ instructions.
 
 .. rubric:: Source Location
 
-drivers/cpufreq/cpufreq-dt.c
+:file:`drivers/cpufreq/cpufreq-dt.c`
 
 The OPP data itself is used by the cpufreq DT driver to scale frequencies
 based on the governors.
@@ -253,15 +253,15 @@ table.
 
    .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-      arch/arm64/boot/dts/ti/k3-am625.dtsi
+      :file:`arch/arm64/boot/dts/ti/k3-am625.dtsi`
 
    .. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
-      arch/arm64/boot/dts/ti/k3-am62a7.dtsi
+      :file:`arch/arm64/boot/dts/ti/k3-am62a7.dtsi`
 
    .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
-      arch/arm64/boot/dts/ti/k3-am62p5.dtsi
+      :file:`arch/arm64/boot/dts/ti/k3-am62p5.dtsi`
 
    .. code-block:: dts
 
@@ -315,11 +315,11 @@ table.
 
       .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-         arch/arm64/boot/dts/ti/k3-am625-sk.dts
+         :file:`arch/arm64/boot/dts/ti/k3-am625-sk.dts`
 
       .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
-         arch/arm64/boot/dts/ti/k3-am62p5-sk.dts
+         :file:`arch/arm64/boot/dts/ti/k3-am62p5-sk.dts`
 
       .. code-block:: dts
 
