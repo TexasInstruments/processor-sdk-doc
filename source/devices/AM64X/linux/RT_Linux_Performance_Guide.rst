@@ -499,7 +499,23 @@ ICSSG Ethernet Driver
     "1024","978.00","39.84 (min 37.56, max 40.96)","5.00","5.38 (min 2.89, max 7.92)"
     "1472","1472.00","167.00 (min 56.52, max 374.79)","14.25 (min 5.00, max 32.00)","17.31 (min 0.25, max 49.37)"
 
+.. rubric:: Switch Mode
+   :name: icssg-switch-mode
 
+.. csv-table:: ICSSG Switch Mode Forwarding
+   :header: "Mode","am64xx-hsevm: THROUGHPUT (Mbits/sec)","am64xx-hsevm: CPU Load % (SENDER)","am64xx-hsevm: CPU Load % (FORWARDING)","am64xx-hsevm: CPU Load % (RECIEVER)"
+
+   "Switch with HW Offload","929","94.07","0","83.73"
+   "Switch with SW Offload","915","96.23","30","85.38"
+
+.. rubric:: HSR Mode
+   :name: icssg-hsr-mode
+
+.. csv-table:: ICSSG HSR Mode Forwarding
+   :header: "Mode","am64xx-hsevm: THROUGHPUT (Mbits/sec)","am64xx-hsevm: CPU Load % (SENDER)","am64xx-hsevm: CPU Load % (FORWARDING)","am64xx-hsevm: CPU Load % (RECIEVER)"
+
+   "HSR with HW Offload","466","62.01","0","69.11"
+   "HSR with SW Offload","387","65","29.96","70"
 
 |
 
