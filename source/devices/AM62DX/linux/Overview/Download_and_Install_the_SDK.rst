@@ -83,10 +83,10 @@ by double clicking on it within your Linux host PC.
 **MCU+ SDK for RTOS/NO-RTOS**
 
 .. note::
-   AM62D Linux SDK contains only the Linux specific source and application intended
-   to run on A53/Linux core. For A53 based FreeRTOS side source and applications, refer **MCU+ SDK**
-
+   Processor SDK Linux AM62Dx contains only the Linux specific source and application intended
+   to runs on A53/Linux core. For R5F and RTOS/NO-RTOS side source and applications, refer **MCU+ SDK**
+   package.
 
 **Instructions to set-up CCS**
 
-
+-  Refer doc from here MCU+SDK Installer.

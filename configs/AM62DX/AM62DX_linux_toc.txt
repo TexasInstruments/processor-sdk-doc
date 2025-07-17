@@ -52,6 +52,7 @@ linux/Foundational_Components/Kernel/Kernel_Drivers/UART
 linux/Foundational_Components/Kernel/Kernel_Drivers/UBIFS
 linux/Foundational_Components/Kernel/Kernel_Drivers/VTM
 linux/Foundational_Components/Kernel/Kernel_Drivers/Watchdog
+linux/Foundational_Components/System_Security/Auth_boot
 
 #linux/Foundational_Components_Power_Management
 
@@ -64,6 +65,7 @@ linux/Foundational_Components/Tools/Development_Tools
 linux/Foundational_Components/Tools/Pin_Mux_Tools
 linux/Foundational_Components/Tools/Flash_via_Fastboot
 linux/Foundational_Components_ATF
+linux/Foundational_Components_OPTEE
 
 linux/How_to_Guides
 linux/How_to_Guides_Developer_Notes
