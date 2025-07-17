@@ -25,7 +25,7 @@ from datetime import datetime
 rootdir = os.environ.get('ROOTDIR')
 sys.path.insert(0, os.path.abspath(rootdir))
 
-from scripts import interpretvalues, sectinc, replacevars
+from scripts import interpretvalues, sectinc, replacevars, ifconfig_helpers
 
 # -- General configuration ------------------------------------------------
 
