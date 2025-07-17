@@ -228,7 +228,7 @@ Your newly built wic image will be generated in deploy-ti directory. Use :ref:`L
 
    .. note:: If trying to build tisdk-display-cluster image, add ``DISPLAY_CLUSTER_ENABLE="1"`` at the end of :file:`conf/local.conf` file before running bitbake.
 
-.. ifconfig:: CONFIG_part_variant in ('AM64X', 'AM65X', 'AM335X', 'AM437X')
+.. ifconfig:: CONFIG_part_variant in ('AM64X', 'AM62DX', 'AM65X', 'AM335X', 'AM437X')
 
    .. important::
 

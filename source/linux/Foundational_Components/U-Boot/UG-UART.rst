@@ -67,7 +67,7 @@ is installed
       $ sb --ymodem $OUT_AXX/tispl.bin > $UART_BOOT_MAIN_UART < $UART_BOOT_MAIN_UART
       $ sb --ymodem $OUT_AXX/u-boot.img > $UART_BOOT_MAIN_UART < $UART_BOOT_MAIN_UART
 
-.. ifconfig:: CONFIG_part_variant in ('AM64X', 'AM62X', 'J722S', 'AM62PX')
+.. ifconfig:: CONFIG_part_variant in ('AM64X', 'AM62X', 'J722S', 'AM62PX', 'AM62DX')
 
    ROM supports booting from MAIN_UART0 via X-Modem protocol. R5 SPL, A53
    SPL and U-Boot use Y-MODEM Protocol for downloading next stages over

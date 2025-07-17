@@ -552,6 +552,53 @@ Build U-Boot
          $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" am62ax_evm_a53_defconfig O=$UBOOT_DIR/out/a53
          $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" CC="$CC_64" BL31=$TFA_DIR/build/k3/lite/release/bl31.bin TEE=$OPTEE_DIR/out/arm-plat-k3/core/tee-pager_v2.bin O=$UBOOT_DIR/out/a53 BINMAN_INDIRS=$TI_LINUX_FW_DIR
 
+   .. ifconfig:: CONFIG_part_variant in ('AM62DX')
+
+      +-------------+----------------------------------+--------------------------------------------------------+--------------------------------------------------------+
+      |  Board      |            SD Boot               |                       USB DFU                          |                       USB MSC                          |
+      +=============+==================================+========================================================+========================================================+
+      |  AM62DX EVM |  | ``am62dx_evm_r5_defconfig``   |  | ``am62dx_evm_r5_defconfig am62x_r5_usbdfu.config``  |  | ``am62dx_evm_r5_defconfig am62x_r5_usbmsc.config``  |
+      |             |  | ``am62dx_evm_a53_defconfig``  |  | ``am62dx_evm_a53_defconfig``                        |  | ``am62dx_evm_a53_defconfig``                        |
+      +-------------+----------------------------------+--------------------------------------------------------+--------------------------------------------------------+
+
+      .. note::
+
+         Where to get the sources:
+
+         - ti-u-boot version: :ref:`u-boot-release-notes`
+         - ti-linux-firmware version: :ref:`ti-linux-fw-release-notes`
+         - TF-A version: :ref:`tf-a-release-notes`
+         - OP-TEE version: :ref:`optee-release-notes`
+
+      .. code-block:: console
+
+         $ export UBOOT_DIR=<path-to-ti-u-boot>
+         $ export TI_LINUX_FW_DIR=<path-to-ti-linux-firmware>
+         $ export TFA_DIR=<path-to-arm-trusted-firmware>
+         $ export OPTEE_DIR=<path-to-ti-optee-os>
+
+      .. note::
+
+         The instructions below assume all binaries are built manually. For instructions to build bl31.bin go to: :ref:`foundational-components-optee`.
+         For instructions to build tee-pager_v2.bin (bl32.bin) go to: :ref:`foundational-components-atf`. BINMAN_INDIRS can point to
+         :file:`<path-to-tisdk>/board-support/prebuilt-images` to use the pre-built binaries that come in the pre-built SDK (bl31.bin for BL31, bl32.bin for TEE).
+
+      .. code-block:: console
+
+         $ cd $UBOOT_DIR
+
+         R5
+         To build tiboot3.bin. Saved in $UBOOT_DIR/out/r5.
+         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_32" am62dx_evm_r5_defconfig O=$UBOOT_DIR/out/r5
+         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_32" O=$UBOOT_DIR/out/r5 BINMAN_INDIRS=$TI_LINUX_FW_DIR
+
+         A53
+         To build tispl.bin and u-boot.img. Saved in $UBOOT_DIR/out/a53. Requires bl31.bin, tee-pager_v2.bin.
+         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" am62dx_evm_a53_defconfig O=$UBOOT_DIR/out/a53
+         $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" CC="$CC_64" BL31=$TFA_DIR/build/k3/lite/release/bl31.bin TEE=$OPTEE_DIR/out/arm-plat-k3/core/tee-pager_v2.bin O=$UBOOT_DIR/out/a53 BINMAN_INDIRS=$TI_LINUX_FW_DIR
+
+
+
    .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
       +-------------+----------------------------------+----------------------------------------------------------+--------------------------------------------------------+
@@ -659,13 +706,13 @@ Build U-Boot
       :file:`<path to folder>/ti-sysfw/` can be used. Please make sure
       to use the absolute path.
 
-.. ifconfig:: CONFIG_part_variant in ('J721E', 'J7200', 'AM62X', 'AM62AX', 'AM62PX', 'J721S2', 'J784S4','J742S2', 'J722S')
+.. ifconfig:: CONFIG_part_variant in ('J721E', 'J7200', 'AM62X', 'AM62AX', 'AM62DX', 'AM62PX', 'J721S2', 'J784S4','J742S2', 'J722S')
 
    .. note::
 
       It is also possible to pick up a custom DM binary by adding TI_DM argument pointing to the file. If not provided, it defaults to picking up the DM binary from BINMAN_INDIRS. This is only applicable to devices that utilize split firmware.
 
-.. ifconfig:: CONFIG_part_variant in ('AM65X', 'J721E', 'J7200', 'AM64X', 'AM62X', 'AM62AX', 'AM62LX', 'AM62PX', 'J721S2', 'J784S4','J742S2', 'J722S')
+.. ifconfig:: CONFIG_part_variant in ('AM65X', 'J721E', 'J7200', 'AM64X', 'AM62X', 'AM62AX', 'AM62DX', 'AM62LX', 'AM62PX', 'J721S2', 'J784S4','J742S2', 'J722S')
 
    .. rubric:: Target Images
       :name: target-images
@@ -821,6 +868,18 @@ Build U-Boot
          * tiboot3-am62ax-hs-evm.bin from <output directory>/r5
          * tispl.bin, u-boot.img from <output directory>/a53
 
+.. ifconfig:: CONFIG_part_variant in ('AM62DX')
+
+   * HS-FS
+
+     * :file:`tiboot3-am62dx-hs-fs-evm.bin` from :file:`<output directory>/r5`
+     * :file:`tispl.bin, u-boot.img` from :file:`<output directory>/a53`
+
+   * HS-SE
+
+     * :file:`tiboot3-am62dx-hs-evm.bin` from :file:`<output directory>/r5`
+     * :file:`tispl.bin, u-boot.img` from :file:`<output directory>/a53`
+
 .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
        * HS-FS
@@ -853,7 +912,7 @@ Build U-Boot
          * tispl.bin
          * u-boot.img
 
-.. ifconfig:: CONFIG_part_variant in ('AM65X', 'J721E', 'J7200', 'AM64X', 'AM62X', 'AM62AX', 'AM62PX', 'J721S2', 'J784S4','J742S2', 'J722S', 'AM62LX')
+.. ifconfig:: CONFIG_part_variant in ('AM65X', 'J721E', 'J7200', 'AM64X', 'AM62X', 'AM62AX', 'AM62DX', 'AM62PX', 'J721S2', 'J784S4','J742S2', 'J722S', 'AM62LX')
 
    .. warning::
 
@@ -2079,7 +2138,7 @@ The SRAM memory layout explains the memory used for Bootloader's operation.
             │                                      │
             └──────────────────────────────────────┘0x43c3ffff
 
-    .. ifconfig:: CONFIG_part_variant in ('AM62AX','AM62PX')
+    .. ifconfig:: CONFIG_part_variant in ('AM62AX','AM62PX','AM62DX')
 
         .. code-block:: console
 

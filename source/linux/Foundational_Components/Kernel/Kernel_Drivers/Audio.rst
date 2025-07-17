@@ -886,7 +886,7 @@ Additional Information
     #. `Interfacing DRA7xx Audio to Analog Codecs
        <http://www.ti.com/lit/an/sprac09a/sprac09a.pdf>`__
 
-.. ifconfig:: CONFIG_part_family in ('J7_family', 'AM62X_family', 'AM62AX_family', 'AM62PX_family', 'AM62LX_family')
+.. ifconfig:: CONFIG_part_family in ('J7_family', 'AM62X_family', 'AM62AX_family', 'AM62DX_family', 'AM62PX_family', 'AM62LX_family')
 
     #. `Tools and Techniques for Audio Debugging
        <https://www.ti.com/lit/an/sprac10/sprac10.pdf>`__
@@ -911,3 +911,7 @@ Additional Information
        Differential Input/Output
        <http://www.ti.com/lit/ds/symlink/pcm3168a.pdf>`__
 
+.. ifconfig:: CONFIG_part_variant in ('AM62DX')
+
+    #. `TAD52512 - High-performance stereo audio DAC
+       <https://www.ti.com/lit/ds/symlink/tad5212.pdf>`__

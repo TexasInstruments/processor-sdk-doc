@@ -38,12 +38,12 @@ linux/Foundational_Components/U-Boot/Apps-SPL-Debug-OpenOCD
 linux/Foundational_Components_Kernel
 linux/Foundational_Components_Kernel_Drivers
 linux/Foundational_Components/Kernel/Kernel_Drivers/Audio
-linux/Foundational_Components/Kernel/Kernel_Drivers/EQEP
+#linux/Foundational_Components/Kernel/Kernel_Drivers/EQEP
 linux/Foundational_Components/Kernel/Kernel_Drivers/GPIO
 linux/Foundational_Components/Kernel/Kernel_Drivers/I2C
 #linux/Foundational_Components/Kernel/Kernel_Drivers/MCAN
 linux/Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW-Ethernet
-linux/Foundational_Components/Kernel/Kernel_Drivers/PWM
+#linux/Foundational_Components/Kernel/Kernel_Drivers/PWM
 #linux/Foundational_Components/Kernel/Kernel_Drivers/SPI
 #linux/Foundational_Components/Kernel/Kernel_Drivers/QSPI
 linux/Foundational_Components/Kernel/Kernel_Drivers/Storage/MMC-SD
@@ -57,13 +57,15 @@ linux/Foundational_Components/Kernel/Kernel_Drivers/Watchdog
 
 linux/Foundational_Components_Kernel_Users_Guide
 linux/Foundational_Components_Kernel_LTP-DDT_Validation
-linux/Foundational_Components_Security
+#linux/Foundational_Components_Security
+#linux/Foundational_Components/System_Security/Auth_boot
 linux/Foundational_Components_Filesystem
 linux/Foundational_Components_Tools
 linux/Foundational_Components/Tools/Development_Tools
 linux/Foundational_Components/Tools/Pin_Mux_Tools
 linux/Foundational_Components/Tools/Flash_via_Fastboot
 linux/Foundational_Components_ATF
+linux/Foundational_Components_OPTEE
 
 linux/How_to_Guides
 linux/How_to_Guides_Developer_Notes
