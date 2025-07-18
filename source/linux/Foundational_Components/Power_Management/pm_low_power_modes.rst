@@ -132,8 +132,8 @@ I/O Only Plus DDR
 
    .. code-block:: console
 
-      root@<machine>:~# devmem2 0x4084014 0x20050000  # MCU_PADCONFIG5 for mcu_uart0
-      root@<machine>:~# devmem2 0x4084024 0x20050000  # MCU_PADCONFIG9 for wkup_uart0
+      root@<machine>:~# devmem2 0x4084014 w 0x20050000  # MCU_PADCONFIG5 for mcu_uart0
+      root@<machine>:~# devmem2 0x4084024 w 0x20050000  # MCU_PADCONFIG9 for wkup_uart0
 
    .. note::
 
