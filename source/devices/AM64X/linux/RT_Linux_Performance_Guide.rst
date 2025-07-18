@@ -445,7 +445,34 @@ CPSW/CPSW2g/CPSW3g Ethernet Driver
 
     "netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_MAERTS","1058.45 (min 964.24, max 1158.01)","88.12 (min 79.19, max 99.75)"
 
+.. rubric::  TCP Bidirectional Throughput Interrupt Pacing
+	:name: CPSW2g-tcp-bidirectional-throughput-interrupt-pacing
 
+.. csv-table:: CPSW2g TCP Bidirectional Throughput Interrupt Pacing
+	:header: "Command Used","am64xx-hsevm: THROUGHPUT (Mbits/sec)","am64xx-hsevm: CPU Load % (LOCAL_CPU_UTIL)"
+
+	"netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_MAERTS","1196.36","99.96"
+
+.. rubric::  UDP Throughput
+   :name: CPSW2g-udp-throughput-0-loss
+
+.. csv-table:: CPSW2g UDP Egress Throughput 0 loss
+	:header: "UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am64xx-hsevm: THROUGHPUT (Mbits/sec)","am64xx-hsevm: Packets Per Second (kPPS)","am64xx-hsevm: CPU Load % (LOCAL_CPU_UTIL)"
+
+	"64","40.58","80.00","79.03"
+	"128","79.43","78.00","77.99"
+	"256","154.99","62.00","77.67"
+	"1024","577.17","70.00","91.40"
+	"1472","589.21","49.00","85.92"
+
+.. csv-table:: CPSW2g UDP Ingress Throughput 0 loss
+	:header: "UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am64xx-hsevm: THROUGHPUT (Mbits/sec)","am64xx-hsevm: Packets Per Second (kPPS)","am64xx-hsevm: CPU Load % (LOCAL_CPU_UTIL)"
+
+	"64","2.92","6.00","0.18"
+	"128","6.96","7.00","7.83"
+	"256","15.56","8.00","1.2"
+	"1024","61.44","8.00","8.39"
+	"1472","88.32","8.00","8.17"
 
 ICSSG Ethernet Driver
 ^^^^^^^^^^^^^^^^^^^^^
