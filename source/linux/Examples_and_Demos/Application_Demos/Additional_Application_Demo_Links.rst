@@ -36,6 +36,10 @@ TIDL Demo
 
     .. note:: This demo is not applicable to AM437X devices.
 
+.. ifconfig:: CONFIG_part_family in ('AM57X_family')
+
+    .. note:: This demo is not applicable to AM57X devices.
+
 .. ifconfig:: CONFIG_part_family in ('General_family')
 
     Refer to various TI DeepLearning demos documented at

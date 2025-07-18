@@ -90,7 +90,7 @@ suggestions at `E2E <https://e2e.ti.com/>`__.
     .. |__OPTEE__| replace:: :ref:`OPTEE <foundational-components-optee>`
 
 
-.. ifconfig:: CONFIG_part_family in ('AM335X_family', 'AM437X_family')
+.. ifconfig:: CONFIG_part_family in ('AM335X_family', 'AM437X_family', 'AM57X_family')
 
     +--------------------------+------------------------+----------------------------+-------------+
     | **Foundational Components** (more information on each piece of the distribution)             |

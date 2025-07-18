@@ -22,7 +22,7 @@ following platform(s):
    |  `AM437x EVM-SK <http://www.ti.com/tool/tmdxsk437x>`__
    |  `AM437x IDK <http://www.ti.com/tool/TMDSIDK437X>`__
 
-.. ifconfig:: CONFIG_part_family in ('General_family')
+.. ifconfig:: CONFIG_part_family in ('General_family', 'AM57x_family')
 
    |  `DRA76x EVM <http://www.ti.com/tool/J6PEVM577P>`__
    |  `DRA74x EVM <http://www.ti.com/tool/j6evm5777>`__
