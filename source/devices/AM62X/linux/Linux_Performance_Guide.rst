@@ -1126,9 +1126,10 @@ IPSec Software Performance
 Low Power Performance
 -------------------------
 
-Table:  **Deep sleep**
+Power Performance
+^^^^^^^^^^^^^^^^^
 
-.. csv-table::
+.. csv-table:: Deep Sleep Power Performance
    :header: "Rail name","Rail voltage(V)","Power (mW)"
 
    "vdd_core","0.85","8.53"
@@ -1139,9 +1140,7 @@ Table:  **Deep sleep**
    "vdd_ddr4","1.10","7.50"
    "Total"," ","24.37"
 
-Table:  **MCU only**
-
-.. csv-table::
+.. csv-table:: MCU Only Power Performance
    :header: "Rail name","Rail voltage(V)","Power (mW)"
 
    "vdd_core","0.85","109.46"

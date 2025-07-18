@@ -702,9 +702,10 @@ Listed for each algorithm are the code snippets used to run each benchmark test.
 Low Power Performance
 -------------------------
 
-Table:  **Deep sleep**
+Power Performance
+^^^^^^^^^^^^^^^^^
 
-.. csv-table::
+.. csv-table:: Deep Sleep Power Performance
     :header: "Rail name","Rail voltage(V)","Power (mW)"
 
     "vdd_core","0.85","19.16"
@@ -715,9 +716,7 @@ Table:  **Deep sleep**
     "vdd_lpddr4","1.10","3.59"
     "Total"," ","42.96"
 
-Table:  **MCU only**
-
-.. csv-table::
+.. csv-table:: MCU Only Power Performance
     :header: "Rail name","Rail voltage(V)","Power (mW)"
 
     "vdd_core","0.85","199.73"

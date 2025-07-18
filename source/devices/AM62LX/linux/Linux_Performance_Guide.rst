@@ -806,12 +806,13 @@ USB Device Controller
 Low Power Performance
 ---------------------
 
+Power Performance
+^^^^^^^^^^^^^^^^^
+
 These are power measurements taken while the device is in various low power modes like
 Deep Sleep and RTC Only + DDR.
 
-Table:  **Deep sleep**
-
-.. csv-table::
+.. csv-table:: Deep Sleep Power Performance
      :header: "Rail name","Rail voltage(V)","Power (mW)"
 
      "vdd_core", "0.75", "4.88"
@@ -823,9 +824,7 @@ Table:  **Deep sleep**
      "vdd_rtc_1v8", "1.80", "0.01"
      "Total"," ","~11.04"
 
-Table:  **RTC Only + DDR**
-
-.. csv-table::
+.. csv-table:: RTC Only + DDR Power Performance
      :header: "Rail name","Rail voltage(V)","Power (mW)"
 
      "vdd_core", "0.00", "0.00"
