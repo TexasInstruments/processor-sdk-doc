@@ -495,7 +495,7 @@ Connect to EVMK2H using CCS
 
 .. note::
    For newer versions of CCS, a XDS200 firmware update is recommended which user can perform using instruction on the article
-   `Updating XDS200 Firmware <https://dev.ti.com/tirex/explore/node?node=AADzJ8Y-La4f7Bi5Ga0TcA__FUz-xrs__LATEST>`__
+   `Updating XDS200 Firmware <https://software-dl.ti.com/ccs/esd/documents/xdsdebugprobes/emu_xds200.html>`__
 
 **Step 2:** Create CCS Target configuration
 

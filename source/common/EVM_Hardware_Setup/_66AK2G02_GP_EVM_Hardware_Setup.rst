@@ -185,7 +185,7 @@ and is directly useable by CCS.
 On Rev C boards and earlier revisions of the board, users who plan to
 connect the USB cable to USB 3.0 cable need to follow the instructions
 to update Emulation firmware using steps described in the article
-`Updating\_the\_XDS200\_firmware <http://dev.ti.com/tirex/explore/node?node=AADzJ8Y-La4f7Bi5Ga0TcA__FUz-xrs__LATEST>`__
+`Updating\_the\_XDS200\_firmware <https://software-dl.ti.com/ccs/esd/documents/xdsdebugprobes/emu_xds200.html#installation-instructions>`__
 Without the firmware update, users are recommended to disconnect the
 mini USB cable from the XDS USB connector before powering up the EVM and
 reconnect after board power up is complete.
@@ -537,7 +537,7 @@ internal XDS200 USB debug probe to a host machine.
    :name: software-update-required
 
 Steps to update the XDS200 firmware on the EVM are archived on the article
-`Updating\_the\_XDS200\_firmware <http://dev.ti.com/tirex/explore/node?node=AADzJ8Y-La4f7Bi5Ga0TcA__FUz-xrs__LATEST>`__
+`Updating\_the\_XDS200\_firmware <https://software-dl.ti.com/ccs/esd/documents/xdsdebugprobes/emu_xds200.html#updating-the-firmware>`__
 
 .. rubric:: Hardware updates required
    :name: hardware-updates-required
