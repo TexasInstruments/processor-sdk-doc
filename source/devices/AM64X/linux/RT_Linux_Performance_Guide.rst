@@ -757,3 +757,42 @@ Listed for each algorithm are the code snippets used to run each benchmark test.
 
 
 |
+
+RP Message Inter-Processor Communication (IPC) Latency
+------------------------------------------------------
+
+RP Message latency Performance
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+RP Message latency is the delay measured from sending a round trip echo message from 
+a Linux application to a remote processor and back. The following measurements use 
+a RP message length of 1 byte and 490 bytes for comparison.
+
+The Linux user space application `rpmsg_char_benchmark <https://git.ti.com/cgit/rpmsg/ti-rpmsg-char/>`__ captures these latency values.
+
+Test commands used for running IPC latency tests:
+
+.. code:: console
+
+   rpmsg_char_benchmark -r 2 -n 100000 -m 1 & chrt -f -p 80 $!
+
+Latencies reported:
+
+
+.. csv-table::
+   :header: "Remote Processor","Message Size (in bytes)","Average round trip (usecs)","Max round trip (usecs)"
+
+   "R5F0_0","1","32","205"
+   "R5F0_0","490","162","272"
+   "M4F","1","41","186"
+   "M4F","490","301","446"
+
+.. image:: img/R5_0_0_m1_ipc_latency.png
+
+.. image:: img/R5_0_0_m490_ipc_latency.png
+
+.. image:: img/m4_0_m1_ipc_latency.png
+
+.. image:: img/m4_0_m490_ipc_latency.png
+
+|
