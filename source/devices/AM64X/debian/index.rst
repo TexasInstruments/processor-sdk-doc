@@ -24,9 +24,9 @@ Debian Developer's Guide
 .. rubric:: Feedback
    :name: feedback
 
-If you have feedback, suggestions, or ideas on how to improve the SDK
-or docs, it is very appreciated. Please post your ideas to the Linux
-forum listed at :ref:`Technical Support <technical-support>`.
+We are always striving to improve this product. If you have feedback, suggestions,
+or ideas on how to improve the SDK or docs, it is very appreciated. Please post your
+ideas to the Linux forum listed at :ref:`Technical Support <technical-support>`.
 
 
 +--------------------------------+----------------------------------------------------------------------------------------------------+
