@@ -438,3 +438,63 @@ Power Menu
     .. Image:: /images/ti-apps-launcher-powermenu2.png
        :height: 400
 
+Compiling TI Apps Launcher
+--------------------------
+
+The ideal way to compile TI Apps Launcher is to trigger a Yocto
+build. But for a quicker way to do it, especially during development,
+TI provides a `debian-arm64
+<https://github.com/TexasInstruments/ti-docker-images/pkgs/container/debian-arm64>`__
+Docker image. This image already has all dependencies required
+for compiling ti-apps-launcher.
+
+First, clone TI Apps Launcher on host:
+
+.. code:: console
+
+   git clone https://github.com/texasinstruments/ti-apps-launcher.git
+   export TI_APPS_LAUNCHER_REPO="$(pwd)/ti-apps-launcher"
+   cd ti-apps-launcher
+
+Then, add the following line in :file:`CMakeLists.txt`:
+
+.. code:: console
+
+   add_compile_definitions(SOC_AM62=1) # if target is AM62x or AM62SIP
+   add_compile_definitions(SOC_AM62_LP=1) # if target is AM62x-LP
+   add_compile_definitions(SOC_AM62P=1) # if target is AM62P
+
+Then, pull TI's debian-arm64 Docker image and run it:
+
+.. code:: console
+
+   docker pull ghcr.io/texasinstruments/debian-arm64:latest
+   docker run -it -v ${TI_APPS_LAUNCHER_REPO}:/root/ti-apps-launcher ghcr.io/texasinstruments/debian-arm64 bash
+
+Finally, run:
+
+.. code:: console
+
+   cmake -B build -S . -DRT_BUILD=0 # if target is RT image, make -DRT_BUILD=1
+   make -C build
+
+The compiled binary should be :file:`build/ti-apps-launcher`.
+
+Copy the compiled binary to :file:`/usr/bin/` directory of the target:
+
+.. code:: console
+
+   scp ${TI_APPS_LAUNCHER_REPO}/build/ti-apps-launcher root@<ip-addr-of-device>:/usr/bin
+
+If you have modified the scripts in the :file:`scripts/` directory, then copy them too:
+
+.. code:: console
+
+   scp -r ${TI_APPS_LAUNCHER_REPO}/scripts root@<ip-addr-of-device>:/opt/ti-apps-launcher
+
+.. note::
+
+   This is a quick and easy way to compile ti-apps-launcher during
+   development, but it is a good idea to validate with Yocto builds
+   often. There is a possibility that compiler mismatch could present
+   issues in the run up to production.
