@@ -4,7 +4,7 @@ devices/AM62AX/linux/Overview
 devices/AM62AX/linux/Overview_Getting_Started_Guide
 devices/AM62AX/linux/Overview/Build_and_Run_the_Demos
 devices/AM62AX/linux/Overview/Download_and_Install_the_SDK
-devices/AM62AX/linux/Overview/Run_Setup_Scripts
+linux/Overview/Run_Setup_Scripts
 devices/AM62AX/linux/Release_Specific
 devices/AM62AX/linux/Release_Specific_Release_Notes
 devices/AM62AX/linux/Release_Specific_Yocto_layer_Configuration
@@ -15,7 +15,7 @@ devices/AM62AX/linux/RT_Linux_Performance_Guide
 devices/AM62AX/linux/Release_Specific_Supported_Platforms_and_Versions
 
 linux/Overview_Building_the_SDK
-linux/Overview_Top_Level_Makefile
+linux/Overview/Top_Level_Makefile
 linux/Overview_Directory_Structure_Overview
 linux/Overview_Technical_Support
 linux/Overview_GPLv3_Disclaimer
@@ -106,11 +106,7 @@ linux/Foundational_Components_ATF
 linux/Foundational_Components_Multimedia_wave5
 linux/How_to_Guides
 linux/How_to_Guides_Developer_Notes
-linux/How_to_Guides/Host/Connect_to_an_EVM_via_Telnet
-linux/How_to_Guides/Host/How_to_Setup_a_Samba_Server
-linux/How_to_Guides/Host/Moving_Files_to_the_Target_System
 linux/How_to_Guides/Host/K3_Resource_Partitioning_Tool
-#linux/How_to_Guides/Host/How_to_Setup_and_Debug_using_Lauterbach
 linux/How_to_Guides/Host/SYSFW_Trace_Parser
 linux/How_to_Guides/Target/Processor_SDK_Linux_File_System_Optimization_Customization
 linux/How_to_Guides/Target/How_to_boot_quickly
@@ -125,8 +121,6 @@ linux/How_to_Guides/Target/Runtime_debug_unlock_on_secure_device
 linux/How_to_Guides/Target/How_to_Tune_Real_Time_Linux
 linux/How_to_Guides/FAQ/How_to_Check_Device_Tree_Info
 linux/How_to_Guides/FAQ/How_to_Integrate_Open_Source_Software
-linux/How_to_Guides/Host/How_to_Build_a_Ubuntu_Linux_host_under_VMware
-linux/How_to_Guides_Hardware_Setup_with_CCS
 linux/How_to_Guides/Target/How_To_Carve_Out_CMA
 
 linux/Demo_User_Guides/index_Demos

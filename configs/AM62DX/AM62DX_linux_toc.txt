@@ -5,12 +5,13 @@ devices/AM62DX/linux/Overview/Download_and_Install_the_SDK
 linux/Overview/Run_Setup_Scripts
 devices/AM62DX/linux/Release_Specific
 devices/AM62DX/linux/Release_Specific_Release_Notes
+devices/AM62DX/linux/Release_Specific_Build_Sheet
 devices/AM62DX/linux/Release_Specific_Yocto_layer_Configuration
-devices/AM62DX/linux/Release_Specific_Migration_Guide
-devices/AM62DX/linux/Release_Specific_Kernel_Performance_Guide
-devices/AM62DX/linux/Linux_Performance_Guide
-devices/AM62DX/linux/RT_Linux_Performance_Guide
-devices/AM62DX/linux/Release_Specific_Workarounds
+#devices/AM62DX/linux/Release_Specific_Migration_Guide
+#devices/AM62DX/linux/Release_Specific_Kernel_Performance_Guide
+#devices/AM62DX/linux/Linux_Performance_Guide
+#devices/AM62DX/linux/RT_Linux_Performance_Guide
+#devices/AM62DX/linux/Release_Specific_Workarounds
 devices/AM62DX/linux/Release_Specific_Supported_Platforms_and_Versions
 
 linux/Overview_Building_the_SDK
@@ -27,8 +28,8 @@ linux/Foundational_Components/U-Boot/Users-Guide
 linux/Foundational_Components/U-Boot/UG-General-Info
 linux/Foundational_Components/U-Boot/UG-DFU
 linux/Foundational_Components/U-Boot/UG-Memory-K3
-linux/Foundational_Components/U-Boot/UG-SPI
-linux/Foundational_Components/U-Boot/UG-QSPI
+#linux/Foundational_Components/U-Boot/UG-SPI
+#linux/Foundational_Components/U-Boot/UG-QSPI
 linux/Foundational_Components/U-Boot/UG-UART
 
 linux/Foundational_Components/U-Boot/Applications
@@ -40,19 +41,19 @@ linux/Foundational_Components/Kernel/Kernel_Drivers/Audio
 linux/Foundational_Components/Kernel/Kernel_Drivers/EQEP
 linux/Foundational_Components/Kernel/Kernel_Drivers/GPIO
 linux/Foundational_Components/Kernel/Kernel_Drivers/I2C
-linux/Foundational_Components/Kernel/Kernel_Drivers/MCAN
+#linux/Foundational_Components/Kernel/Kernel_Drivers/MCAN
 linux/Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW-Ethernet
 linux/Foundational_Components/Kernel/Kernel_Drivers/PWM
-linux/Foundational_Components/Kernel/Kernel_Drivers/SPI
-linux/Foundational_Components/Kernel/Kernel_Drivers/QSPI
+#linux/Foundational_Components/Kernel/Kernel_Drivers/SPI
+#linux/Foundational_Components/Kernel/Kernel_Drivers/QSPI
 linux/Foundational_Components/Kernel/Kernel_Drivers/Storage/MMC-SD
-linux/Foundational_Components/Kernel/Kernel_Drivers/Storage/NAND
+#linux/Foundational_Components/Kernel/Kernel_Drivers/Storage/NAND
 linux/Foundational_Components/Kernel/Kernel_Drivers/UART
 linux/Foundational_Components/Kernel/Kernel_Drivers/UBIFS
 linux/Foundational_Components/Kernel/Kernel_Drivers/VTM
 linux/Foundational_Components/Kernel/Kernel_Drivers/Watchdog
 
-linux/Foundational_Components_Power_Management
+#linux/Foundational_Components_Power_Management
 
 linux/Foundational_Components_Kernel_Users_Guide
 linux/Foundational_Components_Kernel_LTP-DDT_Validation
@@ -61,6 +62,7 @@ linux/Foundational_Components_Filesystem
 linux/Foundational_Components_Tools
 linux/Foundational_Components/Tools/Development_Tools
 linux/Foundational_Components/Tools/Pin_Mux_Tools
+linux/Foundational_Components/Tools/Flash_via_Fastboot
 linux/Foundational_Components_ATF
 
 linux/How_to_Guides
@@ -73,7 +75,10 @@ linux/How_to_Guides/Target/Runtime_debug_unlock_on_secure_device
 linux/How_to_Guides/FAQ/How_to_Check_Device_Tree_Info
 linux/How_to_Guides/FAQ/How_to_Integrate_Open_Source_Software
 linux/How_to_Guides_Hardware_Setup_with_CCS
-linux/How_to_Guides/Hardware_Setup_with_CCS/AM62DX_EVM_Hardware_Setup
+linux/How_to_Guides/Hardware_Setup_with_CCS/AM62Dx_EVM_Hardware_Setup
+
+linux/Demo_User_Guides/index_Demos
+linux/Demo_User_Guides/AM62D_Dsp_Offload_User_Guide
 
 linux/Demo_User_Guides/index_Demos
 linux/Demo_User_Guides/AM62D_Dsp_Offload_User_Guide

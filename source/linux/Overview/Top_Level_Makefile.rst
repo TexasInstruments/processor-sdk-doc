@@ -102,23 +102,23 @@ makefile targets.
         * AM62x installer supports ``am62xx-evm`` and ``am62xx-lp-evm`` platforms. ``am62xx-evm`` is the default platform for the Toplevel Makefile. To build for ``am62xx-lp-evm``, pass ``PLATFORM=am62xx-lp-evm`` as argument to make.
         * No special arguments are needed to build for ``am62xxsip-evm`` in AM62xSIP Installer.
 
-.. ifconfig:: CONFIG_part_variant not in ('AM62X', 'AM64X', 'AM62PX', 'AM335X', 'AM437X', 'AM65X', 'AM57X')
+.. ifconfig:: CONFIG_part_variant not in ('AM62X', 'AM64X', 'AM62PX', 'AM335X', 'AM437X', 'AM65X', 'AM57X', 'AM62AX')
 
-    .. code-block:: console
+   .. code-block:: console
 
-        host# sudo apt-get install build-essential autoconf automake bison flex libssl-dev bc u-boot-tools swig
+      host# sudo apt-get install build-essential autoconf automake bison flex libssl-dev bc u-boot-tools swig
 
-.. ifconfig:: CONFIG_part_variant in ('AM62PX', 'AM62X', 'AM64X', 'AM335X', 'AM437X', 'AM65X', 'AM57X')
+.. ifconfig:: CONFIG_part_variant in ('AM62PX', 'AM62X', 'AM64X', 'AM335X', 'AM437X', 'AM65X', 'AM57X', 'AM62AX')
 
-    .. code-block:: console
+   .. code-block:: console
 
-        host# sudo apt-get install build-essential autoconf automake bison flex libgnutls28-dev libmpc-dev libmpcdec6 libmpc3 libmpcdec-dev libssl-dev bc u-boot-tools swig python3 python3-pip
+      host# sudo apt-get install build-essential autoconf automake bison flex libgnutls28-dev libmpc-dev libmpcdec6 libmpc3 libmpcdec-dev libssl-dev bc u-boot-tools swig python3 python3-pip
 
-    Following pip packages are also needed for jailhouse & binman in u-boot targets
+   Following pip packages are also needed for jailhouse & binman in u-boot targets
 
-    .. code-block:: console
+   .. code-block:: console
 
-        host# pip3 install jsonschema pyelftools PyYAML Mako yamllint
+      host# pip3 install jsonschema pyelftools PyYAML Mako yamllint
 
 .. ifconfig:: CONFIG_sdk in ('JACINTO','j7_foundational')
 
@@ -204,11 +204,11 @@ devices will have following additional targets:
      jailhouse tools and cell configs. Applicable for only platforms with
      Hypervisor support enabled.
 
-.. ifconfig:: CONFIG_part_variant in ('AM64X', 'AM62X', 'AM62PX')
+.. ifconfig:: CONFIG_part_variant in ('AM64X', 'AM62X', 'AM62PX', 'AM62AX')
 
-    - ``arm-benchmarks`` - Build the ARM Benchmarks
+   - ``arm-benchmarks`` - Build the ARM Benchmarks
 
-    - ``cryptodev`` - Build module for cryptographic hardware accelerators.
+   - ``cryptodev`` - Build module for cryptographic hardware accelerators.
 
 .. ifconfig:: CONFIG_part_variant in ('AM62PX', 'AM62X')
 
@@ -354,25 +354,25 @@ the Makefile from the top-level of the SDK.
 
     host# make am-benchmarks_install
 
-.. ifconfig:: CONFIG_part_variant in ('AM62PX', 'AM62X', 'AM64X' )
+.. ifconfig:: CONFIG_part_variant in ('AM62PX', 'AM62X', 'AM64X', 'AM62AX')
 
-    -  Build the ARM Benchmarks
+   -  Build the ARM Benchmarks
 
-       .. code-block:: console
+      .. code-block:: console
 
-           host# make arm-benchmarks
+         host# make arm-benchmarks
 
-    -  Clean the ARM Benchmarks
+   -  Clean the ARM Benchmarks
 
-       .. code-block:: console
+      .. code-block:: console
 
-           host# make arm-benchmarks_clean
+         host# make arm-benchmarks_clean
 
-    -  Install the ARM Benchmarks
+   -  Install the ARM Benchmarks
 
-       .. code-block:: console
+      .. code-block:: console
 
-           host# sudo make arm-benchmarks_install
+         host# sudo make arm-benchmarks_install
 
 .. ifconfig:: CONFIG_sdk in ('JACINTO','j7_foundational') or CONFIG_part_variant in ('AM65X')
 
@@ -427,57 +427,57 @@ the Makefile from the top-level of the SDK.
 
       host# make sysfw-image_install
 
-.. ifconfig:: CONFIG_part_variant not in ('AM62PX', 'AM64X', 'AM62X')
+.. ifconfig:: CONFIG_part_variant not in ('AM62PX', 'AM64X', 'AM62X', 'AM62AX')
 
-    -  Build u-boot
+   -  Build u-boot
 
-    .. code-block:: console
+   .. code-block:: console
 
-        host# make u-boot
+      host# make u-boot
 
-    -  Clean u-boot
+   -  Clean u-boot
 
-    .. code-block:: console
+   .. code-block:: console
 
-        host# make u-boot_clean
+      host# make u-boot_clean
 
-.. ifconfig:: CONFIG_part_variant in ('AM62PX', 'AM64X', 'AM62X')
+.. ifconfig:: CONFIG_part_variant in ('AM62PX', 'AM64X', 'AM62X', 'AM62AX')
 
-    -  Build u-boot
-
-       .. code-block:: console
-
-           host# make u-boot
-
-    - Build A53
+   -  Build u-boot
 
       .. code-block:: console
 
-          host# make u-boot-a53
+         host# make u-boot
 
-    - Build R5
-
-      .. code-block:: console
-
-          host# make u-boot-r5
-
-    - Copy boot-binaries to built-images folder
+   - Build A53
 
       .. code-block:: console
 
-          host# make u-boot_stage
+         host# make u-boot-a53
 
-    - Install boot-binaries to SD card boot partition
-
-      .. code-block:: console
-
-          host# sudo DESTDIR=/media/$USER/boot make u-boot_install
-
-    - Clean u-boot
+   - Build R5
 
       .. code-block:: console
 
-          host# make u-boot_clean
+         host# make u-boot-r5
+
+   - Copy boot-binaries to built-images folder
+
+      .. code-block:: console
+
+         host# make u-boot_stage
+
+   - Install boot-binaries to SD card boot partition
+
+      .. code-block:: console
+
+         host# sudo DESTDIR=/media/$USER/boot make u-boot_install
+
+   - Clean u-boot
+
+      .. code-block:: console
+
+         host# make u-boot_clean
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
@@ -497,53 +497,6 @@ the Makefile from the top-level of the SDK.
           host# sudo DESTDIR=/media/$USER/boot PLATFORM=am62xx-lp-evm make u-boot_install
 
     Similar argument can be added to all u-boot targets discussed above.
-
-.. ifconfig:: CONFIG_part_variant in ('AM62AX')
-
-    -  Build the combined boot image (tiboot3.bin)
-
-    This requires first building the R5 boot image. This will generate the u-boot-spl.bin. Then build sysfw-image to generate combined boot image.
-
-    **For GP**
-
-    .. code-block:: console
-
-        host# make u-boot
-        host# make sysfw-image DEVICE_TYPE=gp
-
-    The combined boot image will be at <TI_SDK_PATH>/board-support/k3-image-gen*/tiboot3-am6*-gp-evm.bin
-
-    **For HS-FS**
-
-    .. code-block:: console
-
-        host# make u-boot
-        host# export TI_SECURE_DEV_PKG=<path-to-board-support>/core-secdev-k3
-        host# make sysfw-image DEVICE_TYPE=hs-fs
-
-    The combined boot image will be at <TI_SDK_PATH>/board-support/k3-image-gen*/tiboot3-am6*-hs-fs-evm.bin
-
-    **For HS-SE**
-
-    .. code-block:: console
-
-        host# make u-boot
-        host# export TI_SECURE_DEV_PKG=<path-to-board-support>/core-secdev-k3
-        host# make sysfw-image DEVICE_TYPE=hs
-
-    The combined boot image will be at <TI_SDK_PATH>/board-support/k3-image-gen*/tiboot3-am6*-hs-evm.bin
-
-    .. note:: If TI_SECURE_DEV_PKG environment variable is not defined, tiboot3.bin can still be built for GP devices. The following errors will occur in K3-Image-Gen build logs when building for HS-FS or HS-SE devices without the TI_SECURE_DEV_PKG environment variable defined and K3-Image-Gen build may fail:
-
-    .. code-block:: console
-
-       TI_SECURE_DEV_PKG must be set for HS, defaults will not work.  Stop.
-
-    To fix the above issue, do the following and rebuild the `sysfw-image`.
-
-    .. code-block:: console
-
-       host# export TI_SECURE_DEV_PKG=<path-to-board-support>/core-secdev-k3
 
 .. ifconfig:: CONFIG_sdk in ('JACINTO','j7_foundational')
 
@@ -579,14 +532,14 @@ the Makefile from the top-level of the SDK.
 .. rubric:: Installing boot binaries
    :name: installing-boot-binaries
 
-.. ifconfig:: CONFIG_part_variant not in ('AM62PX', 'AM62X', 'AM64X')
+.. ifconfig:: CONFIG_part_variant not in ('AM62PX', 'AM62X', 'AM64X', 'AM62AX')
 
-    All the install targets copy the files in the rootfs pointed by the DESTDIR variable.
-    *make install* command only copies the files in rootfs. If you have built either of
-    system firmware or u-boot, you should copy these binaries in the boot partition of
-    the SD card. e.g. run following to copy boot binaries in SD card boot partition.
+   All the install targets copy the files in the rootfs pointed by the DESTDIR variable.
+   *make install* command only copies the files in rootfs. If you have built either of
+   system firmware or u-boot, you should copy these binaries in the boot partition of
+   the SD card. e.g. run following to copy boot binaries in SD card boot partition.
 
-.. ifconfig:: CONFIG_part_variant in ('AM62PX', 'AM62X', 'AM64X')
+.. ifconfig:: CONFIG_part_variant in ('AM62PX', 'AM62X', 'AM64X', 'AM62AX')
 
    All the install targets copy the files in the rootfs pointed by the DESTDIR variable.
    Run following commands to copy boot binaries in SD card boot partition.
@@ -608,27 +561,19 @@ the Makefile from the top-level of the SDK.
 
 .. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
-    **For GP**
+   **For HS-FS**
 
-    .. code-block:: console
+   .. code-block:: console
 
-        host# sudo cp board-support/k3-image-gen*/tiboot3-am62*-gp-evm.bin /media/$USER/boot/tiboot3.bin
-        host# sudo cp board-support/u-boot_build/a53/u-boot.img board-support/u-boot_build/a53/tispl.bin /media/$USER/boot
+      host# sudo cp board-support/built-images/tiboot3-am62a*-hs-fs-evm.bin /media/$USER/boot/tiboot3.bin
+      host# sudo cp board-support/built-images/u-boot.img board-support/built-images/tispl.bin /media/$USER/boot
 
-    **For HS-FS**
+   **For HS-SE**
 
-    .. code-block:: console
+   .. code-block:: console
 
-        host# sudo cp board-support/k3-image-gen*/tiboot3-am62*-hs-fs-evm.bin /media/$USER/boot/tiboot3.bin
-        host# sudo cp board-support/u-boot_build/a53/u-boot.img board-support/u-boot_build/a53/tispl.bin /media/$USER/boot
-
-    **For HS-SE**
-
-    .. code-block:: console
-
-        host# sudo cp board-support/k3-image-gen*/tiboot3-am62*-hs-evm.bin /media/$USER/boot/tiboot3.bin
-        host# sudo cp board-support/u-boot_build/a53/tispl.bin_HS /media/$USER/boot/tispl.bin
-        host# sudo cp board-support/u-boot_build/a53/u-boot.img_HS /media/$USER/boot/u-boot.img
+      host# sudo cp board-support/built-images/tiboot3-am62a*-hs-evm.bin /media/$USER/boot/tiboot3.bin
+      host# sudo cp board-support/built-images/tispl.bin board-support/built-images/u-boot.img /media/$USER/boot
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 

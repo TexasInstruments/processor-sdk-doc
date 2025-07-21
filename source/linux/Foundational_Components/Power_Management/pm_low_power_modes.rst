@@ -54,23 +54,12 @@ sources is found to be enabled, Partial I/O is entered instead of poweroff.
 
 The following wakeup sources have been configured for Partial I/O:
 mcu_uart0, mcu_mcan0, and mcu_mcan1. Partial I/O mode can only be tested
-when `k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=11.00.09>`__
+when `k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=11.01.05>`__
 overlay is loaded. Please refer to :ref:`How to enable DT overlays<howto_dt_overlays>` for more details.
 
 After Linux boots, the MCAN wakeup for Partial I/O is enabled.
 
-.. rubric:: To enable UART wakeup:
-
-.. code-block:: console
-
-   root@<machine>:~# echo enabled > /sys/class/tty/ttyS0/device/power/wakeup
-
-.. note::
-
-   UART wakeup from Partial I/O is currently being debugged on the EVM.
-
-With at least one of the wakeup sources enabled, Partial I/O mode can be
-entered with the following command:
+Enter Partial I/O mode with the following command:
 
 .. code-block:: console
 
@@ -88,11 +77,6 @@ The system has entered Partial I/O and can only be woken up with an
 activity on the I/O pin programmed for wakeup. For example, if mcu_mcan0
 wakeup was enabled, grounding Pin 22 of J8 MCU Header will wakeup the
 system and it will go through a normal Linux boot process.
-
-.. note::
-
-   The capability to detect whether system is resuming from Partial I/O
-   or doing a normal cold boot will be added in future release.
 
 .. _pm_io_only_plus_ddr:
 
@@ -132,7 +116,7 @@ I/O Only Plus DDR
    The wakeup sources that can be used to wake the system from I/O Only Plus
    DDR are mcu_uart0, mcu_mcan0, mcu_mcan1 and wkup_uart0. To use the mcu_mcan0
    and mcu_mcan1 wakeup sources, apply the
-   `k3-am62x-sk-lpm-io-ddr-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-io-ddr-wkup-sources.dtso?h=11.00.09>`__
+   `k3-am62x-sk-lpm-io-ddr-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-io-ddr-wkup-sources.dtso?h=11.01.05>`__
    overlay. Please refer to :ref:`How to enable DT overlays<howto_dt_overlays>`
    for more details. To use the mcu_uart0 and wkup_uart0 wakeup sources, direct
    register writes can be used to enable wakeup after Linux boots.
@@ -148,8 +132,8 @@ I/O Only Plus DDR
 
    .. code-block:: console
 
-      root@<machine>:~# devmem2 0x4084014 0x20050000  # MCU_PADCONFIG5 for mcu_uart0
-      root@<machine>:~# devmem2 0x4084024 0x20050000  # MCU_PADCONFIG9 for wkup_uart0
+      root@<machine>:~# devmem2 0x4084014 w 0x20050000  # MCU_PADCONFIG5 for mcu_uart0
+      root@<machine>:~# devmem2 0x4084024 w 0x20050000  # MCU_PADCONFIG9 for wkup_uart0
 
    .. note::
 
@@ -290,9 +274,12 @@ In order to enter Deep Sleep, use the following command:
       [  230.295457] psci: CPU3 killed (polled 0 ms)
 
 This partially indicates that Linux has finished it's Deep Sleep suspend sequence.
-For further confirmation, one can take a look at the PMIC_LPM_EN pin on the EVM
-(after programming the PMCTRL_SYS register (0x43018080) to 0x15). Here, if the pin is 3.3V when active and
-0V when in deep sleep.
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+   For further confirmation, program the PMCTRL_SYS register (0x43018080) to
+   0x15. The PMIC_LPM_EN pin on the EVM is 3.3V when active and 0V when in 
+   DeepSleep.
 
 .. note::
 
@@ -322,27 +309,6 @@ To enter MCU Only mode, set :code:`100 msec` resume latency for CPU0 in Linux:
 .. code-block:: console
 
    root@<machine>:~# echo 100000 > /sys/devices/system/cpu/cpu0/power/pm_qos_resume_latency_us
-
-.. important::
-
-   Note that the step below to set "enabled" won't work for current SDK
-   and will be supported in future release
-
-.. ifconfig:: CONFIG_part_variant in ('AM62X')
-
-   To enter MCU Only mode, enable MCU M4 core as a wakeup source in linux:
-
-   .. code-block:: console
-
-      root@am62xx-evm:~# echo enabled > /sys/bus/platform/devices/5000000.m4fss/power/wakeup
-
-.. ifconfig:: CONFIG_part_variant in ('AM62AX', 'AM62PX')
-
-   To enter MCU Only mode, enable MCU R5 core as a wakeup source in linux:
-
-   .. code-block:: console
-
-      root@<machine>:~# echo enabled > /sys/bus/platform/devices/79000000.r5f/power/wakeup
 
 Now, the SoC can be suspended using the following command:
 

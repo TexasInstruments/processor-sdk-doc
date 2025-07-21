@@ -80,6 +80,11 @@ Open the index page in a web browser
     debian:  ./build/processor-sdk-debian-<FAMILY>/esd/docs/[version]/index.html
     edgeai:  ./build/processor-sdk-edgeai-<FAMILY>/esd/docs/[version]/index.html
 
+## Contributing
+
+See the [contribution guidelines](CONTRIBUTING.md) for information about
+formatting guidelines, workflows, and common issues.
+
 ## Live Preview on GitHub Pages
 
 GitHub Pages are now live for all `DEVFAMILY` and `OS` supported by this repository.

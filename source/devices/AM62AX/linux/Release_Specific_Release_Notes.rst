@@ -45,7 +45,8 @@ What's new
 
 **Processor SDK Linux AM62AX Release has following new features:**
 
-- First 2025 LTS Reference Release Including RT combined branch model
+  - First 2025 LTS Reference Release Including RT combined branch model
+  - Falcon mode through R5 SPL :ref:`U-Boot Falcon Mode <U-Boot-Falcon-Mode>`
   - Important Bug Fixes on top of Processor SDK 10.01.10.04 Release
   - Review Issue Tracker Section for the new fixes.
 
@@ -53,7 +54,7 @@ What's new
 
   - RT Kernel : Real-Time Linux Interrupt Latency numbers here :ref:`RT Interrupt Latencies <RT-linux-performance>`
   - Support for streaming from OV2312 camera with `DS90UB954-Q1EVM <https://www.ti.com/tool/DS90UB954-Q1EVM>`_
-  - Power Management: :ref:`I/O Only Plus DDR <pm_io_only_plus_ddr>` mode
+  - How standby power mode works - :ref:`CPUIdle Documentation <cpuidle-guide>`
 
 **Component version:**
 

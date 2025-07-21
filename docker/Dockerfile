@@ -13,6 +13,7 @@ RUN apk add --no-cache \
 		ripgrep \
 		shadow \
 		su-exec \
+		tar \
 		vale \
 		zip \
 	&& echo "**** create abc user and make our folders ****" \

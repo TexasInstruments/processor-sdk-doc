@@ -45,8 +45,9 @@ What's new
 
 **Processor SDK Linux AM62X Release has following new features:**
 
-- Second 2025 LTS Reference Release Including RT combined branch model
-  - Falcon mode through R5 SPL
+  - Second 2025 LTS Reference Release Including RT combined branch model
+  - Add support for AM62SIP, which is an example of using AM62x with 512MiB of RAM
+  - Falcon mode through R5 SPL :ref:`U-Boot Falcon Mode <U-Boot-Falcon-Mode>`
   - Important Bug Fixes on top of Processor SDK 11.00.09.04 Release
   - Review Issue Tracker Section for the new fixes.
 
@@ -57,6 +58,7 @@ What's new
   - Snagfactory Support - :ref:`Snagfactory Tool <Flash-via-Fastboot>`
   - Support for M2 CC33xx cards on Debian - `How to Enable M.2-CC33x1 in Linux <https://software-dl.ti.com/processor-sdk-linux/esd/AM62X/10_01_10_04_Debian/exports/docs/linux/How_to_Guides/Target/How_To_Enable_M2CC3301_in_linux.html>`__
   - How to Enable PRU RPMsg - `Read FAQ <https://e2e.ti.com/support/processors-group/processors/f/791/t/1494495>`__
+  - How standby power mode works - :ref:`CPUIdle Documentation <cpuidle-guide>`
 
 **Component version:**
 
@@ -157,7 +159,7 @@ Yocto
 .. rubric:: meta-tisdk
    :name: meta-tisdk
 
-| Head Commit: 60969f56929e61855d2c581a329e98d8428fc35d meta-ti-foundational: recipes-demos: dsp offload: update SRCREV
+| Head Commit: 3265fc78d1dddd1642c112a2f3f42507bfa176d9 meta-ti-foundational: ti-apps-launcher: Update SRCREV
 
 | Clone: https://github.com/TexasInstruments/meta-tisdk.git
 | Branch: scarthgap

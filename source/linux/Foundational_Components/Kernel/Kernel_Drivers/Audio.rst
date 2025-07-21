@@ -37,6 +37,12 @@ instances to a codec or an HDMI bridge.
 
 Generic commands and instructions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. ifconfig:: CONFIG_part_variant in ('AM62DX')
+
+    .. note::
+
+        Only Audio playback with static DAC confgiuration is supported.
+        Recording feature is not supported.
 
 Most of the boards have simple audio setup which means we have one
 sound card with one playback and one capture PCM.

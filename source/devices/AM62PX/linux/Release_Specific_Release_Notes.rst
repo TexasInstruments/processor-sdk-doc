@@ -36,18 +36,18 @@ found on the SDK download page or in the installed directory as indicated below.
 -  Linux Manifest:  :file:`<PSDK_PATH>/manifest/software_manifest.htm`
 
 
-Release 11.00.09.04
+Release 11.01.05.03
 ===================
 
-Released on April 2025
+Released on July 2025
 
 What's new
 ----------
 
 **Processor SDK Linux AM62PX Release has following new features:**
 
-- Second 2025 LTS Reference Release Including RT combined branch model
-  - Falcon mode through R5 SPL.
+  - Second 2025 LTS Reference Release Including RT combined branch model
+  - Falcon mode through R5 SPL :ref:`U-Boot Falcon Mode <U-Boot-Falcon-Mode>`
   - Important Bug Fixes on top of Processor SDK 11.00.09.04 Release.
   - Review Issue Tracker Section for the new fixes.
 
@@ -56,7 +56,7 @@ What's new
   - RT Kernel : Real-Time Linux Interrupt Latency numbers here - :ref:`RT Interrupt Latencies <RT-linux-performance>`
   - Support for streaming from multiple OV5640 cameras with `Arducam V3Link (Fusion Mini) <https://www.arducam.com/product/arducam-v3link-camera-kit-for-ti-development-boards/>`_
   - TISCI: A53 hosts default priv_id value updated to 1 from 4 (to match all other SOCs)
-  - Power Management: :ref:`I/O Only Plus DDR <pm_io_only_plus_ddr>` mode
+  - How standby power mode works - :ref:`CPUIdle Documentation <cpuidle-guide>`
   - Out-of-Box TI Apps Launcher Application with Qt6 Framework - :ref:`TI Apps Launcher <TI-Apps-Launcher-User-Guide-label>`
   - Snagfactory Support - :ref:`Snagfactory Tool <Flash-via-Fastboot>`
   - Support for M2 CC33xx cards on Debian - `How to Enable M.2-CC33x1 in Linux <https://software-dl.ti.com/processor-sdk-linux/esd/AM62PX/10_01_10_04_Debian/exports/docs/linux/How_to_Guides/Target/How_To_Enable_M2CC3301_in_linux.html>`__
@@ -167,7 +167,7 @@ Yocto
 .. rubric:: meta-tisdk
    :name: meta-tisdk
 
-| Head Commit: 60969f56929e61855d2c581a329e98d8428fc35d meta-ti-foundational: recipes-demos: dsp offload: update SRCREV
+| Head Commit: 3265fc78d1dddd1642c112a2f3f42507bfa176d9 meta-ti-foundational: ti-apps-launcher: Update SRCREV
 
 | Clone: https://github.com/TexasInstruments/meta-tisdk.git
 | Branch: scarthgap
