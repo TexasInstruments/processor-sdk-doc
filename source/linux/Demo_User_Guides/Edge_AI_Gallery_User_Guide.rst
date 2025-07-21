@@ -139,3 +139,50 @@ The edge AI gallery launches on Linux startup. Follow the below instructions to 
 .. ifconfig:: CONFIG_part_variant in ('J784S4')
 
    13. For more information on edge AI software stack, refer `Edge AI Documentation <https://software-dl.ti.com/jacinto7/esd/processor-sdk-linux-edgeai/AM69A/10_01_00/exports/docs/common/sdk_overview.html>`_
+
+Compiling EdgeAI GUI App
+========================
+
+The ideal way to compile EdgeAI GUI App is to trigger a Yocto
+build. But for a quicker way to do it, especially during development,
+TI provides a `debian-arm64
+<https://github.com/TexasInstruments/ti-docker-images/pkgs/container/debian-arm64>`__
+Docker image. This image already has all dependencies required
+for compiling edgeai-gui-app.
+
+First, clone EdgeAI GUI App on host:
+
+.. code:: console
+
+   git clone https://git.ti.com/git/apps/edgeai-gui-app.git
+   export EDGEAI_GUI_APP_REPO="$(pwd)/edgeai-gui-app"
+   cd ${EDGEAI_GUI_APP_REPO}
+
+Then, pull TI's debian-arm64 Docker image and run it:
+
+.. code:: console
+
+   docker pull ghcr.io/texasinstruments/debian-arm64:latest
+   docker run -it -v ${EDGEAI_GUI_APP_REPO}:/root/ti-apps-launcher ghcr.io/texasinstruments/debian-arm64 bash
+
+Finally, run:
+
+.. code:: console
+
+   cmake -B build -S . -DRT_BUILD=0 # if target is RT image, make -DRT_BUILD=1
+   make -C build
+
+The compiled binary should be ``build/edgeai-gui-app``.
+
+Copy the compiled binary to the :file:`/usr/bin` of the target:
+
+.. code:: console
+
+   scp ${EDGEAI_GUI_APP_REPO}/build/edgeai-gui-app root@<ip-addr-of-device>:/usr/bin/
+
+.. note::
+
+   This is a quick and easy way to compile ti-apps-launcher during
+   development, but it is a good idea to validate with Yocto builds
+   often. There is a possibility that compiler mismatch could present
+   issues in the run up to production.
