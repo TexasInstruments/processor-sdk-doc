@@ -284,4 +284,5 @@ Building the Linux demo binary from sources
 Building the c7 firmware from sources
 --------------------------------------
 
-- Please refer to the `MCU+ SDK Documentation  <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62DX/11_00_00_16/exports/docs/api_guide_am62dx/GETTING_STARTED_BUILD.html>`__
+- Refer to the `MCU+ SDK Documentation  <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62DX/11_01_00_16/exports/docs/api_guide_am62dx/GETTING_STARTED_BUILD.html>`__
+- Refer to the `C7 Demo Firmware <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62DX/11_01_00_16/exports/docs/api_guide_am62dx/EXAMPLES_DRIVERS_IPC_RPMESSAGE_LINUX_AUDIO_FILTER_OFFLOAD.html>`__
