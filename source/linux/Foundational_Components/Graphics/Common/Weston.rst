@@ -58,7 +58,7 @@ If you need to interact with this instance with any other user, then make sure
 that user is capable of interacting with the wayland socket. This will be
 :file:`wayland-1` under the ``weston`` user's ``XDG_RUNTIME_DIR``,
 :file:`/run/user/1000/`. We do not recommend running graphical applications as
-root.
+root. See :ref:`running-weston-clients` for more information.
 
 To start the systemd service manually, do the following:
 
@@ -147,6 +147,8 @@ following will stop it:
 It is also possible to start Weston from the native console, exit
 Weston by pressing Ctrl-Alt-Backspace.
 
+.. _running-weston-clients:
+
 **********************
 Running Weston clients
 **********************
@@ -154,6 +156,24 @@ Running Weston clients
 Weston client examples can run from the command line on a serial port
 console or an SSH console. After launching Weston, the user should be
 able to use the keyboard and the mouse for various controls.
+
+The ``WAYLAND_DISPLAY`` variable informs clients what socket they should
+interact with. Typically these sockets are under the ``XDG_RUNTIME_DIR``,
+allowing ``WAYLAND_DISPLAY`` to be a file name. The ``WAYLAND_DISPLAY`` variable
+can also be a full path to the socket.
+
+Applications stated from terminal sessions running under the Weston process will
+have this variable set automatically. If it is not set automatically and the
+process is running under the same user as Weston, then you should only have to
+set ``WAYLAND_DISPLAY`` to :file:`wayland-{X}`. Here ``X`` is the session
+number, which should start at 1 and increment for each simultaneous instance of
+Weston started.
+
+Do not set the ``XDG_RUNTIME_DIR`` variable to any other user's runtime
+directory. This will cause issues with other applications. If that user can
+interact with another users socket, point ``WAYLAND_DISPLAY`` to the full path
+of the socket instead. For example ``WAYLAND_DISPLAY=/run/user/1000/wayland-1``
+allows an application to interact with user ID 1000's session.
 
 .. code-block:: console
 
