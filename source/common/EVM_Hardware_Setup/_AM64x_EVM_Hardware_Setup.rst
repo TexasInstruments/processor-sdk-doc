@@ -10,7 +10,7 @@ standard Ethernet, peripheral component interconnect express (PCIe), fast serial
 interface (FSI) and others to easily create prototypes, onboard display, onboard
 current-measurement capabilities for power-conscious applications.
 
-For Quick Start Quide `click here. <https://dev.ti.com/tirex/content/tirex-product-tree/am64x-devtools/docs/am64x_gpevm_quick_start_guide.html>`__
+For Quick Start Quide `click here. <https://dev.ti.com/tirex/content/tirex-product-tree/processors-devtools/am64x_gpevm_quick_start_guide.html>`__
 
 For User Guide `click here. <https://www.ti.com/lit/ug/spruix0d/spruix0d.pdf?ts=1677228212518&ref_url=https%253A%252F%252Fwww.google.com%252F>`__
 
