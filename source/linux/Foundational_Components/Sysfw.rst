@@ -30,5 +30,5 @@ The responsibilities of Device Manager are:
 * Forwarding response received from the DMSC to non-secure hosts for the above
   forwarded messages.
 
-Please refer to `TISCI User Guide <https://software-dl.ti.com/tisci/esd/22_01_02/index.html>`__
+Please refer to `TISCI User Guide <https://software-dl.ti.com/tisci/esd/11_01_02/index.html>`__
 for details.
