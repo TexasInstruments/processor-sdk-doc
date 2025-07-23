@@ -920,7 +920,7 @@ SDK wic image filesystem:
 		TEST STATUS: PASSED
 
 		# for DM R5F<->A53 IPC, use the below command. For remote proc ids, please refer to : 'https://git.ti.com/cgit/rpmsg/ti-rpmsg-char/tree/include/rproc_id.h'
-		root@am62axx-evm:~# rpmsg_char_simple -r15 -p21 -n10
+		root@am62axx-evm:~# rpmsg_char_simple -r15 -n10
 		Created endpt device rpmsg-char-15-127176, fd = 3 port = 1024
 		Exchanging 10 messages with rpmsg device ti.ipc4.ping-pong on rproc id 15 ...
 
@@ -950,7 +950,7 @@ SDK wic image filesystem:
 		TEST STATUS: PASSED
 
 		# C7x<->A53_0 IPC
-		root@am62axx-evm:~# rpmsg_char_simple -r8 -p21 -n10
+		root@am62axx-evm:~# rpmsg_char_simple -r8 -n10
 		Created endpt device rpmsg-char-8-127180, fd = 3 port = 1024
 		Exchanging 10 messages with rpmsg device ti.ipc4.ping-pong on rproc id 8 ...
 
