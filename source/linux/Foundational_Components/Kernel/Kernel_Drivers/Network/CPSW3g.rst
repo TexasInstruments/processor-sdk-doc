@@ -66,12 +66,12 @@ Supported platforms
 .. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
     .. note::
-        | The second CPSW MAC port of the CPSW3g instance on AM62A requires an Add-On card.
-        | Additionally, the device-tree overlay:
-        |  **k3-am62a7-sk-ethernet-dc01.dtbo**
-        | has to be applied at U-Boot stage using the command:
-        |  **setenv name_overlays ti/k3-am62a7-sk-ethernet-dc01.dtbo**
-        | to enable functionality of the second CPSW port in Linux.
+      | The second CPSW MAC port of the CPSW3g instance on AM62A requires an Add-On card.
+      | Additionally, the device-tree overlay:
+      |  **k3-am62a7-sk-ethernet-dc01.dtbo**
+      | has to be applied at U-Boot stage using the command:
+      |  **setenv name_overlays ti/k3-am62a7-sk-ethernet-dc01.dtbo**
+      | to enable functionality of the second CPSW port in Linux.
 
 ********************
 Driver Configuration
@@ -82,12 +82,12 @@ custom builds, please ensure following configs are enabled.
 
 .. code-block:: kconfig
 
-    CONFIG_TI_DAVINCI_MDIO
-    CONFIG_TI_K3_AM65_CPSW_NUSS
-    CONFIG_TI_K3_AM65_CPSW_SWITCHDEV
-    CONFIG_TI_K3_AM65_CPTS
-    CONFIG_TI_AM65_CPSW_TAS
-    CONFIG_PHY_TI_GMII_SEL
+   CONFIG_TI_DAVINCI_MDIO
+   CONFIG_TI_K3_AM65_CPSW_NUSS
+   CONFIG_TI_K3_AM65_CPSW_SWITCHDEV
+   CONFIG_TI_K3_AM65_CPTS
+   CONFIG_TI_AM65_CPSW_TAS
+   CONFIG_PHY_TI_GMII_SEL
 
 For further details regarding the above configs, refer:
 
@@ -359,17 +359,17 @@ taking effect
 .. code-block:: console
 
    root@evm:~# ethtool -S eth1 | grep col
-     tx_collision_frames: 1796093
-     tx_single_coll_frames: 0
-     tx_mult_coll_frames: 3
-     tx_excessive_collisions: 0
-     tx_late_collisions: 0
+      tx_collision_frames: 1796093
+      tx_single_coll_frames: 0
+      tx_mult_coll_frames: 3
+      tx_excessive_collisions: 0
+      tx_late_collisions: 0
    root@evm:~# ethtool -S eth0 | grep col
-     tx_collision_frames: 3
-     tx_single_coll_frames: 0
-     tx_mult_coll_frames: 2002396
-     tx_excessive_collisions: 52
-     tx_late_collisions: 23
+      tx_collision_frames: 3
+      tx_single_coll_frames: 0
+      tx_mult_coll_frames: 2002396
+      tx_excessive_collisions: 52
+      tx_late_collisions: 23
 
    tx_collision_frames:      Enet_Pn_TxCut Enet Port n Cut Thru with and without delay (full-duplex)
    tx_single_coll_frames:    Enet_pn_TxCut_SAF Enet Port n Tx Store and Forward (full-duplex)

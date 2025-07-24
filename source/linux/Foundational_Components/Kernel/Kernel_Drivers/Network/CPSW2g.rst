@@ -4,7 +4,7 @@ CPSW2g Ethernet
 ---------------
 
 .. contents:: :local:
-    :depth: 3
+   :depth: 3
 
 Introduction
 ============
@@ -49,13 +49,13 @@ Driver Configuration
 The TI Processor SDK has |__PART_FAMILY_DEVICE_NAMES__| CPSW2g driver enabled by default.
 In case of custom builds, please ensure following configs are enabled.
 
-::
+.. code:: Kconfig
 
-    CONFIG_TI_DAVINCI_MDIO
-    CONFIG_TI_K3_AM65_CPSW_NUSS
-    CONFIG_TI_K3_AM65_CPTS
-    CONFIG_TI_AM65_CPSW_TAS
-    CONFIG_PHY_TI_GMII_SEL
+   CONFIG_TI_DAVINCI_MDIO
+   CONFIG_TI_K3_AM65_CPSW_NUSS
+   CONFIG_TI_K3_AM65_CPTS
+   CONFIG_TI_AM65_CPSW_TAS
+   CONFIG_PHY_TI_GMII_SEL
 
 For further details regarding the above configs, refer:
 #. drivers/net/ethernet/ti/Kconfig

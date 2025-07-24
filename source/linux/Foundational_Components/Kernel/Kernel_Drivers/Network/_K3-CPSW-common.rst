@@ -112,13 +112,13 @@ updating the :file:`am65-cpsw-nuss.c` driver with the following change:
    --- a/drivers/net/ethernet/ti/am65-cpsw-nuss.c
    +++ b/drivers/net/ethernet/ti/am65-cpsw-nuss.c
    @@ -1745,7 +1745,8 @@ static netdev_tx_t am65_cpsw_nuss_ndo_slave_xmit(struct sk_buff *skb,
-                   cs_offset = cs_start + skb->csum_offset;
-                   /* HW numerates bytes starting from 1 */
-                   psdata[2] = ((cs_offset + 1) << 24) |
-   -                           ((cs_start + 1) << 16) | (skb->len - cs_start);
-   +                           ((cs_start + 1) << 16) | (skb->len - cs_start)
-   +                           | BIT(15); // BIT(15) enables csum inversion for zero csum
-                   dev_dbg(dev, "%s tx psdata:%#x\n", __func__, psdata[2]);
+                  cs_offset = cs_start + skb->csum_offset;
+                  /* HW numerates bytes starting from 1 */
+                  psdata[2] = ((cs_offset + 1) << 24) |
+   -                          ((cs_start + 1) << 16) | (skb->len - cs_start);
+   +                          ((cs_start + 1) << 16) | (skb->len - cs_start)
+   +                          | BIT(15); // BIT(15) enables csum inversion for zero csum
+                  dev_dbg(dev, "%s tx psdata:%#x\n", __func__, psdata[2]);
 
 .. ifconfig:: CONFIG_part_variant in ('AM65X')
 
@@ -171,12 +171,12 @@ like eth0.5, below is an example how it check the vlan interface
    ifconfig eth0.5
    ....
    eth0.5    Link encap:Ethernet  HWaddr 20:CD:39:2B:C7:BE
-             inet addr:192.168.10.5  Bcast:192.168.10.255  Mask:255.255.255.0
-             UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
-             RX packets:0 errors:0 dropped:0 overruns:0 frame:0
-             TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
-             collisions:0 txqueuelen:0
-             RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+            inet addr:192.168.10.5  Bcast:192.168.10.255  Mask:255.255.255.0
+            UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+            RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+            TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+            collisions:0 txqueuelen:0
+            RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
 
 *VLAN Packet Send/Receive*
 

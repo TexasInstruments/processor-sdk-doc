@@ -2,7 +2,7 @@ CPSW Ethernet
 -------------
 
 .. contents:: :local:
-    :depth: 1
+   :depth: 1
 
 Introduction
 """"""""""""
@@ -12,7 +12,7 @@ standard TSN features such as PTP, EST, CBS and IET.
 
 .. note::
 
-    To operate in switch mode, at least two external ports are required.
+   To operate in switch mode, at least two external ports are required.
 
 Instances of the CPSW Subsystem
 """"""""""""""""""""""""""""""""
@@ -81,9 +81,9 @@ The CPSW Ethernet Subsystem supports TSN features in the following configuration
 For further details regarding the TSN features and testing, refer :ref:`tsn_with_cpsw`
 
 .. toctree::
-    :hidden:
+   :hidden:
 
-    CPSW2g
-    CPSW3g
-    CPSWng
-    CPSW-TSN
+   CPSW2g
+   CPSW3g
+   CPSWng
+   CPSW-TSN

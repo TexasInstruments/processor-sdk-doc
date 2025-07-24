@@ -5,7 +5,7 @@ TSN with CPSW
 ==============
 
 .. contents:: :local:
-    :depth: 3
+   :depth: 3
 
 Introduction
 ============
@@ -18,10 +18,10 @@ TI Common Platform Ethernet Switch (CPSW) supports TSN features such as:
 4. IET (Interspersing Express Traffic) [IEEE-802.3br, IEEE-802.1Qbu]
 
 .. note::
-    All TSN features require CONFIG_TI_AM65_CPTS to be enabled.
+   All TSN features require CONFIG_TI_AM65_CPTS to be enabled.
 
 .. note::
-    Switch based TSN features are supported only with CPSWxg for x >= 3.
+   Switch based TSN features are supported only with CPSWxg for x >= 3.
 
 Documentation and Testing
 =========================
@@ -30,12 +30,12 @@ The documentation for each of the TSN features along with the tests are
 present at:
 
 .. toctree::
-    :maxdepth: 1
+   :maxdepth: 1
 
-    CPSW-PTP
-    CPSW-EST
-    CPSW-CBS
-    CPSW-IET
+   CPSW-PTP
+   CPSW-EST
+   CPSW-CBS
+   CPSW-IET
 
 Testing Details
 ================
@@ -55,6 +55,6 @@ Testing Details
 - For tuning the TSN features in Switch Mode, refer :ref:`tsn_tuning`
 
 .. toctree::
-    :hidden:
+   :hidden:
 
-    CPSW-TSN-Tuning
+   CPSW-TSN-Tuning
