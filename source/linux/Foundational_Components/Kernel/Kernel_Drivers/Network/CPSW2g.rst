@@ -49,7 +49,7 @@ Driver Configuration
 The TI Processor SDK has |__PART_FAMILY_DEVICE_NAMES__| CPSW2g driver enabled by default.
 In case of custom builds, please ensure following configs are enabled.
 
-::
+.. code:: text
 
     CONFIG_TI_DAVINCI_MDIO
     CONFIG_TI_K3_AM65_CPSW_NUSS
