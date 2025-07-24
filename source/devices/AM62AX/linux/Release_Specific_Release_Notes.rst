@@ -35,10 +35,10 @@ found on the SDK download page or in the installed directory as indicated below.
 -  Linux Manifest:  "/docs/software_manifest.html"
 
 
-Release 11.00.09.04
+Release 11.01.07.05
 ===================
 
-Released on April 2025
+Released on July 2025
 
 What's new
 ----------
@@ -47,7 +47,7 @@ What's new
 
   - First 2025 LTS Reference Release Including RT combined branch model
   - Falcon mode through R5 SPL :ref:`U-Boot Falcon Mode <U-Boot-Falcon-Mode>`
-  - Important Bug Fixes on top of Processor SDK 10.01.10.04 Release
+  - Important Bug Fixes on top of Processor SDK 10.01.00.05 Release
   - Review Issue Tracker Section for the new fixes.
 
 **Key Release References:**
@@ -58,14 +58,13 @@ What's new
 
 **Component version:**
 
-  - Kernel 6.12.17
+  - Kernel 6.12.35
   - U-Boot 2025.01
-  - Toolchain GCC 13.3
-  - ATF 2.12+
-  - OPTEE 4.5.0
-  - Graphics DDK 24.2
-  - TIFS Firmware / SYSFW `v11.00.07 <https://software-dl.ti.com/tisci/esd/11_00_07/release_notes/release_notes.html>`__ (Click on the link for more information)
-  - DM Firmware 11.00.00.06
+  - Toolchain GCC 13.4
+  - ATF 2.13+
+  - OPTEE 4.6.0
+  - TIFS Firmware / SYSFW `v11.01.02 <https://software-dl.ti.com/tisci/esd/11_01_02/release_notes/release_notes.html>`__ (Click on the link for more information)
+  - DM Firmware 11.01.00.05
   - Yocto scarthgap 5.0
 
 
@@ -77,51 +76,42 @@ Build Information
 U-Boot
 ------
 
-.. rubric:: u-boot
-   :name: u-boot
-
-.. ifconfig:: CONFIG_image_type in ('edgeai','adas')
-
-    .. note::
-
-       meta-edgeai Yocto layer contains additional patches for U-Boot `here <https://git.ti.com/cgit/edgeai/meta-edgeai/tree/recipes-bsp/u-boot?h=10.01.00.05>`__.
-
-| Head Commit: cd91d73601810374d16a1f17505ab2e72e31f75d PENDING: mmc: am654_sdhci: Unset HIGH_SPEED_ENA for MMC_HS_52
+| Head Commit: 3bcfad6cee95403f7f62dd9d871cc3ea948c0761 PENDING: configs: am68_sk_r5_defconfig: Reduce ENV_SIZE
 | uBoot Version: 2025.01
-| uBoot Description: RC Release 11.00.09
+| uBoot Description: RC Release 11.01.07
 | Clone: git://git.ti.com/ti-u-boot/ti-u-boot.git
 | Branch: ti-u-boot-2025.01
-| uBoot Tag: 11.00.09
+| uBoot Tag: 11.01.07
 |
 
 .. _tf-a-release-notes:
 
 TF-A
 ----
-| Head Commit: b11beb2b6bd30b75c4bfb0e9925c0e72f16ca53f PENDING: feat(ti): Update DDR Configurations
-| Repo: https://github.com/TexasInstruments/arm-trusted-firmware.git
-| Branch: ti-master
-| Tag: (2.12 based): 11.00.09
+| Head Commit: e0c4d3903b382bf34f552af53e6d955fae5283ab Merge changes from topic "xlnx_fix_gen_con_datatype" into integration
+| Repo: https://git.trustedfirmware.org/plugins/gitiles/TF-A/trusted-firmware-a.git/
+| Branch: master
+| Tag: (2.13 based)
 |
 
 .. _optee-release-notes:
 
 OP-TEE
 ------
-| Head Commit: ef1ebdc23034a804a72da2207f1a825ce96a1464 plat-k3: Add initial support for AM62Lx SoC
+| Head Commit: 71785645fa6ce42db40dbf5a54e0eaedc4f61591 Update CHANGELOG for 4.6.0
 | Repo: https://github.com/OP-TEE/optee_os/
 | Branch: master
-| Tag: 4.5.0+
+| Tag: 4.6.0
 |
 
 .. _ti-linux-fw-release-notes:
 
 ti-linux-firmware
 -----------------
-| Head Commit: 27003b6bff61a55dd1fff2cc777e5e07b092b1f7 ti-eth: j721e/j784s4/j7200: update firmware to version 11.00.02
+| Head Commit: f59a711599249ecac75fea38b7a15ef9137d650d Merge branch 'main' of git://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware into ti-linux-firmware-next
 | Clone: https://git.ti.com/cgit/processor-firmware/ti-linux-firmware
 | Branch: ti-linux-firmware
-| Tag: 11.00.09
+| Tag: 11.01.07
 |
 
 Kernel
@@ -129,64 +119,59 @@ Kernel
 .. rubric:: Linux Kernel
    :name: linux-kernel
 
-| Head Commit: c85877d40f8e70e1e201eca2ae1648781f238a37 PENDING: can: m_can: Support pinctrl wakeup state for Partial I/O
-| Kernel Version: v6.12.17
-| Kernel Description: RC Release 11.00.09
+| Head Commit: 72f48d59b8f087fa0dd1f1e8c2c0b5bc0baa537c TI: arm64: dts: ti: k3-am642: Add eqep overlay
+| Kernel Version: v6.12.35
+| Kernel Description: RC Release 11.01.07
 
 | Repo: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
 | Branch: ti-linux-6.12.y
-| Tag: 11.00.09
+| Tag: 11.01.07
 | use-kernel-config=defconfig
 | non-rt-config-fragment=kernel/configs/ti_arm64_prune.config
 | rt-config-fragment=config-fragment=kernel/configs/ti_arm64_prune.config kernel/configs/ti_rt.config
+|
 
-.. ifconfig:: CONFIG_image_type in ('edgeai','adas')
-
-   .. note::
-
-      meta-edgeai Yocto layer contains additional patches for Kernel `here <https://git.ti.com/cgit/edgeai/meta-edgeai/tree/recipes-kernel/linux?h=10.01.00.05>`__.
 
 Yocto
 -----
 .. rubric:: meta-ti
    :name: meta-ti
 
-| Head Commit: 5385fb9231e8d48c30ddd965c4cc623a1f004e3e CI/CD Auto-Merger: cicd.scarthgap.202503251551
+| Head Commit: 4b943f75bfeb04278b11c477a1e3b9ed768c56c1 CI/CD Auto-Merger: cicd.scarthgap.202507231325
 
 | Clone: git://git.yoctoproject.org/meta-ti
 | Branch: scarthgap
-| Release Tag: 11.00.09
+| Release Tag: 11.01.07
 |
 
 .. rubric:: meta-arago
    :name: meta-arago
 
-| Head Commit: 4ec7ae427f9a6aeb7d0b98ac7251bfc2436dbae2 CI/CD Auto-Merger: cicd.scarthgap.202503251551
+| Head Commit: af3a6dd837018f70a2f7e1b6c78b593ece01d92f meta-arago-test: packagegroups: Add off-screen demo to ti-test package group
 
 | Clone: git://git.yoctoproject.org/meta-arago
 | Branch: scarthgap
-| Release Tag: 11.00.09
+| Release Tag: 11.01.07
 |
 
 .. rubric:: meta-tisdk
    :name: meta-tisdk
 
-| Head Commit: e5820fc658978e74bf9270e911e966c417105650 meta-ti-foundational: emptty: Move disabling weston logic to emptty recipe
+| Head Commit: 3265fc78d1dddd1642c112a2f3f42507bfa176d9 meta-ti-foundational: ti-apps-launcher: Update SRCREV
 
 | Clone: https://github.com/TexasInstruments/meta-tisdk.git
 | Branch: scarthgap
-| Release Tag: 11.00.09.04
+| Release Tag: 11.01.07.05
 |
 
 .. rubric:: meta-edgeai
    :name: meta-edgeai
 
-| Head Commit: bccfd706c87e0017360e75bdf9803679fe24db13 [20241210] EDGEAI Auto Update
-| Date: 2024-12-10 10:21:16 -0600
+| Head Commit: 2f3ea75ca6733035d5a60fc2a3fc7d15af9e9851 ti-vision-apps: am62axx: Bump up to REL.PSDK.ANALYTICS.AM62A.11.01.00.05
 
 | Clone: https://git.ti.com/git/edgeai/meta-edgeai.git
 | Branch: scarthgap
-| Release Tag: 10.01.00.05
+| Release Tag: 11.01.07.05
 |
 
 
