@@ -20,13 +20,13 @@ enable support for SIOCSHWTSTAMP and SIOCGHWTSTAMP socket ioctls. The
 PTP exposes the PHC as a character device with standardized ioctls which
 usually can be found at path:
 
-::
+.. code:: text
 
        /dev/ptpN
 
 Supported PTP hardware clock functionality:
 
-::
+.. code:: text
 
     Basic clock operations
        - Set time
@@ -34,7 +34,7 @@ Supported PTP hardware clock functionality:
        - Shift the clock by a given offset atomically
        - Adjust clock frequency
 
-::
+.. code:: text
 
     Ancillary clock features
        - Time stamp external events
@@ -43,7 +43,7 @@ Supported PTP hardware clock functionality:
 
 Supported parameters for SIOCSHWTSTAMP and SIOCGHWTSTAMP:
 
-::
+.. code:: text
 
     SIOCSHWTSTAMP
        hwtstamp_config.flags = 0
@@ -58,7 +58,7 @@ CPTS PTP packet timestamping default configuration when enabled
 (SIOCSHWTSTAMP):
 
 
-::
+.. code:: text
 
     CPSW_PN_TS_CTL_REG
        TS_MSG_TYPE_EN = 0xF (Sync, Delay_Req, Pdelay_Req, and Pdelay_Resp.)
@@ -67,7 +67,7 @@ CPTS PTP packet timestamping default configuration when enabled
        TS_TX_ANNEX_D_EN = 1
        TS_TX_VLAN_LTYPE1_E = 1
 
-::
+.. code:: text
 
     CPSW_PN_TS_CTL_LTYPE2_REG
        TS_TTL_NONZERO = 1
@@ -80,13 +80,13 @@ CPTS PTP packet timestamping default configuration when enabled
        TS_107 = 1
        TS_LTYPE1 = 0x88F7 (ETH_P_1588)
 
-::
+.. code:: text
 
     CPSW_PN_TS_SEQ_LTYPE_REG
        TS_SEQ_ID_OFFSET = 0x1e
        TS_LTYPE1 = 0x88F7 (ETH_P_1588)
 
-::
+.. code:: text
 
     CPSW_PN_TS_VLAN_LTYPE_REG
        TS_VLAN_LTYPE1 =  0x8100 (ETH_P_8021Q)
@@ -117,14 +117,14 @@ generation can be delayed (especially with low speed links) the ptp4l
 
 - create file ptp.cfg with content as below:
 
-::
+.. code:: text
 
     [global]
     tx_timestamp_timeout     400
 
 - pass configuration file to ptp4l using "-f" option:
 
-::
+.. code:: console
 
      ptp4l -E -2 -H -i eth0  -l 6 -m -q -p /dev/ptpN -f ptp.cfg
 
@@ -133,13 +133,13 @@ generation can be delayed (especially with low speed links) the ptp4l
 The following command can be used to run a ptp-over-L4 client on the evm
 in slave mode
 
-::
+.. code:: console
 
        ./ptp4l -E -4 -H -i eth0 -s -l 7 -m -q -p /dev/ptpN
 
 For ptp-over-L2 client, use the command
 
-::
+.. code:: console
 
        ./ptp4l -E -2 -H -i eth0 -s -l 7 -m -q -p /dev/ptpN
 
@@ -148,7 +148,7 @@ For ptp-over-L2 client, use the command
 ptp4l can also be run in master mode. For example, the following command
 starts a ptp4l-over-L2 master on an EVM using hardware timestamping,
 
-::
+.. code:: console
 
        ./ptp4l -E -2 -H -i eth0 -l 7 -m -q -p /dev/ptpN
 
@@ -156,7 +156,7 @@ On a Linux PC which does not support hardware timestamping, the
 following command starts a ptp4l-over-L2 master using software
 timestamping.
 
-::
+.. code:: console
 
        ./ptp4l -E -2 -S -i eth0 -l 7 -m -q
 
@@ -165,14 +165,14 @@ timestamping.
 
 -  get the ptp clock time
 
-::
+.. code:: console
 
        # testptp -d /dev/ptpN -g
        clock time: 1493255613.608918429 or Thu Apr 27 01:13:33 2017
 
 -  query the ptp clock's capabilities
 
-::
+.. code:: console
 
        # testptp -d /dev/ptpN -c
        capabilities:
@@ -188,7 +188,7 @@ timestamping.
 
 Time difference between to testptp -g calls should be equal sleep time
 
-::
+.. code:: console
 
        # testptp -g -d /dev/ptpN && sleep 5 && testptp -g -d /dev/ptpN
        clock time: 1493255884.565859901 or Thu Apr 27 01:18:04 2017
@@ -196,7 +196,7 @@ Time difference between to testptp -g calls should be equal sleep time
 
 -  shift the ptp clock time by 'val' seconds
 
-::
+.. code:: console
 
        # testptp -g -d /dev/ptpN && testptp -t 100 && testptp -g -d /dev/ptpN
        clock time: 1493256107.640649117 or Thu Apr 27 01:21:47 2017
@@ -205,7 +205,7 @@ Time difference between to testptp -g calls should be equal sleep time
 
 -  set the ptp clock time to 'val' seconds
 
-::
+.. code:: console
 
        # testptp -g -d /dev/ptpN && testptp -T 1000000 && testptp -g -d /dev/ptpN
        clock time: 1493256277.568238925 or Thu Apr 27 01:24:37 2017
@@ -214,7 +214,7 @@ Time difference between to testptp -g calls should be equal sleep time
 
 -  adjust the ptp clock frequency by 'val' ppb
 
-::
+.. code:: console
 
        # testptp -g -d /dev/ptpN && testptp -f 1000000 && testptp -g -d /dev/ptpN
        clock time: 151.347795184 or Thu Jan  1 00:02:31 1970
@@ -242,7 +242,7 @@ GENF0 to HW4_TS_PUSH added.
 
 .. ifconfig:: CONFIG_part_variant in ('AM62AX','AM62X')
 
-    ::
+    .. code:: dts
 
        #define TS_OFFSET(pa, val)     (0x4+(pa)*4) (0x10000 | val)
        &timesync_router {
@@ -260,7 +260,7 @@ GENF0 to HW4_TS_PUSH added.
 
 .. ifconfig:: CONFIG_part_variant in ('AM64X')
 
-    ::
+    .. code:: dts
 
        #define TS_OFFSET(pa, val)     (0x4+(pa)*4) (0x10000 | val)
 
@@ -279,7 +279,7 @@ GENF0 to HW4_TS_PUSH added.
 
 .. ifconfig:: CONFIG_part_variant in ('J721E','J7200','J721S2','J784S4','J742S2')
 
-    ::
+    .. code:: dts
 
        #define TS_OFFSET(pa, val)     (0x4+(pa)*4) (0x10000 | val)
 
@@ -364,7 +364,7 @@ The Output Destinations for the Time Sync Router are documented at:
 
 To test that the timestamping feature works with the above changes, execute the following
 
-::
+.. code:: console
 
        # testptp -d /dev/ptpN -p 500000000 -i 0
        # testptp -d /dev/ptpN -e 5 -i 3
@@ -395,7 +395,7 @@ For example, route CPSWxG CPTS GENF1 output to HW3_TS_PUSH input
 
 .. ifconfig:: CONFIG_part_variant in ('AM62AX','AM62X')
 
-    ::
+    .. code:: dts
 
        #define TS_OFFSET(pa, val)     (0x4+(pa)*4) (0x10000 | val)
 
@@ -414,7 +414,7 @@ For example, route CPSWxG CPTS GENF1 output to HW3_TS_PUSH input
 
 .. ifconfig:: CONFIG_part_variant in ('AM64X')
 
-    ::
+    .. code:: dts
 
        #define TS_OFFSET(pa, val)     (0x4+(pa)*4) (0x10000 | val)
        &timesync_router {
@@ -432,7 +432,7 @@ For example, route CPSWxG CPTS GENF1 output to HW3_TS_PUSH input
 
 .. ifconfig:: CONFIG_part_variant in ('J721E','J7200','J721S2','J784S4','J742S2')
 
-    ::
+    .. code:: dts
 
        #define TS_OFFSET(pa, val)     (0x4+(pa)*4) (0x10000 | val)
 
@@ -452,7 +452,7 @@ For example, route CPSWxG CPTS GENF1 output to HW3_TS_PUSH input
 2. Inform the mapping to the CPSWxG driver, by using the "ti,pps" device-tree property
    in the cpts device-tree node present within the CPSWxG device-tree node:
 
-::
+.. code:: dts
 
    &cpswx {
            cpts@3d000 {
@@ -491,7 +491,7 @@ Setup
 1. In both J7VCL and AM625-SK, create a config file named **ptp.cfg** whose
 contents are as follows:
 
-::
+.. code:: text
 
     [global]
     tx_timestamp_timeout 400
@@ -513,13 +513,13 @@ modified for different interface connections.
 
 1. Run the following on J7VCL:
 
-::
+.. code:: console
 
     ptp4l -E -2 -H -i eth1 -l 6 -m -q -f ptp.cfg
 
 2. Run the following on AM625-SK:
 
-::
+.. code:: console
 
     ptp4l -E -2 -H -i eth0 -s -l 6 -m -q -f ptp.cfg
 
@@ -527,7 +527,7 @@ modified for different interface connections.
 
 On J7VCL:
 
-::
+.. code:: console
 
     root@j7200-evm:~/TSN-PTP4L# ptp4l -E -2 -H -i eth1 -l 6 -m -q -f ptp.cfg
     ptp4l[1827.484]: selected /dev/ptp2 as PTP clock
@@ -541,7 +541,7 @@ On J7VCL:
 
 On AM625-SK:
 
-::
+.. code:: console
 
     root@am62xx-evm:~# ptp4l -E -2 -H -i eth0 -s -l 6 -m -q -f ptp.cfg
     ptp4l[1874.715]: selected /dev/ptp0 as PTP clock
@@ -602,13 +602,13 @@ modified for different interface connections.
 
 1. Run the following on AM625-SK:
 
-::
+.. code:: console
 
     ptp4l -E -2 -H -i eth0 -l 6 -m -q -f ptp.cfg
 
 2. Run the following on J7VCL:
 
-::
+.. code:: console
 
     ptp4l -E -2 -H -i eth1 -s -l 6 -m -q -f ptp.cfg
 
@@ -616,7 +616,7 @@ modified for different interface connections.
 
 On AM625-SK:
 
-::
+.. code:: console
 
     root@am62xx-evm:~# ptp4l -E -2 -H -i eth0 -l 6 -m -q -f ptp.cfg
     ptp4l[2647.841]: selected /dev/ptp0 as PTP clock
@@ -630,7 +630,7 @@ On AM625-SK:
 
 On J7VCL:
 
-::
+.. code:: console
 
     root@j7200-evm:~/TSN-PTP4L# ptp4l -E -2 -H -i eth1 -s -l 6 -m -q -f ptp.cfg
     ptp4l[2215.575]: selected /dev/ptp2 as PTP clock
@@ -677,7 +677,7 @@ Use the following ptp config file on the device that acts as the transparent clo
 
 **tc-ptp.cfg**
 
-::
+.. code:: text
 
     [global]
     tx_timestamp_timeout 400
@@ -706,7 +706,7 @@ connected to J7VCL's eth2.
 
 1. Enable switch mode on J7VCL by running the following commands:
 
-::
+.. code:: console
 
     devlink dev param set platform/c000000.ethernet name switch_mode value true cmode runtime
     ip link add name br0 type bridge
@@ -725,7 +725,7 @@ connected to J7VCL's eth2.
 
 2. On the PC, create the same ptp.cfg file mentioned earlier and run:
 
-::
+.. code:: console
 
     sudo ptp4l -E -2 -S -i enp2s0 -l 6 -m -q -f ptp.cfg
 
@@ -734,13 +734,13 @@ Replace -S with -H if PC supports Hardware Timestamping.
 
 3. On J7VCL, run:
 
-::
+.. code:: console
 
     ptp4l -E -2 -H -i eth1 -i eth2 -s -f tc-ptp.cfg --step_threshold=1 -m -q
 
 4. On AM625-SK, run:
 
-::
+.. code:: console
 
     ptp4l -E -2 -H -i eth0 -s -l 6 -m -q -f ptp.cfg
 
@@ -748,7 +748,7 @@ Replace -S with -H if PC supports Hardware Timestamping.
 
 On PC:
 
-::
+.. code:: console
 
     user@pc:~/TSN-PTP4L$ sudo ptp4l -E -2 -S -i enp2s0 -l 6 -m -q -f p.cfg
     ptp4l[16750.478]: port 1: INITIALIZING to LISTENING on INITIALIZE
@@ -760,7 +760,7 @@ On PC:
 
 On J7VCL:
 
-::
+.. code:: console
 
     root@j7200-evm:~/PTP# ptp4l -E -2 -H -i eth1 -i eth2 -s -f ptp.cfg --step_threshold=1 -q -m
     ptp4l[602.896]: selected /dev/ptp2 as PTP clock
@@ -848,7 +848,7 @@ On J7VCL:
 
 On AM625-SK:
 
-::
+.. code:: console
 
     root@am62xx-evm:~# ptp4l -E -2 -H -i eth0 -s -l 6 -m -q -f ptp.cfg
     ptp4l[618.874]: selected /dev/ptp0 as PTP clock
@@ -917,7 +917,7 @@ connected to AM625-SK's eth1.
 
 1. Enable switch mode on AM625-SK by running the following commands:
 
-::
+.. code:: console
 
     devlink dev param set platform/8000000.ethernet name switch_mode value true cmode runtime
     ip link add name br0 type bridge
@@ -936,7 +936,7 @@ connected to AM625-SK's eth1.
 
 2. On the PC, create the same ptp.cfg file mentioned earlier and run:
 
-::
+.. code:: console
 
     sudo ptp4l -E -2 -S -i enp2s0 -l 6 -m -q -f ptp.cfg
 
@@ -945,13 +945,13 @@ Replace -S with -H if PC supports Hardware Timestamping.
 
 3. On AM625-SK, run:
 
-::
+.. code:: console
 
     ptp4l -E -2 -H -i eth0 -i eth1 -s -f tc-ptp.cfg --step_threshold=1 -m -q
 
 4. On J7VCL, run:
 
-::
+.. code:: console
 
     ptp4l -E -2 -H -i eth1 -s -l 6 -m -q -f ptp.cfg
 
@@ -959,7 +959,7 @@ Replace -S with -H if PC supports Hardware Timestamping.
 
 On PC:
 
-::
+.. code:: console
 
     user@pc:~/TSN-PTP4L$ sudo ptp4l -E -2 -S -i enp2s0 -l 6 -m -q -f ptp.cfg
     ptp4l[18640.121]: port 1: INITIALIZING to LISTENING on INITIALIZE
@@ -971,7 +971,7 @@ On PC:
 
 On AM625-SK:
 
-::
+.. code:: console
 
     root@am62xx-evm:~# ptp4l -E -2 -H -i eth0 -i eth1 -s -f ptp.cfg --step_threshold=1 -m -q
     ptp4l[508.734]: selected /dev/ptp0 as PTP clock
@@ -1021,7 +1021,7 @@ On AM625-SK:
 
 On J7VCL:
 
-::
+.. code:: console
 
     root@j7200-evm:~/PTP# ptp4l -E -2 -H -i eth1 -s -l 6 -m -q -f ptp.cfg
     ptp4l[425.608]: selected /dev/ptp2 as PTP clock

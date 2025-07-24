@@ -49,7 +49,7 @@ priority which has the longest wait time of X microseconds. Also, the TX queue
 size is 2K Bytes = 2048 Bytes.
 The EST schedule would be as follows:
 
-::
+.. code:: console
 
     Priority 0          X0 microseconds
     Priority 1          X1 microseconds
@@ -64,7 +64,7 @@ which corresponds to the maximum time that one of all the n priorities has to
 wait for its turn.
 Then, to prevent packet drops, we require:
 
-::
+.. code:: console
 
     (Maximum-Wait-Time)*(Throughput) < Queue-Size
 
@@ -77,7 +77,7 @@ Then, to prevent packet drops, we require:
 Using the above condition, we can find out the maximum wait-time for different
 throughput as follows:
 
-::
+.. code:: console
 
     1. Throughput of 10 Mbps (Y = 10*1024*1024/8 Bytes/Second)
         => X*(10*1024*1024/8) < 2048000000
@@ -94,7 +94,7 @@ We can also use the condition to derive the maximum throughput allowed for a
 given EST as follows:
 For example, consider an EST schedule as follows:
 
-::
+.. code:: console
 
     Priority-0 200 microseconds
     Priority-1 300 microseconds
@@ -118,25 +118,25 @@ being filled quickly, again resulting in packet drops.
 For a CBS schedule where there are N priorities with the rate-limiting on each
 of these priorities being:
 
-::
+.. code:: console
 
     X0, X1, .... XN-1 Bytes per second.
 
 If the actual throughput of each of these priorities is:
 
-::
+.. code:: console
 
     Y0, Y1, .... YN-1 Bytes per second,
 
 and they are all greater than the rate-limits, then, the queues will fill up in:
 
-::
+.. code:: console
 
     2048/(Y0-X0), 2048/(Y1-X1), .... seconds.
 
 In general, queue 'i' will fill up in:
 
-::
+.. code:: console
 
     2048/(Yi-Xi) seconds
 
@@ -147,7 +147,7 @@ Thus, traffic accumulates at a rate of (Y0-X0) and (Y1-X1) on queues 0 and 1 and
 starts filling them up.
 For the example above, it would take:
 
-::
+.. code:: console
 
     15.625 milliseconds to fill up queue 0, and
     1.5625 milliseconds to fill up queue 1,
@@ -167,13 +167,13 @@ starts filling up the queue, resulting in packet drops.
 If the low priority traffic is arriving at Y Bytes per second, it would fill up
 the queue in:
 
-::
+.. code:: console
 
     2048/Y seconds.
 
 For example, if low priority traffic is arriving at 100 Mbps, it would fill up
 the queue in:
 
-::
+.. code:: console
 
     156.25 microseconds.

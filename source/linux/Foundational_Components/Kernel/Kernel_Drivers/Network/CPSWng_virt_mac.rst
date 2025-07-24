@@ -32,7 +32,7 @@ This solution is illustrated below.
 
    Overall TI remoteproc/virtio/rpmsg/rpmsg-kdrv description is out of scope of this section.
 
-::
+.. code:: text
 
  User space           +------+
  +--------------------+ethX  +----------------------------------------+
@@ -147,7 +147,7 @@ Once started, the j721e-cpsw-virt-mac driver will wait for rpmsg_kdrv_switch dri
 
 Drivers initialization Linux kernel log example for Virtual MAC switch mode:
 
-::
+.. code:: text
 
  rpmsg-kdrv-eth-switch rpmsg-kdrv-1-mpu_1_0_ethswitch-device-0: Device info: permissions: 0FFFFFFF uart_id: 2
  rpmsg-kdrv-eth-switch rpmsg-kdrv-1-mpu_1_0_ethswitch-device-0: FW ver 0.2 (rev 0)  3/Oct/2021 SHA:31ed829b
@@ -158,7 +158,7 @@ Drivers initialization Linux kernel log example for Virtual MAC switch mode:
 
 Drivers initialization Linux kernel log example for Virtual MAC only mode:
 
-::
+.. code:: text
 
  rpmsg-kdrv-eth-switch rpmsg-kdrv-3-mpu_1_0_ethmac-device-1: Device info: permissions: 0FFFFFFF uart_id: 2
  rpmsg-kdrv-eth-switch rpmsg-kdrv-3-mpu_1_0_ethmac-device-1: FW ver 0.2 (rev 0)  3/Oct/2021 SHA:31ed829b
@@ -218,7 +218,7 @@ The j721e-cpsw-virt-mac driver also starts/stops the TX UDMA channel.
 For RX side, the j721e-cpsw-virt-mac driver only performs UDMA RX flow initialization (including RX free descriptor and RX ring initialization).
 
 
-::
+.. code:: text
 
         User space          +------+
        +--------------------+ethX  +----------------------------------------+
@@ -294,7 +294,7 @@ Driver Configuration
 The |__SDK_FULL_NAME__| package has a |__PART_FAMILY_NAME__| rpmsg_kdrv_switch and j721e-cpsw-virt-mac drivers enabled by default and built as modules.
 In case of custom builds, please ensure following configs are enabled.
 
-::
+.. code:: text
 
    CONFIG_RPMSG_KDRV
    CONFIG_RPMSG_KDRV_ETH_SWITCH
@@ -310,14 +310,14 @@ Eth0 can be started by default or configured manually:
 
 *DHCP*
 
-::
+.. code:: console
 
       udhcpc -i ethX
       ip link set dev ethX up
 
 *Manual IP address configuration*
 
-::
+.. code:: console
 
     ip addr add <ip>/24 dev ethX
     ip link set dev ethX up
@@ -331,7 +331,7 @@ Set MAC address
 
 The j721e-cpsw-virt-mac supports changing the HW MAC address, but this operation can be performed only when the network device is inactive (down).
 
-::
+.. code:: console
 
    ip link set dev ethX down
    ip link set dev ethX address <MAC-addr>
@@ -346,7 +346,7 @@ Get driver information
 The CPSW0 interface can be identified by using ``ethtool -i|--driver`` command.
 It also provides some information about supported features.
 
-::
+.. code:: console
 
     # ethtool -i <dev>
     ...
@@ -354,7 +354,7 @@ It also provides some information about supported features.
 Display standard information about device/link
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code:: console
 
    # ethtool eth0
 
@@ -364,7 +364,7 @@ Display standard information about device/link
 Show permanent hardware address
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code:: console
 
            # ethtool -P eth0
            Permanent address: a0:f6:fd:a6:46:6e"
@@ -374,7 +374,7 @@ RX/TX checksum offload
 
 The driver enables RX checksum offload by default. The current status can be obtained by using "ethtool -k" command:
 
-::
+.. code:: console
 
     # ethtool -k <dev>
     ....
@@ -385,7 +385,7 @@ The driver enables RX checksum offload by default. The current status can be obt
 
 It can be disabled/enabled by using "ethtool -K" command:
 
-::
+.. code:: console
 
     ethtool -K <dev> rx-checksum on|off
     ethtool -K <dev> tx-checksum-ip-generic on|off
@@ -397,7 +397,7 @@ It can be disabled/enabled by using "ethtool -K" command:
 Driver testing
 ^^^^^^^^^^^^^^
 
-::
+.. code:: console
 
    # ethtool -t|--test <dev>
    ...
@@ -422,13 +422,13 @@ The Interrupt pacing (IRQ coalescing) based on hrtimers for RX/TX data path sepa
 
 The Interrupt pacing (IRQ coalescing) configuration can be retrieved by commands:
 
-::
+.. code:: console
 
   #  ethtool -c ethX
 
 It is also possible to use standard Linux Net core hard irqs deferral feature which can be enabled by configuring:
 
-::
+.. code:: console
 
  /sys/class/net/ethX/
   gro_flush_timeout (in ns)
@@ -465,7 +465,7 @@ The EthFW supports two logical types of MC addresses:
 
 MC MAC addresses can be added/deleted using *ip maddr* command:
 
-::
+.. code:: console
 
     # Add MC address 239.255.1.4
     ip maddr add 01:00:5e:7f:01:04 dev ethX
@@ -483,7 +483,7 @@ MC MAC addresses can be added/deleted using *ip maddr* command:
 
 or by using Linux socket IOCTL SIOCADDMULTI/SIOCDELMULTI:
 
-::
+.. code:: console
 
     ip route add 239.255.1.3 dev eth1
     iperf -s -B 239.255.1.3 -u&
