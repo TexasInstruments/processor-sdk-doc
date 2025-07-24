@@ -78,7 +78,7 @@ Flash bootloader binaries to eMMC
 =================================
 
 To boot with *eMMC boot* the eMMC needs to be prepared before hand. The recommended process
-is to flash an SD card with TI SDK image, copy the bootlader binaries that will be flashed to
+is to flash an SD card with TI SDK image, copy the bootloader binaries that will be flashed to
 eMMC in the SD card "boot" partition in emmc/ folder, boot the board with *MMCSD boot* from SD
 (FS mode), and proceed to flash the eMMC from either u-boot or linux.
 
@@ -199,7 +199,7 @@ Flash rootfs to eMMC
 To boot the rootfs from eMMC UDA, the eMMC needs to be prepared before hand. It is not
 possible to format a partition to ext4 in U-Boot, so the recommended process is to flash
 an SD card with TI SDK image, boot the device with SD card boot to linux kernel prompt,
-and prepre eMMC UDA from Linux.
+and prepare eMMC UDA from Linux.
 
 First create a "root" partition to flash the rootfs as shown :ref:`here <mmc-create-root-partition-emmc-linux>`.
 The new disk partition should be formatted as ext4 type as shown :ref:`here <mmc-format-partition-ext4>`.

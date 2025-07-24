@@ -36,7 +36,7 @@ can be found in the following way:
 The device index "**0**" for eMMC will be used when flashing to the eMMC device
 :ref:`here <how-to-emmc-boot>` using :command:`mmc dev` command.
 
-In u-boot environment, usually **mmcdev=n** is used to selct which MMC device to boot
+In u-boot environment, usually **mmcdev=n** is used to select which MMC device to boot
 Linux from, where **n** is the device index.
 
 MMC HW partitions
@@ -419,7 +419,7 @@ Flash and boot SPL from USB storage
    .. note::
 
       The SoC does not support booting from USB mass storage, but USB can still be
-      accesed as storage device at U-Boot prompt.
+      accessed as storage device at U-Boot prompt.
 
 .. ifconfig:: CONFIG_part_variant in ('AM64X', 'AM65X', 'J722S')
 

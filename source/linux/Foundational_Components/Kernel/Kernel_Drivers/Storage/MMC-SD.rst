@@ -277,7 +277,7 @@ Driver Configuration
 
       $ sudo -E make modules_install ARCH=arm INSTALL_MOD_PATH=path/to/filesystem
 
-   Boot the kernel upto kernel prompt and use modprobe to insert the driver
+   Boot the kernel up-to kernel prompt and use modprobe to insert the driver
    module and all its dependencies.
 
    .. code-block:: console
@@ -425,10 +425,10 @@ MMC support in Linux
 
 |
 
-.. ifconfig:: CONFIG_part_family not in ('General_family', 'AM57X_family', 'AM335X_family', 'AM437X_family')
+Steps for working around SD card issues in Linux
+************************************************
 
-   Steps for working around SD card issues in Linux
-   ************************************************
+.. ifconfig:: CONFIG_part_family not in ('General_family', 'AM57X_family', 'AM335X_family', 'AM437X_family')
 
    In some cases, failures can be seen while using some SD cards:
 
@@ -540,6 +540,11 @@ MMC support in Linux
          };
 
          sdhci2: mmc@fa20000 {
+
+.. ifconfig:: CONFIG_part_family in ('General_family', 'AM57X_family', 'AM335X_family', 'AM437X_family')
+
+   Steps for working around SD card issues in Linux documentation is pending for |__PART_FAMILY_DEVICE_NAMES__|
+   please reach out to:  `Help e2e <https://e2e.ti.com//>`__ for additional information.
 
 |
 
