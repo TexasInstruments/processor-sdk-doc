@@ -83,8 +83,8 @@ boot the device.
 .. note::
 
    For eMMC, typically, the device ships without a partition table If there is a need to
-   create a partition in UDA, please go :ref:`here <mmc-create-partitions-in-emmc-uda-from-linux>`
-   and to format the partition go :ref:`here <mmc-formatting-mmc-partition-from-linux>` before
+   create a partition in UDA, please go :ref:`here <mmc-create-partitions-in-emmc-linux>`
+   and to format the partition go :ref:`here <mmc-format-partition-linux>` before
    proceeding.
 
 To list disk partitions for any MMC device from u-boot prompt, use the

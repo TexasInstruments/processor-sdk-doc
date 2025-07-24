@@ -91,7 +91,7 @@ Set using the :command:`mmc bootbus` and :command:`mmc partconf` commands. Go to
 
 Where <dev> is MMC device index.
 
-- For more information on these commands, please go `here <https://docs.u-boot.org/en/latest/usage/cmd/mmc.html//>`__.
+- For more information on these commands, go `here <https://docs.u-boot.org/en/latest/usage/cmd/mmc.html>`__.
 
 **Boot from UDA**
 
@@ -115,7 +115,7 @@ Where <dev> is MMC device index.
 .. warning::
 
    This is a write-once field. For more information, please refer to the u-boot
-   doc found `here <https://docs.u-boot.org/en/latest/usage/cmd/mmc.html//>`__.
+   doc found `here <https://docs.u-boot.org/en/latest/usage/cmd/mmc.html>`__.
 
 **U-boot environment**
 
