@@ -104,10 +104,10 @@ The support status is indicated by the following codes:
    ,,EndPoint,Yes,No,No,No
    ,,TSN,Yes,No,No,No
    ,,TSN - VLAN,Yes,No,No,No
-   ,Universal Serial Bus Subsystem (USBSS),Host 3.1,Yes,No,No,No
-   ,,Device 3.1,Yes,No,No,No
+   ,Universal Serial Bus Subsystem (USBSS),Host 3.1,NA,No,No,No
+   ,,Device 3.1,NA,No,No,No
    ,,Host 2.0,Yes,No,No,No
-   ,,Device 2.0,No,No,No,No
+   ,,Device 2.0,Yes,No,No,No
    Memory Interfaces,Flash Subsystem (FSS),,No,No,No,No
    ,Quad Serial Peripheral Interface (QSPI),NOR,No,No,No,No
    ,,NAND,No,No,No,No
