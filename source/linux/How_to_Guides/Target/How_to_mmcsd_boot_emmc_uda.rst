@@ -42,7 +42,7 @@ Manually flash eMMC device
 ==========================
 
 To boot with *MMCSD boot* from eMMC UDA in fs mode, the eMMC needs to be prepared before hand.
-The recommended process is to flash an SD card with TI SDK image, copy the bootlader binaries
+The recommended process is to flash an SD card with TI SDK image, copy the bootloader binaries
 that will be flashed to eMMC in the SD card "boot" partition in :file:`emmc/` folder, boot the
 board with *MMCSD boot* from SD (FS mode), and proceed to create disk partitions and flash the
 eMMC from linux.
@@ -91,7 +91,7 @@ Set using the :command:`mmc bootbus` and :command:`mmc partconf` commands. Go to
 
 Where <dev> is MMC device index.
 
-- For more information on these commands, please go `here <https://docs.u-boot.org/en/latest/usage/cmd/mmc.html//>`__.
+- For more information on these commands, go `here <https://docs.u-boot.org/en/latest/usage/cmd/mmc.html>`__.
 
 **Boot from UDA**
 
@@ -115,7 +115,7 @@ Where <dev> is MMC device index.
 .. warning::
 
    This is a write-once field. For more information, please refer to the u-boot
-   doc found `here <https://docs.u-boot.org/en/latest/usage/cmd/mmc.html//>`__.
+   doc found `here <https://docs.u-boot.org/en/latest/usage/cmd/mmc.html>`__.
 
 **U-boot environment**
 
