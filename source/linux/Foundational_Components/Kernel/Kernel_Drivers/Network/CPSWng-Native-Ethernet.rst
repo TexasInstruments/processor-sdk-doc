@@ -22,7 +22,7 @@ Driver Configuration
 
 Enable the following configs for Native Ethernet with CPSWng:
 
-::
+.. code:: text
 
     CONFIG_TI_K3_AM65_CPSW_NUSS
     CONFIG_TI_K3_AM65_CPSW_SWITCHDEV
@@ -106,7 +106,7 @@ All configuration is implemented via switchdev API.
 Bridge setup
 ''''''''''''
 
-::
+.. code:: console
 
     devlink dev param set platform/c000000.ethernet \
     name switch_mode value true cmode runtime
@@ -135,14 +135,14 @@ Bridge setup
 Turn On/Off Spanning Tree Protocol (STP)
 ''''''''''''''''''''''''''''''''''''''''
 
-::
+.. code:: console
 
     ip link set dev br0 type bridge stp_state 1/0
 
 VLAN configuration
 ''''''''''''''''''
 
-::
+.. code:: console
 
     bridge vlan add dev br0 vid 1 self <---- add VLAN as a Bridge Entry
     bridge vlan add dev br0 vid 1 pvid untagged self <---- add cpu port to VLAN 1
@@ -154,7 +154,7 @@ Adding extra VLANs
 
 1. Untagged
 
-::
+.. code:: console
 
     bridge vlan add dev eth1 vid 100 pvid untagged master
     bridge vlan add dev sw0p2 vid 100 pvid untagged master
@@ -163,7 +163,7 @@ Adding extra VLANs
 
 2. Tagged
 
-::
+.. code:: console
 
     bridge vlan add dev eth1 vid 100 master
     bridge vlan add dev sw0p2 vid 100 master

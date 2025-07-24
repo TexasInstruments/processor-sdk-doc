@@ -27,7 +27,7 @@ Host port ingress Rate Limiting offload
 The netdev sysfs **tx_maxrate** parameter can be used to configure rate limit in Mbit/s per TX DMA channel.
 The rate for shapers has to be set a little bit more then potential incoming rate, and real rates can differ, due to discreetness.
 
-::
+.. code:: console
 
    echo 100 > /sys/class/net/eth2/queues/tx-7/tx_maxrate
 
@@ -40,7 +40,7 @@ In this example Rate Limiting is enabled only for Host port TX channels.
 * pri6 traffic routed to TX DMA channel 6, rate limit 200Mbit
 * pri0-5 traffic routed to TX DMA channel 0
 
-::
+.. code:: console
 
    ip link set dev eth0 down
    ethtool -L eth0 tx 8
@@ -100,7 +100,7 @@ The MQPRIO Qdisc **shaper bw_rlimit min_rate and max_rate** parameters can be us
 * if Host sends traffic to the same, rate limited External Ports FIFO then corresponding Host TX DMA channel shapers has to be enabled and its rate has to be set equal or less than External Ports FIFO rate
 * the rate for shapers has to be set a little bit more then potential incoming rate, and real rates can differ, due to discreetness.
 
-::
+.. code:: console
 
    tc qdisc add dev eth0 parent root handle 100: mqprio num_tc 3 \
    map 0 0 0 0 0 0 1 2 0 0 0 0 0 0 0 0 \
@@ -120,7 +120,7 @@ In this example Rate Limiting is enabled for Host port TX channels and External 
 * pri6 traffic mapped to TC1, External Ports FIFO1, cir=200Mbit, eir=250Mbit
 * pri0-5 traffic mapped to TC1, External Ports FIFO0
 
-::
+.. code:: console
 
    ip link set dev eth0 down
    ethtool -L eth0 tx 8
@@ -181,7 +181,7 @@ Connect eth0 of AM625-SK to eth1 of J7VCL.
 
 1. Create and run the following script on AM625-SK:
 
-::
+.. code:: console
 
     #!/bin/sh
 
@@ -207,7 +207,7 @@ Connect eth0 of AM625-SK to eth1 of J7VCL.
 In the above script,  the tx queues that send data to the host port are rate-
 limited using the following commands:
 
-::
+.. code:: console
 
     # Rate limit tx queue 7 of eth0 to 106 Mbps
     echo 106 > /sys/class/net/eth0/queues/tx-7/tx_maxrate
@@ -216,13 +216,13 @@ limited using the following commands:
 
 2. Next, assign IP address of 192.168.1.2 to Port-1 of the CPSW5G ports on J7VCL using:
 
-::
+.. code:: console
 
     ifconfig eth1 192.168.1.2
 
 3. Next, start an iperf server on J7VCL by running:
 
-::
+.. code:: console
 
     iperf3 -s -p 5001&
     iperf3 -s -p 5002&
@@ -230,7 +230,7 @@ limited using the following commands:
 
 4. Now, run the iperf client on AM625-SK using:
 
-::
+.. code:: console
 
     iperf3 -c 192.168.1.2 -t10 -p5001 -Tpri7 & \
     iperf3 -c 192.168.1.2 -t10 -p5002 -Tpri6 & \
@@ -240,7 +240,7 @@ limited using the following commands:
 
 On AM625-SK:
 
-::
+.. code:: console
 
     pri0:  - - - - - - - - - - - - - - - - - - - - - - - - -
     pri0:  [ ID] Interval           Transfer     Bitrate         Retr
@@ -270,7 +270,7 @@ Connect eth1 of J7VCL to eth0 of AM625-SK.
 
 1. Create and run the following script on J7VCL:
 
-::
+.. code:: bash
 
     #!/bin/sh
 
@@ -298,7 +298,7 @@ Connect eth1 of J7VCL to eth0 of AM625-SK.
 In the above script,  the tx queues that send data to the host port are rate-
 limited using the following commands:
 
-::
+.. code:: console
 
     # Rate limit tx queue 7 of eth0 to 106 Mbps
     echo 106 > /sys/class/net/eth0/queues/tx-7/tx_maxrate
@@ -307,13 +307,13 @@ limited using the following commands:
 
 2. Next, assign IP address of 192.168.1.2 to Port-1 of the CPSW3G ports on AM625-SK using:
 
-::
+.. code:: console
 
     ifconfig eth0 192.168.1.2
 
 3. Next, start an iperf server on AM625-SK by running:
 
-::
+.. code:: console
 
     iperf3 -s -p 5001&
     iperf3 -s -p 5002&
@@ -321,7 +321,7 @@ limited using the following commands:
 
 4. Now, run the iperf client on J7VCL using:
 
-::
+.. code:: console
 
     iperf3 -c 192.168.1.2 -t10 -p5001 -Tpri7 & \
     iperf3 -c 192.168.1.2 -t10 -p5002 -Tpri6 & \
@@ -331,7 +331,7 @@ limited using the following commands:
 
 On J7VCL:
 
-::
+.. code:: console
 
     pri0:  - - - - - - - - - - - - - - - - - - - - - - - - -
     pri0:  [ ID] Interval           Transfer     Bitrate         Retr
@@ -361,7 +361,7 @@ Connect eth0 of AM625-SK to eth1 of J7VCL.
 
 1. Create and run the following script on AM625-SK:
 
-::
+.. code:: sh
 
     #!/bin/sh
 
@@ -388,13 +388,13 @@ Connect eth0 of AM625-SK to eth1 of J7VCL.
 
 2. Assign IP address of 192.168.1.2 to Port-1 of the CPSW5G ports on J7VCL using:
 
-::
+.. code:: console
 
     ifconfig eth1 192.168.1.2
 
 3. Next, start an iperf server on J7VCL using:
 
-::
+.. code:: console
 
     iperf3 -s -p 5001&
     iperf3 -s -p 5002&
@@ -402,7 +402,7 @@ Connect eth0 of AM625-SK to eth1 of J7VCL.
 
 4. Now, run the iperf client on AM625-SK using:
 
-::
+.. code:: console
 
     iperf3 -c 192.168.1.2 -t10 -p5001 -Tpri7 & \
     iperf3 -c 192.168.1.2 -t10 -p5002 -Tpri6 & \
@@ -412,7 +412,7 @@ Connect eth0 of AM625-SK to eth1 of J7VCL.
 
 On AM625-SK:
 
-::
+.. code:: console
 
     pri7:  - - - - - - - - - - - - - - - - - - - - - - - - -
     pri7:  [ ID] Interval           Transfer     Bitrate         Retr
@@ -442,7 +442,7 @@ Connect eth1 of J7VCL to eth0 of AM625-SK.
 
 1. Create and run the following script on J7VCL:
 
-::
+.. code:: sh
 
     #!/bin/sh
 
@@ -471,13 +471,13 @@ Connect eth1 of J7VCL to eth0 of AM625-SK.
 
 2. Assign IP address of 192.168.1.2 to Port-1 of the CPSW3G ports on AM625-SK using:
 
-::
+.. code:: console
 
     ifconfig eth0 192.168.1.2
 
 3. Next, start an iperf server on AM625-SK using:
 
-::
+.. code:: console
 
     iperf3 -s -p 5001&
     iperf3 -s -p 5002&
@@ -485,7 +485,7 @@ Connect eth1 of J7VCL to eth0 of AM625-SK.
 
 4. Now, run the iperf client on J7VCL using:
 
-::
+.. code:: console
 
     iperf3 -c 192.168.1.2 -t10 -p5001 -Tpri7 & \
     iperf3 -c 192.168.1.2 -t10 -p5002 -Tpri6 & \
@@ -495,7 +495,7 @@ Connect eth1 of J7VCL to eth0 of AM625-SK.
 
 On J7VCL:
 
-::
+.. code:: console
 
     pri0:  - - - - - - - - - - - - - - - - - - - - - - - - -
     pri0:  [ ID] Interval           Transfer     Bitrate         Retr
@@ -540,7 +540,7 @@ eth1.
 
 1. Create and run the following script on AM625-SK:
 
-::
+.. code:: sh
 
     #!/bin/sh
     ifconfig eth0 down
@@ -572,7 +572,7 @@ eth1.
 
 2. Create and run the following script on AM64-SK:
 
-::
+.. code:: sh
 
     #!/bin/sh
 
@@ -603,7 +603,7 @@ eth1.
 
 3. Create and run the following scripts on J7VCL:
 
-::
+.. code:: console
 
     #!/bin/sh
 
@@ -617,7 +617,7 @@ eth1.
 
 4. Now, run the iperf client on AM64-SK using the following commands:
 
-::
+.. code:: console
 
     iperf3 -c 192.168.1.2 -u -b108M -t10 -p5001 -Tpri7 & \
     iperf3 -c 192.168.1.2 -u -b214M -t10 -p5002 -Tpri6 & \
@@ -625,7 +625,7 @@ eth1.
 
 **Results:**
 
-::
+.. code:: console
 
     pri7:  - - - - - - - - - - - - - - - - - - - - - - - - -
     pri7:  [ ID] Interval           Transfer     Bitrate         Jitter    Lost/Total Datagrams
@@ -655,7 +655,7 @@ Connect AM64-SK's eth0 to J7VCL's eth1 and AM625-SK's eth0 to J7VCL's eth2.
 
 1. Create and run the following script on J7VCL:
 
-::
+.. code:: console
 
     #!/bin/sh
     ifconfig eth1 down
@@ -689,7 +689,7 @@ Connect AM64-SK's eth0 to J7VCL's eth1 and AM625-SK's eth0 to J7VCL's eth2.
 
 2. Create and run the following script on AM64-SK:
 
-::
+.. code:: console
 
     #!/bin/sh
 
@@ -720,7 +720,7 @@ Connect AM64-SK's eth0 to J7VCL's eth1 and AM625-SK's eth0 to J7VCL's eth2.
 
 3. Create and run the following script on AM625-SK:
 
-::
+.. code:: console
 
     #!/bin/sh
 
@@ -734,7 +734,7 @@ Connect AM64-SK's eth0 to J7VCL's eth1 and AM625-SK's eth0 to J7VCL's eth2.
 
 4. Now, run the iperf client on AM64-SK using the following commands:
 
-::
+.. code:: console
 
     iperf3 -c 192.168.1.2 -u -b108M -t10 -p5001 -Tpri7 & \
     iperf3 -c 192.168.1.2 -u -b214M -t10 -p5002 -Tpri6 & \
@@ -742,7 +742,7 @@ Connect AM64-SK's eth0 to J7VCL's eth1 and AM625-SK's eth0 to J7VCL's eth2.
 
 **Results:**
 
-::
+.. code:: console
 
     pri6:  - - - - - - - - - - - - - - - - - - - - - - - - -
     pri6:  [ ID] Interval           Transfer     Bitrate         Jitter    Lost/Total Datagrams

@@ -36,7 +36,7 @@ An example configuration with 3 schedule entries given below:-
 
 Here are the steps to configure this schedule.
 
-::
+.. code:: console
 
  #Setup interface and queue configuration
  #Bring down all interfaces associated with the same CPSW instance to update tx channels
@@ -116,7 +116,7 @@ Packet highlighted are the first packet transmitted during Gate open of Q2/TC2 a
 
 CPSW EST hardware will transmit the frame during Gate open. If a frame happens to arrive at the hardware queue just before the Gate closes, it gets spilled over to the next schedule window. If this is not desirable, user may add a guard band between schedule window, duration of which should equal to the transmission time of a MTU frame (1518 * 8 = 12144 nsec) + 2336 nsec (TRM describes this as 292 wire clocks = 292 * 8 = 2336).  This ensures that frames don't spill over to the next sched window. For example, for the example schedule described above, to ensure no spill over, guard bands may be introduced as follows:-
 
-::
+.. code:: console
 
  tc qdisc replace dev eth0 parent root handle 100 taprio \
     num_tc 3 \
@@ -138,7 +138,7 @@ The above schedule still have a cycle-time of 500 msec, however there are guard 
 
 In the example schedule described earlier, there are 3 schedule windows described by sched-entry, first 2 being each of 125 usec and a third of 250 usec. So the schedule has a cycle-time of 500 msec which is the sum of the intervals of individual schedule. tc command also allow user to specify cycle-time as part of the command which can be used to truncate or stretch an entry. For example in the typical schedule, if user specify cycle-time of 600000
 
-::
+.. code:: console
 
  tc qdisc replace dev eth0 parent root handle 100 taprio \
     num_tc 3 \
@@ -156,7 +156,7 @@ In the example schedule described earlier, there are 3 schedule windows describe
 
 In the above example, the last window gets stretched for a total of 350 usec instead of 250 usec resulting in a cycle-time of 600 usec. Similarly if the cycle-time is less than the sum of individual sched-entry, then schedule would get truncated.
 
-::
+.. code:: console
 
  tc qdisc replace dev eth0 parent root handle 100 taprio \
     num_tc 3 \
@@ -200,7 +200,7 @@ Setup
 
 2. Cross-compile and build the executable using:
 
-::
+.. code:: console
 
     make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu-
 
@@ -218,7 +218,7 @@ Connect eth0 of AM625-SK to eth1 of J7VCL.
 
 1. Run the following on AM625-SK:
 
-::
+.. code:: console
 
     #!/bin/sh
 
@@ -263,7 +263,7 @@ Connect eth0 of AM625-SK to eth1 of J7VCL.
 
 2.  Wait for eth0 on AM625-SK to be up and then run the following on J7VCL:
 
-::
+.. code:: console
 
     #!/bin/sh
     while sleep 1; do ./plget -m rx-lat -f ipgap -n 128 -i eth1 -t ptpl2 -f hwts; done
@@ -272,7 +272,7 @@ Connect eth0 of AM625-SK to eth1 of J7VCL.
 
 On J7VCL:
 
-::
+.. code:: console
 
     Priority 3 Output:
     hw rx time, us: packets 128:
@@ -420,7 +420,7 @@ On J7VCL:
 
 **Explanation:**
 
-::
+.. code:: text
 
     Looking at the inter-packet gaps, which correspond to the second table within each of the priorities, for Priority 3,
     we see that the inter-packet gap is roughly 12 microseconds for about 10 packets, after which it suddenly jumps to
@@ -443,7 +443,7 @@ Connect eth1 of J7VCL to eth0 of AM625-SK.
 
 1. Run the following on J7VCL:
 
-::
+.. code:: console
 
     #!/bin/sh
 
@@ -491,7 +491,7 @@ Connect eth1 of J7VCL to eth0 of AM625-SK.
 
 2. Wait for eth1 on J7VCL to be up and then run the following on AM625-SK:
 
-::
+.. code:: console
 
     #!/bin/sh
     while sleep 1; do ./plget -m rx-lat -f ipgap -n 128 -i eth0 -t ptpl2 -f hwts; done
@@ -500,7 +500,7 @@ Connect eth1 of J7VCL to eth0 of AM625-SK.
 
 On AM625-SK:
 
-::
+.. code:: console
 
     Priority 3 Output:
     hw rx time, us: packets 128:
@@ -648,7 +648,7 @@ On AM625-SK:
 
 **Explanation:**
 
-::
+.. code:: text
 
     Looking at the inter-packet gaps, which correspond to the second table within each of the priorities, for Priority 3,
     we see that the inter-packet gap is roughly 12 microseconds for about 10 packets, after which it suddenly jumps to
@@ -671,7 +671,7 @@ Connect eth0 of AM625-SK to eth1 of J7VCL and eth1 of AM625-SK to eth2 of J7VCL.
 
 1. Run the following on AM625-SK:
 
-::
+.. code:: sh
 
     #!/bin/sh
 
@@ -736,7 +736,7 @@ Connect eth0 of AM625-SK to eth1 of J7VCL and eth1 of AM625-SK to eth2 of J7VCL.
 
 2. Once eth0 and eth1 are up in AM625-SK, run the following on J7VCL:
 
-::
+.. code:: sh
 
     #!/bin/sh
     ./plget -m rx-lat -f ipgap -n 128 -i eth1 -t ptpl2 -f hwts > eth0-prio3.txt& ./plget -m rx-lat -f ipgap -n 128 -i eth2 -t ptpl2 -f hwts > eth1-prio3.txt
@@ -756,7 +756,7 @@ Connect eth0 of AM625-SK to eth1 of J7VCL and eth1 of AM625-SK to eth2 of J7VCL.
 
 **Results:**
 
-::
+.. code:: console
 
     eth0-prio1.txt:
     hw rx time, us: packets 128:
@@ -1055,7 +1055,7 @@ Connect eth1 of J7VCL to eth0 of AM625-SK and eth2 of J7VCL to eth1 of AM625-SK.
 
 1. Run the following on J7VCL:
 
-::
+.. code:: console
 
     #!/bin/sh
 
@@ -1122,7 +1122,7 @@ Connect eth1 of J7VCL to eth0 of AM625-SK and eth2 of J7VCL to eth1 of AM625-SK.
 
 2. Once eth1 and eth2 are up in J7VCL, run the following on AM625-SK:
 
-::
+.. code:: console
 
     #!/bin/sh
     ./plget -m rx-lat -f ipgap -n 128 -i eth0 -t ptpl2 -f hwts > eth1-prio3.txt& ./plget -m rx-lat -f ipgap -n 128 -i eth1 -t ptpl2 -f hwts > eth2-prio3.txt
@@ -1142,7 +1142,7 @@ Connect eth1 of J7VCL to eth0 of AM625-SK and eth2 of J7VCL to eth1 of AM625-SK.
 
 **Results:**
 
-::
+.. code:: console
 
     eth1-prio1.txt:
 
@@ -1471,7 +1471,7 @@ Connect eth0 of AM625-SK to J7VCL and eth1 of AM625-SK to eth0 of AM64-SK.
 
 1. Run the following command on AM625-SK:
 
-::
+.. code:: console
 
     #!/bin/sh
 
@@ -1530,7 +1530,7 @@ Connect eth0 of AM625-SK to J7VCL and eth1 of AM625-SK to eth0 of AM64-SK.
 2. Wait for the message "Switch setup completed." to be displayed on
 AM625-SK and then run the following on AM64-SK:
 
-::
+.. code:: console
 
     #!/bin/sh
 
@@ -1539,7 +1539,7 @@ AM625-SK and then run the following on AM64-SK:
 
 3. Next, run the following on J7VCL:
 
-::
+.. code:: console
 
     #!/bin/sh
 
@@ -1558,7 +1558,7 @@ AM625-SK and then run the following on AM64-SK:
 
 **Results on AM64-SK:**
 
-::
+.. code:: console
 
     Priority 3 Output:
     hw rx time, us: packets 128:
@@ -1713,7 +1713,7 @@ Connect eth1 of J7VCL to AM625-SK and eth2 of J7VCL to eth0 of AM64-SK.
 
 1. Run the following command on J7VCL:
 
-::
+.. code:: console
 
     #!/bin/sh
 
@@ -1774,7 +1774,7 @@ Connect eth1 of J7VCL to AM625-SK and eth2 of J7VCL to eth0 of AM64-SK.
 2. Wait for the message "Switch setup completed." to be displayed on
 J7VCL and then run the following on AM64-SK:
 
-::
+.. code:: console
 
     #!/bin/sh
 
@@ -1783,7 +1783,7 @@ J7VCL and then run the following on AM64-SK:
 
 3. Next, run the following on AM625-SK:
 
-::
+.. code:: console
 
     #!/bin/sh
 
@@ -1802,7 +1802,7 @@ J7VCL and then run the following on AM64-SK:
 
 **Results on AM64-SK:**
 
-::
+.. code:: console
 
     Priority 3 Output:
     hw rx time, us: packets 128:

@@ -26,15 +26,13 @@ The driver supports the following features:
 To enable/disable Networking support, start the *Linux Kernel Configuration*
 tool:
 
-::
+.. code:: text
 
     $ make menuconfig
 
-|
-
 Select *Device Drivers* from the main menu.
 
-::
+.. code:: text
 
        ...
        ...
@@ -46,11 +44,9 @@ Select *Device Drivers* from the main menu.
        ...
        ...
 
-|
-
 Select *Network device support* as shown below:
 
-::
+.. code:: text
 
        ...
        ...
@@ -62,11 +58,9 @@ Select *Network device support* as shown below:
        ...
        ...
 
-|
-
 Select *Ethernet driver support* as shown below:
 
-::
+.. code:: text
 
        ...
        ...
@@ -79,11 +73,9 @@ Select *Ethernet driver support* as shown below:
        ...
        ...
 
-|
-
 Select ** as shown here:
 
-::
+.. code:: menuconfig
 
        ...
        [*]   Texas Instruments (TI) devices
@@ -93,8 +85,6 @@ Select ** as shown here:
        -*-     TI CPSW Switch Phy sel Support
        <*>     TI CPSW Switch Support
        [ ]       TI Common Platform Time Sync (CPTS) Support
-
-|
 
 .. rubric:: **Module Build**
    :name: module-build
@@ -107,7 +97,7 @@ places mentioned in the section above select module build (short-cut key
 
 Select ** as shown here:
 
-::
+.. code:: menuconfig
 
       ...
        [*]   Texas Instruments (TI) devices
