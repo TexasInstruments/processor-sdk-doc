@@ -49,6 +49,7 @@ Released July 2025
   * Important Bug Fixes
       * Review Issue Tracker Section for the new fixes.
 
+.. _release-specific-build-information:
 
 Build Information
 =================

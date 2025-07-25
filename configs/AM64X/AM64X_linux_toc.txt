@@ -24,8 +24,14 @@ devices/AM64X/linux/RT_Linux_Performance_Guide
 
 linux/Foundational_Components
 linux/Foundational_Components_U-Boot
+linux/Foundational_Components/U-Boot/Build-Guide-K3
+linux/Foundational_Components/U-Boot/BG-Setup-K3
+linux/Foundational_Components/U-Boot/BG-Build-K3
+linux/Foundational_Components/U-Boot/BG-Target-Images-K3
+linux/Foundational_Components/U-Boot/BG-Bootflow-K3
+linux/Foundational_Components/U-Boot/BG-Environment-K3
+linux/Foundational_Components/U-Boot/BG-Ram-Device-Trees-K3
 linux/Foundational_Components/U-Boot/Users-Guide
-linux/Foundational_Components/U-Boot/UG-General-Info
 linux/Foundational_Components/U-Boot/UG-DFU
 linux/Foundational_Components/U-Boot/UG-Memory-K3
 linux/Foundational_Components/U-Boot/UG-SPI
