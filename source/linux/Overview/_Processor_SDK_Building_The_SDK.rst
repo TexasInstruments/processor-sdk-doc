@@ -107,19 +107,32 @@ The MACHINE can be set to |__SDK_BUILD_MACHINE__|, for example.
       .. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
          The final command below will build the **tisdk-edgeai-image**, which is the
-         Processor SDK image with arago + edge ai filesystem.  See `Build Options`_ for a list of
+         Processor SDK image with Arago + EdgeAI filesystem.  See `Build Options`_ for a list of
          additional targets.
 
-         .. code-block:: console
+         .. tabs::
 
-            $ git clone https://git.ti.com/git/arago-project/oe-layersetup.git tisdk
-            $ cd tisdk
-            $ ./oe-layertool-setup.sh -f configs/processor-sdk-analytics/processor-sdk-analytics-10.01.00-config.txt
-            $ cd build
-            $ . conf/setenv
-            $ MACHINE=am62axx-evm bitbake -k tisdk-edgeai-image
+            .. tab:: Build Linux SD card Image
 
-         Your tisdk-edgeai-image wic image will be generated in arago-tmp-[toolchain]/deploy directory. Use `Processor\_SDK\_Linux\_create\_SD\_card <Overview/Processor_SDK_Linux_create_SD_card.html>`__ to flash this image on the SD-Card.
+               .. code-block:: console
+
+                  $ git clone https://git.ti.com/git/arago-project/oe-layersetup.git tisdk
+                  $ cd tisdk
+                  $ ./oe-layertool-setup.sh -f configs/processor-sdk-analytics/<oeconfig-file>
+                  $ cd build
+                  $ . conf/setenv
+                  $ MACHINE=am62axx-evm bitbake -k tisdk-edgeai-image
+
+            .. tab:: Build RT-Linux SD card Image
+
+               .. code-block:: console
+
+                  $ git clone https://git.ti.com/git/arago-project/oe-layersetup.git tisdk
+                  $ cd tisdk
+                  $ ./oe-layertool-setup.sh -f configs/processor-sdk-analytics/<oeconfig-file>
+                  $ cd build
+                  $ . conf/setenv
+                  $ MACHINE=am62axx-evm ARAGO_RT_ENABLE=1 bitbake -k tisdk-edgeai-image
 
       .. ifconfig:: CONFIG_part_variant not in ('AM62AX')
 
