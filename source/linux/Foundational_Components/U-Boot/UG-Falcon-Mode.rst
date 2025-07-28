@@ -28,7 +28,7 @@ enabled before :ref:`building the SDK <building-the-sdk-with-yocto>` as follows:
 The following set of patches are also required since they are **not** part of the
 ``11.01`` SDK release:
 
-   * `meta-ti <https://patchwork.yoctoproject.org/project/ti/list/?series=36071>`__
+   * `meta-ti <https://git.yoctoproject.org/meta-ti/log/?h=scarthgap&qt=range&q=9601219021a43cf0c8b8d30ff6fd5f1e4bd42621...272390d0f6183ebab4d7fa81c689a35a125aebc6>`__
    * `U-Boot <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/commit/?h=ti-u-boot-2025.01-next&id=80f8ea010e3ef61277b7ab94ac4aeb85499c3ca5>`__
 
 *************************************
