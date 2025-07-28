@@ -36,6 +36,9 @@ jobs:
       - name: Generate root index
         run: ./bin/root_index.py
 
+      - name: Deduplicate assets
+        run: ./bin/dedupe.py
+
       - name: Upload static files as single artifact
         uses: actions/upload-pages-artifact@v3
         with:
