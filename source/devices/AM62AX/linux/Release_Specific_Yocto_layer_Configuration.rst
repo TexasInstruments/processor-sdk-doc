@@ -1,22 +1,25 @@
 .. _yocto-layer-configuration:
 
-**************************
+*************************
 Yocto Layer Configuration
-**************************
-
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_Building_The_SDK#Layer_Configuration
+*************************
 
 Processor SDK uses the following oe-layersetup configs to configure the
 meta layers. These are the <config> used in the command:
 
-``$ ./oe-layertool-setup.sh -f <config>``
+.. code-block:: console
 
-The following config files are located in the **configs/processor-sdk-analytics**
+   $ ./oe-layertool-setup.sh -f <config>
+
+The following config files are located in the :file:`configs/processor-sdk-analytics`
 directory of the `oe-layersetup git repo <https://git.ti.com/cgit/arago-project/oe-layersetup/>`_.
 
-+----------------------------------------------------+------------------------------------------------+--------------------------------+
-|                    Description                     |      Config File                               | Supported yocto build machine  |
-+====================================================+================================================+================================+
-| |__SDK_FULL_NAME__| : 11_01_07_05 Release          | processor-sdk-analytics-11_01_07_05-config.txt | |__SDK_BUILD_MACHINE__|        |
-+----------------------------------------------------+------------------------------------------------+--------------------------------+
++-------------------------------------------------------------------+------------------------------------------------------+------------------------------+
+| Config File                                                       | Description                                          | Supported machines/platforms |
++===================================================================+======================================================+==============================+
+| processor-sdk-analytics-11.01.07.05-config.txt                    | Used for building EdgeAI filesystem                  | am62axx-evm                  |
++-------------------------------------------------------------------+------------------------------------------------------+------------------------------+
+| processor-sdk-analytics-selinux-11.01.07.05-config.txt            | Used for building SELinux enabled EdgeAI filesystem  | am62axx-evm                  |
++-------------------------------------------------------------------+------------------------------------------------------+------------------------------+
 
+The oe-layersetup configuration, as defined in :file:`processor-sdk-analytics-11.01.07.05-config.txt` is used for configuring the meta layers in the yocto SD card image available on |__SDK_DOWNLOAD_URL__|.
