@@ -506,21 +506,81 @@ The TI switch-config tool can be used for CPSW NUSS register dump parsing.
 | reg_value (u32)    | MMIO region dump length, including header   |
 +--------------------+---------------------------------------------+
 
-Exception: ALE table dumped as raw array of ALE records (3 * u32 per record).
+.. ifconfig:: CONFIG_part_variant in ('AM62X','AM62PX','AM64X')
 
-.. code-block:: console
+   Exception: ALE table dumped as raw array of ALE records (3 * u32 per record).
 
-   # ethtool -d eth0
-   Offset          Values
-   ------          ------
-   0x0000:         01 00 00 00 48 00 00 00 00 00 00 00 00 71 a0 6b
-   0x0010:         04 00 00 00 00 00 00 00 08 00 00 00 00 00 00 00
-   0x0020:         0c 00 00 00 00 00 00 00 10 00 00 00 01 00 00 00
-   0x0030:         14 00 00 00 00 00 00 00 18 00 00 00 00 00 00 00
-   0x0040:         1c 00 00 00 00 00 00 00 02 00 00 00 48 00 00 00
-   0x0050:         30 00 00 00 0b 00 00 00 34 00 00 00 00 00 00 00
-   0x0060:         38 00 00 00 00 00 00 00 3c 00 00 00 00 00 00 00
-   ...
+   .. code-block:: console
+
+      # ethtool -d eth0
+      Offset          Values
+      ------          ------
+      0x0000:         01 00 00 00 48 00 00 00 00 00 00 00 00 71 a0 6b
+      0x0010:         04 00 00 00 00 00 00 00 08 00 00 00 00 00 00 00
+      0x0020:         0c 00 00 00 00 00 00 00 10 00 00 00 01 00 00 00
+      0x0030:         14 00 00 00 00 00 00 00 18 00 00 00 00 00 00 00
+      0x0040:         1c 00 00 00 00 00 00 00 02 00 00 00 48 00 00 00
+      0x0050:         30 00 00 00 0b 00 00 00 34 00 00 00 00 00 00 00
+      0x0060:         38 00 00 00 00 00 00 00 3c 00 00 00 00 00 00 00
+      ...
+
+.. ifconfig:: CONFIG_part_variant not in ('AM62X','AM62PX','AM64X')
+
+   .. code-block:: console
+
+      # ethtool --register-dump eth0
+      K3 CPSW dump version: 1, len: 6328
+      (Missing registers in memory space can be considered as zero valued)
+      --------------------------------------------------------------------
+      cpsw-nuss regdump: number of Registers:(16)
+      00000000:reg(6BA02102)
+      00000010:reg(00000001)
+      cpsw-nuss-rgmii-status regdump: number of Registers:(16)
+      00000030:reg(0000000D)
+      cpsw-nuss-mdio regdump: number of Registers:(128)
+      00000f00:reg(00070907)
+      00000f04:reg(8100014C)
+      00000f08:reg(00000001)
+      00000f0c:reg(00000001)
+      00000f10:reg(00000003)
+      00000f30:reg(00000001)
+      00000f34:reg(80000000)
+      00000f38:reg(FFFFFFFF)
+      cpsw-nu regdump: number of Registers:(144)
+      00020000:reg(6BA82102)
+      00020004:reg(00006006)
+      ...
+
+   ALE-table will also get dumped after all register dumps.
+   Example of ALE-dump:
+
+   .. code-block:: console
+
+      Number of ALE entries: 64
+      0: Type: Inner VLAN
+         Nolearn Mask = 0x0, Ingress Check = 0
+         VLAN ID = 0, No Frag = 0, Registered Mask = 0x0
+         Force Untagged Packet Egress = 0x3, Unregistered Mask = 0x1, Limit Next Header Control = 0, Members = 0x3
+      1: Type: Unicast
+         Updated Address = f4:84:4c:fb:3e:9a, Unicast Type = Persistent, Port_num = 0x0, Secure: 1, Blocked: 0, Touch = 0, Agable = 0
+      2: Type: Multicast
+         VID = 0, Address = ff:ff:ff:ff:ff:ff, Multicast_state = Forwarding, No  Super, port_mask = 0x3
+      3: Type: Multicast
+         Address = 01:00:5e:00:00:01, Multicast_State = Forwarding, No Super, port_mask = 0x3
+      4: Type: Multicast
+         Address = 33:33:00:00:00:01, Multicast_State = Forwarding, No Super, port_mask = 0x3
+      5: Type: Multicast
+         Address = 33:33:ff:fb:3e:9a, Multicast_State = Forwarding, No Super, port_mask = 0x3
+      6: Type: Multicast
+         Address = 33:33:00:00:00:fb, Multicast_State = Forwarding, No Super, port_mask = 0x3
+      7: Type: Multicast
+         Address = 01:00:5e:00:00:fb, Multicast_State = Forwarding, No Super, port_mask = 0x3
+      8: Type: Multicast
+         Address = 01:80:c2:00:00:00, Multicast_State = Forwarding, No Super, port_mask = 0x3
+      9: Type: Multicast
+         Address = 01:80:c2:00:00:03, Multicast_State = Forwarding, No Super, port_mask = 0x3
+      10: Type: Multicast
+         Address = 01:80:c2:00:00:0e, Multicast_State = Forwarding, No Super, port_mask = 0x3
 
 ################
 Interrupt pacing
