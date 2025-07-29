@@ -95,6 +95,13 @@ controllers work only in master mode.
       whether or not the OSPI flash part chosen for custom board designs meets all
       the criteria listed at https://e2e.ti.com/support/processors/f/791/t/946418
 
+.. ifconfig:: CONFIG_part_variant in ('AM62PX', 'AM64X')
+
+   .. important::
+
+      Apply this `patch <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/commit/?h=ti-u-boot-2025.01-next&id=3d64c9fb4274ff1c7cbc7a2c8e8e33790b923bc6>`__
+      as it's not added with the ``11.01`` SDK release.
+
 .. rubric:: Driver Features
 
 OSPI controllers supports PHY Calibration in DQS + Double Data Rate (DDR) mode
