@@ -501,6 +501,22 @@ CPSW/CPSW2g/CPSW3g Ethernet Driver
 
 
 
+Linux OSPI Flash Driver
+-----------------------
+
+
+AM62AXX-SK
+^^^^^^^^^^
+
+
+RAW
+"""
+
+.. csv-table:: OSPI Raw Flash Driver
+    :header: "File size (Mbytes)","am62axx_sk-fs: Raw Read Throughput (Mbytes/sec)"
+
+    "50","33.33"
+
 EMMC Driver
 -----------
 .. warning::
