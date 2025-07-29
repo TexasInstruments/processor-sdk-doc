@@ -1,8 +1,8 @@
 .. _Release-note-label:
 
-************************************
+#############
 Release Notes
-************************************
+#############
 
 Overview
 ========
@@ -32,13 +32,13 @@ Please refer to the software manifests, which outlines the licensing
 status for all packages included in this release. The manifest can be
 found on the SDK download page or in the installed directory as indicated below.
 
--  Linux Manifest:  "/docs/software_manifest.html"
+-  Linux Manifest: :file:`<PSDK_PATH>/manifest/software_manifest.htm`
 
 
 Release 11.01.07.05
 ===================
 
-Released on July 2025
+Released on Aug 2025
 
 What's new
 ----------
@@ -46,6 +46,13 @@ What's new
 **Processor SDK Linux AM62AX Release has following new features:**
 
   - First 2025 LTS Reference Release Including RT combined branch model
+  - Out-of-the-Box EdgeAI Gallery App powered by QT 6.9 for seamless AI experiences
+  - EdgeAI memory carveouts now supported via `k3-am62a7-sk-edgeai.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62a7-sk-edgeai.dtso?h=11.01.07>`_ in ti-linux-kernel & applied by default in the AM62A board environment via the name_overlays variable in ti-u-boot as seen in `board/ti/am62ax/am62ax.env <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/tree/board/ti/am62ax/am62ax.env?h=11.01.07#n22>`_
+  - Support for SELinux via meta-selinux with tisdk-edgeai-image
+  - EdgeAI DM R5 (:file:`dm_edgeai_mcu1_0_release_strip.out`) & C7x IPC (:file:`dsp_edgeai_c7x_1_release_strip.out`) firmwares delivered via `ti-linux-firmware <https://git.ti.com/cgit/processor-firmware/ti-linux-firmware/tree/?h=11.01.07>`_
+  - Linux Remoteproc driver now boots remote cores (MCU R5 & C7x) by default during Linux kernel boot time to support Low Power Mode (LPM) with EdgeAI firmwares.
+  - Simplified the Yocto build process for :file:`tisdk-edgeai-image` by eliminating the unnecessary edgeai branding step - :ref:`Building the SDK with Yocto <building-the-sdk-with-yocto>`
+  - EdgeAI DM R5 & C7x firmwares now default to remote endpoint 14 for consistency across Sitara AM6x platforms with Linux RPMsg userspace application - :ref:`IPC for AM62ax <foundational-components-ipc>`
   - Falcon mode through R5 SPL :ref:`U-Boot Falcon Mode <U-Boot-Falcon-Mode>`
   - Important Bug Fixes on top of Processor SDK 10.01.00.05 Release
   - Review Issue Tracker Section for the new fixes.
