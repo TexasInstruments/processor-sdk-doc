@@ -317,21 +317,19 @@ The "Build Output" is given relative to the
 
    .. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
-      +------------------------------+---------------------------------------------------------------+----------------------------+
-      | Target                       | Build Output                                                  | Description                |
-      +==============================+===============================================================+============================+
-      | tisdk-core-bundle            | images/<machine>/processor-sdk-linux-bundle-<machine>.tar.xz  | Full SDK                   |
-      +------------------------------+---------------------------------------------------------------+----------------------------+
-      | tisdk-edgeai-image           | images/<machine>/tisdk-edgeai-image-<machine>.tar.xz          | Target Edge AI Filesystem  |
-      +------------------------------+---------------------------------------------------------------+----------------------------+
-      | tisdk-default-image          | images/<machine>/tisdk-default-image-<machine>.tar.xz         | Target Filesystem          |
-      +------------------------------+---------------------------------------------------------------+----------------------------+
-      | tisdk-base-image             | images/<machine>/tisdk-base-image-<machine>.tar.xz            | Minimal Target Filesytem   |
-      +------------------------------+---------------------------------------------------------------+----------------------------+
-      | meta-toolchain-arago-tisdk   | sdk/arago-<arago-version>-<architecture>.sh                   | Devkit                     |
-      +------------------------------+---------------------------------------------------------------+----------------------------+
-      | mc:k3r5:meta-toolchain-arago | sdk/arago-<arago-version>-<architecture>.sh                   | K3R5 baremetal toolchain   |
-      +------------------------------+---------------------------------------------------------------+----------------------------+
+      +------------------------------+---------------------------------------------------------------+-------------------------------+
+      | Target                       | Build Output                                                  | Description                   |
+      +==============================+===============================================================+===============================+
+      | tisdk-edgeai-image           | images/<machine>/tisdk-edgeai-image-<machine>.tar.xz          | Target Edge AI Filesystem     |
+      +------------------------------+---------------------------------------------------------------+-------------------------------+
+      | tisdk-default-image          | images/<machine>/tisdk-default-image-<machine>.tar.xz         | Target Filesystem w/o EdgeAI  |
+      +------------------------------+---------------------------------------------------------------+-------------------------------+
+      | tisdk-base-image             | images/<machine>/tisdk-base-image-<machine>.tar.xz            | Minimal Target Filesytem      |
+      +------------------------------+---------------------------------------------------------------+-------------------------------+
+      | meta-toolchain-arago-tisdk   | sdk/arago-<arago-version>-<architecture>.sh                   | Devkit                        |
+      +------------------------------+---------------------------------------------------------------+-------------------------------+
+      | mc:k3r5:meta-toolchain-arago | sdk/arago-<arago-version>-<architecture>.sh                   | K3R5 baremetal toolchain      |
+      +------------------------------+---------------------------------------------------------------+-------------------------------+
 
    .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
