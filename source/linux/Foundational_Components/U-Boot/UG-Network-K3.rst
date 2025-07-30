@@ -70,7 +70,15 @@ binaries files to be sent over TFTP are listed in the table below.
 
       - Ethernet RGMII boot is supported over RGMII on J721S2 SoC.
 
-.. ifconfig:: CONFIG_part_variant in ('AM64X','AM62X','J722S','AM62PX','J721S2')
+.. ifconfig:: CONFIG_part_variant in ('J784S4')
+
+   Build tiboot3.bin using ``am69_evm_r5_ethboot_defconfig``. Build tispl.bin and u-boot.img using ``am69_evm_a72_ethboot_defconfig``.
+
+   .. important::
+
+      - Ethernet RGMII boot is supported over RGMII on J784S4 SoC.
+
+.. ifconfig:: CONFIG_part_variant in ('AM64X','AM62X','J722S','AM62PX','J721S2','J784S4')
 
    If using ISC dhcpd an example host entry would look like this:
 

@@ -32,6 +32,10 @@ Replacement Variables
 '__PCIE_BASE_ADDRESS__'          : '2900000'
 '__PCIE_DEVICE_ID__'             : '0xb00d'
 '__IMAGE_TYPE__'                 : 'default'
+'__SPL_VCI_STRING_LEN__'         : '18'
+'__SPL_VCI_STRING__'             : 'AM69 U-Boot R5 SPL'
+'__UBOOT_VCI_STRING_LEN__'       : '19'
+'__UBOOT_VCI_STRING__'           : 'AM69 U-Boot A72 SPL'
 
 Configuration Values
 --------------------
