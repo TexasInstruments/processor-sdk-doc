@@ -31,6 +31,10 @@ Replacement Variables
 '__FEATURINGMATRIX__'            : \
 '__SYSFW_CORE_NAME__'            : 'TIFS'
 '__IMAGE_TYPE__'                 : 'default'
+'__SPL_VCI_STRING_LEN__'         : '20'
+'__SPL_VCI_STRING__'             : 'AM62PX U-Boot R5 SPL'
+'__UBOOT_VCI_STRING_LEN__'       : '21'
+'__UBOOT_VCI_STRING__'           : 'AM62PX U-Boot A53 SPL'
 
 Configuration Values
 --------------------
