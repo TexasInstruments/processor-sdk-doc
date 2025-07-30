@@ -62,7 +62,15 @@ binaries files to be sent over TFTP are listed in the table below.
       - When the link info Bootmode pin is enabled, this means no auto-negotiation or reading of the Ethernet PHY is needed since the ROM will assume the link is up at 1Gbps, full duplex mode.
       - Disable link info Bootmode pin so that ROM can identify the PHY and establishes link with the supported speed and duplex mode.
 
-.. ifconfig:: CONFIG_part_variant in ('AM64X','AM62X','J722S','AM62PX')
+.. ifconfig:: CONFIG_part_variant in ('J721S2')
+
+   Build tiboot3.bin using ``am68_evm_r5_ethboot_defconfig``. Build tispl.bin and u-boot.img using ``am68_evm_a72_ethboot_defconfig``.
+
+   .. important::
+
+      - Ethernet RGMII boot is supported over RGMII on J721S2 SoC.
+
+.. ifconfig:: CONFIG_part_variant in ('AM64X','AM62X','J722S','AM62PX','J721S2')
 
    If using ISC dhcpd an example host entry would look like this:
 
