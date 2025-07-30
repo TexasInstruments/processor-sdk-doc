@@ -34,7 +34,7 @@ linux/Foundational_Components/U-Boot/UG-SPI
 linux/Foundational_Components/U-Boot/UG-QSPI
 linux/Foundational_Components/U-Boot/UG-UART
 linux/Foundational_Components/U-Boot/UG-DDRSS
-#linux/Foundational_Components/U-Boot/UG-Network-K3
+linux/Foundational_Components/U-Boot/UG-Network-K3
 linux/Foundational_Components/U-Boot/UG-Splash-Screen
 linux/Foundational_Components/U-Boot/UG-RemoteProc
 linux/Foundational_Components/U-Boot/UG-Falcon-Mode
