@@ -32,6 +32,10 @@ Replacement Variables
 '__FEATURINGMATRIX__'            : \
 '__SYSFW_CORE_NAME__'            : 'TIFS'
 '__IMAGE_TYPE__'                 : 'adas'
+'__SPL_VCI_STRING_LEN__'         : '19'
+'__SPL_VCI_STRING__'             : 'J722S U-Boot R5 SPL'
+'__UBOOT_VCI_STRING_LEN__'       : '20'
+'__UBOOT_VCI_STRING__'           : 'J722S U-Boot A53 SPL'
 
 Configuration Values
 --------------------
