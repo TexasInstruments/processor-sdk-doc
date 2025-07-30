@@ -53,9 +53,22 @@ What's new
   - Linux Remoteproc driver now boots remote cores (MCU R5 & C7x) by default during Linux kernel boot time to support Low Power Mode (LPM) with EdgeAI firmwares.
   - Simplified the Yocto build process for :file:`tisdk-edgeai-image` by eliminating the unnecessary edgeai branding step - :ref:`Building the SDK with Yocto <building-the-sdk-with-yocto>`
   - EdgeAI DM R5 & C7x firmwares now default to remote endpoint 14 for consistency across Sitara AM6x platforms with Linux RPMsg userspace application - :ref:`IPC for AM62ax <foundational-components-ipc>`
+  - Support for suspend/resume of C7x in Edge AI Stack (currently context for VPAC and TIDL is not saved)
   - Falcon mode through R5 SPL :ref:`U-Boot Falcon Mode <U-Boot-Falcon-Mode>`
+  - TIDL - TI Deep Learning Library
+     - Module safety for TIDL
+     - Added support for 6 dimensions in Transpose
+     - Added support for several new operators: Unsqueeze, Acos, Atan, Cos, CosH, ELU, Neg, Tan, TanH, ScatterElements, SiLU
+     - Enhanced broadcast capabilities for MatMul, Add & Mul operators
+     - TIDL Host emulation supports runtime redirection of temporary buffers to a specified path (Instead of :file:`/dev/shm`)
+  - Imaging
+     - Support for IMX728 camera sensor
+     - Support for RGB color space
+     - Support to access VPAC PSA signature data
+     - Added support for YUV422I format
+     - Multiple bug fixes w.r.t VPAC MSC and LDC subsystem
   - Important Bug Fixes on top of Processor SDK 10.01.00.05 Release
-  - Review Issue Tracker Section for the new fixes.
+  - Review Issue Tracker Section for the new fixes - :ref:`Link to Issues Tracker <issue-tracker>`
 
 **Key Release References:**
 
@@ -181,6 +194,7 @@ Yocto
 | Release Tag: 11.01.07.05
 |
 
+.. _issue-tracker:
 
 Issues Tracker
 ==============
