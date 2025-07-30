@@ -68,8 +68,7 @@ Device tree bindings
 
 The DT bindings description can be found at:
 
-| `Documentation/devicetree/bindings/net/ti,icssg-prueth.txt <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/Documentation/devicetree/bindings/net/ti,icssg-prueth.txt?h=ti-linux-5.10.y>`__
-|
+:ti-linux-kernel-binding:`net/ti,icssg-prueth.txt`
 
 User guide
 ##########
