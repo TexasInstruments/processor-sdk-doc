@@ -126,7 +126,7 @@ The edge AI gallery launches on Linux startup. Follow the below instructions to 
 
    .. note:: For the above changes to take affect, close and relaunch the application.
 
-   14. For more information on edge AI software stack, refer `Edge AI Documentation <https://software-dl.ti.com/jacinto7/esd/processor-sdk-linux-edgeai/AM62AX/10_01_00/exports/edgeai_docs/common/sdk_overview.html>`_
+   14. For more information on edge AI software stack, refer `Edge AI Documentation <https://software-dl.ti.com/processor-sdk-linux/esd/AM62AX/11_01_07_05/exports/docs/edgeai/sdk_overview.html>`_
 
 .. ifconfig:: CONFIG_part_variant in ('J721E')
 

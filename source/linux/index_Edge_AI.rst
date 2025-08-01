@@ -8,7 +8,7 @@ Edge AI
 
 .. ifconfig:: CONFIG_part_family in ('AM62AX_family')
 
-   For more information on edge AI software stack, refer `Edge AI Documentation <https://software-dl.ti.com/processor-sdk-linux/esd/AM62AX/10_01_00/exports/edgeai-docs/common/sdk_overview.html#>`_
+   For more information on edge AI software stack, refer `Edge AI Documentation <https://software-dl.ti.com/processor-sdk-linux/esd/AM62AX/11_01_07_05/exports/docs/edgeai/sdk_overview.html>`_
 
 .. ifconfig:: CONFIG_part_variant in ('J721E')
 
