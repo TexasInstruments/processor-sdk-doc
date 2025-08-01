@@ -61,7 +61,9 @@ following platform(s):
 |
 
 .. toctree::
-    :maxdepth: 2
+   :maxdepth: 2
 
-    Foundational_Components/U-Boot/Users-Guide
-    Foundational_Components/U-Boot/Applications
+   Foundational_Components/U-Boot/Build-Guide-K3
+   Foundational_Components/U-Boot/Build-Guide-OMAP
+   Foundational_Components/U-Boot/Users-Guide
+   Foundational_Components/U-Boot/Applications

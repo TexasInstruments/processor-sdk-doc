@@ -71,6 +71,7 @@ What's new
   - Armbian-based Debian 13 (Trixie)
   - Buildroot 2024.11.1
 
+.. _release-specific-build-information:
 
 Build Information
 =================
