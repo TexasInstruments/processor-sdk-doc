@@ -127,7 +127,7 @@ Reducing bootloader time
 
 .. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
-    You can track current performance numbers here: `AM62AX <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62AX/latest/exports/docs/api_guide_am62ax/DATASHEET_AM62AX_EVM.html#autotoc_md148>`_
+    You can track current performance numbers here: `AM62AX <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62AX/11_01_00_16/exports/docs/api_guide_am62ax/DATASHEET_AM62AX_EVM.html#autotoc_md148>`_
 
 .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
@@ -146,11 +146,11 @@ Reducing bootloader time
 
     .. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
-        - `UART flashing tool AM62AX <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62AX/latest/exports/docs/api_guide_am62ax/TOOLS_FLASH.html>`_
+        - `UART flashing tool AM62AX <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62AX/11_01_00_16/exports/docs/api_guide_am62ax/TOOLS_FLASH.html>`_
 
-        - `U-Boot eMMC flashing tool AM62AX <https://software-dl.ti.com/processor-sdk-linux/esd/AM62AX/latest/exports/docs/linux/Foundational_Components/U-Boot/UG-General-Info.html#u-boot-environment>`_
+        - `U-Boot eMMC flashing tool AM62AX <https://software-dl.ti.com/processor-sdk-linux/esd/AM62AX/11_01_00_16/exports/docs/linux/Foundational_Components/U-Boot/UG-General-Info.html#u-boot-environment>`_
 
-        - `U-Boot SPI flashing tool AM62AX <https://software-dl.ti.com/processor-sdk-linux/esd/AM62AX/latest/exports/docs/linux/Foundational_Components/U-Boot/UG-SPI.html#spi>`_
+        - `U-Boot SPI flashing tool AM62AX <https://software-dl.ti.com/processor-sdk-linux/esd/AM62AX/11_01_00_16/exports/docs/linux/Foundational_Components/U-Boot/UG-SPI.html#spi>`_
 
     .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
@@ -168,7 +168,7 @@ Secondary Boot Loader (SBL)
 
 .. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
-    The following section will reference `AM62AX MCU+ SDK's SBL examples <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62AX/latest/exports/docs/api_guide_am62ax/EXAMPLES_DRIVERS_SBL.html>`_.
+    The following section will reference `AM62AX MCU+ SDK's SBL examples <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62AX/11_01_00_16/exports/docs/api_guide_am62ax/EXAMPLES_DRIVERS_SBL.html>`_.
 
 .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
@@ -180,7 +180,7 @@ Secondary Boot Loader (SBL)
 
 .. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
-    - `AM62AX Falcon Mode <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62AX/latest/exports/docs/api_guide_am62ax/TOOLS_BOOT.html#LINUX_APPIMAGE_GEN_TOOL>`_
+    - `AM62AX Falcon Mode <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62AX/11_01_00_16/exports/docs/api_guide_am62ax/TOOLS_BOOT.html#LINUX_APPIMAGE_GEN_TOOL>`_
 
 .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 

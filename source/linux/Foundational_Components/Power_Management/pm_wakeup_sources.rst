@@ -588,7 +588,7 @@ from the firmware side, please refer to the relevant documentation:
 
 .. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
-   `MCU+ SDK for AM62Ax <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62AX/latest/exports/docs/api_guide_am62ax/index.html>`__
+   `MCU+ SDK for AM62Ax <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62AX/11_01_00_16/exports/docs/api_guide_am62ax/index.html>`__
 
 .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
