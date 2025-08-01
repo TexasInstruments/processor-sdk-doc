@@ -37,5 +37,3 @@ Processor SDK 11.00.09.04
       fragments. Please refer to `linux users guide
       <../../../linux/Foundational_Components_Kernel_Users_Guide.html#preparing-to-build>`__
       for build instructions.
-
-.. include:: _Release_Specific_PLL.rst

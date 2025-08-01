@@ -43,5 +43,3 @@ Processor SDK 11.00.09.04
       for build instructions.
 
 .. include:: _AM62_Enable_UHS_MMCSD.rst
-
-.. include:: _Release_Specific_PLL.rst

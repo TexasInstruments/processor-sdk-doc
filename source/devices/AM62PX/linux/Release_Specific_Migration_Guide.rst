@@ -26,5 +26,3 @@ Processor SDK 11.00.09.04
 - OPTEE 4.5.0
 - Yocto Scarthgap/5.0
 - Platforms Supported : AM62Px (HS-FS, HS-SE) : `SK-AM62P <https://www.ti.com/tool/SK-AM62P-LP>`__
-
-.. include:: _Release_Specific_PLL.rst
