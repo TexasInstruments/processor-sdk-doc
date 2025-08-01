@@ -33,6 +33,10 @@ Replacement Variables
 '__PCIE_BASE_ADDRESS__'          : 'f102000'
 '__PCIE_DEVICE_ID__'             : '0xb010'
 '__IMAGE_TYPE__'                 : 'default'
+'__SPL_VCI_STRING_LEN__'         : '19'
+'__SPL_VCI_STRING__'             : 'AM64X U-Boot R5 SPL'
+'__UBOOT_VCI_STRING_LEN__'       : '20'
+'__UBOOT_VCI_STRING__'           : 'AM64X U-Boot A53 SPL'
 
 Configuration Values
 --------------------
