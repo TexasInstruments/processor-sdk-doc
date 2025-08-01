@@ -1,22 +1,29 @@
 .. http://processors.wiki.ti.com/index.php/Linux_Core_MMC/SD_User%27s_Guide
 
-MMC/SD
-######
+MMCSD
+#####
+
+.. ifconfig:: CONFIG_part_family in ('AM62X_family', 'AM62PX_family')
+
+   .. warning::
+
+      There is important information on MMC support for |__PART_FAMILY_DEVICE_NAMES__| device, go
+      :ref:`here <mmc-support-linux>` for more information.
 
 Introduction
 ************
 
-The multimedia card high-speed/SDIO (MMC/SDIO) host controller provides
-an interface between a local host (LH) such as a microprocessor unit
-(MPU) or digital signal processor (DSP) and either MMC, SD® memory
-cards, or SDIO cards and handles MMC/SDIO transactions with minimal LH
-intervention.
+The MMCSD (Multi-Media Card Secure Digital) host controller provides
+an interface between a local host (LH) such as a MicroProcessor Unit (MPU)
+or Digital Signal Processor (DSP) and either embedded MultiMedia Card (eMMC),
+SD (Secure Digital), or SDIO (Secure Digital IO) devices. The MMCSD host
+controller handles MMCSD/SDIO protocol with minimal LH intervention.
 
 .. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family', 'AM57X_family')
 
-   Main features of the MMC/SDIO host controllers:
+   Main features of the MMCSD host controllers:
 
-   -  Full compliance with MMC/SD command/response sets as defined in the
+   -  Full compliance with MMCSD command/response sets as defined in the
       Specification.
 
    -  Support:
@@ -29,9 +36,9 @@ intervention.
       -  Two slave DMA channels (1 for TX, 1 for RX)
       -  Designed for low power and programmable clock generation
       -  Maximum operating frequency of 48MHz
-      -  MMC/SD card hot insertion and removal
+      -  MMCSD card hot insertion and removal
 
-The following image shows the MMC/SD Driver Architecture:
+The following image shows the MMCSD Driver Architecture:
 
 .. Image:: /images/Mmcsd_Driver.png
 
@@ -241,9 +248,9 @@ Driver Configuration
 
 .. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family', 'AM57X_family')
 
-   The default kernel configuration enables support for MMC/SD(built-in to kernel).
+   The default kernel configuration enables support for MMCSD(built-in to kernel).
 
-   The selection of MMC/SD/SDIO driver can be modified using the linux kernel
+   The selection of MMCSD/SDIO driver can be modified using the linux kernel
    configuration tool. Launch it by the following command:
 
    .. code-block:: console
@@ -270,7 +277,7 @@ Driver Configuration
 
       $ sudo -E make modules_install ARCH=arm INSTALL_MOD_PATH=path/to/filesystem
 
-   Boot the kernel upto kernel prompt and use modprobe to insert the driver
+   Boot the kernel up-to kernel prompt and use modprobe to insert the driver
    module and all its dependencies.
 
    .. code-block:: console
@@ -284,7 +291,7 @@ Driver Configuration
 
 .. ifconfig:: CONFIG_part_family in ('J7_family', 'AM62X_family', 'AM64X_family', 'AM62AX_family', 'AM62PX_family', 'AM62LX_family')
 
-   The default kernel configuration enables support for MMC/SD driver as
+   The default kernel configuration enables support for MMCSD driver as
    built-in to kernel. TI SDHCI driver is used. Following options need to be
    configured in Linux Kernel for successfully selecting SDHCI driver for
    |__PART_FAMILY_DEVICE_NAMES__|.
@@ -367,10 +374,59 @@ Driver Configuration
 
 |
 
-.. ifconfig:: CONFIG_part_family not in ('General_family', 'AM57X_family', 'AM335X_family', 'AM437X_family')
+.. _mmc-support-linux:
 
-   Steps for working around SD card issues in Linux
-   ************************************************
+MMC support in Linux
+********************
+
+.. ifconfig:: CONFIG_part_family in ('AM62PX_family')
+
+   **eMMC HS400 support**
+
+   For 11.1 SDK, am62px device does not support eMMC HS400 mode due to errata `i2458 <https://www.ti.com/lit/pdf/sprz574>`__.
+   If support for HS400 is required, please add the following to k3-am62p-j722s-common-main.dtsi:
+
+   .. code-block:: diff
+
+      diff --git a/arch/arm64/boot/dts/ti/k3-am62p-j722s-common-main.dtsi b/arch/arm64/boot/dts/ti/k3-am62p-j722s-common-main.dtsi
+      index 3e5ca8a3eb86..a05b22a6e5a2 100644
+      --- a/arch/arm64/boot/dts/ti/k3-am62p-j722s-common-main.dtsi
+      +++ b/arch/arm64/boot/dts/ti/k3-am62p-j722s-common-main.dtsi
+      @@ -593,12 +593,16 @@ sdhci0: mmc@fa10000 {
+                      bus-width = <8>;
+                      mmc-ddr-1_8v;
+                      mmc-hs200-1_8v;
+      +               mmc-hs400-1_8v;
+                      ti,clkbuf-sel = <0x7>;
+                      ti,trm-icp = <0x8>;
+      +               ti,strobe-sel = <0x55>;
+                      ti,otap-del-sel-legacy = <0x1>;
+                      ti,otap-del-sel-mmc-hs = <0x1>;
+                      ti,otap-del-sel-ddr52 = <0x6>;
+                      ti,otap-del-sel-hs200 = <0x8>;
+      +               ti,otap-del-sel-hs400 = <0x5>; // at 0.85V VDD_CORE
+      +               //ti,otap-del-sel-hs400 = <0x7>; // at 0.75V VDD_CORE
+                      ti,itap-del-sel-legacy = <0x10>;
+                      ti,itap-del-sel-mmc-hs = <0xa>;
+                      ti,itap-del-sel-ddr52 = <0x3>;
+
+.. ifconfig:: CONFIG_part_family in ('AM62X_family')
+
+   **Missing eMMC support**
+
+   Support for eMMC is missed for AM62SIP SK in Processor SDK 11.01. Therefore, eMMC boot, reading/writting/accessing
+   the eMMC will not work on AM62SIP SK. If eMMC support is required, apply the following:
+   `commit <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/commit/?h=ti-linux-6.12.y&id=78e6abff3220>`__
+   in TI-Linux ti-linux-6.12.y branch to enable eMMC support in Linux.
+
+.. ifconfig:: CONFIG_part_family not in ('AM62X_family', 'AM62PX_family')
+
+   There is no missing MMC support for |__PART_FAMILY_DEVICE_NAMES__| device.
+
+Steps for working around SD card issues in Linux
+************************************************
+
+.. ifconfig:: CONFIG_part_family not in ('General_family', 'AM57X_family', 'AM335X_family', 'AM437X_family')
 
    In some cases, failures can be seen while using some SD cards:
 
@@ -483,42 +539,10 @@ Driver Configuration
 
          sdhci2: mmc@fa20000 {
 
-eMMC HS400 support in Linux
-===========================
+.. ifconfig:: CONFIG_part_family in ('General_family', 'AM57X_family', 'AM335X_family', 'AM437X_family')
 
-.. ifconfig:: CONFIG_part_family in ('AM62PX_family')
-
-   For 11.0 SDK, am62px device does not support eMMC HS400 mode due to errata i2458.
-   If support for HS400 is anyways required, please add the following DT attributes to sdhci0 node:
-
-   .. code-block:: diff
-
-      diff --git a/arch/arm64/boot/dts/ti/k3-am62p-j722s-common-main.dtsi b/arch/arm64/boot/dts/ti/k3-am62p-j722s-common-main.dtsi
-      index 3e5ca8a3eb86..a05b22a6e5a2 100644
-      --- a/arch/arm64/boot/dts/ti/k3-am62p-j722s-common-main.dtsi
-      +++ b/arch/arm64/boot/dts/ti/k3-am62p-j722s-common-main.dtsi
-      @@ -593,12 +593,16 @@ sdhci0: mmc@fa10000 {
-                      bus-width = <8>;
-                      mmc-ddr-1_8v;
-                      mmc-hs200-1_8v;
-      +               mmc-hs400-1_8v;
-                      ti,clkbuf-sel = <0x7>;
-                      ti,trm-icp = <0x8>;
-      +               ti,strobe-sel = <0x55>;
-                      ti,otap-del-sel-legacy = <0x1>;
-                      ti,otap-del-sel-mmc-hs = <0x1>;
-                      ti,otap-del-sel-ddr52 = <0x6>;
-                      ti,otap-del-sel-hs200 = <0x8>;
-      +               ti,otap-del-sel-hs400 = <0x5>; // at 0.85V VDD_CORE
-      +               //ti,otap-del-sel-hs400 = <0x7>; // at 0.75V VDD_CORE
-                      ti,itap-del-sel-legacy = <0x10>;
-                      ti,itap-del-sel-mmc-hs = <0xa>;
-                      ti,itap-del-sel-ddr52 = <0x3>;
-
-.. ifconfig:: CONFIG_part_family not in ('AM62PX_family')
-
-	eMMC HS400 is not suppported, refer to :ref:`this <mmc-sd-supported-hs-modes>` table for the list of modes supported in Linux
-	for |__PART_FAMILY_NAME__| SoC.
+   Steps for working around SD card issues in Linux documentation is pending for |__PART_FAMILY_DEVICE_NAMES__|
+   please reach out to:  `Help e2e <https://e2e.ti.com//>`__ for additional information.
 
 |
 
@@ -526,7 +550,7 @@ eMMC HS400 support in Linux
 
 Listing MMC devices from Linux
 ******************************
-eMMC and SD cards are registered to the MMC subsystem and availiable as a block device
+eMMC and SD cards are registered to the MMC subsystem and available as a block device
 as :file:`/dev/mmcblk{n}`. To find which device index **n** corresponds to eMMC device,
 check which device includes :file:`mmcblk{n}boot0` and :file:`mmcblk{n}boot1`. Here,
 mmcblk0* is in eMMC.
@@ -545,7 +569,7 @@ mmcblk0* is in eMMC.
 
 The disk partitions for each MMC device are displayed as :file:`/dev/mmcblk{n}p{x}`,
 to see what disk partitions exist for an eMMC device and if they are mounted, use the
-command :command:`lsblk`, like so:
+command :command:`lsblk`, such as:
 
 .. code-block:: console
 
@@ -559,7 +583,7 @@ command :command:`lsblk`, like so:
    `-mmcblk1p2  179:98   0  1.9G  0 part /
 
 Use the :command:`mount` and :command:`umount` commands to mount and unmount disk partitions
-if they are formated, usally to vfat or ext4 types.
+if they are formatted, usually to vfat or ext4 types.
 
 .. _mmc-create-partitions-in-emmc-linux:
 
@@ -571,11 +595,11 @@ to flash the rootfs. To create disk partitions in UDA, use the :command:`fdisk` 
 For ex: :samp:`fdisk /dev/mmcblk{n}` in which **n** is typically 0 or 1. In the example above,
 eMMC is :samp:`fdisk /dev/mmcblk0`.
 
-For documentation on using fdisk, please go to: `fdisk how-to <https://tldp.org/HOWTO/Partition/fdisk_partitioning.html>`__.
+For documentation on using fdisk, go to: `fdisk how-to <https://tldp.org/HOWTO/Partition/fdisk_partitioning.html>`__.
 
 **Erase eMMC UDA**
 
-In Linux, before creating disk partitions, we can optionally erase eMMC UDA using :command:`dd`
+In Linux, before creating disk partitions, we can optionally erase eMMC UDA by using :command:`dd`
 command:
 
 .. code-block:: console
@@ -583,7 +607,7 @@ command:
    root@<machine>:~# umount /dev/mmcblk0*
    root@<machine>:~# dd if=/dev/zero of=/dev/mmcblk0 bs=1M count=n
 
-where ``n`` should be determined according the the following formula: ``count = total size UDA (bytes) / bs``.
+where ``n`` should be determined according to the following formula: ``count = total size UDA (bytes) / bs``.
 
 .. _mmc-create-boot-partition-emmc-linux:
 
@@ -591,7 +615,7 @@ Create "boot" partition
 =======================
 
 In this example create a "boot" partition of size 400 MiB which can be formatted to vfat type
-and will store the bootloader binaries.
+and will store the boot loader binaries.
 
 .. code-block:: console
 
@@ -634,7 +658,7 @@ and will store the bootloader binaries.
    Calling ioctl() to re-read partition table.
    Syncing disks.
 
-Make sure bootable flag is set for "boot" partition, ROM may not boot from this patitition
+Make sure bootable flag is set for "boot" partition, ROM might not boot from this partition
 if bootable flag is not set.
 
 .. _mmc-create-root-partition-emmc-linux:
@@ -686,7 +710,7 @@ Linux kernel Image, DTB, and the rootfs.
 Formatting eMMC partitions from Linux
 *************************************
 
-After creating a partition/s, the partition can be formated with the :command:`mkfs` command.
+After creating a partition/s, the partition can be formatted with the :command:`mkfs` command.
 For ex: :samp:`mkfs -t ext4 /dev/mmcblk{n}` where **mmcblk{n}** is the MMC device with the new
 disk partitions to format. The general syntax for formatting disk partitions in Linux is:
 
@@ -740,10 +764,10 @@ Flash eMMC for MMCSD boot
 *************************
 
 In this example, we show one simple method for flashing to eMMC for MMCSD boot from
-eMMC UDA in FS mode. Please know this is not the only method for flashing the eMMC
-for this bootmode.
+eMMC UDA in FS mode. Know this is not the only method for flashing the eMMC for this
+boot mode.
 
-This example assumes the current bootmode is MMCSD boot from SD (FS mode)
+This example assumes the current boot mode is MMCSD boot from SD (FS mode)
 
 .. _mmc-flash-emmc-uda-boot:
 
@@ -757,7 +781,7 @@ Flash to eMMC "boot" partition
    root@<machine>:~# mount /dev/mmcblk0p1 /mnt/eboot
    root@<machine>:~# mount /dev/mmcblk1p1 /mnt/sdboot
 
-Verify the partitions are mounted to the correct folders using :command:`lsblk` command in the
+Verify the partitions are mounted to the correct folders by using :command:`lsblk` command in the
 column labeled :file:`MOUNTPOINTS`.
 
 .. code-block:: console
@@ -773,7 +797,7 @@ column labeled :file:`MOUNTPOINTS`.
    |-mmcblk1p1  179:97   0  128M  0 part /mnt/sdboot
    `-mmcblk1p2  179:98   0  8.7G  0 part /
 
-Now we can copy bootloader binaries to eMMC and umount the partitions when writes finish.
+Now we can copy boot loader binaries to eMMC and umount the partitions when writes finish.
 
 .. code-block:: console
 
@@ -795,7 +819,7 @@ Flash to eMMC "root" partition
    [69229.982452] EXT4-fs (mmcblk0p2): mounted filesystem 74d40075-07e4-4bce-9401-6fccef68e934 r/w with ordered data mode. Quota mode: none.
    root@<machine>:~# mount /dev/mmcblk1p2 /mnt/sdroot
 
-Verify the partitions are mounted to the correct folders using :command:`lsblk` command in the
+Verify the partitions are mounted to the correct folders by using :command:`lsblk` command in the
 column labeled :file:`MOUNTPOINTS`.
 
 .. code-block:: console
@@ -812,7 +836,7 @@ column labeled :file:`MOUNTPOINTS`.
    `-mmcblk1p2  179:98   0  8.7G  0 part /mnt/sdroot
                                          /
 
-Now we can copy rootfs to eMMC (either from SD rootfs or from tarball) and umount the partitions
+Now we can copy rootfs to eMMC (either from SD rootfs or from tar file) and umount the partitions
 when writes finish.
 
 **From SD**
@@ -827,7 +851,7 @@ when writes finish.
    root@<machine>:~# umount /mnt/*
    [70154.205154] EXT4-fs (mmcblk0p2): unmounting filesystem 74d40075-07e4-4bce-9401-6fccef68e934.
 
-**From tarball**
+**From tar file**
 
 This sections requires for tisdk-base-image-<soc>evm.rootfs.tar.xz to have been previously copied
 to the SD card rootfs.
