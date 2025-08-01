@@ -20,6 +20,7 @@ Processor SDK Linux Software Developer's Guide
    index_RTOS
    /linux/How_to_Guides
    /linux/Demo_User_Guides/index_Demos
+   /linux/Documentation_Tarball
 
 |
 
