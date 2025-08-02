@@ -46,10 +46,10 @@ What's new
 **Processor SDK Linux AM62AX Release has following new features:**
 
   - First 2025 LTS Reference Release Including RT combined branch model
-  - Out-of-the-Box EdgeAI Gallery App powered by QT 6.9 for seamless AI experiences
-  - EdgeAI memory carveouts now supported via `k3-am62a7-sk-edgeai.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62a7-sk-edgeai.dtso?h=11.01.07>`_ in ti-linux-kernel & applied by default in the AM62A board environment via the name_overlays variable in ti-u-boot as seen in `board/ti/am62ax/am62ax.env <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/tree/board/ti/am62ax/am62ax.env?h=11.01.07#n22>`_
-  - Support for SELinux via meta-selinux with tisdk-edgeai-image
-  - EdgeAI DM R5 (:file:`dm_edgeai_mcu1_0_release_strip.out`) & C7x IPC (:file:`dsp_edgeai_c7x_1_release_strip.out`) firmwares delivered via `ti-linux-firmware <https://git.ti.com/cgit/processor-firmware/ti-linux-firmware/tree/?h=11.01.07>`_
+  - Out-of-the-Box EdgeAI Gallery App powered by QT 6.9 for seamless AI experiences - :ref:`Edge AI Gallery - User Guide <Edge-AI-Gallery-User-Guide-label>`
+  - EdgeAI memory carveouts now supported via `k3-am62a7-sk-edgeai.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62a7-sk-edgeai.dtso?h=11.01.07>`_ in ti-linux-kernel & applied by default in the AM62A board environment via the name_overlays variable in ti-u-boot as seen in `board/ti/am62ax/am62ax.env <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/tree/board/ti/am62ax/am62ax.env?h=11.01.07#n22>`_ - `FAQ - EdgeAI memory carveouts <https://software-dl.ti.com/processor-sdk-linux/esd/AM62AX/11_01_07_05/exports/docs/devices/AM62AX/edgeai/faq.html#why-does-error-unable-to-map-memory-0xa2000000-appear-after-applying-a-custom-dtbo-using-name-overlays-from-sdk-11-1-with-edgeai>`__
+  - Support for SELinux via meta-selinux with tisdk-edgeai-image - :ref:`Building the SELinux image with Yocto <building-the-sdk-with-yocto>` and :ref:`SELinux oeconfig file <yocto-layer-configuration>`
+  - EdgeAI DM R5 (:file:`dm_edgeai_mcu1_0_release_strip.out`) & C7x IPC (:file:`dsp_edgeai_c7x_1_release_strip.out`) firmwares delivered via `ti-linux-firmware <https://git.ti.com/cgit/processor-firmware/ti-linux-firmware/tree/?h=11.01.07>`__
   - Linux Remoteproc driver now boots remote cores (MCU R5 & C7x) by default during Linux kernel boot time to support Low Power Mode (LPM) with EdgeAI firmwares.
   - Simplified the Yocto build process for :file:`tisdk-edgeai-image` by eliminating the unnecessary edgeai branding step - :ref:`Building the SDK with Yocto <building-the-sdk-with-yocto>`
   - EdgeAI DM R5 & C7x firmwares now default to remote endpoint 14 for consistency across Sitara AM6x platforms with Linux RPMsg userspace application - :ref:`IPC for AM62ax <foundational-components-ipc>`
