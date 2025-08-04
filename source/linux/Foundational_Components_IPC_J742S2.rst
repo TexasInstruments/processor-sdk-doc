@@ -195,7 +195,8 @@ System memory is carved out for each remote processor core for IPC and for the
 remote processor's code/data section needs. The default
 memory carveouts (DMA pools) are shown below.
 
-See the devicetree bindings documentation for more details: `Documentation/devicetree/bindings/remoteproc/ti,k3-r5f-rproc.yaml <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/Documentation/devicetree/bindings/remoteproc/ti,k3-r5f-rproc.yaml?h=ti-linux-6.6.y>`__
+See the devicetree bindings documentation for more details:
+:ti-linux-kernel-binding:`remoteproc/ti,k3-r5f-rproc.yaml`
 
 .. code-block:: text
 
