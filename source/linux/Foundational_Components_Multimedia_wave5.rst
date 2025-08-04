@@ -394,6 +394,15 @@ apply to the input to encoder - decoder has no support for them. The formats inc
    NV12 H264/H265 encoded stream and output raw data to display in any of the formats
    mentioned above assuming the display has support.
 
+The V4L2 gstreamer plugins are only able to handle a subset of colorimetries. If the
+colorimetry is not supported, the gstreamer pipeline will fail to negotiate the format even
+if the pixel formats are compatible. Wave5 supports all the colorimetries supported by the
+V4L2 gstreamer elements. The supported colorimetries are:
+
+   - V4L2_COLORIMETRY_BT601
+   - V4L2_COLORIMETRY_BT709
+   - V4L2_COLORIMETRY_BT2020
+
 ********************************
 Encoder and Decoder Capabilities
 ********************************
