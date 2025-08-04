@@ -678,8 +678,8 @@ Build U-Boot
 
          $ make CROSS_COMPILE="$CROSS_COMPILE_64" am62lx_evm_defconfig
          $ make CROSS_COMPILE="$CROSS_COMPILE_64" \
-            BL1=$TFA_DIR/build/k3/lite/release/bl1.bin \
-            BL31=$TFA_DIR/build/k3/lite/release/bl31.bin \
+            BL1=$TFA_DIR/build/k3/am62l/release/bl1.bin \
+            BL31=$TFA_DIR/build/k3/am62l/release/bl31.bin \
             BINMAN_INDIRS=$TI_LINUX_FW_DIR
 
 .. ifconfig:: CONFIG_part_variant not in ('AM64X', 'AM62X', 'AM62AX', 'AM62LX')
