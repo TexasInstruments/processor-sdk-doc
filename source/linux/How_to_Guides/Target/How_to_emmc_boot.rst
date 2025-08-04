@@ -201,9 +201,11 @@ possible to format a partition to ext4 in U-Boot, so the recommended process is 
 an SD card with TI SDK image, boot the device with SD card boot to Linux kernel prompt,
 and prepare eMMC UDA from Linux.
 
+Note that in the following examples the "root" partition is the second disk partition, in our
+case, "root" will be the first partition so replace :file:`/dev/mmcblk0p2` with :file:`/dev/mmcblk0p1`.
 First create a "root" partition to flash the rootfs as shown :ref:`here <mmc-create-root-partition-emmc-linux>`.
 The new disk partition should be formatted as ext4 type as shown :ref:`here <mmc-format-partition-ext4>`.
-Mount the new partition and flash the rootfs as shown  :ref:`here <mmc-flash-emmc-uda-root>`.
+Mount the new partition and flash the rootfs as shown :ref:`here <mmc-flash-emmc-uda-root>`.
 The Linux kernel :file:`Image` and DT file are expected to be in the /boot folder of the
 "root" partition in order for u-boot to find and load them.
 
