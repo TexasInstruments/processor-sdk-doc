@@ -1,11 +1,20 @@
 SD, eMMC and USB
 ################
 
-The following guide shows how to flash and boot from storage media like the
-embedded multimedia card (eMMC), secure digital (SD) card, and USB storage
-devices. While this is a step-by-step guide, it is in no way extensive and
-does not cover all the per-platform corner-cases. For any  issues/questions
-on this guide, please reach out to: `Help e2e <https://e2e.ti.com//>`__.
+.. ifconfig:: CONFIG_part_family in ('AM62X_family', 'AM62PX_family')
+
+   .. warning::
+
+      There is important information on multimedia card (MMC) support for |__PART_FAMILY_DEVICE_NAMES__| device, go
+      :ref:`here <uboot-mmc-support>` for more information.
+
+Overview
+********
+
+The following guide shows how to flash and boot from storage media such as the embedded multimedia
+card (eMMC), secure digital (SD) card, and USB storage devices. While this is a step-by-step guide,
+it is in no way extensive and does not cover all the per-platform corner-cases.
+For any  issues or questions on this guide, reach out to: `Help e2e <https://e2e.ti.com//>`__.
 
 MMC
 ***
@@ -15,7 +24,7 @@ MMC
 Listing MMC devices
 ===================
 
-Usually in all the platforms there will be two MMC instances of which one
+Usually in all the platforms there will be two multimedia card (MMC) instances of which one
 would be SD and the other would be eMMC. The device index of them can vary from
 one class of platforms to the other. For a given platform, the device index
 can be found in the following way:
@@ -29,7 +38,7 @@ can be found in the following way:
 The device index "**0**" for eMMC will be used when flashing to the eMMC device
 :ref:`here <how-to-emmc-boot>` using :command:`mmc dev` command.
 
-In u-boot environment, usually **mmcdev=n** is used to selct which MMC device to boot
+In u-boot environment, usually **mmcdev=n** is used to select which MMC device to boot
 Linux from, where **n** is the device index.
 
 MMC HW partitions
@@ -39,15 +48,15 @@ This sections includes a summary of MMC hardware partitions.
 
 **eMMC**
 
-   Normally eMMC is divided into 4 areas (aka HW partitions):
+   Normally eMMC is divided into 4 areas (also known as HW partitions):
 
-   - UDA (User Data Area): Used to store user data such as a file system. This partition can divided into disk partitions
+   - User data area (UDA): Used to store user data such as a file system. This partition can divided into disk partitions
    - Boot0/1: Used to store firmware and data needed during boot
-   - RPMB (Replay-protected memory-block area): Used to store secure data
+   - Replay protected memory block (RPMB) : Used to store secure data
 
 **SD**
 
-   SD card memory is not divided into sections like eMMC, but acts like UDA in eMMC where user can
+   SD card memory is not divided into sections such as eMMC, but acts like UDA in eMMC where user can
    create disk partitions in software allowing to divide the storage space into multiple sections.
 
 .. _uboot-selecting-mmc-device-and-partitions:
@@ -55,7 +64,7 @@ This sections includes a summary of MMC hardware partitions.
 Selecting MMC device and partitions
 ===================================
 
-To selct an MMC device in u-boot, the command: :command:`mmc dev` could be used.
+To select an MMC device in u-boot, the command: :command:`mmc dev` could be used.
 The general syntax is:
 
 .. code-block:: console
@@ -83,7 +92,7 @@ boot the device.
 .. note::
 
    For eMMC, typically, the device ships without a partition table If there is a need to
-   create a partition in UDA, please go :ref:`here <mmc-create-partitions-in-emmc-linux>`
+   create a partition in UDA, go :ref:`here <mmc-create-partitions-in-emmc-linux>`
    and to format the partition go :ref:`here <mmc-format-partition-linux>` before
    proceeding.
 
@@ -139,26 +148,26 @@ Where the general syntax is:
 
    $ ls <interface> [<dev[:partition]> [directory]]
 
-MMC supported bootmodes
+MMC supported boot modes
 ========================
 
-The K3 based processors support and recommends using *eMMC boot* from Boot0/1. For complete
-information on the MMC bootmodes supported by ROM, please refer to the device specific TRM,
-under: :file:`Initialization/Boot Mode Pins`. ROM supports the following two MMC bootmodes:
+The K3 based processors support and recommends using *eMMC boot* from Boot0 or Boot1. For complete
+information on the MMC boot modes supported by ROM, refer to the device specific TRM,
+under: :file:`Initialization/Boot Mode Pins`. ROM supports the following two MMC boot modes:
 
 **eMMC boot**
 
-   This bootmode is a special bootmode specific to eMMC device. In this bootmode, ROM cannot
-   boot from SD and can only boot from Boot0 or Boot1 in eMMC. Please go :ref:`here <how-to-emmc-boot>`
-   for a step-by-step guide to boot with this bootmode.
+   This boot mode is a special boot mode specific to eMMC device. In this boot mode, ROM cannot
+   boot from SD and can only boot from Boot0 or Boot1 in eMMC. Go :ref:`here <how-to-emmc-boot>`
+   for a step-by-step guide to boot with this boot mode.
 
 **MMCSD boot**
 
-   This bootmode allows to boot from either eMMC or SD device. With this bootmode, ROM can
-   only boot from SD card or UDA in eMMC. ROM allows to boot in RAW or FS mode, FS mode being
-   the recommended option and hence will have a subsequent guide to boot using this mode. Configuration
-   for selecting MMC device and RAW/FS mode, is done with bootmode pins, please refer to TRM for this
-   setup. To boot from eMMC UDA in FS mode, please go :ref:`here <how-to-mmcsd-boot-from-emmc-uda>`.
+   This boot mode allows to boot from either eMMC or SD device. With this boot mode, ROM can
+   only boot from SD card or UDA in eMMC. ROM allows to boot in raw or filesystem (FS) mode, FS mode being
+   the recommended option and therefore will have a subsequent guide to boot using this mode. Configuration
+   for selecting MMC device and raw/FS mode, is done with boot mode pins, refer to TRM for this
+   setup. To boot from eMMC UDA in FS mode, go :ref:`here <how-to-mmcsd-boot-from-emmc-uda>`.
 
 Flashing an MMC device using USB-DFU
 ====================================
@@ -167,17 +176,17 @@ To flash the eMMC device (Boot0) using USB-DFU, the device should
 be booted to u-boot prompt and a USB cable connected from the host machine
 to the device USB port configured to USB peripheral mode.
 
-From u-boot prompt execute the following:
+From u-boot prompt enter the following:
 
 .. code-block:: console
 
    => setenv dfu_alt_info ${dfu_alt_info_emmc}
    => dfu 0 mmc 0
 
-This comands assumes eMMC device exists and is mmc device 0.
+This command assumes eMMC device exists and is MMC device 0.
 
-On the host machine have the bootloader binaries ready to flash
-to eMMC Boot0. Execute the :command:`dfu-util` to transfer
+On the host machine have the boot loader binaries ready to flash
+to eMMC Boot0. Run the :command:`dfu-util` to transfer
 files to the device. The general syntax for dfu-util command is:
 
 .. code-block:: console
@@ -198,7 +207,7 @@ To see what are the dfu-targets, on the host machine run: :samp:`sudo dfu-util -
    Found DFU: [0451:6165] ver=0223, devnum=32, cfg=1, intf=0, path="1-10", alt=1, name="rootfs", serial="0000000000000591"
    Found DFU: [0451:6165] ver=0223, devnum=32, cfg=1, intf=0, path="1-10", alt=0, name="rawemmc", serial="0000000000000591"
 
-Then transfer each desired binary from the host to the device:
+Then transfer each binary from the host to the device:
 
 - Host:
 
@@ -222,8 +231,8 @@ Then transfer each desired binary from the host to the device:
 Flashing an SD card from a host PC
 ==================================
 
-This section assumes that you have flashed an SD card using the
-script "create-sdcard.sh" packaged in the installer or have
+This section assumes that you have flashed an SD card by using the
+script "create-sdcard.sh" packaged in the installation program or have
 made a compatible layout manually. In this case, you will need
 to copy the boot images:
 
@@ -253,7 +262,7 @@ Configuring USB in Host Mode
 .. ifconfig:: CONFIG_part_variant not in ('J721E', 'J7200', 'J721S2', 'AM64X', 'AM62X', 'AM65X')
 
    Configuring USB in host mode documentation is pending for |__PART_FAMILY_DEVICE_NAMES__|
-   please reach out to:  `Help e2e <https://e2e.ti.com//>`__ for additional information.
+   reach out to:  `Help e2e <https://e2e.ti.com//>`__ for additional information.
 
 .. ifconfig:: CONFIG_part_variant in ('J721E', 'J7200', 'J721S2')
 
@@ -388,7 +397,7 @@ Configuring USB in Host Mode
    Loading images from USB storage
    ===============================
 
-   For loading images from a FAT partition on a different media than mmc, replace
+   For loading images from a FAT partition on a different media than MMC, replace
    the :command:`mmc` command with the required media. For example, to load images
    from a FAT partition on a USB storage device connected to the zeroth instance
    of USB:
@@ -405,14 +414,14 @@ Flash and boot SPL from USB storage
 .. ifconfig:: CONFIG_part_variant not in ('J7200', 'J721E', 'AM64X', 'AM65X', 'J722S')
 
    Boot SPL from USB storage documentation is pending for |__PART_FAMILY_DEVICE_NAMES__|
-   please reach out to:  `Help e2e <https://e2e.ti.com//>`__ for additional information.
+   reach out to:  `Help e2e <https://e2e.ti.com//>`__ for additional information.
 
 .. ifconfig:: CONFIG_part_variant in ('J7200', 'J721E')
 
    .. note::
 
       The SoC does not support booting from USB mass storage, but USB can still be
-      accesed as storage device at U-Boot prompt.
+      accessed as storage device at U-Boot prompt.
 
 .. ifconfig:: CONFIG_part_variant in ('AM64X', 'AM65X', 'J722S')
 
@@ -421,15 +430,15 @@ Flash and boot SPL from USB storage
       Booting to U-Boot prompt from USB storage is supported. The following are the
       steps to be followed:
 
-      - Build the bootloader images using default "am64x_evm_r5_defconfig" and
+      - Build the boot loader images using default "am64x_evm_r5_defconfig" and
         "am64x_evm_a53_defconfig" configs files. For instructions to build the
-        bootloader images please refer to :ref:`Build-U-Boot-label`.
+        boot loader images, refer to :ref:`Build-U-Boot-label`.
       - Create a FAT32 partition with boot flag enabled on the USB storage device.
-      - Copy the bootloader images(tiboot3.bin, tispl.bin, u-boot.img) into the
+      - Copy the boot loader images(tiboot3.bin, tispl.bin, u-boot.img) into the
         above created partition.
       - Set the boot mode switches to usb host mode (For boot switch details refer to the
         **Initialization/Boot Mode Pins** chapter of TRM.)
-      - Connect the USB Mass storage device with the bootloader images and boot up
+      - Connect the USB Mass storage device with the boot loader images and boot up
         the board.
       - The board should now boot to u-boot prompt.
 
@@ -438,15 +447,15 @@ Flash and boot SPL from USB storage
       Booting to U-Boot prompt from USB storage is supported. The following are the
       steps to be followed:
 
-      - Build the bootloader images using the "am65x_evm_r5_usbmsc_defconfig"
+      - Build the boot loader images using the "am65x_evm_r5_usbmsc_defconfig"
         and "am65x_evm_a53_defconfig" configs files. For instructions to build the
-        bootloader images please refer to :ref:`Build-U-Boot-label`.
+        boot loader images, refer to :ref:`Build-U-Boot-label`.
       - Create a FAT32 partition with boot flag enabled on the USB storage device.
-      - Copy the bootloader images(tiboot3.bin, sysfw.itb, tispl.bin, u-boot.img)
+      - Copy the boot loader images(tiboot3.bin, sysfw.itb, tispl.bin, u-boot.img)
         into the above created partition.
       - Set the boot mode switches to usb host mode (For boot switch details refer to the
         **Initialization/Boot Mode Pins** chapter of TRM.)
-      - Connect the USB Mass storage device with the bootloader images and boot up
+      - Connect the USB Mass storage device with the boot loader images and boot up
         the board.
       - The board should now boot to u-boot prompt.
 
@@ -456,21 +465,21 @@ Flash and boot SPL from USB storage
       steps to be followed:
 
       - In U-Boot the USB controller can be used in either host or peripheral mode.
-        For booting to linux kernel from USB storage device, the USB port should be
+        For booting to Linux kernel from USB storage device, the USB port should be
         in host mode.
       - By default, USB0 is set to peripheral mode. Change this from peripheral to
         host mode.
-      - Build the bootloader images using the default "j722s_evm_r5_defconfig" and
+      - Build the boot loader images using the default "j722s_evm_r5_defconfig" and
         the config fragment "j722s_evm_r5_usbmsc.config" and "j722s_evm_a53_defconfig"
         configs files. The configs required for USB MSC boot are already enabled. For
-        instructions to build the bootloader images please refer to :ref:`Build-U-Boot-label`.
+        instructions to build the boot loader images, refer to :ref:`Build-U-Boot-label`.
       - Create a FAT32 partition with boot flag enabled on the USB storage device.
-      - Copy the bootloader images(tiboot3.bin, tispl.bin, u-boot.img) into the above
+      - Copy the boot loader images(tiboot3.bin, tispl.bin, u-boot.img) into the above
         created partition.
       - Set the boot mode switches to USB host boot mode (Refer to the **Initialization**
         chapter of TRM for boot switch details)
       - Make sure USB0 port in DRP mode: SW2[2:3] = 00
-      - Connect the USB Mass storage device with the bootloader images and boot up
+      - Connect the USB Mass storage device with the boot loader images and boot up
         the board.
 
    .. note::
@@ -487,8 +496,8 @@ Boot Linux from USB storage
 
 .. ifconfig:: CONFIG_part_family not in ('J7_family', 'AM62X_family', 'AM64X_family')
 
-   Booting Linux from USB storage documentation is pending for |__PART_FAMILY_DEVICE_NAMES__|
-   please reach out to:  `Help e2e <https://e2e.ti.com//>`__ for additional information.
+   Booting Linux from USB storage documentation is pending for |__PART_FAMILY_DEVICE_NAMES__|,
+   reach out to:  `Help e2e <https://e2e.ti.com//>`__ for additional information.
 
 .. ifconfig:: CONFIG_part_family in ('J7_family')
 
@@ -504,7 +513,7 @@ Boot Linux from USB storage
       - U-Boot
 
          - In U-Boot, the USB controller can be used in either host or peripheral
-           mode. For booting to linux prompt. For USB storage device, the USB port has
+           mode. For booting to Linux prompt. For USB storage device, the USB port has
            to be set as host. By default, USB0 is set to peripheral mode. Change this
            from peripheral to host mode in u-boot DT.
 
@@ -557,12 +566,12 @@ Boot Linux from USB storage
    - U-Boot
 
       - In U-Boot the USB controller can be used in either host or peripheral mode. For
-        booting to linux kernel from USB storage device, the USB port is to be set as host.
+        booting to Linux kernel from USB storage device, the USB port is to be set as host.
       - By default, on AM625-SK board the zero instance of USB connected to the Type C
         port, is set to peripheral mode and the first instance of USB connected to the Type
         A port is set to host mode.
-      - Therefore, USB controller needs to be set host mode and custom bootloader images
-        are required to be built, if zeroth instance is used. Please refer to note in section
+      - Therefore, USB controller needs to be set host mode and custom boot loader images
+        are required to be built, if zeroth instance is used. Refer to note in section
         :ref:`uboot-configure-usb-in-host-mode`
 
    - Linux
@@ -613,13 +622,13 @@ Boot Linux from USB storage
    - U-Boot
 
       - In U-Boot the USB controller can be used in either host or peripheral mode. For
-        booting to linux kernel from USB storage device, the USB port is to be set as host.
+        booting to Linux kernel from USB storage device, the USB port is to be set as host.
       - By default, the USB controller is set in peripheral mode.
       - If the boot media used to boot to U-Boot is USB Host mode(:ref:`uboot-usb-msc-boot`)
         then, the USB controller is set to host mode during runtime. Therefore, no changes
         would be required in this case.
       - If a boot media other than USB Host is used, the USB controller needs to be set
-        host mode and custom bootloader images are required to be built. Please refer to note
+        host mode and custom boot loader images are required to be built. Refer to note
         in section :ref:`uboot-configure-usb-in-host-mode`
 
    - Linux
@@ -646,7 +655,7 @@ Boot Linux from USB storage
         file and modules. The USB Mass storage device should have two partitions:
 
       - boot
-         - For creating this parition please refer :ref:`uboot-usb-msc-boot`
+         - For creating this parition, refer to :ref:`uboot-usb-msc-boot`
       - rootfs
          - A partition with ext4 filesystem and the following images in /boot/ directory
             - Linux kernel **Image**
@@ -779,7 +788,7 @@ MMC support in u-boot
 Steps for working around SD card issues in u-boot
 =================================================
 
-In some cases, issues can be seen while using some SD cards, like:
+In some cases, issues can be seen while using some SD cards, such as:
 
 - Error while trying to initialize:
 

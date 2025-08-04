@@ -7,13 +7,13 @@ How to flash eMMC and boot with eMMC Boot
 Overview
 ========
 
-This how to guide allows to prepare and flash the eMMC device to boot using *eMMC boot*,
-that is, to boot from Boot0 or Boot1 eMMC hardware partitions and boot the rootfs from
-eMMC UDA.
+This how to guide allows to prepare and flash the embedded multimedia card (eMMC) device to
+boot using *eMMC boot*, that is, to boot from Boot0 or Boot1 eMMC hardware partitions and
+boot the root filesystem (rootfs) from eMMC user data area (UDA).
 
 .. note::
 
-   This process will require a working SD card that can boot the device to Linux kernel.
+   This process will require a working secure digital (SD) card that can boot the device to Linux kernel.
 
 .. _how-to-emmc-layout:
 
@@ -74,13 +74,13 @@ eMMC layout
       +----------------------------------+0x3E00   +-------------------------+
                    Boot0 (8 MB)                              UDA
 
-Flash bootloader binaries to eMMC
-=================================
+Flash boot loader binaries to eMMC
+==================================
 
 To boot with *eMMC boot* the eMMC needs to be prepared before hand. The recommended process
-is to flash an SD card with TI SDK image, copy the bootlader binaries that will be flashed to
+is to flash an SD card with TI SDK image, copy the boot loader binaries that will be flashed to
 eMMC in the SD card "boot" partition in emmc/ folder, boot the board with *MMCSD boot* from SD
-(FS mode), and proceed to flash the eMMC from either u-boot or linux.
+filesystem (FS) mode, and proceed to flash the eMMC from either u-boot or Linux.
 
 **Erase eMMC**
 
@@ -107,7 +107,7 @@ To erase boot1, replace ``mmc dev 0 1`` with ``mmc dev 0 2``.
 
 **Flash from u-boot**
 
-Stop at u-boot prompt and flash eMMC using :command:`fatload` and :command:`mmc write` commands
+Stop at u-boot prompt and flash eMMC by using :command:`fatload` and :command:`mmc write` commands
 to load binaries from SD card and flash them to eMMC Boot0.
 
 In this example, eMMC device is ``dev 0``, to find which device is eMMC, refer to
@@ -171,9 +171,9 @@ In this example, eMMC device is ``dev 0``, to find which device is eMMC, refer t
       => fatload mmc 1 ${loadaddr} emmc/sysfw.itb
       => mmc write ${loadaddr} 0x3600 0x800
 
-**Flash from linux**
+**Flash from Linux**
 
-At linux prompt, flash eMMC using :command:`cp` and :command:`dd` commands to load binaries
+At Linux prompt, flash eMMC by using :command:`cp` and :command:`dd` commands to load binaries
 from SD card and flash them to eMMC Boot0.
 
 In this example, eMMC is :file:`/dev/mmcblk0*` and SD :file:`/dev/mmcblk1*` to find which
@@ -191,15 +191,15 @@ eMMC Boot1 instead, replace ``mmcblk0boot0`` with ``mmcblk0boot1``.
 
 Where seek is the eMMC offset converted to decimal type. For example, for seek=1024, we are
 flashing to offset 0x400. Please refer :ref:`here <how-to-emmc-layout>` for the offsets in eMMC
-when flashing bootloader files.
+when flashing boot loader files.
 
 Flash rootfs to eMMC
 ====================
 
 To boot the rootfs from eMMC UDA, the eMMC needs to be prepared before hand. It is not
 possible to format a partition to ext4 in U-Boot, so the recommended process is to flash
-an SD card with TI SDK image, boot the device with SD card boot to linux kernel prompt,
-and prepre eMMC UDA from Linux.
+an SD card with TI SDK image, boot the device with SD card boot to Linux kernel prompt,
+and prepare eMMC UDA from Linux.
 
 First create a "root" partition to flash the rootfs as shown :ref:`here <mmc-create-root-partition-emmc-linux>`.
 The new disk partition should be formatted as ext4 type as shown :ref:`here <mmc-format-partition-ext4>`.
@@ -217,7 +217,7 @@ set configuration for *eMMC boot*.
 
 After flashing binaries to eMMC flash, the eMMC device Extended CSD register fields:
 BUS_WIDTH and PARTITION_CONFIG must be set so ROM will use the correct configuration
-for *eMMC boot*. Set using the :command:`mmc bootbus` and :command:`mmc partconf` commands.
+for *eMMC boot*. Set by using the :command:`mmc bootbus` and :command:`mmc partconf` commands.
 Go to ``Boot from Boot0`` if booting for eMMC boot0. Alternatively, ``Boot from Boot1`` if
 booting from eMMC boot1.
 
@@ -230,9 +230,9 @@ booting from eMMC boot1.
 
    $ mmc partconf <dev> [[varname] | [<boot_ack> <boot_partition> <partition_access>]]
 
-Where <dev> is MMC device index.
+Where <dev> is mmc device index.
 
-- For more information on these commands, please go `here <https://docs.u-boot.org/en/latest/usage/cmd/mmc.html>`__.
+- For more information on these commands, go `here <https://docs.u-boot.org/en/latest/usage/cmd/mmc.html>`__.
 
 **Boot from Boot0**
 
@@ -253,7 +253,7 @@ Where <dev> is MMC device index.
    On eMMC devices, warm reset will not work if EXT_CSD[162] bit is unset since the
    reset input signal will be ignored. Warm reset is required to be enabled in order
    for the eMMC to be in a "clean state" on power-on reset so that ROM can do
-   a clean enumeration. To set the EXT_CSD[162] bit, stop at u-boot prompt and execute
+   a clean enumeration. To set the EXT_CSD[162] bit, stop at u-boot prompt and enter
    the following command:
 
 .. code-block:: console
@@ -262,7 +262,7 @@ Where <dev> is MMC device index.
 
 .. warning::
 
-   This is a write-once field. For more information, please refer to the u-boot
+   This is a write-once field. For more information, refer to the u-boot
    doc found `here <https://docs.u-boot.org/en/latest/usage/cmd/mmc.html>`__.
 
 **U-boot environment**
@@ -299,12 +299,12 @@ First apply the following change in u-boot for any SoC.
     bootdir=/boot
     rd_spec=-
 
-Re-build bootloader binaries and copy build outputs to the SD card "boot" partition
+Re-build boot loader binaries and copy build outputs to the SD card "boot" partition
 and :file:`emmc/` folder. Proceed to flash eMMC with these binaries as shown in this
 step-by-step guide.
 
 Boot from eMMC boot partition
 =============================
 
-Finally we can proceed to change boot mode pins to *eMMC boot* as per specific TRM, under:
+Finally we can proceed to change boot mode pins to *eMMC boot* according to TRM, under:
 :file:`Initialization/Boot Mode Pins` and power cycle the board.

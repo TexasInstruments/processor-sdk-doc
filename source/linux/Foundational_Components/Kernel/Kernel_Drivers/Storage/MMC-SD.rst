@@ -1,22 +1,28 @@
 .. http://processors.wiki.ti.com/index.php/Linux_Core_MMC/SD_User%27s_Guide
 
-MMC/SD
-######
+MMCSD
+#####
+
+.. ifconfig:: CONFIG_part_family in ('AM62X_family', 'AM62PX_family')
+
+   .. warning::
+
+      There is important information on multimedia card (MMC) support for |__PART_FAMILY_DEVICE_NAMES__| device, go
+      :ref:`here <mmc-support-linux>` for more information.
 
 Introduction
 ************
 
-The multimedia card high-speed/SDIO (MMC/SDIO) host controller provides
-an interface between a local host (LH) such as a microprocessor unit
-(MPU) or digital signal processor (DSP) and either MMC, SD® memory
-cards, or SDIO cards and handles MMC/SDIO transactions with minimal LH
-intervention.
+The multimedia card secure digital (MMCSD) host controller provides an interface between a local host (LH)
+such as a microprocessor unit (MPU) or digital signal processor (DSP) and either embedded multimedia card (eMMC),
+secure digital (SD), or secure digital input/output (SDIO) devices. The MMCSD host controller handles MMCSD and
+SDIO protocol with minimal LH intervention.
 
 .. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family', 'AM57X_family')
 
-   Main features of the MMC/SDIO host controllers:
+   Main features of the MMCSD host controllers:
 
-   -  Full compliance with MMC/SD command/response sets as defined in the
+   -  Full compliance with MMCSD command/response sets as defined in the
       Specification.
 
    -  Support:
@@ -29,9 +35,9 @@ intervention.
       -  Two slave DMA channels (1 for TX, 1 for RX)
       -  Designed for low power and programmable clock generation
       -  Maximum operating frequency of 48MHz
-      -  MMC/SD card hot insertion and removal
+      -  MMCSD card hot insertion and removal
 
-The following image shows the MMC/SD Driver Architecture:
+The following image shows the MMCSD Driver Architecture:
 
 .. Image:: /images/Mmcsd_Driver.png
 
@@ -41,23 +47,6 @@ References
 #. `JEDEC eMMC homepage <http://www.jedec.org/category/technology-focus-area/flash-memory-ssds-ufs-emmc//>`__
 #. `SD organization homepage <http://www.sdcard.org//>`__
 
-Acronyms & Definitions
-**********************
-
-+-----------+--------------------+
-| Acronym   | Definition         |
-+===========+====================+
-| MMC       | Multimedia Card    |
-+-----------+--------------------+
-| HS-MMC    | High Speed MMC     |
-+-----------+--------------------+
-| SD        | Secure Digital     |
-+-----------+--------------------+
-| SDHC      | SD High Capacity   |
-+-----------+--------------------+
-| SDIO      | SD Input/Output    |
-+-----------+--------------------+
-
 Features
 ********
 
@@ -66,12 +55,12 @@ Features
    The SD driver supports the following features:
 
    -  The driver is built in-kernel (part of vmlinux)
-   -  SD cards including SD High Speed and SDHC cards
+   -  SD cards including SD High Speed and secure digital high capacity (SDHC) cards
    -  Uses block bounce buffer to aggregate scattered blocks
 
 .. ifconfig:: CONFIG_part_family in ('J7_family')
 
-   The SD/MMC driver supports the following features:
+   The MMCSD driver supports the following features:
 
    - Support ADMA for DMA transfers
    - HS400 speed mode
@@ -80,17 +69,17 @@ Features
 
 .. ifconfig:: CONFIG_part_family in ('AM62X_family', 'AM62AX_family', 'AM64X_family', 'AM62LX_family', 'AM62PX_family')
 
-   The SD/MMC driver supports the following features:
+   The MMCSD driver supports the following features:
 
    - Support ADMA for DMA transfers
    - HS200 speed mode
    - Support for both built-in and module mode
    - ext2/ext3/ext4 file system support
 
-.. _mmc-sd-supported-hs-modes:
+.. _mmc-supported-uhs-modes:
 
-SD: Supported High Speed Modes
-******************************
+Supported ultra high speed (UHS) modes
+**************************************
 
 .. ifconfig:: CONFIG_part_family in ('General_family', 'AM57X_family', 'AM65X_family')
 
@@ -153,9 +142,9 @@ SD: Supported High Speed Modes
    | PATRIOT 8G UHS CARD - Voltage switching fails and enumerates in high speed   |
    +------------------------------------------------------------------------------+
 
-   **Known Workaround**: For cards which doesn't enumerate in UHS mode,
+   **Known Workaround**: For cards that don't enumerate in UHS mode,
    removing the PULLUP resistor in CLK line and changing the GPIO to
-   PULLDOWN increases the frequency in which the card enumerates in UHS
+   PULLDOWN increases the frequency that the card enumerates in UHS
    modes.
 
    +--------------------+-------+---------+
@@ -236,14 +225,14 @@ SD: Supported High Speed Modes
       am62px, Y, Y, N
       am62lx, Y, Y, N
 
-Driver Configuration
+Driver configuration
 ********************
 
 .. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family', 'AM57X_family')
 
-   The default kernel configuration enables support for MMC/SD(built-in to kernel).
+   The default kernel configuration enables support for MMCSD(built-in to kernel).
 
-   The selection of MMC/SD/SDIO driver can be modified using the linux kernel
+   The selection of MMCSD/SDIO driver can be modified using the linux kernel
    configuration tool. Launch it by the following command:
 
    .. code-block:: console
@@ -270,7 +259,7 @@ Driver Configuration
 
       $ sudo -E make modules_install ARCH=arm INSTALL_MOD_PATH=path/to/filesystem
 
-   Boot the kernel upto kernel prompt and use modprobe to insert the driver
+   Boot the kernel up-to kernel prompt and use modprobe to insert the driver
    module and all its dependencies.
 
    .. code-block:: console
@@ -284,7 +273,7 @@ Driver Configuration
 
 .. ifconfig:: CONFIG_part_family in ('J7_family', 'AM62X_family', 'AM64X_family', 'AM62AX_family', 'AM62PX_family', 'AM62LX_family')
 
-   The default kernel configuration enables support for MMC/SD driver as
+   The default kernel configuration enables support for MMCSD driver as
    built-in to kernel. TI SDHCI driver is used. Following options need to be
    configured in Linux Kernel for successfully selecting SDHCI driver for
    |__PART_FAMILY_DEVICE_NAMES__|.
@@ -331,7 +320,7 @@ Driver Configuration
    If an operation is delayed for too long, it becomes critical, taking
    priority over the regular read/write from host. This can cause host
    operations to be delayed or take more time than expected. To avoid such
-   issues the MMC HW and core driver provide a framework which can check
+   issues the multimedia card (MMC) HW and core driver provide a framework that can check
    for pending background operations and give the card some time to service
    them before they become critical. This feature is already part of the
    framework and to start using it the User needs to enable:
@@ -347,8 +336,8 @@ Driver Configuration
 
       root@<machine>:mmc bkops enable /dev/mmcblk0
 
-   You can find the instance of eMMC by reading the ios timing spec form
-   debugfs:
+   You can find the instance of eMMC by reading the ios timing spec from
+   debug filesystem (debugfs):
 
    .. code-block:: console
 
@@ -416,10 +405,10 @@ MMC support in Linux
 
    There is no missing MMC support for |__PART_FAMILY_DEVICE_NAMES__| device.
 
-.. ifconfig:: CONFIG_part_family not in ('General_family', 'AM57X_family', 'AM335X_family', 'AM437X_family')
+Steps for working around SD card issues in Linux
+************************************************
 
-   Steps for working around SD card issues in Linux
-   ************************************************
+.. ifconfig:: CONFIG_part_family not in ('General_family', 'AM57X_family', 'AM335X_family', 'AM437X_family')
 
    In some cases, failures can be seen while using some SD cards:
 
@@ -465,7 +454,7 @@ MMC support in Linux
    #. Restricting to a given speed mode
 
       By default the kernel driver tries to enumerate an SD card in the highest supported
-      speed mode. Below is the order in which the driver tries to enumerate an SD card:
+      speed mode. Below is the order that the driver tries to enumerate an SD card:
 
          - SDR104
          - DDR50
@@ -495,7 +484,7 @@ MMC support in Linux
          };
 
       Limiting to SD HS speed mode can also be done by using the property
-      **no-1-8-v**. This disables switching to 1.8V which is required for
+      **no-1-8-v**. This disables switching to 1.8V, which is required for
       UHS speed modes(SDR104, DDR50, SDR50, SDR25, SDR12):
 
       .. code-block:: dts
@@ -532,7 +521,10 @@ MMC support in Linux
 
          sdhci2: mmc@fa20000 {
 
+.. ifconfig:: CONFIG_part_family in ('General_family', 'AM57X_family', 'AM335X_family', 'AM437X_family')
 
+   Steps for working around SD card issues in Linux documentation is pending for |__PART_FAMILY_DEVICE_NAMES__|
+   please reach out to:  `Help e2e <https://e2e.ti.com//>`__ for additional information.
 
 |
 
@@ -540,8 +532,8 @@ MMC support in Linux
 
 Listing MMC devices from Linux
 ******************************
-eMMC and SD cards are registered to the MMC subsystem and availiable as a block device
-as :file:`/dev/mmcblk{n}`. To find which device index **n** corresponds to eMMC device,
+eMMC and SD cards register with the MMC subsystem and are available as a block device
+as :file:`/dev/mmcblk{n}`. To find the device index **n** corresponding to an eMMC device,
 check which device includes :file:`mmcblk{n}boot0` and :file:`mmcblk{n}boot1`. Here,
 mmcblk0* is in eMMC.
 
@@ -557,9 +549,9 @@ mmcblk0* is in eMMC.
    brw-rw---- 1 root disk 179, 97 Jan  1 00:00 /dev/mmcblk1p1
    brw-rw---- 1 root disk 179, 98 Jan  8  2025 /dev/mmcblk1p2
 
-The disk partitions for each MMC device are displayed as :file:`/dev/mmcblk{n}p{x}`,
-to see what disk partitions exist for an eMMC device and if they are mounted, use the
-command :command:`lsblk`, like so:
+The disk partitions for each MMC device are displayed as :file:`/dev/mmcblk{n}p{x}`.
+To check existing or mounted disk partitions for an eMMC device, use the
+command :command:`lsblk`, such as:
 
 .. code-block:: console
 
@@ -572,24 +564,24 @@ command :command:`lsblk`, like so:
    |-mmcblk1p1  179:97   0  128M  0 part /run/media/boot-mmcblk1p1
    `-mmcblk1p2  179:98   0  1.9G  0 part /
 
-Use the :command:`mount` and :command:`umount` commands to mount and unmount disk partitions
-if they are formated, usally to vfat or ext4 types.
+Use the :command:`mount` and :command:`umount` commands to mount and unmount formatted disk
+partitions, usually to virtual file allocation table (vfat) or fourth extended file system (ext4) types.
 
 .. _mmc-create-partitions-in-emmc-linux:
 
 Create partitions in eMMC UDA
 *****************************
 
-In eMMC, the User Data Area (UDA) HW partition is the primary storage space generally used
-to flash the rootfs. To create disk partitions in UDA, use the :command:`fdisk` command.
-For ex: :samp:`fdisk /dev/mmcblk{n}` in which **n** is typically 0 or 1. In the example above,
+In eMMC, the user data area (UDA) HW partition is the primary storage space generally used
+to flash the root filesystem (rootfs). To create disk partitions in UDA, use the :command:`fdisk` command.
+For ex: :samp:`fdisk /dev/mmcblk{n}` in which **n** is typically 0 or 1. In the previous example,
 eMMC is :samp:`fdisk /dev/mmcblk0`.
 
-For documentation on using fdisk, please go to: `fdisk how-to <https://tldp.org/HOWTO/Partition/fdisk_partitioning.html>`__.
+For documentation on using fdisk command, go to: `fdisk how-to <https://tldp.org/HOWTO/Partition/fdisk_partitioning.html>`__.
 
 **Erase eMMC UDA**
 
-In Linux, before creating disk partitions, we can optionally erase eMMC UDA using :command:`dd`
+In Linux, before creating disk partitions, we can optionally erase eMMC UDA by using :command:`dd`
 command:
 
 .. code-block:: console
@@ -597,7 +589,7 @@ command:
    root@<machine>:~# umount /dev/mmcblk0*
    root@<machine>:~# dd if=/dev/zero of=/dev/mmcblk0 bs=1M count=n
 
-where ``n`` should be determined according the the following formula: ``count = total size UDA (bytes) / bs``.
+where ``n`` should be determined according to the following formula: ``count = total size UDA (bytes) / bs``.
 
 .. _mmc-create-boot-partition-emmc-linux:
 
@@ -605,7 +597,7 @@ Create "boot" partition
 =======================
 
 In this example create a "boot" partition of size 400 MiB which can be formatted to vfat type
-and will store the bootloader binaries.
+and will store the boot loader binaries.
 
 .. code-block:: console
 
@@ -648,7 +640,7 @@ and will store the bootloader binaries.
    Calling ioctl() to re-read partition table.
    Syncing disks.
 
-Make sure bootable flag is set for "boot" partition, ROM may not boot from this patitition
+Make sure bootable flag is set for "boot" partition, ROM might not boot from this partition
 if bootable flag is not set.
 
 .. _mmc-create-root-partition-emmc-linux:
@@ -700,7 +692,7 @@ Linux kernel Image, DTB, and the rootfs.
 Formatting eMMC partitions from Linux
 *************************************
 
-After creating a partition/s, the partition can be formated with the :command:`mkfs` command.
+After creating a partition/s, the partition can be formatted with the :command:`mkfs` command.
 For ex: :samp:`mkfs -t ext4 /dev/mmcblk{n}` where **mmcblk{n}** is the MMC device with the new
 disk partitions to format. The general syntax for formatting disk partitions in Linux is:
 
@@ -754,10 +746,10 @@ Flash eMMC for MMCSD boot
 *************************
 
 In this example, we show one simple method for flashing to eMMC for MMCSD boot from
-eMMC UDA in FS mode. Please know this is not the only method for flashing the eMMC
-for this bootmode.
+eMMC UDA in filesystem (FS) mode. Know this is not the only method for flashing the eMMC for this
+boot mode.
 
-This example assumes the current bootmode is MMCSD boot from SD (FS mode)
+This example assumes the current boot mode is MMCSD boot from SD (FS mode)
 
 .. _mmc-flash-emmc-uda-boot:
 
@@ -771,7 +763,7 @@ Flash to eMMC "boot" partition
    root@<machine>:~# mount /dev/mmcblk0p1 /mnt/eboot
    root@<machine>:~# mount /dev/mmcblk1p1 /mnt/sdboot
 
-Verify the partitions are mounted to the correct folders using :command:`lsblk` command in the
+Verify the partitions are mounted to the correct folders by using :command:`lsblk` command in the
 column labeled :file:`MOUNTPOINTS`.
 
 .. code-block:: console
@@ -787,7 +779,7 @@ column labeled :file:`MOUNTPOINTS`.
    |-mmcblk1p1  179:97   0  128M  0 part /mnt/sdboot
    `-mmcblk1p2  179:98   0  8.7G  0 part /
 
-Now we can copy bootloader binaries to eMMC and umount the partitions when writes finish.
+Now we can copy boot loader binaries to eMMC and umount the partitions when writes finish.
 
 .. code-block:: console
 
@@ -809,7 +801,7 @@ Flash to eMMC "root" partition
    [69229.982452] EXT4-fs (mmcblk0p2): mounted filesystem 74d40075-07e4-4bce-9401-6fccef68e934 r/w with ordered data mode. Quota mode: none.
    root@<machine>:~# mount /dev/mmcblk1p2 /mnt/sdroot
 
-Verify the partitions are mounted to the correct folders using :command:`lsblk` command in the
+Verify the partitions are mounted to the correct folders by using :command:`lsblk` command in the
 column labeled :file:`MOUNTPOINTS`.
 
 .. code-block:: console
@@ -826,7 +818,7 @@ column labeled :file:`MOUNTPOINTS`.
    `-mmcblk1p2  179:98   0  8.7G  0 part /mnt/sdroot
                                          /
 
-Now we can copy rootfs to eMMC (either from SD rootfs or from tarball) and umount the partitions
+Now we can copy rootfs to eMMC (either from SD rootfs or from tar file) and umount the partitions
 when writes finish.
 
 **From SD**
@@ -841,7 +833,7 @@ when writes finish.
    root@<machine>:~# umount /mnt/*
    [70154.205154] EXT4-fs (mmcblk0p2): unmounting filesystem 74d40075-07e4-4bce-9401-6fccef68e934.
 
-**From tarball**
+**From tar file**
 
 This sections requires for tisdk-base-image-<soc>evm.rootfs.tar.xz to have been previously copied
 to the SD card rootfs.
