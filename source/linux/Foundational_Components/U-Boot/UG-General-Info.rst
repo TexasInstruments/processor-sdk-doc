@@ -661,6 +661,7 @@ Build U-Boot
 
       .. code-block:: console
 
+         $ export UBOOT_DIR=<path-to-ti-u-boot>
          $ export TI_LINUX_FW_DIR=<path-to-ti-linux-firmware>
          $ export TFA_DIR=<path-to-arm-trusted-firmware>
 
@@ -676,8 +677,8 @@ Build U-Boot
 
       .. code-block:: console
 
-         $ make CROSS_COMPILE="$CROSS_COMPILE_64" am62lx_evm_defconfig
-         $ make CROSS_COMPILE="$CROSS_COMPILE_64" \
+         $ make CROSS_COMPILE="$CROSS_COMPILE_64" am62lx_evm_defconfig O=$UBOOT_DIR/out
+         $ make CROSS_COMPILE="$CROSS_COMPILE_64" O=$UBOOT_DIR/out \
             BL1=$TFA_DIR/build/k3/am62l/release/bl1.bin \
             BL31=$TFA_DIR/build/k3/am62l/release/bl31.bin \
             BINMAN_INDIRS=$TI_LINUX_FW_DIR
