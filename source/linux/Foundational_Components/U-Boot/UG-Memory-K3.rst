@@ -661,6 +661,121 @@ Boot Linux from USB storage
 
             => run usbboot
 
+|
+
+.. _uboot-mmc-support:
+
+MMC support in u-boot
+=====================
+
+.. ifconfig:: CONFIG_part_family in ('AM62PX_family')
+
+   **eMMC HS400 support**
+
+   For 11.0 and 11.1 SDK, am62px device does not support eMMC HS400 mode due to errata `i2458 <https://www.ti.com/lit/pdf/sprz574>`__.
+   If support for HS400 is required, add the following to k3-am62p-j722s-common-main.dtsi:
+
+   .. code-block:: diff
+
+      diff --git a/dts/upstream/src/arm64/ti/k3-am62p-j722s-common-main.dtsi b/dts/upstream/src/arm64/ti/k3-am62p-j722s-common-main.dtsi
+      index 8bfc6539b2a..8a536b081e1 100644
+      --- a/dts/upstream/src/arm64/ti/k3-am62p-j722s-common-main.dtsi
+      +++ b/dts/upstream/src/arm64/ti/k3-am62p-j722s-common-main.dtsi
+      @@ -593,12 +593,16 @@
+                      bus-width = <8>;
+                      mmc-ddr-1_8v;
+                      mmc-hs200-1_8v;
+      +               mmc-hs400-1_8v;
+                      ti,clkbuf-sel = <0x7>;
+      +               ti,strobe-sel = <0x55>;
+                      ti,trm-icp = <0x8>;
+                      ti,otap-del-sel-legacy = <0x1>;
+                      ti,otap-del-sel-mmc-hs = <0x1>;
+                      ti,otap-del-sel-ddr52 = <0x6>;
+                      ti,otap-del-sel-hs200 = <0x8>;
+      +               ti,otap-del-sel-hs400 = <0x5>; // at 0.85V VDD_CORE
+      +               //ti,otap-del-sel-hs400 = <0x7>; // at 0.75V VDD_CORE
+                      ti,itap-del-sel-legacy = <0x10>;
+                      ti,itap-del-sel-mmc-hs = <0xa>;
+                      ti,itap-del-sel-ddr52 = <0x3>;
+
+   and enable the following config options:
+
+   .. code-block:: diff
+
+      diff --git a/configs/am62px_evm_a53_defconfig b/configs/am62px_evm_a53_defconfig
+      index 09a91248ce6..f95879f41c9 100644
+      --- a/configs/am62px_evm_a53_defconfig
+      +++ b/configs/am62px_evm_a53_defconfig
+      @@ -114,8 +114,8 @@ CONFIG_MMC_IO_VOLTAGE=y
+       CONFIG_SPL_MMC_IO_VOLTAGE=y
+       CONFIG_MMC_UHS_SUPPORT=y
+       CONFIG_SPL_MMC_UHS_SUPPORT=y
+      -CONFIG_MMC_HS200_SUPPORT=y
+      -CONFIG_SPL_MMC_HS200_SUPPORT=y
+      +CONFIG_MMC_HS400_SUPPORT=y
+      +CONFIG_SPL_MMC_HS400_SUPPORT=y
+       CONFIG_MMC_SDHCI=y
+       CONFIG_MMC_SDHCI_ADMA=y
+       CONFIG_SPL_MMC_SDHCI_ADMA=y
+
+.. ifconfig:: CONFIG_part_family in ('AM62X_family')
+
+   **Missing eMMC support**
+
+   Support for eMMC is missing for AM62SIP SK in Processor SDK 11.01. Therefore, eMMC boot, reading/writting/accessing the eMMC
+   will not work on AM62SIP SK. If eMMC support is required, apply the following diff to k3-am6254xxl-sk.dts:
+
+   .. code-block:: diff
+
+      diff --git a/dts/upstream/src/arm64/ti/k3-am6254xxl-sk.dts b/dts/upstream/src/arm64/ti/k3-am6254xxl-sk.dts
+      index 060df318b3f..d2c9f226b73 100644
+      --- a/dts/upstream/src/arm64/ti/k3-am6254xxl-sk.dts
+      +++ b/dts/upstream/src/arm64/ti/k3-am6254xxl-sk.dts
+      @@ -42,6 +42,22 @@
+      };
+
+      &main_pmx0 {
+      +       main_mmc0_pins_default: main-mmc0-default-pins {
+      +               bootph-all;
+      +               pinctrl-single,pins = <
+      +                       AM62X_IOPAD(0x220, PIN_INPUT, 0) /* (Y3) MMC0_CMD */
+      +                       AM62X_IOPAD(0x218, PIN_INPUT, 0) /* (AB1) MMC0_CLK */
+      +                       AM62X_IOPAD(0x214, PIN_INPUT, 0) /* (AA2) MMC0_DAT0 */
+      +                       AM62X_IOPAD(0x210, PIN_INPUT_PULLUP, 0) /* (AA1) MMC0_DAT1 */
+      +                       AM62X_IOPAD(0x20c, PIN_INPUT_PULLUP, 0) /* (AA3) MMC0_DAT2 */
+      +                       AM62X_IOPAD(0x208, PIN_INPUT_PULLUP, 0) /* (Y4) MMC0_DAT3 */
+      +                       AM62X_IOPAD(0x204, PIN_INPUT_PULLUP, 0) /* (AB2) MMC0_DAT4 */
+      +                       AM62X_IOPAD(0x200, PIN_INPUT_PULLUP, 0) /* (AC1) MMC0_DAT5 */
+      +                       AM62X_IOPAD(0x1fc, PIN_INPUT_PULLUP, 0) /* (AD2) MMC0_DAT6 */
+      +                       AM62X_IOPAD(0x1f8, PIN_INPUT_PULLUP, 0) /* (AC2) MMC0_DAT7 */
+      +               >;
+      +       };
+      +
+            main_rgmii2_pins_default: main-rgmii2-default-pins {
+                     bootph-all;
+                     pinctrl-single,pins = <
+      @@ -147,6 +163,14 @@
+            };
+      };
+
+      +&sdhci0 {
+      +       bootph-all;
+      +       status = "okay";
+      +       pinctrl-names = "default";
+      +       pinctrl-0 = <&main_mmc0_pins_default>;
+      +};
+      +
+      &sdhci1 {
+            vmmc-supply = <&vdd_mmc1>;
+            vqmmc-supply = <&vdd_sd_dv>;
+
+.. ifconfig:: CONFIG_part_family not in ('AM62X_family', 'AM62PX_family')
+
+   There is no missing MMC support for |__PART_FAMILY_DEVICE_NAMES__| device.
+
+|
+
 Steps for working around SD card issues in u-boot
 =================================================
 
@@ -758,60 +873,3 @@ increasing order of reducing performance.
       };
 
       sdhci2: mmc@fa20000 {
-
-eMMC HS400 support in u-boot
-============================
-
-.. ifconfig:: CONFIG_part_family in ('AM62PX_family')
-
-   For 11.0 SDK, am62px device does not support eMMC HS400 mode due to errata i2458.
-   If support for HS400 is anyways required, please add the following DT attributes to sdhci0 node:
-
-   .. code-block:: diff
-
-      diff --git a/dts/upstream/src/arm64/ti/k3-am62p-j722s-common-main.dtsi b/dts/upstream/src/arm64/ti/k3-am62p-j722s-common-main.dtsi
-      index 8bfc6539b2a..8a536b081e1 100644
-      --- a/dts/upstream/src/arm64/ti/k3-am62p-j722s-common-main.dtsi
-      +++ b/dts/upstream/src/arm64/ti/k3-am62p-j722s-common-main.dtsi
-      @@ -593,12 +593,16 @@
-                      bus-width = <8>;
-                      mmc-ddr-1_8v;
-                      mmc-hs200-1_8v;
-      +               mmc-hs400-1_8v;
-                      ti,clkbuf-sel = <0x7>;
-      +               ti,strobe-sel = <0x55>;
-                      ti,trm-icp = <0x8>;
-                      ti,otap-del-sel-legacy = <0x1>;
-                      ti,otap-del-sel-mmc-hs = <0x1>;
-                      ti,otap-del-sel-ddr52 = <0x6>;
-                      ti,otap-del-sel-hs200 = <0x8>;
-      +               ti,otap-del-sel-hs400 = <0x5>; // at 0.85V VDD_CORE
-      +               //ti,otap-del-sel-hs400 = <0x7>; // at 0.75V VDD_CORE
-                      ti,itap-del-sel-legacy = <0x10>;
-                      ti,itap-del-sel-mmc-hs = <0xa>;
-                      ti,itap-del-sel-ddr52 = <0x3>;
-
-   and enable the following config options:
-
-   .. code-block:: diff
-
-      diff --git a/configs/am62px_evm_a53_defconfig b/configs/am62px_evm_a53_defconfig
-      index 09a91248ce6..f95879f41c9 100644
-      --- a/configs/am62px_evm_a53_defconfig
-      +++ b/configs/am62px_evm_a53_defconfig
-      @@ -114,8 +114,8 @@ CONFIG_MMC_IO_VOLTAGE=y
-       CONFIG_SPL_MMC_IO_VOLTAGE=y
-       CONFIG_MMC_UHS_SUPPORT=y
-       CONFIG_SPL_MMC_UHS_SUPPORT=y
-      -CONFIG_MMC_HS200_SUPPORT=y
-      -CONFIG_SPL_MMC_HS200_SUPPORT=y
-      +CONFIG_MMC_HS400_SUPPORT=y
-      +CONFIG_SPL_MMC_HS400_SUPPORT=y
-       CONFIG_MMC_SDHCI=y
-       CONFIG_MMC_SDHCI_ADMA=y
-       CONFIG_SPL_MMC_SDHCI_ADMA=y
-
-.. ifconfig:: CONFIG_part_family not in ('AM62PX_family')
-
-	eMMC HS400 is not suppported, refer to :ref:`this <mmc-sd-supported-hs-modes>` table for the list of modes supported in u-boot
-	for |__PART_FAMILY_NAME__| SoC.
