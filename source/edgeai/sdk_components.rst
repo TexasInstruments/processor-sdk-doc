@@ -110,7 +110,7 @@ package and tools to customize Linux layers of the software stack.
 
 .. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
-   Click `AM62AX Linux Foundation components <https://software-dl.ti.com/processor-sdk-linux/esd/AM62AX/10_01_00/exports/docs/linux/Foundational_Components.html>`_
+   Click `AM62AX Linux Foundational components <https://software-dl.ti.com/processor-sdk-linux/esd/AM62AX/11_01_07_05/exports/docs/linux/Foundational_Components.html>`_
    to explore more!
 
 .. ifconfig:: CONFIG_part_variant in ('AM67A')

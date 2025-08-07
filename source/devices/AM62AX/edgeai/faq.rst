@@ -79,9 +79,9 @@ blog `Multiple UVC cameras on linux <https://www.thegoodpenguin.co.uk/blog/multi
 
 To apply the work around to our SDK, use below steps
 
-#. Download and install `Processor SDK Linux <https://software-dl.ti.com/processor-sdk-linux/esd/AM62AX/10_01_00/exports/docs/devices/AM62AX/linux/Overview/Download_and_Install_the_SDK.html>`__
+#. Download and install `Processor SDK Linux <https://software-dl.ti.com/processor-sdk-linux/esd/AM62AX/11_01_07_05/exports/docs/devices/AM62AX/linux/Overview/Download_and_Install_the_SDK.html>`__
 #. Get the patch to add `bandwidth_cap` parameter to `uvcvideo` kernel module `uvcvideo patch <https://www.spinics.net/lists/linux-media/msg175596.html>`_
-#. Apply the patch to kernel source in Processor SDK Linux Install path. Please refer to `PSDK building kernel <https://software-dl.ti.com/processor-sdk-linux/esd/AM62AX/10_01_00/exports/docs/linux/Foundational_Components_Kernel_Users_Guide.html#overview>`_
+#. Apply the patch to kernel source in Processor SDK Linux Install path. Please refer to `PSDK building kernel <https://software-dl.ti.com/processor-sdk-linux/esd/AM62AX/11_01_07_05/exports/docs/linux/Foundational_Components_Kernel_Users_Guide.html#overview>`_
 #. Compile only `uvcvideo` module using below command
 
    .. code-block:: bash
