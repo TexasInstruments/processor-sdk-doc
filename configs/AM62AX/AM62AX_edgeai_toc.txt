@@ -6,7 +6,7 @@ devices/AM62AX/edgeai/faq
 devices/AM62AX/edgeai/getting_started
 devices/AM62AX/edgeai/index
 devices/AM62AX/edgeai/test_report
-devices/AM62AX/edgeai/release_notes
+devices/AM62AX/edgeai/software_components_version
 
 edgeai/sdk_overview
 edgeai/configuration_file

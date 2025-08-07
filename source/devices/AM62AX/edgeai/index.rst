@@ -23,7 +23,7 @@ Processor SDK Linux Edge AI Software Developer's Guide
    datasheet_optiflow
    datasheet_tiovx_apps
    test_report
-   release_notes
+   software_components_version
    faq
 
 +--------------------------------+--------------------------------------------------------------------------------------------------+
