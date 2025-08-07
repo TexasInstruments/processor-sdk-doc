@@ -15,6 +15,7 @@ User's Guide
     UG-PCIeBoot
     UG-NAND
     UG-Memory-K3
+    UG-UMS
     UG-Memory-OMAP
     UG-SPI
     UG-QSPI
