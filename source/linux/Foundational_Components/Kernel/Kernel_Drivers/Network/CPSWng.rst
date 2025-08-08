@@ -4,7 +4,7 @@ CPSWng Ethernet
 ---------------
 
 .. contents:: :local:
-    :depth: 1
+   :depth: 1
 
 Introduction
 """"""""""""
@@ -51,8 +51,8 @@ configurations:
 #. CPSWng Native Ethernet Switch
 
 .. Caution::
-    The two configurations are mutually exclusive. Only one of the two
-    can be enabled for a build.
+   The two configurations are mutually exclusive. Only one of the two
+   can be enabled for a build.
 
 .. ifconfig:: CONFIG_part_family in ('J7_family')
 
@@ -104,7 +104,7 @@ This configuration supports MAC mode, Switch mode and TSN features on Linux.
    For further details, refer :ref:`cpsw3g`
 
 .. toctree::
-    :hidden:
+   :hidden:
 
-    CPSW-Proxy-Client
-    CPSWng-Native-Ethernet
+   CPSW-Proxy-Client
+   CPSWng-Native-Ethernet

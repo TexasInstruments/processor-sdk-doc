@@ -4,7 +4,7 @@ CPSWng virtual MAC (remoteproc)
 -------------------------------
 
 .. contents:: :local:
-    :depth: 3
+   :depth: 3
 
 Introduction
 ============
@@ -32,7 +32,7 @@ This solution is illustrated below.
 
    Overall TI remoteproc/virtio/rpmsg/rpmsg-kdrv description is out of scope of this section.
 
-::
+.. code:: text
 
  User space           +------+
  +--------------------+ethX  +----------------------------------------+
@@ -147,25 +147,25 @@ Once started, the j721e-cpsw-virt-mac driver will wait for rpmsg_kdrv_switch dri
 
 Drivers initialization Linux kernel log example for Virtual MAC switch mode:
 
-::
+.. code:: text
 
- rpmsg-kdrv-eth-switch rpmsg-kdrv-1-mpu_1_0_ethswitch-device-0: Device info: permissions: 0FFFFFFF uart_id: 2
- rpmsg-kdrv-eth-switch rpmsg-kdrv-1-mpu_1_0_ethswitch-device-0: FW ver 0.2 (rev 0)  3/Oct/2021 SHA:31ed829b
- j721e-cpsw-virt-mac main_r5fss_cpsw9g_virt_mac0: rpmsg attach_ext - rx_mtu:1522 features:00000003 tx_mtu[0]:2024 flow_idx:172 tx_cpsw_psil_dst_id:51712 mac_addr:70:ff:76:1d:92:c1 mac-only:0
- j721e-cpsw-virt-mac main_r5fss_cpsw9g_virt_mac0: virt_cpsw_nuss mac loaded
- j721e-cpsw-virt-mac main_r5fss_cpsw9g_virt_mac0: rdev_features:00000003 rdev_mtu:1522 flow_id:172 tx_psil_dst_id:4A00 mac_only:0
- j721e-cpsw-virt-mac main_r5fss_cpsw9g_virt_mac0: local_mac_addr:00:00:00:00:00:00 rdev_mac_addr:70:ff:76:1d:92:c1
+   rpmsg-kdrv-eth-switch rpmsg-kdrv-1-mpu_1_0_ethswitch-device-0: Device info: permissions: 0FFFFFFF uart_id: 2
+   rpmsg-kdrv-eth-switch rpmsg-kdrv-1-mpu_1_0_ethswitch-device-0: FW ver 0.2 (rev 0)  3/Oct/2021 SHA:31ed829b
+   j721e-cpsw-virt-mac main_r5fss_cpsw9g_virt_mac0: rpmsg attach_ext - rx_mtu:1522 features:00000003 tx_mtu[0]:2024 flow_idx:172 tx_cpsw_psil_dst_id:51712 mac_addr:70:ff:76:1d:92:c1 mac-only:0
+   j721e-cpsw-virt-mac main_r5fss_cpsw9g_virt_mac0: virt_cpsw_nuss mac loaded
+   j721e-cpsw-virt-mac main_r5fss_cpsw9g_virt_mac0: rdev_features:00000003 rdev_mtu:1522 flow_id:172 tx_psil_dst_id:4A00 mac_only:0
+   j721e-cpsw-virt-mac main_r5fss_cpsw9g_virt_mac0: local_mac_addr:00:00:00:00:00:00 rdev_mac_addr:70:ff:76:1d:92:c1
 
 Drivers initialization Linux kernel log example for Virtual MAC only mode:
 
-::
+.. code:: text
 
- rpmsg-kdrv-eth-switch rpmsg-kdrv-3-mpu_1_0_ethmac-device-1: Device info: permissions: 0FFFFFFF uart_id: 2
- rpmsg-kdrv-eth-switch rpmsg-kdrv-3-mpu_1_0_ethmac-device-1: FW ver 0.2 (rev 0)  3/Oct/2021 SHA:31ed829b
- j721e-cpsw-virt-mac main-r5fss-cpsw9g-virt-mac1: rpmsg attach_ext - rx_mtu:1522 features:00000007 tx_mtu[0]:2024 flow_idx:173 tx_cpsw_psil_dst_id:51713 mac_addr:70:ff:76:1d:92:c2 mac-only:1
- j721e-cpsw-virt-mac main-r5fss-cpsw9g-virt-mac1: virt_cpsw_nuss mac loaded
- j721e-cpsw-virt-mac main-r5fss-cpsw9g-virt-mac1: rdev_features:00000007 rdev_mtu:1522 flow_id:173 tx_psil_dst_id:4A01 mac_only:1
- j721e-cpsw-virt-mac main-r5fss-cpsw9g-virt-mac1: local_mac_addr:00:00:00:00:00:00 rdev_mac_addr:70:ff:76:1d:92:c2
+   rpmsg-kdrv-eth-switch rpmsg-kdrv-3-mpu_1_0_ethmac-device-1: Device info: permissions: 0FFFFFFF uart_id: 2
+   rpmsg-kdrv-eth-switch rpmsg-kdrv-3-mpu_1_0_ethmac-device-1: FW ver 0.2 (rev 0)  3/Oct/2021 SHA:31ed829b
+   j721e-cpsw-virt-mac main-r5fss-cpsw9g-virt-mac1: rpmsg attach_ext - rx_mtu:1522 features:00000007 tx_mtu[0]:2024 flow_idx:173 tx_cpsw_psil_dst_id:51713 mac_addr:70:ff:76:1d:92:c2 mac-only:1
+   j721e-cpsw-virt-mac main-r5fss-cpsw9g-virt-mac1: virt_cpsw_nuss mac loaded
+   j721e-cpsw-virt-mac main-r5fss-cpsw9g-virt-mac1: rdev_features:00000007 rdev_mtu:1522 flow_id:173 tx_psil_dst_id:4A01 mac_only:1
+   j721e-cpsw-virt-mac main-r5fss-cpsw9g-virt-mac1: local_mac_addr:00:00:00:00:00:00 rdev_mac_addr:70:ff:76:1d:92:c2
 
 rpmsg_kdrv_switch driver
 """"""""""""""""""""""""
@@ -218,7 +218,7 @@ The j721e-cpsw-virt-mac driver also starts/stops the TX UDMA channel.
 For RX side, the j721e-cpsw-virt-mac driver only performs UDMA RX flow initialization (including RX free descriptor and RX ring initialization).
 
 
-::
+.. code:: text
 
         User space          +------+
        +--------------------+ethX  +----------------------------------------+
@@ -272,21 +272,21 @@ To enable Linux CPSWng Virtual Client functionality at U-Boot, save the followin
 
 .. ifconfig:: CONFIG_part_variant in ('J721E')
 
-    .. code-block:: text
+   .. code-block:: text
 
-        name_overlays="ti/k3-j721e-evm-virt-mac-client.dtbo"
+      name_overlays="ti/k3-j721e-evm-virt-mac-client.dtbo"
 
 .. ifconfig:: CONFIG_part_variant in ('J7200')
 
-    .. code-block:: text
+   .. code-block:: text
 
-        name_overlays="ti/k3-j7200-evm-virt-mac-client.dtbo"
+      name_overlays="ti/k3-j7200-evm-virt-mac-client.dtbo"
 
 .. ifconfig:: CONFIG_part_variant in ('J784S4','J742S2')
 
-    .. code-block:: text
+   .. code-block:: text
 
-        name_overlays="ti/k3-j784s4-evm-virt-mac-client.dtbo"
+      name_overlays="ti/k3-j784s4-evm-virt-mac-client.dtbo"
 
 Driver Configuration
 ====================
@@ -294,7 +294,7 @@ Driver Configuration
 The |__SDK_FULL_NAME__| package has a |__PART_FAMILY_NAME__| rpmsg_kdrv_switch and j721e-cpsw-virt-mac drivers enabled by default and built as modules.
 In case of custom builds, please ensure following configs are enabled.
 
-::
+.. code:: Kconfig
 
    CONFIG_RPMSG_KDRV
    CONFIG_RPMSG_KDRV_ETH_SWITCH
@@ -310,28 +310,28 @@ Eth0 can be started by default or configured manually:
 
 *DHCP*
 
-::
+.. code:: console
 
-      udhcpc -i ethX
-      ip link set dev ethX up
+   udhcpc -i ethX
+   ip link set dev ethX up
 
 *Manual IP address configuration*
 
-::
+.. code:: console
 
-    ip addr add <ip>/24 dev ethX
-    ip link set dev ethX up
+   ip addr add <ip>/24 dev ethX
+   ip link set dev ethX up
 
-    < or >
+   < or >
 
-    ifconfig ethX <ip> netmask <mask> up
+   ifconfig ethX <ip> netmask <mask> up
 
 Set MAC address
 """""""""""""""
 
 The j721e-cpsw-virt-mac supports changing the HW MAC address, but this operation can be performed only when the network device is inactive (down).
 
-::
+.. code:: console
 
    ip link set dev ethX down
    ip link set dev ethX address <MAC-addr>
@@ -346,15 +346,15 @@ Get driver information
 The CPSW0 interface can be identified by using ``ethtool -i|--driver`` command.
 It also provides some information about supported features.
 
-::
+.. code:: console
 
-    # ethtool -i <dev>
-    ...
+   # ethtool -i <dev>
+   ...
 
 Display standard information about device/link
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code:: console
 
    # ethtool eth0
 
@@ -364,40 +364,40 @@ Display standard information about device/link
 Show permanent hardware address
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+.. code:: console
 
-           # ethtool -P eth0
-           Permanent address: a0:f6:fd:a6:46:6e"
+   # ethtool -P eth0
+   Permanent address: a0:f6:fd:a6:46:6e"
 
 RX/TX checksum offload
 ^^^^^^^^^^^^^^^^^^^^^^
 
 The driver enables RX checksum offload by default. The current status can be obtained by using "ethtool -k" command:
 
-::
+.. code:: console
 
-    # ethtool -k <dev>
-    ....
-    rx-checksumming: on
-    tx-checksumming: off
-        tx-checksum-ipv4: off [fixed]
-        tx-checksum-ip-generic: off
+   # ethtool -k <dev>
+   ....
+   rx-checksumming: on
+   tx-checksumming: off
+      tx-checksum-ipv4: off [fixed]
+      tx-checksum-ip-generic: off
 
 It can be disabled/enabled by using "ethtool -K" command:
 
-::
+.. code:: console
 
-    ethtool -K <dev> rx-checksum on|off
-    ethtool -K <dev> tx-checksum-ip-generic on|off
+   ethtool -K <dev> rx-checksum on|off
+   ethtool -K <dev> tx-checksum-ip-generic on|off
 
 .. note::
 
-    TX checksum offload enablement is controlled by EthSwitch FW and current status provided to j721e-cpsw-virt-mac driver.
+   TX checksum offload enablement is controlled by EthSwitch FW and current status provided to j721e-cpsw-virt-mac driver.
 
 Driver testing
 ^^^^^^^^^^^^^^
 
-::
+.. code:: console
 
    # ethtool -t|--test <dev>
    ...
@@ -415,24 +415,24 @@ Interrupt pacing
 
 The Interrupt pacing (IRQ coalescing) based on hrtimers for RX/TX data path separately can be enabled by ethtool commands (min value is 20us):
 
-::
+.. code:: sh
 
-  #  ethtool -C ethX tx-usecs N
-  #  ethtool -C ethX rx-usecs N
+   #  ethtool -C ethX tx-usecs N
+   #  ethtool -C ethX rx-usecs N
 
 The Interrupt pacing (IRQ coalescing) configuration can be retrieved by commands:
 
-::
+.. code:: console
 
-  #  ethtool -c ethX
+   #  ethtool -c ethX
 
 It is also possible to use standard Linux Net core hard irqs deferral feature which can be enabled by configuring:
 
-::
+.. code:: console
 
- /sys/class/net/ethX/
-  gro_flush_timeout (in ns)
-  napi_defer_hard_irqs (number of retries)
+   /sys/class/net/ethX/
+   gro_flush_timeout (in ns)
+   napi_defer_hard_irqs (number of retries)
 
 Enabling of hard IRQ will be deferred napi_defer_hard_irqs times with gro_flush_timeout timeout.
 
@@ -447,16 +447,16 @@ The EthFW supports MC filtering which allows to offload MC addresses list to Eth
 
 The EthFW supports two logical types of MC addresses:
 
-  - *exclusive MC addresses* : such MC addresses will be exclusively directed to the Linux only through j721e-cpsw-virt-mac driver netdev.
+   - *exclusive MC addresses* : such MC addresses will be exclusively directed to the Linux only through j721e-cpsw-virt-mac driver netdev.
 
-  - *shared MC addresses* : such MC addresses belongs to statically configurable by EthFW MC addresses range. In this case MC packets will be delivered to Linux host by other means (i.e. shared memory based TAP interface) and not through j721e-cpsw-virt-mac driver netdev.
-    Shared MC addresses intended to be used when it's required to deliver MC packets to more then one CPU cores present on |__PART_FAMILY_NAME__| SoC.
+   - *shared MC addresses* : such MC addresses belongs to statically configurable by EthFW MC addresses range. In this case MC packets will be delivered to Linux host by other means (i.e. shared memory based TAP interface) and not through j721e-cpsw-virt-mac driver netdev.
+      Shared MC addresses intended to be used when it's required to deliver MC packets to more then one CPU cores present on |__PART_FAMILY_NAME__| SoC.
 
-  - *reserved MC addresses* : such MC addresses belongs to reserved, statically configurable by EthFW MC addresses range.
-    Reserved MC addresses intended to be consumed by EthFW itself only.
+   - *reserved MC addresses* : such MC addresses belongs to reserved, statically configurable by EthFW MC addresses range.
+      Reserved MC addresses intended to be consumed by EthFW itself only.
 
 
-  The j721e-cpsw-virt-mac driver doesn't distinguish between exclusive, shared and reserved MC addresses and offloads all requested MC addresses, but if MC address is shared or reserved - the offload operation become NOP from the j721e-cpsw-virt-mac driver point of view.
+   The j721e-cpsw-virt-mac driver doesn't distinguish between exclusive, shared and reserved MC addresses and offloads all requested MC addresses, but if MC address is shared or reserved - the offload operation become NOP from the j721e-cpsw-virt-mac driver point of view.
 
 .. note::
 
@@ -465,31 +465,31 @@ The EthFW supports two logical types of MC addresses:
 
 MC MAC addresses can be added/deleted using *ip maddr* command:
 
-::
+.. code:: console
 
-    # Add MC address 239.255.1.4
-    ip maddr add 01:00:5e:7f:01:04 dev ethX
-    ip maddr show dev ethX
-    2:      ethX
-        ...
-        link  01:00:5e:00:00:fb users 2
-        link  01:00:5e:00:00:fc users 2
-        link  01:00:5e:7f:01:03 users 2
-        link  01:00:5e:7f:01:04 users 2 static
-        ^^^^
+   # Add MC address 239.255.1.4
+   ip maddr add 01:00:5e:7f:01:04 dev ethX
+   ip maddr show dev ethX
+   2:      ethX
+      ...
+      link  01:00:5e:00:00:fb users 2
+      link  01:00:5e:00:00:fc users 2
+      link  01:00:5e:7f:01:03 users 2
+      link  01:00:5e:7f:01:04 users 2 static
+      ^^^^
 
-    # Del MC address 239.255.1.4
-    ip maddr del 01:00:5e:7f:01:04 dev eth0
+   # Del MC address 239.255.1.4
+   ip maddr del 01:00:5e:7f:01:04 dev eth0
 
 or by using Linux socket IOCTL SIOCADDMULTI/SIOCDELMULTI:
 
-::
+.. code:: console
 
-    ip route add 239.255.1.3 dev eth1
-    iperf -s -B 239.255.1.3 -u&
-    ip maddr show dev ethX
-    2:      ethX
-        ...
-        link  01:00:5e:7f:01:03 users 2
-        inet  239.255.1.3
-        ^^^^
+   ip route add 239.255.1.3 dev eth1
+   iperf -s -B 239.255.1.3 -u&
+   ip maddr show dev ethX
+   2:      ethX
+      ...
+      link  01:00:5e:7f:01:03 users 2
+      inet  239.255.1.3
+      ^^^^

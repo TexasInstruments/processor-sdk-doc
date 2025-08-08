@@ -229,14 +229,14 @@ Multicast MAC addresses can be added/deleted using the *ip maddr* command:
 
 .. code-block:: console
 
-    # Add Multicast address <Multicast-Address>
-    ip maddr add <Multicast-Address> dev <ethX>
+   # Add Multicast address <Multicast-Address>
+   ip maddr add <Multicast-Address> dev <ethX>
 
-    # Check if entry has been added successfully
-    ip maddr show dev <ethX>
+   # Check if entry has been added successfully
+   ip maddr show dev <ethX>
 
-    # Delete Multicast address <Multicast-Address>
-    ip maddr del <Multicast-Address> dev <ethX>
+   # Delete Multicast address <Multicast-Address>
+   ip maddr del <Multicast-Address> dev <ethX>
 
 TX QoS
 ^^^^^^
