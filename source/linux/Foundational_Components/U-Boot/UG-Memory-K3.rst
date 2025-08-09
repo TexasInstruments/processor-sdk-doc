@@ -1,11 +1,20 @@
 SD, eMMC and USB
 ################
 
-The following guide shows how to flash and boot from storage media like the
-embedded multimedia card (eMMC), secure digital (SD) card, and USB storage
-devices. While this is a step-by-step guide, it is in no way extensive and
-does not cover all the per-platform corner-cases. For any  issues/questions
-on this guide, please reach out to: `Help e2e <https://e2e.ti.com//>`__.
+.. ifconfig:: CONFIG_part_family in ('AM62X_family', 'AM62PX_family')
+
+   .. warning::
+
+      There is important information on multimedia card (MMC) support for |__PART_FAMILY_DEVICE_NAMES__| device, go
+      :ref:`here <uboot-mmc-support>` for more information.
+
+Overview
+********
+
+The following guide shows how to flash and boot from storage media such as the embedded multimedia
+card (eMMC), secure digital (SD) card, and USB storage devices. While this is a step-by-step guide,
+it is in no way extensive and does not cover all the per-platform corner-cases.
+For any  issues or questions on this guide, reach out to: `Help e2e <https://e2e.ti.com//>`__.
 
 MMC
 ***
@@ -15,7 +24,7 @@ MMC
 Listing MMC devices
 ===================
 
-Usually in all the platforms there will be two MMC instances of which one
+Usually in all the platforms there will be two multimedia card (MMC) instances of which one
 would be SD and the other would be eMMC. The device index of them can vary from
 one class of platforms to the other. For a given platform, the device index
 can be found in the following way:
@@ -29,7 +38,7 @@ can be found in the following way:
 The device index "**0**" for eMMC will be used when flashing to the eMMC device
 :ref:`here <how-to-emmc-boot>` using :command:`mmc dev` command.
 
-In u-boot environment, usually **mmcdev=n** is used to selct which MMC device to boot
+In u-boot environment, usually **mmcdev=n** is used to select which MMC device to boot
 Linux from, where **n** is the device index.
 
 MMC HW partitions
@@ -39,15 +48,15 @@ This sections includes a summary of MMC hardware partitions.
 
 **eMMC**
 
-   Normally eMMC is divided into 4 areas (aka HW partitions):
+   Normally eMMC is divided into 4 areas (also known as HW partitions):
 
-   - UDA (User Data Area): Used to store user data such as a file system. This partition can divided into disk partitions
+   - User data area (UDA): Used to store user data such as a file system. This partition can divided into disk partitions
    - Boot0/1: Used to store firmware and data needed during boot
-   - RPMB (Replay-protected memory-block area): Used to store secure data
+   - Replay protected memory block (RPMB) : Used to store secure data
 
 **SD**
 
-   SD card memory is not divided into sections like eMMC, but acts like UDA in eMMC where user can
+   SD card memory is not divided into sections such as eMMC, but acts like UDA in eMMC where user can
    create disk partitions in software allowing to divide the storage space into multiple sections.
 
 .. _uboot-selecting-mmc-device-and-partitions:
@@ -55,7 +64,7 @@ This sections includes a summary of MMC hardware partitions.
 Selecting MMC device and partitions
 ===================================
 
-To selct an MMC device in u-boot, the command: :command:`mmc dev` could be used.
+To select an MMC device in u-boot, the command: :command:`mmc dev` could be used.
 The general syntax is:
 
 .. code-block:: console
@@ -83,8 +92,8 @@ boot the device.
 .. note::
 
    For eMMC, typically, the device ships without a partition table If there is a need to
-   create a partition in UDA, please go :ref:`here <mmc-create-partitions-in-emmc-uda-from-linux>`
-   and to format the partition go :ref:`here <mmc-formatting-mmc-partition-from-linux>` before
+   create a partition in UDA, go :ref:`here <mmc-create-partitions-in-emmc-linux>`
+   and to format the partition go :ref:`here <mmc-format-partition-linux>` before
    proceeding.
 
 To list disk partitions for any MMC device from u-boot prompt, use the
@@ -139,26 +148,26 @@ Where the general syntax is:
 
    $ ls <interface> [<dev[:partition]> [directory]]
 
-MMC supported bootmodes
+MMC supported boot modes
 ========================
 
-The K3 based processors support and recommends using *eMMC boot* from Boot0/1. For complete
-information on the MMC bootmodes supported by ROM, please refer to the device specific TRM,
-under: :file:`Initialization/Boot Mode Pins`. ROM supports the following two MMC bootmodes:
+The K3 based processors support and recommends using *eMMC boot* from Boot0 or Boot1. For complete
+information on the MMC boot modes supported by ROM, refer to the device specific TRM,
+under: :file:`Initialization/Boot Mode Pins`. ROM supports the following two MMC boot modes:
 
 **eMMC boot**
 
-   This bootmode is a special bootmode specific to eMMC device. In this bootmode, ROM cannot
-   boot from SD and can only boot from Boot0 or Boot1 in eMMC. Please go :ref:`here <how-to-emmc-boot>`
-   for a step-by-step guide to boot with this bootmode.
+   This boot mode is a special boot mode specific to eMMC device. In this boot mode, ROM cannot
+   boot from SD and can only boot from Boot0 or Boot1 in eMMC. Go :ref:`here <how-to-emmc-boot>`
+   for a step-by-step guide to boot with this boot mode.
 
 **MMCSD boot**
 
-   This bootmode allows to boot from either eMMC or SD device. With this bootmode, ROM can
-   only boot from SD card or UDA in eMMC. ROM allows to boot in RAW or FS mode, FS mode being
-   the recommended option and hence will have a subsequent guide to boot using this mode. Configuration
-   for selecting MMC device and RAW/FS mode, is done with bootmode pins, please refer to TRM for this
-   setup. To boot from eMMC UDA in FS mode, please go :ref:`here <how-to-mmcsd-boot-from-emmc-uda>`.
+   This boot mode allows to boot from either eMMC or SD device. With this boot mode, ROM can
+   only boot from SD card or UDA in eMMC. ROM allows to boot in raw or filesystem (FS) mode, FS mode being
+   the recommended option and therefore will have a subsequent guide to boot using this mode. Configuration
+   for selecting MMC device and raw/FS mode, is done with boot mode pins, refer to TRM for this
+   setup. To boot from eMMC UDA in FS mode, go :ref:`here <how-to-mmcsd-boot-from-emmc-uda>`.
 
 Flashing an MMC device using USB-DFU
 ====================================
@@ -167,17 +176,17 @@ To flash the eMMC device (Boot0) using USB-DFU, the device should
 be booted to u-boot prompt and a USB cable connected from the host machine
 to the device USB port configured to USB peripheral mode.
 
-From u-boot prompt execute the following:
+From u-boot prompt enter the following:
 
 .. code-block:: console
 
    => setenv dfu_alt_info ${dfu_alt_info_emmc}
    => dfu 0 mmc 0
 
-This comands assumes eMMC device exists and is mmc device 0.
+This command assumes eMMC device exists and is MMC device 0.
 
-On the host machine have the bootloader binaries ready to flash
-to eMMC Boot0. Execute the :command:`dfu-util` to transfer
+On the host machine have the boot loader binaries ready to flash
+to eMMC Boot0. Run the :command:`dfu-util` to transfer
 files to the device. The general syntax for dfu-util command is:
 
 .. code-block:: console
@@ -198,7 +207,7 @@ To see what are the dfu-targets, on the host machine run: :samp:`sudo dfu-util -
    Found DFU: [0451:6165] ver=0223, devnum=32, cfg=1, intf=0, path="1-10", alt=1, name="rootfs", serial="0000000000000591"
    Found DFU: [0451:6165] ver=0223, devnum=32, cfg=1, intf=0, path="1-10", alt=0, name="rawemmc", serial="0000000000000591"
 
-Then transfer each desired binary from the host to the device:
+Then transfer each binary from the host to the device:
 
 - Host:
 
@@ -222,8 +231,8 @@ Then transfer each desired binary from the host to the device:
 Flashing an SD card from a host PC
 ==================================
 
-This section assumes that you have flashed an SD card using the
-script "create-sdcard.sh" packaged in the installer or have
+This section assumes that you have flashed an SD card by using the
+script "create-sdcard.sh" packaged in the installation program or have
 made a compatible layout manually. In this case, you will need
 to copy the boot images:
 
@@ -253,7 +262,7 @@ Configuring USB in Host Mode
 .. ifconfig:: CONFIG_part_variant not in ('J721E', 'J7200', 'J721S2', 'AM64X', 'AM62X', 'AM65X')
 
    Configuring USB in host mode documentation is pending for |__PART_FAMILY_DEVICE_NAMES__|
-   please reach out to:  `Help e2e <https://e2e.ti.com//>`__ for additional information.
+   reach out to:  `Help e2e <https://e2e.ti.com//>`__ for additional information.
 
 .. ifconfig:: CONFIG_part_variant in ('J721E', 'J7200', 'J721S2')
 
@@ -388,7 +397,7 @@ Configuring USB in Host Mode
    Loading images from USB storage
    ===============================
 
-   For loading images from a FAT partition on a different media than mmc, replace
+   For loading images from a FAT partition on a different media than MMC, replace
    the :command:`mmc` command with the required media. For example, to load images
    from a FAT partition on a USB storage device connected to the zeroth instance
    of USB:
@@ -405,14 +414,14 @@ Flash and boot SPL from USB storage
 .. ifconfig:: CONFIG_part_variant not in ('J7200', 'J721E', 'AM64X', 'AM65X', 'J722S')
 
    Boot SPL from USB storage documentation is pending for |__PART_FAMILY_DEVICE_NAMES__|
-   please reach out to:  `Help e2e <https://e2e.ti.com//>`__ for additional information.
+   reach out to:  `Help e2e <https://e2e.ti.com//>`__ for additional information.
 
 .. ifconfig:: CONFIG_part_variant in ('J7200', 'J721E')
 
    .. note::
 
       The SoC does not support booting from USB mass storage, but USB can still be
-      accesed as storage device at U-Boot prompt.
+      accessed as storage device at U-Boot prompt.
 
 .. ifconfig:: CONFIG_part_variant in ('AM64X', 'AM65X', 'J722S')
 
@@ -421,15 +430,15 @@ Flash and boot SPL from USB storage
       Booting to U-Boot prompt from USB storage is supported. The following are the
       steps to be followed:
 
-      - Build the bootloader images using default "am64x_evm_r5_defconfig" and
+      - Build the boot loader images using default "am64x_evm_r5_defconfig" and
         "am64x_evm_a53_defconfig" configs files. For instructions to build the
-        bootloader images please refer to :ref:`Build-U-Boot-label`.
+        boot loader images, refer to :ref:`Build-U-Boot-label`.
       - Create a FAT32 partition with boot flag enabled on the USB storage device.
-      - Copy the bootloader images(tiboot3.bin, tispl.bin, u-boot.img) into the
+      - Copy the boot loader images(tiboot3.bin, tispl.bin, u-boot.img) into the
         above created partition.
       - Set the boot mode switches to usb host mode (For boot switch details refer to the
         **Initialization/Boot Mode Pins** chapter of TRM.)
-      - Connect the USB Mass storage device with the bootloader images and boot up
+      - Connect the USB Mass storage device with the boot loader images and boot up
         the board.
       - The board should now boot to u-boot prompt.
 
@@ -438,15 +447,15 @@ Flash and boot SPL from USB storage
       Booting to U-Boot prompt from USB storage is supported. The following are the
       steps to be followed:
 
-      - Build the bootloader images using the "am65x_evm_r5_usbmsc_defconfig"
+      - Build the boot loader images using the "am65x_evm_r5_usbmsc_defconfig"
         and "am65x_evm_a53_defconfig" configs files. For instructions to build the
-        bootloader images please refer to :ref:`Build-U-Boot-label`.
+        boot loader images, refer to :ref:`Build-U-Boot-label`.
       - Create a FAT32 partition with boot flag enabled on the USB storage device.
-      - Copy the bootloader images(tiboot3.bin, sysfw.itb, tispl.bin, u-boot.img)
+      - Copy the boot loader images(tiboot3.bin, sysfw.itb, tispl.bin, u-boot.img)
         into the above created partition.
       - Set the boot mode switches to usb host mode (For boot switch details refer to the
         **Initialization/Boot Mode Pins** chapter of TRM.)
-      - Connect the USB Mass storage device with the bootloader images and boot up
+      - Connect the USB Mass storage device with the boot loader images and boot up
         the board.
       - The board should now boot to u-boot prompt.
 
@@ -456,21 +465,21 @@ Flash and boot SPL from USB storage
       steps to be followed:
 
       - In U-Boot the USB controller can be used in either host or peripheral mode.
-        For booting to linux kernel from USB storage device, the USB port should be
+        For booting to Linux kernel from USB storage device, the USB port should be
         in host mode.
       - By default, USB0 is set to peripheral mode. Change this from peripheral to
         host mode.
-      - Build the bootloader images using the default "j722s_evm_r5_defconfig" and
+      - Build the boot loader images using the default "j722s_evm_r5_defconfig" and
         the config fragment "j722s_evm_r5_usbmsc.config" and "j722s_evm_a53_defconfig"
         configs files. The configs required for USB MSC boot are already enabled. For
-        instructions to build the bootloader images please refer to :ref:`Build-U-Boot-label`.
+        instructions to build the boot loader images, refer to :ref:`Build-U-Boot-label`.
       - Create a FAT32 partition with boot flag enabled on the USB storage device.
-      - Copy the bootloader images(tiboot3.bin, tispl.bin, u-boot.img) into the above
+      - Copy the boot loader images(tiboot3.bin, tispl.bin, u-boot.img) into the above
         created partition.
       - Set the boot mode switches to USB host boot mode (Refer to the **Initialization**
         chapter of TRM for boot switch details)
       - Make sure USB0 port in DRP mode: SW2[2:3] = 00
-      - Connect the USB Mass storage device with the bootloader images and boot up
+      - Connect the USB Mass storage device with the boot loader images and boot up
         the board.
 
    .. note::
@@ -487,8 +496,8 @@ Boot Linux from USB storage
 
 .. ifconfig:: CONFIG_part_family not in ('J7_family', 'AM62X_family', 'AM64X_family')
 
-   Booting Linux from USB storage documentation is pending for |__PART_FAMILY_DEVICE_NAMES__|
-   please reach out to:  `Help e2e <https://e2e.ti.com//>`__ for additional information.
+   Booting Linux from USB storage documentation is pending for |__PART_FAMILY_DEVICE_NAMES__|,
+   reach out to:  `Help e2e <https://e2e.ti.com//>`__ for additional information.
 
 .. ifconfig:: CONFIG_part_family in ('J7_family')
 
@@ -504,7 +513,7 @@ Boot Linux from USB storage
       - U-Boot
 
          - In U-Boot, the USB controller can be used in either host or peripheral
-           mode. For booting to linux prompt. For USB storage device, the USB port has
+           mode. For booting to Linux prompt. For USB storage device, the USB port has
            to be set as host. By default, USB0 is set to peripheral mode. Change this
            from peripheral to host mode in u-boot DT.
 
@@ -557,12 +566,12 @@ Boot Linux from USB storage
    - U-Boot
 
       - In U-Boot the USB controller can be used in either host or peripheral mode. For
-        booting to linux kernel from USB storage device, the USB port is to be set as host.
+        booting to Linux kernel from USB storage device, the USB port is to be set as host.
       - By default, on AM625-SK board the zero instance of USB connected to the Type C
         port, is set to peripheral mode and the first instance of USB connected to the Type
         A port is set to host mode.
-      - Therefore, USB controller needs to be set host mode and custom bootloader images
-        are required to be built, if zeroth instance is used. Please refer to note in section
+      - Therefore, USB controller needs to be set host mode and custom boot loader images
+        are required to be built, if zeroth instance is used. Refer to note in section
         :ref:`uboot-configure-usb-in-host-mode`
 
    - Linux
@@ -613,13 +622,13 @@ Boot Linux from USB storage
    - U-Boot
 
       - In U-Boot the USB controller can be used in either host or peripheral mode. For
-        booting to linux kernel from USB storage device, the USB port is to be set as host.
+        booting to Linux kernel from USB storage device, the USB port is to be set as host.
       - By default, the USB controller is set in peripheral mode.
       - If the boot media used to boot to U-Boot is USB Host mode(:ref:`uboot-usb-msc-boot`)
         then, the USB controller is set to host mode during runtime. Therefore, no changes
         would be required in this case.
       - If a boot media other than USB Host is used, the USB controller needs to be set
-        host mode and custom bootloader images are required to be built. Please refer to note
+        host mode and custom boot loader images are required to be built. Refer to note
         in section :ref:`uboot-configure-usb-in-host-mode`
 
    - Linux
@@ -646,7 +655,7 @@ Boot Linux from USB storage
         file and modules. The USB Mass storage device should have two partitions:
 
       - boot
-         - For creating this parition please refer :ref:`uboot-usb-msc-boot`
+         - For creating this parition, refer to :ref:`uboot-usb-msc-boot`
       - rootfs
          - A partition with ext4 filesystem and the following images in /boot/ directory
             - Linux kernel **Image**
@@ -661,10 +670,125 @@ Boot Linux from USB storage
 
             => run usbboot
 
+|
+
+.. _uboot-mmc-support:
+
+MMC support in u-boot
+=====================
+
+.. ifconfig:: CONFIG_part_family in ('AM62PX_family')
+
+   **eMMC HS400 support**
+
+   For 11.0 and 11.1 SDK, am62px device does not support eMMC HS400 mode due to errata `i2458 <https://www.ti.com/lit/pdf/sprz574>`__.
+   If support for HS400 is required, add the following to k3-am62p-j722s-common-main.dtsi:
+
+   .. code-block:: diff
+
+      diff --git a/dts/upstream/src/arm64/ti/k3-am62p-j722s-common-main.dtsi b/dts/upstream/src/arm64/ti/k3-am62p-j722s-common-main.dtsi
+      index 8bfc6539b2a..8a536b081e1 100644
+      --- a/dts/upstream/src/arm64/ti/k3-am62p-j722s-common-main.dtsi
+      +++ b/dts/upstream/src/arm64/ti/k3-am62p-j722s-common-main.dtsi
+      @@ -593,12 +593,16 @@
+                      bus-width = <8>;
+                      mmc-ddr-1_8v;
+                      mmc-hs200-1_8v;
+      +               mmc-hs400-1_8v;
+                      ti,clkbuf-sel = <0x7>;
+      +               ti,strobe-sel = <0x55>;
+                      ti,trm-icp = <0x8>;
+                      ti,otap-del-sel-legacy = <0x1>;
+                      ti,otap-del-sel-mmc-hs = <0x1>;
+                      ti,otap-del-sel-ddr52 = <0x6>;
+                      ti,otap-del-sel-hs200 = <0x8>;
+      +               ti,otap-del-sel-hs400 = <0x5>; // at 0.85V VDD_CORE
+      +               //ti,otap-del-sel-hs400 = <0x7>; // at 0.75V VDD_CORE
+                      ti,itap-del-sel-legacy = <0x10>;
+                      ti,itap-del-sel-mmc-hs = <0xa>;
+                      ti,itap-del-sel-ddr52 = <0x3>;
+
+   and enable the following config options:
+
+   .. code-block:: diff
+
+      diff --git a/configs/am62px_evm_a53_defconfig b/configs/am62px_evm_a53_defconfig
+      index 09a91248ce6..f95879f41c9 100644
+      --- a/configs/am62px_evm_a53_defconfig
+      +++ b/configs/am62px_evm_a53_defconfig
+      @@ -114,8 +114,8 @@ CONFIG_MMC_IO_VOLTAGE=y
+       CONFIG_SPL_MMC_IO_VOLTAGE=y
+       CONFIG_MMC_UHS_SUPPORT=y
+       CONFIG_SPL_MMC_UHS_SUPPORT=y
+      -CONFIG_MMC_HS200_SUPPORT=y
+      -CONFIG_SPL_MMC_HS200_SUPPORT=y
+      +CONFIG_MMC_HS400_SUPPORT=y
+      +CONFIG_SPL_MMC_HS400_SUPPORT=y
+       CONFIG_MMC_SDHCI=y
+       CONFIG_MMC_SDHCI_ADMA=y
+       CONFIG_SPL_MMC_SDHCI_ADMA=y
+
+.. ifconfig:: CONFIG_part_family in ('AM62X_family')
+
+   **Missing eMMC support**
+
+   Support for eMMC is missing for AM62SIP SK in Processor SDK 11.01. Therefore, eMMC boot, reading/writting/accessing the eMMC
+   will not work on AM62SIP SK. If eMMC support is required, apply the following diff to k3-am6254xxl-sk.dts:
+
+   .. code-block:: diff
+
+      diff --git a/dts/upstream/src/arm64/ti/k3-am6254xxl-sk.dts b/dts/upstream/src/arm64/ti/k3-am6254xxl-sk.dts
+      index 060df318b3f..d2c9f226b73 100644
+      --- a/dts/upstream/src/arm64/ti/k3-am6254xxl-sk.dts
+      +++ b/dts/upstream/src/arm64/ti/k3-am6254xxl-sk.dts
+      @@ -42,6 +42,22 @@
+      };
+
+      &main_pmx0 {
+      +       main_mmc0_pins_default: main-mmc0-default-pins {
+      +               bootph-all;
+      +               pinctrl-single,pins = <
+      +                       AM62X_IOPAD(0x220, PIN_INPUT, 0) /* (Y3) MMC0_CMD */
+      +                       AM62X_IOPAD(0x218, PIN_INPUT, 0) /* (AB1) MMC0_CLK */
+      +                       AM62X_IOPAD(0x214, PIN_INPUT, 0) /* (AA2) MMC0_DAT0 */
+      +                       AM62X_IOPAD(0x210, PIN_INPUT_PULLUP, 0) /* (AA1) MMC0_DAT1 */
+      +                       AM62X_IOPAD(0x20c, PIN_INPUT_PULLUP, 0) /* (AA3) MMC0_DAT2 */
+      +                       AM62X_IOPAD(0x208, PIN_INPUT_PULLUP, 0) /* (Y4) MMC0_DAT3 */
+      +                       AM62X_IOPAD(0x204, PIN_INPUT_PULLUP, 0) /* (AB2) MMC0_DAT4 */
+      +                       AM62X_IOPAD(0x200, PIN_INPUT_PULLUP, 0) /* (AC1) MMC0_DAT5 */
+      +                       AM62X_IOPAD(0x1fc, PIN_INPUT_PULLUP, 0) /* (AD2) MMC0_DAT6 */
+      +                       AM62X_IOPAD(0x1f8, PIN_INPUT_PULLUP, 0) /* (AC2) MMC0_DAT7 */
+      +               >;
+      +       };
+      +
+            main_rgmii2_pins_default: main-rgmii2-default-pins {
+                     bootph-all;
+                     pinctrl-single,pins = <
+      @@ -147,6 +163,14 @@
+            };
+      };
+
+      +&sdhci0 {
+      +       bootph-all;
+      +       status = "okay";
+      +       pinctrl-names = "default";
+      +       pinctrl-0 = <&main_mmc0_pins_default>;
+      +};
+      +
+      &sdhci1 {
+            vmmc-supply = <&vdd_mmc1>;
+            vqmmc-supply = <&vdd_sd_dv>;
+
+.. ifconfig:: CONFIG_part_family not in ('AM62X_family', 'AM62PX_family')
+
+   There is no missing MMC support for |__PART_FAMILY_DEVICE_NAMES__| device.
+
+|
+
 Steps for working around SD card issues in u-boot
 =================================================
 
-In some cases, issues can be seen while using some SD cards, like:
+In some cases, issues can be seen while using some SD cards, such as:
 
 - Error while trying to initialize:
 
@@ -758,60 +882,3 @@ increasing order of reducing performance.
       };
 
       sdhci2: mmc@fa20000 {
-
-eMMC HS400 support in u-boot
-============================
-
-.. ifconfig:: CONFIG_part_family in ('AM62PX_family')
-
-   For 11.0 SDK, am62px device does not support eMMC HS400 mode due to errata i2458.
-   If support for HS400 is anyways required, please add the following DT attributes to sdhci0 node:
-
-   .. code-block:: diff
-
-      diff --git a/dts/upstream/src/arm64/ti/k3-am62p-j722s-common-main.dtsi b/dts/upstream/src/arm64/ti/k3-am62p-j722s-common-main.dtsi
-      index 8bfc6539b2a..8a536b081e1 100644
-      --- a/dts/upstream/src/arm64/ti/k3-am62p-j722s-common-main.dtsi
-      +++ b/dts/upstream/src/arm64/ti/k3-am62p-j722s-common-main.dtsi
-      @@ -593,12 +593,16 @@
-                      bus-width = <8>;
-                      mmc-ddr-1_8v;
-                      mmc-hs200-1_8v;
-      +               mmc-hs400-1_8v;
-                      ti,clkbuf-sel = <0x7>;
-      +               ti,strobe-sel = <0x55>;
-                      ti,trm-icp = <0x8>;
-                      ti,otap-del-sel-legacy = <0x1>;
-                      ti,otap-del-sel-mmc-hs = <0x1>;
-                      ti,otap-del-sel-ddr52 = <0x6>;
-                      ti,otap-del-sel-hs200 = <0x8>;
-      +               ti,otap-del-sel-hs400 = <0x5>; // at 0.85V VDD_CORE
-      +               //ti,otap-del-sel-hs400 = <0x7>; // at 0.75V VDD_CORE
-                      ti,itap-del-sel-legacy = <0x10>;
-                      ti,itap-del-sel-mmc-hs = <0xa>;
-                      ti,itap-del-sel-ddr52 = <0x3>;
-
-   and enable the following config options:
-
-   .. code-block:: diff
-
-      diff --git a/configs/am62px_evm_a53_defconfig b/configs/am62px_evm_a53_defconfig
-      index 09a91248ce6..f95879f41c9 100644
-      --- a/configs/am62px_evm_a53_defconfig
-      +++ b/configs/am62px_evm_a53_defconfig
-      @@ -114,8 +114,8 @@ CONFIG_MMC_IO_VOLTAGE=y
-       CONFIG_SPL_MMC_IO_VOLTAGE=y
-       CONFIG_MMC_UHS_SUPPORT=y
-       CONFIG_SPL_MMC_UHS_SUPPORT=y
-      -CONFIG_MMC_HS200_SUPPORT=y
-      -CONFIG_SPL_MMC_HS200_SUPPORT=y
-      +CONFIG_MMC_HS400_SUPPORT=y
-      +CONFIG_SPL_MMC_HS400_SUPPORT=y
-       CONFIG_MMC_SDHCI=y
-       CONFIG_MMC_SDHCI_ADMA=y
-       CONFIG_SPL_MMC_SDHCI_ADMA=y
-
-.. ifconfig:: CONFIG_part_family not in ('AM62PX_family')
-
-	eMMC HS400 is not suppported, refer to :ref:`this <mmc-sd-supported-hs-modes>` table for the list of modes supported in u-boot
-	for |__PART_FAMILY_NAME__| SoC.
