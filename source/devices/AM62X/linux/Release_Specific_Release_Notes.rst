@@ -183,18 +183,11 @@ Errata Resolved
    :header: "Record ID", "Title"
    :widths: 15, 70
 
-   "EXT_EP-12128","USB2 PHY locks up due to short suspend"
-   "EXT_EP-12123","USART: Erroneous clear/trigger of timeout interrupt"
-   "EXT_EP-12124","BCDMA: RX Channel can lockup in certain scenarios"
-   "EXT_EP-12125","i2327: RTC: Hardware wakeup event limitation"
-
-Errata Open
------------
-.. csv-table::
-   :header: "Record ID", "Title"
-   :widths: 15, 70
-
-   "EXT_EP-12114","MMCSD: HS200 and SDR104 Command Timeout Window Too Small"
+   "`EXT_EP-12128 <https://sir.ext.ti.com/jira/browse/EXT_EP-12128>`_","USB2 PHY locks up due to short suspend"
+   "`EXT_EP-12123 <https://sir.ext.ti.com/jira/browse/EXT_EP-12123>`_","USART: Erroneous clear/trigger of timeout interrupt"
+   "`EXT_EP-12124 <https://sir.ext.ti.com/jira/browse/EXT_EP-12124>`_","BCDMA: RX Channel can lockup in certain scenarios"
+   "`EXT_EP-12125 <https://sir.ext.ti.com/jira/browse/EXT_EP-12125>`_","i2327: RTC: Hardware wakeup event limitation"
+   "`EXT_EP-12114 <https://sir.ext.ti.com/jira/browse/EXT_EP-12114>`_","MMCSD: HS200 and SDR104 Command Timeout Window Too Small"
 
 Issues Resolved
 ---------------
@@ -202,18 +195,13 @@ Issues Resolved
    :header: "Record ID", "Title"
    :widths: 15, 70
 
-   "EXT_EP-12063","Update the DDR configuration with DDR syscfg 10.03"
-   "EXT_EP-12303","AM62x IPV6 UDP TX Checksum Offload Produces Illegal Checksum 0"
-   "EXT_EP-12111","Linux SDK v10.0: TI-added support for W25N01JW SPI NAND breaks other existing Flash support"
-   "EXT_EP-12313","OTP config structure is incorrectly defined in the secure board configurations"
-   "EXT_EP-12312","AM62x: Add firewall changes to SPL on PG1.1 ROM update for compatibility with ES1.0"
-   "EXT_EP-12112","Add Timer PWM documentation and other infrastructure as needed"
-   "EXT_EP-12056","8250_omap: incorrect handling of dma->rx_running flag"
-   "EXT_EP-12298","suspend-to-RAM wakeup by plugging in USB device is not reliable"
-   "EXT_EP-12286","CICD-next: PIGLIT_S_BGRA_GLES_TEXTURE failure"
-   "EXT_EP-12287","lmbench: runLmDDRBandwidth.sh: bw_mem: command not found"
-   "EXT_EP-12289","Unable to boot kernel from eMMC"
-   "EXT_EP-12342","ETHERNET boot test fails"
+   "`EXT_SITMPUSW-143 <https://sir.ext.ti.com/jira/browse/EXT_SITMPUSW-143>`_","Yocto Documentation: AM6x: SDK: Build Instruction missing steps for building K3R5 baremetal toolchain"
+   "`EXT_EP-12816 <https://sir.ext.ti.com/jira/browse/EXT_EP-12816>`_","SDK Docs: Broken URL in How To Guides > EVM Setup"
+   "`EXT_EP-12817 <https://sir.ext.ti.com/jira/browse/EXT_EP-12817>`_","PRUSS should be disabled for AM62 LP SK board"
+   "`EXT_EP-12081 <https://sir.ext.ti.com/jira/browse/EXT_EP-12081>`_","AM62x: Make Debugging SPL doc specific to AM62x"
+   "`EXT_SITMPUSW-146 <https://sir.ext.ti.com/jira/browse/EXT_SITMPUSW-146>`_","Yocto: meta-ti*: kernel source has uncommited changes"
+   "`EXT_EP-12779 <https://sir.ext.ti.com/jira/browse/EXT_EP-12779>`_","Null dereference on fdinfo when not bound to a render task"
+   "`EXT_EP-12296 <https://sir.ext.ti.com/jira/browse/EXT_EP-12296>`_","AM62x: 6.12 LTS Regression: PRU IPC Failure due to driver missing"
 
 Issues Open
 -----------
@@ -221,11 +209,13 @@ Issues Open
    :header: "Record ID", "Title"
    :widths: 15, 70
 
-   "EXT_EP-12299","AM62x large number of TCP packets with TX checksum errors"
-   "EXT_EP-12074","ti-rpmsg-char: Squash resource leaks"
-   "EXT_EP-12072","misleading GPMC message in kernel log"
-   "EXT_EP-12081","AM62x: Make Debugging SPL doc specific to AM62x"
-   "EXT_EP-12345","beagleplay: Segmentation-Fault: SD Boot failure and needs bootcmd update"
-   "EXT_EP-12296","AM62x: 6.12 LTS Regression: PRU IPC Failure due to driver missing"
-   "EXT_EP-12341","Linux: AM62-LP-SK: SDK 11 Deep Sleep is non-functional"
+   "`EXT_EP-12823 <https://sir.ext.ti.com/jira/browse/EXT_EP-12823>`_","CPSW ptp4l PDELAY_REQ and DELAY_REQ without timestamp messages"
+   "`EXT_EP-12743 <https://sir.ext.ti.com/jira/browse/EXT_EP-12743>`_","Fixup A53 CPU Frequency by Speed Grade Problem"
+   "`EXT_EP-12792 <https://sir.ext.ti.com/jira/browse/EXT_EP-12792>`_","CSI-2 Rx driver shall support frame width that is not 16-byte-aligned"
+   "`EXT_EP-12818 <https://sir.ext.ti.com/jira/browse/EXT_EP-12818>`_","PRU RPMsg swaps which message is sent to which core"
+   "`EXT_EP-12072 <https://sir.ext.ti.com/jira/browse/EXT_EP-12072>`_","misleading GPMC message in kernel log"
+   "`EXT_EP-12785 <https://sir.ext.ti.com/jira/browse/EXT_EP-12785>`_","Cyclictest performance degradation on AM62x/AM64x/AM62A"
+   "`EXT_EP-12815 <https://sir.ext.ti.com/jira/browse/EXT_EP-12815>`_","UDP Ingress failing"
+   "`EXT_EP-12340 <https://sir.ext.ti.com/jira/browse/EXT_EP-12340>`_","Suspend-to-RAM failure: tps65219: device creates a circular dependency and device fails to enter suspend"
+   "`EXT_EP-12345 <https://sir.ext.ti.com/jira/browse/EXT_EP-12345>`_","beagleplay: Segmentation-Fault: SD Boot failure and needs bootcmd update"
 
