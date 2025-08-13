@@ -191,9 +191,10 @@ Errata Resolved
    :header: "Record ID", "Title"
    :widths: 15, 70
 
-   "EXT_EP-12128","USB2 PHY locks up due to short suspend"
-   "EXT_EP-12124","BCDMA: RX Channel can lockup in certain scenarios"
-   "EXT_EP-12294","MMCHS: eMMC HS400 tDCD timing marginal to JEDEC spec"
+   "`EXT_EP-12128 <https://sir.ext.ti.com/jira/browse/EXT_EP-12128>`_","USB2 PHY locks up due to short suspend"
+   "`EXT_EP-12124 <https://sir.ext.ti.com/jira/browse/EXT_EP-12124>`_","BCDMA: RX Channel can lockup in certain scenarios"
+   "`EXT_EP-12114 <https://sir.ext.ti.com/jira/browse/EXT_EP-12114>`_","MMCSD: HS200 and SDR104 Command Timeout Window Too Small"
+   "`EXT_EP-12294 <https://sir.ext.ti.com/jira/browse/EXT_EP-12294>`_","MMCHS: eMMC HS400 tDCD timing marginal to JEDEC spec"
 
 Issues Resolved
 ---------------
@@ -201,16 +202,12 @@ Issues Resolved
    :header: "Record ID", "Title"
    :widths: 15, 70
 
-   "EXT_SITMPUSW-75","Update OTAP values to match the latest datasheet updates"
-   "EXT_EP-12063","Update the DDR configuration with DDR syscfg 10.03"
-   "EXT_EP-12293","Update OTAP values for HS400 to match the latest datasheet updates"
-   "EXT_EP-12111","Linux SDK v10.0: TI-added support for W25N01JW SPI NAND breaks other existing Flash support"
-   "EXT_EP-12112","Add Timer PWM documentation and other infrastructure as needed"
-   "EXT_EP-12268","alloc space exhausted error at u-boot for display cluster"
-   "EXT_EP-12284","Partial I/O not resuming from mcan"
-   "EXT_EP-12288","Graphics driver fails to suspend"
-   "EXT_EP-12289","Unable to boot kernel from eMMC"
-   "EXT_EP-12295","IO Only + DDR Resume Failure: platform 79000000.r5f: ti-sci processor set_config failed"
+   "`EXT_SITMPUSW-143 <https://sir.ext.ti.com/jira/browse/EXT_SITMPUSW-143>`_","Yocto Documentation: AM6x: SDK: Build Instruction missing steps for building K3R5 baremetal toolchain"
+   "`EXT_EP-12816 <https://sir.ext.ti.com/jira/browse/EXT_EP-12816>`_","SDK Docs: Broken URL in How To Guides > EVM Setup"
+   "`EXT_EP-12782 <https://sir.ext.ti.com/jira/browse/EXT_EP-12782>`_","SDK Doc: toolchain information is out of date"
+   "`EXT_SITMPUSW-146 <https://sir.ext.ti.com/jira/browse/EXT_SITMPUSW-146>`_","Yocto: meta-ti*: kernel source has uncommited changes"
+   "`EXT_EP-12755 <https://sir.ext.ti.com/jira/browse/EXT_EP-12755>`_","AM62P: 2x Independent Single-Link OLDI configurability broken"
+   "`EXT_EP-12779 <https://sir.ext.ti.com/jira/browse/EXT_EP-12779>`_","Null dereference on fdinfo when not bound to a render task"
 
 Issues Open
 -----------
@@ -218,5 +215,9 @@ Issues Open
    :header: "Record ID", "Title"
    :widths: 15, 70
 
-   "None", "TODO"
+   "`EXT_EP-12824 <https://sir.ext.ti.com/jira/browse/EXT_EP-12824>`_","AM62P SR1.1 CPUFreq shows 800MHz instead of 1.4GHz"
+   "`EXT_EP-12825 <https://sir.ext.ti.com/jira/browse/EXT_EP-12825>`_","AM62P DFU log:dwc3-am62 usb@f900000: unable to get ti,syscon-phy-pll-refclk regmap"
+   "`EXT_EP-12792 <https://sir.ext.ti.com/jira/browse/EXT_EP-12792>`_","CSI-2 Rx driver shall support frame width that is not 16-byte-aligned"
+   "`EXT_EP-12747 <https://sir.ext.ti.com/jira/browse/EXT_EP-12747>`_","Codec: Wave5: Improve Decoder Performance and Fix SError Crash on Fluster test"
+   "`EXT_EP-12833 <https://sir.ext.ti.com/jira/browse/EXT_EP-12833>`_","AM62P PG1.1 CPU Freq show only 200-800MHz."
 
