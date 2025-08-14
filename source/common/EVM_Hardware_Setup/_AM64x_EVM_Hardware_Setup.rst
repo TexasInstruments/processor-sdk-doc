@@ -10,7 +10,7 @@ standard Ethernet, peripheral component interconnect express (PCIe), fast serial
 interface (FSI) and others to easily create prototypes, onboard display, onboard
 current-measurement capabilities for power-conscious applications.
 
-For Quick Start Quide `click here. <https://dev.ti.com/tirex/content/tirex-product-tree/processors-devtools/am64x_gpevm_quick_start_guide.html>`__
+For Quick Start Guide `click here. <https://dev.ti.com/tirex/content/tirex-product-tree/processors-devtools/am64x_gpevm_quick_start_guide.html>`__
 
 For User Guide `click here. <https://www.ti.com/lit/spruj63>`__
 
@@ -27,6 +27,6 @@ serial wired interfaces, two Ethernet Ports for wired connectivity. Using standa
 serial protocols such as UART, I2C, and SPI, the starter kit can interface with
 a multitude of other devices, acting as a communications gateway.
 
-For Quick Start Quide `click here. <https://dev.ti.com/tirex/content/tirex-product-tree/processors-devtools/am64x_skevm_quick_start_guide.html>`__
+For Quick Start Guide `click here. <https://dev.ti.com/tirex/content/tirex-product-tree/processors-devtools/am64x_skevm_quick_start_guide.html>`__
 
 For User Guide `click here. <https://www.ti.com/lit/pdf/spruiy9>`__
