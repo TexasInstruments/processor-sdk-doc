@@ -79,6 +79,9 @@ linux/Foundational_Components/Kernel/Kernel_Drivers/UBIFS
 linux/Foundational_Components/Kernel/Kernel_Drivers/USB/CDNS3
 linux/Foundational_Components/Kernel/Kernel_Drivers/VTM
 linux/Foundational_Components/Kernel/Kernel_Drivers/Watchdog
+
+linux/Foundational_Components/MMC-Known-SD-Card-Issues
+
 linux/Foundational_Components_Kernel_Users_Guide
 linux/Foundational_Components_Kernel_LTP-DDT_Validation
 linux/Foundational_Components_Kernel_FAQs
