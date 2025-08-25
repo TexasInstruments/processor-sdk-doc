@@ -73,6 +73,7 @@ Processor SDK 9.3 Release has following new features:
 #. IVA
 #. libdce
 #. H264 codec
+#. Multimedia
 
 
 .. _release-specific-sdk-components-versions:
@@ -405,7 +406,7 @@ Composer Studio.
 .. rubric:: Host Support
    :name: host-support
 
-The Processor SDK is developed, built and verified on Ubuntu 16.04 and 18.04. Details on how to create a virtual machine to load Ubuntu
+The Processor SDK is developed, built and verified on Ubuntu |__LINUX_UBUNTU_VERSION_SHORT__|. Details on how to create a virtual machine to load Ubuntu
 are described in `this page <How_to_Guides/Host/How_to_Build_a_Ubuntu_Linux_host_under_VMware.html>`__.
 
 

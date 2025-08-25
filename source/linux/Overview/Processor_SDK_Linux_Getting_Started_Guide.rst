@@ -332,7 +332,7 @@ which you can start development.
    -  ``make linux`` configures and builds the kernel
    -  ``make u-boot`` builds u-boot
 
-   The file system can be rebuilt following the instructions at `Building the SDK <Overview_Building_the_SDK.html>`__.
+   The file system can be rebuilt following the instructions at :ref:`Building the SDK <overview-building-the-sdk>`.
 
 
    .. code-block:: bash
