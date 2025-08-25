@@ -125,11 +125,14 @@ refers to ``pvrsrvkm``, which is currently provided at:
 
    - `<https://git.ti.com/cgit/graphics/ti-img-rogue-driver>`_
 
-The SDK includes this by default. The kernel module is at:
+The SDK includes this by default. The kernel module is available at 2 possible
+locations depending on the kernel version selected. Before kernel 6.6 the
+location for external modules was :file:`extra/`, from 6.6 onward the location
+is :file:`updates/`:
 
 .. code-block:: console
 
-   # /lib/modules/$(uname -r)/extra/pvrsrvkm.ko
+   # /lib/modules/$(uname -r)/<external_dir>/pvrsrvkm.ko
 
 Please see the :doc:`Build_Guide` for more information about integration of
 this software stack into other ecosystems.
