@@ -1123,26 +1123,6 @@ which will be described in following sections
    ex02\_messageq example as a reference, add in the IPC pieces to the
    LED example. Build from CCS then add it to the Linux firmware folder.
 
-.. rubric:: Running LED Blink PDK Example from CCS
-   :name: running-led-blink-pdk-example-from-ccs
-
-TODO - Fill this section in with instructions on how to run the LED
-blink example using JTAG and CCS after the board has booted Linux.
-
-.. note::
-   Some edits were made to the LED blink example to allow it to run
-   in a Linux environment, specifically, removed the GPIO interrupts and
-   then added a Clock object to call the LED GPIO toggle function on a
-   periodic bases.
-
-|
-
-.. rubric:: Make CCS project out of ex02\_messageq IPC example
-   :name: make-ccs-project-out-of-ex02_messageq-ipc-example
-
-TODO - fill this section in with instructions on how to make a CCS
-project out of the IPC example source files.
-
 |
 
 .. rubric:: Add IPC to the LED Blink Example
