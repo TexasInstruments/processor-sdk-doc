@@ -87,6 +87,7 @@ linux/Foundational_Components/PRU-ICSS-Linux-Drivers
 linux/Foundational_Components/PRU-ICSS/Linux_Drivers/RemoteProc
 linux/Foundational_Components/PRU-ICSS/Linux_Drivers/RPMsg
 linux/Foundational_Components/PRU-ICSS/RPMsg_Quick_Start_Guide
+linux/Foundational_Components/PRU-ICSS/Linux_Drivers/PRU-ICSS_Ethernet
 linux/Foundational_Components/PRU-ICSS/Linux_Drivers/pru-sw-uart
 linux/Foundational_Components/PRU-ICSS-Hardware
 linux/Foundational_Components/PRU-ICSS/PRU-EVMs
