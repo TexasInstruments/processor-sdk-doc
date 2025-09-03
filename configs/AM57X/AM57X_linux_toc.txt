@@ -53,6 +53,7 @@ linux/Foundational_Components/Kernel/Kernel_Drivers/Camera/VPFE
 linux/Foundational_Components/Kernel/Kernel_Drivers/Camera/VIP
 linux/Foundational_Components/Kernel/Kernel_Drivers/Crypto/SA2UL_OMAP
 linux/Foundational_Components/Kernel/Kernel_Drivers/DCAN
+linux/Foundational_Components/Kernel/Kernel_Drivers/Display/DSS
 linux/Foundational_Components/Kernel/Kernel_Drivers/Display/LCDC
 linux/Foundational_Components/Kernel/Kernel_Drivers/GPIO
 linux/Foundational_Components/Kernel/Kernel_Drivers/I2C
