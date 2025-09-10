@@ -60,6 +60,8 @@ linux/Foundational_Components/Kernel/Kernel_Drivers/I2C
 linux/Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW
 linux/Foundational_Components/Kernel/Kernel_Drivers/Network/NetCP
 linux/Foundational_Components/Kernel/Kernel_Drivers/Network/PRUSS
+linux/Foundational_Components/Kernel/Kernel_Drivers/Network/HSR_PRP_Non_Offload
+linux/Foundational_Components/Kernel/Kernel_Drivers/Network/HSR_Offload
 linux/Foundational_Components/Kernel/Kernel_Drivers/PCIe/PCIe_End_Point
 linux/Foundational_Components/Kernel/Kernel_Drivers/PCIe/PCIe_Root_Complex
 linux/Foundational_Components_Power_Management

@@ -65,7 +65,7 @@ space.
 +--------+-------------------------------------------+-------------------------+
 | S.No   | Location                                  | Description             |
 +========+===========================================+=========================+
-| 1      | drivers/net/ethernet/ti/prueth_core.c     | PRU Ethernet driver     |
+| 1      | drivers/net/ethernet/ti/icssm             | PRU Ethernet driver     |
 +--------+-------------------------------------------+-------------------------+
 | 2      | drivers/remoteproc/pruss.c                | PRUSS core driver       |
 +--------+-------------------------------------------+-------------------------+
@@ -81,52 +81,46 @@ space.
 .. rubric:: **Board specific Setup Details**
    :name: board-specific-setup-details
 
-.. rubric:: AM335x-ICE-v2
-   :name: am335x-ice-v2
+.. ifconfig:: CONFIG_part_variant in ('AM335X')
 
-This board has only 2 Ethernet ports that can be used either as CPSW
-Ethernet or PRUSS Ethernet. For PRUSS Ethernet configration place
-jumpers J18 and J19 at MII position before powering up the board.
+   This board has only 2 Ethernet ports that can be used either as CPSW
+   Ethernet or PRUSS Ethernet. For PRUSS Ethernet configration place
+   jumpers J18 and J19 at MII position before powering up the board.
 
-.. rubric:: AM437x-IDK
-   :name: am437x-idk
+.. ifconfig:: CONFIG_part_variant in ('AM437X')
 
-This board as one Gigabit (CPSW) Ethernert port and 2 PRUSS Ethernet
-ports. No special board configuration is needed to use all ports.
+   This board as one Gigabit (CPSW) Ethernert port and 2 PRUSS Ethernet
+   ports. No special board configuration is needed to use all ports.
 
-.. rubric:: K2G-ICE EVM
-   :name: k2g-ice-evm
+.. ifconfig:: CONFIG_part_variant in ('AM57X')
 
-This board has one Gigabit (netCP) Ethernet port and 4 PRUSS Ethernet
-ports. No special board configuration is needed to use all ports.
+   .. rubric:: AM571x-IDK
+      :name: am571x-idk
 
-.. rubric:: AM571x-IDK
-   :name: am571x-idk
+   This board has 2 Gigabit (CPSW) Ethernet ports and 4 PRUSS Ethernet
+   ports. Due to pinmux limitations it can support either of the following
+   configurations
 
-This board has 2 Gigabit (CPSW) Ethernet ports and 4 PRUSS Ethernet
-ports. Due to pinmux limitations it can support either of the following
-configurations
+   -  Jumper J51 placed. LCD + 2 Gigabit (CPSW) + 2 PRUSS Ethernet ports
+      (PRU2\_ETH0 and PRU2\_ETH1)
 
--  Jumper J51 placed. LCD + 2 Gigabit (CPSW) + 2 PRUSS Ethernet ports
-   (PRU2\_ETH0 and PRU2\_ETH1)
+   **OR**
 
-**OR**
+   -  Jumper J51 removed. No LCD, 2 Gigabit (CPSW) + 4 PRUSS Ethernet
+      ports.
 
--  Jumper J51 removed. No LCD, 2 Gigabit (CPSW) + 4 PRUSS Ethernet
-   ports.
+   NOTE: Jumper must be configured before powering up the board.
 
-NOTE: Jumper must be configured before powering up the board.
+   .. rubric:: AM572x-IDK
+      :name: am572x-idk
 
-.. rubric:: AM572x-IDK
-   :name: am572x-idk
+   This board has 2 Gigabit (CPSW) Ethernet ports and 4 PRUSS Ethernet
+   ports. However, only 2 Gigabit + 2 PRUSS Ethernet ports (PRU2\_ETH0 and
+   PRU2\_ETH1) are supported due to pinmux limitations.
 
-This board has 2 Gigabit (CPSW) Ethernet ports and 4 PRUSS Ethernet
-ports. However, only 2 Gigabit + 2 PRUSS Ethernet ports (PRU2\_ETH0 and
-PRU2\_ETH1) are supported due to pinmux limitations.
-
-NOTE: Only ES2.0 silicon (Board Rev1.3 or later) is supported as older
-Silicon uses a older version of PRUSS core that is not compatible with
-the supplied firmware.
+   NOTE: Only ES2.0 silicon (Board Rev1.3 or later) is supported as older
+   Silicon uses a older version of PRUSS core that is not compatible with
+   the supplied firmware.
 
 .. rubric:: Kernel configuration
    :name: kernel-configuration

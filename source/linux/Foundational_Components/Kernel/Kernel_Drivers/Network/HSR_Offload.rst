@@ -4,15 +4,16 @@ HSR Offload
 
 .. rubric:: **Introduction**
 
-HSR framework in linux allows offloading below functionalities to the
+HSR (High-availability Seamless Redundancy) framework in Linux allows offloading following functionalities to the
 device
 hsr-fwd-offload: For forwarding HSR frames one port to another i.e port-to-port
 forwarding
 
 hsr-dup-offload: Duplicate the outgoing HSR frame
 
-The ICSSG HSR firmware supports port-to-port forwarding, Tx packet duplication
-and this allows to offload these capabilities from HSR driver in software to the PRU-ICSSG.
+The (Programmable Real-time Unit and Industrial Communication Subsystem) PRU-ICSS HSR firmware supports
+port-to-port forwarding, Tx packet duplication and this allows to offload these capabilities from HSR driver
+in software to the PRU subsystem.
 
 To enable offloading using below commands
 To enable port-to-port offload
@@ -29,10 +30,11 @@ To enable Tx packet duplication
   ethtool -K <interface> hsr-dup-offload on
 
 .. note::
-   The ICSSG HSR firmware is designed to always carry out port-to-port
-   forwarding. So whenever any of the HSR features are to be offloaded, the
-   port-to-port forwarding must also be offloaded. It is not possible to offload
-   only Tx packet duplication functionality.
+
+   The ICSS HSR firmware always run with port-to-port forwarding.
+   So whenever any of the HSR features are to be offloaded, the port-to-port
+   forwarding must also be offloaded. It is not possible to offload
+   only transmission (Tx) packet duplication functionality.
 
 The below script sets up an HSR interface with the port-to-port
 forwarding and Tx packet duplication offloaded
@@ -70,8 +72,12 @@ forwarding and Tx packet duplication offloaded
   echo "slave-a=$ifa"
   echo "slave-b=$ifb"
 
-  ip link set hsr0 down
-  ip link delete hsr0  2> /dev/null
+  ip link set $if down
+  ip link delete $if  2> /dev/null
+
+  ip link set $ifa down
+  ip link set $ifb down
+  sleep 1
 
   if [ "$1" = "hsr_hw" ]
   then
@@ -99,6 +105,9 @@ forwarding and Tx packet duplication offloaded
 
   ip addr add "$ip"/24 dev $if
   ip link set $if up
+  ip link set $ifa up
+  ip link set $ifb up
+  sleep 1
 
 To create HSR interface with IP address 192.168.2.20 using eth1 and eth2,
 run the script by passing the arguments as below
@@ -400,12 +409,15 @@ CPU usage at Node B found to be negligible
     0    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00  100.00
     1    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00  100.00
 
-.. rubric:: Througput at Node A
+.. ifconfig:: CONFIG_part_variant in ('AM64X', 'AM65X')
 
-.. list-table:: Throughput performance
-   :widths: 25 25
+   .. rubric:: Througput at Node A
 
-   * - Sender
-     - Receiver
-   * - 505 Mbits/sec
-     - 504 Mbits/sec
+   .. list-table:: Throughput performance
+      :widths: 25 25
+
+      * - Sender
+        - Receiver
+      * - 505 Mbits/sec
+        - 504 Mbits/sec
+
