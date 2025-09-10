@@ -57,6 +57,8 @@ linux/Foundational_Components/Kernel/Kernel_Drivers/GPIO
 linux/Foundational_Components/Kernel/Kernel_Drivers/I2C
 linux/Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW
 linux/Foundational_Components/Kernel/Kernel_Drivers/Network/PRUSS
+linux/Foundational_Components/Kernel/Kernel_Drivers/Network/HSR_PRP_Non_Offload
+linux/Foundational_Components/Kernel/Kernel_Drivers/Network/HSR_Offload
 linux/Foundational_Components/Kernel/Kernel_Drivers/PWM
 linux/Foundational_Components/Kernel/Kernel_Drivers/SPI
 linux/Foundational_Components/Kernel/Kernel_Drivers/Storage/NAND
