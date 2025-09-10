@@ -142,7 +142,7 @@ Reducing bootloader time
 
         - U-Boot eMMC flashing tool AM62X: :ref:`u-boot-build-guide-environment-k3`
 
-        - `U-Boot SPI flashing tool AM62X <https://software-dl.ti.com/processor-sdk-linux/esd/AM62X/latest/exports/docs/linux/Foundational_Components/U-Boot/UG-SPI.html#spi>`_
+        - `U-Boot SPI flashing tool AM62X <https://software-dl.ti.com/processor-sdk-linux/esd/AM62X/latest/exports/docs/linux/Foundational_Components/U-Boot/UG-QSPI.html#ospi-qspi-nor-nand>`_
 
     .. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
@@ -150,7 +150,7 @@ Reducing bootloader time
 
         - U-Boot eMMC flashing tool AM62AX: :ref:`u-boot-build-guide-environment-k3`
 
-        - `U-Boot SPI flashing tool AM62AX <https://software-dl.ti.com/processor-sdk-linux/esd/AM62AX/11_01_00_16/exports/docs/linux/Foundational_Components/U-Boot/UG-SPI.html#spi>`_
+        - `U-Boot SPI flashing tool AM62AX <https://software-dl.ti.com/processor-sdk-linux/esd/AM62AX/11_01_00_16/exports/docs/linux/Foundational_Components/U-Boot/UG-QSPI.html#ospi-qspi-nor-nand>`_
 
     .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
@@ -158,7 +158,7 @@ Reducing bootloader time
 
         - U-Boot eMMC flashing tool AM62PX: :ref:`u-boot-build-guide-environment-k3`
 
-        - `U-Boot SPI flashing tool AM62PX <https://software-dl.ti.com/processor-sdk-linux/esd/AM62PX/latest/exports/docs/linux/Foundational_Components/U-Boot/UG-SPI.html#spi>`_
+        - `U-Boot SPI flashing tool AM62PX <https://software-dl.ti.com/processor-sdk-linux/esd/AM62PX/latest/exports/docs/linux/Foundational_Components/U-Boot/UG-QSPI.html#ospi-qspi-nor-nand>`_
 
 Secondary Boot Loader (SBL)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
