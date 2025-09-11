@@ -87,12 +87,6 @@ ethernet interfaces and IP address for HSR/PRP provided as arguments
   ip link set dev $ifa address $mac
   ip link set dev $ifb address $mac
 
-  ip link set $ifa up
-  sleep 1
-
-  ip link set $ifb up
-  sleep 1
-
   if [ "$1" == "hsr" ]
   then
           ip link add name $if type hsr slave1 $ifa slave2 $ifb supervision 45 version 1
@@ -103,6 +97,10 @@ ethernet interfaces and IP address for HSR/PRP provided as arguments
 
   ip addr add $ip/24 dev $if
   ip link set $if up
+
+  ip link set $ifa up
+  ip link set $ifb up
+  sleep 1
 
 To create HSR interface with IP address 192.168.2.20 using eth1 and eth2, run
 the script by passing the arguments as below
@@ -160,7 +158,7 @@ Multicast MAC address can be added/deleted using ip maddr commands or Linux sock
 ::
 
     # ip maddr show dev <dev>
-    2:      eth0
+    2:      hsr0
     link  01:00:5e:00:00:01
     link  01:80:c2:00:00:00
     link  01:80:c2:00:00:03
@@ -173,9 +171,9 @@ Multicast MAC address can be added/deleted using ip maddr commands or Linux sock
 
 ::
 
-    # ip maddr add 01:00:5e:00:00:05 dev eth0
-    # ip maddr show dev eth0
-    2:      eth0
+    # ip maddr add 01:00:5e:00:00:05 dev hsr0
+    # ip maddr show dev hsr0
+    2:      hsr0
     link  01:00:5e:00:00:01
     link  01:80:c2:00:00:00
     link  01:80:c2:00:00:03
@@ -189,169 +187,171 @@ Multicast MAC address can be added/deleted using ip maddr commands or Linux sock
 
 ::
 
-    # ip maddr del 01:00:5e:00:00:05 dev eth0
+    # ip maddr del 01:00:5e:00:00:05 dev hsr0
 
-.. rubric:: PTP Ordinary Clock
+.. ifconfig:: CONFIG_part_variant in ('AM64X', 'AM65X')
 
-PTP Master Clock
+   .. rubric:: PTP Ordinary Clock
 
-The PTP Ordinary Clock (OC) implementation is provided by the linuxptp application.
-The following command should be executed for master mode clock.
+   PTP Master Clock
 
-::
+   The PTP Ordinary Clock (OC) implementation is provided by the linuxptp application.
+   The following command should be executed for master mode clock.
 
-  ptp4l -f gm_hsr0.cfg -m
+   ::
+
+      ptp4l -f gm_hsr0.cfg -m
 
 
-The gm_hsr0.cfg is given below
+   The gm_hsr0.cfg is given below
 
-::
+   ::
 
-  root@am65xx-evm:~# cat gm_hsr0.cfg
-  [global]
-  sanity_freq_limit 0
-  step_threshold 0.00002
-  tx_timestamp_timeout 20
+      root@am65xx-evm:~# cat gm_hsr0.cfg
+      [global]
+      sanity_freq_limit 0
+      step_threshold 0.00002
+      tx_timestamp_timeout 20
 
-  domainNumber 0
-  priority1    127
-  priority2    128
-  slaveOnly    0
+      domainNumber 0
+      priority1    127
+      priority2    128
+      slaveOnly    0
 
-  twoStepFlag                  1
-  summary_interval             0
-  doubly_attached_clock        1
+      twoStepFlag                  1
+      summary_interval             0
+      doubly_attached_clock        1
 
-  [hsr0]
-  redundancy                   1
-  delay_mechanism              P2P
-  network_transport            L2
+      [hsr0]
+      redundancy                   1
+      delay_mechanism              P2P
+      network_transport            L2
 
-  [eth1]
-  redundancy                   1
-  redundancy_master_interface  hsr0
-  redundancy_slave_number      1
+      [eth1]
+      redundancy                   1
+      redundancy_master_interface  hsr0
+      redundancy_slave_number      1
 
-  logAnnounceInterval          0
-  logSyncInterval              0
-  logMinPdelayReqInterval      0
-  announceReceiptTimeout       3
-  syncReceiptTimeout           2
+      logAnnounceInterval          0
+      logSyncInterval              0
+      logMinPdelayReqInterval      0
+      announceReceiptTimeout       3
+      syncReceiptTimeout           2
 
-  delay_mechanism              P2P
-  network_transport            L2
-  egressLatency                726
-  ingressLatency               186
-  fault_reset_interval         0
+      delay_mechanism              P2P
+      network_transport            L2
+      egressLatency                726
+      ingressLatency               186
+      fault_reset_interval         0
 
-  [eth2]
-  redundancy                   1
-  redundancy_master_interface  hsr0
-  redundancy_slave_number      2
+      [eth2]
+      redundancy                   1
+      redundancy_master_interface  hsr0
+      redundancy_slave_number      2
 
-  logAnnounceInterval          0
-  logSyncInterval              0
-  logMinPdelayReqInterval      0
-  announceReceiptTimeout       3
-  syncReceiptTimeout           2
+      logAnnounceInterval          0
+      logSyncInterval              0
+      logMinPdelayReqInterval      0
+      announceReceiptTimeout       3
+      syncReceiptTimeout           2
 
-  delay_mechanism              P2P
-  network_transport            L2
-  egressLatency                726
-  ingressLatency               186
-  fault_reset_interval         0
+      delay_mechanism              P2P
+      network_transport            L2
+      egressLatency                726
+      ingressLatency               186
+      fault_reset_interval         0
 
-PTP Slave Clock
+   PTP Slave Clock
 
-The following command should be executed for slave mode clock.
+   The following command should be executed for slave mode clock.
 
-::
+   ::
 
-  ptp4l -f oc_hsr0.cfg -m -s
+      ptp4l -f oc_hsr0.cfg -m -s
 
-The oc_hsr0.cfg is given below
+   The oc_hsr0.cfg is given below
 
-::
+   ::
 
-  [global]
-  sanity_freq_limit 0
-  step_threshold 0.00002
-  tx_timestamp_timeout 20
+      [global]
+      sanity_freq_limit 0
+      step_threshold 0.00002
+      tx_timestamp_timeout 20
 
-  domainNumber 0
-  priority1    128
-  priority2    128
-  slaveOnly    0
+      domainNumber 0
+      priority1    128
+      priority2    128
+      slaveOnly    0
 
-  twoStepFlag                  1
-  summary_interval             0
-  doubly_attached_clock        1
+      twoStepFlag                  1
+      summary_interval             0
+      doubly_attached_clock        1
 
-  [hsr0]
-  redundancy                   1
-  delay_mechanism              P2P
-  network_transport            L2
+      [hsr0]
+      redundancy                   1
+      delay_mechanism              P2P
+      network_transport            L2
 
-  [eth1]
-  redundancy                   1
-  redundancy_master_interface  hsr0
-  redundancy_slave_number      1
+      [eth1]
+      redundancy                   1
+      redundancy_master_interface  hsr0
+      redundancy_slave_number      1
 
-  logAnnounceInterval          0
-  logSyncInterval              1
-  logMinPdelayReqInterval      0
-  announceReceiptTimeout       3
-  syncReceiptTimeout           2
+      logAnnounceInterval          0
+      logSyncInterval              1
+      logMinPdelayReqInterval      0
+      announceReceiptTimeout       3
+      syncReceiptTimeout           2
 
-  delay_mechanism              P2P
-  network_transport            L2
-  egressLatency                726
-  ingressLatency               186
-  fault_reset_interval         0
+      delay_mechanism              P2P
+      network_transport            L2
+      egressLatency                726
+      ingressLatency               186
+      fault_reset_interval         0
 
-  [eth2]
-  redundancy                   1
-  redundancy_master_interface  hsr0
-  redundancy_slave_number      2
+      [eth2]
+      redundancy                   1
+      redundancy_master_interface  hsr0
+      redundancy_slave_number      2
 
-  logAnnounceInterval          0
-  logSyncInterval              1
-  logMinPdelayReqInterval      0
-  announceReceiptTimeout       3
-  syncReceiptTimeout           2
+      logAnnounceInterval          0
+      logSyncInterval              1
+      logMinPdelayReqInterval      0
+      announceReceiptTimeout       3
+      syncReceiptTimeout           2
 
-  delay_mechanism              P2P
-  network_transport            L2
-  egressLatency                726
-  ingressLatency               186
-  fault_reset_interval         0
+      delay_mechanism              P2P
+      network_transport            L2
+      egressLatency                726
+      ingressLatency               186
+      fault_reset_interval         0
 
-PPS
+   PPS
 
-  PPS can be tested using testptp.c tool.
+   PPS can be tested using testptp.c tool.
 
-  To find out the PTP device number i.e. PTP Hardware Clock, use
+   To find out the PTP device number i.e. PTP Hardware Clock, use
 
-::
+   ::
 
-  ethtool -T DEVNAME
+      ethtool -T DEVNAME
 
-To turn on PPS,
+   To turn on PPS,
 
-::
+   ::
 
-  # ip link set dev eth1 up
-  # ./testptp -d /dev/ptp2 -P 1
-    pps for system time request okay
+      # ip link set dev eth1 up
+      # ./testptp -d /dev/ptp2 -P 1
+         pps for system time request okay
 
-To turn off PPS,
+   To turn off PPS,
 
-::
+   ::
 
-  # ./testptp -d /dev/ptp2 -P 0
-  pps for system time request okay
+      # ./testptp -d /dev/ptp2 -P 0
+      pps for system time request okay
 
-PTP Over VLAN
+   PTP Over VLAN
 
-For PTP Over VLAN, the PTP oc_hsr0.cfg and gm_hsr0.cfg should use VLAN
-interface instead of hsr0.
+   For PTP Over VLAN, the PTP oc_hsr0.cfg and gm_hsr0.cfg should use VLAN
+   interface instead of hsr0.

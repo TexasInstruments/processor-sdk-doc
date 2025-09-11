@@ -73,6 +73,10 @@ forwarding and Tx packet duplication offloaded
   ip link set hsr0 down
   ip link delete hsr0  2> /dev/null
 
+  ip link set $ifa down
+  ip link set $ifb down
+  sleep 1
+
   if [ "$1" = "hsr_hw" ]
   then
           ethtool -k "$ifa" | grep hsr
@@ -99,6 +103,9 @@ forwarding and Tx packet duplication offloaded
 
   ip addr add "$ip"/24 dev $if
   ip link set $if up
+  ip link set $ifa up
+  ip link set $ifb up
+  sleep 1
 
 To create HSR interface with IP address 192.168.2.20 using eth1 and eth2,
 run the script by passing the arguments as below
@@ -400,12 +407,15 @@ CPU usage at Node B found to be negligible
     0    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00  100.00
     1    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00  100.00
 
-.. rubric:: Througput at Node A
+.. ifconfig:: CONFIG_part_variant in ('AM64X', 'AM65X')
 
-.. list-table:: Throughput performance
-   :widths: 25 25
+   .. rubric:: Througput at Node A
 
-   * - Sender
-     - Receiver
-   * - 505 Mbits/sec
-     - 504 Mbits/sec
+   .. list-table:: Throughput performance
+      :widths: 25 25
+
+      * - Sender
+        - Receiver
+      * - 505 Mbits/sec
+        - 504 Mbits/sec
+
