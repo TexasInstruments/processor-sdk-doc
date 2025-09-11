@@ -249,7 +249,7 @@ VLAN will be subscribed to host port and the respective slave ports.
 
    < or >
 
-   vconfig rem eth0 5
+   vconfig rem eth0.5
 
 **IP assigning**
 
@@ -417,7 +417,7 @@ To allow Dual Emac interfaces to be added to the Linux Bridge one of following c
 Dual EMAC can be enabled with adding the entry dual\_emac to the cpsw
 device tree node as the reference patch below
 
-.. code:: dts
+.. code:: diff
 
     diff --git a/arch/arm/boot/dts/am335x-evmsk.dts b/arch/arm/boot/dts/am335x-evmsk.dts
     index ac1f759..b50e9ef 100644
@@ -570,6 +570,62 @@ Userspace binary formats --->
    < > The IPX protocol
 
 |
+
+.. rubric:: Multi port Switch mode
+   :name: multi-port-switch-mode
+
+.. note::
+
+   The following section documents the Switch mode features available with
+   CPSW.
+
+To enable Switch mode, configure the devlink driver parameter
+"switch_mode" to true
+
+.. code-block:: console
+
+   devlink dev param set platform/48484000.switch name switch_mode value true cmode runtime
+
+You can apply this configuration regardless of the state of the port's
+associated netdev devices. The port's associated netdev devices have to
+be in the **up** state before joining the bridge. This is to avoid
+overwriting the bridge configuration as CPSW switch driver completely
+reloads when the first port changes its state to **up**.
+
+When all interfaces have joined the bridge, the CPSW switch driver will
+begin marking packets with the ``offload_fwd_mark`` flag.
+
+The switchdev APIs provided by the CPSW driver code will configure
+the switch device.
+
+.. rubric:: Bridge Setup
+   :name: bridge-setup
+
+.. code-block:: console
+
+   devlink dev param set platform/48484000.switch name switch_mode value true cmode runtime
+
+   ip link add name br0 type bridge
+   ip link set dev br0 type bridge ageing_time 1000
+   ip link set dev eth0 up
+   ip link set dev eth1 up
+   ip link set dev eth0 master br0
+   ip link set dev eth1 master br0
+
+You must run the following commands if you enable VLAN
+filtering on the bridge (vlan_filtering=1) with default_pvid=1.
+
+.. code-block:: console
+
+   bridge vlan add dev br0 vid 1 self
+   bridge vlan add dev br0 vid 1 pvid untagged self
+
+.. rubric:: Turn On or Off Spanning Tree Protocol (STP)
+   :name: turn-on-or-off-spanning-tree-protocol
+
+.. code-block:: console
+
+   ip link set dev br0 type bridge stp_state 1/0
 
 .. rubric:: Switch Config Commands
    :name: switch-config-commands
