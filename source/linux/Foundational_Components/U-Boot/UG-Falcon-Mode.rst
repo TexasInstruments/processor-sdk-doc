@@ -39,8 +39,8 @@ ATF:
 ====
 
 To meet the 2MiB alignment requirement for the Linux kernel's load address,
-the ``K3_HW_CONFIG_BASE`` *(kernel address)* is modified to ``0x82000000``
-and ``PRELOADED_BL33_BASE`` *(DTB address)* is modified from the K3 default to
+the ``PRELOADED_BL33_BASE`` *(kernel address)* is modified to ``0x82000000``
+and ``K3_HW_CONFIG_BASE`` *(DTB address)* is modified from the K3 default to
 ``0x88000000``.
 
 TI-SPL:
