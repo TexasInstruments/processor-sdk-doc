@@ -16,7 +16,7 @@ methods specific to Linux.
 Baselin-ing the current SGX driver environment
 **********************************************
 
-The the following script shows the current SGX driver environment on the target:
+Create the following script to show the current SGX driver environment on the target:
 
 .. code-block:: sh
    :caption: gfx_check.sh
