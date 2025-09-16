@@ -76,6 +76,13 @@ Create SD Card using balenaEtcher
 
         This operation **WILL ERASE** the contents of your SD card.
 
+.. ifconfig:: CONFIG_image_type in ('adas')
+
+   .. note::
+
+      We do not release WIC images for J7 platforms (J784S4, J742S2, J722S, J721E, J721S2).
+      Please refer to :ref:`Create SD Card with custom images <processor-sdk-linux-sd-card-with-default-images>` for flashing image.
+
 .. _processor-sdk-linux-create-sd-card-using-bmap:
 
 Create SD Card using bmap-tools
@@ -159,6 +166,13 @@ Create SD Card using bmap-tools
          .. parsed-literal::
 
             sudo bmaptool copy --bmap tisdk-|__IMAGE_TYPE__|-image-<machine>-<version>.rootfs.bmap tisdk-|__IMAGE_TYPE__|-image-<machine>-<version>.rootfs.wic /dev/sdc
+
+.. ifconfig:: CONFIG_image_type in ('adas')
+   
+   .. note::
+   
+      We do not release WIC images for J7 platforms (J784S4, J742S2, J722S, J721E, J721S2).
+      Please refer to :ref:`Create SD Card with custom images <processor-sdk-linux-sd-card-with-default-images>` for flashing image.
 
 .. _processor-sdk-linux-create-sd-card-with-custom-images:
 
