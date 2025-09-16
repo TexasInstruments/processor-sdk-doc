@@ -103,6 +103,10 @@ textures, rather than transfer queue (using the SGX hardware).
 
 Useful to rule out problems in TQ.
 
+.. code-block:: text
+
+   DisableHWTextureUpload=1
+
 DefaultPixelFormat
 ==================
 
