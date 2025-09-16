@@ -47,6 +47,14 @@ Create the following script to show the current SGX driver environment on the ta
    echo "Linux Kernel version"
    uname -a
 
+If you are not using any app hints, or have not created the :file:`powervr.ini` file then you should see the following:
+
+.. code-block:: text
+
+   WSEGL settings
+   cat: /etc/powervr.ini: No such file or directory
+
+
 **************************************************
 Runtime checks and configuration of the SGX driver
 **************************************************
@@ -62,7 +70,7 @@ checking the following:
 
 The SGX driver supports some runtime configuration on the target by using a
 configuration file. The optional configuration file is present in the Processor
-SDK at :file:`/etc/powervr.ini`.
+SDK at :file:`/etc/powervr.ini`. If no file is present, you need to create it.
 
 Configuration items use the following syntax:
 
