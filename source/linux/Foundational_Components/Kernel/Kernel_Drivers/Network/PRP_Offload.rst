@@ -347,12 +347,14 @@ A sample test setup is as shown below
 
       iperf3 -c -t60 <Node_C_IP_Addr>
 
-.. rubric:: Throughput at Node A
+.. ifconfig:: CONFIG_part_variant in ('AM64X')
 
-.. list-table:: Throughput performance
-   :widths: 25 25
+   .. rubric:: Througput at Node A
 
-   * - Sender
-     - Receiver
-   * - 610 Mbits/sec
-     - 605 Mbits/sec
+   .. list-table:: Throughput performance
+      :widths: 25 25
+
+      * - Sender
+        - Receiver
+      * - 610 Mbits/sec
+        - 605 Mbits/sec
