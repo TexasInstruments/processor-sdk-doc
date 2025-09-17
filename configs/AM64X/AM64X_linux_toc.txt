@@ -34,7 +34,6 @@ linux/Foundational_Components/U-Boot/BG-Ram-Device-Trees-K3
 linux/Foundational_Components/U-Boot/Users-Guide
 linux/Foundational_Components/U-Boot/UG-DFU
 linux/Foundational_Components/U-Boot/UG-Memory-K3
-linux/Foundational_Components/U-Boot/UG-SPI
 linux/Foundational_Components/U-Boot/UG-QSPI
 linux/Foundational_Components/U-Boot/UG-UART
 linux/Foundational_Components/U-Boot/UG-DDRSS
