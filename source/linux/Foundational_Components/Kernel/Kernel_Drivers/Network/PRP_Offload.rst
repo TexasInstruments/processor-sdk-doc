@@ -11,7 +11,7 @@ It also allows to offload the below functionalities of PRP mode to the underlyin
 - hsr-dup-offload: Duplicate the outgoing PRP frame
 - hsr-tag-rm-offload: Remove PRP trailer from the frame
 
-The ICSSG PRP firmware supports offloading of all above functionalities saving overhead from the driver.
+The Programmable Real-time Unit and Industrial Communication Subsystem (PRU-ICSS) PRP firmware supports offloading of all above functionalities saving overhead from the driver.
 
 .. note::
 
@@ -347,12 +347,14 @@ A sample test setup is as shown below
 
       iperf3 -c -t60 <Node_C_IP_Addr>
 
-.. rubric:: Throughput at Node A
+.. ifconfig:: CONFIG_part_variant in ('AM64X')
 
-.. list-table:: Throughput performance
-   :widths: 25 25
+   .. rubric:: Througput at Node A
 
-   * - Sender
-     - Receiver
-   * - 610 Mbits/sec
-     - 605 Mbits/sec
+   .. list-table:: Throughput performance
+      :widths: 25 25
+
+      * - Sender
+        - Receiver
+      * - 610 Mbits/sec
+        - 605 Mbits/sec

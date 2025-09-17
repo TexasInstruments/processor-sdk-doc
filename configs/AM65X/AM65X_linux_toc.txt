@@ -58,6 +58,7 @@ linux/Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW-EST
 linux/Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW-IET
 linux/Foundational_Components/Kernel/Kernel_Drivers/Network/HSR_PRP_Non_Offload
 linux/Foundational_Components/Kernel/Kernel_Drivers/Network/HSR_Offload
+linux/Foundational_Components/Kernel/Kernel_Drivers/Network/PRP_Offload
 linux/Foundational_Components/Kernel/Kernel_Drivers/PCIe/PCIe_End_Point
 linux/Foundational_Components/Kernel/Kernel_Drivers/PCIe/PCIe_Root_Complex
 linux/Foundational_Components/Kernel/Kernel_Drivers/PWM
