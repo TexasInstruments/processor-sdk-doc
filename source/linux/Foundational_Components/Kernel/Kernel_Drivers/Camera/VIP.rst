@@ -364,26 +364,12 @@ When ti-vip is enabled, the capture device will appear as /dev/videoX.
 Standard V4L2 user space applications can be used as long as the
 capability of the application matches.
 
--  **dmabuftest example**
-   Use VIP to capture a 1280x800 YUYV video stream and display it on an
-   HDMI display using DMABUF buffers.
-
-::
-
-    dmabuftest -s 36:1920x1080 -c 1280x800@YUYV -d /dev/video1
-
 -  **yavta example**
    Capture 800x600 YUYV video stream to file.
 
 ::
 
     yavta -c60 -fYUYV -Fvout_800x600_yuyv.yuv -s800x600 /dev/video1
-
-dmabuftest can be found from:
-
-::
-
-    https://git.ti.com/glsdk/omapdrmtest
 
 yavta can be found from:
 
