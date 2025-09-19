@@ -1153,5 +1153,37 @@ Listed for each algorithm are the code snippets used to run each
 
 Performance and Benchmarks not available in this release.
 
+Ethernet
+---------
 
+ICSSM Ethernet Driver
+^^^^^^^^^^^^^^^^^^^^^^
+
+.. rubric::  UDP Ingress Throughput
+   :name: udp-ingress-throughput-0-loss
+
+.. csv-table:: ICSSM UDP Ingress Throughput 0 loss
+    :header: "UDP Datagram Size(bytes)","am574x-idk: THROUGHPUT (Mbits/sec)","am574x-idk: Packets Per Second (kPPS)","am574x-idk: CPU Load %"
+
+    "64","10.75","21.00","0.74"
+    "128","65.99","64.00","79.09"
+    "256","54.68","27.00","37.59"
+    "1024","93.96","11.00","11.81"
+    "1472","91.08","8.00","23.99"
+
+.. rubric:: Switch Mode
+   :name: icssm-switch-mode
+
+.. csv-table:: ICSSM Switch Mode Forwarding
+   :header: "Mode","am574x-idk: THROUGHPUT (Mbits/sec)","am574x-idk: CPU Load % (FORWARDING)"
+
+   "Switch with HW Offload","94","0.11"
+
+.. rubric:: HSR Mode
+   :name: icssm-hsr-mode
+
+.. csv-table:: ICSSM HSR Mode Forwarding
+   :header: "Mode","am574x-idk: THROUGHPUT (Mbits/sec)","am574x-idk: CPU Load % (FORWARDING)"
+
+   "HSR with HW Offload","93.4","62.01"
 
