@@ -20,7 +20,6 @@ the details on the features supported by these hardware blocks.
    SGX/Overview.rst
    SGX/SGX_Debug_Info.rst
    SGX/AM3_Beagle_Bone_Black_Configuration.rst
-   SGX/OMAP_DRM.rst
    SGX/Build_Guide.rst
 
    Rogue/Overview.rst

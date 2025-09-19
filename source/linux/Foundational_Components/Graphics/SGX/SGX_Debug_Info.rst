@@ -16,7 +16,7 @@ methods specific to Linux.
 Baselin-ing the current SGX driver environment
 **********************************************
 
-The the following script shows the current SGX driver environment on the target:
+Create the following script to show the current SGX driver environment on the target:
 
 .. code-block:: sh
    :caption: gfx_check.sh
@@ -47,6 +47,14 @@ The the following script shows the current SGX driver environment on the target:
    echo "Linux Kernel version"
    uname -a
 
+If you are not using any app hints, or have not created the :file:`powervr.ini` file then you should see the following:
+
+.. code-block:: text
+
+   WSEGL settings
+   cat: /etc/powervr.ini: No such file or directory
+
+
 **************************************************
 Runtime checks and configuration of the SGX driver
 **************************************************
@@ -62,7 +70,7 @@ checking the following:
 
 The SGX driver supports some runtime configuration on the target by using a
 configuration file. The optional configuration file is present in the Processor
-SDK at :file:`/etc/powervr.ini`.
+SDK at :file:`/etc/powervr.ini`. If no file is present, you need to create it.
 
 Configuration items use the following syntax:
 
@@ -94,6 +102,10 @@ If set to 1, the driver uses software upload (copying from driver to SGX) of
 textures, rather than transfer queue (using the SGX hardware).
 
 Useful to rule out problems in TQ.
+
+.. code-block:: text
+
+   DisableHWTextureUpload=1
 
 DefaultPixelFormat
 ==================
