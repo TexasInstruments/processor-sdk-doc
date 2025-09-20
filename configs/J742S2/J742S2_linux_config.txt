@@ -37,6 +37,7 @@ Configuration Values
 'CONFIG_part_family'      : 'J7_family'
 'CONFIG_part_variant'     : 'J742S2'
 'CONFIG_sdk'              : 'JACINTO'
+'CONFIG_image_type'       : 'adas'
 'CONFIG_icss_support'     : 'no'
 'CONFIG_rt_linux_support' : 'yes'
 'CONFIG_gpu_ip'           : 'Rogue_BXS'
