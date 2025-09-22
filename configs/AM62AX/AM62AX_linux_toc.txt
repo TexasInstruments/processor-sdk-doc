@@ -83,6 +83,8 @@ linux/Foundational_Components/Kernel/Kernel_Drivers/USB/AM62_DWC3
 linux/Foundational_Components/Kernel/Kernel_Drivers/VTM
 linux/Foundational_Components/Kernel/Kernel_Drivers/Watchdog
 
+linux/Foundational_Components/MMC-Known-SD-Card-Issues
+
 linux/Foundational_Components_Power_Management
 linux/Foundational_Components/Power_Management/pm_overview
 linux/Foundational_Components/Power_Management/pm_dfs
