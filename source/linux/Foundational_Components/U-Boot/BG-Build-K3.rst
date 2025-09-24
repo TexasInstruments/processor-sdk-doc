@@ -369,6 +369,7 @@ Go :ref:`here <download-and-install-sdk>` to download and install the SDK.
       $ export TI_LINUX_FW_DIR=<path-to-ti-linux-firmware>
       $ export TFA_DIR=<path-to-arm-trusted-firmware>
       $ export OPTEE_DIR=<path-to-ti-optee-os>
+      $ export TI_DM=<path-to-ti-linux-firmware>/ti-dm
 
    .. note::
 
@@ -388,7 +389,7 @@ Go :ref:`here <download-and-install-sdk>` to download and install the SDK.
       A53
       To build tispl.bin and u-boot.img. Saved in $UBOOT_DIR/out/a53. Requires bl31.bin, tee-pager_v2.bin.
       $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" am62ax_evm_a53_defconfig O=$UBOOT_DIR/out/a53
-      $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" CC="$CC_64" BL31=$TFA_DIR/build/k3/lite/release/bl31.bin TEE=$OPTEE_DIR/out/arm-plat-k3/core/tee-pager_v2.bin O=$UBOOT_DIR/out/a53 BINMAN_INDIRS=$TI_LINUX_FW_DIR
+      $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" CC="$CC_64" BL31=$TFA_DIR/build/k3/lite/release/bl31.bin TEE=$OPTEE_DIR/out/arm-plat-k3/core/tee-pager_v2.bin O=$UBOOT_DIR/out/a53 BINMAN_INDIRS=$TI_LINUX_FW_DIR TI_DM=$TI_DM/am62axx/dm_edgeai_mcu1_0_release_strip.out
 
 .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
