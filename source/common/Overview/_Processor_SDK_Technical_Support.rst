@@ -83,7 +83,6 @@ While TI integrates the FOSS in |__SDK_FULL_NAME__|, TI does not own, maintain a
         Example applications:
 
         - https://github.com/tomba/kmsxx
-        - https://git.ti.com/glsdk/example-applications/trees/master/drm-tests
         - http://git.ti.com/sitara-linux/dual-camera-demo/trees/master
         - The modetest tool is available inside git://anongit.freedesktop.org/git/mesa/drm
 
