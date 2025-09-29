@@ -274,10 +274,6 @@ family_tocfiles = [f"{FAMILY}/{FAMILY}_{OS}_toc.txt"]
 # Family Configuration file to use
 family_config_inputfile = f"{FAMILY}/{FAMILY}_{OS}_config.txt"
 
-# Add the buildsheets path here, relative to this directory. These files
-# are copied directly to the root of the documentation.
-html_extra_path = [os.path.join(rootdir, 'source', 'devices', FAMILY, '_static')]
-
 # Set document exclusion list from the tocfiles
 exclude_patterns = sectinc.generate_exclude_patterns(family_tocfiles)
 
