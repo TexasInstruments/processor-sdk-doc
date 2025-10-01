@@ -106,6 +106,7 @@ linux/How_to_Guides_Developer_Notes
 #linux/How_to_Guides/Host/K3_Resource_Partitioning_Tool
 linux/How_to_Guides/Host/How_to_Setup_and_Debug_using_Lauterbach
 linux/How_to_Guides/Host/SYSFW_Trace_Parser
+linux/How_to_Guides/Target/How_to_Tune_Real_Time_Linux
 #linux/How_to_Guides/Target/Processor_SDK_Linux_File_System_Optimization_Customization
 #linux/How_to_Guides/Target/How_to_test_MCAN_on_AM62x
 linux/How_to_Guides/Target/How_to_Use_K3Conf_Tool
