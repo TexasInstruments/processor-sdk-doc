@@ -22,14 +22,6 @@ Linux SDK Software Developer's Guide
 
 |
 
-.. rubric:: Software Build Sheet
-
-The build sheet of supported features for this SDK is available at the following link:
-
-.. raw:: html
-
-   <a href="../../AM62LX_build_sheet_11_00_15_05_files/AM62LX_build_sheet_11.00.15.htm">AM62LX Software Build Sheet</a>
-
 .. include:: /devices/AM62LX/linux/_Release_Specific_QSG.rst
 
 .. rubric:: Feedback
