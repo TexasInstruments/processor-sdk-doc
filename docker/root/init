@@ -3,23 +3,12 @@
 # SPDX-License-Identifier: MIT
 # Copyright (C) 2024 Texas Instruments Incorporated - https://www.ti.com
 
-get_attribs() {
-	local file_stats file_to_test useful_attribs
-	if file_to_test=$(realpath "$1") && [[ $2 =~ ^[0-9]+$ ]] ; then
-		useful_attribs=$(stat "$file_to_test" -t)
-		read -r -a file_stats <<< "${useful_attribs#"$file_to_test"}"
-		echo "${file_stats["$2"]}"
-	else
-		return 1
-	fi
-}
-
 get_build_uid() {
-	get_attribs /build 3
+	stat -c '%u' /build
 }
 
 get_build_gid() {
-	get_attribs /build 4
+	stat -c '%g' /build
 }
 
 if NEW_GID=$(get_build_gid) && NEW_UID=$(get_build_uid); then
