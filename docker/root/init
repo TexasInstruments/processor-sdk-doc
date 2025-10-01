@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # SPDX-License-Identifier: MIT
 # Copyright (C) 2024 Texas Instruments Incorporated - https://www.ti.com
@@ -13,8 +13,8 @@ get_build_gid() {
 
 if NEW_GID=$(get_build_gid) && NEW_UID=$(get_build_uid); then
 	# bypass everything if podman is remapping the id to root
-	if [ "${NEW_UID}" == "0" ]; then
-		if [ "$(id -u)" == "0" ]; then
+	if [ "${NEW_UID}" = "0" ]; then
+		if [ "$(id -u)" = "0" ]; then
 			exec dumb-init -- "$@"
 		else
 			echo "Unable to resolve ns mapping!"
@@ -28,7 +28,7 @@ else
 	echo "Not able to detect UID/GID for remapping!"
 fi
 
-if [ "$(id -u)" == "$(id -u abc)" ]; then
+if [ "$(id -u)" = "$(id -u abc)" ]; then
 	exec dumb-init -- "$@"
 else
 	exec dumb-init -- su-exec abc:abc "$@"
