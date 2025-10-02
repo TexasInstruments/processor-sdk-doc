@@ -20,8 +20,8 @@ on Ubuntu 22.04+, run the following command in the terminal prompt:
 .. note::
 
    The recommended host machine for building U-Boot is Ubuntu 22.04.
-   Users of Ubuntu 18.04 may need to install Python 3.7 or higher. If using the default Python 3.6
-   that comes with Ubuntu 18.04, users may need to install these additional dependencies:
+   Users of Ubuntu 18.04 might need to install Python 3.7 or later. If using the default Python 3.6
+   that is in Ubuntu 18.04, users might need to install these additional dependencies:
 
    .. code-block:: console
 
@@ -42,7 +42,7 @@ Getting the Source Code
 
 The easiest way to get access to the source code is by
 downloading and installing the Processor SDK Linux. Once installed,
-the source code is included in the SDK at the path :file:`<path to tisdk>/board-support`.
+the source code is in the SDK at the path :file:`<path to tisdk>/board-support`.
 For your convenience the sources also includes
 git repositories including commit history.
 
@@ -51,9 +51,7 @@ git repositories including commit history.
    Alternatively, BL-1 and U-Boot sources can directly be fetched from GIT. The GIT
    repo URL, branch and commit id can be found in the release notes:
 
-   - ti-u-boot version: :ref:`u-boot-release-notes`
-   - ti-linux-firmware version: :ref:`ti-linux-fw-release-notes`
-   - TF-A version: :ref:`tf-a-release-notes`
+   - ti-u-boot , OPTEE, TF-A and ti-linux-firmware version is at :ref:`release-specific-build-information`
 
 .. ifconfig:: CONFIG_part_variant not in ('AM62LX')
 
