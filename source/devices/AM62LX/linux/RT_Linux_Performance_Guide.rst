@@ -56,13 +56,21 @@ Test commands used for running stress-ng and cyclictest together
    stress-ng --cpu-method=all -c 4 &
    cyclictest -m -Sp80 -D6h -h400 -i200 -M -q
 
-The latencies observed with this SDK are summarized below:
+The latencies observed with the default yocto SDK are summarized below:
+
+.. note::
+
+   A known issue in this SDK release is affecting this benchmark.
+   Applying `this patch`_ on Yocto's meta-ti layer will restore the
+   context switch latencies to the values you see below:
 
 .. csv-table::
    :header: "Latencies","CPU 0","CPU 1"
 
    "Minimum (us)","5","5"
-   "Average (us)","6","8"
-   "Maximum (us)","47","53"
+   "Average (us)","8","7"
+   "Maximum (us)","57","48"
 
 .. image:: img/rt-cpu-method-all-latency-histogram.png
+
+.. _this patch: https://lists.yoctoproject.org/g/meta-ti/message/19089
