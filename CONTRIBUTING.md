@@ -11,12 +11,22 @@ not strictly enforced.
 Please see the following for additional resources on commit formatting:
 https://www.conventionalcommits.org/en/v1.0.0/
 
-> [!NOTE]
-> This entire project is documentation. Using the docs tag for all changes is
-> not helpful. Please reserve usage of the docs tag for changes to this projects
-> documentation, such as the README or CONTRIBUTING documents. If the change is
-> adding information it should be treated as a feat, if it is changing incorrect
-> information it should be a fix.
+### Commit types
+
+Each commit has a tag with its type following the conventional commit
+convention. The following goes over the more common tags in this project.
+
+ - `feat`: any *addition* to the RST sources or platform configs
+ - `fix`: any *correction* to the RST sources or platform configs
+ - `style`: any modification that does not change the meaning of the source
+ - `refactor`: any modification that neither add a feature or fixes the source
+ - `build`: changes that affect the build system, container, or external
+   dependencies
+ - `ci`: changes to the CI pipelines or associated scripts
+ - `docs`: changes to *project* documentation, such as the main README
+
+ Other supported tags exist in the conventional commit specification, but they
+ are not used as often here.
 
 ## Project structure
 
