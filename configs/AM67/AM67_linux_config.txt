@@ -24,7 +24,7 @@ Replacement Variables
 '__SDK_DOWNLOAD_URL__'           : '`SDK-Download-page <https://www.ti.com/tool/download/PROCESSOR-SDK-LINUX-AM67>`__'
 '__LINUX_UBUNTU_VERSION_LONG__'  : '22.04 (64-bit)'
 '__LINUX_UBUNTU_VERSION_SHORT__' : '22.04'
-'__OPTEE_PLATFORM_FLAVOR__'      : 'am62x'
+'__OPTEE_PLATFORM_FLAVOR__'      : 'k3-am62px'
 '__RTOS_UBUNTU_VERSION_LONG__'   : '22.04 (64-bit)'
 '__WINDOWS_SUPPORTED_LONG__'     : '7 (64-bit)'
 '__FEATURINGMATRIX__'            : \

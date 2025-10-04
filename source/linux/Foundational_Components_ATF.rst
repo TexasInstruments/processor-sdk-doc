@@ -1,18 +1,18 @@
 .. _foundational-components-atf:
 
 ARM Trusted Firmware-A
-========================================
+======================
 .. rubric:: Overview
 
 Trusted Firmware-A (TF-A) provides a reference implementation of secure world
 software for Armv7-A and Armv8-A, including a Secure Monitor executing at
 Exception Level 3 (EL3).
 
-ATF is used as the initial start code on ARMv8-A cores for all K3 platforms.
+Arm Trusted Firmware (ATF) is the initial code on ARMv8-A cores for all K3 platforms.
 After setting up the initial core state and applying any needed errata fixes
 it sets up itself as the EL3 monitor handler. Following that, it installs the secure
-world software (OP-TEE) and passes execution on to either the Linux kernel or U-Boot
-in the non-secure world.
+world open source Trusted Execution Environment (OP-TEE) software and passes execution
+on to either the Linux kernel or U-Boot in the non-secure world.
 
 .. ifconfig:: CONFIG_part_variant in ('AM62LX')
 
@@ -28,8 +28,9 @@ in the non-secure world.
 
 .. rubric:: Getting the ATF Source Code
 
-The pre-built TF-A binary should be packaged in TI Processor SDK: <path-to-processor-sdk>/board-support/prebuilt-images/<optional-build-machine-name>/bl31.bin.
-Use this binary since it has been tested with TI Processor SDK.
+The pre-built TF-A binary is in TI Processor SDK: 
+<path-to-processor-sdk>/board-support/prebuilt-images/<optional-build-machine-name>/bl31.bin.
+Use this binary since it is tested with TI Processor SDK.
 
 If it is not possible to use pre-build binary, use the following:
 
@@ -38,7 +39,7 @@ If it is not possible to use pre-build binary, use the following:
    $ git clone https://github.com/TexasInstruments/arm-trusted-firmware.git
    $ git checkout <hash>
 
-Where <hash> is the commit shown here: :ref:`tf-a-release-notes`.
+Where <hash> is the commit shown here: :ref:`tf-a-release-notes` :ref:`release-specific-build-information`.
 
 |
 

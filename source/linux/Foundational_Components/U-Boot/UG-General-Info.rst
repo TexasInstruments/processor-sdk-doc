@@ -17,8 +17,8 @@ General Information
 .. note::
 
    The recommended host machine for building U-Boot is Ubuntu 22.04.
-   Users of Ubuntu 18.04 may need to install Python 3.7 or higher. If using the default Python 3.6
-   that comes with Ubuntu 18.04, users may need to install these additional dependencies:
+   Users of Ubuntu 18.04 might need to install Python 3.7 or later. If using the default Python 3.6
+   that is in Ubuntu 18.04, users might need to install these additional dependencies:
 
    .. code-block:: console
 
@@ -32,12 +32,12 @@ General Information
    enable secondary program loader.
    The easiest way to get access to the BL-1 source code is by
    downloading and installing the Processor SDK Linux. Once installed,
-   the BL-1 source code is included in the SDK at the path ``<path to tisdk>/board-support``.
+   the BL-1 source code is in the SDK at the path ``<path to tisdk>/board-support``.
    For your convenience the sources also includes the BL-1's
    git repository including commit history.
 
    Alternatively, BL-1 sources can directly be fetched from GIThub. The GIT
-   repo URL, branch and commit id can be found in the :ref:`u-boot-release-notes`
+   repo URL, branch and commit id can be found at :ref:`release-specific-build-information`.
    section of the release notes.
 
    .. _Build-BL1-label:
@@ -45,7 +45,7 @@ General Information
    Build BL-1
    ^^^^^^^^^^
    .. note::
-    The following commands are intended to be run from the root of the
+    The following commands needs to run from the root of the
     TF-A tree unless otherwise specified. The root of the TF-A tree is
     the top-level directory and can be identified by looking for the
     "licenses" directory.
@@ -73,12 +73,12 @@ Getting the U-Boot Source Code
 
 The easiest way to get access to the U-boot source code is by
 downloading and installing the Processor SDK Linux. Once installed,
-the U-Boot source code is included in the SDK at the path ``<path to tisdk>/board-support``.
+the U-Boot source code is in the SDK at the path ``<path to tisdk>/board-support``.
 For your convenience the sources also includes the U-Boot's
 git repository including commit history.
 
-Alternatively, U-Boot sources can directly be fetched from GIT. The GIT
-repo URL, branch and commit id can be found in the :ref:`u-boot-release-notes`
+Alternatively, U-Boot sources can directly be fetched from Git.
+The Git repo URL, branch and commit id can be found in the :ref:`u-boot-release-notes` :ref:`release-specific-build-information`
 section of the release notes.
 
 
@@ -610,12 +610,7 @@ Build U-Boot
 
       .. note::
 
-         Where to get the sources:
-
-         - ti-u-boot version: :ref:`u-boot-release-notes`
-         - ti-linux-firmware version: :ref:`ti-linux-fw-release-notes`
-         - TF-A version: :ref:`tf-a-release-notes`
-         - OP-TEE version: :ref:`optee-release-notes`
+         Where to get the sources: :ref:`release-specific-build-information`.
 
       .. code-block:: console
 
@@ -653,11 +648,7 @@ Build U-Boot
 
       .. note::
 
-         Where to get the sources:
-
-         - ti-u-boot version: :ref:`u-boot-release-notes`
-         - ti-linux-firmware version: :ref:`ti-linux-fw-release-notes`
-         - TF-A version: :ref:`tf-a-release-notes`
+         Where to get the sources: :ref:`release-specific-build-information`.
 
       .. code-block:: console
 
@@ -711,7 +702,7 @@ Build U-Boot
 
    .. note::
 
-      It is also possible to pick up a custom DM binary by adding TI_DM argument pointing to the file. If not provided, it defaults to picking up the DM binary from BINMAN_INDIRS. This is only applicable to devices that utilize split firmware.
+      It is also possible to pick up a custom DM binary by adding TI_DM argument pointing to the file. If not provided, it defaults to picking up the DM binary from BINMAN_INDIRS. This is only applicable to devices that use split firmware.
 
 .. ifconfig:: CONFIG_part_variant in ('AM65X', 'J721E', 'J7200', 'AM64X', 'AM62X', 'AM62AX', 'AM62DX', 'AM62LX', 'AM62PX', 'J721S2', 'J784S4','J742S2', 'J722S')
 
@@ -921,7 +912,7 @@ Build U-Boot
       Also, (For GP devices only) rename :file:`tispl.bin_unsigned` to :file:`tispl.bin` and :file:`u-boot.img_unsigned` to :file:`u-boot.img` as well.
 
 Image Formats
-^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^
 
     .. ifconfig:: CONFIG_part_variant not in ('J7200', 'AM64X', 'J721S2', 'J721E', 'AM62X', 'AM62AX', 'AM62LX', 'J784S4','J742S2', 'J722S', 'AM57X')
 
@@ -1897,7 +1888,7 @@ Boot Flow
    and complete the boot process.
 
 U-Boot Environment
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^
 
 .. note::
 
@@ -1968,7 +1959,7 @@ Then start the USB subsystem:
 
     => usb start
 
-The default behavior of U-Boot is to utilize all information that a DHCP
+The default behavior of U-Boot is to use all information that a DHCP
 server passes to us when the user issues the **dhcp** command. This will
 include the dhcp parameter *next-server* which indicates where to fetch
 files from via TFTP. There may be times however where the dhcp server on
@@ -1982,7 +1973,7 @@ the server. In this case the following steps can be helpful:
     => setenv serverip correct.server.ip
     => tftp
 
-Another alternative is to utilize the full syntax of the tftp command:
+Another alternative is to use the full syntax of the tftp command:
 
 .. code-block:: console
 
@@ -2022,7 +2013,7 @@ RAM in the range of ``[0x80000000, 0xFCE00000]`` is safely available for
 use.
 
 Device Trees
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^
 
 A note about device trees. Now all supported boards are required to use a
 device tree to boot. To facilitate this in supported platforms, a command

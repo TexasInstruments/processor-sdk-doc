@@ -24,7 +24,7 @@ Replacement Variables
 '__SDK_DOWNLOAD_URL__'           : '`Processor SDK AM62A Download Page <https://www.ti.com/tool/PROCESSOR-SDK-AM62A>`__'
 '__LINUX_UBUNTU_VERSION_LONG__'  : '22.04 (64-bit)'
 '__LINUX_UBUNTU_VERSION_SHORT__' : '22.04'
-'__OPTEE_PLATFORM_FLAVOR__'      : 'am62axx'
+'__OPTEE_PLATFORM_FLAVOR__'      : 'k3-am62axx'
 '__RTOS_UBUNTU_VERSION_LONG__'   : '22.04 (64-bit)'
 '__WINDOWS_SUPPORTED_LONG__'     : '10 (64-bit)'
 '__FEATURINGMATRIX__'            : \
