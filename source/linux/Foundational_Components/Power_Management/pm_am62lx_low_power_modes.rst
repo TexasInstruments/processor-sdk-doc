@@ -7,9 +7,11 @@ Low Power Modes
 Overview
 ********
 
-.. important::
+.. note::
 
-   For this release, low power mode support is disabled. It will be enabled in 11.1 release.
+   For this release, both of the documented low power modes below require special steps which have been
+   documented in :ref:`am62l_suspend_workarounds`. This includes the steps to choose the system suspend mode
+   and how to wakeup the system.
 
 The following sections describe a high-level description of the different low power modes (LPM) of the
 device. If your application requires inactive power management, you must determine which
