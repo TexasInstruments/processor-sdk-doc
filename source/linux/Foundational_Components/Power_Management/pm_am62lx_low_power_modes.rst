@@ -7,12 +7,6 @@ Low Power Modes
 Overview
 ********
 
-.. note::
-
-   For this release, both of the documented low power modes below require special steps which have been
-   documented in :ref:`am62l_suspend_workarounds`. This includes the steps to choose the system suspend mode
-   and how to wakeup the system.
-
 The following sections describe a high-level description of the different low power modes (LPM) of the
 device. If your application requires inactive power management, you must determine which
 low power mode described below satisfies your requirements. Each mode must be evaluated
@@ -26,6 +20,11 @@ to highest power consumption):
 
 RTC Only Plus DDR
 *****************
+
+.. note::
+
+   For this release, the RTC Only + DDR low power mode requires special steps
+   to enter. The steps are documented in :ref:`am62l_suspend_workarounds`.
 
 RTC Only + DDR mode is the deepest low power mode that allows the system to enter a state of lowest power consumption
 while still retaining the DDR RAM context.
