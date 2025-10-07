@@ -10,7 +10,7 @@ ARM Trusted Firmware changes
 This patch updates the system suspend mode for the AM62L platform. After making the following changes,
 re-build the ARM Trusted Firmware and then re-package it in the :file:`tispl.bin` file to ensure
 the changes take effect. To learn more about TF-A and how to rebuild it, see :ref:`_foundational-components-atf`.
-For rebuilding u-boot and generating the new :file:`tispl.bin` follow :ref:`Build-U-Boot-label`.
+For rebuilding U-Boot and generating the new :file:`tispl.bin` follow :ref:`Build-U-Boot-label`.
 
 .. code-block:: diff
 
@@ -31,9 +31,9 @@ For rebuilding u-boot and generating the new :file:`tispl.bin` follow :ref:`Buil
 This modifies :file:`plat/ti/k3/common/am62l_psci.c`, which is the new Power
 State Coordination Interface (PSCI) driver for AM62L in Arm Trusted Firmware.
 The :func:`am62l_pwr_domain_suspend` function will change the default system
-suspend mode from Deep Sleep to RTC only + DDR.
+suspend mode from Deep Sleep to RTC Only + DDR.
 
-The default mode of 0 is the deep sleep state. Deep Sleep provides the lowest
+The default mode of 0 is the Deep Sleep state. Deep Sleep provides the lowest
 latency wake-up but also uses more power. The updated default mode of 6 is
 the RTC only + DDR state. In contrast, RTC only + DDR offers a lower power
 consumption profile, but at the cost of higher wake-up latency.
