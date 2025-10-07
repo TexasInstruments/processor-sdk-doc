@@ -51,6 +51,20 @@ valid for given low power modes:
    | CAN UART I/O Daisy Chain                       | Yes   | Yes  | Yes     | Yes      |
    +------------------------------------------------+-------+------+---------+----------+
 
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+   +----------------------------------+------------+----------------+
+   |  Wakeup Source                   | Deep Sleep | RTC Only + DDR |
+   +==================================+============+================+
+   | Real-Time Clock (RTC)            | Yes        | Yes            |
+   +----------------------------------+------------+----------------+
+   | Main I/O Daisy Chain (Main UART) | Yes        | No             |
+   +----------------------------------+------------+----------------+
+   | USB Wakeup                       | Yes        | No             |
+   +----------------------------------+------------+----------------+
+   | RTC Ext Pin                      | Yes        | Yes            |
+   +----------------------------------+------------+----------------+
+
 *********************
 Real-Time Clock (RTC)
 *********************
@@ -885,6 +899,20 @@ CAN UART I/O Daisy Chain
    Once the system has entered any low power mode as shown in the
    :ref:`LPM section<lpm_modes>`, wakeup from MCU_GPIO0_16 or MCU_MCAN0_RX can be
    triggered by grounding Pin 11 or Pin 22 on J8 MCU Header, respectively.
+
+***********
+RTC Ext Pin
+***********
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX')
+
+   This is not applicable for |__PART_FAMILY_DEVICE_NAMES__|.
+
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+   To resume using RTC Ext pin wakeup, press the following button on the EVM:
+
+   .. image:: /images/am62l_lpm_wakeup_evm_pin.jpg
 
 ********************************
 Confirming the Wakeup event type
