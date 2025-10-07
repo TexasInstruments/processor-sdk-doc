@@ -335,7 +335,7 @@ assets here while making any modifications.
 .. ifconfig:: CONFIG_sdk in ('SITARA')
 
    Yocto recipe for building this demo can be found at
-   `github: ti-lvgl-demo.bb <https://github.com/TexasInstruments/meta-tisdk/blob/scarthgap/recipes-demos/ti-lvgl-demo/ti-lvgl-demo.bb>`__
+   `github: ti-lvgl-demo.bb <https://github.com/TexasInstruments/meta-tisdk/blob/scarthgap/meta-ti-foundational/recipes-demos/ti-lvgl-demo/ti-lvgl-demo.bb>`__
 
 .. ifconfig:: CONFIG_sdk in ('DebianSDK')
 
