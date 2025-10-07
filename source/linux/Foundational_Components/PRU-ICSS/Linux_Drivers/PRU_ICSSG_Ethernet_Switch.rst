@@ -129,23 +129,17 @@ Assuming eth1 and eth2 are the active ports of ICSSG1 on AM64xx-EVM, to enable c
 
 .. code-block:: console
 
-   ip link set eth1 down
-   ip link set eth2 down
-
-   # To enable cut thru for slice0 q0
+   # To enable cut through for slice0 q0
    devlink dev param set platform/icssg1-eth name cut_thru value 1 cmode runtime
 
-   # To enable cut thru for slice0 q1
+   # To enable cut through for slice0 q1
    devlink dev param set platform/icssg1-eth name cut_thru value 2 cmode runtime
 
-   # To enable cut thru for slice0 q0, q1
+   # To enable cut through for slice0 q0, q1
    devlink dev param set platform/icssg1-eth name cut_thru value 3 cmode runtime
 
-   # To enable cut thru for slice0 q0, q1 and slice1 q0, q1
+   # To enable cut through for slice0 q0, q1 and slice1 q0, q1
    devlink dev param set platform/icssg1-eth name cut_thru value 771 cmode runtime
-
-   ip link set eth1 up
-   ip link set eth2 up
 
 To show the current cut through status, run the below command,
 
@@ -165,6 +159,13 @@ To disable cut through on all queues
 .. code-block:: console
 
    devlink dev param set platform/icssg1-eth name cut_thru value 0 cmode runtime
+
+.. note::
+
+    Set up the cut through value first before enabling switch mode to ensure that
+    cut through is working properly. This order ensures that the firmware has the
+    expected cut through value. Setting up switch mode will automatically stop and start
+    the firmware so no need to bring links down and back up again.
 
 PTP
 """
