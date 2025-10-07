@@ -464,6 +464,12 @@ Then, add the following line in :file:`CMakeLists.txt`:
    add_compile_definitions(SOC_AM62_LP=1) # if target is AM62x-LP
    add_compile_definitions(SOC_AM62P=1) # if target is AM62P
 
+Then, install the QEMU user mode emulators for enabling cross-architecture execution on host system:
+
+.. code:: console
+
+   sudo apt-get install qemu-user-static
+
 Then, pull TI's debian-arm64 Docker image and run it:
 
 .. code:: console
@@ -475,6 +481,7 @@ Finally, run:
 
 .. code:: console
 
+   cd /root/ti-apps-launcher/
    cmake -B build -S . -DRT_BUILD=0 # if target is RT image, make -DRT_BUILD=1
    make -C build
 
