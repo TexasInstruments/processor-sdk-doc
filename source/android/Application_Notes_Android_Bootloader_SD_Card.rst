@@ -134,6 +134,20 @@ the images are built from source.
            - 01000000
            - 11000010
 
+   .. ifconfig:: CONFIG_part_variant in ('AM67A')
+
+      .. list-table::
+         :widths: 16 16 16
+         :header-rows: 1
+
+         * - Switch Label
+           - SW3: 12345678
+           - SW4: 12345678
+
+         * - SD
+           - 11000010
+           - 01000000
+
 2. Insert the SD card into the |__PART_FAMILY_NAME__| SK EVM.
 
 3. Ensure the device is plugged in with USB host and debug UART/serial debug
@@ -145,6 +159,12 @@ the images are built from source.
       .. code-block:: console
 
          $ sudo picocom -b 115200 -r -l /dev/ttyUSB0
+
+   .. ifconfig:: CONFIG_part_variant in ('AM67A')
+
+      .. code-block:: console
+
+         $ sudo picocom -b 115200 -r -l /dev/ttyUSB2
 
 5. Boot the board with SD card.
 

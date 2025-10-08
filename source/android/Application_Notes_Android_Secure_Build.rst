@@ -76,6 +76,10 @@ The bootloaders scripts will detect that ``avb_pub.key`` is present and will inc
 
    The user can also specify the absolute path of the avb_pub key in yaml config (``build/config/boards/am62p-sk.yaml``):
 
+.. ifconfig:: CONFIG_part_variant in ('AM67A')
+
+   The user can also specify the absolute path of the avb_pub key in yaml config (``build/config/boards/am67a-evm.yaml``):
+
 .. code-block:: yaml
 
    secure:
@@ -199,6 +203,17 @@ Build Android
       $ export FACTORY_BUILD=true
       $ m -j$(nproc)                # OR nice -n19 build/soong/soong_ui.bash --make-mode -j$(nproc)
 
+.. ifconfig:: CONFIG_part_variant in ('AM67A')
+
+   .. code-block:: console
+
+      $ cd ${YOUR_PATH}/ti-aosp-16
+      $ source build/envsetup.sh
+      $ lunch am67a-bp2a-user
+
+      $ export FACTORY_BUILD=true
+      $ m -j$(nproc)                # OR nice -n19 build/soong/soong_ui.bash --make-mode -j$(nproc)
+
 Flash Android
 -------------
 
@@ -232,6 +247,15 @@ Flash using the script: in a different terminal,
 
       # for AM62P SK EVM
       $ sudo ./flashall.sh --board am62px-sk
+
+.. ifconfig:: CONFIG_part_variant in ('AM67A')
+
+   change directory to ``out/target/product/am67a`` and run the ``flashall.sh`` script:
+
+   .. code-block:: console
+
+      # for AM67A EVM
+      $ sudo ./flashall.sh --board am67a-evm
 
 .. warning::
 

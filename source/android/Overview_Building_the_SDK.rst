@@ -4,6 +4,13 @@
 Building the SDK
 ################
 
+.. ifconfig:: CONFIG_part_variant in ('AM67A')
+
+   .. note::
+
+      The android images generated for the AM67A-EVM are not compatible with the BeagleY-AI board.
+      For building and flashing the BeagleY-AI, see the :ref:`beagley-ai-app-note`.
+
 **************
 Build PC setup
 **************
@@ -97,6 +104,19 @@ Where ``<BUILD_TARGET>`` is listed in the table below :
     ============================= ============================
 
     The recommended ``<BUILD_TARGET>`` is ``am62p-bp2a-userdebug``.
+
+.. ifconfig:: CONFIG_part_variant in ('AM67A')
+
+    ============================= ============================
+    Android Build type            Build target
+    ============================= ============================
+    AM67A-EVM Tablet userdebug       ``am67a-bp2a-userdebug``
+    AM67A-EVM Tablet user            ``am67a-bp2a-user``
+    AM67A-EVM Car userdebug          ``am67a_car-bp2a-userdebug``
+    AM67A-EVM Car user               ``am67a_car-bp2a-user``
+    ============================= ============================
+
+    The recommended ``<BUILD_TARGET>`` is ``am67a-bp2a-userdebug``.
 
 It's possible to customize the standard build (``m``), by passing build flags.
 For example, the following enables ADB on user builds:

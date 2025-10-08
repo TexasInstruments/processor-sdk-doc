@@ -21,10 +21,20 @@ $(info ROOTDIR is $(ROOTDIR))
 
 $(info DEVFAMILY is $(DEVFAMILY_UP))
 
-ifeq ($(DEVFAMILY_UP), $(filter $(DEVFAMILY_UP), J721E J7200 J721S2 J784S4 AM68 AM69 J722S AM67 J742S2 AM68A AM67A AM69A TDA4VM))
-  CONFDIR = source/devices/J7_Family/${OS_LOW}
+ifeq ($(OS_LOW), android)
+  # For Android, AM67A and AM67 have their own device directories
+  ifeq ($(DEVFAMILY_UP), $(filter $(DEVFAMILY_UP), J721E J7200 J721S2 J784S4 AM68 AM69 J722S J742S2 AM68A AM69A TDA4VM))
+    CONFDIR = source/devices/J7_Family/${OS_LOW}
+  else
+    CONFDIR = source/devices/$(DEVFAMILY_UP)/${OS_LOW}
+  endif
 else
-  CONFDIR = source/devices/$(DEVFAMILY_UP)/${OS_LOW}
+  # For Linux and other OSes, use J7_Family grouping including AM67A and AM67
+  ifeq ($(DEVFAMILY_UP), $(filter $(DEVFAMILY_UP), J721E J7200 J721S2 J784S4 AM68 AM69 J722S AM67 J742S2 AM68A AM67A AM69A TDA4VM))
+    CONFDIR = source/devices/J7_Family/${OS_LOW}
+  else
+    CONFDIR = source/devices/$(DEVFAMILY_UP)/${OS_LOW}
+  endif
 endif
 
 $(info CONFDIR is $(CONFDIR))

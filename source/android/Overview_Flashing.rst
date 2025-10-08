@@ -9,6 +9,11 @@ Flashing Instruction
    These instructions are for the AM62x SK EVM.
    For flashing the Beagle Play, see the :ref:`beagleplay-app-note`.
 
+.. ifconfig:: CONFIG_part_variant in ('AM67A')
+
+   These instructions are for the AM67A EVM.
+   For flashing the BeagleY-AI, see the :ref:`beagley-ai-app-note`.
+
 
 ************
 DFU Recovery
@@ -54,6 +59,10 @@ Once the build is complete, follow the steps below to flash the images to eMMC.
 
    .. Image:: ../images/am62px_sk_evm_setup.png
 
+.. ifconfig:: CONFIG_part_variant in ('AM67A')
+
+   .. Image:: ../images/am67a_evm_setup.jpg
+
 1. Change the boot mode DIP switches to DFU mode:
 
    .. ifconfig:: CONFIG_part_variant in ('AM62X')
@@ -83,6 +92,20 @@ Once the build is complete, follow the steps below to flash the images to eMMC.
          * - USB DFU
            - 00000000
            - 11001010
+
+   .. ifconfig:: CONFIG_part_variant in ('AM67A')
+
+      .. list-table::
+         :widths: 16 16 16
+         :header-rows: 1
+
+         * - Switch Label
+           - SW3: 12345678
+           - SW4: 12345678
+
+         * - USB DFU
+           - 11001010
+           - 00000000
 
 2. Ensure the device is plugged in with USB host and debug UART/serial debug
 
@@ -141,6 +164,21 @@ Once the build is complete, follow the steps below to flash the images to eMMC.
              $ cd AM62Px_11.00.00_emmc
 
              $ snagrecover -s am625 -f ./am62px-sk-evm-hsfs.yaml
+
+       .. ifconfig:: CONFIG_part_variant in ('AM67A')
+
+         .. code-block:: console
+
+             # If you are using binaries built locally
+             $ cd out/target/product/am67a
+
+             (OR)
+
+             # If you are using pre-built binaries from SDK download page
+             $ cd AM67A_11.00.00_emmc
+
+             # for AM67A EVM (HS-FS only: by default)
+             $ snagrecover -s am62p5 -f ./am67a-evm-hsfs.yaml
 
        produces::
 
@@ -296,6 +334,28 @@ Once the build is complete, follow the steps below to flash the images to eMMC.
              Create GPT partition table
              OKAY [  0.032s]
 
+       .. ifconfig:: CONFIG_part_variant in ('AM67A')
+
+          .. code-block:: console
+
+             # If you are using binaries built locally
+             $ cd out/target/product/am67a
+
+             (OR)
+
+             # If you are using pre-built binaries from SDK download page
+             $ cd AM67A_11.00.00_emmc
+
+             # for AM67A EVM (HS-FS only: by default)
+             $ sudo ./flashall.sh --board am67a-evm
+             board: am67a-evm
+             Fastboot: ./fastboot
+             Generating bootloader-am67a-evm.img ...
+             mkfs.fat 4.2 (2021-01-31)
+             Generating bootloader-am67a-evm.img: DONE
+             Create GPT partition table
+             OKAY [  0.032s]
+
      - ::
 
           Writing GPT: success!
@@ -361,6 +421,20 @@ Once the build is complete, follow the steps below to flash the images to eMMC.
          * - EMMC (with UDA)
            - 00000000
            - 11000010
+
+   .. ifconfig:: CONFIG_part_variant in ('AM67A')
+
+      .. list-table::
+         :widths: 16 16 16
+         :header-rows: 1
+
+         * - Switch Label
+           - SW3: 12345678
+           - SW4: 12345678
+
+         * - EMMC (with UDA)
+           - 11010010
+           - 00000000
 
 
 7. Board should boot the Android images now.
