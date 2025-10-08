@@ -822,7 +822,7 @@ below command on the Host system
 
 .. code-block:: console
 
-   HOST:~$ lsusb -t
+   # lsusb -t
 
 
 ********************
