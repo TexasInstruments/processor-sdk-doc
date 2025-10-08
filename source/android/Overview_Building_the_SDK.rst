@@ -32,15 +32,15 @@ Create a folder for downloading all sources
 
 .. code-block:: console
 
-   $ mkdir ~/10_01_00 && cd $_
+   $ mkdir ~/11_00_00 && cd $_
    $ export YOUR_PATH=$PWD
 
 Fetch the code using ``repo``:
 
 .. code-block:: console
 
-   $ mkdir ${YOUR_PATH}/ti-aosp-15 && cd $_
-   $ repo init -u https://git.ti.com/git/android/manifest.git -b android15-release -m releases/RLS_10_01_01.xml
+   $ mkdir ${YOUR_PATH}/ti-aosp-16 && cd $_
+   $ repo init -u https://git.ti.com/git/android/manifest.git -b android16-release -m releases/RLS_11_00_00.xml
    $ repo sync
 
 .. tip::
@@ -63,7 +63,7 @@ Build Instructions
 
 .. code-block:: console
 
-   $ cd ${YOUR_PATH}/ti-aosp-15
+   $ cd ${YOUR_PATH}/ti-aosp-16
    $ source build/envsetup.sh
    $ lunch <BUILD_TARGET>
    $ m
@@ -77,26 +77,26 @@ Where ``<BUILD_TARGET>`` is listed in the table below :
     ============================= ============================
     Android Build type            Build target
     ============================= ============================
-    AM62X-SK Tablet userdebug       ``am62x-ap4a-userdebug``
-    AM62X-SK Tablet user            ``am62x-ap4a-user``
-    AM62X-SK Car userdebug          ``am62x_car-ap4a-userdebug``
-    AM62X-SK Car user               ``am62x_car-ap4a-user``
+    AM62X-SK Tablet userdebug       ``am62x-bp2a-userdebug``
+    AM62X-SK Tablet user            ``am62x-bp2a-user``
+    AM62X-SK Car userdebug          ``am62x_car-bp2a-userdebug``
+    AM62X-SK Car user               ``am62x_car-bp2a-user``
     ============================= ============================
 
-    The recommended ``<BUILD_TARGET>`` to use is ``am62x-ap4a-userdebug``.
+    The recommended ``<BUILD_TARGET>`` is ``am62x-bp2a-userdebug``.
 
 .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
     ============================= ============================
     Android Build type            Build target
     ============================= ============================
-    AM62PX-SK Tablet userdebug       ``am62p-ap4a-userdebug``
-    AM62PX-SK Tablet user            ``am62p-ap4a-user``
-    AM62PX-SK Car userdebug          ``am62p_car-ap4a-userdebug``
-    AM62PX-SK Car user               ``am62p_car-ap4a-user``
+    AM62PX-SK Tablet userdebug       ``am62p-bp2a-userdebug``
+    AM62PX-SK Tablet user            ``am62p-bp2a-user``
+    AM62PX-SK Car userdebug          ``am62p_car-bp2a-userdebug``
+    AM62PX-SK Car user               ``am62p_car-bp2a-user``
     ============================= ============================
 
-    The recommended ``<BUILD_TARGET>`` to use is ``am62p-ap4a-userdebug``.
+    The recommended ``<BUILD_TARGET>`` is ``am62p-bp2a-userdebug``.
 
 It's possible to customize the standard build (``m``), by passing build flags.
 For example, the following enables ADB on user builds:
@@ -121,7 +121,7 @@ The following build flags are available. **Default** values are **highlighted**.
      - Boot from SD card instead of eMMC
 
 After building is complete, the necessary images will be available in
-:file:`${YOUR_PATH}/ti-aosp-15/out/target/product/am62*/`.
+:file:`${YOUR_PATH}/ti-aosp-16/out/target/product/am62*/`.
 
 To proceed to flash Android, see :ref:`android-flashing`.
 
@@ -138,6 +138,4 @@ To proceed to flash Android, see :ref:`android-flashing`.
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
     The android images generated for the AM62X-SK EVM are compatible with the Beagle Play board.
-    For flashing the Beagle Play, see the `dedicated application note`_.
-
-    .. _dedicated application note: ../devices/AM62X/android/Application_Notes_BeaglePlay.html
+    For flashing the Beagle Play, see the :ref:`beagleplay-app-note`.

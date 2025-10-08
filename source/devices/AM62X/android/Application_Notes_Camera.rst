@@ -57,10 +57,11 @@ After flashing, make sure to halt in the U-Boot shell and run
 
 .. code-block:: console
 
-   => env set dtbo_index 2
+   => env set adtbo_idx 1
    => saveenv
+   => reset
 
-This ensures that the :file:`k3-am625-sk-csi2-ov5640.dtbo` device-tree overlay gets
+This ensures that the :file:`k3-am62x-sk-csi2-ov5640.dtbo` device-tree overlay gets
 applied by the bootloader.
 With the applied overlay, the following drivers should probe:
 

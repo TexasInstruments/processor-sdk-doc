@@ -7,9 +7,7 @@ Flashing Instruction
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
    These instructions are for the AM62x SK EVM.
-   For flashing the Beagle Play, see the `dedicated application note`_.
-
-   .. _dedicated application note: ../devices/AM62X/android/Application_Notes_BeaglePlay.html
+   For flashing the Beagle Play, see the :ref:`beagleplay-app-note`.
 
 
 ************
@@ -116,7 +114,7 @@ Once the build is complete, follow the steps below to flash the images to eMMC.
              (OR)
 
              # If you are using pre-built binaries from SDK download page
-             $ cd AM62x_10.01.00_emmc
+             $ cd AM62x_11.00.00_emmc
 
              # for AM62x SK EVM (GP)
              $ snagrecover -s am625 -f ./am62x-sk-evm.yaml
@@ -140,7 +138,7 @@ Once the build is complete, follow the steps below to flash the images to eMMC.
              (OR)
 
              # If you are using pre-built binaries from SDK download page
-             $ cd AM62Px_10.01.00_emmc
+             $ cd AM62Px_11.00.00_emmc
 
              $ snagrecover -s am625 -f ./am62px-sk-evm-hsfs.yaml
 
@@ -255,7 +253,7 @@ Once the build is complete, follow the steps below to flash the images to eMMC.
              (OR)
 
              # If you are using pre-built binaries from SDK download page
-             $ cd AM62x_10.01.00_emmc
+             $ cd AM62x_11.00.00_emmc
 
              # for AM62x SK EVM (GP)
              $ sudo ./flashall.sh --board am62x-sk
@@ -287,7 +285,7 @@ Once the build is complete, follow the steps below to flash the images to eMMC.
              (OR)
 
              # If you are using pre-built binaries from SDK download page
-             $ cd AM62Px_10.01.00_emmc
+             $ cd AM62Px_11.00.00_emmc
 
              $ sudo ./flashall.sh --board am62px-sk
              board: am62px-sk

@@ -7,7 +7,7 @@ Android is built around a Linux kernel. By default, Android's
 
 .. code-block:: text
 
-   ${YOUR_PATH}/ti-aosp-15/device/ti/am62x-kernel/kernel/6.6
+   ${YOUR_PATH}/ti-aosp-16/device/ti/am62x-kernel/kernel/6.12
 
 This guide describes how to rebuild and customize a Linux kernel for
 Android.
@@ -23,7 +23,7 @@ Fetch the code using ``repo``:
 .. code-block:: console
 
    $ mkdir ${YOUR_PATH}/ti-kernel-aosp/ && cd $_
-   $ repo init -u https://git.ti.com/git/android/manifest.git -b android15-release -m releases/RLS_10_01_01_Kernel.xml
+   $ repo init -u https://git.ti.com/git/android/manifest.git -b android16-release -m releases/RLS_11_00_00_Kernel.xml
    $ repo sync
 
 .. tip::
@@ -32,7 +32,7 @@ Fetch the code using ``repo``:
 
    .. code-block:: console
 
-      $ repo init -u https://git.ti.com/git/android/manifest.git -b android15-release -m releases/RLS_10_01_01_Kernel.xml --depth=1
+      $ repo init -u https://git.ti.com/git/android/manifest.git -b android16-release -m releases/RLS_11_00_00_Kernel.xml --depth=1
 
 .. _android-build-kernel:
 
@@ -45,7 +45,7 @@ tree which has been fully build and is located in:
 
 .. code-block:: text
 
-   ${YOUR_PATH}/ti-aosp-15/
+   ${YOUR_PATH}/ti-aosp-16/
 
 Building everything from scratch
 ================================
@@ -57,9 +57,8 @@ Building everything from scratch
 .. code-block:: console
 
    $ cd ${YOUR_PATH}/ti-kernel-aosp/
-   $ export TARGET_KERNEL_USE="6.6"
-   $ export DIST_DIR=${YOUR_PATH}/ti-aosp-15/device/ti/am62x-kernel/kernel/${TARGET_KERNEL_USE}
-   $ tools/bazel run //common:ti_dist -- --dist_dir=$DIST_DIR
+   $ export DIST_DIR=${YOUR_PATH}/ti-aosp-16/device/ti/am62x-kernel/kernel/6.12
+   $ ./tools/bazel run --config=ti //private/devices/ti/am6x:ti_dist -- --destdir=$DIST_DIR
 
 Re-running this command will rebuild incrementally.
 
@@ -82,9 +81,9 @@ The usual (``make menuconfig``) is done via ``bazel`` command :
 .. code-block:: console
 
    $ cd ${YOUR_PATH}/ti-kernel-aosp/
-   $ tools/bazel run //common:ti_config -- menuconfig
+   $ tools/bazel run --config=ti //private/devices/ti/am6x:ti_config -- menuconfig
 
-This will automatically update the :file:`arch/arm64/configs/ti_gki.fragment`.
+This will automatically update the :file:`private/devices/ti/am6x/ti.fragment`.
 
 .. note::
 
@@ -111,9 +110,9 @@ In order to flash a new kernel, several images should be flashed:
    < Wait for fastbootd reboot >
 
    $ cd <PATH/TO/IMAGES>
-   $ fastboot flash boot boot.img
-   $ fastboot flash vendor_boot vendor_boot.img
-   $ fastboot flash vendor_dlkm vendor_dlkm.img
+   $ fastboot flash boot boot.img --disable-verity
+   $ fastboot flash vendor_boot vendor_boot.img --disable-verity
+   $ fastboot flash vendor_dlkm vendor_dlkm.img --disable-verity
    $ fastboot reboot
 
 The board should boot with the new kernel.
@@ -130,28 +129,35 @@ To enable new modules:
 
    #. Run ``menuconfig`` as documented previously, Select ``=m`` for the driver.
 
-   #. Edit :file:`${YOUR_PATH}/ti-kernel-aosp/BUILD.bazel` to add your new module.
-      Look for the following section:
+   #. Edit :file:`${YOUR_PATH}/ti-kernel-aosp/private/ti/device/am6x/BUILD.bazel` to add your new module.
+      Look for the following sections:
 
       .. code-block:: bazel
 
-         _TI_MODULE_OUTS = [
+         TI_IN_TREE_MODULES = [
              # keep sorted
-             "crypto/af_alg.ko",
-             "crypto/algif_hash.ko",
+             "crypto/crc64_iso3309_generic.ko",
+             "drivers/char/hw_random/optee-rng.ko",
+             "drivers/clk/keystone/sci-clk.ko",
+             ...
+         ]
 
-   #. In the ``_TI_MODULE_OUTS`` array, add the path to your new kernel module.
+         TI_VENDOR_DLKM_MODULES = [
+             # keep sorted
+             "am65-cpts.ko",
+             "cc33xx.ko",
+             "cdns-usb-common.ko",
+             ...
+         ]
+
+   #. Add your new kernel module to the appropriate array:
+
+      - **TI_IN_TREE_MODULES**: For in-tree kernel modules. Use the full path from kernel root (e.g., ``"drivers/your_driver/your_module.ko"``)
+      - **TI_VENDOR_DLKM_MODULES**: For vendor-specific dynamically loadable kernel modules. Use only the module filename (e.g., ``"your_module.ko"``)
+
+      Keep the list sorted alphabetically.
 
    #. Rebuild the kernel as documented in :ref:`android-build-kernel`.
-
-   #. If the driver module needs to be loaded early (in the ramdisk), edit
-      :file:`${YOUR_PATH}/ti-aosp-15/device/ti/am62x/BoardConfig-common.mk`
-      and add the path to your module:
-
-      .. code-block:: make
-
-         BOARD_VENDOR_RAMDISK_KERNEL_MODULES += \
-                 device/ti/am62x-kernel/kernel/$(TARGET_KERNEL_USE)/your_module.ko
 
    #. Finally, rebuild the Android images.
 
@@ -170,32 +176,34 @@ As listed in :ref:`android-dtbo`, we can configure an overlay to be applied
 from U-Boot by setting the ``adtbo_idx`` variable.
 
 To view how the ``adtbo_idx`` maps with the dtbo file, we can inspect the :file:`BUILD.bazel`
-from the `kernel source code <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/BUILD.bazel?h=ti-android-linux-6.6.y#n953>`__.
-Looking at the ``kernel_images()`` macro, we can see:
+from the `kernel source code <https://git.ti.com/cgit/android/kernel-ti-device/tree/BUILD.bazel?h=ti-android-linux-6.12.y>`__.
+Looking at the ``TI_DTBOS`` array, we can see:
 
 .. code-block:: bazel
 
-   kernel_images(
-    name = "ti_images",
-    build_dtbo = True,
-    build_initramfs = True,
-    dtbo_srcs = [
-        ":ti/k3-am62x-sk-hdmi-audio.dtbo",
-        ":ti/k3-am62x-sk-csi2-ov5640.dtbo",
-        ":ti/k3-am62x-sk-csi2-tevi-ov5640.dtbo",
-        ":ti/k3-am625-sk-microtips-mf101hie-panel.dtbo",
-        ":ti/k3-am62x-sk-lpm-wkup-sources.dtbo",
-        ":ti/k3-am62-lp-sk-microtips-mf101hie-panel.dtbo",
-        ":ti/k3-am625-beagleplay-csi2-ov5640.dtbo",
-        ":ti/k3-am625-beagleplay-csi2-tevi-ov5640.dtbo",
-        ":ti/k3-am625-beagleplay-lincolntech-lcd185-panel.dtbo",
-        ":ti/k3-am62p5-sk-mcan.dtbo",
-        ":ti/k3-am62p5-sk-microtips-mf101hie-panel.dtbo",
-        ":ti/k3-am625-sk-m2-cc3301.dtbo",
-        ":ti/k3-am62p5-sk-m2-cc3301.dtbo",
-        ":ti/k3-am625-sk-wl1837.dtbo",
+   TI_DTBOS = [
+       "k3-am62x-sk-hdmi-audio.dtbo",
+       "k3-am62x-sk-csi2-ov5640.dtbo",
+       "k3-am62x-sk-csi2-tevi-ov5640.dtbo",
+       "k3-am625-sk-microtips-mf101hie-panel.dtbo",
+       "k3-am62x-sk-lpm-wkup-sources.dtbo",
+       "k3-am62-lp-sk-microtips-mf101hie-panel.dtbo",
+       "k3-am625-beagleplay-csi2-ov5640.dtbo",
+       "k3-am625-beagleplay-csi2-tevi-ov5640.dtbo",
+       "k3-am625-beagleplay-lincolntech-lcd185-panel.dtbo",
+       "k3-am62p5-sk-mcan.dtbo",
+       "k3-am62p5-sk-microtips-mf101hie-panel.dtbo",
+       "k3-am625-sk-m2-cc3351.dtbo",
+       "k3-am62p5-sk-m2-cc3351.dtbo",
+       "k3-am625-sk-wl1837.dtbo",
+       "k3-am62p5-sk-dsi-rpi-7inch-panel.dtbo",
+       "k3-j722s-evm-csi2-quad-rpi-cam-imx219.dtbo",
+       "k3-j722s-evm-csi2-quad-tevi-ov5640.dtbo",
+       "k3-j722s-evm-dsi-rpi-7inch-panel.dtbo",
+       "k3-j722s-evm-fpdlink-fusion.dtbo",
+   ]
 
-The ``dtbo_srcs`` array order dicates the index. For example:
+The ``TI_DTBOS`` array order dictates the index. For example:
 
 .. list-table::
    :header-rows: 1
@@ -203,54 +211,42 @@ The ``dtbo_srcs`` array order dicates the index. For example:
    * - filename
      - index
 
-   * - :file:`ti/k3-am62x-sk-hdmi-audio.dtbo`
+   * - :file:`k3-am62x-sk-hdmi-audio.dtbo`
      - 0
 
-   * - :file:`ti/k3-am62x-sk-csi2-ov5640.dtbo`
+   * - :file:`k3-am62x-sk-csi2-ov5640.dtbo`
      - 1
+
+   * - :file:`k3-am62x-sk-csi2-tevi-ov5640.dtbo`
+     - 2
+
+   * - :file:`k3-am625-sk-microtips-mf101hie-panel.dtbo`
+     - 3
+
+   * - :file:`k3-am62x-sk-lpm-wkup-sources.dtbo`
+     - 4
 
 
 Adding more :file:`.dtbo` files to the :file:`dtbo.img`
 =======================================================
 
 In this section, we will see how to add more :file:`.dtbo` files to the :file:`dtbo.img`.
-Let's see how to add :file:`ti/k3-am62p5-sk-dsi-rpi-7inch-panel.dtbo` for example:
 
-   #. Edit :file:`${YOUR_PATH}/ti-kernel-aosp/BUILD.bazel`.
-      Look for the following section:
-
-      .. code-block:: bazel
-
-         kernel_build(
-             name = "ti",
-             outs = [
-                 "Image",
-                 "System.map",
-                 "k3-am62-lp-sk.dtb",
-                 "k3-am62-lp-sk-microtips-mf101hie-panel.dtbo",
-
-   #. In the ``kernel_build()`` section, add ``k3-am62p5-sk-dsi-rpi-7inch-panel.dtbo`` to the ``outs`` array.
-
-   #. Still in ``kernel_build()``, look for the ``make_goals`` array and add ``ti/k3-am62p5-sk-dsi-rpi-7inch-panel.dtbo``.
-
-   #. Now look for the following section:
+   #. Edit :file:`${YOUR_PATH}/ti-kernel-aosp/private/ti/device/am6x/BUILD.bazel`.
+      Look for the ``TI_DTBOS`` array and add your new dtbo file:
 
       .. code-block:: bazel
 
-         kernel_images(
-             name = "ti_images",
-             build_dtbo = True,
-             build_initramfs = True,
-             dtbo_srcs = [
-                 ":ti/k3-am62x-sk-hdmi-audio.dtbo",
-                 ":ti/k3-am62x-sk-csi2-ov5640.dtbo",
-                 ":ti/k3-am62x-sk-csi2-tevi-ov5640.dtbo",
-
-   #. In the ``kernel_images()``, add ``:ti/k3-am62p5-sk-dsi-rpi-7inch-panel.dtbo`` at the end of the array.
+         TI_DTBOS = [
+             "k3-am62x-sk-hdmi-audio.dtbo",
+             "k3-am62x-sk-csi2-ov5640.dtbo",
+             ...
+             "your-new-overlay.dtbo",  # Add your new dtbo here
+         ]
 
       .. important::
 
-         Make sure to add the it at the **end** of the array. The order in ``dtbo_srcs`` will determine
+         Make sure to add it at the **end** of the array. The order in ``TI_DTBOS`` will determine
          the ``adtbo_idx`` to be used.
 
    #. Rebuild the kernel as documented in :ref:`android-build-kernel`.

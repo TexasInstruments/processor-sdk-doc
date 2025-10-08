@@ -45,6 +45,6 @@ The following Device-Tree Overlays are supported:
    * - 10
      - Microtips Technology USA 10.1” WUXGA (1920x1200) OLDI panel
    * - 12
-     - M.2-CC3301 WiFi board on the M.2 connector
+     - M.2-CC3351 WiFi board on the M.2 connector
    * - 14
      - RPi 7inch touchscreen DSI panel

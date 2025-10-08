@@ -43,7 +43,7 @@ The following Device-Tree Overlays are supported:
    * - 4
      - Enable MAIN and MCU GPIO + CANUART wakeup source
    * - 11
-     - M.2-CC3301 WiFi board on the M.2 connector
+     - M.2-CC3351 WiFi board on the M.2 connector
    * - 13
      - WL1837 on-board WiFi for AM62X rev 1,2,3
 

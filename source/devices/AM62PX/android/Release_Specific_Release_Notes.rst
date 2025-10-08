@@ -24,16 +24,21 @@ status for all packages included in this release. The manifest can be
 found on the SDK download page.
 
 ****************
-Release 10.01.01
+Release 11.00.00
 ****************
 
-Released on March 2025
+Released on October 2025
 
 What's new
 ==========
 
-* This is a Android 15 based release of Processor SDK Android
-
+* This is an Android 16 based release of Processor SDK Android
+* Kernel upgraded to 6.12
+* U-Boot upgraded to 2025.01
+* AVB with OPTEE and Anti rollback protection
+* Device lock/unlock with OPTEE
+* CSI Camera Record
+* Multimedia Codec HAL compliance (conversion HIDL -> AIDL)
 
 Release Features
 ================
@@ -41,7 +46,7 @@ Release Features
 Following features are enabled/tested in this release for AM62Px Android:
 
 * **Boot:** eMMC boot, fastboot based flashing, A/B partition
-* **Security:** Keymint and gatekeeper implementation with OP-TEE
+* **Security:** Keymint and gatekeeper implementation with OP-TEE, device lock/unlock support, custom AVB keys support
 * **Platform:** SELinux enforced mode with user build, ADB over USB
 * **Connectivity:** Ethernet, USB touch, basic USB NCM, CC33XX M.2 Module Wi-Fi support
 * **Graphics:** GPU accelerated UI with drm_hwcomposer
@@ -49,7 +54,7 @@ Following features are enabled/tested in this release for AM62Px Android:
 * **Multimedia:** :ref:`HW video decode (h264, hevc) encode (h264) <Android Multimedia Wave5>`, USB camera, :ref:`CSI camera <android-csi-camera>`
 * **Android Baseport:** Support of Generic System Image
 * **Display:** Support for LVDS panel and dual display (mirroring and extended)
-* **Display;** Support for the RPI 7Inch touchscreen DSI panel.
+* **Display:** Support for the RPI 7Inch touchscreen DSI panel.
 
 SDK Components and Versions
 ===========================
@@ -57,17 +62,17 @@ SDK Components and Versions
 +------------------------------------+-------------------------------------------------------------------------------+
 | **Component**                      |  **Version**                                                                  |
 +====================================+===============================================================================+
-| **Android**                        | Android 15 / Android 15 Car                                                   |
+| **Android**                        | Android 16 / Android 16 Car                                                   |
 +------------------------------------+-------------------------------------------------------------------------------+
-| **Linux Kernel**                   | Linux 6.6.56                                                                  |
+| **Linux Kernel**                   | Linux 6.12.23                                                                 |
 +------------------------------------+-------------------------------------------------------------------------------+
-| **Linux Kernel Toolchain**         | clang-r510928                                                                 |
+| **Linux Kernel Toolchain**         | clang-r530567                                                                 |
 +------------------------------------+-------------------------------------------------------------------------------+
-| **U-boot**                         | 2024.04                                                                       |
+| **U-boot**                         | 2025.01                                                                       |
 +------------------------------------+-------------------------------------------------------------------------------+
 | **GCC Toolchain**                  | GNU Toolchain for the A-profile Architecture 13.3 (rel1)                      |
 +------------------------------------+-------------------------------------------------------------------------------+
-| **Base Linux SDK**                 | PROCESSOR-SDK-LINUX-AM62PX 10.01.10                                           |
+| **Base Linux SDK**                 | PROCESSOR-SDK-LINUX-AM62PX 11.00.00                                           |
 +------------------------------------+-------------------------------------------------------------------------------+
 | **Hardware Supported**             | AM62PX-SK                                                                     |
 +------------------------------------+-------------------------------------------------------------------------------+

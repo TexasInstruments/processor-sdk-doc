@@ -27,7 +27,7 @@ placeholder.
 Launching the app
 *****************
 
-   * Boot the EVM with binaries built using ``am62p_car-ap4a-userdebug`` lunch target
+   * Boot the EVM with binaries built using ``am62p_car-bp2a-userdebug`` lunch target
 
    * The SnappMaps application should be visible by default on the home screen
 

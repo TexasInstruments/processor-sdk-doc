@@ -22,7 +22,7 @@ OTA via ``adb sideload``
 
       .. code-block:: console
 
-         $ cd ${YOUR_PATH}/ti-aosp-15
+         $ cd ${YOUR_PATH}/ti-aosp-16
          $ source build/envsetup.sh
          $ lunch <BUILD_TARGET>
          $ export DIST_DIR=./dist_output

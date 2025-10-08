@@ -1,3 +1,5 @@
+.. _beagleplay-app-note:
+
 ###########
 Beagle Play
 ###########
