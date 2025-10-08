@@ -544,12 +544,35 @@ Main GPIO
 =========
 
 Configuring Main GPIO as an I/O daisy chain wakeup source requires a
-combination of gpio-keys with chained IRQ in the pinctrl driver. The
-configuration and working of these frameworks have been covered under
-the MCU GPIO and Main UART sections.
+combination of gpio-keys with chained IRQ in the pinctrl driver. To briefly
+explain, setting the 29th bit in the desired padconfig register, allows the
+pad to act as a wakeup source by triggering a wake IRQ to the DM R5 in Deep
+Sleep states.
 
 The reference configuration for Main GPIO wakeup can be found under
 gpio_key node in `k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=11.01.05#n21>`__
+
+.. code-block:: console
+
+   gpio_key {
+	   compatible = "gpio-keys";
+	   autorepeat;
+	   pinctrl-names = "default";
+	   pinctrl-0 = <&main_gpio1_pins_default>;
+	   switch {
+		   label = "WKGPIO";
+		   linux,code = <KEY_WAKEUP>;
+		   interrupts-extended = <&main_gpio1 10 IRQ_TYPE_EDGE_RISING>,
+			   <&main_pmx0 0x1a0>;
+		   interrupt-names = "irq", "wakeup";
+	   };
+   };
+
+Here, we chain the IRQ to the pinctrl driver using the second
+interrupts-extended entry. The wake IRQ framework in Linux works in such a
+way that the second entry gets marked as a wakeup source, and then the
+pinctrl driver is informed that the pad 0x1a0 in this case is to be
+configured as a wakeup pad when system enters Deep Sleep.
 
 Main GPIO wakeup can only be tested when
 `k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=11.01.05>`__
