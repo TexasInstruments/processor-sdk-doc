@@ -258,6 +258,41 @@ For example, if you wish to wakeup from Deep Sleep or MCU Only mode in 10 second
       [   34.731147] remoteproc remoteproc0: remote processor 79000000.r5f is now up
       [   34.754176] PM: suspend exit
 
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+   .. code-block:: console
+
+      root@am62lxx-evm:~# rtcwake -m mem -s 10
+      rtcwake: assuming RTC uses UTC ...
+      rtcwake: wakeup from "mem" using /dev/rtc0 at Thu Jan  1 00:00:46 1970
+      [   28.138624] PM: suspend entry (deep)
+      [   28.142400] Filesystems sync: 0.000 seconds
+      [   28.159141] Freezing user space processes
+      [   28.169800] Freezing user space processes completed (elapsed 0.002 seconds)
+      [   28.176909] OOM killer disabled.
+      [   28.180168] Freezing remaining freezable tasks
+      [   28.186015] Freezing remaining freezable tasks completed (elapsed 0.001 seconds)
+      [   28.193484] printk: Suspending console(s) (use no_console_suspend to debug)
+      ERROR:   Wake up src 0x10000
+      [   28.229712] Disabling non-boot CPUs ...
+      [   28.232172] psci: CPU1 killed (polled 0 ms)
+      [   28.233437] Enabling non-boot CPUs ...
+      [   28.233757] Detected VIPT I-cache on CPU1
+      [   28.233811] GICv3: CPU1: found redistributor 1 region 0:0x0000000001860000
+      [   28.233875] CPU1: Booted secondary processor 0x0000000001 [0x410fd034]
+      [   28.235241] CPU1 is up
+      [   28.257825] am65-cpsw-nuss 8000000.ethernet: set new flow-id-base 96
+      [   28.271845] am65-cpsw-nuss 8000000.ethernet eth0: PHY [8000f00.mdio:00] driver [TI DP83867] (irq=POLL)
+      [   28.271880] am65-cpsw-nuss 8000000.ethernet eth0: configuring for phy/rgmii-rxid link mode
+      [   28.285658] am65-cpsw-nuss 8000000.ethernet eth1: PHY [8000f00.mdio:01] driver [TI DP83867] (irq=POLL)
+      [   28.285678] am65-cpsw-nuss 8000000.ethernet eth1: configuring for phy/rgmii-rxid link mode
+      [   28.364033] OOM killer enabled.
+      [   28.367181] Restarting tasks ... done.
+      [   28.378392] random: crng reseeded on system resumption
+      [   28.384269] PM: suspend exit
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX')
+
    .. note::
 
       The system will enter the mode selected by DM on the basis on existing constraints.
