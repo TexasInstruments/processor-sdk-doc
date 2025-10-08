@@ -396,16 +396,30 @@ a specific way to be configured as wakeup sources.
 For detailed information and sequence please refer to
 I/O Power Management and Daisy Chaining section in the TRM.
 
-.. note::
-   |__PART_FAMILY_DEVICE_NAMES__| supports the ability to wakeup using pad based wake event ONLY in Deep Sleep or MCU Only Mode.
-   During active system usage, even if the wake_enable bit is set the system will be unresponsive to any wakeup
-   activity on that pad.
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX')
 
+   .. note::
 
-To demonstrate I/O daisy chain wakeup as part of |__PART_FAMILY_DEVICE_NAMES__| offering, two reference examples are provided:
+      |__PART_FAMILY_DEVICE_NAMES__| supports the ability to wakeup using pad based wake event ONLY in Deep Sleep or MCU Only Mode.
+      During active system usage, even if the wake_enable bit is set the system will be unresponsive to any wakeup
+      activity on that pad.
 
-#. main_uart0 is used where a key press on the Linux console can wakeup the system.
-#. main_gpio is used where activity on configured GPIO pin can wakeup the system.
+   To demonstrate I/O daisy chain wakeup as part of |__PART_FAMILY_DEVICE_NAMES__| offering, two reference examples are provided:
+
+   #. main_uart0 is used where a key press on the Linux console can wakeup the system.
+   #. main_gpio is used where activity on configured GPIO pin can wakeup the system.
+
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+   .. note::
+
+      |__PART_FAMILY_DEVICE_NAMES__| supports the ability to wakeup using pad based wake event ONLY in Deep Sleep.
+      During active system usage, even if the wake_enable bit is set the system will be unresponsive to any wakeup
+      activity on that pad.
+
+   To demonstrate I/O daisy chain wakeup as part of |__PART_FAMILY_DEVICE_NAMES__| offering, a reference example is provided:
+
+   #. main_uart0 is used where a key press on the Linux console can wakeup the system.
 
 
 Main UART
