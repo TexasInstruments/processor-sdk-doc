@@ -9,7 +9,7 @@ ARM Trusted Firmware changes
 
 This patch updates the system suspend mode for the AM62L platform. After making the following changes,
 re-build the ARM Trusted Firmware and then re-package it in the :file:`tispl.bin` file to ensure
-the changes take effect. To learn more about TF-A and how to rebuild it, see :ref:`_foundational-components-atf`.
+the changes take effect. To learn more about TF-A and how to rebuild it, see :ref:`foundational-components-atf`.
 For rebuilding U-Boot and generating the new :file:`tispl.bin` follow :ref:`Build-U-Boot-label`.
 
 .. code-block:: diff
