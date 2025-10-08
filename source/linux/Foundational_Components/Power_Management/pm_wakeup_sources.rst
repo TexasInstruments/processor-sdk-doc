@@ -346,16 +346,14 @@ Main UART, GPIO, I2C, etc. The question then arises how to wakeup the SoC from p
 to these controllers (for example main UART)? Here's where the role of I/O Daisy Chaining comes in.
 At the hardware level, all the pads in an SoC have to be pinmuxed to dedicated controllers like UART or GPIO.
 
-For example, If a key press on Main UART (which is used for Linux console logs)
+For example, if a key press on Main UART (which is used for Linux console logs)
 were to wakeup the system from Deep Sleep then simply configuring the Main UART controller as a
 wakeup source wouldn't suffice. This is because the UART controller is powered off and wouldn't be able to
 register any key press as such. However, at the "pad" level we are still connected, and the pads have
 a specific way to be configured as wakeup sources.
 
 For detailed information and sequence please refer to
-I/O Power Management and Daisy Chaining section in the TRM. To briefly explain,
-setting the 29th bit in the desired padconfig register, allows the pad to act as a wakeup source by
-triggering a wake irq to the DM R5 in Deep Sleep states.
+I/O Power Management and Daisy Chaining section in the TRM.
 
 .. note::
    |__PART_FAMILY_DEVICE_NAMES__| supports the ability to wakeup using pad based wake event ONLY in Deep Sleep or MCU Only Mode.
@@ -372,59 +370,174 @@ To demonstrate I/O daisy chain wakeup as part of |__PART_FAMILY_DEVICE_NAMES__| 
 Main UART
 =========
 
-The way to configure UART as an I/O daisy chain wakeup, refer to the
-main_uart0 node in `k3-am62x-sk-common.dtsi <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-common.dtsi?h=11.01.05>`_
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-.. code-block:: dts
+   To configure UART as an I/O daisy chain wakeup, refer to the
+   main_uart0 node in `k3-am62x-sk-common.dtsi <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-common.dtsi?h=11.01.16>`_
 
-   interrupts-extended = <&gic500 GIC_SPI 178 IRQ_TYPE_LEVEL_HIGH>,
-                <&main_pmx0 0x1c8>; /* (D14) UART0_RXD PADCONFIG114 */
-   interrupt-names = "irq", "wakeup";
+   .. code-block:: dts
 
-Here, we chain the IRQ to the pinctrl driver using the second interrupts-extended entry.
-The wake IRQ framework in Linux works in such a way that the second entry gets marked as a
-wakeup source, and then the pinctrl driver is informed that the pad 0x1c8 in this case is to
-be configured as a wakeup pad when system enters deep sleep.
+      &main_pmx0 {
+         main_uart0_tx_pins_default: main-uart0-tx-default-pins {
+            bootph-all;
+            pinctrl-single,pins = <
+               AM62X_IOPAD(0x1cc, PIN_OUTPUT, 0) /* (E14/E11) UART0_TXD */
+            >;
+         };
 
-To use main_uart0 as a wakeup source, ensure serial is a wake-irq in /proc/interrupts:
+         main_uart0_rx_pins_default: main-uart0-rx-default-pins {
+            bootph-all;
+            pinctrl-single,pins = <
+               AM62X_IOPAD(0x1c8, PIN_INPUT, 0) /* (D14/A13) UART0_RXD */
+            >;
+         };
 
-.. code-block:: console
+         main_uart0_rx_pins_wakeup: main-uart0-rx-wakeup-pins {
+            pinctrl-single,pins = <
+               AM62X_IOPAD(0x1c8, PIN_INPUT | PIN_WKUP_EN, 0) /* (D14/A13) UART0_RXD */
+            >;
+         };
+      };
 
-   root@<machine>:~# grep wakeup /proc/interrupts
-   231:          0          0          0          0   pinctrl 456 Edge 2800000.serial:wakeup
+      &main_uart0 {
+         bootph-all;
+         status = "okay";
+         pinctrl-names = "default", "wakeup";
+         pinctrl-0 = <&main_uart0_tx_pins_default>, <&main_uart0_rx_pins_default>;
+         pinctrl-1 = <&main_uart0_tx_pins_default>, <&main_uart0_rx_pins_wakeup>;
+         wakeup-source = <&system_deep_sleep>,
+               <&system_mcu_only>,
+               <&system_standby>;
+      };
 
-Then, run this script:
+.. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
-.. code-block:: bash
+   To configure UART as an I/O daisy chain wakeup, refer to the
+   main_uart0 node in `k3-am62a7-sk.dts <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62a7-sk.dts?h=11.01.16>`_
 
-   #!/bin/bash -xe
+   .. code-block:: dts
 
-   # Detach kernel serial console
-   consoles=$(find /sys/bus/platform/devices/*.serial/ -name console)
-   for console in ${consoles}; do
-           echo -n N > ${console}
-   done
+      &main_pmx0 {
+         main_uart0_tx_pins_default: main-uart0-tx-default-pins {
+            pinctrl-single,pins = <
+               AM62AX_IOPAD(0x1cc, PIN_OUTPUT, 0) /* (D15) UART0_TXD */
+            >;
+            bootph-all;
+         };
 
-   # Configure PM runtime autosuspend
-   uarts=$(find /sys/bus/platform/devices/*.serial/power/ -type d)
-   for uart in $uarts; do
-           echo -n 3000 > $uart/autosuspend_delay_ms
-           echo -n enabled > $uart/wakeup
-           echo -n auto > $uart/control
-   done
+         main_uart0_rx_pins_default: main-uart0-rx-default-pins {
+            pinctrl-single,pins = <
+               AM62AX_IOPAD(0x1c8, PIN_INPUT, 0) /* (E14) UART0_RXD */
+            >;
+            bootph-all;
+         };
 
-   # Configure wake-up from suspend
-   uarts=$(find /sys/class/tty/tty[SO]*/power/ -type d 2>/dev/null)
-   for uart in $uarts; do
-           echo -n enabled > $uart/wakeup
-   done
+         main_uart0_rx_pins_wakeup: main-uart0-rx-wakeup-pins {
+            pinctrl-single,pins = <
+               AM62AX_IOPAD(0x1c8, PIN_INPUT | PIN_WKUP_EN, 0) /* (E14) UART0_RXD */
+            >;
+         };
+      };
 
+      &main_uart0 {
+         status = "okay";
+         pinctrl-names = "default", "wakeup";
+         pinctrl-0 = <&main_uart0_tx_pins_default>, <&main_uart0_rx_pins_default>;
+         pinctrl-1 = <&main_uart0_tx_pins_default>, <&main_uart0_rx_pins_wakeup>;
+         wakeup-source = <&system_deep_sleep>,
+               <&system_mcu_only>,
+               <&system_standby>;
+         bootph-all;
+      };
 
-This will configure UART to act as deep sleep wakeup source, and
-then a *key press* on same terminal should trigger a wakeup from Deep Sleep.
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
-Any other pad can be chosen as per application requirements depending on which pad is required
-to wakeup the system.
+   To configure UART as an I/O daisy chain wakeup, refer to the
+   main_uart0 node in `k3-am62p5-sk.dts <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62p5-sk.dts?h=11.01.16>`_
+
+   .. code-block:: dts
+
+      &main_pmx0 {
+         main_uart0_tx_pins_default: main-uart0-tx-default-pins {
+            pinctrl-single,pins = <
+               AM62PX_IOPAD(0x1cc, PIN_OUTPUT, 0) /* (B22) UART0_TXD */
+            >;
+            bootph-all;
+         };
+
+         main_uart0_rx_pins_default: main-uart0-rx-default-pins {
+            pinctrl-single,pins = <
+               AM62PX_IOPAD(0x1c8, PIN_INPUT, 0) /* (A22) UART0_RXD */
+            >;
+            bootph-all;
+         };
+
+         main_uart0_rx_pins_wakeup: main-uart0-rx-wakeup-pins {
+            pinctrl-single,pins = <
+               AM62PX_IOPAD(0x1c8, PIN_INPUT | PIN_WKUP_EN, 0) /* (A22) UART0_RXD */
+            >;
+         };
+      };
+
+      &main_uart0 {
+         pinctrl-names = "default", "wakeup";
+         pinctrl-0 = <&main_uart0_tx_pins_default>, <&main_uart0_rx_pins_default>;
+         pinctrl-1 = <&main_uart0_tx_pins_default>, <&main_uart0_rx_pins_wakeup>;
+         wakeup-source = <&system_deep_sleep>,
+               <&system_mcu_only>,
+               <&system_standby>;
+         status = "okay";
+         bootph-all;
+      };
+
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+   To configure UART as an I/O daisy chain wakeup, refer to the
+   main_uart0 node in `k3-am62l3-evm.dts <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62l3-evm.dts?h=11.01.16>`_
+
+   .. code-block:: dts
+
+      &main_pmx0 {
+         main_uart0_tx_pins_default: main-uart0-tx-default-pins {
+            pinctrl-single,pins = <
+               AM62LX_IOPAD(0x01b8, PIN_OUTPUT, 0) /* (C13) UART0_TXD */
+            >;
+            bootph-all;
+         };
+
+         main_uart0_rx_pins_default: main-uart0-rx-default-pins {
+            pinctrl-single,pins = <
+               AM62LX_IOPAD(0x01b4, PIN_INPUT, 0) /* (D13) UART0_RXD */
+            >;
+            bootph-all;
+         };
+
+         main_uart0_rx_pins_wakeup: main-uart0-rx-wakeup-pins {
+            pinctrl-single,pins = <
+               AM62LX_IOPAD(0x01b4, PIN_INPUT | PIN_WKUP_EN, 0) /* (D13) UART0_RXD */
+            >;
+         };
+      };
+
+      &main_uart0 {
+         pinctrl-names = "default", "wakeup";
+         pinctrl-0 = <&main_uart0_tx_pins_default>, <&main_uart0_rx_pins_default>;
+         pinctrl-1 = <&main_uart0_tx_pins_default>, <&main_uart0_rx_pins_wakeup>;
+         wakeup-source = <&system_deep_sleep>;
+         status = "okay";
+         bootph-all;
+      };
+
+In the above code, a "wakeup" pinctrl state is defined for main_uart0. The
+"wakeup" pinctrl state sets the  WKUP_EN flag on the desired padconfig register,
+which allows the pad to act as a wakeup source. During suspend, the Linux
+8250_omap serial driver switches from the "default" pinctrl state to the "wakeup"
+pinctrl state.
+
+This configures UART to act as a wakeup source, and a *key press* on same
+terminal should trigger a wakeup from LPM.
+
+Any UART can be chosen according to application requirements.
 
 
 Main GPIO
