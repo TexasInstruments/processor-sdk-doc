@@ -857,3 +857,28 @@ Deep Sleep and RTC Only + DDR.
      "vdd_rtc", "0.75", "0.02"
      "vdd_rtc_1v8", "1.80", "0.02"
      "Total"," ","2.41"
+
+Resume Latency Performance
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. csv-table:: LPM Resume Latency Performance
+   :header: "Low Power Mode","Total Resume Latency (ms)"
+
+   "RTC Only + DDR", "459.40"
+   "Deep Sleep", "98.70"
+
+The performance numbers are measured without the Linux printk logs. To remove the
+Linux printk logs, run the following commands in the terminal:
+
+.. code:: console
+
+   # Detach kernel serial console
+   consoles=$(find /sys/bus/platform/devices/*.serial/ -name console)
+   for console in ${consoles}; do
+        echo -n N > ${console}
+   done
+
+
+.. note::
+
+   The measurements shown are from using the default SDK with no extra optimizations.
