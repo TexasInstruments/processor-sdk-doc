@@ -4,7 +4,7 @@
 Wakeup Sources
 ##############
 
-This section talks about the multiple ways in which we can wakeup the |__PART_FAMILY_DEVICE_NAMES__| SoC from Low Power modes like Deep Sleep or MCU only.
+This section talks about the multiple ways in which we can wakeup the |__PART_FAMILY_DEVICE_NAMES__| SoC from various low power modes.
 The |__PART_FAMILY_DEVICE_NAMES__| SoC support various wakeup sources like GP Timers, RTC Timer, UART, I2C, WKUP GPIO, and I/O Daisy Chain.
 
 The table below lists the wakeup sources supported in this SDK release and whether that source is
@@ -51,6 +51,20 @@ valid for given low power modes:
    | CAN UART I/O Daisy Chain                       | Yes   | Yes  | Yes     | Yes      |
    +------------------------------------------------+-------+------+---------+----------+
 
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+   +----------------------------------+------------+----------------+
+   |  Wakeup Source                   | Deep Sleep | RTC Only + DDR |
+   +==================================+============+================+
+   | Real-Time Clock (RTC)            | Yes        | Yes            |
+   +----------------------------------+------------+----------------+
+   | Main I/O Daisy Chain (Main UART) | Yes        | No             |
+   +----------------------------------+------------+----------------+
+   | USB Wakeup                       | Yes        | No             |
+   +----------------------------------+------------+----------------+
+   | RTC Ext Pin                      | Yes        | Yes            |
+   +----------------------------------+------------+----------------+
+
 *********************
 Real-Time Clock (RTC)
 *********************
@@ -73,7 +87,7 @@ It's possible to use the SoC's internal RTC to wakeup the system using the comma
    - Perform a dry run to wakeup the computer at a given time. (Press Ctrl + C to abort):
       rtcwake -m on --date {{hh:ss}}
 
-For example, if you wish to wakeup from Deep Sleep or MCU Only mode in 10 seconds, use the command like this:
+For example, to wakeup from Deep Sleep in 10 seconds, use the command like this:
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
@@ -258,84 +272,126 @@ For example, if you wish to wakeup from Deep Sleep or MCU Only mode in 10 second
       [   34.731147] remoteproc remoteproc0: remote processor 79000000.r5f is now up
       [   34.754176] PM: suspend exit
 
-   .. note::
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
 
-      The system will enter the mode selected by DM on the basis on existing constraints.
+   .. code-block:: console
+
+      root@am62lxx-evm:~# rtcwake -m mem -s 10
+      rtcwake: assuming RTC uses UTC ...
+      rtcwake: wakeup from "mem" using /dev/rtc0 at Thu Jan  1 00:00:46 1970
+      [   28.138624] PM: suspend entry (deep)
+      [   28.142400] Filesystems sync: 0.000 seconds
+      [   28.159141] Freezing user space processes
+      [   28.169800] Freezing user space processes completed (elapsed 0.002 seconds)
+      [   28.176909] OOM killer disabled.
+      [   28.180168] Freezing remaining freezable tasks
+      [   28.186015] Freezing remaining freezable tasks completed (elapsed 0.001 seconds)
+      [   28.193484] printk: Suspending console(s) (use no_console_suspend to debug)
+      ERROR:   Wake up src 0x10000
+      [   28.229712] Disabling non-boot CPUs ...
+      [   28.232172] psci: CPU1 killed (polled 0 ms)
+      [   28.233437] Enabling non-boot CPUs ...
+      [   28.233757] Detected VIPT I-cache on CPU1
+      [   28.233811] GICv3: CPU1: found redistributor 1 region 0:0x0000000001860000
+      [   28.233875] CPU1: Booted secondary processor 0x0000000001 [0x410fd034]
+      [   28.235241] CPU1 is up
+      [   28.257825] am65-cpsw-nuss 8000000.ethernet: set new flow-id-base 96
+      [   28.271845] am65-cpsw-nuss 8000000.ethernet eth0: PHY [8000f00.mdio:00] driver [TI DP83867] (irq=POLL)
+      [   28.271880] am65-cpsw-nuss 8000000.ethernet eth0: configuring for phy/rgmii-rxid link mode
+      [   28.285658] am65-cpsw-nuss 8000000.ethernet eth1: PHY [8000f00.mdio:01] driver [TI DP83867] (irq=POLL)
+      [   28.285678] am65-cpsw-nuss 8000000.ethernet eth1: configuring for phy/rgmii-rxid link mode
+      [   28.364033] OOM killer enabled.
+      [   28.367181] Restarting tasks ... done.
+      [   28.378392] random: crng reseeded on system resumption
+      [   28.384269] PM: suspend exit
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX')
+
+      .. note::
+
+         The system will enter the mode selected by DM on the basis on existing constraints.
+
 
 ********
 MCU GPIO
 ********
 
-One of the most common ways to wakeup a system is by using some I/O activity. MCU GPIOs allow us to do this
-by configuring the MCU GPIO controller as a wakeup source.
-In ideal scenarios, the firmware running on MCU core is responsible for configuring MCU GPIO's as a wakeup source.
-However, if the application design doesn't rely too much on the MCU firmware then
-Linux can be used to configure the MCU GPIOs as a wakeup source. You can refer to the mcu_gpio_key node in
-`k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=11.01.05>`__
-and use it as a template to configure the MCU GPIO of your choice as a wakeup capable GPIO.
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
 
-A brief guide to configuring an MCU GPIO as wakeup:
+   CAN UART wakeup is not supported on AM62LX.
 
-First, we add gpio-keys as a compatible string, refer to `gpio_keys kernel documentation <https://www.kernel.org/doc/Documentation/devicetree/bindings/input/gpio-keys.txt>`__
-for details.
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX')
 
-.. code-block:: dts
+   One of the most common ways to wakeup a system is by using some I/O activity. MCU GPIOs allow us to do this
+   by configuring the MCU GPIO controller as a wakeup source.
+   In ideal scenarios, the firmware running on MCU core is responsible for configuring MCU GPIO's as a wakeup source.
+   However, if the application design doesn't rely too much on the MCU firmware then
+   Linux can be used to configure the MCU GPIOs as a wakeup source. You can refer to the mcu_gpio_key node in
+   `k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=11.01.05>`__
+   and use it as a template to configure the MCU GPIO of your choice as a wakeup capable GPIO.
 
-   compatible = "gpio-keys";
+   A brief guide to configuring an MCU GPIO as wakeup:
+
+   First, we add gpio-keys as a compatible string, refer to `gpio_keys kernel documentation <https://www.kernel.org/doc/Documentation/devicetree/bindings/input/gpio-keys.txt>`__
+   for details.
+
+   .. code-block:: dts
+
+      compatible = "gpio-keys";
 
 
-Set the desired pinctrl,
+   Set the desired pinctrl,
 
-.. code-block:: dts
+   .. code-block:: dts
 
-   pinctrl-names = "default";
-   pinctrl-0 = <&wake_mcugpio1_pins_default>;
+      pinctrl-names = "default";
+      pinctrl-0 = <&wake_mcugpio1_pins_default>;
 
-Setup the interrupt parent and interrupt as MCU_GPIO0,
+   Setup the interrupt parent and interrupt as MCU_GPIO0,
 
-.. code-block:: dts
+   .. code-block:: dts
 
-   interrupt-parent = <&mcu_gpio0>;
-   interrupts = <4 IRQ_TYPE_EDGE_RISING>;
+      interrupt-parent = <&mcu_gpio0>;
+      interrupts = <4 IRQ_TYPE_EDGE_RISING>;
 
-Now, under the switch node we add the following:
+   Now, under the switch node we add the following:
 
-.. code-block:: dts
+   .. code-block:: dts
 
-   switch {
-               label = "MCUGPIO";
-               linux,code = <143>;
-               gpios = <&mcu_gpio0 4 GPIO_ACTIVE_LOW>;
-               wakeup-source;
-   };
+      switch {
+                  label = "MCUGPIO";
+                  linux,code = <143>;
+                  gpios = <&mcu_gpio0 4 GPIO_ACTIVE_LOW>;
+                  wakeup-source;
+      };
 
-#. The label is the descriptive name of the key. The string will reflect under /proc/interrupts as:
+   #. The label is the descriptive name of the key. The string will reflect under /proc/interrupts as:
 
-    .. code-block:: console
+       .. code-block:: console
 
-        root@<machine>:~# cat /proc/interrupts | grep "MCUGPIO"
-        273:          0          0          0          0      GPIO  4 Edge    -davinci_gpio  MCUGPIO
+           root@<machine>:~# cat /proc/interrupts | grep "MCUGPIO"
+           273:          0          0          0          0      GPIO  4 Edge    -davinci_gpio  MCUGPIO
 
-#. linux,code: Keycode to emit.
-#. gpios: the gpio required to be used as the gpio-key.
-#. The `wakeup-source <https://www.kernel.org/doc/Documentation/devicetree/bindings/power/wakeup-source.txt>`__ property describes
-   devices which have wakeup capability.
+   #. linux,code: Keycode to emit.
+   #. gpios: the gpio required to be used as the gpio-key.
+   #. The `wakeup-source <https://www.kernel.org/doc/Documentation/devicetree/bindings/power/wakeup-source.txt>`__ property describes
+      devices which have wakeup capability.
 
-This indicates that gpio_keys can wake-up the system from Deep Sleep or MCU Only mode.
+   This indicates that gpio_keys can wake-up the system from Deep Sleep or MCU Only mode.
 
-The reason we can easily use MCU GPIOs to wakeup the system from deep sleep is because
-MCU GPIO's are in a power domain that is never really shut down. This means that this domain
-stays ON even when the SOC is in deep sleep. Hence, the GPIO controller is able to act as a wakeup
-source and send a wakeup interrupt to the Device Manager. To understand the role of Device Manager
-please refer to :ref:`S/W Architecture of System Suspend<pm_sw_arch>`
+   The reason we can easily use MCU GPIOs to wakeup the system from deep sleep is because
+   MCU GPIO's are in a power domain that is never really shut down. This means that this domain
+   stays ON even when the SOC is in deep sleep. Hence, the GPIO controller is able to act as a wakeup
+   source and send a wakeup interrupt to the Device Manager. To understand the role of Device Manager
+   please refer to :ref:`S/W Architecture of System Suspend<pm_sw_arch>`
 
-MCU GPIO wakeup can only be tested when
-`k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=11.01.05>`__
-overlay is loaded. Please refer to :ref:`How to enable DT overlays<howto_dt_overlays>` for more details.
+   MCU GPIO wakeup can only be tested when
+   `k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=11.01.05>`__
+   overlay is loaded. Please refer to :ref:`How to enable DT overlays<howto_dt_overlays>` for more details.
 
-Once the system has entered Deep Sleep or MCU Only mode as shown in the
-:ref:`LPM section<lpm_modes>`, wakeup from MCU_SPI0_D1 can be triggered
-by grounding Pin 4 on J8 MCU Header.
+   Once the system has entered Deep Sleep or MCU Only mode as shown in the
+   :ref:`LPM section<lpm_modes>`, wakeup from MCU_SPI0_D1 can be triggered
+   by grounding Pin 4 on J8 MCU Header.
 
 ********************
 Main I/O Daisy Chain
@@ -353,126 +409,288 @@ register any key press as such. However, at the "pad" level we are still connect
 a specific way to be configured as wakeup sources.
 
 For detailed information and sequence please refer to
-I/O Power Management and Daisy Chaining section in the TRM. To briefly explain,
-setting the 29th bit in the desired padconfig register, allows the pad to act as a wakeup source by
-triggering a wake irq to the DM R5 in Deep Sleep states.
+I/O Power Management and Daisy Chaining section in the TRM.
 
-.. note::
-   |__PART_FAMILY_DEVICE_NAMES__| supports the ability to wakeup using pad based wake event ONLY in Deep Sleep or MCU Only Mode.
-   During active system usage, even if the wake_enable bit is set the system will be unresponsive to any wakeup
-   activity on that pad.
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX')
 
+   .. note::
 
-To demonstrate I/O daisy chain wakeup as part of |__PART_FAMILY_DEVICE_NAMES__| offering, two reference examples are provided:
+      |__PART_FAMILY_DEVICE_NAMES__| supports the ability to wakeup using pad based wake event ONLY in Deep Sleep or MCU Only Mode.
+      During active system usage, even if the wake_enable bit is set the system will be unresponsive to any wakeup
+      activity on that pad.
 
-#. main_uart0 is used where a key press on the Linux console can wakeup the system.
-#. main_gpio is used where activity on configured GPIO pin can wakeup the system.
+   To demonstrate I/O daisy chain wakeup as part of |__PART_FAMILY_DEVICE_NAMES__| offering, two reference examples are provided:
+
+   #. main_uart0 is used where a key press on the Linux console can wakeup the system.
+   #. main_gpio is used where activity on configured GPIO pin can wakeup the system.
+
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+   .. note::
+
+      |__PART_FAMILY_DEVICE_NAMES__| supports the ability to wakeup using pad based wake event ONLY in Deep Sleep.
+      During active system usage, even if the wake_enable bit is set the system will be unresponsive to any wakeup
+      activity on that pad.
+
+   To demonstrate I/O daisy chain wakeup as part of |__PART_FAMILY_DEVICE_NAMES__| offering, a reference example is provided:
+
+   #. main_uart0 is used where a key press on the Linux console can wakeup the system.
 
 
 Main UART
 =========
 
-The way to configure UART as an I/O daisy chain wakeup, refer to the
-main_uart0 node in `k3-am62x-sk-common.dtsi <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-common.dtsi?h=11.01.05>`_
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-.. code-block:: dts
+   To configure UART as an I/O daisy chain wakeup, refer to the
+   main_uart0 node in `k3-am62x-sk-common.dtsi <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-common.dtsi?h=11.01.16>`_
 
-   interrupts-extended = <&gic500 GIC_SPI 178 IRQ_TYPE_LEVEL_HIGH>,
-                <&main_pmx0 0x1c8>; /* (D14) UART0_RXD PADCONFIG114 */
-   interrupt-names = "irq", "wakeup";
+   .. code-block:: dts
 
-Here, we chain the IRQ to the pinctrl driver using the second interrupts-extended entry.
-The wake IRQ framework in Linux works in such a way that the second entry gets marked as a
-wakeup source, and then the pinctrl driver is informed that the pad 0x1c8 in this case is to
-be configured as a wakeup pad when system enters deep sleep.
+      &main_pmx0 {
+	      main_uart0_tx_pins_default: main-uart0-tx-default-pins {
+		      bootph-all;
+		      pinctrl-single,pins = <
+			      AM62X_IOPAD(0x1cc, PIN_OUTPUT, 0) /* (E14/E11) UART0_TXD */
+		      >;
+	      };
 
-To use main_uart0 as a wakeup source, ensure serial is a wake-irq in /proc/interrupts:
+	      main_uart0_rx_pins_default: main-uart0-rx-default-pins {
+		      bootph-all;
+		      pinctrl-single,pins = <
+			      AM62X_IOPAD(0x1c8, PIN_INPUT, 0) /* (D14/A13) UART0_RXD */
+		      >;
+	      };
 
-.. code-block:: console
+	      main_uart0_rx_pins_wakeup: main-uart0-rx-wakeup-pins {
+		      pinctrl-single,pins = <
+			      AM62X_IOPAD(0x1c8, PIN_INPUT | PIN_WKUP_EN, 0) /* (D14/A13) UART0_RXD */
+		      >;
+	      };
+      };
 
-   root@<machine>:~# grep wakeup /proc/interrupts
-   231:          0          0          0          0   pinctrl 456 Edge 2800000.serial:wakeup
+      &main_uart0 {
+         bootph-all;
+         status = "okay";
+         pinctrl-names = "default", "wakeup";
+         pinctrl-0 = <&main_uart0_tx_pins_default>, <&main_uart0_rx_pins_default>;
+         pinctrl-1 = <&main_uart0_tx_pins_default>, <&main_uart0_rx_pins_wakeup>;
+         wakeup-source = <&system_deep_sleep>,
+               <&system_mcu_only>,
+               <&system_standby>;
+      };
 
-Then, run this script:
+.. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
-.. code-block:: bash
+   To configure UART as an I/O daisy chain wakeup, refer to the
+   main_uart0 node in `k3-am62a7-sk.dts <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62a7-sk.dts?h=11.01.16>`_
 
-   #!/bin/bash -xe
+   .. code-block:: dts
 
-   # Detach kernel serial console
-   consoles=$(find /sys/bus/platform/devices/*.serial/ -name console)
-   for console in ${consoles}; do
-           echo -n N > ${console}
-   done
+      &main_pmx0 {
+	      main_uart0_tx_pins_default: main-uart0-tx-default-pins {
+		      pinctrl-single,pins = <
+			      AM62AX_IOPAD(0x1cc, PIN_OUTPUT, 0) /* (D15) UART0_TXD */
+		      >;
+            bootph-all;
+	      };
 
-   # Configure PM runtime autosuspend
-   uarts=$(find /sys/bus/platform/devices/*.serial/power/ -type d)
-   for uart in $uarts; do
-           echo -n 3000 > $uart/autosuspend_delay_ms
-           echo -n enabled > $uart/wakeup
-           echo -n auto > $uart/control
-   done
+	      main_uart0_rx_pins_default: main-uart0-rx-default-pins {
+		      pinctrl-single,pins = <
+			      AM62AX_IOPAD(0x1c8, PIN_INPUT, 0) /* (E14) UART0_RXD */
+		      >;
+            bootph-all;
+	      };
 
-   # Configure wake-up from suspend
-   uarts=$(find /sys/class/tty/tty[SO]*/power/ -type d 2>/dev/null)
-   for uart in $uarts; do
-           echo -n enabled > $uart/wakeup
-   done
+	      main_uart0_rx_pins_wakeup: main-uart0-rx-wakeup-pins {
+		      pinctrl-single,pins = <
+			      AM62AX_IOPAD(0x1c8, PIN_INPUT | PIN_WKUP_EN, 0) /* (E14) UART0_RXD */
+		      >;
+	      };
+      };
 
+      &main_uart0 {
+         status = "okay";
+         pinctrl-names = "default", "wakeup";
+         pinctrl-0 = <&main_uart0_tx_pins_default>, <&main_uart0_rx_pins_default>;
+         pinctrl-1 = <&main_uart0_tx_pins_default>, <&main_uart0_rx_pins_wakeup>;
+         wakeup-source = <&system_deep_sleep>,
+               <&system_mcu_only>,
+               <&system_standby>;
+         bootph-all;
+      };
 
-This will configure UART to act as deep sleep wakeup source, and
-then a *key press* on same terminal should trigger a wakeup from Deep Sleep.
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
-Any other pad can be chosen as per application requirements depending on which pad is required
-to wakeup the system.
+   To configure UART as an I/O daisy chain wakeup, refer to the
+   main_uart0 node in `k3-am62p5-sk.dts <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62p5-sk.dts?h=11.01.16>`_
+
+   .. code-block:: dts
+
+      &main_pmx0 {
+	      main_uart0_tx_pins_default: main-uart0-tx-default-pins {
+		      pinctrl-single,pins = <
+			      AM62PX_IOPAD(0x1cc, PIN_OUTPUT, 0) /* (B22) UART0_TXD */
+		      >;
+            bootph-all;
+	      };
+
+	      main_uart0_rx_pins_default: main-uart0-rx-default-pins {
+		      pinctrl-single,pins = <
+			      AM62PX_IOPAD(0x1c8, PIN_INPUT, 0) /* (A22) UART0_RXD */
+		      >;
+            bootph-all;
+	      };
+
+	      main_uart0_rx_pins_wakeup: main-uart0-rx-wakeup-pins {
+		      pinctrl-single,pins = <
+			      AM62PX_IOPAD(0x1c8, PIN_INPUT | PIN_WKUP_EN, 0) /* (A22) UART0_RXD */
+		      >;
+	      };
+      };
+
+      &main_uart0 {
+         pinctrl-names = "default", "wakeup";
+         pinctrl-0 = <&main_uart0_tx_pins_default>, <&main_uart0_rx_pins_default>;
+         pinctrl-1 = <&main_uart0_tx_pins_default>, <&main_uart0_rx_pins_wakeup>;
+         wakeup-source = <&system_deep_sleep>,
+               <&system_mcu_only>,
+               <&system_standby>;
+         status = "okay";
+         bootph-all;
+      };
+
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+   To configure UART as an I/O daisy chain wakeup, refer to the
+   main_uart0 node in `k3-am62l3-evm.dts <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62l3-evm.dts?h=11.01.16>`_
+
+   .. code-block:: dts
+
+      &main_pmx0 {
+	      main_uart0_tx_pins_default: main-uart0-tx-default-pins {
+		      pinctrl-single,pins = <
+			      AM62LX_IOPAD(0x01b8, PIN_OUTPUT, 0) /* (C13) UART0_TXD */
+		      >;
+            bootph-all;
+	      };
+
+	      main_uart0_rx_pins_default: main-uart0-rx-default-pins {
+		      pinctrl-single,pins = <
+			      AM62LX_IOPAD(0x01b4, PIN_INPUT, 0) /* (D13) UART0_RXD */
+		      >;
+            bootph-all;
+	      };
+
+	      main_uart0_rx_pins_wakeup: main-uart0-rx-wakeup-pins {
+		      pinctrl-single,pins = <
+			      AM62LX_IOPAD(0x01b4, PIN_INPUT | PIN_WKUP_EN, 0) /* (D13) UART0_RXD */
+		      >;
+	      };
+      };
+
+      &main_uart0 {
+         pinctrl-names = "default", "wakeup";
+         pinctrl-0 = <&main_uart0_tx_pins_default>, <&main_uart0_rx_pins_default>;
+         pinctrl-1 = <&main_uart0_tx_pins_default>, <&main_uart0_rx_pins_wakeup>;
+         wakeup-source = <&system_deep_sleep>;
+         status = "okay";
+         bootph-all;
+      };
+
+In the above code, a "wakeup" pinctrl state is defined for main_uart0. The
+"wakeup" pinctrl state sets the  WKUP_EN flag on the desired padconfig register,
+which allows the pad to act as a wakeup source. During suspend, the Linux
+omap8250 serial driver switches from the "default" pinctrl state to the "wakeup"
+pinctrl state.
+
+This configures UART to act as a wakeup source, and a *key press* on same
+terminal should trigger a wakeup from LPM.
+
+Any UART can be chosen according to application requirements.
 
 
 Main GPIO
 =========
 
-Configuring Main GPIO as an I/O daisy chain wakeup source requires a
-combination of gpio-keys with chained IRQ in the pinctrl driver. The
-configuration and working of these frameworks have been covered under
-the MCU GPIO and Main UART sections.
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
 
-The reference configuration for Main GPIO wakeup can be found under
-gpio_key node in `k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=11.01.05#n21>`__
+   Main GPIO wakeup is not yet supported on AM62LX.
 
-Main GPIO wakeup can only be tested when
-`k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=11.01.05>`__
-overlay is loaded. Please refer to :ref:`How to enable DT overlays<howto_dt_overlays>` for more details.
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX')
 
-To use main_gpio as a wakeup source, ensure gpio is a wake-irq in /proc/interrupts:
+   Configuring Main GPIO as an I/O daisy chain wakeup source requires a
+   combination of gpio-keys with chained IRQ in the pinctrl driver. To briefly
+   explain, setting the 29th bit in the desired padconfig register, allows the
+   pad to act as a wakeup source by triggering a wake IRQ to the DM R5 in Deep
+   Sleep states.
+
+   The reference configuration for Main GPIO wakeup can be found under
+   gpio_key node in `k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=11.01.05#n21>`__
 
 .. code-block:: console
 
-   root@<machine>:~# grep wakeup /proc/interrupts
-   531:          0          0          0          0   pinctrl 416 Edge      WKGPIO:wakeup
+   gpio_key {
+	   compatible = "gpio-keys";
+	   autorepeat;
+	   pinctrl-names = "default";
+	   pinctrl-0 = <&main_gpio1_pins_default>;
+	   switch {
+		   label = "WKGPIO";
+		   linux,code = <KEY_WAKEUP>;
+		   interrupts-extended = <&main_gpio1 10 IRQ_TYPE_EDGE_RISING>,
+			   <&main_pmx0 0x1a0>;
+		   interrupt-names = "irq", "wakeup";
+	   };
+   };
 
-Once the system has entered Deep Sleep or MCU Only mode as shown in the
-:ref:`LPM section<lpm_modes>`, wakeup from MAIN GPIO1_10 can be triggered
-by grounding Pin 33 on J3 User Expansion Connector.
+   Here, we chain the IRQ to the pinctrl driver using the second
+   interrupts-extended entry. The wake IRQ framework in Linux works in such a
+   way that the second entry gets marked as a wakeup source, and then the
+   pinctrl driver is informed that the pad 0x1a0 in this case is to be
+   configured as a wakeup pad when system enters Deep Sleep.
+
+   Main GPIO wakeup can only be tested when
+   `k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=11.01.05>`__
+   overlay is loaded. Please refer to :ref:`How to enable DT overlays<howto_dt_overlays>` for more details.
+
+   To use main_gpio as a wakeup source, ensure gpio is a wake-irq in /proc/interrupts:
+
+   .. code-block:: console
+
+      root@<machine>:~# grep wakeup /proc/interrupts
+      531:          0          0          0          0   pinctrl 416 Edge      WKGPIO:wakeup
+
+   Once the system has entered Deep Sleep or MCU Only mode as shown in the
+   :ref:`LPM section<lpm_modes>`, wakeup from MAIN GPIO1_10 can be triggered
+   by grounding Pin 33 on J3 User Expansion Connector.
 
 *********
 WKUP UART
 *********
 
-The UART in WKUP domain is capable of waking up the system from Deep
-Sleep and MCU Only modes.
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
 
-In order to use WKUP UART as a wakeup source, it needs to be configured
-in a generic way using the ti-sysc interconnect target module driver.
-The reference configuration can be found under target-module in
-`k3-am62-wakeup.dtsi <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62-wakeup.dtsi?h=11.01.05#n46>`__
+   WKUP UART wakeup is not yet supported on AM62LX.
 
-WKUP UART is generally available on the third serial port
-(/dev/ttyUSB2) and by default it only shows output from DM R5.
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX')
 
-Once the system has entered Deep Sleep or MCU Only mode as shown in the
-:ref:`LPM section<lpm_modes>`, wakeup from WKUP UART can be triggered
-by doing *any key press* on the WKUP UART terminal. No output will be
-visible on the WKUP UART terminal, but Linux resume messages will be
-printed on the MAIN UART terminal.
+   The UART in WKUP domain is capable of waking up the system from Deep
+   Sleep and MCU Only modes.
+
+   In order to use WKUP UART as a wakeup source, it needs to be configured
+   in a generic way using the ti-sysc interconnect target module driver.
+   The reference configuration can be found under target-module in
+   `k3-am62-wakeup.dtsi <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62-wakeup.dtsi?h=11.01.05#n46>`__
+
+   WKUP UART is generally available on the third serial port
+   (/dev/ttyUSB2) and by default it only shows output from DM R5.
+
+   Once the system has entered Deep Sleep or MCU Only mode as shown in the
+   :ref:`LPM section<lpm_modes>`, wakeup from WKUP UART can be triggered
+   by doing *any key press* on the WKUP UART terminal. No output will be
+   visible on the WKUP UART terminal, but Linux resume messages will be
+   printed on the MAIN UART terminal.
 
 
 ******************
@@ -489,7 +707,15 @@ The USB wakeup events in Host mode are described below:
 Wakeup via a device connect event
 ---------------------------------
 
-Follow the steps described in :ref:`LPM section<lpm_modes>` to put the system in Low Power Mode via Deep Sleep or MCU only method.
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+   Follow the steps described in :ref:`LPM section<am62lx-power-management>` to
+   put the system into a low power mode, such as Deep Sleep.
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX')
+
+   Follow the steps described in :ref:`LPM section<lpm_modes>` to put the
+   system in Low Power Mode via Deep Sleep or MCU only method.
 
 Now plug in a USB device to one of the port on the board and the system should wakeup. Post wakeup, the device would show up enumerated.
 This can be checked by below command before and after suspending and waking up the system.
@@ -507,7 +733,15 @@ Plug in a USB device to one of the port on the board and check that the device i
 
   # lsusb -t
 
-Follow the steps described in :ref:`LPM section<lpm_modes>` to put the system in Low Power Mode via Deep Sleep or MCU only method.
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+   Follow the steps described in :ref:`LPM section<am62lx-power-management>` to
+   put the system into a low power mode, such as Deep Sleep.
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX')
+
+   Follow the steps described in :ref:`LPM section<lpm_modes>` to put the
+   system in Low Power Mode via Deep Sleep or MCU only method.
 
 Once the system is suspended, disconnect the USB device from the board and this should wakeup the system.
 The device will not show up in list of USB enumerated devices. This can be verified by executing
@@ -543,7 +777,15 @@ Now press a key on the keyboard and check the runtime power status and it would 
 
    # cat /sys/bus/usb/devices/1-1/power/runtime_status
 
-Follow the steps described in :ref:`LPM section<lpm_modes>` to put the system in Low Power Mode via Deep Sleep or MCU only method.
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+   Follow the steps described in :ref:`LPM section<am62lx-power-management>` to
+   put the system into a low power mode, such as Deep Sleep.
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX')
+
+   Follow the steps described in :ref:`LPM section<lpm_modes>` to put the
+   system in Low Power Mode via Deep Sleep or MCU only method.
 
 And once in suspended state, trigger system wakeup via remote wakeup event by typing keys on the keyboard. The system would wakeup.
 And USB keyboard would still be present in the system's list of USB enumerated devices and this can be verified by executing
@@ -564,7 +806,15 @@ Load a USB gadget driver such as g_zero
 
    # modprobe g_zero
 
-Follow the steps described in :ref:`LPM section<lpm_modes>` to put the system in Low Power Mode via Deep Sleep or MCU only method.
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+   Follow the steps described in :ref:`LPM section<am62lx-power-management>` to
+   put the system into a low power mode, such as Deep Sleep.
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX')
+
+   Follow the steps described in :ref:`LPM section<lpm_modes>` to put the
+   system in Low Power Mode via Deep Sleep or MCU only method.
 
 Once the system has entered the suspend state, plug a cable from a different Host system to the board's USB DRP port.
 This should wakeup the system and gadget will be enumerated on the Host. Enumeration of the gadget on the Host system can be verified by executing the
@@ -572,125 +822,155 @@ below command on the Host system
 
 .. code-block:: console
 
-   HOST:~$ lsusb -t
+   # lsusb -t
 
 
 ********************
 MCU IPC based Wakeup
 ********************
 
-It's possible to use IPC based wakeup events from the MCU core. For details on how to implement this
-from the firmware side, please refer to the relevant documentation:
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X')
+   MCU IPC wakeup is not supported on AM62LX.
 
-   `MCU+ SDK for AM62x <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62X/latest/exports/docs/api_guide_am62x/index.html>`__
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX')
 
-.. ifconfig:: CONFIG_part_variant in ('AM62AX')
+   It's possible to use IPC based wakeup events from the MCU core. For details on how to implement this
+   from the firmware side, please refer to the relevant documentation:
 
-   `MCU+ SDK for AM62Ax <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62AX/11_01_00_16/exports/docs/api_guide_am62ax/index.html>`__
+   .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+      `MCU+ SDK for AM62x <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62X/latest/exports/docs/api_guide_am62x/index.html>`__
 
-   `MCU+ SDK for AM62Px <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62PX/latest/exports/docs/api_guide_am62px/index.html>`__
+   .. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
-To use MCU IPC based wakeup, system should be placed into MCU Only mode
-as shown in the :ref:`LPM section<pm_mcu_only>`.
+      `MCU+ SDK for AM62Ax <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62AX/11_01_00_16/exports/docs/api_guide_am62ax/index.html>`__
 
-Once the SoC enters MCU Only mode, the following log should be printed
-on the MCU UART (in most cases it will be /dev/ttyUSB3)
+   .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
-.. code-block:: text
+      `MCU+ SDK for AM62Px <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62PX/latest/exports/docs/api_guide_am62px/index.html>`__
 
-   [IPC RPMSG ECHO] Next MCU mode is 1
-   [IPC RPMSG ECHO] Suspend request to MCU-only mode received
-   [IPC RPMSG ECHO] Press a single key on this terminal to resume the kernel from MCU only mode
+   To use MCU IPC based wakeup, system should be placed into MCU Only mode
+   as shown in the :ref:`LPM section<pm_mcu_only>`.
 
-Any *key press* on the same terminal should trigger a wakeup from MCU Only
-mode and the following message printed:
+   Once the SoC enters MCU Only mode, the following log should be printed
+   on the MCU UART (in most cases it will be /dev/ttyUSB3)
 
-.. code-block:: text
+   .. code-block:: text
 
-   [IPC RPMSG ECHO] Main domain resumed due to MCU UART
+      [IPC RPMSG ECHO] Next MCU mode is 1
+      [IPC RPMSG ECHO] Suspend request to MCU-only mode received
+      [IPC RPMSG ECHO] Press a single key on this terminal to resume the kernel from MCU only mode
 
+   Any *key press* on the same terminal should trigger a wakeup from MCU Only
+   mode and the following message printed:
+
+   .. code-block:: text
+
+      [IPC RPMSG ECHO] Main domain resumed due to MCU UART
 
 ************************
 CAN UART I/O Daisy Chain
 ************************
 
-It is possible to wakeup the system from CAN UART pins in all supported low
-power modes. This is possible once CAN UART is configured.
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
 
-To set CAN UART as a wakeup source, a pinctrl state called "wakeup" needs to be
-added to the device tree. The "wakeup" pinctrl state will set the  WKUP_EN flag
-on the desired padconfig register. When the WKUP_EN flag (29th bit) is set, it
-allows the pad to act as a wakeup source. If CAN UART has the "wakeup" pinctrl
-state defined, then the Linux mcan driver is able to switch to the pinctrl
-"wakeup" state during suspend which enables CAN UART wakeup.
+   CAN UART wakeup is not supported on AM62LX.
 
-The mcan_uart0 and mcan_uart1 nodes in
-`k3-am62x-sk-lpm-io-ddr-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-io-ddr-wkup-sources.dtso?h=11.01.05>`__
-can be used as a reference for enabling CAN UART wakeup.
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX')
 
-.. code-block:: text
+   It is possible to wakeup the system from CAN UART pins in all supported low
+   power modes. This is possible once CAN UART is configured.
 
-   &mcu_pmx0 {
-        mcu_mcan0_tx_pins_default: mcu-mcan0-tx-pins-default {
-                pinctrl-single,pins = <
-                        AM62X_IOPAD(0x034, PIN_OUTPUT, 0) /* (D6) MCU_MCAN0_TX */
-                >;
-        };
+   To set CAN UART as a wakeup source, a pinctrl state called "wakeup" needs to be
+   added to the device tree. The "wakeup" pinctrl state will set the  WKUP_EN flag
+   on the desired padconfig register. When the WKUP_EN flag (29th bit) is set, it
+   allows the pad to act as a wakeup source. If CAN UART has the "wakeup" pinctrl
+   state defined, then the Linux mcan driver is able to switch to the pinctrl
+   "wakeup" state during suspend which enables CAN UART wakeup.
 
-        mcu_mcan0_rx_pins_default: mcu-mcan0-rx-pins-default {
-                pinctrl-single,pins = <
-                        AM62X_IOPAD(0x038, PIN_INPUT, 0) /* (B3) MCU_MCAN0_RX */
-                >;
-        };
+   The mcan_uart0 and mcan_uart1 nodes in
+   `k3-am62x-sk-lpm-io-ddr-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-io-ddr-wkup-sources.dtso?h=11.01.05>`__
+   can be used as a reference for enabling CAN UART wakeup.
 
-        mcu_mcan0_rx_pins_wakeup: mcu-mcan0-rx-pins-wakeup {
-                pinctrl-single,pins = <
-                        AM62X_IOPAD(0x038, PIN_INPUT | WKUP_EN, 0) /* (B3) MCU_MCAN0_RX */
-                >;
-        };
-   };
+   .. code-block:: text
 
-   &mcu_mcan0 {
-        pinctrl-names = "default", "wakeup";
-        pinctrl-0 = <&mcu_mcan0_tx_pins_default>, <&mcu_mcan0_rx_pins_default>;
-        pinctrl-1 = <&mcu_mcan0_tx_pins_default>, <&mcu_mcan0_rx_pins_wakeup>;
-        status = "okay";
-   };
+      &mcu_pmx0 {
+           mcu_mcan0_tx_pins_default: mcu-mcan0-tx-pins-default {
+                   pinctrl-single,pins = <
+                           AM62X_IOPAD(0x034, PIN_OUTPUT, 0) /* (D6) MCU_MCAN0_TX */
+                   >;
+           };
 
-CAN UART wakeup can be tested by using either the
-`k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=11.01.05>`__
-or
-`k3-am62x-sk-lpm-io-ddr-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-io-ddr-wkup-sources.dtso?h=11.01.05>`__
-overlays. Please refer to :ref:`How to enable DT overlays<howto_dt_overlays>`
-for more details.
+           mcu_mcan0_rx_pins_default: mcu-mcan0-rx-pins-default {
+                   pinctrl-single,pins = <
+                           AM62X_IOPAD(0x038, PIN_INPUT, 0) /* (B3) MCU_MCAN0_RX */
+                   >;
+           };
 
-Once the system has entered any low power mode as shown in the
-:ref:`LPM section<lpm_modes>`, wakeup from MCU_GPIO0_16 or MCU_MCAN0_RX can be
-triggered by grounding Pin 11 or Pin 22 on J8 MCU Header, respectively.
+           mcu_mcan0_rx_pins_wakeup: mcu-mcan0-rx-pins-wakeup {
+                   pinctrl-single,pins = <
+                           AM62X_IOPAD(0x038, PIN_INPUT | WKUP_EN, 0) /* (B3) MCU_MCAN0_RX */
+                   >;
+           };
+      };
 
+      &mcu_mcan0 {
+           pinctrl-names = "default", "wakeup";
+           pinctrl-0 = <&mcu_mcan0_tx_pins_default>, <&mcu_mcan0_rx_pins_default>;
+           pinctrl-1 = <&mcu_mcan0_tx_pins_default>, <&mcu_mcan0_rx_pins_wakeup>;
+           status = "okay";
+      };
+
+   CAN UART wakeup can be tested by using either the
+   `k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=11.01.05>`__
+   or
+   `k3-am62x-sk-lpm-io-ddr-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-io-ddr-wkup-sources.dtso?h=11.01.05>`__
+   overlays. Please refer to :ref:`How to enable DT overlays<howto_dt_overlays>`
+   for more details.
+
+   Once the system has entered any low power mode as shown in the
+   :ref:`LPM section<lpm_modes>`, wakeup from MCU_GPIO0_16 or MCU_MCAN0_RX can be
+   triggered by grounding Pin 11 or Pin 22 on J8 MCU Header, respectively.
+
+***********
+RTC Ext Pin
+***********
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX')
+
+   This is not applicable for |__PART_FAMILY_DEVICE_NAMES__|.
+
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+   To resume using RTC Ext pin wakeup, press the following button on the EVM:
+
+   .. image:: /images/am62l_lpm_wakeup_evm_pin.jpg
 
 ********************************
 Confirming the Wakeup event type
 ********************************
 
-When the SoC wakes up from any Low Power Mode, the Device Manager logs the wake
-reason, the pin number that triggered the wakeup, and the last low power mode
-entered. This wake reason and low power mode can be queried by Linux using the
-`TISCI LPM API <https://downloads.ti.com/tisci/esd/latest/2_tisci_msgs/pm/lpm.html>`__.
-The wakeup pin can be found in the datasheet by converting the pin number from
-hex to decimal and finding the corresponding PADCONFIG register.
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
 
-This wake reason is printed as part of the Linux suspend/resume log:
+   This is not applicable for AM62LX.
 
-.. code-block:: console
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX')
 
-   [  249.471725] CPU3 is up
-   [  249.472314] ti-sci 44043000.system-controller: ti_sci: wakeup source:0x80, pin:0x72, mode:0x1
+   When the SoC wakes up from any Low Power Mode, the Device Manager logs the wake
+   reason, the pin number that triggered the wakeup, and the last low power mode
+   entered. This wake reason and low power mode can be queried by Linux using the
+   `TISCI LPM API <https://downloads.ti.com/tisci/esd/latest/2_tisci_msgs/pm/lpm.html>`__.
+   The wakeup pin can be found in the datasheet by converting the pin number from
+   hex to decimal and finding the corresponding PADCONFIG register.
 
-In the above example, the wakeup source of 0x80 is MAIN_IO. The 0x72 pin refers
-to PADCONFIG114. This means the cause of the wakeup event is UART0_RXD. The
-mode of 0x1 is the last low power mode entered which was MCU_ONLY.
+   This wake reason is printed as part of the Linux suspend/resume log:
+
+   .. code-block:: console
+
+      [  249.471725] CPU3 is up
+      [  249.472314] ti-sci 44043000.system-controller: ti_sci: wakeup source:0x80, pin:0x72, mode:0x1
+
+   In the above example, the wakeup source of 0x80 is MAIN_IO. The 0x72 pin refers
+   to PADCONFIG114. This means the cause of the wakeup event is UART0_RXD. The
+   mode of 0x1 is the last low power mode entered which was MCU_ONLY.

@@ -139,14 +139,16 @@ I/O Only Plus DDR
 
       Atleast one of the wakeup sources listed above must be enabled to wakeup from I/O Only Plus DDR mode.
 
-   .. rubric:: To enter I/O Only Plus DDR mode, first disable wakeup from RTC, USB0 and USB1 as these wakeup
-               sources are not supported for this mode.
+   .. rubric:: To enter I/O Only Plus DDR mode, first disable wakeup from RTC,
+               Main UART, USB0, and USB1 as these wakeup sources are not
+               supported for this mode.
 
    .. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
       .. code-block:: console
 
          root@am62axx-evm:~# echo disabled > /sys/class/rtc/rtc0/device/power/wakeup
+         root@am62axx-evm:~# echo disabled > /sys/bus/platform/devices/2800000.serial/power/wakeup
          root@am62axx-evm:~# echo disabled > /sys/devices/platform/bus@f0000/f900000.dwc3-usb/power/wakeup
          root@am62axx-evm:~# echo disabled > /sys/devices/platform/bus@f0000/f910000.dwc3-usb/power/wakeup
 
@@ -155,6 +157,7 @@ I/O Only Plus DDR
       .. code-block:: console
 
          root@am62pxx-evm:~# echo disabled > /sys/class/rtc/rtc0/device/power/wakeup
+         root@am62pxx-evm:~# echo disabled > /sys/bus/platform/devices/2800000.serial/power/wakeup
          root@am62pxx-evm:~# echo disabled > /sys/devices/platform/bus@f0000/f900000.usb/power/wakeup
          root@am62pxx-evm:~# echo disabled > /sys/devices/platform/bus@f0000/f910000.usb/power/wakeup
 

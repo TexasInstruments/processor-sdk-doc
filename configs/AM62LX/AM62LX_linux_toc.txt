@@ -11,6 +11,7 @@ devices/AM62LX/linux/Release_Specific_Migration_Guide
 devices/AM62LX/linux/Release_Specific_Kernel_Performance_Guide
 devices/AM62LX/linux/Linux_Performance_Guide
 devices/AM62LX/linux/RT_Linux_Performance_Guide
+devices/AM62LX/linux/Release_Specific_Workarounds
 devices/AM62LX/linux/Release_Specific_Supported_Platforms_and_Versions
 
 linux/Overview_Building_the_SDK
@@ -75,6 +76,7 @@ linux/Foundational_Components_Power_Management
 linux/Foundational_Components/Power_Management/pm_overview
 linux/Foundational_Components/Power_Management/pm_cpuidle
 linux/Foundational_Components/Power_Management/pm_am62lx_low_power_modes
+linux/Foundational_Components/Power_Management/pm_wakeup_sources
 
 #linux/Foundational_Components/System_Security/SELinux
 linux/Foundational_Components/System_Security/Auth_boot
