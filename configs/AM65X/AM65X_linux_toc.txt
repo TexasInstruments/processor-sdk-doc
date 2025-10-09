@@ -113,7 +113,6 @@ linux/Foundational_Components/Graphics/SGX/Build_Guide
 
 linux/Industrial_Protocols
 linux/Industrial_Protocols_ICSS_Dual_EMAC
-linux/Industrial_Protocols_HSR_PRP
 linux/Industrial_Protocols_PTP
 linux/How_to_Guides
 linux/How_to_Guides_Developer_Notes
