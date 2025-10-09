@@ -693,7 +693,15 @@ The USB wakeup events in Host mode are described below:
 Wakeup via a device connect event
 ---------------------------------
 
-Follow the steps described in :ref:`LPM section<lpm_modes>` to put the system in Low Power Mode via Deep Sleep or MCU only method.
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+   Follow the steps described in :ref:`LPM section<am62lx-power-management>` to
+   put the system into a low power mode, such as Deep Sleep.
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX')
+
+   Follow the steps described in :ref:`LPM section<lpm_modes>` to put the
+   system in Low Power Mode via Deep Sleep or MCU only method.
 
 Now plug in a USB device to one of the port on the board and the system should wakeup. Post wakeup, the device would show up enumerated.
 This can be checked by below command before and after suspending and waking up the system.
@@ -711,7 +719,15 @@ Plug in a USB device to one of the port on the board and check that the device i
 
   # lsusb -t
 
-Follow the steps described in :ref:`LPM section<lpm_modes>` to put the system in Low Power Mode via Deep Sleep or MCU only method.
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+   Follow the steps described in :ref:`LPM section<am62lx-power-management>` to
+   put the system into a low power mode, such as Deep Sleep.
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX')
+
+   Follow the steps described in :ref:`LPM section<lpm_modes>` to put the
+   system in Low Power Mode via Deep Sleep or MCU only method.
 
 Once the system is suspended, disconnect the USB device from the board and this should wakeup the system.
 The device will not show up in list of USB enumerated devices. This can be verified by executing
@@ -747,7 +763,15 @@ Now press a key on the keyboard and check the runtime power status and it would 
 
    # cat /sys/bus/usb/devices/1-1/power/runtime_status
 
-Follow the steps described in :ref:`LPM section<lpm_modes>` to put the system in Low Power Mode via Deep Sleep or MCU only method.
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+   Follow the steps described in :ref:`LPM section<am62lx-power-management>` to
+   put the system into a low power mode, such as Deep Sleep.
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX')
+
+   Follow the steps described in :ref:`LPM section<lpm_modes>` to put the
+   system in Low Power Mode via Deep Sleep or MCU only method.
 
 And once in suspended state, trigger system wakeup via remote wakeup event by typing keys on the keyboard. The system would wakeup.
 And USB keyboard would still be present in the system's list of USB enumerated devices and this can be verified by executing
@@ -768,7 +792,15 @@ Load a USB gadget driver such as g_zero
 
    # modprobe g_zero
 
-Follow the steps described in :ref:`LPM section<lpm_modes>` to put the system in Low Power Mode via Deep Sleep or MCU only method.
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+   Follow the steps described in :ref:`LPM section<am62lx-power-management>` to
+   put the system into a low power mode, such as Deep Sleep.
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX')
+
+   Follow the steps described in :ref:`LPM section<lpm_modes>` to put the
+   system in Low Power Mode via Deep Sleep or MCU only method.
 
 Once the system has entered the suspend state, plug a cable from a different Host system to the board's USB DRP port.
 This should wakeup the system and gadget will be enumerated on the Host. Enumeration of the gadget on the Host system can be verified by executing the
