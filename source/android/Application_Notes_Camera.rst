@@ -4,7 +4,7 @@
 Android Camera
 ##############
 
-The AM62Px supports 2 camera interfaces:
+The |__PART_FAMILY_NAME__| supports 2 camera interfaces:
 
 1. UVC (Usb Video Class) cameras, which are mainly known as webcams.
 2. Camera over CSI-2
@@ -23,27 +23,53 @@ The following hardware is required to use the CSI-2 camera:
 
 - ALINX ov5640 sensor module (AN5641)
 
-  .. image:: ../../../images/alinx_ov5640.jpg
+  .. image:: /images/alinx_ov5640.jpg
     :width: 300
     :alt: alinx_ov5640
 
-- 21 pin raspberry pi CSI ribbon
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-  .. image:: ../../../images/22pin_rpi_csi_flex.jpg
-    :width: 600
-    :alt: 22pin_rpi_csi_flex.jpg
+   - 15 pin FPC ribbon
 
-- AM62Px SK EVM board
+   .. image:: /images/15_pin_fpc_ribbon.jpg
+      :width: 600
+      :alt: 15_pin_fpc_ribbon.jpg
 
-  .. image:: ../../../images/am62px_sk_evm_front.jpg
-    :width: 600
-    :alt: am62px_sk_evm_front.jpg
+   - AM62x SK EVM board
 
-Plug the CSI ribbon in ``J6`` and on the camera module as following:
+   .. image:: /images/am62x_sk_evm_front.jpg
+      :width: 600
+      :alt: am62x_sk_evm_front.jpg
 
-  .. image:: ../../../images/am62px_sk_evm_with_ov5640.jpg
-    :width: 600
-    :alt: am62px_sk_evm_with_ov5640.jpg
+   .. image:: /images/am62x_sk_evm_back.jpg
+      :width: 600
+      :alt: am62x_sk_evm_back.jpg
+
+   Plug the 15 pin FPC ribbon in ``J19`` and on the camera module as following:
+
+   .. image:: /images/am62x_sk_evm_with_ov5640.jpg
+      :width: 600
+      :alt: am62x_sk_evm_with_ov5640.jpg
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+   - 21 pin raspberry pi CSI ribbon
+
+   .. image:: /images/22pin_rpi_csi_flex.jpg
+      :width: 600
+      :alt: 22pin_rpi_csi_flex.jpg
+
+   - AM62Px SK EVM board
+
+   .. image:: /images/am62px_sk_evm_front.jpg
+      :width: 600
+      :alt: am62px_sk_evm_front.jpg
+
+   Plug the CSI ribbon in ``J6`` and on the camera module as following:
+
+   .. image:: /images/am62px_sk_evm_with_ov5640.jpg
+      :width: 600
+      :alt: am62px_sk_evm_with_ov5640.jpg
 
 **********************
 Software configuration
@@ -51,13 +77,26 @@ Software configuration
 
 After flashing, make sure to halt in the U-Boot shell and run
 
+.. ifconfig:: CONFIG_part_variant in ('AM62X','AM62PX')
+
+   .. code-block:: console
+
+      => env set adtbo_idx 2
+      => saveenv
+      => reset
+
+   This ensures that the :file:`k3-am62x-sk-csi2-tevi-ov5640.dtbo` device-tree overlay gets
+
+.. ifconfig:: CONFIG_part_variant in ('AM67A')
+
 .. code-block:: console
 
-   => env set adtbo_idx 2
-   => saveenv
-   => reset
+      => env set adtbo_idx 16
+      => saveenv
+      => reset
 
-This ensures that the :file:`k3-am62x-sk-csi2-tevi-ov5640.dtbo` device-tree overlay gets
+   This ensures that the :file:`k3-j722s-evm-csi2-quad-tevi-ov5640.dtbo` device-tree overlay gets
+
 applied by the bootloader.
 With the applied overlay, the following drivers should probe:
 
@@ -69,6 +108,10 @@ Once booted to the home screen, we can start a capture session using the
 default AOSP provided camera app:
 
 .. code-block:: console
+
+   From home screen launch Camera Application
+
+   OR
 
    $ adb shell 'am start -a android.media.action.IMAGE_CAPTURE'
 

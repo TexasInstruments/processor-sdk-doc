@@ -27,13 +27,23 @@ placeholder.
 Launching the app
 *****************
 
-   * Boot the EVM with binaries built using ``am62p_car-bp2a-userdebug`` lunch target
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-   * The SnappMaps application should be visible by default on the home screen
+      * Boot the EVM with binaries built using ``am62x_car-bp2a-userdebug`` lunch target
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+      * Boot the EVM with binaries built using ``am62p_car-bp2a-userdebug`` lunch target
+
+.. ifconfig:: CONFIG_part_variant in ('AM67A')
+
+      * Boot the EVM with binaries built using ``am67a_car-bp2a-userdebug`` lunch target
+
+* The SnappMaps application should be visible by default on the home screen
 
 
-     .. Image:: /images/am62px_android_sample_maps_app.png
-        :width: 600
+   .. Image:: /images/android_sample_maps_app.png
+      :width: 600
 
 .. note::
 

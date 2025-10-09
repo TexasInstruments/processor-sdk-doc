@@ -5,7 +5,7 @@ Android Multimedia (Video encode/decode)
 ########################################
 
 This application note describes video decoding/encoding using the onboard Wave5 chip
-found in the Texas Instruments AM62Px SoC.
+found in the Texas Instruments |__PART_FAMILY_NAME__| SoC.
 
 The Wave5 hardware is implemented via:
 
@@ -29,7 +29,7 @@ We can run a sample playback via ``atest`` from a development tree.
 .. code-block:: console
 
    # Standard Android build commands
-   $ cd ${YOUR_PATH}/ti-aosp-15
+   $ cd ${YOUR_PATH}/ti-aosp-16
    $ source build/envsetup.sh
    $ lunch <BUILD_TARGET>
 
@@ -145,5 +145,5 @@ To enable more logs, ``v4l2_codec2`` should be rebuild. It's possible to enable 
 
 .. code-block:: console
 
-   $ cd ~/src/ti-aosp-15/external/v4l2_codec2
+   $ cd ~/src/ti-aosp-16/external/v4l2_codec2
    $ sed -i 's#//\#define LOG_NDEBUG 0#\#define LOG_NDEBUG 0#' *.cpp

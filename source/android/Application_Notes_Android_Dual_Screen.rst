@@ -4,7 +4,7 @@ Android Dual Screen Support
 
 This application note contains steps to enable dual screen with Android in mirror mode or extended mode.
 
-The following panel is currently supported with the AM625 SK EVM revision E3 board:
+The following panel is currently supported with the |__PART_FAMILY_NAME__| SK EVM revision E3 board:
 
 - **Microtips Technology USA (13-101HIEB0HF0-S) 10.1"  WUXGA (1920x1200) TFT LCD panel**
 
@@ -12,40 +12,42 @@ The following panel is currently supported with the AM625 SK EVM revision E3 boa
 
    By default Android configures the displays in mirror mode.
 
-*************************************************
-How to enable Microtips LVDS panel on AM62 SK EVM
-*************************************************
+*******************************************************************
+How to enable Microtips LVDS panel on |__PART_FAMILY_NAME__| SK EVM
+*******************************************************************
 
 **Steps to enable OLDI Panel DT overlay:**
 
 #. Follow the :ref:`android-dtbo` guide.
 
-**Steps to enable touch on the Microtips Panel on AM625 SK EVM:**
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-**Note**: The following steps are only applicable on AM625 SK EVM revision E3 board.
+   **Steps to enable touch on the Microtips Panel on AM625 SK EVM:**
 
-#. Power off the LVDS board by disconnecting the 12V barrel jack (do not power off the SK EVM)
-#. Run the following commands from the Linux prompt:
+   **Note**: The following steps are only applicable on AM625 SK EVM revision E3 board.
 
-   .. code-block:: console
+   #. Power off the LVDS board by disconnecting the 12V barrel jack (do not power off the SK EVM)
+   #. Run the following commands from the Linux prompt:
 
-      console:/ $ su
-      console:/ # rmmod ili210x
-      console:/ # i2ctransfer -f -y 0 w3@0x3f 0x09 0x1 0x0e
-      console:/ # i2ctransfer -f -y 0 w6@0x3f 0x08 0x04 0x47 0x50 0x73 0x68
+      .. code-block:: console
 
-#. Power on the LVDS board
-#. Run the following command:
+         console:/ $ su
+         console:/ # rmmod ili210x
+         console:/ # i2ctransfer -f -y 0 w3@0x3f 0x09 0x1 0x0e
+         console:/ # i2ctransfer -f -y 0 w6@0x3f 0x08 0x04 0x47 0x50 0x73 0x68
 
-   .. code-block:: console
+   #. Power on the LVDS board
+   #. Run the following command:
 
-      console:/ # insmod /vendor/lib/modules/ili210x.ko
+      .. code-block:: console
 
-After re-initializing the module, the touch IC should now be registered as an input and touch should be functional.
+         console:/ # insmod /vendor/lib/modules/ili210x.ko
 
-.. attention::
+   After re-initializing the module, the touch IC should now be registered as an input and touch should be functional.
 
-   This step need to be done each time the board reboots.
+   .. attention::
+
+      This step need to be done each time the board reboots.
 
 *****************************************
 How to enable Extended Display in Android

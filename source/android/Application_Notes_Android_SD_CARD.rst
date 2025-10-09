@@ -52,7 +52,13 @@ Build U-Boot
 
 Follow this link to build the :ref:`android-build-bootloaders`.
 
-Rebuild U-Boot then copy :file:`u-boot.img` in Android build system environment : :file:`vendor/ti/am62x/bootloader/am62-sk`
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+   Rebuild U-Boot then copy :file:`u-boot.img` in Android build system environment : :file:`vendor/ti/am62x/bootloader/am62-sk`
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+   Rebuild U-Boot then copy :file:`u-boot.img` in Android build system environment : :file:`vendor/ti/am62x/bootloader/am62px-sk`
 
 Build Android
 =============
@@ -62,7 +68,7 @@ Go in your Android environment then rebuild with ``TARGET_SDCARD_BOOT=true`` bui
 
 .. code-block:: console
 
-   $ cd ${YOUR_PATH}/ti-aosp-15
+   $ cd ${YOUR_PATH}/ti-aosp-16
    $ source build/envsetup.sh
    $ lunch <BUILD_TARGET>
    $ m TARGET_SDCARD_BOOT=true
@@ -77,17 +83,33 @@ Flashing SD Card
 
 - Change the boot mode DIP switches to SD card boot mode:
 
-  .. list-table::
-     :widths: 16 16 16
-     :header-rows: 1
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-     * - Switch Label
-       - SW2: 12345678
-       - SW3: 12345678
+   .. list-table::
+      :widths: 16 16 16
+      :header-rows: 1
 
-     * - SD
-       - 01000000
-       - 11000010
+      * - Switch Label
+        - SW2: 12345678
+        - SW3: 12345678
+
+      * - SD
+        - 01000000
+        - 11000010
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+   .. list-table::
+      :widths: 16 16 16
+      :header-rows: 1
+
+      * - Switch Label
+        - SW5: 12345678
+        - SW4: 12345678
+
+      * - SD
+        - 01000000
+        - 11000010
 
 - Go in :file:`out` directory in android environment.
 

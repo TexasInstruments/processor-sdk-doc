@@ -16,9 +16,9 @@ Background
 
 The default Google UI consists of several UI layers and performs various
 memory intensive operations involving alpha blending, anti-aliasing and
-composition. On AM62x device this keeps the GPU and DDR throughput fully
+composition. On |__PART_FAMILY_NAME__| device this keeps the GPU and DDR throughput fully
 occupied. This Android app has simpler UI animations and few layers that
-shows good user experience with Android on AM62x device.
+shows good user experience with Android on |__PART_FAMILY_NAME__| device.
 
 *****************
 Launching the app
