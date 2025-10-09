@@ -123,7 +123,8 @@ The support status is indicated by the following codes:
    ,,etc.,No,No,No
    ,Error Location Module (ELM),,Yes,No,No
    ,Multimedia Card Secure Digital (MMCSD) Interface,SD Card,Yes,No,Yes
-   ,,eMMC,Yes,No,Yes
+   ,,eMMC,Yes,Yes,Yes
+   ,,eMMC HS400 mode,Yes (SR1.2 only),Yes,Yes
    Industrial & Control Interfaces,Controller Area Network (MCAN) - MAIN domain,CAN,Yes,No,Yes
    ,,CAN FD,Yes,No,Yes
    ,Controller Area Network (MCAN) - MCU domain,CAN,Yes,Yes,No

@@ -681,52 +681,56 @@ MMC support in u-boot
 
    **eMMC HS400 support**
 
-   For 11.0 and 11.1 SDK, am62px device does not support eMMC HS400 mode due to errata `i2458 <https://www.ti.com/lit/pdf/sprz574>`__.
-   If support for HS400 is required, add the following to k3-am62p-j722s-common-main.dtsi:
+   - For 11.1.1 SDK, only am62px SR1.2 supports eMMC HS400 mode, all earlier silicon revisions
+     only support up to eMMC HS200 mode. Logic to determine eMMC mode is abstracted away in host
+     driver and depends on silicon revision parsing.
 
-   .. code-block:: diff
+   - For 11.0 and 11.1 SDK, am62px device does not support eMMC HS400 mode due to errata `i2458 <https://www.ti.com/lit/pdf/sprz574>`__.
+     If support for HS400 is required, add the following to k3-am62p-j722s-common-main.dtsi:
 
-      diff --git a/dts/upstream/src/arm64/ti/k3-am62p-j722s-common-main.dtsi b/dts/upstream/src/arm64/ti/k3-am62p-j722s-common-main.dtsi
-      index 8bfc6539b2a..8a536b081e1 100644
-      --- a/dts/upstream/src/arm64/ti/k3-am62p-j722s-common-main.dtsi
-      +++ b/dts/upstream/src/arm64/ti/k3-am62p-j722s-common-main.dtsi
-      @@ -593,12 +593,16 @@
-                      bus-width = <8>;
-                      mmc-ddr-1_8v;
-                      mmc-hs200-1_8v;
-      +               mmc-hs400-1_8v;
-                      ti,clkbuf-sel = <0x7>;
-      +               ti,strobe-sel = <0x55>;
-                      ti,trm-icp = <0x8>;
-                      ti,otap-del-sel-legacy = <0x1>;
-                      ti,otap-del-sel-mmc-hs = <0x1>;
-                      ti,otap-del-sel-ddr52 = <0x6>;
-                      ti,otap-del-sel-hs200 = <0x8>;
-      +               ti,otap-del-sel-hs400 = <0x5>; // at 0.85V VDD_CORE
-      +               //ti,otap-del-sel-hs400 = <0x7>; // at 0.75V VDD_CORE
-                      ti,itap-del-sel-legacy = <0x10>;
-                      ti,itap-del-sel-mmc-hs = <0xa>;
-                      ti,itap-del-sel-ddr52 = <0x3>;
+      .. code-block:: diff
 
-   and enable the following config options:
+         diff --git a/dts/upstream/src/arm64/ti/k3-am62p-j722s-common-main.dtsi b/dts/upstream/src/arm64/ti/k3-am62p-j722s-common-main.dtsi
+         index 8bfc6539b2a..8a536b081e1 100644
+         --- a/dts/upstream/src/arm64/ti/k3-am62p-j722s-common-main.dtsi
+         +++ b/dts/upstream/src/arm64/ti/k3-am62p-j722s-common-main.dtsi
+         @@ -593,12 +593,16 @@
+                        bus-width = <8>;
+                        mmc-ddr-1_8v;
+                        mmc-hs200-1_8v;
+         +               mmc-hs400-1_8v;
+                        ti,clkbuf-sel = <0x7>;
+         +               ti,strobe-sel = <0x55>;
+                        ti,trm-icp = <0x8>;
+                        ti,otap-del-sel-legacy = <0x1>;
+                        ti,otap-del-sel-mmc-hs = <0x1>;
+                        ti,otap-del-sel-ddr52 = <0x6>;
+                        ti,otap-del-sel-hs200 = <0x8>;
+         +               ti,otap-del-sel-hs400 = <0x5>; // at 0.85V VDD_CORE
+         +               //ti,otap-del-sel-hs400 = <0x7>; // at 0.75V VDD_CORE
+                        ti,itap-del-sel-legacy = <0x10>;
+                        ti,itap-del-sel-mmc-hs = <0xa>;
+                        ti,itap-del-sel-ddr52 = <0x3>;
 
-   .. code-block:: diff
+      and enable the following config options:
 
-      diff --git a/configs/am62px_evm_a53_defconfig b/configs/am62px_evm_a53_defconfig
-      index 09a91248ce6..f95879f41c9 100644
-      --- a/configs/am62px_evm_a53_defconfig
-      +++ b/configs/am62px_evm_a53_defconfig
-      @@ -114,8 +114,8 @@ CONFIG_MMC_IO_VOLTAGE=y
-       CONFIG_SPL_MMC_IO_VOLTAGE=y
-       CONFIG_MMC_UHS_SUPPORT=y
-       CONFIG_SPL_MMC_UHS_SUPPORT=y
-      -CONFIG_MMC_HS200_SUPPORT=y
-      -CONFIG_SPL_MMC_HS200_SUPPORT=y
-      +CONFIG_MMC_HS400_SUPPORT=y
-      +CONFIG_SPL_MMC_HS400_SUPPORT=y
-       CONFIG_MMC_SDHCI=y
-       CONFIG_MMC_SDHCI_ADMA=y
-       CONFIG_SPL_MMC_SDHCI_ADMA=y
+      .. code-block:: diff
+
+         diff --git a/configs/am62px_evm_a53_defconfig b/configs/am62px_evm_a53_defconfig
+         index 09a91248ce6..f95879f41c9 100644
+         --- a/configs/am62px_evm_a53_defconfig
+         +++ b/configs/am62px_evm_a53_defconfig
+         @@ -114,8 +114,8 @@ CONFIG_MMC_IO_VOLTAGE=y
+         CONFIG_SPL_MMC_IO_VOLTAGE=y
+         CONFIG_MMC_UHS_SUPPORT=y
+         CONFIG_SPL_MMC_UHS_SUPPORT=y
+         -CONFIG_MMC_HS200_SUPPORT=y
+         -CONFIG_SPL_MMC_HS200_SUPPORT=y
+         +CONFIG_MMC_HS400_SUPPORT=y
+         +CONFIG_SPL_MMC_HS400_SUPPORT=y
+         CONFIG_MMC_SDHCI=y
+         CONFIG_MMC_SDHCI_ADMA=y
+         CONFIG_SPL_MMC_SDHCI_ADMA=y
 
 .. ifconfig:: CONFIG_part_family in ('AM62X_family')
 

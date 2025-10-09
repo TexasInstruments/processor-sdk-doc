@@ -72,7 +72,8 @@ Features
    The MMCSD driver supports the following features:
 
    - Support ADMA for DMA transfers
-   - HS200 speed mode
+   - HS400 speed mode (SR1.2)
+   - HS200 speed mode (SR1.1)
    - Support for both built-in and module mode
    - ext2/ext3/ext4 file system support
 
@@ -222,7 +223,8 @@ Supported ultra high speed (UHS) modes
       AM62*, Y, Y, N
       AM62ax, Y, Y, N
       am64x, Y, Y, N
-      am62px, Y, Y, N
+      am62px SR1.1, Y, Y, N
+      am62px SR1.2, Y, Y, Y
       am62lx, Y, Y, N
 
 Driver configuration
@@ -365,32 +367,36 @@ MMC support in Linux
 
    **eMMC HS400 support**
 
-   For 11.0 and 11.1 SDK, am62px device does not support eMMC HS400 mode due to errata `i2458 <https://www.ti.com/lit/pdf/sprz574>`__.
-   If support for HS400 is required, please add the following to k3-am62p-j722s-common-main.dtsi:
+   - For 11.1.1 SDK, only am62px SR1.2 supports eMMC HS400 mode, all earlier silicon revisions
+     only support up to eMMC HS200 mode. Logic to determine eMMC mode is abstracted away in host
+     driver and depends on silicon revision parsing.
 
-   .. code-block:: diff
+   - For 11.0 and 11.1 SDK, am62px device does not support eMMC HS400 mode due to errata `i2458 <https://www.ti.com/lit/pdf/sprz574>`__.
+     If support for HS400 is required, please add the following to k3-am62p-j722s-common-main.dtsi:
 
-      diff --git a/arch/arm64/boot/dts/ti/k3-am62p-j722s-common-main.dtsi b/arch/arm64/boot/dts/ti/k3-am62p-j722s-common-main.dtsi
-      index 3e5ca8a3eb86..a05b22a6e5a2 100644
-      --- a/arch/arm64/boot/dts/ti/k3-am62p-j722s-common-main.dtsi
-      +++ b/arch/arm64/boot/dts/ti/k3-am62p-j722s-common-main.dtsi
-      @@ -593,12 +593,16 @@ sdhci0: mmc@fa10000 {
-                      bus-width = <8>;
-                      mmc-ddr-1_8v;
-                      mmc-hs200-1_8v;
-      +               mmc-hs400-1_8v;
-                      ti,clkbuf-sel = <0x7>;
-                      ti,trm-icp = <0x8>;
-      +               ti,strobe-sel = <0x55>;
-                      ti,otap-del-sel-legacy = <0x1>;
-                      ti,otap-del-sel-mmc-hs = <0x1>;
-                      ti,otap-del-sel-ddr52 = <0x6>;
-                      ti,otap-del-sel-hs200 = <0x8>;
-      +               ti,otap-del-sel-hs400 = <0x5>; // at 0.85V VDD_CORE
-      +               //ti,otap-del-sel-hs400 = <0x7>; // at 0.75V VDD_CORE
-                      ti,itap-del-sel-legacy = <0x10>;
-                      ti,itap-del-sel-mmc-hs = <0xa>;
-                      ti,itap-del-sel-ddr52 = <0x3>;
+      .. code-block:: diff
+
+         diff --git a/arch/arm64/boot/dts/ti/k3-am62p-j722s-common-main.dtsi b/arch/arm64/boot/dts/ti/k3-am62p-j722s-common-main.dtsi
+         index 3e5ca8a3eb86..a05b22a6e5a2 100644
+         --- a/arch/arm64/boot/dts/ti/k3-am62p-j722s-common-main.dtsi
+         +++ b/arch/arm64/boot/dts/ti/k3-am62p-j722s-common-main.dtsi
+         @@ -593,12 +593,16 @@ sdhci0: mmc@fa10000 {
+                         bus-width = <8>;
+                         mmc-ddr-1_8v;
+                         mmc-hs200-1_8v;
+         +               mmc-hs400-1_8v;
+                         ti,clkbuf-sel = <0x7>;
+                         ti,trm-icp = <0x8>;
+         +               ti,strobe-sel = <0x55>;
+                         ti,otap-del-sel-legacy = <0x1>;
+                         ti,otap-del-sel-mmc-hs = <0x1>;
+                         ti,otap-del-sel-ddr52 = <0x6>;
+                         ti,otap-del-sel-hs200 = <0x8>;
+         +               ti,otap-del-sel-hs400 = <0x5>; // at 0.85V VDD_CORE
+         +               //ti,otap-del-sel-hs400 = <0x7>; // at 0.75V VDD_CORE
+                         ti,itap-del-sel-legacy = <0x10>;
+                         ti,itap-del-sel-mmc-hs = <0xa>;
+                         ti,itap-del-sel-ddr52 = <0x3>;
 
 .. ifconfig:: CONFIG_part_family in ('AM62X_family')
 
