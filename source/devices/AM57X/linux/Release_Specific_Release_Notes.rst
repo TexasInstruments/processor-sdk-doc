@@ -249,10 +249,10 @@ Issues closed on this release
    "LCPD-25533","VIP capture + scaling Test failure"
    "LCPD-24302","Speed test built in to OpenSSL Cryptographic - performance failures"
    "LCPD-17673","No software documentation for the Timer module"
-   "LCPD-42797,AM57x: ICSSM Dual EMAC support"
-   "LCPD-43525,AM57x: ICSSM Switch Support"
-   "LCPD-43526,AM57x: ICSSM HSR Support"
-   "LCPD-43527,AM57x: ICSSM PRP Support"
+   "LCPD-42797","AM57x: ICSSM Dual EMAC support"
+   "LCPD-43525","AM57x: ICSSM Switch Support"
+   "LCPD-43526","AM57x: ICSSM HSR Support"
+   "LCPD-43527","AM57x: ICSSM PRP Support"
 
 SDK Known Issues
 ----------------
