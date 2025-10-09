@@ -113,3 +113,37 @@ In order to enter DeepSleep,
       [   88.642801] random: crng reseeded on system resumption
       [   88.649913] PM: suspend exit
       root@am62lxx-evm:~#
+
+Memory Usage
+************
+
+The following table summarizes the usage of memory in different modes of
+operation of the device.
+
++--------+-------------+----------------------+------------------+------------+-------------------+
+| Domain | Memory      | Boot Operation       | Normal Operation | Deep Sleep | RTC Only + DDR    |
++========+=============+======================+==================+============+===================+
+| WKUP   | TIFS SRAM   | TIFS load (144 KB)   | TIFS (144 KB)    | TIFS       | TIFS (144 KB)     |
+|        | (196 KB)    | + Sec ROM (20 KB)    |                  | (144 KB)   |                   |
+|        |             |                      |                  |            | SEC ROM (20 KB)   |
+|        |             |                      |                  |            |                   |
+|        |             |                      |                  |            | TIFS_STUB (32 KB) |
++--------+-------------+----------------------+------------------+------------+-------------------+
+| WKUP   | WKUP PSRAM  | Pub ROM (64 KB)      |                  | A53 Stub,  | Pub ROM (64 KB)   |
+|        | (512 KB)    | or (exclusively)     |                  | TF-A Stub  |                   |
+|        |             | PreBL Stack &        |                  | (64 KB)    |                   |
+|        |             | runtime data (64 KB) |                  |            |                   |
++--------+-------------+----------------------+------------------+------------+-------------------+
+| Main   | MAIN MSRAM  | PreBL (64 KB)        | TIFS IPC (24 KB) | TIFS IPC   | PreBL (64 KB)     |
+|        | (96 KB)     | DDR initialization   |                  | (24 KB)    | Non-destructive   |
+|        |             |                      |                  |            | DDR initializtion |
+|        |             | Pub ROM (8 KB)       |                  |            |                   |
+|        |             |                      |                  |            | TIFS IPC +        |
+|        |             | ROM IPC (8 KB)       |                  |            | ROM IPC (24 KB)   |
+|        |             |                      |                  |            |                   |
+|        |             |                      |                  |            | Pub ROM (8 KB)    |
++--------+-------------+----------------------+------------------+------------+-------------------+
+| Main   | DDR         | Linux                | Linux            | Linux      | Linux             |
+|        |             |                      |                  |            |                   |
+|        |             | TF-A                 | TF-A             | TF-A       | TF-A              |
++--------+-------------+----------------------+------------------+------------+-------------------+
