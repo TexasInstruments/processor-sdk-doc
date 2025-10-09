@@ -119,6 +119,9 @@ The following build flags are available. **Default** values are **highlighted**.
    * - ``TARGET_SDCARD_BOOT``
      - **false**/true
      - Boot from SD card instead of eMMC
+   * - ``FACTORY_BUILD``
+     - **false**/true
+     - Enable factory build (TA AVB, OEMLock HAL, RPMB support, device lock/unlock support, some security features in keymint). See :ref:`Application_Notes_Android_Secure_Build` for more details.
 
 After building is complete, the necessary images will be available in
 :file:`${YOUR_PATH}/ti-aosp-16/out/target/product/am62*/`.
