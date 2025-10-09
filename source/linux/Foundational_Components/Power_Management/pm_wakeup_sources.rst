@@ -4,7 +4,7 @@
 Wakeup Sources
 ##############
 
-This section talks about the multiple ways in which we can wakeup the |__PART_FAMILY_DEVICE_NAMES__| SoC from Low Power modes like Deep Sleep or MCU only.
+This section talks about the multiple ways in which we can wakeup the |__PART_FAMILY_DEVICE_NAMES__| SoC from various low power modes.
 The |__PART_FAMILY_DEVICE_NAMES__| SoC support various wakeup sources like GP Timers, RTC Timer, UART, I2C, WKUP GPIO, and I/O Daisy Chain.
 
 The table below lists the wakeup sources supported in this SDK release and whether that source is
@@ -87,7 +87,7 @@ It's possible to use the SoC's internal RTC to wakeup the system using the comma
    - Perform a dry run to wakeup the computer at a given time. (Press Ctrl + C to abort):
       rtcwake -m on --date {{hh:ss}}
 
-For example, if you wish to wakeup from Deep Sleep or MCU Only mode in 10 seconds, use the command like this:
+For example, to wakeup from Deep Sleep in 10 seconds, use the command like this:
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
@@ -706,7 +706,8 @@ The USB wakeup events in Host mode are described below:
 Wakeup via a device connect event
 ---------------------------------
 
-Follow the steps described in :ref:`LPM section<lpm_modes>` to put the system in Low Power Mode via Deep Sleep or MCU only method.
+Follow the steps described in :ref:`LPM section<lpm_modes>` to enter desired
+low power mode.
 
 Now plug in a USB device to one of the port on the board and the system should wakeup. Post wakeup, the device would show up enumerated.
 This can be checked by below command before and after suspending and waking up the system.
@@ -724,7 +725,8 @@ Plug in a USB device to one of the port on the board and check that the device i
 
   # lsusb -t
 
-Follow the steps described in :ref:`LPM section<lpm_modes>` to put the system in Low Power Mode via Deep Sleep or MCU only method.
+Follow the steps described in :ref:`LPM section<lpm_modes>` to enter desired
+low power mode.
 
 Once the system is suspended, disconnect the USB device from the board and this should wakeup the system.
 The device will not show up in list of USB enumerated devices. This can be verified by executing
@@ -760,7 +762,8 @@ Now press a key on the keyboard and check the runtime power status and it would 
 
    # cat /sys/bus/usb/devices/1-1/power/runtime_status
 
-Follow the steps described in :ref:`LPM section<lpm_modes>` to put the system in Low Power Mode via Deep Sleep or MCU only method.
+Follow the steps described in :ref:`LPM section<lpm_modes>` to enter desired
+low power mode.
 
 And once in suspended state, trigger system wakeup via remote wakeup event by typing keys on the keyboard. The system would wakeup.
 And USB keyboard would still be present in the system's list of USB enumerated devices and this can be verified by executing
@@ -781,7 +784,8 @@ Load a USB gadget driver such as g_zero
 
    # modprobe g_zero
 
-Follow the steps described in :ref:`LPM section<lpm_modes>` to put the system in Low Power Mode via Deep Sleep or MCU only method.
+Follow the steps described in :ref:`LPM section<lpm_modes>` to put the system enter desired
+low power mode.
 
 Once the system has entered the suspend state, plug a cable from a different Host system to the board's USB DRP port.
 This should wakeup the system and gadget will be enumerated on the Host. Enumeration of the gadget on the Host system can be verified by executing the
