@@ -4,7 +4,7 @@
 Wakeup Sources
 ##############
 
-This section talks about the multiple ways in which we can wakeup the |__PART_FAMILY_DEVICE_NAMES__| SoC from Low Power modes like Deep Sleep or MCU only.
+This section talks about the multiple ways in which we can wakeup the |__PART_FAMILY_DEVICE_NAMES__| SoC from various low power modes.
 The |__PART_FAMILY_DEVICE_NAMES__| SoC support various wakeup sources like GP Timers, RTC Timer, UART, I2C, WKUP GPIO, and I/O Daisy Chain.
 
 The table below lists the wakeup sources supported in this SDK release and whether that source is
@@ -87,7 +87,7 @@ It's possible to use the SoC's internal RTC to wakeup the system using the comma
    - Perform a dry run to wakeup the computer at a given time. (Press Ctrl + C to abort):
       rtcwake -m on --date {{hh:ss}}
 
-For example, if you wish to wakeup from Deep Sleep or MCU Only mode in 10 seconds, use the command like this:
+For example, to wakeup from Deep Sleep in 10 seconds, use the command like this:
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
