@@ -405,6 +405,11 @@ MMC support in Linux
 
    There is no missing MMC support for |__PART_FAMILY_DEVICE_NAMES__| device.
 
+SD card compatibility in Linux
+******************************
+
+Refer to the :ref:`mmc-sd-card-compatibility-label` page.
+
 Steps for working around SD card issues in Linux
 ************************************************
 
