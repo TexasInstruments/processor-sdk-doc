@@ -34,6 +34,7 @@ jobs:
           - AM64X
           - AM65X
           - AM67
+          - AM67A
           - AM68
           - AM69
           - CORESDK
@@ -50,6 +51,8 @@ jobs:
             device: AM62PX
           - os: android
             device: AM62X
+          - os: android
+            device: AM67A
           - os: buildroot
             device: AM62X
           - os: buildroot
