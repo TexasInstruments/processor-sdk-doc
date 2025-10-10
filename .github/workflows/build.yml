@@ -31,7 +31,7 @@ jobs:
           ./bin/build_matrix.py
 
   build:
-    name: Build Linux Documents
+    name: Build
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/texasinstruments/processor-sdk-doc:latest
