@@ -214,12 +214,6 @@ Secondary Boot Loader (SBL)
     .. Image:: /images/SBL_enable_ospi_phy_skip.png
          :align: center
 
-- Enabling DMA in the bootloader
-
-    Open the relevant example's syscfg and navigate to the `Bootloader` section and click on **Enable DMA** if not enabled by default.
-
-    .. Image:: /images/SBL_enable_dma.png
-         :align: center
 
 .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
@@ -601,25 +595,25 @@ To measure the instance when the filesystem starts, navigate to :file:`init/main
 
     .. code-block:: console
 
-        [2025-07-10 17:37:54.176] NOTICE:  BL31: v2.13.0(release):v2.13.0-240-gd90bb650fe-dirty
-        [2025-07-10 17:37:41.176] NOTICE:  BL31: Built : 21:37:18, Jun 23 2025
-        [2025-07-10 17:37:42.972]
-        [2025-07-10 17:37:42.972] am62xx-evm login:
+        [2025-10-08 15:25:02.847] NOTICE:  BL31: v2.13.0(release):v2.13.0-259-ge0c4d3903
+        [2025-10-08 15:25:02.847] NOTICE:  BL31: Built : 17:07:22, Oct  7 2025
+        [2025-10-08 15:25:03.567]
+        [2025-10-08 15:25:03.567] am62xx-evm login:
 
     +-----------------+-----------+
     |      Stage      | Time (ms) |
     +=================+===========+
     | PMIC (TPS65224) |     15    |
     +-----------------+-----------+
-    |       ROM       |     30    |
+    |       ROM       |     31    |
     +-----------------+-----------+
-    |       SBL       |    186    |
+    |       SBL       |    200    |
     +-----------------+-----------+
-    |  Linux Kernel   |    548    |
+    |  Linux Kernel   |    530    |
     +-----------------+-----------+
-    |     Tiny FS     |    248    |
+    |     Tiny FS     |    188    |
     +-----------------+-----------+
-    |           Total |   1027    |
+    |           Total |    964    |
     +-----------------+-----------+
 
 Bootloader loads HSM binary (9KB), MCU/DSP image (50KB) and Kernel+FS image (22MB) in the above measurements
