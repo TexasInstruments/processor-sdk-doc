@@ -34,6 +34,7 @@ jobs:
           - AM64X
           - AM65X
           - AM67
+          - AM67A
           - AM68
           - AM69
           - CORESDK
