@@ -14,56 +14,32 @@ defaults:
     shell: bash
 
 jobs:
+  collect:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/texasinstruments/processor-sdk-doc:latest
+      options: --entrypoint /bin/bash
+    outputs:
+      build-matrix: "${{ steps.matrix.outputs.matrix }}"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Create build matrix
+        id: matrix
+        run: |
+          ./bin/build_matrix.py
+
   build:
     name: Build Linux Documents
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/texasinstruments/processor-sdk-doc:latest
       options: --entrypoint /bin/bash
+    needs: collect
     strategy:
       matrix:
-        os: [linux]
-        device:
-          - AM335X
-          - AM437X
-          - AM57X
-          - AM62AX
-          - AM62LX
-          - AM62PX
-          - AM62X
-          - AM64X
-          - AM65X
-          - AM67
-          - AM68
-          - AM69
-          - CORESDK
-          - DRA821A
-          - J7200
-          - J721E
-          - J721S2
-          - J722S
-          - J742S2
-          - J784S4
-          - AM62DX
-        include:
-          - os: android
-            device: AM62PX
-          - os: android
-            device: AM62X
-          - os: buildroot
-            device: AM62X
-          - os: buildroot
-            device: AM62LX
-          - os: debian
-            device: AM62X
-          - os: debian
-            device: AM62PX
-          - os: debian
-            device: AM64X
-          - os: debian
-            device: AM62LX
-          - os: edgeai
-            device: AM62AX
+        include: "${{ fromJSON(needs.collect.outputs.build-matrix) }}"
 
     steps:
       - name: Checkout
