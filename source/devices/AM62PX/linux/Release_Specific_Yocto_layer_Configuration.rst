@@ -17,6 +17,12 @@ directory of the `oe-layersetup git repo <https://git.ti.com/cgit/arago-project/
 +---------------------------------------------------------------+-----------------------------------+-------------------------------+
 | Config File                                                   | Description                       | Supported machines/platforms  |
 +===============================================================+===================================+===============================+
-| processor-sdk-scarthgap-chromium-11.01.16.13-config.txt       | Processor SDK 11.01.16.13 Release | am62pxx-evm                   |
+| processor-sdk-scarthgap-chromium-11.01.16.13-config.txt       | Processor SDK 11.01.16.13 Release | |__SDK_BUILD_MACHINE__|       |
 +---------------------------------------------------------------+-----------------------------------+-------------------------------+
+| processor-sdk-scarthgap-11.01.16.13-config.txt                | Processor SDK 11.01.16.13 Release | |__SDK_BUILD_MACHINE__|       |
++---------------------------------------------------------------+-----------------------------------+-------------------------------+
+| processor-sdk-scarthgap-selinux-11.01.16.13-config.txt        | Processor SDK 11.01.16.13 Release | |__SDK_BUILD_MACHINE__|       |
++---------------------------------------------------------------+-----------------------------------+-------------------------------+
+
+The oe-layersetup configuration, as defined in ``processor-sdk-scarthgap-chromium-11.01.16.13-config.txt``, is used for configuring the meta layers in the yocto SD card image available on |__SDK_DOWNLOAD_URL__|.
 
