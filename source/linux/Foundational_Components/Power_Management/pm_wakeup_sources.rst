@@ -321,17 +321,21 @@ MCU GPIO
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX')
 
-   One of the most common ways to wakeup a system is by using some I/O activity. MCU GPIOs allow us to do this
-   by configuring the MCU GPIO controller as a wakeup source.
-   In ideal scenarios, the firmware running on MCU core is responsible for configuring MCU GPIO's as a wakeup source.
-   However, if the application design doesn't rely too much on the MCU firmware then
-   Linux can be used to configure the MCU GPIOs as a wakeup source. You can refer to the mcu_gpio_key node in
+   One of the most common ways to wakeup a system is by using some I/O activity.
+   I/O activity on the MCU GPIOs can wakeup the system when the MCU GPIO
+   controller is configured as a wakeup source. In ideal scenarios, the firmware
+   running on MCU core is responsible for configuring MCU GPIOs as a wakeup
+   source. However, if the application design doesn't rely on the MCU firmware
+   then Linux can be used to configure the MCU GPIOs as a wakeup source. Refer
+   to the mcu_gpio_key node in
    `k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=11.01.05>`__
-   and use it as a template to configure the MCU GPIO of your choice as a wakeup capable GPIO.
+   to use as a template to configure the desired MCU GPIO as a wakeup capable
+   GPIO.
 
    A brief guide to configuring an MCU GPIO as wakeup:
 
-   First, we add gpio-keys as a compatible string, refer to `gpio_keys kernel documentation <https://www.kernel.org/doc/Documentation/devicetree/bindings/input/gpio-keys.txt>`__
+   First, add gpio-keys as a compatible string, refer to
+   `gpio_keys kernel documentation <https://www.kernel.org/doc/Documentation/devicetree/bindings/input/gpio-keys.txt>`__
    for details.
 
    .. code-block:: dts
@@ -353,7 +357,7 @@ MCU GPIO
       interrupt-parent = <&mcu_gpio0>;
       interrupts = <4 IRQ_TYPE_EDGE_RISING>;
 
-   Now, under the switch node we add the following:
+   Now, under the switch node, add the following:
 
    .. code-block:: dts
 
@@ -380,15 +384,16 @@ MCU GPIO
 
    This indicates that gpio_keys can wake-up the system from Deep Sleep or MCU Only mode.
 
-   The reason we can easily use MCU GPIOs to wakeup the system from deep sleep is because
-   MCU GPIO's are in a power domain that is never really shut down. This means that this domain
-   stays ON even when the SOC is in deep sleep. Hence, the GPIO controller is able to act as a wakeup
-   source and send a wakeup interrupt to the Device Manager. To understand the role of Device Manager
-   please refer to :ref:`S/W Architecture of System Suspend<pm_sw_arch>`
+   The MCU GPIOs can be used to wakeup the system from Deep Sleep because MCU
+   GPIOs are in a power domain that stays ON even when the SoC is in Deep Sleep.
+   Hence, the GPIO controller is able to act as a wakeup source and send a
+   wakeup interrupt to the Device Manager. To understand the role of Device
+   Manager, refer to
+   :ref:`S/W Architecture of System Suspend<pm_sw_arch>`
 
    MCU GPIO wakeup can only be tested when
    `k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=11.01.05>`__
-   overlay is loaded. Please refer to :ref:`How to enable DT overlays<howto_dt_overlays>` for more details.
+   overlay is loaded. Refer to :ref:`How to enable DT overlays<howto_dt_overlays>` for more details.
 
    Once the system has entered Deep Sleep or MCU Only mode as shown in the
    :ref:`LPM section<lpm_modes>`, wakeup from MCU_SPI0_D1 can be triggered
