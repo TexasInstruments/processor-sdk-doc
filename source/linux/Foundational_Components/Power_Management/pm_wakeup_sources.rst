@@ -818,7 +818,7 @@ MCU IPC based Wakeup
 
    .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-      `MCU+ SDK for AM62x <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62X/latest/exports/docs/api_guide_am62x/index.html>`__
+      `MCU+ SDK for AM62x <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62X/11_01_00_16/exports/docs/api_guide_am62x/index.html>`__
 
    .. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
@@ -826,7 +826,7 @@ MCU IPC based Wakeup
 
    .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
-      `MCU+ SDK for AM62Px <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62PX/latest/exports/docs/api_guide_am62px/index.html>`__
+      `MCU+ SDK for AM62Px <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62PX/11_01_01_08/exports/docs/api_guide_am62px/index.html>`__
 
    To use MCU IPC based wakeup, system should be placed into MCU Only mode
    as shown in the :ref:`LPM section<pm_mcu_only>`.
