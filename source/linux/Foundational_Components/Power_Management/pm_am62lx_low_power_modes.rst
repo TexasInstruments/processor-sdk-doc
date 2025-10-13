@@ -1,4 +1,4 @@
-.. _am62lx-power-management:
+.. _lpm_modes:
 
 ###############
 Low Power Modes

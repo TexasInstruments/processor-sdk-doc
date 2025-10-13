@@ -41,4 +41,4 @@ consumption profile, but at the cost of higher wake-up latency.
 This change is a temporary solution. A more robust solution is under development to pass a suspend parameter from the kernel
 by leveraging the s2idle mechanism.
 
-Once :file:`tispl.bin` is rebuilt and packaged, continue with entering LPM as described in :ref:`am62lx-power-management`.
+Once :file:`tispl.bin` is rebuilt and packaged, continue with entering LPM as described in :ref:`lpm_modes`.
