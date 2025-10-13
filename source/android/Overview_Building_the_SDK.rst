@@ -47,7 +47,7 @@ Fetch the code using ``repo``:
 .. code-block:: console
 
    $ mkdir ${YOUR_PATH}/ti-aosp-16 && cd $_
-   $ repo init -u https://git.ti.com/git/android/manifest.git -b android16-release -m releases/RLS_11_00_00.xml
+   $ repo init -u https://git.ti.com/git/android/manifest.git -b android16-release -m releases/RLS_11_00.xml
    $ repo sync
 
 .. tip::

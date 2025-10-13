@@ -21,7 +21,7 @@ Fetching Bootloader, Kernel, and Android
 
       $ export YOUR_PATH=~/src/
       $ mkdir ${YOUR_PATH}/ti-bootloader-aosp/ && cd $_
-      $ repo init -u https://git.ti.com/git/android/manifest.git -b android16-release -m releases/RLS_11_00_00_Bootloader.xml
+      $ repo init -u https://git.ti.com/git/android/manifest.git -b android16-release -m releases/RLS_11_00_Bootloader.xml
       $ repo sync
 
 - Kernel:
@@ -29,7 +29,7 @@ Fetching Bootloader, Kernel, and Android
    .. code-block:: console
 
       $ mkdir ${YOUR_PATH}/ti-kernel-aosp/ && cd $_
-      $ repo init -u https://git.ti.com/git/android/manifest.git -b android16-release -m releases/RLS_11_00_00_Kernel.xml
+      $ repo init -u https://git.ti.com/git/android/manifest.git -b android16-release -m releases/RLS_11_00_Kernel.xml
       $ repo sync
 
 - Android:
@@ -38,7 +38,7 @@ Fetching Bootloader, Kernel, and Android
 
       $ export YOUR_PATH=~/src/
       $ mkdir ${YOUR_PATH}/ti-aosp-16 && cd $_
-      $ repo init -u https://git.ti.com/git/android/manifest.git -b android16-release -m releases/RLS_11_00_00.xml
+      $ repo init -u https://git.ti.com/git/android/manifest.git -b android16-release -m releases/RLS_11_00.xml
       $ repo sync
 
 Build Secure Bootloaders
