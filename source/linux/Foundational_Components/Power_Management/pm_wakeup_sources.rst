@@ -364,7 +364,8 @@ MCU GPIO
                   wakeup-source;
       };
 
-   #. The label is the descriptive name of the key. The string will reflect under /proc/interrupts as:
+   #. label: Descriptive name of the switch node. If the MCU GPIO node is setup
+      correctly, the label will appear under /proc/interrupts:
 
        .. code-block:: console
 
@@ -373,8 +374,9 @@ MCU GPIO
 
    #. linux,code: Keycode to emit.
    #. gpios: the gpio required to be used as the gpio-key.
-   #. The `wakeup-source <https://www.kernel.org/doc/Documentation/devicetree/bindings/power/wakeup-source.txt>`__ property describes
-      devices which have wakeup capability.
+   #. wakeup-source:
+      `wakeup-source <https://www.kernel.org/doc/Documentation/devicetree/bindings/power/wakeup-source.txt>`__
+      property describes devices which have wakeup capability.
 
    This indicates that gpio_keys can wake-up the system from Deep Sleep or MCU Only mode.
 
