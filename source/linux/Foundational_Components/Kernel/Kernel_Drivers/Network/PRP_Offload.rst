@@ -55,6 +55,10 @@ The below script sets up a PRP interface with all possible offload functionaliti
    ip link set $if down
    ip link delete $if  2> /dev/null
 
+   ip link set $ifa down
+   ip link set $ifb down
+   sleep 1
+
    if [ "$1" = "prp_hw" ]
    then
          echo "Available offload features for $ifa: "
@@ -85,6 +89,9 @@ The below script sets up a PRP interface with all possible offload functionaliti
 
    ip addr add "$ip"/24 dev $if
    ip link set $if up
+   ip link set $ifa up
+   ip link set $ifb up
+   sleep 1
 
 To create PRP interface with IP address 192.168.1.10 using eth1 and eth2,
 run the script by passing the arguments as below
