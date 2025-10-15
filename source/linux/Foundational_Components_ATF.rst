@@ -24,6 +24,63 @@ on to either the Linux kernel or U-Boot in the non-secure world.
    The SCMI IDs used in the AM62L TF-A implementation are documented in the
    `TF-A documentation <https://github.com/TexasInstruments/arm-trusted-firmware/blob/ti-master/docs/plat/ti-am62l.rst>`__.
 
+   .. rubric:: SCMI and TI SCI
+
+   The AM62Lx represents a transition in Texas Instruments' approach to system control
+   interfaces. In older K3 devices, the Texas Instruments System Controller Interface (TI SCI)
+   was the primary protocol used for power, clock, and resource management. SCMI now serves
+   as a replacement for newer devices like the AM62L, offering similar functionality through
+   an industry-standard ARM protocol. This transition is the result of not having any Device
+   Management (R5 core) in the AM62Lx.
+
+   .. rubric:: Implementation Overview
+
+   The AM62L TF-A implementation runs a SCMI server that manages:
+
+   * **Power Domains**: Over 100 power domains are defined for various peripherals and subsystems
+   * **Clock Management**: Extensive clock control for all major peripherals including:
+
+        - Multiple clock sources (PLLs, oscillators, external clocks)
+        - Clock multiplexers for flexible clock routing
+        - Clock dividers for frequency scaling
+        - Support for dynamic clock rate configuration
+
+   .. rubric:: Modular Architecture
+
+   The SCMI implementation is organized into separate modules:
+
+   * ``plat/ti/k3/common/drivers/scmi/scmi.c`` - Core SCMI server initialization and protocol handling
+   * ``plat/ti/k3/common/drivers/scmi/scmi_pd.c`` - Power domain management
+   * ``plat/ti/k3/common/drivers/scmi/scmi_clock.c`` - Clock control and configuration
+   * ``plat/ti/k3/board/am62l/scmi/scmi_pd_data.h`` - Device-specific power domain definitions
+   * ``plat/ti/k3/board/am62l/scmi/scmi_clk_data.h`` - Device-specific clock tree definitions
+   * ``plat/ti/k3/common/drivers/scmi/plat_scmi_def.h`` - Platform SCMI definitions
+
+   .. rubric:: Clock Infrastructure
+
+   The clock management system supports:
+
+   * **Parent Clock Selection** - Multiple clock sources can be selected as parents for each peripheral
+   * **Clock Multiplexing** - Dynamic switching between different clock sources
+   * **Rate Configuration** - Flexible frequency configuration within supported ranges
+
+   .. rubric:: SCMI Channel Configuration
+
+   The SCMI communication uses:
+
+   * Shared memory at address ``0x70800000``
+   * 4KB shared memory region for message passing
+   * Support for both power domain and clock protocols
+
+   .. rubric:: Usage in Linux
+
+   Linux kernel drivers can use standard SCMI client APIs to:
+
+   * Request power state changes for devices
+   * Configure clock rates and parents
+   * Query current power and clock states
+   * Implement dynamic power management policies
+
 |
 
 .. rubric:: Getting the TF-A Source Code
