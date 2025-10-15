@@ -8,7 +8,7 @@ Trusted Firmware-A (TF-A) provides a reference implementation of secure world
 software for Armv7-A and Armv8-A, including a Secure Monitor executing at
 Exception Level 3 (EL3).
 
-Arm Trusted Firmware (ATF) is the initial code on ARMv8-A cores for all K3 platforms.
+TF-A is the initial code on ARMv8-A cores for all K3 platforms.
 After setting up the initial core state and applying any needed errata fixes
 it sets up itself as the EL3 monitor handler. Following that, it installs the secure
 world open source Trusted Execution Environment (OP-TEE) software and passes execution
@@ -26,7 +26,7 @@ on to either the Linux kernel or U-Boot in the non-secure world.
 
 |
 
-.. rubric:: Getting the ATF Source Code
+.. rubric:: Getting the TF-A Source Code
 
 The pre-built TF-A binary is in the TI Processor SDK:
 <path-to-processor-sdk>/board-support/prebuilt-images/<optional-build-machine-name>/bl31.bin.
@@ -49,7 +49,7 @@ Where <hash> is the commit shown here: :ref:`tf-a-release-notes` :ref:`release-s
    :start-after: .. start_include_yocto_toolchain_host_setup
    :end-before: .. end_include_yocto_toolchain_host_setup
 
-.. rubric:: Building ATF
+.. rubric:: Building TF-A
 
 .. ifconfig:: CONFIG_part_variant in ('AM62LX', 'AM62X', 'AM62AX', 'AM62PX', 'AM64X', 'J722S')
 
@@ -98,7 +98,7 @@ Where <hash> is the commit shown here: :ref:`tf-a-release-notes` :ref:`release-s
     .. code-block:: text
 
        +---------------------------+------------+
-       | ATF image                 | 0x701c0000 |
+       | TF-A image                | 0x701c0000 |
        +---------------------------+------------+
        | OP-TEE image              | 0x9e800000 |
        +---------------------------+------------+
@@ -112,7 +112,7 @@ Where <hash> is the commit shown here: :ref:`tf-a-release-notes` :ref:`release-s
     .. code-block:: text
 
        +---------------------------+------------+
-       | ATF image                 | 0x80000000 |
+       | TF-A image                | 0x80000000 |
        +---------------------------+------------+
        | OP-TEE image              | 0x80200000 |
        +---------------------------+------------+
@@ -126,7 +126,7 @@ Where <hash> is the commit shown here: :ref:`tf-a-release-notes` :ref:`release-s
     .. code-block:: text
 
        +---------------------------+------------+
-       | ATF image                 | 0x70000000 |
+       | TF-A image                | 0x70000000 |
        +---------------------------+------------+
        | OP-TEE image              | 0x9e800000 |
        +---------------------------+------------+
@@ -144,7 +144,7 @@ Where <hash> is the commit shown here: :ref:`tf-a-release-notes` :ref:`release-s
     .. code-block:: text
 
        +-----------------------------------------------------+------------------+-----------------------+---------------------+---------------+-------------------+----------+----------------------------------------+
-       | Source                                              | ATF              | OPTEE                 |  A53 SPL            | A53 U-Boot    | DTB               | kernel   | Comments                               |
+       | Source                                              | TF-A             | OPTEE                 |  A53 SPL            | A53 U-Boot    | DTB               | kernel   | Comments                               |
        +=====================================================+==================+=======================+=====================+===============+===================+==========+========================================+
        | <atf>/plat/ti/k3/board/lite/board.mk                |                  | BL32_BASE             | PRELOADED_BL33_BASE |               | K3_HW_CONFIG_BASE |          | Change K3_HW_CONFIG_BASE for           |
        |                                                     |                  |                       |                     |               |                   |          | u-boot a53 skip case                   |
