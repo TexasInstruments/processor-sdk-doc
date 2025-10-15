@@ -28,11 +28,11 @@ on to either the Linux kernel or U-Boot in the non-secure world.
 
 .. rubric:: Getting the ATF Source Code
 
-The pre-built TF-A binary is in TI Processor SDK: 
+The pre-built TF-A binary is in the TI Processor SDK:
 <path-to-processor-sdk>/board-support/prebuilt-images/<optional-build-machine-name>/bl31.bin.
 Use this binary since it is tested with TI Processor SDK.
 
-If it is not possible to use pre-build binary, use the following:
+If it is not possible to use a pre-built binary, use the following:
 
 .. code-block:: console
 
