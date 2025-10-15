@@ -66,6 +66,19 @@ Build Secure Bootloaders
 
 That will generate ``avb.key`` and  ``avb_pub.key`` under ``build/.keys``.
 
+.. note::
+
+   **Dependency on avbtool**:
+
+   The ``./secure.sh generate_avb_keys`` command has a dependency on the ``avbtool`` binary.
+   The tool is present in the kernel repository at ``prebuilts/kernel-build-tools/linux-x86/bin/avbtool``.
+   If the command fails with the message: ``avbtool: command not found``, update your ``PATH``
+   environment variable to include the avbtool path:
+
+   .. code-block:: console
+
+      $ export PATH=$PATH:${YOUR_PATH}/ti-kernel-aosp/prebuilts/kernel-build-tools/linux-x86/bin
+
 The bootloaders scripts will detect that ``avb_pub.key`` is present and will include it into U-Boot.
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
