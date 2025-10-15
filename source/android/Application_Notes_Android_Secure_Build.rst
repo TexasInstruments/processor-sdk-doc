@@ -51,8 +51,8 @@ Build Secure Bootloaders
       $ cd ${YOUR_PATH}/ti-bootloader-aosp/build
       $ ./secure.sh generate_ta_keys
       $ ls -1 .keys/
-      ta.key
-      ta_pub.key
+      ta.pem
+      ta_pub.pem
 
 - Generate AVB public/private keys:
 
@@ -94,9 +94,9 @@ The bootloaders scripts will detect that ``avb_pub.key`` is present and will inc
    +---------------------+-----------------------------------------------------------------------------+
    | ``avb_pub.key``     | (Optional) Public key used by U-Boot to verify Android images               |
    +---------------------+-----------------------------------------------------------------------------+
-   | ``ta.key``          | (Optional) Private key used to sign Trusted Application (OP-TEE)            |
+   | ``ta.pem``          | (Optional) Private key used to sign Trusted Application (OP-TEE)            |
    +---------------------+-----------------------------------------------------------------------------+
-   | ``ta_pub.key``      | (Optional) Public key used to sign Trusted Application (OP-TEE)             |
+   | ``ta_pub.pem``      | (Optional) Public key used to sign Trusted Application (OP-TEE)             |
    +---------------------+-----------------------------------------------------------------------------+
 
 
