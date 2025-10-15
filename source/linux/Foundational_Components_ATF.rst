@@ -34,10 +34,19 @@ Use this binary since it is tested with TI Processor SDK.
 
 If it is not possible to use a pre-built binary, use the following:
 
-.. code-block:: console
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
 
-   $ git clone https://github.com/TexasInstruments/arm-trusted-firmware.git
-   $ git checkout <hash>
+   .. code-block:: console
+
+      $ git clone https://github.com/TexasInstruments/arm-trusted-firmware.git
+      $ git checkout <hash>
+
+.. ifconfig:: CONFIG_part_variant not in ('AM62LX')
+
+   .. code-block:: console
+
+      $ git clone https://review.trustedfirmware.org/TF-A/trusted-firmware-a.git
+      $ git checkout <hash>
 
 Where <hash> is the commit shown here: :ref:`tf-a-release-notes` :ref:`release-specific-build-information`.
 
