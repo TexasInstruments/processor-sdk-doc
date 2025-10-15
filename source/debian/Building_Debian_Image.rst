@@ -6,7 +6,7 @@ Introduction
 ============
 
 Texas Instruments uses the **Armbian** build framework to generate Debian images for its platforms.
-*Armbian* describes itself to be a "base operating system"; that is, a build framework used to build
+Armbian describes itself to be a "base operating system"; that is, a build framework used to build
 Linux images optimized for Single-Board Computers.
 
 |__SDK_DOWNLOAD_URL__| provides Debian images, but users can also build these, especially if users
@@ -22,8 +22,9 @@ time, see `Armbian Documentation <https://docs.armbian.com/>`__.
 Get Armbian
 -----------
 
-For the time being, TI's fork of Armbian maintains support for TI platforms. Therefore, the first
-step is to fetch TI's fork:
+For the time being, `TI's fork <https://github.com/TexasInstruments/armbian-build.git>`__ of
+`Armbian/build <https://github.com/armbian/build.git>`__ maintains support for TI platforms.
+Therefore, the first step is to fetch TI's fork:
 
 .. code-block:: console
 
@@ -32,75 +33,91 @@ step is to fetch TI's fork:
 Repository Structure
 --------------------
 
-There are 4 files and directories of relevance to this high-level overview:
+The following files and directories are relevant to this high-level overview:
 
-- :file:`configs/`: This directory has configurations for boards, families, kernel configurations,
-  desktop or CLI environments and so on. To find configuration files relevant to TI, see:
+-  :file:`config/`: This directory has configurations for boards, families, kernel configurations,
+   desktop or CLI environments and so on. To find configuration files relevant to TI, see:
 
-   - :file:`configs/sources/families/k3.conf`
-   - :file:`configs/kernel/linux-k3-current.conf`
-   - :file:`configs/kernel/linux-k3-rt-current.conf`
+   - :file:`config/boards/<TI EVM board>.conf`
+   - :file:`config/sources/families/k3.conf`
+   - :file:`config/kernel/linux-k3-current.conf`
+   - :file:`config/kernel/linux-k3-rt-current.conf`
 
-- :file:`compile.sh`: This is the script that the user should run for building Armbian images.
+-  :file:`compile.sh`: This is the script that the user should run for building Armbian images.
 
-- :file:`lib/`: This directory stores the scripts that do most of the work in building Armbian images.
+-  :file:`lib/`: This directory stores the scripts that do most of the work in building Armbian images.
 
-- :file:`extensions/`: This directory has files that define **extension hooks**. In Armbian, *extension
-  hooks* are function signatures, which the build framework calls in the process of building an
-  image. However, the build framework does not define these in ``lib/``. Users can define these
-  functions and integrate custom steps in the build process. TI has ``extensions/ti-debpkgs.sh``
-  extension file. To customize the build process, create a new file in this directory, and define
-  your extension hooks there. Once the file is created, be sure to add the following line to
-  board/family config file:
+-  :file:`extensions/`: This directory has files that define **extension hooks**. In Armbian, extension
+   hooks are function signatures, which the build framework calls in the process of building an
+   image. However, the build framework does not define these in ``lib/``. Users can define these
+   functions and integrate custom steps in the build process. TI has ``extensions/ti-debpkgs.sh``
+   extension file. To customize the build process, create a new file in this directory, and define
+   your extension hooks there. Once the file is created, be sure to add the following line to
+   board/family config file:
 
    .. code-block:: console
 
       enable_extension <extension_name>
 
-- :file:`userpatches/`: This directory stores files that define build parameters, user patches and so on.
+-  :file:`userpatches/`: This directory stores files that define build parameters, user patches and so on.
 
 Building Images
 ---------------
 
-Armbian supports an interactive build process. To build interactively, go to TI's Armbian fork you
-cloned, and use the following command:
+Armbian supports both an interactive UI and a noninteractive build process.
 
-.. code-block:: console
+.. note::
 
-   ./compile.sh
+   This build guide has been tested on an x86 host machine running Ubuntu 22.04. The Armbian :file:`compile.sh` script
+   builds in an ARM64 docker container. Ensure the following packages are installed:
 
-The build framework will then display dialog boxes. The user can use this to select the board, CLI
-or desktop environment, kernel configurations and so on.
+   .. code-block:: console
 
-To build the image non-interactively, specify all required **Build Switches** in the command:
+      sudo apt update
+      sudo apt install docker.io qemu qemu-user-static binfmt-support
 
-.. code-block:: console
+-  To build interactively:
 
-   ./compile.sh [command] [switch...] [command...]
+   .. code-block:: console
 
-A full list of build switches is available at `Build Switches <https://docs.armbian.com/Developer-Guide_Build-Switches/>`__.
+      ./compile.sh
 
-For example, the following command builds the minimal non-RT Trixie image:
+   The build framework will then display dialog boxes. The user can use this to select the board, CLI
+   or desktop environment, kernel configurations and so on.
 
-.. code-block:: console
+-  To build non-interactively:
 
-   ./compile.sh build BOARD=<target> BRANCH=current BUILD_MINIMAL=yes KERNEL_CONFIGURE=no RELEASE=trixie SKIP_ARMBIAN_REPO=yes
+   .. code-block:: console
 
-For a list of targets corresponding to each board, refer:
+      ./compile.sh [command] [switch...] [command...]
 
-      +------------------------------+--------------+
-      | Board                        | Target       |
-      +==============================+==============+
-      | AM62P                        | sk-am62p     |
-      +------------------------------+--------------+
-      | AM62x                        | sk-am62b     |
-      +------------------------------+--------------+
-      | AM62-LP                      | sk-am62-lp   |
-      +------------------------------+--------------+
-      | AM62SIP                      | sk-am62-sip  |
-      +------------------------------+--------------+
-      | AM64x                        | sk-am64b     |
-      +------------------------------+--------------+
+   A full list of build switches is available at `Build Switches <https://docs.armbian.com/Developer-Guide_Build-Switches/>`__.
+
+   .. warning::
+
+      If build issues arise, try adding these build switches to the end of the build command:
+
+      .. code-block:: console
+
+         GIT_SKIP_SUBMODULES=yes SKIP_ARMBIAN_REPO=yes
+
+   For example, the following command builds the minimal non-RT Trixie image:
+
+   .. code-block:: console
+
+      ./compile.sh build BOARD=<board> BRANCH=current BUILD_MINIMAL=yes KERNEL_CONFIGURE=no RELEASE=trixie GIT_SKIP_SUBMODULES=yes SKIP_ARMBIAN_REPO=yes
+
+For a list of boards and branches supported by each SoC, refer:
+
+   .. csv-table::
+      :header: "SoC", "Board", "Board Config File", "Branch"
+
+      AM62Lx,am62lxx-evm,``config/boards/am62lxx-evm.conf``,"current, current-rt, edge"
+      AM62Px,am62pxx-evm,``config/boards/am62pxx-evm.conf``,"current, current-rt, edge"
+      AM62x,sk-am62b,``config/boards/sk-am62b.conf``,"current, edge"
+      AM62-LP,sk-am62-lp,``config/boards/sk-am62-lp.conf``,"current, current-rt, edge"
+      AM62SIP,sk-am62-sip,``config/boards/sk-am62-sip.conf``,"current, current-rt, edge"
+      AM64x,sk-am64b,``config/boards/sk-am64b.conf``,"current, edge"
 
 
 ``output/images/`` stores the built images. These images have a ``.img`` extension.

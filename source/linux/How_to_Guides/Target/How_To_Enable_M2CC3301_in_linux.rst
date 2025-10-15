@@ -114,7 +114,16 @@ Connect to Wi-Fi
 
    .. code-block:: console
 
+      nmcli device wifi list
       nmcli device wifi connect "<SSID>" password "<password>"
+
+   .. note::
+
+      The following command also works and will prompt for a password:
+
+      .. code-block:: console
+
+         nmcli device wifi connect --ask "<SSID>"
 
 For more information on the Wi-Fi capabilities of the CC33xx devices, please
 see the documentation that can be found in the `CC33xx SDK <https://www.ti.com/tool/CC33XX-SOFTWARE>`_.
