@@ -97,6 +97,10 @@ This section describes an overview of the modifications that can be done to achi
 .. Image:: /images/optimized_bootflow_sbl_mpu.png
      :align: center
 
+.. note::
+
+   This document focuses on optimized boot flow by using Secondary Boot Loader (SBL). Users can also achieve shorter boot time by using Secondary Program Loader (SPL) flow. Refer doc :ref:`U-Boot Falcon Mode <U-Boot-Falcon-Mode>`.
+
 Reducing bootloader time
 ------------------------
 
@@ -241,6 +245,10 @@ Secondary Boot Loader (SBL)
 
         .. Image:: /images/SBL_singlerank_ddr.png
          :align: center
+
+.. note::
+
+   SBL flow requires specifying kernel bootargs in either the Linux defconfig or device tree, otherwise the Linux image will fail to boot.
 
 Reducing Linux kernel boot time
 -------------------------------
@@ -611,9 +619,9 @@ To measure the instance when the filesystem starts, navigate to :file:`init/main
     +-----------------+-----------+
     |  Linux Kernel   |    530    |
     +-----------------+-----------+
-    |     Tiny FS     |    188    |
+    |     Tiny FS     |    190    |
     +-----------------+-----------+
-    |           Total |    964    |
+    |      Total      |    966    |
     +-----------------+-----------+
 
 Bootloader loads HSM binary (9KB), MCU/DSP image (50KB) and Kernel+FS image (22MB) in the above measurements
