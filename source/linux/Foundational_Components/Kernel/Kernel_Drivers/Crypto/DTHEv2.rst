@@ -17,7 +17,9 @@ devices:
 
 .. code-block:: text
 
-   * AM62LX             : AES-ECB, AES-CBC, MD5, SHA224, SHA256, SHA384, SHA512
+   * AM62LX    :  Encryption                      - AES-ECB, AES-CBC
+                  Encryption with Authentication  - AES-GCM
+                  Hashing                         - MD5, SHA224, SHA256, SHA384, SHA512, HMAC(MD5), HMAC(SHA224), HMAC(SHA256), HMAC(SHA384), HMAC(SHA512)
 
 ********************
 Building the Drivers
