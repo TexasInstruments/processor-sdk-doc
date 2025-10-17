@@ -89,7 +89,7 @@ After flashing, make sure to halt in the U-Boot shell and run
 
 .. ifconfig:: CONFIG_part_variant in ('AM67A')
 
-.. code-block:: console
+   .. code-block:: console
 
       => env set adtbo_idx 16
       => saveenv
