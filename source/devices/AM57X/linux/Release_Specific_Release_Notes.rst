@@ -45,7 +45,7 @@ Documentation
 Release 11.01.00
 ================
 
-Released September 2025
+Released October 2025
 
 .. rubric:: What's New
    :name: whats-new
@@ -61,6 +61,10 @@ Processor SDK 11.01 Release supports the following platforms:
 Processor SDK 11.01 Release has following new features:
 
   * This is the first release in the 2025 LTS stream 6.12 kernel, 2025.01 U-Boot and Yocto Scarthgap/5.0
+
+.. warning::
+
+   This will be the last LTS SDK release for AM57x devices.
 
 .. rubric::  Descoped SDK features from 11.01
    :name: descoped-sdk-features-from-11.01
