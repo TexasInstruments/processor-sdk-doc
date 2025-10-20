@@ -4,6 +4,8 @@
 Multimedia Video Codec
 ######################
 
+.. _multimedia-wave5-introduction:
+
 ************
 Introduction
 ************
@@ -637,6 +639,35 @@ To pipe the output from ffmpeg to ffplay with hardware acceleration, the followi
 .. code-block:: console
 
    ffmpeg -re -codec:v hevc_v4l2m2m -i input.h265 -fps_mode passthrough -f rawvideo - | ffplay -framerate 30 -video_size 1920x1080 -f rawvideo -autoexit -
+
+FFMPEG also has support to use V4L2 HW accelerators for video encoding. The following command is an example for encoding a raw video by using the Wave5 IP:
+
+.. code-block:: console
+
+   ffmpeg -f rawvideo -pix_fmt yuv420p -s:v 352x288 -r 30 -i <input_video>.yuv -c:v h264_v4l2m2m <output_video>.h264 -y -nostdin
+
+For H265 encoding, use the following command.
+
+.. code-block:: console
+
+   ffmpeg -f rawvideo -pix_fmt yuv420p -s:v 352x288 -r 30 -i <input_video>.yuv -c:v hevc_v4l2m2m <output_video>.h265 -y -nostdin
+
+.. note::
+
+   352x288 is an example resolution. Update this value to properly reflect the resolution of the raw video. 
+
+FFMPEG can also capture video by using cameras attached to the device. See the following for an example.
+
+.. code-block:: console
+
+   ffmpeg -f v4l2 -framerate 30 -video_size 1280x720 -i /dev/video3 -c:v h264_v4l2m2m <video_destination>
+
+Remember that the Wave5 does have HW requirements for the raw video; see :ref:`multimedia-wave5-introduction` for these constraints. If the video is a
+resolution not aligned to the HW requirements, FFMPEG can pad the video to make it compliant with HW. The following command accomplishes this.
+
+.. code-block:: console
+
+   ffmpeg -f rawvideo -pix_fmt yuv420p -s 1920x1080 -r 30 -i <1080p_input_video>.yuv -vf "pad=width=1920:height=1088:x=0:y=0:color=black" -c:v h264_v4l2m2m <output_video>.h264
 
 To print out the packet's data and payload data in hexadecimal from a given multimedia stream named :file:`foo.h265`, the following can be used:
 
