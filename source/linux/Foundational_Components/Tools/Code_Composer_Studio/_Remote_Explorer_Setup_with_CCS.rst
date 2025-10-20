@@ -23,8 +23,7 @@ prerequisites are met:
    should be on the same subnet.
 #. Know the IP of your evm.
 
-   -  You can obtain the IP address of the EVM using matrix and
-      selecting **Settings -> Network Settings** or by connecting over
+   -  You can obtain the IP address of the EVM by connecting over
       the serial console and using the **ifconfig** command.
 
 .. rubric:: Opening the Remote System Explorer Perspective

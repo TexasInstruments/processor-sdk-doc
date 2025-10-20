@@ -27,7 +27,6 @@ Replacement Variables
 '__OPTEE_PLATFORM_FLAVOR__'      : 'k3-am62axx'
 '__RTOS_UBUNTU_VERSION_LONG__'   : '22.04 (64-bit)'
 '__WINDOWS_SUPPORTED_LONG__'     : '10 (64-bit)'
-'__FEATURINGMATRIX__'            : \
 '__SYSFW_CORE_NAME__'            : 'TIFS'
 
 Configuration Values

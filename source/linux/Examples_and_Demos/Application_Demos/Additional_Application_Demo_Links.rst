@@ -17,7 +17,7 @@ This demo showcases Human Machine Interface (HMI) for Electric Vehicle Supply Eq
 Protection Relay Demo
 =====================
 
-Matrix UI provides out of box demo to showcase Human Machine Interface (HMI) for Protection Relays. More details can be found at http://www.ti.com/tool/TIDEP-0102
+An out of box demo to showcase Human Machine Interface (HMI) for Protection Relays. More details can be found at http://www.ti.com/tool/TIDEP-0102
 
 mmWave Gesture Controlled HMI
 =============================

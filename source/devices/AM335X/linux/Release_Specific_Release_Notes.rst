@@ -15,7 +15,6 @@ execution of Linux based applications and includes the following:
 -  SDK Installer
 -  Setup Scripts
 -  Makefiles
--  Matrix Application Launcher
 -  Example Applications
 -  WLAN support (Wilink 8)
 -  Code Composer Studio

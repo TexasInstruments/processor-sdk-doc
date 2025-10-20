@@ -26,7 +26,6 @@ Replacement Variables
 '__LINUX_UBUNTU_VERSION_SHORT__' : '22.04'
 '__OPTEE_PLATFORM_FLAVOR__'      : 'am57xx'
 '__RTOS_UBUNTU_VERSION_LONG__'   : '22.04'
-'__FEATURINGMATRIX__'            : \
 '__SYSFW_CORE_NAME__'            : \
 '__IMAGE_TYPE__'                 : 'default'
 

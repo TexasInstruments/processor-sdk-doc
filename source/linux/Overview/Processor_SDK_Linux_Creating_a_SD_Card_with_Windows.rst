@@ -104,13 +104,9 @@ Here is the process to follow to create the SD card.
 #. Plug it into a supported hardware platform and boot the platform from
    the SD card.
 #. If the platform has a display (Starterkit, for example), you should
-   see the Matrix application from the SDK. If the hardware does not
-   have a display, you should be able to access Matrix remotely through
-   a web browser if the PC and the board are on a common network. You
-   can also connect to the board using a terminal emulator (ex. Tera
-   Term) in order to view the serial console and interact with the
-   embedded Linux system (ex. run ifconfig to get the IP address of the
-   target board in order to connect to it to view remote matrix).
+   see the landing application from the SDK. You can also connect to the board
+   using a terminal emulator (ex. Tera Term) in order to view the serial console
+   and interact with the embedded Linux system.
 
 |
 

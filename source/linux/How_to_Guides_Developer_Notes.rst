@@ -14,10 +14,8 @@ Developer Notes
    How_to_Guides/Host/AM335x_ICEv2_flash_erase
    How_to_Guides/Host/How_to_Setup_Ubuntu_1404_Network_Boot
    How_to_Guides/Host/Additional_How_to_Guide_Links
-   How_to_Guides/Target/How_to_Recalibrate_the_Touchscreen
    How_to_Guides/Target/Processor_SDK_Linux_File_System_Optimization_Customization
    How_to_Guides/Target/How_to_add_a_JVM
-   How_to_Guides/Target/How_to_use_a_Mouse_instead_of_the_Touchscreen_with_Matrix
    How_to_Guides/Target/Update_U-Boot_Environment_Variables_stored_in_SPI_Flash_from_Linux
    How_to_Guides/Target/How_to_Change_dtb_File
    How_to_Guides/Target/How_to_Set_Display_for_AM572x_GP_EVM

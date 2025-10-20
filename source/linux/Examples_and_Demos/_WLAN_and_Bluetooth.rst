@@ -98,14 +98,6 @@ page for more instruction.
 
 -  `WLAN Throughput Test <http://processors.wiki.ti.com/index.php/WLAN_Throughput_Test>`__
 
--  **Web-Browsing on Matrix UI and Remote (PC Based) Web Browser (QT
-   GUI)**
-
--  `QT Web Browser - Connect to AP using Command
-   line <http://processors.wiki.ti.com/index.php/OMAP_Wireless_Connectivity_WLAN_Station_demo_NLCP#Perform_Web-Browsing_over_the_EVM_GUI>`__
--  `QT Web Browser - Connect to AP using QT
-   GUI <http://processors.wiki.ti.com/index.php/OMAP_Wireless_Connectivity_WLAN_Station_demo_NLCP_GUI#Perform_Web-Browsing_over_the_EVM_GUI>`__
-
 -  **WLAN Low Power Use Case Demo (Magic Packet visibly wakes up
    system)**
 

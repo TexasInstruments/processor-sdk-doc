@@ -182,9 +182,6 @@ package:
 
    -  ``arm-benchmarks`` - Builds the ARM Benchmarks for the ARCH defined in
      Rules.make.
-   -  ``am-sysinfo`` - Build the helper applications used by the system
-     settings demos in Matrix.
-
 
 .. rubric:: Additional Targets
    :name: additional-targets

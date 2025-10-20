@@ -6,8 +6,6 @@ Power Management
 ================
 .. include:: Examples_and_Demos/_Power_Management.rst
 
-.. include::  Examples_and_Demos/_AM335x_Power_Management_User_Guide.rst
-
 .. include::  Examples_and_Demos/_ARM_Multimedia_Users_Guide.rst
 
 Accelerated Multimedia
@@ -18,16 +16,6 @@ Graphics and Display
 ====================
 Refer to various SGX 3D demos and other Graphics applications at :doc:`Foundational_Components/Graphics/index` chapter.
 
-DSP offload with OpenCL
-=======================
-See http://downloads.ti.com/mctools/esd/docs/opencl/examples/index.html
-
-.. include:: Examples_and_Demos/_Camera_Users_Guide.rst
-
 WLAN and Bluetooth
 ==================
 .. include:: Examples_and_Demos/_WLAN_and_Bluetooth.rst
-
-Hands on with QT
-================
-.. include:: Examples_and_Demos/_Hands_on_with_QT.rst

@@ -28,7 +28,6 @@ Replacement Variables
 '__RTOS_UBUNTU_VERSION_LONG__'   : '22.04 (64-bit), 16.04 (64-bit)'
 '__FAMILY_NAME__'                : 'j722s'
 '__WINDOWS_SUPPORTED_LONG__'     : '7 (64-bit)'
-'__FEATURINGMATRIX__'            : \
 '__SYSFW_CORE_NAME__'            : 'TIFS'
 '__IMAGE_TYPE__'                 : 'edgeai'
 

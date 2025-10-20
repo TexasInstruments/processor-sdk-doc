@@ -28,7 +28,6 @@ Replacement Variables
 '__FAMILY_NAME__'                : 'am64x'
 '__RTOS_UBUNTU_VERSION_LONG__'   : '14.04 (64-bit), 16.04 (64-bit)'
 '__WINDOWS_SUPPORTED_LONG__'     : '10 (64-bit)'
-'__FEATURINGMATRIX__'            : \
 '__SYSFW_CORE_NAME__'            : 'DMSC'
 '__PCIE_BASE_ADDRESS__'          : 'f102000'
 '__PCIE_DEVICE_ID__'             : '0xb010'

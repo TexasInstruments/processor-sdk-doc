@@ -292,9 +292,7 @@ After opening CCS with a new workspace:
 
 #. The *Projects:* list will now be populated with the projects found.
 #. Uncheck the following projects. They are Qt projects and are imported
-   using a different method. For more information, see the :ref:`Hands on
-   with QT <hands-on-with-qt>`
-   training.
+   using a different method.
 
    -  matrix\_browser
    -  refresh\_screen

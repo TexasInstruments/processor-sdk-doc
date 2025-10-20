@@ -20,15 +20,6 @@ pieces work together. We package all of this together with a working
 Linux Embedded System that has been built with all of the things
 mentioned above.
 
-.. ifconfig:: CONFIG_sdk in ('SITARA')
-
-    It contains a featured application called
-    “Matrix” (derived from the fact that it is basically a simple
-    Graphical User’s Interface (GUI) of icon’s arranged in a “matrix”).
-    Matrix is a fairly simple embedded Linux system that highlights some
-    of the key features of the TI Processor offering (LCD display,
-    graphics, networking, etc.).
-
 What it really serves as is a “known good” starting point. One of the
 big challenges with starting development on a new platform (not to
 mention, a new Operating System (OS) for many), is getting an
@@ -86,8 +77,7 @@ pieces to simplify things a bit:
    .. ifconfig:: CONFIG_sdk in ('SITARA')
 
        -  RTOS application sources and configuration files
-       -  A Yocto/OE compliant filesystem and sources for example
-          applications in Matrix
+       -  A Yocto/OE compliant filesystem
 
    .. ifconfig:: CONFIG_sdk in ('JACINTO','j7_foundational')
 
@@ -121,29 +111,23 @@ So, if you’re not quite there yet, let’s discuss some other options.
 Maybe you’d like to evaluate the SDK a bit to see if it is how you’d
 like to get started.
 
-If this is not good enough and you really want to get your hands on
-something, check out the next section which shares how to play with the
-embedded Linux system |__FEATURINGMATRIX__|, the first piece of the SDK
-mentioned earlier. All you’ll need is access to a Linux
-computer, a SD card, a SD card reader, some free, open-source software,
-and a supported :ref:`Hardware Platform <release-specific-supported-platforms-and-versions>`.
+If this is not good enough and you really want to get your hands on something,
+check out the next section which shares how to play with the embedded Linux
+system, the first piece of the SDK mentioned earlier. All you’ll need is access
+to a Linux computer, a SD card, a SD card reader, some free, open-source
+software, and a supported :ref:`Hardware Platform
+<release-specific-supported-platforms-and-versions>`.
 
-.. ifconfig:: CONFIG_sdk in ('SITARA')
-
-    .. rubric:: Evaluating the SDK Embedded Linux System and Matrix
-       :name: evaluating-the-sdk-embedded-linux-system-and-matrix
-
-.. ifconfig:: CONFIG_sdk in ('JACINTO','j7_foundational')
-
-    .. rubric:: Evaluating the SDK Embedded Linux System
-       :name: evaluating-the-sdk-embedded-linux-system
+ .. rubric:: Evaluating the SDK Embedded Linux System
+    :name: evaluating-the-sdk-embedded-linux-system
 
 If you’re a hands on person, reading documentation and looking at
 presentations gets old fast. So, if you want to see an example of what
 you can build with the SDK and actually hold it in your hands and play
 with it (or show it to someone else that needs help understanding what
 you want to do with it), with minimal effort, you can simply run the
-SDK Embedded Linux System |__FEATURINGMATRIX__| on a supported :ref:`Hardware platform <release-specific-supported-platforms-and-versions>`.
+SDK Embedded Linux System on a supported :ref:`Hardware platform
+<release-specific-supported-platforms-and-versions>`.
 This will allow you to poke and prod and interact. It’s a powerful way
 to get the imagination active and engaged.
 
@@ -161,7 +145,7 @@ to get the imagination active and engaged.
     card is simply a few revisions old and you want the latest and greatest.
     If that is the case, check out the :ref:`Create SD Card <processor-sdk-linux-create-sd-card>`
     page. Just remember, you won’t be able to build or change anything,
-    simply evaluate the SDK Embedded Linux System with Matrix as delivered.
+    simply evaluate the SDK Embedded Linux System as delivered.
     But, even this is enough to get the imagination going and all some folks
     want to do.
 

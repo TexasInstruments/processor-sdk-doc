@@ -32,10 +32,7 @@ See this link to meet the above requirements:
 Although the Processor Linux SDK includes several Qt example
 applications using Code Composer Studio to build or debug these
 applications isn't recommended. QT Creator is the official IDE designed
-to be used when developing or debugging Qt applications.Please reference
-to the following link for further information on all the basic to
-download, install, run, and debug QT applications: `Hands on with
-Qt <Examples_and_Demos_Sub-system_Demos.html#hands-on-with-qt>`__
+to be used when developing or debugging Qt applications.
 
 |
 

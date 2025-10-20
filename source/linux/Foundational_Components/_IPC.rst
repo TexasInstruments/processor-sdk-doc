@@ -8,12 +8,6 @@ Overview
 
 .. include:: Foundational_Components/IPC/_IPC_Overview.rst
 
-*********************
-IPC Quick Start Guide
-*********************
-
-.. include:: Foundational_Components/IPC/_Quick_Start_Guide.rst
-
 **************
 IPC for AM57xx
 **************

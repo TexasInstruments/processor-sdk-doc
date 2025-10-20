@@ -25,7 +25,6 @@ Replacement Variables
 '__LINUX_UBUNTU_VERSION_SHORT__' : '18.04'
 '__RTOS_UBUNTU_VERSION_LONG__'   : '14.04 (64-bit), 16.04 (64-bit)'
 '__WINDOWS_SUPPORTED_LONG__'     : '7 (64-bit)'
-'__FEATURINGMATRIX__'            : 'featuring Matrix'
 '__SYSFW_CORE_NAME__'            : \
 '__IMAGE_TYPE__'                 : 'default'
 

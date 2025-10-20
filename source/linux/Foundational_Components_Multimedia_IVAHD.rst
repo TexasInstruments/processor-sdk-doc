@@ -74,31 +74,6 @@ capabilities.
 
 |
 
-.. rubric:: Multimedia Demos Available via Matrix
-   :name: multimedia-demos-available-via-matrix
-
-The following Multimedia demos are available via Matrix on AM57xx EVM
-(X15 board with LCD). The table below provides a list of these demos,
-with a brief description.
-
-+-----------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **Demo Name**                           | **Details**                                                                                                                                                                                 |
-+-----------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| IVAHD H264 Decode                       | This demo runs a gstreamer playbin pipeline to decode H264 using IVAHD. The demo plays back audio as well and you can listen if speakers are connected.                                     |
-+-----------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| IVAHD H264 Encode                       | This demo runs a gstreamer pipeline to do H264 encoding on IVAHD. The input clip is in NV12 format. The output is saved to /home/root directory                                             |
-+-----------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| AAC Decode                              | This demo runs a gstreamer playbin pipeline for ARM audio decoding and playout.                                                                                                             |
-+-----------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| H.265 (HEVC) Decode                     | This demonstrates HEVC decoding on ARM. The gstreamer pipeline decodes and display an H265 stream.                                                                                          |
-+-----------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| VIP VPE IVAHD MPEG4 Encode and Decode   | This demonstrates video capture via Video Input Port (VIP), color space conversion and scaling with Video Processing Engine (VPE), IVAHD MPEG4 encoding, IVAHD MPEG4 decoding and display   |
-+-----------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| DSP C66 Image Processing                | This demonstrates the use of DSP C66x plugin (dsp66videokernel) for offloading image processing tasks to DSP.                                                                               |
-+-----------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-
-|
-
 .. rubric:: Software Stack of Accelerated Codec Encoding/Decoding
    :name: software-stack-of-accelerated-codec-encodingdecoding
 
