@@ -15,6 +15,7 @@ Debian Developer's Guide
    :numbered:
 
    /debian/Overview
+   /devices/AM62LX/linux/Release_Specific
    Getting_Started_Guide
    /debian/Building_Debian_Image
    /debian/Building_Debian_Packages
