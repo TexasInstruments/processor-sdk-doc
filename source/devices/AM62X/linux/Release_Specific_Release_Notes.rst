@@ -77,6 +77,9 @@ What's new
 Build Information
 =================
 
+Arago (Yocto/OE)
+----------------
+
 .. _u-boot-release-notes:
 
 U-Boot
@@ -166,6 +169,42 @@ Yocto
 | Branch: scarthgap
 | Release Tag: 11.01.05.03
 |
+
+Debian (Armbian)
+----------------
+
+.. list-table::
+   :header-rows: 1
+   :widths: 15, 30, 30, 30
+
+   * - Component
+     - Branch Info
+     - Tag Info
+     - Config Info
+   * - U-Boot
+     - `ti-u-boot-2025.01 <https://github.com/TexasInstruments/ti-u-boot/tree/ti-u-boot-2025.01>`__
+     - `11.01.05 <https://github.com/TexasInstruments/ti-u-boot/releases/tag/11.01.05>`__
+     - `Build <https://github.com/TexasInstruments/armbian-build/blob/5f357a146d6a72dad1b5677e4cfdc111a9f3a935/config/sources/families/k3.conf#L85>`__
+   * - ATF
+     - `master <https://github.com/ARM-Software/arm-trusted-firmware/tree/master>`__
+     - `v2.13+ <https://github.com/ARM-software/arm-trusted-firmware/commit/d90bb650fe4cb3784f62214ab5829f4051c38d0a>`__
+     - `Build <https://github.com/TexasInstruments/armbian-build/blob/5f357a146d6a72dad1b5677e4cfdc111a9f3a935/config/sources/families/k3.conf#L83>`__
+   * - OPTEE
+     - `master <https://github.com/OP-TEE/optee_os/tree/master>`__
+     - `4.6.0 <https://github.com/OP-TEE/optee_os/releases/tag/4.6.0>`__
+     - `Build <https://github.com/TexasInstruments/armbian-build/blob/5f357a146d6a72dad1b5677e4cfdc111a9f3a935/config/sources/families/k3.conf#L111>`__
+   * - Linux Firmware
+     - `ti-linux-firmware <https://github.com/TexasInstruments/ti-linux-firmware/tree/ti-linux-firmware>`__
+     - `11.01.05 <https://github.com/TexasInstruments/ti-linux-firmware/releases/tag/11.01.05>`__
+     - `Git Clone <https://github.com/TexasInstruments/armbian-build/blob/5f357a146d6a72dad1b5677e4cfdc111a9f3a935/config/sources/families/k3.conf#L98>`__
+   * - Linux Kernel
+     - `ti-linux-6.12.y <https://github.com/TexasInstruments/ti-linux-kernel/tree/ti-linux-6.12.y>`__
+     - `11.01.05 <https://github.com/TexasInstruments/ti-linux-kernel/releases/tag/11.01.05>`__
+     - `non-RT <https://github.com/TexasInstruments/armbian-build/blob/2025.07-release/config/kernel/linux-k3-current.config>`__, `RT <https://github.com/TexasInstruments/armbian-build/blob/2025.07-release/config/kernel/linux-k3-current-rt.config>`__
+   * - Armbian Build
+     - `2025.07-release <https://github.com/TexasInstruments/armbian-build/tree/2025.07-release>`__
+     - `11.01.05.03 <https://github.com/TexasInstruments/armbian-build/releases/tag/11.01.05.03>`__
+     - `Build <https://github.com/TexasInstruments/armbian-build/blob/2025.07-release/config/sources/families/k3.conf>`__, `Board <https://github.com/TexasInstruments/armbian-build/blob/2025.07-release/config/boards/sk-am62b.conf>`__
 
 
 Issues Tracker
