@@ -136,3 +136,5 @@ linux/How_to_Guides/Hardware_Setup_with_CCS/AM68_SK_Hardware_Setup
 linux/How_to_Guides/Target/How_To_Carve_Out_CMA
 
 linux/Documentation_Tarball
+
+linux/Demo_User_Guides/Chromium_Browser

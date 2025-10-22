@@ -133,3 +133,5 @@ linux/How_to_Guides_Hardware_Setup_with_CCS
 linux/How_to_Guides/Hardware_Setup_with_CCS/J742S2_EVM_Hardware_Setup
 linux/How_to_Guides/Target/How_To_Carve_Out_CMA
 linux/Documentation_Tarball
+
+linux/Demo_User_Guides/Chromium_Browser

@@ -136,3 +136,5 @@ linux/How_to_Guides/Hardware_Setup_with_CCS/AM69_SK_Hardware_Setup
 linux/How_to_Guides/FAQ/How_to_run_BIST_on_a_core
 linux/How_to_Guides/Target/How_To_Carve_Out_CMA
 linux/Documentation_Tarball
+
+linux/Demo_User_Guides/Chromium_Browser
