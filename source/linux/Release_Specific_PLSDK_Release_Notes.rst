@@ -108,8 +108,6 @@ See :ref:`release-specific-supported-platforms-and-versions` for a list of suppo
 Build Information
 =====================================
 
-.. _u-boot-release-notes:
-
 U-Boot
 -------------------------
 
