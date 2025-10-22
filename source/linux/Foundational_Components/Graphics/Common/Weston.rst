@@ -54,6 +54,14 @@ manager that coordinates the loading of devices with the initialization of any
 specified graphical environment. By default it will automatically start
 ``weston`` under the weston user on device startup.
 
+The definition of the session, including the command used to start it is in
+:file:`/usr/share/wayland-sessions/weston.desktop`. This follows the desktop
+entry initialization (INI) format. Some have argued that session entries do not
+fully meet the `Desktop Entry Specification`_ due to the addition of some new
+keys and silent disregard of other keys.
+
+.. _Desktop Entry Specification: https://specifications.freedesktop.org/desktop-entry-spec
+
 If you need to interact with this instance with any other user, then make sure
 that user is capable of interacting with the wayland socket. This will be
 :file:`wayland-1` under the ``weston`` user's ``XDG_RUNTIME_DIR``,
