@@ -84,6 +84,6 @@ Building the Linux Demo binary from sources
 Building the MCU Firmware from sources
 --------------------------------------
 
-    #. Please refer to the `MCU+ SDK Documentation <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62PX/latest/exports/docs/api_guide_am62px/group__DRV__DSS__MODULE.html>`__
+    #. Please refer to the `MCU+ SDK Documentation <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62PX/11_01_01_08/exports/docs/api_guide_am62px/group__DRV__DSS__MODULE.html>`__
 
 

@@ -85,8 +85,8 @@ by double clicking on it within your Linux host PC.
 .. note::
    AM62L Linux SDK contains only the Linux specific source and application intended
    to run on A53/Linux core. For A53 based FreeRTOS side source and applications, refer **MCU+ SDK**
-   package `[Use Link] <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62LX/latest/exports/docs/api_guide_am62lx/index.html>`__.
+   package `[Use Link] <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62LX/11_00_00_23/exports/docs/api_guide_am62lx/index.html>`__.
 
 **Instructions to set-up CCS**
 
--  Refer `[Use Link] <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62LX/latest/exports/docs/api_guide_am62lx/CCS_SETUP_PAGE.html>`__
+-  Refer `[Use Link] <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62LX/11_00_00_23/exports/docs/api_guide_am62lx/CCS_SETUP_PAGE.html>`__
