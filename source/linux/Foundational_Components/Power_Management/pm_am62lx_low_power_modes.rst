@@ -35,7 +35,7 @@ sources.
 .. code-block:: console
 
    root@am62lxx-evm:~# echo disabled > /sys/devices/platform/bus@f0000/f900000.dwc3-usb/power/wakeup
-   root@am62lxx-evm:~# echo disabled > /sys/devices/platform/bus@f0000/f900000.dwc3-usb/power/wakeup
+   root@am62lxx-evm:~# echo disabled > /sys/devices/platform/bus@f0000/f910000.dwc3-usb/power/wakeup
 
 Now the SoC can be suspended using the following command.
 
