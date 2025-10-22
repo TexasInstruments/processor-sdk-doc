@@ -66,9 +66,6 @@ Processor SDK 6.3 Release has following new features:
 - ICSSG PRUETH
     -  100M Uboot Support in ICSSG on AM654x
 
-
-.. _release-specific-sdk-components-versions:
-
 .. rubric:: SDK Components & Versions
    :name: sdk-components-versions
 

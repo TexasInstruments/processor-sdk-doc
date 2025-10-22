@@ -98,7 +98,7 @@ Release features
 
    -  A72 PMU support for Performance profiling
 
-.. _release-specific-sdk-components-versions:
+.. _release-specific-build-information:
 
 Component versions
 ------------------
