@@ -148,12 +148,14 @@ Issues Resolved
    :header: "Record ID", "Title"
    :widths: 15, 70
 
+   "`EXT_SITMPUSW-166 <https://sir.ext.ti.com/jira/browse/EXT_SITMPUSW-166>`_","ti-apps-launcher: Incomplete Demo Build steps"
+   "`EXT_SITMPUSW-165 <https://sir.ext.ti.com/jira/browse/EXT_SITMPUSW-165>`_","inapplicable wl18xx message in Linux boot log"
    "`EXT_SITMPUSW-143 <https://sir.ext.ti.com/jira/browse/EXT_SITMPUSW-143>`_","Yocto Documentation: AM6x: SDK: Build Instruction missing steps for building K3R5 baremetal toolchain"
    "`EXT_EP-12816 <https://sir.ext.ti.com/jira/browse/EXT_EP-12816>`_","SDK Docs: Broken URL in How To Guides > EVM Setup"
    "`EXT_EP-12782 <https://sir.ext.ti.com/jira/browse/EXT_EP-12782>`_","SDK Doc: toolchain information is out of date"
    "`EXT_SITMPUSW-146 <https://sir.ext.ti.com/jira/browse/EXT_SITMPUSW-146>`_","Yocto: meta-ti*: kernel source has uncommited changes"
-   "`EXT_EP-12755 <https://sir.ext.ti.com/jira/browse/EXT_EP-12755>`_","AM62P: 2x Independent Single-Link OLDI configurability broken"
-   "`EXT_EP-12779 <https://sir.ext.ti.com/jira/browse/EXT_EP-12779>`_","Null dereference on fdinfo when not bound to a render task"
+   "`EXT_EP-12824 <https://sir.ext.ti.com/jira/browse/EXT_EP-12824>`_","AM62P SR1.1 CPUFreq shows 800MHz instead of 1.4GHz"
+   "`EXT_EP-12833 <https://sir.ext.ti.com/jira/browse/EXT_EP-12833>`_","AM62P PG1.1 CPU Freq show only 200-800MHz."
 
 Issues Open
 -----------
@@ -161,9 +163,10 @@ Issues Open
    :header: "Record ID", "Title"
    :widths: 15, 70
 
-   "`EXT_EP-12824 <https://sir.ext.ti.com/jira/browse/EXT_EP-12824>`_","AM62P SR1.1 CPUFreq shows 800MHz instead of 1.4GHz"
    "`EXT_EP-12825 <https://sir.ext.ti.com/jira/browse/EXT_EP-12825>`_","AM62P DFU log:dwc3-am62 usb@f900000: unable to get ti,syscon-phy-pll-refclk regmap"
    "`EXT_EP-12792 <https://sir.ext.ti.com/jira/browse/EXT_EP-12792>`_","CSI-2 Rx driver shall support frame width that is not 16-byte-aligned"
    "`EXT_EP-12747 <https://sir.ext.ti.com/jira/browse/EXT_EP-12747>`_","Codec: Wave5: Improve Decoder Performance and Fix SError Crash on Fluster test"
-   "`EXT_EP-12833 <https://sir.ext.ti.com/jira/browse/EXT_EP-12833>`_","AM62P PG1.1 CPU Freq show only 200-800MHz."
+   "`EXT_EP-12969 <https://sir.ext.ti.com/jira/browse/EXT_EP-12969>`_","am62p: u-boot abort with 2GB DDR"
+   "`EXT_EP-12970 <https://sir.ext.ti.com/jira/browse/EXT_EP-12970>`_","AM6x - Sitara Socs MCASP and BCDMA issue."
+   "`EXT_EP-12972 <https://sir.ext.ti.com/jira/browse/EXT_EP-12972>`_","RPMsg zerocopy example: CMA allocation is broken"
 
