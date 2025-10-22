@@ -23,7 +23,7 @@ runtime may not be located on an NFS mount. While it is possible to use Docker
 on a NFS root, extra configuration is required to modify the default docker
 runtime directory.
 
-.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family', 'AM62X_family')
+.. ifconfig:: CONFIG_part_family in ('AM335X_family', 'AM437X_family', 'AM62X_family')
 
      Please follow the instructions for the :ref:`Create SD Card Script <processor-sdk-linux-create-sd-card-with-custom-images>`
      and when prompted to select the root filesystem tarball, select the ``tisdk-default-image``

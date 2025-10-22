@@ -254,16 +254,6 @@ to copy the boot images:
 
 to the SD card *boot* partition. At this point, the device can boot to u-boot prompt.
 
-.. ifconfig:: CONFIG_part_family in ('General_family')
-
-   However, if you are using OMAP-L138 based board (like the LCDK), then
-   you need to write the generated :file:`u-boot.ais` image to the SD card
-   using command: :command:`dd`.
-
-   .. code-block:: console
-
-      $ sudo dd if=u-boot.ais of=/dev/sd<N> seek=117 bs=512 conv=fsync
-
 USB
 ***
 
@@ -304,12 +294,12 @@ Flash and boot SPL from USB storage
 Boot Linux from USB storage
 ==============================
 
-.. ifconfig:: CONFIG_part_family not in ('General_family', 'AM57X_family')
+.. ifconfig:: CONFIG_part_family not in ('AM57X_family')
 
    Booting Linux from USB storage documentation is pending for |__PART_FAMILY_DEVICE_NAMES__|,
    please reach out to:  `Help e2e <https://e2e.ti.com//>`__ for additional information.
 
-.. ifconfig:: CONFIG_part_family in ('General_family', 'AM57X_family')
+.. ifconfig:: CONFIG_part_family in ('AM57X_family')
 
    To load the Linux Kernel and rootfs from USB rather than a MMC card on
    AMx/DRA7x EVMs, if we assume that the USB device is partitioned the same
@@ -326,7 +316,7 @@ Boot Linux from USB storage
    The USB drivers in Linux kernel need to be built-in (default modules). The
    configuration changes are:
 
-   .. ifconfig:: CONFIG_part_family in ('General_family', 'AM437X_family', 'AM57X_family')
+   .. ifconfig:: CONFIG_part_family in ('AM437X_family', 'AM57X_family')
 
       .. code-block:: Kconfig
 
@@ -392,7 +382,7 @@ Boot Linux from USB storage
       => saveenv
       => boot
 
-.. ifconfig:: CONFIG_part_family in ('General_family', 'AM57X_family')
+.. ifconfig:: CONFIG_part_family in ('AM57X_family')
 
    Booting from SD/eMMC from SPL (Single stage or Falcon mode)
    ===========================================================

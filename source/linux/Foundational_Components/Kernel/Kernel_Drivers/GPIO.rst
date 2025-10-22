@@ -15,19 +15,13 @@ For example, a MMC/SD driver may need to read a GPIO as in input to
 determine if a card is present. The H/W GPIO controllers available will vary by SoC and system
 configuration.
 
-.. ifconfig:: CONFIG_part_family in ('J7_family', 'General_family', 'AM335X_family', 'AM437X_family')
+.. ifconfig:: CONFIG_part_family in ('J7_family', 'AM335X_family', 'AM437X_family')
 
     .. ifconfig:: CONFIG_part_family in ('J7_family')
 
         .. rubric:: J721E specifics
 
         J721E SoCs host DAVINCI GPIO IP.
-
-    .. ifconfig:: CONFIG_part_family in ('General_family')
-
-        .. rubric:: AM65 specifics
-
-        AM65 SoCs host DAVINCI GPIO IP.
 
     Current software supports banked GPIO interrupt only. 16 GPIOs form a bank.
     Each bank can produce an interrupt; this is done to save the number of interrupt
@@ -244,7 +238,7 @@ The GPIO Driver can also be easily leveraged by other drivers to "consume" a GPI
 
 |
 
-.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family')
+.. ifconfig:: CONFIG_part_family in ('AM335X_family', 'AM437X_family')
 
     .. rubric:: Power Management
 

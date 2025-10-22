@@ -44,7 +44,7 @@ Finding the connector ID
 
 Run the following ``modetest`` command:
 
-.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family')
+.. ifconfig:: CONFIG_part_family in ('AM335X_family', 'AM437X_family')
 
    .. code-block:: console
 
@@ -82,7 +82,7 @@ Finding the plane ID
 
 To find the Plane ID, run the ``modetest`` command:
 
-.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family')
+.. ifconfig:: CONFIG_part_family in ('AM335X_family', 'AM437X_family')
 
    .. code-block:: console
 

@@ -23,96 +23,6 @@ The SuperSpeed USB controller features:
 
 DWC3 is integrated in AM65x, OMAP5, DRA7x and AM437x SoCs from TI.
 
-.. ifconfig:: CONFIG_part_family in ('General_family')
-
-    .. rubric:: OMAP5 (omap5-uevm)
-       :name: omap5-omap5-uevm
-
-    The following diagram depicts dwc3 integration in OMAP5. The ID and VBUS
-    events are sensed by a companion device (palmas). The palmas-usb driver
-    (drivers/extcon/extcon-palmas.c) notifies the events to OMAP glue driver
-    (driver/usb/dwc3/dwc3-omap.c) via the extcon framework. The glue driver
-    writes the events to the software mailbox present in DWC3 glue (SS USB
-    OTG controller  module in the diagram) which interrupts the core using
-    UTMI+ signals.
-
-    .. image:: /images/Omap5-dwc3.png
-
-    .. rubric:: DRA7x/AM57x
-       :name: dra7xam57x
-
-    The above diagram also depicts dwc3 integration in DRA7x/AM57x. Some
-    boards provide VBUS and ID events over GPIO whereas some provide ID over
-    GPIO and VBUS through Power Management IC (palmas).
-
-    -  DRA7-evm (J6-evm) and DRA72-evm (J6-eco) boards have ID detection but
-       no VBUS detection support. ID detection is provided through GPIO
-       expander (PCF8574).
-    -  DRA71-evm (J6entry-evm) board has VBUS and ID detection support. Both
-       ID and VBUS detection are provided through GPIO expander (PCF8574).
-
-    On these boards, the GPIO driver (drivers/extcon/extcon-usb-gpio.c)
-    notifies the ID and VBUS events to the OMAP dwc3 glue
-    (drivers/usb/dwc3/dwc3-omap.c) via the extcon framework.
-
-    All DRA7x boards use USB1 port as Super-Speed dual-role port and USB2
-    port High-Speed Host port (Type mini-A). You will need a mini-A to
-    Type-A adapter to use the Host port.
-
-    .. rubric:: AM57x (BeagleBoard-x15/AM57xx-evm/AM57xx-IDK)
-       :name: am57x-beagleboard-x15am57xx-evmam57xx-idk
-
-    -  BeagleBoard-x15/AM57xx-evm use USB1 as Super-Speed host port and have
-       a on-board Super-Speed hub which provides 3 Super-Speed Host (Type-A)
-       ports. USB2 is used as High-Speed peripheral port. VBUS detection for
-       USB2 port is provided through Power Management IC (palmas). The
-       palmas USB driver (drivers/extcon/extcon-palmas.c) notifies the VBUS
-       event to the OMAP dwc3 glue (drivers/usb/dwc3/dwc3-omap.c) via the
-       extcon framework.
-
-    -  AM57xx-IDK boards use USB1 as a High-Speed Host port (Type-A) and
-       USB2 as a High-Speed dual-role port. ID detection for USB2 is
-       provided via GPIO whereas VBUS detection is provided through the PMIC
-       (palmas). The palmas USB driver (drivers/extcon/extcon-palmas.c)
-       notifies both VBUS and ID events to the OMAP dwc3 glue
-       (drivers/usb/dwc3/dwc3-omap.c) via the extcon framework.
-
-    .. rubric:: AM65x
-       :name: am65x
-
-    AM65x has 2 DWC3 controller instances. USB1 instance can be a super-speed
-    port and USB2 instance is a high-speed port.
-    The following diagram depicts dwc3 integration in AM65x's high-speed port.
-    VBUS and ID detection is done internally so companion device is not needed.
-    DWC3 controller uses HW UTMI mode to get the VBUS and ID events and the glue
-    driver (dwc3-am65.c) does not need to write to the software mailbox to
-    notify the events to the dwc3 core.
-
-    - On AM65x-evm/IDK, USB2 port is used as high-speed dual-role port (micro-AB)
-      as shown in figure below.
-
-    .. note:: The board might come with force host jumper J4 pre-installed at the
-      factory. Please remove this jumper for proper dual-role/device-mode operation
-      of USB2 port.
-
-    - On AM65x-IDK, USB1 port is available as a high-speed dual-role port (micro-AB)
-      through a 2Lane PCIe USB2 SERDES card. See below figure.
-
-    .. note:: AM65x-IDK might come with the force host jumper J5 pre-installed
-      on the SERDES card. Please remove this jumper for proper dual-role/device mode
-      operation of USB1 port.
-
-    .. Image:: /images/am65x-dwc3-usbhs.png
-
-    - On AM65x-evm, USB1 port is available as a Super-Speed device or host port
-      (3.0 micro-AB) through a 1Lane PCIe USB3 SERDES card. See below figure.
-
-    .. note:: AM65x-evm might come with the force host jumper J5 pre-installed
-      on the SERDES card. Please remove this jumper for proper dual-role/device mode
-      operation of USB1 port.
-
-    .. Image:: /images/am65x-dwc3-usbss.png
-
 .. ifconfig:: CONFIG_part_family in ('AM437X_family')
 
     The following diagram depicts dwc3 integration in AM437x. Super-Speed is
@@ -289,71 +199,18 @@ Kernel Configuration tool.
 .. rubric:: **Configuring DWC3 in gadget only**
    :name: configuring-dwc3-in-gadget-only
 
-.. ifconfig:: CONFIG_part_family in ('General_family')
-
-    set 'dr\_mode' as 'peripheral' in respective board dts files present in
-    arch/arm/boot/dts/
-
-    -  omap5-uevm.dts for OMAP5
-    -  dra7-evm.dts for DRA7x
-
 .. ifconfig:: CONFIG_part_family in ('AM437X_family')
 
     set 'dr\_mode' as 'peripheral' in respective board dts files present in
     arch/arm/boot/dts/. For AM437x GP EVM, it is am437x-gp-evm.dts.
-
-.. ifconfig:: CONFIG_part_family in ('General_family')
-
-    ::
-
-        Example: To configure both the ports of DRA7 as gadget (default usb2 is configured as 'host')
-        arch/arm/boot/dts/dra7-evm.dts
-
-        &usb1 {
-           dr_mode = "peripheral";
-           pinctrl-names = "default";
-           pinctrl-0 = <&usb1_pins>;
-        };
-        &usb2 {
-          dr_mode = "peripheral";
-           pinctrl-names = "default";
-           pinctrl-0 = <&usb2_pins>;
-        };
 
 .. rubric:: Configuring DWC3 in host only
    :name: configuring-dwc3-in-host-only
 
-.. ifconfig:: CONFIG_part_family in ('General_family')
-
-    set 'dr\_mode' as 'host' in respective board dts files present in
-    arch/arm/boot/dts/
-
-    -  omap5-uevm.dts for OMAP5
-    -  dra7-evm.dts for DRA7x
-
 .. ifconfig:: CONFIG_part_family in ('AM437X_family')
 
     set 'dr\_mode' as 'host' in respective board dts files present in
     arch/arm/boot/dts/. For AM437x GP EVM, it is am437x-gp-evm.dts.
-
-.. ifconfig:: CONFIG_part_family in ('General_family')
-
-    ::
-
-        Example: To configure both the ports of DRA7 as host (default usb1 is configured as 'otg')
-        arch/arm/boot/dts/dra7-evm.dts
-        &usb1 {
-        dr_mode = "host";
-         pinctrl-names = "default";
-         pinctrl-0 = <&usb1_pins>;
-        };
-        &usb2 {
-         dr_mode = "host";
-         pinctrl-names = "default";
-         pinctrl-0 = <&usb2_pins>;
-        };
-
-|
 
 .. rubric:: Testing
    :name: testing-kerel-dwc3
@@ -363,36 +220,6 @@ Kernel Configuration tool.
 
 .. rubric:: Selecting cables
    :name: selecting-cables
-
-.. ifconfig:: CONFIG_part_family in ('General_family')
-
-    .. rubric:: OMAP5-uevm
-       :name: omap5-uevm-kernel-dwc3
-
-    OMAP5-evm has a single Super-Speed micro AB port provided by the DWC3
-    controller. To use it in host mode a OTG adapter (Micro USB 3.0 9-Pin
-    Male to USB 3.0 Female OTG Cable) like below should be used. The ID pin
-    within the adapter must be grounded. Some of the adapters available in
-    the market don't have ID pin grounded. If the ID pin is not grounded the
-    dual-role port will not switch from peripheral mode to host mode.
-
-    .. Image:: /images/OMAP5-HOST.jpg
-
-    .. rubric:: DRA7x-evm
-       :name: dra7x-evm
-
-    DRA7x-evm has 2 USB ports provided by the DWC3 controllers. USB1 is a
-    Super-Speed port and USB2 is a High-Speed port. USB1 is by default
-    configured in dual-role mode and USB2 is configured in host mode.
-
-    For connecting a device to the USB2 port use a mini-A to Type-A OTG
-    adapter cable like this. The ID pin within the adapter cable must be
-    grounded.
-
-    .. Image:: /images/Dra7-HOST.jpg
-
-    For using the USB1 port in host mode use a Super-Speed OTG adapter cable
-    similar to the one used in OMAP5.
 
 .. ifconfig:: CONFIG_part_family in ('AM437X_family')
 

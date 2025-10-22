@@ -20,11 +20,6 @@ when an individual device or CPU is idle for relatively short duration.
 
 The dynamic power management features enabled on |__PART_FAMILY_DEVICE_NAMES__| are as follows:
 
-.. ifconfig:: CONFIG_part_family in ('General_family')
-
-   -  MPU DVFS
-   -  SmartReflex
-
 .. ifconfig:: CONFIG_part_family in ('AM335X_family', 'AM437X_family')
 
    #. DVFS

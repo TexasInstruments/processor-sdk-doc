@@ -208,33 +208,6 @@ custom file paths.
 
 |
 
-.. ifconfig:: CONFIG_part_family in ('General_family')
-
-    .. rubric:: Choose rootfs tarball for K2G
-       :name: choose-rootfs-tarball-for-k2g
-
-    For K2G, you should now see a prompt like:
-
-    ::
-
-        ################################################################################
-
-           Multiple rootfs Tarballs found
-
-        ################################################################################
-
-                 1:tisdk-server-extra-rootfs-image-k2g-evm.tar.gz
-                 2:tisdk-server-rootfs-image-k2g-evm.tar.gz
-
-        Enter Number of rootfs Tarball:
-
-    | Choose option **1** to create an SD card using the complete filesystem
-      image from the SDK. Option **2** provides the base filesystem image of
-      smaller size, and it can be used when the SD card does not have
-      sufficient space.
-
-    |
-
 .. rubric:: Enter SDK Path
    :name: enter-sdk-path
 
@@ -370,23 +343,3 @@ The script will show you the contents of the directory given and ask you
 to verify that the tarballs are present in that directory. The SD card
 will then be populated with the contents of the tarballs and be ready
 for inclusion in the box with the EVM.
-
-|
-
-.. ifconfig:: CONFIG_part_family in ('General_family')
-
-    .. rubric:: Additional Step for OMAPL138 after SD Card Creation
-       :name: additional-step-for-omapl138-after-sd-card-creation
-
-    For OMAP-L138 LCDK, boot loader needs to be updated after the SD card is
-    created as above. The pre-built u-boot-omapl138-lcdk.ais needs to be
-    written to the SD card using the **dd** command. /dev/sd<N> below
-    corresponds to the SD card device listed from the host machine.
-
-    ::
-
-         $ cd <SDK INSTALL DIR>/board-support/prebuilt-images
-         $ sudo dd if=u-boot-omapl138-lcdk.ais of=/dev/sd<N> seek=117 bs=512 conv=fsync
-
-|
-

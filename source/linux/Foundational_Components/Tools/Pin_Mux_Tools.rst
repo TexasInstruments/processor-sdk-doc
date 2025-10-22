@@ -77,25 +77,6 @@ first before any schematic or board design is started.**
 Some peripherals may expose Use Cases to allow you to quickly eliminate
 the signals you won't need.
 
-.. ifconfig:: CONFIG_part_family in ('General_family')
-
-    .. rubric:: AM57xx and MCASP
-       :name: am57xx-and-mcasp
-
-    On the AM57xx series of devices there is a concept of IODELAY. It is a
-    module in the IO of the SoC that makes it possible to ensure valid IO
-    timings on data interfaces with a clock signal. On some peripherals the
-    use case selected can change the IODELAY setting for an IO. MCASP is an
-    advanced audio interface that allows each AXR pin to be an audio source
-    or audio sink, it also allows the SoC to be the clock master or slave,
-    and these configuration can be independently mixed and matched. This
-    makes it important to select the correct use case and pin configurations
-    since the IODELAY configuration changes depending on the options chosen.
-    See the "Virtual Mode Case Details" tables in the datasheet for more
-    information.
-
-    |
-
 .. rubric:: Power Domain Checking
    :name: power-domain-checking
 
@@ -106,13 +87,6 @@ rails. With this information the PinMux Tool can raise a voltage
 conflict warning if a peripheral's IO requires a different voltage than
 is applied to the dual-voltage IO rail.
 
-.. ifconfig:: CONFIG_part_family in ('General_family')
-
-    Example: On the AM57xx pin B14 is supplied by VDDSHV3. If gpio5\_0 is
-    used on this pin, the IO will be either 1.8V or 3.3V depending on the
-    supply level applied to VDDSHV3. Damage may occur to the SoC pin if a
-    3.3V signal was driven into gpio5\_0 while it is operating at 1.8V.
-
 .. rubric:: Changing Pad Configuration Parameters
    :name: changing-pad-configuration-parameters
 
@@ -121,17 +95,6 @@ fields in each Pad Configuration Register. The parameters are typically
 for internal resistor pull and a check box for enabling receive
 functionality. These configuration parameters are SoC specific and may
 vary.
-
-.. ifconfig:: CONFIG_part_family in ('General_family')
-
-    .. rubric:: K2Gxx
-       :name: k2gxx
-
-    The pins on this device have a "buffer class" feature that lets you fine
-    tune the output driver characteristics. For most I/Os, the options are
-    "Class B - Up to 100MHz" or "Class D - Up to 200MHz". The PinMux Tool
-    gives you the option to select the buffer class for pins that support
-    this feature (differential or SerDes I/Os, for example, don't support it).
 
 .. rubric:: RX Enable / Input Enable
    :name: rx-enable-input-enable
@@ -186,16 +149,6 @@ U-boot.
     File names will need to be prefixed by "${SOC}\_". Pinmux header file is
     common for each SOC here, and may need to be updated manually.
 
-.. ifconfig:: CONFIG_part_family in ('General_family')
-
-    .. rubric:: Everything Else (AM5, K2G)
-       :name: everything-else-am5-k2g
-
-    Replace files in this directory
-
-    ${PDK\_INSTALL\_DIR}\\packages\\ti\\board\\src\\${BOARD}\\
-
-
 .. rubric:: Processor SDK Linux
    :name: processor-sdk-linux
 
@@ -214,31 +167,10 @@ Edit the appropriate file in this directory:
 
     ${SDK\_INSTALL\_DIR}\\board\_support\\linux-\*\\arch\\arm64\\boot\\dts\\${BOARD}.dts
 
-.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family')
+.. ifconfig:: CONFIG_part_family in ('AM335X_family', 'AM437X_family')
 
     ${SDK\_INSTALL\_DIR}\\board\_support\\linux-\*\\arch\\arm\\boot\\dts\\${BOARD}.dts
 
-
-.. ifconfig:: CONFIG_part_family in ('General_family')
-
-    .. rubric:: AM57xx u-boot
-       :name: am57xx-u-boot
-
-    The PinMux tool will provide two files: genericFileFormatIOdelay.txt and
-    genericFileFormatPadConf.txt. A perl script is provided to convert the
-    generic formats and provide a format that can be used in u-boot. The
-    script and the instructions to run the script are on
-    `git.ti.com <https://git.ti.com/pmt-generic-converter-tool/am57xx_uboot_pin_config>`__.
-    The output from the script is used to edit the file in this directory.
-
-    ${SDK\_INSTALL\_DIR}\\board\_support\\u-boot-\*\\board\\ti\\am57xx\\mux\_data.h
-
-    .. rubric:: K2G u-boot
-       :name: k2g-u-boot
-
-    Replace the file in this directory.
-
-    ${SDK\_INSTALL\_DIR}\\board\_support\\u-boot-\*\\board\\ti\\ks2\_evm\\mux-k2g.h
 
 .. ifconfig:: CONFIG_part_family in ('AM335X_family', 'AM437X_family')
 

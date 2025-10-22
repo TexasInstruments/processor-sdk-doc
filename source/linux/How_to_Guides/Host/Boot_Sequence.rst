@@ -9,7 +9,7 @@ Boot Sequence
     Please refer back to the particular U-boot component branch and version information for this release:
     :ref:`u-boot-release-notes`
 
-.. ifconfig:: CONFIG_part_family in ('General_family', 'AM57X_family')
+.. ifconfig:: CONFIG_part_family in ('AM57X_family')
 
     .. rubric:: Introduction
        :name: introduction-boot-sequence

@@ -166,19 +166,6 @@ Table:
         -  musb\_am335x.ko can't be removed (and we don't allow that to happen)
            to workaround a known hwmod issue.
 
-.. ifconfig:: CONFIG_part_family in ('General_family')
-
-        -  multi-gadget cannot be used on OMAP-L138 because of lack of
-           sufficient number of endpoints to support multiple functions
-        -  high bandwidth ISO cannot be supported on OMAP-L138. On trying a high
-           bandwidth ISO transfer, you should see message of the form:
-
-        ::
-
-            musb-hdrc musb-hdrc.1.auto: high bandwidth iso (3x896) not supported
-
-        This behaviour is expected.
-
 .. rubric:: **References**
    :name: references
 

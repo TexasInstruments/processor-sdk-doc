@@ -21,48 +21,7 @@ The USB Peripheral boot mode is used to boot using USB
 interface using SPL-DFU feature. Steps outlined here can be used on
 platform that support USB Peripheral boot mode.
 
-.. ifconfig:: CONFIG_part_family in ('General_family')
-
-  #. Enable the SPL-DFU feature in u-boot and build MLO/u-boot binaries.
-  #. Load the MLO and u-boot.img using the dfu-util from host PC.
-  #. Once the u-boot is up, use DFU command from u-boot to flash the
-     binary images from Host PC (using dfu-utils tool) to the eMMC, or
-     QSPI to fresh/factory boards.
-
-  -  Example provided here is for dra7xx platform.
-
-  -  Use default "dra7xx\_evm\_defconfig" to build spl/u-boot-spl.bin,
-     u-boot.img.
-
-  ::
-
-       host$ make dra7xx_evm_defconfig
-       host$ make menuconfig
-
-       select SPL/DFU support
-       menuconfig->SPL/TPL--->
-          ..
-          [*] Support booting from RAM
-          [*] Support USB Gadget drivers
-          [ ]    Support USB Ethernet drivers
-          [*]    Support DFU (Device Firmware Upgrade)
-                    DFU device selection (RAM device) -->
-
-  ::
-
-       Unselect CONFIG_HUSH_PARSER
-       menuconfig--->Command Line interface
-          [*] Support U-boot commands
-          [ ]   Use hush shell
-
-
-  -  Build spl/u-boot-spl.bin and u-boot.img
-
-  ::
-
-       host$ make
-
-.. ifconfig:: CONFIG_part_family in ('General_family', 'AM57X_family')
+.. ifconfig:: CONFIG_part_family in ('AM57X_family')
 
    -  Set SYSBOOT SW2 switch to USB Peripheral boot mode
 

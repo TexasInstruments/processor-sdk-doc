@@ -6,7 +6,7 @@ How to change dtb files
 .. rubric:: Introduction
    :name: introduction-change-dtb-file
 
-.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family', 'AM57X_family')
+.. ifconfig:: CONFIG_part_family in ('AM335X_family', 'AM437X_family', 'AM57X_family')
 
     In some scenarios, it is required to manually change the dtb file used
     by the target. For example, AM437X GP EVM uses LCD display by default.
@@ -22,7 +22,7 @@ How to change dtb files
 .. rubric:: Specify dtb File
    :name: specify-dtb-file
 
-.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family', 'AM57X_family')
+.. ifconfig:: CONFIG_part_family in ('AM335X_family', 'AM437X_family', 'AM57X_family')
 
     The dtb files are located on the target filesystem under "/boot/dtb"
     directory. First, identify the dtb file to be used, e.g.,

@@ -46,7 +46,6 @@ of directories listed under `configs/`. For example:
  * "J721S2" (representing Jacinto 7 AEP)
  * "J784S4" (representing Jacinto 7 AHP)
  * "J722S" (representing Jacinto 7 AEN)
- * "GEN" (representing General family not listed above)
 
 OS represents the operating system. Possible values correspond to the second
 parameter of files listed under the `configs/<DEVFAMILY>/` directory. For

@@ -44,37 +44,6 @@ suggestions at `E2E <https://e2e.ti.com/>`__.
         -
 
 
-.. ifconfig:: CONFIG_part_family in ('General_family')
-
-   .. list-table::
-      :header-rows: 1
-
-      * - Foundational Components
-        -
-        -
-        -
-      * - :ref:`U-Boot <foundational-components-u-boot>`
-        - :ref:`Boot Monitor  <foundational-components-boot-monitor>`
-        - :ref:`Kernel <foundational-components-kernel>`
-        - :ref:`Filesystem <foundational-components-filesystem>`
-      * - :ref:`Tools <foundational-components-tools>`
-        - `OpenCL <http://downloads.ti.com/mctools/esd/docs/opencl/index.html>`__
-        - :ref:`OpenCV <foundational-components-opencv>`
-        - :ref:`Graphics & Display <foundational-components-graphics-and-display>`
-      * - :ref:`Multimedia <foundational-components-multimedia>`
-        - :ref:`Examples, Demos <examples-and-demos>`
-        - :ref:`PRU Subsystem <foundational-components-pru-subsystem>`
-        - :ref:`Virtualization <foundational-components-virtualization>`
-      * - :ref:`IPC <foundational-components-ipc>`
-        - :ref:`OpenVX <foundational-components-openvx>`
-        - :ref:`CMEM <foundational-components-cmem>`
-        - :ref:`Machine Learning <foundational-components-machine-learning>`
-      * - :ref:`ATF <foundational-components-atf>`
-        - :ref:`OPTEE <foundational-components-optee>`
-        -
-        -
-
-
 .. ifconfig:: CONFIG_part_family in ('AM335X_family', 'AM437X_family', 'AM57X_family')
 
    .. list-table::

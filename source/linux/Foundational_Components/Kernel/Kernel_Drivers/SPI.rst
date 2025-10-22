@@ -54,7 +54,7 @@ Note this isn't meant to be an exhaustive list and only takes into
 account features the SPI peripheral in the SoC is capable of but is
 currently not supported in the Linux driver.
 
-.. ifconfig:: CONFIG_part_family in ('J7_family', 'General_family', 'AM335X_family', 'AM437X_family')
+.. ifconfig:: CONFIG_part_family in ('J7_family', 'AM335X_family', 'AM437X_family')
 
    - SPI slave mode is supported only with DMA enabled.
 

@@ -100,104 +100,102 @@ Please refer to :ref:`here <yocto-layer-configuration>` for the
 layer configuration ``oeconfig-file`` for a particular release of |__SDK_FULL_NAME__|.
 The MACHINE can be set to |__SDK_BUILD_MACHINE__|, for example.
 
-.. ifconfig:: CONFIG_part_family not in ('General_family')
+.. ifconfig:: CONFIG_sdk in ('SITARA')
 
-   .. ifconfig:: CONFIG_sdk in ('SITARA')
+   .. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
-      .. ifconfig:: CONFIG_part_variant in ('AM62AX')
+      The final command below will build the **tisdk-edgeai-image**, which is the
+      Processor SDK image with Arago + EdgeAI filesystem.  See `Build Options`_ for a list of
+      additional targets.
 
-         The final command below will build the **tisdk-edgeai-image**, which is the
-         Processor SDK image with Arago + EdgeAI filesystem.  See `Build Options`_ for a list of
-         additional targets.
+      .. tabs::
 
-         .. tabs::
+         .. tab:: Build Linux SD card Image
 
-            .. tab:: Build Linux SD card Image
+            .. code-block:: console
 
-               .. code-block:: console
+               $ git clone https://git.ti.com/git/arago-project/oe-layersetup.git tisdk
+               $ cd tisdk
+               $ ./oe-layertool-setup.sh -f configs/processor-sdk-analytics/<oeconfig-file>
+               $ cd build
+               $ . conf/setenv
+               $ MACHINE=am62axx-evm bitbake -k tisdk-edgeai-image
 
-                  $ git clone https://git.ti.com/git/arago-project/oe-layersetup.git tisdk
-                  $ cd tisdk
-                  $ ./oe-layertool-setup.sh -f configs/processor-sdk-analytics/<oeconfig-file>
-                  $ cd build
-                  $ . conf/setenv
-                  $ MACHINE=am62axx-evm bitbake -k tisdk-edgeai-image
+         .. tab:: Build RT-Linux SD card Image
 
-            .. tab:: Build RT-Linux SD card Image
+            .. code-block:: console
 
-               .. code-block:: console
+               $ git clone https://git.ti.com/git/arago-project/oe-layersetup.git tisdk
+               $ cd tisdk
+               $ ./oe-layertool-setup.sh -f configs/processor-sdk-analytics/<oeconfig-file>
+               $ cd build
+               $ . conf/setenv
+               $ MACHINE=am62axx-evm ARAGO_RT_ENABLE=1 bitbake -k tisdk-edgeai-image
 
-                  $ git clone https://git.ti.com/git/arago-project/oe-layersetup.git tisdk
-                  $ cd tisdk
-                  $ ./oe-layertool-setup.sh -f configs/processor-sdk-analytics/<oeconfig-file>
-                  $ cd build
-                  $ . conf/setenv
-                  $ MACHINE=am62axx-evm ARAGO_RT_ENABLE=1 bitbake -k tisdk-edgeai-image
+   .. ifconfig:: CONFIG_part_variant not in ('AM62AX')
 
-      .. ifconfig:: CONFIG_part_variant not in ('AM62AX')
+      The final command below will build the :file:`tisdk-default-image`, which is the
+      Processor SDK image with arago filesystem.  See `Build Options`_ for a list of
+      additional targets.
 
-         The final command below will build the :file:`tisdk-default-image`, which is the
-         Processor SDK image with arago filesystem.  See `Build Options`_ for a list of
-         additional targets.
+      .. tabs::
 
-         .. tabs::
+         .. tab:: Build Linux SD card Image
 
-            .. tab:: Build Linux SD card Image
+            .. code-block:: console
 
-               .. code-block:: console
+               $ git clone https://git.ti.com/git/arago-project/oe-layersetup.git tisdk
+               $ cd tisdk
+               $ ./oe-layertool-setup.sh -f configs/processor-sdk/<oeconfig-file>
+               $ cd build
+               $ . conf/setenv
+               $ MACHINE=<machine> bitbake -k tisdk-default-image
 
-                  $ git clone https://git.ti.com/git/arago-project/oe-layersetup.git tisdk
-                  $ cd tisdk
-                  $ ./oe-layertool-setup.sh -f configs/processor-sdk/<oeconfig-file>
-                  $ cd build
-                  $ . conf/setenv
-                  $ MACHINE=<machine> bitbake -k tisdk-default-image
+         .. tab:: Build RT-Linux SD card Image
 
-            .. tab:: Build RT-Linux SD card Image
+            .. code-block:: console
 
-               .. code-block:: console
+               $ git clone https://git.ti.com/git/arago-project/oe-layersetup.git tisdk
+               $ cd tisdk
+               $ ./oe-layertool-setup.sh -f configs/processor-sdk/<oeconfig-file>
+               $ cd build
+               $ . conf/setenv
+               $ MACHINE=<machine> ARAGO_RT_ENABLE=1 bitbake -k tisdk-default-image
 
-                  $ git clone https://git.ti.com/git/arago-project/oe-layersetup.git tisdk
-                  $ cd tisdk
-                  $ ./oe-layertool-setup.sh -f configs/processor-sdk/<oeconfig-file>
-                  $ cd build
-                  $ . conf/setenv
-                  $ MACHINE=<machine> ARAGO_RT_ENABLE=1 bitbake -k tisdk-default-image
+   .. ifconfig:: CONFIG_part_variant in ('AM62X','AM62PX','AM62LX')
 
-      .. ifconfig:: CONFIG_part_variant in ('AM62X','AM62PX','AM62LX')
+      * The final command below will build the :file:`tisdk-jailhouse-image`, which is the
+        Processor SDK image with arago filesystem and Jailhouse support.
 
-         * The final command below will build the :file:`tisdk-jailhouse-image`, which is the
-           Processor SDK image with arago filesystem and Jailhouse support.
+      .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-         .. ifconfig:: CONFIG_part_variant in ('AM62X')
+         * :file:`tisdk-jailhouse-image` is not applicable for am62xxsip-evm and beagleplay-ti.
 
-            * :file:`tisdk-jailhouse-image` is not applicable for am62xxsip-evm and beagleplay-ti.
+      .. tabs::
 
-         .. tabs::
+         .. tab:: Build Jailhouse Linux SD card Image
 
-            .. tab:: Build Jailhouse Linux SD card Image
+            .. code-block:: console
 
-               .. code-block:: console
+               $ git clone https://git.ti.com/git/arago-project/oe-layersetup.git tisdk
+               $ cd tisdk
+               $ ./oe-layertool-setup.sh -f configs/processor-sdk/<oeconfig-file>
+               $ cd build
+               $ . conf/setenv
+               $ echo 'TI_EXTRAS="tie-jailhouse"' >> conf/local.conf
+               $ MACHINE=<machine> bitbake -k tisdk-jailhouse-image
 
-                  $ git clone https://git.ti.com/git/arago-project/oe-layersetup.git tisdk
-                  $ cd tisdk
-                  $ ./oe-layertool-setup.sh -f configs/processor-sdk/<oeconfig-file>
-                  $ cd build
-                  $ . conf/setenv
-                  $ echo 'TI_EXTRAS="tie-jailhouse"' >> conf/local.conf
-                  $ MACHINE=<machine> bitbake -k tisdk-jailhouse-image
+         .. tab:: Build Jailhouse RT-Linux SD card Image
 
-            .. tab:: Build Jailhouse RT-Linux SD card Image
+            .. code-block:: console
 
-               .. code-block:: console
-
-                  $ git clone https://git.ti.com/git/arago-project/oe-layersetup.git tisdk
-                  $ cd tisdk
-                  $ ./oe-layertool-setup.sh -f configs/processor-sdk/<oeconfig-file>
-                  $ cd build
-                  $ . conf/setenv
-                  $ echo 'TI_EXTRAS="tie-jailhouse"' >> conf/local.conf
-                  $ MACHINE=<machine> ARAGO_RT_ENABLE=1 bitbake -k tisdk-jailhouse-image
+               $ git clone https://git.ti.com/git/arago-project/oe-layersetup.git tisdk
+               $ cd tisdk
+               $ ./oe-layertool-setup.sh -f configs/processor-sdk/<oeconfig-file>
+               $ cd build
+               $ . conf/setenv
+               $ echo 'TI_EXTRAS="tie-jailhouse"' >> conf/local.conf
+               $ MACHINE=<machine> ARAGO_RT_ENABLE=1 bitbake -k tisdk-jailhouse-image
 
 .. ifconfig:: CONFIG_sdk in ('JACINTO','j7_foundational')
 
@@ -652,30 +650,6 @@ The "Build Output" is given relative to the
       | am62lxx-evm   | AM62L EVM - HS-FS                             |
       +---------------+-----------------------------------------------+
 
-   .. ifconfig:: CONFIG_part_variant in ('Gen')
-
-      +---------------+---------------------------------------------------------------------------------------+
-      | **MACHINE**   | **Supported EVMs**                                                                    |
-      +---------------+---------------------------------------------------------------------------------------+
-      | k2hk-evm      | 66AK2Hx EVM , K2K EVM                                                                 |
-      +---------------+---------------------------------------------------------------------------------------+
-      | k2e-evm       | K2Ex EVM                                                                              |
-      +---------------+---------------------------------------------------------------------------------------+
-      | k2l-evm       | 66AK2L06 EVM                                                                          |
-      +---------------+---------------------------------------------------------------------------------------+
-      | k2g-evm       | K2G EVM                                                                               |
-      +---------------+---------------------------------------------------------------------------------------+
-      | omapl138-lcdk | OMAP-L138 LCDK                                                                        |
-      +---------------+---------------------------------------------------------------------------------------+
-
-   .. rubric:: RT Support
-      :name: RT Support
-
-   Processor SDK Linux supports RT Linux Kernel for the following
-   machines/EVMs. Use the command below to make the RT builds:
-
-   ``MACHINE=<machine> ARAGO_RT_ENABLE=1 bitbake <target>``
-
    .. ifconfig:: CONFIG_part_variant in ('AM335X')
 
       +--------------+---------------------------------------------------------------------------------------+
@@ -744,20 +718,6 @@ The "Build Output" is given relative to the
       +---------------+-----------------------------------------------+
       | am62lxx-evm   | AM62L EVM - HS-FS                             |
       +---------------+-----------------------------------------------+
-
-   .. ifconfig:: CONFIG_part_variant in ('Gen')
-
-      +---------------+--------------------------------------------------------------------------------------+
-      | **MACHINE**   | **Supported EVMs**                                                                   |
-      +---------------+--------------------------------------------------------------------------------------+
-      | k2hk-evm      | 66AK2Hx EVM , K2K EVM                                                                |
-      +---------------+--------------------------------------------------------------------------------------+
-      | k2e-evm       | K2Ex EVM                                                                             |
-      +---------------+--------------------------------------------------------------------------------------+
-      | k2l-evm       | 66AK2L06 EVM                                                                         |
-      +---------------+--------------------------------------------------------------------------------------+
-      | k2g-evm       | K2G EVM                                                                              |
-      +---------------+--------------------------------------------------------------------------------------+
 
 .. _building-the-sdk-recipes:
 

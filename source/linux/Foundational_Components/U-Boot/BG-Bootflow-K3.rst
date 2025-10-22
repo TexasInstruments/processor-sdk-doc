@@ -10,7 +10,7 @@ Bootflow
 Boot Flow
 *********
 
-.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family')
+.. ifconfig:: CONFIG_part_family in ('AM335X_family', 'AM437X_family')
 
    Booting the Linux kernel on an embedded platform is not as simple as simply
    pointing a program counter to the kernel location and letting the processor
@@ -85,7 +85,7 @@ Boot Flow
    specific device tree blob (DTB) as an argument to U-Boot's **bootz**
    command that will extract and start the actual kernel.
 
-.. ifconfig:: CONFIG_part_family not in ('General_family', 'AM335X_family', 'AM437X_family', 'AM62LX_family')
+.. ifconfig:: CONFIG_part_family not in ('AM335X_family', 'AM437X_family', 'AM62LX_family')
 
    On K3 architecture based devices, ROM supports boot only via MCU(R5). This means that
    bootloader has to run on R5 core. In order to meet this constraint, keeping

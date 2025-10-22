@@ -18,7 +18,7 @@ such as a microprocessor unit (MPU) or digital signal processor (DSP) and either
 secure digital (SD), or secure digital input/output (SDIO) devices. The MMCSD host controller handles MMCSD and
 SDIO protocol with minimal LH intervention.
 
-.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family', 'AM57X_family')
+.. ifconfig:: CONFIG_part_family in ('AM335X_family', 'AM437X_family', 'AM57X_family')
 
    Main features of the MMCSD host controllers:
 
@@ -50,7 +50,7 @@ References
 Features
 ********
 
-.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family', 'AM57X_family')
+.. ifconfig:: CONFIG_part_family in ('AM335X_family', 'AM437X_family', 'AM57X_family')
 
    The SD driver supports the following features:
 
@@ -82,7 +82,7 @@ Features
 Supported ultra high speed (UHS) modes
 **************************************
 
-.. ifconfig:: CONFIG_part_family in ('General_family', 'AM57X_family', 'AM65X_family')
+.. ifconfig:: CONFIG_part_family in ('AM57X_family', 'AM65X_family')
 
    +--------------------+--------+-------+-------+-------+-------+
    | Platform           | SDR104 | DDR50 | SDR50 | SDR25 | SDR12 |
@@ -230,7 +230,7 @@ Supported ultra high speed (UHS) modes
 Driver configuration
 ********************
 
-.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family', 'AM57X_family')
+.. ifconfig:: CONFIG_part_family in ('AM335X_family', 'AM437X_family', 'AM57X_family')
 
    The default kernel configuration enables support for MMCSD(built-in to kernel).
 
@@ -305,7 +305,7 @@ Driver configuration
          MMC/SD/SDIO card support -->
             <*> Support for the SDHCI Controller in TI's AM654 SOCs
 
-.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family', 'AM57X_family')
+.. ifconfig:: CONFIG_part_family in ('AM335X_family', 'AM437X_family', 'AM57X_family')
 
    .. rubric:: **Enabling eMMC Card Background operations support**
       :name: enabling-emmc-card-background-operations-support
@@ -414,7 +414,7 @@ MMC support in Linux
 Steps for working around SD card issues in Linux
 ************************************************
 
-.. ifconfig:: CONFIG_part_family not in ('General_family', 'AM57X_family', 'AM335X_family', 'AM437X_family')
+.. ifconfig:: CONFIG_part_family not in ('AM57X_family', 'AM335X_family', 'AM437X_family')
 
    In some cases, failures can be seen while using some SD cards:
 
@@ -527,7 +527,7 @@ Steps for working around SD card issues in Linux
 
          sdhci2: mmc@fa20000 {
 
-.. ifconfig:: CONFIG_part_family in ('General_family', 'AM57X_family', 'AM335X_family', 'AM437X_family')
+.. ifconfig:: CONFIG_part_family in ('AM57X_family', 'AM335X_family', 'AM437X_family')
 
    Steps for working around SD card issues in Linux documentation is pending for |__PART_FAMILY_DEVICE_NAMES__|
    please reach out to:  `Help e2e <https://e2e.ti.com//>`__ for additional information.

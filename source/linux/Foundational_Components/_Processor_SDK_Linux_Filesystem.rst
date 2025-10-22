@@ -34,19 +34,6 @@ This is the complete filesystem image, that contains standard Linux
 commands and features. This also contains the TI component libraries,
 binaries and :ref:`TI Apps Launcher OOB Demo <TI-Apps-Launcher-User-Guide-label>`
 
-.. ifconfig:: CONFIG_sdk in ('SITARA')
-
-    .. ifconfig:: CONFIG_part_family in ('General_family')
-
-        For keystone devices (e.g., K2H/K2K,
-        K2E, K2L, and K2G), two filesystem tarballs are provided due to size
-        limit of the rootfs ubi image:
-
-        -  tisdk-server-rootfs-image-k2g-evm.tar.gz: base filesystem image used
-           to create the ubi image.
-        -  tisdk-server-extra-rootfs-image-k2g-evm.tar.gz: complete filesystem
-           image that can be used with NFS and/or SD card (K2G only).
-
 .. only:: _comment
 
     [comment] current SDK 7.x build for 'PSDK' doesn't have docker/tiny image, so comment out the following section
@@ -85,6 +72,6 @@ Following is a list of all filesystem images provided by TI which can be built v
 
 
 .. note::
-    
-    Watchout for console logs while running `oe-layersetup <https://git.ti.com/cgit/arago-project/oe-layersetup/>`__ 
-    to get an exhaustive list of target filesystem images that can be built using Yocto.  
+
+    Watchout for console logs while running `oe-layersetup <https://git.ti.com/cgit/arago-project/oe-layersetup/>`__
+    to get an exhaustive list of target filesystem images that can be built using Yocto.

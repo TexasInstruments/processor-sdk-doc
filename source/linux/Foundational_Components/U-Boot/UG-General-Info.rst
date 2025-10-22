@@ -1,7 +1,7 @@
 General Information
 -------------------
 
-.. ifconfig:: CONFIG_part_family not in ('General_family', 'AM335X_family', 'AM437X_family')
+.. ifconfig:: CONFIG_part_family not in ('AM335X_family', 'AM437X_family')
 
    .. rubric:: Install host dependencies
 
@@ -92,7 +92,7 @@ Build U-Boot
     the top-level directory and can be identified by looking for the
     "MAINTAINERS" file.
 
-.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family', 'AM57X_family')
+.. ifconfig:: CONFIG_part_family in ('AM335X_family', 'AM437X_family', 'AM57X_family')
 
     We strongly recommend the use of separate object directories when
     building. This is done with O= parameter to make. We also recommend that
@@ -189,7 +189,7 @@ Build U-Boot
         statements.
 
 
-.. ifconfig:: CONFIG_part_family not in ('General_family', 'AM335X_family', 'AM437X_family', 'AM57X_family')
+.. ifconfig:: CONFIG_part_family not in ('AM335X_family', 'AM437X_family', 'AM57X_family')
 
    .. ifconfig:: CONFIG_part_variant not in ('AM65X', 'AM64X', 'AM62LX')
 
@@ -1292,7 +1292,7 @@ Image Formats
 
 Boot Flow
 ^^^^^^^^^
-.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family', 'AM57X_family')
+.. ifconfig:: CONFIG_part_family in ('AM335X_family', 'AM437X_family', 'AM57X_family')
 
     Booting the Linux kernel on an embedded platform is not as simple as simply
     pointing a program counter to the kernel location and letting the processor
@@ -1367,7 +1367,7 @@ Boot Flow
     specific device tree blob (DTB) as an argument to U-Boot's **bootz**
     command that will extract and start the actual kernel.
 
-.. ifconfig:: CONFIG_part_family not in ('General_family', 'AM335X_family', 'AM437X_family', 'AM62LX_family', 'AM57X_family')
+.. ifconfig:: CONFIG_part_family not in ('AM335X_family', 'AM437X_family', 'AM62LX_family', 'AM57X_family')
 
     On K3 architecture based devices, ROM supports boot only via MCU(R5). This means that
     bootloader has to run on R5 core. In order to meet this constraint, keeping

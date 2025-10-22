@@ -162,7 +162,7 @@ Software Information
 
    RemoteProc driver information at :ref:`pru_remoteproc`
 
-   .. ifconfig::  CONFIG_part_family in ('AM335X_family','AM437X_family','General_family')
+   .. ifconfig::  CONFIG_part_family in ('AM335X_family','AM437X_family')
 
       Information about general purpose Ethernet over PRU is at
       :ref:`pru_icss_ethernet`.

@@ -236,26 +236,3 @@ based on what is detected to be supported by the specific SoC in use.
 To implement Dynamic Frequency Scaling (DFS), the voltages in the table
 can be changed to the same fixed value to avoid any voltage scaling from
 taking place if the system has been designed to use a single voltage.
-
-.. ifconfig:: CONFIG_part_family in ('General_family')
-
-   .. rubric:: On-Demand OPP
-
-   On-Demand is a load based DVFS governor, enabled by deafult. The
-   governor will scale voltage and frequency based on load between
-   available OPPs.
-
-   -  VDD\_MPU supports only 2 OPPs for now (OPP\_NOM, OPP\_OD). OPP\_HIGH
-      is not yet enabled. Future versions of Kernel may support OPP\_HIGH.
-   -  VDD\_CORE has only one OPP which removes the possibility of DVFS on
-      VDD\_CORE.
-   -  GPU DVFS is TBD.
-
-   Supported OPPs:
-
-   .. code-block:: text
-
-      /* kHz    uV */
-      1000000 1090000   /* OPP_NOM */
-      1176000 1210000   /* OPP_OD */
-
