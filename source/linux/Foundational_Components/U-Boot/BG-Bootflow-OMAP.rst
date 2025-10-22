@@ -1,14 +1,8 @@
-.. _u-boot-build-guide-bootflow-omap:
-
-########
-Bootflow
-########
-
 .. _Boot-Flow-label:
 
-*********
+#########
 Boot Flow
-*********
+#########
 
 Booting the Linux kernel on an embedded platform is not as simple as simply
 pointing a program counter to the kernel location and letting the processor
