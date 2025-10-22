@@ -43,7 +43,7 @@ If you did not use a separate object directory:
 
 .. ifconfig:: CONFIG_part_variant in ('AM335X')
 
-   If you used ``O=am335x\_evm`` as your object directory:
+   If you used ``O=am335x_evm`` as your object directory:
 
    .. code-block:: console
 
@@ -51,7 +51,7 @@ If you did not use a separate object directory:
 
 .. ifconfig:: CONFIG_part_variant in ('AM437X')
 
-   If you used ``O=am43xx\_evm`` as your object directory:
+   If you used ``O=am43xx_evm`` as your object directory:
 
    .. code-block:: console
 
@@ -59,7 +59,7 @@ If you did not use a separate object directory:
 
 .. ifconfig:: CONFIG_part_variant in ('AM57X')
 
-   If you used ``O=am57xx\_evm`` as your object directory:
+   If you used ``O=am57xx_evm`` as your object directory:
 
    .. code-block:: console
 
