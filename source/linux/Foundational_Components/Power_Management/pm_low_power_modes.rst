@@ -8,6 +8,12 @@ Low Power Modes
 Overview
 ********
 
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+   .. important::
+
+      SK-AM62-SIP EVM does NOT support low power modes.
+
 The following sections describe a high-level description of the different low power modes (LPM) of the
 device. If your application requires inactive power management, you must determine which
 low power mode described below satisfies your requirements. Each mode must be evaluated
