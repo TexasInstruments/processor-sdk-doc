@@ -18,7 +18,7 @@ Processor SDK 09.xx Releases
 
 Processor SDK 09.03.05.02
 -------------------------
-- 2023 LTS Update release, with Kernel Stable Refresh. Please see :ref:`release-specific-sdk-components-versions`.
+- 2023 LTS Update release, with Kernel Stable Refresh. Please see :ref:`release-specific-build-information`.
 - Kernel 6.1.119
 - U-Boot 2023.04
 - Yocto Kirkstone/4.0
@@ -26,7 +26,7 @@ Processor SDK 09.03.05.02
 
 Processor SDK 09.01.00.001
 --------------------------
-- 2023 LTS Update release, with new versions of Kernel and U-boot. Please see :ref:`release-specific-sdk-components-versions`.
+- 2023 LTS Update release, with new versions of Kernel and U-boot. Please see :ref:`release-specific-build-information`.
 - Kernel 6.1.46
 - U-Boot 2023.04
 - Yocto Kirkstone/4.0

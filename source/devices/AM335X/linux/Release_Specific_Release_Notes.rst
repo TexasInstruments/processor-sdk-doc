@@ -61,8 +61,6 @@ Processor SDK 9.3 Release has following new features:
 
 |
 
-.. _release-specific-sdk-components-versions:
-
 .. rubric:: SDK Components & Versions
    :name: sdk-components-versions
 

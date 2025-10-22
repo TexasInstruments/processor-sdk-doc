@@ -56,6 +56,8 @@ Following features are enabled/tested in this release for AM67A Android:
 * **Display:** Support for LVDS panel and dual display (mirroring and extended)
 * **Display:** Support for the RPI 7Inch touchscreen DSI panel.
 
+.. _release-specific-build-information:
+
 SDK Components and Versions
 ===========================
 

@@ -59,8 +59,6 @@ Processor SDK 9.3 Release has following new features:
 - 2023 LTS Stable Update to 6.1.119
 - Important Bug Fixes
 
-.. _release-specific-sdk-components-versions:
-
 .. rubric:: SDK Components & Versions
    :name: sdk-components-versions
 

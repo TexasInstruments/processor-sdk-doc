@@ -75,9 +75,6 @@ Supported Platforms
 ===================
 See :ref:`here <release-specific-supported-platforms-and-versions>` for a list of supported platforms and links to more information.
 
-
-.. _release-specific-sdk-components-versions:
-
 .. _release-specific-build-information:
 
 Build Information

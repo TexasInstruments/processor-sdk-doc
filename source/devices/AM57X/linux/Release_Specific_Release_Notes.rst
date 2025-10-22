@@ -79,9 +79,6 @@ Processor SDK 11.01 Release has following new features:
    pdm-anomaly-detection are deprecated due to dependency on Matrix GUI/QT5
    which is no longer supported with Scarthgap.
 
-
-.. _release-specific-sdk-components-versions:
-
 .. rubric:: SDK Components & Versions
    :name: sdk-components-versions
 
