@@ -32,23 +32,23 @@ jobs:
           git fetch --no-tags --depth=1 origin master
           git switch master
 
-      - name: Run check-files.sh
+      - name: Run check_files.py
         run: |
           # Disable color output
           export NO_COLOR=true
 
           # Run the test
-          bin/delta.sh -a master -b pr -- ./bin/check-files.sh
+          bin/delta.sh -a master -b pr -- ./bin/check_files.py
 
           # Prepare summary
           WARNING_COUNT=$(wc -l < _new-warn.log)
           if [ "$WARNING_COUNT" -gt "0" ]; then
-            echo "New unreachable files found with check-files.sh:"
+            echo "New unreachable files found with check_files.py:"
             echo '```text'
             cat _new-warn.log
             echo '```'
           else
-            echo "No new unreachable files found with check-files.sh"
+            echo "No new unreachable files found with check_files.py"
           fi >> "$GITHUB_STEP_SUMMARY"
 
           # Prepare the artifacts
