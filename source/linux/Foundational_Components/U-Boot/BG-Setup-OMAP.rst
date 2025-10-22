@@ -44,6 +44,6 @@ git repositories including commit history.
 Alternatively, U-Boot sources can directly be fetched from GIT. The GIT
 repo URL, branch and commit id can be found in the release notes:
 
-- ti-u-boot version: :ref:`u-boot-release-notes`
+- ti-u-boot version: :ref:`release-specific-build-information`
 
 

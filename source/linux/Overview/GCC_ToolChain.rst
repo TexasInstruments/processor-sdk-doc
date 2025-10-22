@@ -312,7 +312,7 @@ follows.
 .. rubric:: Arm Toolchain setup
 
 Download the toolchain from `here <https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads>`__,
-and the version can be found in the :ref:`release notes <u-boot-release-notes>`.
+and the version can be found in the :ref:`release notes <release-specific-build-information>`.
 The following example shows how to download and set toolchain paths
 into a ``<COMPILER_PATH>`` directory in Linux Host using x86_64 architecture.
 The environment variables defined here will be referenced in the build

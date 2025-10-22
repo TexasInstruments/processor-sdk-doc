@@ -90,8 +90,6 @@ Processor SDK 11.01 Release has following new features:
 Build Information
 =================
 
-.. _u-boot-release-notes:
-
 U-Boot
 ------
 | Head Commit: 743712b9ee4b33cc9739a3cbeb5a8f14ae2ccf35: TI: dts: arm64: ti: sync dtbs from ti-linux-6.12.y upto ce4785d01a0b
@@ -140,8 +138,6 @@ Kernel
 
       meta-edgeai Yocto layer contains additional patches for Kernel `here <https://git.ti.com/cgit/edgeai/meta-edgeai/tree/recipes-kernel/linux?h=11.01.00.03>`__.
 
-.. _tf-a-release-notes:
-
 TF-A
 ----
 | Head Commit: e0c4d3903b382bf34f552af53e6d955fae5283ab: Merge changes from topic "xlnx_fix_gen_con_datatype" into integration
@@ -151,8 +147,6 @@ TF-A
 | Repo: https://github.com/ARM-software/arm-trusted-firmware
 | Branch: master
 |
-
-.. _optee-release-notes:
 
 OP-TEE
 ------
@@ -164,8 +158,6 @@ OP-TEE
 | Branch: master
 | Tag: 4.6.0
 |
-
-.. _ti-linux-fw-release-notes:
 
 ti-linux-firmware
 -----------------

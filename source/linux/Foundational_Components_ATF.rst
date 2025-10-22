@@ -86,7 +86,7 @@ If it is not possible to use a pre-built binary, use the following:
       $ git clone https://review.trustedfirmware.org/TF-A/trusted-firmware-a.git
       $ git checkout <hash>
 
-Where <hash> is the commit shown here: :ref:`tf-a-release-notes` :ref:`release-specific-build-information`.
+Where <hash> is the commit shown in :ref:`release-specific-build-information`.
 
 |
 
