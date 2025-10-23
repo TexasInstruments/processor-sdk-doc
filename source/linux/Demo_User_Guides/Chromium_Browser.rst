@@ -306,3 +306,161 @@ use the mouse to click the "Run Benchmark" button.
         | |__PART_FAMILY_DEVICE_NAMES__|  | 177.11 @ 1080p60                                                      |
         +---------------------------------+-----------------------------------------------------------------------+
 
+
+Video Streaming
+---------------
+
+.. ifconfig:: CONFIG_part_variant not in ('AM62X', 'J721E')
+
+   Streaming platforms and demuxed videos support hardware acceleration for video playback.
+   This is achieved using the V4L2 stateful decoder API that interfaces with the :ref:`Wave 5<foundational-components-multimedia>` hardware decoder present on |__PART_FAMILY_DEVICE_NAMES__|.
+   Hardware acceleration has been successfully verified with the `W3C WebCodecs VideoDecoder Interface <https://www.w3.org/TR/webcodecs/#videodecoder-interface>`_, which serves as the backend technology for streaming platforms such as YouTube and Vimeo.
+
+   Tested streaming sources include HTML5 video playback, YouTube, and Vimeo.
+
+.. rubric:: HTML5 Video Playback
+
+An **HTML5 video** is a standard video element embedded directly into a webpage by using the ``<video>`` tag.
+Unlike platforms such as YouTube or Vimeo, which run within complex web applications containing ads, thumbnails, and JavaScript-heavy interfaces, HTML5 video playback delivers the raw video stream directly to the browser's player.
+
+.. ifconfig:: CONFIG_part_variant not in ('AM62X', 'J721E')
+
+   This makes it ideal for testing hardware decoding performance, as it avoids additional CPU load from webpage rendering and scripting.
+
+.. code-block:: console
+
+   $ chromium http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4
+
+.. rubric:: Vimeo Streaming
+
+Vimeo commonly uses the **H.264** codec for playback.
+
+.. ifconfig:: CONFIG_part_variant not in ('AM62X', 'J721E')
+
+   Vimeo is supported by hardware acceleration through the V4L2 decoder.
+   Unlike YouTube, Vimeo does not dynamically switch codecs based on system capability and generally delivers consistent H.264 streams across devices,
+   making it more predictable for hardware decoding tests.
+
+.. code-block:: console
+
+   $ chromium https://player.vimeo.com/video/640499893
+
+.. rubric:: YouTube Streaming
+
+YouTube commonly uses **VP9** or **AV1** codecs for playback, which are **not hardware accelerated** on this platform.
+Chromium falls back to **software decoding** when using those codecs, resulting in high CPU usage, especially at higher resolutions.
+
+.. ifconfig:: CONFIG_part_variant not in ('AM62X', 'J721E')
+
+   To enable hardware acceleration, **Chromium requires an extension** that forces YouTube to use the **H.264 codec**.
+   Once this extension is installed, YouTube streams can be hardware decoded using the V4L2 decoder.
+
+.. code-block:: console
+
+   $ chromium https://www.youtube.com/embed/R6MlUcmOul8
+
+.. note::
+
+   - YouTube and Vimeo perform best when played in an **embedded player**, as loading the full webpage and thumbnails is CPU-intensive.
+   - Chromium performs **Audio decoding** using **software**, as hardware acceleration for audio streams is not supported.
+   - Tested resolutions are up to **1080p30**. Higher resolutions might work depending on the platform capabilities.
+   - Hardware accelerated encoding for WebRTC is not currently supported.
+   - Only H.264 codec videos encoded in YUV420 8-bit format are hardware accelerated. Other codecs and formats will fall back to software decoding.
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX', 'J722S')
+
+   .. rubric:: Hardware Acceleration Performance
+
+   +---------------------------------+----------------------+----------------------+----------------------+
+   | **Platform**                    | **Website**          | **CPU Utilisation**  | **GPU Utilisation**  |
+   +---------------------------------+----------------------+----------------------+----------------------+
+   |                                 | YouTube              | 41.21%               | 10%                  |
+   | |__PART_FAMILY_DEVICE_NAMES__|  +----------------------+----------------------+----------------------+
+   |                                 | Vimeo                | 62.39%               | 13%                  |
+   +---------------------------------+----------------------+----------------------+----------------------+
+
+
+   .. rubric:: Software Acceleration Performance
+
+   +---------------------------------+----------------------+----------------------+----------------------+
+   | **Platform**                    | **Website**          | **CPU Utilisation**  | **GPU Utilisation**  |
+   +---------------------------------+----------------------+----------------------+----------------------+
+   |                                 | YouTube              | 213.02%              | 13%                  |
+   | |__PART_FAMILY_DEVICE_NAMES__|  +----------------------+----------------------+----------------------+
+   |                                 | Vimeo                | 157.86%              | 11%                  |
+   +---------------------------------+----------------------+----------------------+----------------------+
+
+.. ifconfig:: CONFIG_part_variant in ('AM68','J721S2')
+
+   .. rubric:: Hardware Acceleration Performance
+
+   +---------------------------------+----------------------+----------------------+----------------------+
+   | **Platform**                    | **Website**          | **CPU Utilisation**  | **GPU Utilisation**  |
+   +---------------------------------+----------------------+----------------------+----------------------+
+   |                                 | YouTube              | 48.30%               | 6%                   |
+   | |__PART_FAMILY_DEVICE_NAMES__|  +----------------------+----------------------+----------------------+
+   |                                 | Vimeo                | 60.12%               | 7%                   |
+   +---------------------------------+----------------------+----------------------+----------------------+
+
+
+   .. rubric:: Software Acceleration Performance
+
+   +---------------------------------+----------------------+----------------------+----------------------+
+   | **Platform**                    | **Website**          | **CPU Utilisation**  | **GPU Utilisation**  |
+   +---------------------------------+----------------------+----------------------+----------------------+
+   |                                 | YouTube              | 98.24%               | 8%                   |
+   | |__PART_FAMILY_DEVICE_NAMES__|  +----------------------+----------------------+----------------------+
+   |                                 | Vimeo                | 123.68%              | 11%                  |
+   +---------------------------------+----------------------+----------------------+----------------------+
+
+.. ifconfig:: CONFIG_part_variant in ('J742S2')
+
+   .. rubric:: Hardware Acceleration Performance
+
+   +---------------------------------+----------------------+----------------------+----------------------+
+   | **Platform**                    | **Website**          | **CPU Utilisation**  | **GPU Utilisation**  |
+   +---------------------------------+----------------------+----------------------+----------------------+
+   |                                 | YouTube              | 26.88%               | 6%                   |
+   | |__PART_FAMILY_DEVICE_NAMES__|  +----------------------+----------------------+----------------------+
+   |                                 | Vimeo                | 38.19%               | 7%                   |
+   +---------------------------------+----------------------+----------------------+----------------------+
+
+
+   .. rubric:: Software Acceleration Performance
+
+   +---------------------------------+----------------------+----------------------+----------------------+
+   | **Platform**                    | **Website**          | **CPU Utilisation**  | **GPU Utilisation**  |
+   +---------------------------------+----------------------+----------------------+----------------------+
+   |                                 | YouTube              | 107.87%              | 9%                   |
+   | |__PART_FAMILY_DEVICE_NAMES__|  +----------------------+----------------------+----------------------+
+   |                                 | Vimeo                | 106.30%              | 12%                  |
+   +---------------------------------+----------------------+----------------------+----------------------+
+
+.. ifconfig:: CONFIG_part_variant in ('AM69','J784S4')
+
+   .. rubric:: Hardware Acceleration Performance
+
+   +---------------------------------+----------------------+----------------------+----------------------+
+   | **Platform**                    | **Website**          | **CPU Utilisation**  | **GPU Utilisation**  |
+   +---------------------------------+----------------------+----------------------+----------------------+
+   |                                 | YouTube              | 25.52%               | 5%                   |
+   | |__PART_FAMILY_DEVICE_NAMES__|  +----------------------+----------------------+----------------------+
+   |                                 | Vimeo                | 28.88%               | 7%                   |
+   +---------------------------------+----------------------+----------------------+----------------------+
+
+
+   .. rubric:: Software Acceleration Performance
+
+   +---------------------------------+----------------------+----------------------+----------------------+
+   | **Platform**                    | **Website**          | **CPU Utilisation**  | **GPU Utilisation**  |
+   +---------------------------------+----------------------+----------------------+----------------------+
+   |                                 | YouTube              | 138.43%              | 9%                   |
+   | |__PART_FAMILY_DEVICE_NAMES__|  +----------------------+----------------------+----------------------+
+   |                                 | Vimeo                | 104.19%              | 11%                  |
+   +---------------------------------+----------------------+----------------------+----------------------+
+
+.. ifconfig:: CONFIG_part_variant not in ('AM62X', 'J721E')
+
+   .. note::
+
+      The tests were performed using the Big Buck Bunny video at 1080p24 for Vimeo and Tears of Steel at 1080p30 for YouTube at full screen.
