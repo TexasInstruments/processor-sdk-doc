@@ -134,15 +134,19 @@ Issues Resolved
    :header: "Record ID", "Title"
    :widths: 15, 70
 
-   "`EXT_EP-12673 <https://sir.ext.ti.com/jira/browse/EXT_EP-12673>`_","AM62L NETDEV WATCHDOG timeout when only one core enabled"
+   "`EXT_SITMPUSW-165 <https://sir.ext.ti.com/jira/browse/EXT_SITMPUSW-165>`_","inapplicable wl18xx message in Linux boot log"
+   "`EXT_EP-12816 <https://sir.ext.ti.com/jira/browse/EXT_EP-12816>`_","SDK Docs: Broken URL in How To Guides > EVM Setup"
+   "`EXT_EP-12780 <https://sir.ext.ti.com/jira/browse/EXT_EP-12780>`_","AM62L Dynamic IP address cannot be obtained when eth interface brought down with command"
    "`EXT_EP-12674 <https://sir.ext.ti.com/jira/browse/EXT_EP-12674>`_","AM62L: Enabling wkup uart causes Linux console (main_uart0) garbled"
-   "`EXT_EP-12667 <https://sir.ext.ti.com/jira/browse/EXT_EP-12667>`_","AM62L: nfsroot fails if the CPUs are limited to 1"
-   "`EXT_EP-12668 <https://sir.ext.ti.com/jira/browse/EXT_EP-12668>`_","AM62L DMA: udma_stop not functional for cyclic packets"
-   "`EXT_EP-12669 <https://sir.ext.ti.com/jira/browse/EXT_EP-12669>`_","AM62L DMA: Disabling CONFIG_TI_K3_UDMA causes build failures"
-   "`EXT_EP-12670 <https://sir.ext.ti.com/jira/browse/EXT_EP-12670>`_","AM62L: bl31 setup: Failed to get response error messages"
-   "`EXT_EP-12671 <https://sir.ext.ti.com/jira/browse/EXT_EP-12671>`_","AM62L: CPU hotplug is failing"
-   "`EXT_EP-12672 <https://sir.ext.ti.com/jira/browse/EXT_EP-12672>`_","AM62L: LPM: RTC+DDR: suspend-resume fails with 2 cores enabled"
-   "`EXT_EP-12676 <https://sir.ext.ti.com/jira/browse/EXT_EP-12676>`_","AM62L DMA: McASP is disabled when CONFIG_TI_K3_UDMA is disabled"
+   "`EXT_EP-12340 <https://sir.ext.ti.com/jira/browse/EXT_EP-12340>`_","Suspend-to-RAM failure: tps65219: device creates a circular dependency and device fails to enter suspend"
+   "`EXT_EP-12977 <https://sir.ext.ti.com/jira/browse/EXT_EP-12977>`_","AM62L: PM: add missing PDs (devices) in the scmi wrapper"
+   "`EXT_EP-12973 <https://sir.ext.ti.com/jira/browse/EXT_EP-12973>`_","AM62L: Suspend-Resume (RTC+DDR): MMC fails"
+   "`EXT_EP-12976 <https://sir.ext.ti.com/jira/browse/EXT_EP-12976>`_","DSI fails to reconnect after suspend/resume"
+   "`EXT_EP-12975 <https://sir.ext.ti.com/jira/browse/EXT_EP-12975>`_","DSS clock warnings appear during suspend/resume when HDMI is connected"
+   "`EXT_EP-12784 <https://sir.ext.ti.com/jira/browse/EXT_EP-12784>`_","AM62L: LPM: 2nd core randomly fails to come online during suspend/resume"
+   "`EXT_EP-12778 <https://sir.ext.ti.com/jira/browse/EXT_EP-12778>`_","AM62L: PG1.1: PM: during clock init the pm driver is touching wkup PLL"
+   "`EXT_EP-12974 <https://sir.ext.ti.com/jira/browse/EXT_EP-12974>`_","AM62L: Heartbeat LED stops blinking on resume from RTC+DDR"
+   "`EXT_EP-12978 <https://sir.ext.ti.com/jira/browse/EXT_EP-12978>`_","AM62L: Suspend-Resume (RTC+DDR): spi-nor resume() fails"
 
 Issues Open
 -----------
@@ -150,5 +154,7 @@ Issues Open
    :header: "Record ID", "Title"
    :widths: 15, 70
 
-   "`EXT_EP-12340 <https://sir.ext.ti.com/jira/browse/EXT_EP-12340>`_","Suspend-to-RAM failure: tps65219: device creates a circular dependency and device fails to enter suspend"
+   "`EXT_EP-12970 <https://sir.ext.ti.com/jira/browse/EXT_EP-12970>`_","AM6x - Sitara Socs MCASP and BCDMA issue."
+   "`EXT_EP-12980 <https://sir.ext.ti.com/jira/browse/EXT_EP-12980>`_","AM62L: Random kernel crash observed on stress test"
+   "`EXT_EP-12979 <https://sir.ext.ti.com/jira/browse/EXT_EP-12979>`_","AM62L: Suspend-Resume (RTC+DDR): davinci_mdio timed out waiting for user access"
 
