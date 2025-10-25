@@ -17,13 +17,14 @@ RST_SOURCE = sorted(SOURCE_PATH.glob("**/*.rst"))
 IGNORED = re.compile(r"([^_].*\.rst)|(version\.txt)")
 
 
-def get_names(base):
-    """Get a set of file names to check for, ignoring anything in that matches the IGNORED regex.
+def get_paths(base):
+    """Get a list of paths to check for, ignoring anything with a name that matches the IGNORED
+    regex.
 
     :param base: Pathlib path to directory to search
-    :return: Set of string path names
+    :return: List of pathlib paths
     """
-    files_to_check = set()
+    files_to_check = []
     for file in base.glob("**/*"):
         if file.is_dir():
             continue
@@ -33,7 +34,7 @@ def get_names(base):
             logger.debug("Ignored: %s", name)
             continue
 
-        files_to_check.add(name)
+        files_to_check.append(file)
     return files_to_check
 
 
@@ -67,15 +68,33 @@ def check_all(string):
     return False
 
 
+def get_unused_files(files):
+    """Get a list of unused files from a subset of files given
+
+    :param files: List of pathlib paths
+    :return: List of unused pathlib paths
+    """
+    names_to_check = {x.name for x in files}
+    unused_names = []
+    for filename in names_to_check:
+        if check_all(filename):
+            continue
+
+        logging.debug("Name not found: %s", filename)
+        unused_names.append(filename)
+
+    return [x for x in files if x.name in unused_names]
+
+
 def main():
     """Main CLI entrypoint"""
     logging.basicConfig(level=logging.INFO)
 
-    files_to_check = get_names(SOURCE_PATH)
-    for filename in files_to_check:
-        if check_all(filename):
-            continue
-        logging.info("File not used: %s", filename)
+    files_to_check = get_paths(SOURCE_PATH)
+    files_unused = get_unused_files(files_to_check)
+
+    for path in files_unused:
+        logging.warning("File not used: %s", path)
 
 
 if __name__ == "__main__":
