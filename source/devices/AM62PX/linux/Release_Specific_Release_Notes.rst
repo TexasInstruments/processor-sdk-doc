@@ -34,6 +34,8 @@ status for all packages included in this release. The manifest can be
 found on the SDK download page or in the installed directory as indicated below.
 
 -  Linux Manifest:  :file:`<PSDK_PATH>/manifest/software_manifest.htm`
+-  Debian Manifest: `TI debian software manifest 11.01.16.13
+   <https://dr-download.ti.com/software-development/software-development-kit-sdk/MD-9ti3Ig9hNi/11.01.16.13/software_manifest_debian_am62pxx-evm_am62pxx-evm.htm>`__
 
 
 Release 11.01.16.13
@@ -80,6 +82,9 @@ What's new
 Build Information
 =================
 
+Arago (Yocto/OE)
+----------------
+
 .. list-table::
    :header-rows: 1
    :widths: 15, 30, 30, 30
@@ -120,6 +125,42 @@ Build Information
      - `scarthgap <https://git.ti.com/cgit/ti-sdk-linux/meta-tisdk/log/?h=scarthgap>`__
      - `11.01.16.13 <https://git.ti.com/cgit/ti-sdk-linux/meta-tisdk/tag/?h=11.01.16.13>`__
      -
+
+Debian (Armbian)
+----------------
+
+.. list-table::
+   :header-rows: 1
+   :widths: 15, 30, 30, 30
+
+   * - Component
+     - Branch Info
+     - Tag Info
+     - Config Info
+   * - U-Boot
+     - `ti-u-boot-2025.01 <https://github.com/TexasInstruments/ti-u-boot/tree/ti-u-boot-2025.01>`__
+     - `11.01.16 <https://github.com/TexasInstruments/ti-u-boot/releases/tag/11.01.16>`__
+     - `Build <https://github.com/TexasInstruments/armbian-build/blob/53f037d7be54ea1f203aa46aaf61b03eb9a58585/config/sources/families/k3.conf#L103>`__
+   * - ATF
+     - `master <https://github.com/ARM-Software/arm-trusted-firmware/tree/master>`__
+     - `v2.13+ <https://github.com/ARM-software/arm-trusted-firmware/commit/e0c4d3903b382bf34f552af53e6d955fae5283ab>`__
+     - `Build <https://github.com/TexasInstruments/armbian-build/blob/53f037d7be54ea1f203aa46aaf61b03eb9a58585/config/sources/families/k3.conf#L101>`__
+   * - OPTEE
+     - `master <https://github.com/OP-TEE/optee_os/tree/master>`__
+     - `4.7.0+ <https://github.com/OP-TEE/optee_os/commit/a9690ae39995af36a31b7a4f446f27ea0787e3a4>`__
+     - `Build <https://github.com/TexasInstruments/armbian-build/blob/53f037d7be54ea1f203aa46aaf61b03eb9a58585/config/sources/families/k3.conf#L130>`__
+   * - Linux Firmware
+     - `ti-linux-firmware <https://github.com/TexasInstruments/ti-linux-firmware/tree/ti-linux-firmware>`__
+     - `11.01.16 <https://github.com/TexasInstruments/ti-linux-firmware/releases/tag/11.01.16>`__
+     - `Git Clone <https://github.com/TexasInstruments/armbian-build/blob/53f037d7be54ea1f203aa46aaf61b03eb9a58585/config/sources/families/k3.conf#L116>`__
+   * - Linux Kernel
+     - `ti-linux-6.12.y <https://github.com/TexasInstruments/ti-linux-kernel/tree/ti-linux-6.12.y>`__
+     - `11.01.16 <https://github.com/TexasInstruments/ti-linux-kernel/releases/tag/11.01.16>`__
+     - `non-RT <https://github.com/TexasInstruments/armbian-build/blob/2025.10-release/config/kernel/linux-k3-current.config>`__, `RT <https://github.com/TexasInstruments/armbian-build/blob/2025.10-release/config/kernel/linux-k3-current-rt.config>`__
+   * - Armbian Build
+     - `2025.10-release <https://github.com/TexasInstruments/armbian-build/tree/2025.10-release>`__
+     - `11.01.16.13 <https://github.com/TexasInstruments/armbian-build/releases/tag/11.01.16.13>`__
+     - `Build <https://github.com/TexasInstruments/armbian-build/blob/2025.10-release/config/sources/families/k3.conf>`__, `Board <https://github.com/TexasInstruments/armbian-build/blob/2025.10-release/config/boards/am62pxx-evm.conf>`__
 
 
 Issues Tracker

@@ -1,6 +1,8 @@
 devices/AM64X/debian/index
 
 debian/Overview
+devices/AM64X/linux/Release_Specific
+devices/AM64X/linux/Release_Specific_Release_Notes
 devices/AM64X/debian/Getting_Started_Guide
 debian/Building_Debian_Image
 debian/Building_Debian_Packages

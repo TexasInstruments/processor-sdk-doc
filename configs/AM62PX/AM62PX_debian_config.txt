@@ -16,12 +16,13 @@ Replacement Variables
 '__PART_FAMILY_NAME__'           : 'AM62Px'
 '__PART_FAMILY_DEVICE_NAMES__'   : 'AM62Px'
 '__PRODUCT_LINE_NAME__'          : 'Sitara MPU'
-'__SDK_BUILD_MACHINE__'          : 'am62xx-evm'
+'__SDK_BUILD_MACHINE__'          : 'am62pxx-evm'
 '__SDK_FULL_NAME__'              : 'Debian for AM62Px'
 '__SDK_SHORT_NAME__'             : 'Debian'
 '__SDK_DOWNLOAD_URL__'           : '`AM62Px-SDK-Download-page <https://www.ti.com/tool/PROCESSOR-SDK-AM62P>`__'
 '__LINUX_UBUNTU_VERSION_LONG__'  : '22.04 (64-bit)'
 '__LINUX_UBUNTU_VERSION_SHORT__' : '22.04'
+'__OPTEE_PLATFORM_FLAVOR__'      : 'k3-am62px'
 
 Configuration Values
 --------------------
