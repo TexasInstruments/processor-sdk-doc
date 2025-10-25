@@ -6,6 +6,7 @@ SPDX-License-Identifier: MIT
 Copyright (C) 2025 Texas Instruments Incorporated - https://www.ti.com
 """
 
+import argparse
 import logging
 import re
 from pathlib import Path
@@ -88,13 +89,26 @@ def get_unused_files(files):
 
 def main():
     """Main CLI entrypoint"""
-    logging.basicConfig(level=logging.INFO)
+    parser = argparse.ArgumentParser(
+        prog="check_files.py",
+        description="Tool to verify all files in the tree are in use",
+    )
+
+    parser.add_argument("-d", "--delete", action="store_true")
+    parser.add_argument("-v", "--verbose", action="store_true")
+
+    args = parser.parse_args()
+    logging.basicConfig(level=logging.DEBUG if args.verbose else logging.INFO)
 
     files_to_check = get_paths(SOURCE_PATH)
     files_unused = get_unused_files(files_to_check)
 
     for path in files_unused:
-        logging.warning("File not used: %s", path)
+        if args.delete:
+            logging.info("Deleting: %s", path)
+            path.unlink()
+        else:
+            logging.warning("File not used: %s", path)
 
 
 if __name__ == "__main__":
