@@ -55,6 +55,8 @@ Following features are enabled/tested in this release for AM62x Android:
 * **Android Baseport:** Support of Generic System Image
 * **Display:** Support for LVDS panel and dual display (mirroring and extended)
 
+.. _release-specific-build-information:
+
 SDK Components and Versions
 ===========================
 
