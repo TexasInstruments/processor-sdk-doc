@@ -13,7 +13,7 @@ from pathlib import Path
 logger = logging.getLogger(__name__)
 
 SOURCE_PATH = Path("source/")
-RST_SOURCE = set(SOURCE_PATH.glob("**/*.rst"))
+RST_SOURCE = sorted(SOURCE_PATH.glob("**/*.rst"))
 IGNORED = re.compile(r"([^_].*\.rst)|(version\.txt)")
 
 
