@@ -28,7 +28,7 @@ on to either the Linux kernel or U-Boot in the non-secure world.
 
 .. rubric:: Getting the ATF Source Code
 
-The pre-built TF-A binary is in TI Processor SDK: 
+The pre-built TF-A binary is in TI Processor SDK:
 <path-to-processor-sdk>/board-support/prebuilt-images/<optional-build-machine-name>/bl31.bin.
 Use this binary since it is tested with TI Processor SDK.
 
@@ -39,7 +39,7 @@ If it is not possible to use pre-build binary, use the following:
    $ git clone https://github.com/TexasInstruments/arm-trusted-firmware.git
    $ git checkout <hash>
 
-Where <hash> is the commit shown here: :ref:`tf-a-release-notes` :ref:`release-specific-build-information`.
+Where <hash> is the commit shown in :ref:`release-specific-build-information`.
 
 |
 

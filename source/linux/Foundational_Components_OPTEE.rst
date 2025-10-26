@@ -27,7 +27,7 @@ If it is not possible to use pre-build binary, use the following:
     $ git clone https://github.com/OP-TEE/optee_os.git
     $ git checkout <hash>
 
-Where <hash> is the OPTEE commit shown here: :ref:`optee-release-notes`.
+Where <hash> is the OPTEE commit shown in :ref:`release-specific-build-information`.
 
 |
 
