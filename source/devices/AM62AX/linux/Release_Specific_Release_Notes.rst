@@ -83,7 +83,7 @@ What's new
   - Toolchain GCC 13.4
   - ATF 2.13+
   - OPTEE 4.6.0
-  - TIFS Firmware / SYSFW `v11.01.02 <https://software-dl.ti.com/tisci/esd/11_01_02/release_notes/release_notes.html>`__ (Click on the link for more information)
+  - TIFS Firmware / SYSFW `v11.01.05 <https://software-dl.ti.com/tisci/esd/11_01_05/release_notes/release_notes.html>`__ (Click on the link for more information)
   - DM Firmware 11.01.00.05
   - Yocto scarthgap 5.0
 
