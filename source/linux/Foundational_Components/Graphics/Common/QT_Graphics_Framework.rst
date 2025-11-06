@@ -19,8 +19,8 @@ The PSDK target file system includes the pre-built Qt libraries under
 Demos
 *****
 
-Qt provides demos for the Null Window System / KMS / DRM / EGL Full Screen
-(EGLFS) backends. By default EGLFS will use the ``eglfs_kms`` backend.
+Qt provides demos for the Wayland, Linux framebuffer (LINUXFB), and EGL Full
+Screen (EGLFS) backends. By default EGLFS will use the ``eglfs_kms`` backend.
 
 .. code-block:: console
 
