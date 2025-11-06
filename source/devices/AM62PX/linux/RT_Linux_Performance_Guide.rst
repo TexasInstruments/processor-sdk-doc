@@ -62,13 +62,19 @@ default SDK image
 
 .. note::
 
-   A known issue in this SDK release is affecting this benchmark.
-   Using OP-TEEs PRNG drivers rather than the hardware accelerated TRNG
-   drivers restores the context switch latencies to the values you see
-   here.
+   Using the OP-TEE TRNG driver can impact this benchmark's performance due to 
+   frequent context switching between Normal World (Linux) and Secure World (OP-TEE), 
+   which occurs when the kernel's hardware random number generator interface 
+   (hwrng) requests entropy from the secure TRNG to replenish the Linux entropy pool.
 
-   More information on switching to the PRNG drivers can be found in the
-   Foundational Components section, here :ref:`building-optee-with-prng`
+   The alternatives that can be taken to avoid the above latency spikes are:
+
+   - Instead of TRNG, use the Software PRNG driver in OP-TEE. More information 
+     on switching to the PRNG driver can be found in the Foundational 
+     Components section: :ref:`building-optee-with-prng`
+
+   - Use a Linux Kernel-based TRNG driver, which involves disabling TRNG 
+     in OP-TEE and enabling the RNG node in the Kernel device tree
 
 .. csv-table::
    :header: "Latencies","CPU 0","CPU 1","CPU 2","CPU 3"
