@@ -90,5 +90,6 @@ components:
     - vishalmti
 
   source/linux/Foundational_Components/Graphics:
+    - Antonios-C
     - DarrenEtheridge
     - StaticRocket
