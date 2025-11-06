@@ -44,8 +44,13 @@ use ``-platform`` option to specify the desired QPA as ``linuxfb`` or ``eglfs``.
 
 .. note::
 
-   The ``linuxfb`` interface is deprecated and requires switching the display
-   into "legacy" framebuffer mode.
+   The ``fbdev`` interface used by default in the ``linuxfb`` platform is
+   deprecated. The platform can use `Dumb-Buffer`_ allocations and required
+   components of the new KMS interface while still using the same software
+   rendering techniques. See ``QT_QPA_FB_DRM`` in the upstream documentation at:
+   https://doc.qt.io/qt-6/embedded-linux.html#linuxfb
+
+   .. _Dumb-Buffer: https://man.archlinux.org/man/drm-memory.7.en#Dumb-Buffers
 
 For example:
 
