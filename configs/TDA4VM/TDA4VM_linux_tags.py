@@ -1,6 +1,3 @@
-# Device Family is J7 = Jacinto 7
-fam_name = 'TDA4VM'
-
 # Project name and HTML title
 project = u'Processor SDK Linux for TDA4VM'
 html_title = 'Processor SDK Linux for TDA4VM Documentation'

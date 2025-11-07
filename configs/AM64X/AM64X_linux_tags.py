@@ -1,6 +1,3 @@
-# Device Family name
-fam_name = 'AM64X'
-
 # Project name and HTML title
 project = u'Processor SDK Linux for AM64X'
 html_title = 'Processor SDK AM64X Documentation'

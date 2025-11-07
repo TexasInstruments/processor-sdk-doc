@@ -1,6 +1,3 @@
-# Device Family is J721S2
-fam_name = 'J721S2'
-
 # Project name and HTML title
 project = u'Processor SDK Linux for J721s2'
 html_title = 'Processor SDK Linux for J721s2 Documentation'

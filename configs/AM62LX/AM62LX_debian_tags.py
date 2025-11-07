@@ -1,6 +1,3 @@
-# Device Family name
-fam_name = 'AM62LX'
-
 # Project name and HTML title
 project = u'Debian for AM62Lx'
 html_title = 'Debian AM62Lx Documentation'

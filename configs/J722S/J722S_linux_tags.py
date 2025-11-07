@@ -1,6 +1,3 @@
-# Device Family name
-fam_name = 'J722S'
-
 # Project name and HTML title
 project = u'Processor SDK Linux for J722S'
 html_title = 'Processor SDK J722S Documentation'
