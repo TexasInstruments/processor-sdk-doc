@@ -8,7 +8,6 @@ Foundational Components
    :maxdepth: 5
 
    Foundational_Components_U-Boot
-   Foundational_Components_Boot_Monitor
    Foundational_Components_Kernel
    Foundational_Components_Power_Management
    Foundational_Components_Security

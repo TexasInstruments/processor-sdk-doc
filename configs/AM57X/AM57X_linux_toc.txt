@@ -44,7 +44,6 @@ linux/Foundational_Components/U-Boot/Applications
 linux/Foundational_Components/U-Boot/Apps-SPL-Debug-OpenOCD
 linux/Foundational_Components/U-Boot/Apps-Load-in-CCS
 linux/Foundational_Components/U-Boot/Apps-TroubleShooting
-linux/Foundational_Components_Boot_Monitor
 linux/Foundational_Components_Kernel
 linux/Foundational_Components_Kernel_Drivers
 linux/Foundational_Components/Kernel/Kernel_Drivers/ADC
