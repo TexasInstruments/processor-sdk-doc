@@ -11,7 +11,7 @@ Overview
 Inside of the |__SDK_FULL_NAME__| package, there is a top-level Makefile that can
 be used to build some of the sub-components found within the SDK. This
 Makefile uses the Rules.make file and gives an example of how the
-various components can be built and the parameters to use for |__PART_FAMILY_DEVICE_NAMES__|.
+various components can be built and the parameters to use for |__PART_FAMILY_NAME__|.
 
 .. note::
 
@@ -146,7 +146,7 @@ of the |__SDK_FULL_NAME__| package. This file is used not only by the
 top-level Makefile, but also by many of the sub-component Makefiles to
 gain access to common shared variables and settings. The variables defined
 in here are all of the required flags/parameters that will be required to
-build/compile any of the sub-component makefile targets for |__PART_FAMILY_DEVICE_NAMES__|.
+build/compile any of the sub-component makefile targets for |__PART_FAMILY_NAME__|.
 
 .. rubric:: Key Variables Defined
    :name: variables-defined
@@ -160,7 +160,7 @@ OR can be specified over command line when calling the make command.
    can be set to 'gp', 'hs', and 'hs-fs'. It is used when building
    u-boot and linux to use unsigned or signed images as required.
 -  **KERNEL\_DEVICETREE\_PREFIX** - This is a regex filter to parse which dtb[o]s
-   should be built for |__PART_FAMILY_DEVICE_NAMES__| SOC, when building linux kernel.
+   should be built for |__PART_FAMILY_NAME__| SOC, when building linux kernel.
 -  **ROOTFS\_PART** - This points to the base installation directory that
    applications/drivers should be installed to. This is usually the root
    of a target file system but can be changed to point anywhere.

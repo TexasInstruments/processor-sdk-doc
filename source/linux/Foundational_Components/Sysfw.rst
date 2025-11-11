@@ -5,7 +5,7 @@ System Firmware
 System Firmware is a collective term used to describe the TI Foundational
 Security (TIFS) and Resource Management (RM)/ Power Management (PM) services.
 System Firmware executes on the Security Manager and Device Manager Core (DMSC)
-on |__PART_FAMILY_DEVICE_NAMES__|.
+on |__PART_FAMILY_NAME__|.
 
 System Firmware provides foundational security management and centralized
 device management.

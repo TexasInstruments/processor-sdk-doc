@@ -11,7 +11,7 @@ CPSW3g
 Introduction
 ************
 
-The TI |__PART_FAMILY_DEVICE_NAMES__| family of devices have multi port
+The TI |__PART_FAMILY_NAME__| family of devices have multi port
 Gigabit Ethernet Switch subsystem. SoCs may have more than 2 external
 port with selectable RGMII and RMII interfaces and an internal
 Communications Port Programming Interface (CPPI) port (Host port 0).

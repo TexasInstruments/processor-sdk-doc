@@ -14,7 +14,7 @@ This documentation applies to Kernel v4.14 and higher.
 
 .. rubric:: Suppported Devices
 
-• |__PART_FAMILY_DEVICE_NAMES__|
+• |__PART_FAMILY_NAME__|
 
 Driver Features
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

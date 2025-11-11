@@ -18,7 +18,7 @@ consumption of the SoC when the system is actively performing tasks.
 Dynamic PM also optimizes the idle power consumption in between tasks,
 when an individual device or CPU is idle for relatively short duration.
 
-The dynamic power management features enabled on |__PART_FAMILY_DEVICE_NAMES__| are as follows:
+The dynamic power management features enabled on |__PART_FAMILY_NAME__| are as follows:
 
 .. ifconfig:: CONFIG_part_family in ('AM335X_family', 'AM437X_family')
 
@@ -39,7 +39,7 @@ The dynamic power management features enabled on |__PART_FAMILY_DEVICE_NAMES__| 
 
    .. note::
 
-      Dynamic Frequency Scaling and runtime PM are not fully supported on |__PART_FAMILY_DEVICE_NAMES__| as of today,
+      Dynamic Frequency Scaling and runtime PM are not fully supported on |__PART_FAMILY_NAME__| as of today,
       and shall be enabled in a future release.
 
 .. rubric:: Static Power Management
@@ -52,7 +52,7 @@ supported by the Linux kernel.
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX')
 
-   The static power management features on |__PART_FAMILY_DEVICE_NAMES__| are:
+   The static power management features on |__PART_FAMILY_NAME__| are:
 
    #. Partial I/O
    #. I/O Only Plus DDR
@@ -61,7 +61,7 @@ supported by the Linux kernel.
 
 .. ifconfig:: CONFIG_part_variant in ('AM62LX')
 
-   The static power management features on |__PART_FAMILY_DEVICE_NAMES__| are:
+   The static power management features on |__PART_FAMILY_NAME__| are:
 
    #. RTC Only Plus DDR
    #. Deep Sleep

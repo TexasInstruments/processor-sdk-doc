@@ -7,7 +7,7 @@ MMCSD
 
    .. warning::
 
-      There is important information on multimedia card (MMC) support for |__PART_FAMILY_DEVICE_NAMES__| device, go
+      There is important information on multimedia card (MMC) support for |__PART_FAMILY_NAME__| device, go
       :ref:`here <mmc-support-linux>` for more information.
 
 Introduction
@@ -278,7 +278,7 @@ Driver configuration
    The default kernel configuration enables support for MMCSD driver as
    built-in to kernel. TI SDHCI driver is used. Following options need to be
    configured in Linux Kernel for successfully selecting SDHCI driver for
-   |__PART_FAMILY_DEVICE_NAMES__|.
+   |__PART_FAMILY_NAME__|.
 
    - Enable SDHCI support (CONFIG_MMC_SDHCI)
 
@@ -409,7 +409,7 @@ MMC support in Linux
 
 .. ifconfig:: CONFIG_part_family not in ('AM62X_family', 'AM62PX_family')
 
-   There is no missing MMC support for |__PART_FAMILY_DEVICE_NAMES__| device.
+   There is no missing MMC support for |__PART_FAMILY_NAME__| device.
 
 Steps for working around SD card issues in Linux
 ************************************************
@@ -529,7 +529,7 @@ Steps for working around SD card issues in Linux
 
 .. ifconfig:: CONFIG_part_family in ('AM57X_family', 'AM335X_family', 'AM437X_family')
 
-   Steps for working around SD card issues in Linux documentation is pending for |__PART_FAMILY_DEVICE_NAMES__|
+   Steps for working around SD card issues in Linux documentation is pending for |__PART_FAMILY_NAME__|
    please reach out to:  `Help e2e <https://e2e.ti.com//>`__ for additional information.
 
 |

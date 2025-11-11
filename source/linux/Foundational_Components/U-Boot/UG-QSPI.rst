@@ -1431,7 +1431,7 @@ Flash properties:
 
 .. ifconfig:: CONFIG_part_variant in ('J784S4','J742S2', 'J722S')
 
-    |__PART_FAMILY_DEVICE_NAMES__| is similar to J721S2, only difference
+    |__PART_FAMILY_NAME__| is similar to J721S2, only difference
     being that OSPI0 is muxed externally between a NOR and a NAND flash
     through a physical switch. OSPI NOR and OSPI NAND can't be used at the
     same time, they need to be selected by changing a physical configuration

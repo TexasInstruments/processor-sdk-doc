@@ -385,7 +385,7 @@ The second command is used to specify that /dev/ptpN has to be used as the clock
 .. rubric:: PPS Pulse Per Second support
    :name: k3-cpts-pps-support
 
-The PPS support for |__PART_FAMILY_DEVICE_NAMES__| can be enabled with the following steps:
+The PPS support for |__PART_FAMILY_NAME__| can be enabled with the following steps:
 
 1. Route the output of the CPSWxG CPTS timestamp generator function (GENFy) to one of the
    CPSWxG CPTS timestamp generator inputs (HWx_TS_PUSH) using the Time Sync Router, by

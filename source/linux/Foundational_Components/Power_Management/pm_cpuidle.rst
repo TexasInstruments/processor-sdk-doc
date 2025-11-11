@@ -20,7 +20,7 @@ transition to the selected state.
 
     .. rubric:: Standby Mode
 
-    On |__PART_FAMILY_DEVICE_NAMES__| platforms, "Standby" mode is implemented through the Linux CPUIdle
+    On |__PART_FAMILY_NAME__| platforms, "Standby" mode is implemented through the Linux CPUIdle
     framework. Standby is the default low-power state that the system enters automatically when idle,
     using the WFI (Wait For Interrupt) C-state. This power-saving mechanism activates whenever the
     system is "just sitting idle" without requiring any special configuration or activation from
@@ -39,7 +39,7 @@ transition to the selected state.
 
     .. rubric:: Standby Implementation Architecture
 
-    For |__PART_FAMILY_DEVICE_NAMES__|, the Standby implementation involves a multi-layer architecture:
+    For |__PART_FAMILY_NAME__|, the Standby implementation involves a multi-layer architecture:
 
     1. **Linux CPUIdle Framework**:
        - Determines when to place CPUs into idle states based on system activity

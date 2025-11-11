@@ -4,7 +4,7 @@
 U-Boot Falcon Mode
 ##################
 
-U-Boot's falcon mode on |__PART_FAMILY_DEVICE_NAMES__| bypasses the A-core SPL
+U-Boot's falcon mode on |__PART_FAMILY_NAME__| bypasses the A-core SPL
 and U-Boot stage, which allows for booting straight to Linux kernel after OP-TEE
 and ATF.
 

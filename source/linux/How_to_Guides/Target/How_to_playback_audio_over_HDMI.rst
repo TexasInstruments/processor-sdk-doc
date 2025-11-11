@@ -4,7 +4,7 @@
 How to playback audio over HDMI
 *******************************
 
-SK-|__PART_FAMILY_DEVICE_NAMES__| supports audio playback over HDMI. This
+SK-|__PART_FAMILY_NAME__| supports audio playback over HDMI. This
 requires shorting a jumper on the board, and applying an additional DT overlay
 (.dtbo) file: :file:`k3-am62x-sk-hdmi-audio.dtbo`.
 
@@ -13,7 +13,7 @@ Steps to enable audio over HDMI
 
 #. Toggle the FET switch that shares audio lines between the 3.5mm Jack and
    HDMI connector. For this you have to short a jumper on the
-   SK-|__PART_FAMILY_DEVICE_NAMES__|, at the location marked below:
+   SK-|__PART_FAMILY_NAME__|, at the location marked below:
 
     .. Image:: ../../../images/AM62x_HDMI_Audio_Jumper.jpg
             :scale: 10%

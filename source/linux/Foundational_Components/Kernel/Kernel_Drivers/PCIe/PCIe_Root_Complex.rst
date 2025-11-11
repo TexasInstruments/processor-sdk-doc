@@ -99,7 +99,7 @@ including desktop, mobile, server, storage and embedded communications.
     .. rubric:: **Hardware Setup Details**
        :name: hardware-setup-details
 
-    |__PART_FAMILY_DEVICE_NAMES__| is, by default, intended to be operated in
+    |__PART_FAMILY_NAME__| is, by default, intended to be operated in
     Root Complex mode.
 
 .. ifconfig:: CONFIG_part_variant in ('AM64X')
@@ -152,7 +152,7 @@ Following is a brief explanation of layers shown in the diagram:
     .. rubric:: *DTS Modification*
        :name: rc-dts-modification
 
-    The default dts for |__PART_FAMILY_DEVICE_NAMES__| is configured to be used in
+    The default dts for |__PART_FAMILY_NAME__| is configured to be used in
     root complex mode.
 
     .. rubric:: *Linux Driver Configuration*
@@ -202,16 +202,16 @@ Following is a brief explanation of layers shown in the diagram:
 
     The RC should enumerate any off-the-shelf PCIe cards. It has been tested
     with Ethernet cards, NVMe cards, PCIe USB card, PCIe WiFi card, PCIe SATA
-    card and also to |__PART_FAMILY_DEVICE_NAMES__| in loopback mode.
+    card and also to |__PART_FAMILY_NAME__| in loopback mode.
 
     In order to see if the connected card is detected, lspci utility should be
     used. Different utilities can be used depending on the cards.
 
     Following are the outputs for some of them:
 
-    - Loopback mode (|__PART_FAMILY_DEVICE_NAMES__| EVM to |__PART_FAMILY_DEVICE_NAMES__| EVM)
+    - Loopback mode (|__PART_FAMILY_NAME__| EVM to |__PART_FAMILY_NAME__| EVM)
 
-      Two |__PART_FAMILY_DEVICE_NAMES__| EVMs can be connected in loopback mode by following
+      Two |__PART_FAMILY_NAME__| EVMs can be connected in loopback mode by following
       the steps explained in
       `End Point (EP) Device Configuration <PCIe_End_Point.html#ep-device-configuration>`_
       section for End Point (EP) and

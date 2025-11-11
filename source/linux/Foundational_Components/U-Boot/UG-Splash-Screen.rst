@@ -8,7 +8,7 @@ Splash screens are typically used to provide feedback to the user that the board
 to showcase the vendor logo which helps with branding and identification of which boot
 image is being used for the bootup.
 
-The |__PART_FAMILY_DEVICE_NAMES__| offers out-of-box splash screen experience with OLDI display.
+The |__PART_FAMILY_NAME__| offers out-of-box splash screen experience with OLDI display.
 It also supports displaying a splash screen until kernel is booted up with flicker-free transition across different boot stages.
 
 ------------------
@@ -23,7 +23,7 @@ The following features are supported for splash screen in U-Boot:
 #. Supports MMC and OSPI as bmp image sources.
 #. Supports splash screen only on OLDI panel.
 
-The |__PART_FAMILY_DEVICE_NAMES__| supports splash screen at both U-Boot proper and A53 SPL with A53 SPL displaying
+The |__PART_FAMILY_NAME__| supports splash screen at both U-Boot proper and A53 SPL with A53 SPL displaying
 splash screen **~1.4 seconds** earlier than U-Boot proper.
 
 Enabling the splash screen on ti-u-boot
@@ -196,9 +196,9 @@ Display custom logo as splash screen
       CONFIG_VIDEO_BMP_GZIP=y
       CONFIG_VIDEO_LOGO=y
 
-Enabling splash screen on custom board based on |__PART_FAMILY_DEVICE_NAMES__| SoC
+Enabling splash screen on custom board based on |__PART_FAMILY_NAME__| SoC
 -----------------------------------------------------------------------------------
-To enable splash screen on custom board based on |__PART_FAMILY_DEVICE_NAMES__| SoC, follow the below steps:
+To enable splash screen on custom board based on |__PART_FAMILY_NAME__| SoC, follow the below steps:
 
 .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
@@ -214,14 +214,14 @@ To enable splash screen on custom board based on |__PART_FAMILY_DEVICE_NAMES__| 
 
 .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
- 2. Enable the A53 SPL splash screen related configurations in the |__PART_FAMILY_DEVICE_NAMES__| defconfig by referring to below patches and files:
+ 2. Enable the A53 SPL splash screen related configurations in the |__PART_FAMILY_NAME__| defconfig by referring to below patches and files:
 
   * `configs: am62px: Enable A53 splashscreen <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/commit/?h=ti-u-boot-2025.01&id=4dacc20b3fd78ac5f61de8096a376afb2fcfd089>`_
   * `Splash screen config fragment for AM62x and AM62P  <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/tree/configs/am62x_a53_splashscreen.config?h=11.00.09>`_
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
- 2. Enable the A53 SPL splash screen related configurations in the |__PART_FAMILY_DEVICE_NAMES__| defconfig by referring to below patches and files:
+ 2. Enable the A53 SPL splash screen related configurations in the |__PART_FAMILY_NAME__| defconfig by referring to below patches and files:
 
   * `configs: am62x_evm_a53_defconfig: Enable A53 splashscreen at U-Boot SPL <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/commit/?h=ti-u-boot-2025.01&id=a53de9902936442fa17b26cb17e639ecafccaa4d>`_
   * `Splash screen config fragment for AM62x and AM62P  <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/tree/configs/am62x_a53_splashscreen.config?h=11.00.09>`_

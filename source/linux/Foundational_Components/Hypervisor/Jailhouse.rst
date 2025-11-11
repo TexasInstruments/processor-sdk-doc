@@ -34,9 +34,9 @@ Jailhouse consists of three parts:
 The tools helps in enabling the hypervisor on the device at runtime, in creating a cell, to load inmate a binary,
 to run the inmate binary and to stop the hypervisor itself.
 
-**************************************************************
-Enabling hypervisor on |__PART_FAMILY_DEVICE_NAMES__| platform
-**************************************************************
+******************************************************
+Enabling hypervisor on |__PART_FAMILY_NAME__| platform
+******************************************************
 
 Jailhouse is an example of Asynchronous Multiprocessing (AMP) architecture.
 When we boot Linux on a multi-core ARM processor, Linux initially utilizes
@@ -58,11 +58,11 @@ The open source Jailhouse project from https://github.com/siemens/jailhouse is i
 - U-Boot port for Jailhouse can be found here `U-Boot git.ti <https://git.ti.com/cgit/processor-sdk/u-boot/>`__. This repository contains the fix for error
   message during boot after memory for Jailhouse is reserved in device tree.
 
-********************************************************************
-Building Jailhouse Image for |__PART_FAMILY_DEVICE_NAMES__| platform
-********************************************************************
+************************************************************
+Building Jailhouse Image for |__PART_FAMILY_NAME__| platform
+************************************************************
 
-The list of components which should be built to get Jailhouse Image for |__PART_FAMILY_DEVICE_NAMES__| are:
+The list of components which should be built to get Jailhouse Image for |__PART_FAMILY_NAME__| are:
 
 * U-Boot ( :file:`tiboot3.bin`, :file:`tispl.bin`, :file:`u-boot.img` ).
 * Kernel ( with Jailhouse and shared memory module ).
@@ -77,7 +77,7 @@ Building Jailhouse Image using Yocto
 
 Refer to prerequisites for Yocto build for an Ubuntu host: :ref:`Host Setup - ubuntu (Recommended)`.
 
-The steps to download and build the |__PART_FAMILY_DEVICE_NAMES__| wic Image containing Jailhouse (tisdk-
+The steps to download and build the |__PART_FAMILY_NAME__| wic Image containing Jailhouse (tisdk-
 jailhouse-image) using Yocto build environment are as listed below :
 
 .. code-block:: console
@@ -102,7 +102,7 @@ inmate cell.
 Building Jailhouse using TI SDK Installer
 =========================================
 
-The latest Processor SDK Linux |__PART_FAMILY_DEVICE_NAMES__| installer is available on |__SDK_DOWNLOAD_URL__|.
+The latest Processor SDK Linux |__PART_FAMILY_NAME__| installer is available on |__SDK_DOWNLOAD_URL__|.
 
 The installer should be downloaded on a Linux ubuntu host machine. The steps to
 install the sources using installer are:
@@ -182,13 +182,13 @@ Booting the SD Card Image
 *************************
 
 After the tisdk-jailhouse-image-|__SDK_BUILD_MACHINE__|.rootfs.wic.xz is flashed to SD Card. Change
-the boot mode pins in |__PART_FAMILY_DEVICE_NAMES__| board for SD Card boot.
+the boot mode pins in |__PART_FAMILY_NAME__| board for SD Card boot.
 
 .. code-block:: console
 
    SW1[1:8] = 11000010 and SW2[1:8] = 01000000
 
-Insert the SD Card in SD Card slot in |__PART_FAMILY_DEVICE_NAMES__| board. Use a
+Insert the SD Card in SD Card slot in |__PART_FAMILY_NAME__| board. Use a
 USB Micro-B cable to connect the host PC to the USB Micro-B interface for UART
 on the EVM then power on the board, the following logs can be observed on the terminal window:
 
@@ -290,7 +290,7 @@ on the EVM then power on the board, the following logs can be observed on the te
 Pre-built components in Jailhouse Image
 ***************************************
 
-The target filesystem on |__PART_FAMILY_DEVICE_NAMES__| platform will consists
+The target filesystem on |__PART_FAMILY_NAME__| platform will consists
 of the following Jailhouse components:
 
 #. :file:`jailhouse.ko`  : kernel module at
@@ -430,15 +430,15 @@ below:
 
       root@am62lxx-evm: jailhouse disable
 
-*********************************************************
-Running Jailhouse Demos on |__PART_FAMILY_DEVICE_NAMES__|
-*********************************************************
+*************************************************
+Running Jailhouse Demos on |__PART_FAMILY_NAME__|
+*************************************************
 
 Host Setup
 ==========
 
 Flash tisdk-jailhouse-image-|__SDK_BUILD_MACHINE__|.rootfs.wic.xz to SD card using balena
-and boot |__PART_FAMILY_DEVICE_NAMES__| from the SD card. As we will be running
+and boot |__PART_FAMILY_NAME__| from the SD card. As we will be running
 two instances ,two terminals are required. Connect one terminal to the primary
 UART (e.g. :file:`/dev/ttyUSB0`) and the other to the secondary UART (e.g. :file:`/dev/ttyUSB1`).
 
