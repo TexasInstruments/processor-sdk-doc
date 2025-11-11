@@ -7,7 +7,7 @@ Boot Sequence
     The J721E boot sequence is shown in the U-boot documentation file for J721E (doc/board/ti/j721e_evm.rst).
 
     Please refer back to the particular U-boot component branch and version information for this release:
-    :ref:`u-boot-release-notes`
+    :ref:`release-specific-build-information`
 
 .. ifconfig:: CONFIG_part_family in ('AM57X_family')
 

@@ -61,11 +61,10 @@ What's included
   - DM Firmware 11.01.00.05
   - Yocto scarthgap 5.0
 
+.. _release-specific-build-information:
 
 Build Information
 =================
-
-.. _u-boot-release-notes:
 
 U-Boot
 ------
@@ -78,8 +77,6 @@ U-Boot
 | uBoot Tag: 11.01.05
 |
 
-.. _tf-a-release-notes:
-
 TF-A
 ----
 | Head Commit: e0c4d3903b382bf34f552af53e6d955fae5283ab Merge changes from topic "xlnx_fix_gen_con_datatype" into integration
@@ -88,8 +85,6 @@ TF-A
 | Tag: (2.13 based)
 |
 
-.. _optee-release-notes:
-
 OP-TEE
 ------
 | Head Commit: 71785645fa6ce42db40dbf5a54e0eaedc4f61591 Update CHANGELOG for 4.6.0
@@ -97,8 +92,6 @@ OP-TEE
 | Branch: master
 | Tag: 4.6.0
 |
-
-.. _ti-linux-fw-release-notes:
 
 ti-linux-firmware
 -----------------

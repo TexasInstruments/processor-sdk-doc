@@ -46,19 +46,5 @@ the source code is in the SDK at the path :file:`<path to tisdk>/board-support`.
 For your convenience the sources also includes
 git repositories including commit history.
 
-.. ifconfig:: CONFIG_part_variant in ('AM62LX')
-
-   Alternatively, BL-1 and U-Boot sources can directly be fetched from GIT. The GIT
-   repo URL, branch and commit id can be found in the release notes:
-
-   - ti-u-boot , OPTEE, TF-A and ti-linux-firmware version is at :ref:`release-specific-build-information`
-
-.. ifconfig:: CONFIG_part_variant not in ('AM62LX')
-
-   Alternatively, U-Boot sources can directly be fetched from GIT. The GIT
-   repo URL, branch and commit id can be found in the release notes:
-
-   - ti-u-boot version: :ref:`u-boot-release-notes`
-   - ti-linux-firmware version: :ref:`ti-linux-fw-release-notes`
-   - TF-A version: :ref:`tf-a-release-notes`
-   - OP-TEE version: :ref:`optee-release-notes`
+U-Boot sources can also be directly fetched from GIT. The GIT repository URL,
+branch and commit id is available in :ref:`release-specific-build-information`.

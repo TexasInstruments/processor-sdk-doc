@@ -61,8 +61,6 @@ Processor SDK 9.3 Release has following new features:
 
 |
 
-.. _release-specific-sdk-components-versions:
-
 .. rubric:: SDK Components & Versions
    :name: sdk-components-versions
 
@@ -90,8 +88,6 @@ See :ref:`here <release-specific-supported-platforms-and-versions>` for a list o
 
 Build Information
 =================
-
-.. _u-boot-release-notes:
 
 U-Boot
 ------
