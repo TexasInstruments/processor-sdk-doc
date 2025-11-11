@@ -7,7 +7,7 @@ Multimedia Video Codec
 Introduction
 ============
 
-TI's embedded processors such as |__PART_FAMILY_DEVICE_NAMES__| have the
+TI's embedded processors such as |__PART_FAMILY_NAME__| have the
 following hardware accelerators:
 
      #.  Multi-Standard HD Video Decoder (DECODER) based on D5520MP2 from
@@ -332,7 +332,7 @@ GStreamer pipelines that enable the use of hardware-accelerated video
 decoding through the V4L2 GStreamer plugin.
 
 Below is a list of GStreamer plugins that utilize the hardware-accelerated
-video decoding in the |__PART_FAMILY_DEVICE_NAMES__|.
+video decoding in the |__PART_FAMILY_NAME__|.
 
 -  DECODER
 

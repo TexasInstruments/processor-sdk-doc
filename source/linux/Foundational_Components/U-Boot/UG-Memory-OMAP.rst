@@ -262,7 +262,7 @@ USB
 Configuring USB in Host Mode
 ============================
 
-Configuring USB in host mode documentation is pending for |__PART_FAMILY_DEVICE_NAMES__|,
+Configuring USB in host mode documentation is pending for |__PART_FAMILY_NAME__|,
 please reach out to:  `Help e2e <https://e2e.ti.com//>`__ for additional information.
 
 .. _uboot-usb-msc-boot:
@@ -272,7 +272,7 @@ Flash and boot SPL from USB storage
 
 .. ifconfig:: CONFIG_part_variant not in ('AM437X')
 
-   Boot SPL from USB storage documentation is pending for |__PART_FAMILY_DEVICE_NAMES__|,
+   Boot SPL from USB storage documentation is pending for |__PART_FAMILY_NAME__|,
    please reach out to:  `Help e2e <https://e2e.ti.com//>`__ for additional information.
 
 .. ifconfig:: CONFIG_part_variant in ('AM437X')
@@ -296,7 +296,7 @@ Boot Linux from USB storage
 
 .. ifconfig:: CONFIG_part_family not in ('AM57X_family')
 
-   Booting Linux from USB storage documentation is pending for |__PART_FAMILY_DEVICE_NAMES__|,
+   Booting Linux from USB storage documentation is pending for |__PART_FAMILY_NAME__|,
    please reach out to:  `Help e2e <https://e2e.ti.com//>`__ for additional information.
 
 .. ifconfig:: CONFIG_part_family in ('AM57X_family')

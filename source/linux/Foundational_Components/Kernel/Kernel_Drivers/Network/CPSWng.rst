@@ -9,7 +9,7 @@ CPSWng Ethernet
 Introduction
 """"""""""""
 
-The TI |__PART_FAMILY_DEVICE_NAMES__| family of devices have Multi Port
+The TI |__PART_FAMILY_NAME__| family of devices have Multi Port
 Gigabit Ethernet Switch Subsystem CPSWng. SoCs may have more than 4 external
 ports with selectable RGMII, QSGMII and SGMII interfaces and an internal
 Communications Port Programming Interface (CPPI) port (Host port 0).

@@ -65,7 +65,7 @@ Once the setup ends, reboot the board. Weston screen will appear on the display.
 
 .. image:: /images/debian_homescreen.png
 
-You've successfully booted Debian on |__PART_FAMILY_DEVICE_NAMES__|.
+You've successfully booted Debian on |__PART_FAMILY_NAME__|.
 
 If the board is connected to a private network, setup the proxy to be able to access the Internet.
 For more info, refer to `apt.conf(5) man page <https://manpages.debian.org/trixie/apt/apt.conf.5.en.html>`__
