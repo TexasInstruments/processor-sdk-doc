@@ -240,7 +240,7 @@ CPWSxG CPTS GENF0 output to HW4_TS_PUSH input.
 The following block shows the Time Sync Router device-tree node with the mapping from CPSWxG CPTS
 GENF0 to HW4_TS_PUSH added.
 
-.. ifconfig:: CONFIG_part_variant in ('AM62AX','AM62X')
+.. ifconfig:: key_within('CONFIG_part_variant', ('AM62AX','AM62X','A'))
 
    .. code:: dts
 
