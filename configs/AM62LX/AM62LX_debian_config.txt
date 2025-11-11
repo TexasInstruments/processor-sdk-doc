@@ -14,7 +14,6 @@
 Replacement Variables
 ---------------------
 '__PART_FAMILY_NAME__'           : 'AM62Lx'
-'__PART_FAMILY_DEVICE_NAMES__'   : 'AM62Lx'
 '__PRODUCT_LINE_NAME__'          : 'Sitara MPU'
 '__SDK_BUILD_MACHINE__'          : 'am62lxx-evm'
 '__SDK_FULL_NAME__'              : 'Debian for AM62Lx'

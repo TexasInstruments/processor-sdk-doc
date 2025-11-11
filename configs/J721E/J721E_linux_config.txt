@@ -14,7 +14,6 @@
 Replacement Variables
 ---------------------
 '__PART_FAMILY_NAME__'           : 'Jacinto 7'
-'__PART_FAMILY_DEVICE_NAMES__'   : 'J721E'
 '__PRODUCT_LINE_NAME__'          : 'Jacinto'
 '__SDK_BUILD_MACHINE__'          : 'j721e-evm'
 '__SDK_FULL_NAME__'              : 'Processor SDK Linux J721e'

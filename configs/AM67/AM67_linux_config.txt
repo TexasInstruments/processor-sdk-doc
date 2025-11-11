@@ -14,7 +14,6 @@
 Replacement Variables
 ---------------------
 '__PART_FAMILY_NAME__'           : 'J722S'
-'__PART_FAMILY_DEVICE_NAMES__'   : 'AM67'
 '__PRODUCT_LINE_NAME__'          : 'Jacinto'
 '__SDK_BUILD_MACHINE__'          : 'j722s-evm'
 '__SDK_FULL_NAME__'              : 'Processor SDK Linux AM67'
