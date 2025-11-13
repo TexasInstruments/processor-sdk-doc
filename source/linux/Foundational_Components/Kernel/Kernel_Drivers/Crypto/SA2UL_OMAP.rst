@@ -10,19 +10,64 @@ The Crypto API Driver is a set of Linux drivers that provide access to the
 hardware cryptographic accelerators. These drivers are available built-in
 in the kernel in the current SDK release.
 
-Following are the Hardware accelerators supported on the following
-devices:
+The following is a list of supported hardware accelerated algorithms:
 
-.. code-block:: text
+.. list-table:: SA2UL/SA3UL Hardware Cryptography Support
+   :header-rows: 1
 
-   * AM335X                : MD5, SHA1, SHA224, SHA256, AES, DES
-   * AM437X                : MD5, SHA1, SAH224, SHA256, SHA384, SHA512, AES, DES, DES3DES
-   * AM57x/DRA7            : AES, DES, DES3DES
-   * AM65x/J721e/J7200     : AES, DES3DES, SHA1, SHA256, SHA512, HMAC(SHA1), HMAC(SHA256), HMAC(SHA512)
-   * J721S2/J784S4/J742S2  : AES, DES3DES, SHA1, SHA256, SHA512, HMAC(SHA1), HMAC(SHA256), HMAC(SHA512)
-   * AM68/AM69             : AES, DES3DES, SHA1, SHA256, SHA512, HMAC(SHA1), HMAC(SHA256), HMAC(SHA512)
-   * AM64X/J722S           : AES, SHA256, SHA512
-   * AM62X/AM62A/AM62P     : AES, SHA256, SHA512
+   * - Device Family
+     - Encryption
+     - Encryption with Authentication
+     - Hash Algorithms
+     - MAC Algorithms
+
+   * - AM335X
+     - AES, DES
+     -
+     - MD5, SHA1, SHA224, SHA256
+     -
+
+   * - AM437X
+     - AES, DES, 3DES
+     -
+     - MD5, SHA1, SHA224, SHA256, SHA384, SHA512
+     -
+
+   * - AM57x / DRA7
+     - AES, DES, 3DES
+     -
+     -
+     -
+
+   * - AM65x / J721e / J7200
+     - AES (CBC, ECB), 3DES (CBC, ECB)
+     - AES-GCM, AUTHENC(HMAC-SHA1, CBC-AES), AUTHENC(HMAC-SHA256, CBC-AES)
+     - SHA1, SHA256, SHA512
+     - HMAC(SHA1, SHA256, SHA512), CMAC(AES)
+
+   * - J721S2 / J784S4 / J742S2
+     - AES (CBC, ECB), 3DES (CBC, ECB)
+     - AES-GCM, AUTHENC(HMAC-SHA1, CBC-AES), AUTHENC(HMAC-SHA256, CBC-AES)
+     - SHA1, SHA256, SHA512
+     - HMAC(SHA1, SHA256, SHA512), CMAC(AES)
+
+   * - AM68 / AM69
+     - AES (CBC, ECB), 3DES (CBC, ECB)
+     - AES-GCM, AUTHENC(HMAC-SHA1, CBC-AES), AUTHENC(HMAC-SHA256, CBC-AES)
+     - SHA1, SHA256, SHA512
+     - HMAC(SHA1, SHA256, SHA512), CMAC(AES)
+
+   * - AM64X / J722S
+     - AES (CBC, ECB)
+     - AES-GCM, AUTHENC(HMAC-SHA256, CBC-AES)
+     - SHA256, SHA512
+     - CMAC(AES)
+
+   * - AM62X / AM62A / AM62P
+     - AES (CBC, ECB)
+     - AES-GCM, AUTHENC(HMAC-SHA256, CBC-AES)
+     - SHA256, SHA512
+     - CMAC(AES)
 
 ********************
 Building the Drivers
