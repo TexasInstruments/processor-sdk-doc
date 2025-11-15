@@ -34,7 +34,7 @@ linux/Foundational_Components/U-Boot/BG-Environment-K3
 linux/Foundational_Components/U-Boot/BG-Ram-Device-Trees-K3
 linux/Foundational_Components/U-Boot/UG-DFU
 linux/Foundational_Components/U-Boot/UG-Memory-K3
-#linux/Foundational_Components/U-Boot/UG-QSPI
+linux/Foundational_Components/U-Boot/UG-QSPI
 linux/Foundational_Components/U-Boot/UG-UART
 
 linux/Foundational_Components/U-Boot/Applications
@@ -43,14 +43,14 @@ linux/Foundational_Components/U-Boot/Apps-SPL-Debug-OpenOCD
 linux/Foundational_Components_Kernel
 linux/Foundational_Components_Kernel_Drivers
 linux/Foundational_Components/Kernel/Kernel_Drivers/Audio
-#linux/Foundational_Components/Kernel/Kernel_Drivers/EQEP
+linux/Foundational_Components/Kernel/Kernel_Drivers/EQEP
 linux/Foundational_Components/Kernel/Kernel_Drivers/GPIO
 linux/Foundational_Components/Kernel/Kernel_Drivers/I2C
-#linux/Foundational_Components/Kernel/Kernel_Drivers/MCAN
+linux/Foundational_Components/Kernel/Kernel_Drivers/MCAN
 linux/Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW-Ethernet
-#linux/Foundational_Components/Kernel/Kernel_Drivers/PWM
-#linux/Foundational_Components/Kernel/Kernel_Drivers/SPI
-#linux/Foundational_Components/Kernel/Kernel_Drivers/QSPI
+linux/Foundational_Components/Kernel/Kernel_Drivers/PWM
+linux/Foundational_Components/Kernel/Kernel_Drivers/SPI
+linux/Foundational_Components/Kernel/Kernel_Drivers/QSPI
 linux/Foundational_Components/Kernel/Kernel_Drivers/Storage/MMC-SD
 #linux/Foundational_Components/Kernel/Kernel_Drivers/Storage/NAND
 linux/Foundational_Components/Kernel/Kernel_Drivers/UART
@@ -62,8 +62,8 @@ linux/Foundational_Components/Kernel/Kernel_Drivers/Watchdog
 
 linux/Foundational_Components_Kernel_Users_Guide
 linux/Foundational_Components_Kernel_LTP-DDT_Validation
-#linux/Foundational_Components_Security
-#linux/Foundational_Components/System_Security/Auth_boot
+linux/Foundational_Components_Security
+linux/Foundational_Components/System_Security/Auth_boot
 linux/Foundational_Components_Filesystem
 linux/Foundational_Components_Tools
 linux/Foundational_Components/Tools/Development_Tools
