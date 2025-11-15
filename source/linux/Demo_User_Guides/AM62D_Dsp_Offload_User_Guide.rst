@@ -1,10 +1,10 @@
 .. _AM62D-dsp-offload-from-linux-user-guide:
 
 AM62D DSP offload from Linux - User Guide
-=========================================
+#########################################
 
 Overview
---------
+********
 
 This guide describes how to set up, build, and run audio DSP offload example by using the Texas Instruments AM62D audio evaluation module (EVM).
 This demo example shows how to offload 8ch audio filtering  to C7x from Linux, input is 8-channel, 256 block size audio data in channel interleaved form.
@@ -62,7 +62,7 @@ Below figure shows how this demo works:
    - DSP/CPU load monitoring.
 
 Hardware Prerequisites
-----------------------
+**********************
 
 - `AM62D-EVM <https://www.ti.com/tool/AUDIO-AM62D-EVM>`__
 
@@ -93,7 +93,7 @@ Hardware Prerequisites
   - Storage: At least 10GB of free space
 
 Software and Tools
-------------------
+******************
 
 - TI Processor SDK Linux RT (AM62Dx)
 
@@ -111,7 +111,7 @@ Software and Tools
 
 
 EVM Setup
----------
+*********
 
 #. Cable Connections
 
@@ -146,7 +146,7 @@ EVM Setup
 
 
 Steps to validate audio DSP offload demo
-----------------------------------------
+****************************************
 
 #. Flash an SD card with the :file:`tisdk-default-image-rt-am62dxx-evm.rootfs.wic.xz` image and follow the instructions provided at :ref:`Create SD Card <processor-sdk-linux-create-sd-card>` guide.
 
@@ -226,15 +226,15 @@ Below is sample snapshot:
 
 
 How to build audio DSP offload demo
-====================================
+***********************************
 
 Building audio DSP offload image from Yocto
------------------------------------------------
+===========================================
 
 - To build the Audio DSP offload image, refer :ref:`Processor SDK - Building the SDK with Yocto <building-the-sdk-with-yocto>`
 
 Building the Linux demo binary from sources
--------------------------------------------
+===========================================
 
 #. The source code for Audio DSP offload  demo is available as part of the `rpmsg-dma <https://github.com/TexasInstruments/rpmsg-dma/tree/scarthgap>`__.
 
@@ -282,7 +282,7 @@ Building the Linux demo binary from sources
 
 
 Building the c7 firmware from sources
---------------------------------------
+=====================================
 
 - Refer to the `MCU+ SDK Documentation  <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62DX/11_01_00_16/exports/docs/api_guide_am62dx/GETTING_STARTED_BUILD.html>`__
 - Refer to the `C7 Demo Firmware <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62DX/11_01_00_16/exports/docs/api_guide_am62dx/EXAMPLES_DRIVERS_IPC_RPMESSAGE_LINUX_AUDIO_FILTER_OFFLOAD.html>`__
