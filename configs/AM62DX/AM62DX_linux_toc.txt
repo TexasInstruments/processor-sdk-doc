@@ -86,5 +86,6 @@ linux/How_to_Guides/Hardware_Setup_with_CCS/AM62Dx_EVM_Hardware_Setup
 
 linux/Demo_User_Guides/index_Demos
 linux/Demo_User_Guides/AM62D_Dsp_Offload_User_Guide
+linux/Demo_User_Guides/AM62D_2DFFT_User_Guide
 
 linux/Documentation_Tarball
