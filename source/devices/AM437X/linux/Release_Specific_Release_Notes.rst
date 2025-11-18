@@ -44,20 +44,20 @@ Documentation
    running the demonstration application that is loaded on flash. This
    document is provided as part of the EVM kit.
 
-Release 09.03.05.02
-===================
+Release 11.02
+=============
 
-Released Dec 2024
+Released November 2025
 
 .. rubric:: What's New
    :name: whats-new
 
-.. note:: Generic PRU-ICSS Ethernet is descoped in 09.03.xx release.
+Processor SDK 11.02 Release has following new features:
 
-Processor SDK 9.3 Release has following new features:
-
-- 2023 LTS Stable Update to 6.1.119
-- Important Bug Fixes
+ - 2025 LTS Stable Update to 6.12.57
+ - ICSSM bug fixes
+ - Test automation improvements
+ - HDMI suport in Linux
 
 .. rubric:: SDK Components & Versions
    :name: sdk-components-versions
@@ -65,13 +65,13 @@ Processor SDK 9.3 Release has following new features:
 +--------------------------+----------------------------+
 | Component                | Version                    |
 +==========================+============================+
-| Linux Kernel             | 6.1.119 (2023 LTS)         |
+| Linux Kernel             | 6.12.57 (2025 LTS)         |
 +--------------------------+----------------------------+
-| U-Boot                   | 2023.04                    |
+| U-Boot                   | 2025.01                    |
 +--------------------------+----------------------------+
-| Yocto Project            | 4.0 (kirkstone)            |
+| Yocto Project            | 5.0 (Scarthgap)            |
 +--------------------------+----------------------------+
-| ARM Toolchain (gcc)      | 11.5                       |
+| ARM Toolchain (gcc)      | 13.4+                      |
 +--------------------------+----------------------------+
 
 |
@@ -90,11 +90,10 @@ Build Information
 U-Boot
 ------
 
-| Head Commit: 2a13324ec63cc488f5f578886d0cf6ece348dfda arm: dts: am335x: Use PWM for LCD backlight
-
+| Head Commit: a44465cad8a30cbad5e8b22baef59aa7f5151494 TI: dts: arm64: ti: sync dtbs from ti-linux-6.12.y upto 1a86d36433ea
 | Clone: git://git.ti.com/ti-u-boot/ti-u-boot.git
-| Branch: ti-u-boot-2023.04
-| Tag: 09.03.05
+| Branch: ti-u-boot-2025.01
+| Tag: 11.02.05
 |
 
 .. _release-specific-build-information-kernel:
@@ -107,11 +106,10 @@ Kernel
 .. rubric:: Linux Kernel
    :name: linux-kernel
 
-| Head Commit: c490f4c0fe51281818c45159c0fbed94f852978e HACK: arm: dts: am57: disable late attach as default
-
+| Head Commit: 1a86d36433eac7cef246d41fbd4d2bdd9612253f PENDING: arm64: dts: ti: k3-am62p-j722s-common-main: Change reg value for OLDI TX
 | Clone: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
-| Branch: ti-linux-6.1.y
-| Tag: 09.03.05
+| Branch: ti-linux-6.12.y
+| Tag: 11.02.05
 |
 
 .. _release-specific-build-information-rt-linux-kernel:
@@ -119,11 +117,7 @@ Kernel
 .. rubric:: Real Time (RT) Linux Kernel
    :name: real-time-rt-linux-kernel
 
-| Head Commit: b0f9de804a162329bc81857ad50947311228dfb2 Merge branch 'ti-linux-6.1.y-cicd' into ti-rt-linux-6.1.y-cicd
-
-| Clone: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
-| Branch: ti-rt-linux-6.1.y
-| Tag: 09.03.05-rt
+| There will be no am43* RT Linux kernel support this release
 |
 
 .. _release-specific-generic-kernel-release-notes:
@@ -143,31 +137,28 @@ Yocto
 .. rubric:: meta-ti
    :name: meta-ti
 
-| Head Commit: 963140e3b5820d6ebf54a4418946a628e0fea2c6 CI/CD Auto-Merger: cicd.kirkstone.202412041235
-
+| Head Commit: f483464c72055cdcb81853e06afc89719e73073f CI/CD Auto-Merger: cicd.scarthgap.202511140456
 | Clone: git://git.yoctoproject.org/meta-ti
-| Branch: kirkstone
-| Release Tag: 09.03.05
+| Branch: scarthgap
+| Release Tag: 11.02.05
 |
 
 .. rubric:: meta-arago
    :name: meta-arago
 
-| Head Commit: f59caa5f47a625ef9eecada069ae6a74c70bcc47 CI/CD Auto-Merger: cicd.kirkstone.202412041235
-
+| Head Commit: 0d3641074b98f79096d415483402e580318249f2 CI/CD Auto-Merger: cicd.scarthgap.202511140456
 | Clone: git://git.yoctoproject.org/meta-arago
-| Branch: kirkstone
-| Release Tag: 09.03.05
+| Branch: scarthgap
+| Release Tag: 11.02.05
 |
 
 .. rubric:: meta-tisdk
    :name: meta-tisdk
 
-| Head Commit: 2ee8bead9d04afcb61234738e0d9a644395d27bf recipes-core: packagegroups: Drop SGX sources from am65xx
-
+| Head Commit: 	13c9c57b790a940c8f7b8b6a5d634ef04e3c7f03 meta-ti-foundational: recipes-core: include ti-lvgl-demo
 | Clone: git://git.ti.com/ti-sdk-linux/meta-tisdk.git
-| Branch: kirkstone
-| Release Tag: 09.03.05.02
+| Branch: scarthgap
+| Release Tag:
 |
 
 Issues Tracker
@@ -179,34 +170,15 @@ Issues Tracker
 
     - Further Information can be found at `SIR Portal <https://sir.ext.ti.com/>`_
 
-Errata Resolved
----------------
-.. csv-table::
-   :header: "Record ID", "Title"
-   :widths: 15, 70
-
-   "EXT_EP-12116","i897: USB Stop Endpoint doesnt work in certain circumstances"
-   "EXT_EP-12117","i896: USB Port disable doesnt work"
-
-
-Issues Resolved
----------------
-.. csv-table::
-   :header: "Record ID", "Title"
-   :widths: 15, 70
-
-   "EXT_EP-12092","MPU_DPLL miscalculation in AM335x Linux kernel clock drivers"
-   "EXT_EP-12089","AM335x/AM437x PRU Remoteproc broken in SDK 9.1"
-   "EXT_EP-12087","AM437x: AUTOIDLE bit shouldn't be set in all UART device tree nodes"
-   "EXT_EP-12089","AM335x/AM437x PRU Remoteproc broken in SDK 9.1"
-
 Issues Open
 -----------
 .. csv-table::
    :header: "Record ID", "Title"
    :widths: 15, 70
 
-   "EXT_EP-12067","AM335x/AM437x PRU Ethernet slowdown from kernel 4.19 -> 5.4/5.10"
+   "EXTSYNC-5849","PRU RPMsg swaps which message is sent to which core"
+   "EXTSYNC-5814","Does Remoteproc driver for PRU-ICSS still zero out memory?"
+   "EXTSYNC-6120","AM437x Disable DeepSleep0 UART Wakeup"
 
 
 .. rubric:: Installation and Usage
