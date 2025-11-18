@@ -105,22 +105,19 @@ OSPI boot:
 
 .. ifconfig:: CONFIG_part_variant not in ('AM62AX')
 
-   For OSPI boot, the :file:`tiboot3.bin` and :file:`tifalcon.bin` files should be
-   flashed to the same addresses in flash as regular boot flow but the
-   :file:`fitImage` is read from the root filesystem's boot directory. The MMC
+   For OSPI boot, the :file:`tiboot3.bin` file should be flashed to the same
+   addresses in flash as regular boot flow whereas :file:`tifalcon.bin` and the
+   :file:`fitImage` are read from the root filesystem's boot directory. The MMC
    device is selected by the ``mmcdev`` env variable for R5 SPL.
 
-   Below U-Boot commands can be used to download :file:`tiboot3.bin` and
-   :file:`tifalcon.bin` over tftp and then flash those to OSPI at their respective
-   addresses.
+   Below U-Boot commands can be used to download :file:`tiboot3.bin` over tftp
+   and then flash it to OSPI.
 
    .. code-block:: console
 
      => sf probe
      => tftp ${loadaddr} tiboot3.bin
      => sf update $loadaddr 0x0 $filesize
-     => tftp ${loadaddr} tifalcon.bin
-     => sf update $loadaddr 0x80000 $filesize
 
 .. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
