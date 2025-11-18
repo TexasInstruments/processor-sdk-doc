@@ -9,9 +9,22 @@ of the Processor SDK for Linux.
 
 As of Oct 2023, Linux SDK for AM335x is in long term maintenance mode. TI will support critical bug fixes and once a year LTS updates but no new development or new features are planned for this device SDK at this time.
 
-*****************************************
-Processor SDK Linux AM335x 09.xx Releases
-*****************************************
+***********************************
+Processor SDK Linux AM335x Releases
+***********************************
+
+Processor SDK 11.xx Releases
+============================
+
+Processor SDK 11.02.05
+----------------------
+- 2025 LTS Update release, with Kernel Stable Refresh. Please see :ref:`release-specific-build-information`.
+- Kernel 6.12.57
+- U-Boot 2025.01
+- Yocto Scarthgap/5.0
+- Platforms Supported : `TMDXEVM3358 <https://www.ti.com/tool/TMDXEVM3358>`__ , `TMDSSK3358 <https://www.ti.com/tool/TMDSSK3358>`__ , `TMDSICE3359 <https://www.ti.com/tool/TMDSICE3359>`__
+- Platforms Supported : `BEAGLE-BONE-BLACK <https://www.ti.com/tool/BEAGL-BONE-BLACK>`__
+- Platforms Supported : `BEAGLE-BONE-GREEN-ECO <https://www.ti.com/tool/BEAGL-BONE-GRN-ECO>`__
 
 Processor SDK 09.xx Releases
 ============================
