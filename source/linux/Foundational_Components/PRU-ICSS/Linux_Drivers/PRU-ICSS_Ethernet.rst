@@ -687,6 +687,23 @@ Turning flooding on/off on switch ports
 .. rubric:: Frequently Asked Questions
    :name: frequently-asked-questions
 
+.. ifconfig:: CONFIG_part_variant in ('AM335X','AM437X')
+
+   .. rubric:: Low TCP performance throughput on PRU-ICSS Ethernet ports, how to improve?
+      :name: low-tcp-performance-throughput-how-to-improve
+
+   The CPUFreq governer should be set to performance for use-cases requiring high throughput.
+   Hence to attain maximum throughput, force the CPU to run at its maximum frequency and
+   prevent any frequency scaling using the following command:
+
+   .. code-block:: console
+
+      echo performance > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+
+   This forces the CPU to run at its maximum frequency and should improve the TCP throughput.
+   On AM335x, TCP throughput with 1500 byte (default) packet size, before and after running the
+   command are 26Mbps and 76Mbps respectively.
+
 .. rubric:: Are the HSR or PRP protocols supported?
    :name: are-the-hsr-or-prp-protocols-supported
 
