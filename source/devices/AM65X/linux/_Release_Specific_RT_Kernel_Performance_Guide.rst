@@ -302,6 +302,19 @@ thread-enabled workloads to be tested.
     "x264-4mq (workloads/)","0.33"
     "x264-4mqw1 (workloads/)","0.33"
 
+Boot-time Measurement
+---------------------
+
+Boot media: MMCSD
+^^^^^^^^^^^^^^^^^
+
+.. csv-table:: Linux boot time MMCSD
+    :header: "Boot Configuration","am654x-evm: Boot time in seconds: avg(min,max)"
+
+    "Linux boot time from SD with default rootfs (20 boot cycles)","17.15 (min 16.76, max 17.93)"
+
+Boot time numbers [avg, min, max] are measured from "Starting kernel" to Linux prompt across 20 boot cycles.
+
 |
 
 Graphics SGX/RGX Driver
@@ -358,7 +371,6 @@ EMMC Driver
   removable media in sync mode to ensure data integrity. For performance
   sensitive applications, umount the auto-mounted filesystem and
   re-mount in async mode.
-
 
 EMMC EXT4 FIO 1G
 ^^^^^^^^^^^^^^^^
@@ -428,9 +440,9 @@ UBOOT MMCSD FAT
 .. csv-table:: UBOOT MMCSD FAT
     :header: "File size (bytes in hex)","am654x-evm: Write Throughput (Kbytes/sec)","am654x-evm: Read Throughput (Kbytes/sec)"
 
-    "400000","17724.22 (min 16583.00, max 18703.20)","22714.58 (min 22505.49, max 22882.68)"
-    "800000","18825.70 (min 14733.81, max 20951.41)","23141.61 (min 23011.24, max 23206.80)"
-    "1000000","19418.42 (min 17693.30, max 20557.09)","23372.42 (min 23305.83, max 23405.71)"
+    "400000","17601.94 (min 15937.74, max 18703.20)","22738.19 (min 22505.49, max 22882.68)"
+    "800000","19452.04 (min 14733.81, max 20951.41)","23197.75 (min 23011.24, max 23272.73)"
+    "1000000","19428.52 (min 16499.50, max 21222.80)","23381.92 (min 23305.83, max 23405.71)"
 
 The performance numbers were captured using the following:
 
