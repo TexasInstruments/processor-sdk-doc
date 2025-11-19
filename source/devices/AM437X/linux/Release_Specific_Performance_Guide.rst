@@ -273,6 +273,19 @@ Execute the benchmark with the following:
     "scale (mb/s)","649.78 (min 649.00, max 651.60)"
     "triad (mb/s)","378.94 (min 378.60, max 379.50)"
 
+Boot-time Measurement
+---------------------
+
+Boot media: MMCSD
+^^^^^^^^^^^^^^^^^
+
+.. csv-table:: Linux boot time MMCSD
+    :header: "Boot Configuration","am43xx-gpevm: Boot time in seconds: avg(min,max)"
+
+    "Linux boot time from SD with default rootfs (20 boot cycles)","50.96 (min 41.96, max 67.61)"
+
+Boot time numbers [avg, min, max] are measured from "Starting kernel" to Linux prompt across 20 boot cycles.
+
 |
 
 Graphics SGX/RGX Driver
@@ -305,6 +318,62 @@ NAND Driver
     "524288","4.33 (min 4.26, max 4.38)","84.77 (min 84.07, max 85.20)","9.75 (min 9.73, max 9.78)","46.07 (min 44.55, max 47.09)"
     "1048576","4.31 (min 4.25, max 4.37)","84.87 (min 84.27, max 85.58)","9.79 (min 9.77, max 9.80)","44.28 (min 43.13, max 46.28)"
     "5242880","4.33 (min 4.26, max 4.39)","84.84 (min 84.44, max 85.52)","9.77 (min 9.73, max 9.81)","44.97 (min 42.98, max 47.50)"
+
+MMCSD
+-----
+
+.. warning::
+
+  **IMPORTANT**: The performance numbers can be severely affected if the media is
+  mounted in sync mode. Hot plug scripts in the filesystem mount
+  removable media in sync mode to ensure data integrity. For performance
+  sensitive applications, umount the auto-mounted filesystem and
+  re-mount in async mode.
+
+MMC EXT4 FIO 1G
+^^^^^^^^^^^^^^^
+
+.. csv-table:: MMC EXT4 FIO 1G
+    :header: "Buffer size (bytes)","am43xx-gpevm: Write EXT4 Throughput (Mbytes/sec)","am43xx-gpevm: Write EXT4 CPU Load (%)","am43xx-gpevm: Read EXT4 Throughput (Mbytes/sec)","am43xx-gpevm: Read EXT4 CPU Load (%)"
+
+    "1m","19.94 (min 19.90, max 20.00)","7.46 (min 6.73, max 8.24)","21.66 (min 21.60, max 21.70)","8.81 (min 8.58, max 9.02)"
+    "4m","19.92 (min 19.90, max 20.00)","6.47 (min 6.07, max 6.61)","21.66 (min 21.60, max 21.70)","8.28 (min 7.99, max 8.96)"
+    "4k","2.53","19.67 (min 18.85, max 20.81)","8.43 (min 8.40, max 8.46)","35.89 (min 33.69, max 38.46)"
+    "256k","19.12 (min 19.00, max 19.30)","9.85 (min 9.59, max 10.32)","21.32 (min 21.30, max 21.40)","9.98 (min 9.78, max 10.33)"
+
+MMC EXT4
+^^^^^^^^
+
+.. csv-table:: MMC EXT4
+    :header: "Buffer size (bytes)","am43xx-gpevm: Write Raw Throughput (Mbytes/sec)","am43xx-gpevm: Write Raw CPU Load (%)","am43xx-gpevm: Read Raw Throughput (Mbytes/sec)","am43xx-gpevm: Read Raw CPU Load (%)"
+
+    "102400","19.14 (min 18.28, max 19.49)","13.97 (min 12.01, max 20.55)","20.21 (min 19.95, max 20.49)","11.98 (min 10.00, max 14.82)"
+    "262144","18.66 (min 17.79, max 19.56)","14.06 (min 11.87, max 18.30)","20.47 (min 20.22, max 21.04)","15.89 (min 14.88, max 16.73)"
+    "524288","18.62 (min 17.83, max 19.31)","13.80 (min 11.66, max 18.71)","21.34 (min 20.77, max 21.77)","15.92 (min 14.72, max 18.95)"
+    "1048576","18.69 (min 17.96, max 19.38)","13.81 (min 11.82, max 18.81)","22.75 (min 22.62, max 22.81)","16.25 (min 15.93, max 16.74)"
+    "5242880","18.99 (min 18.32, max 19.79)","13.58 (min 11.41, max 18.03)","22.77 (min 22.73, max 22.80)","16.96 (min 16.74, max 17.25)"
+
+The performance numbers were captured using the following:
+
+-  SanDisk Max Endurance SD card (SDSQQVR-032G-GN6IA)
+-  Partition was mounted with async option
+
+UBoot MMCSD
+-----------
+
+UBOOT MMCSD FAT
+^^^^^^^^^^^^^^^
+
+.. csv-table:: UBOOT MMCSD FAT
+    :header: "File size (bytes in hex)","am43xx-gpevm: Write Throughput (Kbytes/sec)","am43xx-gpevm: Read Throughput (Kbytes/sec)"
+
+    "400000","14236.33 (min 11314.92, max 16062.75)","19022.86 (min 18875.58, max 19230.05)"
+    "800000","14039.31 (min 11457.34, max 16650.41)","19359.07 (min 19275.29, max 19458.43)"
+    "1000000","14257.06 (min 11855.28, max 16804.10)","19508.72 (min 19458.43, max 19574.67)"
+
+The performance numbers were captured using the following:
+
+-  SanDisk Max Endurance SD card (SDSQQVR-032G-GN6IA)
 
 |
 
