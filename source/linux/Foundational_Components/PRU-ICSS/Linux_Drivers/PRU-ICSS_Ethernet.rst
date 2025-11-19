@@ -523,6 +523,42 @@ mode.
 
    ip link set eth0 promisc on
 
+Configure interface (ethtool)
+=============================
+
+``ethtool -s|--change DEVNAME`` command can be used for configuring interface generic options.
+The main purpose of this command is to configure physical link settings (PHY) like speed, duplex, auto-negotiation.
+
+The PRU Ethernet driver forwards the following commands to the PHY driver:
+
+.. code-block:: console
+
+   # ethtool -s <dev>
+   [ speed %d ]
+   [ duplex half|full ]
+   [ autoneg on|off ]
+   [ wol p|u|m|b|a|g|s|d... ]
+   [ sopass %x:%x:%x:%x:%x:%x ]
+
+.. ifconfig:: CONFIG_part_variant in ('AM335X')
+
+   .. note::
+
+      Half Duplex is only supported for `pruss_emac0` interface. Configuring `pruss_emac1` in half duplex
+      is not functional. This is a known issue that is being tracked separately.
+
+Below is an example of forcing link speed to 100M/10M and duplexity to full:
+
+.. code-block:: console
+
+   # ethtool -s eth0 duplex half speed 100
+   [  169.620032] prueth pruss-eth eth0: Link is Down
+   [  171.727166] prueth pruss-eth eth0: Link is Up - 100Mbps/Half - flow control off
+
+   # ethtool -s eth0 duplex half speed 10
+   [  266.901225] prueth pruss-eth eth0: Link is Down
+   [  269.018796] prueth pruss-eth eth0: Link is Up - 10Mbps/Half - flow control off
+
 PTP Ordinary Clock
 ==================
 
