@@ -144,17 +144,15 @@ a command of the form:
 Using Default Configurations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-For this sdk, the defconfig found in arch/arm64/configs is used to create the prebuilt
-files. We recommend users to use this kernel configuration (or at least use it
-as a starting point).
+
 
 ..
   [comment] instructions for 32 bit processors
 .. ifconfig:: CONFIG_part_family in ('AM335X_family', 'AM437X_family', 'AM57X_family')
 
-    platformName is am335x-evm for AM335x, am437x-evm for AM437x, am57xx-evm for
-    AM57xx, k2hk-evm for K2H/K2K, k2e-evm for K2E, k2l-evm for K2L, k2g-evm for
-    K2G, and omapl138-lcdk for OMAP-L138.
+    For this sdk, the defconfig found in arch/arm/configs is used to create the prebuilt
+    files. We recommend users to use this kernel configuration (or at least use it
+    as a starting point).
 
     For example, to apply the default AM335x kernel configuration, use:
 
@@ -174,6 +172,10 @@ as a starting point).
 ..
   [comment] instructions for 64 bit processors
 .. ifconfig:: CONFIG_part_family not in ('AM335X_family', 'AM437X_family', 'AM57X_family')
+
+    For this sdk, the defconfig found in arch/arm64/configs is used to create the prebuilt
+    files. We recommend users to use this kernel configuration (or at least use it
+    as a starting point).
 
     For example, to apply the recommended kernel configuration for K3 devices, use:
 
@@ -302,7 +304,7 @@ Compiling the Device Tree Binaries
     Starting with the 3.8 kernel each TI evm has an unique device tree
     binary file required by the kernel. Therefore, you will need to build
     and install the correct dtb for the target device. All device tree files
-    are located at arch/arm/boot/dts/. Below list various TI evms and the
+    are located at arch/arm/boot/dts/ti/omap. Below list various TI evms and the
     matching device tree file.
 
     +-------------------------------------------+--------------------------------------+
@@ -355,7 +357,7 @@ Compiling the Device Tree Binaries
 
         make DTC_FLAGS=-@ ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- <dt filename>.dtb
 
-    The compiled device tree file with be located in arch/arm/boot/dts.
+    The compiled device tree file with be located in arch/arm/boot/dts/ti/omap.
 
     For example, the Beaglebone Black device tree file is named
     am335x-boneblack.dts. To build the device tree binary you would run:
@@ -730,18 +732,20 @@ Installing the Kernel Image and Device Tree Binaries
     .. code-block:: console
 
         cd <kernel sources dir>
-        sudo cp arch/arm/boot/zImage <rootfs path>/boot
-        sudo cp arch/arm/boot/dts/<dt file>.dtb <rootfs path>/boot/dtb
+        sudo cp arch/arm/boot/zImage $boot
+        sudo cp arch/arm/boot/dts/ti/omap/<dt file>.dtb $boot
 
     For example, if you wanted to copy the kernel image and BeagleBone
-    Black device tree file to the rootfs partition of a SD card you would
+    Black device tree file to the SD card partition, you would
     enter the below commands:
 
     .. code-block:: console
 
          cd <kernel sources dir>
-         sudo cp arch/arm/boot/zImage /media/rootfs/boot
-         arch/arm/boot/dts/am335x-boneblack.dtb /media/rootfs/boot
+         sudo cp arch/arm/boot/zImage $boot
+         arch/arm/boot/dts/ti/omap/am335x-boneblack.dtb $boot
+
+    Where ``$boot`` is the mount point for the boot partition of the SD card.
 
 ..
   [comment] instructions for 64 bit processors
