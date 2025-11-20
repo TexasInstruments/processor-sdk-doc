@@ -44,8 +44,7 @@ and partitions according to the example in: :ref:`uboot-listing-mmc-devices`.
 
 .. code-block:: console
 
-   => mmc dev 0 0 # select SD "boot" partition
-   => mmc dev 0 1 # select SD "root" partition
+   => mmc dev 0 # select SD
 
 .. ifconfig:: CONFIG_part_variant in ('AM335X')
 
