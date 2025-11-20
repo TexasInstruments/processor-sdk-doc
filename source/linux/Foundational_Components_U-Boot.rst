@@ -13,7 +13,8 @@ following platform(s):
    | `AM335x EVM-SK <http://www.ti.com/tool/tmdssk3358>`__
    | `AM335x ICE <http://www.ti.com/tool/tmdsice3359>`__
    | `BeagleBone White <http://beagleboard.org/bone>`__
-   | `BeagleBone Black <https://beagleboard.org/black>`__
+   | `BeagleBone Black <https://www.ti.com/tool/BEAGL-BONE-BLACK>`__
+   | `BeagleBone Green ECO <https://www.ti.com/tool/BEAGL-BONE-GRN-ECO>`__
 
 .. ifconfig:: CONFIG_part_family in ('AM437X_family')
 
@@ -42,7 +43,6 @@ following platform(s):
 
 .. ifconfig:: CONFIG_part_variant in ('AM65X')
 
-   |  `AM65x EVM <http://www.ti.com/tool/TMDX654GPEVM>`__
    |  `AM65x IDK <http://www.ti.com/tool/TMDX654IDKEVM>`__
 
 .. ifconfig:: CONFIG_part_variant in ('J721E')
