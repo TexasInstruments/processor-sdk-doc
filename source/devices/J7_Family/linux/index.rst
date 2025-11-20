@@ -5,7 +5,7 @@ Processor SDK Linux Software Developer's Guide
 **********************************************
 
 
-.. rubric:: Welcome to the Processor SDK Linux Software Developer's Guide for |__PART_FAMILY_DEVICE_NAMES__|
+.. rubric:: Welcome to the Processor SDK Linux Software Developer's Guide for |__PART_FAMILY_NAME__|
 
 .. include:: /linux/Overview/_Processor_SDK_Linux_Software_Developers_Guide.rst
 

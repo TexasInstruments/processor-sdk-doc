@@ -125,7 +125,7 @@ updating the :file:`am65-cpsw-nuss.c` driver with the following change:
    .. note::
 
       TX checksum offload is implemented, but it is disabled by default
-      on affected |__PART_FAMILY_DEVICE_NAMES__| SR1.0 due to errata i2027.
+      on affected |__PART_FAMILY_NAME__| SR1.0 due to errata i2027.
 
 .. rubric:: **VLAN Config**
    :name: k3-vlan-config
@@ -637,7 +637,7 @@ The main difference of the hard irqs deferral feature from ethtool interrupt pac
 
 The TI Processor SDK includes precompiled correct version of |__PART_FAMILY_NAME__| switch-config tool.
 
-The TI |__PART_FAMILY_NAME__| switch-config tool sources for |__PART_FAMILY_DEVICE_NAMES__|  SoC can be found at
+The TI |__PART_FAMILY_NAME__| switch-config tool sources for |__PART_FAMILY_NAME__|  SoC can be found at
 
 .. code-block:: text
 

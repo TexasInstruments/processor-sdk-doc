@@ -4,7 +4,7 @@ Boot Time Optimizations
 Introduction
 ------------
 
-In today's fast-paced automotive industry, the ability to achieve quick processor boot times is more crucial than ever. This guide will walk you through the necessary steps and considerations for achieving faster boot times on |__PRODUCT_LINE_NAME__| |__PART_FAMILY_DEVICE_NAMES__| devices. From adjusting configurations to implementing best practices, you'll gain the insights needed to deliver a seamless, responsive user experience in your automotive applications. By implementing specific modifications, the default SDK offering can be optimized to boot much faster.
+In today's fast-paced automotive industry, the ability to achieve quick processor boot times is more crucial than ever. This guide will walk you through the necessary steps and considerations for achieving faster boot times on |__PRODUCT_LINE_NAME__| |__PART_FAMILY_NAME__| devices. From adjusting configurations to implementing best practices, you'll gain the insights needed to deliver a seamless, responsive user experience in your automotive applications. By implementing specific modifications, the default SDK offering can be optimized to boot much faster.
 
 Reducing boot time is essential for enhancing user experience and operational efficiency. Quick boot times lead to more responsive systems, which are critical in automotive applications where every second counts. This ensures that drivers and passengers have immediate access to essential features and systems, contributing to overall safety and satisfaction.
 
@@ -385,7 +385,7 @@ The following section displays the time taken by each stage to start and end. Fo
 | It is not convenient to measure this range since it is dependent on the hardware to provide the power to the PMIC quickly. While TI experts can give suggestions to reduce the time, it will not be TI's commitment.
 
 | Range 2 (MCU_PORz to SBL_start):
-| MCU_PORz is the Power-On-Reset pin that is set HIGH as soon as the PMIC powers the voltage rails. This can be probed using Pin #28 on the MCU Header (J11) of the |__PART_FAMILY_DEVICE_NAMES__|. All pins are automatically set HIGH at this point.
+| MCU_PORz is the Power-On-Reset pin that is set HIGH as soon as the PMIC powers the voltage rails. This can be probed using Pin #28 on the MCU Header (J11) of the |__PART_FAMILY_NAME__|. All pins are automatically set HIGH at this point.
 
 .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 

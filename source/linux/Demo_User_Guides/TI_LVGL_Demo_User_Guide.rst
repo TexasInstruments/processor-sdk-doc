@@ -42,7 +42,7 @@ Hardware Prerequisites
 
 .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
-   -  TI |__PART_FAMILY_DEVICE_NAMES__| SK
+   -  TI |__PART_FAMILY_NAME__| SK
 
 -  PC (Windows or Linux, to use serial terminal console)
 
@@ -322,11 +322,11 @@ Building the TI LVGL Demo from Sources
 
 .. ifconfig:: CONFIG_sdk in ('SITARA')
 
-   The TI LVGL Demo is enabled in :file:`tisdk-default-image` yocto filesystem for |__PART_FAMILY_DEVICE_NAMES__| by default.
+   The TI LVGL Demo is enabled in :file:`tisdk-default-image` yocto filesystem for |__PART_FAMILY_NAME__| by default.
 
 .. ifconfig:: CONFIG_sdk in ('DebianSDK')
 
-   The TI LVGL Demo is packaged in :file:`tisdk-debian-trixie` wic image for |__PART_FAMILY_DEVICE_NAMES__| by default.
+   The TI LVGL Demo is packaged in :file:`tisdk-debian-trixie` wic image for |__PART_FAMILY_NAME__| by default.
 
 Note, that the binary itself does not have asset images and slides built in it.
 The image contains the required assets within :file:`/usr/share/ti-lvgl-demo/`. Place any additional

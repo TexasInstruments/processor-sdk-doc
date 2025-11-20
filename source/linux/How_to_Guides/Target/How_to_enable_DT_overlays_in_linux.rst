@@ -44,4 +44,4 @@ Steps to enable DT overlays:
 
         name_overlays=ti/k3-<overlay-1>.dtbo ti/k3-<overlay-2>.dtbo ti/k3-<overlay-3>.dtbo
 
-#. Unmount and eject the SD card. Plug it back in the |__PART_FAMILY_DEVICE_NAMES__| board and turn the board on.
+#. Unmount and eject the SD card. Plug it back in the |__PART_FAMILY_NAME__| board and turn the board on.

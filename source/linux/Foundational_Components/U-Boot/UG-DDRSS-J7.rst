@@ -16,7 +16,7 @@ ECC data is calculated over 64-bit data quanta. For every 256-byte data block
 for ECC storage and the remaining 8/9th of the SDRAM data space are seen as
 consecutive byte addresses. Even if there are non-ECC protected regions the
 previously described 1/9th-8/9th rule still applies and consecutive byte
-addresses are seen from system point of view. |__PART_FAMILY_DEVICE_NAMES__|
+addresses are seen from system point of view. |__PART_FAMILY_NAME__|
 supports up to 3 ECC protected non-overlapping memory ranges. The current
 U-Boot release supports a single region covering the entire SDRAM space.
 

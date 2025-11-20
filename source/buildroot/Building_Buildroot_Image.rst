@@ -158,13 +158,13 @@ Booting the SD Card Image
 =========================
 
 After the image is flashed to SD Card. Change the boot mode pins in
-|__PART_FAMILY_DEVICE_NAMES__| board for SD Card boot.
+|__PART_FAMILY_NAME__| board for SD Card boot.
 
 .. code-block:: console
 
    SW1[1:8] = 11000010 and SW2[1:8] = 01000000
 
-Insert the SD Card in SD Card slot in |__PART_FAMILY_DEVICE_NAMES__| board. Use a
+Insert the SD Card in SD Card slot in |__PART_FAMILY_NAME__| board. Use a
 USB Micro-B cable to connect the host PC to the USB Micro-B interface for UART
 on the EVM then power on the board, the following logs can be observed on the
 terminal window:
