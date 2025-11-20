@@ -1,3 +1,4 @@
+.. _AM65-RT-Linux-Performance-Guide:
 
 =================================
  RT-linux 11.02 Performance Guide
