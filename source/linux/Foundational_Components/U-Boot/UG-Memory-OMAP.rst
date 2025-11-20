@@ -46,12 +46,6 @@ and partitions according to the example in: :ref:`uboot-listing-mmc-devices`.
 
    => mmc dev 0 # select SD
 
-.. ifconfig:: CONFIG_part_variant in ('AM335X')
-
-   .. note::
-
-      AM335x EVM does not carry a eMMC flash
-
 View MMC partition contents
 ===========================
 
@@ -98,16 +92,17 @@ Where the general syntax is:
 
    $ ls <interface> [<dev[:partition]> [directory]]
 
-.. ifconfig:: CONFIG_part_variant in ('AM335X')
-
-   .. note::
-
-      AM335x EVM does not carry a eMMC flash
-
 .. _flash-and-boot-to-uboot-prompt:
 
 Flash and boot SPL from eMMC
 ============================
+
+.. ifconfig:: CONFIG_part_variant in ('AM335X')
+
+   .. note::
+
+      Please note that am335 devices do not support eMMC boot from boot0/boot1,
+      only boot from eMMC UDA.
 
 In some cases it is desirable to write :file:`MLO` and :file:`u-boot.img`
 as raw images to the MMC device rather than load them from a filesystem.
