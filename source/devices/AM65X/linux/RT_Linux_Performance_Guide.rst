@@ -1,3 +1,4 @@
+.. _RT-linux-performance:
 
 =================================
  RT-linux 11.02 Performance Guide
