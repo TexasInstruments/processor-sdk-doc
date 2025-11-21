@@ -10,8 +10,17 @@ Booting U-Boot from the console UART
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In some cases we support loading SPL and U-Boot over the console UART.
-You will need to use the :file:`tiboot3.bin`, :file:`tispl.bin` and :file:`u-boot.img`
-files to boot. As per the TRM, the file is to be loaded via the X-MODEM
+
+.. ifconfig:: CONFIG_part_variant in ('AM335X', 'AM437X')
+
+   You will need to use the :file:`u-boot-spl.bin` and :file:`u-boot.img` files to boot.
+
+.. ifconfig:: CONFIG_part_variant not in ('AM335X', 'AM437X')
+
+   You will need to use the :file:`tiboot3.bin`, :file:`tispl.bin` and :file:`u-boot.img` files to boot.
+
+
+As per the TRM, the file is to be loaded via the X-MODEM
 protocol at 115200 baud 8 stop bits no parity (same as using it for
 console). SPL in turn expects to be sent :file:`u-boot.img` at the same rate
 but via Y-MODEM. An example session from the host PC, assuming console
@@ -90,3 +99,10 @@ is installed
       $ sb --xmodem $OUT_R5/tiboot3.bin > $UART_BOOT_MAIN_UART < $UART_BOOT_MAIN_UART
       $ sb --ymodem $OUT_AXX/tispl.bin > $UART_BOOT_MAIN_UART < $UART_BOOT_MAIN_UART
       $ sb --ymodem $OUT_AXX/u-boot.img > $UART_BOOT_MAIN_UART < $UART_BOOT_MAIN_UART
+
+.. ifconfig:: CONFIG_part_variant in ('AM335X', 'AM437X')
+
+   .. code-block:: console
+
+      $ sb -kb $OUT/u-boot-spl.bin < $UART_BOOT_MAIN_UART > $UART_BOOT_MAIN_UART
+      $ sb -kb --ymodem $OUT/u-boot.img < $UART_BOOT_MAIN_UART > $UART_BOOT_MAIN_UART
