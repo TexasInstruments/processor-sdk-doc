@@ -75,6 +75,7 @@ linux/How_to_Guides
 linux/How_to_Guides_Developer_Notes
 linux/How_to_Guides/Host/SYSFW_Trace_Parser
 linux/How_to_Guides/Target/How_to_enable_DT_overlays_in_linux
+linux/How_to_Guides/Target/How_to_enable_SSC_for_DSS
 linux/How_to_Guides/Target/How_to_emmc_boot
 linux/How_to_Guides/Target/How_to_mmcsd_boot_emmc_uda
 linux/How_to_Guides/Target/Runtime_debug_unlock_on_secure_device

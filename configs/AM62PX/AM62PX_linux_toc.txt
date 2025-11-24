@@ -161,6 +161,7 @@ linux/How_to_Guides/Target/How_to_test_MCAN_on_AM62x
 linux/How_to_Guides/Target/How_to_enable_DT_overlays_in_linux
 linux/How_to_Guides/Target/How_to_playback_audio_over_HDMI
 linux/How_to_Guides/Target/How_to_enable_display_sharing_between_remotecore_and_Linux
+linux/How_to_Guides/Target/How_to_enable_SSC_for_DSS
 linux/How_to_Guides/Target/How_to_boot_quickly
 linux/How_to_Guides/Target/How_to_enable_Microtips_LVDS_Panel
 linux/How_to_Guides/Target/How_To_Enable_M2CC3301_in_linux

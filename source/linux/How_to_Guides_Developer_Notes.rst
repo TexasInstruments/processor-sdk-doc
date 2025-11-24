@@ -32,6 +32,7 @@ Developer Notes
    How_to_Guides/Target/How_to_Use_K3Conf_Tool
    How_to_Guides/Target/How_to_Tune_Real_Time_Linux
    How_to_Guides/Target/How_to_enable_display_sharing_between_remotecore_and_Linux
+   How_to_Guides/Target/How_to_enable_SSC_for_DSS
    How_to_Guides/Target/How_to_boot_quickly
    How_to_Guides/Target/Runtime_debug_unlock_on_secure_device
    How_to_Guides/FAQ/How_to_Verify_Ipc_Linux_R5
