@@ -27,3 +27,9 @@
     font-weight: 400;
     color: hsla(0, 0%, 100%, .3);
 }
+
+/* Table wrapping override */
+.wy-table-responsive table td, .wy-table-responsive table th {
+    overflow-wrap: break-word;
+    white-space: normal;
+}
