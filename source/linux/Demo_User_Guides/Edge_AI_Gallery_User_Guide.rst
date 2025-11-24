@@ -163,13 +163,13 @@ Then, pull TI's debian-arm64 Docker image and run it:
 .. code:: console
 
    docker pull ghcr.io/texasinstruments/debian-arm64:latest
-   docker run -it -v ${EDGEAI_GUI_APP_REPO}:/root/ti-apps-launcher ghcr.io/texasinstruments/debian-arm64 bash
+   docker run -it -v ${EDGEAI_GUI_APP_REPO}:/root/edgeai-gui-app ghcr.io/texasinstruments/debian-arm64 bash
 
 Finally, run:
 
 .. code:: console
 
-   cmake -B build -S . -DRT_BUILD=0 # if target is RT image, make -DRT_BUILD=1
+   cmake -B build -S .
    make -C build
 
 The compiled binary should be ``build/edgeai-gui-app``.
@@ -182,7 +182,7 @@ Copy the compiled binary to the :file:`/usr/bin` of the target:
 
 .. note::
 
-   This is a quick and easy way to compile ti-apps-launcher during
+   This is a quick and easy way to compile EdgeAI GUI App during
    development, but it is a good idea to validate with Yocto builds
    often. There is a possibility that compiler mismatch could present
    issues in the run up to production.
