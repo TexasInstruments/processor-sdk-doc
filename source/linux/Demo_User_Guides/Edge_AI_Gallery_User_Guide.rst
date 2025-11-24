@@ -74,7 +74,9 @@ The edge AI gallery launches on Linux startup. Follow the below instructions to 
 
 5. Select the 4 options as described above and click on ``Start`` to generate and start the pipeline.
 
-   .. note:: As the note suggests, it might take a while for custom pipeline to start.
+   .. note::
+
+      As the note suggests, it might take a while for custom pipeline to start.
 
 .. Image:: /images/am62a_edge_ai_gallery_custom.jpg
    :width: 407
@@ -86,7 +88,9 @@ The edge AI gallery launches on Linux startup. Follow the below instructions to 
 
 7. For ease of use, the IP addr of the device is displayed at the bottom right when Network is connected.
 
-   .. note:: The IP addr is polled only for the first 100 seconds after the application has started.
+   .. note::
+
+      The IP addr is polled only for the first 100 seconds after the application has started.
 
 8. To close the application and go to the Wallpaper screen, use the close button on the top right corner.
 
@@ -99,32 +103,34 @@ The edge AI gallery launches on Linux startup. Follow the below instructions to 
 
 9. To add new images, videos and models, you should add them in the below directories respectively
 
-   - Images - /opt/edgeai-test-data/images/
+   - Images - :file:`/opt/edgeai-test-data/images/`
 
-   - Videos - /opt/edgeai-test-data/videos/
+   - Videos - :file:`/opt/edgeai-test-data/videos/`
 
-   - Models - /opt/model_zoo/
+   - Models - :file:`/opt/model_zoo/`
 
 
 10. To change the videos in the prebuilt pipelines used for ``Image Classification``, ``Object Detection``, ``Semantic Segmentation`` & ``Multi Channel``, you can replace the video files :file:`oob-gui-video*.h264` under :file:`/opt/oob-demo-assets/`.
 
 11. To relaunch the application, you should run
 
-   ::
+    .. code:: console
 
-        /etc/init.d/edgeai-launcher.sh start
+       /etc/init.d/edgeai-launcher.sh start
 
 12. And to stop the application again, you should run
 
-   ::
+    .. code:: console
 
-        /etc/init.d/edgeai-launcher.sh stop
+       /etc/init.d/edgeai-launcher.sh stop
 
 .. ifconfig:: CONFIG_part_family in ('AM62AX_family')
 
    13. To add new models to the ``Model`` dropdown list in Custom popup menu, Add the names of the models in :file:`/opt/oob-demo-assets/allowedModels.txt`.
 
-   .. note:: For the above changes to take affect, close and relaunch the application.
+   .. note::
+
+      For the above changes to take affect, close and relaunch the application.
 
    14. For more information on edge AI software stack, refer `Edge AI Documentation <https://software-dl.ti.com/processor-sdk-linux/esd/AM62AX/11_01_07_05/exports/docs/edgeai/sdk_overview.html>`_
 
@@ -172,7 +178,7 @@ Finally, run:
    cmake -B build -S .
    make -C build
 
-The compiled binary should be ``build/edgeai-gui-app``.
+The compiled binary should be :file:`build/edgeai-gui-app`.
 
 Copy the compiled binary to the :file:`/usr/bin` of the target:
 
