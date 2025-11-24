@@ -13,6 +13,8 @@ It includes various demo applications, such as:
 
 - EV Charging
 
+- Arm analytics
+
 - Smart Home
 
 - Smart Meter
@@ -20,6 +22,64 @@ It includes various demo applications, such as:
 - Thermostat
 
 - Security
+
+.. note::
+
+   Platform compatibility varies for different demo applications. Please see the platform compatibility table below:
+
+   .. list-table:: Demo Compatibility by Platform
+      :header-rows: 1
+      :widths: 20 16 16 16 16 16 16
+
+      * - Platform
+        - EV Charging
+        - Arm analytics
+        - Smart Home
+        - Smart Meter
+        - Thermostat
+        - Security
+      * - AM62L
+        - ✓
+        - ✗
+        - ✓
+        - ✓
+        - ✓
+        - ✓
+      * - AM62x
+        - ✓
+        - ✗
+        - ✓
+        - ✓
+        - ✓
+        - ✓
+      * - AM62P
+        - ✓
+        - ✗
+        - ✓
+        - ✓
+        - ✓
+        - ✓
+      * - AM335X
+        - ✗
+        - ✓
+        - ✓
+        - ✓
+        - ✓
+        - ✗
+      * - AM437X
+        - ✗
+        - ✓
+        - ✓
+        - ✓
+        - ✓
+        - ✗
+      * - AM65X
+        - ✗
+        - ✓
+        - ✓
+        - ✓
+        - ✓
+        - ✗
 
 All necessary equipment and step by step instructions are provided below:
 
@@ -34,15 +94,28 @@ Hardware Prerequisites
 
 .. ifconfig:: CONFIG_part_variant in ('AM62LX')
 
-   -  AM62L Evaluation Module: TMDS62LEVM
+   -  AM62L Evaluation Module: `TMDS62LEVM <https://www.ti.com/tool/TMDS62LEVM>`__
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-   -  TI AM62x SK / TI AM62x-LP SK / TI AM62xSIP SK / BeaglePlay
+   -  TI AM62x SK / TI AM62x-LP SK / TI AM62xSIP SK / BeaglePlay `SK-AM62 <https://www.ti.com/tool/SK-AM62>`__
 
 .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
-   -  TI |__PART_FAMILY_DEVICE_NAMES__| SK
+   -  TI SK-AM62P-LP `TMDS62LEVM <https://www.ti.com/tool/SK-AM62P-LP>`__
+
+.. ifconfig:: CONFIG_part_variant in ('AM335X')
+
+   -  AM335x Evaluation Module: AM335x EVM  or `BEAGL-BONE-GRN-ECO <https://www.ti.com/tool/BEAGL-BONE-GRN-ECO>`__
+   -  BeagleBone Black `BEAGL-BONE-BLACK <https://www.ti.com/tool/BEAGL-BONE-BLACK>`__
+
+.. ifconfig:: CONFIG_part_variant in ('AM437X')
+
+   -  AM437x Evaluation Module: AM437x GP EVM `TMDSEVM437X <https://www.ti.com/tool/TMDSEVM437X>`__
+
+.. ifconfig:: CONFIG_part_variant in ('AM65X')
+
+   -  AM65x Evaluation Module: AM654x GP EVM `TMDX654IDKEVM <https://www.ti.com/tool/TMDX654IDKEVM>`__
 
 -  PC (Windows or Linux, to use serial terminal console)
 
@@ -73,25 +146,25 @@ Launching the TI LVGL Demo
 
    The demo will auto launch upon Linux booting on the EVM. Follow the below instructions to flash the SD card:
 
-   1. Flash an SD card with the :file:`tisdk-default-image`. User can download the :file:`tisdk-default-image` wic image from |__SDK_DOWNLOAD_URL__|.
-   Please follow the instructions from here to :ref:`Flash an SD card <processor-sdk-linux-create-sd-card>`.
+   #. Flash an SD card with the :file:`tisdk-default-image`. User can download the :file:`tisdk-default-image` wic image from |__SDK_DOWNLOAD_URL__|.
+      Please follow the instructions from here to :ref:`Flash an SD card <processor-sdk-linux-create-sd-card>`.
 
-   2. Insert the flashed SD card to the board, connect the display, mouse/touch-input, ethernet cable, aux cable, jumper wire and power on the EVM.
-   The TI LVGL Demo will launch automatically when the device is fully booted.
+   #. Insert the flashed SD card to the board, connect the display, mouse/touch-input, ethernet cable, aux cable, jumper wire and power on the EVM.
+      The TI LVGL Demo will launch automatically when the device is fully booted.
 
 .. ifconfig:: CONFIG_sdk in ('DebianSDK')
 
    Upon booting the EVM, Weston is launched automatically. To launch the LVGL demo, refer the following
    instructions:
 
-   1. Flash an SD card with the :file:`tisdk-debian-trixie` wic image. User can download the wic image from |__SDK_DOWNLOAD_URL__|.
-   Please follow the instructions from here to :ref:`Flash an SD card <processor-sdk-debian-create-sd-card>`.
+   #. Flash an SD card with the :file:`tisdk-debian-trixie` wic image. User can download the wic image from |__SDK_DOWNLOAD_URL__|.
+      Please follow the instructions from here to :ref:`Flash an SD card <processor-sdk-debian-create-sd-card>`.
 
-   2. Insert the flashed SD card to the board, connect the display, mouse/touch-input, ethernet cable, aux cable, jumper wire and power the EVM on.
+   #. Insert the flashed SD card to the board, connect the display, mouse/touch-input, ethernet cable, aux cable, jumper wire and power the EVM on.
 
-   3. Weston is launched on boot. Shut it down with `systemctl stop weston`.
+   #. Weston is launched on boot. Shut it down with `systemctl stop weston`.
 
-   4. Launch the demo by typing `/usr/bin/lvglsim` into the UART command prompt.
+   #. Launch the demo by typing `/usr/bin/lvglsim` into the UART command prompt.
 
 
 **********************
@@ -100,10 +173,16 @@ Using the TI LVGL Demo
 
    The landing/home page of the LVGL demo looks like the following:
 
-   .. Image:: /images/ti-lvgl-demo-home-page.gif
-      :height: 500
+   .. ifconfig:: CONFIG_part_variant in ('AM335X' 'AM437X' 'AM65X')
 
-   |
+      .. Image:: /images/ti-lvgl-demo-legacy-home.png
+         :height: 500
+
+   .. ifconfig:: CONFIG_part_variant in ('AM62LX' 'AM62PX' 'AM62X')
+
+      .. Image:: /images/ti-lvgl-demo-home-page.gif
+         :height: 500
+
 
    - In the demo, scroll through the various widgets to launch different apps.
    - The date/time panel shows the UTC timezone provided the EVM is connected to the internet.
@@ -119,13 +198,41 @@ Using the TI LVGL Demo
 Launching the EV Charging HMI
 =============================
 
-1. To launch the EV Charging HMI demo, click on the `EV Charging` widget in the apps scroll menu.
-2. Click on the `Start charging` button to emulate charging of EV. This will increment charge percentage at fixed time intervals.
+#. To launch the EV Charging HMI demo, click on the `EV Charging` widget in the apps scroll menu.
+#. Click on the `Start charging` button to emulate charging of EV. This will increment charge percentage at fixed time intervals.
 
    .. Image:: /images/ti-lvgl-demo-ev-charging1.png
       :height: 300
    .. Image:: /images/ti-lvgl-demo-ev-charging2.png
       :height: 300
+
+
+Launching the Arm analytics
+=============================
+
+#. Launch the Arm Analytics demo by clicking the **Arm Analytics** widget in the apps scroll menu.
+#. Connect the microphone and click the **Play** button to start audio recognition.
+
+   .. Image:: /images/ti-lvgl-demo-arm-analytics1.png
+      :height: 300
+#. Expose multiple audio sources to the microphone to view the output results. Click the **Stop** button to stop audio recognition.
+
+   .. Image:: /images/ti-lvgl-demo-arm-analytics2.png
+      :height: 300
+   .. Image:: /images/ti-lvgl-demo-arm-analytics3.png
+      :height: 300
+
+**Technical Details:**
+
+The Arm Analytics demo leverages machine learning for real-time audio recognition:
+
+- **ML Framework**: The demo uses :ref:`TensorFlow Lite (LiteRT) <tflite-label>` as the deep learning runtime for efficient on-device inference on Arm Cortex-A cores
+- **Pipeline Management**: :ref:`NNStreamer <nnstreamer-label>` is used to manage the neural network pipeline, providing seamless integration between audio capture and ML inference through GStreamer plugins
+
+For more information on the underlying technologies:
+
+- :ref:`TensorFlow Lite (LiteRT) <tflite-label>` - Deep learning inference framework
+- :ref:`NNStreamer <nnstreamer-label>` - Neural network pipeline management
 
 Launching the Smart Home HMI
 ============================
@@ -345,27 +452,44 @@ assets here while making any modifications.
 The source code is available at `TI LVGL Demo <https://github.com/TexasInstruments/ti-lvgl-demo.git/>`__ and can be re-compiled with the
 following steps:
 
-1. First clone the git repository and its submodules using:
 
-   .. code-block:: console
+#. First clone the appropriate git repository and its submodules using:
 
-      $ git clone --recurse-submodules https://github.com/TexasInstruments/ti-lvgl-demo.git
+   .. ifconfig:: CONFIG_part_variant in ('AM62LX', 'AM62X', 'AM62PX')
 
-2. Create the docker environment and build the application:
+      .. code-block:: console
 
-   .. code-block:: console
+         $ git clone --recurse-submodules https://github.com/TexasInstruments/ti-lvgl-demo.git
 
-      $ cd ti-lvgl-demo
-      $ sudo ./scripts/docker_setup.sh --create-image
-      $ sudo ./scripts/docker_setup.sh --build-app
+   .. ifconfig:: CONFIG_part_variant in ('AM335X', 'AM437X', 'AM65X')
 
-3. Copy the compiled binary to :file:`/usr/bin` directory of the device
+      .. code-block:: console
 
-   .. code-block:: console
+         $ git clone -b legacy --recurse-submodules https://github.com/TexasInstruments/ti-lvgl-demo.git
 
-      $ scp lv_port_linux/bin/lvglsim root@<ip-addr-of-device>:/usr/bin/
-      $ scp -r lv_port_linux/demos/high_res/assets/* root@<ip-addr-of-device>:/usr/share/ti-lvgl-demo/assets/  #make sure assets directory is there on target
-      $ scp -r lv_port_linux/demos/high_res/slides/* root@<ip-addr-of-device>:/usr/share/ti-lvgl-demo/slides/  #make sure slides directory is there on target
-      $ scp lv_port_linux/certs/<certificate> root@<ip-addr-of-device>:/usr/share/ti-lvgl-demo/cert/           #make sure cert directory is there on target
+#. Create the docker environment and build the application:
 
 
+      .. code-block:: console
+
+         $ cd ti-lvgl-demo
+         $ sudo ./scripts/docker_setup.sh --create-image
+         $ sudo ./scripts/docker_setup.sh --build-app
+
+#. Copy the compiled binary to :file:`/usr/bin` directory of the device
+
+   .. ifconfig:: CONFIG_part_variant in ('AM62LX', 'AM62X', 'AM62PX')
+
+      .. code-block:: console
+
+         $ scp lv_port_linux/bin/lvglsim root@<ip-addr-of-device>:/usr/bin/
+         $ scp -r lv_port_linux/demos/high_res/assets/* root@<ip-addr-of-device>:/usr/share/ti-lvgl-demo/assets/  #make sure assets directory is there on target
+         $ scp -r lv_port_linux/demos/high_res/slides/* root@<ip-addr-of-device>:/usr/share/ti-lvgl-demo/slides/  #make sure slides directory is there on target
+         $ scp lv_port_linux/certs/<certificate> root@<ip-addr-of-device>:/usr/share/ti-lvgl-demo/cert/           #make sure cert directory is there on target
+
+   .. ifconfig:: CONFIG_part_variant in ('AM335X', 'AM437X', 'AM65X')
+
+      .. code-block:: console
+
+         $ scp lv_port_linux/build-arm64/bin/lvglsim root@<ip-addr-of-device>:/usr/bin/
+         $ scp -r lv_port_linux/build-arm64/_deps/lv_demos_ext-src/src/high_res/assets/* root@<ip-addr-of-device>:/usr/share/ti-lvgl-demo/assets/     #make sure assets directory is there on target
