@@ -62,6 +62,8 @@ valid for given low power modes:
    +------------------------------------------------+------------+----------------+
    | Main I/O Daisy Chain (Main GPIO and Main UART) | Yes        | No             |
    +------------------------------------------------+------------+----------------+
+   | WKUP UART                                      | Yes        | No             |
+   +------------------------------------------------+------------+----------------+
    | USB Wakeup                                     | Yes        | No             |
    +------------------------------------------------+------------+----------------+
    | RTC Ext Pin                                    | Yes        | Yes            |
@@ -801,28 +803,28 @@ pad to act as a wakeup source by triggering a wake IRQ in Deep Sleep states.
 WKUP UART
 *********
 
-.. ifconfig:: CONFIG_part_variant in ('AM62LX')
+The UART in WKUP domain is capable of waking up the system.
 
-   WKUP UART wakeup is not yet supported on AM62LX.
+In order to use WKUP UART as a wakeup source, it needs to be configured
+in a generic way using the ti-sysc interconnect target module driver.
+The reference configuration can be found under target-module in
+`k3-am62-wakeup.dtsi <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62-wakeup.dtsi?h=11.02.08#n46>`__
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX')
-
-   The UART in WKUP domain is capable of waking up the system from Deep
-   Sleep and MCU Only modes.
-
-   In order to use WKUP UART as a wakeup source, it needs to be configured
-   in a generic way using the ti-sysc interconnect target module driver.
-   The reference configuration can be found under target-module in
-   `k3-am62-wakeup.dtsi <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62-wakeup.dtsi?h=11.01.05#n46>`__
 
    WKUP UART is generally available on the third serial port
    (/dev/ttyUSB2) and by default it only shows output from DM R5.
 
-   Once the system has entered Deep Sleep or MCU Only mode as shown in the
-   :ref:`LPM section<lpm_modes>`, wakeup from WKUP UART can be triggered
-   by doing *any key press* on the WKUP UART terminal. No output will be
-   visible on the WKUP UART terminal, but Linux resume messages will be
-   printed on the MAIN UART terminal.
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+   WKUP UART is generally available on the third serial port
+   (/dev/ttyUSB2).
+
+Once the system has entered the specified low power mode as shown in the
+:ref:`LPM section<lpm_modes>`, wakeup from WKUP UART can be triggered
+by doing *any key press* on the WKUP UART terminal. No output will be
+visible on the WKUP UART terminal, but Linux resume messages will be
+printed on the MAIN UART terminal.
 
 
 ******************
