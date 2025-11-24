@@ -75,6 +75,7 @@ of entropy can work around these issues.
 
    $ make CROSS_COMPILE="$CROSS_COMPILE_32" CROSS_COMPILE64="$CROSS_COMPILE_64" PLATFORM=k3-|__OPTEE_PLATFORM_FLAVOR__| CFG_ARM64_core=y CFG_WITH_SOFTWARE_PRNG=y
 
+.. _secure-storage-with-rpmb:
 
 Secure Storage with RPMB (For HS)
 *********************************
