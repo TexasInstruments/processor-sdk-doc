@@ -58,6 +58,8 @@ valid for given low power modes:
    +==================================+============+================+
    | Real-Time Clock (RTC)            | Yes        | Yes            |
    +----------------------------------+------------+----------------+
+   | WKUP GPIO                        | Yes        | No             |
+   +----------------------------------+------------+----------------+
    | Main I/O Daisy Chain (Main UART) | Yes        | No             |
    +----------------------------------+------------+----------------+
    | USB Wakeup                       | Yes        | No             |
@@ -311,6 +313,8 @@ For example, to wakeup from Deep Sleep in 10 seconds, use the command like this:
 
       The system will enter the mode selected by DM on the basis on existing constraints.
 
+.. _pm_mcu_gpio_wakeup:
+
 ********
 MCU GPIO
 ********
@@ -398,6 +402,92 @@ MCU GPIO
    Once the system has entered Deep Sleep or MCU Only mode as shown in the
    :ref:`LPM section<lpm_modes>`, wakeup from MCU_SPI0_D1 can be triggered
    by grounding Pin 4 on J8 MCU Header.
+
+*********
+WKUP GPIO
+*********
+
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+   One of the most common ways to wakeup a system is by using some I/O activity.
+   I/O activity on the WKUP GPIOs can wakeup the system when the WKUP GPIO
+   controller is configured as a wakeup source. Refer to the ``wkup_gpio_key`` node
+   in
+   `k3-am62l3-evm-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62l3-evm-lpm-wkup-sources.dtso?h=11.02.08>`__
+   to use as a template to configure the desired WKUP GPIO as a wakeup capable
+   GPIO.
+
+   A brief guide to configuring an WKUP GPIO as wakeup:
+
+   1. Add "gpio-keys" as a compatible string, refer to
+      `gpio_keys kernel documentation <https://www.kernel.org/doc/Documentation/devicetree/bindings/input/gpio-keys.txt>`__
+      for details.
+
+      .. code-block:: dts
+
+         compatible = "gpio-keys";
+
+   2. Set the desired pinctrl.
+
+      .. code-block:: dts
+
+         pinctrl-names = "default";
+         pinctrl-0 = <&wake_wkupgpio0_pins_default>;
+
+   3. Setup the interrupt parent as WKUP GPIO, then setup the interrupt.
+
+      .. code-block:: dts
+
+         interrupt-parent = <&wkup_gpio0>;
+         interrupts = <0 IRQ_TYPE_EDGE_RISING>;
+
+   4. Create following child node as a ``switch`` node:
+
+      .. code-block:: dts
+
+         switch {
+                  label = "WKUPGPIO";
+                  linux,code = <143>;
+                  gpios = <&wkup_gpio0 0 GPIO_ACTIVE_LOW>;
+                  wakeup-source;
+         };
+
+      * label: Descriptive name of the switch node. If the WKUP GPIO node is setup
+        correctly, the label will appear under :file:`/proc/interrupts`.
+      * linux,code: Keycode to emit.
+      * gpios: the GPIO required to be used as the gpio-key.
+      * wakeup-source:
+        `wakeup-source <https://www.kernel.org/doc/Documentation/devicetree/bindings/power/wakeup-source.txt>`__
+        property describes devices which have wakeup capability.
+
+   5. To confirm that gpio_keys can wakeup the system from Deep Sleep, check
+      :file:`/proc/interrupts` for the label:
+
+      .. code-block:: console
+
+         root@<machine>:~# cat /proc/interrupts | grep "WKUPGPIO"
+         23:          0          0      GPIO   0 Edge    -davinci_gpio  WKUPGPIO
+
+   The WKUP GPIOs can be used to wakeup the system from Deep Sleep because WKUP
+   GPIOs are in a power domain that stays ON when the SoC is in Deep Sleep.
+   Hence, the GPIO controller is able to act as a wakeup source and send a
+   wakeup interrupt to the system.
+
+   WKUP GPIO wakeup can only be tested when
+   `k3-am62l3-evm-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62l3-evm-lpm-wkup-sources.dtso?h=11.02.08>`__
+   overlay is loaded. Refer to :ref:`How to enable DT overlays<howto_dt_overlays>` for more details.
+   The WKUP GPIO in the overlay is routed from the WKUP UART. With this
+   configuration the WKUP UART is not available as a wakeup source.
+
+   Once the system has entered Deep Sleep as shown in the
+   :ref:`LPM section<lpm_modes>`, wakeup from WKUP_UART0_RXD can be triggered
+   by entering a keypress on the WKUP UART (/dev/ttyUSB2).
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX')
+
+   Setup of WKUP GPIO is the same process of MCU GPIO. Refer to the
+   :ref:`MCU GPIO section<pm_mcu_gpio_wakeup>` on how to configure wakeup from
+   WKUP GPIO.
 
 ********************
 Main I/O Daisy Chain
