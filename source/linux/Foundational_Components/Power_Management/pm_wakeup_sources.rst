@@ -53,19 +53,19 @@ valid for given low power modes:
 
 .. ifconfig:: CONFIG_part_variant in ('AM62LX')
 
-   +----------------------------------+------------+----------------+
-   |  Wakeup Source                   | Deep Sleep | RTC Only + DDR |
-   +==================================+============+================+
-   | Real-Time Clock (RTC)            | Yes        | Yes            |
-   +----------------------------------+------------+----------------+
-   | WKUP GPIO                        | Yes        | No             |
-   +----------------------------------+------------+----------------+
-   | Main I/O Daisy Chain (Main UART) | Yes        | No             |
-   +----------------------------------+------------+----------------+
-   | USB Wakeup                       | Yes        | No             |
-   +----------------------------------+------------+----------------+
-   | RTC Ext Pin                      | Yes        | Yes            |
-   +----------------------------------+------------+----------------+
+   +------------------------------------------------+------------+----------------+
+   |  Wakeup Source                                 | Deep Sleep | RTC Only + DDR |
+   +================================================+============+================+
+   | Real-Time Clock (RTC)                          | Yes        | Yes            |
+   +------------------------------------------------+------------+----------------+
+   | WKUP GPIO                                      | Yes        | No             |
+   +------------------------------------------------+------------+----------------+
+   | Main I/O Daisy Chain (Main GPIO and Main UART) | Yes        | No             |
+   +------------------------------------------------+------------+----------------+
+   | USB Wakeup                                     | Yes        | No             |
+   +------------------------------------------------+------------+----------------+
+   | RTC Ext Pin                                    | Yes        | Yes            |
+   +------------------------------------------------+------------+----------------+
 
 *********************
 Real-Time Clock (RTC)
@@ -511,26 +511,27 @@ I/O Power Management and Daisy Chaining section in the TRM.
 
    .. note::
 
-      |__PART_FAMILY_DEVICE_NAMES__| supports the ability to wakeup using pad based wake event ONLY in Deep Sleep or MCU Only Mode.
-      During active system usage, even if the wake_enable bit is set the system will be unresponsive to any wakeup
-      activity on that pad.
-
-   To demonstrate I/O daisy chain wakeup as part of |__PART_FAMILY_DEVICE_NAMES__| offering, two reference examples are provided:
-
-   #. main_uart0 is used where a key press on the Linux console can wakeup the system.
-   #. main_gpio is used where activity on configured GPIO pin can wakeup the system.
+      |__PART_FAMILY_DEVICE_NAMES__| supports the ability to wakeup using pad
+      based wake event ONLY in Deep Sleep or MCU Only Mode. During active
+      system usage, even if the wake_enable bit is set the system will be
+      unresponsive to any wakeup activity on that pad.
 
 .. ifconfig:: CONFIG_part_variant in ('AM62LX')
 
    .. note::
 
-      |__PART_FAMILY_DEVICE_NAMES__| supports the ability to wakeup using pad based wake event ONLY in Deep Sleep.
-      During active system usage, even if the wake_enable bit is set the system will be unresponsive to any wakeup
+      |__PART_FAMILY_DEVICE_NAMES__| supports the ability to wakeup using pad
+      based wake event ONLY in Deep Sleep. During active system usage, even if
+      the wake_enable bit is set the system will be unresponsive to any wakeup
       activity on that pad.
 
-   To demonstrate I/O daisy chain wakeup as part of |__PART_FAMILY_DEVICE_NAMES__| offering, a reference example is provided:
+To demonstrate I/O daisy chain wakeup as part of |__PART_FAMILY_DEVICE_NAMES__|
+offering, two reference examples are provided:
 
-   #. main_uart0 is used where a key press on the Linux console can wakeup the system.
+#. main_uart0 is used where a key press on the Linux console can wakeup the
+   system.
+#. main_gpio is used where activity on configured GPIO pin can wakeup the
+   system.
 
 
 Main UART
@@ -709,36 +710,32 @@ Any UART can be chosen according to application requirements.
 Main GPIO
 =========
 
-.. ifconfig:: CONFIG_part_variant in ('AM62LX')
-
-   Main GPIO wakeup is not yet supported on AM62LX.
+Configuring Main GPIO as an I/O daisy chain wakeup source requires a
+combination of gpio-keys with chained IRQ in the pinctrl driver. To briefly
+explain, setting the 29th bit in the desired padconfig register, allows the
+pad to act as a wakeup source by triggering a wake IRQ in Deep Sleep states.
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX')
 
-   Configuring Main GPIO as an I/O daisy chain wakeup source requires a
-   combination of gpio-keys with chained IRQ in the pinctrl driver. To briefly
-   explain, setting the 29th bit in the desired padconfig register, allows the
-   pad to act as a wakeup source by triggering a wake IRQ to the DM R5 in Deep
-   Sleep states.
-
    The reference configuration for Main GPIO wakeup can be found under
-   gpio_key node in `k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=11.01.05#n21>`__
+   gpio_key node in
+   `k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=11.02.08#n21>`__
 
-   .. code-block:: console
+      .. code-block:: dts
 
-      gpio_key {
-	      compatible = "gpio-keys";
-	      autorepeat;
-	      pinctrl-names = "default";
-	      pinctrl-0 = <&main_gpio1_pins_default>;
-	      switch {
-		      label = "WKGPIO";
-		      linux,code = <KEY_WAKEUP>;
-		      interrupts-extended = <&main_gpio1 10 IRQ_TYPE_EDGE_RISING>,
-		   	   <&main_pmx0 0x1a0>;
-		      interrupt-names = "irq", "wakeup";
-	      };
-      };
+         gpio_key {
+            compatible = "gpio-keys";
+            autorepeat;
+            pinctrl-names = "default";
+            pinctrl-0 = <&main_gpio1_pins_default>;
+            switch {
+               label = "WKGPIO";
+               linux,code = <KEY_WAKEUP>;
+               interrupts-extended = <&main_gpio1 10 IRQ_TYPE_EDGE_RISING>,
+                  <&main_pmx0 0x1a0>;
+               interrupt-names = "irq", "wakeup";
+            };
+         };
 
    Here, we chain the IRQ to the pinctrl driver using the second
    interrupts-extended entry. The wake IRQ framework in Linux works in such a
@@ -747,7 +744,7 @@ Main GPIO
    configured as a wakeup pad when system enters Deep Sleep.
 
    Main GPIO wakeup can only be tested when
-   `k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=11.01.05>`__
+   `k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=11.02.08>`__
    overlay is loaded. Please refer to :ref:`How to enable DT overlays<howto_dt_overlays>` for more details.
 
    To use main_gpio as a wakeup source, ensure gpio is a wake-irq in /proc/interrupts:
@@ -760,6 +757,45 @@ Main GPIO
    Once the system has entered Deep Sleep or MCU Only mode as shown in the
    :ref:`LPM section<lpm_modes>`, wakeup from MAIN GPIO1_10 can be triggered
    by grounding Pin 33 on J3 User Expansion Connector.
+
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+   The reference configuration for Main GPIO wakeup can be found under
+   gpio_key node in
+   `k3-am62l3-evm.dts <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62l3-evm.dts?h=11.02.08#n50>`__
+
+      .. code-block:: dts
+
+         gpio_key {
+            compatible = "gpio-keys";
+            autorepeat;
+            pinctrl-names = "default";
+            pinctrl-0 = <&usr_button_pins_default>;
+            switch {
+               label = "User Key";
+               linux,code = <BTN_0>;
+               interrupts-extended = <&main_gpio0 90 IRQ_TYPE_EDGE_RISING>,
+                  <&main_pmx0 0x1ac>;
+               interrupt-names = "irq", "wakeup";
+            };
+         };
+
+   Here, we chain the IRQ to the pinctrl driver using the second
+   interrupts-extended entry. The wake IRQ framework in Linux works in such a
+   way that the second entry gets marked as a wakeup source, and then the
+   pinctrl driver is informed that the pad 0x1ac in this case is to be
+   configured as a wakeup pad when system enters Deep Sleep.
+
+   To use main_gpio as a wakeup source, ensure gpio is a wake-irq in /proc/interrupts:
+
+   .. code-block:: console
+
+      root@<machine>:~# grep wakeup /proc/interrupts
+      299:          0          0   pinctrl 428 Edge      User Key:wakeup
+
+   Once the system has entered Deep Sleep as shown in the
+   :ref:`LPM section<lpm_modes>`, wakeup from MAIN GPIO0_90 can be triggered
+   by pressing button SW5.
 
 *********
 WKUP UART
