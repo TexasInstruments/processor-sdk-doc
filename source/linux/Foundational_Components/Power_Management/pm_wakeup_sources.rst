@@ -495,19 +495,22 @@ WKUP GPIO
 Main I/O Daisy Chain
 ********************
 
-The main domain is powered-off when the SoC enters low power mode. This includes controllers like
-Main UART, GPIO, I2C, etc. The question then arises how to wakeup the SoC from peripherals connected
-to these controllers (for example main UART)? Here's where the role of I/O Daisy Chaining comes in.
-At the hardware level, all the pads in an SoC have to be pinmuxed to dedicated controllers like UART or GPIO.
+The system powers off the main domain when the SoC enters a low power mode. The
+main domain includes controllers such as Main UART, GPIO, I2C, etc. I/O daisy
+chaining is used in order to wakeup the SoC from peripherals that are connected
+to powered-off controllers. At the hardware level, all the pads in an SoC are
+pinmuxed to dedicated controllers like UART or GPIO.
 
-For example, if a key press on Main UART (which is used for Linux console logs)
-were to wakeup the system from Deep Sleep then simply configuring the Main UART controller as a
-wakeup source wouldn't suffice. This is because the UART controller is powered off and wouldn't be able to
-register any key press as such. However, at the "pad" level we are still connected, and the pads have
-a specific way to be configured as wakeup sources.
+For example, to wakeup the system from Deep Sleep via a key press on Main UART
+(used for Linux console logs), then simply configuring the Main UART
+controller as a wakeup source wouldn't work. This is because the UART
+controller is powered off and wouldn't be able to register any key press as
+a wakeup event. However, the UART is still connected at the "pad" level and the
+pads can be configured as wakeup sources by setting a specific bit in the pad
+register.
 
-For detailed information and sequence please refer to
-I/O Power Management and Daisy Chaining section in the TRM.
+For detailed information and sequence please refer to I/O Power Management and
+Daisy Chaining section in the TRM.
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX')
 
@@ -713,9 +716,9 @@ Main GPIO
 =========
 
 Configuring Main GPIO as an I/O daisy chain wakeup source requires a
-combination of gpio-keys with chained IRQ in the pinctrl driver. To briefly
-explain, setting the 29th bit in the desired padconfig register, allows the
-pad to act as a wakeup source by triggering a wake IRQ in Deep Sleep states.
+combination of gpio-keys with a chained IRQ in the pinctrl driver. Setting the
+29th bit in the desired padconfig register, allows the pad to act as a wakeup
+source by triggering a wake IRQ in Deep Sleep states.
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX')
 
@@ -739,17 +742,18 @@ pad to act as a wakeup source by triggering a wake IRQ in Deep Sleep states.
             };
          };
 
-   Here, we chain the IRQ to the pinctrl driver using the second
-   interrupts-extended entry. The wake IRQ framework in Linux works in such a
-   way that the second entry gets marked as a wakeup source, and then the
-   pinctrl driver is informed that the pad 0x1a0 in this case is to be
-   configured as a wakeup pad when system enters Deep Sleep.
+   The IRQ is chained to the pinctrl driver using the second
+   interrupts-extended entry. The wake IRQ framework in Linux works so that the
+   second entry gets marked as a wakeup source, and then the pinctrl driver is
+   informed that the pad, 0x1a0 in this case, is to be configured as a wakeup
+   pad when system enters Deep Sleep.
 
    Main GPIO wakeup can only be tested when
    `k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=11.02.08>`__
    overlay is loaded. Please refer to :ref:`How to enable DT overlays<howto_dt_overlays>` for more details.
 
-   To use main_gpio as a wakeup source, ensure gpio is a wake-irq in /proc/interrupts:
+   To use main_gpio as a wakeup source, ensure gpio is a wake-irq in
+   :file:`/proc/interrupts`:
 
    .. code-block:: console
 
@@ -782,13 +786,14 @@ pad to act as a wakeup source by triggering a wake IRQ in Deep Sleep states.
             };
          };
 
-   Here, we chain the IRQ to the pinctrl driver using the second
-   interrupts-extended entry. The wake IRQ framework in Linux works in such a
-   way that the second entry gets marked as a wakeup source, and then the
-   pinctrl driver is informed that the pad 0x1ac in this case is to be
-   configured as a wakeup pad when system enters Deep Sleep.
+   The IRQ is chained to the pinctrl driver using the second
+   interrupts-extended entry. The wake IRQ framework in Linux works so that the
+   second entry gets marked as a wakeup source, and then the pinctrl driver is
+   informed that the pad, 0x1ac in this case, is to be configured as a wakeup
+   pad when system enters Deep Sleep.
 
-   To use main_gpio as a wakeup source, ensure gpio is a wake-irq in /proc/interrupts:
+   To use main_gpio as a wakeup source, ensure gpio is a wake-irq in
+   :file:`/proc/interrupts`:
 
    .. code-block:: console
 
