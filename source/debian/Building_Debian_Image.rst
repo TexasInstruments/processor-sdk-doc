@@ -39,9 +39,12 @@ The following files and directories are relevant to this high-level overview:
    desktop or CLI environments and so on. To find configuration files relevant to TI, see:
 
    - :file:`config/boards/<TI EVM board>.conf`
+   - :file:`config/sources/families/include/k3_common.inc`
    - :file:`config/sources/families/k3.conf`
-   - :file:`config/kernel/linux-k3-current.conf`
-   - :file:`config/kernel/linux-k3-rt-current.conf`
+   - :file:`config/kernel/linux-k3-vendor.conf`
+   - :file:`config/kernel/linux-k3-vendor-rt.conf`
+   - :file:`config/kernel/linux-k3-vendor-edge.conf`
+   - :file:`config/kernel/linux-k3-edge.conf`
 
 -  :file:`compile.sh`: This is the script that the user should run for building Armbian images.
 
@@ -105,19 +108,19 @@ Armbian supports both an interactive UI and a noninteractive build process.
 
    .. code-block:: console
 
-      ./compile.sh build BOARD=<board> BRANCH=current BUILD_MINIMAL=yes KERNEL_CONFIGURE=no RELEASE=trixie GIT_SKIP_SUBMODULES=yes SKIP_ARMBIAN_REPO=yes
+      ./compile.sh build BOARD=<board> BRANCH=vendor BUILD_MINIMAL=yes KERNEL_CONFIGURE=no RELEASE=trixie GIT_SKIP_SUBMODULES=yes SKIP_ARMBIAN_REPO=yes
 
 For a list of boards and branches supported by each SoC, refer:
 
    .. csv-table::
       :header: "SoC", "Board", "Board Config File", "Branch"
 
-      AM62Lx,am62lxx-evm,``config/boards/am62lxx-evm.conf``,"current, current-rt, edge"
-      AM62Px,am62pxx-evm,``config/boards/am62pxx-evm.conf``,"current, current-rt, edge"
-      AM62x,sk-am62b,``config/boards/sk-am62b.conf``,"current, edge"
-      AM62-LP,sk-am62-lp,``config/boards/sk-am62-lp.conf``,"current, current-rt, edge"
-      AM62SIP,sk-am62-sip,``config/boards/sk-am62-sip.conf``,"current, current-rt, edge"
-      AM64x,sk-am64b,``config/boards/sk-am64b.conf``,"current, edge"
+      AM62x,sk-am62b,``config/boards/sk-am62b.conf``,"vendor, vendor-rt, vendor-edge, edge"
+      AM62-LP,sk-am62-lp,``config/boards/sk-am62-lp.conf``,"vendor, vendor-rt, vendor-edge, edge"
+      AM62SIP,sk-am62-sip,``config/boards/sk-am62-sip.conf``,"vendor, vendor-rt, vendor-edge, edge"
+      AM62Lx,tmds62levm,``config/boards/tmds62levm.conf``,"vendor, vendor-rt, vendor-edge"
+      AM62Px,sk-am62p,``config/boards/sk-am62p.conf``,"vendor, vendor-rt, vendor-edge, edge"
+      AM64x,sk-am64b,``config/boards/sk-am64b.conf``,"vendor, vendor-rt, vendor-edge, edge"
 
 
 ``output/images/`` stores the built images. These images have a ``.img`` extension.
