@@ -37,13 +37,6 @@ instances to a codec or an HDMI bridge.
 
 Generic commands and instructions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-.. ifconfig:: CONFIG_part_variant in ('AM62DX')
-
-    .. note::
-
-        Only Audio playback with static DAC confgiuration is supported.
-        Recording feature is not supported.
-
 Most of the boards have simple audio setup which means we have one
 sound card with one playback and one capture PCM.
 To list the available sound cards and PCMs for playback:
@@ -602,6 +595,112 @@ Board-specific instructions
 
     To switch to using HDMI for playback you can refer to: :ref:`hdmi-audio`.
 
+.. ifconfig:: CONFIG_part_variant in ('AM62DX')
+
+   The board uses four **TAD52512 DAC** and two **PCM6240 ADC** connected through
+   **McASP2 [AXR0,1,3 and 4 for playback, AXR14 for Capture]** for audio.
+   The board features eight TRS 3.5mm jack, that can be used for
+   simultaneous 8 channel playback and 4 channel recording.
+
+   The AM62D2-EVM audio subsystem provides comprehensive playback and recording
+   capabilities through dedicated DACs and ADCs. Use the following command to list
+   available playback devices:
+
+   .. code-block:: console
+
+      root@am62dxx-evm:/opt/ltp# aplay -l
+      **** List of PLAYBACK Hardware Devices ****
+      card 0: AM62D2EVM [AM62D2-EVM], device 0: davinci-mcasp.0-pcmdevice-codec pcmdevice-codec-0 [davinci-mcasp.0-pcmdevice-codec pcmdevice-codec-0]
+      Subdevices: 1/1
+      Subdevice #0: subdevice #0
+      card 0: AM62D2EVM [AM62D2-EVM], device 1: davinci-mcasp.0-tad5x1x-hifi-50 tad5x1x-hifi-50-1 [davinci-mcasp.0-tad5x1x-hifi-50 tad5x1x-hifi-50-1]
+      Subdevices: 1/1
+      Subdevice #0: subdevice #0
+      card 0: AM62D2EVM [AM62D2-EVM], device 2: davinci-mcasp.0-tad5x1x-hifi-51 tad5x1x-hifi-51-2 [davinci-mcasp.0-tad5x1x-hifi-51 tad5x1x-hifi-51-2]
+      Subdevices: 1/1
+      Subdevice #0: subdevice #0
+      card 0: AM62D2EVM [AM62D2-EVM], device 3: davinci-mcasp.0-tad5x1x-hifi-52 tad5x1x-hifi-52-3 [davinci-mcasp.0-tad5x1x-hifi-52 tad5x1x-hifi-52-3]
+      Subdevices: 1/1
+      Subdevice #0: subdevice #0
+      card 0: AM62D2EVM [AM62D2-EVM], device 4: davinci-mcasp.0-tad5x1x-hifi-53 tad5x1x-hifi-53-4 [davinci-mcasp.0-tad5x1x-hifi-53 tad5x1x-hifi-53-4]
+      Subdevices: 1/1
+      Subdevice #0: subdevice #0
+
+   Audio playback is handled by four TAD5212 codec devices. These devices provide
+   multi-channel audio output capabilities through the davinci-mcasp interface.
+   Audio recording is managed by two PCM6240 ADC devices. Each PCM6240 ADC
+   supports four channel audio input with configurable profiles for different
+   I2C addresses.
+
+   **Playback Subsystem**
+
+   The TAD5212 driver is located in the kernel configuration at:
+
+   .. code-block:: text
+
+      -> Device Drivers
+       -> Sound card support (SOUND [=y])
+        -> Advanced Linux Sound Architecture (SND [=y])
+         -> ALSA for SoC audio support (SND_SOC [=y])
+          -> CODEC drivers
+           -> Texas Instruments TAC5X1X family driver based on I2C (SND_SOC_TAC5X1X_I2C [=m])
+
+   To play audio on the AM62D2-EVM, use the aplay command.
+   Audio playback is available through connectors J3 and J4.
+
+   Example playback command:
+
+   .. code-block:: console
+
+      root@am62dxx-evm:~# aplay audio_file.wav
+
+   **Recording Subsystem**
+
+   Audio recording is performed through connectors J1 and J2. The two PCM6240
+   devices corresponding to different I2C addresses.
+
+   The PCM6240 driver is located in the kernel configuration at:
+
+   .. code-block:: text
+
+      -> Device Drivers
+       -> Sound card support (SOUND [=y])
+        -> Advanced Linux Sound Architecture (SND [=y])
+         -> ALSA for SoC audio support (SND_SOC [=y])
+          -> CODEC drivers
+           -> Texas Instruments PCM6240 Family Audio chips based on I2C (SND_SOC_PCM6240 [=m])
+
+   Choose active device between two PCM6240 ADC devices:
+
+   .. code-block:: text
+
+      Device 0: PCM6240 at I2C address 0x48 (Connector-J2)
+      Device 1: PCM6240 at I2C address 0x49 (Connector-J1)
+
+   To select Device 0 (I2C address 0x48) as an active device:
+
+   .. code-block:: console
+
+      root@am62dxx-evm:~# amixer cset name='pcm6240-2dev-reg PCM6240 i2c1 Profile id' 0
+      numid=17,iface=MIXER,name='pcm6240-2dev-reg PCM6240 i2c1 Profile id'
+      type=INTEGER,access=rw------,values=1,min=0,max=3,step=0
+      values=0
+
+   To select Device 1 (I2C address 0x49) as an active device:
+
+   .. code-block:: console
+
+      root@am62dxx-evm:~# amixer cset name='pcm6240-2dev-reg PCM6240 i2c1 Profile id' 1
+      numid=17,iface=MIXER,name='pcm6240-2dev-reg PCM6240 i2c1 Profile id'
+      type=INTEGER,access=rw------,values=1,min=0,max=3,step=0
+      values=1
+
+   To record 4-channel audio at 48kHz sample rate with 32-bit depth:
+
+   .. code-block:: console
+
+      root@am62dxx-evm:~# arecord -c 4 -r 48000 -f S32_LE test.wav
+
 Potential issues
 ^^^^^^^^^^^^^^^^
 
@@ -620,6 +719,15 @@ Potential issues
 -  Try to cache the file to be played in memory
 -  Try to use application which uses threads for interacting with ALSA
    and with the filesystem
+
+.. ifconfig:: CONFIG_part_variant in ('AM62DX')
+
+   Following additional issues were observed for AM62D2-EVM in this release:
+
+   - The device requires a restart if audio is missing or plays through
+     only one channel during simultaneous playback and recording.
+   - Starting playback while recording is active introduces a small glitch
+     in the recording.
 
 Additional Information
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -676,3 +784,5 @@ Additional Information
 
     #. `TAD52512 - High-performance stereo audio DAC
        <https://www.ti.com/lit/ds/symlink/tad5212.pdf>`__
+    #. `PCM6240 - Automotive, 4-channel audio ADC
+       <https://www.ti.com/lit/ds/symlink/pcm6240-q1.pdf>`__
