@@ -14,6 +14,7 @@ The SDK supports the following Out-Of-Box demo-applications
    Seva_Store
    Chromium_Browser
    Benchmark_Demo_User_Guide
+   Webserver_Demo_User_Guide
    Display_Cluster_User_Guide
    TI_LVGL_Demo_User_Guide
    AM62D_Dsp_Offload_User_Guide.rst

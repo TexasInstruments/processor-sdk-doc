@@ -1,3 +1,5 @@
+.. _tflite-label:
+
 ########################
 TensorFlow Lite (LiteRT)
 ########################
@@ -176,14 +178,14 @@ The following performance numbers are captured with :command:`benchmark_model` o
 Based on the above data, using the XNNPACK delegate significantly improves inference times across all SoCs, though it generally increases initialization time and overall memory footprint.
 
 .. note::
-   
+
    The performance numbers mentioned above were recorded after stopping the out-of-box (OOB) demos included in the TI SDK.
-   
+
 ********************
 Example Applications
 ********************
- 
-|__SDK_FULL_NAME__| has integrated opensource components like NNStreamer which can be used for neural network inferencing using the sample tflite models under :file:`/usr/share/oob-demo-assets/models/` 
+
+|__SDK_FULL_NAME__| has integrated opensource components like NNStreamer which can be used for neural network inferencing using the sample tflite models under :file:`/usr/share/oob-demo-assets/models/`
 Checkout the Object Detection usecase under :ref:`TI Apps Launcher - User Guide <TI-Apps-Launcher-User-Guide-label>`
 
 Alternatively, if a display is connected, you can run the Object Detection pipeline using this command,
@@ -191,7 +193,7 @@ Alternatively, if a display is connected, you can run the Object Detection pipel
 .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62LX')
 
    .. code-block:: console
-   
+
       gst-launch-1.0 multifilesrc location=/usr/share/oob-demo-assets/videos/oob-gui-video-objects.h264 loop=true ! \
       h264parse ! avdec_h264 ! \
       tee name=tee_split0 \
@@ -220,7 +222,7 @@ Alternatively, if a display is connected, you can run the Object Detection pipel
 .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
    .. code-block:: console
-   
+
       gst-launch-1.0 multifilesrc location=/usr/share/oob-demo-assets/videos/oob-gui-video-objects.h264 loop=true caps=video/x-h264,width=1280,height=720,framerate=1/1 ! \
       h264parse ! v4l2h264dec capture-io-mode=4 ! \
       tee name=tee_split0 \
@@ -247,5 +249,5 @@ Alternatively, if a display is connected, you can run the Object Detection pipel
    The above GStreamer pipeline reads an H.264 video file, decodes it, and processes it for object detection using a TensorFlow Lite model, displaying bounding boxes around detected objects. The processed video is then composited and rendered on the screen using the ``kmssink`` element.
 
 .. attention::
-   
+
    The Example Applications section is not applicable for AM64x
