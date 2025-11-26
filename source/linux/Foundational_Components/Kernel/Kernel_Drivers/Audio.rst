@@ -584,7 +584,6 @@ Board-specific instructions
     .. rubric:: User space
        :name: user-space-9
 
-.. _hdmi_audio:
     The hardware defaults are correct for audio playback, the routing is OK
     and the volume is 'adequate' but in case the volume is not correct:
 
