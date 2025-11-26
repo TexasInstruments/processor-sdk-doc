@@ -19,7 +19,8 @@ devices:
 
    * AM62LX    :  Encryption                      - AES-ECB, AES-CBC, AES-XTS, AES-CTR
                   Encryption with Authentication  - AES-GCM, AES-CCM
-                  Hashing                         - MD5, SHA224, SHA256, SHA384, SHA512, HMAC(MD5), HMAC(SHA224), HMAC(SHA256), HMAC(SHA384), HMAC(SHA512)
+                  Hashing                         - MD5, SHA224, SHA256, SHA384, SHA512
+                  Message Authentication          - HMAC(MD5), HMAC(SHA224), HMAC(SHA256), HMAC(SHA384), HMAC(SHA512)
 
 ********************
 Building the Drivers
