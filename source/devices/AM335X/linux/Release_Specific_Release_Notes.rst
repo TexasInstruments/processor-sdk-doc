@@ -54,11 +54,11 @@ Released November 2025
 Processor SDK 11.02 Release has following new features:
 
  - 2025 LTS Stable Update to 6.12.49
- - New platform: Beaglebone Green Eco support
+ - New platform: `BEAGL-BONE-GRN-ECO <https://www.ti.com/tool/BEAGL-BONE-GRN-ECO>`__ support
  - ICSSM bug fixes
- - Test automation improvements
-
-|
+ - ARM Analytics AI stack enabled in the filesystem
+ - LVGL (Light and Versatile Graphics Library) based interactive demo as out-of-the-box (OOB) on display
+ - Web-based dashboard (port 3000) for real-time CPU performance and Arm Audio analytics demo via standard web browser
 
 .. rubric:: SDK Components & Versions
    :name: sdk-components-versions

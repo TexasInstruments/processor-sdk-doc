@@ -58,8 +58,8 @@ Released November 2025
  - ICSSM bug fixes
  - VLAN Multicast filtering on ICSSG
  - ICSSG XDP Support (Zero Copy)
- - Test automation improvements
-
+ - ARM Analytics AI stack enabled in the filesystem
+ - LVGL (Light and Versatile Graphics Library) based interactive demo as out-of-the-box (OOB) on display
 
 **Component version:**
 
