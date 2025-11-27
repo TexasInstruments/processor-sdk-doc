@@ -210,3 +210,70 @@ software only implementation can be compared to the previous test.
          Signals delivered: 0
          Page size (bytes): 4096
          Exit status: 0
+
+******************************************************************
+Using the True Random Number Generator (TRNG) Hardware Accelerator
+******************************************************************
+
+The pre-built kernel included within the SDK already has the OP-TEE TRNG
+driver enabled. You do not need any further configuration.
+
+Verify that the optee-rng driver is loaded:
+
+.. code-block:: console
+
+   root@am62lxx-evm:~# cat /sys/class/misc/hw_random/rng_current
+   optee-rng
+
+The hwrng device should now show up in the filesystem.
+
+.. code-block:: console
+
+   root@am62lxx-evm:~# ls -l /dev/hwrng
+   crw------- 1 root root 10, 183 Jan 1 2000 /dev/hwrng
+
+Use :command:`cat` on this device to generate random numbers.
+
+.. code-block:: console
+
+   root@am62lxx-evm:~# cat /dev/hwrng | od -x
+   0000000 b2bd ae08 4477 be48 4836 bf64 5d92 01c9
+   0000020 0cb6 7ac5 16f9 8616 a483 7dfd 6bf4 3aa5
+   0000040 d693 db24 d917 5ee7 feb7 34c3 34e9 e7a5
+   0000060 36b7 ea85 fc17 0e66 555c 0934 7a0c 4c69
+   0000100 523b 9f21 1546 fddb d58b e5ed 142a 6712
+   0000120 8d76 8f80 a6d2 30d8 d107 32bc 7f45 f997
+   0000140 9d5d 0d0c f1f0 64f9 a77f 408f b0c1 f5a0
+   0000160 39c6 f0ae 4b59 1a76 84a7 a364 8964 f557
+   root@am62lxx-evm:~#
+
+Test the random number generator on the target.
+
+.. code-block:: console
+
+   root@am62lxx-evm:~# cat /dev/hwrng | rngtest -c 1000
+   rngtest 6.16
+   Copyright (c) 2004 by Henrique de Moraes Holschuh
+   This is free software; see the source for copying conditions.  There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+   rngtest: starting FIPS tests...
+   rngtest: bits received from input: 20000032
+   rngtest: FIPS 140-2 successes: 999
+   rngtest: FIPS 140-2 failures: 1
+   rngtest: FIPS 140-2(2001-10-10) Monobit: 0
+   rngtest: FIPS 140-2(2001-10-10) Poker: 0
+   rngtest: FIPS 140-2(2001-10-10) Runs: 0
+   rngtest: FIPS 140-2(2001-10-10) Long run: 1
+   rngtest: FIPS 140-2(2001-10-10) Continuous run: 0
+   rngtest: input channel speed: (min=72.965; avg=3848.070; max=9765625.000)Kibits/s
+   rngtest: FIPS tests speed: (min=10.794; avg=53.373; max=54.967)Mibits/s
+   rngtest: Program run time: 5710839 microseconds
+   root@am62lxx-evm:~#
+
+Note that the results might be slightly different on your system, since,
+after all, we are dealing with a random number generator. Any appreciable
+number of errors typically indicates a bad random number generator.
+
+If you're satisfied the random number generator is working correctly,
+you can use :program:`rngd` (the random number generator daemon) to feed the
+:file:`/dev/random` entropy pool.
