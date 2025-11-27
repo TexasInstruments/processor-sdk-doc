@@ -77,45 +77,88 @@ of entropy can work around these issues.
 
 .. _secure-storage-with-rpmb:
 
-Secure Storage with RPMB (For HS)
-*********************************
+OP-TEE Secure Storage
+*********************
 
-OP-TEE provides secure storage functionality. TI SoCs with HS configuration have a
-KEK embedded in them that is programmed across OP-TEE instances that are distributed
-in a derived manner. Each HS device has its own HUK signing key (DKEK) which is different
-from other HS devices.
+OP-TEE provides secure storage functionality through two mechanisms:
+**REE FS** (Rich Execution Environment Filesystem) and **RPMB**
+(Replay Protected Memory Block).
 
-For enabling RPMB support along with secure storage, additional flags need to be passed to
-the build instructions. The information for the flags can be found here.
-https://optee.readthedocs.io/en/latest/architecture/secure_storage.html
+TI SDK enables REE FS by-default, and configures OP-TEE to store
+encrypted binary blobs created by REE FS in
+:file:`/var/lib/tee/`.
 
-There is a hybrid mode in which both the flags i.e `CFG_REE_FS=y` and `CFG_RPMB_FS=y` are enabled.
-This mode stores the state of the Secure Storage directory in RPMB partition to check for the
-integrity of the data present in it. It is the recommended way.
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
 
-E.g. For enabling hybrid mode of RPMB along with REE_FS
+   .. note::
 
-.. ifconfig:: CONFIG_part_variant in ('J721S2')
+      Presently, AM62L does not support RPMB. This support will be added
+      in subsequent releases. It does support REE FS.
 
-    .. code-block:: console
+      The remaining devices support both: REE FS by-default and RPMB if
+      OP-TEE binaries are re-compiled with required flags.
 
-        $ export CFG_CONSOLE_UART=0x8
+   For learning more about secure storage in OP-TEE, refer:
+   https://optee.readthedocs.io/en/latest/architecture/secure_storage.html
 
-.. parsed-literal::
+.. ifconfig:: CONFIG_part_variant not in ('AM62LX')
 
-    $ make CROSS_COMPILE64="$CROSS_COMPILE_64" PLATFORM=|__OPTEE_PLATFORM_FLAVOR__| CFG_ARM64_core=y CFG_REE_FS=y CFG_RPMB_FS=y
+   RPMB works in TI SoCs with HS configuration. These embed a KEK
+   that programs across OP-TEE instances in a derived manner. Each HS
+   device has its own HUK signing key (DKEK), which is different from
+   other HS devices. TI SDK disables RPMB by-default. To enable it,
+   re-compiling OP-TEE with ``CFG_RPMB_FS=y`` flag.
 
-OPTEE-client also needs to be updated to enable the use of real
-emmc instead of the virtual emmc that is enabled by default
+   For learning more about secure storage in OP-TEE, and instructions to
+   enable RPMB, refer:
+   https://optee.readthedocs.io/en/latest/architecture/secure_storage.html
+
+   There is a hybrid mode in which both the flags i.e `CFG_REE_FS=y` and `CFG_RPMB_FS=y` are enabled.
+   This mode stores the state of the Secure Storage directory in RPMB partition to check for the
+   integrity of the data present in it. It is the recommended way.
+
+   E.g. For enabling hybrid mode of RPMB along with REE_FS
+
+   .. ifconfig:: CONFIG_part_variant in ('J721S2')
+
+      .. code-block:: console
+
+          $ export CFG_CONSOLE_UART=0x8
+
+   .. parsed-literal::
+
+      $ make CROSS_COMPILE64="$CROSS_COMPILE_64" PLATFORM=|__OPTEE_PLATFORM_FLAVOR__| CFG_ARM64_core=y CFG_REE_FS=y CFG_RPMB_FS=y
+
+   OPTEE-client also needs to be updated to enable the use of real
+   emmc instead of the virtual emmc that is enabled by default
+
+As an example to show the usage of secure storage, the filesystem
+provides a binary :file:`/usr/bin/optee_examples_secure_storage`.
+
+.. code::
+
+   optee_examples_secure_storage
+
+For more details, see optee_examples:
+https://github.com/linaro-swg/optee_examples
 
 Getting OP-TEE Client source code
 ---------------------------------
+
+To get optee_client source code, do:
+
+.. rubric:: Getting OP-TEE Client source code
 
 .. code-block:: console
 
   $ git clone https://github.com/OP-TEE/optee_client
 
 .. rubric:: Building OP-TEE Client with RPMB support
+
+To use emulated RPMB, set RPMB_EMU=1. Otherwise, set RPMB_EMU=0.
+
+For example, the following command builds optee_client to use the real RPMB,
+instead of the emulated one.
 
 .. code-block:: console
 
@@ -146,3 +189,15 @@ Integrate binary output into U-boot
 .. note::
 
     tee-pager_v2.bin may be called bl32.bin in other documentation.
+
+|
+
+.. ifconfig:: CONFIG_part_variant not in ('AM62LX')
+
+   .. rubric:: PKCS#11
+
+   PKCS#11 is a cryptographic token interface standard that allows applications
+   to access cryptographic services through a platform-independent API.
+
+   For userland integration details, refer:
+   https://optee.readthedocs.io/en/latest/building/userland_integration.html
