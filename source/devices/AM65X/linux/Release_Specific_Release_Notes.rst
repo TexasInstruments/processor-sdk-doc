@@ -54,7 +54,7 @@ Released November 2025
 
 **Processor SDK Linux AM65X Release has following new features:**
 
- - 2025 LTS Stable Update to 6.12.57
+ - 2025 LTS Stable Update to 6.12.49
  - ICSSM bug fixes
  - VLAN Multicast filtering on ICSSG
  - ICSSG XDP Support (Zero Copy)
@@ -63,8 +63,8 @@ Released November 2025
 
 **Component version:**
 
-  - Kernel 6.12.57
-  - RT Kernel 6.12.57
+  - Kernel 6.12.49
+  - RT Kernel 6.12.49
   - U-Boot 2025.01
   - Toolchain GCC 13.4+
   - ATF 2.13+

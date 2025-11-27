@@ -53,7 +53,7 @@ Released November 2025
 
 Processor SDK 11.02 Release has following new features:
 
- - 2025 LTS Stable Update to 6.12.57
+ - 2025 LTS Stable Update to 6.12.49
  - New platform: Beaglebone Green Eco support
  - ICSSM bug fixes
  - Test automation improvements
@@ -66,7 +66,7 @@ Processor SDK 11.02 Release has following new features:
 +--------------------------+----------------------------+
 | Component                | Version                    |
 +==========================+============================+
-| Linux Kernel             | 6.12.57 (2025 LTS)         |
+| Linux Kernel             | 6.12.49 (2025 LTS)         |
 +--------------------------+----------------------------+
 | U-Boot                   | 2025.01                    |
 +--------------------------+----------------------------+
