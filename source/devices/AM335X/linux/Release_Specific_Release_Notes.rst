@@ -102,8 +102,8 @@ Build Information
      - :ref:`Build Config <Build-U-Boot-label>`
    * - Linux Kernel
      - `ti-linux-6.12.y <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/log/?h=ti-linux-6.12.y>`__
-     - non-RT- `11.02.05 <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tag/?h=11.02.05>`__ , RT- `11.02.05-rt <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tag/?h=11.02.05-rt>`__
-     - `non-RT <https://git.yoctoproject.org/meta-ti/tree/meta-ti-bsp/recipes-kernel/linux/linux-ti-staging-6.12/ti33x/defconfig?h=11.02.05>`__ , `RT <https://git.yoctoproject.org/meta-ti/tree/meta-ti-bsp/recipes-kernel/linux/linux-ti-staging-rt-6.12/ti33x/defconfig?h=11.02.05>`__
+     - `11.02.05 <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tag/?h=11.02.05>`__
+     - `non-RT <https://git.yoctoproject.org/meta-ti/tree/meta-ti-bsp/recipes-kernel/linux/linux-ti-staging-6.12/ti33x/defconfig?h=11.02.05>`__
    * - meta-ti
      - `scarthgap <https://git.yoctoproject.org/meta-ti/log/?h=scarthgap>`__
      - `11.02.05 <https://git.yoctoproject.org/meta-ti/tag/?h=11.02.05>`__
