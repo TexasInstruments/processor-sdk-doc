@@ -84,7 +84,10 @@ for utilizing the MAC mode features.
 Switch Mode
 """""""""""
 
-All the SoCs listed above support Switch Mode when configured in QSGMII mode.
+.. note::
+
+   Switch mode functionality requires at least two external ethernet ports to work, it is
+   independent of the MAC interface modes.
 
 The Switch mode can be enabled by configuring devlink driver parameter
 "switch_mode" to 1/true::
