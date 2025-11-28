@@ -237,64 +237,64 @@ through the Time Sync Router. The procedure to route the CPSWxG CPTS GENF0 outpu
 input for example, involves modifying the device-tree node of the Time Sync Router, to map the
 CPWSxG CPTS GENF0 output to HW4_TS_PUSH input.
 
-The following block shows the Time Sync Router device-tree node with the mapping from CPSWxG CPTS
-GENF0 to HW4_TS_PUSH added.
-
 .. ifconfig:: CONFIG_part_variant in ('AM62AX','AM62X')
 
-   .. code:: dts
+   The following block shows the Time Sync Router device-tree node with the mapping from CPSW3G CPTS
+   GENF0 to HW3_TS_PUSH added.
 
-      #define TS_OFFSET(pa, val)     (0x4+(pa)*4) (0x10000 | val)
-      &timesync_router {
-         pinctrl-names = "default";
-         pinctrl-0 = <&cpsw_cpts>;
+      .. code:: dts
 
-            /* Example of the timesync routing */
-               cpsw_cpts: cpsw-cpts {
-                        pinctrl-single,pins = <
-                                 /* pps [cpsw cpts genf0] in16 -> out13 [cpsw cpts hw4_push] */
-                                 TS_OFFSET(13, 16)
-                        >;
-               };
-      };
+         /* Include following header file */
+         #include <dt-bindings/timesync/k3-timesync-router.h>
+
+         &timesync_router {
+            /* Use Time Sync Router to map CPTS GENF outputs to HW_TS_PUSH inputs */
+            mux-reg-masks-state = <
+                     /* pps [cpsw cpts genf1] in17 -> out12 [cpsw cpts hw3_push] */
+                     K3_TS_OFFSET(12, 0x0001ffff, 17)
+            >;
+            status = "okay";
+         };
 
 .. ifconfig:: CONFIG_part_variant in ('AM64X')
 
-   .. code:: dts
+   The following block shows the Time Sync Router device-tree node with the mapping from CPSW3G CPTS
+   GENF0 to HW4_TS_PUSH and GENF1 to HW8_TS_PUSH added.
 
-      #define TS_OFFSET(pa, val)     (0x4+(pa)*4) (0x10000 | val)
+      .. code:: dts
 
-      &timesync_router {
-         pinctrl-names = "default";
-         pinctrl-0 = <&cpsw_cpts>;
+         /* Include following header file */
+         #include <dt-bindings/timesync/k3-timesync-router.h>
 
-            /* Example of the timesync routing */
-               cpsw_cpts: cpsw-cpts {
-                        pinctrl-single,pins = <
-                                 /* pps [cpsw cpts genf0] in21 -> out33 [cpsw cpts hw4_push] */
-                                 TS_OFFSET(33, 21)
-                        >;
-               };
-      };
+         &timesync_router {
+            /* Use Time Sync Router to map CPTS GENF outputs to HW_TS_PUSH inputs */
+            mux-reg-masks-state = <
+                     /* pps [cpsw cpts genf0] in29 -> out23 [cpsw cpts hw4_push] */
+                     K3_TS_OFFSET(23, 0x0001ffff, 29)
+                     /* pps [cpsw cpts genf1] in22 -> out37 [cpsw cpts hw8_push] */
+                     K3_TS_OFFSET(37, 0x0001ffff, 22)
+            >;
+            status = "okay";
+         };
 
 .. ifconfig:: CONFIG_part_variant in ('J721E','J7200','J721S2','J784S4','J742S2')
 
-    .. code:: dts
+   The following block shows the Time Sync Router device-tree node with the mapping from CPSW2G CPTS
+   GENF1 to HW4_TS_PUSH added.
 
-      #define TS_OFFSET(pa, val)     (0x4+(pa)*4) (0x10000 | val)
+      .. code:: dts
 
-      &timesync_router {
-         pinctrl-names = "default";
-         pinctrl-0 = <&cpsw_cpts>;
+         /* Include following header file */
+         #include <dt-bindings/timesync/k3-timesync-router.h>
 
-            /* Example of the timesync routing */
-               cpsw_cpts: cpsw-cpts {
-                        pinctrl-single,pins = <
-                                 /* pps [cpsw cpts genf0] in16 -> out25 [cpsw cpts hw4_push] */
-                                 TS_OFFSET(25, 16)
-                        >;
-               };
-      };
+         &timesync_router {
+            /* Use Time Sync Router to map CPTS GENF outputs to HW_TS_PUSH inputs */
+            mux-reg-masks-state = <
+                     /* pps [cpsw cpts genf1] in17 -> out25 [cpsw cpts hw4_push] */
+                     K3_TS_OFFSET(25, 0x0001ffff, 17)
+            >;
+            status = "okay";
+         };
 
 Similar approach can be used for routing the outputs of other timestamp generator functions (GENFy)
 as inputs to other Hardware Timestamping push inputs (HWx_TS_PUSH).
@@ -387,78 +387,94 @@ The second command is used to specify that /dev/ptpN has to be used as the clock
 
 The PPS support for |__PART_FAMILY_DEVICE_NAMES__| can be enabled with the following steps:
 
-1. Route the output of the CPSWxG CPTS timestamp generator function (GENFy) to one of the
-   CPSWxG CPTS timestamp generator inputs (HWx_TS_PUSH) using the Time Sync Router, by
-   modifying the device-tree node corresponding to the Time Sync Router:
-
-For example, route CPSWxG CPTS GENF1 output to HW3_TS_PUSH input
-
 .. ifconfig:: CONFIG_part_variant in ('AM62AX','AM62X')
 
-    .. code:: dts
+   1. Route the output of the CPSW3G CPTS timestamp generator function (GENFy) to one of the
+      CPSW3G CPTS timestamp generator inputs (HWx_TS_PUSH) using the Time Sync Router, by
+      modifying the device-tree node corresponding to the Time Sync Router:
 
-      #define TS_OFFSET(pa, val)     (0x4+(pa)*4) (0x10000 | val)
+      For example, route CPSW3G CPTS GENF1 output to HW3_TS_PUSH input for PPS generation:
 
-      &timesync_router {
-            pinctrl-names = "default";
-            pinctrl-0 = <&cpsw_cpts>;
+         .. code:: dts
 
-            /* Example of timesync routing */
-            cpsw_cpts: cpsw-cpts {
-                  pinctrl-single,pins = <
+            #include <dt-bindings/timesync/k3-timesync-router.h>
+
+            &timesync_router {
+                  /* Use Time Sync Router to map CPTS GENF1 to HW3_TS_PUSH for PPS */
+                  mux-reg-masks-state = <
                            /* pps [cpsw cpts genf1] in17 -> out12 [cpsw cpts hw3_push] */
-                           TS_OFFSET(12, 17)
+                           K3_TS_OFFSET(12, 0x0001ffff, 17)
                   >;
+                  status = "okay";
             };
-      };
 
 .. ifconfig:: CONFIG_part_variant in ('AM64X')
 
-    .. code:: dts
+   1. Route the output of the CPSW3G CPTS timestamp generator function (GENFy) to one of the
+      CPSW3G CPTS timestamp generator inputs (HWx_TS_PUSH) using the Time Sync Router, by
+      modifying the device-tree node corresponding to the Time Sync Router:
 
-      #define TS_OFFSET(pa, val)     (0x4+(pa)*4) (0x10000 | val)
-      &timesync_router {
-            pinctrl-names = "default";
-            pinctrl-0 = <&cpsw_cpts>;
+      For example, route CPSW3G CPTS GENF1 output to HW3_TS_PUSH input for PPS generation:
 
-            /* Example of timesync routing */
-            cpsw_cpts: cpsw-cpts {
-                  pinctrl-single,pins = <
-                           /* pps [cpsw cpts genf1] in22 -> out32 [cpsw cpts hw3_push] */
-                           TS_OFFSET(32, 22)
+         .. code:: dts
+
+            /* Include following header file */
+            #include <dt-bindings/timesync/k3-timesync-router.h>
+
+            &timesync_router {
+                  /* Use Time Sync Router to map CPTS GENF1 to HW3_TS_PUSH for PPS */
+                  mux-reg-masks-state = <
+                           /* pps [cpts genf1] in22 -> out32 [cpts hw3_push] */
+                           K3_TS_OFFSET(32, 0x0001ffff, 22)
                   >;
+                  status = "okay";
             };
-      };
+
+.. ifconfig:: CONFIG_part_variant in ('AM62AX','AM62X','AM64X')
+
+   2. Inform the mapping to the CPSW3G driver, by using the "ti,pps" device-tree property
+      in the cpts device-tree node present within the CPSW3G device-tree node:
+
+         .. code:: dts
+
+            &cpsw3g {
+               cpts@3d000 {
+                        ti,pps = <2 1>;
+               };
+            };
 
 .. ifconfig:: CONFIG_part_variant in ('J721E','J7200','J721S2','J784S4','J742S2')
 
-    .. code:: dts
+   1. Route the output of the CPSW2G CPTS timestamp generator function (GENFy) to one of the
+      CPSW2G CPTS timestamp generator inputs (HWx_TS_PUSH) using the Time Sync Router, by
+      modifying the device-tree node corresponding to the Time Sync Router:
 
-      #define TS_OFFSET(pa, val)     (0x4+(pa)*4) (0x10000 | val)
+      For example, route CPSW2G CPTS GENF1 output to HW4_TS_PUSH input for PPS generation:
 
-      &timesync_router {
-            pinctrl-names = "default";
-            pinctrl-0 = <&cpsw_cpts>;
+         .. code:: dts
 
-            /* Example of timesync routing */
-            cpsw_cpts: cpsw-cpts {
-                  pinctrl-single,pins = <
-                           /* pps [cpsw cpts genf1] in17 -> out24 [cpsw cpts hw3_push] */
-                           TS_OFFSET(24, 17)
+            /* Include following header file */
+            #include <dt-bindings/timesync/k3-timesync-router.h>
+
+            &timesync_router {
+                  /* Use Time Sync Router to map CPTS GENF1 to HW4_TS_PUSH for PPS */
+                  mux-reg-masks-state = <
+                           /* pps [mcu cpsw cpts genf1] in17 -> out25 [mcu cpsw cpts hw4_push] */
+                           K3_TS_OFFSET(25, 0x0001ffff, 17)
                   >;
+                  status = "okay";
             };
-      };
 
-2. Inform the mapping to the CPSWxG driver, by using the "ti,pps" device-tree property
-   in the cpts device-tree node present within the CPSWxG device-tree node:
+   2. Inform the mapping to the CPSW2G driver, by using the "ti,pps" device-tree property
+      in the cpts device-tree node present within the CPSW2G device-tree node:
 
-.. code:: dts
+         .. code:: dts
 
-   &cpswx {
-      cpts@3d000 {
-               ti,pps = <2 1>;
-      };
-   };
+            &mcu_cpsw {
+               cpts@3d000 {
+                        ti,pps = <2 1>;
+               };
+            };
 
 The property "ti,pps" is of the form <x-1 y>, where x and y correspond to the choice of
 HWx_TS_PUSH and GENFy.
