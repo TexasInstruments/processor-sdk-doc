@@ -33,7 +33,7 @@ Describing FIT source
 """""""""""""""""""""
 
 FIT Image is a packed structure containing binary blobs and configurations.
-The Kernel FIT Image that we have has Kernel Image, DTB and the DTBOs
+The Kernel FIT image that we have has Kernel Image, DTB and the DTBOs.
 
 .. ifconfig:: CONFIG_part_family not in ('AM335X_family', 'AM437X_family', 'AM57X_family')
 
@@ -112,7 +112,7 @@ Change the path in data variables to point to the respective files in your
 local machine.
 
 For e.g change "linux.bin" to
-"<path-to-tisdk>/board-support/prebuilt-images/Image".
+:file:`<path-to-tisdk>/board-support/prebuilt-images/Image`.
 
 .. ifconfig:: CONFIG_part_family not in ('AM335X_family', 'AM437X_family', 'AM57X_family')
 
@@ -158,7 +158,7 @@ Generating the fitImage
       For signing a secondary platform like SK boards, you'll require
       additional steps
 
-   Change the CONFIG_DEFAULT_DEVICE_TREE and binman nodes to package u-boot.dtb
+   Change the CONFIG_DEFAULT_DEVICE_TREE and binman nodes to package :file:`u-boot.dtb`.
 
    For e.g
 

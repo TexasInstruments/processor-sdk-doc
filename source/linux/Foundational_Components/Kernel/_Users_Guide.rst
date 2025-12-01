@@ -150,7 +150,7 @@ Using Default Configurations
   [comment] instructions for 32 bit processors
 .. ifconfig:: CONFIG_part_family in ('AM335X_family', 'AM437X_family', 'AM57X_family')
 
-    For this sdk, the defconfig found in arch/arm/configs is used to create the prebuilt
+    For this sdk, the defconfig found in :file:`arch/arm/configs` is used to create the prebuilt
     files. We recommend users to use this kernel configuration (or at least use it
     as a starting point).
 
@@ -173,7 +173,7 @@ Using Default Configurations
   [comment] instructions for 64 bit processors
 .. ifconfig:: CONFIG_part_family not in ('AM335X_family', 'AM437X_family', 'AM57X_family')
 
-    For this sdk, the defconfig found in arch/arm64/configs is used to create the prebuilt
+    For this sdk, the defconfig found in :file:`arch/arm64/configs` is used to create the prebuilt
     files. We recommend users to use this kernel configuration (or at least use it
     as a starting point).
 
@@ -258,31 +258,32 @@ Compiling the Kernel
     bootable kernel image as well as any dynamic kernel modules that were
     selected.
 
-    By default U-boot expects zImage to be the type of kernel image used.
+    By default U-boot expects a compressed, self-extracting kernel image called
+    :file:`zImage` as the type of kernel image used.
 
-    To just build the zImage use this command
+    To build, use this command:
 
     .. code-block:: console
 
         make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- zImage
 
     This will result in a kernel image file being created in the
-    arch/arm/boot/ directory called zImage.
+    :file:`arch/arm/boot/` directory called :file:`zImage`.
 
 ..
   [comment] instructions for 64 bit processors
 .. ifconfig:: CONFIG_part_family not in ('AM335X_family', 'AM437X_family', 'AM57X_family')
 
-    By default U-boot expects to boot kernel `Image`, DTB, and DTOs found in root/boot of the
+    By default U-boot expects to boot kernel :file:`Image`, DTB, and DTOs found in :file:`root/boot` of the
     SD card if using SD/MMC boot. The exception is for HS-SE (High Security - Security Enforced)
-    devices where the FIT image (Flattened Image Tree) named `fitImage` will boot by default.
+    devices where the FIT image (Flattened Image Tree) named :file:`fitImage` will boot by default.
 
-    The FIT image includes the kernel `Image`, DTB, and DTOs. Booting with the FIT image could be
+    The FIT image includes the kernel :file:`Image`, DTB, and DTOs. Booting with the FIT image could be
     enabled/disabled by setting/resetting u-boot environment variable `boot_fit`. If `boot_fit` is set
-    to `1`, then u-boot will boot the FIT image found in root/boot of the SD card.
+    to `1`, then u-boot will boot the FIT image found in :file:`root/boot` of the SD card.
 
-    Once the kernel has been configured it must be compiled to generate the bootable kernel `Image`
-    as well as any dynamic kernel modules that were selected. To rebuild kernel `Image` to boot as
+    Once the kernel has been configured it must be compiled to generate the bootable kernel :file:`Image`
+    as well as any dynamic kernel modules that were selected. To rebuild kernel :file:`Image` to boot as
     is or for FIT image boot, use this command:
 
     .. code-block:: console
@@ -290,7 +291,7 @@ Compiling the Kernel
         make ARCH=arm64 CROSS_COMPILE="$CROSS_COMPILE_64" Image
 
     This will result in a kernel image file being created in the
-    arch/arm64/boot/ directory called Image.
+    :file:`arch/arm64/boot/` directory called :file:`Image`.
 
 .. _kernel_users_guide_compiling_the_device_tree_binaries:
 
@@ -304,7 +305,7 @@ Compiling the Device Tree Binaries
     Starting with the 3.8 kernel each TI evm has an unique device tree
     binary file required by the kernel. Therefore, you will need to build
     and install the correct dtb for the target device. All device tree files
-    are located at arch/arm/boot/dts/ti/omap. Below list various TI evms and the
+    are located at :file:`arch/arm/boot/dts/ti/omap`. Below list various TI evms and the
     matching device tree file.
 
     +-------------------------------------------+--------------------------------------+
@@ -357,10 +358,10 @@ Compiling the Device Tree Binaries
 
         make DTC_FLAGS=-@ ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- <dt filename>.dtb
 
-    The compiled device tree file with be located in arch/arm/boot/dts/ti/omap.
+    The compiled device tree file with be located in :file:`arch/arm/boot/dts/ti/omap`.
 
     For example, the Beaglebone Black device tree file is named
-    am335x-boneblack.dts. To build the device tree binary you would run:
+    :file:`am335x-boneblack.dts`. To build the device tree binary you would run:
 
     .. code-block:: console
 
@@ -379,7 +380,7 @@ Compiling the Device Tree Binaries
     Each TI evm has an unique device tree
     binary file required by the kernel. Therefore, you will need to build
     and install the correct dtb for the target device. TI device tree files
-    are located in arch/arm64/boot/dts/ti. Below list various TI evms and the
+    are located in :file:`arch/arm64/boot/dts/ti`. Below list various TI evms and the
     matching device tree file.
 
     +-------------------------------------------+--------------------------------------+
@@ -431,10 +432,10 @@ Compiling the Device Tree Binaries
 
         make DTC_FLAGS=-@ ARCH=arm64 CROSS_COMPILE="$CROSS_COMPILE_64" ti/<dt filename>.dtb
 
-    The compiled device tree file with be located in arch/arm64/boot/dts/ti.
+    The compiled device tree file with be located in :file:`arch/arm64/boot/dts/ti`.
 
     For example, the AM64x EVM device tree file is named
-    k3-am642-evm.dts. To build the device tree binary you would run:
+    :file:`k3-am642-evm.dts`. To build the device tree binary you would run:
 
     .. code-block:: console
 
@@ -454,7 +455,7 @@ Compiling the Kernel Modules
 .. ifconfig:: CONFIG_part_family in ('AM335X_family', 'AM437X_family', 'AM57X_family')
 
     By default the majority of the Linux drivers used in the sdk are not
-    integrated into the kernel image file (zImage). These drivers are built as
+    integrated into the kernel image file :file:`zImage`. These drivers are built as
     dynamic modules. The command to build these modules is:
 
     .. code-block:: console
@@ -466,7 +467,7 @@ Compiling the Kernel Modules
 .. ifconfig:: CONFIG_part_family not in ('AM335X_family', 'AM437X_family', 'AM57X_family')
 
     By default the majority of the Linux drivers used in the sdk are not
-    integrated into the kernel image file (Image). These drivers are built as
+    integrated into the kernel image file :file:`Image`. These drivers are built as
     dynamic modules. The command to build these modules is:
 
     .. code-block:: console
@@ -529,7 +530,7 @@ Installing the Kernel Image and Device Tree Binaries
 
          cd <kernel sources dir>
          sudo cp arch/arm/boot/zImage $boot
-         arch/arm/boot/dts/ti/omap/am335x-boneblack.dtb $boot
+         sudo cp arch/arm/boot/dts/ti/omap/am335x-boneblack.dtb $boot
 
     Where ``$boot`` is the mount point for the boot partition of the SD card.
 
@@ -556,7 +557,7 @@ Installing the Kernel Image and Device Tree Binaries
 Starting with U-boot 2013.10, the kernel and device tree binaries are read from
 the root file system's boot directory when booting from MMC/EMMC. (NOT from the
 /boot/ partition on the MMC). This would mean you copy the kernel image and device
-tree binaries to /media/rootfs/boot instead of /media/boot.
+tree binaries to :file:`/media/rootfs/boot` instead of :file:`/media/boot`.
 
 Installing the Kernel Modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
