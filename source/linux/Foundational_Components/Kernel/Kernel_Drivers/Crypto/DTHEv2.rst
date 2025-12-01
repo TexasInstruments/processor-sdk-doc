@@ -277,3 +277,59 @@ number of errors typically indicates a bad random number generator.
 If you're satisfied the random number generator is working correctly,
 you can use :program:`rngd` (the random number generator daemon) to feed the
 :file:`/dev/random` entropy pool.
+
+****************************
+Hardware Accelerator testing
+****************************
+
+Testing using the :program:`tcrypt` module
+==========================================
+
+.. code-block:: console
+
+   root@am62lxx-evm:~# modprobe tcrypt mode=500 sec=1
+   [ 1012.121422] tcrypt: testing speed of async ecb(aes) (ecb-aes-dthev2) encryption
+   [ 1012.128872] tcrypt: test 0 (128 bit key, 16 byte blocks): 4931 operations in 1 seconds (78896 bytes)
+   [ 1013.138110] tcrypt: test 1 (128 bit key, 64 byte blocks): 4940 operations in 1 seconds (316160 bytes)
+   [ 1014.146146] tcrypt: test 2 (128 bit key, 128 byte blocks): 4940 operations in 1 seconds (632320 bytes)
+   [ 1015.154298] tcrypt: test 3 (128 bit key, 256 byte blocks): 4940 operations in 1 seconds (1264640 bytes)
+   [ 1016.162329] tcrypt: test 4 (128 bit key, 1024 byte blocks): 4980 operations in 1 seconds (5099520 bytes)
+   [ 1017.170491] tcrypt: test 5 (128 bit key, 1424 byte blocks): 4940 operations in 1 seconds (7034560 bytes)
+   [ 1018.178486] tcrypt: test 6 (128 bit key, 4096 byte blocks): 4960 operations in 1 seconds (20316160 bytes)
+   [ 1019.186570] tcrypt: test 7 (192 bit key, 16 byte blocks): 4960 operations in 1 seconds (79360 bytes)
+   [ 1020.194482] tcrypt: test 8 (192 bit key, 64 byte blocks): 4940 operations in 1 seconds (316160 bytes)
+   [ 1021.202151] tcrypt: test 9 (192 bit key, 128 byte blocks): 5000 operations in 1 seconds (640000 bytes)
+   [ 1022.210225] tcrypt: test 10 (192 bit key, 256 byte blocks): 4940 operations in 1 seconds (1264640 bytes)
+   [ 1023.218410] tcrypt: test 11 (192 bit key, 1024 byte blocks): 5000 operations in 1 seconds (5120000 bytes)
+   [ 1024.226494] tcrypt: test 12 (192 bit key, 1424 byte blocks): 5000 operations in 1 seconds (7120000 bytes)
+   [ 1025.234490] tcrypt: test 13 (192 bit key, 4096 byte blocks): 4980 operations in 1 seconds (20398080 bytes)
+   [ 1026.242625] tcrypt: test 14 (256 bit key, 16 byte blocks): 4940 operations in 1 seconds (79040 bytes)
+   [ 1027.250155] tcrypt: test 15 (256 bit key, 64 byte blocks): 4960 operations in 1 seconds (317440 bytes)
+   [ 1028.258293] tcrypt: test 16 (256 bit key, 128 byte blocks): 4940 operations in 1 seconds (632320 bytes)
+   [ 1029.266342] tcrypt: test 17 (256 bit key, 256 byte blocks): 4940 operations in 1 seconds (1264640 bytes)
+   [ 1030.274405] tcrypt: test 18 (256 bit key, 1024 byte blocks): 4960 operations in 1 seconds (5079040 bytes)
+   [ 1031.282506] tcrypt: test 19 (256 bit key, 1424 byte blocks): 4980 operations in 1 seconds (7091520 bytes)
+   [ 1032.294641] tcrypt: test 20 (256 bit key, 4096 byte blocks): 4980 operations in 1 seconds (20398080 bytes)
+   [ 1033.302656] tcrypt: testing speed of async ecb(aes) (ecb-aes-dthev2) decryption
+   [ 1033.310809] tcrypt: test 0 (128 bit key, 16 byte blocks): 4940 operations in 1 seconds (79040 bytes)
+   [ 1034.318058] tcrypt: test 1 (128 bit key, 64 byte blocks): 4960 operations in 1 seconds (317440 bytes)
+   [ 1035.326153] tcrypt: test 2 (128 bit key, 128 byte blocks): 4940 operations in 1 seconds (632320 bytes)
+   [ 1036.334354] tcrypt: test 3 (128 bit key, 256 byte blocks): 4940 operations in 1 seconds (1264640 bytes)
+   [ 1037.342372] tcrypt: test 4 (128 bit key, 1024 byte blocks): 4920 operations in 1 seconds (5038080 bytes)
+   [ 1038.350475] tcrypt: test 5 (128 bit key, 1424 byte blocks): 4940 operations in 1 seconds (7034560 bytes)
+   [ 1039.358415] tcrypt: test 6 (128 bit key, 4096 byte blocks): 4940 operations in 1 seconds (20234240 bytes)
+   [ 1040.366508] tcrypt: test 7 (192 bit key, 16 byte blocks): 4940 operations in 1 seconds (79040 bytes)
+   [ 1041.374071] tcrypt: test 8 (192 bit key, 64 byte blocks): 4960 operations in 1 seconds (317440 bytes)
+   [ 1042.382158] tcrypt: test 9 (192 bit key, 128 byte blocks): 4960 operations in 1 seconds (634880 bytes)
+   [ 1043.390282] tcrypt: test 10 (192 bit key, 256 byte blocks): 4940 operations in 1 seconds (1264640 bytes)
+   [ 1044.398466] tcrypt: test 11 (192 bit key, 1024 byte blocks): 4940 operations in 1 seconds (5058560 bytes)
+   [ 1045.406558] tcrypt: test 12 (192 bit key, 1424 byte blocks): 4940 operations in 1 seconds (7034560 bytes)
+   [ 1046.414503] tcrypt: test 13 (192 bit key, 4096 byte blocks): 4940 operations in 1 seconds (20234240 bytes)
+   [ 1047.422793] tcrypt: test 14 (256 bit key, 16 byte blocks): 4960 operations in 1 seconds (79360 bytes)
+   [ 1048.430409] tcrypt: test 15 (256 bit key, 64 byte blocks): 4960 operations in 1 seconds (317440 bytes)
+   [ 1049.438295] tcrypt: test 16 (256 bit key, 128 byte blocks): 4940 operations in 1 seconds (632320 bytes)
+   [ 1050.446313] tcrypt: test 17 (256 bit key, 256 byte blocks): 4940 operations in 1 seconds (1264640 bytes)
+   [ 1051.454411] tcrypt: test 18 (256 bit key, 1024 byte blocks): 4960 operations in 1 seconds (5079040 bytes)
+   [ 1052.462508] tcrypt: test 19 (256 bit key, 1424 byte blocks): 4960 operations in 1 seconds (7063040 bytes)
+   [ 1053.470497] tcrypt: test 20 (256 bit key, 4096 byte blocks): 4960 operations in 1 seconds (20316160 bytes)
+   ...
