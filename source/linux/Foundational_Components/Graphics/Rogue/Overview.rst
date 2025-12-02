@@ -148,25 +148,21 @@ The following picture shows the software architecture of Graphics in
 
 .. figure:: /images/rogue-graphics-software-stack.png
    :align: center
+   :width: 750px
 
    PSDK Linux Rogue Graphics Software Stack
 
-Please note that the Rogue Graphics Kernel Module (RGX-KM) in this context
-refers to ``pvrsrvkm``, which is currently provided at:
+* More information regarding Mesa can be found within the :ref:`rogue-build-guide`
+* ``RGX-KM`` refers to the kernel module, within the filesystem it is named ``pvrsrvkm.ko``
+* Within the SDK, the Weston Compositor is used, an implementation of Wayland specification
+* More information regarding integration of this software stack into other ecosystems can be
+  found at :ref:`rogue-build-guide`
 
-   - `<https://git.ti.com/cgit/graphics/ti-img-rogue-driver>`_
+.. note::
 
-The SDK includes this by default. The kernel module is available at 2 possible
-locations depending on the kernel version selected. Before kernel 6.6 the
-location for external modules was :file:`extra/`, from 6.6 onward the location
-is :file:`updates/`:
-
-.. code-block:: console
-
-   # /lib/modules/$(uname -r)/<external_dir>/pvrsrvkm.ko
-
-Please see the :doc:`Build_Guide` for more information about integration of
-this software stack into other ecosystems.
+   The kernel module is available at 2 possible locations depending on the kernel version
+   selected. Before kernel 6.6 the location for external modules was :file:`extra/`, from
+   6.6 onward the location is :file:`updates/`.
 
 Graphics demos
 ==============
