@@ -39,4 +39,5 @@ Configuration Values
 'CONFIG_image_type'       : 'default'
 'CONFIG_icss_support'     : 'yes'
 'CONFIG_rt_linux_support' : 'yes'
-'CONFIG_crypto'           : 'DTHEv2'
+'CONFIG_crypto'           : 'sa2ul'
+'CONFIG_mcrc64'           : 'mcrc64'
