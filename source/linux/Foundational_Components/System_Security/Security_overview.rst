@@ -15,10 +15,10 @@ as part of product development, with the following advantages:
 
 * **Hardware-backed security** - Leverages built-in security hardware 
   for robust protection
-* **Defense in-depth** - Implements security at multiple level including
+* **Defense in-depth** - Implements security at many levels including
   hardware, firmware, software to protect against wide range of attacks
-* **Industry standards compliance** - Incorporates security measures
-  like secure boot, TrustZone, and crypto acceleration that can help meet
+* **Industry standards compliance** - Incorporates security measures such
+  as secure boot, TrustZone, and crypto acceleration that can help meet
   requirements in standards such as IEC 62443 and NIST guidelines
 * **Flexible implementation** - Allows security features that can be 
   tailored to specific application needs
@@ -76,6 +76,22 @@ The following table lists some of the key Security Features:
   +-------------------------+-----------------------------------------------------------+--------------------------------------+
   | **SELinux**             | Kernel security module providing policy-based access      | :ref:`selinux_guide`                 |
   |                         | control for processes, files, and system objects          |                                      |
+  +-------------------------+-----------------------------------------------------------+--------------------------------------+
+  | **Trusted Execution**   | Implementation of secure monitor (EL3) firmware that      | :ref:`foundational-components-atf`   |
+  |                         | manages the secure boot process and TrustZone transitions |                                      |
+  +                         +-----------------------------------------------------------+--------------------------------------+
+  |                         | Trusted Execution Environment that enables isolated       | :ref:`foundational-components-optee` |
+  |                         | execution of security-sensitive applications and services |                                      |
+  +-------------------------+-----------------------------------------------------------+--------------------------------------+
+
+.. ifconfig:: CONFIG_part_variant not in ('AM62X', 'AM62PX', 'AM62AX', 'AM62LX')
+
+  +-------------------------+-----------------------------------------------------------+--------------------------------------+
+  | Security Feature        | Description                                               | Links                                |
+  +=========================+===========================================================+======================================+
+  | **Crypto Acceleration** | Hardware driver support for cryptographic algorithms      | :ref:`crypto-accelerator`            |
+  +-------------------------+-----------------------------------------------------------+--------------------------------------+
+  | **Secure Storage**      | Protection mechanisms for sensitive data                  | :ref:`secure-storage-with-rpmb`      |
   +-------------------------+-----------------------------------------------------------+--------------------------------------+
   | **Trusted Execution**   | Implementation of secure monitor (EL3) firmware that      | :ref:`foundational-components-atf`   |
   |                         | manages the secure boot process and TrustZone transitions |                                      |
