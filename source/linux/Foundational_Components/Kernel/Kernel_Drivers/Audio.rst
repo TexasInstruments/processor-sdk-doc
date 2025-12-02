@@ -463,7 +463,6 @@ Board-specific instructions
         p1 - playback jack
 
     .. rubric:: Kernel config
-       :name: kernel-config-8
 
     .. code-block:: text
 
@@ -492,7 +491,6 @@ Board-specific instructions
         }
 
     .. rubric:: User space
-       :name: user-space-8-kernel-audio
 
     ``NOTE: Playback volume is HIGH after boot. Do not use headset without lowering it!!!``
 
@@ -567,7 +565,6 @@ Board-specific instructions
       HDMI bridge**.
 
     .. rubric:: Kernel config
-       :name: kernel-config-9
 
     .. code-block:: text
 
@@ -582,7 +579,6 @@ Board-specific instructions
                 <*>   ASoC Simple sound card support
 
     .. rubric:: User space
-       :name: user-space-9
 
 .. _hdmi_audio:
     The hardware defaults are correct for audio playback, the routing is OK
