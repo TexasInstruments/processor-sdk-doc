@@ -1,5 +1,7 @@
 .. include:: <isonum.txt>
 
+.. _opengles-api-overview:
+
 #########
 OpenGL ES
 #########
