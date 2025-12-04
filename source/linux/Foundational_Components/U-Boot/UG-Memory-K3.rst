@@ -5,7 +5,7 @@ SD, eMMC and USB
 
    .. warning::
 
-      There is important information on multimedia card (MMC) support for |__PART_FAMILY_DEVICE_NAMES__| device, go
+      There is important information on multimedia card (MMC) support for |__PART_FAMILY_NAME__| device, go
       :ref:`here <uboot-mmc-support>` for more information.
 
 Overview
@@ -261,7 +261,7 @@ Configuring USB in Host Mode
 
 .. ifconfig:: CONFIG_part_variant not in ('J721E', 'J7200', 'J721S2', 'AM64X', 'AM62X', 'AM65X')
 
-   Configuring USB in host mode documentation is pending for |__PART_FAMILY_DEVICE_NAMES__|
+   Configuring USB in host mode documentation is pending for |__PART_FAMILY_NAME__|
    reach out to:  `Help e2e <https://e2e.ti.com//>`__ for additional information.
 
 .. ifconfig:: CONFIG_part_variant in ('J721E', 'J7200', 'J721S2')
@@ -413,7 +413,7 @@ Flash and boot SPL from USB storage
 
 .. ifconfig:: CONFIG_part_variant not in ('J7200', 'J721E', 'AM64X', 'AM65X', 'J722S')
 
-   Boot SPL from USB storage documentation is pending for |__PART_FAMILY_DEVICE_NAMES__|
+   Boot SPL from USB storage documentation is pending for |__PART_FAMILY_NAME__|
    reach out to:  `Help e2e <https://e2e.ti.com//>`__ for additional information.
 
 .. ifconfig:: CONFIG_part_variant in ('J7200', 'J721E')
@@ -496,7 +496,7 @@ Boot Linux from USB storage
 
 .. ifconfig:: CONFIG_part_family not in ('J7_family', 'AM62X_family', 'AM64X_family')
 
-   Booting Linux from USB storage documentation is pending for |__PART_FAMILY_DEVICE_NAMES__|,
+   Booting Linux from USB storage documentation is pending for |__PART_FAMILY_NAME__|,
    reach out to:  `Help e2e <https://e2e.ti.com//>`__ for additional information.
 
 .. ifconfig:: CONFIG_part_family in ('J7_family')
@@ -785,7 +785,7 @@ MMC support in u-boot
 
 .. ifconfig:: CONFIG_part_family not in ('AM62X_family', 'AM62PX_family')
 
-   There is no missing MMC support for |__PART_FAMILY_DEVICE_NAMES__| device.
+   There is no missing MMC support for |__PART_FAMILY_NAME__| device.
 
 |
 

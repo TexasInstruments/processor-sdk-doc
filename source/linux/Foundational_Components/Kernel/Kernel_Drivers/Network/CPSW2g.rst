@@ -9,11 +9,11 @@ CPSW2g Ethernet
 Introduction
 ============
 
-The TI |__PART_FAMILY_DEVICE_NAMES__| SoC has integrated two-port Gigabit Ethernet Switch subsystem
+The TI |__PART_FAMILY_NAME__| SoC has integrated two-port Gigabit Ethernet Switch subsystem
 with selectable RGMII and RMII interfaces and an internal Communications
 Port Programming Interface (CPPI) port (Host port 0). Host Port 0 CPPI Packet
 Streaming Interface interface supports 8 TX channels and one RX channel
-operating by TI |__PART_FAMILY_DEVICE_NAMES__| NAVSS Unified DMA Peripheral Root Complex (UDMA-P) controller.
+operating by TI |__PART_FAMILY_NAME__| NAVSS Unified DMA Peripheral Root Complex (UDMA-P) controller.
 
 The driver follows the standard Linux network interface architecture and
 supports the following features:
@@ -46,7 +46,7 @@ Supported platforms
 Driver Configuration
 ====================
 
-The TI Processor SDK has |__PART_FAMILY_DEVICE_NAMES__| CPSW2g driver enabled by default.
+The TI Processor SDK has |__PART_FAMILY_NAME__| CPSW2g driver enabled by default.
 In case of custom builds, please ensure following configs are enabled.
 
 .. code:: Kconfig

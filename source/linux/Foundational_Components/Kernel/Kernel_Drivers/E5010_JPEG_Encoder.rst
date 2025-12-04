@@ -102,7 +102,7 @@ of video encoding based use-cases utilizing this driver as demonstrated in below
 
 Building the driver
 ===================
-The E5010 JPEG driver is already enabled as a kernel module on |__PART_FAMILY_DEVICE_NAMES__| as part of the default defconfig being used for the board.
+The E5010 JPEG driver is already enabled as a kernel module on |__PART_FAMILY_NAME__| as part of the default defconfig being used for the board.
 If using a separate defconfig, it can be enabled explicitly for compilation by setting corresponding Kconfig as shown below:
 
 .. code-block:: kconfig
@@ -422,7 +422,7 @@ Buffer alignment requirements
 
 Performance and Latency Benchmarking
 ====================================
-The E5010 core is clocked at 250Mhz on |__PART_FAMILY_DEVICE_NAMES__| and theoretical performance expectation
+The E5010 core is clocked at 250Mhz on |__PART_FAMILY_NAME__| and theoretical performance expectation
 with this clocking is as below :
 
 +-------------------+--------------------+
@@ -436,7 +436,7 @@ with this clocking is as below :
 With these numbers theoretically E5010 core can handle 3840x2160@60fps equivalent load
 for 4:2:2 video formats and 3840x2160@75fps equivalent load for 4:2:0 video formats.
 
-This however requires the upstream element (for e.g. camera) to support above rates. On |__PART_FAMILY_DEVICE_NAMES__| board fastest locally available upstream element source is :ref:`wave5 VPU decoder <foundational-components-multimedia>` which provides maximum performance of 3840x2160@59 fps with low bitrate files and we were able to achieve same performance after passing this decoded data to E5010 JPEG Encoder as shown in below example :
+This however requires the upstream element (for e.g. camera) to support above rates. On |__PART_FAMILY_NAME__| board fastest locally available upstream element source is :ref:`wave5 VPU decoder <foundational-components-multimedia>` which provides maximum performance of 3840x2160@59 fps with low bitrate files and we were able to achieve same performance after passing this decoded data to E5010 JPEG Encoder as shown in below example :
 
 .. code-block:: console
 

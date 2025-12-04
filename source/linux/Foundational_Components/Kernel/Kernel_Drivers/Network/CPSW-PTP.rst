@@ -385,7 +385,7 @@ The second command is used to specify that /dev/ptpN has to be used as the clock
 .. rubric:: PPS Pulse Per Second support
    :name: k3-cpts-pps-support
 
-The PPS support for |__PART_FAMILY_DEVICE_NAMES__| can be enabled with the following steps:
+The PPS support for |__PART_FAMILY_NAME__| can be enabled with the following steps:
 
 .. ifconfig:: CONFIG_part_variant in ('AM62AX','AM62X')
 

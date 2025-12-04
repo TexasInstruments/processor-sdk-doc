@@ -14,7 +14,6 @@
 Replacement Variables
 ---------------------
 '__PART_FAMILY_NAME__'           : 'AM62Ax'
-'__PART_FAMILY_DEVICE_NAMES__'   : 'AM62Ax'
 '__PRODUCT_LINE_NAME__'          : 'Sitara MPU'
 '__SDK_BUILD_MACHINE__'          : 'am62a-sk'
 '__SDK_FULL_NAME__'              : 'Processor SDK Linux Edge AI AM62Ax'

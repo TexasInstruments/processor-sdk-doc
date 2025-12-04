@@ -7,7 +7,7 @@ Introduction
 
 .. ifconfig:: CONFIG_gpu_ip in ('Rogue_8XE')
 
-   |__PART_FAMILY_DEVICE_NAMES__| device is enabled with 3D graphics
+   |__PART_FAMILY_NAME__| device is enabled with 3D graphics
    accelerator based on the Rogue 8XE series from Imagination Technologies Inc.
    It enables the support of 3D graphics rendering using OpenGL\ |reg| ES
    API's. The OpenGL\ |reg| ES API's up to and including version 3.2 with
@@ -21,7 +21,7 @@ Introduction
 
 .. ifconfig:: CONFIG_gpu_ip in ('Rogue_AXE')
 
-   |__PART_FAMILY_DEVICE_NAMES__| device is enabled with 3D graphics
+   |__PART_FAMILY_NAME__| device is enabled with 3D graphics
    accelerator based on the A-Series AXE-1-16M from Imagination Technologies Inc.
    It enables the support of 3D graphics rendering using OpenGL\ |reg| ES
    API's. The OpenGL\ |reg| ES API's up to and including version 3.1 with
@@ -35,7 +35,7 @@ Introduction
 
 .. ifconfig:: CONFIG_gpu_ip in ('Rogue_BXS')
 
-   |__PART_FAMILY_DEVICE_NAMES__| device is enabled with 3D graphics
+   |__PART_FAMILY_NAME__| device is enabled with 3D graphics
    accelerator based on the B-Series BXS-4-64 from Imagination Technologies
    Inc. It enables the support of 3D graphics rendering using OpenGL\ |reg| ES
    API's. The OpenGL\ |reg| ES API's up to and including version 3.2 with

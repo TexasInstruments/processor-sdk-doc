@@ -4,8 +4,8 @@
 Wakeup Sources
 ##############
 
-This section talks about the multiple ways in which we can wakeup the |__PART_FAMILY_DEVICE_NAMES__| SoC from various low power modes.
-The |__PART_FAMILY_DEVICE_NAMES__| SoC support various wakeup sources like GP Timers, RTC Timer, UART, I2C, WKUP GPIO, and I/O Daisy Chain.
+This section talks about the multiple ways in which we can wakeup the |__PART_FAMILY_NAME__| SoC from various low power modes.
+The |__PART_FAMILY_NAME__| SoC support various wakeup sources like GP Timers, RTC Timer, UART, I2C, WKUP GPIO, and I/O Daisy Chain.
 
 The table below lists the wakeup sources supported in this SDK release and whether that source is
 valid for given low power modes:
@@ -421,11 +421,11 @@ I/O Power Management and Daisy Chaining section in the TRM.
 
    .. note::
 
-      |__PART_FAMILY_DEVICE_NAMES__| supports the ability to wakeup using pad based wake event ONLY in Deep Sleep or MCU Only Mode.
+      |__PART_FAMILY_NAME__| supports the ability to wakeup using pad based wake event ONLY in Deep Sleep or MCU Only Mode.
       During active system usage, even if the wake_enable bit is set the system will be unresponsive to any wakeup
       activity on that pad.
 
-   To demonstrate I/O daisy chain wakeup as part of |__PART_FAMILY_DEVICE_NAMES__| offering, two reference examples are provided:
+   To demonstrate I/O daisy chain wakeup as part of |__PART_FAMILY_NAME__| offering, two reference examples are provided:
 
    #. main_uart0 is used where a key press on the Linux console can wakeup the system.
    #. main_gpio is used where activity on configured GPIO pin can wakeup the system.
@@ -434,11 +434,11 @@ I/O Power Management and Daisy Chaining section in the TRM.
 
    .. note::
 
-      |__PART_FAMILY_DEVICE_NAMES__| supports the ability to wakeup using pad based wake event ONLY in Deep Sleep.
+      |__PART_FAMILY_NAME__| supports the ability to wakeup using pad based wake event ONLY in Deep Sleep.
       During active system usage, even if the wake_enable bit is set the system will be unresponsive to any wakeup
       activity on that pad.
 
-   To demonstrate I/O daisy chain wakeup as part of |__PART_FAMILY_DEVICE_NAMES__| offering, a reference example is provided:
+   To demonstrate I/O daisy chain wakeup as part of |__PART_FAMILY_NAME__| offering, a reference example is provided:
 
    #. main_uart0 is used where a key press on the Linux console can wakeup the system.
 
@@ -917,7 +917,7 @@ RTC Ext Pin
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX')
 
-   This is not applicable for |__PART_FAMILY_DEVICE_NAMES__|.
+   This is not applicable for |__PART_FAMILY_NAME__|.
 
 .. ifconfig:: CONFIG_part_variant in ('AM62LX')
 

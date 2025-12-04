@@ -155,11 +155,11 @@ platform that support USB Peripheral boot mode.
 
 .. ifconfig:: CONFIG_part_family not in ('AM62X_family', 'AM62AX_family', 'AM62PX_family', 'AM57X_family')
 
-    .. rubric:: USB Peripheral boot mode on |__PART_FAMILY_DEVICE_NAMES__| EVM (SPL-DFU boot mode)
+    .. rubric:: USB Peripheral boot mode on |__PART_FAMILY_NAME__| EVM (SPL-DFU boot mode)
 
 .. ifconfig:: CONFIG_part_family in ('AM62X_family', 'AM62AX_family', 'AM62PX_family')
 
-    .. rubric:: USB Peripheral boot mode on |__PART_FAMILY_DEVICE_NAMES__| SK (SPL-DFU boot mode)
+    .. rubric:: USB Peripheral boot mode on |__PART_FAMILY_NAME__| SK (SPL-DFU boot mode)
 
 .. ifconfig:: CONFIG_part_variant in ('J721E')
 
