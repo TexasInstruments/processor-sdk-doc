@@ -115,9 +115,7 @@ linux/Foundational_Components/Graphics/SGX/Build_Guide
 
 linux/Examples_and_Demos
 linux/Examples_and_Demos_Application_Demos
-linux/Examples_and_Demos/Application_Demos/QT_Thermostat_HMI_Demo
 linux/Examples_and_Demos/Application_Demos/PRU_ADC
-linux/Examples_and_Demos/Application_Demos/Additional_Application_Demo_Links
 linux/Examples_and_Demos_Sub-system_Demos
 linux/How_to_Guides
 linux/How_to_Guides_Host
