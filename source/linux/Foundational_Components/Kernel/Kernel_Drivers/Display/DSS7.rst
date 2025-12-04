@@ -1,3 +1,5 @@
+.. _dss7:
+
 DSS
 #################
 
@@ -374,6 +376,8 @@ Device Tree Node
 
 Documentation for tidss device tree node and its properties can be found in linux kernel device tree bindings in below directory
 ``Documentation/devicetree/bindings/display/ti/``. Seperate binding files are present for different version of the DSS controller.
+
+For information about configuring Spread Spectrum Clocking (SSC) for DSS, see :ref:`how-to-enable-ssc-for-dss`.
 
 
 Driver Usage
