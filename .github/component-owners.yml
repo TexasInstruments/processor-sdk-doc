@@ -63,12 +63,14 @@ components:
     - aniket-l
     - praneethbajjuri
     - uditkumarti
+    - gehariprasath  
 
   source/linux/Foundational_Components:
     - devarsht
     - praneethbajjuri
     - r-vignesh
     - uditkumarti
+    - gehariprasath  
 
   source/linux/Foundational_Components/IPC:
     - 3V3RYONE
@@ -84,6 +86,7 @@ components:
     - praneethbajjuri
     - r-vignesh
     - uditkumarti
+    - gehariprasath  
 
   source/linux/Foundational_Components/Power_Management:
     - DhruvaG2000
