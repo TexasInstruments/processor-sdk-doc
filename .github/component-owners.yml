@@ -88,6 +88,7 @@ components:
   source/linux/Foundational_Components/Power_Management:
     - DhruvaG2000
     - vishalmti
+    - kwillis01
 
   source/linux/Foundational_Components/Graphics:
     - Antonios-C
