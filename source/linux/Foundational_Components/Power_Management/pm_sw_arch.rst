@@ -151,8 +151,8 @@ Specifically, checking of constraints is done at two levels:
 
 The code enabling the constraints framework can be found in:
 
-#. TISCI PM Domain driver: https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/drivers/pmdomain/ti/ti_sci_pm_domains.c?h=11.01.05
-#. TISCI driver: https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/drivers/firmware/ti_sci.c?h=11.01.05
+#. TISCI PM Domain driver: https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/drivers/pmdomain/ti/ti_sci_pm_domains.c?h=11.02.08
+#. TISCI driver: https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/drivers/firmware/ti_sci.c?h=11.02.08
 
 Examples of adding constraints from the remote core side are being implemented and will
 be enabled in future release.
