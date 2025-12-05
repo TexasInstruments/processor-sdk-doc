@@ -333,62 +333,64 @@ MCU GPIO
    running on MCU core is responsible for configuring MCU GPIOs as a wakeup
    source. However, if the application design doesn't rely on the MCU firmware
    then Linux can be used to configure the MCU GPIOs as a wakeup source. Refer
-   to the mcu_gpio_key node in
+   to the ``mcu_gpio_key`` node in
    `k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=11.01.05>`__
    to use as a template to configure the desired MCU GPIO as a wakeup capable
    GPIO.
 
    A brief guide to configuring an MCU GPIO as wakeup:
 
-   First, add gpio-keys as a compatible string, refer to
-   `gpio_keys kernel documentation <https://www.kernel.org/doc/Documentation/devicetree/bindings/input/gpio-keys.txt>`__
-   for details.
+   1. Add "gpio-keys" as a compatible string, refer to
+      `gpio_keys kernel documentation <https://www.kernel.org/doc/Documentation/devicetree/bindings/input/gpio-keys.txt>`__
+      for details.
 
-   .. code-block:: dts
+      .. code-block:: dts
 
-      compatible = "gpio-keys";
+         compatible = "gpio-keys";
 
 
-   Set the desired pinctrl,
+   2. Set the desired pinctrl.
 
-   .. code-block:: dts
+      .. code-block:: dts
 
-      pinctrl-names = "default";
-      pinctrl-0 = <&wake_mcugpio1_pins_default>;
+         pinctrl-names = "default";
+         pinctrl-0 = <&wake_mcugpio1_pins_default>;
 
-   Setup the interrupt parent and interrupt as MCU_GPIO0,
+   3. Setup the interrupt parent as MCU_GPIO0, then setup the interrupt.
 
-   .. code-block:: dts
+      .. code-block:: dts
 
-      interrupt-parent = <&mcu_gpio0>;
-      interrupts = <4 IRQ_TYPE_EDGE_RISING>;
+         interrupt-parent = <&mcu_gpio0>;
+         interrupts = <4 IRQ_TYPE_EDGE_RISING>;
 
-   Now, under the switch node, add the following:
+   4. Create following child node as a ``switch`` node:
 
-   .. code-block:: dts
+      .. code-block:: dts
 
-      switch {
+         switch {
                   label = "MCUGPIO";
                   linux,code = <143>;
                   gpios = <&mcu_gpio0 4 GPIO_ACTIVE_LOW>;
                   wakeup-source;
-      };
+         };
 
-   #. label: Descriptive name of the switch node. If the MCU GPIO node is setup
-      correctly, the label will appear under /proc/interrupts:
+      * label: Descriptive name of the switch node. If the MCU GPIO node is setup
+        correctly, the label will appear under :file:`/proc/interrupts`.
+      * linux,code: Keycode to emit.
+      * gpios: The GPIO required to be used as the gpio-key.
+      * wakeup-source:
+        `wakeup-source <https://www.kernel.org/doc/Documentation/devicetree/bindings/power/wakeup-source.txt>`__
+        property describes devices which have wakeup capability.
 
-       .. code-block:: console
+   5. To confirm that gpio_keys can wakeup the system from Deep Sleep or MCU
+      Only mode, check :file:`/proc/interrupts` for the label:
 
-           root@<machine>:~# cat /proc/interrupts | grep "MCUGPIO"
-           273:          0          0          0          0      GPIO  4 Edge    -davinci_gpio  MCUGPIO
+      .. code-block:: console
 
-   #. linux,code: Keycode to emit.
-   #. gpios: the gpio required to be used as the gpio-key.
-   #. wakeup-source:
-      `wakeup-source <https://www.kernel.org/doc/Documentation/devicetree/bindings/power/wakeup-source.txt>`__
-      property describes devices which have wakeup capability.
+         root@<machine>:~# cat /proc/interrupts | grep "MCUGPIO"
+         273:          0          0          0          0      GPIO  4 Edge    -davinci_gpio  MCUGPIO
 
-   This indicates that gpio_keys can wake-up the system from Deep Sleep or MCU Only mode.
+      This indicates that gpio_keys can wake-up the system from Deep Sleep or MCU Only mode.
 
    The MCU GPIOs can be used to wakeup the system from Deep Sleep because MCU
    GPIOs are in a power domain that stays ON even when the SoC is in Deep Sleep.
