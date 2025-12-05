@@ -1,3 +1,5 @@
+.. _rogue-build-guide:
+
 ###########
 Build guide
 ###########

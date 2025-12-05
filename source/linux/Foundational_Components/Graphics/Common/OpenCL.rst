@@ -1,5 +1,7 @@
 .. include:: <isonum.txt>
 
+.. _opencl-api-overview:
+
 ######
 OpenCL
 ######

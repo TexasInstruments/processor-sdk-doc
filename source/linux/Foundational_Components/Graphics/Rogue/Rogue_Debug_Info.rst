@@ -19,8 +19,6 @@ libraries:
      - Try several blit operations and display them to the screen
    * - ``rgx_compute_test``
      - Try several different compute tasks on the core
-   * - ``rgx_kicksync_test``
-     - Try several processes on the core to stress the KickSync API
    * - ``rgx_triangle_test``
      - Render a triangle to the attached display
    * - ``rgx_twiddling_test``
@@ -31,9 +29,6 @@ set expected to be available in most ti-img-rogue-umlibs releases and are the
 most useful for verifying GPU functionality.
 
 The order of operation to verify fundamental GPU functionality is as follows:
-
-   #. Use ``rgx_kicksync_test`` to verify the GPU can communicate with the
-      kernel module.
 
    #. Use ``rgx_compute_test`` to verify that the GPU is able to handle a proper
       compute load.
