@@ -13,7 +13,6 @@ Host
    How_to_Guides/Host/How_to_Flash_Linux_System_from_U-boot
    How_to_Guides/Host/Customizing_the_SDK_Splash_Screen
    How_to_Guides/Host/AM335x_ICEv2_flash_erase
-   How_to_Guides/Host/How_to_Setup_Ubuntu_1404_Network_Boot
    How_to_Guides/Host/Additional_How_to_Guide_Links
    How_to_Guides/Host/AM335x_AM437x_Hardware_Migration_Guide
    How_to_Guides/Host/Program_the_eMMC_on_Beaglebone_Black

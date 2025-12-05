@@ -375,10 +375,6 @@ RTC-Only and RTC+DDR Mode
 
 RTC-Only and RTC+DDR modes are only supported on AM437x devices.
 
-.. ifconfig:: CONFIG_part_family in ('AM437X_family')
-
-   Please refer to :doc:`pm_rtc_ddr` for details.
-
 .. rubric:: DDR3 VTT Regulator Toggling
 
 Some boards using DDR3 have a VTT Regulator that must be shut off during

@@ -13,4 +13,3 @@ Linux Drivers
    PRU-ICSS/Linux_Drivers/PRU_ICSSG_Ethernet_sr10
    PRU-ICSS/Linux_Drivers/pru-sw-uart
    PRU-ICSS/Linux_Drivers/pruss-uart
-   PRU-ICSS/Linux_Drivers/pru-icssg-pwm

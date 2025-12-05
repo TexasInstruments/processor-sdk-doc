@@ -76,4 +76,3 @@ Machine Learning
    Foundational_Components/Machine_Learning/armnn
    Foundational_Components/Machine_Learning/arm_compute_library
    Foundational_Components/Machine_Learning/nnstreamer
-   Foundational_Components/Machine_Learning/tflite_j7
