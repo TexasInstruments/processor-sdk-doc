@@ -53,12 +53,12 @@ Released November 2025
 
 Processor SDK 11.02 Release has following new features:
 
- - 2025 LTS Stable Update to 6.12.57
- - New platform: Beaglebone Green Eco support
+ - 2025 LTS Stable Update to 6.12.49
+ - New platform: `BEAGL-BONE-GRN-ECO <https://www.ti.com/tool/BEAGL-BONE-GRN-ECO>`__ support
  - ICSSM bug fixes
- - Test automation improvements
-
-|
+ - ARM Analytics AI stack enabled in the filesystem
+ - LVGL (Light and Versatile Graphics Library) based interactive demo as out-of-the-box (OOB) on display
+ - Web-based dashboard (port 3000) for real-time CPU performance and Arm Audio analytics demo via standard web browser
 
 .. rubric:: SDK Components & Versions
    :name: sdk-components-versions
@@ -66,7 +66,7 @@ Processor SDK 11.02 Release has following new features:
 +--------------------------+----------------------------+
 | Component                | Version                    |
 +==========================+============================+
-| Linux Kernel             | 6.12.57 (2025 LTS)         |
+| Linux Kernel             | 6.12.49 (2025 LTS)         |
 +--------------------------+----------------------------+
 | U-Boot                   | 2025.01                    |
 +--------------------------+----------------------------+
@@ -102,8 +102,8 @@ Build Information
      - :ref:`Build Config <Build-U-Boot-label>`
    * - Linux Kernel
      - `ti-linux-6.12.y <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/log/?h=ti-linux-6.12.y>`__
-     - non-RT- `11.02.05 <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tag/?h=11.02.05>`__ , RT- `11.02.05-rt <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tag/?h=11.02.05-rt>`__
-     - `non-RT <https://git.yoctoproject.org/meta-ti/tree/meta-ti-bsp/recipes-kernel/linux/linux-ti-staging-6.12/ti33x/defconfig?h=11.02.05>`__ , `RT <https://git.yoctoproject.org/meta-ti/tree/meta-ti-bsp/recipes-kernel/linux/linux-ti-staging-rt-6.12/ti33x/defconfig?h=11.02.05>`__
+     - `11.02.05 <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tag/?h=11.02.05>`__
+     - `non-RT <https://git.yoctoproject.org/meta-ti/tree/meta-ti-bsp/recipes-kernel/linux/linux-ti-staging-6.12/ti33x/defconfig?h=11.02.05>`__
    * - meta-ti
      - `scarthgap <https://git.yoctoproject.org/meta-ti/log/?h=scarthgap>`__
      - `11.02.05 <https://git.yoctoproject.org/meta-ti/tag/?h=11.02.05>`__

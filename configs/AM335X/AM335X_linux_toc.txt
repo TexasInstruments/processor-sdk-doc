@@ -18,7 +18,7 @@ devices/AM335X/linux/Release_Specific
 devices/AM335X/linux/Release_Specific_Release_Notes
 devices/AM335X/linux/Release_Specific_Migration_Guide
 devices/AM335X/linux/Release_Specific_Performance_Guide
-linux/Release_Specific_Yocto_layer_Configuration
+devices/AM335X/linux/Release_Specific_Yocto_layer_Configuration
 linux/Release_Specific_Supported_Platforms_and_Versions
 linux/Foundational_Components
 linux/Foundational_Components_U-Boot
