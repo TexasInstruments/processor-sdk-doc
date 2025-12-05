@@ -1068,3 +1068,9 @@ On J7VCL:
    ptp4l[447.707]: master offset      15459 s2 freq   -2401 path delay    180152
    ptp4l[448.707]: master offset        256 s2 freq  -12966 path delay    180152
    ptp4l[449.707]: master offset      -4951 s2 freq  -18096 path delay    180152
+
+.. note::
+
+   Switch Mode can also be tested in a configuration where the DUT acts as a master
+   and DUTs connected to it acting as slaves. The setup and commands will be the
+   same as those used for ICSSG. For further details, refer to :ref:`icssg_ptp_switch`.
