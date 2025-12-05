@@ -60,7 +60,7 @@ sources is found to be enabled, Partial I/O is entered instead of poweroff.
 
 The following wakeup sources have been configured for Partial I/O:
 mcu_uart0, mcu_mcan0, and mcu_mcan1. Partial I/O mode can only be tested
-when `k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=11.01.05>`__
+when `k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=11.02.08>`__
 overlay is loaded. Please refer to :ref:`How to enable DT overlays<howto_dt_overlays>` for more details.
 
 After Linux boots, the MCAN wakeup for Partial I/O is enabled.
@@ -122,7 +122,7 @@ I/O Only Plus DDR
    The wakeup sources that can be used to wake the system from I/O Only Plus
    DDR are mcu_uart0, mcu_mcan0, mcu_mcan1 and wkup_uart0. To use the mcu_mcan0
    and mcu_mcan1 wakeup sources, apply the
-   `k3-am62x-sk-lpm-io-ddr-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-io-ddr-wkup-sources.dtso?h=11.01.05>`__
+   `k3-am62x-sk-lpm-io-ddr-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-io-ddr-wkup-sources.dtso?h=11.02.08>`__
    overlay. Please refer to :ref:`How to enable DT overlays<howto_dt_overlays>`
    for more details. To use the mcu_uart0 and wkup_uart0 wakeup sources, direct
    register writes can be used to enable wakeup after Linux boots.
