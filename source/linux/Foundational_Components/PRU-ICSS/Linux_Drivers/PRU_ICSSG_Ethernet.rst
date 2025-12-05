@@ -877,30 +877,55 @@ Time Senstive Network (TSN) Offload Support
 SRAM Requirement
 ################
 
-The ICSSG Ethernet driver supports multiple instances of ICSSG each of which has two slices. Each ICSSG instance supports two Ethernet interfaces i.e. one per slice.
-
-SRAM Required for each ICSSG instance (per two ports) is as below.
-
-.. ifconfig:: CONFIG_part_variant in ('AM65X')
-
-  +------------------+--------------------------+-----------------------------------+
-  | SoC              | Mode                     | SRAM Required per ICSSG instance  |
-  +==================+==========================+===================================+
-  | AM65X SR 2.0     | Emac Mode                |             192 KB                |
-  +------------------+--------------------------+-----------------------------------+
-  | AM65X SR 2.0     | Emac Mode + Switch Mode  |             256 KB                |
-  +------------------+----------------------+---+-----------------------------------+
-
-.. ifconfig:: CONFIG_part_variant in ('AM64X')
-
-  +-----------+--------------------------+-----------------------------------+
-  | SoC       | Mode                     | SRAM Required per ICSSG Instance  |
-  +===========+==========================+===================================+
-  | AM64X     | Emac Mode                |             192 KB                |
-  +-----------+--------------------------+-----------------------------------+
+The Industrial Communication SubSystem Gigabit (ICSSG) Ethernet driver supports multiple ICSSG instances. Each ICSSG instance has two slices. Each ICSSG instance supports up to two Ethernet interfaces, one per slice. Each ICSSG instance requires 256KB of Static Random-Access Memory (SRAM), regardless of whether the ICSSG instance is implementing single Ethernet Media Access Control (EMAC) (one port), dual EMAC (two ports), or dual EMAC + switch mode.
 
 For each ICSSG instance, the SRAM required needs to be contiguous.
-PRUETH only uses the required amount of SRAM from the SRAM/MSMC pool. If PRUETH doesn't get the required amount of SRAM, the prueth_probe() API will return with -ENOMEM error.
+PRUETH only uses the required amount of SRAM from the SRAM pool. If PRUETH does not get the required amount of SRAM, the prueth_probe() API will return with -ENOMEM error.
+
+Allocating custom SRAM region
+*****************************
+
+By default, the ICSSG Ethernet driver uses the standard on-chip SRAM pool for its operation. However, in situations where this SRAM region is already allocated for other cores or purposes, you can define a custom SRAM region specifically for ICSSG Ethernet usage.
+
+Follow these steps to allocate a custom SRAM region:
+
+- Define a dedicated SRAM subregion in the SoC's main device tree file
+- Update your board-specific device tree to point the ICSSG Ethernet driver to this custom SRAM region
+
+Example configuration:
+
+First, define the ethernet-specific SRAM region within the on-chip SRAM node:
+
+.. code-block:: dts
+
+   /* In arch/arm64/boot/dts/ti/k3-am64-main.dtsi */
+   &cbass_main {
+       oc_sram: sram@70000000 {
+           /* existing properties */
+
+           ethernet_sram: ethernet-sram@00000 {
+               compatible = "mmio-sram";
+               reg = <0x00000 0x40000>; /* 256KB allocation */
+               pool;
+           };
+       };
+   };
+
+Then, in your board-specific device tree, update the ICSSG node to use this custom SRAM region:
+
+.. code-block:: dts
+
+   /* In arch/arm64/boot/dts/ti/k3-am64-<board>.dts */
+   &icssg1_eth {
+       /* Replace the default SRAM reference */
+       /* sram = <&oc_sram>; */ /* Original line (remove or comment out) */
+       sram = <&ethernet_sram>; /* New custom SRAM region */
+   };
+
+.. note::
+
+   - The custom SRAM region must be at least 256KB per ICSSG instance
+   - The allocation must be contiguous and 64KB aligned
 
 Firmware name handling
 ######################
