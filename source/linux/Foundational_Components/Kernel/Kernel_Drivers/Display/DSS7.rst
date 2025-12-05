@@ -287,7 +287,7 @@ Note: this is not a comprehensive list of features supported/not supported, and 
 
  The device-tree property "ti,dss-shared-mode-vp" can be used by processing core running Linux to enlist one or more video ports being used by it and the ownership related information can be set using ti,dss-shared-mode-owned-vp device-tree property.
 
- To summarize, below is the list of device-tree properties which can be added to display node, using these properties one can set up a resource paritioning scheme tailored as per the desired end use-case::
+ To summarize, below is the list of device-tree properties which can be added to display node, using these properties one can set up a resource paritioning scheme tailored as per the desired end use-case:
 
 .. ifconfig:: CONFIG_part_variant in ('AM62PX', 'J722S')
 
@@ -339,6 +339,7 @@ Unsupported Features/Limitations
         - **DisplayPort (MHDP)**
                 - MST
                 - 4K@60FPS Resolution
+
                 | For 4k@60FPS resolution, sometimes visual artifacts are seen due to Video Sync Loss.
                 | Therefore the maximum supported video resolution as of now is limited to 4K@30FPS (or equivalent)
                 | by limiting the dp phy-link rate to 2700Mbps.
@@ -347,6 +348,7 @@ Unsupported Features/Limitations
         - **DisplayPort (MHDP)**
                 - MST
                 - 4K@60FPS Resolution
+
                 | MHDP PHY has only 2 SERDES LANES dedicated to eDP and with the phy-link rate of 5400Mbps, the maximum
                 | data rate it can support is 10.8Gbps which is not sufficient for 4k@60FPS. So the maximum supported
                 | resolution is 4K@30FPS (and equivalent resolutions).
@@ -430,12 +432,12 @@ Another option is kms++, a C++11 library for kernel mode setting which includes 
     on the platform. The GPU, if present, associates with the card1, which leaves card2 for DSS1.
     In a case where GPU driver is not present, DSS1 will take up card1.
 
-    - **Note:** Most display applications and windowing managers are programmed in such a way that
-    they can only access a display DRM card (card0) and a GPU DRM card (card1). This is why, the
-    second DSS instance, will not show up running Weston or any framebuffer application, even when
-    GPU is not present, in which case the windowing manager will only use card0. This makes DSS1
-    completely available for a 2nd DRM Master. This can be a custom display application, helping out
-    in the most niche of use-cases.
+   .. note:: Most display applications and windowing managers are programmed in such a way that
+      they can only access a display DRM card (card0) and a GPU DRM card (card1). This is why, the
+      second DSS instance, will not show up running Weston or any framebuffer application, even when
+      GPU is not present, in which case the windowing manager will only use card0. This makes DSS1
+      completely available for a 2nd DRM Master. This can be a custom display application, helping out
+      in the most niche of use-cases.
 
 
 Testing tidss
