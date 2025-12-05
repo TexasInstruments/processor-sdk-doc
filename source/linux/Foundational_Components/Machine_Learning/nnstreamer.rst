@@ -1,3 +1,5 @@
+.. _nnstreamer-label:
+
 NNStreamer
 ==========
 
@@ -37,7 +39,7 @@ Run the included unit tests:
 To list available elements:
 
 .. code-block:: console
-      
+
     root@am62xx-evm:~# gst-inspect-1.0 | grep nnstreamer
     nnstreamer:  tensor_aggregator: TensorAggregator
     nnstreamer:  tensor_converter: TensorConverter
