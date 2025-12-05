@@ -32,8 +32,7 @@ What is Needed
 *  A mini-USB or Ethernet cable to connect the Beaglebone Black to the host PC
 *  A 5V power supply compatible with the Beaglebone Black
 *  A Serial Debug Cable is recommended to monitor U-Boot outputs
-*  A configured `TFTP Server
-   <../Host/How_to_Setup_Ubuntu_1404_Network_Boot.html>`__
+*  A configured TFTP Server
 *  The following files:
 
   * :download:`**fetcher.sh** <files/fetcher.sh>` script
@@ -50,10 +49,6 @@ run on the flash.
 
    .. note:: We can use the prebuilt U-Boot images as-is with no modifications
       needed
-
-   .. note:: A configured TFTP Server is necessary for this guide. Steps to
-      properly configure a TFTP Server can be found `here
-      <../Host/How_to_Setup_Ubuntu_1404_Network_Boot.html>`__
 
    * Copy **u-boot-spl.bin-am335x-evm** and **u-boot-am335x-evm.img** files from
      **<Processor-SDK>/board-support/prebuilt-images/** into the root **/tftpboot/**
