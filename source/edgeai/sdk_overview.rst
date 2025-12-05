@@ -36,7 +36,7 @@ using a live camera and display.
 
 The SDK also enables an interplay of multiple open-source components such as
 GStreamer, OpenVx, OpenCV and deep learning runtime such as TFLite, ONNX and
-Neo-AI DLR. The reference applications showcase perception based examples such
+TVM-RT. The reference applications showcase perception based examples such
 as image classification, object detection and semantic segmentation in both
 Python and C++ variants. The SDK supports edit-build-debug cycles directly on
 the target and also on PC to cross compile and build the applications.

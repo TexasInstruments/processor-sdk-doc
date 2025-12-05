@@ -35,7 +35,7 @@ build and install steps please refer to **edgeai-app-stack** on `GitHub <https:/
 edgeai-gst-apps
 ---------------
 These are plug-and-play deep learning applications which support running open
-source runtime frameworks such as TFLite, ONNX and NeoAI-DLR with a variety of
+source runtime frameworks such as TFLite, ONNX and TVM-RT with a variety of
 input and output configurations.
 
 The latest source code with fixes can be pulled from `TI Edge AI GStreamer apps <https://github.com/TexasInstruments/edgeai-gst-apps>`_

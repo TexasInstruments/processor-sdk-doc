@@ -165,7 +165,7 @@ Model Artifacts and Deployments
 
 The SDK makes use of pre-compiled DNN (Deep Neural Network) models and performs
 inference using various OSRT (open source runtime) such as TFLite runtime,
-ONNX runtime and Neo AI-DLR (related to TVM).
+ONNX runtime and TVM-RT.
 
 Model deployment can be performed in several ways --
 Please view the :doc:`Sample Apps page <./sample_apps>` for more details on
