@@ -32,7 +32,7 @@ transition to the selected state.
     .. rubric:: Enable Standby
 
     In order to enable Standby the `k3-am62x-sk-lpm-standby.dtso
-    <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-standby.dtso?h=11.01.05>`__
+    <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-standby.dtso?h=11.02.08>`__
     overlay should be applied. Refer to :ref:`How to enable DT overlays
     <howto_dt_overlays>` for more details. More information on what the overlay
     does is in the :ref:`linux-device-tree-label` section.
@@ -112,7 +112,7 @@ transition to the selected state.
 
     In order to implement Standby in Linux, an idle-states node has to be added
     and then referenced by the CPU node. The `k3-am62x-sk-lpm-standby.dtso
-    <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-standby.dtso?h=11.01.05>`__
+    <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-standby.dtso?h=11.02.08>`__
     can be used as a reference.
 
     .. code-block:: dts

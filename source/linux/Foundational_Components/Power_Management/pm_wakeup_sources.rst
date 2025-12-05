@@ -332,7 +332,7 @@ MCU GPIO
    source. However, if the application design doesn't rely on the MCU firmware
    then Linux can be used to configure the MCU GPIOs as a wakeup source. Refer
    to the ``mcu_gpio_key`` node in
-   `k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=11.01.05>`__
+   `k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=11.02.08>`__
    to use as a template to configure the desired MCU GPIO as a wakeup capable
    GPIO.
 
@@ -398,7 +398,7 @@ MCU GPIO
    :ref:`S/W Architecture of System Suspend<pm_sw_arch>`
 
    MCU GPIO wakeup can only be tested when
-   `k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=11.01.05>`__
+   `k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=11.02.08>`__
    overlay is loaded. Refer to :ref:`How to enable DT overlays<howto_dt_overlays>` for more details.
 
    Once the system has entered Deep Sleep or MCU Only mode as shown in the
@@ -545,7 +545,7 @@ Main UART
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
    To configure UART as an I/O daisy chain wakeup, refer to the
-   main_uart0 node in `k3-am62x-sk-common.dtsi <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-common.dtsi?h=11.01.16>`_
+   main_uart0 node in `k3-am62x-sk-common.dtsi <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-common.dtsi?h=11.02.08>`_
 
    .. code-block:: dts
 
@@ -585,7 +585,7 @@ Main UART
 .. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
    To configure UART as an I/O daisy chain wakeup, refer to the
-   main_uart0 node in `k3-am62a7-sk.dts <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62a7-sk.dts?h=11.01.16>`_
+   main_uart0 node in `k3-am62a7-sk.dts <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62a7-sk.dts?h=11.02.08>`_
 
    .. code-block:: dts
 
@@ -625,7 +625,7 @@ Main UART
 .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
    To configure UART as an I/O daisy chain wakeup, refer to the
-   main_uart0 node in `k3-am62p5-sk.dts <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62p5-sk.dts?h=11.01.16>`_
+   main_uart0 node in `k3-am62p5-sk.dts <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62p5-sk.dts?h=11.02.08>`_
 
    .. code-block:: dts
 
@@ -665,7 +665,7 @@ Main UART
 .. ifconfig:: CONFIG_part_variant in ('AM62LX')
 
    To configure UART as an I/O daisy chain wakeup, refer to the
-   main_uart0 node in `k3-am62l3-evm.dts <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62l3-evm.dts?h=11.01.16>`_
+   main_uart0 node in `k3-am62l3-evm.dts <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62l3-evm.dts?h=11.02.08>`_
 
    .. code-block:: dts
 
@@ -1001,7 +1001,7 @@ CAN UART I/O Daisy Chain
    "wakeup" state during suspend which enables CAN UART wakeup.
 
    The mcan_uart0 and mcan_uart1 nodes in
-   `k3-am62x-sk-lpm-io-ddr-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-io-ddr-wkup-sources.dtso?h=11.01.05>`__
+   `k3-am62x-sk-lpm-io-ddr-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-io-ddr-wkup-sources.dtso?h=11.02.08>`__
    can be used as a reference for enabling CAN UART wakeup.
 
    .. code-block:: text
@@ -1034,9 +1034,9 @@ CAN UART I/O Daisy Chain
       };
 
    CAN UART wakeup can be tested by using either the
-   `k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=11.01.05>`__
+   `k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=11.02.08>`__
    or
-   `k3-am62x-sk-lpm-io-ddr-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-io-ddr-wkup-sources.dtso?h=11.01.05>`__
+   `k3-am62x-sk-lpm-io-ddr-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-io-ddr-wkup-sources.dtso?h=11.02.08>`__
    overlays. Please refer to :ref:`How to enable DT overlays<howto_dt_overlays>`
    for more details.
 
