@@ -36,7 +36,8 @@ Building the SGX kernel module
 
 The latest branch has the most bug-fixes and has the widest general
 compatibility in modern applications. This is ``1.17.4948957/mesa/k6.1``, and
-despite the mention of kernel 6.1 it is also interoperable with kernel 6.6.
+despite the mention of kernel 6.1 it is also interoperable with kernel 6.6 and
+6.12.
 
 The :file:`INSTALL` file gives a brief overview of how to build and install the
 module. This gives you the common variables, but it does omit some of the more
