@@ -37,6 +37,7 @@ linux/Foundational_Components/U-Boot/UG-NOR
 linux/Foundational_Components/U-Boot/UG-UART
 linux/Foundational_Components/U-Boot/UG-SATA
 linux/Foundational_Components/U-Boot/UG-UFS
+linux/Foundational_Components/U-Boot/UG-DDRSS-J7
 linux/Foundational_Components/U-Boot/UG-HyperBus
 linux/Foundational_Components/U-Boot/UG-RemoteProc
 linux/Foundational_Components/U-Boot/UG-AVS
