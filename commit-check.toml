@@ -1,0 +1,29 @@
+# https://github.com/commit-check/commit-check
+
+[commit]
+# https://www.conventionalcommits.org
+conventional_commits = true
+subject_capitalized = false
+subject_imperative = true
+subject_max_length = 80
+subject_min_length = 5
+allow_commit_types = [
+	"build",
+	"chore",
+	"ci",
+	"docs",
+	"feat",
+	"fix",
+	"refactor",
+	"style",
+]
+allow_merge_commits = false
+allow_revert_commits = false
+allow_empty_commits = false
+allow_fixup_commits = false
+allow_wip_commits = false
+require_signed_off_by = true
+
+[branch]
+# https://conventional-branch.github.io/
+conventional_branch = false
