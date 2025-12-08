@@ -795,7 +795,7 @@ See also
 
 General information on Yocto, OpenEmbedded and Arago projects can be found at:
 
--  `Yocto Project <http://yoctoproject.org/>`__
--  `OpenEmbedded <http://openembedded.org/>`__
+-  `Yocto Project <https://yoctoproject.org/>`__
+-  `OpenEmbedded <https://openembedded.org/>`__
 -  `Arago Project <https://git.yoctoproject.org/meta-arago>`__
 
