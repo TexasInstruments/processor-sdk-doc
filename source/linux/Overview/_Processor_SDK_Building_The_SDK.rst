@@ -305,10 +305,11 @@ In addition to individual components packages, the following table
 provides a list of build targets supported. These are the <target> used
 in the command:
 
-``MACHINE=<machine> bitbake <target>``
+.. code-block:: console
 
-The "Build Output" is given relative to the
-**deploy-ti** directory.
+   MACHINE=<machine> bitbake <target>
+
+The build system places the "Build Output" relative to :file:`deploy-ti`
 
 
 .. ifconfig:: CONFIG_sdk in ('SITARA')
@@ -724,7 +725,6 @@ The "Build Output" is given relative to the
 Recipes
 -------
 
-
 .. rubric:: Recipe Basics
    :name: Recipe Basics
 
@@ -733,98 +733,62 @@ granularity of recipe development and debug. Specifying a recipe name,
 minus the version (if the version is appended to the name), will build
 the recipe and all its dependencies.
 
-.. ifconfig:: CONFIG_sdk in ('SITARA')
+For example, the following command builds only the zlib recipe and all the
+dependencies it defines.
 
-   For example, the command below builds only the opencl recipe and all the
-   dependencies it defines.
+.. code-block:: console
 
-   ``MACHINE=<machine> bitbake opencl``
+   MACHINE=<machine> bitbake zlib
 
-   After the bitbake command above is successfully done,
-   :file:`arago-tmp-[toolchain]/work/<machine>-linux-gnueabi/opencl` directory
-   will be available including the original source code under the git
-   folder, independent shared objects (.so files) under packages-split
-   folder, and IPKs under deploy-ipks folder.
+After the preceding bitbake command completes successfully, the
+:file:`arago-tmp-default-glibc/work/aarch64-oe-linux/zlib` directory gets created.
+It has the original source code, shared objects (.so files) in the packages-split folder
+and IPK packages in the deploy-ipks folder.
 
-.. ifconfig:: CONFIG_sdk in ('JACINTO','j7_foundational')
+.. note::
 
-   For example, the command below builds only the k3conf recipe and all the
-   dependencies it defines.
-
-   ``MACHINE=<machine> bitbake k3conf``
-
-   After the bitbake command above is successfully done,
-   **arago-tmp-[toolchain]/work/<machine>-linux/k3conf** directory
-   will be available including the original source code under the git
-   folder, independent shared objects (.so files) under packages-split
-   folder, and IPKs under deploy-ipks folder.
-
-.. note:: Please note that the output of a recipe can be in another folder under "arago-tmp-[toolchain]/work" directory, depending on the defines of the recipe.
-
+   Please note that the output of a recipe can be in another folder under :file:`arago-tmp-[toolchain]/work` directory, depending on the defines of the recipe.
+   You can call the following command from yocto's build directory to get the path to the workdir of your recipe.
+   
+   .. code-block:: console
+      
+      MACHINE=<machine> bitbake-getvar -r <recipe-name> WORKDIR --value 
 
 .. rubric:: Forced Re-compilation
    :name: Forced Re-compilation
 
-.. ifconfig:: CONFIG_sdk in ('SITARA')
+When needed, source code under the work directory (e.g.,
+:file:`arago-tmp-default-glibc/work/aarch64-oe-linux/zlib/<version>/zlib-<version>`) can
+be modified. After the modification is done, run the following commands
+to force recompilation with the new code and rebuilding of the recipe,
+For example,
 
-   When needed, source code under the work directory (e.g.,
-   **arago-tmp-[toolchain]/work/<machine>-linux-gnueabi/opencl**/git) can
-   be modified. After the modification is done, run the following commands
-   to force recompilation with the new code and rebuilding of the recipe,
-   e.g.,
-   ``MACHINE=<machine> bitbake opencl --force -c compile``
+.. code-block:: console
 
-   ``MACHINE=<machine> bitbake opencl``
-
-.. ifconfig:: CONFIG_sdk in ('JACINTO','j7_foundational')
-
-   When needed, source code under the work directory (e.g.,
-   **arago-tmp-[toolchain]/work/<machine>-linux/k3conf**/git) can
-   be modified. After the modification is done, run the following commands
-   to force recompilation with the new code and rebuilding of the recipe,
-   e.g.,
-
-   ``MACHINE=<machine> bitbake k3conf --force -c compile``
-
-   ``MACHINE=<machine> bitbake k3conf``
+   MACHINE=<machine> bitbake zlib --force -c compile
+   MACHINE=<machine> bitbake zlib
 
 .. rubric:: Installing Package
    :name: installing-package
 
-.. ifconfig:: CONFIG_sdk in ('SITARA')
+To install a modified and rebuilt package, copy the new IPKs from the
+deploy-ipks folder (e.g., :file:`arago-tmp-default-glibc/work/aarch64-oe-linux/zlib/<version>/deploy-ipks`)
+to the target system and then run the following command to install the IPKs:
 
-   To install a modified and rebuilt package, copy the new IPKs from the
-   deploy-ipks folder (e.g.,
-   **arago-tmp-[toolchain]/work/<machine>-linux-gnueabi/opencl/[version]/deploy-ipks**)
-   to the target system and then run the following command to install the
-   IPKs:
+.. code-block:: console
 
-   ``opkg install [package_ipk].ipk``
-
-.. ifconfig:: CONFIG_sdk in ('JACINTO','j7_foundational')
-
-   To install a modified and rebuilt package, copy the new IPKs from the
-   deploy-ipks folder (e.g.,
-   **arago-tmp-[toolchain]/work/<machine>-linux/k3conf/[version]/deploy-ipks**)
-   to the target system and then run the following command to install the
-   IPKs:
-
-   ``opkg install [package_ipk].ipk``
+   opkg install [package_ipk].ipk
 
 .. rubric:: Cleaning a Built Recipe
    :name: cleaning-a-built-recipe
 
-A built recipe can be cleaned using:
+A built recipe can be entirely cleaned using:
 
-``MACHINE=<machine> bitbake <target> -c cleansstate``
+.. code-block:: console
 
-or
+   MACHINE=<machine> bitbake <target> -c cleanall
 
-``MACHINE=<machine> bitbake <target> -c cleanall``
-
-The cleansstate task will clean recipe's work directory and remove the
-recipe's output from the dependency tree used by other recipe's during
-compilation.
+The cleanall task removes all output files, shared state (sstate) cache and downloaded source files for a target (i.e. the contents of DL_DIR)
 
 See also
 ========
