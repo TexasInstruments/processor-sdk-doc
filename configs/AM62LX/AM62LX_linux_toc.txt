@@ -76,6 +76,7 @@ linux/Foundational_Components_Power_Management
 linux/Foundational_Components/Power_Management/pm_overview
 linux/Foundational_Components/Power_Management/pm_cpuidle
 linux/Foundational_Components/Power_Management/pm_am62lx_low_power_modes
+linux/Foundational_Components/Power_Management/pm_psci_s2idle
 linux/Foundational_Components/Power_Management/pm_wakeup_sources
 linux/Foundational_Components/Power_Management/pm_am62lx_debug
 
