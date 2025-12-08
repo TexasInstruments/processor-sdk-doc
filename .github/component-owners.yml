@@ -33,34 +33,39 @@ components:
   source/devices/AM437x/linux: *sitara_legacy_list
   source/devices/AM65X/linux: *sitara_legacy_list
 
-  source/devices/AM64X/linux: *mpu_list
+  source/devices/AM64X/linux:
+    - Pratham-T
+
   source/devices/AM62X/linux:
     - DhruvaG2000
-    - texasinstruments/sitara-mpu-linux-sdk
+    - santhosh21
 
   source/devices/AM62AX/linux:
-    - texasinstruments/sitara-mpu-linux-sdk
+    - cshilwant
+    - PrathamTI
 
   source/devices/AM62AX/edgeai:
     - cshilwant
-    - jeevantelukula
+    - Akshay-Abdar
+
+  source/devices/AM62DX/linux:
+    - paresh-bhagat12
 
   source/devices/AM62PX/linux:
-    - AashvijShenai
-    - texasinstruments/sitara-mpu-linux-sdk
+    - jeevantelukula
+    - jainswamil
 
   source/devices/AM62LX/linux:
-    - texasinstruments/sitara-mpu-linux-sdk
     - bryanbrattlof
-    - r-vignesh
+    - sskartheekadivi
 
   source/linux/Overview:
-    - texasinstruments/sitara-mpu-linux-sdk
-    - aniket-l
+    - praneethbajjuri
+    - gehariprasath
+    - uditkumarti
 
   source/linux/Release_Specific:
-    - texasinstruments/sitara-mpu-linux-sdk
-    - aniket-l
+    - jeevantelukula
     - praneethbajjuri
     - uditkumarti
     - gehariprasath  
@@ -80,6 +85,7 @@ components:
   source/linux/Foundational_Components/U-Boot:
     - bryanbrattlof
     - jmenti
+    - ArchUsr64
 
   source/linux/Foundational_Components/Kernel:
     - devarsht
