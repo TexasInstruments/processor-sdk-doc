@@ -20,13 +20,12 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha }}
 
       - name: Check commit
-        uses: commit-check/commit-check-action@v1
+        uses: commit-check/commit-check-action@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           message: true
           author-name: true
           author-email: true
-          commit-signoff: true
           job-summary: true
           pr-comments: false
