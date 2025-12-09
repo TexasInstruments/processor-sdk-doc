@@ -17,6 +17,6 @@ directory of the `oe-layersetup git repo <https://git.ti.com/cgit/arago-project/
 +--------------------------------------------------------+-----------------------------------+------------------------------+
 | Config File                                            | Description                       | Supported machines/platforms |
 +========================================================+===================================+==============================+
-| processor-sdk-scarthgap-nonqt-11.01.05.03-config.txt   | Processor SDK 11.01.05.03 Release | am64xx-evm                   |
+| processor-sdk-scarthgap-nonqt-11.02.08.02-config.txt   | Processor SDK 11.02.08.02 Release | am64xx-evm                   |
 +--------------------------------------------------------+-----------------------------------+------------------------------+
 

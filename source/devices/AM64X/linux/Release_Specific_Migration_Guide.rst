@@ -11,6 +11,14 @@ of the Processor SDK Linux AM64X.
 Processor SDK Linux AM64X 11.xx Releases
 ****************************************
 
+Processor SDK 11.02.08.02
+=========================
+- This is the third reference release on the 2025 LTS stream with 6.12 Kernel, 2025.01 U-Boot and Yocto Scarthgap/5.0
+- ATF 2.13+
+- OPTEE 4.7.0
+- Yocto Scarthgap/5.0
+- Platforms Supported : AM64x 2.0 (HS-FS) : `EVM <https://www.ti.com/tool/TMDS64EVM>`__ , `SK <https://www.ti.com/tool/SK-AM64B>`__
+
 Processor SDK 11.01.05.03
 =========================
 - This is the second reference release on the 2025 LTS stream with 6.12 Kernel, 2025.01 U-Boot and Yocto Scarthgap/5.0
