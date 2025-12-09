@@ -32,7 +32,7 @@ driver and additionally a Cryptodev kernel module (for OpenSSL) is used
 to access them.  Other devices use the pure software implementation of these
 cryptographic operations.
 
-|__PART_FAMILY_DEVICE_NAMES__| SoC supports a hardware accelerator called
+|__PART_FAMILY_NAME__| SoC supports a hardware accelerator called
 DATA TRANSFORM AND HASHING ENGINE (DTHE) v2 for crypto operations.
 
 The kernel configuration has already been set up in the SDK and no further

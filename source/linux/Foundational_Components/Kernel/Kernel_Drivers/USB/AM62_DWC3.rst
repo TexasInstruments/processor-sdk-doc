@@ -15,7 +15,7 @@ with on-chip  HS/FS/LS (USB2.0) PHY.
 TI SoC Integration
 ******************
 
-The USB subsystem is integrated in TI |__PART_FAMILY_DEVICE_NAMES__| devices.
+The USB subsystem is integrated in TI |__PART_FAMILY_NAME__| devices.
 
 Starter Kit (SK)
 ****************

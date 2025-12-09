@@ -83,7 +83,7 @@ cryptographic operations.
 
 .. ifconfig:: CONFIG_crypto in ('sa2ul')
 
-   |__PART_FAMILY_DEVICE_NAMES__| SoCs support a hardware accelerator called
+   |__PART_FAMILY_NAME__| SoCs support a hardware accelerator called
    Security Accelerator 2/3 Ultra Light (SA2UL/SA3UL) for crypto operations.
 
 The kernel configuration has already been set up in the SDK and no further

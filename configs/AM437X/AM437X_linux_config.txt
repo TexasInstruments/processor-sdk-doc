@@ -14,7 +14,6 @@
 Replacement Variables
 ---------------------
 '__PART_FAMILY_NAME__'           : 'AM437x'
-'__PART_FAMILY_DEVICE_NAMES__'   : 'AM437x'
 '__PRODUCT_LINE_NAME__'          : 'Sitara'
 '__SDK_BUILD_MACHINE__'          : 'am437x-evm'
 '__SDK_FULL_NAME__'              : 'Processor SDK Linux'

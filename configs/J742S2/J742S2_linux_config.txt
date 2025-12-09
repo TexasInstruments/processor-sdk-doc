@@ -14,7 +14,6 @@
 Replacement Variables
 ---------------------
 '__PART_FAMILY_NAME__'           : 'J742S2'
-'__PART_FAMILY_DEVICE_NAMES__'   : 'J742S2'
 '__PRODUCT_LINE_NAME__'          : 'Jacinto'
 '__SDK_BUILD_MACHINE__'          : 'j742s2-evm'
 '__SDK_FULL_NAME__'              : 'Processor SDK Linux J742s2'

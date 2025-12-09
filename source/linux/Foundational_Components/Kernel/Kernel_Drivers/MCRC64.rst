@@ -5,7 +5,7 @@ MCRC64
    :name: introduction-linux-mcrc64
 
 The MCRC64 driver provides access to the hardware MCRC64 engine
-available on |__PART_FAMILY_DEVICE_NAMES__| devices. This driver is
+available on |__PART_FAMILY_NAME__| devices. This driver is
 available as kernel module in the current SDK release.
 
 It supports crc64 hardware acceleration.
@@ -19,7 +19,7 @@ Other devices use the pure software implementation of these crc64 calculations.
 
 .. ifconfig:: CONFIG_mcrc64 in ('mcrc64')
 
-    |__PART_FAMILY_DEVICE_NAMES__| SoCs support a hardware accelerator called
+    |__PART_FAMILY_NAME__| SoCs support a hardware accelerator called
     MCRC64 engine for crc64 calculations.
 
 The kernel configuration has already been set up in the SDK and no further

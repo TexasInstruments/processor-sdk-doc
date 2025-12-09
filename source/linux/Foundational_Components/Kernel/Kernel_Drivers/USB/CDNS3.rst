@@ -14,7 +14,7 @@ controller with on-chip SS (USB3.1 Gen1) PHY and HS/FS/LS (USB2.0) PHY.
 TI SoC Integration
 ******************
 
-The USB subsystem is integrated in TI |__PART_FAMILY_DEVICE_NAMES__| devices.
+The USB subsystem is integrated in TI |__PART_FAMILY_NAME__| devices.
 
 EVM
 ***
@@ -43,7 +43,7 @@ EVM
 
 .. ifconfig:: CONFIG_part_variant in ('J784S4, J742S2')
 
-   The following diagram depicts USB integration in |__PART_FAMILY_DEVICE_NAMES__| EVM.
+   The following diagram depicts USB integration in |__PART_FAMILY_NAME__| EVM.
 
    .. image:: /images/usb_j784s4_j742s2_evm.png
 
@@ -62,7 +62,7 @@ EVM
 
 .. ifconfig:: CONFIG_part_variant in ('J721S2')
 
-   The following diagram depicts USB integration in |__PART_FAMILY_DEVICE_NAMES__| EVM.
+   The following diagram depicts USB integration in |__PART_FAMILY_NAME__| EVM.
 
    .. image:: /images/usb_j721s2_evm.png
 
@@ -81,7 +81,7 @@ EVM
 
 .. ifconfig:: CONFIG_part_variant in ('J7200')
 
-   The following diagram depicts USB integration in |__PART_FAMILY_DEVICE_NAMES__| EVM.
+   The following diagram depicts USB integration in |__PART_FAMILY_NAME__| EVM.
 
    .. image:: /images/usb_j7200_evm.png
 
@@ -106,7 +106,7 @@ EVM
 
 .. ifconfig:: CONFIG_part_variant in ('J722S')
 
-   The following diagram depicts USB integration in |__PART_FAMILY_DEVICE_NAMES__| EVM.
+   The following diagram depicts USB integration in |__PART_FAMILY_NAME__| EVM.
 
    .. image:: /images/usb_j722s_evm.png
 
@@ -130,18 +130,18 @@ EVM
 
    **AM64X_EVM**
 
-   The following diagram depicts USB integration in |__PART_FAMILY_DEVICE_NAMES__| EVM.
+   The following diagram depicts USB integration in |__PART_FAMILY_NAME__| EVM.
 
    .. image:: /images/usb_am64xx_evm.png
 
-   The following image shows the top view of |__PART_FAMILY_DEVICE_NAMES__| EVM.
+   The following image shows the top view of |__PART_FAMILY_NAME__| EVM.
 
    .. image:: /images/am64xx_evm.png
 
-   The USB controller operates in USB2.0 dual role mode on |__PART_FAMILY_DEVICE_NAMES__|
+   The USB controller operates in USB2.0 dual role mode on |__PART_FAMILY_NAME__|
    EVM with a microAB receptacle (labeled as J24).
 
-   A 2x3 header (labeled as J23) is provided on |__PART_FAMILY_DEVICE_NAMES__|
+   A 2x3 header (labeled as J23) is provided on |__PART_FAMILY_NAME__|
    EVM to configure the port for host-only mode. Connecting Pin 1 and 2 to enable
    bulk capacitance on VBUS, and connecting Pin 5 and 6 to ground the ID pin.
 

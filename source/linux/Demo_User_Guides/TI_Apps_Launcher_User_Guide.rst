@@ -24,7 +24,7 @@ TI Apps Launcher is a QT Based Application launcher for TI Platforms. Currently,
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-   Additionally, The below demos are also available on the |__PART_FAMILY_DEVICE_NAMES__| platform specifically:
+   Additionally, The below demos are also available on the |__PART_FAMILY_NAME__| platform specifically:
 
    - ARM Analytics
 
@@ -45,13 +45,13 @@ Hardware Prerequisites
 
 .. ifconfig:: CONFIG_part_variant in ('J721S2','J784S4','J722S')
 
-   -  TI |__PART_FAMILY_DEVICE_NAMES__| SK
+   -  TI |__PART_FAMILY_NAME__| SK
 
 -  PC (Windows or Linux, to use serial terminal console)
 
 -  HDMI Monitor (to view the Demo on Display)
 
--  Ethernet Cable (to connect |__PART_FAMILY_DEVICE_NAMES__| SK to internet)
+-  Ethernet Cable (to connect |__PART_FAMILY_NAME__| SK to internet)
 
 -  USB Camera or OV5640 camera sensor module (for Live Camera)
 
@@ -155,7 +155,7 @@ Launching the Camera App
 
 .. ifconfig:: CONFIG_part_variant not in ('AM62X')
 
-    1. |__PART_FAMILY_DEVICE_NAMES__| has hardware codecs which are capable of encoding and decoding H.246 and H.265 Videos.
+    1. |__PART_FAMILY_NAME__| has hardware codecs which are capable of encoding and decoding H.246 and H.265 Videos.
 
     2. The Camera app supports recording and playback of video in H264 and H265 formats.
 
@@ -250,7 +250,7 @@ Launching the Benchmarks Demo
 
 .. ifconfig:: CONFIG_sdk in ('j7_foundational')
 
-   3. User will now see the list of Benchmarks available to test on TI |__PART_FAMILY_DEVICE_NAMES__|. Click on the `play button` infront of the benchmark you like to test. The image below is captured while running the `dhrystone`.
+   3. User will now see the list of Benchmarks available to test on TI |__PART_FAMILY_NAME__|. Click on the `play button` infront of the benchmark you like to test. The image below is captured while running the `dhrystone`.
 
    .. Image:: /images/benchmarks-system.png
       :height: 400

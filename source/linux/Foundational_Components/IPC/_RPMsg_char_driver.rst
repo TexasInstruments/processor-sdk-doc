@@ -45,7 +45,7 @@ char driver usage from userspace. This library provides an easy means to
 identify and open rpmsg character devices created by the kernel rpmsg-char
 driver.
 
-This library support TI K3 family of devices including |__PART_FAMILY_DEVICE_NAMES__|.
+This library support TI K3 family of devices including |__PART_FAMILY_NAME__|.
 
 The library provides 4 basic APIs wrapping all the rpmsg char driver calls.
 `Please check documentation in 'include/ti_rpmsg_char.h' for details.

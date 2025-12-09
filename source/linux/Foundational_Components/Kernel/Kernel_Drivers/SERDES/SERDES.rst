@@ -29,7 +29,7 @@ Types of SERDES
 
 .. ifconfig:: CONFIG_part_variant in ('AM64X')
 
-   The TI |__PART_FAMILY_DEVICE_NAMES__| SoC has a 1 Lane SERDES.
+   The TI |__PART_FAMILY_NAME__| SoC has a 1 Lane SERDES.
 
    .. rubric:: *1 Lane Serdes*
 
@@ -75,7 +75,7 @@ Types of SERDES
 
 .. ifconfig:: CONFIG_part_variant in ('J7200','J721S2','J784S4','J742S2')
 
-   The TI |__PART_FAMILY_DEVICE_NAMES__| SoC has a 4 Lane SERDES.
+   The TI |__PART_FAMILY_NAME__| SoC has a 4 Lane SERDES.
 
 .. ifconfig:: CONFIG_part_variant in ('J721E','J7200','J721S2','J784S4','J742S2')
 
@@ -171,7 +171,7 @@ modified based on the instructions mentioned in the SERDES Muxing section.
 
    .. rubric:: *Supported 4 Lane Serdes Configurations*
 
-   The 4 Lane SERDES instances in |__PART_FAMILY_DEVICE_NAMES__| SoC are configured by the
+   The 4 Lane SERDES instances in |__PART_FAMILY_NAME__| SoC are configured by the
    Torrent Serdes kernel driver:
 
    .. code-block:: text

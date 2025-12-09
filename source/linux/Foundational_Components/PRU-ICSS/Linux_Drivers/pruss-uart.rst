@@ -10,7 +10,7 @@ The kernel driver is at drivers/tty/serial/8250/8250_pruss.c.
 
 .. rubric:: Support Devices
 
-- |__PART_FAMILY_DEVICE_NAMES__|
+- |__PART_FAMILY_NAME__|
 
 
 .. rubric:: Supported Driver Features

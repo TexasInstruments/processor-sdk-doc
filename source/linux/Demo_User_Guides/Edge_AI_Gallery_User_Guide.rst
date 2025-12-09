@@ -6,14 +6,14 @@ Edge AI Gallery - User Guide
 Overview
 --------
 
-The |__PART_FAMILY_DEVICE_NAMES__| SK board has a QT based Out of Box application setup so that user can test the prepackaged models, with sample images, videos and optionally with a connected camera. The Demo also allows users to add their custom models, images, and videos to extend the functionality.
+The |__PART_FAMILY_NAME__| SK board has a QT based Out of Box application setup so that user can test the prepackaged models, with sample images, videos and optionally with a connected camera. The Demo also allows users to add their custom models, images, and videos to extend the functionality.
 
 All of the necessary equipment requirement and instructions are provided here.
 
 Hardware Prerequisites
 ----------------------
 
-- TI |__PART_FAMILY_DEVICE_NAMES__| SK
+- TI |__PART_FAMILY_NAME__| SK
 
 - PC (Windows or Linux, to use serial terminal console)
 

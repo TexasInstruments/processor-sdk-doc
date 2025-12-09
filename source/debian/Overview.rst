@@ -19,7 +19,7 @@ A few key highlights of this project are:
    <https://github.com/TexasInstruments/ti-debpkgs>`__ hosts these packages.
 
 -  This document also provides the required steps and instructions to customize the TI's components
-   for |__PART_FAMILY_DEVICE_NAMES__| System-on-a-Chip (SoC) and create the corresponding deb packages.
+   for |__PART_FAMILY_NAME__| System-on-a-Chip (SoC) and create the corresponding deb packages.
 
 -  The entire project is public and we accept community contributions as pull requests to GitHub
    repositories.

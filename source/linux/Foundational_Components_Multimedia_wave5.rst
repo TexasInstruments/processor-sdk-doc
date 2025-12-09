@@ -10,7 +10,7 @@ Multimedia Video Codec
 Introduction
 ************
 
-The Wave5 Codec IP is a combined H.264 and H.265 stateful encoder/decoder. It is found on the Texas Instruments |__PART_FAMILY_DEVICE_NAMES__| SoC.
+The Wave5 Codec IP is a combined H.264 and H.265 stateful encoder/decoder. It is found on the Texas Instruments |__PART_FAMILY_NAME__| SoC.
 
 Hardware capabilities:
    - Maximum resolution: 8192x8192 (It can handle this resolution, but not
@@ -347,7 +347,7 @@ GStreamer pipelines that enable the use of hardware-accelerated video
 decoding through the V4L2 GStreamer plugin.
 
 Below is a list of GStreamer plugins that utilize the hardware-accelerated
-video decoding/encoding in the |__PART_FAMILY_DEVICE_NAMES__|.
+video decoding/encoding in the |__PART_FAMILY_NAME__|.
 
    - ENCODER
       #. v4l2h264enc

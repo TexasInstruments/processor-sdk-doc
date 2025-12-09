@@ -88,7 +88,7 @@ The timing generator part of the video port is responsible for providing the pix
 SoC Hardware Description
 ------------------------
 
-SoC Family: |__PART_FAMILY_DEVICE_NAMES__|
+SoC Family: |__PART_FAMILY_NAME__|
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM65X')
 

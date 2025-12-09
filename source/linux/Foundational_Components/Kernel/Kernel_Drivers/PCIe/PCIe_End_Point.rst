@@ -109,7 +109,7 @@ PCIe End Point
 
 .. ifconfig:: CONFIG_part_family in ('AM64X_family','J7_family')
 
-    |__PART_FAMILY_DEVICE_NAMES__| is, by default, intended to be operated in
+    |__PART_FAMILY_NAME__| is, by default, intended to be operated in
     Root Complex mode. So in order to connect two boards, a specialized cable
     like below is required.
 

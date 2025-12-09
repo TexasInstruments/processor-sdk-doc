@@ -17,7 +17,7 @@ standard TSN features such as PTP, EST, CBS and IET.
 Instances of the CPSW Subsystem
 """"""""""""""""""""""""""""""""
 
-The TI |__PART_FAMILY_DEVICE_NAMES__| family of devices contain the following instances
+The TI |__PART_FAMILY_NAME__| family of devices contain the following instances
 of the CPSW Ethernet Subsystem:
 
 .. ifconfig:: CONFIG_part_family in ('J7_family')
