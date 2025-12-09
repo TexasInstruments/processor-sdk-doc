@@ -15,6 +15,7 @@ Kernel Drivers
    Foundational_Components/Kernel/Kernel_Drivers/MCAN
    Foundational_Components/Kernel/Kernel_Drivers/MCRC64
    Foundational_Components/Kernel/Kernel_Drivers/DCAN
+   Foundational_Components/Kernel/Kernel_Drivers/DDR
    Foundational_Components/Kernel/Kernel_Drivers/Display/DSS
    Foundational_Components/Kernel/Kernel_Drivers/Display/DSS7
    Foundational_Components/Kernel/Kernel_Drivers/Display/LCDC

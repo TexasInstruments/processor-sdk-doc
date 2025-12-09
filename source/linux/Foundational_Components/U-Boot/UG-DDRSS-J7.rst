@@ -11,6 +11,8 @@ integrate these blocks in the device. The K3 DDRSS driver
 (:file:`drivers/ram/k3-ddrss/k3-ddrss.c`) runs during the R5 SPL stage and is
 responsible for initializing and configuring the DDR subsystem.
 
+.. _ddr-init:
+
 ******************
 DDR Initialization
 ******************
@@ -21,6 +23,22 @@ training algorithms etc. for DDR initialization. The configuration DTSI can be
 generated using the `Sysconfig tool <https://dev.ti.com/sysconfig>`_ and
 selecting the software product as "DDR Configuration for \*" as well as the
 required device.
+
+.. _ddr-temperature-monitoring-uboot:
+
+**************************
+DDR Temperature Monitoring
+**************************
+
+For enabling temperature polling in the DDR subsystem, the configuration DTSI
+(see :ref:`ddr-init`) must be regenerated after selecting 'Yes'
+for LPDDR > DDRSS x > Enable DRAM Temperature Polling and also changing the DRAM
+Timing Parameters as prompted by the tool.
+
+.. ifconfig:: CONFIG_part_variant in ('J7200', 'J721E')
+
+   The kernel DDR driver utilizes this polling feature to provide base support for
+   dynamic DDR refresh rate changes (see :ref:`ddr-temperature-monitoring-linux`)
 
 **********
 Inline ECC
