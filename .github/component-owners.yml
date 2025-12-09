@@ -1,4 +1,5 @@
 ---
+# yamllint disable rule:line-length
 # Each component identified by its path prefix has a list of owners
 components:
 

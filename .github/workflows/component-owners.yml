@@ -1,7 +1,7 @@
 ---
 name: "component-owners"
 
-on:
+on:  # yamllint disable-line rule:truthy
   # It's insecure to use pull_request_target if you intend to check out code
   # from that PR. This just reads the config file in the pull request base, and
   # is not an issue currently. We will need to use this to comment on PRs coming

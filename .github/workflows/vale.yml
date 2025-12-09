@@ -1,7 +1,7 @@
 ---
 name: "vale"
 
-on: [pull_request]
+on: [pull_request]  # yamllint disable-line rule:truthy
 
 defaults:
   run:

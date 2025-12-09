@@ -1,7 +1,7 @@
 ---
 name: "check-files"
 
-on:
+on:  # yamllint disable-line rule:truthy
   pull_request:
     branches: [master]
     paths:
