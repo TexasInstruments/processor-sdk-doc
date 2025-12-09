@@ -17,11 +17,11 @@ directory of the `oe-layersetup git repo <https://git.ti.com/cgit/arago-project/
 +-------------------------------------------------------------------+-----------------------------------+----------------------------------------------------------+
 | Config File                                                       | Description                       | Supported machines/platforms                             |
 +===================================================================+===================================+==========================================================+
-| processor-sdk-scarthgap-chromium-11.01.05.03-config.txt           | Processor SDK 11.01.05.03 Release | am62xx-evm, am62xx-lp-evm, beagleplay-ti                 |
+| processor-sdk-scarthgap-chromium-11.02.08.02-config.txt           | Processor SDK 11.02.08.02 Release | am62xx-evm, am62xx-lp-evm, beagleplay-ti                 |
 +-------------------------------------------------------------------+-----------------------------------+----------------------------------------------------------+
-| processor-sdk-scarthgap-11.01.05.03-config.txt                    | Processor SDK 11.01.05.03 Release | am62xx-evm, am62xx-lp-evm, am62xxsip-evm, beagleplay-ti  |
+| processor-sdk-scarthgap-11.02.08.02-config.txt                    | Processor SDK 11.02.08.02 Release | am62xx-evm, am62xx-lp-evm, am62xxsip-evm, beagleplay-ti  |
 +-------------------------------------------------------------------+-----------------------------------+----------------------------------------------------------+
-| processor-sdk-scarthgap-selinux-11.01.05.03-config.txt            | Processor SDK 11.01.05.03 Release | am62xx-evm, am62xx-lp-evm, am62xxsip-evm, beagleplay-ti  |
+| processor-sdk-scarthgap-selinux-11.02.08.02-config.txt            | Processor SDK 11.02.08.02 Release | am62xx-evm, am62xx-lp-evm, am62xxsip-evm, beagleplay-ti  |
 +-------------------------------------------------------------------+-----------------------------------+----------------------------------------------------------+
 
-The oe-layersetup configuration, as defined in ``processor-sdk-scarthgap-chromium-11.01.05.03-config.txt``, is used for configuring the meta layers in the yocto SD card image available on |__SDK_DOWNLOAD_URL__|.
+The oe-layersetup configuration, as defined in ``processor-sdk-scarthgap-chromium-11.02.08.02-config.txt``, is used for configuring the meta layers in the yocto SD card image available on |__SDK_DOWNLOAD_URL__|.
