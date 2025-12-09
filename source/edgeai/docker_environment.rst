@@ -1,8 +1,8 @@
 .. _pub_edgeai_docker_env:
 
-==================
+##################
 Docker Environment
-==================
+##################
 
 Docker is a set of "platform as a service" products that uses the OS-level
 virtualization to deliver software in packages called containers.
@@ -16,8 +16,9 @@ additional 3rd party applications and packages as required.
 
 .. _pub_edgeai_docker_build_ontarget:
 
+*********************
 Building Docker image
-======================
+*********************
 
 The `docker/Dockerfile` in the edgeai-gst-apps repo describes the recipe for
 creating the Docker container image. Feel free to review and update it to
@@ -40,8 +41,9 @@ Initiate the Docker image build as shown,
 
    /opt/edgeai-gst-apps/docker# ./docker_build.sh
 
+****************************
 Running the Docker container
-============================
+****************************
 
 Enter the Docker session as shown,
 
@@ -83,16 +85,17 @@ access camera, display and other hardware accelerators the SoC has to offer.
 
 .. _pub_edgeai_docker_additional_commands:
 
+**************************
 Additional Docker commands
-==========================
+**************************
 
 .. note::
 
    This section is provided only for additional reference and not required to
    run out-of-box demos
 
-**Commit Docker container**
-
+Commit Docker container
+=======================
 Generally, containers have a short life cycle. If the container has any local
 changes it is good to save the changes on top of the existing Docker image.
 When re-running the Docker image, the local changes can be restored.
@@ -111,7 +114,8 @@ the container.
 For more information refer:
 `Commit Docker image <https://docs.docker.com/engine/reference/commandline/commit/>`_
 
-**Save Docker Image**
+Save Docker Image
+=================
 
 Docker image can be saved as tar file by using the command below:
 
@@ -120,9 +124,10 @@ Docker image can be saved as tar file by using the command below:
    docker save --output <pre_built_docker_image.tar>
 
 For more information refer here.
-`Save Docker image <https://docs.docker.com/engine/reference/commandline/save/>`_
+`docker image save <https://docs.docker.com/engine/reference/commandline/save/>`_
 
-**Load Docker image**
+Load Docker image
+=================
 
 Load a previously saved Docker image using the command below:
 
@@ -131,9 +136,10 @@ Load a previously saved Docker image using the command below:
    docker load --input <pre_built_docker_image.tar>
 
 For more information refer here.
-`Load Docker image <https://docs.docker.com/engine/reference/commandline/load/>`_
+`docker image load <https://docs.docker.com/engine/reference/commandline/load/>`_
 
-**Remove Docker image**
+Remove Docker image
+===================
 
 Docker image can be removed by using the command below:
 
@@ -149,7 +155,8 @@ For more information refer
 `rmi reference <https://docs.docker.com/engine/reference/commandline/rmi/>`_ and
 `Image prune reference <https://docs.docker.com/engine/reference/commandline/image_prune/>`_
 
-**Remove Docker container**
+Remove Docker container
+=======================
 
 Docker container can be removed by using the command below:
 
@@ -220,7 +227,9 @@ current location is the desired location then exit this procedure.
 6. Anytime the SD card is updated with a new targetfs, steps (1), (3), and
    (4) need to be followed.
 
-**Additional references**
+*********************
+Additional references
+*********************
 
 | https://docs.docker.com/engine/reference/commandline/images/
 | https://docs.docker.com/engine/reference/commandline/ps/

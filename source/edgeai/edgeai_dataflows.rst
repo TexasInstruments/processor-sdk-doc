@@ -1,8 +1,8 @@
 .. _pub_edgeai_dataflows:
 
-=================
+#################
 Edge AI dataflows
-=================
+#################
 
 The reference edgeai application at a high level can be split into 3 parts,
 
@@ -16,11 +16,12 @@ GStreamer launch strings that is generated. User can interact with the applicati
 
 .. _pub_edgeai_optiflow_data_flow:
 
+********
 OpTIFlow
-====================
+********
 
-Image Classification
---------------------
+OpTIFlow - Image Classification
+===============================
 
 | **Input: USB Camera**
 | **DL Task: Classification**
@@ -58,8 +59,8 @@ GStreamer pipeline:
 
    OpTIFlow pipeline for image classification demo with USB camera and display
 
-Object Detection
---------------------
+OpTIFlow - Object Detection
+===========================
 
 | **Input: IMX219 Camera**
 | **DL Task: Detection**
@@ -99,8 +100,8 @@ GStreamer pipeline:
 
    OpTIFlow pipeline for object detection demo with IMX219 camera and save to file
 
-Semantic Segmentation
----------------------
+OpTIFlow - Semantic Segmentation
+================================
 
 | **Input: H264 Video**
 | **DL Task: Segmentation**
@@ -139,8 +140,8 @@ GStreamer pipeline:
 
    OpTIFlow pipeline for semantic segmentation demo with file input and remote streaming
 
-Single Input Multi Inference
-----------------------------
+OpTIFlow - Single Input Multi Inference
+=======================================
 
 | **Input: H264 Video**
 | **DL Task: Detection, Detection, Classification, Segmentation**
@@ -186,8 +187,8 @@ GStreamer pipeline:
 
    OpTIFlow pipeline for single input multi inference
 
-Multi Input Multi Inference
-----------------------------
+OpTIFlow - Multi Input Multi Inference
+======================================
 
 | **Input: USB Camera, H264 Video**
 | **DL Task: Detection, Detection, Classification, Segmentation**
@@ -235,11 +236,12 @@ GStreamer pipeline:
 
    OpTIFlow pipeline for multi input multi inference
 
+***************
 Python/C++ apps
-======================
+***************
 
-Image Classification
---------------------
+Python/C++ apps - Image Classification
+======================================
 
 | **Input: USB Camera**
 | **DL Task: Classification**
@@ -281,8 +283,8 @@ GStreamer output pipeline:
 
    Python/C++ application data-flow for image classification demo with USB camera and display
 
-Object Detection
---------------------
+Python/C++ apps - Object Detection
+==================================
 
 | **Input: IMX219 Camera**
 | **DL Task: Detection**
@@ -325,8 +327,8 @@ GStreamer output pipeline:
 
    Python/C++ application data-flow for object detection demo with IMX219 camera and save to file
 
-Semantic Segmentation
----------------------
+Python/C++ apps - Semantic Segmentation
+=======================================
 
 | **Input: H264 Video**
 | **DL Task: Segmentation**
@@ -368,8 +370,8 @@ GStreamer output pipeline:
 
    Python/C++ application data-flow for semantic segmentation demo with file input and remote streaming
 
-Single Input Multi Inference
-----------------------------
+Python/C++ apps - Single Input Multi Inference
+==============================================
 
 | **Input: H264 Video**
 | **DL Task: Detection, Detection, Classification, Segmentation**
@@ -419,8 +421,8 @@ GStreamer output pipeline:
 
    Python/C++ application data-flow for single input multi inference
 
-Multi Input Multi Inference
-----------------------------
+Python/C++ apps - Multi Input Multi Inference
+=============================================
 
 | **Input: USB Camera, H264 Video**
 | **DL Task: Detection, Detection, Classification, Segmentation**

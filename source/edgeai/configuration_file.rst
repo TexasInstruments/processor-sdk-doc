@@ -1,15 +1,15 @@
 .. _pub_edgeai_configuration:
 
-========================
+########################
 Configuring applications
-========================
+########################
 
 The demo config file uses YAML format to define input sources, models, outputs
-and finally the flows which defines how everything is connected. Config files
-for out-of-box demos are kept in :file:`edgeai-gst-apps/configs` folder. The
-folder contains config files for all the use cases and also multi-input and
+and finally the flows, which define how components connect to each other. The
+:file:`edgeai-gst-apps/configs` directory has the config files for out-of-box demos.
+The folder has config files for all the use cases and also multi-input and
 multi-inference case. The folder also has a template YAML file
-:file:`app_config_template.yaml` which has detailed explanation of all the
+:file:`app_config_template.yaml`, which has detailed explanation of all the
 parameters supported in the config file.
 
 Config file is divided in 4 sections:
@@ -19,8 +19,9 @@ Config file is divided in 4 sections:
 #. Outputs
 #. Flows
 
+******
 Inputs
-======
+******
 
 The input section defines a list of supported inputs like camera, video files etc.
 Their properties like shown below.
@@ -55,7 +56,7 @@ Below are the details of most commonly used inputs.
 .. _pub_edgeai_camera_sources:
 
 Camera sources (v4l2)
----------------------
+=====================
 
 **v4l2src** GStreamer element is used to capture frames from camera sources
 which are exposed as v4l2 devices. In Linux, there are many devices which are
@@ -79,9 +80,8 @@ and prints the detail like below in the console:
 
 script can also be run manually later to get the camera details.
 
-From the above log we can determine that 1 USB camera is connected
-(:file:`/dev/video-usb-cam0`), and 1 CSI camera is connected (:file:`/dev/video-imx219-cam0`) which is IMX219 raw
-sensor and needs ISP.
+The console shows one USB camera at :file:`/dev/video-usb-cam0` and
+one CSI camera at :file:`/dev/video-imx219-cam0` (an IMX219 raw sensor that requires ISP)
 
 Using this method, you can configure correct device for camera capture in the
 input section of config file.
@@ -109,10 +109,10 @@ camera to allow GStreamer to negotiate the format. ``rggb`` for sensor
 that needs ISP.
 
 Video sources
--------------
+=============
 
 H.264 and H.265 encoded videos can be provided as input sources to the demos.
-Sample video files are provided under :file:`/opt/edgeai-test-data/videos/`
+The :file:`/opt/edgeai-test-data/videos/` directory has sample video files.
 
 .. code-block:: yaml
 
@@ -135,12 +135,11 @@ By default the format is set to ``auto`` which will then use the GStreamer
 bin ``decodebin`` instead.
 
 Image sources
--------------
+=============
 
-JPEG compressed images can be provided as inputs to the demos. A sample set of
-images are provided under :file:`/opt/edgeai-test-data/images`. The names of the
-files are numbered sequentially and incrementally and the demo plays the files
-at the fps specified by the user.
+The demos accept JPEG-compressed images as inputs. The :file:`/opt/edgeai-test-data/images`
+directory has sample images. The filenames use sequential numbering, and the demo plays them
+at the user‑specified frame rate.
 
 .. code-block:: yaml
 
@@ -152,7 +151,7 @@ at the fps specified by the user.
       framerate: 1
 
 RTSP sources
-------------
+============
 
 H.264 encoded video streams either coming from a RTSP compliant IP camera or
 via RTSP server running on a remote PC can be provided as inputs to the demo.
@@ -165,8 +164,9 @@ via RTSP server running on a remote PC can be provided as inputs to the demo.
       height: 720
       framerate: 30
 
+******
 Models
-======
+******
 
 The model section defines a list of models that are used in the demo. Path to
 the model directory is a required argument for each model and rest are optional
@@ -200,9 +200,9 @@ Below are some of the use case specific properties:
 The content of the model directory and its structure is discussed in detail in
 :ref:`pub_edgeai_import_custom_models`
 
-
+*******
 Outputs
-=======
+*******
 
 The output section defines a list of supported outputs.
 
@@ -239,7 +239,7 @@ All supported outputs are listed in template config file.
 Below are the details of most commonly used outputs
 
 Display sink (kmssink)
-----------------------
+======================
 
 When you have only one display connected to the SK, kmssink will try to use
 it for displaying the output buffers. In case you have connected multiple
@@ -261,7 +261,7 @@ Following command finds out the connected displays available to use.
 Configure the required connector ID in the output section of the config file.
 
 Video sinks
------------
+===========
 The post-processed outputs can be encoded in H.264 format and stored on disk.
 Please specify the location of the video file in the configuration file.
 
@@ -273,7 +273,7 @@ Please specify the location of the video file in the configuration file.
       height: 1080
 
 Image sinks
------------
+===========
 The post-processed outputs can be stored as JPEG compressed images.
 Please specify the location of the image files in the configuration file.
 The images will be named sequentially and incrementally as shown.
@@ -286,7 +286,7 @@ The images will be named sequentially and incrementally as shown.
       height: 1080
 
 Remote sinks
-------------
+============
 Post-processed frames can be encoded as jpeg or h264 frames and send as udp packets
 to a port. Please specify the sink as remote in the configuration file. The udp port and
 host to send packets to can be defined. If not, default port is 8081 and host
@@ -302,17 +302,16 @@ is 127.0.0.1.
       host: 127.0.0.1
       encoding: jpeg  #(jpeg or h264)
 
-A NodeJS server is provided under :file:`/opt/edgeai-gst-apps/scripts/remote_streaming`
-which establishes a node server on the target and listens to the udp port (8081)
-on localhost (127.0.0.1) and can be used to view the frames remotely.
+The EdgeAI filesystem includes a Node.js server at :file:`/opt/edgeai-gst-apps/scripts/remote_streaming`.
+The server starts a local UDP listener on localhost (127.0.0.1) port 8081 and streams frames for remote viewing.
 
 .. code-block:: bash
 
    /opt/edgeai-gst-apps# node scripts/remote_streaming/server.js
 
-
+*****
 Flows
-=====
+*****
 
 The flows section defines how inputs, models and outputs are connected.
 Multiple flows can be defined to achieve multi input, multi inference as shown
@@ -338,17 +337,15 @@ for optimization. Along with input, models and outputs it is required to define
 plane. This is needed because multiple inference outputs can be rendered to same
 output (Ex: Display).
 
-
 GStreamer plugins
 =================
 
 The edgeai-gst-apps essentially constructs GStreamer pipelines for dataflow.
 This pipeline is constructed optimally and dynamically based on a pool of
-specific plugins available on the platform. The defined pool of plugins for
-different platform can be found in :file:`edgeai-gst-apps/configs/gst_plugin_maps.yaml`
-file.
+specific plugins available on the platform. See :file:`edgeai-gst-apps/configs/gst_plugin_maps.yaml`
+for the pool of plugins defined per platform.
 
-This file contains the plugin used for certain task and the property of plugin
+This file has the plugin used for certain task and the property of plugin
 (if applicable).
 
 Default GStreamer plugins map for |__PART_FAMILY_NAME__|

@@ -1,8 +1,8 @@
 .. _pub_edgeai_inference_models:
 
-====================
+####################
 Deep learning models
-====================
+####################
 
 Neural networks run on TI's C7xMMA accelerator using the TI Deep Learning (TIDL)
 software. Development tools are available for different levels of expertise to help
@@ -25,8 +25,9 @@ In each case, the goal is to acquire or generate a series of
 `"Model Artifacts" <#dnn-directory-structure>`_ that may be deployed to the
 |__PART_FAMILY_NAME__| SoC.
 
+***************************
 Pretrained Model Evaluation
-===========================
+***************************
 
 `TI Edge AI Model Zoo <https://github.com/TexasInstruments/edgeai-tensorlab/tree/main/edgeai-modelzoo>`__
 is a large collection of deep learning models validated to work on TI processors
@@ -54,8 +55,9 @@ out-of-box examples are available.
 Precompiled model artifacts may be downloaded directly from the TI model zoo with a browser
 or by using the `Model Downloader Tool`_ directly in the SDK.
 
+*********************
 Model Downloader Tool
----------------------
+*********************
 
 Use the **Model Downloader Tool** in the SDK to download more models on target as shown,
 
@@ -80,8 +82,9 @@ The script can also be used in a non-interactive way as shown below:
 
 .. _pub_edgeai_model_development_for_beginners:
 
+********************
 Model Training Tools
-====================
+********************
 
 Models within the TI model zoo are used as a starting point for "Transfer Learning",
 and may be retrained for custom use-cases on the developer's dataset. This is considered
@@ -116,8 +119,9 @@ Training code is open source and available for modification as necessary.
 
 .. _pub_edgeai_import_custom_models:
 
+********************
 Import Custom Models
-====================
+********************
 
 The Processor SDK Linux Edge AI for |__PART_FAMILY_NAME__| supports importing
 pre-trained custom models to run inference on target using the "Bring Your Own Model"

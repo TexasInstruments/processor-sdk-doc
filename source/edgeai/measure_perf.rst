@@ -1,14 +1,15 @@
 .. _pub_edgeai_perf_viz_tool:
 
-=====================
+#####################
 Measuring performance
-=====================
+#####################
 
 There are simple tools to get the performance numbers like core loadings, DDR bandwidths,
 HWA loadings, GStreamer element latencies etc.. on the bash terminal.
 
+********************************************
 GStreamer plugin for Performance measurement
---------------------------------------------
+********************************************
 
 This custom GStreamer plugin allows users to include these non-intrusive elements in the pipeline which
 overlays the performance information directly on the output image displayed on the screen. The entire processing,
@@ -48,8 +49,9 @@ A preview of performance overlay on the display is as shown,
       :scale: 30
       :align: center
 
+***************
 Perf-stats tool
----------------
+***************
 
 Perf-stats tool is a simple cpp application which prints stats on the terminal
 and updates it every second. To use this tool, it needs to be compiled and
@@ -78,8 +80,9 @@ below is the sample output of the tool
    DDR: WRITE BW: AVG =   332 MB/s, PEAK =  2138 MB/s
    DDR: TOTAL BW: AVG =  1787 MB/s, PEAK =  8278 MB/s
 
+*****************
 Parse GST Tracers
------------------
+*****************
 
 GStreamer has a feature called tracers to get useful statistics like element wise
 latency, cpu loading, etc. as a part of GST debug logs. These logs are very
