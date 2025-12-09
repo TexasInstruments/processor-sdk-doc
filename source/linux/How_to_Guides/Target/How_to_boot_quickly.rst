@@ -603,10 +603,10 @@ To measure the instance when the filesystem starts, navigate to :file:`init/main
 
     .. code-block:: console
 
-        [2025-10-08 15:25:02.847] NOTICE:  BL31: v2.13.0(release):v2.13.0-259-ge0c4d3903
-        [2025-10-08 15:25:02.847] NOTICE:  BL31: Built : 17:07:22, Oct  7 2025
-        [2025-10-08 15:25:03.567]
-        [2025-10-08 15:25:03.567] am62xx-evm login:
+        [2025-12-09 14:29:28.387] NOTICE:  BL31: v2.13.0(release):v2.13.0-259-ge0c4d3903
+        [2025-12-09 14:29:28.387] NOTICE:  BL31: Built : 06:45:06, Dec  7 2025
+        [2025-12-09 14:29:29.107]
+        [2025-12-09 14:29:29.107] am62xx-evm login:
 
     +-----------------+-----------+
     |      Stage      | Time (ms) |
@@ -617,9 +617,9 @@ To measure the instance when the filesystem starts, navigate to :file:`init/main
     +-----------------+-----------+
     |       SBL       |    200    |
     +-----------------+-----------+
-    |  Linux Kernel   |    530    |
+    |  Linux Kernel   |    549    |
     +-----------------+-----------+
-    |     Tiny FS     |    190    |
+    |     Tiny FS     |    171    |
     +-----------------+-----------+
     |      Total      |    966    |
     +-----------------+-----------+
