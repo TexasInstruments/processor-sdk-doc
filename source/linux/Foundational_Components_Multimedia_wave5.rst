@@ -111,93 +111,94 @@ with the upstream standards. This can be tested as follows:
    Compliance test for wave5-dec device /dev/video0:
 
    Driver Info:
-      Driver name      : wave5-dec
-      Card type        : wave5-dec
-      Bus info         : platform:4210000.video-codec
-      Driver version   : 6.6.44
-      Capabilities     : 0x84204000
-         Video Memory-to-Memory Multiplanar
-         Streaming
-         Extended Pix Format
-         Device Capabilities
-      Device Caps      : 0x04204000
-         Video Memory-to-Memory Multiplanar
-         Streaming
-         Extended Pix Format
-      Detected Stateful Decoder
+           Driver name      : wave5-dec
+           Card type        : wave5-dec
+           Bus info         : platform:30210000.video-codec
+           Driver version   : 6.12.57
+           Capabilities     : 0x84204000
+                   Video Memory-to-Memory Multiplanar
+                   Streaming
+                   Extended Pix Format
+                   Device Capabilities
+           Device Caps      : 0x04204000
+                   Video Memory-to-Memory Multiplanar
+                   Streaming
+                   Extended Pix Format
+           Detected Stateful Decoder
 
    Required ioctls:
-      test VIDIOC_QUERYCAP: OK
-      test invalid ioctls: OK
+           test VIDIOC_QUERYCAP: OK
+           test invalid ioctls: OK
 
    Allow for multiple opens:
-      test second /dev/video0 open: OK
-      test VIDIOC_QUERYCAP: OK
-      test VIDIOC_G/S_PRIORITY: OK
-      test for unlimited opens: OK
+           test second /dev/video0 open: OK
+           test VIDIOC_QUERYCAP: OK
+           test VIDIOC_G/S_PRIORITY: OK
+           test for unlimited opens: OK
 
    Debug ioctls:
-      test VIDIOC_DBG_G/S_REGISTER: OK (Not Supported)
-      test VIDIOC_LOG_STATUS: OK (Not Supported)
+           test VIDIOC_DBG_G/S_REGISTER: OK (Not Supported)
+           test VIDIOC_LOG_STATUS: OK (Not Supported)
 
    Input ioctls:
-      test VIDIOC_G/S_TUNER/ENUM_FREQ_BANDS: OK (Not Supported)
-      test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
-      test VIDIOC_S_HW_FREQ_SEEK: OK (Not Supported)
-      test VIDIOC_ENUMAUDIO: OK (Not Supported)
-      test VIDIOC_G/S/ENUMINPUT: OK (Not Supported)
-      test VIDIOC_G/S_AUDIO: OK (Not Supported)
-      Inputs: 0 Audio Inputs: 0 Tuners: 0
+           test VIDIOC_G/S_TUNER/ENUM_FREQ_BANDS: OK (Not Supported)
+           test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
+           test VIDIOC_S_HW_FREQ_SEEK: OK (Not Supported)
+           test VIDIOC_ENUMAUDIO: OK (Not Supported)
+           test VIDIOC_G/S/ENUMINPUT: OK (Not Supported)
+           test VIDIOC_G/S_AUDIO: OK (Not Supported)
+           Inputs: 0 Audio Inputs: 0 Tuners: 0
 
    Output ioctls:
-      test VIDIOC_G/S_MODULATOR: OK (Not Supported)
-      test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
-      test VIDIOC_ENUMAUDOUT: OK (Not Supported)
-      test VIDIOC_G/S/ENUMOUTPUT: OK (Not Supported)
-      test VIDIOC_G/S_AUDOUT: OK (Not Supported)
-      Outputs: 0 Audio Outputs: 0 Modulators: 0
+           test VIDIOC_G/S_MODULATOR: OK (Not Supported)
+           test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
+           test VIDIOC_ENUMAUDOUT: OK (Not Supported)
+           test VIDIOC_G/S/ENUMOUTPUT: OK (Not Supported)
+           test VIDIOC_G/S_AUDOUT: OK (Not Supported)
+           Outputs: 0 Audio Outputs: 0 Modulators: 0
 
    Input/Output configuration ioctls:
-      test VIDIOC_ENUM/G/S/QUERY_STD: OK (Not Supported)
-      test VIDIOC_ENUM/G/S/QUERY_DV_TIMINGS: OK (Not Supported)
-      test VIDIOC_DV_TIMINGS_CAP: OK (Not Supported)
-      test VIDIOC_G/S_EDID: OK (Not Supported)
+           test VIDIOC_ENUM/G/S/QUERY_STD: OK (Not Supported)
+           test VIDIOC_ENUM/G/S/QUERY_DV_TIMINGS: OK (Not Supported)
+           test VIDIOC_DV_TIMINGS_CAP: OK (Not Supported)
+           test VIDIOC_G/S_EDID: OK (Not Supported)
 
    Control ioctls:
-      test VIDIOC_QUERY_EXT_CTRL/QUERYMENU: OK
-      test VIDIOC_QUERYCTRL: OK
-      test VIDIOC_G/S_CTRL: OK
-      test VIDIOC_G/S/TRY_EXT_CTRLS: OK
-      test VIDIOC_(UN)SUBSCRIBE_EVENT/DQEVENT: OK
-      test VIDIOC_G/S_JPEGCOMP: OK (Not Supported)
-      Standard Controls: 2 Private Controls: 0
+           test VIDIOC_QUERY_EXT_CTRL/QUERYMENU: OK
+           test VIDIOC_QUERYCTRL: OK
+           test VIDIOC_G/S_CTRL: OK
+           test VIDIOC_G/S/TRY_EXT_CTRLS: OK
+           test VIDIOC_(UN)SUBSCRIBE_EVENT/DQEVENT: OK
+           test VIDIOC_G/S_JPEGCOMP: OK (Not Supported)
+           Standard Controls: 2 Private Controls: 0
 
    Format ioctls:
-      test VIDIOC_ENUM_FMT/FRAMESIZES/FRAMEINTERVALS: OK
-      test VIDIOC_G/S_PARM: OK (Not Supported)
-      test VIDIOC_G_FBUF: OK (Not Supported)
-      test VIDIOC_G_FMT: OK
-      test VIDIOC_TRY_FMT: OK
-      test VIDIOC_S_FMT: OK
-      test VIDIOC_G_SLICED_VBI_CAP: OK (Not Supported)
-      test Cropping: OK (Not Supported)
-      test Composing: OK
-      test Scaling: OK (Not Supported)
+           test VIDIOC_ENUM_FMT/FRAMESIZES/FRAMEINTERVALS: OK
+           test VIDIOC_G/S_PARM: OK (Not Supported)
+           test VIDIOC_G_FBUF: OK (Not Supported)
+           test VIDIOC_G_FMT: OK
+           test VIDIOC_TRY_FMT: OK
+           test VIDIOC_S_FMT: OK
+           test VIDIOC_G_SLICED_VBI_CAP: OK (Not Supported)
+           test Cropping: OK (Not Supported)
+           test Composing: OK
+           test Scaling: OK (Not Supported)
 
    Codec ioctls:
-      test VIDIOC_(TRY_)ENCODER_CMD: OK (Not Supported)
-      test VIDIOC_G_ENC_INDEX: OK (Not Supported)
-      test VIDIOC_(TRY_)DECODER_CMD: OK
+           test VIDIOC_(TRY_)ENCODER_CMD: OK (Not Supported)
+           test VIDIOC_G_ENC_INDEX: OK (Not Supported)
+           test VIDIOC_(TRY_)DECODER_CMD: OK
 
    Buffer ioctls:
-         warn: v4l2-test-buffers.cpp(693): VIDIOC_CREATE_BUFS not supported
-         warn: v4l2-test-buffers.cpp(693): VIDIOC_CREATE_BUFS not supported
-      test VIDIOC_REQBUFS/CREATE_BUFS/QUERYBUF: OK
-      test CREATE_BUFS maximum buffers: OK
-      test VIDIOC_EXPBUF: OK
-      test Requests: OK (Not Supported)
+                   warn: v4l2-test-buffers.cpp(813): VIDIOC_CREATE_BUFS not supported
+                   warn: v4l2-test-buffers.cpp(813): VIDIOC_CREATE_BUFS not supported
+           test VIDIOC_REQBUFS/CREATE_BUFS/QUERYBUF: OK
+           test CREATE_BUFS maximum buffers: OK
+           test VIDIOC_REMOVE_BUFS: OK
+           test VIDIOC_EXPBUF: OK
+           test Requests: OK (Not Supported)
 
-   Total for wave5-dec device /dev/video0: 46, Succeeded: 46, Failed: 0, Warnings: 2
+   Total for wave5-dec device /dev/video0: 47, Succeeded: 47, Failed: 0, Warnings: 2
 
 
 Similarly for the encoder, V4L2 compliance tests report can be generated by following command:
@@ -211,92 +212,92 @@ Similarly for the encoder, V4L2 compliance tests report can be generated by foll
    Compliance test for wave5-enc device /dev/video1:
 
    Driver Info:
-      Driver name      : wave5-enc
-      Card type        : wave5-enc
-      Bus info         : platform:4210000.video-codec
-      Driver version   : 6.6.44
-      Capabilities     : 0x84204000
-         Video Memory-to-Memory Multiplanar
-         Streaming
-         Extended Pix Format
-         Device Capabilities
-      Device Caps      : 0x04204000
-         Video Memory-to-Memory Multiplanar
-         Streaming
-         Extended Pix Format
-      Detected Stateful Encoder
+           Driver name      : wave5-enc
+           Card type        : wave5-enc
+           Bus info         : platform:30210000.video-codec
+           Driver version   : 6.12.57
+           Capabilities     : 0x84204000
+                   Video Memory-to-Memory Multiplanar
+                   Streaming
+                   Extended Pix Format
+                   Device Capabilities
+           Device Caps      : 0x04204000
+                   Video Memory-to-Memory Multiplanar
+                   Streaming
+                   Extended Pix Format
+           Detected Stateful Encoder
 
    Required ioctls:
-      test VIDIOC_QUERYCAP: OK
-      test invalid ioctls: OK
+           test VIDIOC_QUERYCAP: OK
+           test invalid ioctls: OK
 
    Allow for multiple opens:
-      test second /dev/video1 open: OK
-      test VIDIOC_QUERYCAP: OK
-      test VIDIOC_G/S_PRIORITY: OK
-      test for unlimited opens: OK
+           test second /dev/video1 open: OK
+           test VIDIOC_QUERYCAP: OK
+           test VIDIOC_G/S_PRIORITY: OK
+           test for unlimited opens: OK
 
    Debug ioctls:
-      test VIDIOC_DBG_G/S_REGISTER: OK (Not Supported)
-      test VIDIOC_LOG_STATUS: OK (Not Supported)
+           test VIDIOC_DBG_G/S_REGISTER: OK (Not Supported)
+           test VIDIOC_LOG_STATUS: OK (Not Supported)
 
    Input ioctls:
-      test VIDIOC_G/S_TUNER/ENUM_FREQ_BANDS: OK (Not Supported)
-      test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
-      test VIDIOC_S_HW_FREQ_SEEK: OK (Not Supported)
-      test VIDIOC_ENUMAUDIO: OK (Not Supported)
-      test VIDIOC_G/S/ENUMINPUT: OK (Not Supported)
-      test VIDIOC_G/S_AUDIO: OK (Not Supported)
-      Inputs: 0 Audio Inputs: 0 Tuners: 0
+           test VIDIOC_G/S_TUNER/ENUM_FREQ_BANDS: OK (Not Supported)
+           test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
+           test VIDIOC_S_HW_FREQ_SEEK: OK (Not Supported)
+           test VIDIOC_ENUMAUDIO: OK (Not Supported)
+           test VIDIOC_G/S/ENUMINPUT: OK (Not Supported)
+           test VIDIOC_G/S_AUDIO: OK (Not Supported)
+           Inputs: 0 Audio Inputs: 0 Tuners: 0
 
    Output ioctls:
-      test VIDIOC_G/S_MODULATOR: OK (Not Supported)
-      test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
-      test VIDIOC_ENUMAUDOUT: OK (Not Supported)
-      test VIDIOC_G/S/ENUMOUTPUT: OK (Not Supported)
-      test VIDIOC_G/S_AUDOUT: OK (Not Supported)
-      Outputs: 0 Audio Outputs: 0 Modulators: 0
+           test VIDIOC_G/S_MODULATOR: OK (Not Supported)
+           test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
+           test VIDIOC_ENUMAUDOUT: OK (Not Supported)
+           test VIDIOC_G/S/ENUMOUTPUT: OK (Not Supported)
+           test VIDIOC_G/S_AUDOUT: OK (Not Supported)
+           Outputs: 0 Audio Outputs: 0 Modulators: 0
 
    Input/Output configuration ioctls:
-      test VIDIOC_ENUM/G/S/QUERY_STD: OK (Not Supported)
-      test VIDIOC_ENUM/G/S/QUERY_DV_TIMINGS: OK (Not Supported)
-      test VIDIOC_DV_TIMINGS_CAP: OK (Not Supported)
-      test VIDIOC_G/S_EDID: OK (Not Supported)
+           test VIDIOC_ENUM/G/S/QUERY_STD: OK (Not Supported)
+           test VIDIOC_ENUM/G/S/QUERY_DV_TIMINGS: OK (Not Supported)
+           test VIDIOC_DV_TIMINGS_CAP: OK (Not Supported)
+           test VIDIOC_G/S_EDID: OK (Not Supported)
 
    Control ioctls:
-      test VIDIOC_QUERY_EXT_CTRL/QUERYMENU: OK
-      test VIDIOC_QUERYCTRL: OK
-      test VIDIOC_G/S_CTRL: OK
-      test VIDIOC_G/S/TRY_EXT_CTRLS: OK
-      test VIDIOC_(UN)SUBSCRIBE_EVENT/DQEVENT: OK
-      test VIDIOC_G/S_JPEGCOMP: OK (Not Supported)
-      Standard Controls: 47 Private Controls: 0
+           test VIDIOC_QUERY_EXT_CTRL/QUERYMENU: OK
+           test VIDIOC_QUERYCTRL: OK
+           test VIDIOC_G/S_CTRL: OK
+           test VIDIOC_G/S/TRY_EXT_CTRLS: OK
+           test VIDIOC_(UN)SUBSCRIBE_EVENT/DQEVENT: OK
+           test VIDIOC_G/S_JPEGCOMP: OK (Not Supported)
+           Standard Controls: 47 Private Controls: 0
 
    Format ioctls:
-      test VIDIOC_ENUM_FMT/FRAMESIZES/FRAMEINTERVALS: OK
-      test VIDIOC_G/S_PARM: OK
-      test VIDIOC_G_FBUF: OK (Not Supported)
-      test VIDIOC_G_FMT: OK
-      test VIDIOC_TRY_FMT: OK
-      test VIDIOC_S_FMT: OK
-      test VIDIOC_G_SLICED_VBI_CAP: OK (Not Supported)
-      test Cropping: OK
-      test Composing: OK (Not Supported)
-      test Scaling: OK (Not Supported)
+           test VIDIOC_ENUM_FMT/FRAMESIZES/FRAMEINTERVALS: OK
+           test VIDIOC_G/S_PARM: OK
+           test VIDIOC_G_FBUF: OK (Not Supported)
+           test VIDIOC_G_FMT: OK
+           test VIDIOC_TRY_FMT: OK
+           test VIDIOC_S_FMT: OK
+           test VIDIOC_G_SLICED_VBI_CAP: OK (Not Supported)
+           test Cropping: OK
+           test Composing: OK (Not Supported)
+           test Scaling: OK (Not Supported)
 
    Codec ioctls:
-      test VIDIOC_(TRY_)ENCODER_CMD: OK
-      test VIDIOC_G_ENC_INDEX: OK (Not Supported)
-      test VIDIOC_(TRY_)DECODER_CMD: OK (Not Supported)
+           test VIDIOC_(TRY_)ENCODER_CMD: OK
+           test VIDIOC_G_ENC_INDEX: OK (Not Supported)
+           test VIDIOC_(TRY_)DECODER_CMD: OK (Not Supported)
 
    Buffer ioctls:
-      test VIDIOC_REQBUFS/CREATE_BUFS/QUERYBUF: OK
-      test CREATE_BUFS maximum buffers: OK
-      test VIDIOC_EXPBUF: OK
-      test Requests: OK (Not Supported)
+           test VIDIOC_REQBUFS/CREATE_BUFS/QUERYBUF: OK
+           test CREATE_BUFS maximum buffers: OK
+           test VIDIOC_REMOVE_BUFS: OK
+           test VIDIOC_EXPBUF: OK
+           test Requests: OK (Not Supported)
 
-   Total for wave5-enc device /dev/video1: 46, Succeeded: 46, Failed: 0, Warnings: 0
-
+   Total for wave5-enc device /dev/video1: 47, Succeeded: 47, Failed: 0, Warnings: 0
 
 GStreamer Plugins for Multimedia
 ================================
@@ -654,7 +655,7 @@ For H265 encoding, use the following command.
 
 .. note::
 
-   352x288 is an example resolution. Update this value to properly reflect the resolution of the raw video. 
+   352x288 is an example resolution. Update this value to properly reflect the resolution of the raw video.
 
 FFMPEG can also capture video by using cameras attached to the device. See the following for an example.
 
