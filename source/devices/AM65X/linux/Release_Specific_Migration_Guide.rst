@@ -19,7 +19,7 @@ Processor SDK 11.xx Releases
 Processor SDK 11.02.05.02
 -------------------------
 - 2025 LTS Update release, with Kernel Stable Refresh. Please see :ref:`release-specific-build-information`.
-- Kernel 6.12.57
+- Kernel 6.12.49
 - U-Boot 2025.01
 - Yocto Scarthgap/5.0
 - Platforms Supported : `TMDX654IDKEVM <https://www.ti.com/tool/TMDX654IDKEVM>`__
