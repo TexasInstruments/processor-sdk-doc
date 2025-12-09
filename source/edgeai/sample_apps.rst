@@ -36,9 +36,9 @@ custom input (Camera/VideoFile/Image) and a custom model available in the
 filesystem. This will automatically construct a GStreamer pipeline with required
 elements and launch the application.
 
-- For a model to pop up on GUI, it needs to be present under ``/opt/model_zoo/``
-- For a videofile to pop up on GUI, the videos needs to be present under ``/opt/edgeai-test-data/videos/``
-- For an image to pop up on GUI, the images needs to be present under ``/opt/edgeai-test-data/iamges/``
+- For a model to pop up on GUI, it needs to be present under :file:`/opt/model_zoo/`
+- For a videofile to pop up on GUI, the videos needs to be present under :file:`/opt/edgeai-test-data/videos/`
+- For an image to pop up on GUI, the images needs to be present under :file:`/opt/edgeai-test-data/images/`
 
 
 .. note::
@@ -87,8 +87,8 @@ configured using a YAML file. Details on configuration file parameters can
 be found in :ref:`pub_edgeai_configuration`
 
 Sample configuration files for out of the box demos can be found in
-``edgeai-gst-apps/configs`` this folder also contains a template config file
-which has brief info on each configurable parameter ``edgeai-gst-apps/configs/app_config_template.yaml``
+:file:`edgeai-gst-apps/configs` this folder also contains a template config file
+which has brief info on each configurable parameter :file:`edgeai-gst-apps/configs/app_config_template.yaml`
 
 Here is how a Python based image classification demo can be run,
 

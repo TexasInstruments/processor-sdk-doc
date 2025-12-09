@@ -65,7 +65,7 @@ Use the **Model Downloader Tool** in the SDK to download more models on target a
 
 The script will launch an interactive menu showing the list of available,
 pre-imported models for download. The downloaded models will be placed
-under ``/opt/model_zoo/`` directory
+under :file:`/opt/model_zoo/` directory
 
 .. figure:: ../images/edgeai/model_downloader.png
    :align: center

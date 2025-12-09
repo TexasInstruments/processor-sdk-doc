@@ -77,7 +77,7 @@ access camera, display and other hardware accelerators the SoC has to offer.
 .. note::
 
    After building and running the docker container, one needs to run
-   ``setup_script.sh`` before running any of the demo applications.
+   :file:`setup_script.sh` before running any of the demo applications.
    This is required to rebuild all components against the shared libraries
    of docker, same should be done when switching back to Yocto
 
@@ -98,7 +98,7 @@ changes it is good to save the changes on top of the existing Docker image.
 When re-running the Docker image, the local changes can be restored.
 
 Following commands show how to save the changes made to the last container.
-Note that this is already done automatically by ``docker_run.sh`` when you exit
+Note that this is already done automatically by :file:`docker_run.sh` when you exit
 the container.
 
 .. code-block:: bash

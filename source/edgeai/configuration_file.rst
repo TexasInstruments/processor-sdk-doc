@@ -6,10 +6,10 @@ Configuring applications
 
 The demo config file uses YAML format to define input sources, models, outputs
 and finally the flows which defines how everything is connected. Config files
-for out-of-box demos are kept in ``edgeai-gst-apps/configs`` folder. The
+for out-of-box demos are kept in :file:`edgeai-gst-apps/configs` folder. The
 folder contains config files for all the use cases and also multi-input and
 multi-inference case. The folder also has a template YAML file
-``app_config_template.yaml`` which has detailed explanation of all the
+:file:`app_config_template.yaml` which has detailed explanation of all the
 parameters supported in the config file.
 
 Config file is divided in 4 sections:
@@ -62,7 +62,7 @@ which are exposed as v4l2 devices. In Linux, there are many devices which are
 implemented as v4l2 devices. Not all of them will be camera devices. You need
 to make sure the correct device is configured for running the demo successfully.
 
-``init_script.sh`` is ran as part of systemd, which detects all cameras connected
+:file:`init_script.sh` is ran as part of systemd, which detects all cameras connected
 and prints the detail like below in the console:
 
 .. code-block:: bash
@@ -80,7 +80,7 @@ and prints the detail like below in the console:
 script can also be run manually later to get the camera details.
 
 From the above log we can determine that 1 USB camera is connected
-(/dev/video-usb-cam0), and 1 CSI camera is connected (/dev/video-imx219-cam0) which is IMX219 raw
+(:file:`/dev/video-usb-cam0`), and 1 CSI camera is connected (:file:`/dev/video-imx219-cam0`) which is IMX219 raw
 sensor and needs ISP.
 
 Using this method, you can configure correct device for camera capture in the
@@ -112,7 +112,7 @@ Video sources
 -------------
 
 H.264 and H.265 encoded videos can be provided as input sources to the demos.
-Sample video files are provided under ``/opt/edgeai-test-data/videos/``
+Sample video files are provided under :file:`/opt/edgeai-test-data/videos/`
 
 .. code-block:: yaml
 
@@ -138,7 +138,7 @@ Image sources
 -------------
 
 JPEG compressed images can be provided as inputs to the demos. A sample set of
-images are provided under ``/opt/edgeai-test-data/images``. The names of the
+images are provided under :file:`/opt/edgeai-test-data/images`. The names of the
 files are numbered sequentially and incrementally and the demo plays the files
 at the fps specified by the user.
 
@@ -302,7 +302,7 @@ is 127.0.0.1.
       host: 127.0.0.1
       encoding: jpeg  #(jpeg or h264)
 
-A NodeJS server is provided under  ``/opt/edgeai-gst-apps/scripts/remote_streaming``
+A NodeJS server is provided under :file:`/opt/edgeai-gst-apps/scripts/remote_streaming`
 which establishes a node server on the target and listens to the udp port (8081)
 on localhost (127.0.0.1) and can be used to view the frames remotely.
 
@@ -345,7 +345,7 @@ GStreamer plugins
 The edgeai-gst-apps essentially constructs GStreamer pipelines for dataflow.
 This pipeline is constructed optimally and dynamically based on a pool of
 specific plugins available on the platform. The defined pool of plugins for
-different platform can be found in ``edgeai-gst-apps/configs/gst_plugin_maps.yaml``
+different platform can be found in :file:`edgeai-gst-apps/configs/gst_plugin_maps.yaml`
 file.
 
 This file contains the plugin used for certain task and the property of plugin
