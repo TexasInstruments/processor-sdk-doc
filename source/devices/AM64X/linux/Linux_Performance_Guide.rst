@@ -1,6 +1,6 @@
-==============================
- Linux 11.01 Performance Guide
-==============================
+====================================
+ Linux 11.02.08.02 Performance Guide
+====================================
 
 .. rubric::  **Read This First**
 
@@ -29,19 +29,3 @@ with drivers included in a particular release.
 
 For further information or to report any problems, contact
 https://e2e.ti.com/ or https://support.ti.com/
-
-Linux OSPI Flash Driver
------------------------
-
-
-AM64XX-SK
-^^^^^^^^^
-
-
-RAW
-"""
-
-.. csv-table:: OSPI Raw Flash Driver
-    :header: "File size (Mbytes)","am64xx_sk-fs: Raw Read Throughput (Mbytes/sec)"
-
-    "50","172.41"
