@@ -1,3 +1,5 @@
+.. _sysfw-trace-parser:
+
 Enabling and Parsing SYSFW Trace
 ================================
 

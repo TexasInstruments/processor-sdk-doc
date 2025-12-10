@@ -16,3 +16,4 @@ Power Management
    Foundational_Components/Power_Management/pm_wakeup_sources
    Foundational_Components/Power_Management/pm_sw_arch
    Foundational_Components/Power_Management/pm_debug
+   Foundational_Components/Power_Management/pm_am62lx_debug
