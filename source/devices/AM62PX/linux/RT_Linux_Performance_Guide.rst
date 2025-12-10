@@ -1,6 +1,6 @@
-=================================
- RT-linux 11.01 Performance Guide
-=================================
+=======================================
+ RT-linux 11.02.08.02 Performance Guide
+=======================================
 
 .. rubric::  **Read This First**
    :name: read-this-first-kernel-perf-guide
@@ -73,12 +73,3 @@ default SDK image
    Components section: :ref:`building-optee-with-prng`, and enabling the RNG
    node in the Linux kernel device tree. This way the HW TRNG is accessed from
    the kernel itself.
-
-.. csv-table::
-   :header: "Latencies","CPU 0","CPU 1","CPU 2","CPU 3"
-
-   "Minimum (usec)","5","5","5","5"
-   "Average (usec)","6","6","7","6"
-   "Maximum (usec)","36","34","37","34"
-
-.. image:: img/rt-cpu-method-all-latency-histogram.png
