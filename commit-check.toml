@@ -4,7 +4,7 @@
 # https://www.conventionalcommits.org
 conventional_commits = true
 subject_capitalized = false
-subject_imperative = true
+subject_imperative = false
 subject_max_length = 80
 subject_min_length = 5
 allow_commit_types = [
