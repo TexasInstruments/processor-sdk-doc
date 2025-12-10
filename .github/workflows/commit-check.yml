@@ -25,6 +25,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           message: true
+          branch: false
           author-name: true
           author-email: true
           job-summary: true
