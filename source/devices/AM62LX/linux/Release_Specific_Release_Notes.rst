@@ -37,10 +37,10 @@ found on the SDK download page or in the installed directory as indicated below.
 -  Debian Manifest: `TI debian software manifest 11.01.16.13
    <https://dr-download.ti.com/software-development/software-development-kit-sdk/MD-YjEeNKJJjt/11.01.16.13/software_manifest_debian_am62lxx-evm_am62lxx-evm.htm>`__
 
-Release 11.01.16.13
+Release 11.02.08.02
 ===================
 
-Released on Oct 2025
+Released on Dec 2025
 
 What's new
 ----------
@@ -49,27 +49,28 @@ What's new
 
   - Supported AM62Lx SR1.1 Only
   - New 2-Stage A53 Boot Flow including OPTEE
-  - ATF Based Device Manager including SCMI
+  - Low Power Mode: DeepSleep Wakeup Event - UART, GPIO, CPUFreq Framework with DFS
+  - Kernel: :ref:`DTHEv2 Crypto Accelerator <DTHEv2-Crypto-Accelerator>` OPTEE TRNG
+  - Support for multiple Linux distributions, such as Yocto, Debian and Buildroot
+
+**Key Release References:**
+
   - Tools: :ref:`K3conf <How-to-use-k3conf-label>`
-  - U-Boot: Legacy Boot Flow, Boot modes (UART, MMCSD, OSPI), GPMC NAND, CPSW, DMA
   - U-Boot: :ref:`User and Reduced Bootmode OTP Programming  <programming-user-otp-fuses-label>`
   - U-Boot: :ref:`Key writer lite Programming <key-writer-lite-label>`
-  - Kernel: RTC, DMA, GPIO, I2C, UART, MMCSD, OSPI NOR, eCAP, eQEP, CPSW, McASP/Audio, DSS, DSI
-  - Kernel: :ref:`DTHEv2 Crypto Accelerator <DTHEv2-Crypto-Accelerator>` AES, SHA, MD5, HMAC
+  - Kernel: :ref:`DTHEv2 Crypto Accelerator <DTHEv2-Crypto-Accelerator>`
   - RT Kernel : Real-Time Linux Interrupt Latency numbers here - :ref:`RT Interrupt Latencies <RT-linux-performance>`
   - Support for Wifi with M2 CC33xx cards - :ref:`How to Enable M.2-CC33xx in Linux <enable_m2cc3301>`
   - Out-of-Box experience based on LVGL (Light and Versatile Graphics Library) - :ref:`TI LVGL Demo - User Guide <TI-LVGL-Demo-User-Guide-label>`
-  - Jailhouse with Kernel 6.12
-  - Debian distribution based on Armbian
-  - Support for multiple Linux distributions, such as Yocto, Debian and Buildroot
 
 **Component version:**
 
-  - Kernel (Including RT) 6.12.43
+  - Kernel (Including RT) 6.12.57
   - U-Boot 2025.01
   - Toolchain GCC 13.4
+  - OPTEE 4.7.0
   - ATF 2.12+
-  - TIFS Firmware `v11.01.12 <https://software-dl.ti.com/tisci/esd/11_01_12/release_notes/release_notes.html>`__ (Click on the link for more information)
+  - TIFS Firmware `v11.02.05 <https://software-dl.ti.com/tisci/esd/11_02_05/release_notes/release_notes.html>`__ (Click on the link for more information)
   - Yocto scarthgap 5.0
   - Armbian-based Debian 13 (Trixie)
   - Buildroot 2024.11.1
@@ -92,35 +93,35 @@ Arago (Yocto/OE)
      - Config Info
    * - U-Boot
      - `ti-u-boot-2025.01 <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/log/?h=ti-u-boot-2025.01>`__
-     - `11.01.16 <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/tag/?h=11.01.16>`__
+     - `11.02.08 <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/tag/?h=11.02.08>`__
      - :ref:`Build Config <Build-U-Boot-label>`
    * - TF-A
      - `ti-master <https://github.com/TexasInstruments/arm-trusted-firmware/tree/ti-master>`__
-     - `v2.12+ <https://git.yoctoproject.org/meta-ti/tree/meta-ti-bsp/recipes-bsp/trusted-firmware-a/trusted-firmware-a-ti.inc?h=11.01.16#n11>`__
+     - `v2.12+ <https://git.yoctoproject.org/meta-ti/tree/meta-ti-bsp/recipes-bsp/trusted-firmware-a/trusted-firmware-a-ti.inc?h=11.02.08#n11>`__
      -
    * - OPTEE
      - `master <https://github.com/OP-TEE/optee_os/tree/master>`__
-     - `4.7.0+ <https://git.yoctoproject.org/meta-ti/tree/meta-ti-bsp/recipes-security/optee/optee-os-ti-version.inc?h=11.01.16#n1>`__
+     - `4.7.0+ <https://git.yoctoproject.org/meta-ti/tree/meta-ti-bsp/recipes-security/optee/optee-os-ti-version.inc?h=11.02.08#n1>`__
      - |__OPTEE_PLATFORM_FLAVOR__|
    * - Linux Firmware
      - `ti-linux-firmware <https://git.ti.com/cgit/processor-firmware/ti-linux-firmware/log/?h=ti-linux-firmware>`__
-     - `11.01.16 <https://git.ti.com/cgit/processor-firmware/ti-linux-firmware/tag/?h=11.01.16>`__
+     - `11.02.08 <https://git.ti.com/cgit/processor-firmware/ti-linux-firmware/tag/?h=11.02.08>`__
      -
    * - Linux Kernel
      - `ti-linux-6.12.y <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/log/?h=ti-linux-6.12.y>`__
-     - `11.01.16 <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tag/?h=11.01.16>`__
-     - `non-RT <https://git.yoctoproject.org/meta-ti/tree/meta-ti-bsp/recipes-kernel/linux/linux-ti-staging-6.12/k3/defconfig?h=11.01.16>`__ , `RT <https://git.yoctoproject.org/meta-ti/tree/meta-ti-bsp/recipes-kernel/linux/linux-ti-staging-rt-6.12/k3/defconfig?h=11.01.16>`__
+     - `11.02.08 <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tag/?h=11.02.08>`__
+     - `non-RT <https://git.yoctoproject.org/meta-ti/tree/meta-ti-bsp/recipes-kernel/linux/linux-ti-staging-6.12/k3/defconfig?h=11.02.08>`__ , `RT <https://git.yoctoproject.org/meta-ti/tree/meta-ti-bsp/recipes-kernel/linux/linux-ti-staging-rt-6.12/k3/defconfig?h=11.02.08>`__
    * - meta-ti
      - `scarthgap <https://git.yoctoproject.org/meta-ti/log/?h=scarthgap>`__
-     - `11.01.16 <https://git.yoctoproject.org/meta-ti/tag/?h=11.01.16>`__
+     - `11.02.08 <https://git.yoctoproject.org/meta-ti/tag/?h=11.02.08>`__
      - |__SDK_BUILD_MACHINE__|
    * - meta-arago
      - `scarthgap <https://git.yoctoproject.org/meta-arago/log/?h=scarthgap>`__
-     - `11.01.16 <https://git.yoctoproject.org/meta-arago/tag/?h=11.01.16>`__
+     - `11.02.08 <https://git.yoctoproject.org/meta-arago/tag/?h=11.02.08>`__
      -
    * - meta-tisdk
      - `scarthgap <https://git.ti.com/cgit/ti-sdk-linux/meta-tisdk/log/?h=scarthgap>`__
-     - `11.01.16.13 <https://git.ti.com/cgit/ti-sdk-linux/meta-tisdk/tag/?h=11.01.16.13>`__
+     - `11.02.08.02 <https://git.ti.com/cgit/ti-sdk-linux/meta-tisdk/tag/?h=11.02.08.02>`__
      -
 
 Debian (Armbian)
