@@ -110,7 +110,7 @@ Launching the Industrial HMI
 
 .. ifconfig:: CONFIG_sdk in ('SITARA')
 
-   .. Image:: /images/ti-apps-launcher-hmi.png
+   .. Image:: /images/AM62xx_HMI_demo.png
       :height: 400
 
 .. ifconfig:: CONFIG_sdk in ('j7_foundational')
@@ -212,7 +212,7 @@ Launching the ARM Analytics Demo
 
     2. To launch the ARM Analytics demo, click on the `ARM Analytics` button on the left panel.
 
-    .. Image:: /images/ti-apps-launcher-arm-analytics.png
+    .. Image:: /images/AM62xx_Arm_Analytics_demo.png
        :height: 400
 
     3. By default, the ARM Analytics demo shows the results of **Object Detection** Model on existing data.
@@ -243,7 +243,7 @@ Launching the Benchmarks Demo
 
    3. User will now see the list of Benchmarks available to test on SK-EVM. Click on the `play button` infront of the benchmark you like to test. The image below is captured while running the `glmark2`.
 
-   .. Image:: /images/ti-apps-launcher-benchmarks-glmark2.png
+   .. Image:: /images/AM62xx_benchmarks_demo.png
       :height: 400
 
    4. Once after the entire benchmark has been run, the FPS & Score will get populated in the table.
@@ -271,7 +271,7 @@ Launching the GPU Performance Demo
 
 .. ifconfig:: CONFIG_sdk in ('SITARA')
 
-   .. Image:: /images/ti-apps-launcher-gpu-performance.png
+   .. Image:: /images/AM62xx_GPU_demo.png
       :height: 400
    
    3. You will see the updated values of FPS & Score metrices getting populated in the table.
@@ -295,6 +295,12 @@ Launching the Seva Store
       Seva Store is not supported on AM62xSIP due to it's memory constraints.
 
 1. |__SDK_FULL_NAME__| now supports Seva Store. Seva Store is a TI developed demo gallery which allows users to download and install demos on the go. Developers can host their demos as Docker Images on any public Docker Registry and link them to Seva Design Gallery. 
+
+.. ifconfig:: CONFIG_sdk in ('SITARA')
+
+   .. Image:: /images/AM62xx_Seva_Store.png
+      :height: 400
+
 
 2. Refer :ref:`Seva Store - User Guide <Seva-Store-label>` to know more about Seva Store.
 
@@ -341,7 +347,7 @@ Launching the 3D Demo
 
    2. Click `Launch` button to launch the 3D Demo by Imagination. By default, you would see the Skinning Model running on the screen.
 
-   .. Image:: /images/ti-apps-launcher-3d-demo.png
+   .. Image:: /images/AM62xx_3d_demo.png
       :height: 400
 
    3. You can use mouse buttons or spacebar to pause the 3D Demo and press `ESC` to exit & go back to TI Apps Launcher.
@@ -359,8 +365,8 @@ Using the Settings Button
 
 2. Once the user clicks on the Settings button, it will ask for a HTTPS Proxy and No proxy values.
 
-.. Image:: /images/ti-apps-launcher-settings.png
-   :height: 400
+   .. Image:: /images/AM62xx_settings.png
+      :height: 400
 
 3. Once you enter the necessary values for both HTTPS and No proxy, click on `Set Proxy` to set the proxy configuration.
 
