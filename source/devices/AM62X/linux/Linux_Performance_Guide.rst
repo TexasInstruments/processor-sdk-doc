@@ -790,3 +790,65 @@ IPSec Software Performance
     "aes128","121.71 (min 2.30, max 305.50)","10.57 (min 0.00, max 27.00)","48.76 (min 28.52, max 54.93)","135.97 (min 4.10, max 338.50)","11.71 (min 0.00, max 30.00)","52.73 (min 47.19, max 58.90)"
     "aes192","75.94 (min 0.20, max 228.80)","6.43 (min 0.00, max 20.00)","42.84 (min 28.19, max 50.88)","2.40 (min 2.20, max 2.60)","0.00","85.06 (min 83.00, max 87.11)"
     "aes256","188.42 (min 1.30, max 302.20)","16.33 (min 0.00, max 26.00)","48.78 (min 28.23, max 54.44)","164.90 (min 4.80, max 331.20)","14.33 (min 0.00, max 29.00)","53.12 (min 28.47, max 65.09)"
+
+Low Power Performance
+-------------------------
+
+Power Performance
+^^^^^^^^^^^^^^^^^
+
+.. csv-table:: Deep Sleep Power Performance
+   :header: "Rail name","Rail voltage(V)","Power (mW)"
+
+   "vdd_core","0.85","9.59"
+   "vddr_core","0.85","n/a"
+   "soc_dvdd_3v3","3.30","7.71"
+   "soc_dvdd_1v8","1.80","0.54"
+   "vdda_1v8","1.80","1.89"
+   "vdd_ddr4","1.10","8.49"
+   "Total"," ","28.21"
+
+.. csv-table:: MCU Only Power Performance
+   :header: "Rail name","Rail voltage(V)","Power (mW)"
+
+   "vdd_core","0.85","110.78"
+   "vddr_core","0.85","n/a"
+   "soc_dvdd_3v3","3.30","13.81"
+   "soc_dvdd_1v8","1.80","0.50"
+   "vdda_1v8","1.80","11.35"
+   "vdd_ddr4","1.10","8.79"
+   "Total"," ","145.23"
+
+Partial I/O Data
+- All voltage rails were measured to be near 0V
+
+.. note::
+
+   The measurements shown are from an SK-AM62B-P1. Results may vary based off of the board variant being used.
+
+Further optimizations are possible for these low power modes. Please refer to the AM62x Power Consumption App Note (https://www.ti.com/lit/pdf/spradg1)
+
+Resume Latency Performance
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. csv-table:: LPM Resume Latency Performance
+   :header: "Low Power Mode","Total Resume Latency (ms)"
+
+   "Deep Sleep", "137.03"
+   "MCU Only", "86.12"
+
+The performance numbers are measured without the Linux printk logs. To remove the
+Linux printk logs, run the following commands in the terminal:
+
+.. code:: console
+
+   # Detach kernel serial console
+   consoles=$(find /sys/bus/platform/devices/*.serial/ -name console)
+   for console in ${consoles}; do
+        echo -n N > ${console}
+   done
+
+
+.. note::
+
+   The measurements shown are from using the default SDK with no extra optimizations.

@@ -689,3 +689,68 @@ Listed for each algorithm are the code snippets used to run each
 ::
 
     time -v openssl speed -elapsed -evp aes-128-cbc
+
+Power Performance
+^^^^^^^^^^^^^^^^^
+
+.. csv-table:: Deep Sleep Power Performance
+   :header: "Rail name","Rail voltage(V)","Power (mW)"
+
+   "vdd_core","0.85","18.32"
+   "vddr_core","0.85","1.53"
+   "soc_dvdd_3v3","3.30","8.54"
+   "soc_dvdd_1v8","1.80","3.01"
+   "vdda_1v8","1.80","68.06"
+   "vdd_lpddr4","1.10","3.47"
+   "Total"," ","102.93"
+
+.. csv-table:: MCU Only Power Performance
+   :header: "Rail name","Rail voltage(V)","Power (mW)"
+
+   "vdd_core","0.85","219.30"
+   "vddr_core","0.85","3.32"
+   "soc_dvdd_3v3","3.30","7.10"
+   "soc_dvdd_1v8","1.80","2.93"
+   "vdda_1v8","1.80","76.55"
+   "vdd_lpddr4","1.10","4.37"
+   "Total"," ","313.56"
+
+Partial I/O Data
+- All voltage rails were measured to be near 0V
+
+.. note::
+
+   The power consumption on the vdda_1v8 rail is not indicitive of the SoC's power consumption due to an oscillator on the rail
+   that has significant current consumption.
+
+.. note::
+
+   The measurements shown are from an AM62Px SK rev E1-1. Results may vary based off of the board revision being used.
+
+Further optimizations are possible for these low power modes. Please refer to the AM62x Power Consumption App Note (https://www.ti.com/lit/pdf/spradg1)
+
+Resume Latency Performance
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. csv-table:: LPM Resume Latency Performance
+   :header: "Low Power Mode","Total Resume Latency (ms)"
+
+   "I/O Only + DDR", "716.68"
+   "Deep Sleep", "150.50"
+   "MCU Only", "94.06"
+
+The performance numbers are measured without the Linux printk logs. To remove the
+Linux printk logs, run the following commands in the terminal:
+
+.. code:: console
+
+   # Detach kernel serial console
+   consoles=$(find /sys/bus/platform/devices/*.serial/ -name console)
+   for console in ${consoles}; do
+        echo -n N > ${console}
+   done
+
+
+.. note::
+
+   The measurements shown are from using the default SDK with no extra optimizations.
