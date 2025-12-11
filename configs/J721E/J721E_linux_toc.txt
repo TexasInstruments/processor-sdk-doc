@@ -37,6 +37,7 @@ linux/Foundational_Components/U-Boot/UG-NOR
 linux/Foundational_Components/U-Boot/UG-UART
 linux/Foundational_Components/U-Boot/UG-SATA
 linux/Foundational_Components/U-Boot/UG-UFS
+linux/Foundational_Components/U-Boot/UG-DDRSS-J7
 linux/Foundational_Components/U-Boot/UG-HyperBus
 linux/Foundational_Components/U-Boot/UG-RemoteProc
 linux/Foundational_Components/U-Boot/UG-AVS
@@ -51,6 +52,7 @@ linux/Foundational_Components/Kernel/Kernel_Drivers/ADC
 linux/Foundational_Components/Kernel/Kernel_Drivers/Audio
 linux/Foundational_Components/Kernel/Kernel_Drivers/Camera/CSI2RX
 linux/Foundational_Components/Kernel/Kernel_Drivers/Crypto/SA2UL_OMAP
+linux/Foundational_Components/Kernel/Kernel_Drivers/DDR
 linux/Foundational_Components/Kernel/Kernel_Drivers/Display/DSS7
 linux/Foundational_Components/Kernel/Kernel_Drivers/DM-Timer
 linux/Foundational_Components/Kernel/Kernel_Drivers/GPIO
