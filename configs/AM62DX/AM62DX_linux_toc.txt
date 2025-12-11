@@ -68,6 +68,7 @@ linux/Foundational_Components_Tools
 linux/Foundational_Components/Tools/Development_Tools
 linux/Foundational_Components/Tools/Pin_Mux_Tools
 linux/Foundational_Components/Tools/Flash_via_Fastboot
+linux/Foundational_Components_IPC62dx
 linux/Foundational_Components_ATF
 linux/Foundational_Components_OPTEE
 
