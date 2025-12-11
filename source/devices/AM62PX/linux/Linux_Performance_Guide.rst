@@ -746,9 +746,9 @@ Resume Latency Performance
 .. csv-table:: LPM Resume Latency Performance
    :header: "Low Power Mode","Total Resume Latency (ms)"
 
-   "I/O Only + DDR", "716.68"
-   "Deep Sleep", "150.50"
-   "MCU Only", "94.06"
+   "I/O Only + DDR", "709.82"
+   "Deep Sleep", "136.52"
+   "MCU Only", "91.68"
 
 The performance numbers are measured without the Linux printk logs. To remove the
 Linux printk logs, run the following commands in the terminal:

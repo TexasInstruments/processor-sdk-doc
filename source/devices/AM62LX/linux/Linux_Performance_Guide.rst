@@ -622,8 +622,8 @@ Resume Latency Performance
 .. csv-table:: LPM Resume Latency Performance
    :header: "Low Power Mode","Total Resume Latency (ms)"
 
-   "RTC Only + DDR", "459.40"
-   "Deep Sleep", "98.70"
+   "RTC Only + DDR", "456.44"
+   "Deep Sleep", "109.96"
 
 The performance numbers are measured without the Linux printk logs. To remove the
 Linux printk logs, run the following commands in the terminal:
