@@ -831,6 +831,18 @@ Low Power Performance
 Power Performance
 ^^^^^^^^^^^^^^^^^
 
+.. csv-table:: I/O Only + DDR Power Performance
+    :header: "Rail name","Rail voltage(V)","Power (mW)"
+
+    "vdd_core","0.85","0.00"
+    "vddr_core","0.85","0.00"
+    "soc_dvdd_3v3","3.30","3.47"
+    "soc_dvdd_1v8","1.80","2.26"
+    "vdda_1v8","1.80","0.02"
+    "vdd_lpddr4","1.10","3.03"
+    "Total"," ","8.78"
+
+
 .. csv-table:: Deep Sleep Power Performance
     :header: "Rail name","Rail voltage(V)","Power (mW)"
 
