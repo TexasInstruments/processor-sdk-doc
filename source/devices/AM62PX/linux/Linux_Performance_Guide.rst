@@ -910,27 +910,38 @@ Low Power Performance
 Power Performance
 ^^^^^^^^^^^^^^^^^
 
+.. csv-table:: I/O Only + DDR Power Performance
+   :header: "Rail name","Rail voltage(V)","Power (mW)"
+
+   "vdd_core","0.85","0.00"
+   "vddr_core","0.85","0.00"
+   "soc_dvdd_3v3","3.30","2.07"
+   "soc_dvdd_1v8","1.80","8.50"
+   "vdda_1v8","1.80","0.13"
+   "vdd_lpddr4","1.10","4.58"
+   "Total"," ","15.28"
+
 .. csv-table:: Deep Sleep Power Performance
    :header: "Rail name","Rail voltage(V)","Power (mW)"
 
-   "vdd_core","0.85","14.36"
-   "vddr_core","0.85","1.03"
-   "soc_dvdd_3v3","3.30","6.02"
-   "soc_dvdd_1v8","1.80","2.78"
-   "vdda_1v8","1.80","67.41"
-   "vdd_lpddr4","1.10","4.92"
-   "Total"," ","96.52"
+   "vdd_core","0.85","18.32"
+   "vddr_core","0.85","1.53"
+   "soc_dvdd_3v3","3.30","8.54"
+   "soc_dvdd_1v8","1.80","3.01"
+   "vdda_1v8","1.80","68.06"
+   "vdd_lpddr4","1.10","3.47"
+   "Total"," ","102.93"
 
 .. csv-table:: MCU Only Power Performance
    :header: "Rail name","Rail voltage(V)","Power (mW)"
 
-   "vdd_core","0.85","213.68"
-   "vddr_core","0.85","2.79"
-   "soc_dvdd_3v3","3.30","7.52"
-   "soc_dvdd_1v8","1.80","2.85"
-   "vdda_1v8","1.80","75.91"
-   "vdd_lpddr4","1.10","5.12"
-   "Total"," ","307.88"
+   "vdd_core","0.85","219.30"
+   "vddr_core","0.85","3.32"
+   "soc_dvdd_3v3","3.30","7.10"
+   "soc_dvdd_1v8","1.80","2.93"
+   "vdda_1v8","1.80","76.55"
+   "vdd_lpddr4","1.10","4.37"
+   "Total"," ","313.56"
 
 Partial I/O Data
 - All voltage rails were measured to be near 0V
@@ -952,9 +963,9 @@ Resume Latency Performance
 .. csv-table:: LPM Resume Latency Performance
    :header: "Low Power Mode","Total Resume Latency (ms)"
 
-   "I/O Only + DDR", "716.68"
-   "Deep Sleep", "150.50"
-   "MCU Only", "94.06"
+   "I/O Only + DDR", "709.82"
+   "Deep Sleep", "136.52"
+   "MCU Only", "91.68"
 
 The performance numbers are measured without the Linux printk logs. To remove the
 Linux printk logs, run the following commands in the terminal:

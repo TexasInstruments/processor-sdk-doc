@@ -837,26 +837,26 @@ Deep Sleep and RTC Only + DDR.
 .. csv-table:: Deep Sleep Power Performance
      :header: "Rail name","Rail voltage(V)","Power (mW)"
 
-     "vdd_core", "0.75", "5.41"
-     "soc_dvdd_1v8", "1.80", "0.30"
-     "soc_dvdd_3v3", "3.29", "3.45"
-     "vdda_1v8", "1.80", "1.26"
-     "vdd_lpddr4_pmic2", "1.10", "1.00"
-     "vdd_rtc", "0.74", "0.02"
+     "vdd_core", "0.75", "4.06"
+     "soc_dvdd_1v8", "1.80", "1.48"
+     "soc_dvdd_3v3", "3.29", "3.59"
+     "vdda_1v8", "1.80", "1.38"
+     "vdd_lpddr4_pmic2", "1.10", "1.04"
+     "vdd_rtc", "0.74", "0.01"
      "vdd_rtc_1v8", "1.80", "0.02"
-     "Total"," ","11.47"
+     "Total"," ","11.57"
 
 .. csv-table:: RTC Only + DDR Power Performance
      :header: "Rail name","Rail voltage(V)","Power (mW)"
 
      "vdd_core", "0.00", "0.00"
-     "soc_dvdd_1v8", "1.80", "0.36"
-     "soc_dvdd_3v3", "3.29", "0.93"
+     "soc_dvdd_1v8", "1.80", "1.41"
+     "soc_dvdd_3v3", "3.29", "1.09"
      "vdda_1v8", "0.00", "0.00"
-     "vdd_lpddr4_pmic2", "1.10", "1.08"
-     "vdd_rtc", "0.75", "0.02"
+     "vdd_lpddr4_pmic2", "1.10", "1.09"
+     "vdd_rtc", "0.75", "0.01"
      "vdd_rtc_1v8", "1.80", "0.02"
-     "Total"," ","2.41"
+     "Total"," ","3.62"
 
 Resume Latency Performance
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -864,8 +864,8 @@ Resume Latency Performance
 .. csv-table:: LPM Resume Latency Performance
    :header: "Low Power Mode","Total Resume Latency (ms)"
 
-   "RTC Only + DDR", "459.40"
-   "Deep Sleep", "98.70"
+   "RTC Only + DDR", "456.44"
+   "Deep Sleep", "109.96"
 
 The performance numbers are measured without the Linux printk logs. To remove the
 Linux printk logs, run the following commands in the terminal:
