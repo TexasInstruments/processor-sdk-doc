@@ -100,6 +100,7 @@ linux/Foundational_Components/Virtualization/Docker
 linux/Foundational_Components_Machine_Learning
 linux/Foundational_Components/Machine_Learning/armnn
 linux/Foundational_Components/Machine_Learning/tflite
+linux/Foundational_Components/Machine_Learning/nnstreamer
 
 linux/Foundational_Components/Graphics/index
 linux/Foundational_Components/Graphics/Common/Display
@@ -112,6 +113,9 @@ linux/Foundational_Components/Graphics/SGX/AM3_Beagle_Bone_Black_Configuration
 linux/Foundational_Components/Graphics/SGX/Overview
 linux/Foundational_Components/Graphics/SGX/SGX_Debug_Info
 linux/Foundational_Components/Graphics/SGX/Build_Guide
+
+linux/Demo_User_Guides/index_Demos
+linux/Demo_User_Guides/Webserver_Demo_User_Guide
 
 linux/Examples_and_Demos
 linux/Examples_and_Demos_Application_Demos
