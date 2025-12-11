@@ -789,6 +789,11 @@ MMC support in u-boot
 
 |
 
+SD card compatibility in u-boot
+===============================
+
+Refer to the :ref:`mmc-sd-card-compatibility-label` page.
+
 Steps for working around SD card issues in u-boot
 =================================================
 
