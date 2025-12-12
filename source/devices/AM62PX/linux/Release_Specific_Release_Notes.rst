@@ -142,28 +142,29 @@ Debian (Armbian)
      - Config Info
    * - U-Boot
      - `ti-u-boot-2025.01 <https://github.com/TexasInstruments/ti-u-boot/tree/ti-u-boot-2025.01>`__
-     - `11.01.16 <https://github.com/TexasInstruments/ti-u-boot/releases/tag/11.01.16>`__
-     - `Build <https://github.com/TexasInstruments/armbian-build/blob/53f037d7be54ea1f203aa46aaf61b03eb9a58585/config/sources/families/k3.conf#L103>`__
+     - `11.02.08 <https://github.com/TexasInstruments/ti-u-boot/releases/tag/11.02.08>`__
+     - `Build <https://github.com/TexasInstruments/armbian-build/blob/ecbe405df4033fa536886336f3796705eaef7eb4/config/sources/families/include/k3_common.inc#L72>`__
    * - ATF
      - `master <https://github.com/ARM-Software/arm-trusted-firmware/tree/master>`__
      - `v2.13+ <https://github.com/ARM-software/arm-trusted-firmware/commit/e0c4d3903b382bf34f552af53e6d955fae5283ab>`__
-     - `Build <https://github.com/TexasInstruments/armbian-build/blob/53f037d7be54ea1f203aa46aaf61b03eb9a58585/config/sources/families/k3.conf#L101>`__
+     - `Build <https://github.com/TexasInstruments/armbian-build/blob/ecbe405df4033fa536886336f3796705eaef7eb4/config/sources/families/include/k3_common.inc#L70>`__
    * - OPTEE
      - `master <https://github.com/OP-TEE/optee_os/tree/master>`__
      - `4.7.0+ <https://github.com/OP-TEE/optee_os/commit/a9690ae39995af36a31b7a4f446f27ea0787e3a4>`__
-     - `Build <https://github.com/TexasInstruments/armbian-build/blob/53f037d7be54ea1f203aa46aaf61b03eb9a58585/config/sources/families/k3.conf#L130>`__
+     - `Build <https://github.com/TexasInstruments/armbian-build/blob/ecbe405df4033fa536886336f3796705eaef7eb4/config/sources/families/include/k3_common.inc#L98>`__
    * - Linux Firmware
      - `ti-linux-firmware <https://github.com/TexasInstruments/ti-linux-firmware/tree/ti-linux-firmware>`__
-     - `11.01.16 <https://github.com/TexasInstruments/ti-linux-firmware/releases/tag/11.01.16>`__
-     - `Git Clone <https://github.com/TexasInstruments/armbian-build/blob/53f037d7be54ea1f203aa46aaf61b03eb9a58585/config/sources/families/k3.conf#L116>`__
+     - `11.02.08 <https://github.com/TexasInstruments/ti-linux-firmware/releases/tag/11.02.08>`__
+     - `Git Clone <https://github.com/TexasInstruments/armbian-build/blob/ecbe405df4033fa536886336f3796705eaef7eb4/config/sources/families/include/k3_common.inc#L85>`__
    * - Linux Kernel
      - `ti-linux-6.12.y <https://github.com/TexasInstruments/ti-linux-kernel/tree/ti-linux-6.12.y>`__
-     - `11.01.16 <https://github.com/TexasInstruments/ti-linux-kernel/releases/tag/11.01.16>`__
-     - `non-RT <https://github.com/TexasInstruments/armbian-build/blob/2025.10-release/config/kernel/linux-k3-current.config>`__, `RT <https://github.com/TexasInstruments/armbian-build/blob/2025.10-release/config/kernel/linux-k3-current-rt.config>`__
+     - `11.02.08 <https://github.com/TexasInstruments/ti-linux-kernel/releases/tag/11.02.08>`__
+     - `non-RT <https://github.com/TexasInstruments/armbian-build/blob/2025.12-release/config/kernel/linux-k3-vendor.config>`__, `RT <https://github.com/TexasInstruments/armbian-build/blob/2025.12-release/config/kernel/linux-k3-vendor-rt.config>`__
    * - Armbian Build
-     - `2025.10-release <https://github.com/TexasInstruments/armbian-build/tree/2025.10-release>`__
-     - `11.01.16.13 <https://github.com/TexasInstruments/armbian-build/releases/tag/11.01.16.13>`__
-     - `Build <https://github.com/TexasInstruments/armbian-build/blob/2025.10-release/config/sources/families/k3.conf>`__, `Board <https://github.com/TexasInstruments/armbian-build/blob/2025.10-release/config/boards/am62pxx-evm.conf>`__
+     - `2025.12-release <https://github.com/TexasInstruments/armbian-build/tree/2025.12-release>`__
+     - `11.02.08.02 <https://github.com/TexasInstruments/armbian-build/releases/tag/11.02.08.02>`__
+     - | Build: `k3_common.inc <https://github.com/TexasInstruments/armbian-build/blob/2025.12-release/config/sources/families/include/k3_common.inc>`__ + `k3.conf <https://github.com/TexasInstruments/armbian-build/blob/2025.12-release/config/sources/families/k3.conf>`__
+       | Board: `SK-AM62P <https://github.com/TexasInstruments/armbian-build/blob/2025.12-release/config/boards/sk-am62p.conf>`__
 
 
 Issues Tracker
