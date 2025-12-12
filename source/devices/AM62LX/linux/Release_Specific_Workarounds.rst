@@ -15,18 +15,17 @@ For rebuilding U-Boot and generating the new :file:`tispl.bin` follow :ref:`Buil
 .. code-block:: diff
 
    diff --git a/plat/ti/k3/common/am62l_psci.c b/plat/ti/k3/common/am62l_psci.c
-   index 70f2aecdd..115729f4a 100644
+   index 3df4986e5..945da5908 100644
    --- a/plat/ti/k3/common/am62l_psci.c
    +++ b/plat/ti/k3/common/am62l_psci.c
-   @@ -133,7 +133,7 @@ static void am62l_pwr_domain_suspend(const psci_power_state_t *target_state)
-   	/* TODO: Pass the mode passed from kernel using s2idle
-   	 * For now make mode=6 for RTC only + DDR and mdoe=0 for deepsleep
-   	 */
-   -       uint32_t mode = 0;
-   +       uint32_t mode = 6;
+   @@ -317,6 +317,7 @@ static void am62l_pwr_domain_suspend(const psci_power_state_t *target_state)
+            * mode=6 for RTC only + DDR and mode=0 for deepsleep
+            */
+           uint32_t mode = am62l_lpm_state;
+   +       mode = 6;
 
-   	core = plat_my_core_pos();
-   	proc_id = PLAT_PROC_START_ID + core;
+           core = plat_my_core_pos();
+           proc_id = PLAT_PROC_START_ID + core;
 
 This modifies :file:`plat/ti/k3/common/am62l_psci.c`, which is the new Power
 State Coordination Interface (PSCI) driver for AM62L in Arm Trusted Firmware.
