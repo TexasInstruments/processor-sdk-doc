@@ -21,6 +21,12 @@ By default, the Processor SDK includes support for the M.2-CC33x1 on the followi
 * SK-AM62P-LP
 * AM62L-EVM
 
+.. warning::
+
+   If you're having Wi-Fi issues, **specifically on the SK-AM62B-P1 board**, your board may be missing a
+   10K resistor at R6. See the CC33XX documentation for more info:
+   https://dev.ti.com/tirex/explore/content/CC33XX_LINUX_MPU_1_00_00_09__all/docs/linux/html/linux/getting-started/sk-am62b-p1.html#sk-am62b-p1-setup
+
 *********************
 Hardware Installation
 *********************
