@@ -24,7 +24,7 @@ Software Architecture
 ^^^^^^^^^^^^^^^^^^^^^
 
 All the hardware components are exposed to userspace applications using the
-Linux ALSA (Advance Linux Sound Architecture) framework, which allows control
+Linux ALSA (Advanced Linux Sound Architecture) framework, which allows control
 and configuration of the hardware through common APIs. For more details check
 the `links below <#additional-information>`__.
 
@@ -625,7 +625,7 @@ separate subdevice.
 
 In most cases ``-Dplughw:0,0`` is the device we want to use for audio
 but in case we have several audio devices (onboard + USB for example)
-one need to specify which device to use for audio:
+one needs to specify which device to use for audio:
 
 .. ifconfig:: CONFIG_part_family in ('AM335X_family', 'AM437X_family')
 
@@ -639,7 +639,7 @@ one need to specify which device to use for audio:
 
 .. ifconfig:: CONFIG_part_variant in ('J784S4','J742S2')
 
-    ``-Dplughw:j784s4cpb,0`` will use the onboard audio on J721E-EVM
+    ``-Dplughw:j784s4cpb,0`` will use the onboard audio on J784S4-EVM
     board.
 
 To play audio on card0's PCM0 and let ALSA to decide if resampling is
@@ -647,20 +647,20 @@ needed:
 
 .. code-block:: text
 
-    aplay -Dplughw:0,0 <path to wav file>
+   aplay -Dplughw:0,0 <path to wav file>
 
 To record audio to a file:
 
 .. code-block:: text
 
-    arecord -Dplughw:0,0 -t wav <path to wav file>
+   arecord -Dplughw:0,0 -t wav <path to wav file>
 
 To test full duplex audio (play back the recorded audio w/o intermediate
 file):
 
 .. code-block:: text
 
-    arecord -Dplughw:0,0 | aplay -Dplughw:0,0
+   arecord -Dplughw:0,0 | aplay -Dplughw:0,0
 
 To request specific audio format to be used for playback/capture take a look
 at the help of aplay/arecord.   For example, one can specify the format with ``-f``,
@@ -670,13 +670,13 @@ For example, record 48KHz, stereo 16bit audio:
 
 .. code-block:: text
 
-    arecord -Dhw:0,0 -fdat -t wav record_48K_stereo_16bit.wav
+   arecord -Dhw:0,0 -fdat -t wav record_48K_stereo_16bit.wav
 
-Or to record record 96KHz, stereo 24bit audio:
+Or to record 96KHz, stereo 24bit audio:
 
 .. code-block:: text
 
-    arecord -Dhw:0,0 -fS24_LE -c2 -r96000 -t wav record_96K_stereo_24bit.wav
+   arecord -Dhw:0,0 -fS24_LE -c2 -r96000 -t wav record_96K_stereo_24bit.wav
 
 It is a good practice to save the mixer settings found to be good and
 reload them after every boot (if your distribution is not doing this
@@ -684,14 +684,14 @@ already)
 
 .. code-block:: text
 
-    Set the mixers for the board with amixer, alsamixer
-    alsactl -f board.aconf store
+   Set the mixers for the board with amixer, alsamixer
+   alsactl -f board.aconf store
 
 After booting up the board it can be restored with a single command:
 
 .. code-block:: text
 
-    alsactl -f board.aconf restore
+   alsactl -f board.aconf restore
 
 Board-specific instructions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -710,15 +710,15 @@ Board-specific instructions
 
     .. code-block:: text
 
-        Device Drivers  --->
-          Sound card support  --->
-            Advanced Linux Sound Architecture  --->
-              ALSA for SoC audio support  --->
-                Audio support for Texas Instruments SoCs  --->
-                  <*> Multichannel Audio Serial Port (McASP) support
-                CODEC drivers  --->
-                  <*> Texas Instruments TLV320AIC3x CODECs
-                <*>   ASoC Simple sound card support
+       Device Drivers  --->
+         Sound card support  --->
+           Advanced Linux Sound Architecture  --->
+             ALSA for SoC audio support  --->
+               Audio support for Texas Instruments SoCs  --->
+                 <*> Multichannel Audio Serial Port (McASP) support
+               CODEC drivers  --->
+                 <*> Texas Instruments TLV320AIC3x CODECs
+               <*>   ASoC Simple sound card support
 
     .. rubric:: User space
        :name: user-space-2
@@ -728,23 +728,23 @@ Board-specific instructions
 
     .. code-block:: text
 
-        amixer -c AM335xEVM sset PCM 90                            # Master Playback volume
+       amixer -c AM335xEVM sset PCM 90                            # Master Playback volume
 
-    For audio capture trough stereo microphones:
-
-    .. code-block:: text
-
-        amixer sset 'Right PGA Mixer Line1R' on
-        amixer sset 'Right PGA Mixer Line1L' on
-        amixer sset 'Left PGA Mixer Line1R' on
-        amixer sset 'Left PGA Mixer Line1L' on
-
-    In addition to previois commands for line in capture run also these:
+    For audio capture through stereo microphones:
 
     .. code-block:: text
 
-        amixer sset 'Left Line1L Mux' differential
-        amixer sset 'Right Line1R Mux' differential
+       amixer sset 'Right PGA Mixer Line1R' on
+       amixer sset 'Right PGA Mixer Line1L' on
+       amixer sset 'Left PGA Mixer Line1R' on
+       amixer sset 'Left PGA Mixer Line1L' on
+
+    In addition to previous commands for line in capture run also these:
+
+    .. code-block:: text
+
+       amixer sset 'Left Line1L Mux' differential
+       amixer sset 'Right Line1R Mux' differential
 
 .. ifconfig:: CONFIG_part_family in ('AM335X_family')
 
@@ -761,15 +761,15 @@ Board-specific instructions
 
     .. code-block:: text
 
-        Device Drivers  --->
-          Sound card support  --->
-            Advanced Linux Sound Architecture  --->
-              ALSA for SoC audio support  --->
-                Audio support for Texas Instruments SoCs  --->
-                  <*> Multichannel Audio Serial Port (McASP) support
-                CODEC drivers  --->
-                  <*> Texas Instruments TLV320AIC3x CODECs
-                <*>   ASoC Simple sound card support
+       Device Drivers  --->
+         Sound card support  --->
+           Advanced Linux Sound Architecture  --->
+             ALSA for SoC audio support  --->
+               Audio support for Texas Instruments SoCs  --->
+                 <*> Multichannel Audio Serial Port (McASP) support
+               CODEC drivers  --->
+                 <*> Texas Instruments TLV320AIC3x CODECs
+               <*>   ASoC Simple sound card support
 
     .. rubric:: User space
        :name: user-space-3
@@ -779,7 +779,7 @@ Board-specific instructions
 
     .. code-block:: text
 
-        amixer -c AM335xEVMSK sset PCM 90                            # Master Playback volume
+       amixer -c AM335xEVMSK sset PCM 90                            # Master Playback volume
 
 .. ifconfig:: CONFIG_part_family in ('AM437X_family')
 
@@ -811,49 +811,49 @@ Board-specific instructions
 
     .. note::
 
-     Before audio playback ALSA mixers must be configured for either Headphone or Speaker output. The audio will not work with non correct mixer configuration!
+     Before audio playback ALSA mixers must be configured for either Headphone or Speaker output. The audio will not work with incorrect mixer configuration!
 
     To play audio through headphone jack run:
 
     .. code-block:: text
 
-        amixer sset 'DAC' 127
-        amixer sset 'HP Analog' 66
-        amixer sset 'HP Driver' 0 on
-        amixer sset 'HP Left' on
-        amixer sset 'HP Right' on
-        amixer sset 'Output Left From Left DAC' on
-        amixer sset 'Output Right From Right DAC' on
+       amixer sset 'DAC' 127
+       amixer sset 'HP Analog' 66
+       amixer sset 'HP Driver' 0 on
+       amixer sset 'HP Left' on
+       amixer sset 'HP Right' on
+       amixer sset 'Output Left From Left DAC' on
+       amixer sset 'Output Right From Right DAC' on
 
     To play audio through internal speakers run:
 
     .. code-block:: text
 
-        amixer sset 'DAC' 127
-        amixer sset 'Speaker Analog' 127
-        amixer sset 'Speaker Driver' 0 on
-        amixer sset 'Speaker Left' on
-        amixer sset 'Speaker Right' on
-        amixer sset 'Output Left From Left DAC' on
-        amixer sset 'Output Right From Right DAC' on
+       amixer sset 'DAC' 127
+       amixer sset 'Speaker Analog' 127
+       amixer sset 'Speaker Driver' 0 on
+       amixer sset 'Speaker Left' on
+       amixer sset 'Speaker Right' on
+       amixer sset 'Output Left From Left DAC' on
+       amixer sset 'Output Right From Right DAC' on
 
     To capture audio from both microphone channels run:
 
     .. code-block:: text
 
-        amixer sset 'MIC1RP P-Terminal' 'FFR 10 Ohm'
-        amixer sset 'MIC1LP P-Terminal' 'FFR 10 Ohm'
-        amixer sset 'ADC' 40
-        amixer cset name='ADC Capture Switch' on
+       amixer sset 'MIC1RP P-Terminal' 'FFR 10 Ohm'
+       amixer sset 'MIC1LP P-Terminal' 'FFR 10 Ohm'
+       amixer sset 'ADC' 40
+       amixer cset name='ADC Capture Switch' on
 
-    If the captured audio has low volume you can try higer values for 'Mic
+    If the captured audio has low volume you can try higher values for 'Mic
     PGA' mixer, for instance:
 
     .. code-block:: text
 
-        amixer sset 'Mic PGA' 50
+       amixer sset 'Mic PGA' 50
 
-    Note: The codec on has only one channel ADC so the captured audio is
+    Note: The codec has only one channel ADC so the captured audio is
     dual channel mono signal.
 
 .. ifconfig:: CONFIG_part_family in ('AM437X_family')
@@ -870,15 +870,15 @@ Board-specific instructions
 
     .. code-block:: text
 
-        Device Drivers  --->
-          Sound card support  --->
-            Advanced Linux Sound Architecture  --->
-              ALSA for SoC audio support  --->
-                Audio support for Texas Instruments SoCs  --->
-                  <*> Multichannel Audio Serial Port (McASP) support
-                CODEC drivers  --->
-                  <*> Texas Instruments TLV320AIC3x CODECs
-                <*>   ASoC Simple sound card support
+       Device Drivers  --->
+         Sound card support  --->
+           Advanced Linux Sound Architecture  --->
+             ALSA for SoC audio support  --->
+               Audio support for Texas Instruments SoCs  --->
+                 <*> Multichannel Audio Serial Port (McASP) support
+               CODEC drivers  --->
+                 <*> Texas Instruments TLV320AIC3x CODECs
+               <*>   ASoC Simple sound card support
 
     .. rubric:: User space
        :name: user-space-5
@@ -888,27 +888,27 @@ Board-specific instructions
 
     .. code-block:: text
 
-        amixer -c AM437xGPEVM sset PCM 90                            # Master Playback volume
+       amixer -c AM437xGPEVM sset PCM 90                            # Master Playback volume
 
     Playback to Headphone only:
 
     .. code-block:: text
 
-        amixer -c AM437xGPEVM sset 'Left HP Mixer DACL1' on               # HP Left route enable
-        amixer -c AM437xGPEVM sset 'Right HP Mixer DACR1' on              # HP Right route enable
-        amixer -c AM437xGPEVM sset 'Left Line Mixer DACL1' off            # Line out Left disable
-        amixer -c AM437xGPEVM sset 'Right Line Mixer DACR1' off           # Line out Right disable
-        amixer -c AM437xGPEVM sset 'HP DAC' 90                            # Adjust HP volume
+       amixer -c AM437xGPEVM sset 'Left HP Mixer DACL1' on               # HP Left route enable
+       amixer -c AM437xGPEVM sset 'Right HP Mixer DACR1' on              # HP Right route enable
+       amixer -c AM437xGPEVM sset 'Left Line Mixer DACL1' off            # Line out Left disable
+       amixer -c AM437xGPEVM sset 'Right Line Mixer DACR1' off           # Line out Right disable
+       amixer -c AM437xGPEVM sset 'HP DAC' 90                            # Adjust HP volume
 
     Record from Line In:
 
     .. code-block:: text
 
-        amixer -c AM437xGPEVM sset 'Left PGA Mixer Line1L' on             # Line in Left enable
-        amixer -c AM437xGPEVM sset 'Right PGA Mixer Line1R' on            # Line in Right enable
-        amixer -c AM437xGPEVM sset 'Left PGA Mixer Mic3L' off             # Analog mic Left disable
-        amixer -c AM437xGPEVM sset 'Right PGA Mixer Mic3R' off            # Analog mic Right disable
-        amixer -c AM437xGPEVM sset 'PGA' 40                               # Adjust Capture volume
+       amixer -c AM437xGPEVM sset 'Left PGA Mixer Line1L' on             # Line in Left enable
+       amixer -c AM437xGPEVM sset 'Right PGA Mixer Line1R' on            # Line in Right enable
+       amixer -c AM437xGPEVM sset 'Left PGA Mixer Mic3L' off             # Analog mic Left disable
+       amixer -c AM437xGPEVM sset 'Right PGA Mixer Mic3R' off            # Analog mic Right disable
+       amixer -c AM437xGPEVM sset 'PGA' 40                               # Adjust Capture volume
 
 .. ifconfig:: CONFIG_part_variant in ('J721E')
 
@@ -926,45 +926,45 @@ Board-specific instructions
 
     .. code-block:: text
 
-               |o|c1  |o|p1  |o|p3
-         _     | |    | |    | |
-        |o|c3  |o|c2  |o|p4  |o|p2
-        --------------------------
+              |o|c1  |o|p1  |o|p3
+        _     | |    | |    | |
+       |o|c3  |o|c2  |o|p4  |o|p2
+       --------------------------
 
-        c1/2/3 - capture jacks (3rd is line input)
-        p1/2/3/4 - playback jacks (4th is line output)
+       c1/2/3 - capture jacks (3rd is line input)
+       p1/2/3/4 - playback jacks (4th is line output)
 
-        2 channel audio (stereo):
-        -------------------------
-        0 (left):  p1/c1 left
-        1 (right): p1/c1 right
+       2 channel audio (stereo):
+       -------------------------
+       0 (left):  p1/c1 left
+       1 (right): p1/c1 right
 
-        4 channel audio:
-        ----------------
-        0: p1/c1 left
-        1: p2/c2 left
-        2: p1/c1 right
-        3: p2/c2 right
+       4 channel audio:
+       ----------------
+       0: p1/c1 left
+       1: p2/c2 left
+       2: p1/c1 right
+       3: p2/c2 right
 
-        6 channel audio:
-        ----------------
-        0: p1/c1 left
-        1: p2/c2 left
-        2: p3/c3 left
-        3: p1/c1 right
-        4: p2/c2 right
-        5: p3/c3 right
+       6 channel audio:
+       ----------------
+       0: p1/c1 left
+       1: p2/c2 left
+       2: p3/c3 left
+       3: p1/c1 right
+       4: p2/c2 right
+       5: p3/c3 right
 
-        8 channel audio:
-        ----------------
-        0: p1/c1 left
-        1: p2/c2 left
-        2: p3/c3 left
-        3: p4 left
-        4: p1/c1 right
-        5: p2/c2 right
-        6: p3/c3 right
-        7: p4 right
+       8 channel audio:
+       ----------------
+       0: p1/c1 left
+       1: p2/c2 left
+       2: p3/c3 left
+       3: p4 left
+       4: p1/c1 right
+       5: p2/c2 right
+       6: p3/c3 right
+       7: p4 right
 
     For example, if the playback is opened in **8-channel** mode and **stereo** audio is
     desired on the **line output (p4)**,  then the **left channel** of the 8-channel stream should
@@ -975,12 +975,12 @@ Board-specific instructions
 
     .. code-block:: text
 
-        Device Drivers  --->
-          Sound card support  --->
-            Advanced Linux Sound Architecture  --->
-              ALSA for SoC audio support  --->
-                Audio support for Texas Instruments SoCs  --->
-                  <*> SoC Audio support for j721e EVM
+       Device Drivers  --->
+         Sound card support  --->
+           Advanced Linux Sound Architecture  --->
+             ALSA for SoC audio support  --->
+               Audio support for Texas Instruments SoCs  --->
+                 <*> SoC Audio support for j721e EVM
 
     .. rubric:: User space
        :name: user-space-8-kernel-audio
@@ -989,22 +989,22 @@ Board-specific instructions
 
     .. code-block:: text
 
-        amixer -c j721ecpb sset 'codec1 DAC1' 141  # Playback volume for p1 jack
-        amixer -c j721ecpb sset 'codec1 DAC2' 141  # Playback volume for p2 jack
-        amixer -c j721ecpb sset 'codec1 DAC3' 141  # Playback volume for p3 jack
-        amixer -c j721ecpb sset 'codec1 DAC4' 141  # Playback volume for p4 jack
+       amixer -c j721ecpb sset 'codec1 DAC1' 141  # Playback volume for p1 jack
+       amixer -c j721ecpb sset 'codec1 DAC2' 141  # Playback volume for p2 jack
+       amixer -c j721ecpb sset 'codec1 DAC3' 141  # Playback volume for p3 jack
+       amixer -c j721ecpb sset 'codec1 DAC4' 141  # Playback volume for p4 jack
 
     Master volume control is disabled by default. It can be enabled by:
 
     .. code-block:: text
 
-        amixer -c j721ecpb sset 'codec1 DAC Volume Control Type' 'Master + Individual'
+       amixer -c j721ecpb sset 'codec1 DAC Volume Control Type' 'Master + Individual'
 
     Then, a master gain control can be applied to all outputs:
 
     .. code-block:: text
 
-        amixer -c j721ecpb sset 'codec1 Master' 141  # Master Playback volume for p1/2/3/4 jack
+       amixer -c j721ecpb sset 'codec1 Master' 141  # Master Playback volume for p1/2/3/4 jack
 
 .. ifconfig:: CONFIG_part_variant in ('J784S4','J742S2')
 
@@ -1019,42 +1019,42 @@ Board-specific instructions
 
     .. code-block:: text
 
-        |o|c1
-        | |
-        |o|p1
-        --------------------------
+       |o|c1
+       | |
+       |o|p1
+       --------------------------
 
-        c1 - capture jack
-        p1 - playback jack
+       c1 - capture jack
+       p1 - playback jack
 
     .. rubric:: Kernel config
        :name: kernel-config-8
 
     .. code-block:: text
 
-        Device Drivers  --->
-          Sound card support  --->
-            Advanced Linux Sound Architecture  --->
-              ALSA for SoC audio support  --->
-                Audio support for Texas Instruments SoCs  --->
-                  <*> SoC Audio support for j721e EVM
+       Device Drivers  --->
+         Sound card support  --->
+           Advanced Linux Sound Architecture  --->
+             ALSA for SoC audio support  --->
+               Audio support for Texas Instruments SoCs  --->
+                 <*> SoC Audio support for j721e EVM
 
     .. rubric:: ~/.asoundrc file needed for audio playback
        :name: asoundrc-file-1
 
     .. code-block:: text
 
-        pcm_slave.j784s4-evm {
-          pcm "hw:0,0"
-          format S16_LE
-          channels 2
-          rate 48000
-        }
+       pcm_slave.j784s4-evm {
+         pcm "hw:0,0"
+         format S16_LE
+         channels 2
+         rate 48000
+       }
 
-        pcm.j784s4-playback {
-          type plug
-          slave j784s4-evm
-        }
+       pcm.j784s4-playback {
+         type plug
+         slave j784s4-evm
+       }
 
     .. rubric:: User space
        :name: user-space-8-kernel-audio
@@ -1065,13 +1065,13 @@ Board-specific instructions
 
     .. code-block:: text
 
-        amixer -c j784s4cpb sset 'codec1 DAC Volume Control Type' 'Master + Individual'
+       amixer -c j784s4cpb sset 'codec1 DAC Volume Control Type' 'Master + Individual'
 
     Then, a master gain control can be applied to all outputs:
 
     .. code-block:: text
 
-        amixer -c j784s4cpb sset 'codec1 Master' 141  # Master Playback volume for p1 jack
+       amixer -c j784s4cpb sset 'codec1 Master' 141  # Master Playback volume for p1 jack
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX', 'J722S')
 
@@ -1089,15 +1089,15 @@ Board-specific instructions
 
     .. code-block:: text
 
-        Device Drivers  --->
-          Sound card support  --->
-            Advanced Linux Sound Architecture  --->
-              ALSA for SoC audio support  --->
-                Audio support for Texas Instruments SoCs  --->
-                  <*> Multichannel Audio Serial Port (McASP) support
-                CODEC drivers  --->
-                  <*> Texas Instruments TLV320AIC3x CODECs
-                <*>   ASoC Simple sound card support
+       Device Drivers  --->
+         Sound card support  --->
+           Advanced Linux Sound Architecture  --->
+             ALSA for SoC audio support  --->
+               Audio support for Texas Instruments SoCs  --->
+                 <*> Multichannel Audio Serial Port (McASP) support
+               CODEC drivers  --->
+                 <*> Texas Instruments TLV320AIC3x CODECs
+               <*>   ASoC Simple sound card support
 
     .. rubric:: User space
        :name: user-space-9
@@ -1107,16 +1107,16 @@ Board-specific instructions
 
     .. code-block:: text
 
-        amixer sset PCM 90%
+       amixer sset PCM 90%
 
     For recording using the mic pin on the 3.5mm jack, you will need to unmute
     MIC3R on the codec, and increase the capture volume:
 
     .. code-block:: text
 
-        amixer sset 'Left PGA Mixer Mic3R' on
-        amixer sset 'Right PGA Mixer Mic3R' on
-        amixer sset PGA 90%
+       amixer sset 'Left PGA Mixer Mic3R' on
+       amixer sset 'Right PGA Mixer Mic3R' on
+       amixer sset PGA 90%
 
     To switch to using HDMI for playback you can refer to: :ref:`hdmi-audio`.
 
@@ -1136,15 +1136,15 @@ Board-specific instructions
 
     .. code-block:: text
 
-        Device Drivers  --->
-          Sound card support  --->
-            Advanced Linux Sound Architecture  --->
-              ALSA for SoC audio support  --->
-                Audio support for Texas Instruments SoCs  --->
-                  <*> Multichannel Audio Serial Port (McASP) support
-                CODEC drivers  --->
-                  <*> Texas Instruments TLV320AIC3x CODECs
-                <*>   ASoC Simple sound card support
+       Device Drivers  --->
+         Sound card support  --->
+           Advanced Linux Sound Architecture  --->
+             ALSA for SoC audio support  --->
+               Audio support for Texas Instruments SoCs  --->
+                 <*> Multichannel Audio Serial Port (McASP) support
+               CODEC drivers  --->
+                 <*> Texas Instruments TLV320AIC3x CODECs
+               <*>   ASoC Simple sound card support
 
     .. rubric:: User space
        :name: user-space-9
@@ -1154,16 +1154,16 @@ Board-specific instructions
 
     .. code-block:: text
 
-        amixer sset PCM 90%
+       amixer sset PCM 90%
 
     For recording using the mic pin on the 3.5mm jack, you will need to unmute
     MIC3R on the codec, and increase the capture volume:
 
     .. code-block:: text
 
-        amixer sset 'Left PGA Mixer Mic3R' on
-        amixer sset 'Right PGA Mixer Mic3R' on
-        amixer sset PGA 90%
+       amixer sset 'Left PGA Mixer Mic3R' on
+       amixer sset 'Right PGA Mixer Mic3R' on
+       amixer sset PGA 90%
 
     To switch to using HDMI for playback you can refer to: :ref:`hdmi-audio`.
 
