@@ -14,6 +14,7 @@ PVRCarbon
 PVRTune
 Sitara
 Slint
+SysConfig
 TFLite
 TVM
 Trixie
