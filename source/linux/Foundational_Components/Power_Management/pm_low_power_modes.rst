@@ -387,6 +387,12 @@ Limitations
 
       SK-AM62-SIP EVM does NOT support low power modes.
 
+   .. important::
+
+      When using low power modes on SK-AM62-LP EVM, USB **cannot** be connected
+      to anything. When USB is connected and a low power mode is entered, the
+      EVM fails to resume to an active Linux state.
+
 HWRNG support on GP devices is incompatible with Deep Sleep and MCU Only
 modes. To test LPM on GP devices, HWRNG has to be unloaded one-time
 before running the Suspend-to-RAM command:
