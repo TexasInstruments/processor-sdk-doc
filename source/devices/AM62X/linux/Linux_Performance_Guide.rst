@@ -440,6 +440,129 @@ Run Glmark2 and capture performance reported (Score). All display outputs (HDMI,
 
 |
 
+
+Ethernet
+-----------------
+Ethernet performance benchmarks were measured using Netperf 2.7.1 https://hewlettpackard.github.io/netperf/doc/netperf.html
+Test procedures were modeled after those defined in RFC-2544:
+https://tools.ietf.org/html/rfc2544, where the DUT is the TI device
+and the "tester" used was a Linux PC. To produce consistent results,
+it is recommended to carry out performance tests in a private network and to avoid
+running NFS on the same interface used in the test. In these results,
+CPU utilization was captured as the total percentage used across all cores on the device,
+while running the performance test over one external interface.
+
+UDP Throughput (0% loss) was measured by the procedure defined in RFC-2544 section 26.1: Throughput.
+In this scenario, netperf options burst_size (-b) and wait_time (-w) are used to limit bandwidth
+during different trials of the test, with the goal of finding the highest rate at which
+no loss is seen. For example, to limit bandwidth to 500Mbits/sec with 1472B datagram:
+
+::
+
+   burst_size = <bandwidth (bits/sec)> / 8 (bits -> bytes) / <UDP datagram size> / 100 (seconds -> 10 ms)
+   burst_size = 500000000 / 8 / 1472 / 100 = 425
+
+   wait_time = 10 milliseconds (minimum supported by Linux PC used for testing)
+
+UDP Throughput (possible loss) was measured by capturing throughput and packet loss statistics when
+running the netperf test with no bandwidth limit (remove -b/-w options). 
+
+In order to start a netperf client on one device, the other device must have netserver running.
+To start netserver:
+
+::
+
+   netserver [-p <port_number>] [-4 (IPv4 addressing)] [-6 (IPv6 addressing)]
+
+Running the following shell script from the DUT will trigger netperf clients to measure
+bidirectional TCP performance for 60 seconds and report CPU utilization. Parameter -k is used in
+client commands to summarize selected statistics on their own line and -j is used to gain
+additional timing measurements during the test.
+
+::
+
+   #!/bin/bash
+   for i in 1
+   do
+      netperf -H <tester ip> -j -c -l 60 -t TCP_STREAM --
+         -k DIRECTION,THROUGHPUT,MEAN_LATENCY,LOCAL_CPU_UTIL,REMOTE_CPU_UTIL,LOCAL_BYTES_SENT,REMOTE_BYTES_RECVD,LOCAL_SEND_SIZE &
+
+      netperf -H <tester ip> -j -c -l 60 -t TCP_MAERTS --
+         -k DIRECTION,THROUGHPUT,MEAN_LATENCY,LOCAL_CPU_UTIL,REMOTE_CPU_UTIL,LOCAL_BYTES_SENT,REMOTE_BYTES_RECVD,LOCAL_SEND_SIZE &
+   done
+
+Running the following commands will trigger netperf clients to measure UDP burst performance for 
+60 seconds at various burst/datagram sizes and report CPU utilization. 
+
+- For UDP egress tests, run netperf client from DUT and start netserver on tester. 
+
+::
+
+   netperf -H <tester ip> -j -c -l 60 -t UDP_STREAM -b <burst_size> -w <wait_time> -- -m <UDP datagram size>
+      -k DIRECTION,THROUGHPUT,MEAN_LATENCY,LOCAL_CPU_UTIL,REMOTE_CPU_UTIL,LOCAL_BYTES_SENT,REMOTE_BYTES_RECVD,LOCAL_SEND_SIZE
+
+- For UDP ingress tests, run netperf client from tester and start netserver on DUT.
+
+::
+
+   netperf -H <DUT ip> -j -C -l 60 -t UDP_STREAM -b <burst_size> -w <wait_time> -- -m <UDP datagram size>
+      -k DIRECTION,THROUGHPUT,MEAN_LATENCY,LOCAL_CPU_UTIL,REMOTE_CPU_UTIL,LOCAL_BYTES_SENT,REMOTE_BYTES_RECVD,LOCAL_SEND_SIZE
+
+
+CPSW/CPSW2g/CPSW3g Ethernet Driver
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- CPSW2g: AM65x, J7200, J721e, J721S2, J784S4, J742S2
+- CPSW3g: AM64x, AM62x, AM62ax, AM62px
+
+.. rubric::  TCP Bidirectional Throughput
+   :name: CPSW2g-tcp-bidirectional-throughput
+
+.. csv-table:: CPSW2g TCP Bidirectional Throughput
+    :header: "Command Used","am62xx_lp_sk-fs: THROUGHPUT (Mbits/sec)","am62xx_lp_sk-fs: CPU Load % (LOCAL_CPU_UTIL)","am62xx_sk-fs: THROUGHPUT (Mbits/sec)","am62xx_sk-fs: CPU Load % (LOCAL_CPU_UTIL)","am62xxsip_sk-fs: THROUGHPUT (Mbits/sec)","am62xxsip_sk-fs: CPU Load % (LOCAL_CPU_UTIL)"
+
+    "netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_MAERTS","1698.44 (min 1628.06, max 1800.35)","67.30 (min 64.15, max 72.01)","1783.17 (min 1762.43, max 1798.15)","67.94 (min 65.84, max 69.35)","1658.66 (min 1180.00, max 1849.79)","66.19 (min 55.35, max 71.09)"
+
+.. rubric::  TCP Bidirectional Throughput Interrupt Pacing
+   :name: CPSW2g-tcp-bidirectional-throughput-interrupt-pacing
+
+.. csv-table:: CPSW2g TCP Bidirectional Throughput Interrupt Pacing
+    :header: "Command Used","am62xx_lp_sk-fs: THROUGHPUT (Mbits/sec)","am62xx_lp_sk-fs: CPU Load % (LOCAL_CPU_UTIL)","am62xx_sk-fs: THROUGHPUT (Mbits/sec)","am62xx_sk-fs: CPU Load % (LOCAL_CPU_UTIL)","am62xxsip_sk-fs: THROUGHPUT (Mbits/sec)","am62xxsip_sk-fs: CPU Load % (LOCAL_CPU_UTIL)"
+
+    "netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_MAERTS","1630.25 (min 1484.82, max 1709.62)","59.65 (min 50.43, max 84.96)","1604.35 (min 301.65, max 1837.36)","47.99 (min 14.99, max 55.09)","1840.19 (min 1813.97, max 1870.78)","54.44 (min 50.41, max 57.84)"
+
+.. rubric::  UDP Throughput
+   :name: CPSW2g-udp-throughput-0-loss
+
+.. csv-table:: CPSW2g UDP Egress Throughput 0 loss
+    :header: "Frame Size(bytes)","am62xx_lp_sk-fs: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am62xx_lp_sk-fs: THROUGHPUT (Mbits/sec)","am62xx_lp_sk-fs: Packets Per Second (kPPS)","am62xx_lp_sk-fs: CPU Load % (LOCAL_CPU_UTIL)","am62xx_sk-fs: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am62xx_sk-fs: THROUGHPUT (Mbits/sec)","am62xx_sk-fs: Packets Per Second (kPPS)","am62xx_sk-fs: CPU Load % (LOCAL_CPU_UTIL)","am62xxsip_sk-fs: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am62xxsip_sk-fs: THROUGHPUT (Mbits/sec)","am62xxsip_sk-fs: Packets Per Second (kPPS)","am62xxsip_sk-fs: CPU Load % (LOCAL_CPU_UTIL)"
+
+    "64","18.00","45.17 (min 42.87, max 45.99)","88.22 (min 84.00, max 90.00)","39.84 (min 25.15, max 63.81)","","42.93 (min 26.73, max 54.34)","83.86 (min 52.00, max 106.00)","30.70 (min 12.22, max 39.15)","","47.46 (min 45.64, max 48.58)","92.75 (min 89.00, max 95.00)","39.02 (min 38.09, max 39.68)"
+    "128","82.00","87.45 (min 81.17, max 89.93)","85.25 (min 79.00, max 88.00)","44.32 (min 37.82, max 62.92)","","90.95 (min 17.31, max 102.75)","88.70 (min 17.00, max 100.00)","34.13 (min 9.70, max 38.73)","","95.20 (min 89.43, max 97.29)","93.00 (min 87.00, max 95.00)","39.06 (min 38.06, max 39.81)"
+    "256","210.00","172.10 (min 156.28, max 178.99)","83.89 (min 76.00, max 87.00)","43.40 (min 37.59, max 62.50)","","200.58 (min 195.49, max 213.41)","97.71 (min 95.00, max 104.00)","38.57 (min 38.11, max 39.49)","","185.76 (min 178.48, max 190.50)","90.57 (min 87.00, max 93.00)","38.56 (min 38.29, max 38.82)"
+    "1024","978.00","610.03 (min 286.71, max 692.59)","74.57 (min 35.00, max 85.00)","37.81 (min 15.50, max 61.34)","","627.48 (min 46.69, max 807.16)","76.78 (min 6.00, max 99.00)","30.94 (min 0.92, max 38.45)","","700.39 (min 683.61, max 736.41)","85.25 (min 83.00, max 90.00)","38.01 (min 37.61, max 38.45)"
+    "1518","1472.00","530.95 (min 183.19, max 697.98)","43.63 (min 15.00, max 57.00)","35.51 (min 11.05, max 60.04)","","757.07 (min 611.07, max 823.49)","62.33 (min 50.00, max 68.00)","35.49 (min 32.74, max 36.36)","","692.69 (min 529.45, max 741.46)","57.13 (min 44.00, max 61.00)","35.56 (min 30.07, max 40.87)"
+
+.. csv-table:: CPSW2g UDP Ingress Throughput 0 loss
+    :header: "Frame Size(bytes)","am62xx_lp_sk-fs: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am62xx_lp_sk-fs: THROUGHPUT (Mbits/sec)","am62xx_lp_sk-fs: Packets Per Second (kPPS)","am62xx_lp_sk-fs: CPU Load % (LOCAL_CPU_UTIL)","am62xx_sk-fs: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am62xx_sk-fs: THROUGHPUT (Mbits/sec)","am62xx_sk-fs: Packets Per Second (kPPS)","am62xx_sk-fs: CPU Load % (LOCAL_CPU_UTIL)","am62xxsip_sk-fs: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am62xxsip_sk-fs: THROUGHPUT (Mbits/sec)","am62xxsip_sk-fs: Packets Per Second (kPPS)","am62xxsip_sk-fs: CPU Load % (LOCAL_CPU_UTIL)"
+
+    "64","18.00","2.27 (min 1.38, max 2.66)","4.33 (min 3.00, max 5.00)","1.77 (min 0.74, max 3.49)","","1.52 (min 1.38, max 1.54)","3.00","0.88 (min 0.62, max 1.82)","","1.92 (min 1.38, max 2.71)","3.89 (min 3.00, max 5.00)","1.18 (min 0.58, max 2.47)"
+    "128","82.00","5.28 (min 5.12, max 5.43)","5.00","2.32 (min 1.08, max 4.15)","","4.51","4.00","1.19 (min 0.85, max 2.88)","","4.73 (min 4.10, max 5.32)","4.57 (min 4.00, max 5.00)","0.99 (min 0.76, max 1.18)"
+    "256","210.00","10.38 (min 9.83, max 10.85)","5.00","2.01 (min 1.04, max 3.87)","","11.06 (min 9.83, max 16.18)","5.50 (min 5.00, max 8.00)","1.76 (min 1.05, max 3.74)","","10.32 (min 9.20, max 10.85)","4.80 (min 4.00, max 5.00)","1.06 (min 0.98, max 1.15)"
+    "1024","978.00","43.15 (min 42.60, max 43.42)","5.00","3.05 (min 1.38, max 5.13)","","43.07 (min 42.60, max 44.23)","5.00","2.44 (min 1.48, max 3.70)","","189.01 (min 27.85, max 935.80)","22.83 (min 3.00, max 114.00)","8.78 (min 1.39, max 42.77)"
+    "1518","1472.00","61.97 (min 61.23, max 62.41)","5.00","3.53 (min 1.95, max 4.71)","","62.18 (min 61.23, max 63.59)","5.00","3.07 (min 1.84, max 4.74)","","225.77 (min 28.26, max 941.32)","19.00 (min 2.00, max 80.00)","11.77 (min 1.97, max 42.15)"
+
+.. csv-table:: CPSW2g UDP Ingress Throughput possible loss
+    :header: "Frame Size(bytes)","am62xx_lp_sk-fs: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am62xx_lp_sk-fs: THROUGHPUT (Mbits/sec)","am62xx_lp_sk-fs: Packets Per Second (kPPS)","am62xx_lp_sk-fs: CPU Load % (LOCAL_CPU_UTIL)","am62xx_lp_sk-fs: Packet Loss %","am62xx_sk-fs: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am62xx_sk-fs: THROUGHPUT (Mbits/sec)","am62xx_sk-fs: Packets Per Second (kPPS)","am62xx_sk-fs: CPU Load % (LOCAL_CPU_UTIL)","am62xx_sk-fs: Packet Loss %","am62xxsip_sk-fs: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am62xxsip_sk-fs: THROUGHPUT (Mbits/sec)","am62xxsip_sk-fs: Packets Per Second (kPPS)","am62xxsip_sk-fs: CPU Load % (LOCAL_CPU_UTIL)","am62xxsip_sk-fs: Packet Loss %"
+
+    "64","18.00","78.62 (min 69.58, max 88.72)","153.56 (min 136.00, max 173.00)","48.04 (min 39.65, max 69.17)","52.00 (min 0.03, max 80.01)","","96.29 (min 89.66, max 97.42)","188.13 (min 175.00, max 190.00)","42.55 (min 39.69, max 44.43)","47.53 (min 31.90, max 64.49)","","83.77 (min 61.91, max 91.66)","163.56 (min 121.00, max 179.00)","42.08 (min 40.20, max 43.92)","71.27 (min 65.75, max 77.58)"
+    "128","82.00","166.41 (min 141.23, max 171.82)","162.57 (min 138.00, max 168.00)","43.50 (min 40.85, max 45.21)","45.31 (min 0.18, max 62.80)","","192.35 (min 182.52, max 194.35)","187.89 (min 178.00, max 190.00)","40.78 (min 33.34, max 46.88)","48.04 (min 28.69, max 70.54)","","170.66 (min 161.89, max 179.10)","166.71 (min 158.00, max 175.00)","43.01 (min 41.89, max 44.60)","66.48 (min 46.79, max 74.38)"
+    "256","210.00","302.93 (min 274.45, max 334.43)","147.89 (min 134.00, max 163.00)","48.96 (min 40.52, max 69.72)","28.02 (min 0.35, max 61.23)","","365.04 (min 343.99, max 374.14)","178.33 (min 168.00, max 183.00)","43.26 (min 41.74, max 44.53)","47.95 (min 40.06, max 53.04)","","285.42 (min 148.67, max 331.95)","139.40 (min 73.00, max 162.00)","42.81 (min 39.40, max 44.21)","46.03 (min 16.49, max 58.26)"
+    "1024","978.00","815.64 (min 461.33, max 935.09)","99.56 (min 56.00, max 114.00)","44.65 (min 38.28, max 68.37)","0.31 (min 0.07, max 0.81)","","889.38 (min 838.56, max 935.45)","108.43 (min 102.00, max 114.00)","42.69 (min 39.75, max 45.31)","0.43 (min 0.06, max 0.90)","","817.58 (min 732.19, max 908.97)","99.83 (min 89.00, max 111.00)","41.74 (min 40.22, max 43.02)","0.48 (min 0.09, max 0.89)"
+    "1518","1472.00","847.13 (min 748.02, max 945.15)","72.00 (min 64.00, max 80.00)","43.54 (min 35.25, max 68.38)","0.43 (min 0.03, max 1.40)","","881.34 (min 797.89, max 922.82)","74.80 (min 68.00, max 78.00)","40.02 (min 35.44, max 42.18)","0.34 (min 0.16, max 0.49)","","922.03 (min 879.70, max 955.84)","78.29 (min 75.00, max 81.00)","41.81 (min 39.60, max 43.08)","0.41 (min 0.00, max 0.77)"
+
+|
+
 Linux OSPI Flash Driver
 -----------------------
 
