@@ -402,6 +402,12 @@ Enabling camera sensors
          sink_3::startx=980 sink_3::starty=500 sink_3::width=640 sink_3::height=480 ! \
          video/x-raw, width=1920, height=1080, format=NV12 ! queue ! kmssink driver-name=tidss sync=false force-modesetting=true
 
+      .. note::
+
+         When configuring the media pipe for execution of the above GStreamer pipeline, it is recommended to setup routes such that CTX 0 is bypassed.
+         This configuration prevents frame corruption in scenarios where high system load results in degraded performance of one or more kernel
+         threads assigned for individual camera management.
+
    Suspend to RAM
    ==============
 
