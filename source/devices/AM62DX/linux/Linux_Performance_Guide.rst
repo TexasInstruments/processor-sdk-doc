@@ -352,6 +352,129 @@ Boot time numbers [avg, min, max] are measured from "Starting kernel" to Linux p
 
 |
 
+Ethernet
+-----------------
+Ethernet performance benchmarks were measured using Netperf 2.7.1 https://hewlettpackard.github.io/netperf/doc/netperf.html
+Test procedures were modeled after those defined in RFC-2544:
+https://tools.ietf.org/html/rfc2544, where the DUT is the TI device
+and the "tester" used was a Linux PC. To produce consistent results,
+it is recommended to carry out performance tests in a private network and to avoid
+running NFS on the same interface used in the test. In these results,
+CPU utilization was captured as the total percentage used across all cores on the device,
+while running the performance test over one external interface.
+
+UDP Throughput (0% loss) was measured by the procedure defined in RFC-2544 section 26.1: Throughput.
+In this scenario, netperf options burst_size (-b) and wait_time (-w) are used to limit bandwidth
+during different trials of the test, with the goal of finding the highest rate at which
+no loss is seen. For example, to limit bandwidth to 500Mbits/sec with 1472B datagram:
+
+::
+
+   burst_size = <bandwidth (bits/sec)> / 8 (bits -> bytes) / <UDP datagram size> / 100 (seconds -> 10 ms)
+   burst_size = 500000000 / 8 / 1472 / 100 = 425
+
+   wait_time = 10 milliseconds (minimum supported by Linux PC used for testing)
+
+UDP Throughput (possible loss) was measured by capturing throughput and packet loss statistics when
+running the netperf test with no bandwidth limit (remove -b/-w options).
+
+In order to start a netperf client on one device, the other device must have netserver running.
+To start netserver:
+
+::
+
+   netserver [-p <port_number>] [-4 (IPv4 addressing)] [-6 (IPv6 addressing)]
+
+Running the following shell script from the DUT will trigger netperf clients to measure
+bidirectional TCP performance for 60 seconds and report CPU utilization. Parameter -k is used in
+client commands to summarize selected statistics on their own line and -j is used to gain
+additional timing measurements during the test.
+
+::
+
+   #!/bin/bash
+   for i in 1
+   do
+      netperf -H <tester ip> -j -c -l 60 -t TCP_STREAM --
+         -k DIRECTION,THROUGHPUT,MEAN_LATENCY,LOCAL_CPU_UTIL,REMOTE_CPU_UTIL,LOCAL_BYTES_SENT,REMOTE_BYTES_RECVD,LOCAL_SEND_SIZE &
+
+      netperf -H <tester ip> -j -c -l 60 -t TCP_MAERTS --
+         -k DIRECTION,THROUGHPUT,MEAN_LATENCY,LOCAL_CPU_UTIL,REMOTE_CPU_UTIL,LOCAL_BYTES_SENT,REMOTE_BYTES_RECVD,LOCAL_SEND_SIZE &
+   done
+
+Running the following commands will trigger netperf clients to measure UDP burst performance for
+60 seconds at various burst/datagram sizes and report CPU utilization.
+
+- For UDP egress tests, run netperf client from DUT and start netserver on tester.
+
+::
+
+   netperf -H <tester ip> -j -c -l 60 -t UDP_STREAM -b <burst_size> -w <wait_time> -- -m <UDP datagram size> 
+      -k DIRECTION,THROUGHPUT,MEAN_LATENCY,LOCAL_CPU_UTIL,REMOTE_CPU_UTIL,LOCAL_BYTES_SENT,REMOTE_BYTES_RECVD,LOCAL_SEND_SIZE 
+
+- For UDP ingress tests, run netperf client from tester and start netserver on DUT. 
+
+::
+
+   netperf -H <DUT ip> -j -C -l 60 -t UDP_STREAM -b <burst_size> -w <wait_time> -- -m <UDP datagram size>
+      -k DIRECTION,THROUGHPUT,MEAN_LATENCY,LOCAL_CPU_UTIL,REMOTE_CPU_UTIL,LOCAL_BYTES_SENT,REMOTE_BYTES_RECVD,LOCAL_SEND_SIZE
+
+
+CPSW/CPSW2g/CPSW3g Ethernet Driver
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- CPSW2g: AM65x, J7200, J721e, J721S2, J784S4, J742S2
+- CPSW3g: AM64x, AM62x, AM62ax, AM62px, AM62dx
+
+
+.. rubric::  TCP Bidirectional Throughput 
+   :name: CPSW2g-tcp-bidirectional-throughput
+
+.. csv-table:: CPSW2g TCP Bidirectional Throughput
+    :header: "Command Used","am62dxx_evm-fs: THROUGHPUT (Mbits/sec)","am62dxx_evm-fs: CPU Load % (LOCAL_CPU_UTIL)"
+
+    "netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_MAERTS","304.93 (min 301.56, max 307.77)","11.34 (min 11.00, max 11.84)"
+
+.. rubric::  TCP Bidirectional Throughput Interrupt Pacing
+   :name: CPSW2g-tcp-bidirectional-throughput-interrupt-pacing
+
+.. csv-table:: CPSW2g TCP Bidirectional Throughput Interrupt Pacing
+    :header: "Command Used","am62dxx_evm-fs: THROUGHPUT (Mbits/sec)","am62dxx_evm-fs: CPU Load % (LOCAL_CPU_UTIL)"
+
+    "netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_MAERTS","305.08 (min 301.65, max 308.15)","11.48 (min 11.33, max 11.63)"
+
+.. rubric::  UDP Throughput
+   :name: CPSW2g-udp-throughput-0-loss
+
+.. csv-table:: CPSW2g UDP Egress Throughput 0 loss
+    :header: "Frame Size(bytes)","am62dxx_evm-fs: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am62dxx_evm-fs: THROUGHPUT (Mbits/sec)","am62dxx_evm-fs: Packets Per Second (kPPS)","am62dxx_evm-fs: CPU Load % (LOCAL_CPU_UTIL)"
+
+    "64","18.00","57.87 (min 55.77, max 59.88)","113.00 (min 109.00, max 117.00)","25.67 (min 25.08, max 26.03)"
+    "128","82.00","113.83 (min 109.02, max 116.77)","111.13 (min 106.00, max 114.00)","25.77 (min 25.07, max 26.02)"
+    "256","210.00","148.42 (min 63.90, max 160.50)","72.13 (min 31.00, max 78.00)","19.34 (min 6.07, max 21.69)"
+    "1024","978.00","181.49 (min 181.48, max 181.50)","22.00","7.98 (min 7.88, max 8.14)"
+    "1518","1472.00","179.37 (min 179.36, max 179.37)","15.00","7.84 (min 7.65, max 7.99)"
+
+.. csv-table:: CPSW2g UDP Ingress Throughput 0 loss
+    :header: "Frame Size(bytes)","am62dxx_evm-fs: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am62dxx_evm-fs: THROUGHPUT (Mbits/sec)","am62dxx_evm-fs: Packets Per Second (kPPS)","am62dxx_evm-fs: CPU Load % (LOCAL_CPU_UTIL)"
+
+    "64","18.00","1.86 (min 1.48, max 2.36)","3.63 (min 3.00, max 5.00)","1.53 (min 0.53, max 3.81)"
+    "128","82.00","4.47 (min 4.40, max 4.71)","4.13 (min 4.00, max 5.00)","1.02 (min 0.76, max 1.65)"
+    "256","210.00","10.41 (min 10.03, max 10.85)","5.00","2.42 (min 0.94, max 5.27)"
+    "1024","978.00","43.19 (min 42.60, max 44.24)","5.00","2.08 (min 1.31, max 4.18)"
+    "1518","1472.00","62.15 (min 61.23, max 64.77)","5.11 (min 5.00, max 6.00)","2.90 (min 1.80, max 4.28)"
+
+.. csv-table:: CPSW2g UDP Ingress Throughput possible loss
+    :header: "Frame Size(bytes)","am62dxx_evm-fs: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am62dxx_evm-fs: THROUGHPUT (Mbits/sec)","am62dxx_evm-fs: Packets Per Second (kPPS)","am62dxx_evm-fs: CPU Load % (LOCAL_CPU_UTIL)","am62dxx_evm-fs: Packet Loss %"
+
+    "64","18.00","82.68 (min 69.85, max 95.35)","161.50 (min 136.00, max 186.00)","40.23 (min 38.26, max 42.06)","31.04 (min 0.18, max 62.30)"
+    "128","82.00","174.59 (min 130.93, max 188.67)","170.50 (min 128.00, max 184.00)","41.26 (min 39.46, max 42.34)","44.65 (min 0.39, max 61.31)"
+    "256","210.00","320.34 (min 259.61, max 369.04)","156.50 (min 127.00, max 180.00)","40.94 (min 38.60, max 42.78)","24.24 (min 0.37, max 49.24)"
+    "1024","978.00","876.98 (min 837.06, max 913.30)","106.86 (min 102.00, max 111.00)","40.28 (min 39.04, max 41.61)","0.61 (min 0.18, max 1.17)"
+    "1518","1472.00","892.63 (min 786.50, max 934.06)","75.78 (min 67.00, max 79.00)","38.92 (min 34.39, max 40.76)","1.04 (min 0.25, max 2.13)"
+
+|
+
 USB Driver
 ----------
 
