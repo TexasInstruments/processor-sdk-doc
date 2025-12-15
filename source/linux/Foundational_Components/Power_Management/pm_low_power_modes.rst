@@ -393,6 +393,8 @@ Limitations
       to anything. When USB is connected and a low power mode is entered, the
       EVM fails to resume to an active Linux state.
 
+RT (Real-Time) Linux does not support any low power modes.
+
 HWRNG support on GP devices is incompatible with Deep Sleep and MCU Only
 modes. To test LPM on GP devices, HWRNG has to be unloaded one-time
 before running the Suspend-to-RAM command:
