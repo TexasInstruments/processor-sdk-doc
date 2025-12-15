@@ -601,6 +601,13 @@ Enabling camera sensors
       $ media-ctl --set-v4l2 '"30102000.ticsi2rx":0[fmt:SRGGB8_1X8/1920x1080]'
       $ media-ctl --set-v4l2 '"imx219 4-0010":0[fmt:SRGGB8_1X8/1920x1080]'
 
+   .. note::
+
+      When configuring the media pipe for multi-camera use case, it is recommended to setup routes such
+      that CTX 0 is bypassed. This configuration prevents frame corruption in scenarios where high system load results in
+      degraded performance of one or more kernel threads assigned for individual camera management. The camera setup
+      script in SD card will do this configuration.
+
    Capturing raw frames
    ====================
 
