@@ -39,6 +39,7 @@ linux/Foundational_Components/U-Boot/UG-QSPI
 linux/Foundational_Components/U-Boot/UG-UART
 linux/Foundational_Components/U-Boot/UG-Key-Writer-Lite
 linux/Foundational_Components/U-Boot/UG-Programming-OTPs
+linux/Foundational_Components/U-Boot/UG-QoS
 
 linux/Foundational_Components/U-Boot/Applications
 linux/Foundational_Components/U-Boot/Apps-SPL-Debug-OpenOCD

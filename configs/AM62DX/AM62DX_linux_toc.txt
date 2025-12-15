@@ -38,6 +38,7 @@ linux/Foundational_Components/U-Boot/UG-UMS
 linux/Foundational_Components/U-Boot/UG-QSPI
 linux/Foundational_Components/U-Boot/UG-UART
 linux/Foundational_Components/U-Boot/UG-RemoteProc
+linux/Foundational_Components/U-Boot/UG-QoS
 
 linux/Foundational_Components/U-Boot/Applications
 linux/Foundational_Components/U-Boot/Apps-SPL-Debug-OpenOCD
