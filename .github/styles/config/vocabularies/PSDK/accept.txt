@@ -30,3 +30,6 @@ mmdebstrap
 bdebstrap
 fdisk
 umount
+TFLite
+ONNX
+TVM
