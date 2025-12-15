@@ -578,7 +578,7 @@ Enabling camera sensors
       subdev_id = /dev/v4l-imx219-subdev0
       isp_required = yes
 
-   For manual configuration, like switching to a different resolution or2222
+   For manual configuration, like switching to a different resolution or
    bitdepth, you can use media-ctl as `explained above
    <#utilities-to-interact-with-the-driver>`__. For example you can switch to
    10-bit 1640x1232 capture on IMX219 using:
