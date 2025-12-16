@@ -188,5 +188,5 @@ The current PWM settings for ePWM and eCAP(APWM) can be monitored from the debug
 EHRPWM can be tested using the following overlays for each of the following devices:
 
 #. AM62X SK: k3-am625-sk-rpi-hdr-ehrpwm.dtso
-#. AM62AX SK: k3-am62a7-sk-rpi-hdr-ehrpwm.dtso
+#. AM62AX SK and AM62DX EVM: k3-am62a7-sk-rpi-hdr-ehrpwm.dtso
 #. AM62PX SK: k3-am62p5-sk-rpi-hdr-ehrpwm.dtso

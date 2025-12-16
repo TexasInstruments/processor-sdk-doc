@@ -46,7 +46,7 @@ What's new
 **Processor SDK Linux AM62DX Release has following new features:**
 
   - Second 2025 LTS Reference Release Including RT combined branch model
-  - McASP async mode: independent transmit (playback) and receIve (capture) clocking.
+  - McASP async mode: independent transmit (playback) and receive (capture) clocking.
   - 4 channel recording support.
   - OSPI, EQEP, PWM, support.
   - Important Bug Fixes on top of Processor SDK 11.01.05.03 Release.
