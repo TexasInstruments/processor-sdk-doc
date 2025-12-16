@@ -63,6 +63,15 @@ Make sure to connect the Ethernet cable or CC33xx M.2 WiFi card, HDMI Display, M
 During first bootup, a setup script will run. This script guides the user through setting up user account, root password, date and so on.
 Once the setup ends, reboot the board. Weston screen will appear on the display.
 
+.. note::
+
+   In case you do not see the setup script during first boot, note that Armbian will automatically set the root account to its defaults:
+
+      - Username: **root**
+      - Password: **1234**
+
+   *This could happen for several reasons, such as power cycling the board during first boot.*
+
 .. image:: /images/debian_homescreen.png
 
 You've successfully booted Debian on |__PART_FAMILY_DEVICE_NAMES__|.
