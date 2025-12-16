@@ -45,6 +45,7 @@ linux/Foundational_Components/U-Boot/Apps-SPL-Debug-OpenOCD
 linux/Foundational_Components_Kernel
 linux/Foundational_Components_Kernel_Drivers
 linux/Foundational_Components/Kernel/Kernel_Drivers/Audio
+linux/Foundational_Components/Kernel/Kernel_Drivers/Crypto/SA2UL_OMAP
 linux/Foundational_Components/Kernel/Kernel_Drivers/EQEP
 linux/Foundational_Components/Kernel/Kernel_Drivers/GPIO
 linux/Foundational_Components/Kernel/Kernel_Drivers/I2C
