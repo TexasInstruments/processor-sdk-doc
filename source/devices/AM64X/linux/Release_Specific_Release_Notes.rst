@@ -48,6 +48,7 @@ What's new
 
 - Third 2025 LTS Reference Release Including RT combined branch model
   - PRU Remoteproc boot
+  - Added support for McASP async mode: independent transmit (playback) and receive (capture) clocking
   - Important Bug Fixes on top of Processor SDK 11.01.05.03 Release
   - Review Issue Tracker Section for the new fixes.
 

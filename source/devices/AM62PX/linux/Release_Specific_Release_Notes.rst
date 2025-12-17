@@ -53,6 +53,7 @@ What's new
   - Low Power Mode - Standby via CPUIdle
   - McSPI Turbo mode
   - LPDDR4 Temp read and update Refresh
+  - Added support for McASP async mode: independent transmit (playback) and receive (capture) clocking
   - Important Bug Fixes on top of Processor SDK 11.01.16.13 Release.
   - Review Issue Tracker Section for the new fixes.
 
