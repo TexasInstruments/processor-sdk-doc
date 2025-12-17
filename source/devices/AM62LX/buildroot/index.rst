@@ -15,6 +15,7 @@ Buildroot Developer's Guide
    :numbered:
 
    ../../../buildroot/Overview
+   /devices/AM62LX/linux/Release_Specific
    Getting_Started_Guide
    ../../../buildroot/Building_Buildroot_Image
    ../../../buildroot/Building_Buildroot_Packages

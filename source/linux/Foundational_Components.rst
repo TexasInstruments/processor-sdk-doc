@@ -23,6 +23,7 @@ Foundational Components
    Foundational_Components_IPC_J722S
    Foundational_Components_IPC62x
    Foundational_Components_IPC62ax
+   Foundational_Components_IPC62dx
    Foundational_Components_IPC62px
    Foundational_Components_IPC64x
    Foundational_Components_IPCLLD

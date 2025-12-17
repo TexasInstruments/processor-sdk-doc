@@ -66,7 +66,7 @@ The following is a list of supported hardware accelerated algorithms:
      - SHA256, SHA512
      - CMAC(AES)
 
-   * - AM62X / AM62A / AM62P
+   * - AM62X / AM62A / AM62D / AM62P
      - AES (CBC, ECB)
      - AES-GCM, AUTHENC(HMAC-SHA256, CBC-AES)
      - SHA256, SHA512

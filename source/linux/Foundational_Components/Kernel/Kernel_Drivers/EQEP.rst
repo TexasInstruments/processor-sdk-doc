@@ -7,7 +7,7 @@ EQEP
 Linux has support for EQEP (Enhanced Quadature Encoder Pulse).
 EQEP channels can be used to interface with rotary encoder hardware.
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX')
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62DX')
 
    - AM62x SK: EQEP0: k3-am62x-sk-eqep.dtso
 

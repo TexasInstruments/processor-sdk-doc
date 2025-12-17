@@ -1,4 +1,5 @@
 devices/AM62DX/index
+devices/AM62DX/index_RTOS
 devices/AM62DX/linux/Overview
 devices/AM62DX/linux/Overview_Getting_Started_Guide
 devices/AM62DX/linux/Overview/Download_and_Install_the_SDK
@@ -7,7 +8,7 @@ devices/AM62DX/linux/Release_Specific
 devices/AM62DX/linux/Release_Specific_Release_Notes
 devices/AM62DX/linux/Release_Specific_Build_Sheet
 devices/AM62DX/linux/Release_Specific_Yocto_layer_Configuration
-#devices/AM62DX/linux/Release_Specific_Migration_Guide
+devices/AM62DX/linux/Release_Specific_Migration_Guide
 devices/AM62DX/linux/Release_Specific_Kernel_Performance_Guide
 devices/AM62DX/linux/Linux_Performance_Guide
 #devices/AM62DX/linux/Release_Specific_Workarounds
@@ -33,8 +34,10 @@ linux/Foundational_Components/U-Boot/BG-Environment-K3
 linux/Foundational_Components/U-Boot/BG-Ram-Device-Trees-K3
 linux/Foundational_Components/U-Boot/UG-DFU
 linux/Foundational_Components/U-Boot/UG-Memory-K3
+linux/Foundational_Components/U-Boot/UG-UMS
 linux/Foundational_Components/U-Boot/UG-QSPI
 linux/Foundational_Components/U-Boot/UG-UART
+linux/Foundational_Components/U-Boot/UG-RemoteProc
 
 linux/Foundational_Components/U-Boot/Applications
 linux/Foundational_Components/U-Boot/Apps-SPL-Debug-OpenOCD
@@ -42,16 +45,19 @@ linux/Foundational_Components/U-Boot/Apps-SPL-Debug-OpenOCD
 linux/Foundational_Components_Kernel
 linux/Foundational_Components_Kernel_Drivers
 linux/Foundational_Components/Kernel/Kernel_Drivers/Audio
+linux/Foundational_Components/Kernel/Kernel_Drivers/Crypto/SA2UL_OMAP
 linux/Foundational_Components/Kernel/Kernel_Drivers/EQEP
 linux/Foundational_Components/Kernel/Kernel_Drivers/GPIO
 linux/Foundational_Components/Kernel/Kernel_Drivers/I2C
-linux/Foundational_Components/Kernel/Kernel_Drivers/MCAN
+#linux/Foundational_Components/Kernel/Kernel_Drivers/MCAN
+linux/Foundational_Components/Kernel/Kernel_Drivers/MCRC64
 linux/Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW-Ethernet
 linux/Foundational_Components/Kernel/Kernel_Drivers/PWM
 linux/Foundational_Components/Kernel/Kernel_Drivers/SPI
 linux/Foundational_Components/Kernel/Kernel_Drivers/QSPI
 linux/Foundational_Components/Kernel/Kernel_Drivers/Storage/MMC-SD
 #linux/Foundational_Components/Kernel/Kernel_Drivers/Storage/NAND
+linux/Foundational_Components/Kernel/Kernel_Drivers/DM-Timer
 linux/Foundational_Components/Kernel/Kernel_Drivers/UART
 linux/Foundational_Components/Kernel/Kernel_Drivers/UBIFS
 linux/Foundational_Components/Kernel/Kernel_Drivers/VTM
@@ -68,18 +74,25 @@ linux/Foundational_Components_Tools
 linux/Foundational_Components/Tools/Development_Tools
 linux/Foundational_Components/Tools/Pin_Mux_Tools
 linux/Foundational_Components/Tools/Flash_via_Fastboot
+linux/Foundational_Components_IPC62dx
 linux/Foundational_Components_ATF
 linux/Foundational_Components_OPTEE
 
 linux/How_to_Guides
 linux/How_to_Guides_Developer_Notes
+linux/How_to_Guides/Host/Moving_Files_to_the_Target_System
+linux/How_to_Guides/Host/K3_Resource_Partitioning_Tool
 linux/How_to_Guides/Host/SYSFW_Trace_Parser
+linux/How_to_Guides/Target/Processor_SDK_Linux_File_System_Optimization_Customization
 linux/How_to_Guides/Target/How_to_enable_DT_overlays_in_linux
 linux/How_to_Guides/Target/How_to_emmc_boot
 linux/How_to_Guides/Target/How_to_mmcsd_boot_emmc_uda
+#linux/How_to_Guides/Target/How_to_test_MCAN_on_AM62x
+linux/How_to_Guides/Target/How_to_Use_K3Conf_Tool
 linux/How_to_Guides/Target/Runtime_debug_unlock_on_secure_device
 linux/How_to_Guides/FAQ/How_to_Check_Device_Tree_Info
 linux/How_to_Guides/FAQ/How_to_Integrate_Open_Source_Software
+linux/How_to_Guides/Target/How_To_Carve_Out_CMA
 linux/How_to_Guides_Hardware_Setup_with_CCS
 linux/How_to_Guides/Hardware_Setup_with_CCS/AM62Dx_EVM_Hardware_Setup
 

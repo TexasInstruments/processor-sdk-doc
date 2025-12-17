@@ -43,7 +43,7 @@ Released on Dec 2025
 What's new
 ----------
 
-**Processor SDK Linux AM62PX Release has following new features:**
+**Processor SDK Linux AM62DX Release has following new features:**
 
   - Second 2025 LTS Reference Release Including RT combined branch model
   - McASP asynchronous mode enabled supporting independent TX and RX settings.
@@ -56,7 +56,6 @@ What's included
 **Key Release References:**
 
   - Snagfactory Support - :ref:`Snagfactory Tool <Flash-via-Fastboot>`
-  - How to Enable PRU RPMsg - `Read FAQ <https://e2e.ti.com/support/processors-group/processors/f/791/t/1494495>`__
 
 **Component version:**
 
@@ -66,8 +65,8 @@ What's included
   - ATF 2.13+
   - OPTEE 4.7.0
   - TIFS Firmware `v11.02.05 <https://software-dl.ti.com/tisci/esd/11_02_05/release_notes/release_notes.html>`__ (Click on the link for more information)
-  - IPC Firmware REL.MCUSDK.11.01.00.00
-  - TAD5212 Firmware 1.0.0.0
+  - IPC Firmware REL.MCUSDK.11.02.00.11
+  - PCM6240 ADC Firmware 1.0.0.0
   - DM Firmware 11.02.00.11
   - Yocto scarthgap 5.0
 

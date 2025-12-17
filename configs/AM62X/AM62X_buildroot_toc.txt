@@ -2,5 +2,7 @@ devices/AM62X/buildroot/index
 devices/AM62X/buildroot/Getting_Started_Guide
 
 buildroot/Overview
+devices/AM62X/linux/Release_Specific
+devices/AM62X/linux/Release_Specific_Release_Notes
 buildroot/Building_Buildroot_Image
 buildroot/Building_Buildroot_Packages

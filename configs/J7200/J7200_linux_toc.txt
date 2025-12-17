@@ -37,6 +37,7 @@ linux/Foundational_Components/U-Boot/UG-NOR
 linux/Foundational_Components/U-Boot/UG-UART
 linux/Foundational_Components/U-Boot/UG-SATA
 linux/Foundational_Components/U-Boot/UG-UFS
+linux/Foundational_Components/U-Boot/UG-DDRSS-J7
 linux/Foundational_Components/U-Boot/UG-HyperBus
 linux/Foundational_Components/U-Boot/UG-RemoteProc
 linux/Foundational_Components/U-Boot/UG-AVS
@@ -49,6 +50,7 @@ linux/Foundational_Components_Kernel
 linux/Foundational_Components_Kernel_Drivers
 linux/Foundational_Components/Kernel/Kernel_Drivers/ADC
 linux/Foundational_Components/Kernel/Kernel_Drivers/Crypto/SA2UL_OMAP
+linux/Foundational_Components/Kernel/Kernel_Drivers/DDR
 linux/Foundational_Components/Kernel/Kernel_Drivers/DM-Timer
 linux/Foundational_Components/Kernel/Kernel_Drivers/MCAN
 linux/Foundational_Components/Kernel/Kernel_Drivers/GPIO
@@ -83,6 +85,8 @@ linux/Foundational_Components_Kernel_LTP-DDT_Validation
 linux/Foundational_Components_Kernel_FAQs
 linux/Foundational_Components_Security
 linux/Foundational_Components/System_Security/Security_overview
+linux/Foundational_Components_Power_Management
+linux/Foundational_Components/Power_Management/pm_low_power_modes_socoff
 linux/Foundational_Components_Filesystem
 linux/Foundational_Components_Tools
 linux/Foundational_Components/Tools/Development_Tools

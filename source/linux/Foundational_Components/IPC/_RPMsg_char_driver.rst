@@ -266,10 +266,10 @@ rpmsg_char_close()
 		+------------------+--------------------+---------+-----------------------------------+
 
 
-.. ifconfig:: CONFIG_part_variant in ('AM62AX')
+.. ifconfig:: CONFIG_part_variant in ('AM62AX','AM62DX')
 
 	The below table lists the device enumerations as defined in the
-	rpmsg_char_library. The validity of the enumerations wrt AM62Ax is also
+	rpmsg_char_library. The validity of the enumerations wrt |__PART_FAMILY_NAME__| is also
 	specified.
 
 	.. code-block:: text
@@ -979,6 +979,100 @@ SDK wic image filesystem:
 
 		TEST STATUS: PASSED
 
+.. ifconfig:: CONFIG_part_variant in ('AM62DX')
+
+   .. code-block:: console
+
+      # MCU R5F<->A53_0 IPC
+      root@am62dxx-evm:~# rpmsg_char_simple -r0 -n10
+      Created endpt device rpmsg-char-0-990, fd = 3 port = 1025
+      Exchanging 10 messages with rpmsg device rpmsg-char-0-990 on rproc id 0 ...
+
+      Sending message #0: hello there 0!
+      Receiving message #0: hello there 0!
+      Sending message #1: hello there 1!
+      Receiving message #1: hello there 1!
+      Sending message #2: hello there 2!
+      Receiving message #2: hello there 2!
+      Sending message #3: hello there 3!
+      Receiving message #3: hello there 3!
+      Sending message #4: hello there 4!
+      Receiving message #4: hello there 4!
+      Sending message #5: hello there 5!
+      Receiving message #5: hello there 5!
+      Sending message #6: hello there 6!
+      Receiving message #6: hello there 6!
+      Sending message #7: hello there 7!
+      Receiving message #7: hello there 7!
+      Sending message #8: hello there 8!
+      Receiving message #8: hello there 8!
+      Sending message #9: hello there 9!
+      Receiving message #9: hello there 9!
+
+      Communicated 10 messages successfully on rpmsg-char-0-990
+
+      TEST STATUS: PASSED
+
+      # for DM R5F<->A53 IPC, use the below command. For remote proc ids, please refer to : 'https://git.ti.com/cgit/rpmsg/ti-rpmsg-char/tree/include/rproc_id.h'
+      root@am62dxx-evm:~# rpmsg_char_simple -r15 -n10
+      Created endpt device rpmsg-char-15-995, fd = 3 port = 1025
+      Exchanging 10 messages with rpmsg device rpmsg-char-15-995 on rproc id 15 ...
+
+      Sending message #0: hello there 0!
+      Receiving message #0: hello there 0!
+      Sending message #1: hello there 1!
+      Receiving message #1: hello there 1!
+      Sending message #2: hello there 2!
+      Receiving message #2: hello there 2!
+      Sending message #3: hello there 3!
+      Receiving message #3: hello there 3!
+      Sending message #4: hello there 4!
+      Receiving message #4: hello there 4!
+      Sending message #5: hello there 5!
+      Receiving message #5: hello there 5!
+      Sending message #6: hello there 6!
+      Receiving message #6: hello there 6!
+      Sending message #7: hello there 7!
+      Receiving message #7: hello there 7!
+      Sending message #8: hello there 8!
+      Receiving message #8: hello there 8!
+      Sending message #9: hello there 9!
+      Receiving message #9: hello there 9!
+
+      Communicated 10 messages successfully on rpmsg-char-15-995
+
+      TEST STATUS: PASSED
+
+      # C7x<->A53_0 IPC
+      root@am62dxx-evm:~# rpmsg_char_simple -r8 -n10
+      Created endpt device rpmsg-char-8-998, fd = 3 port = 1025
+      Exchanging 10 messages with rpmsg device rpmsg-char-8-998 on rproc id 8 ...
+
+      Sending message #0: hello there 0!
+      Receiving message #0: hello there 0!
+      Sending message #1: hello there 1!
+      Receiving message #1: hello there 1!
+      Sending message #2: hello there 2!
+      Receiving message #2: hello there 2!
+      Sending message #3: hello there 3!
+      Receiving message #3: hello there 3!
+      Sending message #4: hello there 4!
+      Receiving message #4: hello there 4!
+      Sending message #5: hello there 5!
+      Receiving message #5: hello there 5!
+      Sending message #6: hello there 6!
+      Receiving message #6: hello there 6!
+      Sending message #7: hello there 7!
+      Receiving message #7: hello there 7!
+      Sending message #8: hello there 8!
+      Receiving message #8: hello there 8!
+      Sending message #9: hello there 9!
+      Receiving message #9: hello there 9!
+
+      Communicated 10 messages successfully on rpmsg-char-8-127180
+
+      TEST STATUS: PASSED
+
 .. rubric:: RPMsg kernel space example
 
 The kernel space example is in the Linux Processor SDK under
@@ -1449,3 +1543,44 @@ SDK wic image filesystem:
 		[ 2081.878713] rpmsg_client_sample virtio2.ti.ipc4.ping-pong.-1.13: incoming msg 10 (src: 0xd)
 		[ 2081.887258] rpmsg_client_sample virtio2.ti.ipc4.ping-pong.-1.13: goodbye!
 
+.. ifconfig:: CONFIG_part_variant in ('AM62DX')
+
+   .. code-block:: console
+
+      root@am62dxx-evm:~# modprobe rpmsg_client_sample count=10
+      [  180.532155] rpmsg_client_sample virtio0.rpmsg-client-sample.-1.13: new channel: 0x401 -> 0xd!
+      [  180.532359] rpmsg_client_sample virtio0.rpmsg-client-sample.-1.13: incoming msg 1 (src: 0xd)
+      [  180.532457] rpmsg_client_sample virtio1.rpmsg-client-sample.-1.13: new channel: 0x401 -> 0xd!
+      [  180.532495] rpmsg_client_sample virtio1.rpmsg-client-sample.-1.13: incoming msg 1 (src: 0xd)
+      [  180.532571] rpmsg_client_sample virtio1.rpmsg-client-sample.-1.13: incoming msg 2 (src: 0xd)
+      [  180.532599] rpmsg_client_sample virtio1.rpmsg-client-sample.-1.13: incoming msg 3 (src: 0xd)
+      [  180.532626] rpmsg_client_sample virtio1.rpmsg-client-sample.-1.13: incoming msg 4 (src: 0xd)
+      [  180.532640] rpmsg_client_sample virtio2.rpmsg-client-sample.-1.13: new channel: 0x401 -> 0xd!
+      [  180.532654] rpmsg_client_sample virtio1.rpmsg-client-sample.-1.13: incoming msg 5 (src: 0xd)
+      [  180.532687] rpmsg_client_sample virtio1.rpmsg-client-sample.-1.13: incoming msg 6 (src: 0xd)
+      [  180.532711] rpmsg_client_sample virtio1.rpmsg-client-sample.-1.13: incoming msg 7 (src: 0xd)
+      [  180.532741] rpmsg_client_sample virtio1.rpmsg-client-sample.-1.13: incoming msg 8 (src: 0xd)
+      [  180.532780] rpmsg_client_sample virtio0.rpmsg-client-sample.-1.13: incoming msg 2 (src: 0xd)
+      [  180.532822] rpmsg_client_sample virtio2.rpmsg-client-sample.-1.13: incoming msg 1 (src: 0xd)
+      [  180.532853] rpmsg_client_sample virtio2.rpmsg-client-sample.-1.13: incoming msg 2 (src: 0xd)
+      [  180.532887] rpmsg_client_sample virtio1.rpmsg-client-sample.-1.13: incoming msg 9 (src: 0xd)
+      [  180.532915] rpmsg_client_sample virtio1.rpmsg-client-sample.-1.13: incoming msg 10 (src: 0xd)
+      [  180.532921] rpmsg_client_sample virtio1.rpmsg-client-sample.-1.13: goodbye!
+      [  180.532940] rpmsg_client_sample virtio2.rpmsg-client-sample.-1.13: incoming msg 3 (src: 0xd)
+      [  180.533007] rpmsg_client_sample virtio2.rpmsg-client-sample.-1.13: incoming msg 4 (src: 0xd)
+      [  180.533047] rpmsg_client_sample virtio0.rpmsg-client-sample.-1.13: incoming msg 3 (src: 0xd)
+      [  180.533075] rpmsg_client_sample virtio2.rpmsg-client-sample.-1.13: incoming msg 5 (src: 0xd)
+      [  180.533109] rpmsg_client_sample virtio2.rpmsg-client-sample.-1.13: incoming msg 6 (src: 0xd)
+      [  180.533141] rpmsg_client_sample virtio2.rpmsg-client-sample.-1.13: incoming msg 7 (src: 0xd)
+      [  180.533171] rpmsg_client_sample virtio2.rpmsg-client-sample.-1.13: incoming msg 8 (src: 0xd)
+      [  180.533202] rpmsg_client_sample virtio2.rpmsg-client-sample.-1.13: incoming msg 9 (src: 0xd)
+      [  180.533238] rpmsg_client_sample virtio2.rpmsg-client-sample.-1.13: incoming msg 10 (src: 0xd)
+      [  180.533244] rpmsg_client_sample virtio2.rpmsg-client-sample.-1.13: goodbye!
+      [  180.533264] rpmsg_client_sample virtio0.rpmsg-client-sample.-1.13: incoming msg 4 (src: 0xd)
+      [  180.533487] rpmsg_client_sample virtio0.rpmsg-client-sample.-1.13: incoming msg 5 (src: 0xd)
+      [  180.533766] rpmsg_client_sample virtio0.rpmsg-client-sample.-1.13: incoming msg 6 (src: 0xd)
+      [  180.534000] rpmsg_client_sample virtio0.rpmsg-client-sample.-1.13: incoming msg 7 (src: 0xd)
+      [  180.534216] rpmsg_client_sample virtio0.rpmsg-client-sample.-1.13: incoming msg 8 (src: 0xd)
+      [  180.534433] rpmsg_client_sample virtio0.rpmsg-client-sample.-1.13: incoming msg 9 (src: 0xd)
+      [  180.534654] rpmsg_client_sample virtio0.rpmsg-client-sample.-1.13: incoming msg 10 (src: 0xd)
+      [  180.534660] rpmsg_client_sample virtio0.rpmsg-client-sample.-1.13: goodbye!

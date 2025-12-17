@@ -129,7 +129,7 @@ Debian (Armbian)
 
 .. list-table::
    :header-rows: 1
-   :widths: 15, 30, 30, 30
+   :widths: 15, 30, 30, 32
 
    * - Component
      - Branch Info
@@ -137,29 +137,69 @@ Debian (Armbian)
      - Config Info
    * - U-Boot
      - `ti-u-boot-2025.01 <https://github.com/TexasInstruments/ti-u-boot/tree/ti-u-boot-2025.01>`__
-     - `11.01.05 <https://github.com/TexasInstruments/ti-u-boot/releases/tag/11.01.05>`__
-     - `Build <https://github.com/TexasInstruments/armbian-build/blob/5f357a146d6a72dad1b5677e4cfdc111a9f3a935/config/sources/families/k3.conf#L85>`__
+     - `11.02.08 <https://github.com/TexasInstruments/ti-u-boot/releases/tag/11.02.08>`__
+     - `Build <https://github.com/TexasInstruments/armbian-build/blob/ecbe405df4033fa536886336f3796705eaef7eb4/config/sources/families/include/k3_common.inc#L72>`__
    * - ATF
      - `master <https://github.com/ARM-Software/arm-trusted-firmware/tree/master>`__
-     - `v2.13+ <https://github.com/ARM-software/arm-trusted-firmware/commit/d90bb650fe4cb3784f62214ab5829f4051c38d0a>`__
-     - `Build <https://github.com/TexasInstruments/armbian-build/blob/5f357a146d6a72dad1b5677e4cfdc111a9f3a935/config/sources/families/k3.conf#L83>`__
+     - `v2.13+ <https://github.com/ARM-software/arm-trusted-firmware/commit/e0c4d3903b382bf34f552af53e6d955fae5283ab>`__
+     - `Build <https://github.com/TexasInstruments/armbian-build/blob/ecbe405df4033fa536886336f3796705eaef7eb4/config/sources/families/include/k3_common.inc#L70>`__
    * - OPTEE
      - `master <https://github.com/OP-TEE/optee_os/tree/master>`__
-     - `4.6.0 <https://github.com/OP-TEE/optee_os/releases/tag/4.6.0>`__
-     - `Build <https://github.com/TexasInstruments/armbian-build/blob/5f357a146d6a72dad1b5677e4cfdc111a9f3a935/config/sources/families/k3.conf#L111>`__
+     - `4.7.0+ <https://github.com/OP-TEE/optee_os/commit/a9690ae39995af36a31b7a4f446f27ea0787e3a4>`__
+     - `Build <https://github.com/TexasInstruments/armbian-build/blob/ecbe405df4033fa536886336f3796705eaef7eb4/config/sources/families/include/k3_common.inc#L98>`__
    * - Linux Firmware
      - `ti-linux-firmware <https://github.com/TexasInstruments/ti-linux-firmware/tree/ti-linux-firmware>`__
-     - `11.01.05 <https://github.com/TexasInstruments/ti-linux-firmware/releases/tag/11.01.05>`__
-     - `Git Clone <https://github.com/TexasInstruments/armbian-build/blob/5f357a146d6a72dad1b5677e4cfdc111a9f3a935/config/sources/families/k3.conf#L98>`__
+     - `11.02.08 <https://github.com/TexasInstruments/ti-linux-firmware/releases/tag/11.02.08>`__
+     - `Git Clone <https://github.com/TexasInstruments/armbian-build/blob/ecbe405df4033fa536886336f3796705eaef7eb4/config/sources/families/include/k3_common.inc#L85>`__
    * - Linux Kernel
      - `ti-linux-6.12.y <https://github.com/TexasInstruments/ti-linux-kernel/tree/ti-linux-6.12.y>`__
-     - `11.01.05 <https://github.com/TexasInstruments/ti-linux-kernel/releases/tag/11.01.05>`__
-     - `non-RT <https://github.com/TexasInstruments/armbian-build/blob/2025.07-release/config/kernel/linux-k3-current.config>`__, `RT <https://github.com/TexasInstruments/armbian-build/blob/2025.07-release/config/kernel/linux-k3-current-rt.config>`__
+     - `11.02.08 <https://github.com/TexasInstruments/ti-linux-kernel/releases/tag/11.02.08>`__
+     - `non-RT <https://github.com/TexasInstruments/armbian-build/blob/2025.12-release/config/kernel/linux-k3-vendor.config>`__, `RT <https://github.com/TexasInstruments/armbian-build/blob/2025.12-release/config/kernel/linux-k3-vendor-rt.config>`__
    * - Armbian Build
-     - `2025.07-release <https://github.com/TexasInstruments/armbian-build/tree/2025.07-release>`__
-     - `11.01.05.03 <https://github.com/TexasInstruments/armbian-build/releases/tag/11.01.05.03>`__
-     - `Build <https://github.com/TexasInstruments/armbian-build/blob/2025.07-release/config/sources/families/k3.conf>`__, `Board <https://github.com/TexasInstruments/armbian-build/blob/2025.07-release/config/boards/sk-am62b.conf>`__
+     - `2025.12-release <https://github.com/TexasInstruments/armbian-build/tree/2025.12-release>`__
+     - `11.02.08.02 <https://github.com/TexasInstruments/armbian-build/releases/tag/11.02.08.02>`__
+     - | Build: `k3_common.inc <https://github.com/TexasInstruments/armbian-build/blob/2025.12-release/config/sources/families/include/k3_common.inc>`__ + `k3.conf <https://github.com/TexasInstruments/armbian-build/blob/2025.12-release/config/sources/families/k3.conf>`__
+       | Board: `SK-AM62B <https://github.com/TexasInstruments/armbian-build/blob/2025.12-release/config/boards/sk-am62b.conf>`__, `SK-AM62-LP <https://github.com/TexasInstruments/armbian-build/blob/2025.12-release/config/boards/sk-am62-lp.conf>`__, `SK-AM62-SIP <https://github.com/TexasInstruments/armbian-build/blob/2025.12-release/config/boards/sk-am62-sip.conf>`__
 
+Buildroot (Buildroot External TI)
+---------------------------------
+
+.. list-table::
+   :header-rows: 1
+   :widths: 15, 30, 30, 30
+
+   * - Component
+     - Branch Info
+     - Tag Info
+     - Config Info
+   * - U-Boot
+     - `ti-u-boot-2025.01 <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/log/?h=ti-u-boot-2025.01>`__
+     - `11.02.08 <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/tag/?h=11.02.08>`__
+     - `Build <https://github.com/TexasInstruments/buildroot-external-TI/blob/78d0a34cec662b7fd96bf7319e9c59d2b79c1df3/configs/ti_release_am62x_sk_defconfig#L60>`__
+   * - ATF
+     - `master <https://github.com/ARM-Software/arm-trusted-firmware/tree/master>`__
+     - `v2.13+ <https://github.com/ARM-software/arm-trusted-firmware/commit/e0c4d3903b382bf34f552af53e6d955fae5283ab>`__
+     - `Build <https://github.com/TexasInstruments/buildroot-external-TI/blob/78d0a34cec662b7fd96bf7319e9c59d2b79c1df3/configs/ti_release_am62x_sk_defconfig#L40>`__
+   * - OPTEE
+     - `master <https://github.com/OP-TEE/optee_os/tree/master>`__
+     - `4.7.0+ <https://github.com/OP-TEE/optee_os/commit/a9690ae39995af36a31b7a4f446f27ea0787e3a4>`__
+     - `Build <https://github.com/TexasInstruments/buildroot-external-TI/blob/78d0a34cec662b7fd96bf7319e9c59d2b79c1df3/configs/ti_release_am62x_sk_defconfig#L47>`__
+   * - Linux Firmware
+     - `ti-linux-firmware <https://github.com/TexasInstruments/ti-linux-firmware/tree/ti-linux-firmware>`__
+     - `11.02.08 <https://github.com/TexasInstruments/ti-linux-firmware/releases/tag/11.02.08>`__
+     - `Git Clone <https://github.com/buildroot/buildroot/blob/1a17185606161d7a03198e249c02bdc2bdc972d0/boot/ti-k3-boot-firmware/ti-k3-boot-firmware.mk#L8>`__
+   * - Linux Kernel
+     - `ti-linux-6.12.y <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/log/?h=ti-linux-6.12.y>`__
+     - `11.02.08 <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tag/?h=11.02.08>`__
+     - `non-RT <https://github.com/TexasInstruments/buildroot-external-TI/blob/78d0a34cec662b7fd96bf7319e9c59d2b79c1df3/configs/ti_release_am62x_sk_defconfig#L15>`__, `RT <https://github.com/TexasInstruments/buildroot-external-TI/blob/78d0a34cec662b7fd96bf7319e9c59d2b79c1df3/configs/ti_release_am62x_sk_rt_defconfig#L15>`__
+   * - Buildroot External TI
+     - `main <https://github.com/TexasInstruments/buildroot-external-TI/tree/main>`__
+     - `11.02.08.02 <https://github.com/TexasInstruments/buildroot-external-TI/releases/tag/11.02.08.02>`__
+     - `Build <https://github.com/TexasInstruments/buildroot-external-TI/tree/main/configs>`__, `Board <https://github.com/TexasInstruments/buildroot-external-TI/tree/main/board/ti/am62x-sk>`__
+   * - Buildroot
+     - `2025.08.x <https://github.com/buildroot/buildroot/tree/2025.08.x>`__
+     - `2025.08.2 <https://github.com/buildroot/buildroot/releases/tag/2025.08.2>`__
+     -
 
 Issues Tracker
 ==============

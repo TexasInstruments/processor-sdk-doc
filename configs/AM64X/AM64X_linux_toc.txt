@@ -48,6 +48,7 @@ linux/Foundational_Components_Kernel
 linux/Foundational_Components_Kernel_Drivers
 linux/Foundational_Components/Kernel/Kernel_Drivers/ADC
 linux/Foundational_Components/Kernel/Kernel_Drivers/Crypto/SA2UL_OMAP
+linux/Foundational_Components/Kernel/Kernel_Drivers/DDR
 linux/Foundational_Components/Kernel/Kernel_Drivers/DM-Timer
 linux/Foundational_Components/Kernel/Kernel_Drivers/EQEP
 linux/Foundational_Components/Kernel/Kernel_Drivers/GPIO

@@ -63,6 +63,15 @@ After approximately 20 seconds, the board should boot and you should see the on-
 During first bootup, a setup script will run. This script guides the user through setting up user account, root password, date and so on.
 Once the setup ends, reboot the board.
 
+.. note::
+
+   In case you do not see the setup script during first boot, note that Armbian will automatically set the root account to its defaults:
+
+      - Username: **root**
+      - Password: **1234**
+
+   *This could happen for several reasons, such as power cycling the board during first boot.*
+
 To verify the distro, connect via the UART console and try running ``neofetch`` on the terminal. The output of the command can be observed on the screen as shown below.
 
 .. image:: /images/debian_neofetch.png

@@ -402,6 +402,12 @@ Enabling camera sensors
          sink_3::startx=980 sink_3::starty=500 sink_3::width=640 sink_3::height=480 ! \
          video/x-raw, width=1920, height=1080, format=NV12 ! queue ! kmssink driver-name=tidss sync=false force-modesetting=true
 
+      .. note::
+
+         When configuring the media pipe for execution of the above GStreamer pipeline, it is recommended to setup routes such that CTX 0 is bypassed.
+         This configuration prevents frame corruption in scenarios where high system load results in degraded performance of one or more kernel
+         threads assigned for individual camera management.
+
    Suspend to RAM
    ==============
 
@@ -578,7 +584,7 @@ Enabling camera sensors
       subdev_id = /dev/v4l-imx219-subdev0
       isp_required = yes
 
-   For manual configuration, like switching to a different resolution or2222
+   For manual configuration, like switching to a different resolution or
    bitdepth, you can use media-ctl as `explained above
    <#utilities-to-interact-with-the-driver>`__. For example you can switch to
    10-bit 1640x1232 capture on IMX219 using:
@@ -594,6 +600,13 @@ Enabling camera sensors
 
       $ media-ctl --set-v4l2 '"30102000.ticsi2rx":0[fmt:SRGGB8_1X8/1920x1080]'
       $ media-ctl --set-v4l2 '"imx219 4-0010":0[fmt:SRGGB8_1X8/1920x1080]'
+
+   .. note::
+
+      When configuring the media pipe for multi-camera use case, it is recommended to setup routes such
+      that CTX 0 is bypassed. This configuration prevents frame corruption in scenarios where high system load results in
+      degraded performance of one or more kernel threads assigned for individual camera management. The camera setup
+      script in SD card will do this configuration.
 
    Capturing raw frames
    ====================
