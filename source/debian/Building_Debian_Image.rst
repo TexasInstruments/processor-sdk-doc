@@ -72,12 +72,14 @@ Armbian supports both an interactive UI and a noninteractive build process.
 .. note::
 
    This build guide has been tested on an x86 host machine running Ubuntu 22.04. The Armbian :file:`compile.sh` script
-   builds in an ARM64 docker container. Ensure the following packages are installed:
+   builds in an ARM64 docker container. Install the following packages and configure docker:
 
    .. code-block:: console
 
       sudo apt update
-      sudo apt install docker.io qemu qemu-user-static binfmt-support
+      sudo apt install docker.io qemu-user-static binfmt-support
+      sudo usermod -aG docker $USER
+      newgrp docker
 
 -  To build interactively:
 
