@@ -1,22 +1,27 @@
 .. _yocto-layer-configuration:
 
-**************************
+#########################
 Yocto Layer Configuration
-**************************
+#########################
 
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_Building_The_SDK#Layer_Configuration
+Processor SDK uses oe-layersetup configuration files to initialize the
+Yocto build environment. Configure your build with the following command:
 
-Processor SDK uses the following oe-layersetup configs to configure the
-meta layers. These are the <config> used in the command:
+.. code-block:: console
 
-``$ ./oe-layertool-setup.sh -f <config>``
+   $ ./oe-layertool-setup.sh -f <config>
 
-|
-| The following config files are located in the **yocto-build/configs/processor-sdk-linux**
-  directory.
+Replace ``<config>`` with one of the following configuration files.
 
-+-------------------------------------+----------------------------------------------------+--------------------------------+
-|      Config File                    |                    Description                     | Supported machines             |
-+=====================================+====================================================+================================+
-| processor-sdk-linux-11_01_02_01.txt | Processor SDK Linux 11_01 Release                  | am57xx-evm, am57xx-hs-evm      |
-+-------------------------------------+----------------------------------------------------+--------------------------------+
+The :file:`yocto-build/configs/processor-sdk-linux` directory has the following configuration files.
+
+.. list-table:: Yocto Layer Configuration
+   :widths: 50 50 30
+   :header-rows: 1
+
+   * - Config File
+     - Description
+     - Supported machines/platforms
+   * - :file:`processor-sdk-linux-11_01_02_01.txt`
+     - Processor SDK Linux 11_01 Release
+     - |__SDK_BUILD_MACHINE__|, am57xx-hs-evm

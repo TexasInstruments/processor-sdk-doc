@@ -1,22 +1,28 @@
 .. _yocto-layer-configuration:
 
-*************************
+#########################
 Yocto Layer Configuration
-*************************
+#########################
 
-Processor SDK uses the following oe-layersetup configs to configure the
-meta layers. These are the <config> used in the command:
+Processor SDK uses oe-layersetup configuration files to initialize the
+Yocto build environment. Configure your build with the following command:
 
 .. code-block:: console
 
    $ ./oe-layertool-setup.sh -f <config>
 
-The following config files are located in the ``configs/processor-sdk``
-directory of the `oe-layersetup git repo <https://git.ti.com/cgit/arago-project/oe-layersetup/>`_.
+Replace ``<config>`` with one of the following configuration files.
 
-+--------------------------------------------------------+-----------------------------------+------------------------------+
-| Config File                                            | Description                       | Supported machines/platforms |
-+========================================================+===================================+==============================+
-| processor-sdk-scarthgap-nonqt-11.02.08.02-config.txt   | Processor SDK 11.02.08.02 Release | am64xx-evm                   |
-+--------------------------------------------------------+-----------------------------------+------------------------------+
+The `oe-layersetup git repository <https://git.ti.com/cgit/arago-project/oe-layersetup/>`__
+has the following configuration files in the :file:`configs/processor-sdk` directory.
 
+.. list-table:: Yocto Layer Configuration
+   :widths: 50 50 30
+   :header-rows: 1
+
+   * - Config File
+     - Description
+     - Supported machines/platforms
+   * - :file:`processor-sdk-scarthgap-nonqt-11.02.08.02-config.txt`
+     - Used for building Yocto based filesystem
+     - |__SDK_BUILD_MACHINE__|
