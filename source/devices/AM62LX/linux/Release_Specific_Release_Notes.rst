@@ -50,6 +50,7 @@ What's new
   - Supported AM62Lx SR1.1 Only
   - New 2-Stage A53 Boot Flow including OPTEE
   - Low Power Mode: DeepSleep Wakeup Event - UART, GPIO, CPUFreq Framework with DFS
+  - Added support for McASP asynchronous mode, which enables independent TX and RX settings.
   - Kernel: :ref:`DTHEv2 Crypto Accelerator <DTHEv2-Crypto-Accelerator>` OPTEE TRNG
   - Support for multiple Linux distributions, such as Yocto, Debian and Buildroot
 

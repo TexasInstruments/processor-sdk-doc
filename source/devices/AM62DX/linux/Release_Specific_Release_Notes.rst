@@ -46,7 +46,7 @@ What's new
 **Processor SDK Linux AM62PX Release has following new features:**
 
   - Second 2025 LTS Reference Release Including RT combined branch model
-  - McASP Async TX and RX on single channel.
+  - McASP asynchronous mode enabled supporting independent TX and RX settings.
   - Important Bug Fixes on top of Processor SDK 11.01.16.13 Release.
   - Review Issue Tracker Section for the new fixes.
 

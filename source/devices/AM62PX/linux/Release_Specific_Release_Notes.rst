@@ -52,6 +52,7 @@ What's new
   - Supported AM62Px SR 1.2 with eMMC HS400 mode
   - Low Power Mode - Standby via CPUIdle
   - McSPI Turbo mode
+  - Support for McASP asynchronous mode, which enables independent TX and RX settings.
   - LPDDR4 Temp read and update Refresh
   - Important Bug Fixes on top of Processor SDK 11.01.16.13 Release.
   - Review Issue Tracker Section for the new fixes.
