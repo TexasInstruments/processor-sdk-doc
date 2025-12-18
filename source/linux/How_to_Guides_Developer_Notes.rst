@@ -35,6 +35,7 @@ Developer Notes
    How_to_Guides/Target/How_to_enable_SSC_for_DSS
    How_to_Guides/Target/How_to_boot_quickly
    How_to_Guides/Target/Runtime_debug_unlock_on_secure_device
+   How_to_Guides/Target/How_to_BeagleBadge_getting_started
    How_to_Guides/FAQ/How_to_Verify_Ipc_Linux_R5
    How_to_Guides/FAQ/How_to_Configure_MSMC_memory
    How_to_Guides/FAQ/How_to_Check_Device_Tree_Info
