@@ -51,6 +51,7 @@ What's new
   - Low Power Mode - Standby Via CPUIdle
   - Important Bug Fixes on top of Processor SDK 11.01.05.03 Release
   - Review Issue Tracker Section for the new fixes.
+  - Negative edge panel support
 
 **Key Release References:**
 

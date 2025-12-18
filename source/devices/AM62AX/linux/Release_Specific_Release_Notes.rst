@@ -69,6 +69,7 @@ What's new
      - Multiple bug fixes w.r.t VPAC MSC and LDC subsystem
   - Important Bug Fixes on top of Processor SDK 10.01.00.05 Release
   - Review Issue Tracker Section for the new fixes - :ref:`Link to Issues Tracker <issue-tracker>`
+  - Negative edge panel support
 
 **Key Release References:**
 

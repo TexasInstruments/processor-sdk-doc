@@ -55,6 +55,7 @@ What's new
   - LPDDR4 Temp read and update Refresh
   - Important Bug Fixes on top of Processor SDK 11.01.16.13 Release.
   - Review Issue Tracker Section for the new fixes.
+  - Negative edge panel support
 
 **Key Release References:**
 
