@@ -123,6 +123,7 @@ linux/How_to_Guides/Target/How_to_emmc_boot
 linux/How_to_Guides/Target/How_to_mmcsd_boot_emmc_uda
 linux/How_to_Guides/Target/How_To_Enable_M2CC3301_in_linux
 linux/How_to_Guides/Target/Runtime_debug_unlock_on_secure_device
+linux/How_to_Guides/Target/How_to_BeagleBadge_getting_started
 linux/How_to_Guides/FAQ/How_to_Check_Device_Tree_Info
 linux/How_to_Guides/FAQ/How_to_Integrate_Open_Source_Software
 linux/How_to_Guides_Hardware_Setup_with_CCS
