@@ -48,5 +48,5 @@ Use below in place of <Config File>, to setup the meta layers for the current re
    +----------------------------------------------------+------------------------------------------------+--------------------------------+
    |                    Description                     |      Config File                               | Supported yocto build machine  |
    +====================================================+================================================+================================+
-   | |__SDK_FULL_NAME__| : 11_01_00 Release             | processor-sdk-analytics-11.01.00-config.txt    | |__SDK_BUILD_MACHINE__|        |
+   | |__SDK_FULL_NAME__| : 11_02_00 Release             | processor-sdk-analytics-11.02.00-config.txt    | |__SDK_BUILD_MACHINE__|        |
    +----------------------------------------------------+------------------------------------------------+--------------------------------+

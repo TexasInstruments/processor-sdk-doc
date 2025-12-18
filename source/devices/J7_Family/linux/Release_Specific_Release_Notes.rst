@@ -106,7 +106,7 @@ U-Boot
 
    .. note::
 
-      meta-edgeai Yocto layer contains additional patches for U-Boot `here <https://git.ti.com/cgit/edgeai/meta-edgeai/tree/recipes-bsp/u-boot?h=11.01.00.03>`__.
+      meta-edgeai Yocto layer contains additional patches for U-Boot `here <https://git.ti.com/cgit/edgeai/meta-edgeai/tree/recipes-bsp/u-boot?h=REL.PSDK.ANALYTICS.11.02.00.05>`__.
 
 .. _kernel-release-notes:
 
@@ -134,7 +134,7 @@ Kernel
 
    .. note::
 
-      meta-edgeai Yocto layer contains additional patches for Kernel `here <https://git.ti.com/cgit/edgeai/meta-edgeai/tree/recipes-kernel/linux?h=11.01.00.03>`__.
+      meta-edgeai Yocto layer contains additional patches for Kernel `here <https://git.ti.com/cgit/edgeai/meta-edgeai/tree/recipes-kernel/linux?h=REL.PSDK.ANALYTICS.11.02.00.05>`__.
 
 TF-A
 ----
@@ -203,23 +203,23 @@ Yocto
 
 .. rubric:: meta-tisdk
 
-| Head Commit: 3265fc78d1dddd1642c112a2f3f42507bfa176d9: meta-ti-foundational: ti-apps-launcher: Update SRCREV
+| Head Commit: 71e97d787810978a21dc536dfe59d0c821b554fd ti-lvgl-demo: Simplify recipe and align source
 
 | Repo: https://github.com/TexasInstruments/meta-tisdk.git
 | Branch: scarthgap
-| Release Tag: 11.01.07.05
+| Release Tag: REL.PSDK.ANALYTICS.11.02.00.05
 |
 
 .. ifconfig:: CONFIG_image_type in ('edgeai', 'adas')
 
    .. rubric:: meta-edgeai
 
-   | Head Commit: 42fb59bb661dd2a467e6df7f5ddf8ec21661083c recipes-tisdk: ti-edgeai-firmware: update psdk_fw SRC_REV
+   | Head Commit: e814c23648afeb0efd277ae6a9fce9aba0aee025 ti-vision-apps: J7*: Bump up to REL.PSDK.ANALYTICS.11.02.00.05
    | Date: 2025-09-13
 
    | Clone: git://git.ti.com/edgeai/meta-edgeai.git
    | Branch: scarthgap
-   | Release Tag: 11.01.00.03
+   | Release Tag: REL.PSDK.ANALYTICS.11.02.00.05
    |
 
 Issues Tracker
