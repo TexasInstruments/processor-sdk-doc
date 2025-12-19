@@ -164,6 +164,35 @@ in this case:
 replace_b
 ```
 
+### Headings / sections
+
+We are trying to move to the [Python Developer's Guide for
+documenting](https://devguide.python.org/documentation/markup/#sections)
+standard of section hierarchy. This means that section definitions should use
+the following pattern:
+
+```rst
+#########
+Section 1
+#########
+
+*********
+Section 2
+*********
+
+Section 3
+=========
+
+Section 4
+---------
+
+Section 5
+^^^^^^^^^
+
+Section 6
+"""""""""
+```
+
 ## Licensing
 
 ### Community
