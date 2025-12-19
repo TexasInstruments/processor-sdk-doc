@@ -417,6 +417,7 @@ Linux Known Issues
    :header: "Record ID", "Title", "Platform", "Workaround"
    :widths: 5, 10, 70, 35
 
+   "LCPD-45962","j7200-evm,j784s4-evm","Remotecore IPC communication is not functional after suspend-resume",""
    "LCPD-45771","am62pxx_sk-fs,am62pxx_sk-se,j722s_evm-fs,j722s_evm-se","GPIO PADCONFIG Bits Changing after using gpiod userspace",""
    "LCPD-45607","j7200-evm,j721s2-evm","McSPI performance improvements",""
    "LCPD-45569","j7200-evm","J7200: UART: Infinite IRQs storm upon error condition on the RX Line",""
