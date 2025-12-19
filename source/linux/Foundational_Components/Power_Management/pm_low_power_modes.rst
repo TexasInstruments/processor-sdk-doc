@@ -389,9 +389,23 @@ Limitations
 
    .. important::
 
-      When using low power modes on SK-AM62-LP EVM, USB **cannot** be connected
-      to anything. When USB is connected and a low power mode is entered, the
+      When using low power modes on SK-AM62-LP EVM, USB1 **cannot** be connected
+      to anything. When USB1 is connected and a low power mode is entered, the
       EVM fails to resume to an active Linux state.
+
+      **Hardware Workaround:** Remove resistor R131 from the SK-AM62-LP EVM to resolve
+      this limitation and enable proper resume from low power modes.
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+   .. important::
+
+      When using low power modes on SK-AM62P-LP E1 or E1-1 EVMs, USB1 **cannot** be connected
+      to anything. When USB1 is connected and a low power mode is entered, the
+      EVM fails to resume to an active Linux state.
+
+      **Hardware Workaround:** Remove resistor R169 from the SK-AM62P-LP EVM to resolve
+      this limitation and enable proper resume from low power modes.
 
 RT (Real-Time) Linux does not support any low power modes.
 
