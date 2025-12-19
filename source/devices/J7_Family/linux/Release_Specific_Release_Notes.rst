@@ -82,6 +82,7 @@ Processor SDK 11.02 Release has following new features:
   * Low power mode support for J784S4 and J7200
   * Temperature based refresh rate change for DDR
   * Crypto: Add AES-CMAC algorithm support in SA2UL driver
+  * Added support for McASP async mode: independent transmit (playback) and receive (capture) clocking
 
 .. _release-specific-build-information:
 

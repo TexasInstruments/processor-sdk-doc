@@ -60,6 +60,7 @@ Processor SDK 11.02 Release has following new features:
  - HDMI suport in Linux
  - ARM Analytics AI stack enabled in the filesystem
  - LVGL (Light and Versatile Graphics Library) based interactive demo as out-of-the-box (OOB) on display
+ - Added support for McASP async mode: independent transmit (playback) and receive (capture) clocking
 
 .. rubric:: SDK Components & Versions
    :name: sdk-components-versions
