@@ -447,6 +447,7 @@ Go :ref:`here <download-and-install-sdk>` to download and install the SDK.
       $ export UBOOT_DIR=<path-to-ti-u-boot>
       $ export TI_LINUX_FW_DIR=<path-to-ti-linux-firmware>
       $ export TFA_DIR=<path-to-arm-trusted-firmware>
+      $ export OPTEE_DIR=<path-to-ti-optee-os>
 
    .. note::
 
@@ -465,7 +466,8 @@ Go :ref:`here <download-and-install-sdk>` to download and install the SDK.
       $ make CROSS_COMPILE="$CROSS_COMPILE_64" \
          BL1=$TFA_DIR/build/k3/am62l/release/bl1.bin \
          BL31=$TFA_DIR/build/k3/am62l/release/bl31.bin \
-         BINMAN_INDIRS=$TI_LINUX_FW_DIR
+         BINMAN_INDIRS=$TI_LINUX_FW_DIR \
+         TEE=$OPTEE_DIR/out/arm-plat-k3/core/tee-pager_v2.bin
 
 .. ifconfig:: CONFIG_part_variant not in ('AM64X', 'AM62X', 'AM62AX', 'AM62LX')
 
