@@ -475,6 +475,19 @@ CPSW/CPSW2g/CPSW3g Ethernet Driver
 
 |
 
+Linux OSPI Flash Driver
+-----------------------
+
+RAW
+
+.. csv-table:: OSPI Raw Flash Driver
+    :header: "File size (Mbytes)","am62dxx_evm-fs: Raw Read Throughput (Mbytes/sec)"
+
+    "10","227.27"
+    "50","217.39"
+
+|
+
 USB Driver
 ----------
 
