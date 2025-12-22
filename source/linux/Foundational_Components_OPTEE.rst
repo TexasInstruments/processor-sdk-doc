@@ -24,8 +24,8 @@ If it is not possible to use pre-build binary, use the following:
 
 .. code-block:: console
 
-    $ git clone https://github.com/OP-TEE/optee_os.git
-    $ git checkout <hash>
+   $ git clone https://github.com/OP-TEE/optee_os.git
+   $ git checkout <hash>
 
 Where <hash> is the OPTEE commit shown in :ref:`release-specific-build-information`.
 
@@ -43,23 +43,39 @@ Building OP-TEE OS
 
 .. ifconfig:: CONFIG_part_variant in ('J721S2', 'J784S4','J742S2')
 
-    .. code-block:: console
+   .. code-block:: console
 
-        $ export CFG_CONSOLE_UART=0x8
+      $ export CFG_CONSOLE_UART=0x8
 
 Building the OP-TEE image
 *************************
 
-  .. parsed-literal::
+.. ifconfig:: CONFIG_part_variant not in ('AM62LX')
 
-     $ make CROSS_COMPILE="$CROSS_COMPILE_32" CROSS_COMPILE64="$CROSS_COMPILE_64" PLATFORM=|__OPTEE_PLATFORM_FLAVOR__| CFG_ARM64_core=y
+   .. parsed-literal::
+
+      $ make CROSS_COMPILE="$CROSS_COMPILE_32" CROSS_COMPILE64="$CROSS_COMPILE_64" PLATFORM=|__OPTEE_PLATFORM_FLAVOR__| CFG_ARM64_core=y
+
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+   .. parsed-literal::
+
+      $ make CROSS_COMPILE64="$CROSS_COMPILE_64" PLATFORM=|__OPTEE_PLATFORM_FLAVOR__| CFG_ARM64_core=y CFG_USER_TA_TARGETS=ta_arm64
 
 Building the OP-TEE image with debug parameters
 ***********************************************
 
-  .. parsed-literal::
+.. ifconfig:: CONFIG_part_variant not in ('AM62LX')
 
-     $ make CROSS_COMPILE="$CROSS_COMPILE_32" CROSS_COMPILE64="$CROSS_COMPILE_64" PLATFORM=|__OPTEE_PLATFORM_FLAVOR__| CFG_ARM64_core=y CFG_TEE_CORE_LOG_LEVEL=2 CFG_TEE_CORE_DEBUG=y
+   .. parsed-literal::
+
+      $ make CROSS_COMPILE="$CROSS_COMPILE_32" CROSS_COMPILE64="$CROSS_COMPILE_64" PLATFORM=|__OPTEE_PLATFORM_FLAVOR__| CFG_ARM64_core=y CFG_TEE_CORE_LOG_LEVEL=2 CFG_TEE_CORE_DEBUG=y
+
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+   .. parsed-literal::
+
+      $ make CROSS_COMPILE64="$CROSS_COMPILE_64" PLATFORM=|__OPTEE_PLATFORM_FLAVOR__| CFG_ARM64_core=y CFG_TEE_CORE_LOG_LEVEL=2 CFG_TEE_CORE_DEBUG=y CFG_USER_TA_TARGETS=ta_arm64
 
 .. _building-optee-with-prng:
 
@@ -71,9 +87,17 @@ detrimental effect to the overall system latency. Using the
 ``CFG_WITH_SOFTWARE_PRNG`` flag to use OP-TEE's Pseudo RNG drivers as a source
 of entropy can work around these issues.
 
-.. parsed-literal::
+.. ifconfig:: CONFIG_part_variant not in ('AM62LX')
 
-   $ make CROSS_COMPILE="$CROSS_COMPILE_32" CROSS_COMPILE64="$CROSS_COMPILE_64" PLATFORM=k3-|__OPTEE_PLATFORM_FLAVOR__| CFG_ARM64_core=y CFG_WITH_SOFTWARE_PRNG=y
+   .. parsed-literal::
+
+      $ make CROSS_COMPILE="$CROSS_COMPILE_32" CROSS_COMPILE64="$CROSS_COMPILE_64" PLATFORM=k3-|__OPTEE_PLATFORM_FLAVOR__| CFG_ARM64_core=y CFG_WITH_SOFTWARE_PRNG=y
+
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+   .. parsed-literal::
+
+      $ make CROSS_COMPILE64="$CROSS_COMPILE_64" PLATFORM=k3-|__OPTEE_PLATFORM_FLAVOR__| CFG_ARM64_core=y CFG_WITH_SOFTWARE_PRNG=y CFG_USER_TA_TARGETS=ta_arm64
 
 .. _secure-storage-with-rpmb:
 
@@ -151,7 +175,7 @@ To get optee_client source code, do:
 
 .. code-block:: console
 
-  $ git clone https://github.com/OP-TEE/optee_client
+   $ git clone https://github.com/OP-TEE/optee_client
 
 .. rubric:: Building OP-TEE Client with RPMB support
 
@@ -162,7 +186,7 @@ instead of the emulated one.
 
 .. code-block:: console
 
-  $ make CROSS_COMPILE="$CROSS_COMPILE_64" PLATFORM=k3 CFG_TEE_SUPP_LOG_LEVEL=2 RPMB_EMU=0 CFG_ARM64_core=y
+   $ make CROSS_COMPILE="$CROSS_COMPILE_64" PLATFORM=k3 CFG_TEE_SUPP_LOG_LEVEL=2 RPMB_EMU=0 CFG_ARM64_core=y
 
 Now update optee-client binary and libraries on your SD card with the generated ones
 in `out/export/usr` folder
@@ -188,7 +212,7 @@ Integrate binary output into U-boot
 
 .. note::
 
-    tee-pager_v2.bin may be called bl32.bin in other documentation.
+   tee-pager_v2.bin may be called bl32.bin in other documentation.
 
 |
 
