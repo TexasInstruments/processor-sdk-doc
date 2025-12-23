@@ -50,16 +50,32 @@ Building OP-TEE OS
 Building the OP-TEE image
 *************************
 
+.. ifconfig:: CONFIG_part_variant not in ('AM62LX')
+
   .. parsed-literal::
 
      $ make CROSS_COMPILE="$CROSS_COMPILE_32" CROSS_COMPILE64="$CROSS_COMPILE_64" PLATFORM=|__OPTEE_PLATFORM_FLAVOR__| CFG_ARM64_core=y
 
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+  .. parsed-literal::
+
+     $ make CROSS_COMPILE64="$CROSS_COMPILE_64" PLATFORM=|__OPTEE_PLATFORM_FLAVOR__| CFG_ARM64_core=y CFG_USER_TA_TARGETS=ta_arm64
+
 Building the OP-TEE image with debug parameters
 ***********************************************
+
+.. ifconfig:: CONFIG_part_variant not in ('AM62LX')
 
   .. parsed-literal::
 
      $ make CROSS_COMPILE="$CROSS_COMPILE_32" CROSS_COMPILE64="$CROSS_COMPILE_64" PLATFORM=|__OPTEE_PLATFORM_FLAVOR__| CFG_ARM64_core=y CFG_TEE_CORE_LOG_LEVEL=2 CFG_TEE_CORE_DEBUG=y
+
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+  .. parsed-literal::
+
+     $ make CROSS_COMPILE64="$CROSS_COMPILE_64" PLATFORM=|__OPTEE_PLATFORM_FLAVOR__| CFG_ARM64_core=y CFG_TEE_CORE_LOG_LEVEL=2 CFG_TEE_CORE_DEBUG=y CFG_USER_TA_TARGETS=ta_arm64
 
 .. _building-optee-with-prng:
 
@@ -71,9 +87,17 @@ detrimental effect to the overall system latency. Using the
 ``CFG_WITH_SOFTWARE_PRNG`` flag to use OP-TEE's Pseudo RNG drivers as a source
 of entropy can work around these issues.
 
-.. parsed-literal::
+.. ifconfig:: CONFIG_part_variant not in ('AM62LX')
 
-   $ make CROSS_COMPILE="$CROSS_COMPILE_32" CROSS_COMPILE64="$CROSS_COMPILE_64" PLATFORM=k3-|__OPTEE_PLATFORM_FLAVOR__| CFG_ARM64_core=y CFG_WITH_SOFTWARE_PRNG=y
+  .. parsed-literal::
+
+     $ make CROSS_COMPILE="$CROSS_COMPILE_32" CROSS_COMPILE64="$CROSS_COMPILE_64" PLATFORM=k3-|__OPTEE_PLATFORM_FLAVOR__| CFG_ARM64_core=y CFG_WITH_SOFTWARE_PRNG=y
+
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+  .. parsed-literal::
+
+     $ make CROSS_COMPILE64="$CROSS_COMPILE_64" PLATFORM=k3-|__OPTEE_PLATFORM_FLAVOR__| CFG_ARM64_core=y CFG_WITH_SOFTWARE_PRNG=y CFG_USER_TA_TARGETS=ta_arm64
 
 .. _secure-storage-with-rpmb:
 
