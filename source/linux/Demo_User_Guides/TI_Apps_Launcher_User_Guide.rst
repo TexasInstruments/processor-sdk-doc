@@ -3,6 +3,12 @@
 TI Apps Launcher - User Guide
 =============================
 
+.. note::
+
+   The TI Apps Launcher uses the Qt framework. The SDK also supports other modern UI toolkits,
+   such as Flutter and Slint. For instructions on building applications with these frameworks,
+   see the :ref:`GUI_Frameworks_User_Guide`.
+
 Overview
 --------
 

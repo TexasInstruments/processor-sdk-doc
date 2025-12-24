@@ -182,6 +182,7 @@ linux/Demo_User_Guides/index_Demos
 linux/Demo_User_Guides/TI_Apps_Launcher_User_Guide
 linux/Demo_User_Guides/Seva_Store
 linux/Demo_User_Guides/Chromium_Browser
+linux/Demo_User_Guides/GUI_Frameworks_User_Guide
 
 common/PRU-ICSS/Getting_Started_with_PSSP
 common/PRU-ICSS/Header_Files
