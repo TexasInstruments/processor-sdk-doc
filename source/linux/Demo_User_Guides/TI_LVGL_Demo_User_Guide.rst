@@ -13,6 +13,8 @@ It includes various demo applications, such as:
 
 - EV Charging
 
+- Arm analytics
+
 - Smart Home
 
 - Smart Meter
@@ -20,6 +22,64 @@ It includes various demo applications, such as:
 - Thermostat
 
 - Security
+
+.. note::
+
+   Platform compatibility varies for different demo applications. Please refer to the platform compatibility table below:
+
+   .. list-table:: Demo Compatibility by Platform
+      :header-rows: 1
+      :widths: 20 16 16 16 16 16 16
+
+      * - Platform
+        - EV Charging
+        - Arm analytics
+        - Smart Home
+        - Smart Meter
+        - Thermostat
+        - Security
+      * - AM62L
+        - ✓
+        - ✗
+        - ✓
+        - ✓
+        - ✓
+        - ✓
+      * - AM62x
+        - ✓
+        - ✗
+        - ✓
+        - ✓
+        - ✓
+        - ✓
+      * - AM62P
+        - ✓
+        - ✗
+        - ✓
+        - ✓
+        - ✓
+        - ✓
+      * - AM335X
+        - ✗
+        - ✓
+        - ✓
+        - ✓
+        - ✓
+        - ✗
+      * - AM437X
+        - ✗
+        - ✓
+        - ✓
+        - ✓
+        - ✓
+        - ✗
+      * - AM65X
+        - ✗
+        - ✓
+        - ✓
+        - ✓
+        - ✓
+        - ✗
 
 All necessary equipment and step by step instructions are provided below:
 
@@ -43,6 +103,19 @@ Hardware Prerequisites
 .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
    -  TI |__PART_FAMILY_DEVICE_NAMES__| SK
+
+.. ifconfig:: CONFIG_part_variant in ('AM335X')
+
+   -  AM335x Evaluation Module: AM335x EVM
+   -  BeagleBone Black
+
+.. ifconfig:: CONFIG_part_variant in ('AM437X')
+
+   -  AM437x Evaluation Module: AM437x GP EVM
+
+.. ifconfig:: CONFIG_part_variant in ('AM65X')
+
+   -  AM65x Evaluation Module: AM654x GP EVM
 
 -  PC (Windows or Linux, to use serial terminal console)
 
@@ -100,10 +173,16 @@ Using the TI LVGL Demo
 
    The landing/home page of the LVGL demo looks like the following:
 
-   .. Image:: /images/ti-lvgl-demo-home-page.gif
-      :height: 500
+   .. ifconfig:: CONFIG_part_variant in ('AM335X' 'AM437X' 'AM65X')
 
-   |
+      .. Image:: /images/ti-lvgl-demo-legacy-home.png
+         :height: 500
+
+   .. ifconfig:: CONFIG_part_variant in ('AM62LX' 'AM62PX' 'AM62X')
+
+      .. Image:: /images/ti-lvgl-demo-home-page.gif
+         :height: 500
+
 
    - In the demo, scroll through the various widgets to launch different apps.
    - The date/time panel shows the UTC timezone provided the EVM is connected to the internet.
@@ -125,6 +204,22 @@ Launching the EV Charging HMI
    .. Image:: /images/ti-lvgl-demo-ev-charging1.png
       :height: 300
    .. Image:: /images/ti-lvgl-demo-ev-charging2.png
+      :height: 300
+
+
+Launching the Arm analytics
+=============================
+
+1. Launch the Arm Analytics demo by clicking the **Arm Analytics** widget in the apps scroll menu.
+2. Connect the microphone and click the **Play** button to start audio recognition.
+
+   .. Image:: /images/ti-lvgl-demo-arm-analytics1.png
+      :height: 300
+3. Expose multiple audio sources to the microphone to view the output results. Click the **Stop** button to stop audio recognition.
+
+   .. Image:: /images/ti-lvgl-demo-arm-analytics2.png
+      :height: 300
+   .. Image:: /images/ti-lvgl-demo-arm-analytics3.png
       :height: 300
 
 Launching the Smart Home HMI
@@ -345,27 +440,53 @@ assets here while making any modifications.
 The source code is available at `TI LVGL Demo <https://github.com/TexasInstruments/ti-lvgl-demo.git/>`__ and can be re-compiled with the
 following steps:
 
-1. First clone the git repository and its submodules using:
+.. note::
+
+   **Source Code Repositories by Platform**
+
+   For AM335X, AM437X, and AM65X platforms, use the legacy branch of the repository:
 
    .. code-block:: console
 
-      $ git clone --recurse-submodules https://github.com/TexasInstruments/ti-lvgl-demo.git
+      $ git clone -b legacy --recurse-submodules https://github.com/TexasInstruments/ti-lvgl-demo-legacy.git
+
+1. First clone the appropriate git repository and its submodules using:
+
+   .. ifconfig:: CONFIG_part_variant in ('AM62LX', 'AM62X', 'AM62PX')
+
+      .. code-block:: console
+
+         $ git clone --recurse-submodules https://github.com/TexasInstruments/ti-lvgl-demo.git
+
+   .. ifconfig:: CONFIG_part_variant in ('AM335X', 'AM437X', 'AM65X')
+
+      .. code-block:: console
+
+         $ git clone -b legacy --recurse-submodules https://github.com/TexasInstruments/ti-lvgl-demo.git
 
 2. Create the docker environment and build the application:
 
-   .. code-block:: console
 
-      $ cd ti-lvgl-demo
-      $ sudo ./scripts/docker_setup.sh --create-image
-      $ sudo ./scripts/docker_setup.sh --build-app
+      .. code-block:: console
+
+         $ cd ti-lvgl-demo
+         $ sudo ./scripts/docker_setup.sh --create-image
+         $ sudo ./scripts/docker_setup.sh --build-app
 
 3. Copy the compiled binary to :file:`/usr/bin` directory of the device
 
-   .. code-block:: console
+   .. ifconfig:: CONFIG_part_variant in ('AM62LX', 'AM62X', 'AM62PX')
 
-      $ scp lv_port_linux/bin/lvglsim root@<ip-addr-of-device>:/usr/bin/
-      $ scp -r lv_port_linux/demos/high_res/assets/* root@<ip-addr-of-device>:/usr/share/ti-lvgl-demo/assets/  #make sure assets directory is there on target
-      $ scp -r lv_port_linux/demos/high_res/slides/* root@<ip-addr-of-device>:/usr/share/ti-lvgl-demo/slides/  #make sure slides directory is there on target
-      $ scp lv_port_linux/certs/<certificate> root@<ip-addr-of-device>:/usr/share/ti-lvgl-demo/cert/           #make sure cert directory is there on target
+      .. code-block:: console
 
+         $ scp lv_port_linux/bin/lvglsim root@<ip-addr-of-device>:/usr/bin/
+         $ scp -r lv_port_linux/demos/high_res/assets/* root@<ip-addr-of-device>:/usr/share/ti-lvgl-demo/assets/  #make sure assets directory is there on target
+         $ scp -r lv_port_linux/demos/high_res/slides/* root@<ip-addr-of-device>:/usr/share/ti-lvgl-demo/slides/  #make sure slides directory is there on target
+         $ scp lv_port_linux/certs/<certificate> root@<ip-addr-of-device>:/usr/share/ti-lvgl-demo/cert/           #make sure cert directory is there on target
 
+   .. ifconfig:: CONFIG_part_variant in ('AM335X', 'AM437X', 'AM65X')
+
+      .. code-block:: console
+
+         $ scp lv_port_linux/build-arm64/bin/lvglsim root@<ip-addr-of-device>:/usr/bin/
+         $ scp -r lv_port_linux/build-arm64/_deps/lv_demos_ext-src/src/high_res/assets/* root@<ip-addr-of-device>:/usr/share/ti-lvgl-demo/assets/     #make sure assets directory is there on target
