@@ -167,6 +167,8 @@ To disable cut through on all queues
     expected cut through value. Setting up switch mode will automatically stop and start
     the firmware so no need to bring links down and back up again.
 
+.. _icssg_ptp_switch:
+
 PTP
 """
 PTP can be run during switch mode. To run PTP in switch mode, 3 AM64x EVMs need to be connected with middle EVM acting as the switch. Use the following ptp config file on all slave EVMs. For Master EVM, priority1 filed needs to be changed.
