@@ -9,6 +9,7 @@ Application Notes
 
    /android/Application_Notes_Partitions
    Application_Notes_dtbo_support
+   /android/Application_Notes_M2_WiFi_BT
    /android/Application_Notes_Android_Bootloader_SD_Card
    /android/Application_Notes_Android_SD_CARD
    /android/Application_Notes_Android_Dual_Screen
