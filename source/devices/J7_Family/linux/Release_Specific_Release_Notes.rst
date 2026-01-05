@@ -91,14 +91,14 @@ Build Information
 
 U-Boot
 ------
-| Head Commit: 7493977a537fe3f8a45814c6284b942f7f09e035: PENDING: configs: am62lx_evm_defconfig: Remove CONFIG_SYS_BOOTM_LEN
-| Date: Wed Dec 3 19:18:28 2025 +0530
+| Head Commit: df1fe238230433ba3e5b731356156e145aa90917: TI: dts: arm64: ti: sync dtbs from ti-linux-6.12.y upto 15b58b1dcd0e
+| Date: Wed Dec 24 13:19:54 2025 +0530
 | uBoot Version: 2025.01
-| uBoot Description: 11.02.08
+| uBoot Description: 11.02.11
 
 | Repo: git://git.ti.com/ti-u-boot/ti-u-boot.git
 | Branch: ti-u-boot-2025.01
-| uBoot Tag: 11.02.08
+| uBoot Tag: 11.02.11
 
 | Compiler Information: arm-oe-eabi-gcc (GCC) 13.4.0, aarch64-oe-linux-gcc (GCC) 13.4.0
 |
@@ -116,14 +116,14 @@ Kernel
 .. rubric:: Linux Kernel
    :name: linux-kernel
 
-| Head Commit: 31b07ab8dfbcc182da591e9e3703edd9f4ca7633: PENDING: ASoC: ti: davinci-mcasp: Async mode to only start stream-specific clocks
-| Date: Thu Dec 4 16:30:43 2025 +0530
+| Head Commit: 15b58b1dcd0e0a79d83740b81da1a1367f6f3f68: FROMLIST: arm64: dts: ti: Remove 4 watchdogs from common file and move them to J784S4
+| Date:   Wed Dec 24 11:32:20 2025 +0530
 | Kernel Version: 6.12.57
-| Kernel Description: 11.02.08
+| Kernel Description: 11.02.11
 
 | Repo: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
 | Branch: ti-linux-6.12.y
-| Tag: 11.02.08
+| Tag: 11.02.11
 | Non-RT Kernel defconfig: defconfig + ti_arm64_prune.config
 | RT Kernel defconfig: defconfig + ti_rt.config + ti_arm64_prune.config
 
