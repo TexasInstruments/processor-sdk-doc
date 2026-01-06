@@ -1,5 +1,8 @@
 BeagleBone
 Broadcom
+NXP
+SDIO
+UART
 GStreamer
 Jacinto
 Khronos
