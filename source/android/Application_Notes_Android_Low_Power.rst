@@ -8,6 +8,12 @@ Supported low power mode:
 
 #. **Suspend to RAM (S2R):** All power domains are off except for wake-up domain that has wake-up co-processor (DM R5) running. DDR is in self refresh.
 
+.. note::
+
+   OP-TEE OS debug logs are disabled by default. However, if you enable them for debugging
+   purposes (CFG_TEE_CORE_LOG_LEVEL > 0), the suspend/resume functionality will not work
+   properly. Make sure to disable OP-TEE OS logs when testing low power modes.
+
 *****************************
 Enable Suspend/Resume support
 *****************************
@@ -29,13 +35,6 @@ Enable Suspend/Resume support
     [  171.970763] psci: CPU1 killed (polled 4 ms)
     [  171.993689] psci: CPU2 killed (polled 0 ms)
     [  172.014894] psci: CPU3 killed (polled 4 ms)
-    [I/TC: Secondary CPU 1 initializing
-    I/TC: Secondary CPU 1 switching to normal world boot
-    I/TC: Secondary CPU 2 initializing
-    I/TC: Secondary CPU 2 switching to normal world boot
-    I/T[  200.035482] am65-cpsw-nuss 8000000.ethernet: set new flow-id-base 19
-    C: Secondary CPU 3 initializing
-    I/TC: Secondary CPU 3 switching to normal world boot
     [  200.067533] am65-cpsw-nuss 8000000.ethernet eth0: PHY [8000f00.mdio:00] driver [TI DP83867] (irq=POLL)
     [  200.076971] am65-cpsw-nuss 8000000.ethernet eth0: configuring for phy/rgmii-rxid link mode
     [  200.103015] am65-cpsw-nuss 8000000.ethernet eth1: PHY [8000f00.mdio:01] driver [TI DP83867] (irq=POLL)
