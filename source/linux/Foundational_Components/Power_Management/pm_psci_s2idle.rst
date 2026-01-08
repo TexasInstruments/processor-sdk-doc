@@ -122,7 +122,7 @@ The coordination in OSI mode follows a specific "Last Man Standing" sequence. Th
 2. **Last Core Idle:** When the *last* active core in the cluster is ready to go idle, the OS recognizes
    that the entire cluster, and potentially the system, can now be powered down.
 
-3. **Composite Request:** The last core issues a `CPU_SUSPEND` call that requests a **composite state**:
+3. **Composite Request:** The last core issues a ``CPU_SUSPEND`` call that requests a **composite state**:
 
    * **Core State:** Power Down
    * **Cluster State:** Power Down
