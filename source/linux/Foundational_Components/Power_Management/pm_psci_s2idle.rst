@@ -141,7 +141,7 @@ In OSI mode, this parameter must encode the intent for the entire hierarchy.
 Power State Parameter Encoding
 ================================
 
-The `power_state` is a 32-bit parameter defined by the ARM PSCI specification (ARM DEN0022C).
+The ``power_state`` is a 32-bit parameter defined by the ARM PSCI specification (ARM DEN0022C).
 It has two encoding formats, controlled by the platform's build configuration.
 
 Standard Format
