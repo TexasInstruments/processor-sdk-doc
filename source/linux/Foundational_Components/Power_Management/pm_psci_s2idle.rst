@@ -135,7 +135,7 @@ The coordination in OSI mode follows a specific "Last Man Standing" sequence. Th
 Understanding the Suspend Parameter
 ***********************************
 
-The `power_state` parameter passed to `CPU_SUSPEND` is the key to requesting these states.
+The ``power_state`` parameter passed to ``CPU_SUSPEND`` is the key to requesting these states.
 In OSI mode, this parameter must encode the intent for the entire hierarchy.
 
 Power State Parameter Encoding
