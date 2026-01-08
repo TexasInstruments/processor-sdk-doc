@@ -293,7 +293,7 @@ PSCI APIs are invoked.
 
    * - **Entry Path**
      - **cpuidle**: Uses the standard CPUidle framework. Additionally, each driver is made idle by calling respective runtime suspend hooks.
-     - **suspend_ops**: Uses platform-specific suspend operations like each driver's suspend ops and finally the `PSCI_SYSTEM_SUSPEND` is called.
+     - **suspend_ops**: Uses driver specific suspend operations before ``PSCI_SYSTEM_SUSPEND`` is called.
        No governors exist to make any decisions.
 
    * - **PSCI Call**
