@@ -53,7 +53,7 @@ SoC.
         v
    5. Thaw tasks
 
-The `cpuidle` framework calls the PSCI `CPU_SUSPEND` API to transition each CPU individually into respective low-power states.
+The ``cpuidle`` framework calls the PSCI ``CPU_SUSPEND`` API to set each CPU to their corresponding low-power state.
 The effectiveness of s2idle depends heavily on the PSCI implementation's ability to coordinate these
 requests and enter the deepest possible hardware state.
 
