@@ -36,6 +36,53 @@ https://e2e.ti.com/ or https://support.ti.com/
 System Benchmarks
 -----------------
 
+Stress-ng and Cyclic Test
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. _RT-linux-performance:
+
+stress-ng (next-generation) will stress test a embedded platform in
+various selectable ways. It was designed to exercise various physical
+subsystems as well as the various operating system kernel interfaces.
+stress-ng can also measure test throughput rates; this can be useful to
+observe performance changes across different operating system or types
+of hardware.
+
+Cyclictest is most commonly used for benchmarking RT systems. It is one
+of the most frequently used tools for evaluating the relative
+performance of real-time systems. Some performance tests which use
+Cyclictest are System benchmarking, Latency debugging with tracing and
+-approximating application performance.
+
+Test commands used for running stress-ng and cyclictest together
+
+.. code:: console
+
+   stress-ng --cpu-method=all -c 4 &
+   cyclictest -m -Sp80 -D6h -h400 -i200 -M -q
+
+The following summarizes the latencies observed using the yocto based
+default SDK image:
+
+.. note::
+
+   A known issue in this SDK release is affecting this benchmark.
+   Using OP-TEE's PRNG drivers rather than the hardware accelerated TRNG
+   drivers restores the context switch latencies to the values you see
+   here.
+
+   More information on switching to the PRNG drivers can be found in the
+   Foundational Components section, here :ref:`building-optee-with-prng`
+
+.. csv-table::
+   :header: "Latencies","CPU 0","CPU 1"
+
+   "Minimum (usec)","6","6"
+   "Average (usec)","9","9"
+   "Maximum (usec)","58","73"
+
+.. image:: img/rt-cpu-method-all-latency-histogram.png
+
 LMBench
 ^^^^^^^
 LMBench is a collection of microbenchmarks of which the memory bandwidth
