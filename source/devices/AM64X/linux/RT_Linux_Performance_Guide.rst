@@ -38,12 +38,12 @@ System Benchmarks
 
 LMBench
 ^^^^^^^
-LMBench is a collection of microbenchmarks of which the memory bandwidth 
-and latency related ones are typically used to estimate processor 
-memory system performance. More information about lmbench at 
+LMBench is a collection of microbenchmarks of which the memory bandwidth
+and latency related ones are typically used to estimate processor
+memory system performance. More information about lmbench at
 https://lmbench.sourceforge.net/whatis_lmbench.html and
 https://lmbench.sourceforge.net/man/lmbench.8.html
-  
+
 **Latency**: lat_mem_rd-stride128-szN, where N is equal to or smaller than the cache
 size at given level measures the cache miss penalty. N that is at least
 double the size of last level cache is the latency to external memory.
@@ -343,7 +343,7 @@ To start netserver:
 ::
 
    netserver [-p <port_number>] [-4 (IPv4 addressing)] [-6 (IPv6 addressing)]
- 
+
 Running the following shell script from the DUT will trigger netperf clients to measure
 bidirectional TCP performance for 60 seconds and report CPU utilization. Parameter -k is used in
 client commands to summarize selected statistics on their own line and -j is used to gain
@@ -414,7 +414,7 @@ CPSW/CPSW2g/CPSW3g Ethernet Driver
 ICSSG Ethernet Driver
 ^^^^^^^^^^^^^^^^^^^^^
 
-.. rubric::  TCP Bidirectional Throughput 
+.. rubric::  TCP Bidirectional Throughput
    :name: tcp-bidirectional-throughput
 
 .. csv-table:: ICSSG TCP Bidirectional Throughput
