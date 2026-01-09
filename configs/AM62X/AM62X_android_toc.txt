@@ -5,6 +5,8 @@ devices/AM62X/android/Application_Notes
 devices/AM62X/android/Application_Notes_dtbo_support
 devices/AM62X/android/Application_Notes_BeaglePlay
 
+android/Application_Notes_M2_WiFi_BT
+
 android/Application_Notes_Android_Bootloader_SD_Card
 android/Application_Notes_Android_Dual_Screen
 android/Application_Notes_Android_Low_Power

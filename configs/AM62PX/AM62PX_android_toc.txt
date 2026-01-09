@@ -4,6 +4,8 @@ devices/AM62PX/android/Release_Specific_Release_Notes
 devices/AM62PX/android/Application_Notes
 devices/AM62PX/android/Application_Notes_dtbo_support
 
+android/Application_Notes_M2_WiFi_BT
+
 android/Application_Notes_Android_Bootloader_SD_Card
 android/Application_Notes_Android_Dual_Screen
 android/Application_Notes_Android_Low_Power
