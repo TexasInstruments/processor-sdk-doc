@@ -79,3 +79,12 @@ default SDK image using the SK-AM62B-P1_ reference board:
    Components section: :ref:`building-optee-with-prng`, and enabling the RNG
    node in the Linux kernel device tree. This way the HW TRNG is accessed from
    the kernel itself.
+
+.. csv-table::
+   :header: "Latencies","CPU 0","CPU 1","CPU 2","CPU 3"
+
+   "Minimum (usec)","5","5","5","5"
+   "Average (usec)","6","6","6","6"
+   "Maximum (usec)","66","41","39","31"
+
+.. image:: img/rt-cpu-method-all-latency-histogram.png
