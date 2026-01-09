@@ -112,11 +112,7 @@ linux/Foundational_Components/Graphics/SGX/Overview
 linux/Foundational_Components/Graphics/SGX/SGX_Debug_Info
 linux/Foundational_Components/Graphics/SGX/Build_Guide
 
-linux/Examples_and_Demos
-linux/Examples_and_Demos_Application_Demos
-linux/Examples_and_Demos/Application_Demos/QT_Thermostat_HMI_Demo
-linux/Examples_and_Demos/Application_Demos/Additional_Application_Demo_Links
-linux/Examples_and_Demos_Sub-system_Demos
+
 linux/How_to_Guides
 linux/How_to_Guides_Host
 linux/How_to_Guides/Host/Moving_Files_to_the_Target_System
