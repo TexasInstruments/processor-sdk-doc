@@ -3,6 +3,10 @@
 TI Apps Launcher - User Guide
 =============================
 
+The TI Apps Launcher uses the Qt framework. The SDK also supports other modern UI toolkits,
+such as Flutter and Slint. For instructions on building applications with these frameworks,
+see the :ref:`GUI_Frameworks_User_Guide`.
+
 Overview
 --------
 
@@ -273,9 +277,9 @@ Launching the GPU Performance Demo
 
    .. Image:: /images/ti-apps-launcher-gpu-performance.png
       :height: 400
-   
+
    3. You will see the updated values of FPS & Score metrices getting populated in the table.
-   
+
 .. ifconfig:: CONFIG_sdk in ('j7_foundational')
 
    3. The image below is captured while running the `glmark2` with **GPU Load Level as 3**.
@@ -294,7 +298,7 @@ Launching the Seva Store
 
       Seva Store is not supported on AM62xSIP due to it's memory constraints.
 
-1. |__SDK_FULL_NAME__| now supports Seva Store. Seva Store is a TI developed demo gallery which allows users to download and install demos on the go. Developers can host their demos as Docker Images on any public Docker Registry and link them to Seva Design Gallery. 
+1. |__SDK_FULL_NAME__| now supports Seva Store. Seva Store is a TI developed demo gallery which allows users to download and install demos on the go. Developers can host their demos as Docker Images on any public Docker Registry and link them to Seva Design Gallery.
 
 2. Refer :ref:`Seva Store - User Guide <Seva-Store-label>` to know more about Seva Store.
 
@@ -313,13 +317,13 @@ Launching the Chromium Browser
       Chromium Browser is not supported on AM62xSIP due to it's memory constraints.
 
 1. |__SDK_FULL_NAME__| now supports GPU Accelarated Chromium Browser. Click on the Chromium button on the left panel.
-  
+
 2. Click Launch button to launch the Chromium Browser. The Browser launches with `WebGL Aquarium <https://webglsamples.org/aquarium/aquarium.html>`__ as the first tab by default.
 
    .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
       .. Image:: /images/chromium-browser-am62x.png
-         :height: 400   
+         :height: 400
 
    .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
