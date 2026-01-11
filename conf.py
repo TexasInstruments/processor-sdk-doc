@@ -16,6 +16,7 @@
 import sys
 import os
 import importlib
+import subprocess
 from datetime import datetime
 
 # If extensions (or modules to document with autodoc) are in another directory,
@@ -203,7 +204,33 @@ html_context = {
     "github_repo": "processor-sdk-doc",
     "github_version": "master",
     "conf_py_path": "/source/",
+    "versions": [],
 }
+
+def get_versions():
+    versions = ["master"]
+    try:
+        cmd = ["git", "ls-remote", "--tags", "--heads", "https://github.com/TexasInstruments/processor-sdk-doc"]
+        output = subprocess.check_output(cmd).decode('utf-8').splitlines()
+        tags = []
+        for line in output:
+            parts = line.split()
+            if len(parts) == 2:
+                ref = parts[1]
+                if ref.startswith("refs/tags/"):
+                    tag = ref.replace("refs/tags/", "")
+                    tags.append(tag)
+
+        # Sort tags descending
+        tags.sort(reverse=True)
+        versions.extend(tags)
+    except Exception as e:
+        print(f"Error fetching versions: {e}")
+        # Fallback
+        versions = ["master"]
+    return versions
+
+html_context["versions"] = get_versions()
 
 # -- Options for LaTeX output ---------------------------------------------
 
