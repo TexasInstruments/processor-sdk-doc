@@ -72,3 +72,13 @@ default SDK image:
    Components section: :ref:`building-optee-with-prng`, and enabling the RNG
    node in the Linux kernel device tree. This way the HW TRNG is accessed from
    the kernel itself.
+
+
+.. csv-table::
+   :header: "Latencies","CPU 0","CPU 1"
+
+   "Minimum (usec)","5","5"
+   "Average (usec)","8","7"
+   "Maximum (usec)","62","47"
+
+.. image:: img/rt-cpu-method-all-latency-histogram.png
