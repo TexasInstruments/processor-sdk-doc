@@ -24,22 +24,13 @@ target name. That way if you are working with multiple configuration
 targets it is very easy to know which folder contains the u-boot
 binaries that you are interested in.
 
-.. rubric:: Setting the tool chain path
-
-We strongly recommend using the toolchain that came with the Linux Core
-release that corresponds to this U-Boot release. For e.g:
-
-.. code-block:: console
-
-   $ export PATH=$HOME/<TOOLCHAIN_PATH>/bin:$PATH
-
 .. rubric:: Cleaning the Sources
 
 If you did not use a separate object directory:
 
 .. code-block:: console
 
-   $ make CROSS_COMPILE=arm-none-linux-gnueabihf- distclean
+   $ make CROSS_COMPILE="$CROSS_COMPILE_32" distclean
 
 .. ifconfig:: CONFIG_part_variant in ('AM335X')
 
@@ -122,8 +113,8 @@ with:
 
    .. code-block:: console
 
-      $ make CROSS_COMPILE=arm-none-linux-gnueabihf- O=am335x_evm am335x_evm_defconfig
-      $ make CROSS_COMPILE=arm-none-linux-gnueabihf- O=am335x_evm
+      $ make CROSS_COMPILE="$CROSS_COMPILE_32" O=am335x_evm am335x_evm_defconfig
+      $ make CROSS_COMPILE="$CROSS_COMPILE_32" O=am335x_evm
 
 .. ifconfig:: CONFIG_part_variant in ('AM437X')
 
@@ -131,8 +122,8 @@ with:
 
    .. code-block:: console
 
-      $ make CROSS_COMPILE=arm-none-linux-gnueabihf- O=am43xx_evm am43xx_evm_defconfig
-      $ make CROSS_COMPILE=arm-none-linux-gnueabihf- O=am43xx_evm
+      $ make CROSS_COMPILE="$CROSS_COMPILE_32" O=am43xx_evm am43xx_evm_defconfig
+      $ make CROSS_COMPILE="$CROSS_COMPILE_32" O=am43xx_evm
 
 .. ifconfig:: CONFIG_part_variant in ('AM57X')
 
@@ -140,8 +131,8 @@ with:
 
    .. code-block:: console
 
-      $ make CROSS_COMPILE=arm-none-linux-gnueabihf- O=am57xx_evm am57xx_evm_defconfig
-      $ make CROSS_COMPILE=arm-none-linux-gnueabihf- O=am57xx_evm
+      $ make CROSS_COMPILE="$CROSS_COMPILE_32" O=am57xx_evm am57xx_evm_defconfig
+      $ make CROSS_COMPILE="$CROSS_COMPILE_32" O=am57xx_evm
 
 .. note::
 

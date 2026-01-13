@@ -46,4 +46,10 @@ repo URL, branch and commit id can be found in the release notes:
 
 - ti-u-boot version: :ref:`release-specific-build-information`
 
+*******************************
+Setup Cross Compile Environment
+*******************************
 
+.. include:: ../../Overview/GCC_ToolChain.rst
+   :start-after: .. start_include_yocto_toolchain_host_setup
+   :end-before: .. end_include_yocto_toolchain_host_setup

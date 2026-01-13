@@ -48,3 +48,11 @@ git repositories including commit history.
 
 U-Boot sources can also be directly fetched from GIT. The GIT repository URL,
 branch and commit id is available in :ref:`release-specific-build-information`.
+
+*******************************
+Setup Cross Compile Environment
+*******************************
+
+.. include:: ../../Overview/GCC_ToolChain.rst
+   :start-after: .. start_include_yocto_toolchain_host_setup
+   :end-before: .. end_include_yocto_toolchain_host_setup

@@ -90,7 +90,7 @@ Where <hash> is the commit shown in :ref:`release-specific-build-information`.
 
 |
 
-.. rubric:: Setting up the toolchain paths
+.. rubric:: Setup Cross Compile Environment
 
 .. include:: Overview/GCC_ToolChain.rst
    :start-after: .. start_include_yocto_toolchain_host_setup

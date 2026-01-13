@@ -5,7 +5,12 @@ GCC ToolChain Setup
 
 .. start_include_yocto_toolchain_host_setup
 
-Before compiling any of the sources referenced in this document, set the cross compiler paths to the toolchains packaged in the Processor SDK [Recommended] as shown below. Refer to :ref:`yocto-toolchain` section for more details on usage.
+The cross compile version supported in this release can be found in the release
+notes for the kernel release.
+
+Before compiling any of the sources referenced in this document, set the cross
+compiler paths to the toolchains packaged in the Processor SDK [Recommended] as
+shown below. Refer to :ref:`yocto-toolchain` section for more details on usage.
 
 .. ifconfig:: CONFIG_part_variant in ('AM335X', 'AM437X', 'AM57X')
 
@@ -35,7 +40,8 @@ Before compiling any of the sources referenced in this document, set the cross c
       host# export SYSROOT_32="${SDK_INSTALL_DIR}/k3r5-devkit/sysroots/armv7at2hf-vfp-oe-eabi"
       host# export CFLAGS32="--sysroot=${SYSROOT_32}"
 
-If the Processor SDK is not installed, the Arm GNU toolchains can be downloaded and setup. Refer to :ref:`external-arm-toolchain` section for more details on usage.
+If the Processor SDK is not installed, the Arm GNU toolchains can be downloaded and setup.
+Refer to :ref:`external-arm-toolchain` section for more details on usage.
 
 .. end_include_yocto_toolchain_host_setup
 
