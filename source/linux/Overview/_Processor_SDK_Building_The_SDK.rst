@@ -197,6 +197,24 @@ The MACHINE can be set to |__SDK_BUILD_MACHINE__|, for example.
                $ echo 'TI_EXTRAS="tie-jailhouse"' >> conf/local.conf
                $ MACHINE=<machine> ARAGO_RT_ENABLE=1 bitbake -k tisdk-jailhouse-image
 
+   .. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+      * The command below will build the :file:`tisdk-evse-image`, which is the
+        Processor SDK image with arago filesystem and `AM62L-EVSE-DEV-EVM <https://www.ti.com/lit/ug/slvudn0/slvudn0.pdf>`_ support (EV charging Use case support).
+
+      .. code-block:: console
+
+         $ git clone https://git.ti.com/git/arago-project/oe-layersetup.git tisdk
+         $ cd tisdk
+         $ ./oe-layertool-setup.sh -f configs/processor-sdk/<oeconfig-file>
+         $ cd build
+         $ . conf/setenv
+         $ MACHINE=am62lxx-evm ARAGO_RT_ENABLE=1 bitbake -k tisdk-evse-image
+
+      .. important::
+
+         EVSE (EV Charging) image uses RT-Linux and is not supported on Linux.
+
 .. ifconfig:: CONFIG_sdk in ('JACINTO','j7_foundational')
 
    |__SDK_FULL_NAME__| uses the 'oe-layersetup' tool to configure the meta layers. If you do not have the Linux SDK package installed:
@@ -378,6 +396,8 @@ The build system places the "Build Output" relative to :file:`deploy-ti`
       | tisdk-default-image          | images/<machine>/tisdk-default-image-<machine>.rootfs.tar.xz   | Target Filesystem          |
       +------------------------------+----------------------------------------------------------------+----------------------------+
       | tisdk-jailhouse-image        | images/<machine>/tisdk-jailhouse-image-<machine>.rootfs.tar.xz | Jailhouse Filesystem       |
+      +------------------------------+----------------------------------------------------------------+----------------------------+
+      | tisdk-evse-image             | images/<machine>/tisdk-evse-image-rt-<machine>.rootfs.tar.xz   | EV Charging Filesystem     |
       +------------------------------+----------------------------------------------------------------+----------------------------+
       | tisdk-base-image             | images/<machine>/tisdk-base-image-<machine>.rootfs.tar.xz      | Minimal Target Filesytem   |
       +------------------------------+----------------------------------------------------------------+----------------------------+
@@ -749,10 +769,10 @@ and IPK packages in the deploy-ipks folder.
 
    Please note that the output of a recipe can be in another folder under :file:`arago-tmp-[toolchain]/work` directory, depending on the defines of the recipe.
    You can call the following command from yocto's build directory to get the path to the workdir of your recipe.
-   
+
    .. code-block:: console
-      
-      MACHINE=<machine> bitbake-getvar -r <recipe-name> WORKDIR --value 
+
+      MACHINE=<machine> bitbake-getvar -r <recipe-name> WORKDIR --value
 
 .. rubric:: Forced Re-compilation
    :name: Forced Re-compilation
