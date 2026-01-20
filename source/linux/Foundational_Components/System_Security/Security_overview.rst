@@ -61,6 +61,10 @@ The following table lists some of the key Security Features:
   |                         | Trusted Execution Environment that enables isolated       | :ref:`foundational-components-optee` |
   |                         | execution of security-sensitive applications and services |                                      |
   +-------------------------+-----------------------------------------------------------+--------------------------------------+
+  | **Memory Firewalls**    | Prevents unauthorized access through hardware-enforced    | :ref:`memory-firewalls`              |
+  |                         | security boundaries                                       |				       |
+  +-------------------------+-----------------------------------------------------------+--------------------------------------+
+
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX', 'AM62AX')
 
@@ -83,6 +87,9 @@ The following table lists some of the key Security Features:
   |                         | Trusted Execution Environment that enables isolated       | :ref:`foundational-components-optee` |
   |                         | execution of security-sensitive applications and services |                                      |
   +-------------------------+-----------------------------------------------------------+--------------------------------------+
+  | **Memory Firewalls**    | Prevents unauthorized access through hardware-enforced    | :ref:`memory-firewalls`              |
+  |                         | security boundaries                                       |				       |
+  +-------------------------+-----------------------------------------------------------+--------------------------------------+
 
 .. ifconfig:: CONFIG_part_variant not in ('AM62X', 'AM62PX', 'AM62AX', 'AM62LX')
 
@@ -98,5 +105,8 @@ The following table lists some of the key Security Features:
   +                         +-----------------------------------------------------------+--------------------------------------+
   |                         | Trusted Execution Environment that enables isolated       | :ref:`foundational-components-optee` |
   |                         | execution of security-sensitive applications and services |                                      |
+  +-------------------------+-----------------------------------------------------------+--------------------------------------+
+  | **Memory Firewalls**    | Prevents unauthorized access through hardware-enforced    | :ref:`memory-firewalls`              |
+  |                         | security boundaries                                       |				       |
   +-------------------------+-----------------------------------------------------------+--------------------------------------+
 
