@@ -230,13 +230,27 @@ Issues Resolved
    :header: "Record ID", "Title"
    :widths: 15, 70
 
-   "`EXT_SITMPUSW-143 <https://sir.ext.ti.com/jira/browse/EXT_SITMPUSW-143>`_","Yocto Documentation: AM6x: SDK: Build Instruction missing steps for building K3R5 baremetal toolchain"
-   "`EXT_EP-12816 <https://sir.ext.ti.com/jira/browse/EXT_EP-12816>`_","SDK Docs: Broken URL in How To Guides > EVM Setup"
-   "`EXT_EP-12817 <https://sir.ext.ti.com/jira/browse/EXT_EP-12817>`_","PRUSS should be disabled for AM62 LP SK board"
-   "`EXT_EP-12081 <https://sir.ext.ti.com/jira/browse/EXT_EP-12081>`_","AM62x: Make Debugging SPL doc specific to AM62x"
-   "`EXT_SITMPUSW-146 <https://sir.ext.ti.com/jira/browse/EXT_SITMPUSW-146>`_","Yocto: meta-ti*: kernel source has uncommited changes"
-   "`EXT_EP-12779 <https://sir.ext.ti.com/jira/browse/EXT_EP-12779>`_","Null dereference on fdinfo when not bound to a render task"
-   "`EXT_EP-12296 <https://sir.ext.ti.com/jira/browse/EXT_EP-12296>`_","AM62x: 6.12 LTS Regression: PRU IPC Failure due to driver missing"
+   "`EXT_SITMPUSW-163 <https://sir.ext.ti.com/jira/browse/EXT_SITMPUSW-163>`_","k3conf utility is not packaged with Buildroot image"
+   "`EXT_EP-13126 <https://sir.ext.ti.com/jira/browse/EXT_EP-13126>`_","AM62x devicetree: PRUSS IRAM is 16kB"
+   "`EXT_EP-13129 <https://sir.ext.ti.com/jira/browse/EXT_EP-13129>`_","cpsw: probe failed if CONFIG_DEBUG_FS is disabled"
+   "`EXT_EP-13135 <https://sir.ext.ti.com/jira/browse/EXT_EP-13135>`_","Linux SDK docs: inconsistent TF-A git repo URL's"
+   "`EXT_EP-13137 <https://sir.ext.ti.com/jira/browse/EXT_EP-13137>`_","Weston Fails to Wake from idle-time Sleep, Restarts After SIGTERM"
+   "`EXT_EP-12970 <https://sir.ext.ti.com/jira/browse/EXT_EP-12970>`_","AM6x - Sitara Socs MCASP and BCDMA issue"
+   "`EXT_EP-12226 <https://sir.ext.ti.com/jira/browse/EXT_EP-12226>`_","Backport ""board: ti: common: Kconfig: add CMD_CACHE"" into TI U-Boot Tree"
+   "`EXT_EP-13160 <https://sir.ext.ti.com/jira/browse/EXT_EP-13160>`_","Need PTPv1 support / fixes on AM62x family along with PTPv2"
+   "`EXT_EP-12823 <https://sir.ext.ti.com/jira/browse/EXT_EP-12823>`_","CPSW ptp4l PDELAY_REQ and DELAY_REQ without timestamp messages"
+   "`EXT_EP-13140 <https://sir.ext.ti.com/jira/browse/EXT_EP-13140>`_","kernel: missing am625 minimal devicetree file"
+   "`EXT_EP-13141 <https://sir.ext.ti.com/jira/browse/EXT_EP-13141>`_","u-boot: missing am625 minimal devicetree files"
+   "`EXT_EP-12792 <https://sir.ext.ti.com/jira/browse/EXT_EP-12792>`_","CSI-2 Rx driver shall support frame width that is not 16-byte-aligned"
+   "`EXT_EP-12972 <https://sir.ext.ti.com/jira/browse/EXT_EP-12972>`_","RPMsg zerocopy example: CMA allocation is broken"
+   "`EXT_SITMPUSW-174 <https://sir.ext.ti.com/jira/browse/EXT_SITMPUSW-174>`_","UDMA: HC/UHC channel allocation fails due to RM config mismatch with CSL defines"
+   "`EXT_EP-13164 <https://sir.ext.ti.com/jira/browse/EXT_EP-13164>`_","CSI fails to stream due to DMA"
+   "`EXT_EP-12753 <https://sir.ext.ti.com/jira/browse/EXT_EP-12753>`_","Piglit testing: Swapfile creation causing timeout"
+   "`EXT_EP-13147 <https://sir.ext.ti.com/jira/browse/EXT_EP-13147>`_","padconfig: ST_EN bit not preserved"
+   "`EXT_EP-13170 <https://sir.ext.ti.com/jira/browse/EXT_EP-13170>`_","EMMC flashing and booting issue for am62xx-sip"
+   "`EXT_EP-12785 <https://sir.ext.ti.com/jira/browse/EXT_EP-12785>`_","Cyclictest performance degradation on AM62x/AM64x/AM62A"
+   "`EXT_EP-12815 <https://sir.ext.ti.com/jira/browse/EXT_EP-12815>`_","UDP Ingress failing"
+   "`EXT_EP-12345 <https://sir.ext.ti.com/jira/browse/EXT_EP-12345>`_","beagleplay: Segmentation-Fault: SD Boot failure and needs bootcmd update"
 
 Issues Open
 -----------
@@ -244,13 +258,7 @@ Issues Open
    :header: "Record ID", "Title"
    :widths: 15, 70
 
-   "`EXT_EP-12823 <https://sir.ext.ti.com/jira/browse/EXT_EP-12823>`_","CPSW ptp4l PDELAY_REQ and DELAY_REQ without timestamp messages"
-   "`EXT_EP-12743 <https://sir.ext.ti.com/jira/browse/EXT_EP-12743>`_","Fixup A53 CPU Frequency by Speed Grade Problem"
-   "`EXT_EP-12792 <https://sir.ext.ti.com/jira/browse/EXT_EP-12792>`_","CSI-2 Rx driver shall support frame width that is not 16-byte-aligned"
+   "`EXT_EP-13125 <https://sir.ext.ti.com/jira/browse/EXT_EP-13125>`_","incorrect pinmux config of MMC_CLK pin"
    "`EXT_EP-12818 <https://sir.ext.ti.com/jira/browse/EXT_EP-12818>`_","PRU RPMsg swaps which message is sent to which core"
-   "`EXT_EP-12072 <https://sir.ext.ti.com/jira/browse/EXT_EP-12072>`_","misleading GPMC message in kernel log"
-   "`EXT_EP-12785 <https://sir.ext.ti.com/jira/browse/EXT_EP-12785>`_","Cyclictest performance degradation on AM62x/AM64x/AM62A"
-   "`EXT_EP-12815 <https://sir.ext.ti.com/jira/browse/EXT_EP-12815>`_","UDP Ingress failing"
-   "`EXT_EP-12340 <https://sir.ext.ti.com/jira/browse/EXT_EP-12340>`_","Suspend-to-RAM failure: tps65219: device creates a circular dependency and device fails to enter suspend"
-   "`EXT_EP-12345 <https://sir.ext.ti.com/jira/browse/EXT_EP-12345>`_","beagleplay: Segmentation-Fault: SD Boot failure and needs bootcmd update"
+   "`EXT_SITMPUSW-275 <https://sir.ext.ti.com/jira/browse/EXT_SITMPUSW-275>`_","Debian SDK: support for graphics user mode libraries"
 
