@@ -178,17 +178,22 @@ Issues Resolved
    :header: "Record ID", "Title"
    :widths: 15, 70
 
-   "`EXT_SITMPUSW-74 <https://sir.ext.ti.com/jira/browse/EXT_SITMPUSW-74>`_","Resource Table generating wrong format for rm-cfg.yaml"
-   "`EXT_EP-12816 <https://sir.ext.ti.com/jira/browse/EXT_EP-12816>`_","SDK Docs: Broken URL in How To Guides > EVM Setup"
-   "`EXT_EP-12820 <https://sir.ext.ti.com/jira/browse/EXT_EP-12820>`_","AM64x UDP title missing from performance guide"
-   "`EXT_EP-12748 <https://sir.ext.ti.com/jira/browse/EXT_EP-12748>`_","AM64x CPSW UDP tests missing from Performance Guide"
-   "`EXT_EP-12760 <https://sir.ext.ti.com/jira/browse/EXT_EP-12760>`_","CPSW Multicast packets not received on one eth interface when other eth interface links up"
-   "`EXT_EP-12781 <https://sir.ext.ti.com/jira/browse/EXT_EP-12781>`_","AM64x Software Buildsheet: incorrect information"
-   "`EXT_EP-12310 <https://sir.ext.ti.com/jira/browse/EXT_EP-12310>`_","Resource Table generating wrong format for rm-cfg.yaml"
-   "`EXT_EP-12285 <https://sir.ext.ti.com/jira/browse/EXT_EP-12285>`_","SK-AM64B: Deferred probe of i2c bus warning"
-   "`EXT_EP-12300 <https://sir.ext.ti.com/jira/browse/EXT_EP-12300>`_","ICSSG: Ethernet: Promiscuous mode is always enabled in bridge mode"
-   "`EXT_EP-12821 <https://sir.ext.ti.com/jira/browse/EXT_EP-12821>`_","ethtool does not count PRU Ethernet TX frames"
-   "`EXT_SITMPUSW-146 <https://sir.ext.ti.com/jira/browse/EXT_SITMPUSW-146>`_","Yocto: meta-ti*: kernel source has uncommited changes"
+   "`EXT_EP-13164 <https://sir.ext.ti.com/jira/browse/EXT_EP-13164>`_","CSI fails to stream due to DMA"
+   "`EXT_EP-13127 <https://sir.ext.ti.com/jira/browse/EXT_EP-13127>`_","AM64x PRU Ethernet dual EMAC requires 256kB SRAM"
+   "`EXT_EP-13129 <https://sir.ext.ti.com/jira/browse/EXT_EP-13129>`_","cpsw: probe failed if CONFIG_DEBUG_FS is disabled"
+   "`EXT_EP-13166 <https://sir.ext.ti.com/jira/browse/EXT_EP-13166>`_","U-Boot: CONFIG_DEFAULT_DEVICE_TREE is not effective"
+   "`EXT_EP-13132 <https://sir.ext.ti.com/jira/browse/EXT_EP-13132>`_","ptp4l gm_hsr0.cfg and oc_hsr0.cfg nonoffload example is deprecated"
+   "`EXT_EP-13133 <https://sir.ext.ti.com/jira/browse/EXT_EP-13133>`_","PRP not working - AM64x"
+   "`EXT_EP-12226 <https://sir.ext.ti.com/jira/browse/EXT_EP-12226>`_","Backport ""board: ti: common: Kconfig: add CMD_CACHE"" into TI U-Boot Tree"
+   "`EXT_EP-13160 <https://sir.ext.ti.com/jira/browse/EXT_EP-13160>`_","Need PTPv1 support / fixes on AM62x family along with PTPv2"
+   "`EXT_EP-13138 <https://sir.ext.ti.com/jira/browse/EXT_EP-13138>`_","Duplicate packets not removed when HSR firmwares reloaded"
+   "`EXT_EP-13161 <https://sir.ext.ti.com/jira/browse/EXT_EP-13161>`_","HSR Offload 100Mbps cannot ping on SDK 10.1 or 11.0"
+   "`EXT_EP-13147 <https://sir.ext.ti.com/jira/browse/EXT_EP-13147>`_","padconfig: ST_EN bit not preserved"
+   "`EXT_EP-12785 <https://sir.ext.ti.com/jira/browse/EXT_EP-12785>`_","Cyclictest performance degradation on AM62x/AM64x/AM62A"
+   "`EXT_EP-12751 <https://sir.ext.ti.com/jira/browse/EXT_EP-12751>`_","AM64x PRU Ethernet Benchmark testing low throughput"
+   "`EXT_EP-12972 <https://sir.ext.ti.com/jira/browse/EXT_EP-12972>`_","RPMsg zerocopy example: CMA allocation is broken"
+   "`EXT_EP-12750 <https://sir.ext.ti.com/jira/browse/EXT_EP-12750>`_","TMDS64EVM: PCIe refclk contention"
+   "`EXT_EP-12815 <https://sir.ext.ti.com/jira/browse/EXT_EP-12815>`_","UDP Ingress failing"
 
 Issues Open
 -----------
@@ -196,13 +201,8 @@ Issues Open
    :header: "Record ID", "Title"
    :widths: 15, 70
 
-   "`EXT_EP-12750 <https://sir.ext.ti.com/jira/browse/EXT_EP-12750>`_","TMDS64EVM: PCIe refclk contention"
+   "`EXT_EP-13131 <https://sir.ext.ti.com/jira/browse/EXT_EP-13131>`_","MMCSD: PHY DLL frequency is setting incorrectly for any clock < 200MHz"
    "`EXT_EP-12819 <https://sir.ext.ti.com/jira/browse/EXT_EP-12819>`_","AM64x CICD does not test PRU"
    "`EXT_EP-12818 <https://sir.ext.ti.com/jira/browse/EXT_EP-12818>`_","PRU RPMsg swaps which message is sent to which core"
-   "`EXT_EP-12075 <https://sir.ext.ti.com/jira/browse/EXT_EP-12075>`_","U-boot gets stuck when DDR size changed to 512 MB"
-   "`EXT_EP-12827 <https://sir.ext.ti.com/jira/browse/EXT_EP-12827>`_","bridged traffic CPSW3G is not following VLAN priority for preemptable traffic"
-   "`EXT_EP-12749 <https://sir.ext.ti.com/jira/browse/EXT_EP-12749>`_","cdns: device mode: Linux hangs when USB cable is disconnected"
    "`EXT_EP-12060 <https://sir.ext.ti.com/jira/browse/EXT_EP-12060>`_","AM64x: Lower core count on variant devices no supported"
-   "`EXT_EP-12785 <https://sir.ext.ti.com/jira/browse/EXT_EP-12785>`_","Cyclictest performance degradation on AM62x/AM64x/AM62A"
-   "`EXT_EP-12815 <https://sir.ext.ti.com/jira/browse/EXT_EP-12815>`_","UDP Ingress failing"
 
