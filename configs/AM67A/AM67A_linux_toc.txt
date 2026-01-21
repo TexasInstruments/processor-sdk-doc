@@ -133,3 +133,6 @@ linux/Documentation_Tarball
 
 linux/Demo_User_Guides/index_Demos
 linux/Demo_User_Guides/Edge_AI_Gallery_User_Guide
+
+boards/index
+boards/beagle/BeagleY-AI/BeagleY-AI

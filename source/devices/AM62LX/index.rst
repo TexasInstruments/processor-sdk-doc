@@ -18,6 +18,7 @@ Linux SDK Software Developer's Guide
    /linux/Foundational_Components
    /linux/How_to_Guides
    /linux/Demo_User_Guides/index_Demos
+   /boards/index
    /linux/Documentation_Tarball
 
 |

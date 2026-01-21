@@ -3,6 +3,9 @@ devices/AM67A/android/Release_Specific
 devices/AM67A/android/Release_Specific_Release_Notes
 devices/AM67A/android/Application_Notes
 devices/AM67A/android/Application_Notes_dtbo_support
+
+boards/index
+boards/beagle/BeagleY-AI/BeagleY-AI
 boards/beagle/BeagleY-AI/android/Application_Notes_BeagleY_AI
 
 android/Application_Notes_Android_Bootloader_SD_Card
