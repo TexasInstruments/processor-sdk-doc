@@ -3,7 +3,7 @@ devices/AM62X/android/Release_Specific
 devices/AM62X/android/Release_Specific_Release_Notes
 devices/AM62X/android/Application_Notes
 devices/AM62X/android/Application_Notes_dtbo_support
-devices/AM62X/android/Application_Notes_BeaglePlay
+boards/beagle/BeaglePlay/android/Application_Notes_BeaglePlay
 
 android/Application_Notes_M2_WiFi_BT
 

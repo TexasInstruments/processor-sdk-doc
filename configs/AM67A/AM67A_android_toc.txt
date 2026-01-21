@@ -3,7 +3,7 @@ devices/AM67A/android/Release_Specific
 devices/AM67A/android/Release_Specific_Release_Notes
 devices/AM67A/android/Application_Notes
 devices/AM67A/android/Application_Notes_dtbo_support
-devices/AM67A/android/Application_Notes_BeagleY_AI
+boards/beagle/BeagleY-AI/android/Application_Notes_BeagleY_AI
 
 android/Application_Notes_Android_Bootloader_SD_Card
 android/Application_Notes_Android_Dual_Screen
