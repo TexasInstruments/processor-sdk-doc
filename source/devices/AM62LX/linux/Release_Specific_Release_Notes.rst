@@ -218,19 +218,15 @@ Issues Resolved
    :header: "Record ID", "Title"
    :widths: 15, 70
 
-   "`EXT_SITMPUSW-165 <https://sir.ext.ti.com/jira/browse/EXT_SITMPUSW-165>`_","inapplicable wl18xx message in Linux boot log"
-   "`EXT_EP-12816 <https://sir.ext.ti.com/jira/browse/EXT_EP-12816>`_","SDK Docs: Broken URL in How To Guides > EVM Setup"
-   "`EXT_EP-12780 <https://sir.ext.ti.com/jira/browse/EXT_EP-12780>`_","AM62L Dynamic IP address cannot be obtained when eth interface brought down with command"
-   "`EXT_EP-12674 <https://sir.ext.ti.com/jira/browse/EXT_EP-12674>`_","AM62L: Enabling wkup uart causes Linux console (main_uart0) garbled"
-   "`EXT_EP-12340 <https://sir.ext.ti.com/jira/browse/EXT_EP-12340>`_","Suspend-to-RAM failure: tps65219: device creates a circular dependency and device fails to enter suspend"
-   "`EXT_EP-12977 <https://sir.ext.ti.com/jira/browse/EXT_EP-12977>`_","AM62L: PM: add missing PDs (devices) in the scmi wrapper"
-   "`EXT_EP-12973 <https://sir.ext.ti.com/jira/browse/EXT_EP-12973>`_","AM62L: Suspend-Resume (RTC+DDR): MMC fails"
-   "`EXT_EP-12976 <https://sir.ext.ti.com/jira/browse/EXT_EP-12976>`_","DSI fails to reconnect after suspend/resume"
-   "`EXT_EP-12975 <https://sir.ext.ti.com/jira/browse/EXT_EP-12975>`_","DSS clock warnings appear during suspend/resume when HDMI is connected"
-   "`EXT_EP-12784 <https://sir.ext.ti.com/jira/browse/EXT_EP-12784>`_","AM62L: LPM: 2nd core randomly fails to come online during suspend/resume"
-   "`EXT_EP-12778 <https://sir.ext.ti.com/jira/browse/EXT_EP-12778>`_","AM62L: PG1.1: PM: during clock init the pm driver is touching wkup PLL"
-   "`EXT_EP-12974 <https://sir.ext.ti.com/jira/browse/EXT_EP-12974>`_","AM62L: Heartbeat LED stops blinking on resume from RTC+DDR"
-   "`EXT_EP-12978 <https://sir.ext.ti.com/jira/browse/EXT_EP-12978>`_","AM62L: Suspend-Resume (RTC+DDR): spi-nor resume() fails"
+   "`EXT_SITMPUSW-174 <https://sir.ext.ti.com/jira/browse/EXT_SITMPUSW-174>`_","UDMA: HC/UHC channel allocation fails due to RM config mismatch with CSL defines"
+   "`EXT_EP-13129 <https://sir.ext.ti.com/jira/browse/EXT_EP-13129>`_","cpsw: probe failed if CONFIG_DEBUG_FS is disabled"
+   "`EXT_EP-13135 <https://sir.ext.ti.com/jira/browse/EXT_EP-13135>`_","Linux SDK docs: inconsistent TF-A git repo URL's"
+   "`EXT_EP-12970 <https://sir.ext.ti.com/jira/browse/EXT_EP-12970>`_","AM6x - Sitara Socs MCASP and BCDMA issue"
+   "`EXT_EP-12226 <https://sir.ext.ti.com/jira/browse/EXT_EP-12226>`_","Backport ""board: ti: common: Kconfig: add CMD_CACHE"" into TI U-Boot Tree"
+   "`EXT_EP-13147 <https://sir.ext.ti.com/jira/browse/EXT_EP-13147>`_","padconfig: ST_EN bit not preserved"
+   "`EXT_EP-13171 <https://sir.ext.ti.com/jira/browse/EXT_EP-13171>`_","AM62L Disable DPI when not used"
+   "`EXT_EP-13172 <https://sir.ext.ti.com/jira/browse/EXT_EP-13172>`_","AM62L: RTC+DDR resume failure with dwc3_ti_resume"
+   "`EXT_EP-13175 <https://sir.ext.ti.com/jira/browse/EXT_EP-13175>`_","AM62L: Suspend-Resume (RTC+DDR): eth0: failed to start"
 
 Issues Open
 -----------
@@ -238,7 +234,8 @@ Issues Open
    :header: "Record ID", "Title"
    :widths: 15, 70
 
-   "`EXT_EP-12970 <https://sir.ext.ti.com/jira/browse/EXT_EP-12970>`_","AM6x - Sitara Socs MCASP and BCDMA issue."
+   "`EXT_EP-13124 <https://sir.ext.ti.com/jira/browse/EXT_EP-13124>`_","AM62L two stage BL booting from redundant GPMC-NAND partition"
    "`EXT_EP-12980 <https://sir.ext.ti.com/jira/browse/EXT_EP-12980>`_","AM62L: Random kernel crash observed on stress test"
+   "`EXT_EP-13145 <https://sir.ext.ti.com/jira/browse/EXT_EP-13145>`_","AM62L: Network stability issues"
    "`EXT_EP-12979 <https://sir.ext.ti.com/jira/browse/EXT_EP-12979>`_","AM62L: Suspend-Resume (RTC+DDR): davinci_mdio timed out waiting for user access"
 
