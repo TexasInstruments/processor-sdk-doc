@@ -135,20 +135,13 @@ Issues Resolved
    :header: "Record ID", "Title"
    :widths: 15, 70
 
-   "EXTSYNC-4980","AM335x: UART and GPIO Wakeup from Standby Failed"
-   "EXTSYNC-6118","AM335x DDR initialization timing incorrect in DDR driver"
-
-
-Issues Open
------------
-.. csv-table::
-   :header: "Record ID", "Title"
-   :widths: 15, 70
-
-   "EXTSYNC-5849","PRU RPMsg swaps which message is sent to which core"
-   "EXTSYNC-5814","Does Remoteproc driver for PRU-ICSS still zero out memory?"
-   "EXTSYNC-6119","tilcdc faults during device init"
-
+   "`EXT_SITMPUSW-146 <https://sir.ext.ti.com/jira/browse/EXT_SITMPUSW-146>`_","Yocto: meta-ti*: kernel source has uncommited changes"
+   "`EXT_SITMPUSW-145 <https://sir.ext.ti.com/jira/browse/EXT_SITMPUSW-145>`_","Linux SDK User Manual needs Customer-Accessible Change Log / Revision History"
+   "`EXT_EP-12830 <https://sir.ext.ti.com/jira/browse/EXT_EP-12830>`_","Dhrystone performance report contains wrong cpu frequency"
+   "`EXT_EP-13174 <https://sir.ext.ti.com/jira/browse/EXT_EP-13174>`_","AM335x DDR initialization timing incorrect in DDR driver"
+   "`EXT_EP-12079 <https://sir.ext.ti.com/jira/browse/EXT_EP-12079>`_","AM335x: UART and GPIO Wakeup from Standby Failed"
+   "`EXT_EP-12056 <https://sir.ext.ti.com/jira/browse/EXT_EP-12056>`_","8250_omap: incorrect handling of dma->rx_running flag"
+   "`EXT_EP-12067 <https://sir.ext.ti.com/jira/browse/EXT_EP-12067>`_","AM335x/AM437x PRU Ethernet slowdown from kernel 4.19 -> 5.4/5.10"
 
 .. rubric:: Installation and Usage
    :name: installation-and-usage
