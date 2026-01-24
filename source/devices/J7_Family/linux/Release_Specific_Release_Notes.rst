@@ -107,7 +107,7 @@ U-Boot
 
    .. note::
 
-      meta-edgeai Yocto layer contains additional patches for U-Boot `here <https://git.ti.com/cgit/edgeai/meta-edgeai/tree/recipes-bsp/u-boot?h=REL.PSDK.ANALYTICS.11.02.00.05>`__.
+      meta-edgeai Yocto layer contains additional patches for U-Boot `here <https://git.ti.com/cgit/edgeai/meta-edgeai/tree/recipes-bsp/u-boot?h=REL.PSDK.ANALYTICS.11.02.00.06>`__.
 
 .. _kernel-release-notes:
 
@@ -135,7 +135,7 @@ Kernel
 
    .. note::
 
-      meta-edgeai Yocto layer contains additional patches for Kernel `here <https://git.ti.com/cgit/edgeai/meta-edgeai/tree/recipes-kernel/linux?h=REL.PSDK.ANALYTICS.11.02.00.05>`__.
+      meta-edgeai Yocto layer contains additional patches for Kernel `here <https://git.ti.com/cgit/edgeai/meta-edgeai/tree/recipes-kernel/linux?h=REL.PSDK.ANALYTICS.11.02.00.06>`__.
 
 TF-A
 ----
@@ -204,23 +204,24 @@ Yocto
 
 .. rubric:: meta-tisdk
 
-| Head Commit: 71e97d787810978a21dc536dfe59d0c821b554fd ti-lvgl-demo: Simplify recipe and align source
+| Head Commit: 078b37b05e191a0e69ddbe74b402e0f1b29e6b30 tisdk-evse-image: add image recipe for EVSE OOB
+| Date: Tue Dec 23 00:26:58 2025 -0600
 
 | Repo: https://github.com/TexasInstruments/meta-tisdk.git
 | Branch: scarthgap
-| Release Tag: REL.PSDK.ANALYTICS.11.02.00.05
+| Release Tag: REL.PSDK.ANALYTICS.11.02.00.06
 |
 
 .. ifconfig:: CONFIG_image_type in ('edgeai', 'adas')
 
    .. rubric:: meta-edgeai
 
-   | Head Commit: e814c23648afeb0efd277ae6a9fce9aba0aee025 ti-vision-apps: J7*: Bump up to REL.PSDK.ANALYTICS.11.02.00.05
-   | Date: 2025-09-13
+   | Head Commit: 7d07e25a15632494d6c30efb09d68de1c95f9394 recipes-core/packagegroup: Add yaml-cpp packagegroup
+   | Date: Fri Jan 23 04:50:28 2026 -0600
 
    | Clone: git://git.ti.com/edgeai/meta-edgeai.git
    | Branch: scarthgap
-   | Release Tag: REL.PSDK.ANALYTICS.11.02.00.05
+   | Release Tag: REL.PSDK.ANALYTICS.11.02.00.06
    |
 
 Issues Tracker
