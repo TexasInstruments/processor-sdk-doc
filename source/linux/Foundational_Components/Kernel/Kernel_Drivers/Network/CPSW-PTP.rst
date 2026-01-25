@@ -1068,3 +1068,9 @@ On J7VCL:
    ptp4l[447.707]: master offset      15459 s2 freq   -2401 path delay    180152
    ptp4l[448.707]: master offset        256 s2 freq  -12966 path delay    180152
    ptp4l[449.707]: master offset      -4951 s2 freq  -18096 path delay    180152
+
+.. note::
+
+   You can also test switch mode in a configuration where the device configured as
+   a switch is acting as a master and devices connected to it act as client devices.
+   The setup and commands are the same as it is used here: :ref:`icssg_ptp_switch`.
