@@ -1,38 +1,22 @@
-###########################
-BeagleBadge Getting Started
-###########################
-
-********
-Overview
-********
-
-The BeagleBadge is a compact development platform from `BeagleBoard <https://www.beagleboard.org/>`__ powered
-by the `TI AM62L SoC <https://www.ti.com/product/AM62L/>`__. Designed for portable and low-power applications,
-it features a built-in CC33xx chip supporting WI-FI and Bluetooth applications, multiple low power modes, and
-an integrated fuel gauge for battery power monitoring. The board provides a rich interface including an e-paper
-connector, DSI connector, Grove expansion, seven-segment displays, and an RGB LED. Fully supported in TI sources,
-the BeagleBadge offers flexible boot options (OSPI, UART, SD, USB-DFU). It supports Zephyr or Linux (with Armbian
-or Arago distributions), making it an ideal open source solution for modern IoT and HMI projects.
-
-*********
+#########
 Boot Flow
-*********
+#########
 
 BeagleBadge has a `TI AM62L SoC <https://www.ti.com/product/AM62L/>`__, refer to :ref:`AM62Lx Boot Flow <Boot-Flow-label>`
 for more details on AM62L boot flow.
 
-************
+############
 Applications
-************
+############
 
 - Deep Sleep Low Power mode as low as 350mW power draw
 - RTC only mode with 3-5mW power draw
 - E-Paper display support with tinyDRM
 - Battery-powered with fuel gauge monitoring
 
-*****************
+#################
 Low level sources
-*****************
+#################
 
 .. list-table::
    :header-rows: 1
@@ -48,24 +32,9 @@ Low level sources
      - `ti-linux-6.12.y <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/log/?h=ti-linux-6.12.y>`__
      - :file:`arch/arm64/boot/dts/ti/k3-am62l3-beaglebadge.dts`
 
-***********************
-Supported Distributions
-***********************
-
-.. list-table::
-   :header-rows: 1
-   :widths: 15, 15
-
-   * - Component
-     - Branch
-   * - Armbian
-     - `2025.12-beaglebadge <https://github.com/TexasInstruments/armbian-build/tree/2025.12-beaglebadge>`__
-   * - Arago
-     - `Scarthgap <https://github.com/TexasInstruments/meta-tisdk/tree/scarthgap>`__
-
-************************
+########################
 Building for BeagleBadge
-************************
+########################
 
 .. code-block:: console
 
@@ -89,9 +58,9 @@ For more information on building Arago for BeagleBadge, go :ref:`here <building-
 
 To build Armbian for BeagleBadge, refer to **Debian SDK user manual** found `here <https://www.ti.com/tool/download/AM62L-LINUX-SDK>`__.
 
-*******************
+###################
 Booting BeagleBadge
-*******************
+###################
 
 BeagleBadge supports four boot modes with the following configuration:
 
@@ -106,8 +75,9 @@ BeagleBadge supports four boot modes with the following configuration:
 In the following instructions, assume /dev/ttyUSB0 is the serial port enumerated
 on host machine from BeagleBadge USB C connection.
 
+*******
 SD boot
-=======
+*******
 
    1. Flash SD card with Debian or Arago image
    2. Insert Micro SD card
@@ -115,8 +85,9 @@ SD boot
    4. Connect USB C cable
    5. Connect to /dev/ttyUSB0 on host machine
 
+*********
 OSPI boot
-=========
+*********
 
    1. Boot via SD boot and stop at u-boot prompt
    2. Flash OSPI
@@ -144,8 +115,9 @@ OSPI boot
    3. Cold reset the board by disconnecting and reconnecting USB C cable.
    4. Reconnect to /dev/ttyUSB0 on host machine
 
+*********
 UART boot
-=========
+*********
 
    1. Connect USB C cable
    2. Connect to /dev/ttyUSB0 on host machine
@@ -157,8 +129,9 @@ UART boot
          $ sb --xmodem tispl.bin > /dev/ttyUSB0 < /dev/ttyUSB0
          $ sb --ymodem u-boot.img > /dev/ttyUSB0 < /dev/ttyUSB0
 
+************
 USB-DFU boot
-============
+************
 
    1. Press & hold **Select** until step 4
    2. Connect USB C cable

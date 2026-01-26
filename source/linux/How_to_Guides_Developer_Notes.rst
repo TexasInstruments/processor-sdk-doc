@@ -19,7 +19,6 @@ Developer Notes
    How_to_Guides/Target/How_to_Change_dtb_File
    How_to_Guides/Target/How_to_Set_Display_for_AM572x_GP_EVM
    How_to_Guides/Target/How_To_Enable_M2CC3301_in_linux
-   How_to_Guides/Target/How_to_Boot_Beagle_Bone_Black_with_Processor_SDK_Linux
    How_to_Guides/Target/How_to_flash_emmc_device
    How_to_Guides/Target/How_to_emmc_boot
    How_to_Guides/Target/How_to_mmcsd_boot_emmc_uda
@@ -35,7 +34,6 @@ Developer Notes
    How_to_Guides/Target/How_to_enable_SSC_for_DSS
    How_to_Guides/Target/How_to_boot_quickly
    How_to_Guides/Target/Runtime_debug_unlock_on_secure_device
-   How_to_Guides/Target/How_to_BeagleBadge_getting_started
    How_to_Guides/FAQ/How_to_Verify_Ipc_Linux_R5
    How_to_Guides/FAQ/How_to_Configure_MSMC_memory
    How_to_Guides/FAQ/How_to_Check_Device_Tree_Info

@@ -205,4 +205,7 @@ common/PRU-ICSS/PRU-Getting-Started-Labs_Lab5
 common/PRU-ICSS/PRU-Hands-on-Labs
 common/PRU-ICSS/Resource_Tables
 
+boards/index
+boards/beagle/BeaglePlay/BeaglePlay
+
 linux/Documentation_Tarball
