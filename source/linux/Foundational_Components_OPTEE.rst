@@ -31,8 +31,8 @@ Where <hash> is the OPTEE commit shown in :ref:`release-specific-build-informati
 
 |
 
-Setting up the toolchain paths
-------------------------------
+Setup Cross Compile Environment
+-------------------------------
 
 .. include:: Overview/GCC_ToolChain.rst
    :start-after: .. start_include_yocto_toolchain_host_setup

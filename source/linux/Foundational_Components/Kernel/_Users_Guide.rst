@@ -37,12 +37,6 @@ Alternatively, Kernel sources can directly be fetched from GIT.
 Preparing to Build
 ------------------
 
-It is important that when using the GCC toolchain provided with the SDK
-or stand alone from TI that you do **NOT** source the
-*environment-setup* file included with the toolchain when building the
-kernel. Doing so will cause the compilation of host side components
-within the kernel tree to fail.
-
 .. note::
     The following commands are intended to be run from the root of the
     kernel tree unless otherwise specified. The root of the kernel tree is
@@ -51,31 +45,19 @@ within the kernel tree to fail.
 
 .. _kernel-compiler:
 
-Compiler
-^^^^^^^^
+Setup Cross Compile Environment
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-..
-  [comment] instructions for 32 bit processors
-.. ifconfig:: CONFIG_part_family in ('AM335X_family', 'AM437X_family', 'AM57X_family')
+.. important::
 
-   Before compiling the kernel or kernel modules the SDK's toolchain needs
-   to be added to the PATH environment variable
+   When using the GCC toolchain provided with the SDK or stand alone from TI that you do
+   **NOT** source the :file:`environment-setup` file included with the toolchain when
+   building the kernel. Doing so will cause the compilation of host side components within
+   the kernel tree to fail.
 
-   .. code-block:: console
-
-      export PATH=<sdk path>/linux-devkit/sysroots/x86_64-arago-linux/usr/bin:$PATH
-
-..
-  [comment] instructions for 64 bit processors
-.. ifconfig:: CONFIG_part_family not in ('AM335X_family', 'AM437X_family', 'AM57X_family')
-
-   .. include:: Overview/GCC_ToolChain.rst
-      :start-after: .. start_include_yocto_toolchain_host_setup
-      :end-before: .. end_include_yocto_toolchain_host_setup
-
-The current compiler supported for this release along with download
-location can be found in the release notes for the kernel release.
-
+.. include:: Overview/GCC_ToolChain.rst
+   :start-after: .. start_include_yocto_toolchain_host_setup
+   :end-before: .. end_include_yocto_toolchain_host_setup
 
 Cleaning the Kernel Sources
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -98,7 +80,7 @@ The command to clean the kernel is:
 
     .. code-block:: console
 
-        make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- distclean
+        make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_32" distclean
 
 ..
   [comment] instructions for 64 bit processors
@@ -131,7 +113,7 @@ a command of the form:
 
     .. code-block:: console
 
-        make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- <defconfig>
+        make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_32" <defconfig>
 
 ..
   [comment] instructions for 64 bit processors
@@ -160,13 +142,13 @@ Using Default Configurations
 
     .. code-block:: console
 
-        make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- multi_v7_defconfig ti_multi_v7_prune.config no_smp.config
+        make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_32" multi_v7_defconfig ti_multi_v7_prune.config no_smp.config
 
     For RT-Linux,
 
     .. code-block:: console
 
-        make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- multi_v7_defconfig ti_multi_v7_prune.config no_smp.config ti_rt.config
+        make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_32" multi_v7_defconfig ti_multi_v7_prune.config no_smp.config ti_rt.config
 
 
 ..
@@ -215,13 +197,13 @@ To invoke the kernel configuration you simply use a command like:
 
     .. code-block:: console
 
-        make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- <config type>
+        make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_32" <config type>
 
     i.e. for menuconfig the command would look like
 
     .. code-block:: console
 
-        make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- menuconfig
+        make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_32" menuconfig
 
 ..
   [comment] instructions for 64 bit processors
@@ -265,7 +247,7 @@ Compiling the Kernel
 
     .. code-block:: console
 
-        make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- zImage
+        make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_32" zImage
 
     This will result in a kernel image file being created in the
     :file:`arch/arm/boot/` directory called :file:`zImage`.
@@ -356,7 +338,7 @@ Compiling the Device Tree Binaries
 
     .. code-block:: console
 
-        make DTC_FLAGS=-@ ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- <dt filename>.dtb
+        make DTC_FLAGS=-@ ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_32" <dt filename>.dtb
 
     The compiled device tree file with be located in :file:`arch/arm/boot/dts/ti/omap`.
 
@@ -365,13 +347,13 @@ Compiling the Device Tree Binaries
 
     .. code-block:: console
 
-        make DTC_FLAGS=-@ ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- am335x-boneblack.dtb
+        make DTC_FLAGS=-@ ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_32" am335x-boneblack.dtb
 
     Alternatively, you can build every device tree binary with command
 
     .. code-block:: console
 
-        make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- dtbs
+        make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_32" dtbs
 
 ..
   [comment] instructions for 64 bit processors
@@ -460,7 +442,7 @@ Compiling the Kernel Modules
 
     .. code-block:: console
 
-        make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- modules
+        make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_32" modules
 
 ..
   [comment] instructions for 64 bit processors
