@@ -177,7 +177,7 @@ linux/How_to_Guides/Target/How_to_Tune_Real_Time_Linux
 linux/How_to_Guides/FAQ/How_to_Check_Device_Tree_Info
 linux/How_to_Guides/FAQ/How_to_Integrate_Open_Source_Software
 linux/How_to_Guides_Hardware_Setup_with_CCS
-linux/How_to_Guides/Hardware_Setup_with_CCS/AM62x_EVM_Hardware_Setup
+common/How_to_Guides/AM62x_EVM_Hardware_Setup
 
 linux/Demo_User_Guides/index_Demos
 linux/Demo_User_Guides/TI_Apps_Launcher_User_Guide
