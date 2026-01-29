@@ -91,5 +91,5 @@ linux/How_to_Guides/FAQ/How_to_Check_Device_Tree_Info
 linux/How_to_Guides/FAQ/How_to_Integrate_Open_Source_Software
 linux/How_to_Guides/Host/How_to_Build_a_Ubuntu_Linux_host_under_VMware
 linux/How_to_Guides_Hardware_Setup_with_CCS
-linux/How_to_Guides/Hardware_Setup_with_CCS/J7200_EVM_Hardware_Setup
+common/How_to_Guides/J7200_EVM_Hardware_Setup
 linux/Documentation_Tarball
