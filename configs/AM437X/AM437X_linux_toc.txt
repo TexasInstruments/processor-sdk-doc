@@ -112,6 +112,8 @@ linux/Foundational_Components/Graphics/SGX/Overview
 linux/Foundational_Components/Graphics/SGX/SGX_Debug_Info
 linux/Foundational_Components/Graphics/SGX/Build_Guide
 
+linux/Demo_User_Guides/index_Demos
+linux/Demo_User_Guides/TI_LVGL_Demo_User_Guide
 
 linux/How_to_Guides
 linux/How_to_Guides_Host

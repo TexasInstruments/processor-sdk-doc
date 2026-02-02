@@ -16,6 +16,7 @@ Processor SDK Linux Software Developer's Guide
    /linux/Overview
    Release_Specific
    /linux/Foundational_Components
+   /linux/Demo_User_Guides/index_Demos
    /linux/Industrial_Protocols
    /linux/How_to_Guides
    /linux/Documentation_Tarball
