@@ -21,31 +21,17 @@ and functions, it makes the whole filesystem vulnerable.
 To understand how the problem was fixed in Scarthgap filesystem, refer:
 https://static.sched.com/hosted_files/osseu2024/8b/EOSS%20Vienna%202024%20-%20Surviving%20Y2038.pdf
 
-*******************************
-Building a Y2K38-friendly Image
-*******************************
+*********************
+Y2K38 Issue Resolved
+*********************
 
-In SDK 9.3, TI's 32-bit platforms are still based on Kirkstone filesystem, which is NOT Y2K38-friendly. The Y2K38 issue
-is fixed in OE-core Scarthgap, on which the next release will be based.
+**The current SDK release is based on Scarthgap filesystem, which has the Y2K38 issue fixed.**
 
-Until then, if a Y2K38-friendly filesystem is required, obtain a :file:`tisdk-thinlinux-image` from the latest
-`cicd.scarthgap.x`:
-
-.. ifconfig:: CONFIG_part_variant in ('AM335X')
-
-   https://software-dl.ti.com/cicd-report/linux/index.html?section=platform&platform=am335x
-
-.. ifconfig:: CONFIG_part_variant in ('AM437X')
-
-   https://software-dl.ti.com/cicd-report/linux/index.html?section=platform&platform=am437x
-
-The above images are based on the 6.6 Kernel and Scarthgap filesystem, and thus has the Y2K38 issue fixed.
+TI's 32-bit platforms now use OE-core Scarthgap, which includes the necessary updates to data structures and functions
+to handle dates beyond 2038. The filesystem images provided in this SDK are Y2K38-compliant out of the box.
 
 .. note::
-   While the above images are Y2K38-friendly, it must be ensured that even the code introduced to it from other sources
-   is Y2K38-friendly. Any code that is not Y2K38-friendly will break the Y2K38-compatibility of the filesystem. Thus it
-   is important to be intentional about writing Y2K38-friendly code, and to test this code to ensure that the final
-   image remains Y2K38-friendly.
-
-To build a Y2K38-friendly image on the 6.6 Kernel and Scarthgap filesystem baseline, follow the "Build Instructions"
-section present in the above link.
+   While the SDK images are Y2K38-friendly, it must be ensured that any code introduced from other sources
+   is also Y2K38-friendly. Any code that is not Y2K38-compliant will break the Y2K38-compatibility of the filesystem.
+   Thus it is important to be intentional about writing Y2K38-friendly code, and to test this code to ensure that the
+   final image remains Y2K38-compliant.
