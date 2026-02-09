@@ -794,6 +794,9 @@ Listed for each algorithm are the code snippets used to run each
 
     time -v openssl speed -elapsed -evp aes-128-cbc
 
+Low Power Performance
+---------------------
+
 Power Performance
 ^^^^^^^^^^^^^^^^^
 
