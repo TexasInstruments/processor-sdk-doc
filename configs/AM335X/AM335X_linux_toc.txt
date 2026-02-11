@@ -132,10 +132,6 @@ linux/How_to_Guides/Target/How_to_fix_y2k38
 linux/How_to_Guides/Target/How_to_Change_dtb_File
 linux/How_to_Guides/Target/How_to_Boot_Beagle_Bone_Black_with_Processor_SDK_Linux
 linux/How_to_Guides/Target/How_to_Program_Beaglebone_Black_eMMC_via_SD_Card
-linux/How_to_Guides_Hardware_Setup_with_CCS
-linux/How_to_Guides/Hardware_Setup_with_CCS/EVMK2H_Hardware_Setup
-linux/How_to_Guides/Hardware_Setup_with_CCS/ICE_AM335x_Hardware_Setup
-linux/How_to_Guides/Hardware_Setup_with_CCS/ICE_AMIC110_EVM_Hardware_Setup
 linux/How_to_Guides_Board_Port
 linux/How_to_Guides/Board_Port/U-Boot
 linux/How_to_Guides/Board_Port/Linux
@@ -154,7 +150,6 @@ common/PRU-ICSS/PRU-Getting-Started-Labs_Lab2_assemblyCode
 common/PRU-ICSS/PRU-Getting-Started-Labs_Lab2_mixedCandAssembly
 common/PRU-ICSS/PRU-Getting-Started-Labs_Lab3
 common/PRU-ICSS/PRU-Getting-Started-Labs_Lab4
-common/PRU-ICSS/PRU-Getting-Started-Labs_Lab4_TIRTOS
 common/PRU-ICSS/PRU-Getting-Started-Labs_Lab5
 common/PRU-ICSS/PRU-Hands-on-Labs
 common/PRU-ICSS/Resource_Tables
