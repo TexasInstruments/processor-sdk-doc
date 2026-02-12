@@ -55,7 +55,7 @@ Patch to apply:
    -    trace_dst_enables: 0x00
    -    trace_src_enables: 0x00
    +    trace_dst_enables: 0x0D
-   +    trace_src_enables: 0x7F
+   +    trace_src_enables: 0x3F
 
 After applying the patch, re-build U-Boot following the instructions in :ref:`u-boot-build-guide-build-k3`.
 
