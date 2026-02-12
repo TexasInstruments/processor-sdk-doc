@@ -91,6 +91,11 @@ RTC Only Plus DDR
 RTC Only + DDR mode is the deepest low power mode that allows the system to enter a state of lowest power consumption
 while still retaining the DDR RAM context.
 
+.. important::
+
+   Jumper J14 position on the EVM determines which low power mode is entered. For RTC Only + DDR mode,
+   connect jumper J14 to the position marked as "RTC + DDR MODE" (different from RTC Only Mode).
+
 In order to enter RTC Only + DDR mode, first disable USB0 and USB1 as wakeup
 sources.
 
