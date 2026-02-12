@@ -63,5 +63,6 @@ supported by the Linux kernel.
 
    The static power management features on |__PART_FAMILY_DEVICE_NAMES__| are:
 
+   #. RTC Only
    #. RTC Only Plus DDR
    #. Deep Sleep
