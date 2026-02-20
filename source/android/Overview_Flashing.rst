@@ -137,7 +137,7 @@ Once the build is complete, follow the steps below to flash the images to eMMC.
              (OR)
 
              # If you are using pre-built binaries from SDK download page
-             $ cd AM62x_11.00.00_emmc
+             $ cd AM62x_11.00.01_emmc
 
              # for AM62x SK EVM (GP)
              $ snagrecover -s am625 -f ./am62x-sk-evm.yaml
@@ -161,7 +161,7 @@ Once the build is complete, follow the steps below to flash the images to eMMC.
              (OR)
 
              # If you are using pre-built binaries from SDK download page
-             $ cd AM62Px_11.00.00_emmc
+             $ cd AM62Px_11.00.01_emmc
 
              $ snagrecover -s am625 -f ./am62px-sk-evm-hsfs.yaml
 
@@ -175,7 +175,7 @@ Once the build is complete, follow the steps below to flash the images to eMMC.
              (OR)
 
              # If you are using pre-built binaries from SDK download page
-             $ cd AM67A_11.00.00_emmc
+             $ cd AM67A_11.00.01_emmc
 
              # for AM67A EVM (HS-FS only: by default)
              $ snagrecover -s am62p5 -f ./am67a-evm-hsfs.yaml
@@ -291,7 +291,7 @@ Once the build is complete, follow the steps below to flash the images to eMMC.
              (OR)
 
              # If you are using pre-built binaries from SDK download page
-             $ cd AM62x_11.00.00_emmc
+             $ cd AM62x_11.00.01_emmc
 
              # for AM62x SK EVM (GP)
              $ sudo ./flashall.sh --board am62x-sk
@@ -323,7 +323,7 @@ Once the build is complete, follow the steps below to flash the images to eMMC.
              (OR)
 
              # If you are using pre-built binaries from SDK download page
-             $ cd AM62Px_11.00.00_emmc
+             $ cd AM62Px_11.00.01_emmc
 
              $ sudo ./flashall.sh --board am62px-sk
              board: am62px-sk
@@ -344,7 +344,7 @@ Once the build is complete, follow the steps below to flash the images to eMMC.
              (OR)
 
              # If you are using pre-built binaries from SDK download page
-             $ cd AM67A_11.00.00_emmc
+             $ cd AM67A_11.00.01_emmc
 
              # for AM67A EVM (HS-FS only: by default)
              $ sudo ./flashall.sh --board am67a-evm

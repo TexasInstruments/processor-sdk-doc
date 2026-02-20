@@ -24,21 +24,19 @@ status for all packages included in this release. The manifest can be
 found on the SDK download page.
 
 ****************
-Release 11.00.00
+Release 11.00.01
 ****************
 
-Released on October 2025
+Released on February 2026
 
 What's new
 ==========
 
-* This is an Android 16 based release of Processor SDK Android
-* Kernel upgraded to 6.12
-* U-Boot upgraded to 2025.01
-* AVB with OPTEE and Anti rollback protection
-* Device lock/unlock with OPTEE
-* CSI Camera Record
-* Multimedia Codec HAL compliance (conversion HIDL -> AIDL)
+This is a refresh release of Android 16 11.00.00 release addressing below issues:
+* Fix for LPM DeepSleep regression
+* Fix for Cpufreq regression
+* Fix RPI display support
+* Fix getrootoftrust security features in factory build mode
 
 Release Features
 ================
