@@ -23,7 +23,7 @@ Fetch the code using ``repo``:
 .. code-block:: console
 
    $ mkdir ${YOUR_PATH}/ti-kernel-aosp/ && cd $_
-   $ repo init -u https://git.ti.com/git/android/manifest.git -b android16-release -m releases/RLS_11_00_Kernel.xml
+   $ repo init -u https://git.ti.com/git/android/manifest.git -b android16-release -m releases/RLS_11_00_01_Kernel.xml
    $ repo sync
 
 .. tip::
@@ -32,7 +32,7 @@ Fetch the code using ``repo``:
 
    .. code-block:: console
 
-      $ repo init -u https://git.ti.com/git/android/manifest.git -b android16-release -m releases/RLS_11_00_Kernel.xml --depth=1
+      $ repo init -u https://git.ti.com/git/android/manifest.git -b android16-release -m releases/RLS_11_00_01_Kernel.xml --depth=1
 
 .. _android-build-kernel:
 
