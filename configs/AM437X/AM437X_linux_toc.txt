@@ -126,8 +126,6 @@ linux/How_to_Guides/Target/How_to_add_a_JVM
 linux/How_to_Guides/Target/Update_U-Boot_Environment_Variables_stored_in_SPI_Flash_from_Linux
 linux/How_to_Guides/Target/How_to_Change_dtb_File
 linux/How_to_Guides/Target/How_to_fix_y2k38
-linux/How_to_Guides_Hardware_Setup_with_CCS
-linux/How_to_Guides/Hardware_Setup_with_CCS/EVMK2H_Hardware_Setup
 linux/How_to_Guides_Board_Port
 linux/How_to_Guides/Board_Port/U-Boot
 common/PRU-ICSS/Getting_Started_with_PSSP
@@ -145,7 +143,6 @@ common/PRU-ICSS/PRU-Getting-Started-Labs_Lab2_assemblyCode
 common/PRU-ICSS/PRU-Getting-Started-Labs_Lab2_mixedCandAssembly
 common/PRU-ICSS/PRU-Getting-Started-Labs_Lab3
 common/PRU-ICSS/PRU-Getting-Started-Labs_Lab4
-common/PRU-ICSS/PRU-Getting-Started-Labs_Lab4_TIRTOS
 common/PRU-ICSS/PRU-Getting-Started-Labs_Lab5
 common/PRU-ICSS/PRU-Hands-on-Labs
 common/PRU-ICSS/Resource_Tables

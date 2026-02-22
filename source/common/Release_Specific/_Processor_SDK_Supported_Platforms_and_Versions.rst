@@ -20,17 +20,6 @@ SDK.
     | Ubuntu                    | | 22.04 (64-bit)        |
     +---------------------------+-------------------------+
 
-    -  **RTOS SDK**
-
-    +---------------------------+-------------------------+
-    | **Operating System**      | | **Version**           |
-    +---------------------------+-------------------------+
-    | Windows                   | | 7 (64-bit)            |
-    +---------------------------+-------------------------+
-    | Ubuntu                    | | 14.04 (64-bit)        |
-    |                           | | 16.04 (64-bit)        |
-    +---------------------------+-------------------------+
-
 .. ifconfig:: CONFIG_sdk in ('JACINTO','j7_foundational')
 
     -  **Linux SDK**
@@ -58,49 +47,41 @@ The following platforms and EVMs are supported with Processor SDK.
 
 .. ifconfig:: CONFIG_part_family in ('AM335X_family')
 
-    +--------------------------------------+--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+
-    |**Platform**                          |**EVM**                               |**Tested  |**Document**                                |**Processor SDK |**Processor SDK |**Processor SDK |
-    |                                      |                                      |Version** |                                            |Linux**         |RT Linux**      |RTOS**          |
-    +--------------------------------------+--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+
-    |`AM335x <http://www.ti.com/lsds/ti/   |`AM335x EVM                           | 1.6A     |`Hardware User's Guide <http://             | X              | X              | X              |
-    |processors/sitara/arm_cortex-a8/      |<http://www.ti.com/tool/              |          |processors.wiki.ti.com/index.php/AM335x_    |                |                |                |
-    |am335x/overview.page>`__              |tmdxevm3358>`__                       |          |General_Purpose_EVM_HW_User_Guide>`__       |                |                |                |
-    |                                      +--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+
-    |                                      |`AM335x SK                            | 1.2      |`Hardware User's Guide <http://             | X              | X              | X              |
-    |                                      |<http://www.ti.com/tool/              |          |processors.wiki.ti.com/index.php/           |                |                |                |
-    |                                      |tmdssk3358>`__                        |          |AM335xStarterKitHardwareUsersGuide>`__      |                |                |                |
-    |                                      +--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+
-    |                                      |`BeagleBone Black                     | B6       |`Hardware User's Guide <https://github.com/ | X              |                | X              |
-    |                                      |<http://beagleboard.org/Products/     |          |CircuitCo/BeagleBone-Black/blob/            |                |                |                |
-    |                                      |BeagleBone%20Black>`__                |          |master/BBB_SRM.pdf?raw=true>`__             |                |                |                |
-    |                                      +--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+
-    |                                      |`AM335x ICE                           | 2.1A     |`Hardware User's Guide <http://processors.  |                | X              | X              |
-    |                                      |<http://www.ti.com/tool/              |          |wiki.ti.com/index.php/AM335x_Industrial_    |                |                |                |
-    |                                      |TMDSICE3359>`__                       |          |Communication_Engine_%28ICE%29_EVM_HW_      |                |                |                |
-    |                                      |                                      |          |User_Guide>`__                              |                |                |                |
-    |                                      |                                      |          |`Hardware Setup with CCS <http://processors |                |                |                |
-    |                                      |                                      |          |.wiki.ti.com/index.php/ICE_AM335x_          |                |                |                |
-    |                                      |                                      |          |Hardware_Setup>`__                          |                |                |                |
-    +--------------------------------------+--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+
+    +--------------------------------------+--------------------------------------+----------+--------------------------------------------+----------------+
+    |**Platform**                          |**EVM**                               |**Tested  |**Document**                                |**Processor SDK |
+    |                                      |                                      |Version** |                                            |Linux**         |
+    +--------------------------------------+--------------------------------------+----------+--------------------------------------------+----------------+
+    |`AM335x <http://www.ti.com/lsds/ti/   |`AM335x EVM                           | 1.6A     |`Hardware User's Guide <http://             | X              |
+    |processors/sitara/arm_cortex-a8/      |<http://www.ti.com/tool/              |          |processors.wiki.ti.com/index.php/AM335x_    |                |
+    |am335x/overview.page>`__              |tmdxevm3358>`__                       |          |General_Purpose_EVM_HW_User_Guide>`__       |                |
+    |                                      +--------------------------------------+----------+--------------------------------------------+----------------+
+    |                                      |`AM335x SK                            | 1.2      |`Hardware User's Guide <http://             | X              |
+    |                                      |<http://www.ti.com/tool/              |          |processors.wiki.ti.com/index.php/           |                |
+    |                                      |tmdssk3358>`__                        |          |AM335xStarterKitHardwareUsersGuide>`__      |                |
+    |                                      +--------------------------------------+----------+--------------------------------------------+----------------+
+    |                                      |`BeagleBone Black                     | B6       |`Hardware User's Guide <https://github.com/ | X              |
+    |                                      |<https://www.beagleboard.org/         |          |CircuitCo/BeagleBone-Black/blob/            |                |
+    |                                      |boards/beaglebone-black>`__           |          |master/BBB_SRM.pdf?raw=true>`__             |                |
+    |                                      +--------------------------------------+----------+--------------------------------------------+----------------+
+    |                                      |`BeagleBone Grren Eco                 | 1.0      |`Hardware User's Guide <hhttps://www.ti.com/| X              |
+    |                                      |<https://www.ti.com/tool/             |          |lit/ug/slvudi2/slvudi2.pdf>`__              |                |
+    |                                      |BEAGL-BONE-GRN-ECO>`__                |          |                                            |                |
+    +--------------------------------------+--------------------------------------+----------+--------------------------------------------+----------------+
 
 .. ifconfig:: CONFIG_part_family in ('AM437X_family')
 
-    +--------------------------------------+--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+
-    |**Platform**                          |**EVM**                               |**Tested  |**Document**                                |**Processor SDK |**Processor SDK |**Processor SDK |
-    |                                      |                                      |Version** |                                            |Linux**         |RT Linux**      |RTOS**          |
-    +--------------------------------------+--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+
-    |`AM437x <http://www.ti.com/lsds/ti/   |`AM437x EVM                           | 1.5B     |`Hardware User's Guide <http://             | X              | X              | X              |
-    |processors/sitara/arm_cortex-a9/      |<http://www.ti.com/tool/              |          |processors.wiki.ti.com/index.php/AM437x_    |                |                |                |
-    |am437x/overview.page>`__              |TMDXEVM437X>`__                       |          |General_Purpose_EVM_HW_User_Guide>`__       |                |                |                |
-    |                                      +--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+
-    |                                      |`AM437x SK                            | 1.1A     |`Hardware User's Guide <http://             | X              | X              | X              |
-    |                                      |<http://www.ti.com/tool/              |          |www.ti.com/lit/pdf/spruhw8>`__              |                |                |                |
-    |                                      |TMDXSK437X>`__                        |          |                                            |                |                |                |
-    |                                      +--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+
-    |                                      |`AM437x IDK                           | 1.4A     |`Hardware User's Guide <http://             |                | X              | X              |
-    |                                      |<http://www.ti.com/tool/              |          |www.ti.com/lit/pdf/sprw259>`__              |                |                |                |
-    |                                      |tmdsidk437x>`__                       |          |                                            |                |                |                |
-    +--------------------------------------+--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+
+    +--------------------------------------+--------------------------------------+----------+--------------------------------------------+----------------+
+    |**Platform**                          |**EVM**                               |**Tested  |**Document**                                |**Processor SDK |
+    |                                      |                                      |Version** |                                            |Linux**         |
+    +--------------------------------------+--------------------------------------+----------+--------------------------------------------+----------------+
+    |`AM437x <http://www.ti.com/lsds/ti/   |`AM437x EVM                           | 1.5B     |`Hardware User's Guide <http://             | X              |
+    |processors/sitara/arm_cortex-a9/      |<http://www.ti.com/tool/              |          |processors.wiki.ti.com/index.php/AM437x_    |                |
+    |am437x/overview.page>`__              |TMDXEVM437X>`__                       |          |General_Purpose_EVM_HW_User_Guide>`__       |                |
+    |                                      +--------------------------------------+----------+--------------------------------------------+----------------+
+    |                                      |`AM437x SK                            | 1.1A     |`Hardware User's Guide <http://             | X              |
+    |                                      |<http://www.ti.com/tool/              |          |www.ti.com/lit/pdf/spruhw8>`__              |                |
+    |                                      |TMDXSK437X>`__                        |          |                                            |                |
+    +--------------------------------------+--------------------------------------+----------+--------------------------------------------+----------------+
 
 .. ifconfig:: CONFIG_part_family in ('J7_family')
 
