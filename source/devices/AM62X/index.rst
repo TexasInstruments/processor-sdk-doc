@@ -19,6 +19,7 @@ Processor SDK Linux Software Developer's Guide
    /linux/How_to_Guides
    /devices/AM62X/index_RTOS
    /linux/Demo_User_Guides/index_Demos
+   /boards/index
    /linux/Documentation_Tarball
 
 |

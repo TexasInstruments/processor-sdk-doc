@@ -16,5 +16,4 @@ Application Notes
    /android/Application_Notes_Android_Multimedia_Video
    /android/Application_Notes_Sample_Maps_App
    /android/Application_Notes_Simple_UI_App
-   Application_Notes_BeagleY_AI
    /android/Application_Notes_Android_Secure_Build

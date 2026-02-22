@@ -15,7 +15,6 @@ Host
    How_to_Guides/Host/AM335x_ICEv2_flash_erase
    How_to_Guides/Host/Additional_How_to_Guide_Links
    How_to_Guides/Host/AM335x_AM437x_Hardware_Migration_Guide
-   How_to_Guides/Host/Program_the_eMMC_on_Beaglebone_Black
    How_to_Guides/Host/K3_Resource_Partitioning_Tool
    How_to_Guides/Host/How_to_Setup_and_Debug_using_Lauterbach
    How_to_Guides/Host/SYSFW_Trace_Parser
