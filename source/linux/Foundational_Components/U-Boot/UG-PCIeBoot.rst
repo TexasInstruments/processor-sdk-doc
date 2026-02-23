@@ -31,6 +31,13 @@ To enable PCIe boot mode, configure the boot mode switches as follows:
       SW2 (B0 - B7):   1 1 0 1 0 1 1 0
       SW3 (B8 - B15):  0 0 0 0 0 0 0 0
 
+.. ifconfig:: CONFIG_part_variant in ('J784S4')
+
+   .. code-block:: text
+
+      SW7:   0 1 0 1 0 0 0 0
+      SW11:  1 0 0 0 1 0 0 0
+
 .. note::
 
    DIP switch settings are EVM-specific and may not apply to all board designs.
@@ -48,7 +55,7 @@ Both boards should be powered off before making the connection, and the PCIe lin
 securely established before powering on the devices.
 
 Other hardware configurations are possible. So adapt the setup steps as
-applicable to your board design.
+applicable to given board design.
 
 Endpoint Configuration
 ----------------------
@@ -57,21 +64,21 @@ The following configuration options are used to set up the |__PART_FAMILY_NAME__
 as a PCIe endpoint for PCIe boot. These options must be set in the
 board's defconfig in U-BOOT for the corresponding boot loader image.
 
-- ``CONFIG_PCI_DFU_BAR_SIZE``:
-  Configures the size of the PCIe BAR (Base Address Register) that is
+- ``CONFIG_SPL_PCI_DFU_BAR_SIZE``:
+  Configures the size of the PCIe Base Address Register (BAR) that is
   exposed for device firmware update (DFU) and boot loader image download.
 
-- ``CONFIG_PCI_DFU_VENDOR_ID``:
+- ``CONFIG_SPL_PCI_DFU_VENDOR_ID``:
   Specifies the PCIe vendor ID to be advertised by the endpoint.
 
-- ``CONFIG_PCI_DFU_DEVICE_ID``:
+- ``CONFIG_SPL_PCI_DFU_DEVICE_ID``:
   Specifies the PCIe device ID to be advertised by the endpoint.
 
-- ``CONFIG_PCI_DFU_MAGIC_WORD``:
+- ``CONFIG_SPL_PCI_DFU_MAGIC_WORD``:
   Magic word written by the root complex at the end of the image transfer to
   signal to the endpoint that the boot loader image is ready for processing.
 
-- ``CONFIG_PCI_DFU_BOOT_PHASE``:
+- ``CONFIG_SPL_PCI_DFU_BOOT_PHASE``:
   Specify the current boot phase when booting via DFU over PCIe.
   This value can be read by the root complex to determine the
   current boot phase. Value of this config is written to memory
@@ -89,35 +96,65 @@ board's defconfig in U-BOOT for the corresponding boot loader image.
       To enable endpoint mode, the boot loaders must be built with the
       device tree overlay ``k3-am642-evm-pcie0-ep.dtso``.
 
+.. ifconfig:: CONFIG_part_variant in ('J784S4')
+
+   .. note::
+
+      All the configs required for PCIe boot are enabled in
+      ``j784s4_evm_a72_defconfig`` and ``j784s4_evm_r5_defconfig`` by default.
+
+      By default, PCIe root complex mode is enabled in the device tree.
+      To enable endpoint mode, the boot loaders must be built with the
+      device tree overlay ``k3-j784s4-evm-pcie0-pcie1-ep.dtso``.
+
 Ensure these configuration options are set appropriately in the build
 environment to enable a successful PCIe boot process.
 
 PCIe Boot Procedure
 -------------------
 
+Before starting, compile the sample host program provided in the next section:
+
+.. code-block:: bash
+
+   gcc -o pcie_boot_copy pcie_boot_copy.c
+
 1. After configuring the boot mode switches on the endpoint and
    connecting it to the root complex as shown in the figure, power
    on the endpoint.
 
-2. On the root complex, rescan the PCIe bus to enumerate the PCIe
-   endpoint. The endpoint will appear as a RAM device on the root
-   complex. The enumeration may look similar to the following:
+2. On the root complex, check the initial PCIe enumeration using ``lspci``:
+
+   .. code-block:: bash
+
+      lspci
+
+   The endpoint will appear as a RAM device or with many functions.
+   The enumeration might look similar to the following:
 
    .. code-block:: text
 
-        01:00.0 RAM memory: Texas Instruments Device b010
-            Control: I/O- Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop- ParErr- Stepping- SERR- FastB2B- DisINTx+
-            Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=fast >TAbort- <TAbort- <MAbort- >SERR- <PERR- INTx-
-            Latency: 0
-            Interrupt: pin A routed to IRQ 526
-            Region 0: Memory at 68100000 (32-bit, non-prefetchable) [size=1M]
-            Region 1: Memory at 68200000 (32-bit, prefetchable) [size=2M]
-            Region 2: Memory at 6a000000 (64-bit, prefetchable) [size=32M]
-            Region 4: Memory at 6c000000 (64-bit, prefetchable) [size=32M]
+      0000:00:00.0 PCI bridge: Texas Instruments Device b012
+      0000:01:00.0 RAM memory: Texas Instruments Device b012
+      0000:01:00.1 Non-VGA unclassified device: Texas Instruments Device 0100
+      0000:01:00.2 Non-VGA unclassified device: Texas Instruments Device 0100
 
-3. Copy ``tiboot3.bin`` to Region 1.
+   .. note::
+
+      The exact device IDs and number of functions can vary depending on the
+      platform and boot stage.
+
+3. Copy ``tiboot3.bin`` to the endpoint using the sample host program.
+   Use ``lspci -vv`` to identify the BAR (Base Address Register) region
+   to write to.
 
    .. ifconfig:: CONFIG_part_variant in ('AM64X')
+
+      Example command to copy ``tiboot3.bin`` (assuming BAR address ``0x68200000``):
+
+      .. code-block:: bash
+
+         sudo ./pcie_boot_copy am64x 0x68200000 tiboot3.bin
 
       After the root complex has finished copying the image,
       it must write the PCIe boot data address to ``0x701BCFE0``.
@@ -127,31 +164,108 @@ PCIe Boot Procedure
       memory base + offset) to ``0x701BCFE0``. This notifies the ROM
       that the image is ready to be authenticated and processed.
 
-4. Once ``tiboot3.bin`` is transferred, rescan the PCIe bus on the
-   root complex to enumerate the PCIe endpoint device, in order to
-   transfer the next stage boot loader. The enumeration may now look
-   like the following:
+   .. ifconfig:: CONFIG_part_variant in ('J784S4')
+
+      Example command to copy ``tiboot3.bin`` (assuming BAR address ``0x4007100000``):
+
+      .. code-block:: bash
+
+         sudo ./pcie_boot_copy j784s4 0x4007100000 tiboot3.bin
+
+      After the root complex has finished copying the image, the R5 ROM
+      waits for two specific checks to continue the boot sequence:
+
+      - The root complex must write the start address (32-bit) of the image
+        to address location ``0x41CF3FE0``.
+      - The root complex must write the magic word ``0xB17CEAD9`` to address
+        location ``0x41CF3FE4``.
+
+      These two writes signal to the ROM that the image has been fully copied
+      and is ready to be authenticated and processed. The sample program handles
+      these writes automatically.
+
+4. Once the ``tiboot3.bin`` transfer is complete, the PCIe link will go down briefly.
+   Scan the PCIe bus on the root complex again to enumerate the endpoint device
+   for transferring the next stage boot loader:
+
+   .. code-block:: bash
+
+      echo 1 > /sys/bus/pci/devices/0000\:00\:00.0/rescan
+
+   Check the new enumeration with ``lspci``:
+
+   .. code-block:: bash
+
+      lspci
+
+   The enumeration will look similar to the following:
 
    .. code-block:: text
 
-        0000:01:00.0 RAM memory: Texas Instruments Device b010
-            Subsystem: Device 7003:beef
-            Flags: bus master, fast devsel, latency 0, IRQ 644
-            Memory at 12000000 (32-bit, prefetchable) [size=4M]
-            Capabilities: [80] Power Management version 3
-            Capabilities: [90] MSI: Enable+ Count=1/1 Maskable+ 64bit+
-            Capabilities: [b0] MSI-X: Enable- Count=1 Masked-
-            Capabilities: [c0] Express Endpoint, IntMsgNum 0
-            Capabilities: [100] Advanced Error Reporting
+      0000:00:00.0 PCI bridge: Texas Instruments Device b012
+      0000:01:00.0 RAM memory: Texas Instruments Device b010 (rev dc)
+
+   Use ``lspci -vv`` to identify the new BAR address for the memory region.
 
 5. At this stage, only one memory region will be visible. Copy
-   ``tispl.bin`` to this region. After the copy, the root complex
-   must write a 4-byte magic word (defined in the defconfig) at the
-   end of the memory region. This indicates to the endpoint that the
-   boot loader image has been copied.
+   ``tispl.bin`` to this region using the sample host program.
 
-6. Repeat steps 4 and 5 to transfer ``u-boot.img`` using the same
-   procedure.
+   .. ifconfig:: CONFIG_part_variant in ('J784S4')
+
+      Example command (assuming BAR address ``0x4000400000``):
+
+      .. code-block:: bash
+
+         sudo ./pcie_boot_copy j784s4 0x4000400000 tispl.bin
+
+   .. ifconfig:: CONFIG_part_variant in ('AM64X')
+
+      Example command (assuming BAR address ``0x12000000``):
+
+      .. code-block:: bash
+
+         sudo ./pcie_boot_copy am64x 0x12000000 tispl.bin
+
+   After the copy, the root complex must write a 4-byte magic word (defined
+   in the defconfig) at the end of the memory region. This indicates to the
+   endpoint that the host has copied the boot loader image. The sample program
+   handles this automatically.
+
+6. The PCIe link will go down again after the endpoint processes ``tispl.bin``.
+   Remove and scan the PCIe device again to enumerate it for the final stage:
+
+   .. code-block:: bash
+
+      echo 1 > /sys/bus/pci/devices/0000\:01\:00.0/remove
+      echo 1 > /sys/bus/pci/devices/0000\:00\:00.0/rescan
+
+   Copy ``u-boot.img`` using the same procedure as step 5.
+
+   .. ifconfig:: CONFIG_part_variant in ('J784S4')
+
+      Example command (assuming BAR address ``0x4000400000``):
+
+      .. code-block:: bash
+
+         sudo ./pcie_boot_copy j784s4 0x4000400000 u-boot.img
+
+   .. ifconfig:: CONFIG_part_variant in ('AM64X')
+
+      Example command (assuming BAR address ``0x12000000``):
+
+      .. code-block:: bash
+
+         sudo ./pcie_boot_copy am64x 0x12000000 u-boot.img
+
+7. After ``u-boot.img`` is successfully loaded and executed, the boot process
+   is complete and U-Boot should be running on the endpoint device.
+
+.. note::
+
+   During the boot process, "PCIe LINK DOWN" messages might be displayed in the
+   kernel logs. The endpoint resets and re-initializes the PCIe link after
+   processing each boot stage, so this behaviour matches expectations.
+
 
 Sample Host Program for Image Transfer
 --------------------------------------
@@ -174,6 +288,7 @@ appropriate memory regions using ``/dev/mem``.
    int main(int argc, char *argv[])
    {
       char *bootfilename = NULL;
+      char *platform = NULL;
       off_t bar1_address = 0;
       int fd;
       void *map_base;
@@ -183,23 +298,44 @@ appropriate memory regions using ``/dev/mem``.
       int i;
       FILE * fptr;
       off_t load_addr, load_addr_offset, start_addr_offset;
+      unsigned int magic_word = 0;
+      int use_magic_word = 0;
 
-      if (argc != 3) {
-         printf("Usage: %s <bar_address> <binary_file>\n", argv[0]);
+      if (argc != 4) {
+         printf("Usage: %s <platform> <bar_address> <binary_file>\n", argv[0]);
+         printf("  platform: am64x or j784s4\n");
          return 0;
       }
 
-      bar1_address = strtoul(argv[1], NULL, 16);
-      bootfilename = argv[2];
+      platform = argv[1];
+      bar1_address = strtoul(argv[2], NULL, 16);
+      bootfilename = argv[3];
 
+      printf("platform: %s\n", platform);
       printf("bootfilename: %s\n", bootfilename);
       printf("bar1_address: 0x%lx\n", bar1_address);
 
       if(!strcmp(bootfilename,"tiboot3.bin"))
       {
-         load_addr = 0x70000000;
-         load_addr_offset = 0x1000;
-         start_addr_offset = 0x1bcfe0;
+         if(!strcmp(platform, "am64x"))
+         {
+            load_addr = 0x70000000;
+            load_addr_offset = 0x1000;
+            start_addr_offset = 0x1bcfe0;
+         }
+         else if(!strcmp(platform, "j784s4"))
+         {
+            load_addr = 0x41C00000;
+            load_addr_offset = 0x00;
+            start_addr_offset = 0xf3fe0;
+            magic_word = 0xB17CEAD9;
+            use_magic_word = 1;
+         }
+         else
+         {
+            printf("Unsupported platform: %s\n", platform);
+            return 0;
+         }
       }
       else
       {
@@ -211,6 +347,8 @@ appropriate memory regions using ``/dev/mem``.
       printf("load_addr: 0x%lx\n", load_addr);
       printf("load_addr_offset: 0x%lx\n", load_addr_offset);
       printf("start_addr_offset: 0x%lx\n", start_addr_offset);
+      if (use_magic_word)
+         printf("magic_word: 0x%x\n", magic_word);
 
       printf("try to open /dev/mem.\n");
       fd = open("/dev/mem", O_RDWR | O_SYNC);
@@ -268,6 +406,14 @@ appropriate memory regions using ``/dev/mem``.
       sleep(1);
 
       *(unsigned int *)(map_base + start_addr_offset) = (unsigned int)(load_addr_offset + load_addr);
+
+      // Write magic word for J784S4 at R5 stage
+      if(use_magic_word)
+      {
+         *(unsigned int *)(map_base + start_addr_offset + 4) = magic_word;
+         printf("Magic word written.\n");
+      }
+
       return 0;
    }
 
@@ -275,11 +421,19 @@ Usage Example
 ^^^^^^^^^^^^^
 
 To copy a boot loader file (e.g., ``tiboot3.bin``) to the PCIe device,
-run:
+specify the platform, BAR address, and binary file.
+
+For AM64X:
 
 .. code-block:: bash
 
-   sudo ./pcie_boot_copy 0x68200000 tiboot3.bin
+   sudo ./pcie_boot_copy am64x 0x68200000 tiboot3.bin
 
-Replace ``0x68200000`` with the appropriate BAR region address as
-enumerated on the root complex, and specify the correct binary file.
+For J784S4:
+
+.. code-block:: bash
+
+   sudo ./pcie_boot_copy j784s4 0x12000000 tiboot3.bin
+
+Replace the BAR address with the appropriate BAR region address as
+enumerated on the root complex for specific setup.

@@ -40,6 +40,7 @@ linux/Foundational_Components/U-Boot/UG-UFS
 linux/Foundational_Components/U-Boot/UG-DDRSS-J7
 linux/Foundational_Components/U-Boot/UG-HyperBus
 linux/Foundational_Components/U-Boot/UG-RemoteProc
+linux/Foundational_Components/U-Boot/UG-PCIeBoot
 linux/Foundational_Components/U-Boot/UG-HSM
 linux/Foundational_Components/U-Boot/Applications
 linux/Foundational_Components/U-Boot/Apps-SPL-Debug-OpenOCD
