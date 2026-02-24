@@ -1,5 +1,19 @@
 # Contributing to processor-sdk-doc
 
+## Release branching
+
+This project has adopted release branches for major release numbers. This allows
+for updates and fixes on documentation for past release windows.
+
+The `master` branch is for the current major release. An active window ends with
+first release candidate of the next major release. At this time a new branch
+spawns from `master` to track any further contributions. Open pull requests
+that change content related to the old release are `Closed`. If they are still
+valid you can reopen them against the new branch.
+
+This means branch `12` will not exist until the first `13` tag is present on
+`meta-ti` or `meta-arago`. Until that point `master` is effectively `12`.
+
 ## Commit formatting
 
 The main requirements are that commits contain a reasonable commit message and
