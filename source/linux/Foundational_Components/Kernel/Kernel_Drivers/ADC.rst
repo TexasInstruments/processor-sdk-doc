@@ -235,16 +235,9 @@ To test ADC, Connect a DC voltage supply to each of the AIN0 through
 AIN7 pins (based on your channel configuration), and vary voltage
 between 0 and 1.8v reference voltage.
 
-.. raw:: html
+.. caution::
 
-   <div
-   style="word-wrap: break-word; margin: 5px; padding: 5px 10px; background-color: #fff3f3; border-left: 5px solid #ff3333;">
-
-**CAUTION** Make sure that the voltage supplied does not cross 1.8v
-
-.. raw:: html
-
-   </div>
+   Make sure that the voltage supplied does not cross 1.8v
 
 On loading the module you would see the IIO device created
 
