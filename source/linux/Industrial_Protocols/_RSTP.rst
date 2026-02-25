@@ -31,33 +31,9 @@ https://wiki.linuxfoundation.org/networking/bridge
 
 |
 
-.. raw:: html
-
-   <div class="thumb tnone">
-
-.. raw:: html
-
-   <div class="thumbinner" style="width:671px;">
-
 .. Image:: /images/Cpsw_rstp_mstpd_topology_1.jpg
 
-.. raw:: html
-
-   <div class="thumbcaption">
-
 3 node ring demonstrating port blocking on low cost link
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 |
 
