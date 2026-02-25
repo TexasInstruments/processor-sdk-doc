@@ -104,14 +104,6 @@ responsible for abstracting away details specific to the hardware acceleators.
 The accelerators are reference in Gstreamer by the V4L2 plugin. This plugin is
 responsible for the interaction between user space and the V4L2 kernel driver.
 
-.. raw:: html
-
-   <div class="center">
-
-.. raw:: html
-
-   <div class="floatnone">
-
 .. figure:: ../images/MM_D5520MP2_VXE384MP2_SW_overview.png
    :alt: codec software stack
 
@@ -372,30 +364,12 @@ display the decoded video on the screen. The audio stream is queued and
 then decoded by the ARM audio GStreamer plugin, and then reaches its
 destination at the alsasink element to play the decoded audio.
 
-.. raw:: html
-
-   <div class="center">
-
-.. raw:: html
-
-   <div class="floatnone">
-
 .. _gst-dec-playout-fig:
 
 .. figure:: ../images/Gst_decode_playout_v2.png
    :alt: gstreamer decode playout
 
    GStreamer Decode Playout
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-|
 
 Running a GStreamer pipeline
 ----------------------------

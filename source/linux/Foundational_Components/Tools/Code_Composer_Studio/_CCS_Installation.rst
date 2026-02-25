@@ -22,21 +22,13 @@ CCS uses the Eclipse backend and includes the following plugins:
 -  Cross-compile for GCC- allows easy access to the ARM GCC-based
    compiler included in the Processor Linux SDK
 
-.. raw:: html
+.. note::
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-You should download CCS from the Processor Linux SDK Download page
-because it comes with the above plug-ins already installed. Otherwise,
-you will have to install the plug-ins yourself in order to take
-advantage of all the features covered in the wiki help pages and wiki
-training pages.
-
-.. raw:: html
-
-   </div>
+   You should download CCS from the Processor Linux SDK Download page
+   because it comes with the above plug-ins already installed. Otherwise,
+   you will have to install the plug-ins yourself in order to take
+   advantage of all the features covered in the wiki help pages and wiki
+   training pages.
 
 |
 
@@ -132,23 +124,15 @@ to install it now, you can install CCS using the following commands:
 .. rubric:: CCS Installation Steps
    :name: ccs-installation-steps
 
-.. raw:: html
+.. note::
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-The "Limited 90-day period" language in the CCS installer license
-agreement applies only for the case of using high-speed JTAG emulators
-(does not apply to use of the XDS100v2 JTAG emulator or an on-board
-emulator). If a debug configuration is used that requires a high-speed
-JTAG emulator, you will be prompted to register your software for a fee.
-All use of CCS (excluding use of high-speed JTAG emulators) is free and
-has no 90-day time limit.
-
-.. raw:: html
-
-   </div>
+   The "Limited 90-day period" language in the CCS installer license
+   agreement applies only for the case of using high-speed JTAG emulators
+   (does not apply to use of the XDS100v2 JTAG emulator or an on-board
+   emulator). If a debug configuration is used that requires a high-speed
+   JTAG emulator, you will be prompted to register your software for a fee.
+   All use of CCS (excluding use of high-speed JTAG emulators) is free and
+   has no 90-day time limit.
 
 When the CCS installer runs, you can greatly reduced the install time
 and installed disk space usage by taking the defaults as they appear in
@@ -330,18 +314,10 @@ example we will use the *mem-util* project.
 
    .. Image:: /images/CCS_build_memutil.png
 
-   .. raw:: html
+   .. note::
 
-      <div
-      style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-   **NOTE**
-   You can use **Project -> Build All** to build all of the projects in
-   the *Project Explorer*.
-
-   .. raw:: html
-
-      </div>
+      You can use **Project -> Build All** to build all of the projects in
+      the *Project Explorer*.
 
 .. rubric:: Installing C/C++ Projects
    :name: installing-cc-projects
@@ -359,19 +335,11 @@ file system:
    setting up a target filesystem, see `Processor SDK Linux Setup
    Script <../../Overview/Run_Setup_Scripts.html>`__.
 
-   .. raw:: html
+   .. note::
 
-      <div
-      style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-   **NOTE**
-   The top-level Makefile uses the install commands in the component
-   Makefiles and can be used as a reference for how to invoke the
-   install commands.
-
-   .. raw:: html
-
-      </div>
+      The top-level Makefile uses the install commands in the component
+      Makefiles and can be used as a reference for how to invoke the
+      install commands.
 
 #. For all file system types, you can also transfer the file using the
    drag-and-drop method of Remote System Explorer. See the `Remote
@@ -417,18 +385,10 @@ build a simple *Hello World* application for the target.
 #. In the *Command* dialog, set the following values:
    Tool command prefix: **arm-linux-gnueabihf-**.
 
-   .. raw:: html
+   .. note::
 
-      <div
-      style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-   **NOTE**
-   The prefix ends with a "-". This is the prefix of the cross-compiler
-   tools as will be seen when setting the *Tool command path*.
-
-   .. raw:: html
-
-      </div>
+      The prefix ends with a "-". This is the prefix of the cross-compiler
+      tools as will be seen when setting the *Tool command path*.
 
    Tool command path:
    **/home/sitara/ti-sdk-<machine>-<version>/linux-devkit/sysroots/<Arago

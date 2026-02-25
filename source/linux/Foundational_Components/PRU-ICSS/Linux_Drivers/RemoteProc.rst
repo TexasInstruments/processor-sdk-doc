@@ -6,15 +6,7 @@ RemoteProc
 .. rubric:: Introduction
    :name: introduction-pru-icss-remoteproc-rpmsg
 
-.. raw:: html
-
-   <div>
-
 .. Image:: /images/Overview.PNG
-
-.. raw:: html
-
-   </div>
 
 The host processor on TI's Sitara family of devices is an ARM Cortex-A
 processor. Typically the ARM core is running Linux based on the
@@ -64,23 +56,7 @@ load firmwares into the PRU cores and then run them.
 .. rubric:: Step 0
    :name: step-0
 
-.. raw:: html
-
-   <div>
-
-.. raw:: html
-
-   <div class="floatright">
-
 .. Image:: /images/Step0_2_0_2_11.PNG
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 The four blocks in the image to right represent: The ARM core running
 Linux, the Linux filesystem where the PRU firmware binaries are
@@ -109,15 +85,7 @@ inserted.
 .. rubric:: Step 1
    :name: step-1
 
-.. raw:: html
-
-   <div class="floatright">
-
 .. Image:: /images/Step1_2_0_2_11.PNG
-
-.. raw:: html
-
-   </div>
 
 | In this step, the sysfs interface (mentioned above in step 0) is used
   to specify the name of the firmware to be loaded as well as to signal
@@ -134,15 +102,7 @@ inserted.
 .. rubric:: Step 2
    :name: step-2
 
-.. raw:: html
-
-   <div class="floatright">
-
 .. Image:: /images/Step2_2_0_2_11.PNG
-
-.. raw:: html
-
-   </div>
 
 The pru_rproc module verifies two things before it proceeds with the
 firmware loading process.
@@ -172,15 +132,7 @@ firmware loading process.
 .. rubric:: Step 3
    :name: step-3
 
-.. raw:: html
-
-   <div class="floatright">
-
 .. Image:: /images/Step3_2_0_2_11.PNG
-
-.. raw:: html
-
-   </div>
 
 -  The pru_rproc module configures all of the resources that are being
    requested by the firmwares
@@ -195,15 +147,7 @@ firmware loading process.
 .. rubric:: Step 4
    :name: step-4
 
-.. raw:: html
-
-   <div class="floatright">
-
 .. Image:: /images/Step4_2_0_2_11.PNG
-
-.. raw:: html
-
-   </div>
 
 | The pru_rproc module then loads the binary into the instruction RAM
   of the PRUs and also copies the resource table into the PRUs data RAM
@@ -221,15 +165,7 @@ firmware loading process.
 .. rubric:: Step 5
    :name: step-5
 
-.. raw:: html
-
-   <div class="floatright">
-
 .. Image:: /images/Step5_2_0_2_11.PNG
-
-.. raw:: html
-
-   </div>
 
 Now that everything is configured and the application code is in place,
 the pru_rproc module instructs the PRU cores to begin execution.

@@ -68,23 +68,7 @@ uses RPMSG framework on the ARM which communicates to the counterpart on
 the slave core. On the slave core, it uses Codec engine and Frame
 Component for the video/image codec processing on IVA.
 
-.. raw:: html
-
-   <div class="center">
-
-.. raw:: html
-
-   <div class="floatnone">
-
 .. Image:: /images/Mm_software_overview_v3.png
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 **Overview of the Multimedia Software Stack using DCE**
 AM57xx as an example has the following accelerators
