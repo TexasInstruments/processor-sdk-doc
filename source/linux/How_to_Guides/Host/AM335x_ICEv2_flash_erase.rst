@@ -27,18 +27,10 @@ on a Ubuntu 14.04 host system
 #. Create a target configuration file in CCS to connect to the AM3359
    ICE board
 
-   .. raw:: html
+   .. note::
 
-      <div
-      style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-   **NOTE**
-   If you already have a target configuration for your AM3359 ICE board
-   you may skip this step
-
-   .. raw:: html
-
-      </div>
+      If you already have a target configuration for your AM3359 ICE board
+      you may skip this step
 
    -  Click **File -> New-> Target Configuration File**
    -  Filename : AM3359-ice-v2.ccxml. Check "Use shared location" to be
