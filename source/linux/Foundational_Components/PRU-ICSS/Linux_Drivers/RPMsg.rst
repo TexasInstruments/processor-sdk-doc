@@ -60,15 +60,7 @@ ability to rebuild the library if changes are desired.
 .. rubric:: ARM to PRU
    :name: arm-to-pru
 
-.. raw:: html
-
-   <div class="floatright">
-
 .. Image:: /images/Arm-to-pru.PNG
-
-.. raw:: html
-
-   </div>
 
 The diagram to the right shows the process that occurs when the ARM
 sends a message to the PRU. These steps are shown for illustrative
@@ -103,15 +95,7 @@ abstraction layer.
 .. rubric:: PRU to ARM
    :name: pru-to-arm
 
-.. raw:: html
-
-   <div class="floatright">
-
 .. Image:: /images/Pru-to-arm.PNG
-
-.. raw:: html
-
-   </div>
 
 The diagram to the right shows the process that occurs when the PRU
 sends a message to the ARM. These steps are shown for illustrative
