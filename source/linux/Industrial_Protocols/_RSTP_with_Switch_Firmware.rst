@@ -17,36 +17,9 @@ indicated in the FDB entry directly without involving the host.
 To set up a RSTP network with ICSS switch firmware, connect 3 AM571x-IDK
 as follows:
 
-.. raw:: html
-
-   <div class="thumb tnone">
-
-.. raw:: html
-
-   <div class="thumbinner" style="width:671px;">
-
 .. Image:: /images/rstp_with_switch_firmware.jpg
 
-.. raw:: html
-
-   <div class="thumbcaption">
-
-
-| Example: 3 node ring demonstrating RSTP with switch firmware
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-|
+Example: 3 node ring demonstrating RSTP with switch firmware
 
 .. note::
 
