@@ -40,22 +40,6 @@ designed to help you through the initial setup of the EVM.
 | representative, create a bootable µSD card (using the included blank     |
 | µSD) and insert it into the EVM**                                        |
 +--------------------------------------------------------------------------+
-| .. raw:: html                                                            |
-|                                                                          |
-|    <div class="thumb tleft">                                             |
-|                                                                          |
-| .. raw:: html                                                            |
-|                                                                          |
-|    <div class="thumbinner" style="width:227px;">                         |
-|                                                                          |
-| .. raw:: html                                                            |
-|                                                                          |
-|    <div class="thumbcaption">                                            |
-|                                                                          |
-| .. raw:: html                                                            |
-|                                                                          |
-|    <div class="magnify">                                                 |
-|                                                                          |
 | .. Image:: /images/IDK_uSD.png                                           |
 +--------------------------------------------------------------------------+
 
@@ -63,24 +47,7 @@ designed to help you through the initial setup of the EVM.
 | **2. Connect the power cable to the power jack on the board and plug in  |
 | to an AC power source**                                                  |
 +--------------------------------------------------------------------------+
-| .. raw:: html                                                            |
-|                                                                          |
-|    <div class="thumb tleft">                                             |
-|                                                                          |
-| .. raw:: html                                                            |
-|                                                                          |
-|    <div class="thumbinner" style="width:224px;">                         |
-|                                                                          |
-| .. raw:: html                                                            |
-|                                                                          |
-|    <div class="thumbcaption">                                            |
-|                                                                          |
-| .. raw:: html                                                            |
-|                                                                          |
-|    <div class="magnify">                                                 |
-|                                                                          |
 | .. Image:: /images/Power_cord_connect.png                                |
-|                                                                          |
 +--------------------------------------------------------------------------+
 
 Note: When powering this IDK, always use the recommended power supply
@@ -97,22 +64,6 @@ VDE, CCC, PSE, etc.
 | connect to the USB on the host. Connect Ethernet cable to GIG ETH0 if    |
 | Network connectivity is required**                                       |
 +--------------------------------------------------------------------------+
-| .. raw:: html                                                            |
-|                                                                          |
-|    <div class="thumb tleft">                                             |
-|                                                                          |
-| .. raw:: html                                                            |
-|                                                                          |
-|    <div class="thumbinner" style="width:225px;">                         |
-|                                                                          |
-| .. raw:: html                                                            |
-|                                                                          |
-|    <div class="thumbcaption">                                            |
-|                                                                          |
-| .. raw:: html                                                            |
-|                                                                          |
-|    <div class="magnify">                                                 |
-|                                                                          |
 | .. Image:: /images/JTAGUSB_UART.png                                      |
 +--------------------------------------------------------------------------+
 
@@ -122,22 +73,6 @@ power on the EVM.
 +--------------------------------------------------------------------------+
 | **4. Select the power ON button to run power the IDK.**                  |
 +--------------------------------------------------------------------------+
-| .. raw:: html                                                            |
-|                                                                          |
-|    <div class="thumb tleft">                                             |
-|                                                                          |
-| .. raw:: html                                                            |
-|                                                                          |
-|    <div class="thumbinner" style="width:226px;">                         |
-|                                                                          |
-| .. raw:: html                                                            |
-|                                                                          |
-|    <div class="thumbcaption">                                            |
-|                                                                          |
-| .. raw:: html                                                            |
-|                                                                          |
-|    <div class="magnify">                                                 |
-|                                                                          |
 | .. Image:: /images/PowerON.png                                           |
 +--------------------------------------------------------------------------+
 
@@ -152,32 +87,7 @@ corresponding to FTDI UARTtoUSB will be turned on.
 | messages. Connecting to target using emulator has been discussed in the                     |
 | section below.**                                                                            |
 +-----------------------------------------------+---------------------------------------------+
-| .. raw:: html                                 | .. raw:: html                               |
-|                                               |                                             |
-|    <div class="center">                       |    <div class="center">                     |
-|                                               |                                             |
-| .. raw:: html                                 | .. raw:: html                               |
-|                                               |                                             |
-|    <div                                       |    <div                                     |
-|    class="thumb tnone">                       |    class="thumb tnone">                     |
-|                                               |                                             |
-| .. raw:: html                                 | .. raw:: html                               |
-|                                               |                                             |
-|    <div                                       |    <div                                     |
-|    class="thumbinner"                         |    class="thumbinner"                       |
-|    style="width:402px;">                      |    style="width:302px;">                    |
-|                                               |                                             |
 | .. Image:: /images/Serial_connect.jpg         | .. Image:: /images/Baudrate.jpg             |
-|                                               |                                             |
-| .. raw:: html                                 | .. raw:: html                               |
-|                                               |                                             |
-|    <div                                       |    <div                                     |
-|    class="thumbcaption">                      |    class="thumbcaption">                    |
-|                                               |                                             |
-| .. raw:: html                                 | .. raw:: html                               |
-|                                               |                                             |
-|    <div class="magnify">                      |    <div class="magnify">                    |
-|                                               |                                             |
 +-----------------------------------------------+---------------------------------------------+
 
 .. rubric:: Connecting IDK EVM to Code Composer Studio
@@ -200,18 +110,10 @@ configuration(File->New->Target Configuration file) as shown in the
 images below and provide appropriate name to the configuration. Select
 Texas Instuments XDS100v2 emulator and target as IDK\_AM572x.
 
-.. raw:: html
+.. note::
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-If you don\`t find the IDK\_AM572x target make sure you have installed
-the Sitara Device support version 1.3.x package correctly
-
-.. raw:: html
-
-   </div>
+   If you don't find the IDK\_AM572x target make sure you have installed
+   the Sitara Device support version 1.3.x package correctly
 
 .. Image:: /images/Target_configuration.png
 
