@@ -55,35 +55,19 @@ Building Display Cluster wic image from Yocto
 
     #. To build the display cluster wic image, please refer :ref:`Processor SDK - Building the SDK with Yocto <building-the-sdk-with-yocto>`
 
-Building the Linux Demo binary from sources
--------------------------------------------
+Building the Display Cluster Demo from source
+---------------------------------------------
 
     #. The source code for Display Cluster demo is available as part of the `ti-apps-launcher <https://github.com/TexasInstruments/ti-apps-launcher>`__.
+    #. Display Cluster Demo does not require building the source code.
+    #. The demo can run provided that the app source code and Qt 6's  ``qmlscene`` utility are present.
 
+    #. To start the demo, issue the following command
        .. code-block:: console
 
-           host# git clone https://github.com/TexasInstruments/ti-apps-launcher
-
-    #. Download and Install the Linux SDK from |__SDK_DOWNLOAD_URL__| following the steps mentioned at :ref:`Download and Install the SDK <download-and-install-sdk>`.
-
-    #. Prepare the environment for cross compilation.
-
-       .. code-block:: console
-
-           host# source <path-to-linux-installer>/linux-devkit/environment-setup
-
-    #. Compile the sources
-
-       .. code-block:: console
-
-           [linux-devkit]:> cd <path-to-ti-apps-launcher-sources>
-           [linux-devkit]:> qmake ../ti-demo.pro ; make
-
-    #. Transfer the generated :file:`ti-demo` binary to the target and run it.
+          qmlscene --fullscreen apps/auto_cluster.qml
 
 Building the MCU Firmware from sources
 --------------------------------------
 
     #. Please refer to the `MCU+ SDK Documentation <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62PX/11_01_01_08/exports/docs/api_guide_am62px/group__DRV__DSS__MODULE.html>`__
-
-
