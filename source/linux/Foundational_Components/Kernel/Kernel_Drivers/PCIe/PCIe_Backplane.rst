@@ -14,11 +14,11 @@ endpoint controller. Each host should be connected to a separate endpoint
 controller instance and each host will enumerate the other host as an
 independent function.
 
-PCIe uses NTB (non transparent bridge) for two hosts to communicate with each
-other. Though J721E doesn't have an explicit NTB controller, NTB functionality
-can be achieved using multiple endpoint controller instances. And for PCIe
-backplane (to connect more than 2 hosts), aggregation of NTB controllers
-can be modeled using multiple instances of multi-function endpoint controller.
+PCIe uses NTB (Non Transparent Bridge) for two hosts to communicate with each
+other. Though |__PART_FAMILY_DEVICE_NAMES__| does not have an explicit NTB
+controller, multiple endpoint controller instances provide NTB functionality.
+For PCIe backplane (to connect more than 2 hosts), multiple instances of
+multi-function endpoint controller create the aggregation of NTB controllers.
 
 In the below diagram, PCI NTB function configures the SoC with multiple
 PCIe Endpoint (EP) instances in such a way that transaction from one EP
@@ -63,6 +63,12 @@ the endpoint side NTB architecture.
 The following picture shows J721E EVM connected to two DRA7 EVMs. Here the two
 DRA7x boards communicate with each other using J721E as backplane.
 
+.. ifconfig:: CONFIG_part_variant in ('J784S4','J742S2')
+
+  Similarly, |__PART_FAMILY_DEVICE_NAMES__| can be connected to two hosts, who
+  can communicate with each other using |__PART_FAMILY_DEVICE_NAMES__|
+  as backplane.
+
 .. Image:: /images/j721e-backplane.jpg
 
 
@@ -71,21 +77,34 @@ DRA7x boards communicate with each other using J721E as backplane.
 
 .. rubric:: *Backplane DTS Overlay File*
 
-The following DTS overlay file configures the PCIe controller in EP mode and
-also contains a device tree node to create a NTB function device:
+The following DTS overlay files configure both the PCIe controller in EP mode
+required for NTB functionality:
 
-::
+.. ifconfig:: CONFIG_part_variant in ('J784S4','J742S2')
 
-  arch/arm64/boot/dts/ti/k3-j721e-pcie-backplane.dtso
+   * :file:`arch/arm64/boot/dts/ti/k3-j784s4-evm-pcie0-pcie1-ep.dtso`
 
-In order to apply the dts overlay file, the following command should be given
+.. ifconfig:: CONFIG_part_variant not in ('J784S4','J742S2')
+
+   * :file:`arch/arm64/boot/dts/ti/k3-j721e-evm-pcie0-ep.dtso`
+   * :file:`arch/arm64/boot/dts/ti/k3-j721e-evm-pcie1-ep.dtso`
+
+In order to apply the dts overlay files, the following command should be given
 in u-boot prompt:
 
-::
+.. ifconfig:: CONFIG_part_variant in ('J784S4','J742S2')
 
-  #setenv name_overlays ti/k3-j721e-pcie-backplane.dtbo
+   .. code-block:: console
 
-.. rubric:: *EP Side Configuration (J721E Backplane)*
+      setenv name_overlays ti/k3-j784s4-evm-pcie0-pcie1-ep.dtbo
+
+.. ifconfig:: CONFIG_part_variant not in ('J784S4','J742S2')
+
+   .. code-block:: console
+
+      setenv name_overlays ti/k3-j721e-evm-pcie0-ep.dtbo ti/k3-j721e-evm-pcie1-ep.dtbo
+
+.. rubric:: *EP Side Configuration (Backplane)*
    :name: ep-side-configuration
 
 .. rubric:: **Dip switch settings**
@@ -100,9 +119,9 @@ in u-boot prompt:
   Both PCIe instances should be configured in EP mode by setting
   PCIE_1L_MODE_SEL (switch 5) and PCIE_2L_MODE_SEL (switch 6) in sw3 to '1'.
 
-.. rubric:: **8.x SDK (5.10 Kernel)**
+.. rubric:: **EP Backplane Configuration Steps**
 
-The following set of steps is required only for 5.10 Kernel
+The following steps are required to configure the PCIe endpoints as a backplane:
 
     .. rubric:: Creating pci-epf-ntb device
 
@@ -111,6 +130,7 @@ The following set of steps is required only for 5.10 Kernel
 
     ::
 
+        # modprobe pci_epf_ntb
         # mount -t configfs none /sys/kernel/config
         # cd /sys/kernel/config/pci_ep/
         # mkdir functions/pci_epf_ntb/func1
@@ -151,15 +171,8 @@ The following set of steps is required only for 5.10 Kernel
         # echo 0x104c > functions/pci_epf_ntb/func1/vendorid
         # echo 0xb00d > functions/pci_epf_ntb/func1/deviceid
 
-    In order to configure NTB specific attributes, a new sub-directory to func1
-    should be created
-
-    ::
-
-        # mkdir functions/pci_epf_ntb/func1/pci_epf_ntb.0/
-
-    The NTB function driver will populate this directory with various attributes
-    that can be configured by the user
+    The NTB function driver also populates func1/pci_epf_ntb.0 directory with
+    various attributes that can be configured by the user
 
     ::
 
@@ -188,13 +201,13 @@ The following set of steps is required only for 5.10 Kernel
 
     ::
 
-        # ln -s controllers/2900000.pcie-ep/ functions/pci-epf-ntb/func1/primary
-        # ln -s controllers/2910000.pcie-ep/ functions/pci-epf-ntb/func1/secondary
+        # ln -s controllers/2900000.pcie-ep/ functions/pci_epf_ntb/func1/primary
+        # ln -s controllers/2910000.pcie-ep/ functions/pci_epf_ntb/func1/secondary
 
     Once the above step is completed, both the PCI endpoint controllers are ready to
     establish a link with the host.
 
-    .. rubric:: Start the Link: 7.x and 8.x SDK (5.4 and 5.10 Kernel)
+    .. rubric:: Start the Link:
 
     In order for the endpoint device to establish a link with the host, the _start_
     field should be populated with '1'. For NTB, both the PCI endpoint controllers
@@ -204,9 +217,6 @@ The following set of steps is required only for 5.10 Kernel
 
         # echo 1 > controllers/2900000.pcie-ep/start
         # echo 1 > controllers/2910000.pcie-ep/start
-
-(PCIe2 can also be configured for NTB, but that is not
-tested yet).
 
 .. rubric:: *RC Side Configuration*
    :name: rc-side-configuration
@@ -221,6 +231,7 @@ existing driver.
 
 ::
 
+  modprobe ntb_hw_epf
   echo 0000:01:00.0 > /sys/bus/pci/devices/0000\:01\:00.0/driver/unbind
 
 After unbinding from existing driver, it should be bound to ntb_hw_epf driver.
@@ -241,14 +252,14 @@ hosts.
 .. rubric:: **Kernel Configs**
    :name: kernel-configs
 
-.. rubric:: *EP Side (J721E Backplane)*
+.. rubric:: *EP Side (Backplane)*
    :name: ep-side-configs
 
 ::
 
   CONFIG_PCI_ENDPOINT=y
   CONFIG_PCI_ENDPOINT_CONFIGFS=y
-  CONFIG_PCI_EPF_NTB=y
+  CONFIG_PCI_EPF_NTB=m
   CONFIG_PCI_J721E=y
   CONFIG_PCIE_CADENCE=y
   CONFIG_PCIE_CADENCE_EP=y
@@ -274,5 +285,5 @@ For additional information, please refer to:
 
 ::
 
-  <Processor_SDK_install_dir>/board-support/linux-[ver]/Documentation/PCI/endpoint/pci-test-ntb.txt
+  <Processor_SDK_install_dir>/board-support/linux-[ver]/Documentation/PCI/endpoint/pci-ntb-function.rst
 
