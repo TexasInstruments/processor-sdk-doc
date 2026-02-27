@@ -197,6 +197,20 @@ Following is a brief explanation of layers shown in the diagram:
     2. 1 MB IO region
     3. Remaining region (4 GB - 1 MB - 4 KB) as 32-bit Non-Prefetchable MEM
 
+    .. note::
+
+      If the root complex is connected to an endpoint with virtual functions,
+      and the kernel panics during enumeration, add 'pci=realloc' to bootargs
+      at the U-Boot prompt using the following command:
+
+      .. code-block:: console
+
+         setenv optargs 'pci=realloc'
+
+      The 'pci=realloc' parameter instructs the Linux kernel to reallocate PCI
+      bridge resources. This helps resolve resource conflicts during enumeration
+      of PCIe devices by allowing the kernel to reassign memory and I/O addresses.
+
     .. rubric:: **Testing Details**
        :name: testing-details
 
