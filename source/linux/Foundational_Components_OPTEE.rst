@@ -56,6 +56,11 @@ Building the OP-TEE image
 
       $ make CROSS_COMPILE="$CROSS_COMPILE_32" CROSS_COMPILE64="$CROSS_COMPILE_64" PLATFORM=\ |__OPTEE_PLATFORM_FLAVOR__| CFG_ARM64_core=y
 
+   .. warning::
+
+      If building OP-TEE on AM62SIP, add the following argument to the above make command:
+      ``CFG_TZDRAM_START=0x80080000``
+
 .. ifconfig:: CONFIG_part_variant in ('AM62LX')
 
    .. parsed-literal::
