@@ -146,70 +146,84 @@ Following is a brief explanation of layers shown in the diagram:
 
 .. ifconfig:: CONFIG_part_family in ('AM64X_family','J7_family')
 
-    .. rubric:: **RC Device Configuration**
-       :name: rc-device-configuration
+   .. rubric:: **RC Device Configuration**
+      :name: rc-device-configuration
 
-    .. rubric:: *DTS Modification*
-       :name: rc-dts-modification
+   .. rubric:: *DTS Modification*
+      :name: rc-dts-modification
 
-    The default dts for |__PART_FAMILY_DEVICE_NAMES__| is configured to be used in
-    root complex mode.
+   The default dts for |__PART_FAMILY_DEVICE_NAMES__| is configured to be used in
+   root complex mode.
 
-    .. rubric:: *Linux Driver Configuration*
-       :name: linux-driver-configuration
+   .. rubric:: *Linux Driver Configuration*
+      :name: linux-driver-configuration
 
-    The following config options have to be enabled in order to configure the
-    PCI controller to be used in Root Complex mode.
+   The following config options have to be enabled in order to configure the
+   PCI controller to be used in Root Complex mode.
 
-    ::
+   ::
 
-        CONFIG_SOCIONEXT_SYNQUACER_PREITS=y
-        CONFIG_PCI=y
-        CONFIG_PCI_MSI=y
-        CONFIG_PCI_J721E=y
-        CONFIG_PCIE_CADENCE=y
-        CONFIG_PCIE_CADENCE_HOST=y
+      CONFIG_SOCIONEXT_SYNQUACER_PREITS=y
+      CONFIG_PCI=y
+      CONFIG_PCI_MSI=y
+      CONFIG_PCI_J721E=y
+      CONFIG_PCIE_CADENCE=y
+      CONFIG_PCIE_CADENCE_HOST=y
 
-    .. rubric:: **Compliance Mode**
-        :name: compliance-mode
+   .. rubric:: **Compliance Mode**
+      :name: compliance-mode
 
-    In RC mode of operation, the Endpoint device can be forced to enter
-    Compliance Mode for PCIe compliance testing by setting the "EC" bit
-    in the LINK_CTRL_STATUS_2 register of the respective PCIe RC instance.
-    Setting "EC" to 1 initiates a hot reset thereby forcing the Endpoint
-    device into Compliance mode. The "EC" bit can be set from command-line
-    by using devmem2 utility as follows:
+   In RC mode of operation, the Endpoint device can be forced to enter
+   Compliance Mode for PCIe compliance testing by setting the "EC" bit
+   in the LINK_CTRL_STATUS_2 register of the respective PCIe RC instance.
+   Setting "EC" to 1 initiates a hot reset thereby forcing the Endpoint
+   device into Compliance mode. The "EC" bit can be set from command-line
+   by using devmem2 utility as follows:
 
-        devmem2 <address> w <value>
+      devmem2 <address> w <value>
 
-    where <address> is the address of LINK_CTRL_STATUS_2 register and
-    <value> is the resulting value to be written with "EC" bit of the
-    register set.
+   where <address> is the address of LINK_CTRL_STATUS_2 register and
+   <value> is the resulting value to be written with "EC" bit of the
+   register set.
 
-    .. rubric:: **64-Bit Address Space with 4 GB Size**
-       :name: 64-bit-address-space
+   .. rubric:: **64-Bit Address Space with 4 GB Size**
+      :name: 64-bit-address-space
 
-    The PCIe Controller support for 64-Bit addressing in the System's
-    Address Space with 4 GB Size is enabled in the device-tree.
-    The 4 GB region is split as:
+   The PCIe Controller support for 64-Bit addressing in the System's
+   Address Space with 4 GB Size is enabled in the device-tree.
+   The 4 GB region is split as:
 
-    1. 4 KB ECAM region for Configuration Accesses
-    2. 1 MB IO region
-    3. Remaining region (4 GB - 1 MB - 4 KB) as 32-bit Non-Prefetchable MEM
+   1. 4 KB ECAM region for Configuration Accesses
+   2. 1 MB IO region
+   3. Remaining region (4 GB - 1 MB - 4 KB) as 32-bit Non-Prefetchable MEM
 
-    .. rubric:: **Testing Details**
-       :name: testing-details
+   .. note::
 
-    The RC should enumerate any off-the-shelf PCIe cards. It has been tested
-    with Ethernet cards, NVMe cards, PCIe USB card, PCIe WiFi card, PCIe SATA
-    card and also to |__PART_FAMILY_DEVICE_NAMES__| in loopback mode.
+      If the root complex is connected to an endpoint with virtual functions,
+      and the kernel panics during enumeration, add ``pci=realloc`` to ``optargs``
+      at the U-Boot prompt using the following command:
 
-    In order to see if the connected card is detected, lspci utility should be
-    used. Different utilities can be used depending on the cards.
+      .. code-block:: console
 
-    Following are the outputs for some of them:
+         setenv optargs 'pci=realloc'
 
-    - Loopback mode (|__PART_FAMILY_DEVICE_NAMES__| EVM to |__PART_FAMILY_DEVICE_NAMES__| EVM)
+      The ``pci=realloc`` parameter instructs the Linux kernel to reallocate PCI
+      bridge resources. This helps resolve resource conflicts during enumeration
+      of PCIe devices by allowing the kernel to reassign memory and I/O addresses.
+
+   .. rubric:: **Testing Details**
+      :name: testing-details
+
+   The RC should enumerate any off-the-shelf PCIe cards. It has been tested
+   with Ethernet cards, NVMe cards, PCIe USB card, PCIe WiFi card, PCIe SATA
+   card and also to |__PART_FAMILY_DEVICE_NAMES__| in loopback mode.
+
+   In order to see if the connected card is detected, lspci utility should be
+   used. Different utilities can be used depending on the cards.
+
+   Following are the outputs for some of them:
+
+   - Loopback mode (|__PART_FAMILY_DEVICE_NAMES__| EVM to |__PART_FAMILY_DEVICE_NAMES__| EVM)
 
       Two |__PART_FAMILY_DEVICE_NAMES__| EVMs can be connected in loopback mode by following
       the steps explained in
