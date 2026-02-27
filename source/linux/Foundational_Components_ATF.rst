@@ -108,6 +108,11 @@ Where <hash> is the commit shown in :ref:`release-specific-build-information`.
                $ cd $TFA_DIR
                $ make ARCH=aarch64 CROSS_COMPILE="$CROSS_COMPILE_64" PLAT=k3 TARGET_BOARD=lite SPD=opteed
 
+            .. warning::
+
+               If building TF-A on AM62SIP, add the following arguments to the above make command:
+               ``BL32_BASE=0x80080000 PRELOADED_BL33_BASE=0x82000000``
+
     .. ifconfig:: CONFIG_part_variant in ('AM62LX')
 
         *Without OP-TEE enabled:*
