@@ -67,8 +67,8 @@ linux/Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW-EST
 linux/Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW-CBS
 linux/Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW-IET
 linux/Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW-TSN-Tuning
-linux/Foundational_Components/Kernel/Kernel_Drivers/PCIe/PCIe_End_Point
-linux/Foundational_Components/Kernel/Kernel_Drivers/PCIe/PCIe_Backplane
+#linux/Foundational_Components/Kernel/Kernel_Drivers/PCIe/PCIe_End_Point
+#linux/Foundational_Components/Kernel/Kernel_Drivers/PCIe/PCIe_Backplane
 linux/Foundational_Components/Kernel/Kernel_Drivers/PCIe/PCIe_Root_Complex
 linux/Foundational_Components/Kernel/Kernel_Drivers/PMIC/pmic_tps6594
 linux/Foundational_Components_Power_Management
