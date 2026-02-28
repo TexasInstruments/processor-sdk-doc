@@ -38,8 +38,8 @@ System Benchmarks
 
 LMBench
 ^^^^^^^
-LMBench is a collection of microbenchmarks of which the memory bandwidth 
-and latency related ones are typically used to estimate processor 
+LMBench is a collection of microbenchmarks of which the memory bandwidth
+and latency related ones are typically used to estimate processor
 memory system performance. More information about lmbench at
 https://lmbench.sourceforge.net/whatis_lmbench.html and
 https://lmbench.sourceforge.net/man/lmbench.8.html
@@ -186,7 +186,7 @@ Dhrystone is a core only benchmark that runs from warm L1 caches in all
 modern processors. It scales linearly with clock speed.
 
 Please take note, different run may produce different slightly results.
-This is advised to run this test multiple times in order to get maximum 
+This is advised to run this test multiple times in order to get maximum
 performance numbers.
 
 Execute the benchmark with the following:
@@ -485,7 +485,7 @@ CPSW/CPSW2g/CPSW3g Ethernet Driver
 - CPSW2g: AM65x, J7200, J721e, J721S2, J784S4, J742S2
 - CPSW3g: AM64x, AM62x, AM62ax, AM62px
 
-.. rubric::  TCP Bidirectional Throughput 
+.. rubric::  TCP Bidirectional Throughput
    :name: CPSW2g-tcp-bidirectional-throughput
 
 .. csv-table:: CPSW2g TCP Bidirectional Throughput
@@ -689,7 +689,7 @@ The performance numbers were captured using the following:
 
 USB Driver
 ----------
- 
+
 USB Device Controller
 ^^^^^^^^^^^^^^^^^^^^^
 
@@ -710,7 +710,7 @@ Power Performance
 ^^^^^^^^^^^^^^^^^
 
 These are power measurements taken while the device is in various low power modes like
-Deep Sleep and RTC Only + DDR.
+Deep Sleep, RTC Only + DDR, and RTC Only.
 
 .. csv-table:: Deep Sleep Power Performance
      :header: "Rail name","Rail voltage(V)","Power (mW)"
@@ -736,12 +736,25 @@ Deep Sleep and RTC Only + DDR.
      "vdd_rtc_1v8", "1.80", "0.02"
      "Total"," ","3.62"
 
+.. csv-table:: RTC Only Power Performance
+     :header: "Rail name","Rail voltage(V)","Power (mW)"
+
+     "vdd_core", "0.00", "0.00"
+     "soc_dvdd_1v8", "0.00", "0.00"
+     "soc_dvdd_3v3", "0.00", "0.00"
+     "vdda_1v8", "0.00", "0.00"
+     "vdd_lpddr4_pmic2", "0.00", "0.00"
+     "vdd_rtc", "0.75", "0.02"
+     "vdd_rtc_1v8", "1.80", "0.01"
+     "Total"," ","0.04"
+
 Resume Latency Performance
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. csv-table:: LPM Resume Latency Performance
    :header: "Low Power Mode","Total Resume Latency (ms)"
 
+   "RTC Only", "Full normal boot time (~seconds)"
    "RTC Only + DDR", "456.44"
    "Deep Sleep", "109.96"
 
