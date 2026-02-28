@@ -22,7 +22,7 @@ on to either the Linux kernel or U-Boot in the non-secure world.
    (SCMI) protocol to manage clocks and power domains. SCMI is a standardized interface for
    system control and management, providing a common way to access and control system resources.
    The SCMI IDs used in the AM62L TF-A implementation are documented in the
-   `TF-A documentation <https://github.com/TexasInstruments/arm-trusted-firmware/blob/ti-master/docs/plat/ti-am62l.rst>`__.
+   `TF-A documentation <https://github.com/TexasInstruments/arm-trusted-firmware/blob/ti-tfa-2.14.y/docs/plat/ti-k3-am62l.rst>`__.
 
    .. rubric:: SCMI and TI SCI
 
