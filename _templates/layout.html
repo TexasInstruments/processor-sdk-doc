@@ -1,24 +1,34 @@
 {% extends "!layout.html" %}
-{%- block extrahead %} 
-  <script src="https://www.ti.com/assets/js/headerfooter/analytics.js" type="text/javascript" charset="utf-8"></script>
-  {{ super() }}
+{%- block extrahead %}
+<script src="https://www.ti.com/assets/js/headerfooter/analytics.js" type="text/javascript" charset="utf-8"></script>
+{{ super() }}
 {% endblock %}
 {%- block sidebartitle %}
-  {# the logo helper function was removed in Sphinx 6 and deprecated since Sphinx 4 #}
-  {# the master_doc variable was renamed to root_doc in Sphinx 4 (master_doc still exists in later Sphinx versions) #}
-  {%- set _logo_url = logo_url|default(pathto('_static/' + (logo or ""), 1)) %}
-  {%- set _root_doc = root_doc|default(master_doc) %}
-  <a href="{{ pathto(_root_doc) }}"{% if not theme_logo_only %} class="icon icon-home"{% endif %}>
-    {% if not theme_logo_only %}{{ project }}{% endif %}
-    {%- if logo or logo_url %}
-      <img src="{{ _logo_url }}" class="logo" alt="{{ _('Logo') }}"/>
-    {%- endif %}
-  </a>
-  {%- set nav_version = version %}
-  {%- if nav_version %}
-    <div class="version">
-      {{ nav_version }}
-    </div>
+{# the logo helper function was removed in Sphinx 6 and deprecated since Sphinx 4 #}
+{# the master_doc variable was renamed to root_doc in Sphinx 4 (master_doc still exists in later Sphinx versions) #}
+{%- set _logo_url = logo_url|default(pathto('_static/' + (logo or ""), 1)) %}
+{%- set _root_doc = root_doc|default(master_doc) %}
+<a href="{{ pathto(_root_doc) }}" {% if not theme_logo_only %} class="icon icon-home" {% endif %}>
+  {% if not theme_logo_only %}{{ project }}{% endif %}
+  {%- if logo or logo_url %}
+  <img src="{{ _logo_url }}" class="logo" alt="{{ _('Logo') }}" />
   {%- endif %}
-  {%- include "searchbox.html" %}
+</a>
+{%- set nav_version = version %}
+{%- if nav_version and versions %}
+<div class="version">
+  <select id="version-selector"
+    onchange="location.href = location.href.replace(/\/docs\/[^\/]+\//, '/docs/' + this.value + '/');"
+    style="background-color: white; color: black; border: 1px solid #d9d9d9; padding: 5px; border-radius: 3px;">
+    {% for v in versions %}
+    <option value="{{ v }}" {% if v==nav_version %}selected{% endif %}>{{ v }}</option>
+    {% endfor %}
+  </select>
+</div>
+{%- elif nav_version %}
+<div class="version">
+  {{ nav_version }}
+</div>
+{%- endif %}
+{%- include "searchbox.html" %}
 {% endblock %}
