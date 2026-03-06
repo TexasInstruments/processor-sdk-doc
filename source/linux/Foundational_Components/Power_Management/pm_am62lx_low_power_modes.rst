@@ -15,8 +15,70 @@ values are detailed in the device-specific data sheet. As part of this SDK offer
 Texas Instruments has added support for the following low power modes (ordered from lowest power consumption
 to highest power consumption):
 
+#. RTC Only
 #. RTC Only Plus DDR
 #. Deep Sleep
+
+RTC Only
+********
+
+RTC Only mode is the deepest low power mode that allows the system to enter a complete poweroff state
+with ultra-low power consumption while maintaining system time and wakeup capability.
+Unlike other low power modes, RTC Only powers off all domains except the RTC, which remains active
+to keep track of system time and provide wakeup via RTC alarm or RTC I/O event.
+
+.. note::
+
+   The system loses nearly all its state as DDR is also turned-off.
+   RTC Only is comparable with a Linux poweroff state with system timer ON.
+
+.. important::
+
+   Jumper J14 position on the EVM determines which low power mode is entered. For RTC Only mode,
+   connect jumper J14 to the position marked as "RTC ONLY MODE".
+
+   .. image:: /images/am62l_lpm_j14.png
+
+The reference implementation in this SDK implements RTC Only as a poweroff state.
+When the system powers off, the RTC driver programs the RTC hardware for poweroff mode.
+The final sequence to power off the system is executed by TF-A firmware, which pulls the PMIC_EN
+signal low to turn off all the supply rails powered by the PMIC.
+
+On AM62L platforms, if the ``system-power-controller`` device tree property is not set on the PMIC node,
+the PMIC will not register a poweroff handler. In this configuration, TF-A firmware handles the
+poweroff sequence and the system enters RTC Only mode. This allows the system to maintain accurate
+system time and provide wakeup capability via RTC alarm or external button press while consuming
+minimal power.
+
+RTC Only mode supports two wakeup sources: RTC timer alarm and RTC I/O pins.
+
+Use the following command to enter RTC Only mode with a timer alarm for wakeup:
+
+.. code-block:: console
+
+   root@<machine>:~# rtcwake -s <time> -m off
+
+Use the following command to enter RTC Only mode with RTC I/O (button press) for wakeup:
+
+.. code-block:: console
+
+   root@<machine>:~# poweroff
+
+At this point, the Linux kernel will go through its poweroff process and
+the console output will stop at the following lines:
+
+.. code-block:: dmesg
+
+   [   51.698039] systemd-shutdown[1]: Powering off.
+   [   51.769478] reboot: Power down
+
+The system has entered RTC Only mode and can be woken up by activity on an RTC I/O pin
+programmed for wakeup. If an alarm was set, the system will automatically wake up
+when the alarm triggers.
+
+During resume from RTC Only mode, the system goes through a normal Linux boot process. The RTC driver
+detects that the RTC is already programmed and skips the full initialization, performing only minimal
+cleanup to preserve the system time.
 
 RTC Only Plus DDR
 *****************
@@ -28,6 +90,11 @@ RTC Only Plus DDR
 
 RTC Only + DDR mode is the deepest low power mode that allows the system to enter a state of lowest power consumption
 while still retaining the DDR RAM context.
+
+.. important::
+
+   Jumper J14 position on the EVM determines which low power mode is entered. For RTC Only + DDR mode,
+   connect jumper J14 to the position marked as "RTC + DDR MODE" (different from RTC Only Mode).
 
 In order to enter RTC Only + DDR mode, first disable USB0 and USB1 as wakeup
 sources.
