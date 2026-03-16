@@ -8,3 +8,5 @@ build/
 # vale configs and intermediary data
 .github/styles/*
 !.github/styles/config
+/.venv
+.DS_Store
