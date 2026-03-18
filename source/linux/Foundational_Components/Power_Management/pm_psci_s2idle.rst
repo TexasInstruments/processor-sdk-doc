@@ -309,3 +309,454 @@ PSCI APIs are invoked.
      - Lower
      - High, primarily due to the overhead of **CPU Hotplug** for non-boot CPUs
 
+**********************************************
+Low Power Mode Selection in S2Idle (OSI Mode)
+**********************************************
+
+S2Idle with OSI mode enables sophisticated low-power mode selection based on system constraints,
+power domain hierarchy, and predicted idle duration. The system can automatically select between
+multiple low-power modes without user intervention, adapting to the runtime requirements.
+
+Power Domain Hierarchy in Device Tree
+======================================
+
+The power domain hierarchy in the Device Tree defines how different system components are grouped
+and how their power states are coordinated. This hierarchical structure is fundamental to OSI mode's
+"Last Man Standing" logic.
+
+**Hierarchical Structure:**
+
+.. code-block:: text
+
+   MAIN_PD (System Level)
+       │
+       ├──> CLUSTER_PD (Cluster Level)
+       │        │
+       │        ├──> CPU_PD (CPU Level)
+       │        │       ├──> CPU0
+       │        │       └──> CPU1
+       │        │
+       │        └──> Cluster-sensitive peripherals
+       │             ├──> CPSW3G (Ethernet)
+       │             └──> DSS0 (Display)
+       │
+       └──> Main domain peripherals
+            ├──> UART, I2C, SPI controllers
+            ├──> Timers
+            ├──> SDHCI controllers
+            └──> USB controllers
+
+**Device Tree Implementation:**
+
+In the Device Tree, this hierarchy is established through power domain mappings:
+
+.. code-block:: dts
+
+   &psci {
+       CPU_PD: power-controller-cpu {
+           #power-domain-cells = <0>;
+           power-domains = <&CLUSTER_PD>;
+           domain-idle-states = <&cpu_sleep_0>, <&cpu_sleep_1>;
+       };
+
+       CLUSTER_PD: power-controller-cluster {
+           #power-domain-cells = <0>;
+           domain-idle-states = <&cluster_sleep_0>;
+           power-domains = <&MAIN_PD>;
+       };
+
+       MAIN_PD: power-controller-main {
+           #power-domain-cells = <0>;
+           domain-idle-states = <&main_sleep_deep>, <&main_sleep_rtcddr>;
+       };
+   };
+
+**Why Domain Grouping is Needed:**
+
+The domain grouping serves several critical purposes:
+
+1. **Hardware Dependency Management**: Certain peripherals must remain active for specific low-power
+   states. For example, DDR controllers must remain operational in RTC+DDR mode, but can be powered
+   down in Deep Sleep mode.
+
+2. **Constraint Propagation**: When a device in the CLUSTER_PD is active (e.g., Display Subsystem),
+   the cluster cannot enter its deepest idle state. The constraint propagates up the hierarchy,
+   preventing both CLUSTER_PD and MAIN_PD from entering deeper states.
+
+3. **Automatic Mode Selection**: The cpuidle framework uses the hierarchy to automatically select
+   the deepest possible state. If any device in a power domain is active or has latency constraints,
+   shallower states are automatically chosen.
+
+4. **Race Condition Prevention**: The hierarchy ensures that the PSCI firmware can verify all
+   components in a domain are truly idle before powering down that domain.
+
+**Peripheral Power Domain Mapping:**
+
+The ``power-domain-map`` property explicitly assigns peripherals to power domains:
+
+.. code-block:: dts
+
+   &scmi_pds {
+       power-domain-map = <3 &CLUSTER_PD>,  /* CPSW3G Ethernet */
+                          <39 &CLUSTER_PD>, /* DSS0 Display */
+                          <38 &CLUSTER_PD>, /* DSS_DSI0 */
+                          <15 &MAIN_PD>,    /* TIMER0 */
+                          <26 &MAIN_PD>,    /* SDHCI1 */
+                          <89 &MAIN_PD>,    /* UART0 */
+                          <95 &MAIN_PD>;    /* USBSS0 */
+   };
+
+This mapping ensures that when the Display (DSS0) is active, the system won't enter states that
+would cause DDR Auto Self-Refresh issues. Similarly, active UART or USB connections prevent
+deeper system states that would disconnect those interfaces.
+
+Role in Mode Selection
+=======================
+
+During s2idle entry, the cpuidle framework traverses the power domain hierarchy from bottom to top:
+
+.. code-block:: text
+
+   Mode Selection Flow during S2Idle Entry
+   ========================================
+
+   1. Freeze user space tasks
+   2. Suspend all devices (call runtime_suspend hooks)
+   3. For each CPU (in cpuidle framework):
+
+      CPU Level (CPU_PD):
+      ├─> Check QoS latency constraints
+      ├─> Check device activity in CPU_PD
+      └─> Select CPU idle state: cpu_sleep_0 (Standby) or cpu_sleep_1 (PowerDown)
+
+      Cluster Level (CLUSTER_PD):
+      ├─> Check if this is the last CPU in cluster
+      ├─> Check device activity in CLUSTER_PD (e.g., Display, Ethernet)
+      ├─> If last CPU and no constraints:
+      │   └─> Select cluster idle state: cluster_sleep_0
+      └─> Else: Skip cluster power-down
+
+      System Level (MAIN_PD):
+      ├─> Check if last CPU in system
+      ├─> Check device activity in MAIN_PD (e.g., UART, USB, Timers)
+      ├─> Check QoS constraints for entire system
+      ├─> Compare latency requirements to available states:
+      │   ├─> main_sleep_rtcddr (exit latency: 600ms)
+      │   └─> main_sleep_deep (exit latency: 10ms)
+      └─> Select deepest state that meets all constraints
+
+   4. Last CPU issues composite CPU_SUSPEND with selected state
+   5. PSCI firmware verifies and executes power-down
+
+Idle State Definitions
+=======================
+
+The Device Tree defines multiple idle states at each level of the hierarchy, each with different
+power/latency trade-offs:
+
+**CPU-Level Idle States:**
+
+.. code-block:: dts
+
+   idle-states {
+       cpu_sleep_0: stby {
+           compatible = "arm,idle-state";
+           idle-state-name = "Standby";
+           arm,psci-suspend-param = <0x00000001>;
+           entry-latency-us = <25>;
+           exit-latency-us = <100>;
+           min-residency-us = <1000>;
+       };
+
+       cpu_sleep_1: powerdown {
+           compatible = "arm,idle-state";
+           idle-state-name = "PowerDown";
+           arm,psci-suspend-param = <0x012233>;
+           entry-latency-us = <250000>;
+           exit-latency-us = <100000>;
+           min-residency-us = <1000000>;
+           local-timer-stop;
+       };
+   };
+
+**Domain-Level Idle States:**
+
+.. code-block:: dts
+
+   domain-idle-states {
+       cluster_sleep_0: low-latency-stby {
+           compatible = "domain-idle-state";
+           arm,psci-suspend-param = <0x01000021>;
+           entry-latency-us = <200>;
+           exit-latency-us = <300>;
+           min-residency-us = <10000>;
+       };
+
+       main_sleep_deep: main-sleep-deep {
+           compatible = "domain-idle-state";
+           arm,psci-suspend-param = <0x2012235>;
+           entry-latency-us = <10000>;
+           exit-latency-us = <10000>;
+           min-residency-us = <500000>;
+           local-timer-stop;
+       };
+
+       main_sleep_rtcddr: main-sleep-rtcddr {
+           compatible = "domain-idle-state";
+           arm,psci-suspend-param = <0x2012234>;
+           local-timer-stop;
+           entry-latency-us = <300000>;
+           exit-latency-us = <600000>;
+           min-residency-us = <1000000>;
+       };
+   };
+
+Understanding the Suspend Parameters
+=====================================
+
+The ``arm,psci-suspend-param`` values encode the target power state using the PSCI standard format
+described earlier. Let's decode the key parameters for the main domain states:
+
+**Deep Sleep Mode (main_sleep_deep):**
+
+Parameter: ``0x2012235``
+
+.. code-block:: text
+
+   Binary:     0000 0010 0000 0001 0010 0010 0011 0101
+   Hex:        0x02012235
+
+   [31:26] = 0  → Reserved
+   [25:24] = 2  → Power Level = System (0x2)
+   [23:17] = 0  → Reserved
+   [16]    = 1  → State Type = Power Down
+   [15:0]  = 0x2235 → State ID (platform-specific)
+
+**Interpretation:**
+
+- **Power Level = 2 (System)**: The entire system, including the SoC, enters a low-power state
+- **State Type = 1 (Power Down)**: Context is lost; firmware must restore state on resume
+- **State ID = 0x2235**: Platform-specific identifier that the PSCI firmware (TF-A) recognizes
+  as "Deep Sleep" mode where DDR is in Self-Refresh and more peripherals in the Main domain
+  remain powered compared to RTC+DDR mode, providing faster resume at the cost of higher power
+
+**RTC+DDR Mode (main_sleep_rtcddr):**
+
+Parameter: ``0x2012234``
+
+.. code-block:: text
+
+   Binary:     0000 0010 0000 0001 0010 0010 0011 0100
+   Hex:        0x02012234
+
+   [31:26] = 0  → Reserved
+   [25:24] = 2  → Power Level = System (0x2)
+   [23:17] = 0  → Reserved
+   [16]    = 1  → State Type = Power Down
+   [15:0]  = 0x2234 → State ID (platform-specific)
+
+**Interpretation:**
+
+- **Power Level = 2 (System)**: System-level power state
+- **State Type = 1 (Power Down)**: Power-down with context loss
+- **State ID = 0x2234**: Platform-specific identifier for "RTC+DDR" mode where DDR is in
+  Self-Refresh and only minimal peripherals (RTC, I/O retention) remain powered in the Main
+  domain, providing maximum power savings at the cost of longer resume latency
+
+**Key Differences:**
+
+.. list-table:: Deep Sleep vs RTC+DDR Mode Comparison
+   :widths: 30 35 35
+   :header-rows: 1
+
+   * - Property
+     - Deep Sleep (0x2012235)
+     - RTC+DDR (0x2012234)
+
+   * - **State ID**
+     - 0x2235
+     - 0x2234
+
+   * - **DDR State**
+     - Self-Refresh
+     - Self-Refresh
+
+   * - **Main Domain State**
+     - Partially powered (more peripherals ON)
+     - Minimal power (only RTC, I/O retention)
+
+   * - **Exit Latency**
+     - 10ms (10,000 μs) - Shallower state
+     - 600ms (600,000 μs) - Deeper state
+
+   * - **Entry Latency**
+     - 10ms (10,000 μs)
+     - 300ms (300,000 μs)
+
+   * - **Min Residency**
+     - 500ms (500,000 μs)
+     - 1000ms (1,000,000 μs)
+
+   * - **Power Consumption**
+     - Higher (more peripherals active)
+     - Lower (minimal peripherals active)
+
+   * - **Use Case**
+     - Short to moderate idle periods where faster resume is needed
+     - Long idle periods where maximum power savings needed
+
+The cpuidle governor uses these latency and residency values to automatically select the appropriate
+mode. If predicted idle time is short and latency constraints are tight, Deep Sleep mode (the
+shallower state) is chosen for faster resume. For longer predicted idle periods with relaxed
+latency requirements, RTC+DDR mode (the deeper state) is preferred for maximum power savings.
+
+QoS Latency Constraints and Mode Selection
+===========================================
+
+The Linux kernel's PM QoS (Quality of Service) framework allows drivers and applications to
+specify maximum acceptable wakeup latency. These constraints directly influence which idle
+state can be entered during s2idle.
+
+**How QoS Constraints Work:**
+
+1. Each device or CPU can register a latency constraint (in nanoseconds)
+2. The cpuidle governor queries these constraints before selecting an idle state
+3. Only idle states with ``exit-latency-us`` ≤ constraint are considered
+4. The deepest eligible state is selected
+
+**Example: Deep Sleep Mode Selection:**
+
+Consider a scenario where the system has active I2C or SPI communication requiring responses
+within 20ms. A QoS constraint of 20,000 μs (20ms) would be applied:
+
+.. code-block:: text
+
+   Available Main Domain States:
+   ├─> main_sleep_rtcddr: exit-latency = 600,000 μs (600ms) → REJECTED (exceeds constraint)
+   └─> main_sleep_deep:   exit-latency = 10,000 μs (10ms)   → SELECTED (meets constraint)
+
+   Result: System enters Deep Sleep mode instead of RTC+DDR mode
+
+In this example, even though RTC+DDR provides better power savings, the 20ms latency constraint
+forces the system to use the shallower Deep Sleep mode. The selection is between the two main
+domain idle states defined for s2idle suspend.
+
+**Setting QoS Constraints from User Space:**
+
+Applications can constrain the system's low-power behavior by writing to the PM QoS device file.
+Below is a C program that demonstrates this:
+
+.. code-block:: c
+
+   /* testqos.c - Set CPU wakeup latency constraint */
+   #include <stdio.h>
+   #include <fcntl.h>
+   #include <unistd.h>
+   #include <signal.h>
+
+   #define QOS_DEV "/dev/cpu_wakeup_latency"
+   #define LATENCY_VAL "0x1000"  /* 4096 ns (4 μs) in hex */
+
+   static volatile int keep_running = 1;
+
+   void sig_handler(int sig) {
+       keep_running = 0;
+   }
+
+   int main(void) {
+       int fd;
+
+       signal(SIGINT, sig_handler);
+       signal(SIGTERM, sig_handler);
+
+       fd = open(QOS_DEV, O_RDWR);
+       if (fd < 0) {
+           perror("open");
+           return 1;
+       }
+
+       if (write(fd, LATENCY_VAL, sizeof(LATENCY_VAL) - 1) < 0) {
+           perror("write");
+           close(fd);
+           return 1;
+       }
+
+       printf("QoS set to %s. Press Ctrl+C to exit.\n", LATENCY_VAL);
+
+       while (keep_running)
+           sleep(1);
+
+       close(fd);
+       printf("Released.\n");
+       return 0;
+   }
+
+**Why This Program is Needed:**
+
+This program demonstrates how to control low-power mode selection by setting QoS latency constraints.
+By applying a tight latency constraint (4 μs in the example), you can force the system to stay in
+shallow idle states, preventing entry into Deep Sleep or RTC+DDR modes. This is useful for testing
+that the cpuidle governor correctly respects QoS constraints and selects the appropriate idle state
+based on latency requirements.
+
+**Selecting Specific Low-Power Modes:**
+
+To force selection of a specific mode, set the QoS constraint strategically based on the exit
+latencies of the available states. The latency value must be provided as a **hex string**
+(e.g., "0x7ef41").
+
+* **To force Deep Sleep mode**: Set constraint above Deep Sleep's exit latency (10ms = 10,000 μs)
+  but below RTC+DDR's exit latency (600ms = 600,000 μs). For example, use **520 μs (520,001 ns)**:
+
+  .. code-block:: c
+
+     #define LATENCY_VAL "0x7ef41"  /* 520,001 ns = 520 μs in hex */
+
+  **Calculation:**
+
+  - Target latency: 520 μs = 520,000 ns (round to 520,001 for convenience)
+  - Convert to hex: 520,001₁₀ = 0x7EF41₁₆
+  - Write as hex string: ``"0x7ef41"``
+  - This allows Deep Sleep (10,000 μs exit latency) but blocks RTC+DDR (600,000 μs exit latency)
+
+* **To allow RTC+DDR mode**: Set constraint higher than 600ms (600,000 μs) or don't apply any
+  constraint, allowing the cpuidle governor to select the deepest state (RTC+DDR) during long
+  idle periods.
+
+**How It Sets QoS Constraints:**
+
+The program opens the special device file ``/dev/cpu_wakeup_latency``, which is part of the
+kernel's PM QoS framework. Writing a latency value (in nanoseconds) to this file:
+
+1. Registers a global CPU wakeup latency constraint
+2. Causes the cpuidle governor to filter out any idle states with exit latency exceeding this value
+3. Remains active as long as the file descriptor is open
+4. Automatically releases the constraint when the file descriptor is closed (on program exit)
+
+**Usage Example:**
+
+.. code-block:: console
+
+   root@am62lxx-evm:~# gcc testqos.c -o testqos
+   root@am62lxx-evm:~# ./testqos
+   QoS set to 0x1000. Press Ctrl+C to exit.
+
+   # In another terminal, observe the constrained behavior:
+   root@am62lxx-evm:~# cat /sys/devices/system/cpu/cpu0/cpuidle/state*/latency
+   0          # state0: WFI
+   125        # state1: Standby
+   350125     # state2: PowerDown (disabled by QoS)
+
+   # Press Ctrl+C in the first terminal
+   Released.
+
+   # Now the deeper states are available again:
+   root@am62lxx-evm:~# cat /sys/devices/system/cpu/cpu0/cpuidle/state*/latency
+   0
+   125
+   350125     # state2: PowerDown (now enabled)
+
+The value ``0x1000`` (4096 ns = ~4 μs) prevents any idle state with exit latency greater than
+4 μs from being entered. In the example above, the PowerDown state with 350ms exit latency
+is effectively disabled while the constraint is active.
+
