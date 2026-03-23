@@ -67,6 +67,7 @@ linux/Foundational_Components/Kernel/Kernel_Drivers/Network/HSR_PRP_Non_Offload
 linux/Foundational_Components/Kernel/Kernel_Drivers/Network/HSR_PRP_PTP
 linux/Foundational_Components/Kernel/Kernel_Drivers/Network/HSR_Offload
 linux/Foundational_Components/Kernel/Kernel_Drivers/Network/PRP_Offload
+linux/Foundational_Components/Kernel/Kernel_Drivers/Network/XDP
 linux/Foundational_Components/Kernel/Kernel_Drivers/SPI
 linux/Foundational_Components/Kernel/Kernel_Drivers/PCIe/PCIe_End_Point
 linux/Foundational_Components/Kernel/Kernel_Drivers/PCIe/PCIe_Root_Complex
@@ -108,7 +109,6 @@ linux/Foundational_Components/PRU-ICSS/Linux_Drivers/RemoteProc
 linux/Foundational_Components/PRU-ICSS/Linux_Drivers/PRU_ICSSG_Ethernet
 linux/Foundational_Components/PRU-ICSS/Linux_Drivers/PRU_ICSSG_Ethernet_Switch
 linux/Foundational_Components/PRU-ICSS/Linux_Drivers/RPMsg
-linux/Foundational_Components/PRU-ICSS/Linux_Drivers/PRU_ICSSG_XDP
 linux/Foundational_Components/PRU-ICSS/RPMsg_Quick_Start_Guide
 linux/Foundational_Components/PRU-ICSS-Hardware
 linux/Foundational_Components/PRU-ICSS/PRU-EVMs
