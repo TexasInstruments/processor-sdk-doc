@@ -48,6 +48,7 @@ Features supported
 - Cut Through forwarding
 - PHY Interrupt mode for ICSSG2
 - Multicast filtering support for VLAN interfaces
+- ICSSG0 dual EMAC support on AM64x with DP83TG720 PHY
 
 .. rubric:: **Features not supported**
 
@@ -668,6 +669,90 @@ PTP/OC in slave mode:
 
 |
 
+.. _icssg0_configuration:
+
+ICSSG0 Configuration
+####################
+
+.. ifconfig:: CONFIG_part_variant in ('AM64X')
+
+  ICSSG0 Dual EMAC Support
+  ************************
+
+  AM642 EVM supports ICSSG0 dual EMAC configuration using the device tree overlay. This enables both ICSSG0 Ethernet interfaces (port0 and port1) in dual EMAC mode.
+
+  .. rubric:: Hardware Requirements
+
+  - AM642 EVM (`TMDS64EVM <https://www.ti.com/tool/TMDS64EVM>`__)
+  - DP83TG720-IND-SPE-EVM daughter card (`DP83TG720-IND-SPE-EVM <https://www.ti.com/tool/DP83TG720-IND-SPE-EVM>`__)
+
+  .. rubric:: Software Requirements
+
+  The following kernel configurations are required:
+
+  .. code-block:: text
+
+      CONFIG_DP83TG720_PHY=m
+
+  This PHY driver is enabled as a module in the default defconfig.
+
+  .. rubric:: Enabling ICSSG0
+
+  To enable ICSSG0 in dual EMAC mode with RGMII interface, apply the device tree overlay in U-Boot:
+
+  .. code-block:: console
+
+      setenv name_overlays ti/k3-am642-evm-icssg0.dtbo
+      saveenv
+      boot
+
+  After booting with the overlay, two new network interfaces will be available (typically eth2 and eth3, depending on your system configuration).
+
+  .. rubric:: Verifying ICSSG0 Interfaces
+
+  Check the available network interfaces:
+
+  .. code-block:: console
+
+      # ip link show
+      ...
+      eth2: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN mode DEFAULT group default qlen 1000
+          link/ether xx:xx:xx:xx:xx:xx brd ff:ff:ff:ff:ff:ff
+      eth3: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN mode DEFAULT group default qlen 1000
+          link/ether xx:xx:xx:xx:xx:xx brd ff:ff:ff:ff:ff:ff
+
+  Verify the driver and firmware:
+
+  .. code-block:: console
+
+      # ethtool -i eth2
+      driver: icssg-prueth
+      version:
+      firmware-version:
+      expansion-rom-version:
+      bus-info: icssg0-eth
+      supports-statistics: yes
+      supports-test: no
+      supports-eeprom-access: no
+      supports-register-dump: no
+      supports-priv-flags: no
+
+  .. rubric:: Combining ICSSG0 and ICSSG1
+
+  The ICSSG0 overlay can be combined with the existing ICSSG1 overlay to enable all four ICSSG interfaces:
+
+  .. code-block:: console
+
+      setenv name_overlays ti/k3-am642-evm-icssg0.dtbo ti/k3-am642-evm-icssg1-dualemac.dtbo
+      saveenv
+      boot
+
+  This configuration provides four ICSSG Ethernet ports total (2 from ICSSG0 + 2 from ICSSG1).
+
+  .. note::
+
+      When using ICSSG0, ensure the DP83TG720 daughter card is properly connected to the AM642 EVM ICSSG0 interface connectors.
+
 PPS Pulse Per Second support
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -842,19 +927,51 @@ CPSW / PRU Ethernet Selection
    - Dual EMAC: 2 Ethernet ports on a single PRU_ICSSG instance
 
    On AM64x EVM (`TMDS64EVM <https://www.ti.com/tool/TMDS64EVM>`__ & `TMDS64GPEVM <https://www.ti.com/tool/TMDS64GPEVM>`__), one Ethernet port is connected to CPSW, one Ethernet port is connected to PRU Ethernet, and one Ethernet port can be muxed to either CPSW or PRU Ethernet depending on the device tree settings.
-   The Ethernet port is muxed to CPSW by default in the AM64x EVM device tree :file:`k3-am642-evm.dts`, disabling this port for ICSSG (Single EMAC).
+   The Ethernet port is muxed to CPSW by default in the AM64x EVM device tree :file:`k3-am642-evm.dts`, disabling this port for ICSSG1 (Single EMAC).
 
-   To use **RGMII** interface in **Dual EMAC** mode the :file:`k3-am642-evm-icssg1-dualemac.dtbo` overlay file has to be applied using the following command in u-boot.
+   The AM64x EVM supports both ICSSG0 and ICSSG1 instances, each providing dual EMAC capability. ICSSG0 and ICSSG1 can be enabled independently or simultaneously to provide up to four ICSSG Ethernet ports.
+
+   .. rubric:: ICSSG0 Overlay Configuration
+
+   ICSSG0 supports dual EMAC mode with RGMII interface. To enable ICSSG0, apply the :file:`k3-am642-evm-icssg0.dtbo` overlay:
+
+    .. code-block:: console
+
+      setenv name_overlays ti/k3-am642-evm-icssg0.dtbo
+      saveenv
+      boot
+
+   Refer :ref:`icssg0_configuration` section for more details.
+
+   .. rubric:: ICSSG1 Overlay Configuration
+
+   To use **RGMII** interface in **Dual EMAC** mode for ICSSG1, apply the :file:`k3-am642-evm-icssg1-dualemac.dtbo` overlay:
 
     .. code-block:: console
 
       setenv bootcmd 'run findfdt; run envboot;run init_${boot}; run get_kern_${boot}; run get_fdt_${boot};setenv name_overlays ti/k3-am642-evm-icssg1-dualemac.dtbo; run get_overlay_${boot}; run run_kern'
 
-   To use **MII** interface in **Dual EMAC** mode the :file:`k3-am642-evm-icssg1-dualemac-mii.dtbo` overlay file has to be applied using the following command in u-boot.
+   To use **MII** interface in **Dual EMAC** mode for ICSSG1, apply the :file:`k3-am642-evm-icssg1-dualemac-mii.dtbo` overlay:
 
     .. code-block:: console
 
       setenv bootcmd 'run findfdt; run envboot;run init_${boot}; run get_kern_${boot}; run get_fdt_${boot};setenv name_overlays ti/k3-am642-evm-icssg1-dualemac-mii.dtbo; run get_overlay_${boot}; run run_kern'
+
+   .. rubric:: Enabling Both ICSSG0 and ICSSG1
+
+   Both ICSSG instances can be enabled simultaneously to provide four ICSSG Ethernet ports:
+
+    .. code-block:: console
+
+      setenv name_overlays ti/k3-am642-evm-icssg0.dtbo ti/k3-am642-evm-icssg1-dualemac.dtbo
+      saveenv
+      boot
+
+   This configuration provides:
+
+   - ICSSG0: Two Ethernet ports (typically eth1 and eth2)
+   - ICSSG1: Two Ethernet ports (typically eth3 and eth4)
+   - CPSW: One Ethernet port (eth0)
 
 .. ifconfig:: CONFIG_part_variant in ('AM65X')
 
