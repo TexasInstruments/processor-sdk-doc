@@ -32,6 +32,7 @@ Kernel Drivers
    Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW-Ethernet
    Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW2g
    Foundational_Components/Kernel/Kernel_Drivers/Network/NETCONF-YANG
+   Foundational_Components/Kernel/Kernel_Drivers/Network/XDP
    Foundational_Components/Kernel/Kernel_Drivers/PCIe/PCIe_End_Point
    Foundational_Components/Kernel/Kernel_Drivers/PCIe/PCIe_Backplane
    Foundational_Components/Kernel/Kernel_Drivers/PCIe/PCIe_Root_Complex
