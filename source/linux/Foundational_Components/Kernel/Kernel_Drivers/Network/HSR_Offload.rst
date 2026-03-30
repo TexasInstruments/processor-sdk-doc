@@ -339,6 +339,12 @@ Example:
 
    # ip maddr del 01:80:c4:00:00:0e dev hsr0.5
 
+.. ifconfig:: CONFIG_part_variant in ('AM64X')
+
+   .. rubric:: *PTP Support*
+
+   For PTP support over HSR, see :ref:`hsr-prp-ptp`.
+
 .. rubric:: Performance
 
 This section describes the throughput and CPU usage metrics in the offload case

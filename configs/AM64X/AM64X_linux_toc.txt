@@ -64,6 +64,7 @@ linux/Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW-IET
 linux/Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW-TSN-Tuning
 linux/Foundational_Components/Kernel/Kernel_Drivers/Network/NETCONF-YANG
 linux/Foundational_Components/Kernel/Kernel_Drivers/Network/HSR_PRP_Non_Offload
+linux/Foundational_Components/Kernel/Kernel_Drivers/Network/HSR_PRP_PTP
 linux/Foundational_Components/Kernel/Kernel_Drivers/Network/HSR_Offload
 linux/Foundational_Components/Kernel/Kernel_Drivers/Network/PRP_Offload
 linux/Foundational_Components/Kernel/Kernel_Drivers/SPI
