@@ -53,7 +53,7 @@ linux/Foundational_Components/U-Boot/Apps-TroubleShooting
 linux/Foundational_Components_Kernel
 linux/Foundational_Components_Kernel_Drivers
 linux/Foundational_Components/Kernel/Kernel_Drivers/Audio
-linux/Foundational_Components/Kernel/Kernel_Drivers/Camera/CSI2RX
+linux/Foundational_Components/Kernel/Kernel_Drivers/Camera/CSI2RX_AM62AX
 linux/Foundational_Components/Kernel/Kernel_Drivers/Crypto/SA2UL_OMAP
 linux/Foundational_Components/Kernel/Kernel_Drivers/DDR
 linux/Foundational_Components/Kernel/Kernel_Drivers/Display/DSS7

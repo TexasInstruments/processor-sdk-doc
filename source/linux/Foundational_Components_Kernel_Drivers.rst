@@ -9,7 +9,13 @@ Kernel Drivers
    Foundational_Components/Kernel/Kernel_Drivers/Camera/VPFE
    Foundational_Components/Kernel/Kernel_Drivers/Camera/VIP
    Foundational_Components/Kernel/Kernel_Drivers/Camera/CAL
-   Foundational_Components/Kernel/Kernel_Drivers/Camera/CSI2RX
+   Foundational_Components/Kernel/Kernel_Drivers/Camera/CSI2RX_AM62X
+   Foundational_Components/Kernel/Kernel_Drivers/Camera/CSI2RX_AM62PX
+   Foundational_Components/Kernel/Kernel_Drivers/Camera/CSI2RX_AM62AX
+   Foundational_Components/Kernel/Kernel_Drivers/Camera/CSI2RX_J721E
+   Foundational_Components/Kernel/Kernel_Drivers/Camera/CSI2RX_J721S2
+   Foundational_Components/Kernel/Kernel_Drivers/Camera/CSI2RX_J784S4
+   Foundational_Components/Kernel/Kernel_Drivers/Camera/CSI2RX_J722S
    Foundational_Components/Kernel/Kernel_Drivers/Crypto/DTHEv2
    Foundational_Components/Kernel/Kernel_Drivers/Crypto/SA2UL_OMAP
    Foundational_Components/Kernel/Kernel_Drivers/MCAN
