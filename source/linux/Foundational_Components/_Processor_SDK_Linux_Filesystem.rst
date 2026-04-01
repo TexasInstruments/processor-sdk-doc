@@ -32,7 +32,7 @@ There are different filesystem tarballs provided in the SDK. You'll find them at
 
 This is the complete filesystem image, that contains standard Linux
 commands and features. This also contains the TI component libraries,
-binaries and :ref:`TI Apps Launcher OOB Demo <TI-Apps-Launcher-User-Guide-label>`
+binaries and :ref:`OOB Demos <oob-demo-applications>`
 
 .. only:: _comment
 
@@ -56,16 +56,16 @@ Following is a list of all filesystem images provided by TI which can be built v
     Common targets are:
 
     From meta-arago[recommended]:
-        tisdk-bootstrap-base-image:  Arago TI SDK bootstrap base image for initramfs
-        tisdk-jailhouse-image:  Arago TI SDK image for Jailhouse Hypervisor
-        tisdk-bootstrap-image:  Arago TI SDK bootstrap image usable for board bringup
-        tisdk-tiny-initramfs:  Arago TI SDK super minimal base image for initramfs
-        tisdk-core-bundle:  Installer package for TI SDK - NOT for direct use on target
-        tisdk-base-image:  Arago TI SDK base image with test tools
-        tisdk-thinlinux-image:  Arago TI SDK Thin Linux image
-        tisdk-jailhouse-inmate:  Arago TI SDK super minimal base image for jailhouse linux demo
-        tisdk-default-image:  Arago TI SDK full filesystem image
-        tisdk-tiny-image:  Arago TI SDK super minimal base image for initramfs
+        arago-bootstrap-base-image:  Arago TI SDK bootstrap base image for initramfs
+        arago-jailhouse-image:  Arago TI SDK image for Jailhouse Hypervisor (Supported platforms - AM62x SK, AM62x LP SK, AM62L EVM, AM62Px EVM)
+        arago-bootstrap-image:  Arago TI SDK bootstrap image usable for board bringup
+        arago-tiny-initramfs:  Arago TI SDK super minimal base image for initramfs
+        arago-core-bundle:  Installer package for TI SDK - NOT for direct use on target
+        arago-base-image:  Arago TI SDK base image with test tools
+        arago-thinlinux-image:  Arago TI SDK Thin Linux image
+        arago-jailhouse-inmate:  Arago TI SDK super minimal base image for jailhouse linux demo (Supported platforms - AM62x SK, AM62x LP SK, AM62L EVM, AM62Px EVM)
+        arago-default-image:  Arago TI SDK full filesystem image
+        arago-tiny-image:  Arago TI SDK super minimal base image for initramfs
 
     From meta-tisdk:
         tisdk-display-cluster-image:  Arago TI SDK full filesystem image showcasing display sharing in AM62P
