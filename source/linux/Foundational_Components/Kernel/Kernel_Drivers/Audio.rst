@@ -1172,7 +1172,7 @@ Board-specific instructions
    The board uses four **TAD52512 DAC** and two **PCM6240 ADC** connected through
    **McASP2 [AXR0,1,3 and 4 for playback, AXR14 for Capture]** for audio.
    The board features eight TRS 3.5mm jack, that can be used for
-   simultaneous 8 channel playback and 4 channel recording.
+   simultaneous 8 channel playback and 8 channel recording.
 
    The AM62D2-EVM audio subsystem provides comprehensive playback and recording
    capabilities through dedicated DACs and ADCs. Use the following command to list
@@ -1242,36 +1242,44 @@ Board-specific instructions
           -> CODEC drivers
            -> Texas Instruments PCM6240 Family Audio chips based on I2C (SND_SOC_PCM6240 [=m])
 
-   Choose active device between two PCM6240 ADC devices:
+   Choose active recording profile from the available PCM6240 ADC profiles:
 
    .. code-block:: text
 
-      Device 0: PCM6240 at I2C address 0x48 (Connector-J2)
-      Device 1: PCM6240 at I2C address 0x49 (Connector-J1)
+      Profile 0: 8ch Non-Interleaved - All 8 channels from both ADCs in non-interleaved format
+      Profile 1: 8ch Interleaved - All 8 channels from both ADCs in interleaved format
+      Profile 2: J2A Stereo - Stereo recording from J2A connector (I2C 0x48)
+      Profile 3: J2B Stereo - Stereo recording from J2B connector (I2C 0x48)
+      Profile 4: J1A Stereo - Stereo recording from J1A connector (I2C 0x49)
+      Profile 5: J1B Stereo - Stereo recording from J1B connector (I2C 0x49)
+      Profile 6: J2A,J2B 4ch Non-Interleaved - 4-channel non-interleaved from J2 connectors
+      Profile 7: J2A,J2B 4ch Interleaved - 4-channel interleaved from J2 connectors
+      Profile 8: J1A,J1B 4ch Non-Interleaved - 4-channel non-interleaved from J1 connectors
+      Profile 9: J1A,J1B 4ch Interleaved - 4-channel interleaved from J1 connectors
 
-   To select Device 0 (I2C address 0x48) as an active device:
+   Example to select Profile 0 (8ch Non-Interleaved - default profile):
 
    .. code-block:: console
+
+      # To select Profile 0 (8ch Non-Interleaved - default profile)
 
       root@am62dxx-evm:~# amixer cset name='pcm6240-2dev-reg PCM6240 i2c1 Profile id' 0
       numid=17,iface=MIXER,name='pcm6240-2dev-reg PCM6240 i2c1 Profile id'
-      type=INTEGER,access=rw------,values=1,min=0,max=3,step=0
+      type=INTEGER,access=rw------,values=1,min=0,max=9,step=0
       values=0
 
-   To select Device 1 (I2C address 0x49) as an active device:
-
-   .. code-block:: console
-
+      # To select Profile 1 (8ch Interleaved):
+    
       root@am62dxx-evm:~# amixer cset name='pcm6240-2dev-reg PCM6240 i2c1 Profile id' 1
       numid=17,iface=MIXER,name='pcm6240-2dev-reg PCM6240 i2c1 Profile id'
-      type=INTEGER,access=rw------,values=1,min=0,max=3,step=0
+      type=INTEGER,access=rw------,values=1,min=0,max=9,step=0
       values=1
 
-   To record 4-channel audio at 48kHz sample rate with 32-bit depth:
+   To record 8-channel audio at 48kHz sample rate with 32-bit depth:
 
    .. code-block:: console
 
-      root@am62dxx-evm:~# arecord -c 4 -r 48000 -f S32_LE test.wav
+      root@am62dxx-evm:~# arecord -c 8 -r 48000 -f S32_LE test.wav
 
 Potential issues
 ^^^^^^^^^^^^^^^^
