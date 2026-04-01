@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xl="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:dc="http://purl.org/dc/elements/1.1/" viewBox="3504.5 4784.5 573.85235 65" width="573.85235" height="65">
+  <defs>
+    <font-face font-family="Helvetica Neue" font-size="8" panose-1="2 0 5 3 0 0 0 2 0 4" units-per-em="1000" underline-position="-100" underline-thickness="50" slope="0" x-height="517" cap-height="714" ascent="951.9958" descent="-212.99744" font-weight="400">
+      <font-face-src>
+        <font-face-name name="HelveticaNeue"/>
+      </font-face-src>
+    </font-face>
+    <font-face font-family="Helvetica Neue" font-size="14" panose-1="2 0 5 3 0 0 0 2 0 4" units-per-em="1000" underline-position="-100" underline-thickness="50" slope="0" x-height="517" cap-height="714" ascent="951.9958" descent="-212.99744" font-weight="400">
+      <font-face-src>
+        <font-face-name name="HelveticaNeue"/>
+      </font-face-src>
+    </font-face>
+    <font-face font-family="Helvetica Neue" font-size="12" panose-1="2 0 5 3 0 0 0 2 0 4" units-per-em="1000" underline-position="-100" underline-thickness="50" slope="0" x-height="517" cap-height="714" ascent="951.9958" descent="-212.99744" font-weight="400">
+      <font-face-src>
+        <font-face-name name="HelveticaNeue"/>
+      </font-face-src>
+    </font-face>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-1 -4 10 8" markerWidth="10" markerHeight="8" color="black">
+      <g>
+        <path d="M 8 0 L 0 -3 L 0 3 Z" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+  </defs>
+  <metadata> Produced by OmniGraffle 7.18.1\n2025-12-01 02:30:57 +0000</metadata>
+  <g id="TISP_11_2_examples_cascadeBiquad" stroke-opacity="1" fill="none" fill-opacity="1" stroke-dasharray="none" stroke="none">
+    <title>TISP_11.2_examples_cascadeBiquad</title>
+    <rect fill="white" x="3504.5" y="4784.5" width="573.85235" height="65"/>
+    <g id="TISP_11_2_examples_cascadeBiquad_Layer_1">
+      <title>Layer 1</title>
+      <g id="Graphic_20">
+        <text transform="translate(4025.5 4806.776)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="8" font-weight="400" fill="black" x="13.192" y="8">8Ch</tspan>
+          <tspan font-family="Helvetica Neue" font-size="8" font-weight="400" fill="black" x="24868996e-20" y="18.224">64 samples</tspan>
+        </text>
+      </g>
+      <g id="Graphic_5">
+        <rect x="3560.5" y="4785" width="128" height="64" fill="#189"/>
+        <rect x="3560.5" y="4785" width="128" height="64" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(3565.5 4801.636)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="14" font-weight="400" fill="white" x="19.59" y="13">TypeConvert</tspan>
+          <tspan font-family="Helvetica Neue" font-size="12" font-weight="400" fill="#e0e0e0" x="19.946" y="27.391998">int32_t -&gt; float</tspan>
+        </text>
+      </g>
+      <g id="Graphic_7">
+        <rect x="3726.5" y="4785" width="128" height="64" fill="#189"/>
+        <rect x="3726.5" y="4785" width="128" height="64" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(3731.5 4800.608)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="14" font-weight="400" fill="white" x="25.036" y="13">Parametric </tspan>
+          <tspan font-family="Helvetica Neue" font-size="14" font-weight="400" fill="white" x="30.363" y="29.392">Equalizer</tspan>
+        </text>
+      </g>
+      <g id="Graphic_8">
+        <rect x="3892.5" y="4785" width="128" height="64" fill="#189"/>
+        <rect x="3892.5" y="4785" width="128" height="64" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(3897.5 4801.636)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="14" font-weight="400" fill="white" x="19.59" y="13">TypeConvert</tspan>
+          <tspan font-family="Helvetica Neue" font-size="12" font-weight="400" fill="#e0e0e0" x="19.946" y="27.391998">float -&gt; int32_t</tspan>
+        </text>
+      </g>
+      <g id="Line_9">
+        <line x1="3688.5" y1="4817" x2="3716.6" y2="4817" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_10">
+        <line x1="3854.5" y1="4817" x2="3882.6" y2="4817" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_16">
+        <line x1="3524.8366" y1="4817" x2="3550.6" y2="4817" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_18">
+        <line x1="4020.5" y1="4817" x2="4067.9523" y2="4817" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_19">
+        <text transform="translate(3509.5 4806.776)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="8" font-weight="400" fill="black" x="13.192" y="8">8Ch</tspan>
+          <tspan font-family="Helvetica Neue" font-size="8" font-weight="400" fill="black" x="24868996e-20" y="18.224">64 samples</tspan>
+        </text>
+      </g>
+    </g>
+  </g>
+</svg>
