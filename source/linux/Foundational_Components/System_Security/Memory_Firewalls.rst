@@ -82,6 +82,13 @@ TIFS does not output logs by default. Enabling TIFS logging requires
 modifying U-Boot source code, recompiling it, and transferring the new
 binaries to the boot partition.
 
+.. note::
+
+   Currently, TIFS logs report a firewall read violation during boot. This
+   occurs because A53 speculatively accesses TF-A's memory region, which is
+   protected from non-secure access by a firewall. This occurs only once, since
+   TF-A's memory region is unmapped from the page table afterwards.
+
 Modify U-Boot Configuration
 ===========================
 
