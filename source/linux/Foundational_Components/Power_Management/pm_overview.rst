@@ -11,6 +11,12 @@ requires coordination between multiple software and hardware frameworks.
 Power Management techniques can broadly be classified into two categories:
 Dynamic Power Management and Static Power Management.
 
+.. note::
+
+   With ti-u-boot-2026.01, LPM works only if ti-linux-firmware is 12.0 or
+   newer. On older firmware images and new U-Boot, LPM fails and the device
+   requires a reboot.
+
 .. rubric:: Dynamic Power Management
 
 Dynamic Power Management techniques reduce the active power
