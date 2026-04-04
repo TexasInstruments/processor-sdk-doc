@@ -24,7 +24,7 @@ Software Dependencies to Get Started
 Prerequisites
 
 -  Processor SDK Linux for AM62Dx |__SDK_DOWNLOAD_URL__|.
--  Processor SDK MCU+ for AM62D refer `doc <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62DX/11_02_00_20/exports/docs/api_guide_am62dx/index.html>`__
+-  Processor SDK MCU+ for AM62D refer `doc <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62DX/12_00_00_22/exports/docs/api_guide_am62dx/index.html>`__
 
 .. note::
 

@@ -1,8 +1,8 @@
 .. _AM62D-dsp-offload-from-linux-user-guide:
 
-#########################################
-AM62D DSP offload from Linux - User Guide
-#########################################
+############################
+AM62D DSP offload from Linux
+############################
 
 ********
 Overview
@@ -105,13 +105,13 @@ Software and Tools
 
 - `C7000-CGT <https://www.ti.com/tool/C7000-CGT#downloads>`__ compiler
 
-- `Code Composer Studio <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62DX/11_00_00_16/exports/docs/api_guide_am62dx/CCS_PROJECTS_PAGE.html>`__
+- `Code Composer Studio <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62DX/12_00_00_22/exports/docs/api_guide_am62dx/CCS_PROJECTS_PAGE.html>`__
 
 - `TI Clang Compiler Toolchain <https://www.ti.com/tool/download/ARM-CGT-CLANG>`__
 
 - CMake, GCC, make, git, scp, minicom, Python3
 
-- `rpmsg-dma library <https://github.com/TexasInstruments/rpmsg-dma/tree/scarthgap>`__
+- `rpmsg-dma library <https://github.com/TexasInstruments/rpmsg-dma/tree/main>`__
 
 *********
 EVM Setup
@@ -126,6 +126,8 @@ EVM Setup
         .. figure:: /images/AM62D_evm_setup.png
            :height: 600
            :width: 1000
+
+   - Refer `Quick Start Guide for AM62D2-EVM <https://dev.ti.com/tirex/explore/node?isTheia=false&node=A__ARZXwcKmAzaWG2hcFPpKRA__PROCESSORS-DEVTOOLS__FUz-xrs__LATEST>`__ for more details.
 
 #. Setup UART Terminal
 
@@ -160,7 +162,7 @@ Steps to validate audio DSP offload demo
 
 #. Connect the USB-C cable from the power adapter to one of the two USB-C ports on the EVM.
 
-#. Download Host Utility `audmon.py <https://github.com/TexasInstruments/rpmsg-dma/blob/scarthgap/example/audio_offload/host%20utility/audmon.py>`__.
+#. Download Host Utility `audmon.py <https://github.com/TexasInstruments/rpmsg-dma/blob/main/example/audio_offload/host%20utility/audmon.py>`__.
 
 #. The EVM should boot and the booting progress should display in the serial port console. At the end of booting, the Arago login prompt will appear. Just enter "root" to log in.
 
@@ -214,7 +216,7 @@ Steps to validate audio DSP offload demo
 
    - Summary labels for min/max/avg stats per run
 
-   - For more information refer: `README <https://github.com/TexasInstruments/rpmsg-dma/blob/scarthgap/example/audio_offload/host%20utility/README.md>`_.
+   - For more information refer: `README <https://github.com/TexasInstruments/rpmsg-dma/blob/main/example/audio_offload/host%20utility/README.md>`_.
 
 .. note::
    
@@ -226,7 +228,7 @@ Below is sample snapshot:
    :height: 600
    :width: 1200
 
-- For more information on demo application and configuration, refer: `DSP Offload Example <https://github.com/TexasInstruments/rpmsg-dma/blob/scarthgap/example/audio_offload/host%20utility/README.md>`__.
+- For more information on demo application and configuration, refer: `DSP Offload Example <https://github.com/TexasInstruments/rpmsg-dma/blob/main/example/audio_offload/host%20utility/README.md>`__.
 
 ***********************************
 How to build audio DSP offload demo
@@ -240,11 +242,11 @@ Building audio DSP offload image from Yocto
 Building the Linux demo binary from sources
 ===========================================
 
-#. The source code for Audio DSP offload  demo is available as part of the `rpmsg-dma <https://github.com/TexasInstruments/rpmsg-dma/tree/scarthgap>`__.
+#. The source code for Audio DSP offload  demo is available as part of the `rpmsg-dma <https://github.com/TexasInstruments/rpmsg-dma/tree/main>`__.
 
    .. code-block:: console
 
-      host# git clone https://github.com/TexasInstruments/rpmsg-dma.git -b scarthgap
+      host# git clone https://github.com/TexasInstruments/rpmsg-dma.git -b main
 
 #. Download and Install the AM62D Linux SDK from |__SDK_DOWNLOAD_URL__| following the steps mentioned at :ref:`Download and Install the SDK <download-and-install-sdk>`.
 
@@ -289,5 +291,5 @@ Building the Linux demo binary from sources
 Building the c7 firmware from sources
 =====================================
 
-- Refer to the `MCU+ SDK Documentation  <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62DX/11_02_00_20/exports/docs/api_guide_am62dx/GETTING_STARTED_BUILD.html>`__
-- Refer to the `C7 Demo Firmware <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62DX/11_02_00_20/exports/docs/api_guide_am62dx/EXAMPLES_DRIVERS_IPC_RPMESSAGE_LINUX_AUDIO_FILTER_OFFLOAD.html>`__
+- Refer to the `MCU+ SDK Documentation  <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62DX/12_00_00_22/exports/docs/api_guide_am62dx/GETTING_STARTED_BUILD.html>`__
+- Refer to the `C7 Demo Firmware <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62DX/12_00_00_22/exports/docs/api_guide_am62dx/EXAMPLES_DRIVERS_IPC_RPMESSAGE_LINUX_AUDIO_FILTER_OFFLOAD.html>`__

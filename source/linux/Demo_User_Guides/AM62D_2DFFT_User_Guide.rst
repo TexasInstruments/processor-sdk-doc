@@ -95,10 +95,10 @@ Software and tools
 - TI Processor SDK Linux RT (AM62Dx)
 - MCU+SDK for AM62Dx
 - `C7000-CGT <https://www.ti.com/tool/C7000-CGT#downloads>`__ compiler
-- `Code Composer Studio <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62DX/11_00_00_16/exports/docs/api_guide_am62dx/CCS_PROJECTS_PAGE.html>`__
+- `Code Composer Studio <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62DX/12_00_00_22/exports/docs/api_guide_am62dx/CCS_PROJECTS_PAGE.html>`__
 - `TI Clang Compiler Toolchain <https://www.ti.com/tool/download/ARM-CGT-CLANG>`__
 - CMake, GCC, make, git, scp, minicom
-- `rpmsg-dma library <https://github.com/TexasInstruments/rpmsg-dma/tree/scarthgap>`__
+- `rpmsg-dma library <https://github.com/TexasInstruments/rpmsg-dma/tree/main>`__
 
 *********
 EVM setup
@@ -112,6 +112,8 @@ EVM setup
    .. figure:: /images/AM62D_evm_setup.png
       :height: 600
       :width: 1000
+
+   - Refer `Quick Start Guide for AM62D2-EVM <https://dev.ti.com/tirex/explore/node?isTheia=false&node=A__ARZXwcKmAzaWG2hcFPpKRA__PROCESSORS-DEVTOOLS__FUz-xrs__LATEST>`__ for more details.
 
 #. Setup UART Terminal
    
@@ -206,11 +208,11 @@ Building the linux demo binary from sources
 ===========================================
 
 #. The source code for the 2D FFT DSP offload demo is available as part of
-   the `rpmsg-dma <https://github.com/TexasInstruments/rpmsg-dma/tree/scarthgap>`__.
+   the `rpmsg-dma <https://github.com/TexasInstruments/rpmsg-dma/tree/main>`__.
    
    .. code-block:: console
       
-      host# git clone https://github.com/TexasInstruments/rpmsg-dma.git -b scarthgap
+      host# git clone https://github.com/TexasInstruments/rpmsg-dma.git -b main
 
 #. Download and Install the AM62D Linux SDK from |__SDK_DOWNLOAD_URL__| following
    the steps mentioned at :ref:`Download and Install the SDK <download-and-install-sdk>`.
@@ -252,5 +254,5 @@ Building the linux demo binary from sources
 Building the C7 firmware from sources
 =====================================
 
-- Refer to the `MCU+ SDK Documentation  <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62DX/11_02_00_20/exports/docs/api_guide_am62dx/GETTING_STARTED_BUILD.html>`__
-- Refer to the `C7x TISP Linux 2D FFT Offload Example <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62DX/11_02_00_20/exports/docs/api_guide_am62dx/EXAMPLES_TISP_FFT2D_LINUX_DSP_OFFLOAD.html>`__
+- Refer to the `MCU+ SDK Documentation  <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62DX/12_00_00_22/exports/docs/api_guide_am62dx/GETTING_STARTED_BUILD.html>`__
+- Refer to the `C7x TISP Linux 2D FFT Offload Example <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62DX/12_00_00_22/exports/docs/api_guide_am62dx/EXAMPLES_TISP_FFT2D_LINUX_DSP_OFFLOAD.html>`__
