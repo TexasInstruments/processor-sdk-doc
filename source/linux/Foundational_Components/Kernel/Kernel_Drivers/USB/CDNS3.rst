@@ -104,6 +104,85 @@ EVM
    J7200 EVM only supports single USB interface, so the USB3.1 and USB2.0 cannot be
    supported simultaneously.
 
+   Since J7200 SoC has a single instance of SERDES namely SERDES0, it is configured
+   for PCIe and QSGMII protocols. Hence, USB is configured for USB2.0 out of the box.
+
+   The following device-tree changes can be made to configure the SERDES for PCIe and
+   USB3 protocols, thereby enabling SuperSpeed for USB:
+
+   .. code-block:: diff
+
+      diff --git a/arch/arm64/boot/dts/ti/k3-j7200-common-proc-board.dts b/arch/arm64/boot/dts/ti/k3-j7200-common-proc-board.dts
+      index 735ffd3f35a1..f3d0c038c92d 100644
+      --- a/arch/arm64/boot/dts/ti/k3-j7200-common-proc-board.dts
+      +++ b/arch/arm64/boot/dts/ti/k3-j7200-common-proc-board.dts
+      @@ -412,7 +412,7 @@ &main_sdhci1 {
+
+       &serdes_ln_ctrl {
+               idle-states = <J7200_SERDES0_LANE0_PCIE1_LANE0>, <J7200_SERDES0_LANE1_PCIE1_LANE1>,
+      -                     <J7200_SERDES0_LANE2_QSGMII_LANE1>, <J7200_SERDES0_LANE3_IP4_UNUSED>;
+      +                     <J7200_SERDES0_LANE2_IP3_UNUSED>, <J7200_SERDES0_LANE3_USB>;
+       };
+
+       &mcu_spi1 {
+      @@ -424,20 +424,6 @@ &usb_serdes_mux {
+              bootph-all;
+       };
+
+      -&usbss0 {
+      -       pinctrl-names = "default";
+      -       pinctrl-0 = <&main_usbss0_pins_default>;
+      -       bootph-all;
+      -       ti,vbus-divider;
+      -       ti,usb2-only;
+      -};
+      -
+      -&usb0 {
+      -       dr_mode = "otg";
+      -       maximum-speed = "high-speed";
+      -       bootph-all;
+      -};
+      -
+       &tscadc0 {
+              adc {
+                       ti,adc-channels = <0 1 2 3 4 5 6 7>;
+      @@ -457,13 +443,28 @@ serdes0_pcie_link: phy@0 {
+                      resets = <&serdes_wiz0 1>, <&serdes_wiz0 2>;
+              };
+
+      -       serdes0_qsgmii_link: phy@1 {
+      -               reg = <2>;
+      -               cdns,num-lanes = <1>;
+      -               #phy-cells = <0>;
+      -               cdns,phy-type = <PHY_TYPE_QSGMII>;
+      -               resets = <&serdes_wiz0 3>;
+      -       };
+      +       serdes0_usb_link: phy@1 {
+      +        reg = <3>;
+      +        cdns,num-lanes = <1>;
+      +        #phy-cells = <0>;
+      +        cdns,phy-type = <PHY_TYPE_USB3>;
+      +        resets = <&serdes_wiz0 4>;
+      +    };
+      +};
+      +
+      +&usbss0 {
+      +       pinctrl-names = "default";
+      +       pinctrl-0 = <&main_usbss0_pins_default>;
+      +       bootph-all;
+      +       ti,vbus-divider;
+      +};
+      +
+      +&usb0 {
+      +       dr_mode = "host";
+      +       maximum-speed = "super-speed";
+      +       phys = <&serdes0_usb_link>;
+      +       phy-names = "cdns3,usb3-phy";
+      +       bootph-all;
+       };
+
+       &pcie1_rc {
+
 .. ifconfig:: CONFIG_part_variant in ('J722S')
 
    The following diagram depicts USB integration in |__PART_FAMILY_DEVICE_NAMES__| EVM.
