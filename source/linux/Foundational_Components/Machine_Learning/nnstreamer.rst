@@ -12,7 +12,7 @@ https://nnstreamer.ai/
 Supported versions
 ------------------
 
-  - NNStreamer 2.4.2
+  - NNStreamer 2.6.0
 
 Testing NNStreamer
 ------------------
@@ -20,7 +20,7 @@ Testing NNStreamer
 .. code-block:: console
 
     root@am62xx-evm:~# nnstreamer-check
-    NNStreamer version: 2.4.2
+    NNStreamer version: 2.6.0
                loaded : TRUE
                path   : /usr/lib/gstreamer-1.0/libnnstreamer.so
     ...

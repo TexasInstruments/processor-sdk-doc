@@ -18,7 +18,7 @@ https://onnxruntime.ai/
 Supported version
 -----------------
 
-  - ONNX Runtime 1.20.1
+  - ONNX Runtime 1.23.2
 
 ONNX Runtime test applications
 ------------------------------
@@ -34,7 +34,7 @@ Running benchmark_model
     usage: perf_test [options...] model_path [result_file]
     Options:
 	-m [test_mode]: Specifies the test mode. Value could be 'duration' or 'times'.
-		Provide 'duration' to run the test for a fix duration, and 'times' to repeated for a certain times. 
+		Provide 'duration' to run the test for a fix duration, and 'times' to repeated for a certain times.
 	-M: Disable memory pattern.
 	-A: Disable memory arena
 	-I: Generate tensor input binding (Free dimensions are treated as 1.)
@@ -55,19 +55,19 @@ Running benchmark_model
 	-o [optimization level]: Default is 99 (all). Valid values are 0 (disable), 1 (basic), 2 (extended), 99 (all).
 		Please see onnxruntime_c_api.h (enum GraphOptimizationLevel) for the full list of all optimization levels.
 	-u [optimized_model_path]: Specify the optimized model path for saving.
-	-d [CUDA only][cudnn_conv_algorithm]: Specify CUDNN convolution algorithms: 0(benchmark), 1(heuristic), 2(default). 
-	-q [CUDA only] use separate stream for copy. 
+	-d [CUDA only][cudnn_conv_algorithm]: Specify CUDNN convolution algorithms: 0(benchmark), 1(heuristic), 2(default).
+	-q [CUDA only] use separate stream for copy.
 	-z: Set denormal as zero. When turning on this option reduces latency dramatically, a model may have denormals.
-	-C: Specify session configuration entries as key-value pairs: -C "<key1>|<value1> <key2>|<value2>" 
-	    Refer to onnxruntime_session_options_config_keys.h for valid keys and values. 
-	    [Example] -C "session.disable_cpu_ep_fallback|1 ep.context_enable|1" 
-	-i: Specify EP specific runtime options as key value pairs. Different runtime options available are: 
+	-C: Specify session configuration entries as key-value pairs: -C "<key1>|<value1> <key2>|<value2>"
+	    Refer to onnxruntime_session_options_config_keys.h for valid keys and values.
+	    [Example] -C "session.disable_cpu_ep_fallback|1 ep.context_enable|1"
+	-i: Specify EP specific runtime options as key value pairs. Different runtime options available are:
 	    [Usage]: -e <provider_name> -i '<key1>|<value1> <key2>|<value2>'
 
-	    [ACL only] [enable_fast_math]: Options: 'true', 'false', default: 'false', 
+	    [ACL only] [enable_fast_math]: Options: 'true', 'false', default: 'false',
 
 	-T [Set intra op thread affinities]: Specify intra op thread affinity string
-	 [Example]: -T 1,2;3,4;5,6 or -T 1-2;3-4;5-6 
+	 [Example]: -T 1,2;3,4;5,6 or -T 1-2;3-4;5-6
 		 Use semicolon to separate configuration between threads.
 		 E.g. 1,2;3,4;5,6 specifies affinities for three threads, the first thread will be attached to the first and second logical processor.
 		 The number of affinities must be equal to intra_op_num_threads - 1
@@ -84,22 +84,22 @@ Example of running *onnxruntime_perf_test* on target using the pre-installed mob
 .. code-block:: console
 
     # /usr/bin/onnxruntime-tests/onnxruntime_perf_test -I -m times -r 8 -e acl -P /usr/bin/onnxruntime-tests/testdata/mobilenet_v3_small_excerpt.onnx
-    Session creation time cost: 0.0273071 s
-    First inference time cost: 20 ms
-    Total inference time cost: 0.14188 s
+    Session creation time cost: 0.139671 s
+    First inference time cost: 15 ms
+    Total inference time cost: 0.126396 s
     Total inference requests: 8
-    Average inference time cost: 17.735 ms
-    Total inference run time: 0.141991 s
-    Number of inferences per second: 56.3415 
-    Avg CPU usage: 98 %
-    Peak working set size: 35299328 bytes
-    Avg CPU usage:98
-    Peak working set size:35299328
+    Average inference time cost: 15.7995 ms
+    Total inference run time: 0.126518 s
+    Number of inferences per second: 63.232
+    Avg CPU usage: 100 %
+    Peak working set size: 37994496 bytes
+    Avg CPU usage:100
+    Peak working set size:37994496
     Runs:8
-    Min Latency: 0.0159831 s
-    Max Latency: 0.0232702 s
-    P50 Latency: 0.0167086 s
-    P90 Latency: 0.0232702 s
-    P95 Latency: 0.0232702 s
-    P99 Latency: 0.0232702 s
-    P999 Latency: 0.0232702 s
+    Min Latency: 0.00955697 s
+    Max Latency: 0.0239688 s
+    P50 Latency: 0.0156388 s
+    P90 Latency: 0.0239688 s
+    P95 Latency: 0.0239688 s
+    P99 Latency: 0.0239688 s
+    P999 Latency: 0.0239688 s

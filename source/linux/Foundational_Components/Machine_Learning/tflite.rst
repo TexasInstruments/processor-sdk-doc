@@ -18,7 +18,7 @@ It supports on-device inference with low latency and a compact binary size. You 
 Features
 ********
 
-  - TensorFlow Lite v2.18.0 via Yocto - `meta-arago-extras/recipes-framework/tensorflow-lite/tensorflow-lite_2.18.0.bb <https://web.git.yoctoproject.org/meta-arago/tree/meta-arago-extras/recipes-framework/tensorflow-lite/tensorflow-lite_2.18.0.bb?h=11.00.09>`__
+  - TensorFlow Lite v2.20.0 via Yocto - `meta-arago-extras/recipes-framework/tensorflow-lite/tensorflow-lite_2.20.0.bb <https://web.git.yoctoproject.org/meta-arago/tree/meta-arago-extras/recipes-framework/tensorflow-lite/tensorflow-lite_2.18.0.bb?h=11.00.09>`__
   - Multithreaded computation with acceleration using Arm Neon SIMD instructions on Cortex-A cores
   - C++ Library and Python interpreter (supported Python version 3)
   - TensorFlow Lite Model benchmark Tool (i.e. :command:`benchmark_model`)
@@ -89,23 +89,21 @@ The output of the benchmarking application should be similar to:
    root@am62xx-evm:~# /opt/tensorflow-lite/tools/benchmark_model --graph=/usr/share/oob-demo-assets/models/ssd_mobilenet_v2_coco.tflite --num_threads=4 --use_xnnpack=false
    INFO: STARTING!
    INFO: Log parameter values verbosely: [0]
-   INFO: Num threads: [4]
    INFO: Graph: [/usr/share/oob-demo-assets/models/ssd_mobilenet_v2_coco.tflite]
    INFO: Signature to run: []
-   INFO: #threads used for CPU inference: [4]
    INFO: Use xnnpack: [0]
    INFO: Loaded model /usr/share/oob-demo-assets/models/ssd_mobilenet_v2_coco.tflite
    INFO: The input model file size (MB): 67.3128
-   INFO: Initialized session in 6.418ms.
+   INFO: Initialized session in 5.579ms.
    INFO: Running benchmark for at least 1 iterations and at least 0.5 seconds but terminate if exceeding 150 seconds.
-   INFO: count=1 curr=1041765
+   INFO: count=1 curr=1357602 p5=1357602 median=1357602 p95=1357602
 
    INFO: Running benchmark for at least 50 iterations and at least 1 seconds but terminate if exceeding 150 seconds.
-   INFO: count=50 first=977738 curr=964908 min=911877 max=1112273 avg=971535 std=39112
+   INFO: count=50 first=1249964 curr=1240143 min=1238588 max=1252566 avg=1.24027e+06 std=2565 p5=1238753 median=1239807 p95=1247415
 
-   INFO: Inference timings in us: Init: 6418, First inference: 1041765, Warmup (avg): 1.04176e+06, Inference (avg): 971535
+   INFO: Inference timings in us: Init: 5579, First inference: 1357602, Warmup (avg): 1.3576e+06, Inference (avg): 1.24027e+06
    INFO: Note: as the benchmark tool itself affects memory footprint, the following is only APPROXIMATE to the actual memory footprint of the model at runtime. Take the information at your discretion.
-   INFO: Memory footprint delta from the start of the tool (MB): init=6.14844 overall=109.848
+   INFO: Memory footprint delta from the start of the tool (MB): init=6.36328 overall=109.832
 
 Where,
 
@@ -130,26 +128,23 @@ The output of the benchmarking application should be similar to,
    root@am62xx-evm:~# /opt/tensorflow-lite/tools/benchmark_model --graph=/usr/share/oob-demo-assets/models/ssd_mobilenet_v2_coco.tflite --num_threads=4 --use_xnnpack=true
    INFO: STARTING!
    INFO: Log parameter values verbosely: [0]
-   INFO: Num threads: [4]
    INFO: Graph: [/usr/share/oob-demo-assets/models/ssd_mobilenet_v2_coco.tflite]
    INFO: Signature to run: []
-   INFO: #threads used for CPU inference: [4]
    INFO: Use xnnpack: [1]
    INFO: Loaded model /usr/share/oob-demo-assets/models/ssd_mobilenet_v2_coco.tflite
    INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
    INFO: XNNPACK delegate created.
    INFO: Explicitly applied XNNPACK delegate, and the model graph will be partially executed by the delegate w/ 1 delegate kernels.
    INFO: The input model file size (MB): 67.3128
-   INFO: Initialized session in 592.232ms.
+   INFO: Initialized session in 614.333ms.
    INFO: Running benchmark for at least 1 iterations and at least 0.5 seconds but terminate if exceeding 150 seconds.
-   INFO: count=1 curr=633430
-
+   INFO: count=1 curr=905463 p5=905463 median=905463 p95=905463
    INFO: Running benchmark for at least 50 iterations and at least 1 seconds but terminate if exceeding 150 seconds.
-   INFO: count=50 first=605745 curr=618849 min=568228 max=722188 avg=602943 std=27690
-
-   INFO: Inference timings in us: Init: 592232, First inference: 633430, Warmup (avg): 633430, Inference (avg): 602943
+   INFO: count=50 first=900416 curr=898333 min=898007 max=906121 avg=899641 std=1549 p5=898333 median=899281 p95=904305
+   INFO: Inference timings in us: Init: 614333, First inference: 905463, Warmup (avg): 905463, Inference (avg): 899641
    INFO: Note: as the benchmark tool itself affects memory footprint, the following is only APPROXIMATE to the actual memory footprint of the model at runtime. Take the information at your discretion.
-   INFO: Memory footprint delta from the start of the tool (MB): init=133.086 overall=149.531
+   INFO: Memory footprint delta from the start of the tool (MB): init=146.363 overall=150.141
+
 
 Where,
 
@@ -166,14 +161,14 @@ The following performance numbers are captured with :command:`benchmark_model` o
    :header: "SOC", "Delegates", "Inference Time (sec)", "Initialization Time (ms)", "Overall Memory Footprint (MB)"
    :widths: 10, 10, 20, 20, 20
 
-   "AM62X", "CPU only", "0.977168", "6.129", "110.07"
-   "", "XNNPACK", "0.613474", "593.558", "149.699"
-   "AM62PX", "CPU only", "0.419261", "4.79", "108.707"
-   "", "XNNPACK", "0.274756", "1208.04", "149.395"
-   "AM64X", "CPU only", "1.10675", "144.535", "109.562"
-   "", "XNNPACK", "0.702809", "601.33", "149.602"
-   "AM62L", "CPU only", "1.04867", "6.088", "110.129"
-   "", "XNNPACK", "0.661133", "466.216", "149.703"
+   "AM62X", "CPU only", "1.24027", "5.579", "109.832"
+   "", "XNNPACK", "0.899641", "614.333", "150.141"
+   "AM62PX", "CPU only", "1.23341", "252.390", "111.121"
+   "", "XNNPACK", "0.875280", "597.639", "150.52"
+   "AM64X", "CPU only", "1.26429", "135.579", "110.188"
+   "", "XNNPACK", "0.740743", "885.636", "150.484"
+   "AM62L", "CPU only", "1.3708", "807.076", "111.152"
+   "", "XNNPACK", "0.930577", "769.145", "150.496"
 
 Based on the above data, using the XNNPACK delegate significantly improves inference times across all SoCs, though it generally increases initialization time and overall memory footprint.
 
@@ -185,10 +180,12 @@ Based on the above data, using the XNNPACK delegate significantly improves infer
 Example Applications
 ********************
 
-|__SDK_FULL_NAME__| has integrated opensource components like NNStreamer which can be used for neural network inferencing using the sample tflite models under :file:`/usr/share/oob-demo-assets/models/`
-Checkout the Object Detection usecase under :ref:`TI Apps Launcher - User Guide <TI-Apps-Launcher-User-Guide-label>`
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62LX', 'AM62PX')
 
-Alternatively, if a display is connected, you can run the Object Detection pipeline using this command,
+   |__SDK_FULL_NAME__| has integrated opensource components like NNStreamer which can be used for neural network inferencing using the sample tflite models under :file:`/usr/share/oob-demo-assets/models/`
+   Checkout the Object Detection usecase under :ref:`TI Apps Launcher - User Guide <TI-Apps-Launcher-User-Guide-label>`
+
+   Alternatively, if a display is connected, you can run the Object Detection pipeline using this command,
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62LX')
 
@@ -247,6 +244,47 @@ Alternatively, if a display is connected, you can run the Object Detection pipel
       kmssink name=sink
 
    The above GStreamer pipeline reads an H.264 video file, decodes it, and processes it for object detection using a TensorFlow Lite model, displaying bounding boxes around detected objects. The processed video is then composited and rendered on the screen using the ``kmssink`` element.
+
+.. ifconfig:: CONFIG_part_variant in ('AM62DX')
+
+   |__SDK_FULL_NAME__| has integrated opensource components like NNStreamer which can be used for neural network inferencing using the sample TensorFlow Lite models under :file:`/usr/share/oob-demo-assets/models/`
+
+   If an audio input device is connected, you can run the Audio Classification pipeline using this command:
+
+      .. code-block:: console
+
+         gst-launch-1.0 \
+         alsasrc ! \
+         audioconvert ! \
+         audioresample ! \
+         audio/x-raw,format=S16LE,channels=1,rate=16000,layout=interleaved ! \
+         tensor_converter frames-per-tensor=3900 ! \
+         tensor_aggregator \
+               frames-in=3900 \
+               frames-out=15600 \
+               frames-flush=3900 \
+               frames-dim=1 ! \
+         tensor_transform \
+               mode=arithmetic \
+               option=typecast:float32,add:0.5,div:32767.5 ! \
+         tensor_transform \
+               mode=transpose \
+               option=1:0:2:3 ! \
+         queue \
+               leaky=2 \
+               max-size-buffers=10 ! \
+         tensor_filter \
+               framework=tensorflow2-lite \
+               model=/usr/share/oob-demo-assets/models/yamnet_audio_classification.tflite \
+               custom=Delegate:XNNPACK,NumThreads:2 ! \
+         tensor_decoder \
+               mode=image_labeling \
+               option1=/usr/share/oob-demo-assets/labels/yamnet_label_list.txt ! \
+         filesink \
+               buffer-mode=2 \
+               location=/dev/stdout
+
+   The above GStreamer pipeline captures real-time audio from an ALSA source, converts it to the required format, and processes it for audio event classification using the YAMNet TensorFlow Lite model. The audio data is aggregated into tensors, normalized for machine learning input, and classified to identify various audio events and sounds. The classification results are decoded to human-readable labels and output to stdout.
 
 .. attention::
 

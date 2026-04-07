@@ -23,4 +23,4 @@ in conjunction with the TIDL TensorFlow Lite Delegate.
 Supported versions
 ------------------
 
-  - Arm NN 24.11
+  - Arm NN 26.01
