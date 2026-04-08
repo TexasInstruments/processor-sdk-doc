@@ -30,15 +30,14 @@ The following is an example list where Chain-of-Trust should be maintained.
 - Disable kernel debug options
 - Disable/remove userspace debug tools, devmem disable, etc..
 
-We provide methods for U-Boot's SPL loader to securely verify/decrypt the U-Boot proper, and this U-Boot proper to securely verify/decrypt the
-Kernel/DTB/initfamfs. This is accomplished by calling into TIFS via TI-SCI (Texas Instruments System controller Interface). This allows us to use
-the same signing/encrypting tools used to authenticate the first-stage image. For more infomation using TI_SCI methods refer to the
-`TISCI User Guide <https://software-dl.ti.com/tisci/esd/22_01_02/index.html>`__.
+We provide methods for U-Boot's SPL loader to securely verify/encrypt the U-Boot proper. This is accomplished by calling into TIFS via TI-SCI
+(Texas Instruments System Controller Interface). For more infomation using TI_SCI methods refer to the
+`TISCI User Guide <https://software-dl.ti.com/tisci/esd/22_01_02/index.html>`__. U-Boot proper then securely verifies/decrypts the Kernel/DTB/initramfs.
 
-.. Image:: /images/K3_KF.JPG
+.. Image:: /images/K3_KF.png
         :scale: 70%
 
-Secure boot is like an onion, it has layers. Some layers are trusted more than others. Secure ROM has the highest trust and REE (Run-time Execution
+Secure boot has layers. Some layers are trusted more than others. Secure ROM has the highest trust and REE (Run-time Execution
 Environment) non-trustzone user-space applications have the least. If any higher trust code is to be loaded by a lower trust entity, it must be verified
 by an even higher trust entity and not allowed to be accessed by the lower trust entity after that point. Some such trust inversions are listed below:
 
