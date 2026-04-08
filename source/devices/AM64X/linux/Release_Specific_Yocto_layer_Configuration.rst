@@ -23,6 +23,6 @@ has the following configuration files in the :file:`configs/processor-sdk` direc
    * - Config File
      - Description
      - Supported machines/platforms
-   * - :file:`processor-sdk-scarthgap-nonqt-11.02.08.02-config.txt`
+   * - :file:`processor-sdk-master-nonqt-12.00.00.07.04-config.txt`
      - Used for building Yocto based filesystem
      - |__SDK_BUILD_MACHINE__|

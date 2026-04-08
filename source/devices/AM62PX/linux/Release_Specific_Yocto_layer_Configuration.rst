@@ -23,14 +23,14 @@ has the following configuration files in the :file:`configs/processor-sdk` direc
    * - Config File
      - Description
      - Supported machines/platforms
-   * - :file:`processor-sdk-scarthgap-chromium-11.02.08.02-config.txt`
+   * - :file:`processor-sdk-master-chromium-12.00.00.07.04-config.txt`
      - Used for building chromium browser enabled Yocto based filesystem
      - |__SDK_BUILD_MACHINE__|
-   * - :file:`processor-sdk-scarthgap-11.02.08.02-config.txt`
+   * - :file:`processor-sdk-master-12.00.00.07.04-config.txt`
      - Used for building Yocto based filesystem
      - |__SDK_BUILD_MACHINE__|
-   * - :file:`processor-sdk-scarthgap-selinux-11.02.08.02-config.txt`
+   * - :file:`processor-sdk-master-selinux-12.00.00.07.04-config.txt`
      - Used for building SELinux enabled Yocto based filesystem
      - |__SDK_BUILD_MACHINE__|
 
-The oe-layersetup configuration, as defined in ``processor-sdk-scarthgap-chromium-11.02.08.02-config.txt``, is used for configuring the meta layers in the yocto SD card image available on |__SDK_DOWNLOAD_URL__|.
+The oe-layersetup configuration, as defined in ``processor-sdk-master-chromium-12.00.00.07.04-config.txt``, is used for configuring the meta layers in the yocto SD card image available on |__SDK_DOWNLOAD_URL__|.
