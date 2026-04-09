@@ -30,6 +30,29 @@ The following steps show how to build R5 SPL with falcon mode support:
 
    * `Falcon Mode - U-Boot documentaiton <https://docs.u-boot.org/en/v2026.01/board/ti/am62x_sk.html#falcon-mode>`__
 
+.. important::
+
+   The following patch is required to enable R5 falcon mode in U-Boot for
+   ``12.0`` SDK release:
+
+   .. code-block:: diff
+
+      diff --git a/arch/arm/mach-k3/common.c b/arch/arm/mach-k3/common.c
+      index b93516ff806..b5ced6e713b 100644
+      --- a/arch/arm/mach-k3/common.c
+      +++ b/arch/arm/mach-k3/common.c
+      @@ -54,7 +54,7 @@ struct ti_sci_handle *get_ti_sci_handle(void)
+       	return (struct ti_sci_handle *)ti_sci_get_handle_from_sysfw(dev);
+       }
+
+      -#ifdef CONFIG_SPL_OS_BOOT
+      +#if IS_ENABLED(CONFIG_SPL_OS_BOOT) && IS_ENABLED(CONFIG_ARM64)
+       void *board_spl_fit_buffer_addr(ulong fit_size, int sectors, int bl_len)
+       {
+       	return (void *)CONFIG_SPL_LOAD_FIT_ADDRESS;
+
+   * `Patch in ti-u-boot tree <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/commit/?h=ti-u-boot-2026.01-next&id=ee3048ee0822c35312379b6e24b5c80e9a845110>`__
+
 *******************
 Extra Configuration
 *******************
