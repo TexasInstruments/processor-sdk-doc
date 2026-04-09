@@ -22,6 +22,10 @@ The following steps show how to build R5 SPL with falcon mode support:
 
    * `Falcon Mode - U-Boot documentaiton <https://docs.u-boot.org/en/v2026.01/board/ti/am62ax_sk.html#falcon-mode>`__
 
+.. ifconfig:: CONFIG_part_variant in ('AM62DX')
+
+   * `Falcon Mode - U-Boot documentaiton <https://docs.u-boot.org/en/v2026.04/board/ti/am62dx_evm.html#falcon-mode>`__
+
 .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
    * `Falcon Mode - U-Boot documentaiton <https://docs.u-boot.org/en/v2026.01/board/ti/am62px_sk.html#falcon-mode>`__
@@ -60,7 +64,7 @@ Extra Configuration
 OSPI boot:
 ==========
 
-.. ifconfig:: CONFIG_part_variant not in ('AM62AX')
+.. ifconfig:: CONFIG_part_variant not in ('AM62AX', 'AM62DX')
 
    For OSPI boot, the :file:`tiboot3.bin` file should be flashed to the same
    addresses in flash as regular boot flow whereas :file:`tifalcon.bin` and the
@@ -76,7 +80,7 @@ OSPI boot:
      => tftp ${loadaddr} tiboot3.bin
      => sf update $loadaddr 0x0 $filesize
 
-.. ifconfig:: CONFIG_part_variant in ('AM62AX')
+.. ifconfig:: CONFIG_part_variant in ('AM62AX', 'AM62DX')
 
    This section is not applicable for this platform.
 
