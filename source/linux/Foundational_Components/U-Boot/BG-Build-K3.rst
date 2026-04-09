@@ -458,6 +458,15 @@ All of these binaries are available in the SDK at :file:`<path to tisdk>/board-s
          BINMAN_INDIRS=$TI_LINUX_FW_DIR \
          TEE=$OPTEE_DIR/out/arm-plat-k3/core/tee-pager_v2.bin
 
+   .. note::
+
+      The :file:`am62lx_falcon.config` config fragment can be used to enable
+      falcon mode support.
+
+      .. code-block:: console
+
+         $ make CROSS_COMPILE="$CROSS_COMPILE_64" am62lx_evm_defconfig am62lx_falcon.config
+
 .. ifconfig:: CONFIG_part_variant not in ('AM64X', 'AM62X', 'AM62AX', 'AM62LX')
 
    .. note::
