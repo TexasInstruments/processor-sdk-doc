@@ -37,21 +37,20 @@ found on the SDK download page or in the installed directory as indicated below.
 -  Debian Manifest: `TI debian software manifest 11.01.16.13
    <https://dr-download.ti.com/software-development/software-development-kit-sdk/MD-YjEeNKJJjt/11.01.16.13/software_manifest_debian_am62lxx-evm_am62lxx-evm.htm>`__
 
-Release 11.02.08.02
-===================
+Release 12.00.00.07.04
+======================
 
-Released on Dec 2025
+Released on Apr 2026
 
 What's new
 ----------
 
 **Processor SDK Linux AM62LX Release has following new features:**
 
-  - Supported AM62Lx SR1.1 Only
-  - New 2-Stage A53 Boot Flow including OPTEE
-  - Low Power Mode: DeepSleep Wakeup Event - UART, GPIO, CPUFreq Framework with DFS
-  - Added support for McASP async mode: independent transmit (playback) and receive (capture) clocking
-  - Kernel: :ref:`DTHEv2 Crypto Accelerator <DTHEv2-Crypto-Accelerator>` OPTEE TRNG
+  - First 2026 LTS Reference Release Including RT combined branch model
+  - Uboot: :ref:`A53 SPL Falcon boot <U-Boot-Falcon-Mode>`
+  - Important Bug Fixes on top of Processor SDK 11.02.08.02 Release.
+  - Review Issue Tracker Section for the new fixes.
   - Support for multiple Linux distributions, such as Yocto, Debian and Buildroot
 
 **Key Release References:**
@@ -66,15 +65,15 @@ What's new
 
 **Component version:**
 
-  - Kernel (Including RT) 6.12.57
-  - U-Boot 2025.01
-  - Toolchain GCC 13.4
-  - OPTEE 4.7.0
-  - ATF 2.12+
-  - TIFS Firmware `v11.02.05 <https://software-dl.ti.com/tisci/esd/11_02_05/release_notes/release_notes.html>`__ (Click on the link for more information)
-  - Yocto scarthgap 5.0
+  - Kernel (Including RT) 6.18.13
+  - U-Boot 2026.01
+  - Toolchain GCC 15.2
+  - OPTEE 4.9.0+
+  - ATF 2.14+
+  - TIFS Firmware `v12.00.02 <https://software-dl.ti.com/tisci/esd/12_00_02/release_notes/release_notes.html>`__ (Click on the link for more information)
+  - Yocto Master
   - Armbian-based Debian 13 (Trixie)
-  - Buildroot 2024.11.1
+  - Buildroot 2026.02
 
 .. _release-specific-build-information:
 
