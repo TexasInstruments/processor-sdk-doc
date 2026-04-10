@@ -1,5 +1,5 @@
 =======================================
- RT-linux 11.02.08.02 Performance Guide
+ RT-linux 12.00.00 Performance Guide
 =======================================
 
 .. rubric::  **Read This First**
@@ -36,55 +36,3 @@ For further information or to report any problems, contact
 https://e2e.ti.com/ or https://support.ti.com/
 
 |
-
-System Benchmarks
------------------
-
-Stress-ng and Cyclic Test
-
-.. _RT-linux-performance:
-
-stress-ng (next-generation) will stress test a embedded platform in various selectable ways.
-It was designed to exercise various physical subsystems as well as the various
-operating system kernel interfaces. stress-ng can also measure test throughput rates;
-this can be useful to observe performance changes across different operating system or types of hardware.
-
-Cyclictest is most commonly used for benchmarking RT systems.
-It is one of the most frequently used tools for evaluating the relative performance of real-time systems.
-Some performance tests which use Cyclictest are System benchmarking, Latency debugging with tracing and
-approximating application performance.
-
-Test commands used for running stress-ng and cyclictest together
-
-.. code:: console
-
-   stress-ng --cpu-method=all -c 4 &
-   cyclictest -m -Sp80 -D6h -h400 -i200 -M -q
-
-The following summarizes the latencies observed using the yocto based
-default SDK image using the SK-AM62B-P1_ reference board:
-
-.. _SK-AM62B-P1: https://www.ti.com/tool/SK-AM62B-P1
-
-.. note::
-
-   Using the OP-TEE TRNG driver can impact this benchmark's performance due to
-   frequent context switching between Normal World (Linux) and Secure World (OP-TEE),
-   that occurs when the kernel's hardware random number generator interface
-   (hwrng) requests entropy from the secure TRNG to replenish the Linux entropy
-   pool.
-
-   The Linux TRNG driver can mitigate these latency spikes. This involves
-   enabling the Pseudo RNG driver in OP-TEE as documented in the Foundational
-   Components section: :ref:`building-optee-with-prng`, and enabling the RNG
-   node in the Linux kernel device tree. This way the HW TRNG is accessed from
-   the kernel itself.
-
-.. csv-table::
-   :header: "Latencies","CPU 0","CPU 1","CPU 2","CPU 3"
-
-   "Minimum (usec)","5","5","5","5"
-   "Average (usec)","6","6","6","6"
-   "Maximum (usec)","66","41","39","31"
-
-.. image:: img/rt-cpu-method-all-latency-histogram.png
