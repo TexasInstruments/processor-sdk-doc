@@ -1,10 +1,10 @@
+#################################
+ Linux 12.00.00 Performance Guide
+#################################
 
-===================================
-Linux 12.00.00 Performance Guide
-===================================
-
-.. rubric::  **Read This First**
-   :name: read-this-first-kernel-perf-guide
+***************
+Read This First
+***************
 
 **All performance numbers provided in this document are gathered using
 following Evaluation Modules unless otherwise specified.**
@@ -17,8 +17,9 @@ following Evaluation Modules unless otherwise specified.**
 
 Table:  Evaluation Modules
 
-.. rubric::  About This Manual
-   :name: about-this-manual-kernel-perf-guide
+*****************
+About This Manual
+*****************
 
 This document provides performance data for each of the device drivers
 which are part of the Processor SDK Linux package. This document should be
@@ -26,17 +27,20 @@ used in conjunction with release notes and user guides provided with the
 Processor SDK Linux package for information on specific issues present
 with drivers included in a particular release.
 
-.. rubric::  If You Need Assistance
-   :name: if-you-need-assistance-kernel-perf-guide
-
 For further information or to report any problems, contact
 https://e2e.ti.com/ or https://support.ti.com/
 
+|
+
+*****************
 System Benchmarks
------------------
+*****************
+
+|
 
 LMBench
-^^^^^^^
+=======
+
 LMBench is a collection of microbenchmarks of which the memory bandwidth 
 and latency related ones are typically used to estimate processor 
 memory system performance. More information about lmbench at
@@ -180,7 +184,7 @@ Execute the LMBench with the following:
     "tcp_latency_using_localhost (microsec)","0.92 (min 0.76, max 1.14)"
 
 Dhrystone
-^^^^^^^^^
+=========
 Dhrystone is a core only benchmark that runs from warm L1 caches in all
 modern processors. It scales linearly with clock speed.
 
@@ -202,7 +206,8 @@ Execute the benchmark with the following:
     "dhrystone_per_second (dhrystonep)","6323683.00 (min 5882353.00, max 6896551.50)"
 
 Whetstone
-^^^^^^^^^
+=========
+
 Whetstone is a benchmark primarily measuring floating-point arithmetic performance.
 
 Execute the benchmark with the following:
@@ -217,7 +222,8 @@ Execute the benchmark with the following:
     "whetstone (mips)","5000.00"
 
 Linpack
-^^^^^^^
+=======
+
 Linpack measures peak double precision (64 bit) floating point performance in
 solving a dense linear system.
 
@@ -227,7 +233,8 @@ solving a dense linear system.
     "linpack (kflops)","559402.33 (min 518395.00, max 580053.00)"
 
 NBench
-^^^^^^
+======
+
 NBench which stands for Native Benchmark is used to measure macro benchmarks
 for commonly used operations such as sorting and analysis algorithms.
 More information about NBench at
@@ -248,7 +255,8 @@ https://nbench.io/articles/index.html
     "string_sort (iterations)","157.42 (min 150.17, max 168.31)"
 
 Stream
-^^^^^^
+======
+
 STREAM is a microbenchmark for measuring data memory system performance without
 any data reuse. It is designed to miss on caches and exercise data prefetcher
 and speculative accesses.
@@ -274,7 +282,8 @@ Execute the benchmark with the following:
     "triad (mb/s)","2328.48 (min 2274.80, max 2413.50)"
 
 CoreMarkPro
-^^^^^^^^^^^
+===========
+
 CoreMark®-Pro is a comprehensive, advanced processor benchmark that works with
 and enhances the market-proven industry-standard EEMBC CoreMark® benchmark.
 While CoreMark stresses the CPU pipeline, CoreMark-Pro tests the entire processor,
@@ -310,7 +319,8 @@ and floating-point workloads, and data sets for utilizing larger memory subsyste
     "zip-test (workloads/)","41.87 (min 38.46, max 46.51)"
 
 MultiBench
-^^^^^^^^^^
+==========
+
 MultiBench™ is a suite of benchmarks that allows processor and system designers to
 analyze, test, and improve multicore processors. It uses three forms of concurrency:
 Data decomposition: multiple threads cooperating on achieving a unified goal and
@@ -357,11 +367,13 @@ thread-enabled workloads to be tested.
     "x264-4mq (workloads/)","0.54 (min 0.51, max 0.58)"
     "x264-4mqw1 (workloads/)","0.54 (min 0.52, max 0.58)"
 
+|
+
 Boot-time Measurement
----------------------
+=====================
 
 Boot media: MMCSD
-^^^^^^^^^^^^^^^^^
+-----------------
 
 .. csv-table:: Linux boot time MMCSD
     :header: "Boot Configuration","am62pxx_sk-fs: Boot time in seconds: avg(min,max)"
@@ -372,8 +384,8 @@ Boot time numbers [avg, min, max] are measured from "Starting kernel" to Linux p
 
 |
 
-ALSA SoC Audio Driver
----------------------
+ALSA SoC Audio
+==============
 
 #. Access type - RW\_INTERLEAVED
 #. Channels - 2
@@ -408,11 +420,12 @@ ALSA SoC Audio Driver
 
 |
 
-Graphics SGX/RGX Driver
------------------------
+Graphics SGX/RGX
+================
 
 GFXBench
-^^^^^^^^
+--------
+
 Run GFXBench and capture performance reported (Score and Display rate in fps). All display outputs (HDMI, Displayport and/or LCD) are connected when running these tests
 
 .. csv-table:: GFXBench Performance
@@ -423,7 +436,7 @@ Run GFXBench and capture performance reported (Score and Display rate in fps). A
     " GFXBench 5.x gl_5_high_off","108.08 (min 104.61, max 115.03)","1.68 (min 1.63, max 1.79)"
 
 Glmark2
-^^^^^^^
+-------
 
 Run Glmark2 and capture performance reported (Score). All display outputs (HDMI, Displayport and/or LCD) are connected when running these tests
 
@@ -436,7 +449,8 @@ Run Glmark2 and capture performance reported (Score). All display outputs (HDMI,
 |
 
 Ethernet
---------
+========
+
 Ethernet performance benchmarks were measured using :command:`netperf` 2.7.1 https://hewlettpackard.github.io/netperf/doc/netperf.html
 Test procedures were modeled after those defined in RFC-2544:
 https://tools.ietf.org/html/rfc2544, where the DUT is the TI device
@@ -502,29 +516,29 @@ Running the following commands will trigger :command:`netperf` clients to measur
    netperf -H <DUT ip> -j -C -l 60 -t UDP_STREAM -b <burst_size> -w <wait_time> -- -m <UDP datagram size>
       -k DIRECTION,THROUGHPUT,MEAN_LATENCY,LOCAL_CPU_UTIL,REMOTE_CPU_UTIL,LOCAL_BYTES_SENT,REMOTE_BYTES_RECVD,LOCAL_SEND_SIZE
 
-CPSW/CPSW2g/CPSW3g Ethernet Driver
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+CPSW/CPSW2g/CPSW3g Ethernet
+---------------------------
 
-- CPSW3g: AM64x, AM62x, AM62ax, AM62px
+- CPSW3g: AM62px
 
-.. rubric::  TCP Bidirectional Throughput
-   :name: CPSW2g-tcp-bidirectional-throughput
+TCP Bidirectional Throughput
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. csv-table:: CPSW2g TCP Bidirectional Throughput
     :header: "Command Used","am62pxx_sk-fs: THROUGHPUT (Mbits/sec)","am62pxx_sk-fs: CPU Load % (LOCAL_CPU_UTIL)"
 
     "netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_MAERTS","1553.15 (min 1176.25, max 1811.29)","54.49 (min 39.05, max 70.68)"
 
-.. rubric::  TCP Bidirectional Throughput Interrupt Pacing
-   :name: CPSW2g-tcp-bidirectional-throughput-interrupt-pacing
+TCP Bidirectional Throughput Interrupt Pacing
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. csv-table:: CPSW2g TCP Bidirectional Throughput Interrupt Pacing
     :header: "Command Used","am62pxx_sk-fs: THROUGHPUT (Mbits/sec)","am62pxx_sk-fs: CPU Load % (LOCAL_CPU_UTIL)"
 
     "netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_MAERTS","1849.66 (min 1825.39, max 1875.16)","38.86 (min 32.01, max 45.30)"
 
-.. rubric::  UDP Throughput
-   :name: CPSW2g-udp-throughput-0-loss
+UDP Throughput
+^^^^^^^^^^^^^^
 
 .. csv-table:: CPSW2g UDP Egress Throughput 0 loss
     :header: "Frame Size(bytes)","am62pxx_sk-fs: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am62pxx_sk-fs: THROUGHPUT (Mbits/sec)","am62pxx_sk-fs: Packets Per Second (kPPS)","am62pxx_sk-fs: CPU Load % (LOCAL_CPU_UTIL)"
@@ -547,14 +561,11 @@ CPSW/CPSW2g/CPSW3g Ethernet Driver
 
 |
 
-Linux OSPI Flash Driver
------------------------
+OSPI
+====
 
-.. rubric:: AM62PXX-SK
-   :name: am62pxx-sk-ospi
-
-.. rubric:: UBIFS
-   :name: am62pxx-sk-ospi-ubifs
+UBIFS
+-----
 
 .. csv-table:: OSPI Flash Driver
     :header: "Buffer size (bytes)","am62pxx_sk-fs: Write UBIFS Throughput (Mbytes/sec)","am62pxx_sk-fs: Write UBIFS CPU Load (%)","am62pxx_sk-fs: Read UBIFS Throughput (Mbytes/sec)","am62pxx_sk-fs: Read UBIFS CPU Load (%)"
@@ -564,16 +575,19 @@ Linux OSPI Flash Driver
     "524288","0.13 (min 0.10, max 0.18)","29.15 (min 25.26, max 32.64)","27.37 (min 27.03, max 27.85)","6.63 (min 3.45, max 9.68)"
     "1048576","0.13 (min 0.10, max 0.18)","30.02 (min 27.22, max 33.36)","27.16 (min 26.74, max 27.82)","9.50 (min 3.33, max 12.90)"
 
-.. rubric:: RAW
-   :name: am62pxx-sk-ospi-raw
+OSPI RAW
+--------
 
 .. csv-table:: OSPI Raw Flash Driver
     :header: "File size (Mbytes)","am62pxx_sk-fs: Raw Read Throughput (Mbytes/sec)"
 
     "50","37.88"
 
-EMMC Driver
------------
+|
+
+EMMC
+====
+
 .. warning::
 
   **IMPORTANT**: The performance numbers can be severely affected if the media is
@@ -583,7 +597,7 @@ EMMC Driver
   re-mount in async mode.
 
 EMMC EXT4 FIO 1G
-^^^^^^^^^^^^^^^^
+----------------
 
 .. csv-table:: EMMC EXT4 FIO 1G
     :header: "Buffer size (bytes)","am62pxx_sk-fs: Write EXT4 Throughput (Mbytes/sec)","am62pxx_sk-fs: Write EXT4 CPU Load (%)","am62pxx_sk-fs: Read EXT4 Throughput (Mbytes/sec)","am62pxx_sk-fs: Read EXT4 CPU Load (%)"
@@ -594,7 +608,7 @@ EMMC EXT4 FIO 1G
     "256k","91.10 (min 90.60, max 91.70)","2.08 (min 1.91, max 2.26)","267.80 (min 173.00, max 294.00)","4.07 (min 2.71, max 4.75)"
 
 EMMC EXT4
-^^^^^^^^^
+---------
 
 .. csv-table:: EMMC EXT4
     :header: "Buffer size (bytes)","am62pxx_sk-fs: Write EXT4 Throughput (Mbytes/sec)","am62pxx_sk-fs: Write EXT4 CPU Load (%)","am62pxx_sk-fs: Read EXT4 Throughput (Mbytes/sec)","am62pxx_sk-fs: Read EXT4 CPU Load (%)"
@@ -606,7 +620,7 @@ EMMC EXT4
     "5242880","75.53 (min 47.37, max 95.20)","2.43 (min 1.12, max 4.32)","181.68 (min 181.18, max 182.02)","5.64 (min 5.19, max 6.49)"
 
 EMMC VFAT
-^^^^^^^^^
+---------
 
 .. csv-table:: EMMC VFAT
     :header: "Buffer size (bytes)","am62pxx_sk-fs: Write VFAT Throughput (Mbytes/sec)","am62pxx_sk-fs: Write VFAT CPU Load (%)","am62pxx_sk-fs: Read VFAT Throughput (Mbytes/sec)","am62pxx_sk-fs: Read VFAT CPU Load (%)"
@@ -617,8 +631,8 @@ EMMC VFAT
     "1048576","52.85 (min 12.24, max 75.55)","5.12 (min 3.58, max 6.94)","262.95 (min 176.25, max 285.29)","14.56 (min 8.05, max 17.57)"
     "5242880","55.67 (min 12.34, max 82.40)","5.28 (min 3.61, max 7.06)","262.72 (min 175.95, max 284.89)","14.16 (min 9.62, max 16.44)"
 
-UBoot EMMC Driver
------------------
+UBoot EMMC
+----------
 
 .. csv-table:: UBOOT EMMC RAW
     :header: "File size (bytes in hex)","am62pxx_sk-fs: Write Throughput (Kbytes/sec)","am62pxx_sk-fs: Read Throughput (Kbytes/sec)"
@@ -627,7 +641,7 @@ UBoot EMMC Driver
     "4000000","97568.90 (min 95672.99, max 99598.78)","247676.85 (min 193893.49, max 302009.22)"
 
 MMCSD
------
+=====
 
 .. warning::
 
@@ -638,7 +652,7 @@ MMCSD
   re-mount in async mode.
 
 MMC EXT4 FIO 1G
-^^^^^^^^^^^^^^^
+---------------
 
 .. csv-table:: MMC EXT4 FIO 1G
     :header: "Buffer size (bytes)","am62pxx_sk-fs: Write EXT4 Throughput (Mbytes/sec)","am62pxx_sk-fs: Write EXT4 CPU Load (%)","am62pxx_sk-fs: Read EXT4 Throughput (Mbytes/sec)","am62pxx_sk-fs: Read EXT4 CPU Load (%)"
@@ -649,7 +663,7 @@ MMC EXT4 FIO 1G
     "256k","38.92 (min 38.50, max 39.50)","1.30 (min 1.13, max 1.44)","83.68 (min 83.30, max 84.40)","1.59 (min 1.47, max 1.72)"
 
 MMC EXT4
-^^^^^^^^
+--------
 
 .. csv-table:: MMC EXT4
     :header: "Buffer size (bytes)","am62pxx_sk-fs: Write Raw Throughput (Mbytes/sec)","am62pxx_sk-fs: Write Raw CPU Load (%)","am62pxx_sk-fs: Read Raw Throughput (Mbytes/sec)","am62pxx_sk-fs: Read Raw CPU Load (%)"
@@ -684,11 +698,11 @@ The performance numbers were captured using the following:
 
 |
 
-USB Driver
-----------
+USB
+===
 
 USB Device Controller
-^^^^^^^^^^^^^^^^^^^^^
+---------------------
 
 .. csv-table:: USBDEVICE HIGHSPEED SLAVE_READ_THROUGHPUT
     :header: "Number of Blocks","am62pxx_sk-fs: Throughput (MB/sec)"
@@ -702,11 +716,11 @@ USB Device Controller
 
 |
 
-CRYPTO Driver
--------------
+CRYPTO
+======
 
 OpenSSL Performance
-^^^^^^^^^^^^^^^^^^^
+-------------------
 
 .. csv-table:: OpenSSL Performance
     :header: "Algorithm","Buffer Size (in bytes)","am62pxx_sk-fs: throughput (KBytes/Sec)"
@@ -778,3 +792,5 @@ Listed for each algorithm are the code snippets used to run each
 ::
 
     time -v openssl speed -elapsed -evp aes-128-cbc
+
+|
