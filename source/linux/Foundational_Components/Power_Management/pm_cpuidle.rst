@@ -16,7 +16,7 @@ C-state. Governor decides whether to continue in current state/
 transition to a different state. Current 'driver' is called to
 transition to the selected state.
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX', 'J722S', 'AM62DX')
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX', 'J722S', 'AM62DX', 'AM62LX')
 
     .. rubric:: Standby Mode
 
@@ -31,9 +31,21 @@ transition to the selected state.
 
     .. rubric:: Enable Standby
 
-    In order to enable Standby the `k3-am62x-sk-lpm-standby.dtso
-    <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-standby.dtso?h=12.00.00.07>`__
-    overlay should be applied. Refer to :ref:`How to enable DT overlays
+    In order to enable Standby, apply the appropriate device tree overlay for your platform.
+
+    .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX', 'J722S', 'AM62DX')
+
+       Use the `k3-am62x-sk-lpm-standby.dtso
+       <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-standby.dtso?h=12.00.00.07>`__
+       overlay.
+
+    .. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+       Use the `k3-am62l3-evm-idle-states.dtso
+       <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62l3-evm-idle-states.dtso?h=12.00.00.07>`__
+       overlay for cluster standby support.
+
+    Refer to :ref:`How to enable DT overlays
     <howto_dt_overlays>` for more details. More information on what the overlay
     does is in the :ref:`linux-device-tree-label` section.
 
@@ -77,7 +89,7 @@ transition to the selected state.
 
     It's important to distinguish between the lightweight "standby" provided by CPUIdle and deeper sleep states:
 
-    * **CPUIdle Standby (WFI)**:
+    **CPUIdle Standby (WFI)**:
       - Processor-level power saving only
       - Very fast entry and exit (microseconds)
       - Occurs automatically hundreds of times per second
@@ -85,7 +97,7 @@ transition to the selected state.
       - All peripherals remain operational
       - Perfect for normal "idle" periods
 
-    * **Deep Sleep Modes**:
+    **Deep Sleep Modes**:
       - System-wide power saving
       - Slower entry and exit (milliseconds to seconds)
       - Requires explicit software requests
@@ -104,16 +116,31 @@ transition to the selected state.
 
     **TF-A Side** (not part of Linux kernel):
 
-    - :file:`plat/ti/k3/common/k3_psci.c` - PSCI implementation for K3 platforms
+    .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX', 'J722S', 'AM62DX')
+
+       - :file:`plat/ti/k3/common/k3_psci.c` - PSCI implementation for K3 platforms
+
+    .. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+       - :file:`plat/ti/k3low/common/am62l_psci.c` - PSCI implementation for AM62LX
 
     .. _linux-device-tree-label:
 
     .. rubric:: Linux Device Tree Implementation
 
-    In order to implement Standby in Linux, an idle-states node has to be added
-    and then referenced by the CPU node. The `k3-am62x-sk-lpm-standby.dtso
-    <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-standby.dtso?h=12.00.00.07>`__
-    can be used as a reference.
+    .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX', 'J722S', 'AM62DX')
+
+       In order to implement Standby in Linux, an idle-states node has to be added
+       and then referenced by the CPU node. The `k3-am62x-sk-lpm-standby.dtso
+       <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-standby.dtso?h=12.00.00.07>`__
+       can be used as a reference.
+
+    .. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+       In order to implement Standby in Linux, an idle-states node has to be added
+       and then referenced by the CPU node. The `k3-am62l3-evm-idle-states.dtso
+       <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62l3-evm-idle-states.dtso?h=12.00.00.07>`__
+       can be used as a reference.
 
     .. code-block:: dts
 
