@@ -982,6 +982,7 @@ MCU IPC based Wakeup
 
       [IPC RPMSG ECHO] Main domain resumed due to MCU UART
 
+.. _pm_wakeup_sources_can:
 
 *******************
 CAN I/O Daisy Chain
@@ -1019,16 +1020,35 @@ CAN I/O Daisy Chain
            status = "okay";
       };
 
-   CAN UART wakeup can be tested by using either the
-   `k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=11.02.08>`__
-   or
-   `k3-am62x-sk-lpm-io-ddr-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-io-ddr-wkup-sources.dtso?h=11.02.08>`__
-   overlays. Please refer to :ref:`How to enable DT overlays<howto_dt_overlays>`
-   for more details.
 
-   Once the system has entered any low power mode as shown in the
-   :ref:`LPM section<lpm_modes>`, wakeup from MCU_GPIO0_16 or MCU_MCAN0_RX can be
-   triggered by grounding Pin 11 or Pin 22 on J8 MCU Header, respectively.
+   .. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+      CAN wakeup is enabled by default for the AM62X LP-SK EVM. For all
+      other EVMs, the device tree overlay
+      `k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=11.02.08>`__
+      is required for testing CAN wakeup. See
+      :ref:`How to enable DT overlays<howto_dt_overlays>` for details.
+
+   .. ifconfig:: CONFIG_part_variant in ('AM62AX','AM62PX')
+
+      Either device tree overlay
+      `k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=11.02.08>`__
+      or
+      `k3-am62x-sk-lpm-io-ddr-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-io-ddr-wkup-sources.dtso?h=11.02.08>`__
+      are needed for testing. See
+      :ref:`How to enable DT overlays<howto_dt_overlays>` for details.
+
+
+   Before entering low power mode, enable CAN wakeup using ethtool:
+
+   .. code-block:: console
+
+      root@<machine>:~# ethtool -s mcu_mcan0 wol p
+      root@<machine>:~# ethtool -s mcu_mcan1 wol p
+
+   Once the system enters a low power mode, wakeup from mcu_mcan0 or
+   mcu_mcan1 can be triggered by grounding Pin 22 or Pin 11 on J8 MCU
+   Header, respectively.
 
 ***********
 RTC Ext Pin

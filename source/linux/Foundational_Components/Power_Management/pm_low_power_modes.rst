@@ -50,12 +50,9 @@ wakeup event is triggered.
 Partial I/O is a poweroff state. Upon poweroff, the Linux ti_sci driver 
 chooses Partial I/O entry if any CAN I/O wakeup sources are present.
 
-The following wakeup sources have been configured for Partial I/O:
-mcu_uart0, mcu_mcan0, and mcu_mcan1. Partial I/O mode can only be tested
-when `k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=11.02.08>`__
-overlay is loaded. Refer to :ref:`How to enable DT overlays<howto_dt_overlays>` for more details.
-
-After Linux boots, the MCAN wakeup for Partial I/O is enabled.
+Partial I/O supports wakeup sources mcu_mcan0 and mcu_mcan1. For more
+information about enabling CAN wakeup, see
+:ref:`CAN I/O Daisy Chain<pm_wakeup_sources_can>`.
 
 Enter Partial I/O mode with the following command:
 
@@ -72,10 +69,9 @@ the console output will stop at the following lines:
    [   74.396204] reboot: Power down
    [   74.399358] ti-sci 44043000.system-controller: Entering Partial-IO because a powered wakeup-enabled device was found.
 
-The system has entered Partial I/O and can only be woken up with
-activity on the I/O pin programmed for wakeup. For example, if mcu_mcan0
-wakeup was enabled, grounding Pin 22 of J8 MCU Header will wakeup the
-system and it will go through a normal Linux boot process.
+The above output indicates that the system has entered Partial I/O. The
+system will resume to through a normal Linux boot process by triggering
+activity on the wakeup I/O pin programmed.
 
 .. _pm_io_only_plus_ddr:
 
@@ -112,13 +108,12 @@ I/O Only Plus DDR
 
       .. important:: Jumper J12 should be connected on SK to enable system to enter I/O Only plus DDR mode.
 
-   The wakeup sources that can be used to wake the system from I/O Only Plus
-   DDR are mcu_uart0, mcu_mcan0, mcu_mcan1 and wkup_uart0. To use the mcu_mcan0
-   and mcu_mcan1 wakeup sources, apply the
-   `k3-am62x-sk-lpm-io-ddr-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-io-ddr-wkup-sources.dtso?h=11.02.08>`__
-   overlay. Please refer to :ref:`How to enable DT overlays<howto_dt_overlays>`
-   for more details. To use the mcu_uart0 and wkup_uart0 wakeup sources, direct
-   register writes can be used to enable wakeup after Linux boots.
+   I/O Only Plus DDR supports wakeup sources mcu_uart0, mcu_mcan0,
+   mcu_mcan1 and wkup_uart0. To use the mcu_mcan0 and mcu_mcan1 wakeup
+   sources, see
+   :ref:`CAN I/O Daisy Chain<pm_wakeup_sources_can>`.
+   To use the mcu_uart0 and wkup_uart0 wakeup sources, direct register
+   writes enable wakeup after Linux boots.
 
    .. rubric:: Following commands set the wakeup EN bit, enable receive for pad in PADCONFIG register and can
                be used to enable wakeup from mcu_uart0 and wkup_uart0 pins respectively.
