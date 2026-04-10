@@ -1,10 +1,11 @@
 
-====================================
+#################################
  Linux 12.00.00 Performance Guide
-====================================
+#################################
 
-.. rubric::  **Read This First**
-   :name: read-this-first-kernel-perf-guide
+***************
+Read This First
+***************
 
 **All performance numbers provided in this document are gathered using
 following Evaluation Modules unless otherwise specified.**
@@ -18,8 +19,9 @@ following Evaluation Modules unless otherwise specified.**
 
 Table:  Evaluation Modules
 
-.. rubric::  About This Manual
-   :name: about-this-manual-kernel-perf-guide
+*****************
+About This Manual
+*****************
 
 This document provides performance data for each of the device drivers
 which are part of the Processor SDK Linux package. This document should be
@@ -27,17 +29,20 @@ used in conjunction with release notes and user guides provided with the
 Processor SDK Linux package for information on specific issues present
 with drivers included in a particular release.
 
-.. rubric::  If You Need Assistance
-   :name: if-you-need-assistance-kernel-perf-guide
-
 For further information or to report any problems, contact
 https://e2e.ti.com/ or https://support.ti.com/
 
+|
+
+*****************
 System Benchmarks
------------------
+*****************
+
+|
 
 LMBench
-^^^^^^^
+=======
+
 LMBench is a collection of microbenchmarks of which the memory bandwidth 
 and latency related ones are typically used to estimate processor 
 memory system performance. More information about lmbench at
@@ -181,7 +186,8 @@ Execute the LMBench with the following:
     "tcp_latency_using_localhost (microsec)","0.89 (min 0.76, max 1.02)"
 
 Dhrystone
-^^^^^^^^^
+=========
+
 Dhrystone is a core only benchmark that runs from warm L1 caches in all
 modern processors. It scales linearly with clock speed.
 
@@ -203,7 +209,8 @@ Execute the benchmark with the following:
     "dhrystone_per_second (dhrystonep)","6789289.58 (min 6451613.00, max 7142857.00)"
 
 Whetstone
-^^^^^^^^^
+=========
+
 Whetstone is a benchmark primarily measuring floating-point arithmetic performance.
 
 Execute the benchmark with the following:
@@ -218,7 +225,8 @@ Execute the benchmark with the following:
     "whetstone (mips)","5833.33 (min 5000.00, max 10000.00)"
 
 Linpack
-^^^^^^^
+=======
+
 Linpack measures peak double precision (64 bit) floating point performance in
 solving a dense linear system.
 
@@ -228,7 +236,8 @@ solving a dense linear system.
     "linpack (kflops)","580360.75 (min 579515.00, max 581724.00)"
 
 Stream
-^^^^^^
+======
+
 STREAM is a microbenchmark for measuring data memory system performance without
 any data reuse. It is designed to miss on caches and exercise data prefetcher
 and speculative accesses.
@@ -254,7 +263,8 @@ Execute the benchmark with the following:
     "triad (mb/s)","2384.27 (min 2377.90, max 2393.60)"
 
 CoreMarkPro
-^^^^^^^^^^^
+===========
+
 CoreMark®-Pro is a comprehensive, advanced processor benchmark that works with
 and enhances the market-proven industry-standard EEMBC CoreMark® benchmark.
 While CoreMark stresses the CPU pipeline, CoreMark-Pro tests the entire processor,
@@ -291,7 +301,8 @@ and floating-point workloads, and data sets for utilizing larger memory subsyste
     "zip-test (workloads/)","78.74 (min 74.07, max 83.33)"
 
 MultiBench
-^^^^^^^^^^
+==========
+
 MultiBench™ is a suite of benchmarks that allows processor and system designers to
 analyze, test, and improve multicore processors. It uses three forms of concurrency:
 Data decomposition: multiple threads cooperating on achieving a unified goal and
@@ -338,11 +349,13 @@ thread-enabled workloads to be tested.
     "x264-4mq (workloads/)","0.58"
     "x264-4mqw1 (workloads/)","0.58"
 
+|
+
 Boot-time Measurement
----------------------
+=====================
 
 Boot media: MMCSD
-^^^^^^^^^^^^^^^^^
+-----------------
 
 .. csv-table:: Linux boot time MMCSD
     :header: "Boot Configuration","am62dxx_evm-fs: Boot time in seconds: avg(min,max)"
@@ -354,7 +367,8 @@ Boot time numbers [avg, min, max] are measured from "Starting kernel" to Linux p
 |
 
 Ethernet
---------
+========
+
 Ethernet performance benchmarks were measured using :command:`netperf` 2.7.1 https://hewlettpackard.github.io/netperf/doc/netperf.html
 Test procedures were modeled after those defined in RFC-2544:
 https://tools.ietf.org/html/rfc2544, where the DUT is the TI device
@@ -420,11 +434,11 @@ Running the following commands will trigger :command:`netperf` clients to measur
    netperf -H <DUT ip> -j -C -l 60 -t UDP_STREAM -b <burst_size> -w <wait_time> -- -m <UDP datagram size>
       -k DIRECTION,THROUGHPUT,MEAN_LATENCY,LOCAL_CPU_UTIL,REMOTE_CPU_UTIL,LOCAL_BYTES_SENT,REMOTE_BYTES_RECVD,LOCAL_SEND_SIZE
 
-CPSW/CPSW2g/CPSW3g Ethernet Driver
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+CPSW/CPSW2g/CPSW3g Ethernet
+---------------------------
 
-.. rubric::  UDP Throughput
-   :name: CPSW2g-udp-throughput-0-loss
+UDP Throughput
+^^^^^^^^^^^^^^
 
 .. csv-table:: CPSW2g UDP Egress Throughput 0 loss
     :header: "Frame Size(bytes)","am62dxx_evm-fs: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am62dxx_evm-fs: THROUGHPUT (Mbits/sec)","am62dxx_evm-fs: Packets Per Second (kPPS)","am62dxx_evm-fs: CPU Load % (LOCAL_CPU_UTIL)"
@@ -452,11 +466,11 @@ CPSW/CPSW2g/CPSW3g Ethernet Driver
 
 |
 
-USB Driver
-----------
+USB
+===
 
 USB Device Controller
-^^^^^^^^^^^^^^^^^^^^^
+---------------------
 
 .. csv-table:: USBDEVICE HIGHSPEED SLAVE_READ_THROUGHPUT
     :header: "Number of Blocks","am62dxx_evm-fs: Throughput (MB/sec)"
@@ -470,11 +484,11 @@ USB Device Controller
 
 |
 
-CRYPTO Driver
--------------
+CRYPTO
+======
 
 OpenSSL Performance
-^^^^^^^^^^^^^^^^^^^
+-------------------
 
 .. csv-table:: OpenSSL Performance
     :header: "Algorithm","Buffer Size (in bytes)","am62dxx_evm-fs: throughput (KBytes/Sec)"
@@ -546,3 +560,5 @@ Listed for each algorithm are the code snippets used to run each
 ::
 
     time -v openssl speed -elapsed -evp aes-128-cbc
+
+|
