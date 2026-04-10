@@ -27,7 +27,7 @@ valid for given low power modes:
    +------------------------------------------------+------------+----------+-------------+
    | MCU IPC (for MCU Only mode)                    | No         | Yes      | No          |
    +------------------------------------------------+------------+----------+-------------+
-   | CAN UART I/O Daisy Chain                       | Yes        | Yes      | Yes         |
+   | CAN I/O Daisy Chain                            | Yes        | Yes      | Yes         |
    +------------------------------------------------+------------+----------+-------------+
 
 .. ifconfig:: CONFIG_part_variant in ('AM62AX', 'AM62PX')
@@ -48,7 +48,7 @@ valid for given low power modes:
    +------------------------------------------------+-------+------+---------+----------+
    | MCU IPC (for MCU Only mode)                    | No    | Yes  | No      | No       |
    +------------------------------------------------+-------+------+---------+----------+
-   | CAN UART I/O Daisy Chain                       | Yes   | Yes  | Yes     | Yes      |
+   | CAN I/O Daisy Chain                            | Yes   | Yes  | Yes     | Yes      |
    +------------------------------------------------+-------+------+---------+----------+
 
 .. ifconfig:: CONFIG_part_variant in ('AM62LX')
@@ -982,45 +982,29 @@ MCU IPC based Wakeup
 
       [IPC RPMSG ECHO] Main domain resumed due to MCU UART
 
-************************
-CAN UART I/O Daisy Chain
-************************
+
+*******************
+CAN I/O Daisy Chain
+*******************
 
 .. ifconfig:: CONFIG_part_variant in ('AM62LX')
 
-   CAN UART wakeup is not supported on AM62LX.
+   CAN wakeup is not supported on AM62LX.
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX')
 
-   It is possible to wakeup the system from CAN UART pins in all supported low
-   power modes. This is possible once CAN UART is configured.
+   CAN pins can be used to wake the system from any supported low power mode.
+   To enable this, in the device tree configure a "wakeup" pinctrl state that sets
+   the WKUP_EN flag (29th bit) on the desired padconfig register. This allows the
+   mcan driver to switch to the wakeup state during suspend.
 
-   To set CAN UART as a wakeup source, a pinctrl state called "wakeup" needs to be
-   added to the device tree. The "wakeup" pinctrl state will set the  WKUP_EN flag
-   on the desired padconfig register. When the WKUP_EN flag (29th bit) is set, it
-   allows the pad to act as a wakeup source. If CAN UART has the "wakeup" pinctrl
-   state defined, then the Linux mcan driver is able to switch to the pinctrl
-   "wakeup" state during suspend which enables CAN UART wakeup.
+   Refer to the mcu_mcan0 and mcu_mcan1 nodes in
+   `k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=11.02.08>`__
+   for a complete example:
 
-   The mcan_uart0 and mcan_uart1 nodes in
-   `k3-am62x-sk-lpm-io-ddr-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-io-ddr-wkup-sources.dtso?h=11.02.08>`__
-   can be used as a reference for enabling CAN UART wakeup.
-
-   .. code-block:: text
+   .. code-block:: dts
 
       &mcu_pmx0 {
-           mcu_mcan0_tx_pins_default: mcu-mcan0-tx-pins-default {
-                   pinctrl-single,pins = <
-                           AM62X_IOPAD(0x034, PIN_OUTPUT, 0) /* (D6) MCU_MCAN0_TX */
-                   >;
-           };
-
-           mcu_mcan0_rx_pins_default: mcu-mcan0-rx-pins-default {
-                   pinctrl-single,pins = <
-                           AM62X_IOPAD(0x038, PIN_INPUT, 0) /* (B3) MCU_MCAN0_RX */
-                   >;
-           };
-
            mcu_mcan0_rx_pins_wakeup: mcu-mcan0-rx-pins-wakeup {
                    pinctrl-single,pins = <
                            AM62X_IOPAD(0x038, PIN_INPUT | WKUP_EN, 0) /* (B3) MCU_MCAN0_RX */
