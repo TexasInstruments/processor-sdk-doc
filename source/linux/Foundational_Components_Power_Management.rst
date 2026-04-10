@@ -8,6 +8,7 @@ Power Management
    Foundational_Components/Power_Management/pm_dvfs
    Foundational_Components/Power_Management/pm_dfs
    Foundational_Components/Power_Management/pm_cpuidle
+   Foundational_Components/Power_Management/pm_am62l_standby
    Foundational_Components/Power_Management/pm_runtime_pm
    Foundational_Components/Power_Management/pm_smartreflex
    Foundational_Components/Power_Management/pm_suspend_resume
