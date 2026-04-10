@@ -47,15 +47,13 @@ wakeup event is triggered.
 
       Only AM62 LP-SK EVM supports Partial I/O mode.
 
-The reference implementation in this SDK implements Partial I/O as a
-poweroff state. On poweroff, Linux ti_sci driver checks the potential
-Partial I/O wakeup sources for being enabled. If one of the wakeup
-sources is found to be enabled, Partial I/O is entered instead of poweroff.
+Partial I/O is a poweroff state. Upon poweroff, the Linux ti_sci driver 
+chooses Partial I/O entry if any CAN I/O wakeup sources are present.
 
 The following wakeup sources have been configured for Partial I/O:
 mcu_uart0, mcu_mcan0, and mcu_mcan1. Partial I/O mode can only be tested
 when `k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=11.02.08>`__
-overlay is loaded. Please refer to :ref:`How to enable DT overlays<howto_dt_overlays>` for more details.
+overlay is loaded. Refer to :ref:`How to enable DT overlays<howto_dt_overlays>` for more details.
 
 After Linux boots, the MCAN wakeup for Partial I/O is enabled.
 
@@ -70,10 +68,11 @@ the console output will stop at the following lines:
 
 .. code-block:: text
 
-   [   51.698039] systemd-shutdown[1]: Powering off.
-   [   51.769478] reboot: Power down
+   [   74.310565] systemd-shutdown[1]: Powering off.
+   [   74.396204] reboot: Power down
+   [   74.399358] ti-sci 44043000.system-controller: Entering Partial-IO because a powered wakeup-enabled device was found.
 
-The system has entered Partial I/O and can only be woken up with an
+The system has entered Partial I/O and can only be woken up with
 activity on the I/O pin programmed for wakeup. For example, if mcu_mcan0
 wakeup was enabled, grounding Pin 22 of J8 MCU Header will wakeup the
 system and it will go through a normal Linux boot process.
