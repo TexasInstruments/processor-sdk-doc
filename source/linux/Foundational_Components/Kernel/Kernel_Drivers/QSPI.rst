@@ -774,3 +774,11 @@ thus no longer contributing to active power consumed by the system.
 
 When a transaction is initiated from userspace or otherwise, the driver resumes
 the OSPI controller automatically.
+
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+   .. note::
+
+      OSPI NOR random IO data corruption is observed in 12.00.00. Fix for this is available in the below jira tracker:
+
+      https://sir.ext.ti.com/jira/browse/EXT_EP-13319
