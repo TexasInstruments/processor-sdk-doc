@@ -101,6 +101,7 @@ linux/Foundational_Components/System_Security/SELinux
 linux/Foundational_Components/System_Security/Auth_boot
 linux/Foundational_Components/System_Security/Memory_Firewalls
 linux/Foundational_Components_Secure_Boot
+linux/Foundational_Components/System_Security/Filesystem_Encryption
 
 linux/Foundational_Components_PRU_Subsystem
 linux/Foundational_Components/PRU-ICSS-Linux-Drivers

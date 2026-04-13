@@ -62,7 +62,10 @@ The following table lists some of the key Security Features:
   |                         | execution of security-sensitive applications and services |                                      |
   +-------------------------+-----------------------------------------------------------+--------------------------------------+
   | **Memory Firewalls**    | Prevents unauthorized access through hardware-enforced    | :ref:`memory-firewalls`              |
-  |                         | security boundaries                                       |				       |
+  |                         | security boundaries                                       |                                      |
+  +-------------------------+-----------------------------------------------------------+--------------------------------------+
+  |**fTPM based**           | Yocto reference implemenation of filesystem  encryption   | :ref:`filesystem-encryption`         |
+  |**Filesystem Encryption**| using LUKS2 with TPM-sealed keys                          |                                      |
   +-------------------------+-----------------------------------------------------------+--------------------------------------+
 
 
@@ -92,7 +95,10 @@ The following table lists some of the key Security Features:
   |                         | execution of security-sensitive applications and services |                                      |
   +-------------------------+-----------------------------------------------------------+--------------------------------------+
   | **Memory Firewalls**    | Prevents unauthorized access through hardware-enforced    | :ref:`memory-firewalls`              |
-  |                         | security boundaries                                       |				       |
+  |                         | security boundaries                                       |                                      |
+  +-------------------------+-----------------------------------------------------------+--------------------------------------+
+  |**fTPM based**           | Yocto reference implemenation of filesystem  encryption   | :ref:`filesystem-encryption`         |
+  |**Filesystem Encryption**| using LUKS2 with TPM-sealed keys                          |                                      |
   +-------------------------+-----------------------------------------------------------+--------------------------------------+
 
 .. ifconfig:: CONFIG_part_variant not in ('AM62X', 'AM62PX', 'AM62AX', 'AM62LX')
