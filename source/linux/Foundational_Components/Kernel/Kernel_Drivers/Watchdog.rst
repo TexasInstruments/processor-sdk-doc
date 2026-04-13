@@ -236,4 +236,11 @@ found in Linux Kernel at: samples/watchdog/watchdog-simple.c.
       +               ti,esm-pins = <224>, <225>, <227>, <241>, <242>, <248>;
                       bootph-pre-ram;
               };
- 
+
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+   .. note::
+
+      12.00.00 release missed adding watchdog node. Fix for this is available in the below jira tracker:
+
+      https://sir.ext.ti.com/jira/browse/EXT_EP-13330
