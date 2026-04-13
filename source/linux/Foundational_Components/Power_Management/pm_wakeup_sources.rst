@@ -552,23 +552,18 @@ Main UART
    .. code-block:: dts
 
       &main_pmx0 {
-         main_uart0_tx_pins_default: main-uart0-tx-default-pins {
+         main_uart0_pins_default: main-uart0-default-pins {
             bootph-all;
             pinctrl-single,pins = <
+               AM62X_IOPAD(0x1c8, PIN_INPUT, 0) /* (D14/A13) UART0_RXD */
                AM62X_IOPAD(0x1cc, PIN_OUTPUT, 0) /* (E14/E11) UART0_TXD */
             >;
          };
 
-         main_uart0_rx_pins_default: main-uart0-rx-default-pins {
-            bootph-all;
-            pinctrl-single,pins = <
-               AM62X_IOPAD(0x1c8, PIN_INPUT, 0) /* (D14/A13) UART0_RXD */
-            >;
-         };
-
-         main_uart0_rx_pins_wakeup: main-uart0-rx-wakeup-pins {
+         main_uart0_pins_wakeup: main-uart0-wakeup-pins {
             pinctrl-single,pins = <
                AM62X_IOPAD(0x1c8, PIN_INPUT | PIN_WKUP_EN, 0) /* (D14/A13) UART0_RXD */
+               AM62X_IOPAD(0x1cc, PIN_OUTPUT, 0) /* (E14/E11) UART0_TXD */
             >;
          };
       };
@@ -577,11 +572,11 @@ Main UART
          bootph-all;
          status = "okay";
          pinctrl-names = "default", "wakeup";
-         pinctrl-0 = <&main_uart0_tx_pins_default>, <&main_uart0_rx_pins_default>;
-         pinctrl-1 = <&main_uart0_tx_pins_default>, <&main_uart0_rx_pins_wakeup>;
+         pinctrl-0 = <&main_uart0_pins_default>;
+         pinctrl-1 = <&main_uart0_pins_wakeup>;
          wakeup-source = <&system_deep_sleep>,
-               <&system_mcu_only>,
-               <&system_standby>;
+                         <&system_mcu_only>,
+                         <&system_standby>;
       };
 
 .. ifconfig:: CONFIG_part_variant in ('AM62AX')
@@ -592,23 +587,18 @@ Main UART
    .. code-block:: dts
 
       &main_pmx0 {
-         main_uart0_tx_pins_default: main-uart0-tx-default-pins {
+         main_uart0_pins_default: main-uart0-default-pins {
             pinctrl-single,pins = <
+               AM62AX_IOPAD(0x1c8, PIN_INPUT, 0) /* (E14) UART0_RXD */
                AM62AX_IOPAD(0x1cc, PIN_OUTPUT, 0) /* (D15) UART0_TXD */
             >;
             bootph-all;
-         };
+	 };
 
-         main_uart0_rx_pins_default: main-uart0-rx-default-pins {
-            pinctrl-single,pins = <
-               AM62AX_IOPAD(0x1c8, PIN_INPUT, 0) /* (E14) UART0_RXD */
-            >;
-            bootph-all;
-         };
-
-         main_uart0_rx_pins_wakeup: main-uart0-rx-wakeup-pins {
+         main_uart0_pins_wakeup: main-uart0-wakeup-pins {
             pinctrl-single,pins = <
                AM62AX_IOPAD(0x1c8, PIN_INPUT | PIN_WKUP_EN, 0) /* (E14) UART0_RXD */
+               AM62AX_IOPAD(0x1cc, PIN_OUTPUT, 0) /* (D15) UART0_TXD */
             >;
          };
       };
@@ -616,11 +606,11 @@ Main UART
       &main_uart0 {
          status = "okay";
          pinctrl-names = "default", "wakeup";
-         pinctrl-0 = <&main_uart0_tx_pins_default>, <&main_uart0_rx_pins_default>;
-         pinctrl-1 = <&main_uart0_tx_pins_default>, <&main_uart0_rx_pins_wakeup>;
+         pinctrl-0 = <&main_uart0_pins_default>;
+         pinctrl-1 = <&main_uart0_pins_wakeup>;
          wakeup-source = <&system_deep_sleep>,
-               <&system_mcu_only>,
-               <&system_standby>;
+                         <&system_mcu_only>,
+                         <&system_standby>;
          bootph-all;
       };
 
@@ -632,34 +622,28 @@ Main UART
    .. code-block:: dts
 
       &main_pmx0 {
-         main_uart0_tx_pins_default: main-uart0-tx-default-pins {
+         main_uart0_pins_default: main-uart0-default-pins {
             pinctrl-single,pins = <
-               AM62PX_IOPAD(0x1cc, PIN_OUTPUT, 0) /* (B22) UART0_TXD */
+               AM62PX_IOPAD(0x1c8, PIN_INPUT, 0)	/* (A22) UART0_RXD */
+               AM62PX_IOPAD(0x1cc, PIN_OUTPUT, 0)	/* (B22) UART0_TXD */
             >;
             bootph-all;
          };
 
-         main_uart0_rx_pins_default: main-uart0-rx-default-pins {
+         main_uart0_pins_wakeup: main-uart0-wakeup-pins {
             pinctrl-single,pins = <
-               AM62PX_IOPAD(0x1c8, PIN_INPUT, 0) /* (A22) UART0_RXD */
-            >;
-            bootph-all;
-         };
-
-         main_uart0_rx_pins_wakeup: main-uart0-rx-wakeup-pins {
-            pinctrl-single,pins = <
-               AM62PX_IOPAD(0x1c8, PIN_INPUT | PIN_WKUP_EN, 0) /* (A22) UART0_RXD */
+               AM62PX_IOPAD(0x1c8, PIN_INPUT | PIN_WKUP_EN, 0)	/* (A22) UART0_RXD */
+               AM62PX_IOPAD(0x1cc, PIN_OUTPUT, 0)	/* (B22) UART0_TXD */
             >;
          };
-      };
 
       &main_uart0 {
          pinctrl-names = "default", "wakeup";
-         pinctrl-0 = <&main_uart0_tx_pins_default>, <&main_uart0_rx_pins_default>;
-         pinctrl-1 = <&main_uart0_tx_pins_default>, <&main_uart0_rx_pins_wakeup>;
+         pinctrl-0 = <&main_uart0_pins_default>;
+         pinctrl-1 = <&main_uart0_pins_wakeup>;
          wakeup-source = <&system_deep_sleep>,
-               <&system_mcu_only>,
-               <&system_standby>;
+                         <&system_mcu_only>,
+                         <&system_standby>;
          status = "okay";
          bootph-all;
       };
@@ -671,33 +655,28 @@ Main UART
 
    .. code-block:: dts
 
-      &main_pmx0 {
-         main_uart0_tx_pins_default: main-uart0-tx-default-pins {
+      &pmx0 {
+         uart0_pins_default: uart0-default-pins {
             pinctrl-single,pins = <
+               AM62LX_IOPAD(0x01b4, PIN_INPUT, 0) /* (D13) UART0_RXD */
                AM62LX_IOPAD(0x01b8, PIN_OUTPUT, 0) /* (C13) UART0_TXD */
             >;
             bootph-all;
          };
 
-         main_uart0_rx_pins_default: main-uart0-rx-default-pins {
-            pinctrl-single,pins = <
-               AM62LX_IOPAD(0x01b4, PIN_INPUT, 0) /* (D13) UART0_RXD */
-            >;
-            bootph-all;
-         };
-
-         main_uart0_rx_pins_wakeup: main-uart0-rx-wakeup-pins {
+         uart0_pins_wakeup: uart0-wakeup-pins {
             pinctrl-single,pins = <
                AM62LX_IOPAD(0x01b4, PIN_INPUT | PIN_WKUP_EN, 0) /* (D13) UART0_RXD */
+               AM62LX_IOPAD(0x01b8, PIN_OUTPUT, 0) /* (C13) UART0_TXD */
             >;
          };
       };
 
-      &main_uart0 {
+      &uart0 {
+         pinctrl-0 = <&uart0_pins_default>;
+         pinctrl-1 = <&uart0_pins_wakeup>;
          pinctrl-names = "default", "wakeup";
-         pinctrl-0 = <&main_uart0_tx_pins_default>, <&main_uart0_rx_pins_default>;
-         pinctrl-1 = <&main_uart0_tx_pins_default>, <&main_uart0_rx_pins_wakeup>;
-         wakeup-source = <&system_deep_sleep>;
+         wakeup-source;
          status = "okay";
          bootph-all;
       };
