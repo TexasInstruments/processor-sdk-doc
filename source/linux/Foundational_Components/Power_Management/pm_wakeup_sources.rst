@@ -334,7 +334,7 @@ MCU GPIO
    source. However, if the application design doesn't rely on the MCU firmware
    then Linux can be used to configure the MCU GPIOs as a wakeup source. Refer
    to the ``mcu_gpio_key`` node in
-   `k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=11.02.08>`__
+   `k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=12.00.00.07>`__
    to use as a template to configure the desired MCU GPIO as a wakeup capable
    GPIO.
 
@@ -400,7 +400,7 @@ MCU GPIO
    :ref:`S/W Architecture of System Suspend<pm_sw_arch>`
 
    MCU GPIO wakeup can only be tested when
-   `k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=11.02.08>`__
+   `k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=12.00.00.07>`__
    overlay is loaded. Refer to :ref:`How to enable DT overlays<howto_dt_overlays>` for more details.
 
    Once the system has entered Deep Sleep or MCU Only mode as shown in the
@@ -417,7 +417,7 @@ WKUP GPIO
    I/O activity on the WKUP GPIOs can wakeup the system when the WKUP GPIO
    controller is configured as a wakeup source. Refer to the ``wkup_gpio_key`` node
    in
-   `k3-am62l3-evm-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62l3-evm-lpm-wkup-sources.dtso?h=11.02.08>`__
+   `k3-am62l3-evm-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62l3-evm-lpm-wkup-sources.dtso?h=12.00.00.07>`__
    to use as a template to configure the desired WKUP GPIO as a wakeup capable
    GPIO.
 
@@ -478,7 +478,7 @@ WKUP GPIO
    wakeup interrupt to the system.
 
    WKUP GPIO wakeup can only be tested when
-   `k3-am62l3-evm-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62l3-evm-lpm-wkup-sources.dtso?h=11.02.08>`__
+   `k3-am62l3-evm-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62l3-evm-lpm-wkup-sources.dtso?h=12.00.00.07>`__
    overlay is loaded. Refer to :ref:`How to enable DT overlays<howto_dt_overlays>` for more details.
    The WKUP GPIO in the overlay is routed from the WKUP UART. With this
    configuration the WKUP UART is not available as a wakeup source.
@@ -547,7 +547,7 @@ Main UART
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
    To configure UART as an I/O daisy chain wakeup, refer to the
-   main_uart0 node in `k3-am62x-sk-common.dtsi <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-common.dtsi?h=11.02.08>`_
+   main_uart0 node in `k3-am62x-sk-common.dtsi <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-common.dtsi?h=12.00.00.07>`_
 
    .. code-block:: dts
 
@@ -582,7 +582,7 @@ Main UART
 .. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
    To configure UART as an I/O daisy chain wakeup, refer to the
-   main_uart0 node in `k3-am62a7-sk.dts <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62a7-sk.dts?h=11.02.08>`_
+   main_uart0 node in `k3-am62a7-sk.dts <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62a7-sk.dts?h=12.00.00.07>`_
 
    .. code-block:: dts
 
@@ -617,7 +617,7 @@ Main UART
 .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
    To configure UART as an I/O daisy chain wakeup, refer to the
-   main_uart0 node in `k3-am62p5-sk.dts <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62p5-sk.dts?h=11.02.08>`_
+   main_uart0 node in `k3-am62p5-sk.dts <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62p5-sk.dts?h=12.00.00.07>`_
 
    .. code-block:: dts
 
@@ -651,7 +651,7 @@ Main UART
 .. ifconfig:: CONFIG_part_variant in ('AM62LX')
 
    To configure UART as an I/O daisy chain wakeup, refer to the
-   main_uart0 node in `k3-am62l3-evm.dts <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62l3-evm.dts?h=11.02.08>`_
+   main_uart0 node in `k3-am62l3-evm.dts <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62l3-evm.dts?h=12.00.00.07>`_
 
    .. code-block:: dts
 
@@ -705,7 +705,7 @@ source by triggering a wake IRQ in Deep Sleep states.
 
    The reference configuration for Main GPIO wakeup can be found under
    gpio_key node in
-   `k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=11.02.08#n21>`__
+   `k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=12.00.00.07#n21>`__
 
       .. code-block:: dts
 
@@ -730,7 +730,7 @@ source by triggering a wake IRQ in Deep Sleep states.
    pad when system enters Deep Sleep.
 
    Main GPIO wakeup can only be tested when
-   `k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=11.02.08>`__
+   `k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=12.00.00.07>`__
    overlay is loaded. Please refer to :ref:`How to enable DT overlays<howto_dt_overlays>` for more details.
 
    To use main_gpio as a wakeup source, ensure gpio is a wake-irq in
@@ -749,7 +749,7 @@ source by triggering a wake IRQ in Deep Sleep states.
 
    The reference configuration for Main GPIO wakeup can be found under
    gpio_key node in
-   `k3-am62l3-evm.dts <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62l3-evm.dts?h=11.02.08#n50>`__
+   `k3-am62l3-evm.dts <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62l3-evm.dts?h=12.00.00.07#n69>`__
 
       .. code-block:: dts
 
@@ -794,7 +794,7 @@ The UART in WKUP domain is capable of waking up the system.
 In order to use WKUP UART as a wakeup source, it needs to be configured
 in a generic way using the ti-sysc interconnect target module driver.
 The reference configuration can be found under target-module in
-`k3-am62-wakeup.dtsi <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62-wakeup.dtsi?h=11.02.08#n46>`__
+`k3-am62-wakeup.dtsi <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62-wakeup.dtsi?h=12.00.00.07#n46>`__
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX')
 
@@ -979,7 +979,7 @@ CAN I/O Daisy Chain
    mcan driver to switch to the wakeup state during suspend.
 
    Refer to the mcu_mcan0 and mcu_mcan1 nodes in
-   `k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=11.02.08>`__
+   `k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=12.00.00.07>`__
    for a complete example:
 
    .. code-block:: dts
@@ -1004,19 +1004,18 @@ CAN I/O Daisy Chain
 
       CAN wakeup is enabled by default for the AM62X LP-SK EVM. For all
       other EVMs, the device tree overlay
-      `k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=11.02.08>`__
+      `k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=12.00.00.07>`__
       is required for testing CAN wakeup. See
       :ref:`How to enable DT overlays<howto_dt_overlays>` for details.
 
    .. ifconfig:: CONFIG_part_variant in ('AM62AX','AM62PX')
 
       Either device tree overlay
-      `k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=11.02.08>`__
+      `k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=12.00.00.07>`__
       or
-      `k3-am62x-sk-lpm-io-ddr-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-io-ddr-wkup-sources.dtso?h=11.02.08>`__
+      `k3-am62x-sk-lpm-io-ddr-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-io-ddr-wkup-sources.dtso?h=12.00.00.07>`__
       are needed for testing. See
       :ref:`How to enable DT overlays<howto_dt_overlays>` for details.
-
 
    Before entering low power mode, enable CAN wakeup using ethtool:
 
