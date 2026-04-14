@@ -52,6 +52,10 @@ What's new
   - Important Bug Fixes on top of Processor SDK 11.02.08.02 Release.
   - Review Issue Tracker Section for the new fixes.
   - Support for multiple Linux distributions, such as Yocto, Debian and Buildroot
+  - OPTEE: Hardware-backed secure key storage via RPMB with PKCS#11 interface
+  - Security: ATF, OPTEE and RNG memory firewall for isolation from Linux
+  - Security: Yocto reference for LUKS2 root filesystem encryption with fTPM key management
+  - Secure boot: Support for U-boot FIT image signing and verification
 
 **Key Release References:**
 

@@ -46,9 +46,10 @@ What's new
 
 **Processor SDK Linux AM64X Release has following new features:**
 
-- First 2026 LTS Reference Release Including RT combined branch model
+  - First 2026 LTS Reference Release Including RT combined branch model
   - Important Bug Fixes on top of Processor SDK 11.02.08.02 Release
   - Review Issue Tracker Section for the new fixes.
+  - Security: ATF and OPTEE memory firewall for isolation from Linux
 
 **Key Release References:**
 

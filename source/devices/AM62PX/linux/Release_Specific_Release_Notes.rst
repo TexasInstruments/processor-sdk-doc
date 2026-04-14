@@ -51,6 +51,8 @@ What's new
   - First 2026 LTS Reference Release Including RT combined branch model
   - Important Bug Fixes on top of Processor SDK 11.02.08.02 Release.
   - Review Issue Tracker Section for the new fixes.
+  - Security: ATF and OPTEE memory firewall for isolation from Linux
+  - Security: Yocto reference for LUKS2 root filesystem encryption with fTPM key management
 
 **Key Release References:**
 
