@@ -432,6 +432,34 @@ UDP Ingress Throughput
 
 |
 
+PCIe
+====
+
+PCIe-NVMe-SSD
+-------------
+
+To run the performance test, connect an NVMe SSD to the PCIe slot of the EVM, and execute the following commands:
+
+.. code-block:: console
+
+   cd /opt/ltp
+   ./runltp -P am64xx-hsevm -f ddt/pci_gen3ssd_perf -s "PCI_L_PERF_NVMESSD_EXT4_FIO_10G "
+
+.. csv-table:: PCIE SSD EXT4 FIO 10G
+    :header: "Buffer size (bytes)","Write EXT4 Throughput (Mbytes/sec)","Write EXT4 CPU Load (%)","Read EXT4 Throughput (Mbytes/sec)","Read EXT4 CPU Load (%)"
+
+    "1m","397 (min 393.4, max 400.6)","24.39","422 (min 419.0, max 425.9)","15.49"
+    "4m","398 (min 385.9, max 411.0)","19.26","424 (min 410.2, max 436.1)","15.11"
+    "4k","74.2 (min 71.1, max 76.3)","50.47","103 (min 100.8, max 105.5)","50.78"
+    "256k","397 (min 390.3, max 399.3)","25.54","420 (min 416.3, max 422.7)","15.16"
+
+- File size used: 10G
+- FIO command options: --ioengine='libaio' --iodepth=4 --numjobs=1 --direct=1 --group_reporting --runtime=60 --time_based --eta=never
+- Platform: Speed 5GT/s, Width x1
+- SSD used: Intel SSDPED1D280GA
+
+|
+
 OSPI
 ====
 
