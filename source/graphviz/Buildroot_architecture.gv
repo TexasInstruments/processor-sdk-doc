@@ -1,0 +1,348 @@
+digraph buildroot_architecture {
+    rankdir=TB;
+    graph [splines=ortho, nodesep=0.5, ranksep=0.7,
+           fontname="Arial", pad=0.5, bgcolor="white"];
+    node  [fontname="Arial", fontsize=7, margin=0];
+    edge  [fontname="Arial", fontsize=11, penwidth=2.0,
+           arrowsize=1.2];
+
+    subgraph cluster_outer {
+        label="Buildroot-based Linux(R) Embedded Software for TI Devices";
+        style="filled,bold";
+        fillcolor="#F0F4FF";
+        color="#1A237E";
+        penwidth=4;
+        fontsize=20;
+        fontcolor="#1A237E";
+        fontname="Arial Bold";
+
+        apps [
+            shape=none,
+            label=<
+              <TABLE BORDER="4" CELLBORDER="0" CELLSPACING="5"
+                     CELLPADDING="6" BGCOLOR="#E8F5E9"
+                     COLOR="#2E7D32" STYLE="ROUNDED">
+                <TR>
+                  <TD COLSPAN="2" BGCOLOR="#2E7D32"
+                      STYLE="ROUNDED" WIDTH="300">
+                    <FONT COLOR="white" POINT-SIZE="13">
+                      <B>&#9312; Applications</B>
+                    </FONT>
+                  </TD>
+                </TR>
+                <TR>
+                  <TD BGCOLOR="#43A047" STYLE="ROUNDED"
+                      WIDTH="140" HEIGHT="40">
+                    <FONT COLOR="white" POINT-SIZE="11">
+                      <B>GUI Applications</B>
+                    </FONT>
+                  </TD>
+                  <TD BGCOLOR="#43A047" STYLE="ROUNDED"
+                      WIDTH="140" HEIGHT="40">
+                    <FONT COLOR="white" POINT-SIZE="11">
+                      <B>Custom Applications</B>
+                    </FONT>
+                  </TD>
+                </TR>
+                <TR>
+                  <TD BGCOLOR="#66BB6A" STYLE="ROUNDED"
+                      WIDTH="140" HEIGHT="40">
+                    <FONT COLOR="white" POINT-SIZE="11">
+                      <B>Trusted Applications</B>
+                    </FONT>
+                  </TD>
+                  <TD BGCOLOR="#66BB6A" STYLE="ROUNDED"
+                      WIDTH="140" HEIGHT="40">
+                    <FONT COLOR="white" POINT-SIZE="11">
+                      <B>Middleware and Libraries</B>
+                    </FONT>
+                  </TD>
+                </TR>
+              </TABLE>
+            >
+        ];
+
+        buildroot [
+            shape=none,
+            label=<
+              <TABLE BORDER="4" CELLBORDER="0" CELLSPACING="5"
+                     CELLPADDING="9" BGCOLOR="#FFFDE7"
+                     COLOR="#E65100" STYLE="ROUNDED">
+                <TR>
+                  <TD COLSPAN="2" BGCOLOR="#E65100"
+                      STYLE="ROUNDED" WIDTH="300"
+                      HREF="https://gitlab.com/buildroot.org/buildroot/"
+                      TARGET="_blank"
+                      TOOLTIP="Buildroot official repository">
+                    <FONT COLOR="white" POINT-SIZE="13">
+                      <B>&#9313; Buildroot Build System</B>
+                    </FONT>
+                  </TD>
+                </TR>
+                <TR>
+                  <TD BGCOLOR="#F9A825" STYLE="ROUNDED"
+                      WIDTH="140" HEIGHT="55"
+                      HREF="https://gitlab.com/buildroot.org/buildroot/"
+                      TARGET="_blank"
+                      TOOLTIP="Buildroot Core repository">
+                    <FONT COLOR="#3E2723" POINT-SIZE="13">
+                      <B>Buildroot</B>
+                    </FONT>
+                  </TD>
+                  <TD BGCOLOR="#FFB300" STYLE="ROUNDED"
+                      WIDTH="140" HEIGHT="55"
+                      HREF="https://github.com/TexasInstruments/buildroot-external-TI"
+                      TARGET="_blank"
+                      TOOLTIP="TI Buildroot external tree repository">
+                    <FONT COLOR="#3E2723" POINT-SIZE="13">
+                      <B>Buildroot External-TI</B>
+                    </FONT>
+                  </TD>
+                </TR>
+              </TABLE>
+            >
+        ];
+
+        tibsp [
+            shape=none,
+            label=<
+              <TABLE BORDER="4" CELLBORDER="0" CELLSPACING="5"
+                     CELLPADDING="6" BGCOLOR="#EDE7F6"
+                     COLOR="#4527A0" STYLE="ROUNDED">
+                <TR>
+                  <TD COLSPAN="4" BGCOLOR="#4527A0"
+                      STYLE="ROUNDED" WIDTH="300">
+                    <FONT COLOR="white" POINT-SIZE="13">
+                      <B>&#9314; TI BSP Components</B>
+                    </FONT>
+                  </TD>
+                </TR>
+                <TR>
+                  <TD COLSPAN="4" BGCOLOR="#512DA8" STYLE="ROUNDED">
+                    <FONT COLOR="white" POINT-SIZE="10">
+                      <B>Firmware and Security Components</B>
+                    </FONT>
+                  </TD>
+                </TR>
+                <TR>
+                  <TD BGCOLOR="#7B1FA2" STYLE="ROUNDED"
+                      WIDTH="68" HEIGHT="40"
+                      HREF="https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git/"
+                      TARGET="_blank"
+                      TOOLTIP="Trusted Firmware-A repository">
+                    <FONT COLOR="white" POINT-SIZE="10">
+                      <B>TF-A</B>
+                    </FONT>
+                  </TD>
+                  <TD BGCOLOR="#8E24AA" STYLE="ROUNDED"
+                      WIDTH="68" HEIGHT="40"
+                      HREF="https://github.com/OP-TEE/optee_os"
+                      TARGET="_blank"
+                      TOOLTIP="OP-TEE OS repository">
+                    <FONT COLOR="white" POINT-SIZE="10">
+                      <B>OP-TEE</B>
+                    </FONT>
+                  </TD>
+                  <TD BGCOLOR="#AB47BC" STYLE="ROUNDED"
+                      WIDTH="88" HEIGHT="40"
+                      HREF="https://git.ti.com/cgit/processor-firmware/ti-linux-firmware"
+                      TARGET="_blank"
+                      TOOLTIP="TI Linux Firmware repository">
+                    <FONT COLOR="white" POINT-SIZE="10">
+                      <B>TI Linux Firmware</B>
+                      <BR/>
+                      <FONT POINT-SIZE="7">
+                        (N/A for AM62Lx-EVM)
+                      </FONT>
+                    </FONT>
+                  </TD>
+                  <TD BGCOLOR="#9C27B0" STYLE="ROUNDED"
+                      WIDTH="68" HEIGHT="40"
+                      HREF="https://github.com/u-boot/u-boot"
+                      TARGET="_blank"
+                      TOOLTIP="U-Boot repository">
+                    <FONT COLOR="white" POINT-SIZE="10">
+                      <B>U-Boot</B>
+                    </FONT>
+                  </TD>
+                </TR>
+                <TR>
+                  <TD COLSPAN="4" BGCOLOR="#1565C0" STYLE="ROUNDED">
+                    <FONT COLOR="white" POINT-SIZE="10">
+                      <B>Linux Kernel Components</B>
+                    </FONT>
+                  </TD>
+                </TR>
+                <TR>
+                  <TD BGCOLOR="#1976D2" STYLE="ROUNDED"
+                      WIDTH="68" HEIGHT="40"
+                      HREF="https://github.com/TexasInstruments/ti-linux-kernel/tree/ti-linux-6.18.y"
+                      TARGET="_blank"
+                      TOOLTIP="Linux Kernel repository">
+                    <FONT COLOR="white" POINT-SIZE="10">
+                      <B>TI Linux Kernel</B>
+                    </FONT>
+                  </TD>
+                  <TD COLSPAN="2" BGCOLOR="#1E88E5"
+                      STYLE="ROUNDED" HEIGHT="40"
+                      HREF="https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel"
+                      TARGET="_blank"
+                      TOOLTIP="TI Linux Kernel repository">
+                    <FONT COLOR="white" POINT-SIZE="10">
+                      <B>TI Kernel Drivers</B>
+                    </FONT>
+                  </TD>
+                  <TD BGCOLOR="#42A5F5" STYLE="ROUNDED"
+                      WIDTH="68" HEIGHT="40"
+                      HREF="https://github.com/torvalds/linux/tree/master/arch/arm64/boot/dts/ti"
+                      TARGET="_blank"
+                      TOOLTIP="TI Device Tree sources">
+                    <FONT COLOR="white" POINT-SIZE="10">
+                      <B>Device Tree</B>
+                    </FONT>
+                  </TD>
+                </TR>
+              </TABLE>
+            >
+        ];
+
+        artifacts [
+            shape=none,
+            label=<
+              <TABLE BORDER="4" CELLBORDER="0" CELLSPACING="5"
+                     CELLPADDING="6" BGCOLOR="#F3E5F5"
+                     COLOR="#880E4F" STYLE="ROUNDED">
+                <TR>
+                  <TD COLSPAN="3" BGCOLOR="#880E4F"
+                      STYLE="ROUNDED" WIDTH="300">
+                    <FONT COLOR="white" POINT-SIZE="13">
+                      <B>Build Artifacts</B>
+                    </FONT>
+                  </TD>
+                </TR>
+                <TR>
+                  <TD BGCOLOR="#AD1457" STYLE="ROUNDED"
+                      WIDTH="92" HEIGHT="38">
+                    <FONT COLOR="white" POINT-SIZE="11">
+                      <B>SD Card Image</B>
+                    </FONT>
+                  </TD>
+                  <TD BGCOLOR="#C2185B" STYLE="ROUNDED"
+                      WIDTH="92" HEIGHT="38">
+                    <FONT COLOR="white" POINT-SIZE="11">
+                      <B>Boot Artifacts</B>
+                    </FONT>
+                  </TD>
+                  <TD BGCOLOR="#D81B60" STYLE="ROUNDED"
+                      WIDTH="92" HEIGHT="38">
+                    <FONT COLOR="white" POINT-SIZE="11">
+                      <B>Root Filesystem</B>
+                    </FONT>
+                  </TD>
+                </TR>
+              </TABLE>
+            >
+        ];
+
+        legend [
+            shape=none,
+            label=<
+              <TABLE BORDER="2" CELLBORDER="0" CELLSPACING="3"
+                     CELLPADDING="4" BGCOLOR="#FAFAFA"
+                     COLOR="#424242" STYLE="ROUNDED">
+                <TR>
+                  <TD COLSPAN="2" BGCOLOR="#424242"
+                      STYLE="ROUNDED" WIDTH="200">
+                    <FONT COLOR="white" POINT-SIZE="11">
+                      <B>Legend</B>
+                    </FONT>
+                  </TD>
+                </TR>
+                <TR>
+                  <TD BGCOLOR="#2E7D32" STYLE="ROUNDED"
+                      WIDTH="16" HEIGHT="16">
+                    <FONT COLOR="white" POINT-SIZE="4"> </FONT>
+                  </TD>
+                  <TD ALIGN="LEFT" WIDTH="180">
+                    <FONT COLOR="#2E7D32" POINT-SIZE="10">
+                      <B>Applications Layer</B>
+                    </FONT>
+                  </TD>
+                </TR>
+                <TR>
+                  <TD BGCOLOR="#E65100" STYLE="ROUNDED"
+                      WIDTH="16" HEIGHT="16">
+                    <FONT COLOR="white" POINT-SIZE="4"> </FONT>
+                  </TD>
+                  <TD ALIGN="LEFT" WIDTH="180">
+                    <FONT COLOR="#E65100" POINT-SIZE="10">
+                      <B>Buildroot Build System</B>
+                    </FONT>
+                  </TD>
+                </TR>
+                <TR>
+                  <TD BGCOLOR="#4527A0" STYLE="ROUNDED"
+                      WIDTH="16" HEIGHT="16">
+                    <FONT COLOR="white" POINT-SIZE="4"> </FONT>
+                  </TD>
+                  <TD ALIGN="LEFT" WIDTH="180">
+                    <FONT COLOR="#4527A0" POINT-SIZE="10">
+                      <B>TI BSP Components</B>
+                    </FONT>
+                  </TD>
+                </TR>
+                <TR>
+                  <TD BGCOLOR="#880E4F" STYLE="ROUNDED"
+                      WIDTH="16" HEIGHT="16">
+                    <FONT COLOR="white" POINT-SIZE="4"> </FONT>
+                  </TD>
+                  <TD ALIGN="LEFT" WIDTH="180">
+                    <FONT COLOR="#880E4F" POINT-SIZE="10">
+                      <B>Build Artifacts</B>
+                    </FONT>
+                  </TD>
+                </TR>
+              </TABLE>
+            >
+        ];
+    }
+
+    // Vertical flow: apps -> buildroot -> tibsp -> artifacts -> legend
+    apps      -> buildroot [style=invis, weight=100];
+    buildroot -> tibsp     [style=invis, weight=100];
+    tibsp     -> artifacts [style=invis, weight=100];
+    artifacts -> legend    [style=invis, weight=100];
+
+    // Data-flow edges (constraint=false so they don't affect layout)
+    apps -> buildroot [
+        color="#2E7D32",
+        penwidth=2.5,
+        arrowsize=1.2,
+        fontcolor="#2E7D32",
+        fontsize=11,
+        fontname="Arial Bold",
+        constraint=false
+    ];
+
+    tibsp -> buildroot [
+        color="#4527A0",
+        penwidth=2.5,
+        arrowsize=1.2,
+        fontcolor="#4527A0",
+        fontsize=11,
+        fontname="Arial Bold",
+        constraint=false
+    ];
+
+    buildroot -> artifacts [
+        color="#E65100",
+        penwidth=3.0,
+        arrowsize=1.5,
+        label="  Output  ",
+        fontcolor="#E65100",
+        fontsize=11,
+        fontname="Arial Bold",
+        style=bold,
+        constraint=false
+    ];
+}

@@ -8,7 +8,48 @@ cross-compiled toolchains, root filesystems, Linux kernels, and bootloaders.
 Buildroot is highly customizable, allowing developers to tailor their Linux
 environment to meet the specific needs of their embedded projects.
 
-Buildroot official Git repository is hosted at `Gitlab/Buildroot <https://gitlab.com/buildroot.org/buildroot/>`__.
+
+**************************************
+Buildroot Architecture for TI Devices
+**************************************
+
+The diagram below shows the Buildroot-based Linux embedded software distribution main components for TI devices.
+
+The open-source Linux\ :sup:`®` distribution, based on the Buildroot build system, running on the Arm\ :sup:`®` Cortex\ :sup:`®`\-A processors, includes:
+
+- **TI BSP Components** — the Texas Instruments Board Support Package, comprising:
+
+  - The boot chain based on **TF-A** (Trusted Firmware-A) and **U-Boot**.
+  - The secure monitor based on **TF-A** and **OP-TEE**, running on the Arm\ :sup:`®`
+    Cortex\ :sup:`®`\-A in secure mode.
+  - The **OP-TEE** secure OS running on the Arm\ :sup:`®` Cortex\ :sup:`®`\-A in secure mode,
+    providing a Trusted Execution Environment (TEE) for Trusted Applications.
+  - The **Linux Kernel** and **TI Kernel Drivers** running on the Arm\ :sup:`®`
+    Cortex\ :sup:`®`\-A in non-secure mode, along with board-specific **Device Trees**.
+  - The **TI Linux Firmware** providing co-processor firmwares
+    (not applicable for AM62Lx-EVM).
+
+- **Buildroot Build System** — consisting of:
+
+  - **Buildroot Core**: the upstream Buildroot framework that drives the entire build.
+  - **Buildroot External-TI**: the TI-specific external tree
+    (`buildroot-external-TI <https://github.com/TexasInstruments/buildroot-external-TI>`__)
+    that adds TI board configurations, packages, and patches without modifying upstream Buildroot.
+
+- **Applications** — the user-space software layer built on top of the BSP, including
+  GUI applications, custom applications, Trusted Applications running under OP-TEE,
+  and middleware and libraries.
+
+- **Build Artifacts** — the outputs produced by the Buildroot build system: an SD card
+  image, individual boot artifacts, and a root filesystem.
+
+.. note::
+
+   Each component in the diagram below is a **clickable hyperlink** that navigates
+   directly to the corresponding source repository or documentation.
+
+.. graphviz:: ../graphviz/Buildroot_architecture.gv
+   :caption: Buildroot-based Linux Architecture for TI Devices
 
 *************************
 Key Features of Buildroot
