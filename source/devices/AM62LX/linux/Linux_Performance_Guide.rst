@@ -499,7 +499,7 @@ TCP Bidirectional Throughput
 .. csv-table:: CPSW2g TCP Bidirectional Throughput
     :header: "Command Used","am62lxx_evm-fs: THROUGHPUT (Mbits/sec)","am62lxx_evm-fs: CPU Load % (LOCAL_CPU_UTIL)"
 
-    "netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_MAERTS","1048.02 (min 1035.65, max 1060.38)","99.10 (min 98.47, max 99.72)"
+    "netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_MAERTS","1064.14","100.0"
 
 TCP Bidirectional Throughput Interrupt Pacing
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -507,7 +507,7 @@ TCP Bidirectional Throughput Interrupt Pacing
 .. csv-table:: CPSW2g TCP Bidirectional Throughput Interrupt Pacing
     :header: "Command Used","am62lxx_evm-fs: THROUGHPUT (Mbits/sec)","am62lxx_evm-fs: CPU Load % (LOCAL_CPU_UTIL)"
 
-    "netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_MAERTS","1182.95 (min 1179.68, max 1186.21)","95.50 (min 95.39, max 95.60)"
+    "netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_MAERTS","988.33","96.5"
 
 UDP Throughput
 ^^^^^^^^^^^^^^
@@ -515,20 +515,20 @@ UDP Throughput
 .. csv-table:: CPSW2g UDP Egress Throughput 0 loss
     :header: "Frame Size(bytes)","am62lxx_evm-fs: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am62lxx_evm-fs: THROUGHPUT (Mbits/sec)","am62lxx_evm-fs: Packets Per Second (kPPS)","am62lxx_evm-fs: CPU Load % (LOCAL_CPU_UTIL)"
 
-    "64","","36.89 (min 36.82, max 36.96)","72.00","75.48 (min 75.29, max 75.67)"
-    "128","","80.20","78.00","77.85"
-    "256","","145.24","71.00","75.58"
-    "1024","","355.15 (min 137.62, max 572.68)","43.50 (min 17.00, max 70.00)","49.89 (min 24.19, max 75.58)"
-    "1518","","623.50 (min 619.61, max 627.38)","51.50 (min 51.00, max 52.00)","72.61 (min 71.63, max 73.58)"
+    "64","","39.22","77","77.1"
+    "128","","80.94","79","77.3"
+    "256","","158.35","77","76.7"
+    "1024","","569.25","69","74.3"
+    "1518","","769.98","65","73.8"
 
 .. csv-table:: CPSW2g UDP Ingress Throughput 0 loss
     :header: "Frame Size(bytes)","am62lxx_evm-fs: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am62lxx_evm-fs: THROUGHPUT (Mbits/sec)","am62lxx_evm-fs: Packets Per Second (kPPS)","am62lxx_evm-fs: CPU Load % (LOCAL_CPU_UTIL)"
 
-    "64","","1.54 (min 1.48, max 1.59)","3.00","1.97 (min 1.84, max 2.10)"
-    "128","","4.46 (min 4.40, max 4.51)","4.00","3.70 (min 2.67, max 4.73)"
-    "256","","10.14 (min 10.04, max 10.24)","5.00","3.06 (min 3.00, max 3.11)"
-    "1024","","42.19 (min 41.78, max 42.60)","5.00","3.49 (min 3.40, max 3.57)"
-    "1518","","34.74 (min 8.24, max 61.23)","3.00 (min 1.00, max 5.00)","3.65 (min 1.02, max 6.27)"
+    "64","","29.44","58","34.9"
+    "128","","79.46","78","45.3"
+    "256","","144.79","71","44.6"
+    "1024","","587.36","72","64.1"
+    "1518","","804.28","68","73.4"
 
 .. csv-table:: CPSW2g UDP Ingress Throughput possible loss
     :header: "Frame Size(bytes)","am62lxx_evm-fs: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am62lxx_evm-fs: THROUGHPUT (Mbits/sec)","am62lxx_evm-fs: Packets Per Second (kPPS)","am62lxx_evm-fs: CPU Load % (LOCAL_CPU_UTIL)","am62lxx_evm-fs: Packet Loss %"

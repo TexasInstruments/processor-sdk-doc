@@ -349,7 +349,7 @@ TCP Bidirectional Throughput
 .. csv-table:: CPSW2g TCP Bidirectional Throughput
     :header: "Command Used","am64xx-hsevm: THROUGHPUT (Mbits/sec)","am64xx-hsevm: CPU Load % (LOCAL_CPU_UTIL)"
 
-    "netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_MAERTS","1100.48 (min 1064.93, max 1125.49)","99.80 (min 99.68, max 99.87)"
+    "netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_MAERTS","1051.83","98.0"
 
 TCP Bidirectional Throughput Interrupt Pacing
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -357,7 +357,7 @@ TCP Bidirectional Throughput Interrupt Pacing
 .. csv-table:: CPSW2g TCP Bidirectional Throughput Interrupt Pacing
     :header: "Command Used","am64xx-hsevm: THROUGHPUT (Mbits/sec)","am64xx-hsevm: CPU Load % (LOCAL_CPU_UTIL)"
 
-    "netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_MAERTS","1129.68 (min 1104.10, max 1180.26)","92.57 (min 77.95, max 98.21)"
+    "netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_MAERTS","1141.56","98.7"
 
 UDP Throughput
 ^^^^^^^^^^^^^^
@@ -365,19 +365,20 @@ UDP Throughput
 .. csv-table:: CPSW2g UDP Egress Throughput 0 loss
     :header: "Frame Size(bytes)","am64xx-hsevm: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am64xx-hsevm: THROUGHPUT (Mbits/sec)","am64xx-hsevm: Packets Per Second (kPPS)","am64xx-hsevm: CPU Load % (LOCAL_CPU_UTIL)"
 
-    "64","","31.91 (min 16.92, max 46.99)","62.25 (min 33.00, max 92.00)","71.14 (min 54.01, max 87.52)"
-    "128","","62.77 (min 33.94, max 92.73)","61.50 (min 33.00, max 91.00)","69.80 (min 52.96, max 86.37)"
-    "256","","91.10 (min 53.10, max 171.91)","44.50 (min 26.00, max 84.00)","56.55 (min 31.44, max 87.70)"
-    "1024","","420.23 (min 273.76, max 655.96)","51.00 (min 33.00, max 80.00)","66.26 (min 53.48, max 89.14)"
-    "1518","","443.96 (min 254.51, max 628.95)","36.50 (min 21.00, max 52.00)","71.19 (min 53.13, max 89.29)"
+    "64","","44.26","86","87.2"
+    "128","","84.74","83","87.4"
+    "256","","168.40","82","90.2"
+    "1024","","612.56","75","89.4"
+    "1518","","864.47","73","89.6"
 
 .. csv-table:: CPSW2g UDP Ingress Throughput 0 loss
     :header: "Frame Size(bytes)","am64xx-hsevm: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am64xx-hsevm: THROUGHPUT (Mbits/sec)","am64xx-hsevm: Packets Per Second (kPPS)","am64xx-hsevm: CPU Load % (LOCAL_CPU_UTIL)"
 
-    "128","","4.89 (min 4.40, max 5.43)","4.50 (min 4.00, max 5.00)","2.05 (min 0.20, max 7.47)"
-    "256","","10.60 (min 10.24, max 11.06)","5.00","1.86 (min 0.13, max 6.88)"
-    "1024","","42.05 (min 41.78, max 42.60)","5.00","3.74 (min 0.94, max 7.58)"
-    "1518","","63.29 (min 62.41, max 64.76)","5.00","7.24 (min 7.04, max 7.31)"
+    "64","","30.77","60","35.0"
+    "128","","74.65","73","43.7"
+    "256","","150.12","73","44.4"
+    "1024","","566.07","69","48.6"
+    "1518","","876.13","74","66.7"
 
 .. csv-table:: CPSW2g UDP Ingress Throughput possible loss
     :header: "Frame Size(bytes)","am64xx-hsevm: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am64xx-hsevm: THROUGHPUT (Mbits/sec)","am64xx-hsevm: Packets Per Second (kPPS)","am64xx-hsevm: CPU Load % (LOCAL_CPU_UTIL)","am64xx-hsevm: Packet Loss %"
@@ -390,21 +391,21 @@ UDP Throughput
 ICSSG Ethernet
 --------------
 
-TCP Bidirectional Throughput
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ICSSG TCP Bidirectional Throughput
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. csv-table:: ICSSG TCP Bidirectional Throughput
     :header: "Command Used","am64xx-hsevm: THROUGHPUT (Mbits/sec)","am64xx-hsevm: CPU Load % (LOCAL_CPU_UTIL)"
 
-    "netperf -H 192.168.2.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.2.1 -j -c -C -l 60 -t TCP_MAERTS","812.01 (min 355.31, max 1121.74)","83.12 (min 74.78, max 99.72)"
+    "netperf -H 192.168.2.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.2.1 -j -c -C -l 60 -t TCP_MAERTS","1073.37","95.6"
 
-TCP Bidirectional Throughput Interrupt Pacing
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ICSSG TCP Bidirectional Throughput Interrupt Pacing
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. csv-table:: ICSSG TCP Bidirectional Throughput Interrupt Pacing
     :header: "Command Used","am64xx-hsevm: THROUGHPUT (Mbits/sec)","am64xx-hsevm: CPU Load % (LOCAL_CPU_UTIL)"
 
-    "netperf -H 192.168.2.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.2.1 -j -c -C -l 60 -t TCP_MAERTS","528.47 (min 363.92, max 1021.70)","50.15 (min 38.53, max 84.08)"
+    "netperf -H 192.168.2.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.2.1 -j -c -C -l 60 -t TCP_MAERTS","1039.79","83.8"
 
 UDP Egress Throughput
 ^^^^^^^^^^^^^^^^^^^^^
@@ -412,11 +413,11 @@ UDP Egress Throughput
 .. csv-table:: ICSSG UDP Egress Throughput 0 loss
     :header: "Frame Size(bytes)","am64xx-hsevm: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am64xx-hsevm: THROUGHPUT (Mbits/sec)","am64xx-hsevm: Packets Per Second (kPPS)","am64xx-hsevm: CPU Load % (LOCAL_CPU_UTIL)"
 
-    "64","","18.70 (min 16.63, max 19.65)","36.25 (min 32.00, max 38.00)","53.66 (min 53.49, max 53.81)"
-    "128","","37.99 (min 35.64, max 39.58)","37.25 (min 35.00, max 39.00)","53.92 (min 53.64, max 54.23)"
-    "256","","122.26 (min 70.86, max 173.65)","59.75 (min 35.00, max 85.00)","71.04 (min 53.56, max 89.45)"
-    "1024","","421.89 (min 20.48, max 646.48)","51.67 (min 3.00, max 79.00)","59.85 (min 0.95, max 89.47)"
-    "1472","","225.95 (min 9.42, max 866.11)","19.25 (min 1.00, max 74.00)","23.84 (min 0.19, max 88.88)"
+    "64","","45.31","88","87.5"
+    "128","","87.49","85","88.4"
+    "256","","166.04","81","89.2"
+    "1024","","610.00","74","89.3"
+    "1472","","855.64","73","90.1"
 
 UDP Ingress Throughput
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -424,11 +425,11 @@ UDP Ingress Throughput
 .. csv-table:: ICSSG UDP Ingress Throughput 0 loss
     :header: "Frame Size(bytes)","am64xx-hsevm: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am64xx-hsevm: THROUGHPUT (Mbits/sec)","am64xx-hsevm: Packets Per Second (kPPS)","am64xx-hsevm: CPU Load %"
 
-    "64","","1.55 (min 1.43, max 1.64)","3.00","2.63 (min 0.19, max 6.18)"
-    "128","","4.43 (min 4.30, max 4.71)","4.25 (min 4.00, max 5.00)","1.16 (min 0.22, max 2.30)"
-    "256","","10.14 (min 9.63, max 10.65)","5.00","4.54 (min 0.32, max 6.49)"
-    "1024","","43.22 (min 42.60, max 43.42)","5.00","6.99 (min 5.41, max 9.72)"
-    "1472","","99.50 (min 61.23, max 181.34)","8.25 (min 5.00, max 15.00)","11.03 (min 6.91, max 20.94)"
+    "64","","36.35","71","44.2"
+    "128","","70.25","69","47.0"
+    "256","","138.03","67","45.5"
+    "1024","","530.84","65","52.5"
+    "1472","","626.48","53","48.6"
 
 |
 
