@@ -443,17 +443,20 @@ UDP Throughput
 .. csv-table:: CPSW2g UDP Egress Throughput 0 loss
     :header: "Frame Size(bytes)","am62dxx_evm-fs: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am62dxx_evm-fs: THROUGHPUT (Mbits/sec)","am62dxx_evm-fs: Packets Per Second (kPPS)","am62dxx_evm-fs: CPU Load % (LOCAL_CPU_UTIL)"
 
-    "64","","46.03 (min 45.82, max 46.24)","89.50 (min 89.00, max 90.00)","38.12 (min 38.01, max 38.23)"
-    "128","","91.09 (min 90.84, max 91.34)","89.00","38.04 (min 37.99, max 38.09)"
+    "64","","45.45","89","37.6"
+    "128","","90.47","88","37.6"
+    "256","","181.31","89","37.7"
+    "1024","","704.12","86","37.1"
+    "1518","","716.61","61","29.8"
 
 .. csv-table:: CPSW2g UDP Ingress Throughput 0 loss
     :header: "Frame Size(bytes)","am62dxx_evm-fs: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am62dxx_evm-fs: THROUGHPUT (Mbits/sec)","am62dxx_evm-fs: Packets Per Second (kPPS)","am62dxx_evm-fs: CPU Load % (LOCAL_CPU_UTIL)"
 
-    "64","","1.97 (min 1.54, max 2.15)","3.75 (min 3.00, max 4.00)","2.24 (min 1.52, max 3.73)"
-    "128","","5.15 (min 5.12, max 5.22)","5.00","2.97 (min 2.13, max 4.33)"
-    "256","","9.78 (min 9.01, max 10.65)","4.75 (min 4.00, max 5.00)","2.84 (min 1.03, max 5.42)"
-    "1024","","43.09 (min 38.50, max 51.61)","5.20 (min 5.00, max 6.00)","3.78 (min 2.73, max 6.02)"
-    "1518","","60.76 (min 55.35, max 64.77)","5.20 (min 5.00, max 6.00)","3.50 (min 2.30, max 5.87)"
+    "64","","33.69","66","11.8"
+    "128","","80.87","79","20.9"
+    "256","","154.01","75","14.0"
+    "1024","","617.87","75","23.8"
+    "1518","","726.36","62","29.2"
 
 .. csv-table:: CPSW2g UDP Ingress Throughput possible loss
     :header: "Frame Size(bytes)","am62dxx_evm-fs: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am62dxx_evm-fs: THROUGHPUT (Mbits/sec)","am62dxx_evm-fs: Packets Per Second (kPPS)","am62dxx_evm-fs: CPU Load % (LOCAL_CPU_UTIL)","am62dxx_evm-fs: Packet Loss %"
