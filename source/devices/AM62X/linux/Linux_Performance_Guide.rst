@@ -923,6 +923,72 @@ Listed for each algorithm are the code snippets used to run each
 
     time -v openssl speed -elapsed -evp aes-128-cbc
 
+
+Crypto Performance Comparison
+-----------------------------
+
+The following table shows different AES/SHA algorithms throughput measured using
+openssl speed across the SA3UL accelerator, ARM Cryptographic Extension (CE), and baseline ARM CPU.
+
+.. csv-table:: Crypto Accelerator Performance
+   :header: "Algorithm", "Size (bytes)", "Accelerator (MB/s)", "ARM CE (MB/s)", "ARM (MB/s)"
+   :widths: 20, 25, 20, 20, 20
+
+   "aes-128-cbc", "16", "0.38", "95.83", "31.06"
+   "aes-128-cbc", "64", "1.60", "300.27", "39.69"
+   "aes-128-cbc", "256", "6.08", "632.25", "42.89"
+   "aes-128-cbc", "1024", "23.90", "895.17", "43.74"
+   "aes-128-cbc", "8192", "93.02", "1018.16", "44.04"
+   "aes-128-cbc", "16384", "117.17", "1028.05", "44.03"
+   "aes-128-ecb", "16 bytes", "0.38", "104.39", "33.22"
+   "aes-128-ecb", "64 bytes", "1.65", "286.28", "41.15"
+   "aes-128-ecb", "256 bytes", "6.12", "653.72", "43.92"
+   "aes-128-ecb", "1024 bytes", "23.97", "986.05", "44.66"
+   "aes-128-ecb", "8192 bytes", "95.95", "1156.00", "44.89"
+   "aes-128-ecb", "16384 bytes", "123.02", "1169.81", "44.90"
+   "aes-192-cbc", "16 bytes", "0.38", "93.65", "28.01"
+   "aes-192-cbc", "64 bytes", "1.57", "275.37", "34.50"
+   "aes-192-cbc", "256 bytes", "6.06", "526.80", "36.80"
+   "aes-192-cbc", "1024 bytes", "23.68", "696.19", "37.42"
+   "aes-192-cbc", "8192 bytes", "86.63", "767.44", "37.61"
+   "aes-192-cbc", "16384 bytes", "109.92", "773.00", "37.62"
+   "aes-192-ecb", "16 bytes", "0.38", "99.14", "29.40"
+   "aes-192-ecb", "64 bytes", "1.65", "268.53", "35.45"
+   "aes-192-ecb", "256 bytes", "6.09", "594.94", "37.48"
+   "aes-192-ecb", "1024 bytes", "23.88", "871.28", "38.02"
+   "aes-192-ecb", "8192 bytes", "92.35", "1005.13", "38.19"
+   "aes-192-ecb", "16384 bytes", "115.74", "1016.20", "38.16"
+   "aes-256-cbc", "16 bytes", "0.38", "91.26", "25.25"
+   "aes-256-cbc", "64 bytes", "1.52", "255.82", "30.41"
+   "aes-256-cbc", "256 bytes", "6.05", "460.21", "32.18"
+   "aes-256-cbc", "1024 bytes", "23.88", "584.38", "32.66"
+   "aes-256-cbc", "8192 bytes", "82.42", "633.85", "32.78"
+   "aes-256-cbc", "16384 bytes", "103.74", "637.05", "32.75"
+   "sha2-256", "16 bytes", "0.50", "12.97", "8.61"
+   "sha2-256", "64 bytes", "1.96", "47.09", "24.49"
+   "sha2-256", "256 bytes", "7.74", "152.84", "53.85"
+   "sha2-256", "1024 bytes", "29.85", "347.00", "77.00"
+   "sha2-256", "8192 bytes", "172.08", "553.98", "88.04"
+   "sha2-256", "16384 bytes", "264.31", "578.23", "88.93"
+   "sha2-512", "16 bytes", "0.42", "7.71", "7.73"
+   "sha2-512", "64 bytes", "1.70", "30.78", "30.43"
+   "sha2-512", "256 bytes", "6.05", "65.03", "65.12"
+   "sha2-512", "1024 bytes", "23.97", "109.16", "108.88"
+   "sha2-512", "8192 bytes", "85.19", "136.24", "136.33"
+   "sha2-512", "16384 bytes", "105.89", "138.69", "138.64"
+
+.. csv-table:: CPU Usage %
+   :header: "Algorithm", "Accelerator (%)", "ARM CE (%)", "ARM (%)"
+   :widths: 25, 25, 25, 25
+
+   "aes-128-cbc", "38%", "99%", "99%"
+   "aes-128-ecb", "36%", "99%", "99%"
+   "aes-192-cbc", "38%", "99%", "99%"
+   "aes-192-ecb", "38%", "99%", "99%"
+   "aes-256-cbc", "38%", "99%", "99%"
+   "sha2-256", "94%", "99%", "99%"
+   "sha2-512", "93%", "99%", "99%"
+
 IPSec Software Performance
 --------------------------
 
