@@ -30,6 +30,10 @@ The following drivers have been validated for Runtime PM in this release:
 
     DSS, GPU, McASP, OSPI, MCAN, Video Codec.
 
+.. ifconfig:: CONFIG_part_variant in ('AM62DX')
+
+    DSS, McASP, OSPI, MCAN.
+
 .. rubric:: Driver Usage
 
 Linux provides the following sysfs interface (/sys/devices/.../power/)
