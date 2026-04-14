@@ -8,6 +8,7 @@ RUN apk add --no-cache \
 		diffutils \
 		dumb-init \
 		git \
+		graphviz \
 		make \
 		py3-pip \
 		ripgrep \

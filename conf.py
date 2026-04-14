@@ -39,6 +39,7 @@ extensions = [
     'sphinx.ext.todo',
     'sphinx.ext.mathjax',
     'sphinx.ext.ifconfig',
+    'sphinx.ext.graphviz',
     'sphinx_rtd_theme',
     'sphinx_tabs.tabs',
     'sphinx_copybutton'
@@ -252,6 +253,9 @@ latex_elements = {
 
 # Suppress warnings about excluded documents because every device gets a different toc tree
 suppress_warnings = ['toc.excluded']
+
+# Render graphviz diagrams as SVG so that hyperlinks in diagrams are clickable
+graphviz_output_format = 'svg'
 
 # -- Tag file loader ------------------------------------------------------
 
