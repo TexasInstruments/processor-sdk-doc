@@ -54,6 +54,9 @@ What's included
 
 **Key Release References:**
 
+  - Signal Chain OOB example :ref:`Cascade Biquad Parametric EQ Demo <AM62D-cascade-biquad-parametric-eq-from-linux-user-guide>`
+  - 8-channel recording support :ref:`Audio User Guide <Audio_User_Guide>`
+  - ARM only Analytics support :ref:`Machine Learning <foundational-components-machine-learning>`
   - Snagfactory Support - :ref:`Snagfactory Tool <Flash-via-Fastboot>`
 
 **Component version:**
