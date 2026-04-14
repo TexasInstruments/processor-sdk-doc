@@ -110,56 +110,40 @@ OP-TEE Secure Storage
 *********************
 
 OP-TEE provides secure storage functionality through two mechanisms:
-**REE FS** (Rich Execution Environment Filesystem) and **RPMB**
-(Replay Protected Memory Block).
+**Rich Execution Environment Filesystem (REE FS)** and **Replay Protected Memory Block (RPMB)**.
 
 TI SDK enables REE FS by-default, and configures OP-TEE to store
 encrypted binary blobs created by REE FS in
 :file:`/var/lib/tee/`.
 
-.. ifconfig:: CONFIG_part_variant in ('AM62LX')
+RPMB works in TI SoCs with HS configuration. These embed a Key Encryption Key (KEK)
+that programs across OP-TEE instances in a derived manner. Each HS
+device has its own Hardware Unique Key (HUK) signing key Derived Key Encryption Key (DKEK), which is different from
+other HS devices. TI SDK disables RPMB by-default. To enable it,
+re-compiling OP-TEE with ``CFG_RPMB_FS=y`` flag.
 
-   .. note::
+For learning more about secure storage in OP-TEE, and instructions to
+enable RPMB, refer:
+https://optee.readthedocs.io/en/latest/architecture/secure_storage.html
 
-      Presently, AM62L does not support RPMB. This support will be added
-      in subsequent releases. It does support REE FS.
+There is a hybrid mode, which enables both ``CFG_REE_FS=y`` and ``CFG_RPMB_FS=y``.
+This mode stores the state of the Secure Storage directory in RPMB partition to check for the
+integrity of the data present in it. It is the recommended way.
 
-      The remaining devices support both: REE FS by-default and RPMB if
-      OP-TEE binaries are re-compiled with required flags.
+E.g. For enabling hybrid mode of RPMB along with REE_FS
 
-   For learning more about secure storage in OP-TEE, refer:
-   https://optee.readthedocs.io/en/latest/architecture/secure_storage.html
+.. ifconfig:: CONFIG_part_variant in ('J721S2')
 
-.. ifconfig:: CONFIG_part_variant not in ('AM62LX')
+   .. code-block:: console
 
-   RPMB works in TI SoCs with HS configuration. These embed a KEK
-   that programs across OP-TEE instances in a derived manner. Each HS
-   device has its own HUK signing key (DKEK), which is different from
-   other HS devices. TI SDK disables RPMB by-default. To enable it,
-   re-compiling OP-TEE with ``CFG_RPMB_FS=y`` flag.
+       $ export CFG_CONSOLE_UART=0x8
 
-   For learning more about secure storage in OP-TEE, and instructions to
-   enable RPMB, refer:
-   https://optee.readthedocs.io/en/latest/architecture/secure_storage.html
+.. parsed-literal::
 
-   There is a hybrid mode in which both the flags i.e `CFG_REE_FS=y` and `CFG_RPMB_FS=y` are enabled.
-   This mode stores the state of the Secure Storage directory in RPMB partition to check for the
-   integrity of the data present in it. It is the recommended way.
+   $ make CROSS_COMPILE64="$CROSS_COMPILE_64" PLATFORM=\ |__OPTEE_PLATFORM_FLAVOR__| CFG_ARM64_core=y CFG_REE_FS=y CFG_RPMB_FS=y
 
-   E.g. For enabling hybrid mode of RPMB along with REE_FS
-
-   .. ifconfig:: CONFIG_part_variant in ('J721S2')
-
-      .. code-block:: console
-
-          $ export CFG_CONSOLE_UART=0x8
-
-   .. parsed-literal::
-
-      $ make CROSS_COMPILE64="$CROSS_COMPILE_64" PLATFORM=\ |__OPTEE_PLATFORM_FLAVOR__| CFG_ARM64_core=y CFG_REE_FS=y CFG_RPMB_FS=y
-
-   OPTEE-client also needs to be updated to enable the use of real
-   emmc instead of the virtual emmc that is enabled by default
+Also update optee-client to enable the use of real
+eMMC instead of the virtual eMMC, which is the default option.
 
 As an example to show the usage of secure storage, the filesystem
 provides a binary :file:`/usr/bin/optee_examples_secure_storage`.
@@ -221,12 +205,10 @@ Integrate binary output into U-boot
 
 |
 
-.. ifconfig:: CONFIG_part_variant not in ('AM62LX')
+.. rubric:: PKCS#11
 
-   .. rubric:: PKCS#11
+Public Key Cryptography Standard #11 (PKCS#11) is a cryptographic token interface standard that allows applications
+to access cryptographic services through a platform-independent API.
 
-   PKCS#11 is a cryptographic token interface standard that allows applications
-   to access cryptographic services through a platform-independent API.
-
-   For userland integration details, refer:
-   https://optee.readthedocs.io/en/latest/building/userland_integration.html
+For userspace integration details, refer:
+https://optee.readthedocs.io/en/latest/building/userland_integration.html
