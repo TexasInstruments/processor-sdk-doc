@@ -59,6 +59,19 @@ overlay is loaded. Please refer to :ref:`How to enable DT overlays<howto_dt_over
 
 After Linux boots, the MCAN wakeup for Partial I/O is enabled.
 
+.. ifconfig:: CONFIG_part_variant in ('AM62DX')
+
+   .. important::
+
+      Currently, wakeup from CAN is not available on AM62D EVM, but CAN
+      wakeup still needs to be **enabled** to enter Partial I/O. To wakeup
+      from Partial I/O, the WKUP UART should be used. To enable wakeup
+      from WKUP UART, enter the following command:
+
+      .. code-block:: console
+
+         root@<machine>:~# devmem2 0x4084024 w 0x20050000  # MCU_PADCONFIG9 for wkup_uart0
+
 Enter Partial I/O mode with the following command:
 
 .. code-block:: console
@@ -88,7 +101,7 @@ I/O Only Plus DDR
 
    This mode is not applicable for AM62X.
 
-.. ifconfig:: CONFIG_part_variant in ('AM62AX' , 'AM62PX')
+.. ifconfig:: CONFIG_part_variant in ('AM62AX' , 'AM62PX', 'AM62DX')
 
    This mode is similar to Partial I/O mode, with the major distinction being
    that the DDR memory is kept in self refresh to save context. All the processor
@@ -112,6 +125,10 @@ I/O Only Plus DDR
    .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
       .. important:: Jumper J12 should be connected on SK to enable system to enter I/O Only plus DDR mode.
+
+   .. ifconfig:: CONFIG_part_variant in ('AM62DX')
+
+      .. important:: Jumper J16 should be connected on SK to enable system to enter I/O Only plus DDR mode.
 
    The wakeup sources that can be used to wake the system from I/O Only Plus
    DDR are mcu_uart0, mcu_mcan0, mcu_mcan1 and wkup_uart0. To use the mcu_mcan0
@@ -143,7 +160,7 @@ I/O Only Plus DDR
                Main UART, USB0, and USB1 as these wakeup sources are not
                supported for this mode.
 
-   .. ifconfig:: CONFIG_part_variant in ('AM62AX')
+   .. ifconfig:: CONFIG_part_variant in ('AM62AX', 'AM62DX')
 
       .. code-block:: console
 
@@ -163,7 +180,7 @@ I/O Only Plus DDR
 
    .. rubric:: Then, configure PMIC register bit to turn off only selected rails for this mode.
 
-   .. ifconfig:: CONFIG_part_variant in ('AM62AX')
+   .. ifconfig:: CONFIG_part_variant in ('AM62AX', 'AM62DX')
 
       .. code-block:: console
 
@@ -253,7 +270,7 @@ In order to enter Deep Sleep, use the following command:
       [  444.826567] psci: CPU2 killed (polled 0 ms)
       [  444.830170] psci: CPU3 killed (polled 0 ms)
 
-.. ifconfig:: CONFIG_part_variant in ('AM62AX' , 'AM62PX')
+.. ifconfig:: CONFIG_part_variant in ('AM62AX' , 'AM62PX', 'AM62DX')
 
    .. code-block:: console
 

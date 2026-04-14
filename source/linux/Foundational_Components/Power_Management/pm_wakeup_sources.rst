@@ -30,7 +30,7 @@ valid for given low power modes:
    | CAN UART I/O Daisy Chain                       | Yes        | Yes      | Yes         |
    +------------------------------------------------+------------+----------+-------------+
 
-.. ifconfig:: CONFIG_part_variant in ('AM62AX', 'AM62PX')
+.. ifconfig:: CONFIG_part_variant in ('AM62AX', 'AM62PX', 'AM62DX')
 
    +------------------------------------------------+-------+------+---------+----------+
    |  Wakeup Source                                 | Deep  | MCU  | Partial | I/O Only |
@@ -155,7 +155,7 @@ For example, to wakeup from Deep Sleep in 10 seconds, use the command like this:
       [ 34.645777] PM: suspend exit
       root@am62xx-evm:~#
 
-.. ifconfig:: CONFIG_part_variant in ('AM62AX')
+.. ifconfig:: CONFIG_part_variant in ('AM62AX', 'AM62DX')
 
    .. code-block:: console
 
@@ -309,7 +309,7 @@ For example, to wakeup from Deep Sleep in 10 seconds, use the command like this:
       [   28.378392] random: crng reseeded on system resumption
       [   28.384269] PM: suspend exit
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX')
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX', 'AM62DX')
 
    .. note::
 
@@ -325,7 +325,7 @@ MCU GPIO
 
    MCU GPIO wakeup is not supported on AM62LX.
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX')
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX', 'AM62DX')
 
    One of the most common ways to wakeup a system is by using some I/O activity.
    I/O activity on the MCU GPIOs can wakeup the system when the MCU GPIO
@@ -487,7 +487,7 @@ WKUP GPIO
    :ref:`LPM section<lpm_modes>`, wakeup from WKUP_UART0_RXD can be triggered
    by entering a keypress on the WKUP UART (/dev/ttyUSB2).
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX')
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX', 'AM62DX')
 
    Setup of WKUP GPIO is the same process of MCU GPIO. Refer to the
    :ref:`MCU GPIO section<pm_mcu_gpio_wakeup>` on how to configure wakeup from
@@ -514,7 +514,7 @@ register.
 For detailed information and sequence please refer to I/O Power Management and
 Daisy Chaining section in the TRM.
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX')
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX', 'AM62DX')
 
    .. note::
 
@@ -702,6 +702,41 @@ Main UART
          bootph-all;
       };
 
+.. ifconfig:: CONFIG_part_variant in ('AM62DX')
+
+   To configure UART as an I/O daisy chain wakeup, refer to the
+   main_uart0 node in `k3-am62d2-evm.dts <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62d2-evm.dts?h=12.00.00.07>`_
+
+   .. code-block:: dts
+
+      &main_pmx0 {
+         main_uart0_pins_default: main-uart0-default-pins {
+            pinctrl-single,pins = <
+               AM62DX_IOPAD(0x01c8, PIN_INPUT, 0) /* (E14) UART0_RXD */
+               AM62DX_IOPAD(0x01cc, PIN_OUTPUT, 0) /* (D15) UART0_TXD */
+            >;
+            bootph-all;
+         };
+
+         main_uart0_pins_wakeup: main-uart0-wakeup-pins {
+            pinctrl-single,pins = <
+               AM62DX_IOPAD(0x01c8, PIN_INPUT | PIN_WKUP_EN, 0) /* (E14) UART0_RXD */
+               AM62DX_IOPAD(0x01cc, PIN_OUTPUT, 0) /* (D15) UART0_TXD */
+            >;
+         };
+      };
+
+      &main_uart0 {
+         status = "okay";
+         pinctrl-names = "default", "wakeup";
+         pinctrl-0 = <&main_uart0_pins_default>;
+         pinctrl-1 = <&main_uart0_pins_wakeup>;
+         wakeup-source = <&system_deep_sleep>,
+                         <&system_mcu_only>,
+                         <&system_standby>;
+         bootph-all;
+      };
+
 In the above code, a "wakeup" pinctrl state is defined for main_uart0. The
 "wakeup" pinctrl state sets the  WKUP_EN flag on the desired padconfig register,
 which allows the pad to act as a wakeup source. During suspend, the Linux
@@ -722,7 +757,7 @@ combination of gpio-keys with a chained IRQ in the pinctrl driver. Setting the
 29th bit in the desired padconfig register, allows the pad to act as a wakeup
 source by triggering a wake IRQ in Deep Sleep states.
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX')
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX', 'AM62DX')
 
    The reference configuration for Main GPIO wakeup can be found under
    gpio_key node in
@@ -817,7 +852,7 @@ in a generic way using the ti-sysc interconnect target module driver.
 The reference configuration can be found under target-module in
 `k3-am62-wakeup.dtsi <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62-wakeup.dtsi?h=11.02.08#n46>`__
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX')
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX', 'AM62DX')
 
    WKUP UART is generally available on the third serial port
    (/dev/ttyUSB2) and by default it only shows output from DM R5.
@@ -946,7 +981,7 @@ MCU IPC based Wakeup
 
    MCU IPC wakeup is not supported on AM62LX.
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX')
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX', 'AM62DX')
 
    It's possible to use IPC based wakeup events from the MCU core. For details on how to implement this
    from the firmware side, please refer to the relevant documentation:
@@ -955,7 +990,7 @@ MCU IPC based Wakeup
 
       `MCU+ SDK for AM62x <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62X/11_01_00_16/exports/docs/api_guide_am62x/index.html>`__
 
-   .. ifconfig:: CONFIG_part_variant in ('AM62AX')
+   .. ifconfig:: CONFIG_part_variant in ('AM62AX', 'AM62DX')
 
       `MCU+ SDK for AM62Ax <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62AX/11_01_00_16/exports/docs/api_guide_am62ax/index.html>`__
 
@@ -990,7 +1025,7 @@ CAN UART I/O Daisy Chain
 
    CAN UART wakeup is not supported on AM62LX.
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX')
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX', 'AM62DX')
 
    It is possible to wakeup the system from CAN UART pins in all supported low
    power modes. This is possible once CAN UART is configured.
@@ -1050,7 +1085,7 @@ CAN UART I/O Daisy Chain
 RTC Ext Pin
 ***********
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX')
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX', 'AM62DX')
 
    This is not applicable for |__PART_FAMILY_DEVICE_NAMES__|.
 
@@ -1068,7 +1103,7 @@ Confirming the Wakeup event type
 
    This is not applicable for AM62LX.
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX')
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX', 'AM62DX')
 
    When the SoC wakes up from any Low Power Mode, the Device Manager logs the wake
    reason, the pin number that triggered the wakeup, and the last low power mode
