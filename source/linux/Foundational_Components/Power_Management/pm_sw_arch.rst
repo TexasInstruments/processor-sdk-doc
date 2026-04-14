@@ -230,7 +230,7 @@ If constraint is put on MAIN devgroup devices, then no low power mode is possibl
    `Devgroup section <https://software-dl.ti.com/tisci/esd/latest/5_soc_doc/am62x/soc_devgrps.html#am62x-device-group-descriptions>`__
    of TISCI documentation.
 
-.. ifconfig:: CONFIG_part_variant in ('AM62AX')
+.. ifconfig:: CONFIG_part_variant in ('AM62AX', 'AM62DX')
 
    For detailed description for devgroup of these devices, refer to
    `Devgroup section <https://software-dl.ti.com/tisci/esd/latest/5_soc_doc/am62ax/soc_devgrps.html#am62ax-device-group-descriptions>`__

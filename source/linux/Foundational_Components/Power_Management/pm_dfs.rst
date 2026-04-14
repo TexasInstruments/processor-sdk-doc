@@ -197,7 +197,7 @@ To view supported OPP's (frequency in kHz),
       $ cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies
       750000000 1000000000 1500000000 2000000000
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX', 'J722S')
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX', 'J722S', 'AM62DX')
 
    .. code-block:: console
 
@@ -248,7 +248,7 @@ table.
               };
       };
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX')
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX', 'AM62DX')
 
    The OPP table defined in the following files
    allows defining of a different set of OPPs for each different SoC:
@@ -257,7 +257,7 @@ table.
 
       :file:`arch/arm64/boot/dts/ti/k3-am625.dtsi`
 
-   .. ifconfig:: CONFIG_part_variant in ('AM62AX')
+   .. ifconfig:: CONFIG_part_variant in ('AM62AX', 'AM62DX')
 
       :file:`arch/arm64/boot/dts/ti/k3-am62a7.dtsi`
 

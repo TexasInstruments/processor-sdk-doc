@@ -16,7 +16,7 @@ C-state. Governor decides whether to continue in current state/
 transition to a different state. Current 'driver' is called to
 transition to the selected state.
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX', 'J722S')
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX', 'J722S', 'AM62DX')
 
     .. rubric:: Standby Mode
 
