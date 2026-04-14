@@ -43,23 +43,23 @@ The support status is indicated by the following codes:
    ,,PRG,No
    ,,PGD,No
    ,,VTM,Yes
-   Power Management,Deep Sleep Low Power Mode  ,,No
-   ,Deep Sleep LPM Wakeup Events,RTC Timer,No
+   Power Management,Deep Sleep Low Power Mode  ,,Yes
+   ,Deep Sleep LPM Wakeup Events,RTC Timer,Yes
    ,,GT Timers,No
-   ,,WKUP UART,No
+   ,,WKUP UART,Yes
    ,,I2C,No
-   ,,MCU GPIO,No
-   ,,I/O Daisy Chain,No
-   ,,USB Connect/Disconnect,No
-   ,,USB Remote Wakeup,No
-   ,MCU-Only Low Power Mode,,No
-   ,Standby Low Power Mode,,No
-   ,Partial I/O Low Power Mode,,No
-   ,IO + DDR low power mode,,No
-   ,Boot-time OPP configurations,,No
-   ,Runtime Power Management,,No
+   ,,MCU GPIO,Yes
+   ,,I/O Daisy Chain,Yes
+   ,,USB Connect/Disconnect,Yes
+   ,,USB Remote Wakeup,Yes
+   ,MCU-Only Low Power Mode,,Yes
+   ,Standby Low Power Mode,,Yes
+   ,Partial I/O Low Power Mode,,Yes
+   ,IO + DDR low power mode,,Yes
+   ,Boot-time OPP configurations,,Yes
+   ,Runtime Power Management,,Yes
    ,DFS/CPUFreq,,Yes
-   ,CPUIdle (A53 WFI),,No
+   ,CPUIdle (A53 WFI),,Yes
    ,CPUIdle (DDR in Self-Refresh),,No
    Interprocessor Communication,Mailbox,,Yes
    ,Spinlock,,Yes
