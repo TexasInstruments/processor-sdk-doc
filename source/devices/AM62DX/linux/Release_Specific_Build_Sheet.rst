@@ -126,9 +126,9 @@ The support status is indicated by the following codes:
    ,,CAN FD,No
    ,Controller Area Network (MCAN) - MCU domain,CAN,No
    ,,CAN FD,No
-   ,Enhanced Capture (ECAP) Module,Capture,Yes
-   ,,PWM,Yes
-   ,Enhanced Pulse Width Modulation (EPWM) Module,,Yes
+   ,Enhanced Capture (ECAP) Module,Capture,No
+   ,,PWM,No
+   ,Enhanced Pulse Width Modulation (EPWM) Module,,No
    ,Enhanced Quadrature Encoder Pulse (EQEP) Module,,No
    Camera Subsystem,Camera Streaming Interface Receiver (CSI_RX_IF),,NA
    ,MIPI D-PHY Receiver (DPHY_RX),,NA
