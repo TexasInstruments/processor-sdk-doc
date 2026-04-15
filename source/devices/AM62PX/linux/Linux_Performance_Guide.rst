@@ -859,3 +859,85 @@ The following table shows different AES/SHA algorithms throughput measured using
    "sha2-512", "95%", "99%", "99%"
 
 |
+
+Low Power Performance
+---------------------
+
+Power Performance
+^^^^^^^^^^^^^^^^^
+
+.. csv-table:: I/O Only + DDR Power Performance
+   :header: "Rail name","Rail voltage(V)","Power (mW)"
+
+   "vdd_core","0.85","0.00"
+   "vddr_core","0.85","0.00"
+   "soc_dvdd_3v3","3.30","2.04"
+   "soc_dvdd_1v8","1.80","8.27"
+   "vdda_1v8","1.80","0.10"
+   "vdd_lpddr4","1.10","0.46"
+   "Total"," ","10.87"
+
+.. csv-table:: Deep Sleep Power Performance
+   :header: "Rail name","Rail voltage(V)","Power (mW)"
+
+   "vdd_core","0.85","10.71"
+   "vddr_core","0.85","1.01"
+   "soc_dvdd_3v3","3.30","6.11"
+   "soc_dvdd_1v8","1.80","2.83"
+   "vdda_1v8","1.80","1.45"
+   "vdd_lpddr4","1.10","0.39"
+   "Total"," ","13.4"
+
+.. csv-table:: MCU Only Power Performance
+   :header: "Rail name","Rail voltage(V)","Power (mW)"
+
+   "vdd_core","0.85","151.75"
+   "vddr_core","0.85","1.38"
+   "soc_dvdd_3v3","3.30","6.30"
+   "soc_dvdd_1v8","1.80","2.74"
+   "vdda_1v8","1.80","10.07"
+   "vdd_lpddr4","1.10","0.23"
+   "Total"," ","172.47"
+
+Partial I/O Data
+- All voltage rails were measured to be near 0V
+
+.. note::
+
+   The power consumption on the vdda_1v8 rail does not include an
+   oscillator on the rail that has significant current consumption.
+   Since previous SDK power measurements include the oscillator on the
+   rail, the reported power measurements are significantly different from
+   the current reported power measurements.
+
+.. note::
+
+   The measurements shown are from an AM62Px SK rev E1-1. Results may vary based off of the board revision being used.
+
+Further optimizations are possible for these low power modes. Please refer to the AM62x Power Consumption App Note (https://www.ti.com/lit/pdf/spradg1)
+
+Resume Latency Performance
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. csv-table:: LPM Resume Latency Performance
+   :header: "Low Power Mode","Total Resume Latency (ms)"
+
+   "I/O Only + DDR", "691"
+   "Deep Sleep", "149"
+   "MCU Only", "103"
+
+The performance numbers are measured without the Linux printk logs. To remove the
+Linux printk logs, run the following commands in the terminal:
+
+.. code:: console
+
+   # Detach kernel serial console
+   consoles=$(find /sys/bus/platform/devices/*.serial/ -name console)
+   for console in ${consoles}; do
+        echo -n N > ${console}
+   done
+
+
+.. note::
+
+   The measurements shown are from using the default SDK with no extra optimizations.

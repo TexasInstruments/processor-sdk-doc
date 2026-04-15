@@ -1000,3 +1000,67 @@ IPSec Software Performance
     "aes256","130.00 (min 53.40, max 206.60)","11.00 (min 4.00, max 18.00)","39.11 (min 27.23, max 50.98)","88.60 (min 0.40, max 205.40)","7.67 (min 0.00, max 18.00)","43.07 (min 27.21, max 51.38)"
 
 |
+
+
+Low Power Performance
+-------------------------
+
+Power Performance
+^^^^^^^^^^^^^^^^^
+
+.. csv-table:: Deep Sleep Power Performance
+   :header: "Rail name","Rail voltage(V)","Power (mW)"
+
+   "vdd_core","0.85","9.33"
+   "vddr_core","0.85","n/a"
+   "soc_dvdd_3v3","3.30","7.71"
+   "soc_dvdd_1v8","1.80","0.63"
+   "vdda_1v8","1.80","1.94"
+   "vdd_ddr4","1.10","8.04"
+   "Total"," ","27.64"
+
+.. csv-table:: MCU Only Power Performance
+   :header: "Rail name","Rail voltage(V)","Power (mW)"
+
+   "vdd_core","0.85","92.83"
+   "vddr_core","0.85","n/a"
+   "soc_dvdd_3v3","3.30","13.90"
+   "soc_dvdd_1v8","1.80","0.99"
+   "vdda_1v8","1.80","10.80"
+   "vdd_ddr4","1.10","9.03"
+   "Total"," ","126.56"
+
+Partial I/O Data
+- All voltage rails were measured to be near 0V
+
+.. note::
+
+   The measurements shown are from an SK-AM62B-P1. Results may vary based off of the board variant being used.
+
+Further optimizations are possible for these low power modes. Please refer to the AM62x Power Consumption App Note (https://www.ti.com/lit/pdf/spradg1)
+
+Resume Latency Performance
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. csv-table:: LPM Resume Latency Performance
+   :header: "Low Power Mode","Total Resume Latency (ms)"
+
+   "Deep Sleep", "137"
+   "MCU Only", "94"
+
+The performance numbers are measured without the Linux printk logs. To remove the
+Linux printk logs, run the following commands in the terminal:
+
+.. code:: console
+
+   # Detach kernel serial console
+   consoles=$(find /sys/bus/platform/devices/*.serial/ -name console)
+   for console in ${consoles}; do
+        echo -n N > ${console}
+   done
+
+.. note::
+
+   The measurements shown are from using the default SDK with no extra optimizations.
+
+Further optimizations are possible for these low power modes. Please refer to the AM62x Power Consumption App Note (https://www.ti.com/lit/pdf/spradg1)

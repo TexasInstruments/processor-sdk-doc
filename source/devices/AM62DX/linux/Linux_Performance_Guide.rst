@@ -562,3 +562,47 @@ Listed for each algorithm are the code snippets used to run each
     time -v openssl speed -elapsed -evp aes-128-cbc
 
 |
+
+Low Power Performance
+---------------------
+
+Power Performance
+^^^^^^^^^^^^^^^^^
+
+.. csv-table:: I/O Only + DDR Power Performance
+   :header: "Rail name","Rail voltage(V)","Power (mW)"
+
+   "vdd_core","0.85","0.00"
+   "vddr_core","0.85","0.00"
+   "soc_dvdd_3v3","3.30","2.61"
+   "soc_dvdd_1v8","1.80","1.80"
+   "vdda_1v8","1.80","0.00"
+   "vdd_lpddr4","1.10","0.01"
+   "Total"," ","4.42"
+
+.. csv-table:: Deep Sleep Power Performance
+   :header: "Rail name","Rail voltage(V)","Power (mW)"
+
+   "vdd_core","0.85","29.45"
+   "vddr_core","0.85","2.82"
+   "soc_dvdd_3v3","3.30","2.19"
+   "soc_dvdd_1v8","1.80","5.39"
+   "vdda_1v8","1.80","2.62"
+   "vdd_lpddr4","1.10","0.00"
+   "Total"," ","42.47"
+
+.. csv-table:: MCU Only Power Performance
+   :header: "Rail name","Rail voltage(V)","Power (mW)"
+
+   "vdd_core","0.85","208.77"
+   "vddr_core","0.85","4.05"
+   "soc_dvdd_3v3","3.30","10.22"
+   "soc_dvdd_1v8","1.80","3.89"
+   "vdda_1v8","1.80","11.59"
+   "vdd_lpddr4","1.10","0.00"
+   "Total"," ","238.53"
+
+Partial I/O Data
+- All voltage rails were measured to be near 0V
+
+Further optimizations are possible for these low power modes. Please refer to the AM62x Power Consumption App Note (https://www.ti.com/lit/pdf/spradg1)

@@ -836,34 +836,34 @@ Power Performance
 
     "vdd_core","0.85","0.00"
     "vddr_core","0.85","0.00"
-    "soc_dvdd_3v3","3.30","3.47"
-    "soc_dvdd_1v8","1.80","2.26"
+    "soc_dvdd_3v3","3.30","3.31"
+    "soc_dvdd_1v8","1.80","1.89"
     "vdda_1v8","1.80","0.02"
-    "vdd_lpddr4","1.10","3.03"
-    "Total"," ","8.78"
+    "vdd_lpddr4","1.10","3.31"
+    "Total"," ","8.53"
 
 
 .. csv-table:: Deep Sleep Power Performance
     :header: "Rail name","Rail voltage(V)","Power (mW)"
 
-    "vdd_core","0.85","14.48"
-    "vddr_core","0.85","1.90"
-    "soc_dvdd_3v3","3.30","4.38"
-    "soc_dvdd_1v8","1.80","2.08"
-    "vdda_1v8","1.80","10.86"
-    "vdd_lpddr4","1.10","3.31"
-    "Total"," ","36.99"
+    "vdd_core","0.85","15.96"
+    "vddr_core","0.85","1.87"
+    "soc_dvdd_3v3","3.30","6.61"
+    "soc_dvdd_1v8","1.80","2.44"
+    "vdda_1v8","1.80","11.13"
+    "vdd_lpddr4","1.10","2.20"
+    "Total"," ","40.21"
 
 .. csv-table:: MCU Only Power Performance
     :header: "Rail name","Rail voltage(V)","Power (mW)"
 
-    "vdd_core","0.85","197.38"
-    "vddr_core","0.85","3.11"
-    "soc_dvdd_3v3","3.30","10.24"
-    "soc_dvdd_1v8","1.80","2.30"
-    "vdda_1v8","1.80","19.42"
-    "vdd_lpddr4","1.10","4.14"
-    "Total"," ","236.60"
+    "vdd_core","0.85","134.81"
+    "vddr_core","0.85","1.92"
+    "soc_dvdd_3v3","3.30","11.40"
+    "soc_dvdd_1v8","1.80","2.17"
+    "vdda_1v8","1.80","19.55"
+    "vdd_lpddr4","1.10","2.76"
+    "Total"," ","172.60"
 
 Partial I/O Data
 - All voltage rails were measured to be near 0V
@@ -880,9 +880,9 @@ Resume Latency Performance
 .. csv-table:: LPM Resume Latency Performance
    :header: "Low Power Mode","Total Resume Latency (ms)"
 
-   "I/O Only + DDR", "766.17"
-   "Deep Sleep", "153.75"
-   "MCU Only", "89.70"
+   "I/O Only + DDR", "742"
+   "Deep Sleep", "153"
+   "MCU Only", "115"
 
 The performance numbers are measured without the Linux printk logs. To remove the
 Linux printk logs, run the following commands in the terminal:
@@ -899,3 +899,5 @@ Linux printk logs, run the following commands in the terminal:
 .. note::
 
    The measurements shown are from using the default SDK with no extra optimizations.
+
+Further optimizations are possible for these low power modes. Please refer to the AM62x Power Consumption App Note (https://www.ti.com/lit/pdf/spradg1)
