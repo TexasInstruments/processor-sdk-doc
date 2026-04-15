@@ -56,7 +56,7 @@ following platform(s):
 
 .. ifconfig:: CONFIG_part_variant in ('AM64X')
 
-   |  `AM64x EVM <https://www.ti.com/store/ti/en/p/product/?p=TMDS64GPEVM>`__
+   |  `AM64x EVM <https://www.ti.com/tool/TMDS64EVM>`__
 
 |
 
