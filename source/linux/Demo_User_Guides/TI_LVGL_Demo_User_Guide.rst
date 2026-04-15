@@ -125,7 +125,7 @@ Hardware Prerequisites
 
 -  Mouse or Touch Input from HDMI monitor (to control the TI LVGL Demo)
 
--  SD card (minimum 16GB)
+-  SD card (minimum 32GB)
 
 -  Aux cable connected to earphone/speaker
 

@@ -17,7 +17,7 @@ Hardware Prerequisites
 
   - Microtips LVDS Panel
 
-  - SD card (minimum 16GB)
+  - SD card (minimum 32GB)
 
   - PC (Windows or Linux) to flash wic image onto an SD Card
 

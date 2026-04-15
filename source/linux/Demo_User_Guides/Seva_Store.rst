@@ -31,7 +31,7 @@ Hardware Prerequisites
 
 -  Mouse (to control the Demo)
 
--  SD card (minimum 16GB)
+-  SD card (minimum 32GB)
 
 .. _How-to-Launch-Seva-Store-via-TI-Apps-Launcher:
 
@@ -61,7 +61,7 @@ The TI Apps Launcher demo launches on Linux startup. To Launch Seva Store via TI
 .. caution::
 
     If you have connected the SK-EVM to a proxy network, then before launching Seva Store you need to configure Docker and System proxies once per SD Card.
-    
+
     **To set proxy settings you can click on the Settings button from the Left Hand Side Menu and provide the necessary HTTPS & NO PROXY inputs and click Set Proxy button**. Then, continue with Step 3.
 
     .. Image:: /images/webproxy-settings.jpg

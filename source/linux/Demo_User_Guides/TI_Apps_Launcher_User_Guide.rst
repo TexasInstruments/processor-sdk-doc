@@ -61,7 +61,7 @@ Hardware Prerequisites
 
 -  Keyboard & Mouse (to control the TI Apps Launcher)
 
--  SD card (minimum 16GB)
+-  SD card (minimum 32GB)
 
 Launching and Using the TI Apps Launcher
 ----------------------------------------

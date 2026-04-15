@@ -168,9 +168,9 @@ Create SD Card using bmap-tools
             sudo bmaptool copy --bmap tisdk-|__IMAGE_TYPE__|-image-<machine>-<version>.rootfs.bmap tisdk-|__IMAGE_TYPE__|-image-<machine>-<version>.rootfs.wic /dev/sdc
 
 .. ifconfig:: CONFIG_image_type in ('adas')
-   
+
    .. note::
-   
+
       We do not release WIC images for J7 platforms (J784S4, J742S2, J722S, J721E, J721S2).
       Please refer to :ref:`Create SD Card with custom images <processor-sdk-linux-sd-card-with-default-images>` for flashing image.
 
@@ -384,7 +384,7 @@ The |__SDK_FULL_NAME__| can be installed either on host or inside a Docker conta
 
 **Steps to follow inside a Docker Container**
 
-- The SD card you wish to create is inserted into the host system and has a size sufficiently large (16GB or larger) to hold at least the bootloaders, kernel and root file system.
+- The SD card you wish to create is inserted into the host system and has a size sufficiently large (32GB or larger) to hold at least the bootloaders, kernel and root file system.
 - Refer `Steps to Run SDK Installer inside a Container <https://github.com/TexasInstruments/ti-docker-images?tab=readme-ov-file#steps-to-run-sdk-installer-inside-container>`__
 - Start running the script as mentioned in steps 1-4 of :ref:`Create SD card with custom images <processor-sdk-linux-create-sd-card-with-custom-images>` section above.
 - Refer :ref:`Install the Pre-built Images from SDK <choose-install-pre-built-images>`
@@ -396,7 +396,7 @@ The |__SDK_FULL_NAME__| can be installed either on host or inside a Docker conta
 
 #. The |__SDK_FULL_NAME__| package is installed on your host system.
 #. The SD card you wish to create is inserted into the host system and
-   has a size sufficiently large (16GB or larger) to hold at least the bootloaders,
+   has a size sufficiently large (32GB or larger) to hold at least the bootloaders,
    kernel, and root file system.
 #. You have started running the script as detailed in steps 1-4 of
    :ref:`Create SD card with custom images <processor-sdk-linux-create-sd-card-with-custom-images>`

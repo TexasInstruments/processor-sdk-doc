@@ -82,7 +82,7 @@ The following sections cover the Makefile found in the top-level of the |__SDK_F
 Steps to follow inside a Docker Container
 -----------------------------------------
 
-- The SD card you wish to create is inserted into the host system and has a size sufficiently large (16GB or larger) to hold at least the bootloaders, kernel and root file system.
+- The SD card you wish to create is inserted into the host system and has a size sufficiently large (32GB or larger) to hold at least the bootloaders, kernel and root file system.
 - Refer `Steps to Run SDK Installer inside a Container <https://github.com/TexasInstruments/ti-docker-images?tab=readme-ov-file#steps-to-run-sdk-installer-inside-container>`__.
 - Follow :ref:`this <usage-examples>` to understand the Makefile usage.
 
