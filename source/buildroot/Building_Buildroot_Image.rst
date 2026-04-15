@@ -40,11 +40,11 @@ Buildroot tags for Platforms supported are as follws:
      - AM62LX
      - AM62X
    * - https://github.com/buildroot/buildroot
-     - 2025.02.x
-     - 2025.02.x
+     - 2026.02
+     - 2026.02
    * - https://github.com/TexasInstruments/buildroot-external-TI.git
-     - 11.01.16.13
-     - 11.01.05.03
+     - 12.00.00.07.04
+     - 12.00.00.07.04
 
 You can fetch the repos with an explicit tag using:
 
@@ -113,17 +113,17 @@ TI_K3_BOOT_FIRMWARE_VERSION will be as follows:
    * - Platform
      - version_tag
    * - AM62X
-     - 11.01.05
+     - 12.00.00.07
    * - AM62LX
-     - 11.01.16
+     - 12.00.00.07
 
 
 .. code-block:: console
 
    $ make TI_K3_BOOT_FIRMWARE_VERSION=<version_tag>
 
-   For Example, version_tag will be 11.01.05 or 10.01.10
-   $ make TI_K3_BOOT_FIRMWARE_VERSION=11.01.05
+   For Example, version_tag will be 12.00.00.07
+   $ make TI_K3_BOOT_FIRMWARE_VERSION=12.00.00.07
 
 The build process can take some time, depending on your system's resources and
 the complexity of the configuration.

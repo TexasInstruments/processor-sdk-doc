@@ -174,32 +174,32 @@ Buildroot (Buildroot External TI)
      - Tag Info
      - Config Info
    * - U-Boot
-     - `ti-u-boot-2025.01 <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/log/?h=ti-u-boot-2025.01>`__
-     - `11.02.08 <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/tag/?h=11.02.08>`__
-     - `Build <https://github.com/TexasInstruments/buildroot-external-TI/blob/78d0a34cec662b7fd96bf7319e9c59d2b79c1df3/configs/ti_release_am62x_sk_defconfig#L60>`__
+     - `ti-u-boot-2026.01 <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/log/?h=ti-u-boot-2026.01>`__
+     - `12.00.00.07 <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/tag/?h=12.00.00.07>`__
+     - `Build <https://github.com/TexasInstruments/buildroot-external-TI/blob/main/configs/ti_release_am62lx_evm_defconfig#L55>`__
    * - ATF
-     - `master <https://github.com/TexasInstruments/arm-trusted-firmware.git>`__
-     - `v2.13+ <https://github.com/TexasInstruments/arm-trusted-firmware/commit/5939ceaeb664b8da5499dc4ecfa1caa7f5bcc31a>`__
-     - `Build <https://github.com/TexasInstruments/buildroot-external-TI/blob/78d0a34cec662b7fd96bf7319e9c59d2b79c1df3/configs/ti_release_am62lx_evm_rt_defconfig#L39>`__
+     - `ti-tfa-2.14.y <https://github.com/TexasInstruments/arm-trusted-firmware/tree/ti-tfa-2.14.y>`__
+     - `v2.14+ <https://github.com/TexasInstruments/arm-trusted-firmware/commit/d203b8453905178252094416448de009931087e0>`__
+     - `Build <https://github.com/TexasInstruments/buildroot-external-TI/blob/main/configs/ti_release_am62lx_evm_defconfig#L40>`__
    * - OPTEE
      - `master <https://github.com/OP-TEE/optee_os/tree/master>`__
-     - `4.7.0+ <https://github.com/OP-TEE/optee_os/commit/a9690ae39995af36a31b7a4f446f27ea0787e3a4>`__
-     - `Build <https://github.com/TexasInstruments/buildroot-external-TI/blob/78d0a34cec662b7fd96bf7319e9c59d2b79c1df3/configs/ti_release_am62lx_evm_rt_defconfig#L46>`__
+     - `4.9.0+ <https://github.com/OP-TEE/optee_os/commit/f2a7ad0638aeff5243593b33cc56ad064cae7615>`__
+     - `Build <https://github.com/TexasInstruments/buildroot-external-TI/blob/main/configs/ti_release_am62lx_evm_defconfig#L46>`__
    * - Linux Firmware
      - `ti-linux-firmware <https://github.com/TexasInstruments/ti-linux-firmware/tree/ti-linux-firmware>`__
-     - `11.02.08 <https://github.com/TexasInstruments/ti-linux-firmware/releases/tag/11.02.08>`__
+     - `12.00.00.07 <https://github.com/TexasInstruments/ti-linux-firmware/releases/tag/12.00.00.07>`__
      - `Git Clone <https://github.com/buildroot/buildroot/blob/1a17185606161d7a03198e249c02bdc2bdc972d0/boot/ti-k3-boot-firmware/ti-k3-boot-firmware.mk#L8>`__
    * - Linux Kernel
-     - `ti-linux-6.12.y <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/log/?h=ti-linux-6.12.y>`__
-     - `11.02.08 <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tag/?h=11.02.08>`__
-     - `non-RT <https://github.com/TexasInstruments/buildroot-external-TI/blob/78d0a34cec662b7fd96bf7319e9c59d2b79c1df3/configs/ti_release_am62lx_evm_defconfig#L15C58-L15C60>`__, `RT <https://github.com/TexasInstruments/buildroot-external-TI/blob/78d0a34cec662b7fd96bf7319e9c59d2b79c1df3/configs/ti_release_am62lx_evm_rt_defconfig#L15C58-L15C60>`__
+     - `ti-linux-6.18.y <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/log/?h=ti-linux-6.18.y>`__
+     - `12.00.00.07 <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tag/?h=12.00.00.07>`__
+     - `non-RT <https://github.com/TexasInstruments/buildroot-external-TI/blob/main/configs/ti_release_am62lx_evm_defconfig#L15>`__, `RT <https://github.com/TexasInstruments/buildroot-external-TI/blob/main/configs/ti_release_am62lx_evm_rt_defconfig#L15>`__
    * - Buildroot External TI
      - `main <https://github.com/TexasInstruments/buildroot-external-TI/tree/main>`__
-     - `11.02.08.02 <https://github.com/TexasInstruments/buildroot-external-TI/releases/tag/11.02.08.02>`__
+     - `12.00.00.07.04 <https://github.com/TexasInstruments/buildroot-external-TI/releases/tag/12.00.00.07.04>`__
      - `Build <https://github.com/TexasInstruments/buildroot-external-TI/tree/main/configs>`__, `Board <https://github.com/TexasInstruments/buildroot-external-TI/tree/main/board/ti/am62lx-evm>`__
    * - Buildroot
-     - `2025.08.x <https://github.com/buildroot/buildroot/tree/2025.08.x>`__
-     - `2025.08.2 <https://github.com/buildroot/buildroot/releases/tag/2025.08.2>`__
+     - `2026.02.x <https://github.com/buildroot/buildroot/tree/2026.02.x>`__
+     - `2026.02 <https://github.com/buildroot/buildroot/releases/tag/2026.02>`__
      -
 
 Issues Tracker
