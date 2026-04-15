@@ -96,6 +96,7 @@ linux/Foundational_Components/Virtualization/Docker
 linux/Foundational_Components_OPTEE
 linux/Foundational_Components_ATF
 linux/Foundational_Components_Multimedia_wave5
+linux/Foundational_Components_Secure_Boot
 linux/Foundational_Components/Graphics/index
 linux/Foundational_Components/Graphics/Common/Display
 linux/Foundational_Components/Graphics/Common/GTK+_Graphics_Framework
