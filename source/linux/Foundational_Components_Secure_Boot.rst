@@ -1,9 +1,11 @@
+.. _foundational-secure-boot:
+
 **********************************
 Secure Boot
 **********************************
 
-Authenticated Boot
---------------------
+Introduction
+------------
 
 Each device contains customer programmable keys used to authenticate, and optionally decrypt, code/data to be used on the device. A job for
 the Public Boot ROM of both General Purpose (GP) and High Security (HS) devices is to load the next stage of the boot process into memory. On
@@ -30,16 +32,19 @@ The following is an example list where Chain-of-Trust should be maintained.
 - Disable kernel debug options
 - Disable/remove userspace debug tools, devmem disable, etc..
 
-We provide methods for U-Boot's SPL loader to securely verify/encrypt the U-Boot proper. This is accomplished by calling into TIFS via TI-SCI
-(Texas Instruments System Controller Interface). For more infomation using TI_SCI methods refer to the
-`TISCI User Guide <https://software-dl.ti.com/tisci/esd/22_01_02/index.html>`__. U-Boot proper then securely verifies/decrypts the Kernel/DTB/initramfs.
+We offer methods for U-Boot's Secondary Program Loader (SPL) to securely verify the U-Boot
+proper. U-Boot calls Texas Instrument Foundational Security (TIFS) through Texas Instruments System Controller Interface (TISCI)
+to do this. For more information about using TISCI methods see the
+`TISCI User Guide <https://software-dl.ti.com/tisci/esd/latest/index.html>`__. U-Boot proper then securely verifies and decrypts the kernel, Device Tree Blobs (DTB), and initramfs.
 
 .. Image:: /images/K3_KF.png
         :scale: 70%
 
-Secure boot has layers. Some layers are trusted more than others. Secure ROM has the highest trust and REE (Run-time Execution
-Environment) non-trustzone user-space applications have the least. If any higher trust code is to be loaded by a lower trust entity, it must be verified
-by an even higher trust entity and not allowed to be accessed by the lower trust entity after that point. Some such trust inversions are listed below:
+Secure boot has layers. Some layers are trusted more than others. Secure ROM has the highest trust and Runtime Execution
+Environment (REE) non-trustzone user-space applications have the least. If a
+lower trust entity must load a higher trust code, an even higher trust entity
+must verify it and not allow access by the lower trust entity after that
+point. Some such trust inversions are as follows:
 
 - R5 U-Boot loading ATF/OP-TEE
 - R5 Public Boot ROM loading TIFS
@@ -62,21 +67,17 @@ The exact location is device dependent. More details can be found in the device 
 
 .. ifconfig:: CONFIG_part_variant in ('AM64x')
 
-    - `AM64x TRM <https://www.ti.com/lit/pdf/spruim2>`_
-
     The contents of this first stage image are authenticated and decrypted by the Secure ROM. Contents include:
 
     * DMSC firmware: `Texas Instruments Foundational Security (TIFS)` + Device/Power Manager: After authentication/decryption, DMSC firmware replaces the Secure ROM as the authenticator entity executing on the DMSC core.
     * R5 SPL: The R5 SPL bootloader is executed on the R5 core.
 
-.. ifconfig:: CONFIG_part_variant in ('AM62x')
+.. ifconfig:: CONFIG_part_variant not in ('AM64X')
 
-    - `AM62x TRM <https://www.ti.com/lit/pdf/spruiv7>`_
+   The contents of this first stage image are authenticated and decrypted by the Secure ROM. Contents include:
 
-    The contents of this first stage image are authenticated and decrypted by the Secure ROM. Contents include:
-
-    * `Texas Instruments Foundational Security (TIFS)` firmware: After authentication/decryption, TIFS firmware replaces the Secure ROM as the authenticator entity executing on the TIFS core.
-    * R5 SPL`: The R5 SPL bootloader is executed on the R5 core.
+   * `Texas Instruments Foundational Security (TIFS)` firmware: After authentication/decryption, TIFS firmware replaces the Secure ROM as the authenticator entity executing on the TIFS core.
+   * R5 SPL`: The R5 SPL bootloader is executed on the R5 core.
 
 .. rubric:: R5 SPL
 
@@ -121,9 +122,9 @@ A53 SPL's output will be similar to this: (notice the "Authentication passed" li
 .. rubric:: U-Boot
 
 The boot flow continues as it does on a non-secure device, until loading the next FIT image named `fitImage`. This FIT image includes the Linux kernel, DTB, and
-other required boot artifacts. Each component is extracted and authenticated from this FIT image. Once all components are authenticated, U-boot starts Linux.
+other required boot artifacts. U-boot verifies the signed images on boot independently, without using TIFS. U-boot extracts each component from the FIT image and verifies its signature. Once u-boot verifies all components, it starts Linux. For more information, see: `U-Boot FIT Signature Documentation <https://docs.u-boot.org/en/latest/usage/fit/signature.html>`__
 
-U-boot's output will be similar to this: (notice the "Authentication passed" lines as we authenticate the Linux kernel and DTB).
+U-boot's output will be similar to this:
 
 .. code-block:: console
 
@@ -164,7 +165,6 @@ U-boot's output will be similar to this: (notice the "Authentication passed" lin
         Load Address: 0x80080000
         Entry Point:  0x80080000
     Verifying Hash Integrity ... OK
-    Authentication passed
     ## Loading fdt from FIT Image at 90000000 ...
     Using 'k3-am642-evm.dtb' configuration
     Trying 'k3-am642-evm.dtb' fdt subimage
@@ -176,7 +176,6 @@ U-boot's output will be similar to this: (notice the "Authentication passed" lin
         Architecture: AArch64
         Load Address: 0x83000000
     Verifying Hash Integrity ... OK
-    Authentication passed
     Loading fdt from 0x90762a54 to 0x83000000
     Booting using the fdt blob at 0x83000000
     Uncompressing Kernel Image
@@ -195,9 +194,9 @@ HS Boot Flow Tools
 
 U-boot:
 
-    The ti-u-boot source is a project used to create tiboot3.bin, tispl.bin, and u-boot.img. To create  tiboot3.bin for AM64x family devices, u-boot builds R5 SPL and
+    The ti-u-boot source is a project used to create tiboot3.bin, tispl.bin, and u-boot.img. To create  tiboot3.bin for K3 family devices, u-boot builds R5 SPL and
     binman packages it in a `tiboot3.bin` image. To build A53 SPL, binman takes ATF (bl31.bin), OPTEE (bl32.bin), A53 SPL, and A53 DTBs and packages
-    them in a `tispl.bin` image. The openssl library can then then be used to sign each component as specified in k3-am64x-binman.dtsi.
+    them in a `tispl.bin` image. U-Boot can then use the openssl library to sign each component as specified in k3-<soc>-binman.dtsi.
 
     .. code-block:: console
 
@@ -246,7 +245,7 @@ OPTEE:
 Ti-linux-firmware:
 
     The ti-linux-firmware is a TI repository where all firmware releases are stored. Firmwares for a device family can also be found in the pre-built SDK
-    under <path-to-tisdk>/board-support/prebuilt-images/am64xx-evm. Binman expects to find the device firmware with the following appended to u-boot build command:
+    under :file:`<path-to-tisdk>/board-support/prebuilt-images/<evm>`. Binman expects to find the device firmware with the following appended to u-boot build command:
     BINMAN_INDIRS=<path-to-tisdk>/board-support/prebuilt-images, and expects to find a ti-sysfw directory in this path.
 
     .. code-block:: console

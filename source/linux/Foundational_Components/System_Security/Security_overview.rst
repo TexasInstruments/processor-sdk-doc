@@ -71,8 +71,12 @@ The following table lists some of the key Security Features:
   +-------------------------+-----------------------------------------------------------+--------------------------------------+
   | Security Feature        | Description                                               | Links                                |
   +=========================+===========================================================+======================================+
-  | **Authenticated Boot**  | Verifies each boot component to ensure only authorized    | :ref:`auth_boot_guide`               |
-  |                         | code executes on the device                               |                                      |
+  | **Secure Boot**         | Verifies and decrypts each boot stage, establishing a     | :ref:`foundational-secure-boot`      |
+  |                         | hardware-backed chain of trust from ROM to Linux using    |                                      |
+  |                         | customer-programmable keys                                |                                      |
+  +-------------------------+-----------------------------------------------------------+--------------------------------------+
+  | **Authenticated Boot**  | Transparent disk encryption using the Linux kernel        | :ref:`auth_boot_guide`               |
+  |                         | device mapper (dm-crypt) for data confidentiality         |                                      |
   +-------------------------+-----------------------------------------------------------+--------------------------------------+
   | **Crypto Acceleration** | Hardware driver support for cryptographic algorithms      | :ref:`crypto-accelerator`            |
   +-------------------------+-----------------------------------------------------------+--------------------------------------+
