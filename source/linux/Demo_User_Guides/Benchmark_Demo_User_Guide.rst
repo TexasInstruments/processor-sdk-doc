@@ -62,18 +62,24 @@ Get Started
 
 .. Image:: /images/OOB_Linux_ifconfig.png
 
-10. On the PC, open a Internet Browser and enter in the
+10. Run the command below
+
+   .. code-block:: console
+
+      systemctl restart rpmsg_json.service
+
+11. On the PC, open a Internet Browser and enter in the
     following: \ http://IP_ADDRESS_OF_AM64x_EVM:8081, for example, http://192.168.86.198:8081
 
-11. The following web page will pop up:
+12. The following web page will pop up:
 
 .. Image:: /images/OOB_GUI_root.png
 
-12. Click on the "Benchmark Demo":
+13. Click on the "Benchmark Demo":
 
 .. Image:: /images/OOB_GUI_stats.png
 
-13. With the current release, the R5F app for each R5F core are fixed. User can only
+14. With the current release, the R5F app for each R5F core are fixed. User can only
     change the "Options" for each core, then click "LOAD" to refresh the statistics
 
 +-------------+------------------+----------------------+-----------------------------------------------------------+
