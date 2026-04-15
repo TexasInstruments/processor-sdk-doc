@@ -846,3 +846,75 @@ openssl speed across DTHEv2 accelerator, ARM Cryptographic Extension (CE), and b
    "sha2-512", "20%", "98%", "99%"
 
 |
+
+Low Power Performance
+---------------------
+
+Power Performance
+^^^^^^^^^^^^^^^^^
+
+These are power measurements taken while the device is in various low power modes like
+Deep Sleep, RTC Only + DDR, and RTC Only.
+
+.. csv-table:: Deep Sleep Power Performance
+     :header: "Rail name","Rail voltage(V)","Power (mW)"
+
+     "vdd_core", "0.75", "7.17"
+     "soc_dvdd_1v8", "1.80", "1.47"
+     "soc_dvdd_3v3", "3.29", "3.38"
+     "vdda_1v8", "1.80", "1.02"
+     "vdd_lpddr4_pmic2", "1.10", "0.99"
+     "vdd_rtc", "0.74", "0.03"
+     "vdd_rtc_1v8", "1.80", "0.02"
+     "Total"," ","14.07"
+
+.. csv-table:: RTC Only + DDR Power Performance
+     :header: "Rail name","Rail voltage(V)","Power (mW)"
+
+     "vdd_core", "0.00", "0.00"
+     "soc_dvdd_1v8", "1.80", "1.46"
+     "soc_dvdd_3v3", "3.29", "0.99"
+     "vdda_1v8", "0.00", "0.00"
+     "vdd_lpddr4_pmic2", "1.10", "0.95"
+     "vdd_rtc", "0.75", "0.02"
+     "vdd_rtc_1v8", "1.80", "0.01"
+     "Total"," ","3.44"
+
+.. csv-table:: RTC Only Power Performance
+     :header: "Rail name","Rail voltage(V)","Power (mW)"
+
+     "vdd_core", "0.00", "0.00"
+     "soc_dvdd_1v8", "0.00", "0.00"
+     "soc_dvdd_3v3", "0.00", "0.00"
+     "vdda_1v8", "0.00", "0.00"
+     "vdd_lpddr4_pmic2", "0.00", "0.00"
+     "vdd_rtc", "0.75", "0.03"
+     "vdd_rtc_1v8", "1.80", "0.01"
+     "Total"," ","0.05"
+
+Resume Latency Performance
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. csv-table:: LPM Resume Latency Performance
+   :header: "Low Power Mode","Total Resume Latency (ms)"
+
+   "RTC Only", "Full normal boot time (~seconds)"
+   "RTC Only + DDR", "385"
+   "Deep Sleep", "171"
+
+The performance numbers are measured without the Linux printk logs. To remove the
+Linux printk logs, run the following commands in the terminal:
+
+.. code:: console
+
+   # Detach kernel serial console
+   consoles=$(find /sys/bus/platform/devices/*.serial/ -name console)
+   for console in ${consoles}; do
+        echo -n N > ${console}
+   done
+
+.. note::
+
+   The measurements shown are from using the default SDK with no extra optimizations.
+
+Further optimizations are possible for these low power modes. Please refer to the AM62x Power Consumption App Note (https://www.ti.com/lit/pdf/spradg1)
