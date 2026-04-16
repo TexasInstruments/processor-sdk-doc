@@ -33,4 +33,4 @@ has the following configuration files in the :file:`configs/processor-sdk` direc
      - Used for building SELinux enabled Yocto based filesystem
      - |__SDK_BUILD_MACHINE__|, am62xx-lp-evm, am62xxsip-evm, beagleplay-ti
 
-The oe-layersetup configuration, as defined in ``processor-sdk-master-chromium-12.00.00.07.04-config.txt``, is used for configuring the meta layers in the yocto SD card image available on |__SDK_DOWNLOAD_URL__|.
+The oe-layersetup configuration, as defined in :file:`processor-sdk-master-chromium-12.00.00.07.04-config.txt`, is used for configuring the meta layers in the yocto SD card image available on |__SDK_DOWNLOAD_URL__|.
