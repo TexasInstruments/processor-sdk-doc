@@ -51,9 +51,9 @@ found on the SDK download page or in the installed directory as indicated below.
 Software Bill of Materials (SBOM)
 =================================
 
-|SDK_FULL_NAME| releases include Software Bill of Materials (SBOM) files in SPDX 3.0
+|__SDK_FULL_NAME__| releases include Software Bill of Materials (SBOM) files in SPDX 3.0
 format by default. SBOMs for all released artifacts are bundled into a single
-archive and can be found on the |SDK_DOWNLOAD_URL|.
+archive and can be found on the |__SDK_DOWNLOAD_URL__|.
 Release 12.00.00.07.04
 ======================
 
