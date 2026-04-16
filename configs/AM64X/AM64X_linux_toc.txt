@@ -153,6 +153,7 @@ linux/How_to_Guides/Hardware_Setup_with_CCS/AM64x_EVM_Hardware_Setup
 linux/How_to_Guides/FAQ/How_to_Verify_Ipc_Linux_R5
 linux/How_to_Guides/FAQ/How_to_Check_Device_Tree_Info
 linux/How_to_Guides/FAQ/How_to_Integrate_Open_Source_Software
+linux/How_to_Guides/FAQ/How_to_work_with_SBOM
 linux/How_to_Guides/Target/Processor_SDK_Linux_File_System_Optimization_Customization
 
 devices/AM64X/index_RTOS
