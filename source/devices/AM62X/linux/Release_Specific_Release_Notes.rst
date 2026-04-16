@@ -52,6 +52,13 @@ found on the SDK download page or in the installed directory as indicated below.
    -  `AM62x-SIP 12.00.00.07.04
       <https://dr-download.ti.com/software-development/software-development-kit-sdk/MD-PvdSyIiioq/12.00.00.07.04/software_manifest_debian_sk-am62-sip_sk-am62-sip.htm>`__
 
+Software Bill of Materials (SBOM)
+=================================
+
+|__SDK_FULL_NAME__| releases include Software Bill of Materials (SBOM) files in SPDX 3.0
+format for Yocto and CycloneDX 1.6 format for Buildroot. SBOMs for all released artifacts
+are bundled into a single archive and can be found on the |__SDK_DOWNLOAD_URL__|.
+
 Release 12.00.00.07.04
 ======================
 

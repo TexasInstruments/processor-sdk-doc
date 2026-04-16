@@ -48,7 +48,12 @@ found on the SDK download page or in the installed directory as indicated below.
 -  Debian Manifest: `AM62Px 12.00.00.07.04
    <https://dr-download.ti.com/software-development/software-development-kit-sdk/MD-9ti3Ig9hNi/12.00.00.07.04/software_manifest_debian_sk-am62p_sk-am62p.htm>`__
 
+Software Bill of Materials (SBOM)
+=================================
 
+|SDK_FULL_NAME| releases include Software Bill of Materials (SBOM) files in SPDX 3.0
+format by default. SBOMs for all released artifacts are bundled into a single
+archive and can be found on the |SDK_DOWNLOAD_URL|.
 Release 12.00.00.07.04
 ======================
 
