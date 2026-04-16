@@ -100,7 +100,7 @@ Arago (Yocto/OE)
      - `12.00.00.07 <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/tag/?h=12.00.00.07>`__
      - :ref:`Build Config <Build-U-Boot-label>`
    * - TF-A
-     - `master <https://git.trustedfirmware.org/plugins/gitiles/TF-A/trusted-firmware-a.git/+/refs/heads/master>`__
+     - `ti-tfa-2.14.y <https://github.com/TexasInstruments/arm-trusted-firmware/tree/ti-tfa-2.14.y>`__
      - `v2.14+ <https://git.yoctoproject.org/meta-ti/tree/meta-ti-bsp/recipes-bsp/trusted-firmware-a/trusted-firmware-a-ti.inc?h=12.00.00.07#n5>`__
      -
    * - OPTEE
