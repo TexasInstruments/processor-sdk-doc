@@ -26,6 +26,17 @@ to create the embedded system from “scratch” :
 
 This release supports High Security - Field Securable (HS-FS) devices. For migration guide and other info, refer :ref:`HS-Migration-Guide`
 
+Release versioning scheme
+=========================
+
+Processor SDK releases follow the 5-duplet versioning scheme ``YY.RR.EE.CC.SS``, where:
+
+- ``YY`` - Yearly baseline. Increments with each new LTS baseline.
+- ``RR`` - Release index within the yearly baseline. Each yearly baseline includes many stable releases.
+- ``EE`` - Extended release index within a stable baseline.
+- ``CC`` - Release Candidate for common foundational BSP components such as Linux, U-Boot, ATF, OPTEE, Firmware and OE manifest including meta-ti, meta-arago.
+- ``SS`` - SDK Release identifier for Distro layers (Yocto meta-tisdk, Armbian, Buildroot) with OOB Demos and Installers.
+
 Licensing
 =========
 
