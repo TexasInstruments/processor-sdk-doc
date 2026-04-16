@@ -185,31 +185,27 @@ Errata Resolved
    "`EXT_EP-12114 <https://sir.ext.ti.com/jira/browse/EXT_EP-12114>`_","MMCSD: HS200 and SDR104 Command Timeout Window Too Small"
    "`EXT_EP-12294 <https://sir.ext.ti.com/jira/browse/EXT_EP-12294>`_","MMCHS: eMMC HS400 tDCD timing marginal to JEDEC spec"
 
+Errata Open
+-----------
+.. csv-table::
+   :header: "Record ID", "Title"
+   :widths: 15, 70
+
+   "`EXT_EP-13304 <https://sir.ext.ti.com/jira/browse/EXT_EP-13304>`_","U-Boot: MMCSD HS200 Write Failures"
+
 Issues Resolved
 ---------------
 .. csv-table::
    :header: "Record ID", "Title"
    :widths: 15, 70
 
-   "`EXT_EP-13128 <https://sir.ext.ti.com/jira/browse/EXT_EP-13128>`_","AM62P: DSS OLDI: DSS1 OLDI reg value incorrect in DT"
-   "`EXT_EP-13129 <https://sir.ext.ti.com/jira/browse/EXT_EP-13129>`_","cpsw: probe failed if CONFIG_DEBUG_FS is disabled"
-   "`EXT_EP-12969 <https://sir.ext.ti.com/jira/browse/EXT_EP-12969>`_","am62p: u-boot abort with 2GB DDR"
-   "`EXT_EP-13135 <https://sir.ext.ti.com/jira/browse/EXT_EP-13135>`_","Linux SDK docs: inconsistent TF-A git repo URL's"
-   "`EXT_EP-12970 <https://sir.ext.ti.com/jira/browse/EXT_EP-12970>`_","AM6x - Sitara Socs MCASP and BCDMA issue"
-   "`EXT_EP-12226 <https://sir.ext.ti.com/jira/browse/EXT_EP-12226>`_","Backport board: ti: common: Kconfig: add CMD_CACHE into TI U-Boot Tree"
-   "`EXT_EP-13160 <https://sir.ext.ti.com/jira/browse/EXT_EP-13160>`_","Need PTPv1 support / fixes on AM62x family along with PTPv2"
-   "`EXT_EP-13139 <https://sir.ext.ti.com/jira/browse/EXT_EP-13139>`_","am62p main_pmx0 taking JPEG Encoder interrupt"
-   "`EXT_EP-12825 <https://sir.ext.ti.com/jira/browse/EXT_EP-12825>`_","AM62P DFU log:dwc3-am62 usb@f900000: unable to get ti,syscon-phy-pll-refclk regmap"
-   "`EXT_EP-12792 <https://sir.ext.ti.com/jira/browse/EXT_EP-12792>`_","CSI-2 Rx driver shall support frame width that is not 16-byte-aligned"
-   "`EXT_EP-12972 <https://sir.ext.ti.com/jira/browse/EXT_EP-12972>`_","RPMsg zerocopy example: CMA allocation is broken"
-   "`EXT_SITMPUSW-174 <https://sir.ext.ti.com/jira/browse/EXT_SITMPUSW-174>`_","UDMA: HC/UHC channel allocation fails due to RM config mismatch with CSL defines"
-   "`EXT_EP-13164 <https://sir.ext.ti.com/jira/browse/EXT_EP-13164>`_","CSI fails to stream due to DMA"
-   "`EXT_EP-13165 <https://sir.ext.ti.com/jira/browse/EXT_EP-13165>`_","Improper Timestamp Handling in Wave5 driver"
-   "`EXT_EP-13168 <https://sir.ext.ti.com/jira/browse/EXT_EP-13168>`_","RT Linux: NULL pointer dereference Kernel Oops in RT-Linux"
-   "`EXT_EP-12747 <https://sir.ext.ti.com/jira/browse/EXT_EP-12747>`_","Codec: Wave5: Improve Decoder Performance and Fix SError Crash on Fluster test"
-   "`EXT_EP-12783 <https://sir.ext.ti.com/jira/browse/EXT_EP-12783>`_","AM62P: OSPI boot failure"
-   "`EXT_EP-13147 <https://sir.ext.ti.com/jira/browse/EXT_EP-13147>`_","padconfig: ST_EN bit not preserved"
-   "`EXT_EP-13173 <https://sir.ext.ti.com/jira/browse/EXT_EP-13173>`_","AM62P: Need to enable touch input in DTS for DSI"
+   "`EXT_EP-13152 <https://sir.ext.ti.com/jira/browse/EXT_EP-13152>`_","AM62A/AM62P: Gstreamer V4L2allocator CMA leak."
+   "`EXT_EP-13314 <https://sir.ext.ti.com/jira/browse/EXT_EP-13314>`_","AM62Lx Linux SDK documentation on CPSW XDP points to PRU-ICSSG XDP"
+   "`EXT_EP-13131 <https://sir.ext.ti.com/jira/browse/EXT_EP-13131>`_","MMCSD: PHY DLL frequency is setting incorrectly for any clock < 200MHz"
+   "`EXT_EP-13316 <https://sir.ext.ti.com/jira/browse/EXT_EP-13316>`_","Board fails to resume after multiple iterations of MCU Only LPM"
+   "`EXT_EP-13321 <https://sir.ext.ti.com/jira/browse/EXT_EP-13321>`_","gstreamer 1.26.9: v4l2src format negotiation fails with capsfilter constraints"
+   "`EXT_EP-13303 <https://sir.ext.ti.com/jira/browse/EXT_EP-13303>`_","Kernel: MMCSD HS200 Write Failures"
+   "`EXT_EP-13144 <https://sir.ext.ti.com/jira/browse/EXT_EP-13144>`_","Job_ready false reporting ready state too frequently in Wave5 driver"
 
 Issues Open
 -----------
@@ -217,8 +213,5 @@ Issues Open
    :header: "Record ID", "Title"
    :widths: 15, 70
 
-   "`EXT_EP-13152 <https://sir.ext.ti.com/jira/browse/EXT_EP-13152>`_","AM62A/AM62P: Gstreamer V4L2allocator CMA leak."
-   "`EXT_EP-13131 <https://sir.ext.ti.com/jira/browse/EXT_EP-13131>`_","MMCSD: PHY DLL frequency is setting incorrectly for any clock < 200MHz"
-   "`EXT_SITMPUSW-275 <https://sir.ext.ti.com/jira/browse/EXT_SITMPUSW-275>`_","Debian SDK: support for graphics user mode libraries"
-   "`EXT_EP-13144 <https://sir.ext.ti.com/jira/browse/EXT_EP-13144>`_","Job_ready false reporting ready state too frequently in Wave5 driver"
+   "`EXT_EP-13320 <https://sir.ext.ti.com/jira/browse/EXT_EP-13320>`_","PowerVR Vulkan driver crash using MPV"
 

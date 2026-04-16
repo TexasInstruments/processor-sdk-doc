@@ -177,22 +177,8 @@ Issues Resolved
    :header: "Record ID", "Title"
    :widths: 15, 70
 
-   "`EXT_EP-13164 <https://sir.ext.ti.com/jira/browse/EXT_EP-13164>`_","CSI fails to stream due to DMA"
-   "`EXT_EP-13127 <https://sir.ext.ti.com/jira/browse/EXT_EP-13127>`_","AM64x PRU Ethernet dual EMAC requires 256kB SRAM"
-   "`EXT_EP-13129 <https://sir.ext.ti.com/jira/browse/EXT_EP-13129>`_","cpsw: probe failed if CONFIG_DEBUG_FS is disabled"
-   "`EXT_EP-13166 <https://sir.ext.ti.com/jira/browse/EXT_EP-13166>`_","U-Boot: CONFIG_DEFAULT_DEVICE_TREE is not effective"
-   "`EXT_EP-13132 <https://sir.ext.ti.com/jira/browse/EXT_EP-13132>`_","ptp4l gm_hsr0.cfg and oc_hsr0.cfg nonoffload example is deprecated"
-   "`EXT_EP-13133 <https://sir.ext.ti.com/jira/browse/EXT_EP-13133>`_","PRP not working - AM64x"
-   "`EXT_EP-12226 <https://sir.ext.ti.com/jira/browse/EXT_EP-12226>`_","Backport ""board: ti: common: Kconfig: add CMD_CACHE"" into TI U-Boot Tree"
-   "`EXT_EP-13160 <https://sir.ext.ti.com/jira/browse/EXT_EP-13160>`_","Need PTPv1 support / fixes on AM62x family along with PTPv2"
-   "`EXT_EP-13138 <https://sir.ext.ti.com/jira/browse/EXT_EP-13138>`_","Duplicate packets not removed when HSR firmwares reloaded"
-   "`EXT_EP-13161 <https://sir.ext.ti.com/jira/browse/EXT_EP-13161>`_","HSR Offload 100Mbps cannot ping on SDK 10.1 or 11.0"
-   "`EXT_EP-13147 <https://sir.ext.ti.com/jira/browse/EXT_EP-13147>`_","padconfig: ST_EN bit not preserved"
-   "`EXT_EP-12785 <https://sir.ext.ti.com/jira/browse/EXT_EP-12785>`_","Cyclictest performance degradation on AM62x/AM64x/AM62A"
-   "`EXT_EP-12751 <https://sir.ext.ti.com/jira/browse/EXT_EP-12751>`_","AM64x PRU Ethernet Benchmark testing low throughput"
-   "`EXT_EP-12972 <https://sir.ext.ti.com/jira/browse/EXT_EP-12972>`_","RPMsg zerocopy example: CMA allocation is broken"
-   "`EXT_EP-12750 <https://sir.ext.ti.com/jira/browse/EXT_EP-12750>`_","TMDS64EVM: PCIe refclk contention"
-   "`EXT_EP-12815 <https://sir.ext.ti.com/jira/browse/EXT_EP-12815>`_","UDP Ingress failing"
+   "`EXT_EP-13313 <https://sir.ext.ti.com/jira/browse/EXT_EP-13313>`_","PRUETH: 100M Link fails if auto negotiation disabled"
+   "`EXT_EP-13131 <https://sir.ext.ti.com/jira/browse/EXT_EP-13131>`_","MMCSD: PHY DLL frequency is setting incorrectly for any clock < 200MHz"
 
 Issues Open
 -----------
@@ -200,8 +186,13 @@ Issues Open
    :header: "Record ID", "Title"
    :widths: 15, 70
 
-   "`EXT_EP-13131 <https://sir.ext.ti.com/jira/browse/EXT_EP-13131>`_","MMCSD: PHY DLL frequency is setting incorrectly for any clock < 200MHz"
+   "`EXT_EP-13331 <https://sir.ext.ti.com/jira/browse/EXT_EP-13331>`_","am64x: incorrect device id in icssg0_mdio devicetree node"
+   "`EXT_EP-12051 <https://sir.ext.ti.com/jira/browse/EXT_EP-12051>`_","AM64x: DFU Boot hangs on repetitive test"
+   "`EXT_EP-13306 <https://sir.ext.ti.com/jira/browse/EXT_EP-13306>`_","ICSSG: HSR packet out of order"
+   "`EXT_EP-13309 <https://sir.ext.ti.com/jira/browse/EXT_EP-13309>`_","U-Boot binman does not have the provision of SWREV for Board Configurations"
+   "`EXT_EP-13310 <https://sir.ext.ti.com/jira/browse/EXT_EP-13310>`_","Docs: Incorrect secure boot flow description"
    "`EXT_EP-12819 <https://sir.ext.ti.com/jira/browse/EXT_EP-12819>`_","AM64x CICD does not test PRU"
    "`EXT_EP-12818 <https://sir.ext.ti.com/jira/browse/EXT_EP-12818>`_","PRU RPMsg swaps which message is sent to which core"
+   "`EXT_EP-12749 <https://sir.ext.ti.com/jira/browse/EXT_EP-12749>`_","cdns: device mode: Linux hangs when USB cable is disconnected"
    "`EXT_EP-12060 <https://sir.ext.ti.com/jira/browse/EXT_EP-12060>`_","AM64x: Lower core count on variant devices no supported"
 
