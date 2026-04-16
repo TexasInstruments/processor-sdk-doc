@@ -214,6 +214,21 @@ Issues Tracker
 
     - Further Information can be found at `SIR Portal <https://sir.ext.ti.com/>`_
 
+Errata Open
+-----------
+.. csv-table::
+   :header: "Record ID", "Title"
+   :widths: 15, 70
+
+   "`EXT_EP-13304 <https://sir.ext.ti.com/jira/browse/EXT_EP-13304>`_","U-Boot: MMCSD HS200 Write Failures"
+
+Errata Closed
+-------------
+.. csv-table::
+   :header: "Record ID", "Title"
+   :widths: 15, 70
+
+   "`EXT_EP-13303 <https://sir.ext.ti.com/jira/browse/EXT_EP-13303>`_","Kernel: MMCSD HS200 Write Failures"
 
 Issues Resolved
 ---------------
@@ -221,15 +236,10 @@ Issues Resolved
    :header: "Record ID", "Title"
    :widths: 15, 70
 
-   "`EXT_SITMPUSW-174 <https://sir.ext.ti.com/jira/browse/EXT_SITMPUSW-174>`_","UDMA: HC/UHC channel allocation fails due to RM config mismatch with CSL defines"
-   "`EXT_EP-13129 <https://sir.ext.ti.com/jira/browse/EXT_EP-13129>`_","cpsw: probe failed if CONFIG_DEBUG_FS is disabled"
-   "`EXT_EP-13135 <https://sir.ext.ti.com/jira/browse/EXT_EP-13135>`_","Linux SDK docs: inconsistent TF-A git repo URL's"
-   "`EXT_EP-12970 <https://sir.ext.ti.com/jira/browse/EXT_EP-12970>`_","AM6x - Sitara Socs MCASP and BCDMA issue"
-   "`EXT_EP-12226 <https://sir.ext.ti.com/jira/browse/EXT_EP-12226>`_","Backport ""board: ti: common: Kconfig: add CMD_CACHE"" into TI U-Boot Tree"
-   "`EXT_EP-13147 <https://sir.ext.ti.com/jira/browse/EXT_EP-13147>`_","padconfig: ST_EN bit not preserved"
-   "`EXT_EP-13171 <https://sir.ext.ti.com/jira/browse/EXT_EP-13171>`_","AM62L Disable DPI when not used"
-   "`EXT_EP-13172 <https://sir.ext.ti.com/jira/browse/EXT_EP-13172>`_","AM62L: RTC+DDR resume failure with dwc3_ti_resume"
-   "`EXT_EP-13175 <https://sir.ext.ti.com/jira/browse/EXT_EP-13175>`_","AM62L: Suspend-Resume (RTC+DDR): eth0: failed to start"
+   "`EXT_EP-13314 <https://sir.ext.ti.com/jira/browse/EXT_EP-13314>`_","AM62Lx Linux SDK documentation on CPSW XDP points to PRU-ICSSG XDP"
+   "`EXT_EP-13315 <https://sir.ext.ti.com/jira/browse/EXT_EP-13315>`_","U-Boot: Enable caches for A53 SPL AM62l"
+   "`EXT_EP-13145 <https://sir.ext.ti.com/jira/browse/EXT_EP-13145>`_","AM62L: Network stability issues"
+   "`EXT_EP-12979 <https://sir.ext.ti.com/jira/browse/EXT_EP-12979>`_","AM62L: Suspend-Resume (RTC+DDR): davinci_mdio timed out waiting for user access"
 
 Issues Open
 -----------
@@ -237,8 +247,7 @@ Issues Open
    :header: "Record ID", "Title"
    :widths: 15, 70
 
-   "`EXT_EP-13124 <https://sir.ext.ti.com/jira/browse/EXT_EP-13124>`_","AM62L two stage BL booting from redundant GPMC-NAND partition"
+   "`EXT_EP-13319 <https://sir.ext.ti.com/jira/browse/EXT_EP-13319>`_","[AM62L OSPI NOR] Fix OSPI NOR Flash random corruption in IO"
    "`EXT_EP-12980 <https://sir.ext.ti.com/jira/browse/EXT_EP-12980>`_","AM62L: Random kernel crash observed on stress test"
-   "`EXT_EP-13145 <https://sir.ext.ti.com/jira/browse/EXT_EP-13145>`_","AM62L: Network stability issues"
-   "`EXT_EP-12979 <https://sir.ext.ti.com/jira/browse/EXT_EP-12979>`_","AM62L: Suspend-Resume (RTC+DDR): davinci_mdio timed out waiting for user access"
+   "`EXT_EP-13124 <https://sir.ext.ti.com/jira/browse/EXT_EP-13124>`_","AM62L two stage BL booting from redundant GPMC-NAND partition"
 

@@ -215,11 +215,20 @@ Errata Resolved
    :header: "Record ID", "Title"
    :widths: 15, 70
 
-   "`EXT_EP-12128 <https://sir.ext.ti.com/jira/browse/EXT_EP-12128>`_","USB2 PHY locks up due to short suspend"
-   "`EXT_EP-12123 <https://sir.ext.ti.com/jira/browse/EXT_EP-12123>`_","USART: Erroneous clear/trigger of timeout interrupt"
+   "`EXT_EP-13303 <https://sir.ext.ti.com/jira/browse/EXT_EP-13303>`_","Kernel: MMCSD HS200 Write Failures"
    "`EXT_EP-12124 <https://sir.ext.ti.com/jira/browse/EXT_EP-12124>`_","BCDMA: RX Channel can lockup in certain scenarios"
-   "`EXT_EP-12125 <https://sir.ext.ti.com/jira/browse/EXT_EP-12125>`_","i2327: RTC: Hardware wakeup event limitation"
+   "`EXT_EP-12128 <https://sir.ext.ti.com/jira/browse/EXT_EP-12128>`_","USB2 PHY locks up due to short suspend"
    "`EXT_EP-12114 <https://sir.ext.ti.com/jira/browse/EXT_EP-12114>`_","MMCSD: HS200 and SDR104 Command Timeout Window Too Small"
+   "`EXT_EP-12125 <https://sir.ext.ti.com/jira/browse/EXT_EP-12125>`_","i2327: RTC: Hardware wakeup event limitation"
+   "`EXT_EP-12123 <https://sir.ext.ti.com/jira/browse/EXT_EP-12123>`_","USART: Erroneous clear/trigger of timeout interrupt"
+
+Errata Open
+-----------
+.. csv-table::
+   :header: "Record ID", "Title"
+   :widths: 15, 70
+
+   "`EXT_EP-13304 <https://sir.ext.ti.com/jira/browse/EXT_EP-13304>`_","U-Boot: MMCSD HS200 Write Failures"
 
 Issues Resolved
 ---------------
@@ -227,27 +236,12 @@ Issues Resolved
    :header: "Record ID", "Title"
    :widths: 15, 70
 
-   "`EXT_SITMPUSW-163 <https://sir.ext.ti.com/jira/browse/EXT_SITMPUSW-163>`_","k3conf utility is not packaged with Buildroot image"
-   "`EXT_EP-13126 <https://sir.ext.ti.com/jira/browse/EXT_EP-13126>`_","AM62x devicetree: PRUSS IRAM is 16kB"
-   "`EXT_EP-13129 <https://sir.ext.ti.com/jira/browse/EXT_EP-13129>`_","cpsw: probe failed if CONFIG_DEBUG_FS is disabled"
-   "`EXT_EP-13135 <https://sir.ext.ti.com/jira/browse/EXT_EP-13135>`_","Linux SDK docs: inconsistent TF-A git repo URL's"
-   "`EXT_EP-13137 <https://sir.ext.ti.com/jira/browse/EXT_EP-13137>`_","Weston Fails to Wake from idle-time Sleep, Restarts After SIGTERM"
-   "`EXT_EP-12970 <https://sir.ext.ti.com/jira/browse/EXT_EP-12970>`_","AM6x - Sitara Socs MCASP and BCDMA issue"
-   "`EXT_EP-12226 <https://sir.ext.ti.com/jira/browse/EXT_EP-12226>`_","Backport ""board: ti: common: Kconfig: add CMD_CACHE"" into TI U-Boot Tree"
-   "`EXT_EP-13160 <https://sir.ext.ti.com/jira/browse/EXT_EP-13160>`_","Need PTPv1 support / fixes on AM62x family along with PTPv2"
-   "`EXT_EP-12823 <https://sir.ext.ti.com/jira/browse/EXT_EP-12823>`_","CPSW ptp4l PDELAY_REQ and DELAY_REQ without timestamp messages"
-   "`EXT_EP-13140 <https://sir.ext.ti.com/jira/browse/EXT_EP-13140>`_","kernel: missing am625 minimal devicetree file"
-   "`EXT_EP-13141 <https://sir.ext.ti.com/jira/browse/EXT_EP-13141>`_","u-boot: missing am625 minimal devicetree files"
-   "`EXT_EP-12792 <https://sir.ext.ti.com/jira/browse/EXT_EP-12792>`_","CSI-2 Rx driver shall support frame width that is not 16-byte-aligned"
-   "`EXT_EP-12972 <https://sir.ext.ti.com/jira/browse/EXT_EP-12972>`_","RPMsg zerocopy example: CMA allocation is broken"
-   "`EXT_SITMPUSW-174 <https://sir.ext.ti.com/jira/browse/EXT_SITMPUSW-174>`_","UDMA: HC/UHC channel allocation fails due to RM config mismatch with CSL defines"
-   "`EXT_EP-13164 <https://sir.ext.ti.com/jira/browse/EXT_EP-13164>`_","CSI fails to stream due to DMA"
-   "`EXT_EP-12753 <https://sir.ext.ti.com/jira/browse/EXT_EP-12753>`_","Piglit testing: Swapfile creation causing timeout"
-   "`EXT_EP-13147 <https://sir.ext.ti.com/jira/browse/EXT_EP-13147>`_","padconfig: ST_EN bit not preserved"
-   "`EXT_EP-13170 <https://sir.ext.ti.com/jira/browse/EXT_EP-13170>`_","EMMC flashing and booting issue for am62xx-sip"
-   "`EXT_EP-12785 <https://sir.ext.ti.com/jira/browse/EXT_EP-12785>`_","Cyclictest performance degradation on AM62x/AM64x/AM62A"
-   "`EXT_EP-12815 <https://sir.ext.ti.com/jira/browse/EXT_EP-12815>`_","UDP Ingress failing"
-   "`EXT_EP-12345 <https://sir.ext.ti.com/jira/browse/EXT_EP-12345>`_","beagleplay: Segmentation-Fault: SD Boot failure and needs bootcmd update"
+   "`EXT_EP-13314 <https://sir.ext.ti.com/jira/browse/EXT_EP-13314>`_","AM62Lx Linux SDK documentation on CPSW XDP points to PRU-ICSSG XDP"
+   "`EXT_EP-13305 <https://sir.ext.ti.com/jira/browse/EXT_EP-13305>`_","OPTEE build fails with the steps mentioned in the documentation"
+   "`EXT_EP-13142 <https://sir.ext.ti.com/jira/browse/EXT_EP-13142>`_","R5 SPL fails to boot A53 SPL from eMMC backup boot with primary boot configured to eMMC alternate boot"
+   "`EXT_EP-13316 <https://sir.ext.ti.com/jira/browse/EXT_EP-13316>`_","Board fails to resume after multiple iterations of MCU Only LPM"
+   "`EXT_EP-13321 <https://sir.ext.ti.com/jira/browse/EXT_EP-13321>`_","gstreamer 1.26.9: v4l2src format negotiation fails with capsfilter constraints"
+   "`EXT_EP-13317 <https://sir.ext.ti.com/jira/browse/EXT_EP-13317>`_","Mailbox timeout for TI SCI commands"
 
 Issues Open
 -----------
@@ -256,6 +250,7 @@ Issues Open
    :widths: 15, 70
 
    "`EXT_EP-13125 <https://sir.ext.ti.com/jira/browse/EXT_EP-13125>`_","incorrect pinmux config of MMC_CLK pin"
+   "`EXT_EP-13309 <https://sir.ext.ti.com/jira/browse/EXT_EP-13309>`_","U-Boot binman does not have the provision of SWREV for Board Configurations"
+   "`EXT_EP-13311 <https://sir.ext.ti.com/jira/browse/EXT_EP-13311>`_","byte loss in multiple uart external loopback test simultaneously"
    "`EXT_EP-12818 <https://sir.ext.ti.com/jira/browse/EXT_EP-12818>`_","PRU RPMsg swaps which message is sent to which core"
-   "`EXT_SITMPUSW-275 <https://sir.ext.ti.com/jira/browse/EXT_SITMPUSW-275>`_","Debian SDK: support for graphics user mode libraries"
 
