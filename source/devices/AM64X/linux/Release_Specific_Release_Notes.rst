@@ -54,6 +54,7 @@ Software Bill of Materials (SBOM)
 |__SDK_FULL_NAME__| releases include Software Bill of Materials (SBOM) files in SPDX 3.0
 format by default. SBOMs for all released artifacts are bundled into a single
 archive and can be found on the |__SDK_DOWNLOAD_URL__|.
+For more refer :ref:`Working with SBOM <how-to-work-with-sbom>`.
 
 Release 12.00.00.07.04
 ======================
