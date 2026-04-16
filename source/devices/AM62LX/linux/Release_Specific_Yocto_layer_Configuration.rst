@@ -23,9 +23,11 @@ has the following configuration files in the :file:`configs/processor-sdk` direc
    * - Config File
      - Description
      - Supported machines/platforms
-   * - :file:`processor-sdk-master-nonqt-12.00.00.07.04-config.txt`
+   * - :file:`processor-sdk-master-nonui-12.00.00.07.04-config.txt`
      - Used for building Yocto based filesystem
      - |__SDK_BUILD_MACHINE__|
-   * - :file:`processor-sdk-master-evse-12.00.00.07.04-config.txt`
-     - Used for building Yocto based filesystem with `AM62L-EVSE-DEV-EVM <https://www.ti.com/lit/ug/slvudn0/slvudn0.pdf>`_ support (for EV charging Use cases)
+   * - :file:`processor-sdk-master-selinux-12.00.00.07.04-config.txt`
+     - Used for building SELinux enabled Yocto based filesystem
      - |__SDK_BUILD_MACHINE__|
+
+The oe-layersetup configuration, as defined in :file:`processor-sdk-master-nonui-12.00.00.07.04-config.txt`, is used for configuring the meta layers in the yocto SD card image available on |__SDK_DOWNLOAD_URL__|.
