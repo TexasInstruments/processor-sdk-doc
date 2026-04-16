@@ -50,9 +50,9 @@ cell configuration file.
 
 The open source Jailhouse project from https://github.com/siemens/jailhouse is integrated in Yocto build environment.
 
-- Yocto recipe (Scarthgap) for Jailhouse can be found here: `meta-ti <https://git.ti.com/cgit/arago-project/meta-ti/tree/meta-ti-extras/recipes-ti/jailhouse?h=scarthgap>`__.
+- Yocto recipe (master) for Jailhouse can be found here: `meta-ti <https://git.ti.com/cgit/arago-project/meta-ti/tree/meta-ti-extras/recipes-ti/jailhouse?h=master>`__.
 
-- Jailhouse kernel patches are integrated with TI Linux Kernel (v6.12) and hosted here `Linux git.ti <https://git.ti.com/cgit/processor-sdk/linux/>`__. This repository includes Jailhouse module,
+- Jailhouse kernel patches are integrated with TI Linux Kernel (v6.18) and hosted here `Linux git.ti <https://git.ti.com/cgit/processor-sdk/linux/>`__. This repository includes Jailhouse module,
   uio_ivshmem module for shared-memory and device tree changes for Jailhouse.
 
 - U-Boot port for Jailhouse can be found here `U-Boot git.ti <https://git.ti.com/cgit/processor-sdk/u-boot/>`__. This repository contains the fix for error
