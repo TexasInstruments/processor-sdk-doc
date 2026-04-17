@@ -35,6 +35,13 @@ found on the SDK download page or in the installed directory as indicated below.
 
 -  Linux Manifest:  :file:`<PSDK_PATH>/manifest/software_manifest.htm`
 
+Software Bill of Materials (SBOM)
+=================================
+
+|__SDK_FULL_NAME__| releases include Software Bill of Materials (SBOM) files in SPDX 3.0
+format for Yocto. SBOM for released artifacts be found on the |__SDK_DOWNLOAD_URL__|.
+For more refer :ref:`Working with SBOM <how-to-work-with-sbom>`.
+
 Release 12.00.00.07.04
 ======================
 
