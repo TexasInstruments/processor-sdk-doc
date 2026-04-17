@@ -77,8 +77,8 @@ default SDK image:
 .. csv-table::
    :header: "Latencies","CPU 0","CPU 1","CPU 2","CPU 3"
 
-   "Minimum (us)","5","5","5","5"
-   "Average (us)","6","6","6","6"
-   "Maximum (us)","31","29","30","30"
+   "Minimum (us)","4","4","4","5"
+   "Average (us)","5","5","5","5"
+   "Maximum (us)","35","45","34","38"
 
 .. image:: img/rt-cpu-method-all-latency-histogram.png
