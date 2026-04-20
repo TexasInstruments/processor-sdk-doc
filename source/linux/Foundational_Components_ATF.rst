@@ -121,7 +121,7 @@ Where <hash> is the commit shown in :ref:`release-specific-build-information`.
 
                $ export TFA_DIR=<path-to-arm-trusted-firmware>
                $ cd $TFA_DIR
-               $ make ARCH=aarch64 CROSS_COMPILE="$CROSS_COMPILE_64" PLAT=k3 TARGET_BOARD=am62l
+               $ make ARCH=aarch64 CROSS_COMPILE="$CROSS_COMPILE_64" PLAT=k3low TARGET_BOARD=am62lx
 
 .. ifconfig:: CONFIG_part_variant in ('J721S2')
 
