@@ -19,11 +19,11 @@ Build
 
       $ cd <path to tf-a dir>
 
-      $ make CROSS_COMPILE="$CROSS_COMPILE_64" ARCH=aarch64 PLAT=k3 TARGET_BOARD=am62l am62l_bl1
+      $ make CROSS_COMPILE="$CROSS_COMPILE_64" ARCH=aarch64 PLAT=k3low TARGET_BOARD=am62lx am62l_bl1
 
       <or to build bl-1 and bl-31 binaries from TF-A repo>
 
-	   $ make CROSS_COMPILE="$CROSS_COMPILE_64" ARCH=aarch64 PLAT=k3 TARGET_BOARD=am62l
+	   $ make CROSS_COMPILE="$CROSS_COMPILE_64" ARCH=aarch64 PLAT=k3low TARGET_BOARD=am62lx
 
 .. _Build-U-Boot-label:
 
@@ -453,8 +453,8 @@ All of these binaries are available in the SDK at :file:`<path to tisdk>/board-s
       $ cd $UBOOT_DIR
       $ make CROSS_COMPILE="$CROSS_COMPILE_64" am62lx_evm_defconfig
       $ make CROSS_COMPILE="$CROSS_COMPILE_64" \
-         BL1=$TFA_DIR/build/k3/am62l/release/bl1.bin \
-         BL31=$TFA_DIR/build/k3/am62l/release/bl31.bin \
+         BL1=$TFA_DIR/build/k3low/am62lx/release/bl1.bin \
+         BL31=$TFA_DIR/build/k3low/am62lx/release/bl31.bin \
          BINMAN_INDIRS=$TI_LINUX_FW_DIR \
          TEE=$OPTEE_DIR/out/arm-plat-k3/core/tee-pager_v2.bin
 
