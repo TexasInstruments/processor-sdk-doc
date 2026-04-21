@@ -115,13 +115,19 @@ Where <hash> is the commit shown in :ref:`release-specific-build-information`.
 
     .. ifconfig:: CONFIG_part_variant in ('AM62LX')
 
+        .. code-block:: console
+
+            $ export TFA_BOARD=am62lx # for AM62L EVM
+            $ export TFA_BOARD=am62l3_badge # for BeagleBadge on ti-tfa-2.14.y
+            $ export TFA_BOARD=am62lx_badge # for BeagleBadge on ti-master
+            $ export TFA_DIR=<path-to-arm-trusted-firmware>
+
         *Without OP-TEE enabled:*
 
             .. code-block:: console
 
-               $ export TFA_DIR=<path-to-arm-trusted-firmware>
                $ cd $TFA_DIR
-               $ make ARCH=aarch64 CROSS_COMPILE="$CROSS_COMPILE_64" PLAT=k3low TARGET_BOARD=am62lx
+               $ make ARCH=aarch64 CROSS_COMPILE="$CROSS_COMPILE_64" PLAT=k3low TARGET_BOARD=$TFA_BOARD
 
 .. ifconfig:: CONFIG_part_variant in ('J721S2')
 
