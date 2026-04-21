@@ -466,6 +466,209 @@ UDP Throughput
 
 |
 
+OSPI
+====
+
+.. rubric:: AM62DXX-EVM
+   :name: am62dxx-evm-ospi
+
+
+.. rubric:: UBIFS
+   :name: am62dxx-evm-ospi-ubifs
+
+.. csv-table:: OSPI Flash Driver
+    :header: "Buffer size (bytes)","am62dxx_evm-fs: Write UBIFS Throughput (Mbytes/sec)","am62dxx_evm-fs: Write UBIFS CPU Load (%)","am62dxx_evm-fs: Read UBIFS Throughput (Mbytes/sec)","am62dxx_evm-fs: Read UBIFS CPU Load (%)"
+
+    "102400","0.18 (min 0.13, max 0.29)","27.95 (min 24.67, max 32.81)","27.80 (min 27.52, max 27.95)","7.71 (min 3.45, max 12.90)"
+    "262144","0.14 (min 0.11, max 0.19)","28.36 (min 26.09, max 31.33)","27.79 (min 27.70, max 27.86)","7.53 (min 0.00, max 12.50)"
+    "524288","0.15 (min 0.11, max 0.19)","28.01 (min 25.70, max 32.28)","27.62 (min 27.52, max 27.76)","7.47 (min 0.00, max 12.50)"
+    "1048576","0.14 (min 0.11, max 0.19)","28.57 (min 25.89, max 33.40)","27.53 (min 27.25, max 27.95)","9.30 (min 3.57, max 17.14)"
+
+.. rubric:: RAW
+   :name: am62dxx-evm-ospi-raw
+
+.. csv-table:: OSPI Raw Flash Driver
+    :header: "File size (Mbytes)","am62dxx_evm-fs: Raw Read Throughput (Mbytes/sec)"
+
+    "50","37.65 (min 37.59, max 37.88)"
+
+| 
+
+EMMC
+====
+
+.. warning::
+
+  **IMPORTANT**: The performance numbers can be severely affected if the media is
+  mounted in sync mode. Hot plug scripts in the filesystem mount
+  removable media in sync mode to ensure data integrity. For performance
+  sensitive applications, umount the auto-mounted filesystem and
+  re-mount in async mode.
+
+EMMC EXT4 FIO 1G
+----------------
+
+.. csv-table:: EMMC EXT4 FIO 1G
+    :header: "Buffer size (bytes)","am62dxx_evm-fs: Write EXT4 Throughput (Mbytes/sec)","am62dxx_evm-fs: Write EXT4 CPU Load (%)","am62dxx_evm-fs: Read EXT4 Throughput (Mbytes/sec)","am62dxx_evm-fs: Read EXT4 CPU Load (%)"
+
+    "1m","85.83 (min 75.60, max 91.50)","1.53 (min 1.22, max 1.75)","151.50 (min 111.00, max 172.00)","1.58 (min 1.12, max 1.92)"
+    "4m","89.93 (min 79.90, max 96.70)","1.00 (min 0.85, max 1.06)","147.33 (min 110.00, max 172.00)","1.25 (min 0.91, max 1.53)"
+    "4k","45.29 (min 8.07, max 64.20)","14.48 (min 2.77, max 20.43)","80.38 (min 56.40, max 93.90)","19.07 (min 14.20, max 22.42)"
+    "256k","82.67 (min 66.30, max 91.10)","1.80 (min 1.45, max 2.06)","144.65 (min 91.70, max 171.00)","2.19 (min 1.55, max 2.71)"
+
+EMMC RAW FIO 1G
+---------------
+
+.. csv-table:: EMMC RAW FIO 1G
+    :header: "Buffer size (bytes)","am62dxx_evm-fs: Write Raw Throughput (Mbytes/sec)","am62dxx_evm-fs: Write Raw CPU Load (%)","am62dxx_evm-fs: Read Raw Throughput (Mbytes/sec)","am62dxx_evm-fs: Read Raw CPU Load (%)"
+
+    "1m","84.78 (min 73.10, max 91.10)","1.35 (min 1.09, max 1.46)","153.33 (min 111.00, max 174.00)","1.58 (min 1.31, max 1.73)"
+    "4m","90.07 (min 78.50, max 96.60)","0.97 (min 0.81, max 1.08)","153.33 (min 111.00, max 174.00)","1.20 (min 0.96, max 1.56)"
+    "4k","45.31 (min 7.91, max 64.20)","10.99 (min 2.21, max 15.58)","78.82 (min 57.30, max 90.40)","17.15 (min 13.32, max 19.33)"
+    "256k","81.52 (min 64.30, max 90.80)","1.66 (min 1.30, max 1.88)","146.50 (min 93.20, max 173.00)","2.11 (min 1.37, max 2.53)"
+
+EMMC EXT4
+---------
+
+.. csv-table:: EMMC EXT4
+    :header: "Buffer size (bytes)","am62dxx_evm-fs: Write EXT4 Throughput (Mbytes/sec)","am62dxx_evm-fs: Write EXT4 CPU Load (%)","am62dxx_evm-fs: Read EXT4 Throughput (Mbytes/sec)","am62dxx_evm-fs: Read EXT4 CPU Load (%)"
+
+    "102400","86.89 (min 45.15, max 93.13)","3.48 (min 2.69, max 4.97)","168.56 (min 120.34, max 179.02)","5.60 (min 4.58, max 5.98)"
+    "262144","82.72 (min 48.35, max 93.80)","2.64 (min 1.28, max 4.30)","167.28 (min 99.38, max 181.01)","5.64 (min 3.11, max 6.93)"
+    "524288","75.51 (min 46.27, max 94.05)","2.28 (min 1.16, max 4.30)","170.57 (min 119.47, max 181.80)","5.71 (min 4.01, max 6.49)"
+    "1048576","77.20 (min 48.04, max 94.18)","2.31 (min 1.25, max 3.99)","170.74 (min 119.45, max 181.86)","5.40 (min 4.26, max 6.87)"
+    "5242880","73.57 (min 46.13, max 93.84)","2.33 (min 1.25, max 3.99)","171.26 (min 119.41, max 181.87)","5.95 (min 4.01, max 6.52)"
+
+EMMC EXT2
+---------
+
+.. csv-table:: EMMC EXT2
+    :header: "Buffer size (bytes)","am62dxx_evm-fs: Write EXT2 Throughput (Mbytes/sec)","am62dxx_evm-fs: Write EXT2 CPU Load (%)","am62dxx_evm-fs: Read EXT2 Throughput (Mbytes/sec)","am62dxx_evm-fs: Read EXT2 CPU Load (%)"
+
+    "102400","39.87 (min 6.34, max 52.65)","3.51 (min 2.16, max 7.82)","142.95 (min 111.81, max 168.91)","5.88 (min 4.46, max 7.14)"
+    "262144","43.68 (min 6.11, max 67.03)","3.01 (min 1.59, max 8.06)","143.60 (min 113.67, max 173.63)","5.80 (min 4.21, max 7.44)"
+    "524288","49.98 (min 6.55, max 79.96)","3.06 (min 1.50, max 9.01)","156.50 (min 137.82, max 177.19)","5.87 (min 4.68, max 6.29)"
+    "1048576","51.82 (min 6.71, max 84.10)","2.80 (min 1.46, max 9.31)","157.26 (min 139.07, max 176.20)","6.01 (min 4.68, max 7.05)"
+    "5242880","56.15 (min 7.17, max 90.93)","2.64 (min 1.27, max 8.54)","156.67 (min 141.85, max 174.06)","6.03 (min 5.44, max 6.75)"
+
+EMMC VFAT
+---------
+
+.. csv-table:: EMMC VFAT
+    :header: "Buffer size (bytes)","am62dxx_evm-fs: Write VFAT Throughput (Mbytes/sec)","am62dxx_evm-fs: Write VFAT CPU Load (%)","am62dxx_evm-fs: Read VFAT Throughput (Mbytes/sec)","am62dxx_evm-fs: Read VFAT CPU Load (%)"
+
+    "102400","35.64 (min 10.18, max 49.91)","4.32 (min 3.04, max 5.60)","153.77 (min 133.47, max 173.84)","8.39 (min 5.88, max 10.70)"
+    "262144","42.52 (min 11.62, max 62.06)","5.27 (min 2.89, max 7.99)","167.42 (min 153.80, max 175.94)","9.50 (min 8.24, max 10.55)"
+    "524288","46.89 (min 12.01, max 71.89)","4.97 (min 3.55, max 6.88)","169.57 (min 157.20, max 175.58)","9.16 (min 8.00, max 10.08)"
+    "1048576","50.75 (min 11.73, max 74.45)","4.85 (min 3.49, max 6.50)","168.96 (min 159.05, max 175.61)","9.57 (min 8.78, max 11.34)"
+    "5242880","51.49 (min 12.38, max 80.25)","4.80 (min 3.03, max 6.70)","171.56 (min 167.20, max 175.54)","9.64 (min 8.87, max 10.04)"
+
+ 
+UBoot EMMC
+----------
+
+.. csv-table:: UBOOT EMMC RAW
+    :header: "File size (bytes in hex)","am62dxx_evm-fs: Write Throughput (Kbytes/sec)","am62dxx_evm-fs: Read Throughput (Kbytes/sec)"
+
+    "2000000","97103.80 (min 92827.20, max 102721.00)","165591.77 (min 142469.57, max 172463.16)"
+    "4000000","97707.35 (min 95533.53, max 98847.66)","173050.47 (min 162620.35, max 175229.95)"
+
+|
+
+MMCSD
+=====
+
+.. warning::
+
+  **IMPORTANT**: The performance numbers can be severely affected if the media is
+  mounted in sync mode. Hot plug scripts in the filesystem mount
+  removable media in sync mode to ensure data integrity. For performance
+  sensitive applications, umount the auto-mounted filesystem and
+  re-mount in async mode.
+
+
+MMC EXT4 FIO 1G
+---------------
+
+.. csv-table:: MMC EXT4 FIO 1G
+    :header: "Buffer size (bytes)","am62dxx_evm-fs: Write EXT4 Throughput (Mbytes/sec)","am62dxx_evm-fs: Write EXT4 CPU Load (%)","am62dxx_evm-fs: Read EXT4 Throughput (Mbytes/sec)","am62dxx_evm-fs: Read EXT4 CPU Load (%)"
+
+    "1m","42.35 (min 41.60, max 43.10)","1.01 (min 0.92, max 1.14)","86.77 (min 85.10, max 88.30)","1.21 (min 1.05, max 1.29)"
+    "4m","41.02 (min 40.10, max 41.60)","0.68 (min 0.63, max 0.73)","85.60 (min 82.40, max 87.30)","0.90 (min 0.81, max 0.96)"
+    "4k","2.80 (min 2.77, max 2.81)","1.60 (min 1.51, max 1.69)","12.87 (min 12.50, max 13.10)","4.08 (min 4.02, max 4.16)"
+    "256k","38.12 (min 37.30, max 39.00)","1.19 (min 1.11, max 1.32)","83.88 (min 83.10, max 84.50)","1.51 (min 1.47, max 1.56)"
+
+MMC RAW FIO 1G
+--------------
+
+.. csv-table:: MMC RAW FIO 1G
+    :header: "Buffer size (bytes)","am62dxx_evm-fs: Write Raw Throughput (Mbytes/sec)","am62dxx_evm-fs: Write Raw CPU Load (%)","am62dxx_evm-fs: Read Raw Throughput (Mbytes/sec)","am62dxx_evm-fs: Read Raw CPU Load (%)"
+
+    "1m","43.22 (min 42.00, max 44.20)","0.90 (min 0.81, max 0.99)","88.23 (min 88.20, max 88.30)","1.12 (min 1.05, max 1.21)"
+    "4m","42.80 (min 41.90, max 44.00)","0.69 (min 0.64, max 0.73)","88.17 (min 88.00, max 88.30)","0.86 (min 0.84, max 0.88)"
+    "4k","2.81 (min 2.80, max 2.84)","1.34 (min 1.29, max 1.38)","13.03 (min 13.00, max 13.10)","3.76 (min 3.66, max 3.86)"
+    "256k","37.75 (min 36.00, max 40.70)","1.00 (min 0.92, max 1.16)","84.40 (min 84.30, max 84.50)","1.48 (min 1.34, max 1.56)"
+
+MMC EXT4
+--------
+
+.. csv-table:: MMC EXT4
+    :header: "Buffer size (bytes)","am62dxx_evm-fs: Write Raw Throughput (Mbytes/sec)","am62dxx_evm-fs: Write Raw CPU Load (%)","am62dxx_evm-fs: Read Raw Throughput (Mbytes/sec)","am62dxx_evm-fs: Read Raw CPU Load (%)"
+
+    "102400","10.78 (min 10.49, max 11.05)","0.52 (min 0.39, max 0.82)","11.05 (min 10.68, max 11.83)","0.47 (min 0.36, max 0.55)"
+    "262144","10.83 (min 10.54, max 11.15)","0.47 (min 0.29, max 0.88)","11.12 (min 10.81, max 11.24)","0.57 (min 0.46, max 0.71)"
+    "524288","10.79 (min 10.53, max 11.17)","0.41 (min 0.29, max 0.58)","11.23 (min 11.06, max 11.49)","0.48 (min 0.43, max 0.56)"
+    "1048576","10.91 (min 10.51, max 11.31)","0.43 (min 0.29, max 0.65)","11.25 (min 10.84, max 12.03)","0.57 (min 0.42, max 0.75)"
+    "5242880","11.00 (min 10.56, max 11.31)","0.44 (min 0.31, max 0.95)","12.03 (min 12.01, max 12.03)","0.59 (min 0.46, max 0.83)"
+
+MMC EXT3
+--------
+
+.. csv-table:: MMC EXT3
+    :header: "Buffer size (bytes)","am62dxx_evm-fs: Write Raw Throughput (Mbytes/sec)","am62dxx_evm-fs: Write Raw CPU Load (%)","am62dxx_evm-fs: Read Raw Throughput (Mbytes/sec)","am62dxx_evm-fs: Read Raw CPU Load (%)"
+
+    "102400","32.80 (min 27.05, max 38.59)","1.93 (min 1.26, max 3.96)","71.22 (min 68.05, max 75.78)","3.30 (min 2.73, max 4.56)"
+    "262144","32.68 (min 28.51, max 34.70)","1.62 (min 0.99, max 3.46)","76.95 (min 75.21, max 78.70)","3.61 (min 2.77, max 4.36)"
+    "524288","32.65 (min 27.95, max 38.16)","1.64 (min 0.92, max 4.53)","82.90 (min 82.35, max 83.83)","3.68 (min 3.39, max 3.94)"
+    "1048576","34.47 (min 29.54, max 38.43)","1.62 (min 0.94, max 3.52)","82.57 (min 78.49, max 86.37)","3.35 (min 2.95, max 3.74)"
+    "5242880","35.41 (min 30.54, max 40.36)","1.56 (min 0.88, max 3.46)","84.97 (min 79.58, max 86.36)","3.52 (min 3.42, max 3.70)"
+
+MMC EXT2
+--------
+
+.. csv-table:: MMC EXT2
+    :header: "Buffer size (bytes)","am62dxx_evm-fs: Write Raw Throughput (Mbytes/sec)","am62dxx_evm-fs: Write Raw CPU Load (%)","am62dxx_evm-fs: Read Raw Throughput (Mbytes/sec)","am62dxx_evm-fs: Read Raw CPU Load (%)"
+
+    "102400","15.97 (min 3.16, max 20.55)","1.70 (min 1.43, max 1.92)","72.65 (min 68.58, max 75.06)","3.50 (min 3.06, max 3.88)"
+    "262144","25.96 (min 3.22, max 39.58)","1.85 (min 1.40, max 2.26)","79.21 (min 75.06, max 87.04)","3.09 (min 2.73, max 3.43)"
+    "524288","29.08 (min 3.46, max 37.38)","1.73 (min 1.32, max 2.09)","83.16 (min 80.48, max 85.19)","3.18 (min 2.85, max 3.65)"
+    "1048576","29.86 (min 3.53, max 38.71)","1.61 (min 1.08, max 2.81)","82.67 (min 79.79, max 85.87)","3.39 (min 2.65, max 3.71)"
+    "5242880","30.19 (min 3.79, max 38.77)","1.38 (min 1.03, max 1.84)","83.81 (min 80.31, max 86.32)","3.24 (min 3.08, max 3.51)"
+
+The performance numbers were captured using the following:
+
+-  SanDisk Max Endurance SD card (SDSQQVR-032G-GN6IA)
+-  Partition was mounted with async option
+
+UBoot MMCSD
+-----------
+
+UBOOT MMCSD FAT
+^^^^^^^^^^^^^^^
+
+.. csv-table:: UBOOT MMCSD FAT
+    :header: "File size (bytes in hex)","am62dxx_evm-fs: Write Throughput (Kbytes/sec)","am62dxx_evm-fs: Read Throughput (Kbytes/sec)"
+
+    "400000","36678.90 (min 33851.24, max 39384.62)","82198.64 (min 81920.00, max 83591.84)"
+    "800000","40659.22 (min 32899.60, max 45010.99)","87308.41 (min 86231.58, max 88086.02)"
+    "1000000","43129.36 (min 36328.16, max 46811.43)","89613.83 (min 89043.48, max 90021.98)"
+
+The performance numbers were captured using the following:
+
+-  SanDisk Max Endurance SD card (SDSQQVR-032G-GN6IA)
+ 
+|
+
 USB
 ===
 
