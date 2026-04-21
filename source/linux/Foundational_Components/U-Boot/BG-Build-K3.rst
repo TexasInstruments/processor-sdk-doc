@@ -423,9 +423,10 @@ All of these binaries are available in the SDK at :file:`<path to tisdk>/board-s
 .. ifconfig:: CONFIG_part_variant in ('AM62LX')
 
    .. csv-table::
-      :header: "Board","SD / eMMC / UART / OSPI / USB DFU / USB MSC"
+      :header: "Board","SD / UART / OSPI / USB DFU","USB MSC"
 
-      "AM62LX EVM", ``am62lx_evm_defconfig``
+      "AM62LX EVM", ``am62lx_evm_defconfig``, ``am62lx_evm_defconfig``
+      "BeagleBadge", ``am62lx_badge_defconfig``, ""
 
    .. note::
 
@@ -437,6 +438,15 @@ All of these binaries are available in the SDK at :file:`<path to tisdk>/board-s
       $ export TI_LINUX_FW_DIR=<path-to-ti-linux-firmware>
       $ export TFA_DIR=<path-to-arm-trusted-firmware>
       $ export OPTEE_DIR=<path-to-ti-optee-os>
+
+      # Build for AM62LX EVM:
+      $ export UBOOT_CONFIG=am62lx_evm_defconfig
+      $ export TFA_BOARD=am62lx
+
+      # Build for BeagleBadge:
+      $ export UBOOT_CONFIG=am62lx_badge_defconfig
+      $ export TFA_BOARD=am62l3_badge # on ti-tfa-2.14.y
+      $ export TFA_BOARD=am62lx_badge # on ti-master
 
    .. note::
 
@@ -451,10 +461,10 @@ All of these binaries are available in the SDK at :file:`<path to tisdk>/board-s
    .. code-block:: console
 
       $ cd $UBOOT_DIR
-      $ make CROSS_COMPILE="$CROSS_COMPILE_64" am62lx_evm_defconfig
+      $ make CROSS_COMPILE="$CROSS_COMPILE_64" $UBOOT_CONFIG
       $ make CROSS_COMPILE="$CROSS_COMPILE_64" \
-         BL1=$TFA_DIR/build/k3low/am62lx/release/bl1.bin \
-         BL31=$TFA_DIR/build/k3low/am62lx/release/bl31.bin \
+         BL1=$TFA_DIR/build/k3low/$TFA_BOARD/release/bl1.bin \
+         BL31=$TFA_DIR/build/k3low/$TFA_BOARD/release/bl31.bin \
          BINMAN_INDIRS=$TI_LINUX_FW_DIR \
          TEE=$OPTEE_DIR/out/arm-plat-k3/core/tee-pager_v2.bin
 

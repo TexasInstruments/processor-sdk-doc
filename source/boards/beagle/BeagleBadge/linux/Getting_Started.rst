@@ -20,17 +20,20 @@ Low level sources
 
 .. list-table::
    :header-rows: 1
-   :widths: 15, 15, 15
+   :widths: 15, 15, 15, 15
 
    * - Component
      - Branch
      - Source File
+     - Build Instructions
    * - U-Boot
      - `ti-u-boot-2025.01 <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/log/?h=ti-u-boot-2025.01>`__
      - :file:`configs/am62lx_beaglebadge_defconfig`
+     - :ref:`U-Boot Build Guide <u-boot-build-guide-setup-k3>`
    * - Linux Kernel
      - `ti-linux-6.12.y <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/log/?h=ti-linux-6.12.y>`__
      - :file:`arch/arm64/boot/dts/ti/k3-am62l3-beaglebadge.dts`
+     - :ref:`Linux Kernel Build Guide <preparing-to-build>`
 
 ########################
 Building for BeagleBadge
@@ -44,17 +47,19 @@ Building for BeagleBadge
    $ cd build
    $ . conf/setenv
    $ export MACHINE=beaglebadge-ti
-   $ ARAGO_SYSVINIT=1 bitbake -k tisdk-tiny-image
+   $ bitbake -k tisdk-default-image
 
 For more information on building Arago for BeagleBadge, go :ref:`here <building-the-sdk-with-yocto>`.
 
 .. note::
 
-   Yocto: Due to the 256MB size of LPDDR on BeagleBadge, there may be limited free memory (about 17-20MB)
-   for developing applications with the **default**, TI-provided Arago distribution image. Switching to
-   sysVinit for init system instead of systemd can help reduce the memory footprint further. Please go
-   `here <https://www.linuxjournal.com/content/embracing-future-transition-sysvinit-systemd-linux>`__
+   Yocto: The BeagleBadge's 256MB LPDDR memory might limit the free memory available for developing
+   applications with the **default**, TI-provided Arago distribution image. Switching to sysVinit for
+   init system instead of systemd and building TI **tiny** image can help reduce the memory footprint.
+   Please go `here <https://www.linuxjournal.com/content/embracing-future-transition-sysvinit-systemd-linux>`__
    for a comparison of both init systems.
+
+   $ ARAGO_SYSVINIT=1 bitbake -k tisdk-tiny-image
 
 To build Armbian for BeagleBadge, refer to **Debian SDK user manual** found `here <https://www.ti.com/tool/download/AM62L-LINUX-SDK>`__.
 
