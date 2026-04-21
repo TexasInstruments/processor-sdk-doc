@@ -41,7 +41,7 @@ can follow the process described in the following steps:
       git clone https://git.ti.com/git/arago-project/oe-layersetup.git tisdk
       cd tisdk
 
-      # Replace <oeconfig-file> with the appropriate file for the release
+      # Replace <oeconfig-file> with the default oe-config file for the release
       # uncomment the meta-flutter layer configuration in the selected <oeconfig-file>
       ./oe-layertool-setup.sh -f configs/processor-sdk/<oeconfig-file>
       cd build
@@ -102,46 +102,14 @@ balance of performance and low resource usage out-of-the-box.
 Building with Slint
 ===================
 
-This guide provides instructions on how to add the `meta-slint <https://layers.openembedded.org/layerindex/branch/master/layer/meta-slint/>`__ layer
-to the Yocto build system of the TI Processor SDK to build and run Slint applications.
+#. Slint version 1.15 example demos are integrated by default in the :file:`tisdk-default-image`. User can download
+   the :file:`tisdk-default-image` wic image from |__SDK_DOWNLOAD_URL__|.
 
-#. **Prepare your Yocto environment:**
-   Complete the one-time setup prerequisites listed in the |__SDK_FULL_NAME__| documentation at :ref:`building-the-sdk-with-yocto`.
+#. Follow the steps in :ref:`building-the-sdk-with-yocto` to build the image from sources.
+   Use the default oe-config file, which includes the ``meta-slint`` layer.
+   See :ref:`Yocto Layer Configuration <yocto-layer-configuration>` to find the correct oe-config file for the release.
 
-#. **Configure and build the SDK:**
-   The following commands will set up the necessary Slint and dependent layers and build the image.
-
-   .. code-block:: console
-
-      # Set up the base SDK layers
-      git clone https://git.ti.com/git/arago-project/oe-layersetup.git tisdk
-      cd tisdk
-
-      # Create a new config for Slint and add the required meta-layers
-      # Replace <oeconfig-file> with the appropriate file for the release
-      cp configs/processor-sdk/<oeconfig-file> configs/slint-config.txt
-      echo "meta-slint,https://github.com/slint-ui/meta-slint.git,main,7406ee51c140968345b86f3927a8c67984a2dda8,layers=" >> configs/slint-config.txt
-      echo "meta-rust-bin,https://github.com/rust-embedded/meta-rust-bin.git,master,79c077fac9694eb5fbcee7b15e800c21e887bb5d,layers=" >> configs/slint-config.txt
-
-      # Set up the bitbake build environment
-      ./oe-layertool-setup.sh -f configs/slint-config.txt
-      cd build/
-
-      # Add the slint-demos package to the image
-      echo 'IMAGE_INSTALL:append = " slint-demos"' >> conf/local.conf
-
-      # Source the environment and build the image
-      . conf/setenv
-      MACHINE=<machine> bitbake -k tisdk-default-image
-
-   .. note::
-
-      See the :ref:`Yocto Layer Configuration <yocto-layer-configuration>` guide to find the
-      correct :file:`<oeconfig-file>` for the SDK release. Set the ``<machine>`` variable
-      to your target device as in :ref:`Build_Options`.
-
-#. **Flash the SD Card:**
-   Once the build is complete, flash the generated image at :file:`build/deploy-ti/images/<machine>/tisdk-default-image-<machine>.wic.xz`
+#. Once the build is complete, flash the generated image at :file:`build/deploy-ti/images/<machine>/tisdk-default-image-<machine>.wic.xz`
    onto a SD card. See :ref:`Flash an SD card <processor-sdk-linux-create-sd-card>` for instructions.
 
 Running the Demos
@@ -201,3 +169,9 @@ Here are some snapshots of the other demos running on the device.
             :alt: Slint Puzzle Demo
 
             Puzzle demo
+
+.. figure:: /images/slint_energy_monitor.png
+   :align: left
+   :alt: Slint Energy Monitor Demo
+
+   Energy Monitor
