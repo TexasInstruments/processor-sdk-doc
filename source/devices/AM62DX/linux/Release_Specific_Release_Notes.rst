@@ -58,6 +58,7 @@ What's included
   - 8-channel recording support :ref:`Audio User Guide <Audio_User_Guide>`
   - ARM only Analytics support :ref:`Machine Learning <foundational-components-machine-learning>`
   - Snagfactory Support - :ref:`Snagfactory Tool <Flash-via-Fastboot>`
+  - LPM support :ref:`Power-Management <Power-Management>`
 
 **Component version:**
 
