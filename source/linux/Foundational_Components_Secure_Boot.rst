@@ -35,9 +35,9 @@ The following is an example list where Chain-of-Trust should be maintained.
 .. ifconfig:: CONFIG_part_variant in ('AM62LX')
 
    The U-Boot's Secondary Program Loader (SPL) securely verifies the U-Boot
-   proper. U-Boot uses its verified boot framework to do this. U-Boot proper
-   then securely verifies and decrypts the kernel, Device Tree Blobs (DTB),
-   and initramfs.
+   proper. U-Boot uses its verified boot framework to do this
+   (See: :ref:`u-boot-secure-boot-verified-boot`). U-Boot proper then securely
+   verifies and decrypts the kernel, Device Tree Blobs (DTB), and initramfs.
 
    .. Image:: /images/AM62L_KF.png
       :scale: 70%
