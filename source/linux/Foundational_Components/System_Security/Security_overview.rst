@@ -49,6 +49,9 @@ The following table lists some of the key Security Features:
   | **Secure Boot**         | Verifies and decrypts each boot stage, establishing a     | :ref:`foundational-secure-boot`         |
   |                         | hardware-backed chain of trust from ROM to Linux using    |                                         |
   |                         | customer-programmable keys                                |                                         |
+  +                         +-----------------------------------------------------------+-----------------------------------------+
+  |                         | Authenticates U-Boot using open-source Verified Boot      | :ref:`u-boot-secure-boot-verified-boot` |
+  |                         | framework                                                 |                                         |
   +-------------------------+-----------------------------------------------------------+-----------------------------------------+
   | **Authenticated Boot**  | Verifies each boot component to ensure only authorized    | :ref:`auth_boot_guide`                  |
   |                         | code executes on the device                               |                                         |
