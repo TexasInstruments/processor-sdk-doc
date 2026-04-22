@@ -71,12 +71,16 @@ Before encrypting a drive, it is recommended to perform a secure erase by overwr
 Setup
 *****
 
-.. Image:: /images/Auth_default_bootflow.png
-     :align: center
+.. ifconfig:: CONFIG_part_variant not in ('AM62LX')
 
-.. note::
+    .. Image:: /images/Auth_default_bootflow.png
+        :align: center
 
-   A new Yocto layer is in the works to automate all of the below steps
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+    .. Image:: /images/Auth_default_bootflow_AM62L.png
+        :align: center
+
 
 The following steps describe how to build user-space tools and configuration on Yocto. Please use :ref:`Processor SDK - Building the SDK with Yocto <building-the-sdk-with-yocto>` as reference.
 
@@ -240,14 +244,21 @@ The following steps describe how to build user-space tools and configuration on 
 
 #. Repackage the initramfs into the kernel, build and replace the :file:`root/boot/Image` and boot.
 
-.. Image:: /images/Auth_secure_bootflow.png
-     :align: center
+.. ifconfig:: CONFIG_part_variant not in ('AM62LX')
+
+    .. Image:: /images/Auth_secure_bootflow.png
+        :align: center
+
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+    .. Image:: /images/Auth_secure_bootflow_AM62L.png
+        :align: center
 
 **********
 Next steps
 **********
 
-This guide showcases the authenticated boot flow on TI devices and is not meant to be directly used in production. The demo utilizes a pass_key to secure the encrypted partition and is placed in the initramfs in a non-secure manner.
+This guide showcases the authenticated boot flow on TI devices and is not meant to be directly used in production. The demo utilizes a pass_key to secure the encrypted partition and is placed in the initramfs in a non-secure manner. Refer :ref:`File System Encryption with fTPM <filesystem-encryption>` for details on using fTPM based key sealing and secure storage of keys. 
 
 ********
 See Also
