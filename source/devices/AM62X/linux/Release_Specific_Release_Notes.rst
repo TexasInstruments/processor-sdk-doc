@@ -34,6 +34,12 @@ status for all packages included in this release. The manifest can be
 found on the SDK download page or in the installed directory as indicated below.
 
 -  Linux Manifest:  :file:`<PSDK_PATH>/manifest/software_manifest.htm`
+-  Debian Manifest:
+
+   -  `AM62x 11.02.08.02
+      <https://dr-download.ti.com/software-development/software-development-kit-sdk/MD-PvdSyIiioq/11.02.08.02/software_manifest_debian_sk-am62b_sk-am62b.htm>`__
+   -  `AM62x-SIP 11.02.08.02
+      <https://dr-download.ti.com/software-development/software-development-kit-sdk/MD-PvdSyIiioq/11.02.08.02/software_manifest_debian_sk-am62-sip_sk-am62-sip.htm>`__
 
 Release 11.02.08.02
 ===================
