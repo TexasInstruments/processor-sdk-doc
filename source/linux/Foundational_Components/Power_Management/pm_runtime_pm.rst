@@ -32,7 +32,7 @@ The following drivers have been validated for Runtime PM in this release:
 
 .. ifconfig:: CONFIG_part_variant in ('AM62DX')
 
-    DSS, McASP, OSPI, MCAN.
+    McASP, OSPI, MCAN.
 
 .. rubric:: Driver Usage
 
