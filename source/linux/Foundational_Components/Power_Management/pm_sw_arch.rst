@@ -251,7 +251,26 @@ The mode selection is done using resume latencies as mentioned in TI SCI LPM Doc
 Learning Resources
 ******************
 
-#. `AM62x Technical Reference Manual <https://www.ti.com/lit/pdf/spruiv7>`__
-#. `Technical White Paper on Enabling Low Power on AM62x <https://www.ti.com/lit/wp/sprad41/sprad41.pdf>`__
-#. :ref:`Low Power Modes Documentation<lpm_modes>`
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
 
+   #. `AM62x Technical Reference Manual <https://www.ti.com/lit/pdf/spruiv7>`__
+   #. `Technical White Paper on Enabling Low Power on AM62x <https://www.ti.com/lit/wp/sprad41/sprad41.pdf>`__
+   #. :ref:`Low Power Modes Documentation<lpm_modes>`
+
+.. ifconfig:: CONFIG_part_variant in ('AM62AX')
+
+   #. `AM62Ax Technical Reference Manual <https://www.ti.com/lit/ug/spruj16c/spruj16c.pdf>`__
+   #. `Technical White Paper on Enabling Low Power on AM62x <https://www.ti.com/lit/wp/sprad41/sprad41.pdf>`__
+   #. :ref:`Low Power Modes Documentation<lpm_modes>`
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+   #. `AM62Px Technical Reference Manual <https://www.ti.com/lit/ug/spruj83d/spruj83d.pdf>`__
+   #. `Technical White Paper on Enabling Low Power on AM62x <https://www.ti.com/lit/wp/sprad41/sprad41.pdf>`__
+   #. :ref:`Low Power Modes Documentation<lpm_modes>`
+
+.. ifconfig:: CONFIG_part_variant in ('AM62DX')
+
+   #. `AM62Dx Technical Reference Manual <https://www.ti.com/lit/ug/sprujd4a/sprujd4a.pdf>`__
+   #. `Technical White Paper on Enabling Low Power on AM62x <https://www.ti.com/lit/wp/sprad41/sprad41.pdf>`__
+   #. :ref:`Low Power Modes Documentation<lpm_modes>`
