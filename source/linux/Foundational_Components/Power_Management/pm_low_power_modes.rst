@@ -158,19 +158,19 @@ I/O Only Plus DDR
 
       .. code-block:: console
 
-         root@am62axx-evm:~# echo disabled > /sys/class/rtc/rtc0/device/power/wakeup
-         root@am62axx-evm:~# echo disabled > /sys/bus/platform/devices/2800000.serial/power/wakeup
-         root@am62axx-evm:~# echo disabled > /sys/devices/platform/bus@f0000/f900000.dwc3-usb/power/wakeup
-         root@am62axx-evm:~# echo disabled > /sys/devices/platform/bus@f0000/f910000.dwc3-usb/power/wakeup
+         root@<machine>:~# echo disabled > /sys/class/rtc/rtc0/device/power/wakeup
+         root@<machine>:~# echo disabled > /sys/bus/platform/devices/2800000.serial/power/wakeup
+         root@<machine>:~# echo disabled > /sys/devices/platform/bus@f0000/f900000.dwc3-usb/power/wakeup
+         root@<machine>:~# echo disabled > /sys/devices/platform/bus@f0000/f910000.dwc3-usb/power/wakeup
 
    .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
       .. code-block:: console
 
-         root@am62pxx-evm:~# echo disabled > /sys/class/rtc/rtc0/device/power/wakeup
-         root@am62pxx-evm:~# echo disabled > /sys/bus/platform/devices/2800000.serial/power/wakeup
-         root@am62pxx-evm:~# echo disabled > /sys/devices/platform/bus@f0000/f900000.usb/power/wakeup
-         root@am62pxx-evm:~# echo disabled > /sys/devices/platform/bus@f0000/f910000.usb/power/wakeup
+         root@<machine>:~# echo disabled > /sys/class/rtc/rtc0/device/power/wakeup
+         root@<machine>:~# echo disabled > /sys/bus/platform/devices/2800000.serial/power/wakeup
+         root@<machine>:~# echo disabled > /sys/devices/platform/bus@f0000/f900000.usb/power/wakeup
+         root@<machine>:~# echo disabled > /sys/devices/platform/bus@f0000/f910000.usb/power/wakeup
 
    .. rubric:: Then, configure PMIC register bit to turn off only selected rails for this mode.
 
@@ -178,7 +178,7 @@ I/O Only Plus DDR
 
       .. code-block:: console
 
-         root@am62axx-evm:~# i2cset -f -y -m 0xFF -r -a 0 0x48 0x86 0x1
+         root@<machine>:~# i2cset -f -y -m 0xFF -r -a 0 0x48 0x86 0x1
 
       The register write has been done to enable PMIC to enter `PMIC S2R <https://www.ti.com/lit/ug/slvucm3/slvucm3.pdf>`_ .
 
@@ -186,7 +186,7 @@ I/O Only Plus DDR
 
       .. code-block:: console
 
-         root@am62pxx-evm:~# i2cset -f -y -m 0xFF -r -a 0 0x48 0x86 0x2
+         root@<machine>:~# i2cset -f -y -m 0xFF -r -a 0 0x48 0x86 0x2
 
    .. rubric:: Now, the SoC can be suspended using the following command:
 
