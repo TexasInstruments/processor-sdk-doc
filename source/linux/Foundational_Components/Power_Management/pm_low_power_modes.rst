@@ -21,10 +21,8 @@ to highest power consumption):
 #. Deep Sleep
 #. MCU Only
 
-TI SDK 10.0 (ti-linux-6.6.y kernel and 10.0 DM firmware) adds support for
-an updated LPM Software Architecture that seamlessly manages the various
-Suspend-to-RAM modes supported by AM62 family of devices. More details about
-this architecture can be found in :ref:`LPM constraints framework<pm_constraints_fwk>` section.
+More details about the low power mode architecture can be found in
+:ref:`LPM constraints framework<pm_constraints_fwk>` section.
 
 ***********
 Partial I/O
