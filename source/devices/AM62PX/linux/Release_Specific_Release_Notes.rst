@@ -64,6 +64,7 @@ What's new
   - Review Issue Tracker Section for the new fixes.
   - Security: ATF and OPTEE memory firewall for isolation from Linux
   - Security: Yocto reference for LUKS2 root filesystem encryption with fTPM key management
+  - Power: Reduced power consumption using MCU Only low power mode by 35%
 
 **Key Release References:**
 
