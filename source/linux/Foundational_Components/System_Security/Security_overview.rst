@@ -8,19 +8,19 @@ Device Security
 Security Overview
 =================
 
-The |__PART_FAMILY_DEVICE_NAMES__| SoC offers a comprehensive set of 
-security features that protect embedded Linux applications. This guide 
-offers a starting point to understand and implement these capabilities 
+The |__PART_FAMILY_DEVICE_NAMES__| SoC offers a comprehensive set of
+security features that protect embedded Linux applications. This guide
+offers a starting point to understand and implement these capabilities
 as part of product development, with the following advantages:
 
-* **Hardware-backed security** - Leverages built-in security hardware 
+* **Hardware-backed security** - Leverages built-in security hardware
   for robust protection
 * **Defense in-depth** - Implements security at many levels including
   hardware, firmware, software to protect against wide range of attacks
 * **Industry standards compliance** - Incorporates security measures such
   as secure boot, TrustZone, and crypto acceleration that can help meet
   requirements in standards such as IEC 62443 and NIST guidelines
-* **Flexible implementation** - Allows security features that can be 
+* **Flexible implementation** - Allows security features that can be
   tailored to specific application needs
 
 ================
@@ -31,7 +31,7 @@ Below is an overview of the security framework's main domains:
 
 .. figure:: ./images/security_framework.png
 
-These security domains create a chain of trust protecting the 
+These security domains create a chain of trust protecting the
 |__PART_FAMILY_DEVICE_NAMES__| SoC from boot through runtime and storage,
 ensuring system integrity and data confidentiality.
 
@@ -43,31 +43,35 @@ The following table lists some of the key Security Features:
 
 .. ifconfig:: CONFIG_part_variant in ('AM62LX')
 
-  +-------------------------+-----------------------------------------------------------+--------------------------------------+
-  | **Security Feature**    | **Description**                                           | **Links**                            |
-  +=========================+===========================================================+======================================+
-  | **Authenticated Boot**  | Verifies each boot component to ensure only authorized    | :ref:`auth_boot_guide`               |
-  |                         | code executes on the device                               |                                      |
-  +-------------------------+-----------------------------------------------------------+--------------------------------------+
-  | **Crypto Acceleration** | Hardware driver support for cryptographic algorithms and  | :ref:`crypto-accelerator`            |
-  | **and TRNG**            | hardware entropy based secure random number generation    |                                      |
-  +-------------------------+-----------------------------------------------------------+--------------------------------------+
-  | **Key Management**      | Tools for secure key provisioning                         | :ref:`key-writer-lite-label`         |
-  +-------------------------+-----------------------------------------------------------+--------------------------------------+
-  | **Secure Storage**      | Protection mechanisms for sensitive data                  | :ref:`secure-storage-with-rpmb`      |
-  +-------------------------+-----------------------------------------------------------+--------------------------------------+
-  | **Trusted Execution**   | Implementation of secure monitor (EL3) firmware that      | :ref:`foundational-components-atf`   |
-  |                         | manages the secure boot process and TrustZone transitions |                                      |
-  +                         +-----------------------------------------------------------+--------------------------------------+
-  |                         | Trusted Execution Environment that enables isolated       | :ref:`foundational-components-optee` |
-  |                         | execution of security-sensitive applications and services |                                      |
-  +-------------------------+-----------------------------------------------------------+--------------------------------------+
-  | **Memory Firewalls**    | Prevents unauthorized access through hardware-enforced    | :ref:`memory-firewalls`              |
-  |                         | security boundaries                                       |                                      |
-  +-------------------------+-----------------------------------------------------------+--------------------------------------+
-  |**fTPM based**           | Yocto reference implemenation of filesystem  encryption   | :ref:`filesystem-encryption`         |
-  |**Filesystem Encryption**| using LUKS2 with TPM-sealed keys                          |                                      |
-  +-------------------------+-----------------------------------------------------------+--------------------------------------+
+  +-------------------------+-----------------------------------------------------------+-----------------------------------------+
+  | **Security Feature**    | **Description**                                           | **Links**                               |
+  +=========================+===========================================================+=========================================+
+  | **Secure Boot**         | Verifies and decrypts each boot stage, establishing a     | :ref:`foundational-secure-boot`         |
+  |                         | hardware-backed chain of trust from ROM to Linux using    |                                         |
+  |                         | customer-programmable keys                                |                                         |
+  +-------------------------+-----------------------------------------------------------+-----------------------------------------+
+  | **Authenticated Boot**  | Verifies each boot component to ensure only authorized    | :ref:`auth_boot_guide`                  |
+  |                         | code executes on the device                               |                                         |
+  +-------------------------+-----------------------------------------------------------+-----------------------------------------+
+  | **Crypto Acceleration** | Hardware driver support for cryptographic algorithms and  | :ref:`crypto-accelerator`               |
+  | **and TRNG**            | hardware entropy based secure random number generation    |                                         |
+  +-------------------------+-----------------------------------------------------------+-----------------------------------------+
+  | **Key Management**      | Tools for secure key provisioning                         | :ref:`key-writer-lite-label`            |
+  +-------------------------+-----------------------------------------------------------+-----------------------------------------+
+  | **Secure Storage**      | Protection mechanisms for sensitive data                  | :ref:`secure-storage-with-rpmb`         |
+  +-------------------------+-----------------------------------------------------------+-----------------------------------------+
+  | **Trusted Execution**   | Implementation of secure monitor (EL3) firmware that      | :ref:`foundational-components-atf`      |
+  |                         | manages the secure boot process and TrustZone transitions |                                         |
+  +                         +-----------------------------------------------------------+-----------------------------------------+
+  |                         | Trusted Execution Environment that enables isolated       | :ref:`foundational-components-optee`    |
+  |                         | execution of security-sensitive applications and services |                                         |
+  +-------------------------+-----------------------------------------------------------+-----------------------------------------+
+  | **Memory Firewalls**    | Prevents unauthorized access through hardware-enforced    | :ref:`memory-firewalls`                 |
+  |                         | security boundaries                                       |                                         |
+  +-------------------------+-----------------------------------------------------------+-----------------------------------------+
+  |**fTPM based**           | Yocto reference implemenation of filesystem  encryption   | :ref:`filesystem-encryption`            |
+  |**Filesystem Encryption**| using LUKS2 with TPM-sealed keys                          |                                         |
+  +-------------------------+-----------------------------------------------------------+-----------------------------------------+
 
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX', 'AM62AX')
@@ -120,6 +124,6 @@ The following table lists some of the key Security Features:
   |                         | execution of security-sensitive applications and services |                                      |
   +-------------------------+-----------------------------------------------------------+--------------------------------------+
   | **Memory Firewalls**    | Prevents unauthorized access through hardware-enforced    | :ref:`memory-firewalls`              |
-  |                         | security boundaries                                       |				       |
+  |                         | security boundaries                                       |                                      |
   +-------------------------+-----------------------------------------------------------+--------------------------------------+
 

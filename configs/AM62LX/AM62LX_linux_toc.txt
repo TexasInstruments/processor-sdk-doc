@@ -86,6 +86,7 @@ linux/Foundational_Components/System_Security/Security_overview
 linux/Foundational_Components/System_Security/Auth_boot
 linux/Foundational_Components/System_Security/Memory_Firewalls
 linux/Foundational_Components/System_Security/Filesystem_Encryption
+linux/Foundational_Components_Secure_Boot
 
 linux/Foundational_Components_Kernel_Users_Guide
 linux/Foundational_Components_Kernel_LTP-DDT_Validation
