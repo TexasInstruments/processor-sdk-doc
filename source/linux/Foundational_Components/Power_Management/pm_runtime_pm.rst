@@ -45,35 +45,44 @@ to control the Runtime PM behavior at per device level:
 #. *runtime_status:* current status of the device. It can be suspended, active, or unsupported.
 #. *runtime_suspended_time:* period that device has been suspended.
 
-For example, here are the default values for DSS device:
+For example, here are the default values for OSPI device:
 
 .. code-block:: console
 
-    root@am62xx-evm:~# tail -n +1 /sys/devices/platform/bus@f0000/30200000.dss/power/*
-    ==> /sys/devices/platform/bus@f0000/30200000.dss/power/autosuspend_delay_ms <==
-    1000
+   root@<machine>:~# tail -n +1 /sys/devices/platform/bus@f0000/fc00000.bus/fc40000.spi/power/*
+   ==> /sys/devices/platform/bus@f0000/fc00000.bus/fc40000.spi/power/autosuspend_delay_ms <==
+   2000
 
-    ==> /sys/devices/platform/bus@f0000/30200000.dss/power/control <==
-    auto
+   ==> /sys/devices/platform/bus@f0000/fc00000.bus/fc40000.spi/power/control <==
+   auto
 
-    ==> /sys/devices/platform/bus@f0000/30200000.dss/power/runtime_active_time <==
-    24129
+   ==> /sys/devices/platform/bus@f0000/fc00000.bus/fc40000.spi/power/runtime_active_time <==
+   8612
 
-    ==> /sys/devices/platform/bus@f0000/30200000.dss/power/runtime_status <==
-    active
+   ==> /sys/devices/platform/bus@f0000/fc00000.bus/fc40000.spi/power/runtime_status <==
+   suspended
 
-    ==> /sys/devices/platform/bus@f0000/30200000.dss/power/runtime_suspended_time <==
-    0
+   ==> /sys/devices/platform/bus@f0000/fc00000.bus/fc40000.spi/power/runtime_suspended_time <==
+   734540
 
-To disable Runtime PM for the DSS device, the "control" parameter can be
+To disable Runtime PM for the OSPI device, the "control" parameter can be
 changed to "on":
 
 .. code-block:: console
 
-    root@<machine>:~# echo on > /sys/devices/platform/bus@f0000/30200000.dss/power/control
-    root@<machine>:~# cat /sys/devices/platform/bus@f0000/30200000.dss/power/*
-    1000
-    on
-    4629
-    active
-    199277671
+   root@<machine>:~# echo on > /sys/devices/platform/bus@f0000/fc00000.bus/fc40000.spi/power/control
+   root@<machine>:~# tail -n +1 /sys/devices/platform/bus@f0000/fc00000.bus/fc40000.spi/power/*
+   ==> /sys/devices/platform/bus@f0000/fc00000.bus/fc40000.spi/power/autosuspend_delay_ms <==
+   2000
+
+   ==> /sys/devices/platform/bus@f0000/fc00000.bus/fc40000.spi/power/control <==
+   on
+
+   ==> /sys/devices/platform/bus@f0000/fc00000.bus/fc40000.spi/power/runtime_active_time <==
+   11797
+
+   ==> /sys/devices/platform/bus@f0000/fc00000.bus/fc40000.spi/power/runtime_status <==
+   active
+
+   ==> /sys/devices/platform/bus@f0000/fc00000.bus/fc40000.spi/power/runtime_suspended_time <==
+   770604
