@@ -304,8 +304,12 @@ software only implementation can be compared to the previous test.
 Using the TRNG Hardware Accelerator
 ***********************************
 
-The pre built kernel that come with the SDK already has the TRNG driver
-built into the kernel. No further configuration is required.
+In the default SDK, OP-TEE controls the TRNG engine and firewalls its
+hardware registers, blocking outside access. To use TRNG from Linux instead,
+disable the OP-TEE driver and enable the RNG node in the Linux device tree.
+
+Using TRNG from OP-TEE requires no further configuration. Verify the optee-rng
+driver loads:
 
 .. ifconfig:: CONFIG_crypto in ('sa2ul')
 

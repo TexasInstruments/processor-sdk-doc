@@ -49,7 +49,8 @@ The following table lists some of the key Security Features:
   | **Authenticated Boot**  | Verifies each boot component to ensure only authorized    | :ref:`auth_boot_guide`               |
   |                         | code executes on the device                               |                                      |
   +-------------------------+-----------------------------------------------------------+--------------------------------------+
-  | **Crypto Acceleration** | Hardware driver support for cryptographic algorithms      | :ref:`crypto-accelerator`            |
+  | **Crypto Acceleration** | Hardware driver support for cryptographic algorithms and  | :ref:`crypto-accelerator`            |
+  | **and TRNG**            | hardware entropy based secure random number generation    |                                      |
   +-------------------------+-----------------------------------------------------------+--------------------------------------+
   | **Key Management**      | Tools for secure key provisioning                         | :ref:`key-writer-lite-label`         |
   +-------------------------+-----------------------------------------------------------+--------------------------------------+
@@ -81,7 +82,8 @@ The following table lists some of the key Security Features:
   | **Authenticated Boot**  | Transparent disk encryption using the Linux kernel        | :ref:`auth_boot_guide`               |
   |                         | device mapper (dm-crypt) for data confidentiality         |                                      |
   +-------------------------+-----------------------------------------------------------+--------------------------------------+
-  | **Crypto Acceleration** | Hardware driver support for cryptographic algorithms      | :ref:`crypto-accelerator`            |
+  | **Crypto Acceleration** | Hardware driver support for cryptographic algorithms and  | :ref:`crypto-accelerator`            |
+  | **and TRNG**            | hardware entropy based secure random number generation    |                                      |
   +-------------------------+-----------------------------------------------------------+--------------------------------------+
   | **Secure Storage**      | Protection mechanisms for sensitive data                  | :ref:`secure-storage-with-rpmb`      |
   +-------------------------+-----------------------------------------------------------+--------------------------------------+
@@ -106,7 +108,8 @@ The following table lists some of the key Security Features:
   +-------------------------+-----------------------------------------------------------+--------------------------------------+
   | Security Feature        | Description                                               | Links                                |
   +=========================+===========================================================+======================================+
-  | **Crypto Acceleration** | Hardware driver support for cryptographic algorithms      | :ref:`crypto-accelerator`            |
+  | **Crypto Acceleration** | Hardware driver support for cryptographic algorithms and  | :ref:`crypto-accelerator`            |
+  | **and TRNG**            | hardware entropy based secure random number generation    |                                      |
   +-------------------------+-----------------------------------------------------------+--------------------------------------+
   | **Secure Storage**      | Protection mechanisms for sensitive data                  | :ref:`secure-storage-with-rpmb`      |
   +-------------------------+-----------------------------------------------------------+--------------------------------------+
