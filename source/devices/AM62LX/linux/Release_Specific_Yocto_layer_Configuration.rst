@@ -29,5 +29,8 @@ has the following configuration files in the :file:`configs/processor-sdk` direc
    * - :file:`processor-sdk-master-selinux-12.00.00.07.04-config.txt`
      - Used for building SELinux enabled Yocto based filesystem
      - |__SDK_BUILD_MACHINE__|
+   * - :file:`processor-sdk-master-luks-12.00.00.07.04-config.txt`
+     - Used for building SDK with the luks disk encryption using fTPM
+     - |__SDK_BUILD_MACHINE__|
 
 The oe-layersetup configuration, as defined in :file:`processor-sdk-master-nonui-12.00.00.07.04-config.txt`, is used for configuring the meta layers in the yocto SD card image available on |__SDK_DOWNLOAD_URL__|.
