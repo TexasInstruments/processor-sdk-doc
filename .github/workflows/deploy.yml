@@ -8,6 +8,10 @@ on:  # yamllint disable-line rule:truthy
     types:
       - completed
 
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
 permissions:
   contents: read
 
