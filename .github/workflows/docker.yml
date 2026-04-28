@@ -13,12 +13,14 @@ env:
 
 permissions:
   contents: read
-  packages: write
 
 jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
+
+    permissions:
+      packages: write  # Required to push image to ghcr.io
 
     steps:
       - name: Checkout

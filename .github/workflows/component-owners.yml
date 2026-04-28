@@ -10,16 +10,15 @@ on:  # yamllint disable-line rule:truthy
     branches: [master]
 
 permissions:
-  # Clamp permissions since pull_request_target workflows granted full
-  # read/write repository permission by default
   contents: read
-  issues: write
-  pull-requests: write
 
 jobs:
   component-owners:
     name: Assign component owners
     runs-on: ubuntu-latest
+
+    permissions:
+      pull-requests: write  # Required to set reviewers
 
     steps:
       - name: Assign component owners
