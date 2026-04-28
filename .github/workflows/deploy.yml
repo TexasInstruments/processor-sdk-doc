@@ -8,6 +8,9 @@ on:  # yamllint disable-line rule:truthy
     types:
       - completed
 
+permissions:
+  contents: read
+
 jobs:
   agregate:
     name: Agregate build artifacts
@@ -16,8 +19,6 @@ jobs:
     container:
       image: ghcr.io/texasinstruments/processor-sdk-doc:latest
       options: --entrypoint /bin/bash
-    permissions:
-      contents: read
 
     steps:
       - name: Checkout

@@ -11,6 +11,9 @@ defaults:
   run:
     shell: bash
 
+permissions:
+  contents: read
+
 jobs:
   lint:
     name: Lint
@@ -18,8 +21,6 @@ jobs:
     container:
       image: ghcr.io/texasinstruments/processor-sdk-doc:latest
       options: --entrypoint /bin/bash
-    permissions:
-      contents: read
 
     steps:
       - name: Checkout repository
