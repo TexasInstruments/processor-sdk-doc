@@ -57,9 +57,11 @@ jobs:
           git config --global --add safe.directory "$PWD"
 
       - name: Build ${{ matrix.device }}
+        env:
+          DEVFAMILY: ${{ matrix.device }}
+          OS: ${{ matrix.os }}
         run: |
-          make DEVFAMILY=${{ matrix.device }} OS=${{ matrix.os }} \
-          VERSION=${GITHUB_REF_NAME}
+          make VERSION=${GITHUB_REF_NAME}
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
