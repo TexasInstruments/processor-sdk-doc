@@ -8,6 +8,10 @@ on:  # yamllint disable-line rule:truthy
       - '**.yaml'
       - '**.yml'
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.number }}
+  cancel-in-progress: true
+
 permissions:
   contents: read
 
