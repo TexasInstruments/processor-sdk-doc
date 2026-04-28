@@ -3,6 +3,10 @@ name: "vale"
 
 on: [pull_request]  # yamllint disable-line rule:truthy
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.number }}
+  cancel-in-progress: true
+
 defaults:
   run:
     shell: bash
