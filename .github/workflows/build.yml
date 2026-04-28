@@ -60,7 +60,7 @@ jobs:
       - name: Build ${{ matrix.device }}
         run: |
           make DEVFAMILY=${{ matrix.device }} OS=${{ matrix.os }} \
-          VERSION=${{ github.ref_name }}
+          VERSION=${GITHUB_REF_NAME}
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
