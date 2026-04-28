@@ -18,6 +18,7 @@ permissions:
 
 jobs:
   collect:
+    name: Collect DEVFAMILY and OS combinations
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/texasinstruments/processor-sdk-doc:latest
