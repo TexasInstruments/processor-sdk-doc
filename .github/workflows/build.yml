@@ -13,14 +13,15 @@ defaults:
   run:
     shell: bash
 
+permissions:
+  contents: read
+
 jobs:
   collect:
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/texasinstruments/processor-sdk-doc:latest
       options: --entrypoint /bin/bash
-    permissions:
-      contents: read
     outputs:
       build-matrix: "${{ steps.matrix.outputs.matrix }}"
     steps:
@@ -40,8 +41,6 @@ jobs:
     container:
       image: ghcr.io/texasinstruments/processor-sdk-doc:latest
       options: --entrypoint /bin/bash
-    permissions:
-      contents: read
     needs: collect
     strategy:
       matrix:

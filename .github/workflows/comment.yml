@@ -10,13 +10,14 @@ on:  # yamllint disable-line rule:truthy
     types:
       - completed
 
+permissions:
+  pull-requests: write
+
 jobs:
   comment:
     name: Comment
     runs-on: ubuntu-latest
     if: ${{ github.event.workflow_run.event == 'pull_request' }}
-    permissions:
-      pull-requests: write
 
     steps:
       - name: Download artifact
