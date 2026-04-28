@@ -7,21 +7,28 @@ on:  # yamllint disable-line rule:truthy
       - 'docker/**'
       - requirements.txt
 
+concurrency:
+  group: docker
+  cancel-in-progress: true
+
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
+
+permissions:
+  contents: read
+  packages: write  # Required to push image to ghcr.io
 
 jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3

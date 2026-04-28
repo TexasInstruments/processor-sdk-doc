@@ -3,9 +3,16 @@ name: "vale"
 
 on: [pull_request]  # yamllint disable-line rule:truthy
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.number }}
+  cancel-in-progress: true
+
 defaults:
   run:
     shell: bash
+
+permissions:
+  contents: read
 
 jobs:
   vale:
@@ -14,8 +21,6 @@ jobs:
     container:
       image: ghcr.io/staticrocket/processor-sdk-doc:latest
       options: --entrypoint /bin/bash
-    permissions:
-      contents: read
 
     steps:
       - name: Prepare GitHub workdir
@@ -24,6 +29,8 @@ jobs:
 
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
       - name: Get changed files
         id: changed-files

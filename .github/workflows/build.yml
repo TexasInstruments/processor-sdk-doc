@@ -13,19 +13,23 @@ defaults:
   run:
     shell: bash
 
+permissions:
+  contents: read
+
 jobs:
   collect:
+    name: Collect DEVFAMILY and OS combinations
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/texasinstruments/processor-sdk-doc:latest
       options: --entrypoint /bin/bash
-    permissions:
-      contents: read
     outputs:
       build-matrix: "${{ steps.matrix.outputs.matrix }}"
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
       - name: Create build matrix
         id: matrix
@@ -38,8 +42,6 @@ jobs:
     container:
       image: ghcr.io/texasinstruments/processor-sdk-doc:latest
       options: --entrypoint /bin/bash
-    permissions:
-      contents: read
     needs: collect
     strategy:
       matrix:
@@ -48,15 +50,19 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
       - name: Add directory to safe dir overrides
         run: |
           git config --global --add safe.directory "$PWD"
 
       - name: Build ${{ matrix.device }}
+        env:
+          DEVFAMILY: ${{ matrix.device }}
+          OS: ${{ matrix.os }}
         run: |
-          make DEVFAMILY=${{ matrix.device }} OS=${{ matrix.os }} \
-          VERSION=${{ github.ref_name }}
+          make VERSION=${GITHUB_REF_NAME}
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4

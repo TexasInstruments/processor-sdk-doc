@@ -1,20 +1,19 @@
 ---
 name: "component-owners"
 
-on:  # yamllint disable-line rule:truthy
-  # It's insecure to use pull_request_target if you intend to check out code
-  # from that PR. This just reads the config file in the pull request base, and
-  # is not an issue currently. We will need to use this to comment on PRs coming
-  # from forked repositories.
-  pull_request_target:
-    branches: [master]
+# It's insecure to use pull_request_target if you intend to check out code
+# from that PR. This just reads the config file in the pull request base, and
+# is not an issue currently. We will need to use this to comment on PRs coming
+# from forked repositories.
+on: [pull_request_target]  # yamllint disable-line rule:truthy
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.number }}
+  cancel-in-progress: true
 
 permissions:
-  # Clamp permissions since pull_request_target workflows granted full
-  # read/write repository permission by default
   contents: read
-  issues: write
-  pull-requests: write
+  pull-requests: write  # Required to set reviewers
 
 jobs:
   component-owners:

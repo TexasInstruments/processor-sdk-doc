@@ -7,9 +7,16 @@ on:  # yamllint disable-line rule:truthy
     paths:
       - 'source/**'
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.number }}
+  cancel-in-progress: true
+
 defaults:
   run:
     shell: bash
+
+permissions:
+  contents: read
 
 jobs:
   lint:
@@ -18,12 +25,12 @@ jobs:
     container:
       image: ghcr.io/texasinstruments/processor-sdk-doc:latest
       options: --entrypoint /bin/bash
-    permissions:
-      contents: read
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
       - name: Update refs and settings
         run: |
@@ -33,6 +40,8 @@ jobs:
           git switch master
 
       - name: Run check_files.py
+        env:
+          EVENT_NUMBER: ${{ github.event.number }}
         run: |
           # Disable color output
           export NO_COLOR=true
@@ -53,7 +62,7 @@ jobs:
 
           # Prepare the artifacts
           mkdir -p ./results
-          echo "${{ github.event.number }}" > ./results/id
+          echo "$EVENT_NUMBER" > ./results/id
           cp "$GITHUB_STEP_SUMMARY" ./results/summary
           echo "$(wc -l < _new-warn.log)" > ./results/problem-count
 
