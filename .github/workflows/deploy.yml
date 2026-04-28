@@ -54,8 +54,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: agregate
     permissions:
-      pages: write
-      id-token: write
+      pages: write  # Required for deployment to GitHub Pages
 
     steps:
       - name: Update github page deployment

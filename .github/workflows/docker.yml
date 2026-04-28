@@ -13,7 +13,7 @@ env:
 
 permissions:
   contents: read
-  packages: write
+  packages: write  # Required to push image to ghcr.io
 
 jobs:
   build:

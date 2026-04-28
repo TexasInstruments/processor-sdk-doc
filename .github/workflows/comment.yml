@@ -11,7 +11,7 @@ on:  # yamllint disable-line rule:truthy
       - completed
 
 permissions:
-  pull-requests: write
+  pull-requests: write  # Required to leave a comment on a review
 
 jobs:
   comment:
