@@ -36,6 +36,8 @@ jobs:
           git switch master
 
       - name: Run rstcheck
+        env:
+          EVENT_NUMBER: ${{ github.event.number }}
         run: |
           # Disable color output
           export NO_COLOR=true
@@ -56,7 +58,7 @@ jobs:
 
           # Prepare the artifacts
           mkdir -p ./results
-          echo "${{ github.event.number }}" > ./results/id
+          echo "$EVENT_NUMBER" > ./results/id
           cp "$GITHUB_STEP_SUMMARY" ./results/summary
           echo "$(wc -l < _new-warn.log)" > ./results/problem-count
 
