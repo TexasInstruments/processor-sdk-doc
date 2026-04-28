@@ -8,6 +8,9 @@ on:  # yamllint disable-line rule:truthy
       - '**.yaml'
       - '**.yml'
 
+permissions:
+  contents: read
+
 jobs:
   yamllint:
     name: yamllint

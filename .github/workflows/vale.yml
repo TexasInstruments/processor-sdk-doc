@@ -7,6 +7,9 @@ defaults:
   run:
     shell: bash
 
+permissions:
+  contents: read
+
 jobs:
   vale:
     name: vale
@@ -14,8 +17,6 @@ jobs:
     container:
       image: ghcr.io/staticrocket/processor-sdk-doc:latest
       options: --entrypoint /bin/bash
-    permissions:
-      contents: read
 
     steps:
       - name: Prepare GitHub workdir
