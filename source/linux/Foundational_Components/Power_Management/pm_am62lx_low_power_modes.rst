@@ -80,13 +80,16 @@ During resume from RTC Only mode, the system goes through a normal Linux boot pr
 detects that the RTC is already programmed and skips the full initialization, performing only minimal
 cleanup to preserve the system time.
 
-RTC Only Plus DDR
-*****************
-
 .. note::
 
-   For this release, the RTC Only + DDR low power mode requires special steps
+   Please go through the s2idle docs to understand how to select between multiple low power modes.
+   The steps and overall architecture/ sequence diagrams are documented in :ref:`pm_s2idle_psci`.
+   The default mode via s2idle is RTC Only Plus DDR, since it's the deepest.
+   If regular [mem] interface is selected in `/sys/power/mem_sleep`, the RTC Only + DDR low power mode requires special steps
    to enter. The steps are documented in :ref:`am62l_suspend_workarounds`.
+
+RTC Only Plus DDR
+*****************
 
 RTC Only + DDR mode is the deepest low power mode that allows the system to enter a state of lowest power consumption
 while still retaining the DDR RAM context.
@@ -108,37 +111,24 @@ Now the SoC can be suspended using the following command.
 
 .. code-block:: console
 
-   root@am62lxx-evm:~# echo mem > /sys/power/state
-   [   67.335138] PM: suspend entry (deep)
-   [   67.358190] Filesystems sync: 0.019 seconds
-   [   67.363206] Freezing user space processes
-   [   67.368991] Freezing user space processes completed (elapsed 0.001 seconds)
-   [   67.376038] OOM killer disabled.
-   [   67.379271] Freezing remaining freezable tasks
-   [   67.384973] Freezing remaining freezable tasks completed (elapsed 0.001 seconds)
-   [   67.392398] printk: Suspending console(s) (use no_console_suspend to debug)
-   NOTICE:  bl1_plat_arch_setup arch setup
-   NOTICE:  Booting Trusted Firmware
-   NOTICE:  BL1: v2.12.0(release):11.00.04-7-gaa3963759-dirty
-   NOTICE:  BL1: Built : 15:56:37, Feb 25 2025
-   NOTICE:  lpdd4_init <--
-   NOTICE:  DDR ram size =80000000
-   NOTICE:  bl1_platform_setup DDR init done
-   NOTICE:  k3_bl1_handoff sent message to tifs
-   ERROR:   Wake up src 0x0
-   ERROR:   Wake up interrupt 0xc
-   [   67.405953] Disabling non-boot CPUs ...
-   [   67.408032] psci: CPU1 killed (polled 0 ms)
-   [   67.408974] Enabling non-boot CPUs ...
-   [   67.409281] Detected VIPT I-cache on CPU1
-   [   67.409330] GICv3: CPU1: found redistributor 1 region 0:0x0000000001860000
-   [   67.409393] CPU1: Booted secondary processor 0x0000000001 [0x410fd034]
-   [   67.410371] CPU1 is up
-   [   67.446329] OOM killer enabled.
-   [   67.449479] Restarting tasks ... done.
-   [   67.454324] random: crng reseeded on system resumption
-   [   67.459689] PM: suspend exit
-
+   root@am62lxx-evm:~# rtcwake -s 5 -m mem
+   rtcwake: assuming RTC uses UTC ...
+   rtcwake: wakeup from "mem" using /dev/rtc0 at Thu Jan  1 00:04:20 1970
+   [  222.269447] PM: suspend entry (s2idle)
+   [  222.273481] Filesystems sync: 0.000 seconds
+   [  222.281882] Freezing user space processes
+   [  222.291800] Freezing user space processes completed (elapsed 0.002 seconds)
+   [  222.298873] OOM killer disabled.
+   [  222.302177] Freezing remaining freezable tasks
+   [  222.308071] Freezing remaining freezable tasks completed (elapsed 0.001 seconds)
+   [  222.349890] xhci-hcd xhci-hcd.1.auto: xHC error in resume, USBSTS 0x401, Reinit
+   [  222.357227] usb usb1: root hub lost power or was reset
+   [  222.362980] xhci-hcd xhci-hcd.1.auto: USB3 root hub has no ports
+   [  222.395078] OOM killer enabled.
+   [  222.398356] Restarting tasks: Starting
+   [  222.419490] Restarting tasks: Done
+   [  222.430220] random: crng reseeded on system resumption
+   [  222.445468] PM: suspend exit
 
 DeepSleep
 *********
