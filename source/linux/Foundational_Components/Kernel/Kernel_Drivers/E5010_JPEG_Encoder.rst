@@ -40,14 +40,6 @@ Driver Architecture
 
 Below diagram depicts different software layers involved here :
 
-.. raw:: html
-
-   <div class="center">
-
-.. raw:: html
-
-   <div class="floatnone">
-
 .. figure:: /images/E5010_JPEG_driver_stack.png
 
     E5010 JPEG Driver software stack
