@@ -70,7 +70,7 @@ The following table lists some of the key Security Features:
   +-------------------------+-----------------------------------------------------------+--------------------------------------+
 
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX', 'AM62AX', 'AM64X')
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX', 'AM62AX', 'AM64X', 'AM62DX')
 
   +-------------------------+-----------------------------------------------------------+--------------------------------------+
   | Security Feature        | Description                                               | Links                                |
@@ -103,7 +103,7 @@ The following table lists some of the key Security Features:
   |**Filesystem Encryption**| using LUKS2 with TPM-sealed keys                          |                                      |
   +-------------------------+-----------------------------------------------------------+--------------------------------------+
 
-.. ifconfig:: CONFIG_part_variant not in ('AM62X', 'AM62PX', 'AM62AX', 'AM62LX', 'AM64X')
+.. ifconfig:: CONFIG_part_variant not in ('AM62X', 'AM62PX', 'AM62AX', 'AM62LX', 'AM64X', 'AM62DX')
 
   +-------------------------+-----------------------------------------------------------+--------------------------------------+
   | Security Feature        | Description                                               | Links                                |
