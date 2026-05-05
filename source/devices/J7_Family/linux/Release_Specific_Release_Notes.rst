@@ -286,113 +286,67 @@ Issues found and closed on this release that may be applicable to prior releases
 
 |
 
-Errata Workarounds Available in this Release
---------------------------------------------
+Errata Fixes Available Till this Release
+----------------------------------------
 .. csv-table::
-  :header: "Record ID", "Title", "Platform"
-  :widths: 15, 30, 150
+  :header: "Record ID", "Title", "Platform", "ErrataId", "Workaround if any"
+  :widths: 15, 30, 70, 60, 60
 
-   "LCPD-44174","Add workaround for SE in C7x boot sequence"
-   "LCPD-38547","PRU_ICSSG: DOC: Undefined labels"
-   "LCPD-37965","BCDMA: RX Channel can lockup in certain scenarios"
-   "LCPD-37352","USB2 PHY locks up due to short suspend"
-   "LCPD-37081","USB2 PHY locks up due to short suspend"
-   "LCPD-32855","VTM: Temperature Monitors (TEMPSENSORs) should use a software trimming method"
-   "LCPD-32825","PCIe: ls -al /dev/disk/by-id shows no nvme device"
-   "LCPD-32351","MMCSD: HS200 and SDR104 Command Timeout Window Too Small"
-   "LCPD-28496","CPSW: Device lockup when reading CPSW registers"
-   "LCPD-27887","i2327: RTC: Hardware wakeup event limitation"
-   "LCPD-27886","USART: Erroneous clear/trigger of timeout interrupt"
-   "LCPD-25264","BCDMA: Blockcopy Gets Corrupted if TR Read Responses Interleave with Source Data Fetch"
-   "LCPD-24274","PCIe: Link up failure when unused lanes are not assigned to PCIe Controller"
-   "LCPD-22905","UDMA: TR15 hangs if ICNT0 is less than 64 bytes"
-   "LCPD-22890","PCIe: Link up failure when unused lanes are not assigned to PCIe Controller"
-   "LCPD-22576","UART: Possible underflow condition when using EDMA with UART1, UART2, UART3"
-   "LCPD-22573","DPHY: Reset sequence issue can lead to undefined module behavior"
-   "LCPD-22544","DDR: LPDDR4 should be configured to 2666 MT/S"
-   "LCPD-22543","CPSW: ALE IET Express Packet Drops"
-   "LCPD-22424","PCIe: SERDES output reference clock cannot be used"
-   "LCPD-22293","UFS: Auto-Hibernate can cause false entry/exit errors"
-   "LCPD-22249","UDMA: Force teardown bitfield readback is masked in realtime TX/RX registers"
-   "LCPD-20123","MPU COUNTER_REALTIME saturates after several hundred days"
-   "LCPD-19987","UDMAP: Spurious ECC errors due to MAIN/MCU NAVSS rofifo_wr_byten issue"
-   "LCPD-19986","UDMAP: TX Channel SA2UL teardown issue"
-   "LCPD-19966","I3C: SDAPULLEN drives low instead of Hi-Z"
-   "LCPD-19965","OSPI PHY Controller Bug Affecting Read Transactions"
-   "LCPD-19874","PSIL: Clock stop operation can result in undefined behavior"
-   "LCPD-19811","CPSW: ALE incorrectly routes packets with CRC errors"
-   "LCPD-19586","USB: 2.0 PHY hangs if received signal amplitude crosses squelch threshold multiple times within the same packet"
-   "LCPD-19561","R5FSS: Lock-step mode of operation is not functional"
-   "LCPD-19447","DSS: Disabling a layer connected to Overlay may result in synclost during the next frame"
-   "LCPD-19068","DSS: Disabling a layer connected to Overlay may result in synclost during the next frame"
-   "LCPD-19056","USB: DMA hangs if USB reset is received during DMA transfer in device mode"
-   "LCPD-19048","USB: Invalid termination of DMA transfer for endpoint following Isochronous endpoint in Superspeed device mode"
-   "LCPD-19047","USB: Race condition while reading TRB from system memory in device mode"
-   "LCPD-19041","PCIe: End of Interrupt (EOI) not enabled for PCIe legacy interrupts"
-   "LCPD-19032","CPSW: CPSW Does Not Support Intersperced Express Traffic (IET – P802.3br/D2.0) In 10/100Mbps Mode"
-   "LCPD-19031","[CPTS] GENF (and ESTF)  Reconfiguration Issue"
-   "LCPD-19030","USB: USB2PHY Charger Detect is enabled by default without VBUS presence"
-   "LCPD-19029","PCI-Express (PCIe) May Corrupt Inbound Data"
-   "LCPD-19028","DSS : DSS DPI Interface does not support BT.656 and BT.1120 output modes"
-   "LCPD-19027","CPSW does not support CPPI receive checksum (Host to Ethernet) offload feature"
-   "LCPD-19026","MMCSD: Negative Current from UHS-I PHY May Create an Over-Voltage Condition on VDDS6 and VDDS7 which exposes the Device to a Significant Reliability Risk"
-   "LCPD-19025","IO, MMCSD: Incorrect IO Power Supply Connectivity Prevent Dynamic Voltage Change on VDDSHV6 and VDDSHV7"
-   "LCPD-19024","RINGACC and UDMA ring state interoperability issue after channel teardown"
-   "LCPD-19022","UDMA-P Real-time Remote Peer Registers not Functional Across UDMA-P Domains"
-   "LCPD-18999","PCIe: Endpoint destination select attribute (ASEL) based routing issue"
-   "LCPD-18996","Hyperflash: Hyperflash is not functional"
-   "LCPD-18995","OSPI: OSPI Boot doesn't support some xSPI modes or xSPI devices"
-   "LCPD-18981","UDMAP: Packet mode descriptor Address Space Select Field Restrictions"
-   "LCPD-18980","PCIe: Gen2 capable endpoint devices always enumerate as Gen1"
-   "LCPD-18979","MCAN: Message Transmitted with Wrong Arbitration and Control Fields (Early Start of Frame)"
-   "LCPD-18952","DSS : DSS Does Not Support YUV Pixel Data Formats"
-   "LCPD-17806","Cortex-R5F: Deadlock might occur  when one or more MPU regions is configured for write allocate mode"
-   "LCPD-17788","PCI-Express: GEN3 (8GT/s) Operation Not Supported."
-   "LCPD-17786","UART: Spurious UART Interrupts When Using DMA"
-   "LCPD-17784","CPSW: CPSW Does Not Support Intersperced Express Traffic (IET – P802.3br/D2.0) In 10/100Mbps Mode"
-   "LCPD-17783","USB: USB2PHY Charger Detect is enabled by default without VBUS presence"
-   "LCPD-17333","[CPTS] GENF (and ESTF)  Reconfiguration Issue"
-   "LCPD-17220","U-Boot Hyperbus: Hyperflash reads limited to 125MHz max. frequency"
-   "LCPD-16904","PCIe: Unsupported request (UR) or Configuration Request Retry Status (CRS) in configuration completion response packets results in external abort"
-   "LCPD-16643","Hyperbus: Hyperflash reads limited to 125MHz max. frequency"
-   "LCPD-16605","MMC: MMC1/2 Speed Issue"
-   "LCPD-16538","PCI-Express (PCIe) May Corrupt Inbound Data"
-   "LCPD-14941","RINGACC and UDMA ring state interoperability issue after channel teardown"
-   "LCPD-14579","DSS : DSS Does Not Support YUV Pixel Data Formats"
-   "LCPD-14577","CPSW does not support CPPI receive checksum (Host to Ethernet) offload feature"
-   "LCPD-14187","UDMA-P Real-time Remote Peer Registers not Functional Across UDMA-P Domains"
-   "LCPD-14185","MSMC: Non-coherent memory access to coherent memory can cause invalidation of snoop filter"
-   "LCPD-14184","USB:  SuperSpeed USB Non-Functional"
-   "LCPD-9084","i887: Software workaround to limit mmc3 speed to 64MHz"
-   "LCPD-8294","37 pins + VOUT pins need slow slew enabled for timing and reliability respectively"
-   "LCPD-8277","u-boot: j6: SATA is not shutdown correctly as per errata i818"
-   "LCPD-7642","MMC/SD: i832: return DLL to default reset state with CLK gated if not in SDR104/HS200 mode."
-   "LCPD-6907","Workaround errata i880 for RGMII2 is missing"
-   "LCPD-5931","DRA7xx: AM57xx: mmc: upstream errata workaround for i834"
-   "LCPD-5924","ALL: CONNECTIVITY: CPSW: errata i877 workarround for cpsw"
-   "LCPD-5836","CAL: Errata: i913: CSI2 LDO needs to be disabled when module is powered on"
-   "LCPD-5309","i896: USB Port disable doesnt work"
-   "LCPD-5308","i897: USB Stop Endpoint doesnt work in certain circumstances"
-   "LCPD-5052","Upstream: Post the dmtimer errata fix for i874"
-   "LCPD-4975","DSS AM5/DRA7: implement WA for errata i886"
-   "LCPD-4912","DRA7: USB: Implement ErrataID_i896_PED_issue"
-   "LCPD-4910","J6/OMAP5: errata i810 implementation"
-   "LCPD-4648","[rpmsg 2014 LTS] Implement errata i879 - DSP MStandby requires CD_EMU in SW_WKUP"
-   "LCPD-4647","[rpmsg 2015 LTS] Implement errata i879 - DSP MStandby requires CD_EMU in SW_WKUP"
-   "LCPD-4225","J6: Errata: i834: Investigate possibility of software workaround"
-   "LCPD-4218","Implement Workaround for Errata i813 - Spurious Thermal Alert Generation When Temperature Remains in Expected Range"
-   "LCPD-4217","Implement Workaround for Errata i814 - Bandgap Temperature read Dtemp can be corrupted"
-   "LCPD-4195","J6: SATA: Investigate applicability of i807"
-   "LCPD-4184","Implement workaround for errata i814 - Bandgap Temperature read Dtemp can be corrupted"
-   "LCPD-1776","[J6 SATA Adaptation] J6 - Errata i783, SATA Lockup After SATA DPLL Unlock/Relock"
-   "LCPD-1188","J6: Baseport: Errata i877: RGMII clocks must be enabled to avoid IO timing degradation due to Assymetric Aging"
-   "LCPD-1146","DMM hang: Errata VAYU-BUG02976 (i878) (register part)"
-   "LCPD-1108","J6: Wrong Access In 1D Burst For YUV4:2:0-NV12 Format (Errata i631)"
-   "LCPD-1087","J6: MMC: Errata: i802: OMAP5430 MMCHS: DCRC errors during tuning procedure"
-   "LCPD-976","J6/J6eco: 32clk is psuedo (erratum i856) - clock source"
-   "LCPD-975","J6/J6eco: 32clk is psuedo (erratum i856) - realtime counter"
-   "LCPD-876","OMAP5: Errata i810: DPLL Controller Sticks when left clock requests are removed"
+   "LCPD-32351","MMCSD: HS200 and SDR104 Command Timeout Window Too Small","am68_sk-fs, am69_sk-fs, j7200-evm, j721e-idk-gw, j721s2-evm, j722s_evm-fs, j742s2_evm-fs, j784s4-evm","i2312",""
+   "LCPD-27886","USART: Erroneous clear/trigger of timeout interrupt","j7200-evm, j721e-idk-gw, j784s4-evm, j784s4-hsevm","i2310",""
+   "LCPD-24274","PCIe: Link up failure when unused lanes are not assigned to PCIe Controller","j721e-evm","i2183",""
+   "LCPD-22905","UDMA: TR15 hangs if ICNT0 is less than 64 bytes","am654x-evm, j721e-idk-gw","i2234",""
+   "LCPD-22544","DDR: LPDDR4 should be configured to 2666 MT/S","j7200-evm","i2186",""
+   "LCPD-19965","OSPI PHY Controller Bug Affecting Read Transactions","am64xx-evm, am654x-idk, j7200-evm, j721e-idk-gw","i2189",""
+   "LCPD-19047","USB: Race condition while reading TRB from system memory in device mode","j721e-evm, j721e-evm-ivi, j721e-hsevm, j721e-idk-gw","i2067",""
+   "LCPD-18980","PCIe: Gen2 capable endpoint devices always enumerate as Gen1","j721e-evm","i2085",""
+   "LCPD-17220","U-Boot Hyperbus: Hyperflash reads limited to 125MHz max. frequency","j721e-idk-gw","i2088",""
+   "LCPD-16605","MMC: MMC1/2 Speed Issue","j721e-evm, j721e-evm-ivi, j721e-idk-gw","i2090",""
+   "LCPD-47389","USART: Erroneous clear/trigger of timeout interrupt","j7200-evm, j7200-hsevm, j7200_evm-fs, j721e-evm-ivi, j721e-hsevm, j721e-idk-gw, j721e-sk, j721s2-evm, j721s2-hsevm, j721s2_evm-fs, j721s2_evm-se, j722s_evm-fs, j722s_evm-se, j742s2_evm-fs, j784s4-evm, j784s4-hsevm","i2310",""
+   "LCPD-44174","Add workaround for SE in C7x boot sequence","j721s2-evm, j784s4-evm","i2437",""
+   "LCPD-22750","MSMC: Set-hazarding logic withholding RT access waiting on NRT access completion","j7200-evm, j721e-idk-gw","i2116",""
+   "LCPD-19003","DDR: Valid VRef range must be defined during LPDDR4 Command Bus Training","am62axx_sk-fs, am62axx_sk-se, am62pxx_sk-fs, am62pxx_sk-se, am62xx_lp_sk-fs, am62xx_lp_sk-se, am62xx_sk-fs, am62xx_sk-se, am62xxsip_sk-fs, am62xxsip_sk-se, am64xx-evm, am64xx-hsevm, j7200-evm, j7200-hsevm, j721e-idk-gw, j721s2-hsevm, j721s2_evm-fs, j722s_evm-fs, j722s_evm-se, j784s4-evm, j784s4-hsevm","i2160",""
 
+
+
+|
+
+
+Errata Rejected as not applicable
+---------------------------------
+.. csv-table::
+  :header: "Record ID", "Title", "Platform", "ErrataId"
+  :widths: 15, 30, 70, 60
+
+   "LCPD-47318",DDR: Controller anomaly in setting wakeup time for low power states","j7200-evm, j7200-hsevm, j7200_evm-fs, j721e-evm-ivi, j721e-hsevm, j721e-idk-gw, j721e-sk, j721s2-evm, j721s2-hsevm, j721s2_evm-fs, j721s2_evm-se, j742s2_evm-fs, j784s4-evm, j784s4-hsevm","i2157"
+   "LCPD-47230","[Errata] Torrent lane master signals are set to 1'b0 by default","j721e-evm-ivi, j721e-hsevm, j721e-idk-gw, j721e-sk","i2c323"
+   "LCPD-43439","J722S: ROM boot fails for large file sizes","j722s_evm-fs","i2c466"
+   "LCPD-34048","PCIe: AFS bit in PCIE_CORE_RP_I_PCIE_CAP_2 register is not set","j7200-evm, j721s2-evm, j721s2_evm-fs","i2c086"
+   "LCPD-29297","PCIe: Timing requirement for disabling output refclk during L1.2 substate is not met","j7200-evm, j7200-hsevm, j7200_evm-fs, j721s2-evm, j721s2-hsevm, j721s2_evm-fs, j721s2_evm-se, j722s_evm-fs, j722s_evm-se","i2c243"
+   "LCPD-22926","PCIe: The SerDes PCIe Reference Clock Output can exceed the 5.0 GT/s Data Rate RMS jitter limit j7200-hsevm","j7200_evm-fs","i2c241"
+   "LCPD-22925","PCIe: SerDes Reference Clock Output does not comply to Vcross, Rise-Fall Matching, and Edge Rate limits","j7200-evm, j7200-hsevm, j7200_evm-fs, j721s2-evm, j721s2-hsevm, j721s2_evm-fs, j721s2_evm-se","i2c237"
+   "LCPD-22715","i2c232: DDR: Controller postpones more than allowed refreshes after frequency change","am62xx-sk, am62xx_sk-fs, am62xx_sk-se, j7200-evm, j721e-idk-gw, j721s2-evm, j721s2_evm-fs, j742s2_evm-fs, j784s4-evm","i2c232"
+   "LCPD-19812","UDMAP: UDMA transfers with ICNTs and/or src/dst addr NOT aligned to 64B fail when used in event trigger mode","7200-evm, j721e-idk-gw","i2c163"
+   "LCPD-19517","R5FSS: The same interrupt cannot be nested back-2-back within another interrupt","j721e-evm, j721e-evm-ivi, j721e-hsevm, j721e-idk-gw","i2c162"
+   "LCPD-16350","DSS: Frame Buffer Flip/Mirror Feature Using RGB24/BGR24 Packed Format can Result in Pixel Corruption","j721e-idk-gw","i2c039"
+
+|
+
+Open Erratas 
+------------
+.. csv-table::
+  :header: "Record ID", "Title", "Platform", "ErrataId"
+  :widths: 15, 30, 70, 60
+
+   "LPCD-47381","MCAN: Message Transmit order not guaranteed from dedicated Tx Buffers configured with same Message ID","j7200-evm, j7200-hsevm, j7200_evm-fs, j721e-evm-ivi, j721e-hsevm, j721e-idk-gw, j721e-sk, j721s2-evm, j721s2-hsevm, j721s2_evm-fs, j721s2_evm-se, j722s_evm-fs, j722s_evm-se, j742s2_evm-fs, j784s4-evm, j784s4-hsevm","i2278"
+   "LPCD-47355","DDR: Entry and exit to/from Deep Sleep low-power state can cause PHY internal clock misalignment","j7200-evm, j7200-hsevm, j7200_evm-fs, j721e-evm-ivi, j721e-hsevm, j721e-idk-gw, j721e-sk, j721s2-evm, j721s2-hsevm, j721s2_evm-fs, j721s2_evm-se, j742s2_evm-fs, j784s4-evm, j784s4-hsevm","i2166"
+   "LPCD-47295","USB: 2.0 compliance receive sensitivity test limitation","j7200-evm, j7200-hsevm, j7200_evm-fs, j721e-evm-ivi, j721e-hsevm, j721e-idk-gw, j721e-sk, j721s2-evm, j721s2-hsevm, j721s2_evm-fs, j721s2_evm-se, j742s2_evm-fs, j784s4-evm, j784s4-hsevm","i2134"
+   "LPCD-34712","OSPI: 2-byte address is not supported in PHY DDR mode","j7200-evm, j721e-idk-gw, j721s2-evm, j721s2-hsevm, j721s2_evm-fs, j721s2_evm-se, j722s_evm-fs, j722s_evm-se, j742s2_evm-fs, j784s4-evm, j784s4-hsevm","i2383"
+   "LPCD-25539","GPMC: Sub-32-bit read issue with NAND and FPGA/FIFO","j721s2-evm","i2313"
+   "LPCD-22895","CBASS Null Error Interrupt Not Masked By Enable Register","j7200-evm, j7200-hsevm, j7200_evm-fs, j721e-evm-ivi, j721e-hsevm, j721e-idk-gw, j721s2-evm, j721s2-hsevm, j721s2_evm-fs, j721s2_evm-se","i2235"
+   "LPCD-22752","DDR: VRCG high current mode must be used during LPDDR4 CBT and Write DQ Vref Training","j7200-evm, j721e-idk-gw, j721s2-evm, j784s4-evm","i2159"
+   "LPCD-22408","MSMC: Cache Resize to 0 Refreshes Tags instead of Updating them","j7200-evm, j7200-hsevm, j7200_evm-fs, j721e-evm-ivi, j721e-hsevm, j721e-idk-gw, j721e-sk","i2187"
+   "LPCD-19068","DSS: Disabling a layer connected to Overlay may result in synclost during the next frame","j721e-evm, j721e-evm-ivi, j721e-idk-gw","i2097"
 
 
 |
