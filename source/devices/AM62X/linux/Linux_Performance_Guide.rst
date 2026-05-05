@@ -535,7 +535,7 @@ TCP Bidirectional Throughput
 .. csv-table:: CPSW2g TCP Bidirectional Throughput
     :header: "Command Used","am62xx_lp_sk-fs: THROUGHPUT (Mbits/sec)","am62xx_lp_sk-fs: CPU Load % (LOCAL_CPU_UTIL)","am62xx_sk-fs: THROUGHPUT (Mbits/sec)","am62xx_sk-fs: CPU Load % (LOCAL_CPU_UTIL)","am62xxsip_sk-fs: THROUGHPUT (Mbits/sec)","am62xxsip_sk-fs: CPU Load % (LOCAL_CPU_UTIL)"
 
-    "netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_MAERTS","1606.03 (min 1303.43, max 1816.77)","60.01 (min 39.33, max 71.84)","1540.48 (min 1283.30, max 1773.53)","52.49 (min 40.80, max 68.45)","1673.91 (min 1656.34, max 1691.48)","64.30 (min 62.64, max 65.95)"
+    "netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_MAERTS","1720.59","65.0","1740.81","68.7","1843.31","68.7"
 
 TCP Bidirectional Throughput Interrupt Pacing
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -543,7 +543,7 @@ TCP Bidirectional Throughput Interrupt Pacing
 .. csv-table:: CPSW2g TCP Bidirectional Throughput Interrupt Pacing
     :header: "Command Used","am62xx_lp_sk-fs: THROUGHPUT (Mbits/sec)","am62xx_lp_sk-fs: CPU Load % (LOCAL_CPU_UTIL)","am62xx_sk-fs: THROUGHPUT (Mbits/sec)","am62xx_sk-fs: CPU Load % (LOCAL_CPU_UTIL)","am62xxsip_sk-fs: THROUGHPUT (Mbits/sec)","am62xxsip_sk-fs: CPU Load % (LOCAL_CPU_UTIL)"
 
-    "netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_MAERTS","1641.49 (min 1549.80, max 1756.23)","51.62 (min 39.44, max 63.10)","1563.91 (min 1444.87, max 1707.72)","39.79 (min 33.68, max 47.59)","1731.44 (min 1694.58, max 1768.29)","50.23 (min 42.61, max 57.85)"
+    "netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_MAERTS","1815.63","65.8","1835.76","60.1","1835.81","51.6"
 
 UDP Throughput
 ^^^^^^^^^^^^^^
@@ -551,20 +551,20 @@ UDP Throughput
 .. csv-table:: CPSW2g UDP Egress Throughput 0 loss
     :header: "Frame Size(bytes)","am62xx_lp_sk-fs: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am62xx_lp_sk-fs: THROUGHPUT (Mbits/sec)","am62xx_lp_sk-fs: Packets Per Second (kPPS)","am62xx_lp_sk-fs: CPU Load % (LOCAL_CPU_UTIL)","am62xx_sk-fs: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am62xx_sk-fs: THROUGHPUT (Mbits/sec)","am62xx_sk-fs: Packets Per Second (kPPS)","am62xx_sk-fs: CPU Load % (LOCAL_CPU_UTIL)","am62xxsip_sk-fs: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am62xxsip_sk-fs: THROUGHPUT (Mbits/sec)","am62xxsip_sk-fs: Packets Per Second (kPPS)","am62xxsip_sk-fs: CPU Load % (LOCAL_CPU_UTIL)"
 
-    "64","","46.06 (min 37.80, max 54.51)","90.00 (min 74.00, max 106.00)","39.08 (min 36.43, max 42.06)","","53.38 (min 42.81, max 62.88)","104.40 (min 84.00, max 123.00)","39.68 (min 36.73, max 42.59)","","44.24 (min 43.33, max 45.15)","86.50 (min 85.00, max 88.00)","37.12 (min 36.93, max 37.30)"
-    "128","","85.61 (min 73.61, max 109.51)","83.67 (min 72.00, max 107.00)","38.00 (min 36.03, max 41.81)","","104.87 (min 82.30, max 121.26)","102.20 (min 80.00, max 118.00)","39.45 (min 36.24, max 41.89)","","90.28 (min 89.44, max 91.11)","88.00 (min 87.00, max 89.00)","37.38 (min 37.37, max 37.38)"
-    "256","","179.15 (min 147.10, max 213.03)","87.50 (min 72.00, max 104.00)","38.96 (min 36.23, max 42.27)","","127.26 (min 53.04, max 239.91)","62.00 (min 26.00, max 117.00)","24.61 (min 8.86, max 41.07)","","174.19 (min 171.67, max 176.70)","85.00 (min 84.00, max 86.00)","36.85 (min 36.54, max 37.16)"
-    "1024","","662.53 (min 586.81, max 812.44)","81.00 (min 72.00, max 99.00)","37.83 (min 35.95, max 40.50)","","395.91 (min 163.01, max 663.99)","48.40 (min 20.00, max 81.00)","20.92 (min 8.11, max 36.34)","","645.78 (min 634.74, max 656.81)","78.50 (min 77.00, max 80.00)","36.08 (min 35.77, max 36.38)"
-    "1518","","700.49 (min 612.17, max 810.09)","57.75 (min 50.00, max 67.00)","36.31 (min 34.89, max 37.94)","","606.38 (min 537.43, max 675.32)","50.00 (min 44.00, max 56.00)","32.91 (min 30.89, max 34.93)","","699.12 (min 692.68, max 705.56)","57.50 (min 57.00, max 58.00)","35.18 (min 35.07, max 35.28)"
+    "64","","38.06","74","36.2","","45.82","89","37.4","","43.00","84","36.6"
+    "128","","76.00","74","36.4","","84.91","83","36.6","","91.06","89","37.7"
+    "256","","151.70","74","36.3","","173.88","85","36.6","","177.19","87","37.1"
+    "1024","","593.77","72","36.2","","691.51","84","36.6","","652.59","80","36.1"
+    "1518","","832.97","71","35.7","","136.59","12","6.6","","936.62","80","37.6"
 
 .. csv-table:: CPSW2g UDP Ingress Throughput 0 loss
     :header: "Frame Size(bytes)","am62xx_lp_sk-fs: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am62xx_lp_sk-fs: THROUGHPUT (Mbits/sec)","am62xx_lp_sk-fs: Packets Per Second (kPPS)","am62xx_lp_sk-fs: CPU Load % (LOCAL_CPU_UTIL)","am62xx_sk-fs: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am62xx_sk-fs: THROUGHPUT (Mbits/sec)","am62xx_sk-fs: Packets Per Second (kPPS)","am62xx_sk-fs: CPU Load % (LOCAL_CPU_UTIL)","am62xxsip_sk-fs: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am62xxsip_sk-fs: THROUGHPUT (Mbits/sec)","am62xxsip_sk-fs: Packets Per Second (kPPS)","am62xxsip_sk-fs: CPU Load % (LOCAL_CPU_UTIL)"
 
-    "64","","1.82 (min 1.38, max 2.10)","3.75 (min 3.00, max 4.00)","2.15 (min 1.69, max 2.84)","","1.72 (min 1.43, max 2.10)","3.40 (min 3.00, max 4.00)","1.42 (min 0.53, max 2.65)","","2.18 (min 2.10, max 2.25)","4.00","1.24 (min 1.04, max 1.43)"
-    "128","","4.07 (min 3.69, max 5.02)","4.25 (min 4.00, max 5.00)","2.53 (min 1.33, max 4.89)","","4.55 (min 4.10, max 5.22)","4.40 (min 4.00, max 5.00)","2.22 (min 0.81, max 4.32)","","4.86 (min 4.40, max 5.32)","4.50 (min 4.00, max 5.00)","1.28 (min 0.97, max 1.58)"
-    "256","","9.73 (min 9.22, max 10.24)","5.00","3.26 (min 2.02, max 4.50)","","9.63 (min 9.01, max 10.24)","4.67 (min 4.00, max 5.00)","1.47 (min 1.21, max 1.89)","","10.04 (min 9.83, max 10.24)","5.00","1.66 (min 1.21, max 2.11)"
-    "1024","","41.78","5.00","2.92 (min 2.18, max 4.20)","","41.78","5.00","1.58 (min 1.40, max 1.90)","","41.78","5.00","2.82"
-    "1518","","61.23","5.00","3.88 (min 3.72, max 4.08)","","70.26 (min 60.06, max 89.50)","6.00 (min 5.00, max 8.00)","4.64 (min 4.27, max 5.26)"
+    "64","","36.15","71","20.2","","35.58","69","19.1","","29.70","58","11.2"
+    "128","","72.91","71","20.8","","76.08","74","22.0","","71.99","70","17.9"
+    "256","","170.60","83","24.6","","160.11","78","23.1","","150.70","74","16.3"
+    "1024","","532.48","65","30.0","","703.56","86","28.5","","722.42","88","29.1"
+    "1518","","954.19","81","39.9","","956.87","81","39.9","","934.99","79","38.6"
 
 .. csv-table:: CPSW2g UDP Ingress Throughput possible loss
     :header: "Frame Size(bytes)","am62xx_lp_sk-fs: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am62xx_lp_sk-fs: THROUGHPUT (Mbits/sec)","am62xx_lp_sk-fs: Packets Per Second (kPPS)","am62xx_lp_sk-fs: CPU Load % (LOCAL_CPU_UTIL)","am62xx_lp_sk-fs: Packet Loss %","am62xx_sk-fs: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am62xx_sk-fs: THROUGHPUT (Mbits/sec)","am62xx_sk-fs: Packets Per Second (kPPS)","am62xx_sk-fs: CPU Load % (LOCAL_CPU_UTIL)","am62xx_sk-fs: Packet Loss %","am62xxsip_sk-fs: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am62xxsip_sk-fs: THROUGHPUT (Mbits/sec)","am62xxsip_sk-fs: Packets Per Second (kPPS)","am62xxsip_sk-fs: CPU Load % (LOCAL_CPU_UTIL)","am62xxsip_sk-fs: Packet Loss %"
