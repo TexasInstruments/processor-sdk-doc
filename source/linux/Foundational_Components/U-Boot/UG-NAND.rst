@@ -1,5 +1,5 @@
 NAND
------------------------------------
+----
 
 .. ifconfig:: CONFIG_part_family in ('J7_family')
 
@@ -17,7 +17,7 @@ to load and then boot the Linux Kernel using a root filesystem also
 found on NAND.
 
 Erasing, Reading and Writing to/from NAND partitions
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. rubric:: Listing NAND partitions
    :name: listing-nand-partitions
@@ -109,7 +109,7 @@ read from.
 |
 
 Writing to NAND via DFU
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^
 
 If the board supports NAND and USB then flashing NAND via DFU is
 most likely supported (Not supported in AM64 on 8.2).
@@ -224,7 +224,7 @@ Similarly for Other bootloader binaries:
     $ sudo dfu-util -D u-boot.img -a NAND.u-boot
 
 NAND Boot
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^
 
 If you want to load and run U-Boot from NAND, you need to ensure
 that the appropriate U-boot files are loaded in the correct partition.
@@ -257,7 +257,7 @@ the EVM's hardware setup guide.
 |
 
 Booting Kernel and Filesystem from NAND
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If a user wants to use NAND as their primary storage then the NAND flash
 must have individual partitions for all the critical software needed to
@@ -307,7 +307,7 @@ the rootfs UBIFS volume.
     boot=nand
 
 U-Boot Environment in NAND
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 By default, U-Boot environment is saved in a FAT partition on the SD-card.
 For saving/restoring U-Boot environment from a NAND partition, the following
@@ -331,4 +331,4 @@ respectively. They can be obtained from the NAND device node specification in
 the board's device tree file.
 
 Information on creating a UBIFS image and NAND flashing can be found
-`here <../Kernel/Kernel_Drivers/Storage/NAND.html#nand-based-file-system>`__.
+Refer :ref:`here <linux-ubifs>` for UBIFS
