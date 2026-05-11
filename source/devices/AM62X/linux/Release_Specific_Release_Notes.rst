@@ -98,6 +98,7 @@ What's new
   - TIFS Firmware `v12.00.02 <https://software-dl.ti.com/tisci/esd/12_00_02/release_notes/release_notes.html>`__ (Click on the link for more information)
   - Yocto Master
   - Graphics DDK 25.3
+  - Security: Post Quantum Cryptography using Module Lattice (ML) Key Encapsulation Mechanism (KEM) or ML-KEM, ML Digital Signature Algorithm (DSA) or ML-DSA, and Stateless Hash-Based (SLH) DSA or SLH-DSA - :ref:`Post Quantum Cryptography <post_quantum_cryptography>`
   - DM Firmware 12.00.00.09
 
 .. _release-specific-build-information:
