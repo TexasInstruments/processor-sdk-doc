@@ -166,6 +166,15 @@ Launching the TI LVGL Demo
 
    #. Launch the demo by typing `/usr/bin/lvglsim` into the UART command prompt.
 
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+   .. note::
+
+      **AM62LX Performance Issue - SDK 11.02.08.02 and 12.00.00.07.04:**
+
+      For AM62LX platform in SDK releases 11.02.08.02 and 12.00.00.07.04, the default LVGL application is configured to run on Direct Rendering Manager
+      (DRM) which has resulted in performance issues. To improve performance, the rendering mode
+      needs to be changed from DRM to framebuffer (FB) rendering.
 
 **********************
 Using the TI LVGL Demo
