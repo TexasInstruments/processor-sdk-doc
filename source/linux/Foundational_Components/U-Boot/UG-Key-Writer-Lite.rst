@@ -8,6 +8,9 @@ This OTP (One Time Programmable) key writer lite guide describes
 the procedure to be followed to populate customer keys in eFuses
 of the SoC.
 
+**OTP Keywriter Lite is used to convert the HS-FS device to a HS-SE Lite device(without encryption support).**
+**It is used to program only public keys hash.**
+
 .. caution::
 
    Once the SoC eFuses are programmed using keywriter lite,

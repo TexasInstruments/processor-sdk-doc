@@ -33,5 +33,6 @@ User's Guide
    UG-Splash-Screen
    UG-Secure-Boot
    UG-Key-Writer-Lite
+   UG-Keywriter
    UG-Programming-OTPs
    UG-Falcon-Mode
