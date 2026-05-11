@@ -87,6 +87,7 @@ What's new
   - TIFS Firmware / SYSFW `v11.01.05 <https://software-dl.ti.com/tisci/esd/11_01_05/release_notes/release_notes.html>`__ (Click on the link for more information)
   - DM Firmware `MSDK.11.01.00.16+ <https://github.com/TexasInstruments/mcupsdk-core-k3/tree/REL.MCUSDK.K3.11.01.00.16>`__ (Click on the link for more information)
   - Yocto scarthgap 5.0
+  - Security: Post Quantum Cryptography using Module Lattice (ML) Key Encapsulation Mechanism (KEM) or ML-KEM, ML Digital Signature Algorithm (DSA) or ML-DSA, and Stateless Hash-Based (SLH) DSA or SLH-DSA - :ref:`Post Quantum Cryptography <post_quantum_cryptography>`
 
 .. _release-specific-build-information:
 

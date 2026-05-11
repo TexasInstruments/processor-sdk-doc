@@ -74,6 +74,7 @@ What's included
 
   - Signal Chain OOB example :ref:`Cascade Biquad Parametric EQ Demo <AM62D-cascade-biquad-parametric-eq-from-linux-user-guide>`
   - 8-channel recording support :ref:`Audio User Guide <Audio_User_Guide>`
+  - Security: Post Quantum Cryptography using Module Lattice (ML) Key Encapsulation Mechanism (KEM) or ML-KEM, ML Digital Signature Algorithm (DSA) or ML-DSA, and Stateless Hash-Based (SLH) DSA or SLH-DSA - :ref:`Post Quantum Cryptography <post_quantum_cryptography>`
   - ARM only Analytics support :ref:`Machine Learning <foundational-components-machine-learning>`
   - Snagfactory Support - :ref:`Snagfactory Tool <Flash-via-Fastboot>`
   - LPM support :ref:`Power-Management <Power-Management>`
