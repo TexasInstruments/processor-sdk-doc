@@ -24,7 +24,6 @@ Replacement Variables
 '__SDK_DOWNLOAD_URL__'           : '`AM437X-Linux-SDK-Download-page <https://www.ti.com/tool/PROCESSOR-SDK-AM437X>`__'
 '__LINUX_UBUNTU_VERSION_LONG__'  : '22.04 (64-bit)'
 '__LINUX_UBUNTU_VERSION_SHORT__' : '22.04'
-'__RTOS_UBUNTU_VERSION_LONG__'   : '14.04 (64-bit), 16.04 (64-bit)'
 '__WINDOWS_SUPPORTED_LONG__'     : '7 (64-bit)'
 '__SYSFW_CORE_NAME__'            : \
 '__IMAGE_TYPE__'                 : 'default'
@@ -36,7 +35,7 @@ Configuration Values
 'CONFIG_sdk'              : 'SITARA'
 'CONFIG_image_type'       : 'default'
 'CONFIG_icss_support'     : 'yes'
-'CONFIG_rt_linux_support' : 'yes'
+'CONFIG_rt_linux_support' : 'no'
 'CONFIG_gpu_ip'           : 'SGX'
 'CONFIG_crypto'           : 'omap'
 
