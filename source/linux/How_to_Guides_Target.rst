@@ -14,4 +14,3 @@ Target
    How_to_Guides/Target/How_to_visualize_statistics_data
    How_to_Guides/Target/How_to_Use_K3Conf_Tool
    How_to_Guides/Target/How_to_Tune_Real_Time_Linux
-   How_to_Guides/Target/How_to_fix_y2k38
