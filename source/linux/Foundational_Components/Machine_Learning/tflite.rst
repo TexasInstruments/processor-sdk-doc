@@ -169,6 +169,8 @@ The following performance numbers are captured with :command:`benchmark_model` o
    "", "XNNPACK", "0.740743", "885.636", "150.484"
    "AM62L", "CPU only", "1.3708", "807.076", "111.152"
    "", "XNNPACK", "0.930577", "769.145", "150.496"
+   "AM62D", "CPU only", "1.10024", "127.263", "108.918"
+   "", "XNNPACK", "0.264193", "532.539", "151.066"
 
 Based on the above data, using the XNNPACK delegate significantly improves inference times across all SoCs, though it generally increases initialization time and overall memory footprint.
 
