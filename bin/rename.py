@@ -85,7 +85,7 @@ def git_rename(source, destination, dryrun):
     command = ["git", "mv"]
     if dryrun:
         command.append("--dry-run")
-    command.extend([source, destination])
+    command.extend(["--", source, destination])
     result = subprocess.run(command, capture_output=True, check=True, text=True)
     for line in result.stdout.splitlines():
         logging.info("git:%s", line)
