@@ -19,7 +19,7 @@ Build
 
       $ cd <path to tf-a dir>
 
-      $ make CROSS_COMPILE="$CROSS_COMPILE_64" ARCH=aarch64 PLAT=k3low TARGET_BOARD=am62lx am62l_bl1
+      $ make CROSS_COMPILE="$CROSS_COMPILE_64" ARCH=aarch64 PLAT=k3low TARGET_BOARD=am62lx bl1
 
       <or to build bl-1 and bl-31 binaries from TF-A repo>
 
@@ -445,8 +445,8 @@ All of these binaries are available in the SDK at :file:`<path to tisdk>/board-s
 
       # Build for BeagleBadge:
       $ export UBOOT_CONFIG=am62lx_badge_defconfig
-      $ export TFA_BOARD=am62l3_badge # on ti-tfa-2.14.y
-      $ export TFA_BOARD=am62lx_badge # on ti-master
+      $ export TFA_BOARD=am62l3-badge # on ti-tfa-2.14.y
+      $ export TFA_BOARD=am62l-badge # on ti-master
 
    .. note::
 
