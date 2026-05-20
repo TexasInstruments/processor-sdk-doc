@@ -4,6 +4,13 @@
 Target Images
 #############
 
+This page describes the boot images produced by U-Boot builds for K3-based SoCs.
+
+See the :ref:`k3-images` section for which files to copy to your SD card.
+The :ref:`k3-image-formats` section provides technical details on binary layouts for reference.
+
+.. _k3-images:
+
 ******
 Images
 ******
