@@ -118,8 +118,8 @@ Where <hash> is the commit shown in :ref:`release-specific-build-information`.
         .. code-block:: console
 
             $ export TFA_BOARD=am62lx # for AM62L EVM
-            $ export TFA_BOARD=am62l3_badge # for BeagleBadge on ti-tfa-2.14.y
-            $ export TFA_BOARD=am62lx_badge # for BeagleBadge on ti-master
+            $ export TFA_BOARD=am62l3-badge # for BeagleBadge on ti-tfa-2.14.y
+            $ export TFA_BOARD=am62l-badge # for BeagleBadge on ti-master
             $ export TFA_DIR=<path-to-arm-trusted-firmware>
 
         *Without OP-TEE enabled:*
