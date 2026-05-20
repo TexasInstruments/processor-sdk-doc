@@ -308,33 +308,41 @@ All of these binaries are available in the SDK at :file:`<path to tisdk>/board-s
 
       $ cd $UBOOT_DIR
 
-      R5
-      To build tiboot3.bin. Saved in $UBOOT_DIR/out/r5.
+   R5 builds :file:`tiboot3.bin` to :file:`$UBOOT_DIR/out/r5`. A53 builds :file:`tispl.bin` and :file:`u-boot.img` to :file:`$UBOOT_DIR/out/a53` (requires :file:`bl31.bin` and :file:`tee-pager_v2.bin`).
 
-      For AM62X
+   .. rubric:: AM62X
+
+   .. code-block:: console
+
+      R5
       $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_32" am62x_evm_r5_defconfig O=$UBOOT_DIR/out/r5
       $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_32" O=$UBOOT_DIR/out/r5 BINMAN_INDIRS=$TI_LINUX_FW_DIR
 
-      For AM62X LP
+      A53
+      $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" am62x_evm_a53_defconfig O=$UBOOT_DIR/out/a53
+      $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" CC="$CC_64" BL31=$TFA_DIR/build/k3/lite/release/bl31.bin TEE=$OPTEE_DIR/out/arm-plat-k3/core/tee-pager_v2.bin O=$UBOOT_DIR/out/a53 BINMAN_INDIRS=$TI_LINUX_FW_DIR
+
+   .. rubric:: AM62X LP
+
+   .. code-block:: console
+
+      R5
       $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_32" am62x_lpsk_r5_defconfig O=$UBOOT_DIR/out/r5
       $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_32" O=$UBOOT_DIR/out/r5 BINMAN_INDIRS=$TI_LINUX_FW_DIR
 
-      For AM62SIP
+      A53
+      $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" am62x_lpsk_a53_defconfig O=$UBOOT_DIR/out/a53
+      $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" CC="$CC_64" BL31=$TFA_DIR/build/k3/lite/release/bl31.bin TEE=$OPTEE_DIR/out/arm-plat-k3/core/tee-pager_v2.bin O=$UBOOT_DIR/out/a53 BINMAN_INDIRS=$TI_LINUX_FW_DIR
+
+   .. rubric:: AM62SIP
+
+   .. code-block:: console
+
+      R5
       $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_32" am6254atl_evm_r5_defconfig O=$UBOOT_DIR/out/r5
       $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_32" O=$UBOOT_DIR/out/r5 BINMAN_INDIRS=$TI_LINUX_FW_DIR
 
       A53
-      To build tispl.bin and u-boot.img. Saved in $UBOOT_DIR/out/a53. Requires bl31.bin, tee-pager_v2.bin
-
-      For AM62X
-      $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" am62x_evm_a53_defconfig O=$UBOOT_DIR/out/a53
-      $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" CC="$CC_64" BL31=$TFA_DIR/build/k3/lite/release/bl31.bin TEE=$OPTEE_DIR/out/arm-plat-k3/core/tee-pager_v2.bin O=$UBOOT_DIR/out/a53 BINMAN_INDIRS=$TI_LINUX_FW_DIR
-
-      For AM62X LP
-      $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" am62x_lpsk_a53_defconfig O=$UBOOT_DIR/out/a53
-      $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" CC="$CC_64" BL31=$TFA_DIR/build/k3/lite/release/bl31.bin TEE=$OPTEE_DIR/out/arm-plat-k3/core/tee-pager_v2.bin O=$UBOOT_DIR/out/a53 BINMAN_INDIRS=$TI_LINUX_FW_DIR
-
-      For AM62SIP
       $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" am6254atl_evm_a53_defconfig O=$UBOOT_DIR/out/a53
       $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" CC="$CC_64" BL31=$TFA_DIR/build/k3/lite/release/bl31.bin TEE=$OPTEE_DIR/out/arm-plat-k3/core/tee-pager_v2.bin O=$UBOOT_DIR/out/a53 BINMAN_INDIRS=$TI_LINUX_FW_DIR
 
