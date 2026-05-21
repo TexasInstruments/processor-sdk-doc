@@ -498,6 +498,7 @@ Linux Known Issues
    "LCPD-15708","j721e-vlab","J721E: vlab: MMC1 not functional",""
    "LCPD-14249","j721e-vlab","PCI kernel oops seen between rc7 and rc8 of 4.19",""
    "LCPD-9981","j721e-vlab,omapl138-lcdk","Some LTP's memory management tests fail due to low amount of free memory",""
+   "LCPD-47749","j722s_evm-fs,j722s_evm-se","NFS boot fails when EthFW is enabled on MCU2_0 R5F core due to CPSW Proxy Client driver circular dependency",""
 
 
 |
