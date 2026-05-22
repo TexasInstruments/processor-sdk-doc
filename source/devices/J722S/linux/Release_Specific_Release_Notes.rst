@@ -322,6 +322,7 @@ Linux Known Issues
    TAP (no-PHY) DDR mode
    TAP (no-PHY) SDR mode"
    "LCPD-24654","MCAN: Implement workaround for errata i2279","j7200-evm,j721e-idk-gw,j721s2-evm,j722s_evm-fs,j742s2_evm-fs,j784s4-evm",""
+   "LCPD-47749","NFS boot fails when EthFW is enabled on MCU2_0 R5F core due to CPSW Proxy Client driver circular dependency","j722s_evm-fs,j722s_evm-se",""
 
 
 |
