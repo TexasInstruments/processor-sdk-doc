@@ -51,19 +51,19 @@ The following platforms and EVMs are supported with Processor SDK.
     |**Platform**                          |**EVM**                               |**Tested  |**Document**                                |**Processor SDK |
     |                                      |                                      |Version** |                                            |Linux**         |
     +--------------------------------------+--------------------------------------+----------+--------------------------------------------+----------------+
-    |`AM335x <http://www.ti.com/lsds/ti/   |`AM335x EVM                           | 1.6A     |`Hardware User's Guide <http://             | X              |
-    |processors/sitara/arm_cortex-a8/      |<http://www.ti.com/tool/              |          |processors.wiki.ti.com/index.php/AM335x_    |                |
-    |am335x/overview.page>`__              |tmdxevm3358>`__                       |          |General_Purpose_EVM_HW_User_Guide>`__       |                |
+    |`AM335x <http://www.ti.com/lsds/ti/   |`AM335x EVM                           | 1.6A     |`Hardware User's Guide <https://            | Y              |
+    |processors/sitara/arm_cortex-a8/      |<http://www.ti.com/tool/              |          |www.ti.com/lit/ug/spruht5/spruht5.pdf>`__   |                |
+    |am335x/overview.page>`__              |tmdxevm3358>`__                       |          |                                            |                |
     |                                      +--------------------------------------+----------+--------------------------------------------+----------------+
-    |                                      |`AM335x SK                            | 1.2      |`Hardware User's Guide <http://             | X              |
-    |                                      |<http://www.ti.com/tool/              |          |processors.wiki.ti.com/index.php/           |                |
-    |                                      |tmdssk3358>`__                        |          |AM335xStarterKitHardwareUsersGuide>`__      |                |
+    |                                      |AM335x SK                             | 1.2      |`Hardware User's Guide <https://            | Y              |
+    |                                      |                                      |          |www.ti.com/lit/ug/spruih9/spruih9.pdf>`__   |                |
+    |                                      |                                      |          |                                            |                |
     |                                      +--------------------------------------+----------+--------------------------------------------+----------------+
-    |                                      |`BeagleBone Black                     | B6       |`Hardware User's Guide <https://github.com/ | X              |
+    |                                      |`BeagleBone Black                     | B6       |`Hardware User's Guide <https://github.com/ | Y              |
     |                                      |<https://www.beagleboard.org/         |          |CircuitCo/BeagleBone-Black/blob/            |                |
     |                                      |boards/beaglebone-black>`__           |          |master/BBB_SRM.pdf?raw=true>`__             |                |
     |                                      +--------------------------------------+----------+--------------------------------------------+----------------+
-    |                                      |`BeagleBone Green Eco                 | 1.0      |`Hardware User's Guide <https://www.ti.com/ | X              |
+    |                                      |`BeagleBone Green Eco                 | 1.0      |`Hardware User's Guide <https://www.ti.com/ | Y              |
     |                                      |<https://www.ti.com/tool/             |          |lit/ug/slvudi2/slvudi2.pdf>`__              |                |
     |                                      |BEAGL-BONE-GRN-ECO>`__                |          |                                            |                |
     +--------------------------------------+--------------------------------------+----------+--------------------------------------------+----------------+
@@ -74,11 +74,11 @@ The following platforms and EVMs are supported with Processor SDK.
     |**Platform**                          |**EVM**                               |**Tested  |**Document**                                |**Processor SDK |
     |                                      |                                      |Version** |                                            |Linux**         |
     +--------------------------------------+--------------------------------------+----------+--------------------------------------------+----------------+
-    |`AM437x <http://www.ti.com/lsds/ti/   |`AM437x EVM                           | 1.5B     |`Hardware User's Guide <http://             | X              |
-    |processors/sitara/arm_cortex-a9/      |<http://www.ti.com/tool/              |          |processors.wiki.ti.com/index.php/AM437x_    |                |
-    |am437x/overview.page>`__              |TMDSEVM437X>`__                       |          |General_Purpose_EVM_HW_User_Guide>`__       |                |
+    |`AM437x <http://www.ti.com/lsds/ti/   |`AM437x EVM                           | 1.5B     |`Hardware User's Guide <https://            | Y              |
+    |processors/sitara/arm_cortex-a9/      |<http://www.ti.com/tool/              |          |www.ti.com/lit/SPRUHW7>`__                  |                |
+    |am437x/overview.page>`__              |TMDSEVM437X>`__                       |          |                                            |                |
     |                                      +--------------------------------------+----------+--------------------------------------------+----------------+
-    |                                      |`AM437x SK                            | 1.1A     |`Hardware User's Guide <http://             | X              |
+    |                                      |`AM437x SK                            | 1.1A     |`Hardware User's Guide <http://             | Y              |
     |                                      |<http://www.ti.com/tool/              |          |www.ti.com/lit/pdf/spruhw8>`__              |                |
     |                                      |TMDXSK437X>`__                        |          |                                            |                |
     +--------------------------------------+--------------------------------------+----------+--------------------------------------------+----------------+
