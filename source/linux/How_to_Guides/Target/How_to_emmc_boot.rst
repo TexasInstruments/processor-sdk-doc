@@ -209,6 +209,8 @@ Mount the new partition and flash the rootfs as shown :ref:`here <mmc-flash-emmc
 The Linux kernel :file:`Image` and DT file are expected to be in the /boot folder of the
 "root" partition in order for u-boot to find and load them.
 
+.. _emmc_boot_config:
+
 eMMC boot configuration
 =======================
 
