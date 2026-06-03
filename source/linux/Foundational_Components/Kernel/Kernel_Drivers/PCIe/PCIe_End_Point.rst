@@ -116,7 +116,13 @@ PCIe End Point
 
 .. Image:: /images/Pcie_ep_cable.jpg
 
-An equivalent cable can be obtained from DigiKey (https://www.digikey.com/en/products/detail/3m/8kj2-0743-0250/5128345).
+Obtain the above cable with model name PE-FLEX1-G2-MMCX-12-TI1 from
+https://www.adexelec.com/pe-flex1-4-8-16. Please reach out to them for
+further details.
+
+.. ifconfig:: CONFIG_part_family in ('J7_family')
+
+   For x4-lane applications, use the cable with model PE-FLEX4-G2-MMCX-12-TI1.
 
 Modify the cable to remove resistors in CK+ and CK- in order to avoid
 ground loops (power) and smoking clock drivers (clk+/-).
