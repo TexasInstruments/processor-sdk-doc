@@ -192,11 +192,15 @@ Dhrystone
 =========
 
 Dhrystone is a core only benchmark that runs from warm L1 caches in all
-modern processors. It scales linearly with clock speed.
+modern processors. It scales linearly with clock speed. This is a single
+core score depending on the current cpu clock frequency. The total DMIPS
+for all cores is at best the number of cores multiplied by the single core
+score.
 
-Please take note, different run may produce different slightly results.
-This is advised to run this test multiple times in order to get maximum 
-performance numbers.
+
+Please take note, different runs may produce slightly different results.
+It is advised to run this test multiple times in order to get maximum
+performance numbers or to average out the results from many trials.
 
 Execute the benchmark with the following:
 
