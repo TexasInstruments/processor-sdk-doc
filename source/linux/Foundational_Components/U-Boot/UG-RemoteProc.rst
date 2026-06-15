@@ -5,11 +5,20 @@ This section documents how to initialize, load, start and stop remote cores from
 Following remotecores support is available in U-boot for K3 devices. However the actual remote
 cores deployed depends on the specific SoC used:
 
--  Cortex-R5F in Lockstep more
--  Cortex-R5F in split mode
--  Cortex-M4F
--  C66x DSP
--  C71x DSP
+.. ifconfig:: CONFIG_sdk in ('SITARA')
+
+   -  Cortex-R5F in split mode
+   -  Cortex-R5F in single core mode
+   -  Corext-M4F
+   -  C71x DSP
+   -  PRU core
+
+.. ifconfig:: not CONFIG_sdk in ('SITARA')
+
+   -  Cortex-R5F in Lockstep mode
+   -  Cortex-R5F in split mode
+   -  C71x DSP
+   -  C66x DSP
 
 Initialization
 ^^^^^^^^^^^^^^^
@@ -31,18 +40,44 @@ The below command will initialize just the given remote core
 
 The below command lists all the available/initialized remotecores in a system.
 
-.. code-block:: console
+.. ifconfig:: not CONFIG_sdk in ('SITARA')
 
-   => rproc list
-   0 - Name:'r5f@41000000' type:'internal memory mapped' supports: load start stop reset
-   1 - Name:'r5f@41400000' type:'internal memory mapped' supports: load start stop reset
-   2 - Name:'r5f@5c00000' type:'internal memory mapped' supports: load start stop reset
-   3 - Name:'r5f@5d00000' type:'internal memory mapped' supports: load start stop reset
-   4 - Name:'r5f@5e00000' type:'internal memory mapped' supports: load start stop reset
-   5 - Name:'r5f@5f00000' type:'internal memory mapped' supports: load start stop reset
-   6 - Name:'dsp@4d80800000' type:'internal memory mapped' supports: load start stop reset
-   7 - Name:'dsp@4d81800000' type:'internal memory mapped' supports: load start stop reset
-   8 - Name:'dsp@64800000' type:'internal memory mapped' supports: load start stop reset
+   .. code-block:: console
+
+      => rproc list
+      0 - Name:'r5f@41000000' type:'internal memory mapped' supports: load start stop reset
+      1 - Name:'r5f@41400000' type:'internal memory mapped' supports: load start stop reset
+      2 - Name:'r5f@5c00000' type:'internal memory mapped' supports: load start stop reset
+      3 - Name:'r5f@5d00000' type:'internal memory mapped' supports: load start stop reset
+      4 - Name:'r5f@5e00000' type:'internal memory mapped' supports: load start stop reset
+      5 - Name:'r5f@5f00000' type:'internal memory mapped' supports: load start stop reset
+      6 - Name:'dsp@4d80800000' type:'internal memory mapped' supports: load start stop reset
+      7 - Name:'dsp@4d81800000' type:'internal memory mapped' supports: load start stop reset
+      8 - Name:'dsp@64800000' type:'internal memory mapped' supports: load start stop reset
+
+
+.. ifconfig:: CONFIG_sdk in ('SITARA')
+
+   .. code-block:: console
+
+      => rproc list
+      0 - Name:'m4fss@5000000-bus@4000000' type:'internal memory mapped' supports: load start stop 
+      1 - Name:'r5f@78000000-r5fss@78000000' type:'internal memory mapped' supports: load start stop reset 
+      2 - Name:'r5f@78200000-r5fss@78000000' type:'internal memory mapped' supports: load start stop reset 
+      3 - Name:'r5f@78400000-r5fss@78400000' type:'internal memory mapped' supports: load start stop reset 
+      4 - Name:'r5f@78600000-r5fss@78400000' type:'internal memory mapped' supports: load start stop reset 
+      5 - Name:'pru@34000-icssg@30000000' type:'internal memory mapped' supports: load start stop 
+      6 - Name:'rtu@4000-icssg@30000000' type:'internal memory mapped' supports: load start stop 
+      7 - Name:'txpru@a000-icssg@30000000' type:'internal memory mapped' supports: load start stop 
+      8 - Name:'pru@38000-icssg@30000000' type:'internal memory mapped' supports: load start stop 
+      9 - Name:'rtu@6000-icssg@30000000' type:'internal memory mapped' supports: load start stop 
+      10 - Name:'txpru@c000-icssg@30000000' type:'internal memory mapped' supports: load start stop 
+      11 - Name:'pru@34000-icssg@30080000' type:'internal memory mapped' supports: load start stop 
+      12 - Name:'rtu@4000-icssg@30080000' type:'internal memory mapped' supports: load start stop 
+      13 - Name:'txpru@a000-icssg@30080000' type:'internal memory mapped' supports: load start stop 
+      14 - Name:'pru@38000-icssg@30080000' type:'internal memory mapped' supports: load start stop 
+      15 - Name:'rtu@6000-icssg@30080000' type:'internal memory mapped' supports: load start stop 
+      16 - Name:'txpru@c000-icssg@30080000' type:'internal memory mapped' supports: load start stop 
 
 
 Loading
@@ -51,13 +86,24 @@ Loading
 Once Initialized, remotecores can be loaded with a relevant image. Make sure
 image is loaded only after initializing the core.
 
-.. code-block:: console
+.. ifconfig:: not CONFIG_sdk in ('SITARA')
 
-   => load mmc 1:2 0x90000000 /lib/firmware/j7-main-r5f0_0-fw
-   2536540 bytes read in 112 ms (21.6 MiB/s)
-   => rproc load 2 0x90000000 0x${filesize}
-   Load Remote Processor 2 with data@addr=0x90000000 2536540 bytes: Success!
+   .. code-block:: console
 
+      => load mmc 1:2 0x90000000 /lib/firmware/j7-main-r5f0_0-fw
+      2536540 bytes read in 112 ms (21.6 MiB/s)
+      => rproc load 2 0x90000000 0x${filesize}
+      Load Remote Processor 2 with data@addr=0x90000000 2536540 bytes: Success!
+
+.. ifconfig:: CONFIG_sdk in ('SITARA')
+
+   .. code-block:: console
+
+      => load mmc 1:2 0x90000000 /lib/firmware/am64-mcu-m4f0_0-fw-sec
+      90036 bytes read in 13 ms (6.6 MiB/s)
+      => rproc load 0 0x90000000 0x${filesize}
+      Authentication passed
+      Load Remote Processor 0 with data@addr=0x90000000 90036 bytes: Success!
 
 Starting
 ^^^^^^^^^
@@ -79,6 +125,42 @@ A running remotecore can be stopped using the following command.
 
 Make sure all the commands are run in the above given sequence. Currently IPC
 is not supported in U-boot.
+
+.. ifconfig:: CONFIG_sdk in ('SITARA')
+
+   PRU Core Attachment
+   ^^^^^^^^^^^^^^^^^^^
+
+   After the PRU core is booted from U-Boot, it is in detached state. Verify the state 
+   from linux console using the below command:
+
+   .. code-block:: console
+
+      root@am64xx-evm:~# cat /sys/class/remoteproc/remoteproc5/state
+      detached
+
+   To attach to the PRU core, use the below command:
+
+   .. code-block:: console
+
+      echo "start" > /sys/class/remoteproc/remoteproc5/state
+
+   Upon successful attachment, the kernel will display messages like below:
+
+   .. code-block:: console
+
+      [  203.179065] remoteproc remoteproc5: attaching to 30034000.pru
+      [  203.198898] virtio_rpmsg_bus virtio5: rpmsg host is online
+      [  203.198942] virtio_rpmsg_bus virtio5: creating channel rpmsg-raw addr 0x1e
+      [  203.199828] rproc-virtio rproc-virtio.7.auto: registered virtio5 (type 7)
+      [  203.199849] remoteproc remoteproc5: remote processor 30034000.pru is now attached
+
+   Verify PRU core state from linux console :
+
+   .. code-block:: console
+
+      root@am64xx-evm:~# cat /sys/class/remoteproc/remoteproc5/state
+      attached
 
 Lockstep and Split mode
 ^^^^^^^^^^^^^^^^^^^^^^^
