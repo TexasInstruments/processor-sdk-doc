@@ -1,6 +1,6 @@
-.. tabs::
+.. tab-set::
 
-   .. tab:: EGL client extensions
+   .. tab-item:: EGL client extensions
 
       .. list-table:: EGL client extensions
 
@@ -22,7 +22,7 @@
 
          All extensions without links are custom IMG extensions.
 
-   .. tab:: EGL extensions
+   .. tab-item:: EGL extensions
 
       .. list-table:: EGL extensions
 
@@ -63,7 +63,7 @@
 
          All extensions without links are custom IMG extensions.
 
-   .. tab:: GL extensions
+   .. tab-item:: GL extensions
 
       .. list-table:: GL extensions
 
@@ -86,7 +86,7 @@
          * - `GL_EXT_float_blend <https://registry.khronos.org/OpenGL/extensions/EXT/EXT_float_blend.txt>`__
          * - `GL_EXT_geometry_point_size <https://registry.khronos.org/OpenGL/extensions/EXT/EXT_geometry_shader.txt>`__
          * - `GL_EXT_geometry_shader <https://registry.khronos.org/OpenGL/extensions/EXT/EXT_geometry_shader.txt>`__
-         * - `GL_EXT_gpu_shader5 <https://registry.khronos.org/OpenGL/extensions/EXT/EXT_gpu_shader5.txt>`__ 
+         * - `GL_EXT_gpu_shader5 <https://registry.khronos.org/OpenGL/extensions/EXT/EXT_gpu_shader5.txt>`__
          * - `GL_EXT_memory_object <https://registry.khronos.org/OpenGL/extensions/EXT/EXT_external_objects.txt>`__
          * - `GL_EXT_memory_object_fd <https://registry.khronos.org/OpenGL/extensions/EXT/EXT_external_objects_fd.txt>`__
          * - `GL_EXT_multi_draw_arrays <https://registry.khronos.org/OpenGL/extensions/EXT/EXT_multi_draw_arrays.txt>`__
@@ -179,7 +179,7 @@
 
          All extensions without links are custom IMG extensions.
 
-   .. tab:: Vulkan instance extensions
+   .. tab-item:: Vulkan instance extensions
 
       .. list-table:: Vulkan instance extensions
 

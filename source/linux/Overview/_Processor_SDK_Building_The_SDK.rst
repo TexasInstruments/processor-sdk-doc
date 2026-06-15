@@ -108,9 +108,9 @@ The MACHINE can be set to |__SDK_BUILD_MACHINE__|, for example.
       Processor SDK image with Arago + EdgeAI filesystem.  See `Build Options`_ for a list of
       additional targets.
 
-      .. tabs::
+      .. tab-set::
 
-         .. tab:: Build Linux SD card Image
+         .. tab-item:: Build Linux SD card Image
 
             .. code-block:: console
 
@@ -121,7 +121,7 @@ The MACHINE can be set to |__SDK_BUILD_MACHINE__|, for example.
                $ . conf/setenv
                $ MACHINE=am62axx-evm bitbake -k tisdk-edgeai-image
 
-         .. tab:: Build RT-Linux SD card Image
+         .. tab-item:: Build RT-Linux SD card Image
 
             .. code-block:: console
 
@@ -138,9 +138,9 @@ The MACHINE can be set to |__SDK_BUILD_MACHINE__|, for example.
       Processor SDK image with arago filesystem.  See `Build Options`_ for a list of
       additional targets.
 
-      .. tabs::
+      .. tab-set::
 
-         .. tab:: Build Linux SD card Image
+         .. tab-item:: Build Linux SD card Image
 
             .. code-block:: console
 
@@ -151,7 +151,7 @@ The MACHINE can be set to |__SDK_BUILD_MACHINE__|, for example.
                $ . conf/setenv
                $ MACHINE=<machine> bitbake -k tisdk-default-image
 
-         .. tab:: Build RT-Linux SD card Image
+         .. tab-item:: Build RT-Linux SD card Image
 
             .. code-block:: console
 
@@ -171,9 +171,9 @@ The MACHINE can be set to |__SDK_BUILD_MACHINE__|, for example.
 
          * :file:`tisdk-jailhouse-image` is not applicable for am62xxsip-evm and beagleplay-ti.
 
-      .. tabs::
+      .. tab-set::
 
-         .. tab:: Build Jailhouse Linux SD card Image
+         .. tab-item:: Build Jailhouse Linux SD card Image
 
             .. code-block:: console
 
@@ -185,7 +185,7 @@ The MACHINE can be set to |__SDK_BUILD_MACHINE__|, for example.
                $ echo 'TI_EXTRAS="tie-jailhouse"' >> conf/local.conf
                $ MACHINE=<machine> bitbake -k tisdk-jailhouse-image
 
-         .. tab:: Build Jailhouse RT-Linux SD card Image
+         .. tab-item:: Build Jailhouse RT-Linux SD card Image
 
             .. code-block:: console
 

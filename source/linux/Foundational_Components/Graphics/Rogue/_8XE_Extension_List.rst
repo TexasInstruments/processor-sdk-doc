@@ -1,6 +1,6 @@
-.. tabs::
+.. tab-set::
 
-   .. tab:: EGL client extensions
+   .. tab-item:: EGL client extensions
 
       .. list-table:: EGL client extensions
 
@@ -15,7 +15,7 @@
 
          All extensions without links are custom IMG extensions.
 
-   .. tab:: EGL extensions
+   .. tab-item:: EGL extensions
 
       .. list-table:: EGL extensions
 
@@ -43,13 +43,13 @@
          * - `EGL_MESA_drm_image <https://registry.khronos.org/EGL/extensions/MESA/EGL_MESA_drm_image.txt>`__
          * - `EGL_MESA_image_dma_buf_export <https://registry.khronos.org/EGL/extensions/MESA/EGL_MESA_image_dma_buf_export.txt>`__
          * - `EGL_WL_bind_wayland_display <https://registry.khronos.org/EGL/extensions/WL/EGL_WL_bind_wayland_display.txt>`__
-         * - EGL_IMG_cl_image 
-        
+         * - EGL_IMG_cl_image
+
       .. note::
 
          All extensions without links are custom IMG extensions.
 
-   .. tab:: GL extensions
+   .. tab-item:: GL extensions
 
       .. list-table:: GL extensions
 
@@ -68,7 +68,7 @@
          * - `GL_EXT_float_blend <https://registry.khronos.org/OpenGL/extensions/EXT/EXT_float_blend.txt>`__
          * - `GL_EXT_geometry_point_size <https://registry.khronos.org/OpenGL/extensions/EXT/EXT_geometry_shader.txt>`__
          * - `GL_EXT_geometry_shader <https://registry.khronos.org/OpenGL/extensions/EXT/EXT_geometry_shader.txt>`__
-         * - `GL_EXT_gpu_shader5 <https://registry.khronos.org/OpenGL/extensions/EXT/EXT_gpu_shader5.txt>`__ 
+         * - `GL_EXT_gpu_shader5 <https://registry.khronos.org/OpenGL/extensions/EXT/EXT_gpu_shader5.txt>`__
          * - `GL_EXT_memory_object <https://registry.khronos.org/OpenGL/extensions/EXT/EXT_external_objects.txt>`__
          * - `GL_EXT_multisampled_render_to_texture <https://registry.khronos.org/OpenGL/extensions/EXT/EXT_multisampled_render_to_texture.txt>`__
          * - `GL_EXT_multisampled_render_to_texture2 <https://registry.khronos.org/OpenGL/extensions/EXT/EXT_multisampled_render_to_texture2.txt>`__
@@ -157,7 +157,7 @@
 
          All extensions without links are custom IMG extensions.
 
-   .. tab:: Vulkan instance extensions
+   .. tab-item:: Vulkan instance extensions
 
       .. list-table:: Vulkan instance extensions
 
@@ -184,7 +184,7 @@
          * - `VK_EXT_debug_report <https://docs.vulkan.org/refpages/latest/refpages/source/VK_EXT_debug_report.html>`__
            - v10
          * - `VK_EXT_debug_utils <https://docs.vulkan.org/refpages/latest/refpages/source/VK_EXT_debug_utils.html>`__
-           - v2 
+           - v2
 
       .. note::
 

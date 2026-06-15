@@ -41,7 +41,7 @@ extensions = [
     'sphinx.ext.ifconfig',
     'sphinx.ext.graphviz',
     'sphinx_rtd_theme',
-    'sphinx_tabs.tabs',
+    'sphinx_design',
     'sphinx_copybutton'
 ]
 
