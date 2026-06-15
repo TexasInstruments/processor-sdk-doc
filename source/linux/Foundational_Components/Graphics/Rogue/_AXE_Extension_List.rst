@@ -1,6 +1,6 @@
-.. tabs::
+.. tab-set::
 
-   .. tab:: EGL client extensions
+   .. tab-item:: EGL client extensions
 
       .. list-table:: EGL client extensions
 
@@ -22,7 +22,7 @@
 
          All extensions without links are custom IMG extensions.
 
-   .. tab:: EGL extensions
+   .. tab-item:: EGL extensions
 
       .. list-table:: EGL extensions
 
@@ -57,13 +57,13 @@
          * - `EGL_MESA_image_dma_buf_export <https://registry.khronos.org/EGL/extensions/MESA/EGL_MESA_image_dma_buf_export.txt>`__
          * - `EGL_WL_bind_wayland_display <https://registry.khronos.org/EGL/extensions/WL/EGL_WL_bind_wayland_display.txt>`__
          * - `EGL_WL_create_wayland_buffer_from_image <https://registry.khronos.org/EGL/extensions/WL/EGL_WL_create_wayland_buffer_from_image.txt>`__
-         * - EGL_IMG_cl_image 
+         * - EGL_IMG_cl_image
 
       .. note::
 
          All extensions without links are custom IMG extensions.
 
-   .. tab:: GL extensions
+   .. tab-item:: GL extensions
 
       .. list-table:: GL extensions
 
@@ -82,7 +82,7 @@
          * - `GL_EXT_draw_elements_base_vertex <https://registry.khronos.org/OpenGL/extensions/EXT/EXT_draw_elements_base_vertex.txt>`__
          * - `GL_EXT_EGL_image_array <https://registry.khronos.org/OpenGL/extensions/EXT/EXT_EGL_image_array.txt>`__
          * - `GL_EXT_float_blend <https://registry.khronos.org/OpenGL/extensions/EXT/EXT_float_blend.txt>`__
-         * - `GL_EXT_gpu_shader5 <https://registry.khronos.org/OpenGL/extensions/EXT/EXT_gpu_shader5.txt>`__ 
+         * - `GL_EXT_gpu_shader5 <https://registry.khronos.org/OpenGL/extensions/EXT/EXT_gpu_shader5.txt>`__
          * - `GL_EXT_memory_object <https://registry.khronos.org/OpenGL/extensions/EXT/EXT_external_objects.txt>`__
          * - `GL_EXT_memory_object_fd <https://registry.khronos.org/OpenGL/extensions/EXT/EXT_external_objects_fd.txt>`__
          * - `GL_EXT_multi_draw_arrays <https://registry.khronos.org/OpenGL/extensions/EXT/EXT_multi_draw_arrays.txt>`__
@@ -120,7 +120,7 @@
          * - `GL_IMG_read_format <https://registry.khronos.org/OpenGL/extensions/IMG/IMG_read_format.txt>`__
          * - `GL_IMG_shader_binary <https://registry.khronos.org/OpenGL/extensions/IMG/IMG_shader_binary.txt>`__
          * - `GL_IMG_texture_format_BGRA8888 <https://registry.khronos.org/OpenGL/extensions/EXT/EXT_texture_format_BGRA8888.txt>`__
-         * - GL_IMG_texture_npot 
+         * - GL_IMG_texture_npot
          * - `GL_KHR_blend_equation_advanced <https://registry.khronos.org/OpenGL/extensions/KHR/KHR_blend_equation_advanced.txt>`__
          * - `GL_KHR_blend_equation_advanced_coherent <https://registry.khronos.org/OpenGL/extensions/KHR/KHR_blend_equation_advanced_coherent.txt>`__
          * - `GL_KHR_debug <https://registry.khronos.org/OpenGL/extensions/KHR/KHR_debug.txt>`__
@@ -164,7 +164,7 @@
 
          All extensions without links are custom IMG extensions.
 
-   .. tab:: Vulkan instance extensions
+   .. tab-item:: Vulkan instance extensions
 
       .. list-table:: Vulkan instance extensions
 
