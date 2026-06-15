@@ -31,4 +31,4 @@ def generate_exclude_patterns(family_configlist):
         x.relative_to("source/").as_posix() for x in Path("source/").glob("**/*.rst")
     )
     exclude_files = all_rst_files.difference(include_files)
-    return list(exclude_files)
+    return sorted(exclude_files)
