@@ -1,0 +1,8 @@
+Jinja2>=3.1.5
+lxml>=6.0.0
+rstcheck==6.2.5
+rstcheck-core @ git+https://github.com/StaticRocket/rstcheck-core.git@d935498cfc319d62fe2dde3012d81657510f0a90
+Sphinx>=8.2.3
+sphinx-copybutton>=0.5.2
+sphinx-rtd-theme>=3.0.2
+sphinx-tabs>=3.4.7

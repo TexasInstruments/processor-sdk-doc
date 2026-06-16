@@ -12,12 +12,7 @@ ifeq ($(CONTAINER_TOOL),)
   endif
 endif
 
-.PHONY: all setup
-all: Dockerfile setup
+.PHONY: all
+all: Dockerfile
 	$(CONTAINER_TOOL) build . -t texasinstruments/processor-sdk-doc \
 		$(BUILD_ARGS)
-
-setup: requirements.txt
-
-requirements.txt: ../requirements.txt
-	cp -ar ../requirements.txt .
