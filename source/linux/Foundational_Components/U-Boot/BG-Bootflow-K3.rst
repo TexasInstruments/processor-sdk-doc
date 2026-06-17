@@ -9,7 +9,7 @@ bootloader has to run on R5 core. In order to meet this constraint, keeping
 safety in picture and to have faster boot time, the software boot architecture
 is designed as below:
 
-.. ifconfig:: CONFIG_part_family not in ('J7_family', 'AM64X_family', 'AM62X_family', 'AM62AX_family')
+.. ifconfig:: CONFIG_part_family not in ('J7_family', 'AM64X_family', 'AM62X_family', 'AM62AX_family', 'AM62DX_family', 'AM62PX_family', 'AM62LX_family')
 
    .. code-block:: text
 
@@ -339,7 +339,7 @@ is designed as below:
       |                        |                       |                       |                       |
       +------------------------------------------------------------------------+-----------------------+
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX', 'J722S')
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62DX', 'AM62PX', 'J722S')
 
    .. code-block:: text
 
