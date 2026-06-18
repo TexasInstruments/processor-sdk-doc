@@ -111,11 +111,11 @@ A typical flow to do OTP key writer lite is as follows:
    which then toggles the IO pin connected to the Vpp pin, thereby controlling the power supply to the pin.
    On TI EVM, Vpp pin can be turned on using the below commands:
 
-    .. rubric:: Select i2c bus 2, as chip 22 is connected to it, and probe the chip:
+    .. rubric:: Select i2c bus 1, as chip 22 is connected to it, and probe the chip:
 
     .. code-block:: text
 
-       => i2c dev 2
+       => i2c dev 1
        => i2c probe 22
 
     .. rubric:: To turn off Vpp:

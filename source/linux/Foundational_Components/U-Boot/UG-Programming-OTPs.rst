@@ -56,8 +56,8 @@ Follow these steps to enable or disable Vpp:
 
    .. code-block:: text
 
-      # Select i2c bus 2 (chip 22 is connected to it)
-      => i2c dev 2
+      # Select i2c bus 1 (chip 22 is connected to it)
+      => i2c dev 1
 
       # Probe the chip
       => i2c probe 22
