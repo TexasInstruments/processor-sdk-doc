@@ -19,7 +19,7 @@ jobs:
     name: vale
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/staticrocket/processor-sdk-doc:latest
+      image: ghcr.io/texasinstruments/processor-sdk-doc:latest
       options: --entrypoint /bin/bash
 
     steps:
@@ -43,7 +43,7 @@ jobs:
             **.md
 
       - name: Run vale checks on modified files
-        uses: StaticRocket/vale-action@d377866f2e3305ae80ef6ce6516370a7ec4ea55a
+        uses: vale-cli/vale-action@v2
         if: steps.changed-files.outputs.any_changed == 'true'
         with:
           fail_on_error: false  # to be changed when upstream addresses 84
