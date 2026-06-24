@@ -1,5 +1,6 @@
 ---
-name: Docker Workflow
+name: "docker"
+
 on:  # yamllint disable-line rule:truthy
   push:
     branches: [master]
