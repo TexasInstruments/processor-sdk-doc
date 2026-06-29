@@ -12,6 +12,16 @@ of the Processor SDK for Linux.
 Processor SDK 11.xx Releases
 ============================
 
+Processor SDK Jacinto 11.02.01
+------------------------------
+
+- Fourth 2025 LTS (Linux 6.12 and u-boot 2025.01)
+- ATF v2.13.0+
+- OPTEE 4.7.0
+- Yocto Scarthgap/5.0
+- Temperature based refresh rate change for DDR on J721S2
+- Platforms Supported : J721E, J7200, J721S2, J784S4, J742S2
+
 Processor SDK Jacinto 11.02
 ---------------------------
 - This is the Third release in the 2025 LTS stream with 6.12 kernel, 2025.01 U-Boot and Yocto scarthgap/5.0
