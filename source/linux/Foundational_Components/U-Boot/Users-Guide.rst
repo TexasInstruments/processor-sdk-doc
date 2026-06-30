@@ -35,3 +35,4 @@ User's Guide
    UG-Key-Writer-Lite
    UG-Programming-OTPs
    UG-Falcon-Mode
+   UG-QoS
