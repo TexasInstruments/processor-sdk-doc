@@ -66,32 +66,7 @@ Table:  Boards M\_CAN Driver is Validated on
       :name: connection-configuration
 
    +------------------------------------------------+------------------------------------------------------+
-   | .. raw:: html                                  | .. raw:: html                                        |
-   |                                                |                                                      |
-   |    <div class="center">                        |    <div class="center">                              |
-   |                                                |                                                      |
-   | .. raw:: html                                  | .. raw:: html                                        |
-   |                                                |                                                      |
-   |    <div                                        |    <div                                              |
-   |    class="thumb tnone">                        |    class="thumb tnone">                              |
-   |                                                |                                                      |
-   | .. raw:: html                                  | .. raw:: html                                        |
-   |                                                |                                                      |
-   |    <div                                        |    <div                                              |
-   |    class="thumbinner"                          |    class="thumbinner"                                |
-   |    style="width:302px;">                       |    style="width:302px;">                             |
-   |                                                |                                                      |
    | .. Image:: /images/mcan-diagram-evm-to-evm.png | .. Image:: /images/Dcan_header_to_db9.png            |
-   |                                                |                                                      |
-   | .. raw:: html                                  | .. raw:: html                                        |
-   |                                                |                                                      |
-   |    <div                                        |    <div                                              |
-   |    class="thumbcaption">                       |    class="thumbcaption">                             |
-   |                                                |                                                      |
-   | .. raw:: html                                  | .. raw:: html                                        |
-   |                                                |                                                      |
-   |    <div class="magnify">                       |    <div class="magnify">                             |
-   |                                                |                                                      |
    +------------------------------------------------+------------------------------------------------------+
    | Header to Header                               | Header to DB9                                        |
    +------------------------------------------------+------------------------------------------------------+
@@ -145,23 +120,7 @@ Table:  Boards M\_CAN Driver is Validated on
    to the correct pins correctly. Use the below diagram as a reference.
 
    +-------------------------------------------------------------+------------------------------------------------+
-   | .. raw:: html                                               | .. raw:: html                                  |
-   |                                                             |                                                |
-   |    <div class="center">                                     |    <div class="center">                        |
-   |                                                             |                                                |
-   | .. raw:: html                                               | .. raw:: html                                  |
-   |                                                             |                                                |
-   |    <div class="floatnone">                                  |    <div class="floatnone">                     |
-   |                                                             |                                                |
    | .. Image:: /images/DCAN_custom_cable_diagram.png            | .. Image:: /images/Custom_cable.png            |
-   |                                                             |                                                |
-   | .. raw:: html                                               | .. raw:: html                                  |
-   |                                                             |                                                |
-   |    </div>                                                   |    </div>                                      |
-   |                                                             |                                                |
-   | .. raw:: html                                               | .. raw:: html                                  |
-   |                                                             |                                                |
-   |    </div>                                                   |    </div>                                      |
    +-------------------------------------------------------------+------------------------------------------------+
    | Wiring Diagram                                              | Example of completed cable.                    |
    +-------------------------------------------------------------+------------------------------------------------+

@@ -1254,45 +1254,13 @@ for more details.
 +--------------------------------------+--------------------------------------+
 | Wire on AM571x IDK                   | Signal                               |
 +======================================+======================================+
-| lower yellow wire                    | .. raw:: html                        |
-|                                      |                                      |
-|                                      |    <div style="text-align: center;"> |
-|                                      |                                      |
-|                                      | timer15                              |
-|                                      |                                      |
-|                                      | .. raw:: html                        |
-|                                      |                                      |
-|                                      |    </div>                            |
+| lower yellow wire                    | timer15                              |
 +--------------------------------------+--------------------------------------+
-| J21-18 right blue wire               | .. raw:: html                        |
-|                                      |                                      |
-|                                      |    <div style="text-align: center;"> |
-|                                      |                                      |
-|                                      | pr2\_edc\_latch0\_out                |
-|                                      |                                      |
-|                                      | .. raw:: html                        |
-|                                      |                                      |
-|                                      |    </div>                            |
+| J21-18 right blue wire               | pr2\_edc\_latch0\_out                |
 +--------------------------------------+--------------------------------------+
-| J21-20 purple wire                   | .. raw:: html                        |
-|                                      |                                      |
-|                                      |    <div style="text-align: center;"> |
-|                                      |                                      |
-|                                      | pr1\_edc\_latch0\_out                |
-|                                      |                                      |
-|                                      | .. raw:: html                        |
-|                                      |                                      |
-|                                      |    </div>                            |
+| J21-20 purple wire                   | pr1\_edc\_latch0\_out                |
 +--------------------------------------+--------------------------------------+
-| J21-54 left blue wire                | .. raw:: html                        |
-|                                      |                                      |
-|                                      |    <div style="text-align: center;"> |
-|                                      |                                      |
-|                                      | pr1\_edc\_sync0\_out                 |
-|                                      |                                      |
-|                                      | .. raw:: html                        |
-|                                      |                                      |
-|                                      |    </div>                            |
+| J21-54 left blue wire                | pr1\_edc\_sync0\_out                 |
 +--------------------------------------+--------------------------------------+
 
 Example: See below pictures (J21 is the connector along the top right edge)
@@ -1314,35 +1282,11 @@ for more details.
 +--------------------------------------+--------------------------------------+
 | Wire on AM574x IDK                   | Signal                               |
 +======================================+======================================+
-| Center left black wire               | .. raw:: html                        |
-|                                      |                                      |
-|                                      |    <div style="text-align: center;"> |
-|                                      |                                      |
-|                                      | timer15                              |
-|                                      |                                      |
-|                                      | .. raw:: html                        |
-|                                      |                                      |
-|                                      |    </div>                            |
+| Center left black wire               | timer15                              |
 +--------------------------------------+--------------------------------------+
-| J21-13 black wire                    | .. raw:: html                        |
-|                                      |                                      |
-|                                      |    <div style="text-align: center;"> |
-|                                      |                                      |
-|                                      | pr2\_edc\_latch0\_out                |
-|                                      |                                      |
-|                                      | .. raw:: html                        |
-|                                      |                                      |
-|                                      |    </div>                            |
+| J21-13 black wire                    | pr2\_edc\_latch0\_out                |
 +--------------------------------------+--------------------------------------+
-| J21-17 white wire                    | .. raw:: html                        |
-|                                      |                                      |
-|                                      |    <div style="text-align: center;"> |
-|                                      |                                      |
-|                                      | pr1\_edc\_sync0\_out                 |
-|                                      |                                      |
-|                                      | .. raw:: html                        |
-|                                      |                                      |
-|                                      |    </div>                            |
+| J21-17 white wire                    | pr1\_edc\_sync0\_out                 |
 +--------------------------------------+--------------------------------------+
 
 Example: See below pictures (J21 is the connector along the top right edge)

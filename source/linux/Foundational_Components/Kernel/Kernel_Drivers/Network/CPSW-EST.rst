@@ -99,15 +99,7 @@ Here are the steps to configure this schedule.
 
 A sample wireshark capture for the example above is shown below
 
-.. raw:: html
-
-   <div>
-
 .. image:: ../../../../../images/wireshark-tas.jpg
-
-.. raw:: html
-
-   </div>
 
 Packet highlighted are the first packet transmitted during Gate open of Q2/TC2 and are spaced apart by about 500 msec which is the cycle-time of the TAS schedule. Also there are about 9 packets transmitted during the window which is about 12 * 9 = 108 usec within the Gate open interval of 125 usec.
 
