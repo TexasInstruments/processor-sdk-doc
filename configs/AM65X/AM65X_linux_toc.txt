@@ -130,7 +130,7 @@ linux/How_to_Guides/Target/How_to_Use_K3Conf_Tool
 linux/How_to_Guides/Target/How_to_Tune_Real_Time_Linux
 linux/How_to_Guides/FAQ/How_to_Integrate_Open_Source_Software
 linux/How_to_Guides_Hardware_Setup_with_CCS
-linux/How_to_Guides/Hardware_Setup_with_CCS/TMDX654_EVM_Hardware_Setup
+common/How_to_Guides/TMDX654_EVM_Hardware_Setup
 linux/Documentation_Tarball
 common/PRU-ICSS/Getting_Started_with_PSSP
 common/PRU-ICSS/Header_Files
