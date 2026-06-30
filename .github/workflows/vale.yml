@@ -3,19 +3,24 @@ name: "vale"
 
 on: [pull_request]  # yamllint disable-line rule:truthy
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.number }}
+  cancel-in-progress: true
+
 defaults:
   run:
     shell: bash
+
+permissions:
+  contents: read
 
 jobs:
   vale:
     name: vale
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/staticrocket/processor-sdk-doc:latest
+      image: ghcr.io/texasinstruments/processor-sdk-doc:latest
       options: --entrypoint /bin/bash
-    permissions:
-      contents: read
 
     steps:
       - name: Prepare GitHub workdir
@@ -24,6 +29,8 @@ jobs:
 
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
       - name: Get changed files
         id: changed-files
@@ -36,7 +43,7 @@ jobs:
             **.md
 
       - name: Run vale checks on modified files
-        uses: StaticRocket/vale-action@d377866f2e3305ae80ef6ce6516370a7ec4ea55a
+        uses: vale-cli/vale-action@v2
         if: steps.changed-files.outputs.any_changed == 'true'
         with:
           fail_on_error: false  # to be changed when upstream addresses 84
