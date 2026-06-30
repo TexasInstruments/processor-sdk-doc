@@ -517,96 +517,95 @@ The following config options have to be enabled in order to use the
 
 .. ifconfig:: CONFIG_part_family in ('AM64X_family','J7_family')
 
-    pci\_endpoint\_test driver creates the Endpoint Test function device which
-    will be used by the following pcitest utility. pci\_endpoint\_test can
-    either be built-in to the kernel or built as a module. For testing legacy
-    interrupt, MSI interrupt has to be disabled in the host.
+   The ``pci_endpoint_test`` driver creates an endpoint test function device that
+   the following ``pci_endpoint_test`` utility uses. The ``pci_endpoint_test`` driver
+   can either be built-in to the kernel or built as a module.
 
-    pcitest.sh added in tools/pci/ can be used to run all the default PCI
-    endpoint tests. Before pcitest.sh can be used, pcitest.c should be compiled
-    using following steps:
+   The test utility at :file:`tools/testing/selftests/pci_endpoint/pci_endpoint_test.c`
+   is present in SDK rootfs at :file:`/usr/kernel-selftest/pci_endpoint/pci_endpoint_test`.
+   Use this utility to run all the default PCI endpoint tests.
 
-    ::
+   .. code-block:: console
 
-        cd <kernel-dir>
-        make headers_install ARCH=arm64
-        aarch64-linux-gnu-gcc -Iusr/include tools/pci/pcitest.c -o pcitest
-        cp pcitest  <rootfs>/usr/sbin/
-        cp tools/pci/pcitest.sh <rootfs>
+      export PATH=$PATH:/usr/kernel-selftest/pci_endpoint
 
-    .. rubric:: pcitest output
+   .. rubric:: pci_endpoint_test output
 
-    pcitest can be used as follows:
-    ::
+   Run pci_endpoint_test as follows:
 
-        root@evm:~# ./pcitest -h
-        usage:  -h                      Print this help message
-        [options]
-        Options:
-                -D <dev>                PCI endpoint test device {default: /dev/pci-endpoint-test.0}
-                -b <bar num>            BAR test (bar number between 0..5)
-                -m <msi num>            MSI test (msi number between 1..32)
-                -x <msix num>           MSI-X test (msix number between 1..2048)
-                -i <irq type>           Set IRQ type (0 - Legacy, 1 - MSI, 2 - MSI-X)
-                -e                      Clear IRQ
-                -I                      Get current IRQ type configured
-                -l                      Legacy IRQ test
-                -r                      Read buffer test
-                -w                      Write buffer test
-                -c                      Copy buffer test
-                -s <size>               Size of buffer {default: 100KB}
+   .. code-block:: console
 
+      root@evm:~# pci_endpoint_test -h
+      Usage: ./pci_endpoint_test [-h|-l|-d] [-t|-T|-v|-V|-f|-F|-r name]
+            -h       print help
+            -l       list all tests
+            -d       enable debug prints
 
-    Sample usage
-    ::
+            -t name  include test
+            -T name  exclude test
+            -v name  include variant
+            -V name  exclude variant
+            -f name  include fixture
+            -F name  exclude fixture
+            -r name  run specified test
 
-        root@evm:~# ./pcitest -i 1 -D /dev/pci-endpoint-test.0
-        SET IRQ TYPE TO MSI:            OKAY
-        root@evm:~# ./pcitest -m 1 -D /dev/pci-endpoint-test.0
-        MSI1:           OKAY
-        root@evm:~# ./pcitest -e -D /dev/pci-endpoint-test.0
-        CLEAR IRQ:              OKAY
-        root@evm:~# ./pcitest -i 2 -D /dev/pci-endpoint-test.0
-        SET IRQ TYPE TO MSI-X:          OKAY
-        root@evm:~# ./pcitest -x 1 -D /dev/pci-endpoint-test.0
-        MSI-X1:         OKAY
-        root@evm:~# ./pcitest -e -D /dev/pci-endpoint-test.0
-        CLEAR IRQ:              OKAY
+      Test filter options can be specified multiple times. The filtering stops
+      at the first match. For example to include all tests from variant 'bla'
+      but not test 'foo' specify '-T foo -v bla'.
 
-    The script pcitest.sh runs all the bar tests, interrupt tests, read tests,
-    write tests and copy tests.
+   The command ``pci_endpoint_test`` runs all the bar tests, interrupt tests,
+   read tests, write tests and copy tests. Run various tests individually using
+   the following commands:
+
+   .. code-block:: console
+
+      root@evm:~# pci_endpoint_test -r pci_ep_basic.MSI_TEST
+      root@evm:~# pci_endpoint_test -r pci_ep_basic.MSIX_TEST
+      root@evm:~# pci_endpoint_test -r pci_ep_basic.LEGACY_IRQ_TEST
+
+      root@evm:~# pci_endpoint_test -r pci_ep_bar.BAR0.BAR_TEST
+      root@evm:~# pci_endpoint_test -r pci_ep_bar.BAR1.BAR_TEST
+      root@evm:~# pci_endpoint_test -r pci_ep_bar.BAR2.BAR_TEST
+      root@evm:~# pci_endpoint_test -r pci_ep_bar.BAR3.BAR_TEST
+      root@evm:~# pci_endpoint_test -r pci_ep_bar.BAR4.BAR_TEST
+      root@evm:~# pci_endpoint_test -r pci_ep_bar.BAR5.BAR_TEST
+
+      root@evm:~# pci_endpoint_test -r pci_ep_data_transfer.dma.READ_TEST
+      root@evm:~# pci_endpoint_test -r pci_ep_data_transfer.memcpy.READ_TEST
+      root@evm:~# pci_endpoint_test -r pci_ep_data_transfer.dma.WRITE_TEST
+      root@evm:~# pci_endpoint_test -r pci_ep_data_transfer.memcpy.WRITE_TEST
+      root@evm:~# pci_endpoint_test -r pci_ep_data_transfer.dma.COPY_TEST
+      root@evm:~# pci_endpoint_test -r pci_ep_data_transfer.memcpy.COPY_TEST
 
 .. rubric:: **Files**
 
 .. ifconfig:: CONFIG_part_family in ('AM64X_family','J7_family')
 
-    +-----------+---------------------------------------------------+-----------------------------------+
-    | Serial No | Location                                          | Description                       |
-    +===========+===================================================+===================================+
-    | 1         | drivers/pci/endpoint/pci-epc-core.c               | PCI Endpoint Framework            |
-    +           +---------------------------------------------------+                                   +
-    |           | drivers/pci/endpoint/pci-ep-cfs.c                 |                                   |
-    +           +---------------------------------------------------+                                   +
-    |           | drivers/pci/endpoint/pci-epc-mem.c                |                                   |
-    +           +---------------------------------------------------+                                   +
-    |           | drivers/pci/endpoint/pci-epf-core.c               |                                   |
-    +-----------+---------------------------------------------------+-----------------------------------+
-    | 2         | drivers/pci/endpoint/functions/pci-epf-test.c     | PCI Endpoint Function Driver      |
-    +-----------+---------------------------------------------------+-----------------------------------+
-    | 3         | drivers/misc/pci_endpoint_test.c                  | PCI Driver                        |
-    +-----------+---------------------------------------------------+-----------------------------------+
-    | 4         | tools/pci/pcitest.c                               | PCI Userspace Tools               |
-    +           +---------------------------------------------------+                                   +
-    |           | tools/pci/pcitest.sh                              |                                   |
-    +-----------+---------------------------------------------------+-----------------------------------+
-    | 5         | drivers/pci/controller/pci-j721e.c                | PCI Controller Driver             |
-    +           +---------------------------------------------------+                                   +
-    |           | drivers/pci/controller/pcie-cadence.c             |                                   |
-    +           +---------------------------------------------------+                                   +
-    |           | drivers/pci/controller/pcie-cadence-ep.c          |                                   |
-    +           +---------------------------------------------------+                                   +
-    |           | drivers/pci/endpoint/pcie-cadence-host.c          |                                   |
-    +-----------+---------------------------------------------------+-----------------------------------+
+   +-----------+-----------------------------------------------------------+-----------------------------------+
+   | Serial No | Location                                                  | Description                       |
+   +===========+===========================================================+===================================+
+   | 1         | drivers/pci/endpoint/pci-epc-core.c                       | PCI Endpoint Framework            |
+   +           +-----------------------------------------------------------+                                   +
+   |           | drivers/pci/endpoint/pci-ep-cfs.c                         |                                   |
+   +           +-----------------------------------------------------------+                                   +
+   |           | drivers/pci/endpoint/pci-epc-mem.c                        |                                   |
+   +           +-----------------------------------------------------------+                                   +
+   |           | drivers/pci/endpoint/pci-epf-core.c                       |                                   |
+   +-----------+-----------------------------------------------------------+-----------------------------------+
+   | 2         | drivers/pci/endpoint/functions/pci-epf-test.c             | PCI Endpoint Function Driver      |
+   +-----------+-----------------------------------------------------------+-----------------------------------+
+   | 3         | drivers/misc/pci_endpoint_test.c                          | PCI Driver                        |
+   +-----------+-----------------------------------------------------------+-----------------------------------+
+   | 4         | tools/testing/selftests/pci_endpoint/pci_endpoint_test.c  | PCI Userspace Tools               |
+   +-----------+-----------------------------------------------------------+-----------------------------------+
+   | 5         | drivers/pci/controller/pci-j721e.c                        | PCI Controller Driver             |
+   +           +-----------------------------------------------------------+                                   +
+   |           | drivers/pci/controller/pcie-cadence.c                     |                                   |
+   +           +-----------------------------------------------------------+                                   +
+   |           | drivers/pci/controller/pcie-cadence-ep.c                  |                                   |
+   +           +-----------------------------------------------------------+                                   +
+   |           | drivers/pci/controller/pcie-cadence-host.c                |                                   |
+   +-----------+-----------------------------------------------------------+-----------------------------------+
 
 .. ifconfig:: CONFIG_part_family in ('J7_family')
 
