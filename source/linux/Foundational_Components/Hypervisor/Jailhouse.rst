@@ -496,14 +496,14 @@ the demo are:
 
    .. code-block:: console
 
-      root@<machine>: jailhouse cell load k3-am625-sk-linux-demo /usr/libexec/jailhouse/linux-loader.bin -a 0x0 -s "kernel=0xe0200000 dtb=0xe0000000" -a 0x1000 /boot/Image -a 0xe0200000 /boot/tisdk-jailhouse-inmate-am62xx-evm.rootfs.cpio -a 0xe2a5e000 /usr/share/jailhouse/inmate-k3-am625-sk.dtb -a 0xe0000000
+      root@<machine>: jailhouse cell load k3-am625-sk-linux-demo /usr/libexec/jailhouse/linux-loader.bin -a 0x0 -s "kernel=0xe0200000 dtb=0xe0000000" -a 0x1000 /boot/Image -a 0xe0200000 /boot/tisdk-jailhouse-inmate-am62xx-evm.cpio -a 0xe2b4a000 /usr/share/jailhouse/inmate-k3-am625-sk.dtb -a 0xe0000000
 
    linux-loader.bin is a small application provided and built by Jailhouse source
    tree to run inmates. As you can see (-a 0x0) it is loaded to virtual address 0x0.
    "-s "kernel=0xe0200000 dtb=0xe0000000" -a 0x1000" - is the linux_loader argument
    loaded as string to virtual address 0x1000, which instructs the linux-loader to
    branch to the those addresses. Kernel Image is loaded to the virtual address
-   0xe0200000, jailhouse inmate ramfs to 0xe2a5e000 and device tree for inmate to 0xe0000000.
+   0xe0200000, jailhouse inmate ramfs to 0xe2b4a000 and device tree for inmate to 0xe0000000.
 
 .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
@@ -512,11 +512,11 @@ the demo are:
    "-s "kernel=0x9e0200000 dtb=0x9e0000000" -a 0x1000" - is the linux_loader argument
    loaded as string to virtual address 0x1000, which instructs the linux-loader to
    branch to the those addresses. Kernel Image is loaded to the virtual address
-   0x9e0200000, jailhouse inmate ramfs to 0x9e2a5e000 and device tree for inmate to 0x9e0000000.
+   0x9e0200000, jailhouse inmate ramfs to 0x9e2b4a000 and device tree for inmate to 0x9e0000000.
 
    .. code-block:: console
 
-      root@am62pxx-evm: jailhouse cell load k3-am62p5-sk-linux-demo /usr/libexec/jailhouse/linux-loader.bin -a 0x0 -s "kernel=0x9e0200000 dtb=0x9e0000000" -a 0x1000 /boot/Image -a 0x9e0200000 /boot/tisdk-jailhouse-inmate-am62pxx-evm.rootfs.cpio -a 0x9e2a5e000 /usr/share/jailhouse/inmate-k3-am62p5-sk.dtb -a 0x9e0000000
+      root@am62pxx-evm: jailhouse cell load k3-am62p5-sk-linux-demo /usr/libexec/jailhouse/linux-loader.bin -a 0x0 -s "kernel=0x9e0200000 dtb=0x9e0000000" -a 0x1000 /boot/Image -a 0x9e0200000 /boot/tisdk-jailhouse-inmate-am62pxx-evm.cpio -a 0x9e2b4a000 /usr/share/jailhouse/inmate-k3-am62p5-sk.dtb -a 0x9e0000000
 
 .. ifconfig:: CONFIG_part_variant in ('AM62LX')
 
@@ -525,11 +525,11 @@ the demo are:
    "-s "kernel=0xc0800000 dtb=0xc0600000" -a 0x1000" - is the linux_loader argument
    loaded as string to virtual address 0x1000, which instructs the linux-loader to
    branch to the those addresses. Kernel Image is loaded to the virtual address
-   0xc0800000, jailhouse inmate ramfs to 0xc286e000 and device tree for inmate to 0xc0600000.
+   0xc0800000, jailhouse inmate ramfs to 0xc314a000 and device tree for inmate to 0xc0600000.
 
    .. code-block:: console
 
-      root@am62lxx-evm: jailhouse cell load k3-am62l3-evm-linux-demo /usr/libexec/jailhouse/linux-loader.bin -a 0x0 -s "kernel=0xc0800000 dtb=0xc0600000" -a 0x1000 /boot/Image -a 0xc0800000 /boot/tisdk-jailhouse-inmate-rt-am62lxx-evm.rootfs.cpio -a 0xc286e000 /usr/share/jailhouse/inmate-k3-am62l3-evm.dtb -a 0xc0600000
+      root@am62lxx-evm: jailhouse cell load k3-am62l3-evm-linux-demo /usr/libexec/jailhouse/linux-loader.bin -a 0x0 -s "kernel=0xc0800000 dtb=0xc0600000" -a 0x1000 /boot/Image -a 0xc0800000 /boot/tisdk-jailhouse-inmate-am62lxx-evm.cpio -a 0xc314a000 /usr/share/jailhouse/inmate-k3-am62l3-evm.dtb -a 0xc0600000
 
 -  Start inmate cell
 
