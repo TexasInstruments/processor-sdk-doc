@@ -802,7 +802,19 @@ Power Performance
 ^^^^^^^^^^^^^^^^^
 
 These are power measurements taken while the device is in various low power modes like
-DeepSleep, RTC + I/O + DDR, and RTC Only.
+DSS plus DeepSleep, DeepSleep, RTC + I/O + DDR, and RTC Only.
+
+.. csv-table:: DSS plus DeepSleep Power Performance
+     :header: "Rail name","Rail voltage(V)","Power (mW)"
+
+     "vdd_core", "0.75", "44.66"
+     "soc_dvdd_1v8", "1.80", "1.77"
+     "soc_dvdd_3v3", "3.30", "3.64"
+     "vdda_1v8", "1.80", "18.82"
+     "vdd_lpddr4_pmic2", "1.10", "1.06"
+     "vdd_rtc", "0.75", "0.03"
+     "vdd_rtc_1v8", "1.80", "0.01"
+     "Total"," ","69.99"
 
 .. csv-table:: DeepSleep Power Performance
      :header: "Rail name","Rail voltage(V)","Power (mW)"
