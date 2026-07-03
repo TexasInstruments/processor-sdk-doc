@@ -85,6 +85,7 @@ What's new
   - Security: Post Quantum Cryptography using Module Lattice (ML) Key Encapsulation Mechanism (KEM) or ML-KEM, ML Digital Signature Algorithm (DSA) or ML-DSA, and Stateless Hash-Based (SLH) DSA or SLH-DSA - :ref:`Post Quantum Cryptography <post_quantum_cryptography>`
   - Power Management: Active power saving using Standby and Deep Standby Mode - :ref:`Standby Mode <am62l_standby_mode>`
   - Power Management: Runtime low power mode selection using s2idle framework - :ref:`AM62L S2idle <pm_s2idle_psci>`
+  - Power Management: Display static image with SoC in low power - :ref:`DSS plus DeepSleep mode <lpm_dss_ds>`
 
 **Component version:**
 
