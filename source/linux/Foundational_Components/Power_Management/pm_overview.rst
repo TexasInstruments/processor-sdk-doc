@@ -72,3 +72,4 @@ supported by the Linux kernel.
    #. RTC Only
    #. RTC + I/O + DDR
    #. DeepSleep
+   #. DSS plus DeepSleep
