@@ -46,7 +46,7 @@ of the Pulse-Width Modulation Subsystem (PWMSS).
 .. rubric:: Driver Usage
    :name: driver-usage-pwm
 
-.. _Using-PWM-with-sysfs:
+.. _Using_PWM_with_sysfs:
 
 .. rubric:: Using PWM with the sysfs interface
    :name: using-pwm-with-sysfs-interface
@@ -152,7 +152,7 @@ A few examples of kernel drivers using the kernel PWM API:
 - pwm-vibrator: `drivers/input/misc/pwm-vibra.c <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/drivers/input/misc/pwm-vibra.c?h=ti-linux-5.10.y>`_
 
 .. rubric:: Troubleshooting the PWM setup
-   :name: troubleshoot-the-pwm-setup
+   :name: troubleshoot_the_pwm_setup
 
 The current PWM settings for ePWM and eCAP(APWM) can be monitored from the debugfs ``pwm`` entry.
 

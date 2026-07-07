@@ -25,6 +25,7 @@ Kernel Drivers
    Foundational_Components/Kernel/Kernel_Drivers/Display/DSS
    Foundational_Components/Kernel/Kernel_Drivers/Display/DSS7
    Foundational_Components/Kernel/Kernel_Drivers/Display/LCDC
+   Foundational_Components/Kernel/Kernel_Drivers/ECAP
    Foundational_Components/Kernel/Kernel_Drivers/EQEP
    Foundational_Components/Kernel/Kernel_Drivers/GPIO
    Foundational_Components/Kernel/Kernel_Drivers/HYPERFLASH
