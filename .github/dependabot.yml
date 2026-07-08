@@ -1,0 +1,26 @@
+---
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: ".github/workflows"
+    schedule:
+      interval: "monthly"
+    commit-message:
+      prefix: "ci"
+    groups:
+      ci:
+        patterns:
+          - "*"
+
+  - package-ecosystem: "pip"
+    directory: "docker"
+    allow:
+      - dependency-type: "all"
+    schedule:
+      interval: "monthly"
+    commit-message:
+      prefix: "build"
+    groups:
+      pip:
+        patterns:
+          - "*"
