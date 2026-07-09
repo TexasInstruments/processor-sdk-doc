@@ -12,9 +12,9 @@ annotated-types==0.7.0
     # via pydantic
 babel==2.18.0
     # via sphinx
-certifi==2026.5.20
+certifi==2026.6.17
     # via requests
-charset-normalizer==3.4.7
+charset-normalizer==3.4.9
     # via requests
 docutils==0.22.4
     # via
@@ -90,9 +90,9 @@ sphinxcontrib-qthelp==2.0.0
     # via sphinx
 sphinxcontrib-serializinghtml==2.0.0
     # via sphinx
-typer==0.26.7
+typer==0.26.8
     # via rstcheck
-typing-extensions==4.15.0
+typing-extensions==4.16.0
     # via
     #   pydantic
     #   pydantic-core
