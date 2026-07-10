@@ -37,16 +37,25 @@ The AM62L Standby Mode configuration includes the following idle states:
      - Description
      - Latency
 
-   * - **cpu_sleep_0** (CPU Level)
+   * - **cpu_sleep_stby** (CPU Level)
      - Individual CPU WFI (Wait For Interrupt) state
      - Very Low (microseconds)
 
-   * - **cluster_sleep_0** (Low Latency Cluster standby)
-     - Cluster low-latency standby mode when all cores are idle, with reduced clock frequencies and non-critical power domains disabled
+   * - **cluster_sleep_stby** (Cluster standby)
+     - The default cluster standby mode when all cores are idle, with reduced clock frequencies and non-critical power domains disabled
      - Low (milliseconds)
 
-The configuration can be loaded from the device tree overlay :file:`k3-am62l3-evm-idle-states.dtso`, which defines
-these states and their power management characteristics.
+   * - **cluster_sleep_deep_stby*** (Cluster Deep Standby)
+     - Additional deep standby mode similar to cluster standby, with additional clock gating and power domain shutdown for more aggressive power savings.
+     - Low (milliseconds)
+
+.. note::
+
+   The ``cluster_sleep_deep_stby`` state is an optional configuration. Enable it using the device tree overlay
+   :file:`k3-am62l3-evm-idle-states.dtso`.
+
+   **Only enable deep standby when CPSW and Display drivers are not needed.**
+   See :ref:`deep-standby-mode` for more details.
 
 Power Domain Hierarchy
 ======================
@@ -57,36 +66,36 @@ how different power domains relate to each other:
 * **CPU_PD** (CPU Power Domain): Per-CPU power domain
 * **CLUSTER_PD** (Cluster Power Domain): Cluster-level power domain that groups multiple CPUs
 
-These power domains inform CPUIdle about which non-critical domains can be disabled when all cores within them are idle.
+These power domains tell CPUIdle what non-critical domains to disable when all cores within them are idle.
 
-.. note::
+.. _deep-standby-mode:
 
-   The device tree overlay also includes additional idle states for Suspend-to-Idle (S2Idle) functionality
-   that can be referred from :ref:`pm_s2idle_psci`.
-   The Standby Mode uses the **cpu_sleep_0** and **cluster_sleep_0** idle states, coordinated through the
-   **CPU_PD** and **CLUSTER_PD** power domain hierarchy.
+Deep Standby Mode
+=================
 
 Critical Prerequisites
-======================
+----------------------
 
-The AM62L Standby Mode implementation has important prerequisites that must be met for correct operation.
+The following prerequisites must be met before using AM62L deep standby mode.
 
 **CPSW (Gigabit Ethernet) Driver Suspension**
 
-The entry into Cluster level standby is conditional on CPSW driver being suspended, since hardware CRC errors
-occur when CPSW continues operation during cluster standby. The CPSW is an Always-On IP in the AM62L SoC.
+Deep standby entry requires suspending the CPSW driver. Deep standby reduces the CBASS clock
+frequency for power savings, which can cause the CPSW driver to malfunction with hardware CRC errors if it is actively driving traffic.
 
 **Display Driver Suspension**
 
-Similarly, the display driver must be in a suspended state for cluster standby due to frame buffer overflow issues.
-Ensure display is not actively driving output when testing or relying on Standby Mode for power savings.
+Similarly, the display driver must not drive output during deep standby. The DDR enters auto self-refresh
+mode during this state, which causes frame buffer overflow errors.
 
-.. warning::
+How to Enable Deep Standby Mode
+-------------------------------
 
-   Standby Mode only functions correctly when the DISPLAY and CPSW drivers are suspended. The device tree
-   overlay :file:`k3-am62l3-evm-idle-states.dtso` disables the CPSW driver to ensure this
-   condition is met. Do not override this configuration without understanding the implications for cluster
-   idle transitions and hardware stability.
+To enable deep standby mode, apply the device tree overlay :file:`k3-am62l3-evm-idle-states.dtso` to your system.
+See :ref:`howto_dt_overlays` for the steps to enable the overlay.
+
+This overlay adds the ``cluster_sleep_deep_stby`` idle state to the device tree configuration.
+The overlay also disables the CPSW and Display drivers to ensure that the system can safely enter deep standby.
 
 ***********************************************
 Power Sequencing and Cluster Standby Entry/Exit
@@ -97,7 +106,7 @@ When the all cores in a cluster become idle and AM62L system enters Standby Mode
 1. **Detection Phase**:
       - CPUIdle monitors per-CPU idle state transitions
       - Domain idle state manager tracks core idle status
-      - When all cores in a cluster are idle, cluster standby opportunity is identified
+      - When all cores in a cluster are idle, the system identifies a cluster standby opportunity
 
 2. **Coordination Phase**:
       - Linux CPUIdle framework signals cluster idle state via PSCI ``CPU_SUSPEND`` call
@@ -110,25 +119,47 @@ When the all cores in a cluster become idle and AM62L system enters Standby Mode
 
 4. **Standby Entry Phase**:
       - TF-A executes cluster standby entry sequence
-      - Reduces PLL clock frequencies for non-critical subsystems
-      - Disables non-critical power domains
-      - Puts DDR into auto-self-refresh mode
+      - Performs the hardware sequence as mentioned in :ref:`hardware-sequence-details`
       - System enters low-power standby state with reduced power consumption
 
 5. **Wake-Up Phase**:
       - Incoming interrupt(*any* interrupt can wake the system) triggers wake-up
-      - TF-A restores normal PLL frequencies and power domains
-      - DDR exits auto-self-refresh mode
+      - TF-A restores original PLL frequencies and power domains
       - Cores resume execution with minimal latency
       - System returns to active operation
+
+.. _hardware-sequence-details:
+
+*************************
+Hardware Sequence Details
+*************************
+
+The following table outlines the specific hardware sequences executed during standby and deep standby modes:
+
+.. list-table:: Hardware Sequences for Standby Modes
+   :widths: 30 70
+   :header-rows: 1
+
+   * - Mode
+     - Hardware Sequence Steps
+   * - **Shallow Standby Mode**
+     - * Disable GP Test, PBIST, and DEBUGSS LPSCs
+       * Disable DEBUGSS PLL HSDIV
+       * Enable auto-clock-gating for CBASS
+       * Put PLL8(A53 clock) in bypass
+   * - **Deep Standby Mode**
+     - * All default standby mode steps
+       * Reduce CBASS frequency to lowest functional value (125Mhz)
+       * Put DDR in auto self-refresh
+
+The 2 additional changes in deep standby mode (CBASS frequency reduction and DDR auto-self-refresh) result in significantly higher power savings compared to default standby mode.
 
 ***************************
 Monitoring Standby Activity
 ***************************
 
-Once Standby Mode is enabled, you can monitor idle state activity through the PM generic power domain (genpd)
-sysfs interface. The power domain names are derived from the PSCI power domain hierarchy defined in the device
-tree overlay.
+After enabling standby modes, the PM generic power domain (genpd) sysfs interface displays the idle state activity.
+The power domain names come from the PSCI power domain hierarchy in the device tree overlay.
 
 .. rubric:: CPU Idle Activity
 
@@ -144,8 +175,8 @@ To monitor per-CPU idle state usage:
 
 .. rubric:: Cluster Standby Activity (Recommended)
 
-To monitor cluster-level standby mode usage, which is the most useful metric for verifying that the system
-is successfully entering the low-latency standby mode when all cores are idle:
+The cluster-level standby mode usage metric is useful for verifying that the system
+is successfully entering standby mode. To check this value, issue the following:
 
 .. code-block:: console
 
