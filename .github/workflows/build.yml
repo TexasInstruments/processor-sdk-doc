@@ -1,4 +1,6 @@
 ---
+# yamllint disable rule:line-length
+
 name: "build"
 
 on:  # yamllint disable-line rule:truthy

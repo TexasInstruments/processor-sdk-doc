@@ -1,4 +1,6 @@
 ---
+# yamllint disable rule:line-length
+
 name: "check-files"
 
 on:  # yamllint disable-line rule:truthy

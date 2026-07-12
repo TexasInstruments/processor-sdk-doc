@@ -1,4 +1,6 @@
 ---
+# yamllint disable rule:line-length
+
 name: "component-owners"
 
 # It's insecure to use pull_request_target if you intend to check out code

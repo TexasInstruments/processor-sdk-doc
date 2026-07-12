@@ -1,4 +1,6 @@
 ---
+# yamllint disable rule:line-length
+
 name: "check_toc_txt"
 
 on:  # yamllint disable-line rule:truthy
