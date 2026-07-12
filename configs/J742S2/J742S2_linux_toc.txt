@@ -93,7 +93,6 @@ linux/Foundational_Components/Power_Management/pm_low_power_modes_socoff
 linux/Foundational_Components_Filesystem
 linux/Foundational_Components_Tools
 linux/Foundational_Components/Tools/Development_Tools
-linux/Foundational_Components/Tools/Flash_Tools
 linux/Foundational_Components/Tools/SysConfig_Tools
 linux/Foundational_Components/Tools/Code_Composer_Studio
 linux/Foundational_Components_IPC_J742S2

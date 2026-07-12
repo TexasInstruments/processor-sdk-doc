@@ -94,7 +94,6 @@ linux/Foundational_Components/System_Security/Security_overview
 linux/Foundational_Components_Filesystem
 linux/Foundational_Components_Tools
 linux/Foundational_Components/Tools/Development_Tools
-linux/Foundational_Components/Tools/Flash_Tools
 linux/Foundational_Components/Tools/SysConfig_Tools
 linux/Foundational_Components/Tools/Code_Composer_Studio
 linux/Foundational_Components_IPC_J721E
