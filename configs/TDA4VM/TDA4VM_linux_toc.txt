@@ -89,7 +89,6 @@ linux/Foundational_Components_Kernel_FAQs
 linux/Foundational_Components_Filesystem
 linux/Foundational_Components_Tools
 linux/Foundational_Components/Tools/Development_Tools
-linux/Foundational_Components/Tools/Flash_Tools
 linux/Foundational_Components/Tools/Pin_Mux_Tools
 linux/Foundational_Components/Tools/Code_Composer_Studio
 linux/Foundational_Components_IPC_J721E
