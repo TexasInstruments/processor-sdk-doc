@@ -73,10 +73,6 @@ structure by populating the structure and extracting the
 
 A typical flow to do OTP key writer lite is as follows:
 
-#. The cache has to be flushed after loading the binary blob into memory, so enable the config
-   CONFIG_CMD_CACHE=y in <path-to-tisdk>/board-support/<ti-u-boot-source-code>/configs/<device_defconfig>
-   and re-build uboot.
-
 #. Addr 0x82000000 is the dedicated address to store the generated
    key writer lite binary blob. Clear out 1Kb of memory starting
    from 0x82000000:
@@ -92,11 +88,10 @@ A typical flow to do OTP key writer lite is as follows:
 
        => fatload mmc 1:1 0x82000000 key_writer_lite_blob.bin
 
-#. Flush the cache.
+#. Read the memory address 0x82000000 to verify that you loaded the blob successfully.
 
     .. code-block:: text
 
-       => dcache flush
        => md 0x82000000
 
 #. Efuse modification requires a voltage to be applied on a specific pin (Vpp) during the programming.
