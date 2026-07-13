@@ -403,9 +403,20 @@ MCU GPIO
    `k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=12.00.00.07>`__
    overlay is loaded. Refer to :ref:`How to enable DT overlays<howto_dt_overlays>` for more details.
 
-   Once the system has entered Deep Sleep or MCU Only mode as shown in the
-   :ref:`LPM section<lpm_modes>`, wakeup from MCU_SPI0_D1 can be triggered
-   by grounding Pin 4 on J8 MCU Header.
+   .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX')
+
+      Once the system has entered Deep Sleep or MCU Only mode as shown in the
+      :ref:`LPM section<lpm_modes>`, wakeup from MCU_SPI0_D1 can be triggered
+      by grounding Pin 4 on J8 MCU Header.
+
+   .. ifconfig:: CONFIG_part_variant in ('AM62DX')
+
+      .. note::
+
+         AM62D EVM does not have any MCU GPIOs exposed. WKUP UART can be
+         configured as a MCU GPIO wakeup source by disabling the
+         target-module@2b300050 in :file:`k3-am62a-wakeup.dtsi`, and then
+         using the process as described in this section.
 
 *********
 WKUP GPIO
@@ -776,9 +787,19 @@ source by triggering a wake IRQ in Deep Sleep states.
       root@<machine>:~# grep wakeup /proc/interrupts
       531:          0          0          0          0   pinctrl 416 Edge      WKGPIO:wakeup
 
-   Once the system has entered Deep Sleep or MCU Only mode as shown in the
-   :ref:`LPM section<lpm_modes>`, wakeup from MAIN GPIO1_10 can be triggered
-   by grounding Pin 33 on J3 User Expansion Connector.
+   .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX')
+
+      Once the system has entered Deep Sleep or MCU Only mode as shown in the
+      :ref:`LPM section<lpm_modes>`, wakeup from MAIN GPIO1_10 can be triggered
+      by grounding Pin 33 on J3 User Expansion Connector.
+
+   .. ifconfig:: CONFIG_part_variant in ('AM62DX')
+
+      .. note::
+
+         AM62D EVM does not have any Main GPIOs exposed. Main UART4 can be
+         configured as a Main GPIO wakeup source by using the process as
+         described in this section.
 
 .. ifconfig:: CONFIG_part_variant in ('AM62LX')
 
