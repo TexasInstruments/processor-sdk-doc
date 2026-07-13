@@ -157,6 +157,7 @@ I/O Only Plus DDR
       .. code-block:: console
 
          root@<machine>:~# echo disabled > /sys/class/rtc/rtc0/device/power/wakeup
+         root@<machine>:~# echo disabled > /sys/bus/platform/drivers/alarmtimer/*/power/wakeup
          root@<machine>:~# echo disabled > /sys/bus/platform/devices/2800000.serial/power/wakeup
          root@<machine>:~# echo disabled > /sys/devices/platform/bus@f0000/f900000.dwc3-usb/power/wakeup
          root@<machine>:~# echo disabled > /sys/devices/platform/bus@f0000/f910000.dwc3-usb/power/wakeup
@@ -166,6 +167,7 @@ I/O Only Plus DDR
       .. code-block:: console
 
          root@<machine>:~# echo disabled > /sys/class/rtc/rtc0/device/power/wakeup
+         root@<machine>:~# echo disabled > /sys/bus/platform/drivers/alarmtimer/*/power/wakeup
          root@<machine>:~# echo disabled > /sys/bus/platform/devices/2800000.serial/power/wakeup
          root@<machine>:~# echo disabled > /sys/devices/platform/bus@f0000/f900000.usb/power/wakeup
          root@<machine>:~# echo disabled > /sys/devices/platform/bus@f0000/f910000.usb/power/wakeup
