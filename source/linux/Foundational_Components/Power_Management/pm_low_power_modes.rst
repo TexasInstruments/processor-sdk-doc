@@ -174,7 +174,7 @@ I/O Only Plus DDR
 
    .. rubric:: Then, configure PMIC register bit to turn off only selected rails for this mode.
 
-   .. ifconfig:: CONFIG_part_variant in ('AM62AX', 'AM62DX')
+   .. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
       .. code-block:: console
 
@@ -182,7 +182,7 @@ I/O Only Plus DDR
 
       The register write has been done to enable PMIC to enter `PMIC S2R <https://www.ti.com/lit/ug/slvucm3/slvucm3.pdf>`_ .
 
-   .. ifconfig:: CONFIG_part_variant in ('AM62PX')
+   .. ifconfig:: CONFIG_part_variant in ('AM62PX', 'AM62D')
 
       .. code-block:: console
 
