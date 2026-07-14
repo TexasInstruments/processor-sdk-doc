@@ -182,7 +182,7 @@ I/O Only Plus DDR
 
       The register write has been done to enable PMIC to enter `PMIC S2R <https://www.ti.com/lit/ug/slvucm3/slvucm3.pdf>`_ .
 
-   .. ifconfig:: CONFIG_part_variant in ('AM62PX', 'AM62D')
+   .. ifconfig:: CONFIG_part_variant in ('AM62D')
 
       .. code-block:: console
 
