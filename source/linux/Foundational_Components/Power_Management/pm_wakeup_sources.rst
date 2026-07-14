@@ -1033,6 +1033,14 @@ CAN I/O Daisy Chain
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX', 'AM62DX')
 
+   .. ifconfig:: CONFIG_part_variant in ('AM62DX')
+
+      .. important::
+
+         The CAN pins are NOT exposed on the AM62D EVM, so they are not
+         available for use as a physical wakeup source. However, to enter
+         :ref:`Partial I/O LPM<pm_partial_io>` CAN I/O needs to be enabled.
+
    CAN pins can be used to wake the system from any supported low power mode.
    To enable this, in the device tree configure a "wakeup" pinctrl state that sets
    the WKUP_EN flag (29th bit) on the desired padconfig register. This allows the
@@ -1068,7 +1076,7 @@ CAN I/O Daisy Chain
       is required for testing CAN wakeup. See
       :ref:`How to enable DT overlays<howto_dt_overlays>` for details.
 
-   .. ifconfig:: CONFIG_part_variant in ('AM62AX','AM62PX')
+   .. ifconfig:: CONFIG_part_variant in ('AM62AX', 'AM62PX', 'AM62DX')
 
       Either device tree overlay
       `k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=12.00.00.07>`__
