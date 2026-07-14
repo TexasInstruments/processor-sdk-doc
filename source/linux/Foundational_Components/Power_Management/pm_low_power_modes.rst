@@ -24,6 +24,8 @@ to highest power consumption):
 More details about the low power mode architecture can be found in
 :ref:`LPM constraints framework<pm_constraints_fwk>` section.
 
+.. _pm_partial_io:
+
 ***********
 Partial I/O
 ***********
