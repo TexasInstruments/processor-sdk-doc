@@ -1116,7 +1116,90 @@ Confirming the Wakeup event type
 
 .. ifconfig:: CONFIG_part_variant in ('AM62LX')
 
-   This is not applicable for AM62LX.
+   When the SoC wakes up from any low power mode, the Linux
+   ``k3_wkup_src_notify`` driver queries TF-A for the wake source, the pin
+   number that triggered the wakeup, and the last low power mode entered.
+
+   The ID of the wake source is reported from the
+   WKUP_CTRL_MMR_CFG5_WKUP0_SRC register which is found in the
+   `section "WKUP_CTRL_MMR_CFG5_WKUP0_SRC Register" of the TRM <https://www.ti.com/lit/ug/sprujb4a/sprujb4a.pdf>`__.
+
+   .. list-table:: Wakeup Sources
+      :widths: auto
+      :header-rows: 1
+
+      * - Wakeup Source
+        - Source ID
+
+      * - WKUP_I2C0
+        - 0x00001
+
+      * - WKUP_USART0
+        - 0x00002
+
+      * - WKUP_GPIO0
+        - 0x00004
+
+      * - WKUP_TIMER0
+        - 0x00020
+
+      * - WKUP_TIMER1
+        - 0x00040
+
+      * - WKUP_RTC0
+        - 0x00080
+
+      * - USB0_IN_BAND
+        - 0x00200
+
+      * - USB1_IN_BAND
+        - 0x00400
+
+      * - MAIN_IO_DAISY_CHAIN
+        - 0x10000
+
+      * - WKUP_IO_DAISY_CHAIN
+        - 0x20000
+
+      * - RTC I/O
+        - 0x40000
+
+   The low power mode ID is found in the
+   `TI TF-A ti_sci header <https://github.com/TexasInstruments/arm-trusted-firmware/blob/ti-tfa-2.14.y/drivers/ti/ti_sci/ti_sci.h#L287>`__.
+
+   .. list-table:: Low Power Modes
+      :widths: auto
+      :header-rows: 1
+
+      * - System Mode
+        - Mode ID
+
+      * - DeepSleep
+        - 0x0
+
+      * - RTC + IO + DDR
+        - 0x6
+
+      * - RTC Only
+        - 0x7
+
+      * - DSS + DeepSleep
+        - 0x8
+
+   The wakeup pin is found in the data sheet by converting the pin number from
+   hex to decimal and finding the corresponding PADCONFIG register.
+
+   This information is printed as part of the Linux suspend/resume log:
+
+   .. code-block:: console
+
+      CPU1 is up
+      k3_wkup_src_notify wkup-src-notify: wakeup source:0x10000, pin:0x6d, mode:0x0
+
+   In the above example, the wakeup source of 0x10000 is
+   ``MAIN_IO_DAISY_CHAIN``. The 0x6d pin refers to PADCONFIG109. This means the
+   cause of the wakeup event is ``UART0_RXD``. The mode of 0x0 is the last low
+   power mode entered which was DeepSleep.
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX', 'AM62DX')
 
@@ -1134,6 +1217,6 @@ Confirming the Wakeup event type
       [  249.471725] CPU3 is up
       [  249.472314] ti-sci 44043000.system-controller: ti_sci: wakeup source:0x80, pin:0x72, mode:0x1
 
-   In the above example, the wakeup source of 0x80 is MAIN_IO. The 0x72 pin refers
+   In the above example, the wakeup source of 0x80 is ``MAIN_IO``. The 0x72 pin refers
    to PADCONFIG114. This means the cause of the wakeup event is UART0_RXD. The
    mode of 0x1 is the last low power mode entered which was MCU_ONLY.
