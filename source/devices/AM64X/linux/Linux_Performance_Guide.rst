@@ -43,6 +43,8 @@ System Benchmarks
 CRYPTO
 ======
 
+.. _crypto-performance:
+
 Crypto Performance Comparison
 -----------------------------
 
