@@ -59,7 +59,11 @@ The following table lists some of the key Security Features:
   | **Crypto Acceleration** | Hardware driver support for cryptographic algorithms and  | :ref:`crypto-accelerator`               |
   | **and TRNG**            | hardware entropy based secure random number generation    |                                         |
   +-------------------------+-----------------------------------------------------------+-----------------------------------------+
-  | **Key Management**      | Tools for secure key provisioning                         | :ref:`key-writer-lite-label`            |
+  | **OTP Keywriter**       | Converts HS-FS to HS-SE device(with encryption support).  | :ref:`keywriter-label`                  |
+  |                         | Programs both public keys hash and symmetric keys         |                                         |
+  +-------------------------+-----------------------------------------------------------+-----------------------------------------+
+  | **OTP Keywriter Lite**  | Converts HS-FS to HS-SE Lite device(without encryption    | :ref:`key-writer-lite-label`            |
+  |                         | support). Programs only public keys hash                  |                                         |
   +-------------------------+-----------------------------------------------------------+-----------------------------------------+
   | **Secure Storage**      | Protection mechanisms for sensitive data                  | :ref:`secure-storage-with-rpmb`         |
   +-------------------------+-----------------------------------------------------------+-----------------------------------------+
