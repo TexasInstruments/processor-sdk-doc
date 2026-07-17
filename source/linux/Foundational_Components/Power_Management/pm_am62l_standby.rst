@@ -163,7 +163,7 @@ is being actively used during idle periods.
 Difference from System Sleep Modes
 **********************************
 
-Standby Mode is distinct from deeper system sleep modes like Deep Sleep or RTC-Only+DDR:
+Standby Mode is distinct from deeper system sleep modes like Deep Sleep or RTC + I/O + DDR:
 
 .. list-table:: Standby versus Deep Sleep Modes
    :widths: 25 35 40

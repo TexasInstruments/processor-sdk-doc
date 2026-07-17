@@ -259,7 +259,7 @@ Issues Resolved
    "`EXT_EP-13314 <https://sir.ext.ti.com/jira/browse/EXT_EP-13314>`_","AM62Lx Linux SDK documentation on CPSW XDP points to PRU-ICSSG XDP"
    "`EXT_EP-13315 <https://sir.ext.ti.com/jira/browse/EXT_EP-13315>`_","U-Boot: Enable caches for A53 SPL AM62l"
    "`EXT_EP-13145 <https://sir.ext.ti.com/jira/browse/EXT_EP-13145>`_","AM62L: Network stability issues"
-   "`EXT_EP-12979 <https://sir.ext.ti.com/jira/browse/EXT_EP-12979>`_","AM62L: Suspend-Resume (RTC+DDR): davinci_mdio timed out waiting for user access"
+   "`EXT_EP-12979 <https://sir.ext.ti.com/jira/browse/EXT_EP-12979>`_","AM62L: Suspend-Resume (RTC + I/O + DDR): davinci_mdio timed out waiting for user access"
 
 Issues Open
 -----------

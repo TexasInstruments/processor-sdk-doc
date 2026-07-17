@@ -50,7 +50,7 @@ The support status is indicated by the following codes:
    ,,WKUP UART,No
    ,Standby Low Power Mode,,Yes
    ,RTC Only,,SDK12.0
-   ,RTC + DDR,,Yes
+   ,RTC + I/O + DDR,,Yes
    ,Boot-time OPP configurations,,No
    ,Runtime Power Management,,Yes
    ,DFS/CPUFreq,,No

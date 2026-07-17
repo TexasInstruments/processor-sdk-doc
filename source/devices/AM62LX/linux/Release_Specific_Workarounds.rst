@@ -30,7 +30,7 @@ For rebuilding U-Boot and generating the new :file:`tispl.bin` follow :ref:`Buil
 This modifies :file:`plat/ti/k3/common/am62l_psci.c`, which is the new Power
 State Coordination Interface (PSCI) driver for AM62L in Arm Trusted Firmware.
 The :func:`am62l_pwr_domain_suspend` function will change the default system
-suspend mode from Deep Sleep to RTC Only + DDR.
+suspend mode from Deep Sleep to RTC + I/O + DDR.
 
 The default mode of 0 is the Deep Sleep state. Deep Sleep provides the lowest
 latency wake-up but also uses more power. The updated default mode of 6 is

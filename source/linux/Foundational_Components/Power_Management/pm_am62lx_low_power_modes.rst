@@ -16,7 +16,7 @@ Texas Instruments has added support for the following low power modes (ordered f
 to highest power consumption):
 
 #. RTC Only
-#. RTC Only Plus DDR
+#. RTC + I/O + DDR
 #. Deep Sleep
 
 RTC Only
@@ -80,27 +80,27 @@ During resume from RTC Only mode, the system goes through a normal Linux boot pr
 detects that the RTC is already programmed and skips the full initialization, performing only minimal
 cleanup to preserve the system time.
 
-RTC Only Plus DDR
-*****************
+RTC + I/O + DDR
+***************
 
 .. note::
 
    Please go through the s2idle docs to understand how to select between multiple low power modes.
    The steps and overall architecture/ sequence diagrams are documented in :ref:`pm_s2idle_psci`.
-   The default mode via s2idle is RTC Only Plus DDR, since it's the deepest.
+   The default mode using s2idle is RTC + I/O + DDR, since it's the deepest.
 
-   If regular [mem] interface is selected in `/sys/power/mem_sleep`, the RTC Only + DDR low power mode
+   If regular [mem] interface is selected in `/sys/power/mem_sleep`, the RTC + I/O + DDR low power mode
    requires special steps to enter. The steps are documented in :ref:`am62l_suspend_workarounds`.
 
-RTC Only + DDR mode is the deepest low power mode that allows the system to enter a state of lowest power consumption
+RTC + I/O + DDR mode is the deepest low power mode that allows the system to enter a state of lowest power consumption
 while still retaining the DDR RAM context.
 
 .. important::
 
-   Jumper J14 position on the EVM determines which low power mode is entered. For RTC Only + DDR mode,
+   Jumper J14 position on the EVM determines which low power mode is entered. For RTC + I/O + DDR mode,
    connect jumper J14 to the position marked as "RTC + DDR MODE" (different from RTC Only Mode).
 
-In order to enter RTC Only + DDR mode, first disable USB0 and USB1 as wakeup
+In order to enter RTC + I/O + DDR mode, first disable USB0 and USB1 as wakeup
 sources.
 
 .. code-block:: console
@@ -179,7 +179,7 @@ The following table summarizes the usage of memory in different modes of
 operation of the device.
 
 +--------+-------------+----------------------+------------------+------------+-------------------+
-| Domain | Memory      | Boot Operation       | Normal Operation | Deep Sleep | RTC Only + DDR    |
+| Domain | Memory      | Boot Operation       | Normal Operation | Deep Sleep | RTC + I/O + DDR   |
 +========+=============+======================+==================+============+===================+
 | WKUP   | TIFS SRAM   | TIFS load (144 KB)   | TIFS (144 KB)    | TIFS       | TIFS (144 KB)     |
 |        | (196 KB)    | + Sec ROM (20 KB)    |                  | (144 KB)   |                   |
