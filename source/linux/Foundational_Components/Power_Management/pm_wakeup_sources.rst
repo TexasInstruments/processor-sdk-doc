@@ -62,6 +62,8 @@ valid for given low power modes:
    +------------------------------------------------+------------+-----------------+----------+
    | Main I/O Daisy Chain (Main GPIO and Main UART) | Yes        | No              | No       |
    +------------------------------------------------+------------+-----------------+----------+
+   | WKUP I/O Daisy Chain                           | Yes        | Yes             | Yes      |
+   +------------------------------------------------+------------+-----------------+----------+
    | WKUP UART                                      | Yes        | No              | No       |
    +------------------------------------------------+------------+-----------------+----------+
    | USB Wakeup                                     | Yes        | No              | No       |
@@ -841,6 +843,51 @@ source by triggering a wake IRQ in DeepSleep states.
    Once the system has entered DeepSleep as shown in the
    :ref:`LPM section<lpm_modes>`, wakeup from MAIN GPIO0_90 can be triggered
    by pressing button SW5.
+
+************************
+WKUP I/O Daisy Chain
+************************
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX', 'AM62DX')
+
+   This wakeup source is not applicable for |__PART_FAMILY_DEVICE_NAMES__|.
+
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+   In low power states such as RTC + I/O + DDR or RTC Only, the entire SoC is
+   off except for RTC and RTC I/O pins. The controllers of the peripherals that
+   own the I/O pins are powered off, but I/O daisy chaining can be used to
+   wakeup the SoC.
+
+   At the hardware level, all the peripherals are connected to the pads. The pads
+   can be configured to allow for wakeup from the peripheral. Set the WKUP_EN pin
+   on the corresponding pad of the peripheral in order to enable I/O daisy
+   chaining.
+
+   To find which pins can be used for WKUP I/O daisy chain for certain low
+   power modes, refer to the "Power Modes" section of the TRM.
+
+WKUP UART I/O Daisy Chain
+=========================
+
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+   To demonstrate WKUP I/O daisy chain, the WKUP UART is used as an example.
+
+   Configure the WKUP UART to use I/O daisy chain by setting the WKUP_EN bit on
+   its corresponding padconfig. The padconfig address can be found in the
+   data sheet.
+
+   .. code-block:: console
+
+      root@am62lxx-evm:~# devmem2 0x4084000 w 0x20050000
+      /dev/mem opened.
+      Memory mapped at address 0xffff81001000.
+      Read at address  0x04084000 (0xffff81001000): 0x00054000
+      Write at address 0x04084000 (0xffff81001000): 0x20050000, readback 0x20050000
+
+   Enter the intended low power mode, then the system can wakeup from a keypress
+   on the WKUP UART (``/dev/ttyUSB2``).
 
 *********
 WKUP UART
