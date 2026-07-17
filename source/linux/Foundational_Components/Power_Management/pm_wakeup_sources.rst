@@ -66,7 +66,7 @@ valid for given low power modes:
    +------------------------------------------------+------------+-----------------+----------+
    | USB Wakeup                                     | Yes        | No              | No       |
    +------------------------------------------------+------------+-----------------+----------+
-   | RTC Ext Pin                                    | Yes        | Yes             | Yes      |
+   | RTC I/O                                        | Yes        | Yes             | Yes      |
    +------------------------------------------------+------------+-----------------+----------+
 
 *********************
@@ -282,32 +282,33 @@ For example, to wakeup from DeepSleep in 10 seconds, use the command like this:
 
       root@am62lxx-evm:~# rtcwake -m mem -s 10
       rtcwake: assuming RTC uses UTC ...
-      rtcwake: wakeup from "mem" using /dev/rtc0 at Thu Jan  1 00:00:46 1970
-      [   28.138624] PM: suspend entry (deep)
-      [   28.142400] Filesystems sync: 0.000 seconds
-      [   28.159141] Freezing user space processes
-      [   28.169800] Freezing user space processes completed (elapsed 0.002 seconds)
-      [   28.176909] OOM killer disabled.
-      [   28.180168] Freezing remaining freezable tasks
-      [   28.186015] Freezing remaining freezable tasks completed (elapsed 0.001 seconds)
-      [   28.193484] printk: Suspending console(s) (use no_console_suspend to debug)
-      ERROR:   Wake up src 0x10000
-      [   28.229712] Disabling non-boot CPUs ...
-      [   28.232172] psci: CPU1 killed (polled 0 ms)
-      [   28.233437] Enabling non-boot CPUs ...
-      [   28.233757] Detected VIPT I-cache on CPU1
-      [   28.233811] GICv3: CPU1: found redistributor 1 region 0:0x0000000001860000
-      [   28.233875] CPU1: Booted secondary processor 0x0000000001 [0x410fd034]
-      [   28.235241] CPU1 is up
-      [   28.257825] am65-cpsw-nuss 8000000.ethernet: set new flow-id-base 96
-      [   28.271845] am65-cpsw-nuss 8000000.ethernet eth0: PHY [8000f00.mdio:00] driver [TI DP83867] (irq=POLL)
-      [   28.271880] am65-cpsw-nuss 8000000.ethernet eth0: configuring for phy/rgmii-rxid link mode
-      [   28.285658] am65-cpsw-nuss 8000000.ethernet eth1: PHY [8000f00.mdio:01] driver [TI DP83867] (irq=POLL)
-      [   28.285678] am65-cpsw-nuss 8000000.ethernet eth1: configuring for phy/rgmii-rxid link mode
-      [   28.364033] OOM killer enabled.
-      [   28.367181] Restarting tasks ... done.
-      [   28.378392] random: crng reseeded on system resumption
-      [   28.384269] PM: suspend exit
+      rtcwake: wakeup from "mem" using /dev/rtc0 at Thu Jan  1 02:06:12 1970
+      [ 7534.555940] PM: suspend entry (deep)
+      [ 7534.559774] Filesystems sync: 0.000 seconds
+      [ 7534.568106] Freezing user space processes
+      [ 7534.580558] Freezing user space processes completed (elapsed 0.002 seconds)
+      [ 7534.587612] OOM killer disabled.
+      [ 7534.590854] Freezing remaining freezable tasks
+      [ 7534.596807] Freezing remaining freezable tasks completed (elapsed 0.001 seconds)
+      [ 7534.604258] printk: Suspending console(s) (use no_console_suspend to debug)
+      [ 7534.635925] Disabling non-boot CPUs ...
+      [ 7534.638135] psci: CPU1 killed (polled 4 ms)
+      [ 7534.640151] Enabling non-boot CPUs ...
+      [ 7534.700453] Detected VIPT I-cache on CPU1
+      [ 7534.700515] GICv3: CPU1: found redistributor 1 region 0:0x0000000001860000
+      [ 7534.700583] CPU1: Booted secondary processor 0x0000000001 [0x410fd034]
+      [ 7534.701870] CPU1 is up
+      [ 7534.703079] k3_wkup_src_notify wkup-src-notify: wakeup source:0x80, pin:0xff, mode:0x0
+      [ 7534.727317] am65-cpsw-nuss 8000000.ethernet: set new flow-id-base 96
+      [ 7534.741012] am65-cpsw-nuss 8000000.ethernet eth0: PHY [8000f00.mdio:00] driver [TI DP83867] (irq=POLL)
+      [ 7534.741893] am65-cpsw-nuss 8000000.ethernet eth0: configuring for phy/rgmii-rxid link mode
+      [ 7534.755579] am65-cpsw-nuss 8000000.ethernet eth1: PHY [8000f00.mdio:01] driver [TI DP83867] (irq=POLL)
+      [ 7534.756451] am65-cpsw-nuss 8000000.ethernet eth1: configuring for phy/rgmii-rxid link mode
+      [ 7534.841474] OOM killer enabled.
+      [ 7534.844637] Restarting tasks: Starting
+      [ 7534.850878] Restarting tasks: Done
+      [ 7534.854487] random: crng reseeded on system resumption
+      [ 7534.859927] PM: suspend exit
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX', 'AM62DX')
 
@@ -1096,19 +1097,115 @@ CAN I/O Daisy Chain
    mcu_mcan1 can be triggered by grounding Pin 22 or Pin 11 on J8 MCU
    Header, respectively.
 
-***********
-RTC Ext Pin
-***********
+*******
+RTC I/O
+*******
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX', 'AM62DX')
 
-   This is not applicable for |__PART_FAMILY_DEVICE_NAMES__|.
+   This wakeup source is not applicable for |__PART_FAMILY_DEVICE_NAMES__|.
 
 .. ifconfig:: CONFIG_part_variant in ('AM62LX')
 
-   To resume using RTC Ext pin wakeup, press the following button on the EVM:
+   RTC has four external I/O pins that can be used as GPIO pins to wakeup the
+   system.
 
-   .. image:: /images/am62l_lpm_wakeup_evm_pin.jpg
+   RTC I/O nodes are set up as GPIO nodes in the device tree. Refer to the
+   ``rtc_gpio0`` node in
+   `k3-am62l3-evm.dts <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62l3-evm.dts?h=ti-linux-6.18.y#n39>`__.
+
+   .. code-block:: dts
+
+      rtc_gpio0 {
+         compatible = "gpio-keys";
+         button-rtc0 {
+            label = "rtc_gpio_0";
+            wakeup-source;
+            linux,code = <KEY_WAKEUP>;
+            gpios = <&wkup_rtc0 0 GPIO_ACTIVE_LOW>;
+         };
+      };
+
+   Check :file:`/proc/interrupts` to see if RTC I/O pins have been set up
+   correctly.
+
+   .. code-block:: console
+
+      root@am62lxx-evm:~# cat /proc/interrupts | grep rtc_gpio
+      274:          0          0 ti-k3-rtc-gpio   0 Edge      rtc_gpio_0
+      275:          0          0 ti-k3-rtc-gpio   1 Edge      rtc_gpio_1
+      276:          0          0 ti-k3-rtc-gpio   2 Edge      rtc_gpio_2
+
+RTC I/O Pins 0 and 1
+====================
+
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+   Button SW8 on the EVM is routed to RTC I/O pins 0 and 1. To resume
+   using RTC I/O wakeup, press button SW8.
+
+   .. image:: /images/am62l_lpm_rtc_button.jpg
+      :width: 600px
+
+   Confirm that the RTC I/O pins woke the system up by checking if the IRQ count
+   increased in :file:`/proc/interrupts`.
+
+   .. code-block:: console
+
+      root@am62lxx-evm:~# cat /proc/interrupts | grep rtc_gpio
+      274:          1          0 ti-k3-rtc-gpio   0 Edge      rtc_gpio_0
+      275:          1          0 ti-k3-rtc-gpio   1 Edge      rtc_gpio_1
+      276:          0          0 ti-k3-rtc-gpio   2 Edge      rtc_gpio_2
+
+RTC I/O Pin 2
+=============
+
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+   The WKUP UART can be routed to RTC I/O pin 2 by doing the following in the
+   device tree:
+
+   * Disable WKUP UART wakeup by setting the ``wkup_uart0_interconnect`` node to
+     "disabled".
+   * Set the WKUP_EN bit on the WKUP UART pinctrl.
+   * Add the WKUP UART pinctrl to the RTC I/O node with GPIO number 2.
+
+   .. code-block:: dts
+
+      &wkup_uart0_interconnect {
+         status = "disabled";
+      };
+
+      wkup_uart0_pins_default: wkup-uart0-default-pins {
+         pinctrl-single,pins = <
+            AM62LX_IOPAD(0x0000, PIN_INPUT | PIN_WKUP_EN, 0) /* (Y22) WKUP_UART0_RXD */
+            AM62LX_IOPAD(0x0004, PIN_OUTPUT, 0) /* (AA23) WKUP_UART0_TXD */
+         >;
+      };
+
+      rtc_gpio2 {
+         compatible = "gpio-keys";
+         pinctrl-0 = <&wkup_uart0_pins_default>;
+         pinctrl-names = "default";
+         button-rtc2 {
+            label = "rtc_gpio_2";
+            wakeup-source;
+            linux,code = <KEY_WAKEUP>;
+            gpios = <&wkup_rtc0 2 GPIO_ACTIVE_HIGH>;
+         }
+      };
+
+   Wakeup the system with a keypress on the WKUP UART (``/dev/ttyUSB2``).
+
+   Confirm that the RTC I/O pin woke the system up by checking if the IRQ count
+   of ``rtc_gpio_2`` has increased in :file:`/proc/interrupts`.
+
+   .. code-block:: console
+
+      root@am62lxx-evm:~# cat /proc/interrupts | grep rtc_gpio
+      274:          0          0 ti-k3-rtc-gpio   0 Edge      rtc_gpio_0
+      275:          0          0 ti-k3-rtc-gpio   1 Edge      rtc_gpio_1
+      276:          1          0 ti-k3-rtc-gpio   2 Edge      rtc_gpio_2
 
 ********************************
 Confirming the Wakeup event type
