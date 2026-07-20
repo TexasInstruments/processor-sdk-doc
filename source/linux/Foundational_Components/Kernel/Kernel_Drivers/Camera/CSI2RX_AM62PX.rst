@@ -152,11 +152,6 @@ different sensor-supported resolutions like 480p, 720p etc.
 
 You can also run mosaic camera to display stream from 4 OV5640 connected to the SK-AM62P using V3Link fusion mini board.
 
-.. note::
-
-   Arm neon accelerated TI elements for video mosaicing and color format conversion namely ``timosaic`` and ``ticolorconvert`` are not present in AM62P SDK 11.00.
-   To run the below pipeline, AM62P SDK 10.01 should be used with the SDK 11.00 kernel installed from `here <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/log/?h=ti-linux-6.12.y>`__.
-
 .. code-block:: console
 
    $ gst-launch-1.0 \
