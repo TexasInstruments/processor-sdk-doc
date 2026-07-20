@@ -1,14 +1,16 @@
 .. _TI-Apps-Launcher-User-Guide-label:
 
+#############################
 TI Apps Launcher - User Guide
-=============================
+#############################
 
 The TI Apps Launcher uses the Qt framework. The SDK also supports other modern UI toolkits,
 such as Flutter and Slint. For instructions on building applications with these frameworks,
 see the :ref:`GUI_Frameworks_User_Guide`.
 
+********
 Overview
---------
+********
 
 TI Apps Launcher is a QT Based Application launcher for TI Platforms. Currently, TI Apps Launcher incorporates following applications across all supported platforms,
 
@@ -40,8 +42,9 @@ All of the necessary equipment requirement and instructions are provided here.
 
    Not all of the above set of applications are supported by each platform. So there will be differences between each.
 
+**********************
 Hardware Prerequisites
-----------------------
+**********************
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
@@ -63,8 +66,9 @@ Hardware Prerequisites
 
 -  SD card (minimum 32GB)
 
+****************************************
 Launching and Using the TI Apps Launcher
-----------------------------------------
+****************************************
 
 The TI Apps Launcher launches on Linux startup. Follow the below instructions to use it.
 
@@ -102,7 +106,7 @@ The TI Apps Launcher launches on Linux startup. Follow the below instructions to
       :height: 400
 
 Launching the Industrial HMI
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+============================
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
@@ -128,7 +132,7 @@ Launching the Industrial HMI
 
 
 Launching the Camera App
-^^^^^^^^^^^^^^^^^^^^^^^^
+========================
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
@@ -204,7 +208,7 @@ Launching the Camera App
 
 
 Launching the ARM Analytics Demo
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+================================
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
 
@@ -231,7 +235,7 @@ Launching the ARM Analytics Demo
 
 
 Launching the Benchmarks Demo
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+=============================
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
@@ -261,7 +265,7 @@ Launching the Benchmarks Demo
 
 
 Launching the GPU Performance Demo
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+==================================
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
@@ -290,7 +294,7 @@ Launching the GPU Performance Demo
    4. You will see the updated values of FPS & Score metrices getting populated in the table.
 
 Launching the Seva Store
-^^^^^^^^^^^^^^^^^^^^^^^^
+========================
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
 
@@ -308,7 +312,7 @@ Launching the Seva Store
       :height: 400
 
 Launching the Chromium Browser
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+==============================
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
 
@@ -333,7 +337,7 @@ Launching the Chromium Browser
 3. Refer :ref:`Chromium_Browser-label` to know more about Chromium Browser.
 
 Launching the 3D Demo
-^^^^^^^^^^^^^^^^^^^^^
+=====================
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
 
@@ -357,7 +361,7 @@ Launching the 3D Demo
       This section is not valid for this platform.
 
 Using the Settings Button
-^^^^^^^^^^^^^^^^^^^^^^^^^
+=========================
 
 1. The Settings button on the left panel can be used to set docker's systemd-proxy and system proxy if your SK-EVM is connected to a VPN.
 
@@ -370,7 +374,7 @@ Using the Settings Button
 
 
 Using terminal
-^^^^^^^^^^^^^^
+==============
 
 .. ifconfig:: CONFIG_sdk in ('SITARA')
 
@@ -385,7 +389,7 @@ Using terminal
    This section is not applicable for this platform.
 
 Using Wi-Fi Demo
-^^^^^^^^^^^^^^^^
+================
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX')
 
@@ -424,7 +428,7 @@ Using Wi-Fi Demo
 
 
 Power Menu
-^^^^^^^^^^
+==========
 
 1. The top right corner of the TI Apps Launcher is dedicated for the Power Menu.
 
@@ -442,8 +446,9 @@ Power Menu
     .. Image:: /images/ti-apps-launcher-powermenu2.png
        :height: 400
 
+**************************
 Compiling TI Apps Launcher
---------------------------
+**************************
 
 The ideal way to compile TI Apps Launcher is to trigger a Yocto
 build. But for a quicker way to do it, especially during development,
