@@ -202,7 +202,7 @@ should resume from where it left (as long as the sensor supports it).
 CSI2RX testing details
 ======================
 
-Following sensors and daughter cards have been tested with the SDK 12.00.00.07.04
+Following sensors and daughter cards have been tested with the SDK 12.01
 
 .. csv-table:: Sensor
    :header: "Sensor","Media Bus Format","Video Format","Resolution"
