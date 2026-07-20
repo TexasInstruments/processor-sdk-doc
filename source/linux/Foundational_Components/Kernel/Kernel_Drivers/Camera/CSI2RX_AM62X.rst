@@ -159,6 +159,20 @@ should resume from where it left (as long as the sensor supports it).
 
    Only TEVI OV5640 and IMX219 are known to work reliably when system is suspended with capture running.
 
+Embedded Data
+=============
+
+You can set up the media pipeline to route the embedded data stream coming from the IMX219 camera
+sensor to one of the ``/dev/videoX`` nodes and capture embedded data frames.
+
+For example, route the video data to ``/dev/video0`` and embedded data to ``/dev/video1``,
+then use the :command:`yavta` tool provided in the SDK to capture five frames of embedded data with
+the following command.
+
+.. code-block:: console
+
+   $ yavta -s 1920x2 -f GENERIC_8 -c5 /dev/video1 -Femb-frame-#.bin
+
 
 CSI2RX testing details
 ======================
