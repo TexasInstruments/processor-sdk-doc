@@ -27,6 +27,7 @@ Zink
 [Dd]unfell
 [Ee]thernet
 [Ff]ramebuffer
+[Kk]eywriter
 [Kk]irkstone
 [Mm]ulticast
 [Ss]carthgap
