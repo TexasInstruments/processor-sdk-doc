@@ -13,7 +13,7 @@ valid for given low power modes:
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
    +------------------------------------------------+------------+----------+-------------+
-   |  Wakeup Source                                 | Deep Sleep | MCU Only | Partial I/O |
+   |  Wakeup Source                                 | DeepSleep | MCU Only | Partial I/O |
    +================================================+============+==========+=============+
    | Real-Time Clock (RTC)                          | Yes        | Yes      | No          |
    +------------------------------------------------+------------+----------+-------------+
@@ -54,7 +54,7 @@ valid for given low power modes:
 .. ifconfig:: CONFIG_part_variant in ('AM62LX')
 
    +------------------------------------------------+------------+-----------------+----------+
-   |  Wakeup Source                                 | Deep Sleep | RTC + I/O + DDR | RTC Only |
+   |  Wakeup Source                                 | DeepSleep | RTC + I/O + DDR | RTC Only |
    +================================================+============+=================+==========+
    | Real-Time Clock (RTC)                          | Yes        | Yes             | Yes      |
    +------------------------------------------------+------------+-----------------+----------+
@@ -91,7 +91,7 @@ It's possible to use the SoC's internal RTC to wakeup the system using the comma
    - Perform a dry run to wakeup the computer at a given time. (Press Ctrl + C to abort):
       rtcwake -m on --date {{hh:ss}}
 
-For example, to wakeup from Deep Sleep in 10 seconds, use the command like this:
+For example, to wakeup from DeepSleep in 10 seconds, use the command like this:
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
@@ -382,7 +382,7 @@ MCU GPIO
         `wakeup-source <https://www.kernel.org/doc/Documentation/devicetree/bindings/power/wakeup-source.txt>`__
         property describes devices which have wakeup capability.
 
-   5. To confirm that gpio_keys can wakeup the system from Deep Sleep or MCU
+   5. To confirm that gpio_keys can wakeup the system from DeepSleep or MCU
       Only mode, check :file:`/proc/interrupts` for the label:
 
       .. code-block:: console
@@ -390,10 +390,10 @@ MCU GPIO
          root@<machine>:~# cat /proc/interrupts | grep "MCUGPIO"
          273:          0          0          0          0      GPIO  4 Edge    -davinci_gpio  MCUGPIO
 
-      This indicates that gpio_keys can wake-up the system from Deep Sleep or MCU Only mode.
+      This indicates that gpio_keys can wake-up the system from DeepSleep or MCU Only mode.
 
-   The MCU GPIOs can be used to wakeup the system from Deep Sleep because MCU
-   GPIOs are in a power domain that stays ON even when the SoC is in Deep Sleep.
+   The MCU GPIOs can be used to wakeup the system from DeepSleep because MCU
+   GPIOs are in a power domain that stays ON even when the SoC is in DeepSleep.
    Hence, the GPIO controller is able to act as a wakeup source and send a
    wakeup interrupt to the Device Manager. To understand the role of Device
    Manager, refer to
@@ -405,7 +405,7 @@ MCU GPIO
 
    .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX')
 
-      Once the system has entered Deep Sleep or MCU Only mode as shown in the
+      Once the system has entered DeepSleep or MCU Only mode as shown in the
       :ref:`LPM section<lpm_modes>`, wakeup from MCU_SPI0_D1 can be triggered
       by grounding Pin 4 on J8 MCU Header.
 
@@ -514,7 +514,7 @@ chaining is used in order to wakeup the SoC from peripherals that are connected
 to powered-off controllers. At the hardware level, all the pads in an SoC are
 pinmuxed to dedicated controllers like UART or GPIO.
 
-For example, to wakeup the system from Deep Sleep via a key press on Main UART
+For example, to wakeup the system from DeepSleep via a key press on Main UART
 (used for Linux console logs), then simply configuring the Main UART
 controller as a wakeup source wouldn't work. This is because the UART
 controller is powered off and wouldn't be able to register any key press as
@@ -530,7 +530,7 @@ Daisy Chaining section in the TRM.
    .. note::
 
       |__PART_FAMILY_DEVICE_NAMES__| supports the ability to wakeup using pad
-      based wake event ONLY in Deep Sleep or MCU Only Mode. During active
+      based wake event ONLY in DeepSleep or MCU Only Mode. During active
       system usage, even if the wake_enable bit is set the system will be
       unresponsive to any wakeup activity on that pad.
 
@@ -539,7 +539,7 @@ Daisy Chaining section in the TRM.
    .. note::
 
       |__PART_FAMILY_DEVICE_NAMES__| supports the ability to wakeup using pad
-      based wake event ONLY in Deep Sleep. During active system usage, even if
+      based wake event ONLY in DeepSleep. During active system usage, even if
       the wake_enable bit is set the system will be unresponsive to any wakeup
       activity on that pad.
 
@@ -745,7 +745,7 @@ Main GPIO
 Configuring Main GPIO as an I/O daisy chain wakeup source requires a
 combination of gpio-keys with a chained IRQ in the pinctrl driver. Setting the
 29th bit in the desired padconfig register, allows the pad to act as a wakeup
-source by triggering a wake IRQ in Deep Sleep states.
+source by triggering a wake IRQ in DeepSleep states.
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX', 'AM62DX')
 
@@ -773,7 +773,7 @@ source by triggering a wake IRQ in Deep Sleep states.
    interrupts-extended entry. The wake IRQ framework in Linux works so that the
    second entry gets marked as a wakeup source, and then the pinctrl driver is
    informed that the pad, 0x1a0 in this case, is to be configured as a wakeup
-   pad when system enters Deep Sleep.
+   pad when system enters DeepSleep.
 
    Main GPIO wakeup can only be tested when
    `k3-am62x-sk-lpm-wkup-sources.dtso <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-wkup-sources.dtso?h=12.00.00.07>`__
@@ -789,7 +789,7 @@ source by triggering a wake IRQ in Deep Sleep states.
 
    .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX')
 
-      Once the system has entered Deep Sleep or MCU Only mode as shown in the
+      Once the system has entered DeepSleep or MCU Only mode as shown in the
       :ref:`LPM section<lpm_modes>`, wakeup from MAIN GPIO1_10 can be triggered
       by grounding Pin 33 on J3 User Expansion Connector.
 
@@ -827,7 +827,7 @@ source by triggering a wake IRQ in Deep Sleep states.
    interrupts-extended entry. The wake IRQ framework in Linux works so that the
    second entry gets marked as a wakeup source, and then the pinctrl driver is
    informed that the pad, 0x1ac in this case, is to be configured as a wakeup
-   pad when system enters Deep Sleep.
+   pad when system enters DeepSleep.
 
    To use main_gpio as a wakeup source, ensure gpio is a wake-irq in
    :file:`/proc/interrupts`:
@@ -837,7 +837,7 @@ source by triggering a wake IRQ in Deep Sleep states.
       root@<machine>:~# grep wakeup /proc/interrupts
       299:          0          0   pinctrl 428 Edge      User Key:wakeup
 
-   Once the system has entered Deep Sleep as shown in the
+   Once the system has entered DeepSleep as shown in the
    :ref:`LPM section<lpm_modes>`, wakeup from MAIN GPIO0_90 can be triggered
    by pressing button SW5.
 

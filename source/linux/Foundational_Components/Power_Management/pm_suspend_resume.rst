@@ -450,8 +450,8 @@ value provided in the ``ddr3_vtt_toggle_default`` pinctrl entry.
       ...
    };
 
-Deep Sleep Voltage Scaling
---------------------------
+DeepSleep Voltage Scaling
+-------------------------
 
 It is possible to scale the voltages on both the MPU and CORE supply
 rails down to 0.95V while we are in DeepSleep once powerdomains are shut
@@ -459,7 +459,7 @@ off. The i2c sequences needed to scale voltage vary from board to board
 and are dependent on which PMIC is in use, so we use board specific
 binaries that are passed to the CM3 firmware to define the sequences
 needed during the sleep and wake paths. The CM3 firmware is then able to
-write these sequences out at the proper location in the Deep Sleep path
+write these sequences out at the proper location in the DeepSleep path
 on i2c0.
 
 The CM3 firmware at

@@ -8,10 +8,10 @@ S/W Architecture of System Suspend
 Overview
 ********
 
-TI AM62 family of devices support multiple Suspend-to-RAM modes, including Deep Sleep
+TI AM62 family of devices support multiple Suspend-to-RAM modes, including DeepSleep
 and MCU Only as described in :ref:`Low Power Modes<lpm_modes>` section.
 The SoC consumes very low power overall yet it is not completely shut off in these modes.
-For example, during Deep Sleep, certain IPs
+For example, during DeepSleep, certain IPs
 (depending on the power domain to which then belong) will lose context on suspend.
 S/W should save and restore the context as required across state transitions. DDR is in self-
 refresh to allow context saving.
@@ -27,11 +27,11 @@ System diagram and components
 .. Image:: /images/AM62x_Deep_Sleep_Flow.png
 
 
-Above diagram has software sequence for how Deep Sleep (ie. Suspend to RAM) works on
+Above diagram has software sequence for how DeepSleep (ie. Suspend to RAM) works on
 SK-AM62 ( Read more on the Starter Kit `here <https://www.ti.com/tool/SK-AM62>`__ ).
 
-Deep Sleep Entry
-================
+DeepSleep Entry
+===============
 
 #. The user first instructs the system to suspend. This triggers a suspend
    sequence from Linux side (which runs on the A53 cluster of the SoC).
@@ -46,7 +46,7 @@ Deep Sleep Entry
    suspend call. Read more about PSCI `here <https://developer.arm.com/Architectures/Power%20State%20Coordination%20Interface>`__
 
 #. At this point only ATF is running on A53 cores and it does the job of
-   sending a TISCI Message to the TIFS Core telling it to enter Deep Sleep
+   sending a TISCI Message to the TIFS Core telling it to enter DeepSleep
    and then it puts A53 into standby.
 
 #. The TIFS Core then encrypts and writes the contents of it's own SRAM to DDR.
@@ -54,7 +54,7 @@ Deep Sleep Entry
 #. Further it stops tick timer, disables interrupts that are not needed, and suspends local drivers.
    After the above steps it sends TISCI To DM for Suspend Finish and enters WFI.
 
-#. The DM (Device Manager) is the final entity in this entire Deep Sleep sequence. It does the following:
+#. The DM (Device Manager) is the final entity in this entire DeepSleep sequence. It does the following:
 
    a. Saves own context to DDR
    b. Disables Security IP LPSCs, such as LPSC_SAUL.
@@ -81,8 +81,8 @@ Deep Sleep Entry
    DM in WFI will basically wait for the configured wakeup source to trigger
    an interrupt that will act as the wakeup signal.
 
-Deep Sleep Exit
-===============
+DeepSleep Exit
+==============
 
 #. External async wakeup from wake source triggers the DM to resume.
 #. The DM brings MAIN Domain out of reset.
@@ -213,15 +213,15 @@ Otherwise, the mode selection is done as described below:
 
 Above diagram shows the mode selection if constraints are set on MCU_WAKEUP devgroup devices.
 As shown, if the constraints are set on WAKEUP Domain devices or Always ON MCU domain devices,
-Deep Sleep mode will be selected. Otherwise, MCU Only mode will be selected.
+DeepSleep mode will be selected. Otherwise, MCU Only mode will be selected.
 
 If constraint is put on MAIN devgroup devices, then no low power mode is possible.
 
 .. important::
 
    USB devices are an exception in MAIN devgroup as there is extra hardware logic preventing
-   reset of USB devices in Deep Sleep and MCU Only mode.
-   If constraints are set on USB devices, Deep Sleep mode will be selected even though it's
+   reset of USB devices in DeepSleep and MCU Only mode.
+   If constraints are set on USB devices, DeepSleep mode will be selected even though it's
    technically part of MAIN devgroup.
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')

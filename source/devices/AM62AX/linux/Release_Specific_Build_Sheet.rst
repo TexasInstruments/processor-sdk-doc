@@ -43,8 +43,8 @@ The support status is indicated by the following codes:
    ,,PRG,No
    ,,PGD,No
    ,,VTM,Yes
-   Power MaNAgement,Deep Sleep Low Power Mode  ,,Yes
-   ,Deep Sleep LPM Wakeup Events,RTC Timer,Yes
+   Power MaNAgement,DeepSleep Low Power Mode  ,,Yes
+   ,DeepSleep LPM Wakeup Events,RTC Timer,Yes
    ,,GT Timers,No
    ,,WKUP UART,Yes
    ,,I2C,No

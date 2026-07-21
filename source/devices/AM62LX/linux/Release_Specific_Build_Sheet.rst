@@ -39,8 +39,8 @@ The support status is indicated by the following codes:
    ,,eMMC (UHS),Yes
    ,UART Bootloader Operation,,Yes
    Device Configuration,VTM,,Yes
-   Power Management,Deep Sleep Low Power Mode,,Yes
-   ,Deep Sleep LPM Wakeup Events,RTC Timer,Yes
+   Power Management,DeepSleep Low Power Mode,,Yes
+   ,DeepSleep LPM Wakeup Events,RTC Timer,Yes
    ,,GT Timers,No
    ,,I/O Daisy Chain,Yes
    ,,I2C,No

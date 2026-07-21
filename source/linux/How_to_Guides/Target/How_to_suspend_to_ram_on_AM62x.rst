@@ -1,5 +1,5 @@
-How to Suspend to RAM (Deep Sleep) on AM62x
-============================================
+How to Suspend to RAM (DeepSleep) on AM62x
+==========================================
 
 No special steps like using a custom device tree are required.
 Low Power Modes work out-of-the box from this SDK release onwards.

@@ -85,7 +85,7 @@ transition to the selected state.
     This automated process happens continuously during system operation, seamlessly
     transitioning between active and idle states to save power whenever possible.
 
-    .. rubric:: Standby vs. Deep Sleep: Understanding the Difference
+    .. rubric:: Standby vs. DeepSleep: Understanding the Difference
 
     It's important to distinguish between the lightweight "standby" provided by CPUIdle and deeper sleep states:
 
@@ -97,7 +97,7 @@ transition to the selected state.
       - All peripherals remain operational
       - Perfect for normal "idle" periods
 
-    **Deep Sleep Modes**:
+    **DeepSleep Modes**:
       - System-wide power saving
       - Slower entry and exit (milliseconds to seconds)
       - Requires explicit software requests

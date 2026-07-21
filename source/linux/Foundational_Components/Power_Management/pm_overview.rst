@@ -62,7 +62,7 @@ supported by the Linux kernel.
 
    #. Partial I/O
    #. I/O Only Plus DDR
-   #. Deep Sleep
+   #. DeepSleep
    #. MCU Only Mode
 
 .. ifconfig:: CONFIG_part_variant in ('AM62LX')
@@ -71,4 +71,4 @@ supported by the Linux kernel.
 
    #. RTC Only
    #. RTC + I/O + DDR
-   #. Deep Sleep
+   #. DeepSleep

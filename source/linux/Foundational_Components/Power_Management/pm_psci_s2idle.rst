@@ -260,9 +260,9 @@ In the context of **s2idle**, if the OS determines that all constraints are met 
 the last active CPU (Last Man) will invoke `CPU_SUSPEND` with this parameter. The PSCI firmware then
 coordinates the final steps to suspend the system (e.g., placing DDR in self-refresh and powering down the SoC).
 
-**************************
-S2Idle vs Deep Sleep (mem)
-**************************
+*************************
+S2Idle vs DeepSleep (mem)
+*************************
 
 Linux provides two distinct system sleep states accessible via :file:`/sys/power/mem_sleep`:
 **s2idle (freeze)** and **deep (mem)**. While both can achieve similar power savings by suspending devices
@@ -321,7 +321,7 @@ Context loss considerations
 ===========================
 
 On TI K3 platforms with OSI mode enabled, s2idle can dynamically enter deep power states
-(standby, Deep Sleep, RTC + I/O + DDR) that power down the MAIN domain. This creates a hybrid scenario:
+(standby, DeepSleep, RTC + I/O + DDR) that power down the MAIN domain. This creates a hybrid scenario:
 
 - **s2idle behavior**: no CPU hotplug, interrupt-driven wakeup
 - **Hardware reality**: GIC and system peripherals lose power and context
@@ -488,7 +488,7 @@ power/latency trade-offs. The key states are:
 
 **System-Level Idle States (Main Domain):**
 
-* **main_sleep_deep (Deep Sleep)**: DDR in self-refresh, more peripherals remain powered for faster resume
+* **main_sleep_deep (DeepSleep)**: DDR in self-refresh, more peripherals remain powered for faster resume
 
   * ``arm,psci-suspend-param = <0x2012235>``
   * Entry latency: 250ms
@@ -533,14 +533,14 @@ Parameter: ``0x2012235`` and ``0x2012234``
 - **Power Level = 2 (System)**: The entire system, including the SoC, enters a low-power state
 - **State Type = 1 (Power Down)**: Context is lost; firmware must restore state on resume
 - **State ID = 0x2235**: Platform-specific identifier that the PSCI firmware (TF-A) recognizes
-  as "Deep Sleep" mode where DDR is in Self-Refresh and more peripherals in the Main domain
+  as "DeepSleep" mode where DDR is in Self-Refresh and more peripherals in the Main domain
   remain powered compared to RTC + I/O + DDR mode, providing faster resume at the cost of higher power
 - **State ID = 0x2234**: Platform-specific identifier for "RTC + I/O + DDR" mode where DDR is in
   Self-Refresh and only minimal peripherals (RTC, I/O retention) remain powered in the Main
   domain, providing maximum power savings at the cost of longer resume latency
 
 The cpuidle governor uses these latency and residency values to automatically select the appropriate
-mode. If predicted idle time is short and latency constraints are tight, Deep Sleep mode (the
+mode. If predicted idle time is short and latency constraints are tight, DeepSleep mode (the
 shallower state) is chosen for faster resume. For longer predicted idle periods with relaxed
 latency requirements, RTC + I/O + DDR mode (the deeper state) is preferred for maximum power savings.
 
@@ -585,7 +585,7 @@ Here's how it would look like: (The testqos.c program is shown further below, wh
    Released.
 
 The value ``0x7a120`` (500,000 μs = 500ms) allows all CPU-level idle states. At the system domain
-level, Deep Sleep (350ms total: 250ms entry + 100ms exit) is allowed while RTC + I/O + DDR (900ms total:
+level, DeepSleep (350ms total: 250ms entry + 100ms exit) is allowed while RTC + I/O + DDR (900ms total:
 300ms entry + 600ms exit) is blocked.
 
 **Selecting Specific Low-Power Modes using /dev/cpu_wakeup_latency:**
@@ -594,7 +594,7 @@ To force selection of a specific mode, set the QoS constraint strategically base
 latencies of the available states. The latency value must be provided as a **hex string**
 (e.g., "0x7a120").
 
-* **To force Deep Sleep mode**: Set constraint above Deep Sleep's total latency
+* **To force DeepSleep mode**: Set constraint above DeepSleep's total latency
   (250ms entry + 100ms exit = **350ms**) but below RTC + I/O + DDR's total latency
   (300ms entry + 600ms exit = **900ms**). For example, use **500,000 μs** (500ms):
 
@@ -606,17 +606,17 @@ latencies of the available states. The latency value must be provided as a **hex
 
   **Calculation:**
 
-  - Target latency: 500,000 μs (above Deep Sleep's total 350,000 μs; below RTC + I/O + DDR's total 900,000 μs)
+  - Target latency: 500,000 μs (above DeepSleep's total 350,000 μs; below RTC + I/O + DDR's total 900,000 μs)
   - Convert to hex: 500,000₁₀ = 0x7A120₁₆
   - Write as hex string: ``"0x7a120"``.
-  - This allows Deep Sleep (350,000 μs total latency) but blocks RTC + I/O + DDR (900,000 μs total latency)
+  - This allows DeepSleep (350,000 μs total latency) but blocks RTC + I/O + DDR (900,000 μs total latency)
 
 * **To allow RTC + I/O + DDR mode**: Set constraint higher than 900ms (900,000 μs = 300ms entry + 600ms exit)
   or don't apply any constraint, allowing the cpuidle governor to select the deepest state (RTC + I/O + DDR)
   during long idle periods.
 
 
-**Example: Deep Sleep Mode Selection:**
+**Example: DeepSleep Mode Selection:**
 
 Consider a scenario where the QoS constraint is set to 500ms (500,000 μs):
 
@@ -626,10 +626,10 @@ Consider a scenario where the QoS constraint is set to 500ms (500,000 μs):
    ├─> main_sleep_rtcddr: total = 300ms + 600ms = 900,000 μs → REJECTED (exceeds 500ms constraint)
    └─> main_sleep_deep:   total = 250ms + 100ms = 350,000 μs → SELECTED (meets 500ms constraint)
 
-   Result: System enters Deep Sleep mode instead of RTC + I/O + DDR mode
+   Result: System enters DeepSleep mode instead of RTC + I/O + DDR mode
 
 In this example, even though RTC + I/O + DDR provides better power savings, the 500ms constraint is below
-RTC + I/O + DDR's 900ms total latency, so the system uses Deep Sleep instead. The selection is between the
+RTC + I/O + DDR's 900ms total latency, so the system uses DeepSleep instead. The selection is between the
 two main domain idle states defined for s2idle suspend.
 
 **Setting CPU wakeup latency constraints from user space:**

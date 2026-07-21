@@ -18,7 +18,7 @@ to highest power consumption):
 
 #. Partial I/O
 #. I/O Only Plus DDR
-#. Deep Sleep
+#. DeepSleep
 #. MCU Only
 
 More details about the low power mode architecture can be found in
@@ -224,11 +224,11 @@ I/O Only Plus DDR
 
       The system will enter I/O Only plus DDR mode only if DM selects it based on existing constraints.
 
-**********
-Deep Sleep
-**********
+*********
+DeepSleep
+*********
 
-Deep Sleep AKA Suspend-to-RAM is a low-power mode that allows an embedded device
+DeepSleep AKA Suspend-to-RAM is a low-power mode that allows an embedded device
 to retain its state in RAM while the processor is turned off.
 This can save a significant amount of power, especially in devices that are
 battery-powered.
@@ -241,7 +241,7 @@ The benefits of using deep sleep in embedded devices:
    reducing the amount of time that the processor is idle. This is because the processor can
    be kept in a low-power state when it is not needed.
 
-In order to enter Deep Sleep, use the following command:
+In order to enter DeepSleep, use the following command:
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
@@ -289,7 +289,7 @@ In order to enter Deep Sleep, use the following command:
       [  230.292413] psci: CPU2 killed (polled 4 ms)
       [  230.295457] psci: CPU3 killed (polled 0 ms)
 
-This partially indicates that Linux has finished it's Deep Sleep suspend sequence.
+This partially indicates that Linux has finished it's DeepSleep suspend sequence.
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
@@ -302,7 +302,7 @@ This partially indicates that Linux has finished it's Deep Sleep suspend sequenc
    The system will enter deep sleep mode only if DM selects it based on existing constraints.
 
 Refer to the :ref:`Wakeup Sources<pm_wakeup_sources>` section for information on how to wakeup the device from
-Deep Sleep mode using one of the supported wakeup sources.
+DeepSleep mode using one of the supported wakeup sources.
 
 ********
 MCU Only
@@ -310,11 +310,11 @@ MCU Only
 
 .. _pm_mcu_only:
 
-Similar to Deep Sleep, with the major distinction being that the MCU core is kept alive to run applications.
+Similar to DeepSleep, with the major distinction being that the MCU core is kept alive to run applications.
 The benefits of using MCU Only mode:
 
 #. Low power consumption: MCU Only mode can save a significant amount of power, especially in battery-powered
-   devices. This is because the rest of the SoC status is the same as Deep Sleep and DDR is in self-refresh.
+   devices. This is because the rest of the SoC status is the same as DeepSleep and DDR is in self-refresh.
 #. Run background tasks: This mode can be used to run background tasks that do not require the full power of the system.
    For example, you could use the firmware on the MCU core to run a watchdog timer, a sensor polling loop,
    or a network communication task.
@@ -422,7 +422,7 @@ Limitations
 
 RT (Real-Time) Linux does not support any low power modes.
 
-HWRNG support on GP devices is incompatible with Deep Sleep and MCU Only
+HWRNG support on GP devices is incompatible with DeepSleep and MCU Only
 modes. To test LPM on GP devices, HWRNG has to be unloaded one-time
 before running the Suspend-to-RAM command:
 
@@ -439,7 +439,7 @@ in the below table:
 +-----------------+-----------------------------------+------------------------------------+
 |  LPM            |  Firmware v10.0                   |  Firmware < v10.0                  |
 +=================+===================================+====================================+
-| TI Kernel 6.6   |   All low power modes supported   |    Only Deep Sleep supported       |
+| TI Kernel 6.6   |   All low power modes supported   |    Only DeepSleep supported        |
 +-----------------+-----------------------------------+------------------------------------+
 | TI Kernel < 6.6 |   All low power modes supported   |    All low power modes supported   |
 +-----------------+-----------------------------------+------------------------------------+
