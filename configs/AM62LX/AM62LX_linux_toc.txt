@@ -38,7 +38,7 @@ linux/Foundational_Components/U-Boot/UG-UMS
 linux/Foundational_Components/U-Boot/UG-QSPI
 linux/Foundational_Components/U-Boot/UG-UART
 linux/Foundational_Components/U-Boot/UG-Secure-Boot
-linux/Foundational_Components/U-Boot/UG-Key-Writer-Lite
+linux/Foundational_Components/U-Boot/UG-Keywriter-Lite
 linux/Foundational_Components/U-Boot/UG-Keywriter
 linux/Foundational_Components/U-Boot/UG-Programming-OTPs
 

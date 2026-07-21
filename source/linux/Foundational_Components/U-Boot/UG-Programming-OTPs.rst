@@ -35,7 +35,7 @@ Programming fuses
 .. warning::
 
    Before programming fuses, apply proper voltage to the Vpp pin.
-   The :ref:`key-writer-lite-label` document explains how to control
+   The :ref:`keywriter-lite-label` document explains how to control
    Vpp voltage.
 
 The `fuse prog` command programs two types of OTP bits:
@@ -97,7 +97,7 @@ Follow these steps to enable or disable Vpp:
    - Changes to fuses only become visible after a full power cycle
 
 For programming many fuses and keys in one-shot using a binary blob
-(``fuse writebuff``), see the :ref:`key-writer-lite-label` document.
+(``fuse writebuff``), see the :ref:`keywriter-lite-label` document.
 
 Programming boot-mode fuses
 ===========================

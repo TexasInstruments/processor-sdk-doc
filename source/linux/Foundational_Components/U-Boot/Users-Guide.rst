@@ -32,7 +32,7 @@ User's Guide
    UG-Thermal
    UG-Splash-Screen
    UG-Secure-Boot
-   UG-Key-Writer-Lite
+   UG-Keywriter-Lite
    UG-Keywriter
    UG-Programming-OTPs
    UG-Falcon-Mode
