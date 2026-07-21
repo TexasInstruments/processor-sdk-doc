@@ -1,10 +1,10 @@
-.. _key-writer-lite-label:
+.. _keywriter-lite-label:
 
-###############
-Key Writer Lite
-###############
+##############
+Keywriter Lite
+##############
 
-This OTP (One Time Programmable) key writer lite guide describes
+This OTP (One Time Programmable) keywriter lite guide describes
 the procedure to be followed to populate customer keys in eFuses
 of the SoC.
 
@@ -36,9 +36,9 @@ program the customer root key (optionally backup key) on the target
 device, using OTP Keywriter Lite.
 
 Customer key information is put in a structured format to create a
-binary blob (Uboot key writer lite structure).
+binary blob (Uboot keywriter lite structure).
 
-**Uboot Key Writer Lite Structure**
+**Uboot Keywriter Lite Structure**
 
 .. code-block:: c
 
@@ -68,16 +68,16 @@ The overall fuse_otp structure is shown below:
 
 **Generate the Binary Blob**
 
-Generate the binary blob based out of Uboot Key Writer Lite
+Generate the binary blob based out of U-boot keywriter lite
 structure by populating the structure and extracting the
 .data section to a bin file and copy it to SD card.
 
-**Typical Key Writer Lite Flow**
+**Typical Keywriter Lite Flow**
 
-A typical flow to do OTP key writer lite is as follows:
+A typical flow to do OTP keywriter lite is as follows:
 
 #. Addr 0x82000000 is the dedicated address to store the generated
-   key writer lite binary blob. Clear out 1Kb of memory starting
+   keywriter lite binary blob. Clear out 1Kb of memory starting
    from 0x82000000:
 
     .. code-block:: text
@@ -89,7 +89,7 @@ A typical flow to do OTP key writer lite is as follows:
 
     .. code-block:: text
 
-       => fatload mmc 1:1 0x82000000 key_writer_lite_blob.bin
+       => fatload mmc 1:1 0x82000000 keywriter_lite_blob.bin
 
 #. Read the memory address 0x82000000 to verify that you loaded the blob successfully.
 

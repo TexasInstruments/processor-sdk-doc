@@ -62,7 +62,7 @@ The following table lists some of the key Security Features:
   | **OTP Keywriter**       | Converts HS-FS to HS-SE device(with encryption support).  | :ref:`keywriter-label`                  |
   |                         | Programs both public keys hash and symmetric keys         |                                         |
   +-------------------------+-----------------------------------------------------------+-----------------------------------------+
-  | **OTP Keywriter Lite**  | Converts HS-FS to HS-SE Lite device(without encryption    | :ref:`key-writer-lite-label`            |
+  | **OTP Keywriter Lite**  | Converts HS-FS to HS-SE Lite device(without encryption    | :ref:`keywriter-lite-label`             |
   |                         | support). Programs only public keys hash                  |                                         |
   +-------------------------+-----------------------------------------------------------+-----------------------------------------+
   | **Secure Storage**      | Protection mechanisms for sensitive data                  | :ref:`secure-storage-with-rpmb`         |
