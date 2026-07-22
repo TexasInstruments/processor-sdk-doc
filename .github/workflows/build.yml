@@ -1,4 +1,6 @@
 ---
+# yamllint disable rule:line-length
+
 name: "build"
 
 on:  # yamllint disable-line rule:truthy
@@ -7,7 +9,7 @@ on:  # yamllint disable-line rule:truthy
 
 concurrency:
   group: ${{ github.ref_name }}
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 defaults:
   run:
@@ -17,9 +19,79 @@ permissions:
   contents: read
 
 jobs:
+  check-docker-files:
+    name: Check for updated docker files
+    runs-on: ubuntu-latest
+    outputs:
+      changed: ${{ steps.changed-files.outputs.any_changed }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0  # v7.0.0
+        with:
+          persist-credentials: false
+
+      - name: Get changed docker files
+        id: changed-files
+        uses: tj-actions/changed-files@9426d40962ed5378910ee2e21d5f8c6fcbf2dd96  # v47.0.6
+        with:
+          files: docker/**
+
+  docker:
+    name: Build the container
+    runs-on: ubuntu-latest
+    needs: check-docker-files
+    if: ${{ needs.check-docker-files.outputs.changed == 'true' }}
+
+    env:
+      REGISTRY: ghcr.io
+      IMAGE_NAME: ${{ github.repository }}
+
+    permissions:
+      packages: write  # Required to push image to ghcr.io
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0  # v7.0.0
+        with:
+          persist-credentials: false
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@bb05f3f5519dd87d3ba754cc423b652a5edd6d2c  # v4.2.0
+
+      - name: Log into registry ${{ env.REGISTRY }}
+        uses: docker/login-action@af1e73f918a031802d376d3c8bbc3fe56130a9b0  # v4.4.0
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract Docker metadata
+        id: meta
+        uses: docker/metadata-action@dc802804100637a589fabce1cb79ff13a1411302  # v6.2.0
+        with:
+          flavor: latest=true
+          tags: |
+            type=ref,event=branch
+            type=sha
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@53b7df96c91f9c12dcc8a07bcb9ccacbed38856a  # v7.3.0
+        with:
+          platforms: linux/amd64
+          context: docker
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
   collect:
     name: Collect DEVFAMILY and OS combinations
     runs-on: ubuntu-latest
+    needs: docker
+    if: ${{ !failure() && !cancelled() }}
     container:
       image: ghcr.io/texasinstruments/processor-sdk-doc:latest
       options: --entrypoint /bin/bash
@@ -27,7 +99,7 @@ jobs:
       build-matrix: "${{ steps.matrix.outputs.matrix }}"
     steps:
       - name: Checkout
-        uses: actions/checkout@v7
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0  # v7.0.0
         with:
           persist-credentials: false
 
@@ -43,13 +115,14 @@ jobs:
       image: ghcr.io/texasinstruments/processor-sdk-doc:latest
       options: --entrypoint /bin/bash
     needs: collect
+    if: ${{ !failure() && !cancelled() }}
     strategy:
       matrix:
         include: "${{ fromJSON(needs.collect.outputs.build-matrix) }}"
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v7
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0  # v7.0.0
         with:
           persist-credentials: false
 
@@ -65,7 +138,7 @@ jobs:
           make VERSION=${GITHUB_REF_NAME}
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a  # v7.0.1
         with:
           name: ${{ matrix.device }}-${{ matrix.os }}
           path: build/

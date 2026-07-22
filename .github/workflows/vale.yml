@@ -1,7 +1,13 @@
 ---
+# yamllint disable rule:line-length
+
 name: "vale"
 
-on: [pull_request]  # yamllint disable-line rule:truthy
+on:  # yamllint disable-line rule:truthy
+  pull_request:
+    paths:
+      - '**.rst'
+      - '**.md'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.number }}
@@ -28,13 +34,13 @@ jobs:
           mkdir -p /github/home/
 
       - name: Checkout repository
-        uses: actions/checkout@v7
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0  # v7.0.0
         with:
           persist-credentials: false
 
       - name: Get changed files
         id: changed-files
-        uses: tj-actions/changed-files@v47
+        uses: tj-actions/changed-files@9426d40962ed5378910ee2e21d5f8c6fcbf2dd96  # v47.0.6
         with:
           json: true
           escape_json: false
@@ -43,7 +49,7 @@ jobs:
             **.md
 
       - name: Run vale checks on modified files
-        uses: vale-cli/vale-action@v2
+        uses: vale-cli/vale-action@85f9f7f2c5f449ac0ae5b66662961bae3f77ca6a  # v2.1.2
         if: steps.changed-files.outputs.any_changed == 'true'
         with:
           fail_on_error: false  # to be changed when upstream addresses 84
