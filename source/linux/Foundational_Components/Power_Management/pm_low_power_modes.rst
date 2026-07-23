@@ -228,8 +228,8 @@ I/O Only Plus DDR
 DeepSleep
 *********
 
-DeepSleep AKA Suspend-to-RAM is a low-power mode that allows an embedded device
-to retain its state in RAM while the processor is turned off.
+DeepSleep, also known as Suspend-to-RAM, is a low-power mode that allows an
+embedded device to retain its state in RAM while the processor is turned off.
 This can save a significant amount of power, especially in devices that are
 battery-powered.
 

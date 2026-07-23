@@ -260,9 +260,9 @@ In the context of **s2idle**, if the OS determines that all constraints are met 
 the last active CPU (Last Man) will invoke `CPU_SUSPEND` with this parameter. The PSCI firmware then
 coordinates the final steps to suspend the system (e.g., placing DDR in self-refresh and powering down the SoC).
 
-*************************
-S2Idle vs DeepSleep (mem)
-*************************
+*****************************
+S2Idle versus DeepSleep (mem)
+*****************************
 
 Linux provides two distinct system sleep states accessible via :file:`/sys/power/mem_sleep`:
 **s2idle (freeze)** and **deep (mem)**. While both can achieve similar power savings by suspending devices
