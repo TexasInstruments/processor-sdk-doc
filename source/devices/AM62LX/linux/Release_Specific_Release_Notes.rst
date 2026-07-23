@@ -84,6 +84,7 @@ What's new
   - Out-of-Box experience based on LVGL (Light and Versatile Graphics Library) - :ref:`TI LVGL Demo - User Guide <TI-LVGL-Demo-User-Guide-label>`
   - Security: Post Quantum Cryptography using Module Lattice (ML) Key Encapsulation Mechanism (KEM) or ML-KEM, ML Digital Signature Algorithm (DSA) or ML-DSA, and Stateless Hash-Based (SLH) DSA or SLH-DSA - :ref:`Post Quantum Cryptography <post_quantum_cryptography>`
   - Power Management: Active power saving using Standby and Deep Standby Mode - :ref:`Standby Mode <am62l_standby_mode>`
+  - Power Management: Runtime low power mode selection using s2idle framework - :ref:`AM62L S2idle <pm_s2idle_psci>`
 
 **Component version:**
 
