@@ -86,6 +86,7 @@ What's new
   - Support for Wifi with M2 CC33xx cards - :ref:`How to Enable M.2-CC33xx in Linux <enable_m2cc3301>`
   - Out-of-Box experience based on LVGL (Light and Versatile Graphics Library) - :ref:`TI LVGL Demo - User Guide <TI-LVGL-Demo-User-Guide-label>`
   - Security: Post Quantum Cryptography using Module Lattice (ML) Key Encapsulation Mechanism (KEM) or ML-KEM, ML Digital Signature Algorithm (DSA) or ML-DSA, and Stateless Hash-Based (SLH) DSA or SLH-DSA - :ref:`Post Quantum Cryptography <post_quantum_cryptography>`
+  - Power Management: Runtime low power mode selection using s2idle framework - :ref:`AM62L S2idle <pm_s2idle_psci>`
 
 **Component version:**
 
