@@ -36,13 +36,13 @@ transition to the selected state.
     .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM62PX', 'J722S', 'AM62DX')
 
        Use the `k3-am62x-sk-lpm-standby.dtso
-       <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-standby.dtso?h=12.00.00.07>`__
+       <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-standby.dtso?h=12.01.00.05>`__
        overlay.
 
     .. ifconfig:: CONFIG_part_variant in ('AM62LX')
 
        Use the `k3-am62l3-evm-idle-states.dtso
-       <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62l3-evm-idle-states.dtso?h=12.00.00.07>`__
+       <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62l3-evm-idle-states.dtso?h=12.01.00.05>`__
        overlay for cluster standby support.
 
     Refer to :ref:`How to enable DT overlays
@@ -132,14 +132,14 @@ transition to the selected state.
 
        In order to implement Standby in Linux, an idle-states node has to be added
        and then referenced by the CPU node. The `k3-am62x-sk-lpm-standby.dtso
-       <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-standby.dtso?h=12.00.00.07>`__
+       <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-lpm-standby.dtso?h=12.01.00.05>`__
        can be used as a reference.
 
     .. ifconfig:: CONFIG_part_variant in ('AM62LX')
 
        In order to implement Standby in Linux, an idle-states node has to be added
        and then referenced by the CPU node. The `k3-am62l3-evm-idle-states.dtso
-       <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62l3-evm-idle-states.dtso?h=12.00.00.07>`__
+       <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62l3-evm-idle-states.dtso?h=12.01.00.05>`__
        can be used as a reference.
 
     .. code-block:: dts
