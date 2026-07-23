@@ -549,7 +549,7 @@ problems are encountered.
    are using the same IP address for both RNDIS connections, Windows is
    trying to let us know that this is generally not a good idea.
    However, in this situation, the configuration ensures that both
-   interfaces won’t be used at the same time.
+   interfaces won't be used at the same time.
 
    .. Image:: /images/Microsoft_TCP_IP.png
 

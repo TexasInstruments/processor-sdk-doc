@@ -240,7 +240,7 @@ Load the PRU Firmware
 
       .. image:: /images/Pru_lab1_targetconfig.png
 
-#. Let’s launch the debugger and load the code!
+#. Let's launch the debugger and load the code!
 
    #. In the "Target Configurations" view, right click the Target
       Configuration file we just created and select **Launch Selected
@@ -676,7 +676,7 @@ Design & Build the PRU Firmware
 
    a. Notice that as observed in the PRU master code, the PRU slave first
       configures the IEP Timer and DigIO and then interrupts the PRU master to
-      signal that it’s ready to communicate with the temperature sensor.
+      signal that it's ready to communicate with the temperature sensor.
 
    b. Notice that in the **iep_timer_config function**, the PRU slave
       stores different increments of time required by 1-wire protocol (i.e.
@@ -716,7 +716,7 @@ Design & Build the PRU Firmware
 Load the PRU Firmware
 """""""""""""""""""""
 
-10. Let’s launch the debugger and load the code!
+10. Let's launch the debugger and load the code!
 
     a. Right click the Target Configuration file we created earlier and
        select **Launch Selected Configuration**.
@@ -760,7 +760,7 @@ Debug the PRU Firmware
 """"""""""""""""""""""
 
 11. During our design discussion, we were unsure how many PRU cycles the
-    CRC calculation would consume. Let’s actually measure the PRU cycles
+    CRC calculation would consume. Let's actually measure the PRU cycles
     using the CCS debugger!
 
     a. Click on each PRU core and select the **yellow pause button** to

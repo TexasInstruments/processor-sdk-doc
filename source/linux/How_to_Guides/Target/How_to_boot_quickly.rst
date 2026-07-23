@@ -84,7 +84,7 @@ This section details the Out-Of-Box boot sequence:
 
 **OPTEE** (Trusted Execution Environment) is designed as a companion to a non-secure Linux kernel running on Arm; Cortex-A cores using the TrustZone technology.
 
-**U-boot** proper is the second stage bootloader. It offers a flexible way to load and start the Linux Kernel and provides a minimal set of tools to interact with the board’s hardware via a command line interface. It runs from DRAM, initializing additional hardware devices (network, USB, DSI/CSI, etc.). Then, it loads and prepares the device tree (FDT). The main task handled by the U-Boot is the loading and starting of the kernel image itself.
+**U-boot** proper is the second stage bootloader. It offers a flexible way to load and start the Linux Kernel and provides a minimal set of tools to interact with the board's hardware via a command line interface. It runs from DRAM, initializing additional hardware devices (network, USB, DSI/CSI, etc.). Then, it loads and prepares the device tree (FDT). The main task handled by the U-Boot is the loading and starting of the kernel image itself.
 
 **Kernel** runs from DDR and takes over the system completely.
 

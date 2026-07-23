@@ -2037,7 +2037,7 @@ Delete the 100-th entry in the table
        • p0_uni_flood_en : set to 1 to enable unknown unicasts to be flooded to host port. Set to 0 to not flood such unicasts. Note: if set to 0, CPSW may delay
          sending packets to the SOC host until it learns what mac addresses the host is using.
        • vlan_nolearn : set to 1 to prevent VLAN id from being learned along with source address.
-       • no_port_vlan : set to 1 to allow processing of packets received with VLAN ID=0; set to 0 to replace received packets with VLAN ID=0 to the VLAN set in the port’s default VLAN register.
+       • no_port_vlan : set to 1 to allow processing of packets received with VLAN ID=0; set to 0 to replace received packets with VLAN ID=0 to the VLAN set in the port's default VLAN register.
        • oui_deny : 0/1 (refer to [1] for a description of this bit)
        • bypass: set to 1 to enable ALE bypass. In this mode the CPSW will not act as switch on receive; instead it will forward all received traffic from external ports to the host port. Set
          to 0 for normal (switched) operations.
@@ -2062,7 +2062,7 @@ Delete the 100-th entry in the table
        • nolearn.1 : set to 1 to disable address learning for port 1
        • nolearn.2 : set to 1 to disable address learning for port 2
        • unknown_vlan_member : this is the port mask for packets received with unknown VLAN IDs. The port mask is a 5 bit number with a bit representing each port. Bit 0 refers to the
-         host port. A ‘1’ in bit position N means include the port in further forwarding decision. (e.g., port mask = 0x7 means ports 0 (internal), 1 and 2 should be included in the
+         host port. A '1' in bit position N means include the port in further forwarding decision. (e.g., port mask = 0x7 means ports 0 (internal), 1 and 2 should be included in the
          forwarding decision). Refer to [1] for more details.
        • unknown_mcast_flood= : this is the port mask for packets received with unkwown VLAN ID and unknown (un-registered) destination multicast address. This port_mask will be used in the
          multicast flooding decision. unknown multicast flooding.
@@ -2144,7 +2144,7 @@ To set CPSW to VLAN aware mode:
     echo "vlan_aware=1" > /sys/class/net/eth0/device/ale_control
     (set these to 0 to disable vlan aware mode)
 
-To set port 1’s Ingress VLAN defaults:
+To set port 1's Ingress VLAN defaults:
 
 ::
 
@@ -2158,7 +2158,7 @@ To set port 1 to use the above default vlan id on ingress:
 
     echo "p1_pass_pri_tagged=0" > /sys/class/net/eth0/device/gbe_sw/control
 
-To set port 1’s Egress VLAN defaults:
+To set port 1's Egress VLAN defaults:
 
 -  For registered VLANs, the egress policy is set in the
    "force\_untag\_egress field" of the ALE entry for that VLAN. This

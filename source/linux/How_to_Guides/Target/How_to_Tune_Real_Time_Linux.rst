@@ -27,7 +27,7 @@ maximize the time our CPUs can be interrupted by the scheduler and
 introduce a level determinism to the Linux kernel to control the maximum
 latency the system will experience when switching contexts.
 
-It’s important to note these patches do not focus on the minimum
+It's important to note these patches do not focus on the minimum
 interrupt latency and can sometimes even increase it in certain
 situations.
 
@@ -61,7 +61,7 @@ Testing Kernel Performance
 There are many ways to test or evaluate the performance of your
 application with the Real-Time Kernel and some of them will be more
 relevant than others depending on the nature of your application.
-However as we’ll explain later it is typically best to test using your
+However as we'll explain later it is typically best to test using your
 application and using stressing tools to examine its behavior under
 different circumstances.
 
@@ -81,7 +81,7 @@ loads that our application may experience using a tool like stress-ng.
 
    stress-ng –cpu-method=all -c20 &
 
-Then we can monitor our application’s performance or use another tool
+Then we can monitor our application's performance or use another tool
 like cyclictest_ to measure the context switch latency the CPUs are
 experiencing.
 
@@ -179,7 +179,7 @@ strain a resource in the SoC beyond what is acceptable for your
 application that will only be visible after many hours of testing.
 
 
-It’s usually a good idea to embed and use monitoring mechanisms inside
+It's usually a good idea to embed and use monitoring mechanisms inside
 your application to gauge the effects of our tuning efforts. Not only
 will this give us concrete evidence our tuning efforts are working,
 simulating our application with stress-ng or any other application could

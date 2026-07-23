@@ -11,7 +11,7 @@ system on a TI Processor running Linux. Given this goal, we wanted to
 provide something that is more than just a typical Board Support
 Package (BSP) containing a bootloader, Linux kernel, and filesystem.
 While these are certainly necessary elements, we feel they are just a
-starting point, especially for those that aren’t experts in developing
+starting point, especially for those that aren't experts in developing
 with Linux. So, the SDK also contains tools for developing on TI
 Processors (a validated cross-compiling toolchain, for example),
 pre-built libraries that you can use without having to rebuild them
@@ -40,14 +40,14 @@ to the :ref:`Processor SDK Linux Software Developer's Guide <linux-index>`. If y
 need, take a look at the active `E2E Processor Support
 <https://e2e.ti.com/support/processors>`__ Forum
 and see if the topic has been covered before. If not, post
-a new thread and we’ll do our best to provide some guidance.
+a new thread and we'll do our best to provide some guidance.
 
 |
 
 What would you like to do with the SDK?
 ---------------------------------------
 
-As described above, the SDK has a lot to it. Let’s break it down to two
+As described above, the SDK has a lot to it. Let's break it down to two
 pieces to simplify things a bit:
 
 -  The example :ref:`Embedded Linux System <linux-software-stack>`.
@@ -86,7 +86,7 @@ pieces to simplify things a bit:
 
    -  A variety of scripts and Makefiles to automate certain tasks
    -  Other components needed to build an embedded Linux system that
-      don’t fit neatly into one of the above buckets
+      don't fit neatly into one of the above buckets
 
 With these two pieces more clearly defined, we can now get back to that
 all important question, "What would you like to do with the SDK?". If
@@ -107,13 +107,13 @@ with new device drivers and applications.
        also go ahead and skip down to the "I want to Develop!" (or, `Developing
        with the Linux SDK <Processor_SDK_Linux_Getting_Started_Guide.html#start-your-linux-development>`__ section.
 
-So, if you’re not quite there yet, let’s discuss some other options.
-Maybe you’d like to evaluate the SDK a bit to see if it is how you’d
+So, if you're not quite there yet, let's discuss some other options.
+Maybe you'd like to evaluate the SDK a bit to see if it is how you'd
 like to get started.
 
 If this is not good enough and you really want to get your hands on something,
 check out the next section which shares how to play with the embedded Linux
-system, the first piece of the SDK mentioned earlier. All you’ll need is access
+system, the first piece of the SDK mentioned earlier. All you'll need is access
 to a Linux computer, a SD card, a SD card reader, some free, open-source
 software, and a supported :ref:`Hardware Platform
 <release-specific-supported-platforms-and-versions>`.
@@ -121,22 +121,22 @@ software, and a supported :ref:`Hardware Platform
  .. rubric:: Evaluating the SDK Embedded Linux System
     :name: evaluating-the-sdk-embedded-linux-system
 
-If you’re a hands on person, reading documentation and looking at
+If you're a hands on person, reading documentation and looking at
 presentations gets old fast. So, if you want to see an example of what
 you can build with the SDK and actually hold it in your hands and play
 with it (or show it to someone else that needs help understanding what
 you want to do with it), with minimal effort, you can simply run the
 SDK Embedded Linux System on a supported :ref:`Hardware platform
 <release-specific-supported-platforms-and-versions>`.
-This will allow you to poke and prod and interact. It’s a powerful way
+This will allow you to poke and prod and interact. It's a powerful way
 to get the imagination active and engaged.
 
 .. ifconfig:: CONFIG_sdk in ('SITARA')
 
-    If you’ve recently purchased a TI EVM or Starterkit, it should have came
+    If you've recently purchased a TI EVM or Starterkit, it should have came
     with a SD card with the SDK on it. If that is the case, simply plug the
     card in, boot it up, and let your imagination run wild. However, if
-    you’re like us and the boards you are given never have all of the stuff
+    you're like us and the boards you are given never have all of the stuff
     they came with, or if you purchased a
     `Beaglebone <http://beagleboard.org/Products/BeagleBone>`__ or
     `Beaglebone
@@ -144,7 +144,7 @@ to get the imagination active and engaged.
     not have a SD card with the SDK on it. Or, maybe, the SDK on your SD
     card is simply a few revisions old and you want the latest and greatest.
     If that is the case, check out the :ref:`Create SD Card <processor-sdk-linux-create-sd-card>`
-    page. Just remember, you won’t be able to build or change anything,
+    page. Just remember, you won't be able to build or change anything,
     simply evaluate the SDK Embedded Linux System as delivered.
     But, even this is enough to get the imagination going and all some folks
     want to do.
@@ -156,25 +156,25 @@ to get the imagination active and engaged.
 .. rubric:: Start your Linux Development
    :name: start-your-linux-development
 
-OK, you’re all in. Either you’ve known this is what you wanted to do, or
-you’ve gone through the above steps and you want to do more. It’s time
-to develop! Here’s a high level overview:
+OK, you're all in. Either you've known this is what you wanted to do, or
+you've gone through the above steps and you want to do more. It's time
+to develop! Here's a high level overview:
 
--  Get a Linux host up and running if you don’t already have one
+-  Get a Linux host up and running if you don't already have one
 -  Install the SDK and run some scripts to get everything set up
 -  Put the SDK Embedded Linux System on a SD card or TFTP/NFS to play
    with
 -  Build something to validate set up – the SDK for example
 -  Add something to the SDK, like a simple Hello World app
 
-After completing these steps, you’ll have a known good baseline from
+After completing these steps, you'll have a known good baseline from
 which you can start development.
 
 #. **Configure a Linux Host**
 
    If you already have a Linux host machine, go to Step 2.
 
-   To do Linux development with the SDK, you’ll need a host PC running
+   To do Linux development with the SDK, you'll need a host PC running
    Linux. The Linux host is generally much faster and has a lot more
    memory (both RAM and hard disk space) than the typical embedded
    system. While it is certainly possible to do all development
@@ -182,7 +182,7 @@ which you can start development.
    to go and what is supported out of the box with the SDK.
 
    There are many, many ways to get access to a Linux host. We simply
-   can’t validate all possibilities and iterations, therefore we focus
+   can't validate all possibilities and iterations, therefore we focus
    on validating using `Ubuntu <http://www.ubuntu.com/>`__ as the host
    Linux distribution, running natively. We validate the Long-term
    Support (LTS) versions of Ubuntu at the time of a SDK release.
@@ -200,7 +200,7 @@ which you can start development.
 
    Likewise, we would strongly recommend getting a **native 64-bit**
    Ubuntu LTS machine set up for development. For the cost of a little
-   bit of hard drive space, Ubuntu can have direct access to the host’s
+   bit of hard drive space, Ubuntu can have direct access to the host's
    hardware. Virtual Machines (VMs) have come a long way over the years,
    and many people use them daily without problems. However, when you
    are working with a target embedded system (that may be a prototype
@@ -210,10 +210,10 @@ which you can start development.
    disconnecting hardware components, you have to be very diligent about
    making sure what is connected to what. You might prefer using an hour
    to get more work done than debugging a perceived problem caused by
-   the fact the virtual host grabbed a USB port when you weren’t
+   the fact the virtual host grabbed a USB port when you weren't
    watching.
 
-   When you’re ready to proceed,
+   When you're ready to proceed,
    `Ubuntu <http://www.ubuntu.com/download/desktop/install-desktop-long-term-support>`__
    provides a great overview for how to install natively.
 

@@ -66,7 +66,7 @@ Configs to be enabled in kernel:
 .. rubric:: CRC feature
    :name: crc-feature-i2c
 
-.. rubric:: - When drivers are built as ‘modules’
+.. rubric:: - When drivers are built as 'modules'
    :name: crc-feature-i2c-modules
 
 For safety applications, a CRC feature can be enabled from userspace:
@@ -96,7 +96,7 @@ To disable CRC feature, the modprobe conf file must be removed:
 Then, the board must be powered off/on with the mechanical switch to apply
 the new setting.
 
-.. rubric:: - When drivers are built statically into the kernel (‘built-in’)
+.. rubric:: - When drivers are built statically into the kernel ('built-in')
    :name: crc-feature-i2c-builtin
 
 CRC feature can be enabled through the kernel command line parameter:

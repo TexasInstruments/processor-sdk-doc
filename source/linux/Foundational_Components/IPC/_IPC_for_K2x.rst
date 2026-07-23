@@ -249,7 +249,7 @@ these executable binaries:
 
 The Multi-Processor Manager (MPM) Command Line utilities are used to download and start the DSP executables.
 
-Let’s load the example and run the DSP:
+Let's load the example and run the DSP:
 
 ::
 

@@ -109,7 +109,7 @@ the repo is hosted here: http://git.ti.com/processor-sdk/linuxptp
 Hardware Overview
 =================
 
-TI’s Sitara devices have support for GMAC and PRU-ICSS ports, as shown
+TI's Sitara devices have support for GMAC and PRU-ICSS ports, as shown
 in the table below.
 
 +--------------------------+--------------------------+--------------------------+-----------------------+

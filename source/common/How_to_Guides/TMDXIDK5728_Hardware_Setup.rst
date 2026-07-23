@@ -16,7 +16,7 @@ interface to other processors or systems and act as a communication
 gateway in this case. In addition it can directly operate as a standard
 remote I/O system or simple sensor connected to an industrial
 communication network. The embedded emulation logic allows emulation and
-debug using standard development tools such as TI’s Code Composer Studio
+debug using standard development tools such as TI's Code Composer Studio
 by just using the supplied USB cable.
 
 .. rubric:: EVM Layout and key components

@@ -76,7 +76,7 @@ Hardware modifications
 
 Software modifications
 ======================
-TI’s K3 Jacinto family of SoCs have a concept of boardcfg that can be used to configure certain parameters at build time.
+TI's K3 Jacinto family of SoCs have a concept of boardcfg that can be used to configure certain parameters at build time.
 By default, SOC_OFF mode enabled by default in SDK.
 IO_ONLY_PLUS_DDR mode can be enabled by changing boardcfg in u-boot at build time.
 

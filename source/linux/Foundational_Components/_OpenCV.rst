@@ -37,7 +37,7 @@ OpenCV implementation is available for the following TI devices:
 To meet the requirements of real-time processing of images and video
 OpenCV functions were optimized.
 
-More-ever, TI’s OpenCV implementation of hybrid ARM-DSP devices (AM57X,
+More-ever, TI's OpenCV implementation of hybrid ARM-DSP devices (AM57X,
 K2E, K2H, K2L, K2G) provides very efficient implementation of OpenCV
 function where signal-processing-rich algorithms are processed by DSP
 while the ARM processes all other algorithms, controls and manages the
@@ -48,7 +48,7 @@ as well as a set of unit tests to verify the performances and the
 accuracy of the implementation.
 
 This document provides instructions show how to load and run unit tests
-of TI’s OpenCV implementation.
+of TI's OpenCV implementation.
 
 =================================
 OpenCV Modules Supported By TI
@@ -156,7 +156,7 @@ http://downloads.ti.com/mctools/esd/docs/opencl/environment_variables.html
 
 Figure 1 shows the decision tree the transparent API executes to
 determine if the computations will be offloaded to the accelerator
-through OpenCL. The boxes that are shaded gray are specific to TI’s
+through OpenCL. The boxes that are shaded gray are specific to TI's
 implementation of OpenCV. The prohibited list allows us to prevent
 certain OpenCL kernels from executing on the DSP. The kernels are
 prevented to execute on the DSP if they did not pass the accuracy tests.
@@ -292,7 +292,7 @@ Unit Tests
 
 Each function in the OpenCV implementation has a unit test associate
 with the function.
-The following instructions show how to load and run unit tests of TI’s
+The following instructions show how to load and run unit tests of TI's
 OpenCV implementation.
 The screen shots and device dependent instructions in this document
 are from AM57X build and run and can be used as a reference for build

@@ -86,7 +86,7 @@ for the configuration file (fw\_env.config) is /etc/.
    :name: load-fw_printenvfw_setenv-into-target-file-system
 
 This creates the executable fw\_printenv, this file must be copied into
-the target file system, place in /sbin or the user’s directory.
+the target file system, place in /sbin or the user's directory.
 
 You must copy fw\_printenv to fw\_setenv to be able to set variables.
 The program detects the name it was called as and sets the context it
