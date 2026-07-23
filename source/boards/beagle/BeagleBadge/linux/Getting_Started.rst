@@ -9,7 +9,7 @@ for more details on AM62L boot flow.
 Applications
 ############
 
-- Deep Sleep Low Power mode as low as 350mW power draw
+- DeepSleep Low Power mode as low as 350mW power draw
 - RTC only mode with 3-5mW power draw
 - E-Paper display support with tinyDRM
 - Battery-powered with fuel gauge monitoring

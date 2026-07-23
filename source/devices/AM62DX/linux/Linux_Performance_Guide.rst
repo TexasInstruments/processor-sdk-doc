@@ -786,7 +786,7 @@ Power Performance
    "vdd_lpddr4","1.10","0.01"
    "Total"," ","4.42"
 
-.. csv-table:: Deep Sleep Power Performance
+.. csv-table:: DeepSleep Power Performance
    :header: "Rail name","Rail voltage(V)","Power (mW)"
 
    "vdd_core","0.85","29.45"

@@ -854,9 +854,9 @@ Power Performance
 ^^^^^^^^^^^^^^^^^
 
 These are power measurements taken while the device is in various low power modes like
-Deep Sleep, RTC Only + DDR, and RTC Only.
+DeepSleep, RTC + I/O + DDR, and RTC Only.
 
-.. csv-table:: Deep Sleep Power Performance
+.. csv-table:: DeepSleep Power Performance
      :header: "Rail name","Rail voltage(V)","Power (mW)"
 
      "vdd_core", "0.75", "7.17"
@@ -868,7 +868,7 @@ Deep Sleep, RTC Only + DDR, and RTC Only.
      "vdd_rtc_1v8", "1.80", "0.02"
      "Total"," ","14.07"
 
-.. csv-table:: RTC Only + DDR Power Performance
+.. csv-table:: RTC + I/O + DDR Power Performance
      :header: "Rail name","Rail voltage(V)","Power (mW)"
 
      "vdd_core", "0.00", "0.00"
@@ -899,8 +899,8 @@ Resume Latency Performance
    :header: "Low Power Mode","Total Resume Latency (ms)"
 
    "RTC Only", "Full normal boot time (~seconds)"
-   "RTC Only + DDR", "385"
-   "Deep Sleep", "171"
+   "RTC + I/O + DDR", "385"
+   "DeepSleep", "171"
 
 The performance numbers are measured without the Linux printk logs. To remove the
 Linux printk logs, run the following commands in the terminal:

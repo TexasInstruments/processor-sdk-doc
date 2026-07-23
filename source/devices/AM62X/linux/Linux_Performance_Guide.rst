@@ -1008,7 +1008,7 @@ Low Power Performance
 Power Performance
 ^^^^^^^^^^^^^^^^^
 
-.. csv-table:: Deep Sleep Power Performance
+.. csv-table:: DeepSleep Power Performance
    :header: "Rail name","Rail voltage(V)","Power (mW)"
 
    "vdd_core","0.85","9.33"
@@ -1045,7 +1045,7 @@ Resume Latency Performance
 .. csv-table:: LPM Resume Latency Performance
    :header: "Low Power Mode","Total Resume Latency (ms)"
 
-   "Deep Sleep", "137"
+   "DeepSleep", "137"
    "MCU Only", "94"
 
 The performance numbers are measured without the Linux printk logs. To remove the

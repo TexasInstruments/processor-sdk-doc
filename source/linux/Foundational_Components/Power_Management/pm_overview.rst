@@ -62,7 +62,7 @@ supported by the Linux kernel.
 
    #. Partial I/O
    #. I/O Only Plus DDR
-   #. Deep Sleep
+   #. DeepSleep
    #. MCU Only Mode
 
 .. ifconfig:: CONFIG_part_variant in ('AM62LX')
@@ -70,5 +70,5 @@ supported by the Linux kernel.
    The static power management features on |__PART_FAMILY_DEVICE_NAMES__| are:
 
    #. RTC Only
-   #. RTC Only Plus DDR
-   #. Deep Sleep
+   #. RTC + I/O + DDR
+   #. DeepSleep

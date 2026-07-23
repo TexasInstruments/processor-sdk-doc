@@ -163,15 +163,15 @@ is being actively used during idle periods.
 Difference from System Sleep Modes
 **********************************
 
-Standby Mode is distinct from deeper system sleep modes like Deep Sleep or RTC-Only+DDR:
+Standby Mode is distinct from deeper system sleep modes like DeepSleep or RTC + I/O + DDR:
 
-.. list-table:: Standby versus Deep Sleep Modes
+.. list-table:: Standby versus DeepSleep Modes
    :widths: 25 35 40
    :header-rows: 1
 
    * - Feature
      - Standby Mode
-     - Deep Sleep (mem)
+     - DeepSleep (mem)
 
    * - **Entry**
      - Automatic, opportunistic

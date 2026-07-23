@@ -347,7 +347,7 @@ Open Erratum
   :widths: 15, 30, 70, 60
 
    "LPCD-47381","MCAN: Message Transmit order not guaranteed from dedicated Tx Buffers configured with same Message ID","j7200-evm, j7200-hsevm, j7200_evm-fs, j721e-evm-ivi, j721e-hsevm, j721e-idk-gw, j721e-sk, j721s2-evm, j721s2-hsevm, j721s2_evm-fs, j721s2_evm-se, j722s_evm-fs, j722s_evm-se, j742s2_evm-fs, j784s4-evm, j784s4-hsevm","i2278"
-   "LPCD-47355","DDR: Entry and exit to/from Deep Sleep low-power state can cause PHY internal clock misalignment","j7200-evm, j7200-hsevm, j7200_evm-fs, j721e-evm-ivi, j721e-hsevm, j721e-idk-gw, j721e-sk, j721s2-evm, j721s2-hsevm, j721s2_evm-fs, j721s2_evm-se, j742s2_evm-fs, j784s4-evm, j784s4-hsevm","i2166"
+   "LPCD-47355","DDR: Entry and exit to/from DeepSleep low-power state can cause PHY internal clock misalignment","j7200-evm, j7200-hsevm, j7200_evm-fs, j721e-evm-ivi, j721e-hsevm, j721e-idk-gw, j721e-sk, j721s2-evm, j721s2-hsevm, j721s2_evm-fs, j721s2_evm-se, j742s2_evm-fs, j784s4-evm, j784s4-hsevm","i2166"
    "LPCD-47295","USB: 2.0 compliance receive sensitivity test limitation","j7200-evm, j7200-hsevm, j7200_evm-fs, j721e-evm-ivi, j721e-hsevm, j721e-idk-gw, j721e-sk, j721s2-evm, j721s2-hsevm, j721s2_evm-fs, j721s2_evm-se, j742s2_evm-fs, j784s4-evm, j784s4-hsevm","i2134"
    "LPCD-34712","OSPI: 2-byte address is not supported in PHY DDR mode","j7200-evm, j721e-idk-gw, j721s2-evm, j721s2-hsevm, j721s2_evm-fs, j721s2_evm-se, j722s_evm-fs, j722s_evm-se, j742s2_evm-fs, j784s4-evm, j784s4-hsevm","i2383"
    "LPCD-25539","GPMC: Sub-32-bit read issue with NAND and FPGA/FIFO","j721s2-evm","i2313"
