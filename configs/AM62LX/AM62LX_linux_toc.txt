@@ -41,6 +41,7 @@ linux/Foundational_Components/U-Boot/UG-Secure-Boot
 linux/Foundational_Components/U-Boot/UG-Keywriter-Lite
 linux/Foundational_Components/U-Boot/UG-Keywriter
 linux/Foundational_Components/U-Boot/UG-Programming-OTPs
+linux/Foundational_Components/U-Boot/UG-Splash-Screen
 
 linux/Foundational_Components/U-Boot/Applications
 linux/Foundational_Components/U-Boot/Apps-SPL-Debug-OpenOCD
