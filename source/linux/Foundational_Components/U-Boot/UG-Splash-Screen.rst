@@ -204,7 +204,7 @@ To enable splash screen on custom board based on |__PART_FAMILY_DEVICE_NAMES__| 
 
  1. Add video driver and panel node in the dts file by referring following patches:
 
-  * `arm: dts: k3-am62p5-sk-u-boot: Add panel device-tree node <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/commit/?h=ti-u-boot-2025.01&id=1cdea8def9297ae52c6434146d4909c330a212f2>`_
+  * `arm: dts: k3-am62p5-sk-u-boot: Add panel device-tree node <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/commit/?h=ti-u-boot-2026.01&id=1cdea8def9297ae52c6434146d4909c330a212f2>`_
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
@@ -212,19 +212,45 @@ To enable splash screen on custom board based on |__PART_FAMILY_DEVICE_NAMES__| 
 
   * `arm: dts: k3-am625-sk-u-boot: Add panel device-tree node  <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/commit/?h=ti-u-boot-2025.01&id=073bea998eb95d26c01e336a7b533c9e9fdbe767>`_
 
+.. ifconfig:: CONFIG_part_variant in ('J722S')
+
+ 1. Add video driver and panel node in the dts file. Panel-specific device-tree overlays are
+    selected via config fragments — see `Panel-specific config fragments`_ for details.
+
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+ 1. Add video driver and panel node in the dts file. The DSI panel overlay is selected via the
+    :file:`configs/am62lx_evm_dsi_rpi_panel.config` fragment — see `Panel-specific config fragments`_ for details.
+
 .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
  2. Enable the A53 SPL splash screen related configurations in the |__PART_FAMILY_DEVICE_NAMES__| defconfig by referring to below patches and files:
 
-  * `configs: am62px: Enable A53 splashscreen <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/commit/?h=ti-u-boot-2025.01&id=4dacc20b3fd78ac5f61de8096a376afb2fcfd089>`_
-  * `Splash screen config fragment for AM62x and AM62P  <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/tree/configs/am62x_a53_splashscreen.config?h=11.00.09>`_
+  * `configs: am62px: Enable A53 splashscreen <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/commit/?h=ti-u-boot-2026.01&id=4dacc20b3fd78ac5f61de8096a376afb2fcfd089>`_
+  * `Splash screen config fragment for AM62x and AM62P  <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/tree/configs/am62x_a53_splashscreen.config?h=ti-u-boot-2026.01>`_
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
  2. Enable the A53 SPL splash screen related configurations in the |__PART_FAMILY_DEVICE_NAMES__| defconfig by referring to below patches and files:
 
   * `configs: am62x_evm_a53_defconfig: Enable A53 splashscreen at U-Boot SPL <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/commit/?h=ti-u-boot-2025.01&id=a53de9902936442fa17b26cb17e639ecafccaa4d>`_
-  * `Splash screen config fragment for AM62x and AM62P  <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/tree/configs/am62x_a53_splashscreen.config?h=11.00.09>`_
+  * `Splash screen config fragment for AM62x and AM62P  <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/tree/configs/am62x_a53_splashscreen.config?h=ti-u-boot-2025.01>`_
+
+.. ifconfig:: CONFIG_part_variant in ('J722S')
+
+ 2. Enable the A53 SPL splash screen related configurations. The :file:`configs/j722s_evm_a53_defconfig`
+    already includes :file:`configs/am62x_a53_splashscreen.config` so splash screen is enabled by default.
+    For custom boards, refer to the following file:
+
+  * `Splash screen config fragment <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/tree/configs/am62x_a53_splashscreen.config?h=ti-u-boot-2026.01>`_
+
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+ 2. Enable the A53 SPL splash screen related configurations by passing all required config fragments
+    at build time. For custom boards, refer to the following files:
+
+  * `Splash screen config fragment <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/tree/configs/am62x_a53_splashscreen.config?h=ti-u-boot-2026.01>`_
+  * `AM62LX DSI panel config fragment <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/tree/configs/am62lx_evm_dsi_rpi_panel.config?h=ti-u-boot-2026.01>`_
 
 .. note::
 
@@ -250,7 +276,69 @@ To enable splash screen on custom board based on |__PART_FAMILY_DEVICE_NAMES__| 
        CONFIG_VIDEO_LOGO=y
 
 3. To enable different boot media for splash, define splash file locations struct in the board file present at :file:`board/ti/<platform>/evm.c`
+
+.. ifconfig:: CONFIG_part_variant in ('J722S')
+
+   J722S supports two splash storage locations: SPI-NOR flash (raw at offset ``0x700000``) and
+   MMC FAT filesystem. These are defined in :file:`board/ti/j722s/evm.c`:
+
+   .. code-block:: c
+
+      static struct splash_location default_splash_locations[] = {
+           {
+                   .name = "sf",
+                   .storage = SPLASH_STORAGE_SF,
+                   .flags = SPLASH_STORAGE_RAW,
+                   .offset = 0x700000,
+           },
+           {
+                   .name    = "mmc",
+                   .storage = SPLASH_STORAGE_MMC,
+                   .flags   = SPLASH_STORAGE_FS,
+                   .devpart = "1:1",
+           },
+      };
+
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+   AM62LX supports MMC FAT filesystem as the splash storage location. Only MMC is supported
+   as a splash source. This is defined in :file:`board/ti/am62lx/evm.c`:
+
+   .. code-block:: c
+
+      static struct splash_location default_splash_locations[] = {
+           {
+                   .name    = "mmc",
+                   .storage = SPLASH_STORAGE_MMC,
+                   .flags   = SPLASH_STORAGE_FS,
+                   .devpart = "1:1",
+           },
+      };
+
 4. If a different boot media other than mmc is used for storing splash, then update the splash-related env variables in board.env file present at :file:`board/ti/<platform>/<platform>.env`
+
+.. ifconfig:: CONFIG_part_variant in ('J722S')
+
+   The default splash environment variables for J722S are set in :file:`board/ti/j722s/j722s.env`:
+
+   .. code-block:: bash
+
+      splashfile=ti_logo_414x97_32bpp.bmp.gz
+      splashimage=0x80200000
+      splashpos=m,m
+      splashsource=mmc
+
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+   The default splash environment variables for AM62LX are set in :file:`board/ti/am62lx/am62lx.env`.
+   Note that AM62LX uses a different DDR load address for the splash image:
+
+   .. code-block:: bash
+
+      splashfile=ti_logo_414x97_32bpp.bmp.gz
+      splashimage=0x82200000
+      splashpos=m,m
+      splashsource=mmc
 
 Refer section `Display custom logo as splash screen`_
 to know more about splash file location struct and env variables.
@@ -413,6 +501,149 @@ If the user wants to keep the boot animation alive until the display server star
 .. note::
 
    The above option is enabled by default in the SDK, The user will need to disable it manually if they desire a persistent splash screen and they are not using the DRM fbdev emulation feature.
+
+.. _Panel-specific config fragments:
+
+Panel-specific config fragments
+--------------------------------
+In addition to the base :file:`configs/am62x_a53_splashscreen.config`, panel-specific config
+fragments must be applied to select the correct device-tree overlay and display pipeline drivers.
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+   .. list-table::
+      :header-rows: 1
+      :widths: 35 65
+
+      * - Panel
+        - Config fragments required
+      * - OLDI Microtips MF101HIE
+        - :file:`configs/am62p5_j722s_evm_oldi-microtips-mf101hie-panel.config`
+      * - DSI Raspberry Pi 7-inch
+        - :file:`configs/k3_a53_dsi.config` :file:`configs/am62p5_evm_dsi_rpi_panel.config`
+
+.. ifconfig:: CONFIG_part_variant in ('J722S')
+
+   .. list-table::
+      :header-rows: 1
+      :widths: 35 65
+
+      * - Panel
+        - Config fragments required
+      * - OLDI Microtips MF101HIE
+        - :file:`configs/am62p5_j722s_evm_oldi-microtips-mf101hie-panel.config`
+      * - DSI Raspberry Pi 7-inch
+        - :file:`configs/k3_a53_dsi.config` :file:`configs/j722s_evm_dsi_rpi_panel.config`
+      * - eDP
+        - :file:`configs/k3_a53_dsi.config` :file:`configs/j722s_evm_a53_edp.config`
+
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+   .. list-table::
+      :header-rows: 1
+      :widths: 35 65
+
+      * - Panel
+        - Config fragments required
+      * - DSI Raspberry Pi 7-inch
+        - :file:`configs/am62x_a53_splashscreen.config` :file:`configs/k3_a53_dsi.config` :file:`configs/am62lx_evm_dsi_rpi_panel.config`
+
+.. _Building U-Boot with splash screen enabled:
+
+Building U-Boot with splash screen enabled
+------------------------------------------
+The splash screen is enabled by passing the appropriate config fragment(s) alongside the platform
+defconfig at the ``make`` configuration step. The second ``make`` invocation compiles the binaries.
+
+.. ifconfig:: CONFIG_part_variant in ('AM62PX')
+
+   :file:`configs/am62px_evm_a53_defconfig` already includes :file:`configs/am62x_a53_splashscreen.config`,
+   so a standard A53 build has splash screen enabled. To use a specific panel, apply the corresponding
+   config fragment:
+
+   .. code-block:: console
+
+      $ export UBOOT_DIR=<path-to-ti-u-boot>
+      $ export TI_LINUX_FW_DIR=<path-to-ti-linux-firmware>
+      $ export TFA_DIR=<path-to-arm-trusted-firmware>
+      $ export OPTEE_DIR=<path-to-ti-optee-os>
+      $ cd $UBOOT_DIR
+
+      # OLDI panel
+      $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" am62px_evm_a53_defconfig am62p5_j722s_evm_oldi-microtips-mf101hie-panel.config O=$UBOOT_DIR/out/a53
+      $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" CC="$CC_64" BL31=$TFA_DIR/build/k3/lite/release/bl31.bin TEE=$OPTEE_DIR/out/arm-plat-k3/core/tee-pager_v2.bin O=$UBOOT_DIR/out/a53 BINMAN_INDIRS=$TI_LINUX_FW_DIR
+
+      # DSI Raspberry Pi 7-inch panel
+      $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" am62px_evm_a53_defconfig k3_a53_dsi.config am62p5_evm_dsi_rpi_panel.config O=$UBOOT_DIR/out/a53
+      $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" CC="$CC_64" BL31=$TFA_DIR/build/k3/lite/release/bl31.bin TEE=$OPTEE_DIR/out/arm-plat-k3/core/tee-pager_v2.bin O=$UBOOT_DIR/out/a53 BINMAN_INDIRS=$TI_LINUX_FW_DIR
+
+.. ifconfig:: CONFIG_part_variant in ('J722S')
+
+   :file:`configs/j722s_evm_a53_defconfig` already includes :file:`configs/am62x_a53_splashscreen.config`,
+   so a standard A53 build has splash screen enabled. To use a specific panel, apply the corresponding
+   config fragment:
+
+   .. code-block:: console
+
+      $ export UBOOT_DIR=<path-to-ti-u-boot>
+      $ export TI_LINUX_FW_DIR=<path-to-ti-linux-firmware>
+      $ export TFA_DIR=<path-to-arm-trusted-firmware>
+      $ export OPTEE_DIR=<path-to-ti-optee-os>
+      $ cd $UBOOT_DIR
+
+      # OLDI panel
+      $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" j722s_evm_a53_defconfig am62p5_j722s_evm_oldi-microtips-mf101hie-panel.config O=$UBOOT_DIR/out/a53
+      $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" CC="$CC_64" BL31=$TFA_DIR/build/k3/lite/release/bl31.bin TEE=$OPTEE_DIR/out/arm-plat-k3/core/tee-pager_v2.bin O=$UBOOT_DIR/out/a53 BINMAN_INDIRS=$TI_LINUX_FW_DIR
+
+      # DSI Raspberry Pi 7-inch panel
+      $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" j722s_evm_a53_defconfig k3_a53_dsi.config j722s_evm_dsi_rpi_panel.config O=$UBOOT_DIR/out/a53
+      $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" CC="$CC_64" BL31=$TFA_DIR/build/k3/lite/release/bl31.bin TEE=$OPTEE_DIR/out/arm-plat-k3/core/tee-pager_v2.bin O=$UBOOT_DIR/out/a53 BINMAN_INDIRS=$TI_LINUX_FW_DIR
+
+      # eDP
+      $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" j722s_evm_a53_defconfig k3_a53_dsi.config j722s_evm_a53_edp.config O=$UBOOT_DIR/out/a53
+      $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_64" CC="$CC_64" BL31=$TFA_DIR/build/k3/lite/release/bl31.bin TEE=$OPTEE_DIR/out/arm-plat-k3/core/tee-pager_v2.bin O=$UBOOT_DIR/out/a53 BINMAN_INDIRS=$TI_LINUX_FW_DIR
+
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+   AM62LX does not include splash screen configs in the base defconfig. All required config
+   fragments must be passed explicitly alongside the defconfig:
+
+   .. code-block:: console
+
+      $ export UBOOT_DIR=<path-to-ti-u-boot>
+      $ export TI_LINUX_FW_DIR=<path-to-ti-linux-firmware>
+      $ export TFA_DIR=<path-to-arm-trusted-firmware>
+      $ export OPTEE_DIR=<path-to-ti-optee-os>
+      $ cd $UBOOT_DIR
+
+      # DSI Raspberry Pi 7-inch panel
+      $ make CROSS_COMPILE="$CROSS_COMPILE_64" am62lx_evm_defconfig am62x_a53_splashscreen.config k3_a53_dsi.config am62lx_evm_dsi_rpi_panel.config O=$UBOOT_DIR/out
+      $ make CROSS_COMPILE="$CROSS_COMPILE_64" \
+           BL1=$TFA_DIR/build/k3low/am62lx/release/bl1.bin \
+           BL31=$TFA_DIR/build/k3low/am62lx/release/bl31.bin \
+           BINMAN_INDIRS=$TI_LINUX_FW_DIR \
+           TEE=$OPTEE_DIR/out/arm-plat-k3/core/tee-pager_v2.bin \
+           O=$UBOOT_DIR/out
+
+   .. warning::
+
+      When U-Boot splash screen is enabled on |__PART_FAMILY_DEVICE_NAMES__|, Linux boot will
+      hang unless the display pipeline drivers are built into the kernel (``=y``) rather than
+      compiled as modules (``=m``). Modules are loaded too late in the boot sequence to take
+      over the display handed off by U-Boot.
+
+      Apply the following changes to :file:`arch/arm64/configs/defconfig` in Linux:
+
+      .. code-block:: kconfig
+
+         CONFIG_REGULATOR_RASPBERRYPI_TOUCHSCREEN_ATTINY=y
+         CONFIG_DRM=y
+         CONFIG_DRM_PANEL_SIMPLE=y
+         CONFIG_DRM_SIMPLE_BRIDGE=y
+         CONFIG_DRM_TOSHIBA_TC358762=y
+         CONFIG_DRM_CDNS_DSI=y
+         CONFIG_DRM_TIDSS=y
+         CONFIG_PHY_CADENCE_DPHY=y
 
 Disabling splash screen
 -----------------------
