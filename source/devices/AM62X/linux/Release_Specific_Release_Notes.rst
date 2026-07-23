@@ -14,7 +14,7 @@ Developing a scalable platform solutions has never been easier than with the Pro
 solutions.
 
 To simplify the end user experience, Processor SDK Linux AM62x installer provides everything needed as discussed below
-to create the embedded system from “scratch” :
+to create the embedded system from "scratch" :
 
 -  Platform/board-support software and configuration files for Linux
 -  U-Boot and Kernel sources and configuration files

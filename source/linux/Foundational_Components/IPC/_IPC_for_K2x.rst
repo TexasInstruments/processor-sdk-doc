@@ -397,7 +397,7 @@ The carveouts for the DSP are defined in the Linux dts file. For the K2G EVM, th
 
 The memory region "dsp_common_mpm_memory" starts at address 0x9d000000 and has a size of 0x2800000 bytes. This region is where the DSP code/data needs to reside. If they are not in this region, you will see the error "load failed (error: -104)" when trying to load.
 
-The memory region "dsp_common_memory” starts at address 0x9f800000 and has a size of 0x800000. This is a CMA pool, as indicated by the line “compatible = "shared-dma-pool";”, and is reserved for
+The memory region "dsp_common_memory" starts at address 0x9f800000 and has a size of 0x800000. This is a CMA pool, as indicated by the line "compatible = "shared-dma-pool";", and is reserved for
 Virtque region and Rpmsg vring buffers.
 
 As of Processor SDK 5.2, the Virtque and vring buffers are allocated by the remoteproc driver from this region and communicated to the slave by update to the resource table.
@@ -413,7 +413,7 @@ The resource table contains the definitions of the CMA carveout for the Rpmsg vr
 MPM Config File
 ---------------
 
-The MPM configuration file is a JSON format configuration file and is located in the default root file system release as part of Processor SDK Linux. It is labeled “mpm_config.json” and is located in /etc/mpm.
+The MPM configuration file is a JSON format configuration file and is located in the default root file system release as part of Processor SDK Linux. It is labeled "mpm_config.json" and is located in /etc/mpm.
 
 The following are some details regarding the MPM configuration file:
 
@@ -493,7 +493,7 @@ and add the following:
 		stackMemory: "EXT_DDR",
 	};
 
-This will place the DSP code, data, and stack memory at address 0x9d000000. We have chosen address 0x9d000000 because that is what is defined in the Linux device tree by default. Refer to the “dsp_common_mpm_memory” block in the previous section “Linux Device Tree.” Note, the length specified here is 0x00100000; this must be less than the size of the dsp_common_mpm_memory pool.
+This will place the DSP code, data, and stack memory at address 0x9d000000. We have chosen address 0x9d000000 because that is what is defined in the Linux device tree by default. Refer to the "dsp_common_mpm_memory" block in the previous section "Linux Device Tree." Note, the length specified here is 0x00100000; this must be less than the size of the dsp_common_mpm_memory pool.
 
 **Changes to the MPM Config File**
 

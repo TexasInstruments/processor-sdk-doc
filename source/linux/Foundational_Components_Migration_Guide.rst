@@ -44,8 +44,8 @@ Device types
 |       | do not force authentication for booting, however DMSC is locked.      |
 +-------+-----------------------------------------------------------------------+
 | HS-SE | High Security - Security Enforced: This is a SoC/board state after a  |
-|       | customer has successfully blown the keys and set “customer Keys       |
-|       | enable”. In HS-SE device all security features enabled. All secrets   |
+|       | customer has successfully blown the keys and set "customer Keys       |
+|       | enable". In HS-SE device all security features enabled. All secrets   |
 |       | within the device are fully protected and all of the security goals   |
 |       | are fully enforced. The device also enforces secure booting.          |
 +-------+-----------------------------------------------------------------------+

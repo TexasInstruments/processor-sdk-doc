@@ -20,7 +20,7 @@ pieces work together. We package all of this together with a working
 Linux Embedded System that has been built with all of the things
 mentioned above.
 
-What it really serves as is a “known good” starting point. One of the
+What it really serves as is a "known good" starting point. One of the
 big challenges with starting development on a new platform (not to
 mention, a new Operating System (OS) for many), is getting an
 environment set up where you can build and debug code on hardware. The
@@ -58,11 +58,11 @@ pieces to simplify things a bit:
    .. ifconfig:: CONFIG_sdk in ('SITARA')
 
        It can also be used on one of the very popular Beaglebones (either the original
-       “white” or the newer “black”). For K2H/K2K, K2E, and K2L platforms
+       "white" or the newer "black"). For K2H/K2K, K2E, and K2L platforms
        which are not using SD cards, U-Boot is loaded to NOR, Linux kernel
        is fetched from TFTP server, and filesystem is on NFS.
 
--  Everything needed to create the above embedded system from “scratch”:
+-  Everything needed to create the above embedded system from "scratch":
 
    -  U-Boot sources and configuration files
    -  Kernel sources and configuration files
@@ -104,7 +104,7 @@ with new device drivers and applications.
 
     .. note::
        For K2H/K2K, K2E, and K2L platforms which are not using SD cards, please
-       also go ahead and skip down to the “I want to Develop!” (or, `Developing
+       also go ahead and skip down to the "I want to Develop!" (or, `Developing
        with the Linux SDK <Processor_SDK_Linux_Getting_Started_Guide.html#start-your-linux-development>`__ section.
 
 So, if you’re not quite there yet, let’s discuss some other options.
@@ -194,7 +194,7 @@ which you can start development.
 
    Can you use other versions of Ubuntu or even other distributions?
    Theoretically, yes, as long as you can get it to work and there may
-   be more “assembly” required. If you can use the Ubuntu version
+   be more "assembly" required. If you can use the Ubuntu version
    validated against the SDK, it will be the smoothest path and we will
    be able to help you more if you do run into trouble.
 

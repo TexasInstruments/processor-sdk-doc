@@ -80,7 +80,7 @@ TI’s K3 Jacinto family of SoCs have a concept of boardcfg that can be used to 
 By default, SOC_OFF mode enabled by default in SDK.
 IO_ONLY_PLUS_DDR mode can be enabled by changing boardcfg in u-boot at build time.
 
-The low power mode is set statically at build time in “lpm_cfg” section of the power management board config.
+The low power mode is set statically at build time in "lpm_cfg" section of the power management board config.
 In the u-boot source tree the boardcfg is present at:
 
 .. ifconfig:: CONFIG_part_variant in ('J7200')

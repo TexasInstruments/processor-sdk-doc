@@ -579,8 +579,8 @@ Design & Build the PRU Firmware
 
    c. Select **PRU tab**, specify a new **Project Name** (e.g.,
       temp_monitor_slave_0 & temp_monitor_master_1), verify that
-      Compiler version is **TI v2.1.0**, and select “Empty Project.” Note: If
-      “Empty Project (with main.c)” is selected, you will need to delete
+      Compiler version is **TI v2.1.0**, and select "Empty Project." Note: If
+      "Empty Project (with main.c)" is selected, you will need to delete
       **main.c** in the project directory (added by default).
 
    d. Select **Finish**.

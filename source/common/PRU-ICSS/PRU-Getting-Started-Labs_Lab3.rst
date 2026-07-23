@@ -106,7 +106,7 @@ Compiling From Linux
 
 #. Navigate to the PRU project directory.
 
-#. Run “make” from the terminal.
+#. Run "make" from the terminal.
 
    * If the PRU_CGT (PRU code generation tools) environment variable was not
      set, there will be an error.
@@ -126,7 +126,7 @@ Compiling From Linux
  * The generated project files will be available in a folder named **gen** in
    the project directory
 
- * Previously generated files can be removed with “make clean”
+ * Previously generated files can be removed with "make clean"
 
 
 .. _pru_getting_started_labs_linux_compiler_settings:

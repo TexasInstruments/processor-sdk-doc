@@ -90,7 +90,7 @@ into the PRU.
 #. If you clicked on any of the buttons in the previous step, click on "Restart"
    to get back to the program entry point.
 
-#. Use the “Step Over” or “Step Into” buttons to step through the PRU function
+#. Use the "Step Over" or "Step Into" buttons to step through the PRU function
    to the beginning of the while loop.
 
 

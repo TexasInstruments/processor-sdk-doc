@@ -78,7 +78,7 @@ When a PWM channel is exported a pwmX directory will be created in the pwmchipN 
 
 -  **polarity**
 
-  Changes the polarity of the PWM signal. The value written is the string “normal” or “inversed”.
+  Changes the polarity of the PWM signal. The value written is the string "normal" or "inversed".
 
 -  **enable**
 

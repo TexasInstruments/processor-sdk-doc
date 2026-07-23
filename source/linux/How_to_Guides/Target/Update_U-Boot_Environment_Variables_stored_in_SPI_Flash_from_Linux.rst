@@ -46,7 +46,7 @@ Please note that all paths are refereneced to the u-boot source within
 the AMSDK, ti-sdk-am335x-<version>/board-support/u-boot<version>.....
 
 Prior to building the The flag in
-board-support/u-boot<version>/tools/envfw\_env.h “HAVE\_REDUND” must be
+board-support/u-boot<version>/tools/envfw\_env.h "HAVE\_REDUND" must be
 undefined as only a single env partition has been defined in the AMSDK
 SPI MTD partitioning.
 

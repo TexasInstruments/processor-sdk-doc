@@ -2117,9 +2117,9 @@ To enable CPSW:
 ::
 
     //enable unknown unicast flood to host, disable bypass, enable VID=0 processing
-    echo “port0_unicast_flood=1” > /sys/class/net/eth0/device/ale_control
-    echo “bypass=0” > /sys/class/net/eth0/device/ale_control
-    echo “no_port_vlan=1” > /sys/class/net/eth0/device/ale_control
+    echo "port0_unicast_flood=1" > /sys/class/net/eth0/device/ale_control
+    echo "bypass=0" > /sys/class/net/eth0/device/ale_control
+    echo "no_port_vlan=1" > /sys/class/net/eth0/device/ale_control
 
 To disable CPSW:
 
@@ -2127,41 +2127,41 @@ To disable CPSW:
 
     // disable port 0 flood for unknown unicast;
     //enable bypass mode
-    echo “p0_uni_flood_en=0” > /sys/class/net/eth0/device/ale_control
-    echo “bypass=1” > /sys/class/net/eth0/device/ale_control
+    echo "p0_uni_flood_en=0" > /sys/class/net/eth0/device/ale_control
+    echo "bypass=1" > /sys/class/net/eth0/device/ale_control
 
 To set port 1 state to forwarding:
 
 ::
 
-    echo “port_state.1=3” > /sys/class/net/eth0/device/ale_control
+    echo "port_state.1=3" > /sys/class/net/eth0/device/ale_control
 
 To set CPSW to VLAN aware mode:
 
 ::
 
-    echo “vlan_aware=1” > /sys/class/net/eth0/device/gbe_sw/control
-    echo “vlan_aware=1” > /sys/class/net/eth0/device/ale_control
+    echo "vlan_aware=1" > /sys/class/net/eth0/device/gbe_sw/control
+    echo "vlan_aware=1" > /sys/class/net/eth0/device/ale_control
     (set these to 0 to disable vlan aware mode)
 
 To set port 1’s Ingress VLAN defaults:
 
 ::
 
-    echo “port_vlan_id=5” > /sys/class/net/eth0/device/gbe_sw/port_vlan/1
-    echo “port_cfi=0” > /sys/class/net/eth0/device/gbe_sw/port_vlan/1
-    echo “port_vlan_pri=0” > /sys/class/net/eth0/device/gbe_sw/port_vlan/1
+    echo "port_vlan_id=5" > /sys/class/net/eth0/device/gbe_sw/port_vlan/1
+    echo "port_cfi=0" > /sys/class/net/eth0/device/gbe_sw/port_vlan/1
+    echo "port_vlan_pri=0" > /sys/class/net/eth0/device/gbe_sw/port_vlan/1
 
 To set port 1 to use the above default vlan id on ingress:
 
 ::
 
-    echo “p1_pass_pri_tagged=0” > /sys/class/net/eth0/device/gbe_sw/control
+    echo "p1_pass_pri_tagged=0" > /sys/class/net/eth0/device/gbe_sw/control
 
 To set port 1’s Egress VLAN defaults:
 
 -  For registered VLANs, the egress policy is set in the
-   “force\_untag\_egress field” of the ALE entry for that VLAN. This
+   "force\_untag\_egress field" of the ALE entry for that VLAN. This
    field is a bit map with one bit per port. Port 0 is the host port.
    For example, to set VLAN #100 to force untagged
 
@@ -2178,31 +2178,31 @@ egress on port 2 only:
 
 ::
 
-    echo “unknown_force_untag_egress=7” > /sys/class/net/eth0/device/ale_control
+    echo "unknown_force_untag_egress=7" > /sys/class/net/eth0/device/ale_control
 
-To set to Port 1 to “Admit tagged” (i.e. drop un-tagged) :
-
-::
-
-    echo “drop_untagged.1=1” > /sys/class/net/eth0/device/ale_control
-
-To set to Port 1 to “Admit all” :
+To set to Port 1 to "Admit tagged" (i.e. drop un-tagged) :
 
 ::
 
-    echo “drop_untagged.1=0” > /sys/class/net/eth0/device/ale_control
+    echo "drop_untagged.1=1" > /sys/class/net/eth0/device/ale_control
 
-To set to Port 1 to “Admit unknown VLAN”:
-
-::
-
-    echo “drop_unknown.1=0” > /sys/class/net/eth0/device/ale_control
-
-To set to Port 1 to “Drop unknown VLAN”:
+To set to Port 1 to "Admit all" :
 
 ::
 
-    echo “drop_unknown.1=1” > /sys/class/net/eth0/device/ale_control
+    echo "drop_untagged.1=0" > /sys/class/net/eth0/device/ale_control
+
+To set to Port 1 to "Admit unknown VLAN":
+
+::
+
+    echo "drop_unknown.1=0" > /sys/class/net/eth0/device/ale_control
+
+To set to Port 1 to "Drop unknown VLAN":
+
+::
+
+    echo "drop_unknown.1=1" > /sys/class/net/eth0/device/ale_control
 
 .. rubric:: Sample Displays
    :name: sample-displays
