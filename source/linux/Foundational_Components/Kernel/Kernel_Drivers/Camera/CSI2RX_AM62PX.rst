@@ -152,11 +152,6 @@ different sensor-supported resolutions like 480p, 720p etc.
 
 You can also run mosaic camera to display stream from 4 OV5640 connected to the SK-AM62P using V3Link fusion mini board.
 
-.. note::
-
-   Arm neon accelerated TI elements for video mosaicing and color format conversion namely ``timosaic`` and ``ticolorconvert`` are not present in AM62P SDK 11.00.
-   To run the below pipeline, AM62P SDK 10.01 should be used with the SDK 11.00 kernel installed from `here <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/log/?h=ti-linux-6.12.y>`__.
-
 .. code-block:: console
 
    $ gst-launch-1.0 \
@@ -198,11 +193,24 @@ should resume from where it left (as long as the sensor supports it).
 
    Only TEVI OV5640 and IMX219 are known to work reliably when system is suspended with capture running.
 
+Embedded Data
+==============
+
+The embedded data transmitted by the IMX219 camera sensor can be captured along with video data by setting
+up the media pipeline to route the embedded data stream to one of the ``/dev/videoX`` nodes.
+
+Route the video data to ``/dev/video0`` and embedded data to ``/dev/video1``. You can then use the command below with
+the ``yavta`` tool provided in the SDK to capture five frames of embedded data.
+
+.. code-block:: console
+
+   $ yavta -s 1920x2 -f GENERIC_8 -c5 /dev/video1 -Femb-frame-#.bin
+
 
 CSI2RX testing details
 ======================
 
-Following sensors and daughter cards have been tested with the SDK 12.00.00.07.04
+Following sensors and daughter cards have been tested with the SDK 12.01
 
 .. csv-table:: Sensor
    :header: "Sensor","Media Bus Format","Video Format","Resolution"
