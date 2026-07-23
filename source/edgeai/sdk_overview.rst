@@ -7,7 +7,7 @@ Overview
 **Welcome to Processor SDK Linux Edge AI for** |__PART_FAMILY_NAME__| **!**
 
 The SDK provides software and tools to let the users effectively balance
-deep learning performance with system power and cost on Texas Instrument’s
+deep learning performance with system power and cost on Texas Instrument's
 processors for edge AI applications. We offer a practical embedded inference
 solution for next-generation vehicles, smart cameras, edge AI boxes, and
 autonomous machines and robots. In addition to general purpose micro processors,

@@ -63,7 +63,7 @@ Key Features of Buildroot
     With a vast library of packages and a flexible configuration system,
     Buildroot allows for extensive customization of the target system.
 #. **Efficiency**:
-    Buildroot’s minimalistic approach ensures that the generated system is lean
+    Buildroot's minimalistic approach ensures that the generated system is lean
     and efficient, which is critical for resource-constrained embedded
     environments.
 #. **Active Community**:

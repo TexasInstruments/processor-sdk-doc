@@ -611,7 +611,7 @@ the kernel.
 **Q:** Why CMEM failed in physical address > 32bits?
 
 **A:** The user space application need to be compiled with
-“–D\_FILE\_OFFSET\_BITS=64" to allow physical addresses > 32 bits.
+"–D\_FILE\_OFFSET\_BITS=64" to allow physical addresses > 32 bits.
 |
 
 .. rubric:: Licensing

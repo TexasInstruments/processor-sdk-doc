@@ -126,7 +126,7 @@ Issues opened in previous releases that were closed on this release
 
    LCPD-19772,ATF/Uboot GTC frequency handover bug
    LCPD-19733,[ti:ti-rt-linux-5.4.y 3364/11241] drivers/pci/endpoint/functions/pci-epf-ntb.c:860 epf_ntb_init_epc_bar_interface() warn: unsigned 'barno' is never less than zero.
-   LCPD-19731,HSR/PRP : warning: ignoring return value of ‘skb_put_padto'
+   LCPD-19731,HSR/PRP : warning: ignoring return value of 'skb_put_padto'
 
 ..
    project = LCPD AND issuetype = Bug AND status = Closed AND resolution = Done AND component in ("Audio & Display", Baseport, Connectivity, IPC, "Power & Thermal", "System Integration", Wireless, Graphics, Multimedia, Security) AND closedDate > 2020-11-18 AND createdDate > 2020-11-18 AND (Labels not in (LCPD_K3.14_MAINT, MAINTENANCE, PLSDK_NOT_RN) OR labels is EMPTY) AND OS in (Linux, RT-linux) AND fixversion not in (Upstream) AND Platform in (j7200-evm) ORDER BY key DESC, priority DESC

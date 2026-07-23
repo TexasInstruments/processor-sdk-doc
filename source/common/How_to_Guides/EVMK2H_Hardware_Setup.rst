@@ -231,19 +231,19 @@ with the following steps.
 #. Open the LM Flash programmer utility. (Default location Start Menu ->
    All Programs -> Texas Instruments -> Stellaris -> LM Flash Programmer
    -> LM Flash Programmer )
-#. In the LM Flash Programmer Utility ‘Configuration’ tab, in the
-   interface section, select ‘Serial (UART)’ from the drop-down box on
+#. In the LM Flash Programmer Utility 'Configuration' tab, in the
+   interface section, select 'Serial (UART)' from the drop-down box on
    the left.
 #. Select the BMC COM Port (the same COM port used to issue the ver
-   command earlier), and set the ‘Baud Rate’ to 115200.
-#. Set ‘Transfer Size’ to 60, and make sure ‘Disable Auto Baud Support’
+   command earlier), and set the 'Baud Rate' to 115200.
+#. Set 'Transfer Size' to 60, and make sure 'Disable Auto Baud Support'
    is unchecked.
 
    .. image::  /images/LMflashProg_Config.png
 
-#. In the ‘Program’ tab, Browse to the location of the binary file
+#. In the 'Program' tab, Browse to the location of the binary file
    containing the firmware update, and select it.
-#. Leave all other options as default, and press the ‘Program’ button.
+#. Leave all other options as default, and press the 'Program' button.
 #. After the programming is complete, power off the board.
 #. Reconnect the jumper.
 #. Open the HyperTerminal/Console for the BMC COM port.

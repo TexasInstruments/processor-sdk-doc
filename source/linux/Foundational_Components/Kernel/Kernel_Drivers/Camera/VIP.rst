@@ -601,7 +601,7 @@ any modifications) into the device. Following points to keep in mind –
             .depth     = 8,
         },
 
-.. rubric:: What’s the maximum frame rate possible for W\*H resolution
+.. rubric:: What's the maximum frame rate possible for W\*H resolution
    using VIP?
    :name: whats-the-maximum-frame-rate-possible-for-wh-resolution-using-vip
 

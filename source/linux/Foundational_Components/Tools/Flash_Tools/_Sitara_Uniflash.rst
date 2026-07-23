@@ -373,7 +373,7 @@ problems are encountered.
 
 .. image:: /images/Device_manager.png
 
-#. Find the **AM43xx1.2** Device listed in “Other Devices” per below. It
+#. Find the **AM43xx1.2** Device listed in "Other Devices" per below. It
    will have a little yellow exclamation point on it indicating there is
    currently a problem with the device. **Right click** on it and select
    **Update Driver Software…**.
@@ -430,10 +430,10 @@ problems are encountered.
 
    .. Image:: /images/Internet_connection_2.png
 
-   **Note: The number next to the “Local Area Connection” will depend on
+   **Note: The number next to the "Local Area Connection" will depend on
    the number of network connections the computer has. If this is the
    only network connection (i.e. the computer does not have an Ethernet
-   or wireless networking connection), then this would be “1”. In most
+   or wireless networking connection), then this would be "1". In most
    cases, computers have either a wired or wireless connection that will
    take up spot #1. Therefore, the new USB RNDIS Network Connection will
    be #2. However, if the computer has multiple connections already,
@@ -513,10 +513,10 @@ problems are encountered.
 
    .. Image:: /images/Local_area_connection_3.png
 
-   **Note: The number next to the “Local Area Connection” will depend on
+   **Note: The number next to the "Local Area Connection" will depend on
    the number of network connections the computer has. If this is the
    only network connection (i.e. the computer does not have an Ethernet
-   or wireless networking connection), then this would be “1”. In most
+   or wireless networking connection), then this would be "1". In most
    cases, computers have either a wired or wireless connection that will
    take up spot #1. Therefore, the new USB RNDIS Network Connection will
    be #3. However, if the computer has multiple connections already,
@@ -545,11 +545,11 @@ problems are encountered.
    to use another address, you will need to change those configurations
    as well.**
 
-#. Click “No” if asked to remove other static configurations. Since we
+#. Click "No" if asked to remove other static configurations. Since we
    are using the same IP address for both RNDIS connections, Windows is
    trying to let us know that this is generally not a good idea.
    However, in this situation, the configuration ensures that both
-   interfaces won’t be used at the same time.
+   interfaces won't be used at the same time.
 
    .. Image:: /images/Microsoft_TCP_IP.png
 

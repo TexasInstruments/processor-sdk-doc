@@ -518,7 +518,7 @@ result in the driver communicating to the firmware that only 1 reference frame s
 .. code-block:: text
 
    Use 1 Reference Frame for Decode
-   target # gst-launch-1.0 filesrc location=<filename.264> ! h264parse ! v4l2h264dec extra-controls=”s,max_dec_frame_buffering=1” ! waylandsink
+   target # gst-launch-1.0 filesrc location=<filename.264> ! h264parse ! v4l2h264dec extra-controls="s,max_dec_frame_buffering=1" ! waylandsink
 
 .. note:: 
    This might decrease the display latency if the stream does not depend on more than a single reference frame, 
@@ -557,13 +557,13 @@ The following pipelines highlight how these controls can be used to control memo
 
    Remove additional buffers allocated due to cores present on DECODER
    target # gst-launch-1.0 filesrc location=<filename.264> ! h264parse ! v4l2h264dec 
-   extra-controls=”s,max_dec_frame_buffering=0,display_pipeline_size=2,img_extra_decode_buffers=0” ! waylandsink
+   extra-controls="s,max_dec_frame_buffering=0,display_pipeline_size=2,img_extra_decode_buffers=0" ! waylandsink
 
 .. code-block:: text
 
    Hardcode number of reference frames used
    target # gst-launch-1.0 filesrc location=<filename.264> ! h264parse ! v4l2h264dec 
-   extra-controls=”s,max_dec_frame_buffering=0,display_pipeline_size=2,img_extra_decode_buffers=0, override_spec_dpb_buffers=2” ! kmssink
+   extra-controls="s,max_dec_frame_buffering=0,display_pipeline_size=2,img_extra_decode_buffers=0, override_spec_dpb_buffers=2" ! kmssink
 
 .. note::
    Keep in mind that while this allows for complete control, it is important to understand that changing these values can negatively impact decode

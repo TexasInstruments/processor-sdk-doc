@@ -601,7 +601,7 @@ ffplay
 ffprobe
 =======
 ``-show_data``
-   Show payload data, as a hexadecimal and ASCII dump. Coupled with -show_packets, it will dump the packets’ data. Coupled with -show_streams, it will dump the codec extradata
+   Show payload data, as a hexadecimal and ASCII dump. Coupled with -show_packets, it will dump the packets' data. Coupled with -show_streams, it will dump the codec extradata
    The dump is printed as the "data" field. It may contain newlines
 ``-show_packets``
    Show information about each packet contained in the input multimedia stream

@@ -21,7 +21,7 @@ can be saved as a pinmux design file which can be reloaded later.
    :name: disclaimer
 
 **NOTE:** Although these utilities are tested and intended to be
-accurate, they are provided ‘as is’ and are not guaranteed to provide
+accurate, they are provided 'as is' and are not guaranteed to provide
 accurate results. In the event of a conflict between the device data
 contained in this software tool and the device datasheet, the datasheet
 shall take precedence. Please check configuration results against the

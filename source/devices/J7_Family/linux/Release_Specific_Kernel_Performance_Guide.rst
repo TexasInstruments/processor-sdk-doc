@@ -387,7 +387,7 @@ MultiBench
 MultiBench™ is a suite of benchmarks that allows processor and system designers to
 analyze, test, and improve multicore processors. It uses three forms of concurrency:
 Data decomposition: multiple threads cooperating on achieving a unified goal and
-demonstrating a processor’s support for fine grain parallelism.
+demonstrating a processor's support for fine grain parallelism.
 Processing multiple data streams: uses common code running over multiple threads and
 demonstrating how well a processor scales over scalable data inputs.
 Multiple workload processing: shows the scalability of general-purpose processing,

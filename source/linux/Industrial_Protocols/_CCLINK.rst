@@ -149,8 +149,8 @@ Before running the master sample application, first obtain the IP
 address of the slave Ethernet port to be tested. Then, modify
 /usr/share/cclink/MasterParameter.csv to update "Slave1 IP address"
 using the IP address of the Slave station. After that, run the master
-sample application: “Master\_sample
-/usr/share/cclink/MasterParameter.csv”
+sample application: "Master\_sample
+/usr/share/cclink/MasterParameter.csv"
 
 The figure below shows the sample output from the console of the master
 station.
@@ -163,7 +163,7 @@ station.
    :name: slave-sample-application
 
 On the slave station, simply run the slave sample application:
-“Slave\_sample /usr/share/cclink/SlaveParameter.csv”
+"Slave\_sample /usr/share/cclink/SlaveParameter.csv"
 
 The figure below shows the sample output from the console of the slave
 station.

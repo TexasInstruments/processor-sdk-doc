@@ -43,7 +43,7 @@ The following Device-Tree Overlays are supported:
    * - 9
      - 4x MCAN interfaces (requires external CAN transceivers)
    * - 10
-     - Microtips Technology USA 10.1” WUXGA (1920x1200) OLDI panel
+     - Microtips Technology USA 10.1" WUXGA (1920x1200) OLDI panel
    * - 12
      - M.2-CC3351 WiFi board on the M.2 connector
    * - 14

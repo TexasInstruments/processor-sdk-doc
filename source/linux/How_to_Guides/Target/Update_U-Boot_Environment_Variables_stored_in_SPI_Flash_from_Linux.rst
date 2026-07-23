@@ -46,7 +46,7 @@ Please note that all paths are refereneced to the u-boot source within
 the AMSDK, ti-sdk-am335x-<version>/board-support/u-boot<version>.....
 
 Prior to building the The flag in
-board-support/u-boot<version>/tools/envfw\_env.h “HAVE\_REDUND” must be
+board-support/u-boot<version>/tools/envfw\_env.h "HAVE\_REDUND" must be
 undefined as only a single env partition has been defined in the AMSDK
 SPI MTD partitioning.
 
@@ -86,7 +86,7 @@ for the configuration file (fw\_env.config) is /etc/.
    :name: load-fw_printenvfw_setenv-into-target-file-system
 
 This creates the executable fw\_printenv, this file must be copied into
-the target file system, place in /sbin or the user’s directory.
+the target file system, place in /sbin or the user's directory.
 
 You must copy fw\_printenv to fw\_setenv to be able to set variables.
 The program detects the name it was called as and sets the context it
