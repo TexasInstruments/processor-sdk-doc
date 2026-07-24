@@ -27,7 +27,7 @@ Hardware Prerequisites
 
 -  Ethernet switch or ethernet router with DHCP service
 
--  SD card (minimum 2GB)
+-  SD card (minimum 32GB)
 
 Get Started
 -----------
@@ -69,7 +69,7 @@ Get Started
       systemctl restart rpmsg_json.service
 
 11. On the PC, open a Internet Browser and enter in the
-    following: \ http://IP_ADDRESS_OF_AM64x_EVM:8081, for example, http://192.168.86.198:8081
+    following: \ http://IP_ADDRESS_OF_AM64x_EVM:3000, for example, http://192.168.86.198:3000
 
 12. The following web page will pop up:
 
