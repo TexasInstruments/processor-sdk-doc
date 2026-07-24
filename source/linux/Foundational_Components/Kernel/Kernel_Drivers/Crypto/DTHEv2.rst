@@ -23,6 +23,43 @@ devices:
                   Hashing                         - MD5, SHA224, SHA256, SHA384, SHA512
                   Message Authentication          - HMAC(MD5), HMAC(SHA224), HMAC(SHA256), HMAC(SHA384), HMAC(SHA512)
 
+
+*****************************
+Crypto Implementation Options
+*****************************
+
+Users can implement cryptographic operations by using one of the following approaches:
+
+1. **Hardware Accelerator (DTHEv2)**
+
+   - Offloads crypto operations to dedicated hardware engine
+   - Frees up CPU cycles for other tasks
+   - In general lower throughput but optimized for multi-tasking systems
+
+2. **ARM CPU with Cryptographic Extension (ARM CE)**
+
+   - Uses ARM processor's built-in cryptographic hardware support
+   - Delivers higher throughput (faster than hardware accelerator)
+   - Might require high CPU usage
+
+Choosing the Right Implementation
+=================================
+
+**Use Hardware Accelerator (DTHEv2) when:**
+
+- **Multi-tasking systems** - system runs computation heavy services that need CPU resources alongside crypto operations
+- **Functional safety/security requirements** - ASIL or safety-critical applications require offloading crypto operations away from Linux kernel to reduce attack surface and ensure isolation
+- **Compliance/regulatory requirements** - FIPS certification, Common Criteria, or TEE integration mandates hardware acceleration
+
+**Use ARM CPU (CE) when:**
+
+- **Maximum throughput required** - Need high throughput for bulk data encryption, video transcoding, or media processing
+- **Dedicated crypto workload** - Crypto is the primary task and high CPU usage is acceptable
+- **Small/infrequent operations** - One-time encryption with small data blocks where accelerator overhead is minimal
+
+**Performance Comparison** : For a detailed comparison of DTHEv2 accelerator performance against ARM Cryptographic Extension (CE) and baseline ARM CPU, see :ref:`crypto-performance` in the Linux Performance Guide.
+
+
 ********************
 Building the Drivers
 ********************

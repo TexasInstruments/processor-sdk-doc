@@ -72,6 +72,41 @@ The following is a list of supported hardware accelerated algorithms:
      - SHA256, SHA512
      - CMAC(AES)
 
+*****************************
+Crypto Implementation Options
+*****************************
+
+Users can implement cryptographic operations by using one of the following approaches:
+
+1. **Hardware Accelerator**
+
+   - Offloads crypto operations to dedicated hardware engine
+   - Frees up CPU cycles for other tasks
+   - In general lower throughput but optimized for multi-tasking systems
+
+2. **ARM CPU with Cryptographic Extension (ARM CE)**
+
+   - Uses ARM processor's built-in cryptographic hardware support
+   - Delivers higher throughput (faster than hardware accelerator)
+   - Might require high CPU usage
+
+Choosing the Right Implementation
+=================================
+
+**Use Hardware Accelerator when:**
+
+- **Multi-tasking systems** - system runs computation heavy services that need CPU resources alongside crypto operations
+- **Functional safety/security requirements** - ASIL or safety-critical applications require offloading crypto operations away from Linux kernel to reduce attack surface and ensure isolation
+- **Compliance/regulatory requirements** - FIPS certification, Common Criteria, or TEE integration mandates hardware acceleration
+
+**Use ARM CPU (CE) when:**
+
+- **Maximum throughput required** - Need high throughput for bulk data encryption, video transcoding, or media processing
+- **Dedicated crypto workload** - Crypto is the primary task and high CPU usage is acceptable
+- **Small/infrequent operations** - One-time encryption with small data blocks where accelerator overhead is minimal
+
+**Performance Comparison** : For a detailed comparison of hardware accelerator performance against ARM Cryptographic Extension (CE) and baseline ARM CPU, see :ref:`crypto-performance` in the Linux Performance Guide.
+
 ********************
 Building the Drivers
 ********************
@@ -376,7 +411,6 @@ you can use **rngd** (the random number generator daemon) to feed the
 Hardware Accelerator testing
 ****************************
 
-===============================
 Testing using the tcrypt module
 ===============================
 
@@ -420,7 +454,6 @@ Testing using the tcrypt module
    [ 3036.492101] tcrypt:
    ...
 
-=============
 IPSec Testing
 =============
 

@@ -797,6 +797,7 @@ Listed for each algorithm are the code snippets used to run each
 
     time -v openssl speed -elapsed -evp aes-128-cbc
 
+.. _crypto-performance:
 
 Crypto Performance Comparison
 -----------------------------

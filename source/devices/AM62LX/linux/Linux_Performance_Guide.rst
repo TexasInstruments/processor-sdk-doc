@@ -779,6 +779,7 @@ benchmark test.
 
     time -v openssl speed -elapsed -evp aes-128-cbc
 
+.. _crypto-performance:
 
 Crypto Performance Comparison
 -----------------------------
