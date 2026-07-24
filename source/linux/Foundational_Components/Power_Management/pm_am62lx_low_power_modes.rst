@@ -19,8 +19,29 @@ to highest power consumption):
 #. RTC Only Plus DDR
 #. Deep Sleep
 
+These modes fall into two distinct categories based on whether DDR context is retained:
+
+- **Power Off**: The system enters a complete power-off state. DDR context is lost and upon wakeup,
+  the system executes a full hardware restart.
+
+- **Suspend to RAM**: The system suspends with DDR RAM context retained and the state is
+  restored on resume, resulting in significantly lower wakeup latency.
+
+**Power Off Mode**
+
+- RTC Only
+
+**Suspend to RAM Mode**
+
+- RTC + I/O + DDR
+- DeepSleep
+- DSS plus DeepSleep
+
+Power Off Mode
+**************
+
 RTC Only
-********
+========
 
 RTC Only mode is the deepest low power mode that allows the system to enter a complete poweroff state
 with ultra-low power consumption while maintaining system time and wakeup capability.
@@ -80,17 +101,41 @@ During resume from RTC Only mode, the system goes through a normal Linux boot pr
 detects that the RTC is already programmed and skips the full initialization, performing only minimal
 cleanup to preserve the system time.
 
-RTC Only Plus DDR
-*****************
+Suspend to RAM Mode
+*******************
+
+Selecting the Suspend to RAM Entry Mechanism
+============================================
+
+When entering suspend to RAM via ``echo mem > /sys/power/state``, the kernel selects the
+low power mode to enter based on the value of ``/sys/power/mem_sleep``:
+
+- ``deep`` - uses the system suspend path; selected by default.
+   Always enters the hard-coded mode selected in the firmware during build time,
+   which is **DeepSleep** mode by default.
+- ``s2idle`` - uses the Suspend-to-Idle path via PSCI, which allows the platform firmware (TF-A) to select the deepest available mode.
+   Allows mode selection in runtime. Mode selected is determined by latency and system configuration.
+
+To check or change the current default at runtime:
+
+.. code-block:: console
+
+   root@am62lxx-evm:~# cat /sys/power/mem_sleep
+   s2idle [deep]
+
+   root@am62lxx-evm:~# echo s2idle > /sys/power/mem_sleep
+
+
+For full details on the s2idle path, PSCI integration, and mode selection at runtime, refer to :ref:`pm_s2idle_psci`.
 
 .. note::
 
-   Please go through the s2idle docs to understand how to select between multiple low power modes.
-   The steps and overall architecture/ sequence diagrams are documented in :ref:`pm_s2idle_psci`.
-   The default mode via s2idle is RTC Only Plus DDR, since it's the deepest.
+   If the ``[deep]`` path is selected in :file:`/sys/power/mem_sleep`, the low power mode
+   selection requires special steps to enter. The steps are documented in :ref:`am62l_suspend_workarounds`.
+   The default mode is **DeepSleep**.
 
-   If regular [mem] interface is selected in `/sys/power/mem_sleep`, the RTC Only + DDR low power mode
-   requires special steps to enter. The steps are documented in :ref:`am62l_suspend_workarounds`.
+RTC + I/O + DDR
+===============
 
 RTC Only + DDR mode is the deepest low power mode that allows the system to enter a state of lowest power consumption
 while still retaining the DDR RAM context.
@@ -107,6 +152,13 @@ sources.
 
    root@am62lxx-evm:~# echo disabled > /sys/devices/platform/bus@f0000/f900000.dwc3-usb/power/wakeup
    root@am62lxx-evm:~# echo disabled > /sys/devices/platform/bus@f0000/f910000.dwc3-usb/power/wakeup
+
+.. note::
+
+   Without disabling both USB devices as a wakeup source, upon resume from RTC + I/O + DDR, the USB driver
+   will crash and the system will not resume, when using the ``[deep]`` path.
+
+   For the ``[s2idle]`` path, if USB0 or USB1 is enabled as a wakeup source the system will enter DeepSleep instead of RTC + I/O + DDR.
 
 Now the SoC can be suspended using the following command.
 
@@ -132,7 +184,7 @@ Now the SoC can be suspended using the following command.
    [  222.445468] PM: suspend exit
 
 DeepSleep
-*********
+=========
 
 DeepSleep AKA Suspend-to-RAM is a low-power mode that allows the SoC
 to retain its state in RAM while the processor is turned off.
@@ -144,7 +196,16 @@ Since the power to Always-On power domains are ON throughout DeepSleep,
 power to key modules such as GPIO and others is maintained to allow wakeup events
 to exit out of this mode.
 
-In order to enter DeepSleep,
+DeepSleep is the default mode entered using the ``[deep]`` path in :file:`/sys/power/mem_sleep`.
+
+To enter DeepSleep mode by using the ``[s2idle]`` path, set the cpu latency constraint between that of DeepSleep (350ms) and RTC + I/O + DDR (900ms) mode.
+Refer :ref:`setting-cpu-wakeup-latency` to see how to set the CPU wakeup latency constraint.
+
+Use the following command to set the constraint to 500ms, which will allow the system to enter DeepSleep mode.
+
+   .. code-block:: bash
+
+      exec 4<>/dev/cpu_wakeup_latency; echo 0x7a120 >&4
 
    .. code-block:: console
 
@@ -171,6 +232,8 @@ In order to enter DeepSleep,
       [   88.642801] random: crng reseeded on system resumption
       [   88.649913] PM: suspend exit
       root@am62lxx-evm:~#
+
+Run the given commands in a subshell to avoid accidentally keeping the file descriptor open indefinitely.
 
 Memory Usage
 ************
