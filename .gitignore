@@ -8,3 +8,4 @@ build/
 # vale configs and intermediary data
 .github/styles/*
 !.github/styles/config
+!.github/styles/PSDK
