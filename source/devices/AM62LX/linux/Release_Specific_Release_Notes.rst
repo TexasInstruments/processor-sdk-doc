@@ -56,31 +56,28 @@ format for Yocto and CycloneDX 1.6 format for Buildroot. SBOMs for all released 
 are bundled into a single archive and can be found on the |__SDK_DOWNLOAD_URL__|.
 For more refer :ref:`Working with SBOM <how-to-work-with-sbom>`.
 
-Release 12.00.00.07.04
+Release 12.01.00.05.03
 ======================
 
-Released on Apr 2026
+Released on July 2026
 
 What's new
 ----------
 
 **Processor SDK Linux AM62LX Release has following new features:**
 
-  - First 2026 LTS Reference Release Including RT combined branch model
-  - Uboot: :ref:`A53 SPL Falcon boot <U-Boot-Falcon-Mode>`
-  - Important Bug Fixes on top of Processor SDK 11.02.08.02 Release.
+  - Second 2026 LTS Reference Release Including RT combined branch model
+  - Important Bug Fixes on top of Processor SDK 12.00.00.07 Release.
   - Review Issue Tracker Section for the new fixes.
   - Support for multiple Linux distributions, such as Yocto, Debian and Buildroot
-  - OPTEE: Hardware-backed secure key storage via RPMB with PKCS#11 interface
-  - Security: ATF, OPTEE and RNG memory firewall for isolation from Linux
-  - Security: Yocto reference for LUKS2 root filesystem encryption with fTPM key management
-  - Secure boot: Support for U-boot FIT image signing and verification
+  - Security: Full Secure Boot Chain on HS-SE
 
 **Key Release References:**
 
   - Tools: :ref:`K3conf <How-to-use-k3conf-label>`
   - U-Boot: :ref:`User and Reduced Bootmode OTP Programming  <programming-user-otp-fuses-label>`
   - U-Boot: :ref:`Key writer lite Programming <key-writer-lite-label>`
+  - Uboot: :ref:`A53 SPL Falcon boot <U-Boot-Falcon-Mode>`
   - Kernel: :ref:`DTHEv2 Crypto Accelerator <DTHEv2-Crypto-Accelerator>`
   - RT Kernel : Real-Time Linux Interrupt Latency numbers here - :ref:`RT Interrupt Latencies <RT-linux-performance>`
   - Support for Wifi with M2 CC33xx cards - :ref:`How to Enable M.2-CC33xx in Linux <enable_m2cc3301>`
@@ -89,13 +86,13 @@ What's new
 
 **Component version:**
 
-  - Kernel (Including RT) 6.18.13
+  - Kernel (Including RT) 6.18.38
   - U-Boot 2026.01
   - Toolchain GCC 15.2
-  - OPTEE 4.9.0+
+  - OPTEE 4.10.0+
   - ATF 2.14+
-  - TIFS Firmware `v12.00.02 <https://software-dl.ti.com/tisci/esd/12_00_02/release_notes/release_notes.html>`__ (Click on the link for more information)
-  - Yocto Master
+  - TIFS Firmware `v12.01.02 <https://software-dl.ti.com/tisci/esd/12_01_02/release_notes/release_notes.html>`__ (Click on the link for more information)
+  - Yocto Wrynose 6.0
   - Armbian-based Debian 13 (Trixie)
   - Buildroot 2026.02
 
@@ -117,35 +114,35 @@ Arago (Yocto/OE)
      - Config Info
    * - U-Boot
      - `ti-u-boot-2026.01 <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/log/?h=ti-u-boot-2026.01>`__
-     - `12.00.00.07 <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/tag/?h=12.00.00.07>`__
+     - `12.01.00.05 <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/tag/?h=12.01.00.05>`__
      - :ref:`Build Config <Build-U-Boot-label>`
    * - TF-A
      - `ti-tfa-2.14.y <https://github.com/TexasInstruments/arm-trusted-firmware/tree/ti-tfa-2.14.y>`__
-     - `v2.14+ <https://git.yoctoproject.org/meta-ti/tree/meta-ti-bsp/recipes-bsp/trusted-firmware-a/trusted-firmware-a-ti.inc?h=12.00.00.07#n5>`__
+     - `v2.14+ <https://git.yoctoproject.org/meta-ti/tree/meta-ti-bsp/recipes-bsp/trusted-firmware-a/trusted-firmware-a-ti.inc?h=12.01.00.05#n5>`__
      -
    * - OPTEE
      - `master <https://github.com/OP-TEE/optee_os/tree/master>`__
-     - `4.9.0+ <https://git.yoctoproject.org/meta-ti/tree/meta-ti-bsp/recipes-security/optee/optee-os-ti-version.inc?h=12.00.00.07#n1>`__
+     - `4.10.0+ <https://git.yoctoproject.org/meta-ti/tree/meta-ti-bsp/recipes-security/optee/optee-os-ti-version.inc?h=12.01.00.05#n1>`__
      - |__OPTEE_PLATFORM_FLAVOR__|
    * - Linux Firmware
      - `ti-linux-firmware <https://git.ti.com/cgit/processor-firmware/ti-linux-firmware/log/?h=ti-linux-firmware>`__
-     - `12.00.00.07 <https://git.ti.com/cgit/processor-firmware/ti-linux-firmware/tag/?h=12.00.00.07>`__
+     - `12.01.00.05 <https://git.ti.com/cgit/processor-firmware/ti-linux-firmware/tag/?h=12.01.00.05>`__
      -
    * - Linux Kernel
      - `ti-linux-6.18.y <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/log/?h=ti-linux-6.18.y>`__
-     - `12.00.00.07 <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tag/?h=12.00.00.07>`__
-     - `non-RT <https://git.yoctoproject.org/meta-ti/tree/meta-ti-bsp/recipes-kernel/linux/linux-ti-staging-6.18/k3/defconfig?h=12.00.00.07>`__ , `RT <https://git.yoctoproject.org/meta-ti/tree/meta-ti-bsp/recipes-kernel/linux/linux-ti-staging-rt-6.18/k3/defconfig?h=12.00.00.07>`__
+     - `12.01.00.05 <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tag/?h=12.01.00.05>`__
+     - `non-RT <https://git.yoctoproject.org/meta-ti/tree/meta-ti-bsp/recipes-kernel/linux/linux-ti-staging-6.18/k3/defconfig?h=12.01.00.05>`__ , `RT <https://git.yoctoproject.org/meta-ti/tree/meta-ti-bsp/recipes-kernel/linux/linux-ti-staging-rt-6.18/k3/defconfig?h=12.01.00.05>`__
    * - meta-ti
-     - `master <https://git.yoctoproject.org/meta-ti/log/?h=master>`__
-     - `12.00.00.07 <https://git.yoctoproject.org/meta-ti/tag/?h=12.00.00.07>`__
+     - `wrynose <https://git.yoctoproject.org/meta-ti/log/?h=wrynose>`__
+     - `12.01.00.05 <https://git.yoctoproject.org/meta-ti/tag/?h=12.01.00.05>`__
      - |__SDK_BUILD_MACHINE__|
    * - meta-arago
-     - `master <https://git.yoctoproject.org/meta-arago/log/?h=master>`__
-     - `12.00.00.07 <https://git.yoctoproject.org/meta-arago/tag/?h=12.00.00.07>`__
+     - `wrynose <https://git.yoctoproject.org/meta-arago/log/?h=wrynose>`__
+     - `12.01.00.05 <https://git.yoctoproject.org/meta-arago/tag/?h=12.01.00.05>`__
      -
    * - meta-tisdk
-     - `master <https://git.ti.com/cgit/ti-sdk-linux/meta-tisdk/log/?h=scarthgap>`__
-     - `12.00.00.07.04 <https://git.ti.com/cgit/ti-sdk-linux/meta-tisdk/tag/?h=12.00.00.07.04>`__
+     - `wrynose <https://git.ti.com/cgit/ti-sdk-linux/meta-tisdk/log/?h=wrynose>`__
+     - `12.01.00.05.03 <https://git.ti.com/cgit/ti-sdk-linux/meta-tisdk/tag/?h=12.01.00.05.03>`__
      -
 
 Debian (Armbian)

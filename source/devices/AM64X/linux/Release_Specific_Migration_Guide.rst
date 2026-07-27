@@ -11,6 +11,14 @@ of the Processor SDK Linux AM64X.
 Processor SDK Linux AM64X 12.xx Releases
 ****************************************
 
+Processor SDK 12.01.00.05.03
+============================
+- This is the second reference release on the 2026 LTS stream with 6.18 Kernel, 2026.01 U-Boot
+- ATF 2.15
+- OPTEE 4.10.0+
+- Yocto Wrynose/6.0
+- Platforms Supported : AM64x 2.0 (HS-FS) : `EVM <https://www.ti.com/tool/TMDS64EVM>`__ , `SK <https://www.ti.com/tool/SK-AM64B>`__
+
 Processor SDK 12.00.00.07.04
 ============================
 - This is the first reference release on the 2026 LTS stream with 6.18 Kernel, 2026.01 U-Boot

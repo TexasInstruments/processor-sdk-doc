@@ -11,6 +11,17 @@ of the Processor SDK Linux AM62X.
 Processor SDK Linux AM62X 12.xx Releases
 ****************************************
 
+Processor SDK 12.01.00.05.03
+============================
+- This is the second reference release on the 2026 LTS stream with 6.18 Kernel, 2026.01 U-Boot
+- ATF 2.15
+- OPTEE 4.10.0+
+- Yocto Wrynose/6.0
+- Platforms Supported : AM62x (HS-FS, HS-SE) : `SK-AM62 <https://www.ti.com/tool/SK-AM62>`__ , `SK-AM62B <https://www.ti.com/tool/SK-AM62B>`__ , `SK-AM62B-P1 <https://www.ti.com/tool/SK-AM62B-P1>`__
+- Platforms Supported : AM62x LP (HS-FS, HS-SE) : `SK-AM62-LP <https://www.ti.com/tool/SK-AM62-LP>`__
+- Platforms Supported : AM62SIP (HS-FS, HS-SE) : `SK-AM62-SIP <https://www.ti.com/tool/SK-AM62-SIP>`__
+- Platforms Supported : BeaglePlay (GP) : `BeaglePlay <https://www.ti.com/tool/BEAGL-PLAY-SBC>`__
+
 Processor SDK 12.00.00.07.04
 ============================
 - This is the first reference release on the 2026 LTS stream with 6.18 Kernel, 2026.01 U-Boot
