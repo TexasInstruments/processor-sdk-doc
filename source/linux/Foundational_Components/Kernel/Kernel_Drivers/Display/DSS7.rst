@@ -27,21 +27,24 @@ In addition to the SoC's DSS, boards often contain external display bridges (for
 
 .. ifconfig:: CONFIG_part_variant in ('J721E', 'J721S2', 'J784S4','J742S2')
 
-    .. Image:: /images/DSS7_HW.png
+    .. figure:: /images/DSS7_HW.png
+
+       Overview of DSS Hardware
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM65X', 'AM62AX', 'AM62PX', 'J722S')
 
-    .. Image:: /images/DSS7Lite_HW.png
+    .. figure:: /images/DSS7Lite_HW.png
 
-
-The above image gives an overview of the DSS hardware.
+       Overview of DSS Hardware
 
 .. ifconfig:: CONFIG_part_variant in ('AM62PX', 'J722S')
 
     - The |__PART_FAMILY_NAME__| SoC has 2 instances of the DSS7-UL, connected to different display peripherals, inside the SoC.
     - **Note:** The Video Pipelines from one instance of DSS **cannot** overlay image planes via the Overlay Managers of another DSS.
 
-The arrows show how pipelines are connected to overlay managers, which are further connected to video-ports, which finally create an encoded pixel stream for display on the LCD or monitor.
+.. ifconfig:: CONFIG_part_variant in ('J721E', 'J721S2', 'J784S4', 'J742S2', 'AM62X', 'AM65X', 'AM62AX', 'AM62PX', 'J722S')
+
+    The arrows show how pipelines are connected to overlay managers, which are further connected to video-ports, which finally create an encoded pixel stream for display on the LCD or monitor.
 
 .. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
@@ -239,7 +242,7 @@ The mapping of DRM entities to DSS hardware is roughly as follows:
 +===========+================================+
 | plane     | DSS pipeline                   |
 +-----------+--------------------------------+
-| crtc      | DSS videoport                  |
+| CRTC      | DSS videoport                  |
 +-----------+--------------------------------+
 | encoder   | Internal and external bridges  |
 +-----------+--------------------------------+
@@ -502,11 +505,17 @@ tidss supports configuration via DRM properties. These are standard DRM properti
 +--------------------+----------+------------------------------------------------------------------------------------------------------+
 | alpha              | plane    | Full plane alpha-blending                                                                            |
 +--------------------+----------+------------------------------------------------------------------------------------------------------+
-| CTM                | crtc     | Color Transformation Matrix blob property. Implemented trough Color phase rotation matrix in DSS IP. |
+| CTM                | CRTC     | Color Transformation Matrix blob property. Implemented trough Color phase rotation matrix in DSS IP. |
 +--------------------+----------+------------------------------------------------------------------------------------------------------+
-| GAMMA_LUT          | crtc     | Blob property to set the gamma lookup table (LUT) mapping pixel data sent to the connector.          |
+| GAMMA_LUT          | CRTC     | Blob property to set the gamma lookup table (LUT) mapping pixel data sent to the connector.          |
 +--------------------+----------+------------------------------------------------------------------------------------------------------+
-| GAMMA_LUT_SIZE     | crtc     | Number of elements in gammma lookup table.                                                           |
+| GAMMA_LUT_SIZE     | CRTC     | Number of elements in gammma lookup table.                                                           |
++--------------------+----------+------------------------------------------------------------------------------------------------------+
+| SELF_REFRESH       | plane    | Boolean property. When set, plays the last displayed frame in a loop from the DSS internal buffer;   |
+|                    |          | the driver ignores new framebuffers submitted by userspace until userspace clears the property.      |
++--------------------+----------+------------------------------------------------------------------------------------------------------+
+| ALWAYS_ON_DISPLAY  | CRTC     | Boolean property. When set, keeps the video port, along with its associated bridges and PHYs,        |
+|                    |          | powered on even after the last DRM client exits.                                                     |
 +--------------------+----------+------------------------------------------------------------------------------------------------------+
 
 .. _testing_tidss_properties:
@@ -633,7 +642,7 @@ hence plane 41 remains unused.
         setting mode 1920x1200-60.00Hz on connectors 40, crtc 38
         testing 1280x720@XR24 overlay plane 41
 
-  In this example, we use the primary plane via its connector and crtc using the ``-s`` option.
+  In this example, we use the primary plane via its connector and CRTC using the ``-s`` option.
   ``-s 40@38:1920x1200`` renders vertical color bars on the LVDS display. Adding the ``-P`` option,
   ``-P 41@38:1280x720``, renders another frame of color bars (diagonal in this case) of resolution
   1280x720. The ``-w 41:zpos:1`` ensures that the plane 41 is displayed on top of plane 31 (or else,
@@ -770,11 +779,145 @@ For further information on gamma correction:
 *  `<https://www.w3.org/TR/PNG-GammaAppendix.html>`__
 *  `<https://www.benq.com/en-us/knowledge-center/knowledge/gamma-monitor.html>`__
 
+.. rubric:: Self Refresh
+
+Self refresh plays the last displayed frame in a loop by using the DSS internal buffer.
+
+The ``SELF_REFRESH`` plane property is a boolean property. When userspace sets it
+to 1, the DSS hardware loops the last frame the plane received from its internal
+buffer. The driver silently ignores any new framebuffer that userspace submits
+while the property remains set. The display resumes normal operation, taking new
+framebuffers into account, only after userspace clears the property (sets it back
+to 0).
+
+The size of this internal buffer varies per SoC family, and therefore so does the
+maximum frame size (width x height x bytes-per-pixel) that self-refresh can loop:
+
++----------------------------------+-----------------------------------+
+| SoC Family                       | Self-Refresh Internal Buffer Size |
++==================================+===================================+
+| AM65X                            | 40 KB                             |
++----------------------------------+-----------------------------------+
+| AM62X                            | 40 KB                             |
++----------------------------------+-----------------------------------+
+| AM62AX                           | 40 KB                             |
++----------------------------------+-----------------------------------+
+| AM62PX / J722S                   | 40 KB                             |
++----------------------------------+-----------------------------------+
+| AM62LX                           | 20 KB                             |
++----------------------------------+-----------------------------------+
+| J721E / J721S2 / J784S4 / J742S2 | 64 KB                             |
++----------------------------------+-----------------------------------+
+
+If the frame exceeds the internal buffer size for the given SoC, the
+``SELF_REFRESH`` property still reads back as 1, but the driver does not switch
+that plane into self-refresh hardware mode. The plane keeps displaying live
+content as normal; nothing goes blank or freezes. To make self-refresh take
+effect, reduce the plane's resolution or pixel format so the frame fits within
+the internal buffer size. The driver then activates self-refresh automatically
+on the next commit, without needing to clear and re-set the property.
+
+.. code-block:: console
+
+   $ modetest -M tidss -w 35:SELF_REFRESH:1
+
+In this example, ``SELF_REFRESH`` is enabled on plane 35. The plane keeps displaying
+whatever frame was on screen when userspace set the property. The driver drops any
+later frame that an application pushes to the plane while the property remains set.
+The combined example under **Always On Display** below shows how ``kmstest``
+exercises ``SELF_REFRESH`` together with ``ALWAYS_ON_DISPLAY``.
+
+.. rubric:: Always On Display
+
+Keep the display pipeline powered after the application exits. With additional
+firmware-side support, the pipeline also stays powered across system suspend and
+resume; see the note that follows.
+
+The ``ALWAYS_ON_DISPLAY`` CRTC property is a boolean property. When set to 1, the
+driver keeps the video port's power domain powered, along with the power domains
+of its bridges and PHYs (for example DSI and D-PHY). This holds for that video
+port's entire pipeline even after the last DRM client that uses the CRTC exits,
+and across system suspend and resume. This avoids incurring the cost of hardware
+reinitialization of the DSI and D-PHY link the next time an application opens the
+device, at the cost of keeping that hardware powered while idle.
+
+The driver uses two separate mechanisms to keep tidss and every bridge/PHY device
+in the pipeline powered:
+
+- ``pm_runtime_get_noresume()`` on each device, which prevents its runtime PM
+  ``suspend`` callback from running and therefore blocks runtime autosuspend for
+  tidss itself, not only the external bridges/PHYs.
+- ``dev_pm_genpd_set_always_on()``, which marks the device's power domain as
+  always-on, blocking both runtime power-off and the power-off that would
+  otherwise happen when the system suspends.
+
+The driver removes both mechanisms once userspace clears ``ALWAYS_ON_DISPLAY`` on
+all CRTCs that had it set.
+
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+   .. note::
+
+      Keeping the display pipeline powered across the Linux driver's own suspend and resume
+      calls is handled entirely by the ``ALWAYS_ON_DISPLAY`` property as described above.
+      However, surviving an actual system-wide low power state (for example
+      ``echo mem > /sys/power/state``) additionally requires cooperation from the
+      device firmware, which must also be told to keep the display power rails on
+      during that low power state. This firmware-side support is available on
+      AM62LX as the :ref:`dss-plus-deepsleep` low power mode.
+
+.. ifconfig:: CONFIG_part_variant not in ('AM62LX')
+
+   .. note::
+
+      Keeping the display pipeline powered across the Linux driver's own suspend/resume
+      calls is handled entirely by the ``ALWAYS_ON_DISPLAY`` property as described above.
+      However, surviving an actual system-wide low power state (for example
+      ``echo mem > /sys/power/state``) additionally requires cooperation from the
+      device firmware, which must also be told to keep the display power rails on
+      during that low power state. This firmware-side support is only available on
+      the AM62LX SoC and no other SoC supports it. For other SoCs,
+      ``ALWAYS_ON_DISPLAY`` keeps the pipeline powered across application handoff,
+      thus avoiding runtime suspend even if no application is holding a reference,
+      but the display should be assumed to lose power during a full system
+      suspend and resume cycle.
+
+.. code-block:: console
+
+   $ modetest -M tidss -w 42:ALWAYS_ON_DISPLAY:1
+
+In this example, CRTC 42 has ``ALWAYS_ON_DISPLAY`` set to 1. Once the application
+that uses this CRTC exits, the video port and its associated bridge/PHY power
+domains remain powered on, so a later application can reuse the pipeline without
+incurring the cost of hardware reinitialization of the DSI and D-PHY link.
+
+When ``ALWAYS_ON_DISPLAY`` is combined with ``SELF_REFRESH`` on a plane of the same
+CRTC, the video port itself is also kept running (instead of being disabled) once
+the application exits, so the frame looped by ``SELF_REFRESH`` continues to be
+displayed even after application handoff or system suspend/resume.
+
+To keep the frame looped by ``SELF_REFRESH`` displayed even after application
+handoff or system suspend and resume, set ``ALWAYS_ON_DISPLAY`` and
+``SELF_REFRESH`` on the same CRTC. This keeps the video port running after the
+application exits.
+
+.. code-block:: console
+
+   $ modetest -M tidss -w 42:ALWAYS_ON_DISPLAY:1
+   $ modetest -M tidss -w 35:SELF_REFRESH:1
+   $ kmstest --flip
+
+In this combined example, CRTC 42 has ``ALWAYS_ON_DISPLAY`` set and plane 35
+(belonging to that CRTC) has ``SELF_REFRESH`` set. ``kmstest --flip`` is then
+run to exercise page-flipping on the display. While ``SELF_REFRESH`` remains
+set, new frames that ``kmstest`` presents get dropped by the driver. The plane
+will instead continue looping the earlier frame. This will continue even after
+``kmstest`` exits because the video port is not torn down.
+
 Buffers
 -------
 
 The buffers used for tidss can be either allocated from tidss or imported from some other driver (dmabuf import). All buffers must be contiguous.
-
 tidss supports generic DRM dumb buffers. Dumb buffers are allocated using the generic DRM_IOCTL_MODE_CREATE_DUMB ioctl.
 
 
@@ -782,3 +925,75 @@ fbdev emulation (/dev/fb0)
 --------------------------
 
 DRM framework supports "emulating" the legacy fbdev API. This feature can be enabled or disabled in the kernel config (CONFIG_DRM_FBDEV_EMULATION). The fbdev emulation offers only basic feature set and the fb is shown on the first display. Fbdev emulation is mainly intended for kernel console or boot splash screens.
+
+
+Abbreviations
+=============
+
++-----------------+--------------------------------------------------------------+
+| Abbreviation    | Description                                                  |
++=================+==============================================================+
+| DSS             | Display SubSystem                                            |
++-----------------+--------------------------------------------------------------+
+| DISPC           | Display Controller                                           |
++-----------------+--------------------------------------------------------------+
+| DRM             | Direct Rendering Manager                                     |
++-----------------+--------------------------------------------------------------+
+| KMS             | Kernel Mode Setting                                          |
++-----------------+--------------------------------------------------------------+
+| CRTC            | CRT Controller (represents a display pipeline's timing and   |
+|                 | scanout engine in the DRM/KMS model)                         |
++-----------------+--------------------------------------------------------------+
+| VP              | Video Port                                                   |
++-----------------+--------------------------------------------------------------+
+| VID / VIDL      | Video pipeline types; VID pipelines support scaling, VIDL    |
+|                 | pipelines do not                                             |
++-----------------+--------------------------------------------------------------+
+| DPI             | Display Parallel Interface                                   |
++-----------------+--------------------------------------------------------------+
+| DSI             | Display Serial Interface (MIPI DSI)                          |
++-----------------+--------------------------------------------------------------+
+| MIPI            | Mobile Industry Processor Interface                          |
++-----------------+--------------------------------------------------------------+
+| OLDI            | Open LVDS Display Interface                                  |
++-----------------+--------------------------------------------------------------+
+| LVDS            | Low-Voltage Differential Signaling                           |
++-----------------+--------------------------------------------------------------+
+| DP              | DisplayPort                                                  |
++-----------------+--------------------------------------------------------------+
+| SST             | Single-Stream Transport (DisplayPort mode)                   |
++-----------------+--------------------------------------------------------------+
+| MST             | Multi-Stream Transport (DisplayPort mode)                    |
++-----------------+--------------------------------------------------------------+
+| HDMI            | High-Definition Multimedia Interface                         |
++-----------------+--------------------------------------------------------------+
+| MHDP            | Multi-Host DisplayPort controller IP (Cadence)               |
++-----------------+--------------------------------------------------------------+
+| PHY             | Physical layer transceiver                                   |
++-----------------+--------------------------------------------------------------+
+| GPU             | Graphics Processing Unit                                     |
++-----------------+--------------------------------------------------------------+
+| LUT             | Look-Up Table                                                |
++-----------------+--------------------------------------------------------------+
+| RGB             | Red-Green-Blue color format                                  |
++-----------------+--------------------------------------------------------------+
+| YCbCr           | Luma, blue-difference, red-difference chroma color format    |
++-----------------+--------------------------------------------------------------+
+| BT.601 / BT.709 | ITU-R color encoding standards for YCbCr conversion          |
++-----------------+--------------------------------------------------------------+
+| DMA             | Direct Memory Access                                         |
++-----------------+--------------------------------------------------------------+
+| FB              | Framebuffer                                                  |
++-----------------+--------------------------------------------------------------+
+| IP              | Intellectual Property (a reusable hardware block)            |
++-----------------+--------------------------------------------------------------+
+| EVM             | Evaluation Module                                            |
++-----------------+--------------------------------------------------------------+
+| SK              | Starter Kit                                                  |
++-----------------+--------------------------------------------------------------+
+| DT              | Device Tree                                                  |
++-----------------+--------------------------------------------------------------+
+| PM              | Power Management                                             |
++-----------------+--------------------------------------------------------------+
+| V4L2            | Video for Linux 2 (Linux media/video capture API)            |
++-----------------+--------------------------------------------------------------+

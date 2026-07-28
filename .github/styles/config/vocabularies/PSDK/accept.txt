@@ -27,7 +27,7 @@ Zink
 [Cc]odec
 [Dd]unfell
 [Ee]thernet
-[Ff]ramebuffer
+[Ff]ramebuffers?
 [Kk]eywriter
 [Kk]irkstone
 [Mm]ulticast
