@@ -548,10 +548,10 @@ Latencies reported:
 .. csv-table::
    :header: "Remote Processor","Message Size (in bytes)","Average round trip (usecs)","Max round trip (usecs)"
 
-   "R5F0_0","1","35","194"
-   "R5F0_0","490","154","255"
-   "M4F","1","43","162"
-   "M4F","490","282","439"
+   "R5F0_0","1","26","149"
+   "R5F0_0","490","153","284"
+   "M4F","1","37","152"
+   "M4F","490","281","444"
 
 .. image:: img/R5_0_0_m1_ipc_latency.png
 
