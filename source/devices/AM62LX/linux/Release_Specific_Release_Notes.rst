@@ -159,29 +159,29 @@ Debian (Armbian)
      - Config Info
    * - U-Boot
      - `ti-u-boot-2026.01 <https://github.com/TexasInstruments/ti-u-boot/tree/ti-u-boot-2026.01>`__
-     - `12.00.00.07 <https://github.com/TexasInstruments/ti-u-boot/releases/tag/12.00.00.07>`__
-     - `Build <https://github.com/TexasInstruments/armbian-build/blob/9f81d13cc640f9ad876faf2a906a0eda11a6bffd/config/sources/families/include/k3_common.inc#L76>`__
+     - `12.01.00.05 <https://github.com/TexasInstruments/ti-u-boot/releases/tag/12.01.00.05>`__
+     - `Build <https://github.com/TexasInstruments/armbian-build/blob/12.01.00.05.03/config/sources/families/include/k3_common.inc#L73>`__
    * - TF-A
      - `ti-tfa-2.14.y <https://github.com/TexasInstruments/arm-trusted-firmware/tree/ti-tfa-2.14.y>`__
-     - `v2.14+ <https://github.com/TexasInstruments/arm-trusted-firmware/commit/d203b8453905178252094416448de009931087e0>`__
-     - `Build <https://github.com/TexasInstruments/armbian-build/blob/9f81d13cc640f9ad876faf2a906a0eda11a6bffd/config/sources/families/include/k3_common.inc#L74>`__
+     - `v2.14+ <https://github.com/TexasInstruments/arm-trusted-firmware/commit/b54338ab6ee648bb9bef2e9dab7550a9a1d11d54>`__
+     - `Build <https://github.com/TexasInstruments/armbian-build/blob/12.01.00.05.03/config/sources/families/include/k3_common.inc#L71>`__
    * - OPTEE
      - `master <https://github.com/OP-TEE/optee_os/tree/master>`__
-     - `4.9.0+ <https://github.com/OP-TEE/optee_os/commit/f2a7ad0638aeff5243593b33cc56ad064cae7615>`__
-     - `Build <https://github.com/TexasInstruments/armbian-build/blob/9f81d13cc640f9ad876faf2a906a0eda11a6bffd/config/sources/families/include/k3_common.inc#L102>`__
+     - `4.10.0 <https://github.com/OP-TEE/optee_os/commit/753afbbee1682f5d16fd30e87b31058a4fd4f4b8>`__
+     - `Build <https://github.com/TexasInstruments/armbian-build/blob/12.01.00.05.03/config/sources/families/include/k3_common.inc#L99>`__
    * - Linux Firmware
      - `ti-linux-firmware <https://github.com/TexasInstruments/ti-linux-firmware/tree/ti-linux-firmware>`__
-     - `12.00.00.07 <https://github.com/TexasInstruments/ti-linux-firmware/releases/tag/12.00.00.07>`__
-     - `Git Clone <https://github.com/TexasInstruments/armbian-build/blob/9f81d13cc640f9ad876faf2a906a0eda11a6bffd/config/sources/families/include/k3_common.inc#L89>`__
+     - `12.01.00.05 <https://github.com/TexasInstruments/ti-linux-firmware/releases/tag/12.01.00.05>`__
+     - `Git Clone <https://github.com/TexasInstruments/armbian-build/blob/12.01.00.05.03/config/sources/families/include/k3_common.inc#L86>`__
    * - Linux Kernel
      - `ti-linux-6.18.y <https://github.com/TexasInstruments/ti-linux-kernel/tree/ti-linux-6.18.y>`__
-     - `12.00.00.07 <https://github.com/TexasInstruments/ti-linux-kernel/releases/tag/12.00.00.07>`__
-     - `non-RT <https://github.com/TexasInstruments/armbian-build/blob/2026.04-release/config/kernel/linux-k3-vendor.config>`__, `RT <https://github.com/TexasInstruments/armbian-build/blob/2026.04-release/config/kernel/linux-k3-vendor-rt.config>`__
+     - `12.01.00.05 <https://github.com/TexasInstruments/ti-linux-kernel/releases/tag/12.01.00.05>`__
+     - `non-RT <https://github.com/TexasInstruments/armbian-build/blob/12.01.00.05.03/config/kernel/linux-k3-vendor.config>`__, `RT <https://github.com/TexasInstruments/armbian-build/blob/12.01.00.05.03/config/kernel/linux-k3-vendor-rt.config>`__
    * - Armbian Build
-     - `2026.04-release <https://github.com/TexasInstruments/armbian-build/tree/2026.04-release>`__
-     - `12.00.00.07.04 <https://github.com/TexasInstruments/armbian-build/releases/tag/12.00.00.07.04>`__
-     - | Build: `k3_common.inc <https://github.com/TexasInstruments/armbian-build/blob/2026.04-release/config/sources/families/include/k3_common.inc>`__ + `k3.conf <https://github.com/TexasInstruments/armbian-build/blob/2026.04-release/config/sources/families/k3.conf>`__
-       | Board: `TMDS62LEVM <https://github.com/TexasInstruments/armbian-build/blob/2026.04-release/config/boards/tmds62levm.conf>`__
+     - `2026.07-release <https://github.com/TexasInstruments/armbian-build/tree/2026.07-release>`__
+     - `12.01.00.05.03 <https://github.com/TexasInstruments/armbian-build/releases/tag/12.01.00.05.03>`__
+     - | Build: `k3_common.inc <https://github.com/TexasInstruments/armbian-build/blob/12.01.00.05.03/config/sources/families/include/k3_common.inc>`__ + `k3.conf <https://github.com/TexasInstruments/armbian-build/blob/12.01.00.05.03/config/sources/families/k3.conf>`__
+       | Board: `TMDS62LEVM <https://github.com/TexasInstruments/armbian-build/blob/12.01.00.05.03/config/boards/tmds62levm.conf>`__
 
 Buildroot (Buildroot External TI)
 ---------------------------------
