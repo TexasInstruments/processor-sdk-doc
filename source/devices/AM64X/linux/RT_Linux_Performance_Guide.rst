@@ -292,6 +292,34 @@ OSPI Flash Driver
     "50","111.61 (min 40.98, max 147.06)"
 
 
+PCIe Driver
+-----------
+
+.. rubric:: PCIe-NVMe-SSD
+   :name: am64xx-evm-pcie-nvme-ssd
+
+To run the performance test, connect an NVMe SSD to the PCIe slot of the EVM,
+and run the following commands:
+
+.. code-block:: console
+
+   cd /opt/ltp
+   ./runltp -P am64xx-hsevm -f ddt/pci_gen3ssd_perf -s "PCI_L_PERF_NVMESSD_EXT4_FIO_10G "
+
+.. csv-table:: PCIE SSD EXT4 FIO 10G
+    :header: "Buffer size (bytes)","Write EXT4 Throughput (Mbytes/sec)","Write EXT4 CPU Load (%)","Read EXT4 Throughput (Mbytes/sec)","Read EXT4 CPU Load (%)"
+
+    "1m","400 (min 398, max 405)","25.20","424 (min 419, max 428)","19.30"
+    "4m","401 (min 386, max 412)","24.32","425 (min 410, max 436)","19.44"
+    "4k","74.2 (min 73.0, max 75.3)","50.72","102 (min 101, max 104)","50.48"
+    "256k","399 (min 359, max 404)","25.94","423 (min 419, max 427)","16.76"
+
+- File size used: 10G
+- FIO command options: --ioengine='libaio' --iodepth=4 --numjobs=1 --direct=1 --group_reporting --runtime=60 --time_based --eta=never
+- Platform: Speed 5GT/s, Width x1
+- SSD used: Intel SSDPED1D280GA
+
+
 EMMC Driver
 -----------
 .. warning::
