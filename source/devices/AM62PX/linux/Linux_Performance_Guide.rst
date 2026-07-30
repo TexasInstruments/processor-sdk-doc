@@ -956,33 +956,33 @@ Power Performance
 
    "vdd_core","0.85","0.00"
    "vddr_core","0.85","0.00"
-   "soc_dvdd_3v3","3.30","2.04"
-   "soc_dvdd_1v8","1.80","8.27"
+   "soc_dvdd_3v3","3.30","2.11"
+   "soc_dvdd_1v8","1.80","8.42"
    "vdda_1v8","1.80","0.10"
-   "vdd_lpddr4","1.10","0.46"
-   "Total"," ","10.87"
+   "vdd_lpddr4","1.10","4.21"
+   "Total"," ","14.84"
 
 .. csv-table:: DeepSleep Power Performance
    :header: "Rail name","Rail voltage(V)","Power (mW)"
 
-   "vdd_core","0.85","10.71"
-   "vddr_core","0.85","1.01"
-   "soc_dvdd_3v3","3.30","6.11"
-   "soc_dvdd_1v8","1.80","2.83"
-   "vdda_1v8","1.80","1.45"
-   "vdd_lpddr4","1.10","0.39"
-   "Total"," ","13.4"
+   "vdd_core","0.85","16.70"
+   "vddr_core","0.85","1.31"
+   "soc_dvdd_3v3","3.30","5.68"
+   "soc_dvdd_1v8","1.80","2.60"
+   "vdda_1v8","1.80","2.15"
+   "vdd_lpddr4","1.10","3.27"
+   "Total"," ","31.71"
 
 .. csv-table:: MCU Only Power Performance
    :header: "Rail name","Rail voltage(V)","Power (mW)"
 
-   "vdd_core","0.85","151.75"
-   "vddr_core","0.85","1.38"
-   "soc_dvdd_3v3","3.30","6.30"
+   "vdd_core","0.85","154.64"
+   "vddr_core","0.85","1.96"
+   "soc_dvdd_3v3","3.30","5.67"
    "soc_dvdd_1v8","1.80","2.74"
-   "vdda_1v8","1.80","10.07"
-   "vdd_lpddr4","1.10","0.23"
-   "Total"," ","172.47"
+   "vdda_1v8","1.80","10.63"
+   "vdd_lpddr4","1.10","4.06"
+   "Total"," ","179.69"
 
 Partial I/O Data
 - All voltage rails were measured to be near 0V
@@ -991,13 +991,11 @@ Partial I/O Data
 
    The power consumption on the vdda_1v8 rail does not include an
    oscillator on the rail that has significant current consumption.
-   Since previous SDK power measurements include the oscillator on the
-   rail, the reported power measurements are significantly different from
-   the current reported power measurements.
 
 .. note::
 
    The measurements shown are from an AM62Px SK rev E1-1. Results may vary based off of the board revision being used.
+   For the most accurate power measurements, use the latest TIVA firmware.
 
 Further optimizations are possible for these low power modes. Please refer to the AM62x Power Consumption App Note (https://www.ti.com/lit/pdf/spradg1)
 
@@ -1007,9 +1005,9 @@ Resume Latency Performance
 .. csv-table:: LPM Resume Latency Performance
    :header: "Low Power Mode","Total Resume Latency (ms)"
 
-   "I/O Only + DDR", "691"
-   "DeepSleep", "149"
-   "MCU Only", "103"
+   "I/O Only + DDR", "606"
+   "DeepSleep", "145"
+   "MCU Only", "92"
 
 The performance numbers are measured without the Linux printk logs. To remove the
 Linux printk logs, run the following commands in the terminal:

@@ -910,80 +910,6 @@ Listed for each algorithm are the code snippets used to run each
 
     time -v openssl speed -elapsed -evp aes-128-cbc
 
-.. _crypto-performance:
-
-Crypto Performance Comparison
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-The following table shows different AES/SHA algorithms throughput measured using
-openssl speed across DTHEv2 accelerator, ARM Cryptographic Extension (CE), and baseline ARM CPU.
-
-.. csv-table:: Crypto Accelerator Performance
-   :header: "Algorithm", "Size (bytes)", "Accelerator (MB/s)", "ARM CE (MB/s)", "ARM (MB/s)"
-   :widths: 20, 25, 20, 20, 20
-
-   "aes-128-cbc", "16", "0.28", "86.98", "27.92"
-   "aes-128-cbc", "64", "1.15", "271.53", "35.53"
-   "aes-128-cbc", "256", "4.64", "568.31", "38.34"
-   "aes-128-cbc", "1024", "16.39", "798.42", "39.10"
-   "aes-128-cbc", "8192", "81.19", "908.94", "39.33"
-   "aes-128-cbc", "16384", "110.11", "914.60", "39.34"
-   "aes-128-ecb", "16 bytes", "0.28", "91.03", "28.94"
-   "aes-128-ecb", "64 bytes", "1.13", "249.47", "35.86"
-   "aes-128-ecb", "256 bytes", "4.49", "571.00", "38.26"
-   "aes-128-ecb", "1024 bytes", "16.17", "857.11", "38.92"
-   "aes-128-ecb", "8192 bytes", "80.49", "1008.18", "39.09"
-   "aes-128-ecb", "16384 bytes", "110.41", "1020.21", "39.06"
-   "aes-192-cbc", "16 bytes", "0.19", "73.43", "24.97"
-   "aes-192-cbc", "64 bytes", "0.83", "244.53", "30.80"
-   "aes-192-cbc", "256 bytes", "3.07", "470.42", "32.82"
-   "aes-192-cbc", "1024 bytes", "10.39", "619.40", "33.37"
-   "aes-192-cbc", "8192 bytes", "50.85", "684.81", "33.56"
-   "aes-192-cbc", "16384 bytes", "54.89", "686.18", "33.55"
-   "aes-192-ecb", "16 bytes", "0.28", "86.24", "26.24"
-   "aes-192-ecb", "64 bytes", "1.15", "235.42", "31.64"
-   "aes-192-ecb", "256 bytes", "4.63", "527.54", "33.47"
-   "aes-192-ecb", "1024 bytes", "16.39", "773.91", "33.93"
-   "aes-192-ecb", "8192 bytes", "75.54", "897.52", "34.09"
-   "aes-192-ecb", "16384 bytes", "100.75", "906.88", "34.08"
-   "aes-256-cbc", "16 bytes", "0.26", "81.45", "22.12"
-   "aes-256-cbc", "64 bytes", "1.07", "228.09", "27.11"
-   "aes-256-cbc", "256 bytes", "4.30", "410.80", "28.73"
-   "aes-256-cbc", "1024 bytes", "14.73", "521.14", "29.14"
-   "aes-256-cbc", "8192 bytes", "48.88", "565.59", "29.28"
-   "aes-256-cbc", "16384 bytes", "85.82", "568.26", "29.29"
-   "aes-256-ecb", "16 bytes", "0.27", "84.14", "22.99"
-   "aes-256-ecb", "64 bytes", "1.11", "223.06", "27.15"
-   "aes-256-ecb", "256 bytes", "4.43", "467.53", "28.48"
-   "aes-256-ecb", "1024 bytes", "15.28", "672.34", "28.27"
-   "aes-256-ecb", "8192 bytes", "68.27", "764.23", "28.96"
-   "aes-256-ecb", "16384 bytes", "89.08", "764.39", "28.96"
-   "sha2-256", "16 bytes", "0.21", "10.44", "6.69"
-   "sha2-256", "64 bytes", "0.83", "38.35", "19.73"
-   "sha2-256", "256 bytes", "2.11", "125.98", "44.82"
-   "sha2-256", "1024 bytes", "8.32", "292.62", "65.99"
-   "sha2-256", "8192 bytes", "56.35", "479.45", "76.56"
-   "sha2-256", "16384 bytes", "95.08", "499.02", "77.43"
-   "sha2-512", "16 bytes", "0.19", "6.45", "6.44"
-   "sha2-512", "64 bytes", "0.76", "25.70", "25.68"
-   "sha2-512", "256 bytes", "2.01", "55.91", "55.89"
-   "sha2-512", "1024 bytes", "7.82", "94.66", "94.60"
-   "sha2-512", "8192 bytes", "55.03", "118.61", "118.52"
-   "sha2-512", "16384 bytes", "97.24", "120.80", "120.69"
-
-.. csv-table:: CPU Usage %
-   :header: "Algorithm", "Accelerator (%)", "ARM CE (%)", "ARM (%)"
-   :widths: 25, 25, 25, 25
-
-   "aes-128-cbc", "19%", "99%", "99%"
-   "aes-128-ecb", "18%", "99%", "99%"
-   "aes-192-cbc", "9%", "97%", "99%"
-   "aes-192-ecb", "17%", "99%", "99%"
-   "aes-256-cbc", "17%", "99%", "99%"
-   "aes-256-ecb", "16%", "99%", "99%"
-   "sha2-256", "41%", "99%", "99%"
-   "sha2-512", "38%", "99%", "99%"
-
 |
 
 Low Power Performance
@@ -1010,26 +936,26 @@ DSS plus DeepSleep, DeepSleep, RTC + I/O + DDR, and RTC Only.
 .. csv-table:: DeepSleep Power Performance
      :header: "Rail name","Rail voltage(V)","Power (mW)"
 
-     "vdd_core", "0.75", "7.17"
-     "soc_dvdd_1v8", "1.80", "1.47"
-     "soc_dvdd_3v3", "3.29", "3.38"
-     "vdda_1v8", "1.80", "1.02"
-     "vdd_lpddr4_pmic2", "1.10", "0.99"
-     "vdd_rtc", "0.74", "0.03"
+     "vdd_core", "0.75", "6.71"
+     "soc_dvdd_1v8", "1.80", "1.46"
+     "soc_dvdd_3v3", "3.30", "3.44"
+     "vdda_1v8", "1.80", "1.05"
+     "vdd_lpddr4_pmic2", "1.10", "0.97"
+     "vdd_rtc", "0.75", "0.03"
      "vdd_rtc_1v8", "1.80", "0.02"
-     "Total"," ","14.07"
+     "Total"," ","13.67"
 
 .. csv-table:: RTC + I/O + DDR Power Performance
      :header: "Rail name","Rail voltage(V)","Power (mW)"
 
      "vdd_core", "0.00", "0.00"
-     "soc_dvdd_1v8", "1.80", "1.46"
-     "soc_dvdd_3v3", "3.29", "0.99"
+     "soc_dvdd_1v8", "1.80", "1.36"
+     "soc_dvdd_3v3", "3.30", "0.98"
      "vdda_1v8", "0.00", "0.00"
-     "vdd_lpddr4_pmic2", "1.10", "0.95"
-     "vdd_rtc", "0.75", "0.02"
+     "vdd_lpddr4_pmic2", "1.10", "1.03"
+     "vdd_rtc", "0.75", "0.03"
      "vdd_rtc_1v8", "1.80", "0.01"
-     "Total"," ","3.44"
+     "Total"," ","3.41"
 
 .. csv-table:: RTC Only Power Performance
      :header: "Rail name","Rail voltage(V)","Power (mW)"
@@ -1043,6 +969,10 @@ DSS plus DeepSleep, DeepSleep, RTC + I/O + DDR, and RTC Only.
      "vdd_rtc_1v8", "1.80", "0.01"
      "Total"," ","0.05"
 
+.. note::
+
+   For the most accurate power measurements, use the latest TIVA firmware.
+
 Resume Latency Performance
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -1050,8 +980,9 @@ Resume Latency Performance
    :header: "Low Power Mode","Total Resume Latency (ms)"
 
    "RTC Only", "Full normal boot time (~seconds)"
-   "RTC + I/O + DDR", "385"
-   "DeepSleep", "171"
+   "RTC + I/O + DDR", "388"
+   "DeepSleep", "165"
+   "DSS plus DeepSleep", "499"
 
 The performance numbers are measured without the Linux printk logs. To remove the
 Linux printk logs, run the following commands in the terminal:

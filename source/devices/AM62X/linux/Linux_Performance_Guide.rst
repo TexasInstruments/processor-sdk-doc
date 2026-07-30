@@ -1262,6 +1262,7 @@ IPSec Software Performance
     "aes192","162.16 (min 50.20, max 456.20)","14.00 (min 4.00, max 40.00)","44.00 (min 29.67, max 51.46)","0.70","0.00","36.21"
     "aes256","190.65 (min 45.70, max 459.10)","16.50 (min 4.00, max 40.00)","39.63 (min 26.98, max 51.15)","125.30 (min 0.40, max 409.10)","10.75 (min 0.00, max 36.00)","51.72 (min 49.72, max 54.04)"
 
+|
 
 Low Power Performance
 -------------------------
@@ -1272,24 +1273,24 @@ Power Performance
 .. csv-table:: DeepSleep Power Performance
    :header: "Rail name","Rail voltage(V)","Power (mW)"
 
-   "vdd_core","0.85","9.33"
+   "vdd_core","0.85","9.01"
    "vddr_core","0.85","n/a"
-   "soc_dvdd_3v3","3.30","7.71"
-   "soc_dvdd_1v8","1.80","0.63"
-   "vdda_1v8","1.80","1.94"
-   "vdd_ddr4","1.10","8.04"
-   "Total"," ","27.64"
+   "soc_dvdd_3v3","3.30","5.86"
+   "soc_dvdd_1v8","1.80","4.37"
+   "vdda_1v8","1.80","1.80"
+   "vdd_ddr4","1.10","8.07"
+   "Total"," ","29.11"
 
 .. csv-table:: MCU Only Power Performance
    :header: "Rail name","Rail voltage(V)","Power (mW)"
 
-   "vdd_core","0.85","92.83"
+   "vdd_core","0.85","90.67"
    "vddr_core","0.85","n/a"
-   "soc_dvdd_3v3","3.30","13.90"
-   "soc_dvdd_1v8","1.80","0.99"
-   "vdda_1v8","1.80","10.80"
-   "vdd_ddr4","1.10","9.03"
-   "Total"," ","126.56"
+   "soc_dvdd_3v3","3.30","13.65"
+   "soc_dvdd_1v8","1.80","4.95"
+   "vdda_1v8","1.80","10.81"
+   "vdd_ddr4","1.10","8.58"
+   "Total"," ","128.66"
 
 Partial I/O Data
 - All voltage rails were measured to be near 0V
@@ -1297,6 +1298,7 @@ Partial I/O Data
 .. note::
 
    The measurements shown are from an SK-AM62B-P1. Results may vary based off of the board variant being used.
+   For the most accurate power measurements, use the latest TIVA firmware.
 
 Further optimizations are possible for these low power modes. Please refer to the AM62x Power Consumption App Note (https://www.ti.com/lit/pdf/spradg1)
 
@@ -1306,8 +1308,8 @@ Resume Latency Performance
 .. csv-table:: LPM Resume Latency Performance
    :header: "Low Power Mode","Total Resume Latency (ms)"
 
-   "DeepSleep", "137"
-   "MCU Only", "94"
+   "DeepSleep", "124"
+   "MCU Only", "76"
 
 The performance numbers are measured without the Linux printk logs. To remove the
 Linux printk logs, run the following commands in the terminal:
