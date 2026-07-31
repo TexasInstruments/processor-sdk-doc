@@ -23,14 +23,14 @@ has the following configuration files in the :file:`configs/processor-sdk` direc
    * - Config File
      - Description
      - Supported machines/platforms
-   * - :file:`processor-sdk-master-nonui-12.01.00.05.03-config.txt`
+   * - :file:`processor-sdk-wrynose-nongpu-12.01.00.05.03-config.txt`
      - Used for building Yocto based filesystem
      - |__SDK_BUILD_MACHINE__|
-   * - :file:`processor-sdk-master-selinux-12.01.00.05.03-config.txt`
+   * - :file:`processor-sdk-wrynose-selinux-12.01.00.05.03-config.txt`
      - Used for building SELinux enabled Yocto based filesystem
      - |__SDK_BUILD_MACHINE__|
-   * - :file:`processor-sdk-master-luks-12.01.00.05.03-config.txt`
+   * - :file:`processor-sdk-wrynose-luks-12.01.00.05.03-config.txt`
      - Used for building SDK with the luks disk encryption using fTPM
      - |__SDK_BUILD_MACHINE__|
 
-The oe-layersetup configuration, as defined in :file:`processor-sdk-master-nonui-12.01.00.05.03-config.txt`, is used for configuring the meta layers in the yocto SD card image available on |__SDK_DOWNLOAD_URL__|.
+The oe-layersetup configuration, as defined in :file:`processor-sdk-wrynose-nongpu-12.01.00.05.03-config.txt`, is used for configuring the meta layers in the yocto SD card image available on |__SDK_DOWNLOAD_URL__|.

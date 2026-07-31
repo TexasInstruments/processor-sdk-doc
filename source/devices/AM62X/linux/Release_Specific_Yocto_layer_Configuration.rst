@@ -23,17 +23,17 @@ has the following configuration files in the :file:`configs/processor-sdk` direc
    * - Config File
      - Description
      - Supported machines/platforms
-   * - :file:`processor-sdk-master-chromium-12.01.00.05.03-config.txt`
+   * - :file:`processor-sdk-wrynose-chromium-12.01.00.05.03-config.txt`
      - Used for building chromium browser enabled Yocto based filesystem
      - |__SDK_BUILD_MACHINE__|, am62xx-lp-evm, beagleplay-ti
-   * - :file:`processor-sdk-master-12.01.00.05.03-config.txt`
+   * - :file:`processor-sdk-wrynose-12.01.00.05.03-config.txt`
      - Used for building Yocto based filesystem
      - |__SDK_BUILD_MACHINE__|, am62xx-lp-evm, am62xxsip-evm, beagleplay-ti
-   * - :file:`processor-sdk-master-selinux-12.01.00.05.03-config.txt`
+   * - :file:`processor-sdk-wrynose-selinux-12.01.00.05.03-config.txt`
      - Used for building SELinux enabled Yocto based filesystem
      - |__SDK_BUILD_MACHINE__|, am62xx-lp-evm, am62xxsip-evm, beagleplay-ti
-   * - :file:`processor-sdk-master-luks-12.01.00.05.03-config.txt`
+   * - :file:`processor-sdk-wrynose-luks-12.01.00.05.03-config.txt`
      - Used for building SDK with the luks disk encryption using fTPM
      - |__SDK_BUILD_MACHINE__|
 
-The oe-layersetup configuration, as defined in :file:`processor-sdk-master-chromium-12.01.00.05.03-config.txt`, is used for configuring the meta layers in the yocto SD card image available on |__SDK_DOWNLOAD_URL__|.
+The oe-layersetup configuration, as defined in :file:`processor-sdk-wrynose-chromium-12.01.00.05.03-config.txt`, is used for configuring the meta layers in the yocto SD card image available on |__SDK_DOWNLOAD_URL__|.
