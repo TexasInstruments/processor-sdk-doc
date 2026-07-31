@@ -93,29 +93,62 @@ About Slint
 for embedded systems and desktop applications. It is designed to be lightweight and efficient,
 making it a good choice for resource-constrained embedded systems.
 
-Slint uses a flexible architecture with interchangeable rendering backends. By default,
-it uses its own built-in **FemtoVG** renderer, which is a lightweight, hardware-accelerated
-engine that leverages OpenGL ES 2.0. This makes it highly efficient and well-suited for
-embedded GPUs like the PowerVR series on the |__PART_FAMILY_NAME__|, providing a great
-balance of performance and low resource usage out-of-the-box.
+Slint uses a flexible architecture with configurable renderers and backends, controlled
+by ``PACKAGECONFIG`` in ``meta-slint``. See the `meta-slint features documentation
+<https://github.com/slint-ui/meta-slint#features>`__ for the full list of available
+renderers and backends and how to configure them.
+
+On |__PART_FAMILY_NAME__|, the image adapts to the board's graphics stack.
+Devices with a GPU render through the hardware-accelerated Skia renderer.
+GPU-less devices fall back to the Skia software renderer.
 
 Building with Slint
 ===================
 
-#. Slint version 1.15 example demos are integrated by default in the :file:`tisdk-default-image`. User can download
-   the :file:`tisdk-default-image` wic image from |__SDK_DOWNLOAD_URL__|.
+When ``meta-slint`` is included in the Yocto layer configuration, two image targets are available:
 
-#. Follow the steps in :ref:`building-the-sdk-with-yocto` to build the image from sources.
-   Use the default oe-config file, which includes the ``meta-slint`` layer.
-   See :ref:`Yocto Layer Configuration <yocto-layer-configuration>` to find the correct oe-config file for the release.
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
 
-#. Once the build is complete, flash the generated image at :file:`build/deploy-ti/images/<machine>/tisdk-default-image-<machine>.wic.xz`
-   onto a SD card. See :ref:`Flash an SD card <processor-sdk-linux-create-sd-card>` for instructions.
+   * - Image target
+     - What you get
+   * - :file:`tisdk-default-image`
+     - Full TI SDK image with Slint demo binaries in :file:`/usr/bin` and :command:`slint-viewer`. The user manually starts a specific demo.
+   * - :file:`ti-image-slint-demos`
+     - Slint-focused image with the same demo binaries and :command:`slint-viewer`, plus :command:`slint-launcher` which starts
+       automatically on boot and presents a graphical list of demos to launch.
+
+**Download a pre-built image**
+
+- **TI SDK image:** Download :file:`tisdk-default-image` from |__SDK_DOWNLOAD_URL__|.
+- **Slint demo image:** Download from the
+  `meta-slint releases page <https://github.com/slint-ui/meta-slint/releases/tag/demo-images>`__
+  (based on :file:`ti-image-slint-demos`, includes the demo launcher).
+
+Flash the downloaded image to an SD card as described in :ref:`Flash an SD card <processor-sdk-linux-create-sd-card>`.
+
+**Build from source**
+
+Follow the steps in :ref:`building-the-sdk-with-yocto`. Use the default oe-config file, which includes
+the ``meta-slint`` layer. See :ref:`Yocto Layer Configuration <yocto-layer-configuration>` to find the
+correct oe-config file for the release.
+
+.. code-block:: console
+
+   # Standard TI SDK image with Slint demos
+   MACHINE=<machine> bitbake tisdk-default-image
+
+   # Slint-focused image with demo launcher
+   MACHINE=<machine> bitbake ti-image-slint-demos
+
+Flash the generated image at :file:`build/deploy-ti/images/<machine>/<image>-<machine>.wic.xz`
+onto a SD card. See :ref:`Flash an SD card <processor-sdk-linux-create-sd-card>` for instructions.
 
 Running the Demos
 =================
 
-After booting the board with the new image, you will find several Slint demo binaries located in :file:`/usr/bin`, including:
+The following Slint demo binaries are available in :file:`/usr/bin` on both image types:
 
 * :file:`energy-monitor`
 * :file:`gallery`
@@ -125,8 +158,11 @@ After booting the board with the new image, you will find several Slint demo bin
 * :file:`printerdemo`
 * :file:`slide_puzzle`
 
-To run a demo, first stop the ti-apps-launcher that runs out-of-box and then execute the desired binary.
-For example, to run the "home-automation" demo on a Wayland display:
+**With ti-image-slint-demos (or Slint pre-built image):** :command:`slint-launcher` starts automatically on boot.
+Select and start any demo from the graphical list.
+
+**With tisdk-default-image:** Run demos manually. Stop the ti-apps-launcher first before starting any demo.
+For example, to run the :command:`home-automation` demo on a Wayland display:
 
 .. code-block:: console
 
@@ -140,7 +176,26 @@ For example, to run the "home-automation" demo on a Wayland display:
    :width: 50%
    :alt: Slint Home Automation Demo
 
-Here are some snapshots of the other demos running on the device.
+Slint Viewer
+------------
+
+The images now include :command:`slint-viewer`, a tool for previewing :file:`.slint` UI files directly
+on the board. Run it in remote mode to connect from your development machine and push live UI updates
+to the board as you edit, without rebuilding:
+
+.. code-block:: console
+
+   # View all available options
+   slint-viewer --help
+
+   # Start in remote mode — board waits for editor to connect
+   slint-viewer --remote
+
+In your editor's Slint live preview, select **Remote** and enter the address shown on the board.
+See the `Slint Viewer documentation <https://docs.slint.dev/latest/docs/slint/guide/tooling/slint-viewer/>`__
+for full usage.
+
+Here are some snapshots of the other demos running on the device (OpenGL demos require a GPU).
 
 .. list-table::
    :widths: 50 50
@@ -170,8 +225,14 @@ Here are some snapshots of the other demos running on the device.
 
             Puzzle demo
 
-.. figure:: /images/slint_energy_monitor.png
-   :align: left
-   :alt: Slint Energy Monitor Demo
+   *  -  .. figure:: /images/slint_energy_monitor.png
+            :align: center
+            :alt: Slint Energy Monitor Demo
 
-   Energy Monitor
+            Energy Monitor
+
+      -  .. figure:: /images/slint_gallery.png
+            :align: center
+            :alt: Slint Gallery Demo
+
+            Gallery Demo

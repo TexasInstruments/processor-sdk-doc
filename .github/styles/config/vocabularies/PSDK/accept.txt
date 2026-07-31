@@ -13,6 +13,7 @@ OpenVX
 PVRCarbon
 PVRTune
 Sitara
+Skia
 Slint
 TFLite
 TVM
@@ -30,6 +31,7 @@ Zink
 [Kk]eywriter
 [Kk]irkstone
 [Mm]ulticast
+[Rr]enderers?
 [Ss]carthgap
 [Tt]oolchain
 balenaEtcher
