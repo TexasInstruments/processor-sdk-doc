@@ -6,13 +6,13 @@
 #
 alabaster==1.0.0
     # via sphinx
-annotated-doc==0.0.4
+annotated-doc==0.0.5
     # via typer
-annotated-types==0.7.0
+annotated-types==0.8.0
     # via pydantic
 babel==2.18.0
     # via sphinx
-certifi==2026.6.17
+certifi==2026.7.22
     # via requests
 charset-normalizer==3.4.9
     # via requests
@@ -90,7 +90,7 @@ sphinxcontrib-qthelp==2.0.0
     # via sphinx
 sphinxcontrib-serializinghtml==2.0.0
     # via sphinx
-typer==0.26.8
+typer==0.27.0
     # via rstcheck
 typing-extensions==4.16.0
     # via
