@@ -468,6 +468,123 @@ Run Glmark2 and capture performance reported (Score). All display outputs (HDMI,
 
 
 
+Ethernet
+--------
+
+Ethernet performance benchmarks were measured using :command:`netperf` 2.7.1 https://hewlettpackard.github.io/netperf/doc/netperf.html
+Test procedures were modeled after those defined in RFC-2544:
+https://tools.ietf.org/html/rfc2544, where the DUT is the TI device
+and the "tester" used was a Linux PC. To produce consistent results,
+it is recommended to carry out performance tests in a private network and to avoid
+running NFS on the same interface used in the test. In these results,
+CPU utilization was captured as the total percentage used across all cores on the device,
+while running the performance test over one external interface.
+
+UDP Throughput (0% loss) was measured by the procedure defined in RFC-2544 section 26.1: Throughput.
+In this scenario, :command:`netperf` options burst_size (-b) and wait_time (-w) are used to limit bandwidth
+during different trials of the test, with the goal of finding the highest rate at which
+no loss is seen. For example, to limit bandwidth to 500Mbits/sec with 1472B datagram:
+
+.. code-block:: console
+
+   burst_size = <bandwidth (bits/sec)> / 8 (bits -> bytes) / <UDP datagram size> / 100 (seconds -> 10 ms)
+   burst_size = 500000000 / 8 / 1472 / 100 = 425
+
+   wait_time = 10 milliseconds (minimum supported by Linux PC used for testing)
+
+UDP Throughput (possible loss) was measured by capturing throughput and packet loss statistics when
+running the :command:`netperf` test with no bandwidth limit (remove -b/-w options).
+
+The following commands were used to tune the socket buffer sizes on the DUT before running the performance tests:
+
+.. code-block:: console
+
+   sysctl -w net.core.rmem_default=33554432
+   sysctl -w net.core.rmem_max=67108864
+
+In order to start a :command:`netperf` client on one device, the other device must have :command:`netserver` running.
+To start :command:`netserver`:
+
+.. code-block:: console
+
+   netserver [-p <port_number>] [-4 (IPv4 addressing)] [-6 (IPv6 addressing)]
+
+Running the following shell script from the DUT will trigger :command:`netperf` clients to measure
+bidirectional TCP performance for 60 seconds and report CPU utilization. Parameter -k is used in
+client commands to summarize selected statistics on their own line and -j is used to gain
+additional timing measurements during the test.
+
+.. code-block:: console
+
+   #!/bin/bash
+   for i in 1
+   do
+      netperf -H <tester ip> -j -c -l 60 -t TCP_STREAM --
+         -k DIRECTION,THROUGHPUT,MEAN_LATENCY,LOCAL_CPU_UTIL,REMOTE_CPU_UTIL,LOCAL_BYTES_SENT,REMOTE_BYTES_RECVD,LOCAL_SEND_SIZE &
+
+      netperf -H <tester ip> -j -c -l 60 -t TCP_MAERTS --
+         -k DIRECTION,THROUGHPUT,MEAN_LATENCY,LOCAL_CPU_UTIL,REMOTE_CPU_UTIL,LOCAL_BYTES_SENT,REMOTE_BYTES_RECVD,LOCAL_SEND_SIZE &
+   done
+
+Running the following commands will trigger :command:`netperf` clients to measure UDP burst performance for
+60 seconds at various burst/datagram sizes and report CPU utilization.
+
+- For UDP egress tests, run :command:`netperf` client from DUT and start :command:`netserver` on tester.
+
+.. code-block:: console
+
+   netperf -H <tester ip> -j -c -l 60 -t UDP_STREAM -b <burst_size> -w <wait_time> -- -m <UDP datagram size>
+      -k DIRECTION,THROUGHPUT,MEAN_LATENCY,LOCAL_CPU_UTIL,REMOTE_CPU_UTIL,LOCAL_BYTES_SENT,REMOTE_BYTES_RECVD,LOCAL_SEND_SIZE
+
+- For UDP ingress tests, run :command:`netperf` client from tester and start :command:`netserver` on DUT.
+
+.. code-block:: console
+
+   netperf -H <DUT ip> -j -C -l 60 -t UDP_STREAM -b <burst_size> -w <wait_time> -- -m <UDP datagram size>
+      -k DIRECTION,THROUGHPUT,MEAN_LATENCY,LOCAL_CPU_UTIL,REMOTE_CPU_UTIL,LOCAL_BYTES_SENT,REMOTE_BYTES_RECVD,LOCAL_SEND_SIZE
+
+CPSW/CPSW2g/CPSW3g Ethernet
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- CPSW3g: AM62x
+
+TCP Bidirectional Throughput
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. csv-table:: CPSW2g TCP Bidirectional Throughput
+    :header: "Command Used","am62xx_lp_sk-fs: THROUGHPUT (Mbits/sec)","am62xx_lp_sk-fs: CPU Load % (LOCAL_CPU_UTIL)","am62xx_sk-fs: THROUGHPUT (Mbits/sec)","am62xx_sk-fs: CPU Load % (LOCAL_CPU_UTIL)","am62xxsip_sk-fs: THROUGHPUT (Mbits/sec)","am62xxsip_sk-fs: CPU Load % (LOCAL_CPU_UTIL)"
+
+    "netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_MAERTS","1657.01","67.11","1822.62","66.72","1763.18","67.48"
+
+TCP Bidirectional Throughput Interrupt Pacing
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. csv-table:: CPSW2g TCP Bidirectional Throughput Interrupt Pacing
+    :header: "Command Used","am62xx_lp_sk-fs: THROUGHPUT (Mbits/sec)","am62xx_lp_sk-fs: CPU Load % (LOCAL_CPU_UTIL)","am62xx_sk-fs: THROUGHPUT (Mbits/sec)","am62xx_sk-fs: CPU Load % (LOCAL_CPU_UTIL)","am62xxsip_sk-fs: THROUGHPUT (Mbits/sec)","am62xxsip_sk-fs: CPU Load % (LOCAL_CPU_UTIL)"
+
+    "netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_MAERTS","1794.07","63.53","1828.80","57.91","1543.11","49.30"
+
+UDP Throughput
+~~~~~~~~~~~~~~
+
+.. csv-table:: CPSW2g UDP Egress Throughput 0 loss
+    :header: "Frame Size(bytes)", "am62xx_lp_sk-fs: THROUGHPUT (Mbits/sec)", "am62xx_lp_sk-fs: Packets Per Second (kPPS)", "am62xx_lp_sk-fs: CPU Load % (LOCAL_CPU_UTIL)", "am62xx_sk-fs: THROUGHPUT (Mbits/sec)", "am62xx_sk-fs: Packets Per Second (kPPS)", "am62xx_sk-fs: CPU Load % (LOCAL_CPU_UTIL)", "am62xxsip_sk-fs: THROUGHPUT (Mbits/sec)", "am62xxsip_sk-fs: Packets Per Second (kPPS)", "am62xxsip_sk-fs: CPU Load % (LOCAL_CPU_UTIL)"
+
+    "64","38.61","75","36.53","44.13","86","37.14","45.71","89","37.74"
+    "128","76.11","74","36.58","85.34","83","36.72","91.47","89","37.33"
+    "256","148.89","73","36.41","169.41","83","36.51","170.76","83","36.89"
+    "1024","592.94","72","36.75","659.08","80","36.45","704.41","86","37.13"
+    "1518","846.54","72","36.56","208.42","18","11.87","916.55","78","39.59"
+
+.. csv-table:: CPSW2g UDP Ingress Throughput 0 loss
+    :header: "Frame Size(bytes)", "am62xx_lp_sk-fs: THROUGHPUT (Mbits/sec)", "am62xx_lp_sk-fs: Packets Per Second (kPPS)", "am62xx_lp_sk-fs: CPU Load % (LOCAL_CPU_UTIL)", "am62xx_sk-fs: THROUGHPUT (Mbits/sec)", "am62xx_sk-fs: Packets Per Second (kPPS)", "am62xx_sk-fs: CPU Load % (LOCAL_CPU_UTIL)", "am62xxsip_sk-fs: THROUGHPUT (Mbits/sec)", "am62xxsip_sk-fs: Packets Per Second (kPPS)", "am62xxsip_sk-fs: CPU Load % (LOCAL_CPU_UTIL)"
+
+    "64","33.53","65","15.91","41.16","80","19.91","30.41","59","12.23"
+    "128","63.90","62","15.10","66.05","65","15.68","61.95","60","14.96"
+    "256","170.41","83","26.12","148.27","72","18.20","142.13","69","13.55"
+    "1024","611.97","75","26.40","754.92","92","31.48","681.07","83","41.67"
+    "1518","954.54","81","39.92","956.88","81","38.55","710.47","60","31.15"
+
 |
 
 Linux OSPI Flash Driver
