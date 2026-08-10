@@ -18,4 +18,4 @@ Detailed instructions on using the tool can be found in MCU+SDK docs.
 
 .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
-   `MCU+SDK Flash Tools Documentation  <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62PX/11_01_01_08/exports/docs/api_guide_am62px/TOOLS_FLASH.html>`__.
+   `MCU+SDK Flash Tools Documentation  <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62PX/12_01_00_28/exports/docs/api_guide_am62px/components/tools/tools_flash.html>`__.
