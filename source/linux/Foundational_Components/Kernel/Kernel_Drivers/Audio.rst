@@ -90,7 +90,7 @@ in board-level device trees:
      - uint32
      - No :sup:`1`
      - | A fixed multiplier to sampling rate (𝑓\ :sub:`s`) for a given AUXCLK frequency for TX (and RX if ``auxclk-fs-ratio-rx`` not specified).
-       | :sup:`1` If not specified, dividers are calculated from ``.set_sysclk`` via the ASoC machine driver. (For common machine driver such as simple-audio-card or audio-graph-card, this is set via the ``system-clock-frequency = <>`` property in the DAI link).
+       | :sup:`1` When not specified, ``.set_sysclk`` and the ASoC machine driver will decide divider values. The ``system-clock-frequency`` property in the DAI link or endpoint sets this value for common machine drivers such as simple-audio-card, audio-graph-card, or audio-graph-card2).
        | Only applicable when McASP is the master which produces the bit clock.
        | See :ref:`Configuration Guidelines <mcasp-configuration-guidelines>` for details on usage and calculation.
    * - **serial-dir**
@@ -346,7 +346,12 @@ via a sound card definition in the device tree.
 
 The **simple-audio-card** is a generic machine driver and establishes Digital Audio Interface (DAI)
 links that connect the McASP (CPU-side) to codec(s). These DAI links operate within the ASoC framework, which constitutes part of the ALSA stack.
-Most TI EVMs use simple-audio-card for its simplicity, though audio-graph-card or custom machine drivers are also supported.
+Most TI EVMs use simple-audio-card for its simplicity, though audio-graph-card2 or custom machine drivers are also supported.
+audio-graph-card2 describes DAI links through the generic OF-graph ``ports``/``port``/``endpoint`` bindings
+on the McASP node instead of ``simple-audio-card``'s ``cpu``/``codec`` phandle pairs (see the following
+example). It also handles a DPCM (Dynamic PCM) topology, where one front-end stream fans out to, or fans in from, more
+than one backend codec DAI. ``simple-audio-card`` has no mechanism for that: it only ever builds fixed
+one-to-one DAI links. See :ref:`DPCM Topology <mcasp-dpcm-topology>` below.
 All DAI link properties McASP relies on are part of the generic ASoC framework, not specific to any particular machine driver.
 
 The DAI link configuration provides the following intrinsics to the McASP driver:
@@ -536,6 +541,212 @@ In this multi-codec configuration:
 * The ``bitclock-master`` and ``frame-master`` properties specify which device (CPU or codec) drives the bit clock and frame sync signals
 * ``system-clock-direction-out`` is required for McASP to generate clocks, which is required when McASP is driving the signals in master mode
 * Since McASP is in master mode, ``auxclk-fs-ratio`` should be defined in the McASP node, otherwise ``system-clock-frequency`` must be set in the DAI link to provide a fixed clock source
+
+**Multiple Codecs Using audio-graph-card2**
+
+``simple-audio-card`` can already share one McASP instance across multiple independent codec links (see
+the ``simple-audio-card`` multi-codec example above), using its ``cpu``/``codec`` phandle pairs.
+**audio-graph-card2** describes the same kind of topology through the generic OF-graph ``ports``/``port``
+bindings directly on the McASP node instead. The following example is from AM62P5-SK
+(``k3-am62p5-sk.dts``), where one McASP instance serves both a TLV320AIC3106 codec and the on-board
+sii9022 HDMI bridge:
+
+.. code-block:: devicetree
+
+   /* Example from AM62P5-SK (k3-am62p5-sk.dts) */
+   sound0 {
+      compatible = "audio-graph-card2";
+      label = "AM62x-SKEVM";
+      links = <&mcasp1_codec>, <&mcasp1_hdmi>;
+   };
+
+   &mcasp1 {
+      ports {
+         #address-cells = <1>;
+         #size-cells = <0>;
+
+         /* Codec link: TLV320AIC3106, codec is clock master */
+         mcasp1_codec: port@0 {
+            reg = <0>;
+
+            mcasp1_codec_endpoint: endpoint {
+               remote-endpoint = <&aic3x_endpoint>;
+               dai-format = "dsp_b";
+               bitclock-inversion;
+            };
+         };
+
+         /* HDMI link: SII9022, McASP is clock master */
+         mcasp1_hdmi: port@1 {
+            reg = <1>;
+
+            mcasp1_hdmi_endpoint: endpoint {
+               remote-endpoint = <&hdmi_audio_endpoint>;
+               dai-format = "i2s";
+               bitclock-master;
+               frame-master;
+               system-clock-direction-out;
+            };
+         };
+      };
+   };
+
+In this configuration:
+
+* One McASP DAI serves both codec links (here, a headphone codec and HDMI), each exposed as its own ``port@N`` endpoint under the McASP node's ``ports`` container
+* Each ``port@N`` endpoint carries its own ``dai-format`` and clock-role properties. The driver re-applies the active link's format on every ``hw_params`` call, since the shared DAI would otherwise keep the format from whichever link initialized last
+* The sound card node's ``links`` property lists the participating McASP ports, in the order they should appear as ALSA PCM devices
+* This is compatible with earlier boards still using ``simple-audio-card``. No McASP-level configuration change is needed to switch machine drivers
+
+.. _mcasp-dpcm-topology:
+
+**DPCM Topology (Up to Two Front-Ends, One Direction Each)**
+
+audio-graph-card2 also supports a DPCM (Dynamic PCM) topology on the same McASP ``ports`` binding, fanning
+one McASP instance out to several backend (BE) codec DAIs. On the McASP side this supports up to two
+front-ends (FE): one playback and one capture, since one McASP instance only has one TX data path
+and one RX data path. The driver does not support two FEs in the same direction.
+
+The non-DPCM topology shown above maps each ``port``/``link`` to its own independent ALSA PCM device, one
+codec DAI at a time. It has no way to route a single userspace stream to more than one BE codec DAI, or to
+merge several BE codec DAIs into one userspace stream. DPCM's ``routing`` property connects FE widgets to
+BE widgets through DAPM instead of a fixed one-to-one DAI link, so it can do both. Without it, a board like
+this would need userspace to open several independent PCM devices, one per BE codec DAI, and keep them
+synchronized by hand, instead of one playback device and one capture device.
+
+The following is based on the TAS67CD-AEC daughter card overlay for AM62D-EVM
+(``k3-am62d-evm-tas67cd-aec.dtso``), which drives two TAS6754 quad-channel amplifiers, TAS0 and TAS1, off a
+single McASP instance. Each chip exposes an audio, ANC, and feedback DAI. TAS0 and TAS1 play the same
+program audio at the same time, so the one FE playback stream fans out to both chips' audio and ANC BE
+DAIs. Both chips' feedback BE DAIs fan in to the single FE capture stream. TAS1's BE port block is omitted
+below, since it mirrors TAS0's:
+
+.. code-block:: devicetree
+
+   &mcasp1 {
+      ports {
+         #address-cells = <1>;
+         #size-cells = <0>;
+
+         /* Port 0: FE playback DAI, McASP is bus/frame provider */
+         port@0 {
+            reg = <0>;
+
+            mcasp1_port0_ep: endpoint {
+               dai-format = "dsp_b";
+               bitclock-master;
+               frame-master;
+               remote-endpoint = <&fe_pb_ep>;
+            };
+         };
+
+         /* Port 1: FE capture DAI */
+         port@1 {
+            reg = <1>;
+
+            mcasp1_port1_ep: endpoint {
+               dai-format = "dsp_b";
+               bitclock-master;
+               frame-master;
+               remote-endpoint = <&fe_cap_ep>;
+            };
+         };
+      };
+   };
+
+   /* audio-graph-card2 DPCM sound card */
+   sound_tas67cd: sound-tas67cd {
+      compatible = "audio-graph-card2";
+      label = "TAS67CD-AEC";
+
+      routing =
+         /* FE playback fans out to both chips' audio + ANC BE DAIs */
+         "TAS0 Playback", "Playback Port 0",
+         "TAS1 Playback", "Playback Port 0",
+         "TAS0 ANC Playback", "Playback Port 0",
+         "TAS1 ANC Playback", "Playback Port 0",
+
+         /* Both chips' feedback BE DAIs fan in to the single FE capture stream */
+         "Capture Port 1", "TAS0 Feedback Capture",
+         "Capture Port 1", "TAS1 Feedback Capture";
+
+      links = <&mcasp1_fe_pb>, <&mcasp1_fe_cap>,
+              <&be_tas0_audio>, <&be_tas0_anc>, <&be_tas0_fb>,
+              <&be_tas1_audio>, <&be_tas1_anc>, <&be_tas1_fb>;
+
+      dpcm {
+         #address-cells = <1>;
+         #size-cells = <0>;
+
+         /* Front-End: 2 FE DAIs on McASP1 */
+         ports@0 {
+            reg = <0>;
+            #address-cells = <1>;
+            #size-cells = <0>;
+
+            mcasp1_fe_pb: port@0 {
+               reg = <0>;
+               playback-only;
+
+               fe_pb_ep: endpoint {
+                  remote-endpoint = <&mcasp1_port0_ep>;
+               };
+            };
+
+            mcasp1_fe_cap: port@1 {
+               reg = <1>;
+               capture-only;
+
+               fe_cap_ep: endpoint {
+                  remote-endpoint = <&mcasp1_port1_ep>;
+               };
+            };
+         };
+
+         /* Back-End: 6 BE links (2 chips x 3 DAIs); TAS1 block mirrors TAS0, omitted here */
+         ports@1 {
+            reg = <1>;
+            #address-cells = <1>;
+            #size-cells = <0>;
+
+            be_tas0_audio: port@0 {
+               reg = <0>;
+
+               be_tas0_audio_ep: endpoint {
+                  remote-endpoint = <&tas0_audio_ep>;
+               };
+            };
+
+            be_tas0_anc: port@1 {
+               reg = <1>;
+
+               be_tas0_anc_ep: endpoint {
+                  remote-endpoint = <&tas0_anc_ep>;
+               };
+            };
+
+            be_tas0_fb: port@2 {
+               reg = <2>;
+
+               be_tas0_fb_ep: endpoint {
+                  remote-endpoint = <&tas0_fb_ep>;
+               };
+            };
+         };
+      };
+   };
+
+In this configuration:
+
+* The two FE ports on the McASP node (``port@0``/``port@1``) use the same flat, non-DPCM ``ports`` binding as the previous example. DPCM fan-out is defined on the **card** side, in the ``dpcm`` sub-node, not on the McASP node itself
+* ``dpcm { ports@0 {...}; }`` holds the FE DAIs. ``dpcm { ports@1 {...}; }`` holds the BE DAIs. Each BE ``port@N`` links to a codec-side DAI endpoint, here one of the six TAS6754 DAIs across both chips
+* Each FE port is restricted with ``playback-only`` or ``capture-only``. Both FEs map to the same physical McASP instance, registered as separate DAIs (``davinci-mcasp.0``, ``davinci-mcasp.1``), so each FE is limited to one direction to avoid a conflict on that shared hardware
+* The card's ``routing`` property does the fan-out and fan-in. It connects the single "Playback Port 0" FE widget to four BE playback widgets, and both chips' feedback BE widgets to the single "Capture Port 1" FE widget. That many-to-one, one-to-many wiring is not possible with the non-DPCM binding shown earlier
+
+.. attention::
+
+   This DPCM topology supports up to **two** front-ends sharing one McASP instance: one playback and one
+   capture. It does not support two front-ends in the same direction.
 
 For more information on DAI link configuration and ASoC machine drivers, refer to ALSA links in the :ref:`Additional Information <additional-information-alsa-links>` section below.
 
