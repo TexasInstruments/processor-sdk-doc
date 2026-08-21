@@ -45,8 +45,12 @@ status for all packages included in this release. The manifest can be
 found on the SDK download page or in the installed directory as indicated below.
 
 -  Linux Manifest:  :file:`<PSDK_PATH>/manifest/software_manifest.htm`
--  Debian Manifest: `AM62Lx 12.00.00.07.04
-   <https://dr-download.ti.com/software-development/software-development-kit-sdk/MD-YjEeNKJJjt/12.00.00.07.04/software_manifest_debian_tmds62levm_tmds62levm.htm>`__
+-  Debian Manifest:
+
+   -  `AM62Lx non-RT 12.01.00.05.03
+      <https://dr-download.ti.com/software-development/software-development-kit-(sdk)/MD-YjEeNKJJjt/12.01.00.05.03/software_manifest_debian_tmds62levm_tmds62levm.htm>`__
+   -  `AM62Lx RT 12.01.00.05.03
+      <https://dr-download.ti.com/software-development/software-development-kit-(sdk)/MD-pksc0x1Akk/12.01.00.05.03/software_manifest_debian_tmds62levm_tmds62levm-rt.htm>`__
 
 Software Bill of Materials (SBOM)
 =================================

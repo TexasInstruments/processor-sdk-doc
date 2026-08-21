@@ -47,10 +47,14 @@ found on the SDK download page or in the installed directory as indicated below.
 -  Linux Manifest:  :file:`<PSDK_PATH>/manifest/software_manifest.htm`
 -  Debian Manifest:
 
-   -  `AM62x 12.00.00.07.04
-      <https://dr-download.ti.com/software-development/software-development-kit-sdk/MD-PvdSyIiioq/12.00.00.07.04/software_manifest_debian_sk-am62b.html>`__
-   -  `AM62x-SIP 12.00.00.07.04
-      <https://dr-download.ti.com/software-development/software-development-kit-sdk/MD-PvdSyIiioq/12.00.00.07.04/software_manifest_debian_sk-am62-sip_sk-am62-sip.htm>`__
+   -  `AM62x/AM62x-LP non-RT 12.01.00.05.03
+      <https://dr-download.ti.com/software-development/software-development-kit-(sdk)/MD-PvdSyIiioq/12.01.00.05.03/software_manifest_debian_sk-am62b_sk-am62b.htm>`__
+   -  `AM62x/AM62x-LP RT 12.01.00.05.03
+      <https://dr-download.ti.com/software-development/software-development-kit-(sdk)/MD-BDCgfEXHLk/12.01.00.05.03/software_manifest_debian_sk-am62b_sk-am62b-rt.htm>`__
+   -  `AM62x-SIP non-RT 12.01.00.05.03
+      <https://dr-download.ti.com/software-development/software-development-kit-(sdk)/MD-PvdSyIiioq/12.01.00.05.03/software_manifest_debian_sk-am62-sip_sk-am62-sip.htm>`__
+   -  `AM62x-SIP RT 12.01.00.05.03
+      <https://dr-download.ti.com/software-development/software-development-kit-(sdk)/MD-BDCgfEXHLk/12.01.00.05.03/software_manifest_debian_sk-am62-sip_sk-am62-sip-rt.htm>`__
 
 Software Bill of Materials (SBOM)
 =================================
