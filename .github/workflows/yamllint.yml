@@ -28,7 +28,7 @@ jobs:
           persist-credentials: false
 
       - name: yamllint
-        uses: reviewdog/action-yamllint@e02a49fdf53f51ddd8dfa89b09aa975043aeba38  # v1.23.0
+        uses: reviewdog/action-yamllint@de68272fdca5f2a961fb309e0d2e13c2eb186d9e  # v1.23.1
         with:
           fail_level: any
           filter_mode: nofilter
