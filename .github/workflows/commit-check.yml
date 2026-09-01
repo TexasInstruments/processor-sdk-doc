@@ -25,7 +25,7 @@ jobs:
           persist-credentials: false
 
       - name: Check commit
-        uses: commit-check/commit-check-action@bbb6580f01838e475563514f115ec7ef41c9ddc7  # v2.11.1
+        uses: commit-check/commit-check-action@f803083a5bf0867b60d77189bc3810fce2f0e314  # v2.15.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
