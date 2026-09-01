@@ -14,22 +14,22 @@ babel==2.18.0
     # via sphinx
 certifi==2026.7.22
     # via requests
-charset-normalizer==3.4.9
+charset-normalizer==3.5.1
     # via requests
 docutils==0.22.4
     # via
     #   rstcheck-core
     #   sphinx
     #   sphinx-rtd-theme
-idna==3.18
+idna==3.19
     # via requests
-imagesize==2.0.0
+imagesize==2.0.1
     # via sphinx
 jinja2==3.1.6
     # via
     #   -r requirements.in
     #   sphinx
-lxml==6.1.1
+lxml==6.1.2
     # via -r requirements.in
 markdown-it-py==4.2.0
     # via rich
@@ -37,13 +37,13 @@ markupsafe==3.0.3
     # via jinja2
 mdurl==0.1.2
     # via markdown-it-py
-packaging==26.2
+packaging==26.3
     # via sphinx
-pydantic==2.13.4
+pydantic==2.13.5
     # via rstcheck-core
-pydantic-core==2.46.4
+pydantic-core==2.46.5
     # via pydantic
-pygments==2.20.0
+pygments==2.21.0
     # via
     #   rich
     #   sphinx
@@ -90,14 +90,14 @@ sphinxcontrib-qthelp==2.0.0
     # via sphinx
 sphinxcontrib-serializinghtml==2.0.0
     # via sphinx
-typer==0.27.0
+typer==0.27.2
     # via rstcheck
 typing-extensions==4.16.0
     # via
     #   pydantic
     #   pydantic-core
     #   typing-inspection
-typing-inspection==0.4.2
+typing-inspection==0.4.4
     # via pydantic
 urllib3==2.7.0
     # via requests
