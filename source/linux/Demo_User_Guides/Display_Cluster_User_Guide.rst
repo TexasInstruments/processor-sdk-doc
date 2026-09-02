@@ -70,4 +70,4 @@ Building the Display Cluster Demo from source
 Building the MCU Firmware from sources
 --------------------------------------
 
-    #. Please refer to the `MCU+ SDK Documentation <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62PX/11_01_01_08/exports/docs/api_guide_am62px/group__DRV__DSS__MODULE.html>`__
+    #. Please refer to the `MCU+ SDK Documentation <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62PX/12_01_00_28/exports/docs/api_guide_am62px/components/drivers/dss.html>`__
