@@ -82,7 +82,7 @@ Setup
         :align: center
 
 
-The following steps describe how to build user-space tools and configuration on Yocto. Please use :ref:`Processor SDK - Building the SDK with Yocto <building-the-sdk-with-yocto>` as reference.
+The following steps describe how to build user-space tools and configuration on Yocto to set up dm-verity based authenticated boot. Please use :ref:`Processor SDK - Building the SDK with Yocto <building-the-sdk-with-yocto>` as reference. For dm-crypt setup steps, refer to :ref:`File System Encryption with fTPM <filesystem-encryption>`.
 
 #. Use the latest :ref:`oe-config file <yocto-layer-configuration>`. Build the default image and flash onto a 32GB+ SD card:
 
@@ -90,7 +90,7 @@ The following steps describe how to build user-space tools and configuration on 
 
       MACHINE=<machine> bitbake -k tisdk-default-image
 
-#. For this demo, the root filesystem is copied from the default rootfs into the encrypted partition on a 32GB+ SD card. Hence, the SD card needs to be partitioned accordingly. It is recommended to create 2 additional ext4 partitions bringing the total to 4 partitions:
+#. For this demo, dm-verity is set up directly on top of the default root filesystem partition on a 32GB+ SD card. Hence, the SD card needs an additional partition to store the verity hash tree, bringing the total to 3 partitions:
 
    +-----------------+----------------+-------+--------------+
    | Partition Label | /dev partition | Size  |   Comments   |
@@ -99,9 +99,7 @@ The following steps describe how to build user-space tools and configuration on 
    +-----------------+----------------+-------+--------------+
    |      root       | /dev/mmcblk1p2 |  10GB |   Default    |
    +-----------------+----------------+-------+--------------+
-   |      crypt      | /dev/mmcblk1p3 |  10GB | Same as root |
-   +-----------------+----------------+-------+--------------+
-   |     verity      | /dev/mmcblk1p4 |  1GB  | 10% of crypt |
+   |     verity      | /dev/mmcblk1p3 |  1GB  | 10% of root  |
    +-----------------+----------------+-------+--------------+
 
 #. On the host machine, build the Linux Kernel with support for these configs:
@@ -109,7 +107,6 @@ The following steps describe how to build user-space tools and configuration on 
    .. code-block:: kconfig
 
       CONFIG_BLK_DEV_DM=y
-      CONFIG_DM_CRYPT=y
       CONFIG_DM_VERITY=y
 
    These configs can be added using a separate .cfg file or the kernel can be edited using
@@ -118,31 +115,17 @@ The following steps describe how to build user-space tools and configuration on 
 
       MACHINE=<machine> bitbake -c menuconfig linux-ti-staging
 
-#. Edit :file:`sources/meta-arago/meta-arago-distro/recipes-core/images/tisdk-tiny-initramfs.bb` to add *dm-crypt* and *dm-verity* support:
+#. Edit :file:`sources/meta-arago/meta-arago-distro/recipes-core/images/tisdk-tiny-initramfs.bb` to add *dm-verity* support:
 
    .. code-block:: console
 
-      PACKAGE_INSTALL += " cryptsetup lvm2 e2fsprogs-mke2fs"
+      PACKAGE_INSTALL += " cryptsetup"
 
 #. Build the initramfs image:
 
    .. code-block:: console
 
       MACHINE=<machine> bitbake -k tisdk-tiny-initramfs
-
-#. Extract the initramfs .cpio file and add a :file:`pass_key` file
-
-   .. code-block:: console
-
-      # Extract command
-      cpio -iv < <path to .cpio>
-
-      # Create a random pass key
-      tr -dc '[:alnum:]' </dev/urandom | head -c64 > <initramfs_root>/home/pass_key
-
-      # Create cpio from initramfs folder
-      cd <initramfs_root>
-      find . | sort | cpio --reproducible -o -H newc -R root:root > ../<name>.cpio
 
 #. Package the initramfs into the kernel by using the :code:`menuconfig` and build the kernel.
 
@@ -155,56 +138,15 @@ The following steps describe how to build user-space tools and configuration on 
 
 #. Replace the :file:`root/boot/Image` with the updated Image and boot.
 
-#. Run the following commands in initramfs to setup the crypt and verity partitions
+#. Run the following commands in initramfs to setup the verity partition
 
    .. code-block:: console
 
-      # Unmount encrypted partitions if already mounted
+      # Unmount verity partition if already mounted
       umount /dev/mmcblk1p3
-      umount /dev/mmcblk1p4
 
-      # Create the mount paths
-      mkdir /old_mnt
-      mkdir /mnt
-
-      # Mount default root
-      mount /dev/mmcblk1p2 /old_mnt
-
-      # Setup the encrypted partition
-      # The default cipher at the time of writing this guide is aes-xts-plain64
-      # Hardware acceleration for dm-crypt is not tested
-
-      cryptsetup luksFormat /dev/mmcblk1p3 --key-file=/home/pass_key --batch-mode
-      cryptsetup luksOpen /dev/mmcblk1p3 crypt_root --key-file=/home/pass_key
-
-      # Use following commands to verify the status of the LUKS device
-      cryptsetup -v status crypt_root    #Status Check
-      cryptsetup luksDump /dev/mmcblk1p3 #Dump Headers
-
-      # Format and copy rootfs inside encrypted partition
-      mkfs.ext4 /dev/mapper/crypt_root
-
-      # If command is successful you should see below output
-      root@am62xx-evm:~# mkfs.ext4 /dev/mapper/crypt_root
-      mkfs.ext4 /dev/mapper/crypt_root
-      mke2fs 1.47.0 (5-Feb-2023)
-      Creating filesystem with 2952704 4k blocks and 738192 inodes
-      Filesystem UUID: 8cc1c02e-7b0a-4d57-82f0-f3a4c35e0f00
-      Superblock backups stored on blocks:
-          32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632, 2654208
-
-      Allocating group tables: done
-      Writing inode tables: done
-      Creating journal (16384 blocks): done
-      Writing superblocks and filesystem accounting information: done
-
-      # Mount the encrypted partition
-      mount /dev/mapper/crypt_root /mnt
-      cp -ar /old_mnt/. /mnt
-      umount /mnt
-
-      # Setup verity
-      veritysetup format /dev/mapper/crypt_root /dev/mmcblk1p4
+      # Setup verity directly on top of the root partition
+      veritysetup format /dev/mmcblk1p2 /dev/mmcblk1p3
 
       # Output will have a Root hash, copy that hash as it will be used in next step
       ...
@@ -224,12 +166,8 @@ The following steps describe how to build user-space tools and configuration on 
       /bin/mount -t proc none /proc
       /bin/mount -t sysfs none /sys
 
-      # Decrypt
-      # If the cipher was previously changed, add --cipher aes-cbc-plain
-      /sbin/cryptsetup luksOpen --key-file=/home/pass_key /dev/mmcblk1p3 crypt_root
-
       # Verify (use the root hash from the previous ``veritysetup format`` command)
-      /sbin/veritysetup open /dev/mapper/crypt_root verity_root /dev/mmcblk1p4 4392712ba01368efdf14b05c76f9e4df0d53664630b5d48632ed17a137f39076
+      /sbin/veritysetup open /dev/mmcblk1p2 verity_root /dev/mmcblk1p3 4392712ba01368efdf14b05c76f9e4df0d53664630b5d48632ed17a137f39076
 
       mount -o ro /dev/mapper/verity_root /mnt
 
@@ -258,7 +196,7 @@ The following steps describe how to build user-space tools and configuration on 
 Next steps
 **********
 
-This guide showcases the authenticated boot flow on TI devices and is not meant to be directly used in production. The demo utilizes a pass_key to secure the encrypted partition and is placed in the initramfs in a non-secure manner. Refer :ref:`File System Encryption with fTPM <filesystem-encryption>` for details on using fTPM based key sealing and secure storage of keys. 
+This guide showcases the dm-verity authenticated boot flow on TI devices. To additionally set up dm-crypt based disk encryption, refer to :ref:`File System Encryption with fTPM <filesystem-encryption>` for setup steps using firmware TPM based key sealing and secure key storage. 
 
 ********
 See Also
