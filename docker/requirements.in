@@ -1,5 +1,5 @@
 Jinja2>=3.1.5
-lxml>=6.0.0
+lxml>=6.1.2
 rstcheck==6.2.5
 rstcheck-core @ git+https://github.com/StaticRocket/rstcheck-core.git@d935498cfc319d62fe2dde3012d81657510f0a90
 Sphinx>=8.2.3
