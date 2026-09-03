@@ -1,0 +1,41 @@
+# General family replacement variables and configuration values for AM62D Audio AI build
+
+# This file is processed by Python scripts to define both replacement
+# variable and configuration values for a device family build.
+# For replacement variables, all variables should be listed on a single
+# line, and all the variables should be listed on consecutive lines
+# (i.e. no additional blank lines between the replacement variables).
+# Similarly, all the configuration values should be listed on individual,
+# consecutive lines (with no blank linues between the configuration values).
+#
+# Note that neither replacement variables nor configuration values may contain
+# a colon (i.e. ":") in their name.  However, values may contain colons.
+
+Replacement Variables
+---------------------
+'__PART_FAMILY_NAME__'           : 'AM62Dx'
+'__PART_FAMILY_DEVICE_NAMES__'   : 'AM62Dx'
+'__PRODUCT_LINE_NAME__'          : 'Sitara MPU'
+'__SDK_FULL_NAME__'              : 'Processor SDK Linux Audio AI AM62Dx'
+'__SDK_SHORT_NAME__'             : 'PSDK Audio AI'
+'__SDK_DOWNLOAD_URL__'           : '`AM62D-SDK-Download-page <https://www.ti.com/drr/opn/AM62D-LINUX-RT-RESTRICTED-SDK>`__'
+'__AUDIOAI_SDK_VERSION__'        : '12.1'
+'__TIDL_VERSION__'               : '11_02_18_00'
+'__TIDL_TOOLS_VERSION__'         : '11.2.x'
+'__MODELZOO_REPO_URL__'          : 'https://bitbucket.itg.ti.com/projects/AUDIOAI-ALGO/repos/audioai-modelzoo'
+'__TIDLRUNNER_REPO_URL__'        : 'https://bitbucket.itg.ti.com/projects/EDGEAI-ALGO/repos/edgeai-tidlrunner'
+'__TIDL_TOOLS_REPO_URL__'        : 'https://github.com/TexasInstruments/edgeai-tidl-tools'
+'__TARGET_VENV_PATH__'           : '~/venv/modelzoo'
+'__DATASET_AUDIO_CLS__'          : 'UrbanSound8K'
+'__DATASET_SPEECH_ENH__'         : 'VoiceBank-DEMAND-16k'
+'__MODEL_ID_VGGISH11__'          : 'ac-0101'
+'__MODEL_ID_YAMNET__'            : 'ac-0201'
+'__MODEL_ID_GCRN__'              : 'ase-0201'
+'__MODEL_ID_GTCRN__'             : 'ase-0100'
+
+Configuration Values
+--------------------
+'CONFIG_part_family'      : 'AM62DX_family'
+'CONFIG_part_variant'     : 'AM62DX'
+'CONFIG_sdk'              : 'SITARA'
+

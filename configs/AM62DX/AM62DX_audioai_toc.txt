@@ -1,0 +1,5 @@
+devices/AM62DX/audioai/index
+devices/AM62DX/audioai/introduction
+devices/AM62DX/audioai/model_zoo
+devices/AM62DX/audioai/compile_evaluate_inspect
+devices/AM62DX/audioai/performance
