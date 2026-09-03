@@ -1,8 +1,8 @@
 .. _audioai-compile-evaluate-inspect:
 
-############################
-Compile / Evaluate / Inspect
-############################
+##################################
+Model Compile / Evaluate / Inspect
+##################################
 
 .. |tm| unicode:: U+2122
 
@@ -57,7 +57,7 @@ environment. These steps assume `pyenv <https://github.com/pyenv/pyenv>`__.
 
 .. code-block:: console
 
-   $ git clone https://bitbucket.itg.ti.com/scm/edgeai-algo/edgeai-tidlrunner.git
+   $ git clone https://github.com/TexasInstruments/edgeai-tidlrunner.git
    $ cd edgeai-tidlrunner
 
 **2. Create and activate the Python 3.10 environment.**

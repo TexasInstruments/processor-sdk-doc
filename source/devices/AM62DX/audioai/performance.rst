@@ -125,9 +125,9 @@ RTF is reported only for the streaming speech-enhancement models (GCRN, GTCRN);
 VGGish11 and YAMNet classify a whole clip, so a real-time factor is not
 meaningful for them.
 
-********
-Non-goal
-********
+*******************
+Scope & Limitations
+*******************
 
 This section does **not** assess model quality. Classification accuracy and
 speech-enhancement quality metrics are produced by ``tidlrunner-cli evaluate``

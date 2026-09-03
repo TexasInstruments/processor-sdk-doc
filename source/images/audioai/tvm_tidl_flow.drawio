@@ -19,7 +19,7 @@
       <mxGeometry x="670" y="200" width="180" height="50" as="geometry"/>
     </mxCell>
 
-    <mxCell id="tvmgen" value="TVM C7x&#8482; NPU&#10;code generation" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#333333;fontSize=13;" vertex="1" parent="1">
+    <mxCell id="tvmgen" value="TVM C7x&#8482; DSP&#10;code generation" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#333333;fontSize=13;" vertex="1" parent="1">
       <mxGeometry x="120" y="320" width="220" height="60" as="geometry"/>
     </mxCell>
 
@@ -51,8 +51,11 @@
       <mxGeometry x="560" y="592" width="200" height="36" as="geometry"/>
     </mxCell>
 
+    <mxCell id="arm" value="Arm&#174; core" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#3d67a5;strokeColor=#274370;fontColor=#ffffff;fontSize=15;fontStyle=1" vertex="1" parent="1">
+      <mxGeometry x="120" y="670" width="420" height="50" as="geometry"/>
+    </mxCell>
     <mxCell id="c7x" value="C7x&#8482; NPU" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#3d67a5;strokeColor=#274370;fontColor=#ffffff;fontSize=15;fontStyle=1" vertex="1" parent="1">
-      <mxGeometry x="120" y="670" width="660" height="50" as="geometry"/>
+      <mxGeometry x="560" y="670" width="220" height="50" as="geometry"/>
     </mxCell>
 
     <mxCell id="e1" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;endArrow=classic;strokeColor=#333333;" edge="1" parent="1" source="onnx" target="import">
@@ -64,10 +67,10 @@
     <mxCell id="e3" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;endArrow=classic;strokeColor=#38761d;" edge="1" parent="1" source="tidlapi" target="partition">
       <mxGeometry relative="1" as="geometry"/>
     </mxCell>
-    <mxCell id="e4" value="unsupported ops" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;endArrow=classic;strokeColor=#333333;fontColor=#666666;fontSize=11;" edge="1" parent="1" source="partition" target="tvmgen">
+    <mxCell id="e4" value="TIDL unsupported ops" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;endArrow=classic;strokeColor=#333333;fontColor=#666666;fontSize=11;" edge="1" parent="1" source="partition" target="tvmgen">
       <mxGeometry relative="1" as="geometry"/>
     </mxCell>
-    <mxCell id="e5" value="supported ops" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;endArrow=classic;strokeColor=#333333;fontColor=#666666;fontSize=11;" edge="1" parent="1" source="partition" target="tidlcompiler">
+    <mxCell id="e5" value="TIDL supported ops" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;endArrow=classic;strokeColor=#333333;fontColor=#666666;fontSize=11;" edge="1" parent="1" source="partition" target="tidlcompiler">
       <mxGeometry relative="1" as="geometry"/>
     </mxCell>
     <mxCell id="e6" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;endArrow=classic;strokeColor=#333333;" edge="1" parent="1" source="tvmgen" target="artifact">
@@ -79,7 +82,10 @@
     <mxCell id="e8" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;endArrow=classic;strokeColor=#333333;fontSize=11;" edge="1" parent="1" source="artifact" target="runtime">
       <mxGeometry relative="1" as="geometry"/>
     </mxCell>
-    <mxCell id="e9" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;endArrow=classic;strokeColor=#333333;" edge="1" parent="1" source="runtime" target="c7x">
+    <mxCell id="e9" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;endArrow=classic;strokeColor=#333333;" edge="1" parent="1" source="runtime" target="arm">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e10" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;endArrow=classic;strokeColor=#38761d;" edge="1" parent="1" source="tidlrt" target="c7x">
       <mxGeometry relative="1" as="geometry"/>
     </mxCell>
   </root>
