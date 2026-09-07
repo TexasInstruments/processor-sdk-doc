@@ -179,9 +179,18 @@ steps specific to LUKS:
              CFG_RPMB_FS=y \
              CFG_RPMB_WRITE_KEY=y \
              CFG_RPMB_ANNOUNCE_PROBE_CAP=n \
-          " 
+          "
 
-     - **optee-client**: under the ``meta-ti`` layer 
+       .. warning::
+
+          Use ``CFG_RPMB_WRITE_KEY=y`` only to write the authentication key
+          to the RPMB partition. After writing the key, re-flash the device
+          with another image built using ``CFG_RPMB_WRITE_KEY=n`` before
+          deploying to production. Never send an image with the
+          ``CFG_RPMB_WRITE_KEY`` option enabled into production; it exposes
+          the key in plaintext to user-space if requested.
+
+     - **optee-client**: under the ``meta-ti`` layer
        :file:`meta-ti-bsp/recipes-security/optee/optee-client_%.bbappend`
 
        Disable RPMB emulation mode.
