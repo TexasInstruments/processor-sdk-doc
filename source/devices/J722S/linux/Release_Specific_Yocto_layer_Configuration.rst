@@ -9,7 +9,7 @@ Yocto Layer Configuration
 .. ifconfig:: CONFIG_image_type in ( 'adas', 'edgeai')
 
    |__SDK_FULL_NAME__| uses the 'oe-layersetup' tool to configure the meta layers. If you do not have the Linux SDK package installed:
-   
+
    .. code-block:: console
 
       git clone https://git.ti.com/git/arago-project/oe-layersetup.git yocto-build
@@ -19,7 +19,7 @@ Yocto Layer Configuration
 .. ifconfig:: CONFIG_image_type in ('default')
 
    |__SDK_FULL_NAME__| uses the 'oe-layersetup' tool to configure the meta layers. If you do not have the Linux SDK package installed:
-   
+
    .. code-block:: console
 
       git clone https://git.ti.com/git/arago-project/oe-layersetup.git yocto-build
@@ -48,5 +48,5 @@ Use below in place of <Config File>, to setup the meta layers for the current re
    +----------------------------------------------------+------------------------------------------------+--------------------------------+
    |                    Description                     |      Config File                               | Supported yocto build machine  |
    +====================================================+================================================+================================+
-   | |__SDK_FULL_NAME__| : 11_02_01 Release             | processor-sdk-analytics-11.02.01-config.txt    | |__SDK_BUILD_MACHINE__|        |
+   | |__SDK_FULL_NAME__| : 11_02_02 Release             | processor-sdk-analytics-11.02.02-config.txt    | |__SDK_BUILD_MACHINE__|        |
    +----------------------------------------------------+------------------------------------------------+--------------------------------+
