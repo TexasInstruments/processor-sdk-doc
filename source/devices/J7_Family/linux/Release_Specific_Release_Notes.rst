@@ -103,7 +103,7 @@ U-Boot
 
    .. note::
 
-      meta-edgeai Yocto layer contains additional patches for U-Boot `here <https://git.ti.com/cgit/edgeai/meta-edgeai/tree/recipes-bsp/u-boot?h=REL.PSDK.ANALYTICS.11.02.01.02>`__.
+      meta-edgeai Yocto layer contains additional patches for U-Boot `here <https://git.ti.com/cgit/edgeai/meta-edgeai/tree/recipes-bsp/u-boot?h=REL.PSDK.ANALYTICS.11.02.02.03>`__.
 
 .. _kernel-release-notes:
 
@@ -131,7 +131,7 @@ Kernel
 
    .. note::
 
-      meta-edgeai Yocto layer contains additional patches for Kernel `here <https://git.ti.com/cgit/edgeai/meta-edgeai/tree/recipes-kernel/linux?h=REL.PSDK.ANALYTICS.11.02.01.02>`__.
+      meta-edgeai Yocto layer contains additional patches for Kernel `here <https://git.ti.com/cgit/edgeai/meta-edgeai/tree/recipes-kernel/linux?h=REL.PSDK.ANALYTICS.11.02.02.03>`__.
 
 TF-A
 ----
@@ -205,19 +205,19 @@ Yocto
 
 | Repo: https://github.com/TexasInstruments/meta-tisdk.git
 | Branch: scarthgap
-| Release Tag: REL.PSDK.ANALYTICS.11.02.01.02
+| Release Tag: REL.PSDK.ANALYTICS.11.02.02.03
 |
 
 .. ifconfig:: CONFIG_image_type in ('edgeai', 'adas')
 
    .. rubric:: meta-edgeai
 
-   | Head Commit: 04db1a86f468b1072eaf72cb723b0d1b76a505ce tisdk-adas-image: Add edgeai-gst-plugins into ADAS_STACK
-   | Date: Sat June 27 01:38:24 2026 -0500
+   | Head Commit: 75f2d4860776bddb7c50c6de40480819167a0e6f [edgeai-gst-plugins]: Update the commit id to latest
+   | Date: Mon Sep 07 00:39:25 2026 -0500
 
    | Clone: git://git.ti.com/edgeai/meta-edgeai.git
    | Branch: scarthgap
-   | Release Tag: REL.PSDK.ANALYTICS.11.02.01.02
+   | Release Tag: REL.PSDK.ANALYTICS.11.02.02.03
    |
 
 Issues Tracker
