@@ -7,10 +7,11 @@ Performance Benchmark
 .. |tm| unicode:: U+2122
 
 This section reports **inference performance** — latency and memory — for the
-four |__PART_FAMILY_NAME__| Audio AI models. It is **not** an accuracy or
-audio-quality benchmark: model quality (classification accuracy, PESQ / STOI /
-SI-SDR) is measured by the ``evaluate`` step in
-:ref:`Compile / Evaluate / Inspect <audioai-compile-evaluate-inspect>`.
+reference |__PART_FAMILY_NAME__| Audio AI models. The same methodology (perfsim
+estimate + on-target measured) applies to any model you compile through the
+workflow. It is **not** an accuracy or audio-quality benchmark: model quality
+(classification accuracy, PESQ / STOI / SI-SDR) is measured by the ``evaluate``
+step in :ref:`Compile / Evaluate / Inspect <audioai-compile-evaluate-inspect>`.
 
 ***********
 Methodology
@@ -29,7 +30,7 @@ confused:
      - Produced by the TIDL performance simulator during ``compile``. The
        compiler writes a ``result.yaml`` per model under its work directory;
        the ``perfsim`` latency, GMAC count, and estimated DDR transfer are
-       read directly from it. This is a *static estimate* for the C7x\ |tm|
+       read directly from it. This is a *static estimate* for the C7\ |tm|
        NPU subgraph — it does not include Arm-side pre/post-processing or
        runtime overhead.
    * - **on-target measured**
@@ -39,7 +40,7 @@ confused:
        **real-time factor (RTF)** = processing time ÷ audio duration; RTF < 1
        means the model keeps up with real-time audio.
 
-Only models compiled for the C7x\ |tm| NPU (TVM-RT + TIDL) have a perfsim
+Only models compiled for the C7\ |tm| NPU (TVM-RT + TIDL) have a perfsim
 estimate. GTCRN runs FP32 on the Arm core through the ONNX runtime and has no
 TIDL subgraph, so perfsim does not apply to it.
 
@@ -105,15 +106,15 @@ filled in from the Model Zoo inference scripts on the AM62D EVM:
      - Measured latency
      - RTF
    * - VGGish11
-     - C7x\ |tm| NPU
+     - C7\ |tm| NPU
      - TBD
      - — (clip classifier)
    * - YAMNet
-     - C7x\ |tm| NPU
+     - C7\ |tm| NPU
      - TBD
      - — (clip classifier)
    * - GCRN
-     - C7x\ |tm| NPU
+     - C7\ |tm| NPU
      - TBD
      - TBD
    * - GTCRN

@@ -7,13 +7,14 @@ Audio AI Model Zoo
 .. |tm| unicode:: U+2122
 
 The AudioAI ModelZoo delivers out-of-box audio deep-learning demos that run
-directly on the |__PART_FAMILY_NAME__| target. Each supported model ships as an
+directly on the |__PART_FAMILY_NAME__| target. Each reference model ships as an
 `ONNX <https://onnx.ai/>`__ graph plus, where applicable, a pre-compiled
-TVM-RT + TIDL artifact, so you can reproduce inference on the AM62D without
+TVM-RT + TIDL artifact, so you can reproduce these examples on the AM62D without
 compiling anything yourself. Two demo front-ends are provided: standalone
-Python inference scripts and Jupyter notebooks. This section runs entirely
-**on the target**; the x86 compile/evaluate flow is covered in
-:ref:`Compile / Evaluate / Inspect <audioai-compile-evaluate-inspect>`.
+Python inference scripts and Jupyter notebooks. The same on-target runtime hosts
+your own compiled artifacts once you build them through the x86 flow. This
+section runs entirely **on the target**; the x86 compile/evaluate flow is covered
+in :ref:`Compile / Evaluate / Inspect <audioai-compile-evaluate-inspect>`.
 
 .. note::
 
@@ -36,17 +37,17 @@ What ships
    * - VGGish11
      - Sound classification (|__DATASET_AUDIO_CLS__|)
      - |__MODEL_ID_VGGISH11__|
-     - C7x\ |tm| NPU (TVM-RT + TIDL, 8-bit)
+     - C7\ |tm| NPU (TVM-RT + TIDL, 8-bit)
      - Script + notebook
    * - YAMNet
      - Sound classification (|__DATASET_AUDIO_CLS__|)
      - |__MODEL_ID_YAMNET__|
-     - C7x\ |tm| NPU (TVM-RT + TIDL, 8-bit)
+     - C7\ |tm| NPU (TVM-RT + TIDL, 8-bit)
      - Script + notebook
    * - GCRN
      - Speech enhancement (|__DATASET_SPEECH_ENH__|)
      - |__MODEL_ID_GCRN__|
-     - C7x\ |tm| NPU (TVM-RT + TIDL, 16-bit)
+     - C7\ |tm| NPU (TVM-RT + TIDL, 16-bit)
      - Script + notebook
    * - GTCRN
      - Speech enhancement (|__DATASET_SPEECH_ENH__|)
@@ -55,7 +56,7 @@ What ships
      - Notebook only
 
 VGGish11, YAMNet, and GCRN each ship a pre-compiled artifact and run offloaded
-to the C7x\ |tm| NPU through the TVM runtime. GTCRN ships **no** compiled
+to the C7\ |tm| NPU through the TVM runtime. GTCRN ships **no** compiled
 artifact — it runs FP32 on the Arm core through the ONNX runtime and is
 demonstrated in a notebook only.
 
@@ -221,8 +222,8 @@ the destination wav. Expected output (abridged):
 Jupyter notebook demos
 **********************
 
-All four models — including GTCRN — have a Jupyter notebook demo. Start Jupyter
-Lab from the activated venv:
+All four reference models — including GTCRN — have a Jupyter notebook demo. Start
+Jupyter Lab from the activated venv:
 
 .. code-block:: console
 

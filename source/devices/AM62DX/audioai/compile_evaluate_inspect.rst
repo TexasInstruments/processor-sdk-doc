@@ -8,10 +8,18 @@ Model Compile / Evaluate / Inspect
 
 The :ref:`Audio AI Model Zoo <audioai-model-zoo>` runs *pre-compiled* artifacts
 on the |__PART_FAMILY_NAME__| target. This section covers the **x86 host
-workflow** that produces those artifacts: how to compile each audio model for
-the C7x\ |tm| NPU, run host-emulation inference, and measure accuracy against a
+workflow** that produces those artifacts: how to compile an audio model for
+the C7\ |tm| NPU, run host-emulation inference, and measure accuracy against a
 dataset — using **edgeai-tidlrunner**. It runs entirely on an Ubuntu x86 PC;
 nothing here touches the target.
+
+This is the workflow for *any* audio model, not just the reference models. The
+four reference models below are worked examples; to bring your own model you
+point the same ``tidlrunner-cli`` at your ONNX graph and a per-model YAML config,
+using a reference config as a starting template. Which operators offload to the
+C7\ |tm| NPU (vs. fall back to the Arm core) is determined by TIDL — see
+`edgeai-tidl-tools <https://github.com/TexasInstruments/edgeai-tidl-tools>`__ for
+the authoritative list of supported operators.
 
 ********************
 edgeai-tidlrunner
@@ -119,7 +127,7 @@ Interim AM62D TVM-RT compile path
 
 .. warning::
 
-   The AM62D C7x\ |tm| compile path for the three TVM-RT models (VGGish11,
+   The AM62D C7\ |tm| NPU compile path for the three TVM-RT models (VGGish11,
    YAMNet, GCRN) is currently an **interim feasibility flow**, not the
    productized ``setup_runner_pc.sh`` / ``TIDL_TOOLS_VERSION`` download. It is
    documented here for reproducibility and will be replaced before release.
@@ -130,8 +138,9 @@ wheel ships the x86 AM62D TIDL tools *inside* the package, so the AM62D compile
 uses the wheel-bundled tools rather than the ones ``setup_runner_pc.sh``
 downloads. TVM ``dlopen``\ s the TIDL runtime before Python's own import runs,
 so the tool paths must be exported into the environment *before* ``tidlrunner-cli``
-starts. A small wrapper, ``agent_ws/am62d-run.sh``, does this and then runs the
-command you pass it. It exports:
+starts. A sourceable env script, ``devices/am62d_env.sh``, exports these into
+the current shell once; every ``tidlrunner-cli`` command run afterward in that
+shell picks them up. It exports:
 
 .. list-table::
    :header-rows: 1
@@ -151,22 +160,22 @@ command you pass it. It exports:
    * - ``SOC``
      - ``am62d``
 
-Activate the dedicated environment, then prefix each TVM-RT command with the
-wrapper (the whole ``tidlrunner-cli`` invocation is passed as one quoted
-argument):
+Activate the dedicated environment, then source the env script once per shell
+before running ``tidlrunner-cli`` directly:
 
 .. code-block:: console
 
    $ pyenv activate tidlrunner-am62d
-   $ bash agent_ws/am62d-run.sh "tidlrunner-cli compile --config_path <cfg>"
+   $ source devices/am62d_env.sh
+   $ tidlrunner-cli compile --config_path <cfg>
 
 .. note::
 
-   GTCRN does **not** use this wrapper. It runs ARM-only through ONNX Runtime
-   (``tidl_offload: false``) and compiles under the standard ``tidlrunner``
-   environment from steps 1–4.
+   GTCRN does **not** need this env script. It runs ARM-only through ONNX
+   Runtime (``tidl_offload: false``) and compiles under the standard
+   ``tidlrunner`` environment from steps 1–4.
 
-.. TODO(WI-004): replace the interim ``agent_ws/am62d-run.sh`` wrapper +
+.. TODO: replace the interim ``devices/am62d_env.sh`` env script +
    ``tidlrunner-am62d`` venv with the productized ``setup_runner_pc.sh`` /
    ``TIDL_TOOLS_VERSION`` AM62D flow before release. Confirm the final tools
    version string (artifact folder 11_02_18_00 vs. RC bundled tools 11.02.16.00).
@@ -176,8 +185,11 @@ Compile and evaluate
 ********************
 
 Each model has one config that drives all stages. Three models compile to the
-C7x\ |tm| NPU through the TVM runtime; GTCRN is the ONNX-RT exception that runs
-ARM-only. The final AM62D config paths are:
+C7\ |tm| NPU through the TVM runtime; GTCRN is the ONNX-RT exception that runs
+ARM-only. The three TVM-RT models below assume the AM62D env from
+`Interim AM62D TVM-RT compile path`_ — ``pyenv activate tidlrunner-am62d``
+followed by ``source devices/am62d_env.sh`` — is already sourced in the
+current shell. The final AM62D config paths are:
 
 .. list-table::
    :header-rows: 1
@@ -212,14 +224,14 @@ ARM-only. The final AM62D config paths are:
 VGGish11 (TVM-RT, 8-bit)
 ========================
 
-Runs on the C7x\ |tm| NPU (``tidl_offload: true``). Use the AM62D wrapper:
+Runs on the C7\ |tm| NPU (``tidl_offload: true``):
 
 .. code-block:: console
 
    $ CFG=data/configs/samples/models/audio/audio_classification/urbansound8k/vggish11_tvmrt_config.yaml
-   $ bash agent_ws/am62d-run.sh "tidlrunner-cli compile  --config_path $CFG"
-   $ bash agent_ws/am62d-run.sh "tidlrunner-cli infer    --config_path $CFG"
-   $ bash agent_ws/am62d-run.sh "tidlrunner-cli evaluate --config_path $CFG"
+   $ tidlrunner-cli compile  --config_path $CFG
+   $ tidlrunner-cli infer    --config_path $CFG
+   $ tidlrunner-cli evaluate --config_path $CFG
 
 ``evaluate`` reports top-1 / top-5 / macro-F1 over UrbanSound8K fold 10.
 
@@ -229,22 +241,22 @@ YAMNet (TVM-RT, 8-bit)
 .. code-block:: console
 
    $ CFG=data/configs/samples/models/audio/audio_classification/urbansound8k/yamnet_tvmrt_config.yaml
-   $ bash agent_ws/am62d-run.sh "tidlrunner-cli compile  --config_path $CFG"
-   $ bash agent_ws/am62d-run.sh "tidlrunner-cli infer    --config_path $CFG"
-   $ bash agent_ws/am62d-run.sh "tidlrunner-cli evaluate --config_path $CFG"
+   $ tidlrunner-cli compile  --config_path $CFG
+   $ tidlrunner-cli infer    --config_path $CFG
+   $ tidlrunner-cli evaluate --config_path $CFG
 
 GCRN (TVM-RT, 16-bit)
 =====================
 
-GCRN is C7x\ |tm|-offloaded at 16-bit (``tidl_offload: true``, fixed 4-second
-input). Same wrapper flow:
+GCRN is C7\ |tm| NPU-offloaded at 16-bit (``tidl_offload: true``, fixed 4-second
+input):
 
 .. code-block:: console
 
    $ CFG=data/configs/samples/models/audio/speech_enhancement/voicebank_demand_16k/gcrn_fixed_4sec_tvmrt_config.yaml
-   $ bash agent_ws/am62d-run.sh "tidlrunner-cli compile  --config_path $CFG"
-   $ bash agent_ws/am62d-run.sh "tidlrunner-cli infer    --config_path $CFG"
-   $ bash agent_ws/am62d-run.sh "tidlrunner-cli evaluate --config_path $CFG"
+   $ tidlrunner-cli compile  --config_path $CFG
+   $ tidlrunner-cli infer    --config_path $CFG
+   $ tidlrunner-cli evaluate --config_path $CFG
 
 ``evaluate`` reports PESQ / STOI / SI-SDR over the VoiceBank-DEMAND-16k test set.
 
@@ -252,7 +264,7 @@ GTCRN (ONNX-RT, ARM-only)
 =========================
 
 GTCRN has a dynamic time axis and TIDL-unsupported operators, so it runs on the
-Arm Cortex-A cores through ONNX Runtime (``tidl_offload: false``) — no C7x\ |tm|
+Arm Cortex-A cores through ONNX Runtime (``tidl_offload: false``) — no C7\ |tm| NPU
 offload and **no** AM62D wrapper. Run it directly under the standard
 ``tidlrunner`` environment:
 
@@ -266,10 +278,7 @@ offload and **no** AM62D wrapper. Run it directly under the standard
 
 .. note::
 
-   The shipped ``gtcrn_dns3_config.yaml`` sets ``target_device: AM62A``; because
-   the model is ARM-only, execution is device-independent. Passing
-   ``--target_device AM62D`` keeps its work directory under the AM62D tree,
-   consistent with the other three models.
+
 
 ********************
 Model Inspector
@@ -287,7 +296,7 @@ separately. The report opens in any browser and lands at:
 
 The report has three tabs:
 
-- **Model Summary** — acceleration ratio (layers on the C7x\ |tm| DSP vs. Arm
+- **Model Summary** — acceleration ratio (layers on the C7x DSP vs. Arm
   fallback), input/output specs, and an interactive ONNX graph.
 - **Subgraphs** — the TIDL subgraph(s) offloaded to the DSP, with per-layer
   identity and a quantization analysis (INT8 vs. FP32 activation histograms and
@@ -305,16 +314,20 @@ GCRN showcase — an offloaded DSP subgraph
 =========================================
 
 Because GCRN now compiles with ``tidl_offload: true`` on AM62D, its inspector
-report shows a **real C7x\ |tm| DSP subgraph** rather than an all-Arm fallback:
+report shows a **real C7x DSP subgraph** rather than an all-Arm fallback:
 the Subgraphs tab lists a single offloaded subgraph (16-bit) with its layer
 mapping, and the Performance tab breaks that subgraph down by cycles and memory.
-Generate it through the AM62D wrapper:
+Generate it with the AM62D env sourced (see
+`Interim AM62D TVM-RT compile path`_):
 
 .. code-block:: console
 
    $ CFG=data/configs/samples/models/audio/speech_enhancement/voicebank_demand_16k/gcrn_fixed_4sec_tvmrt_config.yaml
-   $ bash agent_ws/am62d-run.sh "tidlrunner-cli inspect --config_path $CFG"
+   $ tidlrunner-cli inspect --config_path $CFG
 
 For contrast, running ``inspect`` on the GTCRN (ONNX-RT) config produces a
 report with **no** DSP subgraph — every layer is Arm fallback — which is what a
-non-offloaded model looks like in the inspector.
+non-offloaded model looks like in the inspector. GTCRN also runs with
+``tidl_offload: false``, so its work directory uses a ``notidl`` segment in
+place of the ``<bits>`` shown in the path template above, e.g.
+``work_dirs/compile/AM62D/notidl/<model_id>/...``.
