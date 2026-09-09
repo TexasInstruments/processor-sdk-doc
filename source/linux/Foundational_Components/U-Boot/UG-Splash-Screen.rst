@@ -729,6 +729,107 @@ Build U-Boot with splash screen enabled
             CONFIG_DRM_TIDSS=y
             CONFIG_PHY_CADENCE_DPHY=y
 
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62PX', 'AM62LX')
+
+   Enabling DPI splash
+   -------------------
+   The DPI display path should be enabled and recognized during U-Boot's display pipeline detection.
+
+   **Enabling DPI output in tidss_drv.c**
+
+   U-Boot's ``tidss`` driver detects and initializes display pipelines in
+   ``tidss_enable_pipeline_components()`` (:file:`drivers/video/tidss/tidss_drv.c`) by
+   matching the device-tree node name of each port's remote endpoint against known
+   patterns: ``"oldi"`` and ``"dsi"``/``"dsi_host"``. A DPI panel connected
+   directly to the DSS video port does not match any of these patterns, so add a ``"dpi"`` branch alongside the
+   existing interfaces:
+
+   .. code-block:: c
+
+      } else if (strstr(ofnode_get_name(remote_port), "dpi")) {
+          priv->bridge_dev = NULL;
+          priv->active_hw_vps[active_pipelines++] = hw_videoport;
+          break;
+      }
+
+   .. note::
+
+      The match is performed against the node name of the remote port's parent
+      (``ofnode_get_name(remote_port)``), not against the panel's ``compatible``
+      property. The panel node in the device tree must include ``dpi`` in its
+      node name/label for this branch to trigger.
+
+   **Adding a DPI panel node in the device tree**
+
+   Add a panel node whose name contains ``dpi`` and connect it to the DSS video port
+   endpoint via ``remote-endpoint``, providing the panel's ``panel-timing`` properties.
+   Below is an example device-tree snippet for adding a DPI panel node:
+
+   .. code-block:: dts
+
+      / {
+          panel_dpi0: panel-dpi {
+              bootph-all;
+              compatible = "simple-panel";
+              status = "okay";
+
+              port {
+                  bootph-all;
+                  panel_dpi0_in: endpoint {
+                      bootph-all;
+                      remote-endpoint = <&dss_vp0_endpoint>;
+                  };
+              };
+
+              panel-timing {
+                  bootph-all;
+                  clock-frequency = <9200000>;
+                  hactive = <800>;
+                  vactive = <480>;
+                  hfront-porch = <8>;
+                  hback-porch = <4>;
+                  hsync-len = <41>;
+                  vfront-porch = <4>;
+                  vback-porch = <2>;
+                  vsync-len = <10>;
+                  hsync-active = <0>;
+                  vsync-active = <0>;
+                  de-active = <1>;
+                  pixelclk-active = <1>;
+              };
+          };
+      };
+
+      &dss0 {
+          bootph-all;
+          status = "okay";
+
+          ports {
+	           bootph-all;
+              #address-cells = <1>;
+              #size-cells = <0>;
+
+              port@0 {
+	               bootph-all;
+                  reg = <0>;
+                  dss_vp0_endpoint: endpoint {
+                      bootph-all;
+                      remote-endpoint = <&panel_dpi0_in>;
+                  };
+              };
+          };
+      };
+
+   The ``panel-timing`` values must match the panel's datasheet, and should be kept
+   consistent with the ``panel-timing`` values used in the Linux kernel device tree for
+   the same panel so that U-Boot and Linux drive the panel with identical timings across
+   the splash-to-kernel handoff.
+
+   Once the pipeline detection and device-tree changes above are in place, the rest of
+   the splash screen flow, enabling the required Kconfig options, setting the splash
+   environment variables, and the flicker-free bloblist-based handoff, is identical to
+   the flow described in the sections above.
+
 Disable splash screen
 ---------------------
 
