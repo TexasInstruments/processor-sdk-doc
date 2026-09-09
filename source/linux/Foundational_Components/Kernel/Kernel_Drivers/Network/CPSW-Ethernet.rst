@@ -90,5 +90,5 @@ For further details regarding the TSN features and testing, refer :ref:`tsn_with
 
 XDP and zero copy
 """""""""""""""""
-The CPSW Ethernet Subsystem supports XDP and zero copy features similar to PRU-ICSS Ethernet Subsystem.
-For more details refer :ref:`pru_icssg_xdp`.
+The CPSW Ethernet Subsystem supports XDP Native Mode, XDP Generic Mode, and Zero-copy mode.
+For detailed setup and testing information, refer to :ref:`kernel_xdp`.
