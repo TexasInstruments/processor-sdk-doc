@@ -18,37 +18,94 @@ enviroment.
 Installing Snagfactory
 **********************
 
+Install using the SDK installer (recommended)
+=============================================
+
+The Linux SDK installer includes a setup script that installs Snagboot and
+configures udev rules automatically.
+
+.. code-block:: console
+
+   $ cd <sdk_install_dir>
+   $ ./bin/setup-snagboot.sh
+
+To also install the optional Snagfactory GUI:
+
+.. code-block:: console
+
+   $ ./bin/setup-snagboot.sh --gui
+
+The script installs Snagboot by using pip, sets up udev rules so USB access works
+without root, and verifies the installation. If pip installs the tools to
+:file:`~/.local/bin` but that directory is not on ``PATH``, add the following to :file:`~/.bashrc`:
+
+.. code-block:: console
+
+   $ export PATH="$HOME/.local/bin:$PATH"
+
+Manual installation
+===================
+
+If the SDK installer is not available, install Snagboot directly by using pip:
+
 * Snagfactory tool is hosted here `Snagfactory <https://github.com/bootlin/snagboot>`__.
 * More info about installation can be found in `Snagfactory Readme <https://github.com/bootlin/snagboot/blob/main/README.md>`__.
-* Snagfactory also is available on pip.
 
 .. code-block:: console
 
    $ python3 -m pip install --user snagboot
    $ python3 -m pip install --user snagboot[gui]
 
+After installation, set up udev rules so USB access works without root:
+
+.. code-block:: console
+
+   $ python3 -m snagrecover --udev | sudo tee /etc/udev/rules.d/80-snagboot.rules
+   $ sudo udevadm control --reload-rules && sudo udevadm trigger
+
+***************************************
+Build boot loader binaries for recovery
+***************************************
+
+For Snagrecover, boot loader images must support Device Firmware Upgrade (DFU) boot
+and fastboot download. The u-boot build requires the USB DFU fragment config to enable
+DFU boot. It also requires the additional fragment config
+:file:`am6x_a53_snagfactory.config`, that enables fastboot support in U-Boot and other
+required configs for :command:`snagfactory`.
+
+Build using the SDK installer (recommended)
+===========================================
+
+The Linux SDK installer includes a dedicated Makefile target that builds
+boot loader images with all the required DFU and Fastboot configuration
+fragments applied automatically.
+
+From the top level of the Linux SDK installer:
+
+.. code-block:: console
+
+   $ make u-boot-snagboot_clean
+   $ make u-boot-snagboot
+   $ make u-boot-snagboot_stage
+
+The build places the staged boot loader images in
+:file:`board-support/built-images/snagboot/`. The directory contains:
+
+* :file:`tiboot3.bin` (R5 Secondary Program Loader (SPL), or A53 SPL for AM62L)
+* :file:`tispl.bin` (A53 SPL with DFU and fastboot support)
+* :file:`u-boot.img` (U-Boot with fastboot support)
+
 .. note::
 
-   At the time of 11.2 release, the corresponding Snagfactory version was v2.5.
+   For AM62L, only the A53 build is needed. The ``u-boot-snagboot`` target
+   handles this automatically.
 
-.. ifconfig:: CONFIG_part_variant in ('AM62DX')
+Manual build
+============
 
-   .. note::
-
-      AM62DX support was added after v2.3. Refer this `commit <https://github.com/bootlin/snagboot/commit/d5a691b1916207ee674e99620c63cc3a6c3b3a28>`__.
-
-*****************************************
-Building bootloader binaries for Recovery
-*****************************************
-
-For Snagrecover, bootloader images must support DFU boot and fastboot download.
-In addition to USB DFU fragment config (which enables DFU boot) for the u-boot
-build, an additional fragment config :file:`am6x_a53_snagfactory.config` needs to be
-used, which enables fastboot support in U-Boot and other required configs for
-snagfactory.
-
-To build bootloader images for recovery using SDK, following change is needed
-in :file:`Rules.make` file present in the top level of Linux SDK Installer.
+If the SDK installer is not available, apply the required config fragments
+manually by editing :file:`Rules.make` in the top level of the Linux SDK and
+then running the standard u-boot build.
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
@@ -108,8 +165,7 @@ in :file:`Rules.make` file present in the top level of Linux SDK Installer.
 
       UBOOT_MACHINE=am62lx_evm_defconfig am62x_a53_usbdfu.config am6x_a53_snagfactory.config
 
-Generate the bootloader images using top-level makefile by running following
-commands on the terminal from the top-level of the Linux SDK installer.
+Then build using the top-level makefile:
 
 .. code-block:: console
 
@@ -117,9 +173,7 @@ commands on the terminal from the top-level of the Linux SDK installer.
    $ make u-boot
    $ make u-boot_stage
 
-Save the bootloader binaries generated in a separate directory. These bootloader
-images will be used for recovery and to start flashing the images. The bootloader
-images after make can be found in :file:`board-support/built-images`.
+The boot loader images are placed in :file:`board-support/built-images`.
 
 For more details regarding USB DFU refer :ref:`usb-device-firmware-upgrade-label`.
 
@@ -183,16 +237,37 @@ Connections
          SW3 - BOOTMODE[8:15] = 00000000
 
 * Power on the board.
-* Optionally you can also connect host PC to board via UART to read the console logs.
+* Optionally you can also connect host PC to board by using UART to read the console logs.
 
 How to use Snagfactory
-**********************
+======================
 
 Comprehensive instructions for installation of the Snagfactory tool are here:
 
 * `Snagfactory doc <https://github.com/bootlin/snagboot/blob/main/docs/snagfactory.md>`__.
 * `Snagfactory config doc <https://github.com/bootlin/snagboot/blob/main/docs/snagfactory_config.md>`__.
 
+YAML configuration files
+=========================
+
+Ready-to-use YAML configuration files for all supported platforms are bundled
+with the SDK installer under:
+
+.. code-block:: text
+
+   <sdk_install_dir>/bin/snagboot_flash/yaml/<board>/
+
+The same configuration files are also available from the TI GitHub repository:
+
+`snagfactory-configs <https://github.com/TexasInstruments/snagfactory-configs>`__
+
+Before using a YAML file, replace the two path placeholders with actual paths
+to your binaries:
+
+* ``<path_to_snagboot_binaries>/`` — recovery boot loader images built with
+  ``u-boot-snagboot`` (placed in :file:`board-support/built-images/snagboot/`)
+* ``<path_to_flash_binaries>/`` — production images to be written to the
+  target non-volatile memory
 
 **SnagFactory GUI Tool Configuration and Device Flashing Procedure**
 
@@ -217,22 +292,22 @@ the SnagFactory GUI tool.
 
    $ snagfactory
 
-**Step 2: Select Configuration File Option**
+**Step 2: Select configuration file option**
 
 * Upon launch, the SnagFactory GUI tool will present the option to add a configuration file.
   Select the conf option to proceed with loading the configuration file.
 
-**Step 3: Load YAML Configuration File**
+**Step 3: Load YAML configuration file**
 
 * Load the YAML configuration file for the platform. This file has the necessary settings
   and parameters for the device flashing process.
 
-**Step 4: Flash the Device**
+**Step 4: Flash the device**
 
 * Once you load the YAML configuration file, the SnagFactory GUI tool will flash the device with
   the specified configuration.
 
-The following table outline the board names for snagfactory yaml configuration.
+The following table outlines the board names for :command:`snagfactory` YAML configuration.
 
 .. list-table::
    :header-rows: 1
@@ -269,18 +344,18 @@ The example configuration files for **emmc** and **ospi-nand** and **ospi-nor** 
 
 For reference, the :file:`ospi-nor.yaml` file for **am62p** platform can be as follows:
 
-.. code-block:: text
+.. code-block:: yaml
 
    boards:
      0451:6165: am62p
    soc-models:
      am62p-firmware:
        tiboot3:
-         path: "<path_to_boot_binaries>/tiboot3.bin"
+         path: "<path_to_snagboot_binaries>/tiboot3.bin"
        tispl:
-         path: "<path_to_boot_binaries>/tispl.bin"
+         path: "<path_to_snagboot_binaries>/tispl.bin"
        u-boot:
-         path: "<path_to_boot_binaries>/u-boot.img"
+         path: "<path_to_snagboot_binaries>/u-boot.img"
      am62p-tasks:
      - eraseblk-size: 0x40000
        fb-buffer-addr: 0x82000000
@@ -309,18 +384,18 @@ For reference, the :file:`ospi-nor.yaml` file for **am62p** platform can be as f
 
 For reference, the :file:`ospi-nand.yaml` file for **am62xx-lp** platform can be as follows:
 
-.. code-block:: text
+.. code-block:: yaml
 
    boards:
      0451:6165: am625
    soc-models:
      am625-firmware:
        tiboot3:
-         path: "<path_to_boot_binaries>/tiboot3.bin"
+         path: "<path_to_snagboot_binaries>/tiboot3.bin"
        tispl:
-         path: "<path_to_boot_binaries>/tispl.bin"
+         path: "<path_to_snagboot_binaries>/tispl.bin"
        u-boot:
-         path: "<path_to_boot_binaries>/u-boot.img"
+         path: "<path_to_snagboot_binaries>/u-boot.img"
      am625-tasks:
      - eraseblk-size: 0x40000
        fb-buffer-addr: 0x82000000
@@ -357,20 +432,20 @@ For reference, the :file:`ospi-nand.yaml` file for **am62xx-lp** platform can be
          - image: "<path_to_flash_binaries>/u-boot.img"
            part: ospi_nand.u-boot
 
-For reference, the  :file:`emmc.yaml` file for **am62p** platform can be as follows:
+For reference, the :file:`emmc.yaml` file for **am62p** platform can be as follows:
 
-.. code-block:: text
+.. code-block:: yaml
 
    boards:
      "0451:6165": "am62p"
    soc-models:
      am62p-firmware:
          tiboot3:
-           path: "<path_to_boot_binaries>/tiboot3.bin"
+           path: "<path_to_snagboot_binaries>/tiboot3.bin"
          tispl:
-           path: "<path_to_boot_binaries>/tispl.bin"
+           path: "<path_to_snagboot_binaries>/tispl.bin"
          u-boot:
-           path: "<path_to_boot_binaries>/u-boot.img"
+           path: "<path_to_snagboot_binaries>/u-boot.img"
      am62p-tasks:
        - target-device: mmc0
          fb-buffer-addr: 0x82000000
@@ -394,9 +469,9 @@ For reference, the  :file:`emmc.yaml` file for **am62p** platform can be as foll
            - image: "<path_to_flash_binaries>/rootfs.ext4"
              part: "rootfs"
 
-For reference, the  :file:`emmc.yaml` file for **am62l** platform can be as follows:
+For reference, the :file:`emmc.yaml` file for **am62l** platform can be as follows:
 
-.. code-block:: text
+.. code-block:: yaml
 
    boards:
      "0451:6165": "am62l3"
@@ -404,11 +479,11 @@ For reference, the  :file:`emmc.yaml` file for **am62l** platform can be as foll
    soc-models:
      am62l3-firmware:
          tiboot3:
-           path: "<path_to_boot_binaries>/tiboot3.bin"
+           path: "<path_to_snagboot_binaries>/tiboot3.bin"
          tispl:
-           path: "<path_to_boot_binaries>/tispl.bin"
+           path: "<path_to_snagboot_binaries>/tispl.bin"
          u-boot:
-           path: "<path_to_boot_binaries>/u-boot.img"
+           path: "<path_to_snagboot_binaries>/u-boot.img"
 
      am62l3-tasks:
        - target-device: mmc0
@@ -438,7 +513,7 @@ For reference, the  :file:`emmc.yaml` file for **am62l** platform can be as foll
 
 For eMMC boot configuration, refer :ref:`emmc_boot_config`
 
-**Snagboot Command-line Configuration and Device Flashing Procedure**
+**Snagboot command-line configuration and device flashing procedure**
 
 Snagrecover uses vendor-specific ROM code mechanisms to initialize external RAM and run U-Boot, without modifying any non-volatile memories.
 
@@ -446,7 +521,7 @@ Snagrecover uses vendor-specific ROM code mechanisms to initialize external RAM 
 
    $ snagrecover -s am625 -F "{'tiboot3': {'path': 'tiboot3.bin'}}" -F "{'tispl': {'path': 'tispl.bin'}}" -F "{'u-boot': {'path': 'u-boot.img'}}"
 
-* Comprehensive instructions for using snagrecover command line are here:
+* Comprehensive instructions for using :command:`snagrecover` command line are here:
   `Snagrecover command line <https://github.com/bootlin/snagboot/blob/main/docs/snagrecover.md>`__.
 
 Snagflash communicates with U-Boot to flash system images to non-volatile memories, using either DFU, UMS or Fastboot.
@@ -455,5 +530,5 @@ Snagflash communicates with U-Boot to flash system images to non-volatile memori
 
    $ snagflash -P fastboot-uboot -p 0451:6165 -i
 
-* Comprehensive instructions for using snagflash command line are here:
+* Comprehensive instructions for using :command:`snagflash` command line are here:
   `Snagflash command line <https://github.com/bootlin/snagboot/blob/main/docs/snagflash.md>`__.
