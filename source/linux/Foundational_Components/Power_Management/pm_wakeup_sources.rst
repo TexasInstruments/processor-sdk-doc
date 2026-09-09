@@ -1034,7 +1034,7 @@ MCU IPC based Wakeup
 
    .. ifconfig:: CONFIG_part_variant in ('AM62PX')
 
-      `MCU+ SDK for AM62Px <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62PX/12_00_00_27/exports/docs/api_guide_am62px/index.html>`__
+      `MCU+ SDK for AM62Px <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62PX/12_01_00_28/exports/docs/api_guide_am62px/device/am62px/main_page.html>`__
 
    .. ifconfig:: CONFIG_part_variant in ('AM62DX')
 

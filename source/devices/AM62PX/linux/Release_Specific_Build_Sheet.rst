@@ -6,7 +6,7 @@ Software Build Sheet
 
 Build Sheet of supported features and modules for this |__SDK_FULL_NAME__| Release.
 The following table lists the supported features and modules with the support status
-for Linux on A53. Please refer to `RTOS Build Sheet <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62PX/11_01_01_08/exports/docs/build_sheet/am62p-sw-buildsheet.html>`__
+for Linux on A53. Please refer to `RTOS Build Sheet <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62PX/12_01_00_28/exports/docs/api_guide_am62px/buildsheet/buildsheet_am62px.html>`__
 for the supported features and modules on RTOS.
 
 The support status is indicated by the following codes:
