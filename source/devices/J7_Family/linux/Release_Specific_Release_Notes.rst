@@ -103,7 +103,7 @@ U-Boot
 
    .. note::
 
-      meta-edgeai Yocto layer contains additional patches for U-Boot `here <https://git.ti.com/cgit/edgeai/meta-edgeai/tree/recipes-bsp/u-boot?h=REL.PSDK.ANALYTICS.11.02.02.03>`__.
+      meta-edgeai Yocto layer contains additional patches for U-Boot `here <https://git.ti.com/cgit/edgeai/meta-edgeai/tree/recipes-bsp/u-boot?h=REL.PSDK.ANALYTICS.11.02.02.04>`__.
 
 .. _kernel-release-notes:
 
@@ -131,7 +131,7 @@ Kernel
 
    .. note::
 
-      meta-edgeai Yocto layer contains additional patches for Kernel `here <https://git.ti.com/cgit/edgeai/meta-edgeai/tree/recipes-kernel/linux?h=REL.PSDK.ANALYTICS.11.02.02.03>`__.
+      meta-edgeai Yocto layer contains additional patches for Kernel `here <https://git.ti.com/cgit/edgeai/meta-edgeai/tree/recipes-kernel/linux?h=REL.PSDK.ANALYTICS.11.02.02.04>`__.
 
 TF-A
 ----
@@ -205,19 +205,19 @@ Yocto
 
 | Repo: https://github.com/TexasInstruments/meta-tisdk.git
 | Branch: scarthgap
-| Release Tag: REL.PSDK.ANALYTICS.11.02.02.03
+| Release Tag: REL.PSDK.ANALYTICS.11.02.02.04
 |
 
 .. ifconfig:: CONFIG_image_type in ('edgeai', 'adas')
 
    .. rubric:: meta-edgeai
 
-   | Head Commit: 75f2d4860776bddb7c50c6de40480819167a0e6f [edgeai-gst-plugins]: Update the commit id to latest
-   | Date: Mon Sep 07 00:39:25 2026 -0500
+   | Head Commit: 47437a7817c1f88213b1f27403b4b7966aaac813 ti-vision-apps: J784s4: Bump up to REL.PSDK.ANALYTICS.11.02.02.04
+   | Date: Wed Sep 09 10:27:50 2026 -0500
 
    | Clone: git://git.ti.com/edgeai/meta-edgeai.git
    | Branch: scarthgap
-   | Release Tag: REL.PSDK.ANALYTICS.11.02.02.03
+   | Release Tag: REL.PSDK.ANALYTICS.11.02.02.04
    |
 
 Issues Tracker
