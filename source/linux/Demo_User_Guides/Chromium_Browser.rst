@@ -10,15 +10,15 @@ Chromium Browser - User Guide
 Overview
 --------
 
-On TI devices with IMG Rogue class GPU's.  The Chromium browser (available from https://chromium.googlesource.com/chromium/src/)
+On TI devices with IMG Rogue class GPUs.  The Chromium browser (available from https://chromium.googlesource.com/chromium/src/)
 is accelerated using OpenGLES.
 
-The version of Chromium that is build can be obtained with this command:
+The version of Chromium that is built can be obtained with this command:
 
 .. code-block:: console
 
     $ chromium --version
-    Chromium 123.0.6312.122 stable
+    Chromium 132.0.6834.83 stable
 
 The version of Chromium shown here is the one that GPU acceleration is verified to work with.
 
@@ -29,9 +29,7 @@ Launching Chromium Browser
 
    For security reasons it is suggested never to run Chromium as the root user.
 
-To launch the Chromium browser:
-
-Assuming you are logged in as the root user.
+To launch the Chromium browser (assuming you are logged in as root):
 
 Switch to the weston user:
 
@@ -39,7 +37,7 @@ Switch to the weston user:
 
     $ su weston
 
-And then run the chromium binary:
+Then run the chromium binary:
 
 .. code-block:: console
 
@@ -61,14 +59,13 @@ Will open the aquarium 3d benchmark in a fullscreen window on the Weston desktop
 
 The :console:`--start-fullscreen` switch will make the chromium browser consume the entire screen including overwriting the Weston menu bar.
 
-This will start chromium and provided you have network connectivity to the internet from the TI platform it will
-connect to an example application that uses WebGL/Javascript and renders fish swimming in a fish bowl using the 3D GPU.
+This will start Chromium. With network connectivity, it will connect to an example application that uses WebGL/Javascript and renders fish swimming in a fish bowl using the 3D GPU.
 
 Graphics Feature Status
 -----------------------
 
 To see the GPU features that are in use, enter :code:`chrome://gpu` into the Chromium URL/Navigation bar. A web page will be
-rendered with this information. The below example shows what is enabled/disabled when GPU acceleration is working correctly
+rendered with this information. The below example shows what is enabled/disabled when GPU acceleration is working correctly.
 
 .. code-block:: text
 
@@ -88,7 +85,7 @@ rendered with this information. The below example shows what is enabled/disabled
     *   WebGPU: Disabled
 
 
-If for some reason you suspect the GPU is rending something incorrectly, you can run chromium with GPU disabled
+If for some reason you suspect the GPU is rendering something incorrectly, you can run chromium with GPU disabled
 using the :console:`--disable-gpu` flag:
 
 .. code-block:: console
@@ -106,38 +103,38 @@ To get raw performance numbers from the GPU, you may want to disable frame sync 
 Running Chromium as the root user
 ---------------------------------
 
-This is absolutely not recommended, as to do so gives a web page too much access to your system.  
+This is absolutely not recommended, as to do so gives a web page too much access to your system. 
 To run in this mode you also have to provide the :console:`--no-sandbox` switch, which disables all sandboxing
 of the browser from the base system and could leave you open for a malicious webpage to do something
 nefarious.
 
 
-How to build Chromuim under Yocto
+How to build Chromium under Yocto
 ---------------------------------
 
-Pull in the meta-browser and meta-clang layer into a Scarthgap Yocto build.
+Pull in the meta-browser and meta-lts-mixins layer into a Scarthgap Yocto build.
 
 meta-browser should be pinned to commit:
 
 .. code-block:: text
 
-    commit 1ed2254d72a4c25879014c98be287a7e3e22904c
-    Author: Max Ihlenfeldt <max@igalia.com>
-    Date:   Wed May 22 14:54:02 2024 +0200
+    commit 27ca52f635a31f5f9762813a8527dd31323549b7
+    Author: Ariel D'Alessandro <ariel.dalessandro@gmail.com>
+    Date:   Thu Feb 20 06:59:07 2025 -0300
 
-        chromium: Backport missing dependency in NewTabPage (#816)
+        chromium: Update to 132.0.6834.83 (#867)
 
-meta-clang needs to be pinned to HEAD commit of branch "scarthgap", as of the time of writing that equates to this commit:
+meta-lts-mixins should be pinned to commit:
 
 .. code-block:: text
 
-    commit e7dceb1c92caf7f21ef1d7b49c85328c30cffd90 (HEAD -> scarthgap, origin/scarthgap)
-    Author: Etienne Cordonnier <ecordonnier@snap.com>
-    Date:   Fri May 3 17:47:46 2024 +0200
+    commit a8046d5ec53b1856169ac795aa87cb0d5db84c04
+    Author: Khem Raj <raj.khem@gmail.com>
+    Date:   Wed Apr 30 23:33:39 2025 -0700
 
-        clang: use release tarball instead of git
+        rust: Fix build with GCC-15 on aarch64/musl
 
-With these layers pinned to the correct commit, you need to make sure they are referenced in :console:`build/conf/bblayers.conf`
+With these layers pinned to the correct commit, you need to make sure they are referenced in :console:`build/conf/bblayers.conf`.
 This is done automatically if you use the oe-layersetup tool.
 
 .. code-block:: console
@@ -146,23 +143,23 @@ This is done automatically if you use the oe-layersetup tool.
     $ ./oe-layersetup -f config/arago-scarthgap-chromium-config.txt
 
 Once this is done, use bitbake to create the tisdk-default-image. This will 
-detect the meta-browser and meta-clang layers, automatically building and 
+detect the meta-browser and meta-lts-mixins layers, automatically building and 
 adding Chromium to the root filesystem image.
 
 .. tip::
 
     Build times of Chromium can be very long depending on the size of your build machine. It has been found that you need
-    at least 64Gigs of RAM, and on a 28 thread Intel Core-I9 with an SSD for the build driver it will still take upwards of 2 hours just
+    at least 64 GB of RAM, and on a 28 thread Intel Core-I9 with an SSD for the build driver it will still take upwards of 2 hours just
     to build Chromium. A full Yocto Scarthgap build that includes Chromium can easily take 400GBytes of SSD.
 
 The following will initiate a full tisdk-default-image build that would include
-Chromium if the meta-browser and meta-clang layers are present:
+Chromium if the meta-browser and meta-lts-mixins layers are present:
 
 .. code-block:: console
 
     $ MACHINE=<machine> bitbake tisdk-default-image
 
-If you want to significantly reduced image size, the IPKs can be built
+If you want to significantly reduce image size, the IPKs can be built
 directly using the following:
 
 .. code-block:: console
@@ -185,15 +182,14 @@ Somewhere into your :file:`build/conf/local.conf` file.
 Limitations
 -----------
 
-* Audio/video within the browser is not supported.
-* Hardware acceleration of video either decode or encode is not supported.
+* Hardware acceleration of video encode is not supported.
 
 Performance
 -----------
 
 **Performance of WebGL Aquarium**
 
-Standard WebGL benchmarks available at these URLS: https://webglsamples.org/aquarium/aquarium.html
+Standard WebGL benchmarks available at these URLs: https://webglsamples.org/aquarium/aquarium.html
 
 Run as the weston user with the command line :console:`chromium https://webglsamples.org/aquarium/aquarium.html --start-fullscreen`
 
@@ -259,7 +255,7 @@ Run as the weston user with the command line :console:`chromium https://webglsam
 
 **Performance of MotionMarkv1.3**
 
-Standard Javascript benchmarks available at these URLS: https://browserbench.org/MotionMark/
+Standard Javascript benchmarks available at these URLs: https://browserbench.org/MotionMark/
 
 Run as the weston user with the command line :console:`chromium https://browserbench.org/MotionMark/ --start-fullscreen`
 use the mouse to click the "Run Benchmark" button.
@@ -313,10 +309,10 @@ Video Streaming
 .. ifconfig:: CONFIG_part_variant not in ('AM62X', 'J721E')
 
    Streaming platforms and demuxed videos support hardware acceleration for video playback.
-   This is achieved using the V4L2 stateful decoder API that interfaces with the :ref:`Wave 5<foundational-components-multimedia>` hardware decoder present on |__PART_FAMILY_DEVICE_NAMES__|.
+   This is achieved using the V4L2 stateful decoder API that interfaces with the :ref:`Wave5<foundational-components-multimedia>` hardware decoder present on |__PART_FAMILY_DEVICE_NAMES__|.
    Hardware acceleration has been successfully verified with the `W3C WebCodecs VideoDecoder Interface <https://www.w3.org/TR/webcodecs/#videodecoder-interface>`_, which serves as the backend technology for streaming platforms such as YouTube and Vimeo.
 
-   Tested streaming sources include HTML5 video playback, YouTube, and Vimeo.
+   Tested streaming sources include HTML5, YouTube, and Vimeo video playback.
 
 .. rubric:: HTML5 Video Playback
 
@@ -353,7 +349,7 @@ Chromium falls back to **software decoding** when using those codecs, resulting 
 .. ifconfig:: CONFIG_part_variant not in ('AM62X', 'J721E')
 
    To enable hardware acceleration, **Chromium requires an extension** that forces YouTube to use the **H.264 codec**.
-   Once this extension is installed, YouTube streams can be hardware decoded using the V4L2 decoder.
+   With this extension installed, YouTube streams are hardware decoded using the V4L2 decoder.
 
 .. code-block:: console
 
