@@ -433,7 +433,7 @@ All of these binaries are available in the SDK at :file:`<path to tisdk>/board-s
    .. csv-table::
       :header: "Board","SD / UART / OSPI / USB DFU","USB MSC"
 
-      "AM62LX EVM", ``am62lx_evm_defconfig``, ``am62lx_evm_defconfig``
+      "AM62LX EVM", ``am62lx_evm_defconfig``, ``am62lx_evm_defconfig`` ``am62x_a53_usbmsc.config``
       "BeagleBadge", ``am62lx_badge_defconfig``, ""
 
    .. note::
@@ -475,6 +475,15 @@ All of these binaries are available in the SDK at :file:`<path to tisdk>/board-s
          BL31=$TFA_DIR/build/k3low/$TFA_BOARD/release/bl31.bin \
          BINMAN_INDIRS=$TI_LINUX_FW_DIR \
          TEE=$OPTEE_DIR/out/arm-plat-k3/core/tee-pager_v2.bin
+
+   .. note::
+
+      The :file:`am62x_a53_usbmsc.config` config fragment can be used to enable
+      USB MSC boot support.
+
+      .. code-block:: console
+
+         $ make CROSS_COMPILE="$CROSS_COMPILE_64" am62lx_evm_defconfig am62x_a53_usbmsc.config
 
    .. note::
 

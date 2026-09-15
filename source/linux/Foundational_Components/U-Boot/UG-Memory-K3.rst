@@ -411,7 +411,7 @@ Configuring USB in Host Mode
 Flash and boot SPL from USB storage
 ===================================
 
-.. ifconfig:: CONFIG_part_variant not in ('J7200', 'J721E', 'AM64X', 'AM65X', 'J722S')
+.. ifconfig:: CONFIG_part_variant not in ('J7200', 'J721E', 'AM64X', 'AM65X', 'J722S', 'AM62LX')
 
    Boot SPL from USB storage documentation is pending for |__PART_FAMILY_DEVICE_NAMES__|
    reach out to:  `Help e2e <https://e2e.ti.com//>`__ for additional information.
@@ -422,6 +422,24 @@ Flash and boot SPL from USB storage
 
       The SoC does not support booting from USB mass storage, but USB can still be
       accessed as storage device at U-Boot prompt.
+
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+   Booting to U-Boot prompt from USB storage is supported. The following are the
+   steps to be followed:
+
+   - Build the boot loader images using the default ``am62lx_evm_defconfig`` with the
+     config fragment ``am62x_a53_usbmsc.config``. The configs required for USB MSC boot
+     are enabled by this fragment. For instructions to build the boot loader images,
+     refer to :ref:`Build-U-Boot-label`.
+   - Create a FAT32 partition with boot flag enabled on the USB storage device.
+   - Copy the boot loader images (:file:`tiboot3.bin`, :file:`tispl.bin`,
+     :file:`u-boot.img`) into the above created partition.
+   - Set the boot mode switches to USB host boot mode (Refer to the
+     **Initialization/Boot Mode Pins** chapter of TRM for boot switch details).
+   - Connect the USB Mass storage device with the boot loader images and boot up
+     the board.
+   - The board should now boot to u-boot prompt.
 
 .. ifconfig:: CONFIG_part_variant in ('AM64X', 'AM65X', 'J722S')
 
