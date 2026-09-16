@@ -44,7 +44,7 @@ Features supported
 - Different MII modes for Real-Time Ethernet ports (MII_G_RT1 and MII_G_RT2) on different PRU_ICSSG instances. For example, MII on a PRU_ICSSG1 port, and RGMII on a PRU_ICSSG2 port, is supported.
 - IRQ Coalescing also known as interrupt pacing.
 - Multi-cast HW filtering
-- XDP Native Mode and XDP Generic Mode
+- XDP Native Mode, XDP Generic Mode and Zero-copy mode
 - Cut Through forwarding
 - PHY Interrupt mode for ICSSG2
 - Multicast filtering support for VLAN interfaces
@@ -54,7 +54,6 @@ Features supported
 - VLAN HW filtering
 - All-multi mode is always enabled
 - Different MII modes for Real-Time Ethernet ports (MII_G_RT1 and MII_G_RT2) on a single PRU_ICSSG instance. For example, MII_G_RT1=MII and MII_G_RT2=RGMII.
-- XDP with Zero-copy mode
 
 Driver Configuration
 ####################
@@ -713,8 +712,8 @@ To turn off PPS,
 XDP
 ###
 
-The PRU_ICSSG Ethernet driver supports Native XDP as well as Generic XDP. XDP with Zero-copy mode is not supported yet.
-For detailed setup and how to test XDP please refer to :ref:`pru_icssg_xdp`.
+The PRU_ICSSG Ethernet driver supports Native XDP, Generic XDP, and Zero-copy mode.
+Refer to :ref:`kernel_xdp` for more details.
 
 
 Tips
