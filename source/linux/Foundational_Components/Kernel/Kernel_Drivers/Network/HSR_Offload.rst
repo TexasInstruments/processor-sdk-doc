@@ -41,6 +41,7 @@ To enable Tx packet duplication
 The below script sets up an HSR interface with the port-to-port
 forwarding and Tx packet duplication offloaded
 
+.. _hsr-setup-script:
 .. code-block:: bash
 
   #!/bin/sh
@@ -428,4 +429,21 @@ CPU usage at Node B found to be negligible
         - Receiver
       * - 505 Mbits/sec
         - 504 Mbits/sec
+
+.. rubric:: HSR RedBox Support
+
+The HSR RedBox feature extends standard HSR functionality by adding an interlink port
+that bridges the HSR ring to an external network segment. This allows devices on the
+external segment to communicate directly with HSR ring nodes as if they were part of
+the same HSR Ring.
+
+On AM64x, ICSSG can be used as an HSR Redbox. To enable this feature, the CPSW port
+(``eth0``) must be connected to the external network to serve as the interlink port.
+
+The existing :ref:`hsr_setup.sh script <hsr-setup-script>` can be used with small modification
+to the ``ip link add`` command inside it, which must be updated as below.
+
+.. code-block:: bash
+
+   ip link add name <HSR_INTF> type hsr slave1 <IFACE_A> slave2 <IFACE_B> interlink <INTERLINK_IFACE> supervision 45 version 1
 
