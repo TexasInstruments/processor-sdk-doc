@@ -63,6 +63,7 @@ components:
     - praneethbajjuri
     - gehariprasath
     - uditkumarti
+    - ti-sebin
 
   source/linux/Release_Specific:
     - jeevantelukula
@@ -73,7 +74,7 @@ components:
   source/linux/Foundational_Components:
     - devarsht
     - praneethbajjuri
-    - r-vignesh
+    - ti-sebin
     - uditkumarti
     - gehariprasath
 
@@ -90,6 +91,7 @@ components:
   source/linux/Foundational_Components/Kernel:
     - devarsht
     - praneethbajjuri
+    - ti-sebin
     - r-vignesh
     - uditkumarti
     - gehariprasath
