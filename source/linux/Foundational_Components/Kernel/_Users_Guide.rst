@@ -535,13 +535,16 @@ Installing the Kernel Image and Device Tree Binaries
     .. code-block:: console
 
          cd <kernel sources dir>
-         sudo cp arch/arm64/boot/Image /media/rootfs/boot
-         sudo cp arch/arm64/boot/dts/ti/k3-am642-evm.dtb /media/rootfs/boot/dtb/ti
+         sudo cp arch/arm64/boot/Image /media/$USER/rootfs/boot
+         sudo cp arch/arm64/boot/dts/ti/k3-am642-evm.dtb /media/$USER/rootfs/boot/dtb/ti
 
 Starting with U-boot 2013.10, the kernel and device tree binaries are read from
 the root file system's boot directory when booting from MMC/EMMC. (NOT from the
 /boot/ partition on the MMC). This would mean you copy the kernel image and device
-tree binaries to :file:`/media/rootfs/boot` instead of :file:`/media/boot`.
+tree binaries to :file:`/media/$USER/rootfs/boot` instead of :file:`/media/$USER/boot`.
+
+Here, ``$USER`` is the username of the user on the host machine where the SD card
+is mounted.
 
 Installing the Kernel Modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -567,7 +570,7 @@ file system. The general format of the command is:
 
     .. code-block:: console
 
-        sudo make ARCH=arm INSTALL_MOD_PATH=/media/rootfs modules_install
+        sudo make ARCH=arm INSTALL_MOD_PATH=/media/$USER/rootfs modules_install
 
 ..
   [comment] instructions for 64 bit processors
@@ -582,7 +585,10 @@ file system. The general format of the command is:
 
     .. code-block:: console
 
-        sudo make ARCH=arm64 INSTALL_MOD_PATH=/media/rootfs modules_install
+        sudo make ARCH=arm64 INSTALL_MOD_PATH=/media/$USER/rootfs modules_install
+
+Here, ``$USER`` is the username of the user on the host machine where the SD card
+is mounted.
 
 .. note::
 
