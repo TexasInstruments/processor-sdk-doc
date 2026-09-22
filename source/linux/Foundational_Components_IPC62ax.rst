@@ -151,12 +151,6 @@ Finally, use the sysfs interface to start the remote core:
 	[   66.858507] virtio_rpmsg_bus virtio2: creating channel rpmsg_chrdev addr 0xe
 	[   66.864574] remoteproc remoteproc0: remote processor 7e000000.dsp is now up
 
-.. note::
-
-   The RemoteProc driver does not support a graceful shutdown of R5 and DSP cores
-   in the current Linux Processor SDK. For now, it is recommended to reboot the
-   board when loading new binaries into an R5F or DSP core.
-
 DMA memory Carveouts
 --------------------
 
