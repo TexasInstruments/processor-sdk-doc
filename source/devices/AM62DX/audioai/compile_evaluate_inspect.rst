@@ -14,7 +14,7 @@ dataset — using **edgeai-tidlrunner**. It runs entirely on an Ubuntu x86 PC;
 nothing here touches the target.
 
 This is the workflow for *any* audio model, not just the reference models. The
-four reference models below are worked examples; to bring your own model you
+four reference models below are worked examples. To bring your own model you
 point the same ``tidlrunner-cli`` at your ONNX graph and a per-model YAML config,
 using a reference config as a starting template. Which operators offload to the
 C7\ |tm| NPU (vs. fall back to the Arm core) is determined by TIDL — see
@@ -72,7 +72,7 @@ These steps assume `pyenv <https://github.com/pyenv/pyenv>`__.
    $ cd edgeai-tidlrunner
 
 **2. Create and activate a dedicated Python 3.10 environment.** The AM62D flow
-uses a release-candidate TVM wheel; keep it in its own venv (``tidlrunner-am62d``)
+uses a TI TVM wheel; keep it in its own venv (``tidlrunner-am62d``)
 so it never clobbers a standard ``tidlrunner`` setup:
 
 .. code-block:: console
@@ -90,7 +90,7 @@ everything this flow needs:
 
 It downloads the ARM GCC 15.2 and C7000 CGT 5.0.0.LTS cross-toolchains into
 ``tools/tidl_tools_package/bin/`` (skipped if already present), installs the
-release-candidate x86 TVM wheel — which bundles the AM62D x86 TIDL tools *inside*
+x86 TI TVM wheel — which bundles the AM62D x86 TIDL tools *inside*
 the package — and installs ``tidlrunner[pc,audio]``, ``tools``, ``onnxruntime``,
 and ``tidl_onnx_model_optimizer``. The ``[audio]`` extra pulls in the audio
 packages (``librosa``, ``soundfile``, ``scipy``, ``pesq``, ``pystoi``,
@@ -146,11 +146,11 @@ sets. Download them from the repository root:
 They land under ``data/datasets/UrbanSound8K/`` and
 ``data/datasets/VoiceBank-DEMAND-16k/`` — the paths the model configs expect.
 The classification configs use UrbanSound8K **fold 10** (837 samples) as the
-test set; the speech-enhancement configs use the VoiceBank-DEMAND-16k test set
+test set; the speech-enhancement configs use the VoiceBank-DEMAND-16k **test** set
 (824 files).
 
 The reference ONNX models auto-download at compile time via ``.link`` files, so
-fetching them ahead of time is optional. To pre-download all four:
+fetching them ahead of time is **optional**. To pre-download all reference ONNX models:
 
 .. code-block:: console
 
@@ -168,12 +168,12 @@ same environment. The AM62D config paths are:
 
 .. list-table::
    :header-rows: 1
-   :widths: 14 10 12 10 54
+   :widths: 12 10 12 18 54
 
    * - Model
      - Model ID
      - Runtime
-     - Bits
+     - Tensor Bits
      - Config path (relative to ``edgeai-tidlrunner/``)
    * - VGGish11
      - |__MODEL_ID_VGGISH11__|
@@ -188,7 +188,7 @@ same environment. The AM62D config paths are:
    * - GCRN
      - |__MODEL_ID_GCRN__|
      - TVM-RT
-     - 16
+     - 16 (LSTM), FP32 (Enc/Dec)
      - ``data/configs/samples/models/audio/speech_enhancement/voicebank_demand_16k/gcrn_fixed_4sec_tvmrt_config.yaml``
    * - GTCRN
      - |__MODEL_ID_GTCRN__|
