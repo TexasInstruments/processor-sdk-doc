@@ -476,6 +476,137 @@ Accessible when CPTS is enabled.
     and writing of EEE advertising settings in Ethernet PHY. This way one
     can disable advertising EEE for certain speeds.
 
+.. rubric:: ``ethtool -N|--config-nfc DEVNAME`` Configure RX Network Flow Classification
+   :name: k3-ethtool-config-nfc
+
+The CPSW driver supports RX classification using the ALE (Address Lookup Engine)
+policer engine. This allows steering received packets to specific RX channels
+or dropping them based on Ethernet header fields. The classification is
+configured using ``ethtool -N`` (or ``--config-nfc``) command.
+
+Currently only raw Ethernet (flow-type ``ether``) matching is supported with
+the following fields:
+
+- Source MAC address (``src``)
+- Destination MAC address (``dst``)
+- VLAN tag with PCP (Priority Code Point) and VID (``vlan``)
+
+The action specifies the target RX channel (0-7) or ``-1`` to drop the packet.
+
+.. note::
+
+   RX classification requires multiple RX channels to be configured first using
+   ``ethtool -L <dev> rx <N>`` where N is the number of channels (up to 8).
+
+.. rubric:: **Syntax**
+
+.. code-block:: console
+
+   ethtool -N <dev> flow-type ether [src <MAC>] [dst <MAC>] [vlan <0xPCP_VID>] action <channel>
+
+Where:
+
+- ``flow-type ether`` - Raw Ethernet frame matching (only supported type)
+- ``src <MAC>`` - Source MAC address (format: xx:yy:zz:aa:bb:cc)
+- ``dst <MAC>`` - Destination MAC address (format: xx:yy:zz:aa:bb:cc)
+- ``vlan <0xPCP_VID>`` - VLAN tag encoded as 0xPCPVID where PCP is 3-bit
+  priority (0-7) in upper bits and VID is 12-bit VLAN ID (0-4095) in lower bits.
+  Example: PCP 7, VID 5 = 0xE005 (7 << 13 | 5)
+- ``action <channel>`` - Target RX channel (0-7) or -1 for drop
+
+.. rubric:: **Prerequisites**
+
+Increase number of RX channels before adding classification rules:
+
+.. code-block:: console
+
+   ip link set eth0 down
+   ethtool -L eth0 rx 8
+   ip link set eth0 up
+
+.. rubric:: **Test Cases**
+
+**1) Ether Source Address Test**
+
+Route traffic from specific source MAC to RX channel 5:
+
+.. code-block:: console
+
+   ethtool -N eth0 flow-type ether src xx:yy:zz:aa:bb:cc action 5
+
+Traffic from that address should route to channel 5.
+
+**2) Ether Destination Address Test**
+
+Route traffic to specific destination MAC to RX channel 4:
+
+.. code-block:: console
+
+   ethtool -N eth0 flow-type ether dst yy:zz:aa:bb:cc:dd action 4
+
+Traffic to that address should route to channel 4.
+
+**3) Drop Test**
+
+Drop traffic from specific source MAC:
+
+.. code-block:: console
+
+   ethtool -N eth0 flow-type ether src xx:yy:zz:aa:bb:cc action -1
+
+Traffic from that address should be dropped.
+
+**4) VLAN PCP Test**
+
+Route VLAN tagged traffic with specific PCP and VID to RX channel 6.
+
+On remote host, create VLAN interface with egress QoS mapping all traffic to PCP 7:
+
+.. code-block:: console
+
+   sudo ip link add link eno1 name eno1.5 type vlan id 5 egress-qos-map 0:7 1:7 2:7 3:7 4:7 5:7 6:7 7:7
+   sudo ifconfig eno1.5 192.168.10.1
+
+On DUT, create matching VLAN interface:
+
+.. code-block:: console
+
+   ip link add link eth0 name eth0.5 type vlan id 5
+   ifconfig eth0.5 192.168.10.5
+
+Configure classification for VLAN PCP 7, VID 5 (0xE005 = 7<<13 | 5) to channel 6:
+
+.. code-block:: console
+
+   ethtool -N eth0 flow-type ether vlan 0xe005 action 6
+
+Traffic from that VLAN with PCP 7 should route to channel 6.
+
+.. rubric:: **Viewing Configured Rules**
+
+Use ``ethtool -n`` (or ``--show-nfc``) to display active RX classification rules:
+
+.. code-block:: console
+
+   # ethtool -n eth0
+   2 RX flow classifications
+   [0]: flow-type ether src xx:yy:zz:aa:bb:cc action 5
+   [1]: flow-type ether vlan 0xe005 action 6
+
+.. rubric:: **Deleting Rules**
+
+Delete a specific rule by its index (shown in ``ethtool -n`` output):
+
+.. code-block:: console
+
+   ethtool -N eth0 delete <index>
+
+Example:
+
+.. code-block:: console
+
+   ethtool -N eth0 delete 0
+
 .. rubric:: ``ethtool -d|--register-dump DEVNAME`` Do a register dump
    :name: k3-ethtool-do-a-register-dump
 
