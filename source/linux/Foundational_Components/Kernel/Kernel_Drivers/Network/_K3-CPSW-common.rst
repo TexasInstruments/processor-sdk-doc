@@ -476,6 +476,106 @@ Accessible when CPTS is enabled.
     and writing of EEE advertising settings in Ethernet PHY. This way one
     can disable advertising EEE for certain speeds.
 
+.. rubric:: ``ethtool -N|--config-nfc DEVNAME`` Configure RX Network Flow Classification
+   :name: k3-ethtool-config-nfc
+
+The CPSW driver supports RX classification through the Address Lookup Engine (ALE).
+This allows for steering of received packets to specific RX channels
+or dropping them based on Ethernet header fields. The ``-N`` or ``--config-nfc``
+flags of :command:`ethtool` set the receiving network flow classification rules.
+
+Currently only raw Ethernet (flow-type ``ether``) matching is supported with
+the following fields:
+
+- Source MAC address (``src``)
+- Destination MAC address (``dst``)
+
+The action specifies the target RX channel (0-7) or ``-1`` to drop the packet.
+
+.. note::
+
+   RX classification requires multiple RX channels to be configured first using
+   ``ethtool -L <dev> rx <N>`` where N is the number of channels (up to 8).
+
+.. rubric:: **Syntax**
+
+.. code-block:: console
+
+   ethtool -N <dev> flow-type ether [src <MAC>] [dst <MAC>] action <channel>
+
+Where:
+
+- ``flow-type ether`` - Raw Ethernet frame matching (only supported type)
+- ``src <MAC>`` - Source MAC address (format: xx:yy:zz:aa:bb:cc)
+- ``dst <MAC>`` - Destination MAC address (format: xx:yy:zz:aa:bb:cc)
+- ``action <channel>`` - Target RX channel (0-7) or -1 for drop
+
+.. rubric:: **Prerequisites**
+
+Increase number of RX channels before adding classification rules:
+
+.. code-block:: console
+
+   ip link set eth0 down
+   ethtool -L eth0 rx 8
+   ip link set eth0 up
+
+.. rubric:: **Test Cases**
+
+#. **Ether Source Address Test**
+
+   Route traffic from specific source MAC to RX channel 5:
+
+   .. code-block:: console
+
+      ethtool -N eth0 flow-type ether src xx:yy:zz:aa:bb:cc action 5
+
+   Traffic from that address should route to channel 5.
+
+#. **Ether Destination Address Test**
+
+   Route traffic to specific destination MAC to RX channel 4:
+
+   .. code-block:: console
+
+      ethtool -N eth0 flow-type ether dst yy:zz:aa:bb:cc:dd action 4
+
+   Traffic to that address should route to channel 4.
+
+#. **Drop Test**
+
+   Drop traffic from specific source MAC:
+
+   .. code-block:: console
+
+      ethtool -N eth0 flow-type ether src xx:yy:zz:aa:bb:cc action -1
+
+   Traffic from that address should be dropped.
+
+.. rubric:: **Viewing Configured Rules**
+
+Use ``ethtool -n`` (or ``--show-nfc``) to display active RX classification rules:
+
+.. code-block:: console
+
+   # ethtool -n eth0
+   1 RX flow classifications
+   [0]: flow-type ether src xx:yy:zz:aa:bb:cc action 5
+
+.. rubric:: **Deleting Rules**
+
+Delete a specific rule by its index (shown in ``ethtool -n`` output):
+
+.. code-block:: console
+
+   ethtool -N eth0 delete <index>
+
+Example:
+
+.. code-block:: console
+
+   ethtool -N eth0 delete 0
+
 .. rubric:: ``ethtool -d|--register-dump DEVNAME`` Do a register dump
    :name: k3-ethtool-do-a-register-dump
 
