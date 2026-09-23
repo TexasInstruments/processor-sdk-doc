@@ -125,7 +125,4 @@ offloaded subgraphs to TIDL-RT on the C7\ |tm| NPU.
    :align: center
 
    TVM + TIDL compile-and-deploy flow for the AM62D audio models. Green blocks
-   are handled by TIDL; white blocks are handled by TVM. VGGish11, YAMNet, and
-   GCRN follow this offloaded path; GTCRN runs ARM-only on the ONNX runtime.
-
-.. TODO(WI-002): confirm the TVM + TIDL diagram concept with Anand Pathak before release.
+   are handled by TIDL; white blocks are handled by TVM.
