@@ -103,7 +103,7 @@ U-Boot
 
    .. note::
 
-      meta-edgeai Yocto layer contains additional patches for U-Boot `here <https://git.ti.com/cgit/edgeai/meta-edgeai/tree/recipes-bsp/u-boot?h=REL.PSDK.ANALYTICS.11.02.02.04>`__.
+      meta-edgeai Yocto layer contains additional patches for U-Boot `here <https://git.ti.com/cgit/edgeai/meta-edgeai/tree/recipes-bsp/u-boot?h=REL.PSDK.ANALYTICS.11.02.02.05>`__.
 
 .. _kernel-release-notes:
 
@@ -131,7 +131,7 @@ Kernel
 
    .. note::
 
-      meta-edgeai Yocto layer contains additional patches for Kernel `here <https://git.ti.com/cgit/edgeai/meta-edgeai/tree/recipes-kernel/linux?h=REL.PSDK.ANALYTICS.11.02.02.04>`__.
+      meta-edgeai Yocto layer contains additional patches for Kernel `here <https://git.ti.com/cgit/edgeai/meta-edgeai/tree/recipes-kernel/linux?h=REL.PSDK.ANALYTICS.11.02.02.05>`__.
 
 TF-A
 ----
@@ -205,19 +205,19 @@ Yocto
 
 | Repo: https://github.com/TexasInstruments/meta-tisdk.git
 | Branch: scarthgap
-| Release Tag: REL.PSDK.ANALYTICS.11.02.02.04
+| Release Tag: REL.PSDK.ANALYTICS.11.02.02.05
 |
 
 .. ifconfig:: CONFIG_image_type in ('edgeai', 'adas')
 
    .. rubric:: meta-edgeai
 
-   | Head Commit: 47437a7817c1f88213b1f27403b4b7966aaac813 ti-vision-apps: J784s4: Bump up to REL.PSDK.ANALYTICS.11.02.02.04
-   | Date: Wed Sep 09 10:27:50 2026 -0500
+   | Head Commit: 5dc140cfd2ccd2b8175c123bae15b1c6d5a3ebeb ti-vision-apps: Update the tag for vision apps for 11.02.02 REL
+   | Date: Thur Sep 17 04:17:24 2026 -0500
 
    | Clone: git://git.ti.com/edgeai/meta-edgeai.git
    | Branch: scarthgap
-   | Release Tag: REL.PSDK.ANALYTICS.11.02.02.04
+   | Release Tag: REL.PSDK.ANALYTICS.11.02.02.05
    |
 
 Issues Tracker
