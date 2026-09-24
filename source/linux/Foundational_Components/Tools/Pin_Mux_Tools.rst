@@ -129,26 +129,6 @@ configurations while the MLO file (secondary bootloader) executes from
 OCMC RAM. This guide will include how to convert the generic format for
 U-boot.
 
-
-.. ifconfig:: CONFIG_part_family in ('AM335X_family', 'AM437X_family')
-
-    .. rubric:: Processor SDK RTOS
-       :name: processor-sdk-rtos
-
-    After updating the files in the directories below you will need to
-    recompile the **board\_lib** and **sbl** components of the Processor SDK
-    Platform Development Kit (PDK). Follow this guide on `Rebuilding The
-    PDK <http://processors.wiki.ti.com/index.php/Rebuilding_The_PDK>`__.
-
-    .. rubric:: AM3, AM4, AMIC
-       :name: am3-am4-amic
-
-    Replace files in this directory
-
-    ${PDK\_INSTALL\_DIR}\\packages\\ti\\starterware\\board\\${SOC}\\
-    File names will need to be prefixed by "${SOC}\_". Pinmux header file is
-    common for each SOC here, and may need to be updated manually.
-
 .. rubric:: Processor SDK Linux
    :name: processor-sdk-linux
 

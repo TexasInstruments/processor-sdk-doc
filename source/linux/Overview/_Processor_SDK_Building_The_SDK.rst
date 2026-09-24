@@ -132,7 +132,7 @@ The MACHINE can be set to |__SDK_BUILD_MACHINE__|, for example.
                $ . conf/setenv
                $ MACHINE=am62axx-evm ARAGO_RT_ENABLE=1 bitbake -k tisdk-edgeai-image
 
-   .. ifconfig:: CONFIG_part_variant not in ('AM62AX')
+   .. ifconfig:: CONFIG_part_variant not in ('AM62AX', 'AM335X', 'AM437X')
 
       The final command below will build the :file:`tisdk-default-image`, which is the
       Processor SDK image with arago filesystem.  See `Build Options`_ for a list of
@@ -161,6 +161,21 @@ The MACHINE can be set to |__SDK_BUILD_MACHINE__|, for example.
                $ cd build
                $ . conf/setenv
                $ MACHINE=<machine> ARAGO_RT_ENABLE=1 bitbake -k tisdk-default-image
+
+   .. ifconfig:: CONFIG_part_variant in ('AM335X', 'AM437X')
+
+      The final command below will build the :file:`tisdk-default-image`, which is the
+      Processor SDK image with arago filesystem.  See `Build Options`_ for a list of
+      additional targets.
+
+      .. code-block:: console
+
+         $ git clone https://git.ti.com/git/arago-project/oe-layersetup.git tisdk
+         $ cd tisdk
+         $ ./oe-layertool-setup.sh -f configs/processor-sdk/<oeconfig-file>
+         $ cd build
+         $ . conf/setenv
+         $ MACHINE=<machine> bitbake -k tisdk-default-image
 
    .. ifconfig:: CONFIG_part_variant in ('AM62X','AM62PX','AM62LX')
 
