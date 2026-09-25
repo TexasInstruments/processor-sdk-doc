@@ -70,7 +70,8 @@ clean:
 lint:
 	rstcheck -r "$(SOURCEDIR)"
 
-html: 
+html:
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) "$(SOURCEDIR)" "$(BUILDDIR)"
+	python3 scripts/build_searchindex.py "$(BUILDDIR)"
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)."
