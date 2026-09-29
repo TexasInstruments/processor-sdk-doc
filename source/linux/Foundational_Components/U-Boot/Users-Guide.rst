@@ -32,6 +32,7 @@ User's Guide
    UG-Thermal
    UG-Splash-Screen
    UG-Secure-Boot
+   UG-ECDSA-Signing
    UG-Keywriter-Lite
    UG-Keywriter
    UG-Programming-OTPs
