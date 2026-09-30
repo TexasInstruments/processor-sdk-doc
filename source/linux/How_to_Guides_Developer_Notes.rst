@@ -21,6 +21,7 @@ Developer Notes
    How_to_Guides/Target/How_To_Enable_M2CC3301_in_linux
    How_to_Guides/Target/How_to_flash_emmc_device
    How_to_Guides/Target/How_to_emmc_boot
+   How_to_Guides/Target/How_to_use_PipeWire
    How_to_Guides/Target/How_to_mmcsd_boot_emmc_uda
    How_to_Guides/Target/How_to_suspend_to_ram_on_AM62x
    How_to_Guides/Target/How_to_test_MCAN_on_AM62x
