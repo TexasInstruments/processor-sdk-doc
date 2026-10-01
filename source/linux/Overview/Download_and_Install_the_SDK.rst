@@ -142,3 +142,10 @@ The default selection of where to install is the user's home directory.
 
 After the installation, refer to section `Setting up host environment <Run_Setup_Scripts.html>`__ for next steps.
 
+Latest development downloads – CI/CD
+------------------------------------
+
+In addition to official SDK releases, TI provides periodic builds available for download. TI generates these builds automatically. They include the latest bug fixes and new features as soon as developers merge them into the code base, without waiting for the next scheduled SDK release. If you meet a bug during development, a periodic CI/CD build might already contain the fix. These builds suit local development use and help you continue working without an open issue blocking your progress. The periodic downloads do not replace the official Processors SDK releases, which have full documentation, training, and support.
+
+`Latest Development Downloads <https://software-dl.ti.com/cicd-report/linux/>`__
+
