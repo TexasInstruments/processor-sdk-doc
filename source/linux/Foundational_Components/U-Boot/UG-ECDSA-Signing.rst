@@ -74,9 +74,9 @@ Cortex-R5 and Cortex-A72 defconfigs, merging the same
 :file:`tiboot3.bin`, :file:`tispl.bin`, and :file:`u-boot.img` together.
 There is nothing to configure per image, only per build.
 
-*****
-Steps
-*****
+***********************
+How to sign boot images
+***********************
 
 1. Place your ECDSA key under :file:`arch/arm/mach-k3/keys/ecdsa/` in the
    ``ti-u-boot`` source tree:
