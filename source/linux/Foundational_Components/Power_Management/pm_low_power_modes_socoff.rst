@@ -237,7 +237,7 @@ Resume flow,
 Known limitations
 *****************
 1. Only A core as suspend master supported and tested with Linux.
-2. The LPM feature is not supported on HS-SE variant J784S4.
-3. If PCIe is being used, the resume latency increases by 1 sec for every PCIe instance, If EP is not connected.
-4. Remote core firmwares are getting loaded by Linux on resume.
-5. MCU domain R5 core, cannot be used in split mode.
+2. If PCIe is being used, the resume latency increases by 1 sec for every PCIe instance, If EP is not connected.
+3. Remote core firmwares are getting loaded by Linux on resume.
+4. MCU domain R5 core, cannot be used in split mode.
+5. With EthFW enabled, Low Power Mode (LPM) is not functional, as the Ethernet proxy client driver does not yet support suspend/resume.
