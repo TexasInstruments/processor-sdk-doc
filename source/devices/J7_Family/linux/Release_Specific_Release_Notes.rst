@@ -87,14 +87,14 @@ Build Information
 
 U-Boot
 ------
-| Head Commit: 4ca322ca563a21cccad8c9ba65e386b9fd34dd16: TI: mmc: am654_sdhci: Fix up eMMC OTAP delay for HS200 on SR2.0
-| Wed Aug 12 12:08:10 2026 +0530
+| Head Commit: 70800b68682ddc7a9e7e6695712a94fc9f62ed37: FROMLIST: configs: j7200_evm_a72_defconfig: Enable config to auto-probe the PHY
+| Tue Sep 22 17:13:28 2026 +0530
 | uBoot Version: 2025.01
-| uBoot Description: 11.02.18
+| uBoot Description: 11.02.20
 
 | Repo: git://git.ti.com/ti-u-boot/ti-u-boot.git
 | Branch: ti-u-boot-2025.01
-| uBoot Tag: 11.02.18
+| uBoot Tag: 11.02.20
 
 | Compiler Information: arm-oe-eabi-gcc (GCC) 13.4.0, aarch64-oe-linux-gcc (GCC) 13.4.0
 |
@@ -112,14 +112,14 @@ Kernel
 .. rubric:: Linux Kernel
    :name: linux-kernel
 
-| Head Commit: ca77f7291a4f1c5f6927fee4e47282b03a39ebfd: UPSTREAM: PCI: j721e: Fix incorrect max_lanes for J7200
-| Date:   Thu Aug 13 09:49:37 2026 +0530
+| Head Commit: 1b14f5313a97da1edd4e4d92036b727ea267ef5f: TI: HACK: phy: ti: phy-j721e-wiz: manage phy_reset_n in WIZ for pre-configured SerDes
+| Date:  Thu Oct 1 17:05:31 2026 +0530
 | Kernel Version: 6.12.57
-| Kernel Description: 11.02.18
+| Kernel Description: 11.02.20
 
 | Repo: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
 | Branch: ti-linux-6.12.y
-| Tag: 11.02.18
+| Tag: 11.02.20
 | Non-RT Kernel defconfig: defconfig + ti_arm64_prune.config
 | RT Kernel defconfig: defconfig + ti_rt.config + ti_arm64_prune.config
 
