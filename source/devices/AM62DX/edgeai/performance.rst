@@ -11,7 +11,7 @@ reference |__PART_FAMILY_NAME__| Audio AI models. The same methodology (perfsim
 estimate + on-target measured) applies to any model you compile through the
 workflow. It is **not** an accuracy or audio-quality benchmark: model quality
 (classification accuracy, PESQ / STOI / SI-SDR) is measured by the ``evaluate``
-step in :ref:`Compile / Evaluate / Inspect <audioai-compile-evaluate-inspect>`.
+step in :ref:`Model Compile and Evaluate <audioai-compile-evaluate>`.
 
 ***********
 Methodology
@@ -133,4 +133,4 @@ Scope & Limitations
 This section does **not** assess model quality. Classification accuracy and
 speech-enhancement quality metrics are produced by ``tidlrunner-cli evaluate``
 and documented in
-:ref:`Compile / Evaluate / Inspect <audioai-compile-evaluate-inspect>`.
+:ref:`Model Compile and Evaluate <audioai-compile-evaluate>`.

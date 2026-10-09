@@ -23,9 +23,11 @@ The remaining sections cover:
 - :ref:`Audio AI Model Zoo <audioai-model-zoo>` — out-of-box demos on the AM62D
   target (inference scripts and Jupyter notebooks) using pre-trained models and
   pre-compiled artifacts.
-- :ref:`Compile / Evaluate / Inspect <audioai-compile-evaluate-inspect>` — the
-  x86 BYOM workflow built on ``edgeai-tidlrunner``: compile a model for the AM62D,
-  evaluate accuracy on a dataset, and inspect the compiled subgraphs.
+- :ref:`Model Compile and Evaluate <audioai-compile-evaluate>` — the
+  x86 BYOM workflow built on ``edgeai-tidlrunner``: compile a model for the AM62D
+  and evaluate accuracy on a dataset.
+- :ref:`Model Inspect <audioai-model-inspect>` — analyze the compiled subgraphs
+  and per-layer behavior with Model Inspector.
 - :ref:`Performance benchmark <audioai-performance>` — latency and memory
   methodology with per-model tables.
 
@@ -37,10 +39,11 @@ The end-to-end path is the same for a reference model or your own model:
 
 #. **Obtain an ONNX model** — a reference graph shipped with the AudioAI ModelZoo,
    or your own exported ONNX.
-#. **Compile** it for the C7\ |tm| NPU on an x86 host (:ref:`Compile / Evaluate /
-   Inspect <audioai-compile-evaluate-inspect>`).
+#. **Compile** it for the C7\ |tm| NPU on an x86 host (:ref:`Model Compile and
+   Evaluate <audioai-compile-evaluate>`).
 #. **Evaluate** accuracy or audio-quality metrics on a dataset.
-#. **Inspect** the compiled subgraphs and per-layer analysis.
+#. **Inspect** the compiled subgraphs and per-layer analysis (:ref:`Model
+   Inspect <audioai-model-inspect>`).
 #. **Run** on the AM62D target using the compiled artifact
    (:ref:`Audio AI Model Zoo <audioai-model-zoo>`).
 #. **Benchmark** latency and memory (:ref:`Performance <audioai-performance>`).

@@ -14,7 +14,7 @@ compiling anything yourself. Two demo front-ends are provided: standalone
 Python inference scripts and Jupyter notebooks. The same on-target runtime hosts
 your own compiled artifacts once you build them through the x86 flow. This
 section runs entirely **on the target**; the x86 compile/evaluate flow is covered
-in :ref:`Compile / Evaluate / Inspect <audioai-compile-evaluate-inspect>`.
+in :ref:`Model Compile and Evaluate <audioai-compile-evaluate>`.
 
 .. note::
 
@@ -311,4 +311,4 @@ graph — there is no ``artifacts/`` folder since no TIDL compilation is
 involved. The demo script and notebook load the ONNX model directly with
 ``CPUExecutionProvider`` and run FP32 on the Arm core. Compiled TVM-RT + TIDL
 artifacts for your own models are produced by the x86 workflow in
-:ref:`Compile / Evaluate / Inspect <audioai-compile-evaluate-inspect>`.
+:ref:`Model Compile and Evaluate <audioai-compile-evaluate>`.

@@ -1,5 +1,6 @@
 devices/AM62DX/edgeai/index
 devices/AM62DX/edgeai/introduction
 devices/AM62DX/edgeai/model_zoo
-devices/AM62DX/edgeai/compile_evaluate_inspect
+devices/AM62DX/edgeai/model_compile_evaluate
+devices/AM62DX/edgeai/model_inspect
 devices/AM62DX/edgeai/performance

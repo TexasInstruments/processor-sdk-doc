@@ -12,7 +12,8 @@ AM62D Audio AI Software Developer's Guide
 
    introduction
    model_zoo
-   compile_evaluate_inspect
+   model_compile_evaluate
+   model_inspect
    performance
 
 +--------------------------------+--------------------------------------------------------------------------------------------------+
