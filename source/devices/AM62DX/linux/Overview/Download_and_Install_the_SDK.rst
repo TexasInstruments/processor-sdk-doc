@@ -89,4 +89,11 @@ by double clicking on it within your Linux host PC.
 
 **Instructions to set-up CCS**
 
--  Refer MCU+SDK Installer `doc <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62DX/12_00_00_22/exports/docs/api_guide_am62dx/CCS_SETUP_PAGE.html>`__.
+-  Refer MCU+SDK Installer `doc <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62DX/12_00_00_22/exports/docs/api_guide_am62dx/CCS_SETUP_PAGE.html>`__
+
+Latest AM62Dx development downloads – CI/CD
+-------------------------------------------
+
+In addition to official SDK releases, TI provides periodic builds available for download. TI generates these builds automatically. They include the latest bug fixes and new features as soon as developers merge them into the code base, without waiting for the next scheduled SDK release. If you meet a bug during development, a periodic CI/CD build might already contain the fix. These builds suit local development use and help you continue working without an open issue blocking your progress. The periodic downloads do not replace the official Processors SDK releases, which have full documentation, training, and support.
+
+`Latest AM62Dx Downloads <https://software-dl.ti.com/cicd-report/linux/>`__
