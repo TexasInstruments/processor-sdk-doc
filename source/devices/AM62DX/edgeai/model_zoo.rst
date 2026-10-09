@@ -75,7 +75,7 @@ rootfs.
 .. code-block:: console
 
    $ mkdir -p ~/tidl && cd ~/tidl
-   $ git clone https://github.com/TexasInstruments-Sandbox/audioai-modelzoo.git
+   $ git clone https://github.com/TexasInstruments/audioai-modelzoo.git
    $ cd audioai-modelzoo
 
 **2. Download the model artifacts.** Downloads the three pre-compiled

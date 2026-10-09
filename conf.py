@@ -264,7 +264,7 @@ OS = os.environ.get("OS", "")
 
 # Audio AI docs prefix every shell command with a "$ " prompt symbol; strip it
 # from the copy-button output so copied text is directly runnable. 
-if OS == "audioai":
+if OS == "edgeai" and FAMILY == "AM62DX":
     copybutton_prompt_text = "$ "
 
 try:
