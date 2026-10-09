@@ -82,7 +82,7 @@ What's new
   - U-Boot: :ref:`User and Reduced Bootmode OTP Programming  <programming-user-otp-fuses-label>`
   - U-Boot: :ref:`Key writer lite Programming <key-writer-lite-label>`
   - Uboot: :ref:`A53 SPL Falcon boot <U-Boot-Falcon-Mode>`
-  - Kernel: :ref:`DTHEv2 Crypto Accelerator <DTHEv2-Crypto-Accelerator>`
+  - Kernel: :ref:`DTHEv2 Crypto Accelerator <crypto-accelerator>`
   - RT Kernel : Real-Time Linux Interrupt Latency numbers here - :ref:`RT Interrupt Latencies <RT-linux-performance>`
   - Support for Wifi with M2 CC33xx cards - :ref:`How to Enable M.2-CC33xx in Linux <enable_m2cc3301>`
   - Out-of-Box experience based on LVGL (Light and Versatile Graphics Library) - :ref:`TI LVGL Demo - User Guide <TI-LVGL-Demo-User-Guide-label>`

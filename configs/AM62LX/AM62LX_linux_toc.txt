@@ -49,7 +49,7 @@ linux/Foundational_Components/U-Boot/Apps-SPL-Debug-OpenOCD
 linux/Foundational_Components_Kernel
 linux/Foundational_Components_Kernel_Drivers
 linux/Foundational_Components/Kernel/Kernel_Drivers/Audio
-linux/Foundational_Components/Kernel/Kernel_Drivers/Crypto/DTHEv2
+linux/Foundational_Components/Kernel/Kernel_Drivers/Crypto/Crypto
 linux/Foundational_Components/Kernel/Kernel_Drivers/Display/DSS7
 linux/Foundational_Components/Kernel/Kernel_Drivers/ECAP
 linux/Foundational_Components/Kernel/Kernel_Drivers/EQEP
