@@ -28,6 +28,10 @@ Linux ALSA (Advanced Linux Sound Architecture) framework, which allows control
 and configuration of the hardware through common APIs. For more details check
 the `links below <#additional-information>`__.
 
+The default audio server on TI Linux SDK is PipeWire, which provides a modern
+multimedia framework for audio and video handling. For more information on
+PipeWire setup and usage, refer :ref:`PipeWire doc <how-to-use-pipewire>`.
+
 Within the kernel there are separate drivers for each component. For each
 board a sound-card instance is created, usually using the :code:`sound {}`
 device tree node, that links together various components like different McASP
