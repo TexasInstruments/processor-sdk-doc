@@ -8,6 +8,7 @@ SPHINXOPTS    =
 SPHINXBUILD   = sphinx-build
 PAPER         =
 OS           ?= linux
+BUILD_FTS_INDEX ?=
 
 _UC = $(shell echo '$1' | tr '[:lower:]' '[:upper:]')
 _LC = $(shell echo '$1' | tr '[:upper:]' '[:lower:]')
@@ -70,7 +71,8 @@ clean:
 lint:
 	rstcheck -r "$(SOURCEDIR)"
 
-html: 
+html:
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) "$(SOURCEDIR)" "$(BUILDDIR)"
+	if [ -n "$(BUILD_FTS_INDEX)" ]; then python3 scripts/build_searchindex.py "$(BUILDDIR)"; fi
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)."
