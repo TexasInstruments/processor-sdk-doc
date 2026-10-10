@@ -55,6 +55,34 @@ Building Display Cluster wic image from Yocto
 
     #. To build the display cluster wic image, please refer :ref:`Processor SDK - Building the SDK with Yocto <building-the-sdk-with-yocto>`
 
+Building Display Cluster image from SDK Installer
+-------------------------------------------------
+
+    #. :ref:`Download and Install the SDK <download-and-install-sdk>`
+
+    #. Compile U-boot for Display cluster, by issuing the following command
+       .. code-block:: console
+
+          DISPLAY_CLUSTER=1 make u-boot
+
+    #. The compiled u-boot will be located at :file:`<SDK-root>/board-support/u-boot-build`
+
+    #. Create a temporary copy of the folder :file:`<SDK-root>/board-support/prebuilt-images/am62pxx-evm-display-cluster`
+
+       .. code-block:: console
+
+          cp -arv <SDK-root>/board-support/prebuilt-images/am62pxx-evm-display-cluster /tmp/am62pxx-evm-display-cluster-boot
+
+    #. Copy compiled u-boot to the temporary folder
+
+       .. code-block:: console
+
+          cp -arv <SDK-root>/board-support/u-boot-build/r5/tiboot3.bin /tmp/am62pxx-evm-display-cluster-boot
+          cp -arv <SDK-root>/board-support/u-boot-build/a53/tispl.bin /tmp/am62pxx-evm-display-cluster-boot
+          cp -arv <SDK-root>/board-support/u-boot-build/a53/u-boot.img /tmp/am62pxx-evm-display-cluster-boot
+
+    #. Create the SD card by following the instructions provided at :ref:`Create SD Card <processor-sdk-linux-create-sd-card-with-custom-images>` guide.
+
 Building the Display Cluster Demo from source
 ---------------------------------------------
 
