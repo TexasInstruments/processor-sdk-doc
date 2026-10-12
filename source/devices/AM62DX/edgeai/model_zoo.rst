@@ -256,15 +256,15 @@ the activated venv:
    $ cd ~/tidl/audioai-modelzoo
    $ ./jupyter_lab_venv.sh
 
-The launcher prints a highlighted access URL and pre-loads the four inference
-notebooks in tabs. Open the URL in a browser on a machine that can reach the
-target and enter the token ``tidl`` when prompted:
+The launcher prints a highlighted access URL. Open the URL in a browser on a
+machine that can reach the target and enter the token ``tidl`` when prompted:
 
 .. code-block:: text
 
    Access URL: http://<target-ip>:8888/lab?token=tidl
 
-The notebooks are:
+Jupyter Lab opens with the GCRN notebook loaded. To run a different model, pick
+its notebook from the file browser in the left sidebar. The notebooks are:
 
 .. list-table::
    :header-rows: 1

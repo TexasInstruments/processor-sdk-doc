@@ -6,7 +6,7 @@
 # line, and all the variables should be listed on consecutive lines
 # (i.e. no additional blank lines between the replacement variables).
 # Similarly, all the configuration values should be listed on individual,
-# consecutive lines (with no blank linues between the configuration values).
+# consecutive lines (with no blank lines between the configuration values).
 #
 # Note that neither replacement variables nor configuration values may contain
 # a colon (i.e. ":") in their name.  However, values may contain colons.
@@ -38,4 +38,3 @@ Configuration Values
 'CONFIG_part_family'      : 'AM62DX_family'
 'CONFIG_part_variant'     : 'AM62DX'
 'CONFIG_sdk'              : 'SITARA'
-

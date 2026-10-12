@@ -21,7 +21,11 @@ separately. The report opens in any browser and lands at:
 
 .. code-block:: text
 
-   work_dirs/compile/<target_device>/<bits>/<model_id>/inspector/modelinspector.html
+   work_dirs/compile/<target_device>/<bits>/<model_dir>/inspect/modelinspector.html
+
+``<model_dir>`` is the model's work directory, named after its model ID,
+runtime, task, dataset, and model, e.g.
+``ase-0201_tvmrt_speech_enhancement_voicebank_demand_16k_gcrn_fixed_4sec_onnx``.
 
 The report has three tabs:
 
@@ -58,4 +62,4 @@ report with **no** DSP subgraph — every layer is Arm fallback — which is wha
 non-offloaded model looks like in the inspector. GTCRN also runs with
 ``tidl_offload: false``, so its work directory uses a ``notidl`` segment in
 place of the ``<bits>`` shown in the path template above, e.g.
-``work_dirs/compile/AM62D/notidl/<model_id>/...``.
+``work_dirs/compile/AM62D/notidl/<model_dir>/...``.
