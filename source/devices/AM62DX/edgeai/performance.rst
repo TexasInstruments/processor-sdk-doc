@@ -1,12 +1,12 @@
+.. include:: <isonum.txt>
+
 .. _audioai-performance:
 
 #####################
 Performance Benchmark
 #####################
 
-.. |tm| unicode:: U+2122
-
-This section reports **inference performance** — latency and memory — for the
+This section reports **inference performance** - latency and memory - for the
 reference |__PART_FAMILY_NAME__| Audio AI models. The same methodology (perfsim
 estimate + on-target measured) applies to any model you compile through the
 workflow. It is **not** an accuracy or audio-quality benchmark: model quality
@@ -30,17 +30,17 @@ confused:
      - Produced by the TIDL performance simulator during ``compile``. The
        compiler writes a ``result.yaml`` per model under its work directory;
        the ``perfsim`` latency, GMAC count, and estimated DDR transfer are
-       read directly from it. This is a *static estimate* for the C7\ |tm|
-       NPU subgraph — it does not include Arm-side pre/post-processing or
+       read directly from it. This is a *static estimate* for the C7\ |trade|
+       NPU subgraph - it does not include Arm-side pre/post-processing or
        runtime overhead.
    * - **on-target measured**
      - Wall-clock latency timed on the AM62D target while running the
        :ref:`Model Zoo <audioai-model-zoo>` inference scripts. For the
        streaming speech-enhancement models it is also expressed as a
-       **real-time factor (RTF)** = processing time ÷ audio duration; RTF < 1
+       **real-time factor (RTF)** = processing time / audio duration; RTF < 1
        means the model keeps up with real-time audio.
 
-Only models compiled for the C7\ |tm| NPU (TVM-RT + TIDL) have a perfsim
+Only models compiled for the C7\ |trade| NPU (TVM-RT + TIDL) have a perfsim
 estimate. GTCRN runs FP32 on the Arm core through the ONNX runtime and has no
 TIDL subgraph, so perfsim does not apply to it.
 
@@ -65,25 +65,25 @@ Per-model results
      - GMACs
      - DDR transfer *(estimated)*
    * - VGGish11
-     - |__MODEL_ID_VGGISH11__|
+     - ``ac-0101``
      - 8-bit
      - 5.235 ms
      - 1.1515
      - 10.73 MB
    * - YAMNet
-     - |__MODEL_ID_YAMNET__|
+     - ``ac-0201``
      - 8-bit
      - 1.990 ms
      - 0.0692
      - 3.55 MB
    * - GCRN
-     - |__MODEL_ID_GCRN__|
+     - ``ase-0201``
      - 16-bit
      - TBD
      - TBD
      - TBD
    * - GTCRN
-     - |__MODEL_ID_GTCRN__|
+     - ``ase-0100``
      - FP32 (Arm)
      - N/A
      - N/A
@@ -94,7 +94,7 @@ above). GCRN is compiled at 16-bit but its ``result.yaml`` is not yet captured,
 so its perfsim figures are **TBD**. GTCRN is Arm-only (no TIDL subgraph), so
 perfsim is **N/A**.
 
-On-target measured latency and RTF for all four models are **TBD** — to be
+On-target measured latency and RTF for all four models are **TBD** - to be
 filled in from the Model Zoo inference scripts on the AM62D EVM:
 
 .. list-table::
@@ -106,15 +106,15 @@ filled in from the Model Zoo inference scripts on the AM62D EVM:
      - Measured latency
      - RTF
    * - VGGish11
-     - C7\ |tm| NPU
+     - C7\ |trade| NPU
      - TBD
-     - — (clip classifier)
+     - - (clip classifier)
    * - YAMNet
-     - C7\ |tm| NPU
+     - C7\ |trade| NPU
      - TBD
-     - — (clip classifier)
+     - - (clip classifier)
    * - GCRN
-     - C7\ |tm| NPU
+     - C7\ |trade| NPU
      - TBD
      - TBD
    * - GTCRN

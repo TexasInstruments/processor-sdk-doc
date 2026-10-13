@@ -9,14 +9,14 @@ Model Inspector analyzes a model on the x86 host after (or instead of) the
 edgeai-tidlrunner installation and environment described in
 :ref:`Setup <audioai-am62d-setup>`.
 
-********************
+***************
 Model Inspector
-********************
+***************
 
 ``tidlrunner-cli inspect`` is a one-shot analysis pipeline: it compiles the
 model for TIDL, runs inference, re-runs a non-TIDL reference for comparison,
 computes per-layer signal-to-noise ratios, and emits a **self-contained
-interactive HTML report** — no need to run ``compile`` and ``infer``
+interactive HTML report** - no need to run ``compile`` and ``infer``
 separately. The report opens in any browser and lands at:
 
 .. code-block:: text
@@ -29,12 +29,12 @@ runtime, task, dataset, and model, e.g.
 
 The report has three tabs:
 
-- **Model Summary** — acceleration ratio (layers on the C7x DSP vs. Arm
+- **Model Summary** - acceleration ratio (layers on the C7x DSP vs. Arm
   fallback), input/output specs, and an interactive ONNX graph.
-- **Subgraphs** — the TIDL subgraph(s) offloaded to the DSP, with per-layer
+- **Subgraphs** - the TIDL subgraph(s) offloaded to the DSP, with per-layer
   identity and a quantization analysis (INT8 vs. FP32 activation histograms and
   scatter plots).
-- **Performance** — *estimated* per-layer processing time, DSP cycle breakdown
+- **Performance** - *estimated* per-layer processing time, DSP cycle breakdown
   (total / IO / kernel), memory usage (DDR / L2 / MSMC), and SNR metrics.
 
 .. note::
@@ -43,7 +43,7 @@ The report has three tabs:
    on-target measurements. Model Inspector requires TIDL tools **11.02 or
    later** (earlier versions emit SVG subgraph files it cannot read).
 
-GCRN showcase — an offloaded DSP subgraph
+GCRN showcase - an offloaded DSP subgraph
 =========================================
 
 Because GCRN now compiles with ``tidl_offload: true`` on AM62D, its inspector
@@ -58,7 +58,7 @@ Generate it with the AM62D env sourced (see :ref:`Setup <audioai-am62d-setup>`):
    $ tidlrunner-cli inspect --config_path $CFG
 
 For contrast, running ``inspect`` on the GTCRN (ONNX-RT) config produces a
-report with **no** DSP subgraph — every layer is Arm fallback — which is what a
+report with **no** DSP subgraph - every layer is Arm fallback - which is what a
 non-offloaded model looks like in the inspector. GTCRN also runs with
 ``tidl_offload: false``, so its work directory uses a ``notidl`` segment in
 place of the ``<bits>`` shown in the path template above, e.g.

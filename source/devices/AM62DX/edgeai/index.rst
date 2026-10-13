@@ -1,8 +1,8 @@
 .. _audioai-index:
 
-*********************************************
+#########################################
 AM62D Audio AI Software Developer's Guide
-*********************************************
+#########################################
 
 .. rubric:: Welcome to the AM62D Audio AI/DL Software Developer's Guide
 

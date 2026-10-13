@@ -1,34 +1,34 @@
+.. include:: <isonum.txt>
+
 .. _audioai-compile-evaluate:
 
-###########################
+##########################
 Model Compile and Evaluate
-###########################
-
-.. |tm| unicode:: U+2122
+##########################
 
 The :ref:`Audio AI Model Zoo <audioai-model-zoo>` runs *pre-compiled* artifacts
 on the |__PART_FAMILY_NAME__| target. This section covers the **x86 host
 workflow** that produces those artifacts: how to compile an audio model for
-the C7\ |tm| NPU, run host-emulation inference, and measure accuracy against a
-dataset — using **edgeai-tidlrunner**. It runs entirely on an Ubuntu x86 PC;
+the C7\ |trade| NPU, run host-emulation inference, and measure accuracy against a
+dataset - using **edgeai-tidlrunner**. It runs entirely on an Ubuntu x86 PC;
 nothing here touches the target.
 
 This is the workflow for *any* audio model, not just the reference models. The
 four reference models below are worked examples. To bring your own model you
 point the same ``tidlrunner-cli`` at your ONNX graph and a per-model YAML config,
 using a reference config as a starting template. Which operators offload to the
-C7\ |tm| NPU (vs. fall back to the Arm core) is determined by TIDL — see
+C7\ |trade| NPU (vs. fall back to the Arm core) is determined by TIDL - see
 `edgeai-tidl-tools <https://github.com/TexasInstruments/edgeai-tidl-tools>`__ for
 the authoritative list of supported operators.
 
-********************
+*****************
 edgeai-tidlrunner
-********************
+*****************
 
 edgeai-tidlrunner is a bring-your-own-model (BYOM) command-line wrapper over the
 core `edgeai-tidl-tools <https://github.com/TexasInstruments/edgeai-tidl-tools>`__
 compilation stack. A single YAML config per model drives every stage, and one
-CLI — ``tidlrunner-cli`` — exposes the stages this section uses:
+CLI - ``tidlrunner-cli`` - exposes the stages this section uses:
 
 .. list-table::
    :header-rows: 1
@@ -55,78 +55,78 @@ reused across ``compile``, ``infer``, and ``evaluate``.
 
 .. _audioai-am62d-setup:
 
-********************
+*****
 Setup
-********************
+*****
 
 Model compilation runs on an x86 PC (Ubuntu Linux recommended). The AM62D audio
 flow is self-contained: a single setup script installs the whole TVM toolchain
 into a dedicated Python 3.10 environment. The TIDL tools target Python 3.10.
 These steps assume `pyenv <https://github.com/pyenv/pyenv>`__.
 
-**1. Clone the repository** (|__TIDLRUNNER_REPO_URL__|):
+#. **Clone the repository** (https://github.com/TexasInstruments/edgeai-tidlrunner):
 
-.. code-block:: console
+   .. code-block:: console
 
-   $ git clone https://github.com/TexasInstruments/edgeai-tidlrunner.git
-   $ cd edgeai-tidlrunner
+      $ git clone https://github.com/TexasInstruments/edgeai-tidlrunner.git
+      $ cd edgeai-tidlrunner
 
-**2. Create and activate a dedicated Python 3.10 environment.** The AM62D flow
-uses a TI TVM wheel; keep it in its own venv (``tidlrunner-am62d``)
-so it never clobbers a standard ``tidlrunner`` setup:
+#. **Create and activate a dedicated Python 3.10 environment.** The AM62D flow
+   uses a TI TVM wheel; keep it in its own venv (``tidlrunner-am62d``)
+   so it never clobbers a standard ``tidlrunner`` setup:
 
-.. code-block:: console
+   .. code-block:: console
 
-   $ pyenv install 3.10
-   $ pyenv virtualenv 3.10 tidlrunner-am62d
-   $ pyenv activate tidlrunner-am62d
+      $ pyenv install 3.10
+      $ pyenv virtualenv 3.10 tidlrunner-am62d
+      $ pyenv activate tidlrunner-am62d
 
-**3. Run the AM62D setup script.** With the venv active, one script installs
-everything this flow needs:
+#. **Run the AM62D setup script.** With the venv active, one script installs
+   everything this flow needs:
 
-.. code-block:: console
+   .. code-block:: console
 
-   $ ./devices/setup_am62d.sh
+      $ ./devices/setup_am62d.sh
 
-It downloads the ARM GCC 15.2 and C7000 CGT 5.0.0.LTS cross-toolchains into
-``tools/tidl_tools_package/bin/`` (skipped if already present), installs the
-x86 TI TVM wheel — which bundles the AM62D x86 TIDL tools *inside*
-the package — and installs ``tidlrunner[pc,audio]``, ``tools``, ``onnxruntime``,
-and ``tidl_onnx_model_optimizer``. The ``[audio]`` extra pulls in the audio
-packages (``librosa``, ``soundfile``, ``scipy``, ``pesq``, ``pystoi``,
-``scikit-learn``). No separate ``pip install`` is needed.
+   It downloads the ARM GCC 15.2 and C7000 CGT 5.0.0.LTS cross-toolchains into
+   ``tools/tidl_tools_package/bin/`` (skipped if already present), installs the
+   x86 TI TVM wheel - which bundles the AM62D x86 TIDL tools *inside*
+   the package - and installs ``tidlrunner[pc,audio]``, ``tools``, ``onnxruntime``,
+   and ``tidl_onnx_model_optimizer``. The ``[audio]`` extra pulls in the audio
+   packages (``librosa``, ``soundfile``, ``scipy``, ``pesq``, ``pystoi``,
+   ``scikit-learn``). No separate ``pip install`` is needed.
 
-**4. Source the env script once per shell.** TVM ``dlopen``\ s the TIDL runtime
-(``libvx_tidl_rt.so``) before Python's own import runs, so the tool paths must be
-live in the shell *before* ``tidlrunner-cli`` starts. Source — do **not** execute
-— ``devices/am62d_env.sh`` once; every ``tidlrunner-cli`` command run afterward in
-that shell picks the vars up:
+#. **Source the env script once per shell.** TVM ``dlopen``\ s the TIDL runtime
+   (``libvx_tidl_rt.so``) before Python's own import runs, so the tool paths must be
+   live in the shell *before* ``tidlrunner-cli`` starts. Source (do **not** execute)
+   ``devices/am62d_env.sh`` once; every ``tidlrunner-cli`` command run afterward in
+   that shell picks the vars up:
 
-.. code-block:: console
+   .. code-block:: console
 
-   $ source devices/am62d_env.sh
+      $ source devices/am62d_env.sh
 
-It exports:
+   It exports:
 
-.. list-table::
-   :header-rows: 1
-   :widths: 26 74
+   .. list-table::
+      :header-rows: 1
+      :widths: 26 74
 
-   * - Variable
-     - Value
-   * - ``TIDL_TOOLS_PATH``
-     - ``<tvm-package-dir>/3rdparty/x86_tidl_tools/AM62D`` (resolved from the
-       active venv's installed ``tvm``)
-   * - ``LD_LIBRARY_PATH``
-     - prepends ``TIDL_TOOLS_PATH`` so ``libvx_tidl_rt.so`` resolves
-   * - ``ARM64_GCC_PATH``
-     - the aarch64 GNU toolchain installed by ``setup_am62d.sh`` under
-       ``tools/tidl_tools_package/bin/`` (override by exporting before sourcing)
-   * - ``CGT7X_ROOT``
-     - the C7000 code-generation tools installed by ``setup_am62d.sh`` under
-       ``tools/tidl_tools_package/bin/`` (override by exporting before sourcing)
-   * - ``SOC``
-     - ``am62d``
+      * - Variable
+        - Value
+      * - ``TIDL_TOOLS_PATH``
+        - ``<tvm-package-dir>/3rdparty/x86_tidl_tools/AM62D`` (resolved from the
+          active venv's installed ``tvm``)
+      * - ``LD_LIBRARY_PATH``
+        - prepends ``TIDL_TOOLS_PATH`` so ``libvx_tidl_rt.so`` resolves
+      * - ``ARM64_GCC_PATH``
+        - the aarch64 GNU toolchain installed by ``setup_am62d.sh`` under
+          ``tools/tidl_tools_package/bin/`` (override by exporting before sourcing)
+      * - ``CGT7X_ROOT``
+        - the C7000 code-generation tools installed by ``setup_am62d.sh`` under
+          ``tools/tidl_tools_package/bin/`` (override by exporting before sourcing)
+      * - ``SOC``
+        - ``am62d``
 
 Datasets
 ========
@@ -137,14 +137,14 @@ sets. Download them from the repository root:
 
 .. code-block:: console
 
-   $ # UrbanSound8K (~5.6 GB) — sound classification (VGGish11, YAMNet)
+   $ # UrbanSound8K (~5.6 GB) - sound classification (VGGish11, YAMNet)
    $ bash examples/audio/scripts/download_urbansound8k.sh
 
-   $ # VoiceBank-DEMAND-16k (~2 GB) — speech enhancement (GCRN, GTCRN)
+   $ # VoiceBank-DEMAND-16k (~2 GB) - speech enhancement (GCRN, GTCRN)
    $ python3 examples/audio/scripts/download_voicebank_demand.py
 
 They land under ``data/datasets/UrbanSound8K/`` and
-``data/datasets/VoiceBank-DEMAND-16k/`` — the paths the model configs expect.
+``data/datasets/VoiceBank-DEMAND-16k/`` - the paths the model configs expect.
 The classification configs use UrbanSound8K **fold 10** (837 samples) as the
 test set; the speech-enhancement configs use the VoiceBank-DEMAND-16k **test** set
 (824 files).
@@ -162,8 +162,8 @@ Compile and evaluate
 
 Each model has one config that drives all stages. All four run under the
 ``tidlrunner-am62d`` environment with ``devices/am62d_env.sh`` already sourced
-(see `Setup`_). Three models compile to the C7\ |tm| NPU through the TVM runtime;
-GTCRN runs ARM-only through ONNX Runtime (no C7\ |tm| NPU offload) but uses the
+(see `Setup`_). Three models compile to the C7\ |trade| NPU through the TVM runtime;
+GTCRN runs ARM-only through ONNX Runtime (no C7\ |trade| NPU offload) but uses the
 same environment. The AM62D config paths are:
 
 .. list-table::
@@ -176,22 +176,22 @@ same environment. The AM62D config paths are:
      - Tensor Bits
      - Config path (relative to ``edgeai-tidlrunner/``)
    * - VGGish11
-     - |__MODEL_ID_VGGISH11__|
+     - ``ac-0101``
      - TVM-RT
      - 8
      - ``data/configs/samples/models/audio/audio_classification/urbansound8k/vggish11_tvmrt_config.yaml``
    * - YAMNet
-     - |__MODEL_ID_YAMNET__|
+     - ``ac-0201``
      - TVM-RT
      - 8
      - ``data/configs/samples/models/audio/audio_classification/urbansound8k/yamnet_tvmrt_config.yaml``
    * - GCRN
-     - |__MODEL_ID_GCRN__|
+     - ``ase-0201``
      - TVM-RT
      - 16 (LSTM), FP32 (Enc/Dec)
      - ``data/configs/samples/models/audio/speech_enhancement/voicebank_demand_16k/gcrn_fixed_4sec_tvmrt_config.yaml``
    * - GTCRN
-     - |__MODEL_ID_GTCRN__|
+     - ``ase-0100``
      - ONNX-RT
      - FP32
      - ``data/configs/samples/models/audio/speech_enhancement/voicebank_demand_16k/gtcrn_dns3_config.yaml``
@@ -199,7 +199,7 @@ same environment. The AM62D config paths are:
 VGGish11 (TVM-RT, 8-bit)
 ========================
 
-Runs on the C7\ |tm| NPU (``tidl_offload: true``):
+Runs on the C7\ |trade| NPU (``tidl_offload: true``):
 
 .. code-block:: console
 
@@ -223,7 +223,7 @@ YAMNet (TVM-RT, 8-bit)
 GCRN (TVM-RT, 16-bit)
 =====================
 
-GCRN is C7\ |tm| NPU-offloaded at 16-bit (``tidl_offload: true``, fixed 4-second
+GCRN is C7\ |trade| NPU-offloaded at 16-bit (``tidl_offload: true``, fixed 4-second
 input):
 
 .. code-block:: console
@@ -239,7 +239,7 @@ GTCRN (ONNX-RT, ARM-only)
 =========================
 
 GTCRN has a dynamic time axis and TIDL-unsupported operators, so it runs on the
-Arm Cortex-A cores through ONNX Runtime (``tidl_offload: false``) — no C7\ |tm| NPU
+Arm Cortex-A cores through ONNX Runtime (``tidl_offload: false``) - no C7\ |trade| NPU
 offload. It uses the same ``tidlrunner-am62d`` environment as the other models;
 it simply does not offload to the DSP:
 

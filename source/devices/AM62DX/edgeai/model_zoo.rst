@@ -1,10 +1,10 @@
+.. include:: <isonum.txt>
+
 .. _audioai-model-zoo:
 
 ##################
 Audio AI Model Zoo
 ##################
-
-.. |tm| unicode:: U+2122
 
 The AudioAI ModelZoo delivers out-of-box audio deep-learning demos that run
 directly on the |__PART_FAMILY_NAME__| target. Each reference model ships as an
@@ -21,9 +21,9 @@ in :ref:`Model Compile and Evaluate <audioai-compile-evaluate>`.
    The models in this repository are made available for experimentation and
    development. They are not intended for deployment in production.
 
-********************
+**********
 What ships
-********************
+**********
 
 .. list-table::
    :header-rows: 1
@@ -35,75 +35,75 @@ What ships
      - On target
      - Demo
    * - VGGish11
-     - Sound classification (|__DATASET_AUDIO_CLS__|)
-     - |__MODEL_ID_VGGISH11__|
-     - C7\ |tm| NPU (TVM-RT + TIDL, 8-bit)
+     - Sound classification (UrbanSound8K)
+     - ``ac-0101``
+     - C7\ |trade| NPU (TVM-RT + TIDL, 8-bit)
      - Script + notebook
    * - YAMNet
-     - Sound classification (|__DATASET_AUDIO_CLS__|)
-     - |__MODEL_ID_YAMNET__|
-     - C7\ |tm| NPU (TVM-RT + TIDL, 8-bit)
+     - Sound classification (UrbanSound8K)
+     - ``ac-0201``
+     - C7\ |trade| NPU (TVM-RT + TIDL, 8-bit)
      - Script + notebook
    * - GCRN
-     - Speech enhancement (|__DATASET_SPEECH_ENH__|)
-     - |__MODEL_ID_GCRN__|
-     - C7\ |tm| NPU (TVM-RT + TIDL, 16-bit)
+     - Speech enhancement (VoiceBank-DEMAND-16k)
+     - ``ase-0201``
+     - C7\ |trade| NPU (TVM-RT + TIDL, 16-bit)
      - Script + notebook
    * - GTCRN
-     - Speech enhancement (|__DATASET_SPEECH_ENH__|)
-     - |__MODEL_ID_GTCRN__|
+     - Speech enhancement (VoiceBank-DEMAND-16k)
+     - ``ase-0100``
      - Arm core (ONNX runtime, FP32)
      - Script + notebook
 
 VGGish11, YAMNet, and GCRN each ship a pre-compiled TVM-RT + TIDL artifact and
-run offloaded to the C7\ |tm| NPU. GTCRN ships **no** compiled artifact — it
+run offloaded to the C7\ |trade| NPU. GTCRN ships **no** compiled artifact - it
 runs FP32 on the Arm core through the ONNX runtime, packaged as a plain ONNX
 Runtime artifact.
 
-********************
+***************
 On-target setup
-********************
+***************
 
 The steps below run on the AM62D target (aarch64), on the Linux command line of
 the Processor SDK rootfs. The notebooks and scripts run in a Python virtual
 environment that reuses the TIDL-enabled TVM runtime already present in the
 rootfs.
 
-**1. Clone the repository.** Clone the AudioAI ModelZoo repository
-(|__MODELZOO_REPO_URL__|):
+#. **Clone the repository.** Clone the AudioAI ModelZoo repository
+   (https://github.com/TexasInstruments/audioai-modelzoo):
 
-.. code-block:: console
+   .. code-block:: console
 
-   $ mkdir -p ~/tidl && cd ~/tidl
-   $ git clone https://github.com/TexasInstruments/audioai-modelzoo.git
-   $ cd audioai-modelzoo
+      $ mkdir -p ~/tidl && cd ~/tidl
+      $ git clone https://github.com/TexasInstruments/audioai-modelzoo.git
+      $ cd audioai-modelzoo
 
-**2. Download the model artifacts.** Downloads the three pre-compiled
-TVM-RT + TIDL artifacts (VGGish11, YAMNet, GCRN) plus the GTCRN ONNX Runtime
-artifact into ``model_artifacts/<TIDL_VER>/am62d/``:
+#. **Download the model artifacts.** Downloads the three pre-compiled
+   TVM-RT + TIDL artifacts (VGGish11, YAMNet, GCRN) plus the GTCRN ONNX Runtime
+   artifact into ``model_artifacts/<TIDL_VER>/am62d/``:
 
-.. code-block:: console
+   .. code-block:: console
 
-   $ ./download_models.sh -y
+      $ ./download_models.sh -y
 
-The script defaults to an interactive selection menu; the ``-y`` flag
-downloads everything non-interactively. Add ``-l`` to print the source URLs
-without downloading.
+   The script defaults to an interactive selection menu; the ``-y`` flag
+   downloads everything non-interactively. Add ``-l`` to print the source URLs
+   without downloading.
 
-**3. Create the virtual environment.** Creates the venv at
-|__TARGET_VENV_PATH__| with ``--system-site-packages`` so the TIDL-enabled
-runtime from the rootfs is visible:
+#. **Create the virtual environment.** Creates the venv at
+   ~/venv/modelzoo with ``--system-site-packages`` so the TIDL-enabled
+   runtime from the rootfs is visible:
 
-.. code-block:: console
+   .. code-block:: console
 
-   $ ./setup_venv.sh
+      $ ./setup_venv.sh
 
-**4. Activate the venv.** Activate it in every new shell before running the
-demos:
+#. **Activate the venv.** Activate it in every new shell before running the
+   demos:
 
-.. code-block:: console
+   .. code-block:: console
 
-   $ source ~/venv/modelzoo/bin/activate
+      $ source ~/venv/modelzoo/bin/activate
 
 **********************
 Inference script demos
@@ -120,7 +120,7 @@ YAMNet (sound classification)
    $ cd ~/tidl/audioai-modelzoo/inference/yamnet_sc
    $ python3 yamnet_infer_audio.py --audio-file samples/miaow_16k.wav
 
-The script preprocesses the audio into log-mel patches, runs each patch through
+The script converts the audio into log-mel patches, runs each patch through
 the TVM-RT + TIDL session, and averages the per-patch scores. For the bundled
 ``miaow_16k.wav`` clip the top classes are cat/animal sounds. Expected output
 (abridged):
@@ -161,7 +161,7 @@ VGGish11 (sound classification)
    $ cd ~/tidl/audioai-modelzoo/inference/vggish11_sc
    $ python3 vggish_infer_audio.py --audio-file sample_wav/139951-9-0-9.wav
 
-The bundled clip is |__DATASET_AUDIO_CLS__| class 9 (street music). Expected
+The bundled clip is UrbanSound8K class 9 (street music). Expected
 output (abridged):
 
 .. code-block:: text
@@ -215,7 +215,7 @@ GTCRN (speech enhancement)
    $ cd ~/tidl/audioai-modelzoo/inference/gtcrn_se
    $ python3 gtcrn_infer_audio.py --input sample_wav/mix.wav
 
-Unlike the other three models, GTCRN has no TVM-RT + TIDL artifact — the script
+Unlike the other three models, GTCRN has no TVM-RT + TIDL artifact - the script
 loads the ONNX graph directly and runs it on ``CPUExecutionProvider`` (Arm
 core, FP32). It writes the enhanced audio to ``enh_onnx.wav`` beside the input;
 pass ``--output`` to change the destination wav. Expected output (abridged):
@@ -281,9 +281,9 @@ its notebook from the file browser in the left sidebar. The notebooks are:
    * - YAMNet
      - ``inference/yamnet_sc/yamnet_inference.ipynb``
 
-********************
+******************
 Compiled artifacts
-********************
+******************
 
 ``download_models.sh`` places the artifacts under
 ``model_artifacts/<TIDL_VER>/am62d/``. Each model gets its own directory,
@@ -292,22 +292,22 @@ model) and, where applicable, an ``artifacts/`` folder (the compiled model
 artifacts). VGGish11, YAMNet, and GCRN each get a pre-compiled TVM-RT + TIDL
 artifact:
 
-- |__MODEL_ID_VGGISH11__| — ``ac-0101_tvmrt_audio_classification_urbansound8k_vggish11_onnx`` (VGGish11)
-- |__MODEL_ID_YAMNET__| — ``ac-0201_tvmrt_audio_classification_urbansound8k_yamnet_onnx`` (YAMNet)
-- |__MODEL_ID_GCRN__| — ``ase-0201_tvmrt_speech_enhancement_voicebank_demand_16k_gcrn_fixed_4sec_onnx`` (GCRN)
+- ``ac-0101`` - ``ac-0101_tvmrt_audio_classification_urbansound8k_vggish11_onnx`` (VGGish11)
+- ``ac-0201`` - ``ac-0201_tvmrt_audio_classification_urbansound8k_yamnet_onnx`` (YAMNet)
+- ``ase-0201`` - ``ase-0201_tvmrt_speech_enhancement_voicebank_demand_16k_gcrn_fixed_4sec_onnx`` (GCRN)
 
 Each of those artifact directories' ``artifacts/`` folder holds the TVM-RT
-deployables (``deploy_lib.so``, ``deploy_graph.json``, ``deploy_param.params``)
+deployment artifacts (``deploy_lib.so``, ``deploy_graph.json``, ``deploy_param.params``)
 in both target (``.evm``, aarch64) and host (``.pc``, x86) variants. The demo
 scripts and notebooks select the ``.evm`` variant automatically on the target.
 
-GTCRN (|__MODEL_ID_GTCRN__|) gets an ONNX Runtime artifact instead of a
+GTCRN (``ase-0100``) gets an ONNX Runtime artifact instead of a
 compiled one:
 
-- |__MODEL_ID_GTCRN__| — ``ase-0100_onnxrt_speech_enhancement_voicebank_demand_16k_gtcrn_dns3_onnx`` (GTCRN)
+- ``ase-0100`` - ``ase-0100_onnxrt_speech_enhancement_voicebank_demand_16k_gtcrn_dns3_onnx`` (GTCRN)
 
 Its directory holds only the ``model/`` folder, with the ``gtcrn_dns3.onnx``
-graph — there is no ``artifacts/`` folder since no TIDL compilation is
+graph - there is no ``artifacts/`` folder since no TIDL compilation is
 involved. The demo script and notebook load the ONNX model directly with
 ``CPUExecutionProvider`` and run FP32 on the Arm core. Compiled TVM-RT + TIDL
 artifacts for your own models are produced by the x86 workflow in
