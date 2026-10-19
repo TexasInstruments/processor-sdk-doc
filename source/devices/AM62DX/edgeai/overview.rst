@@ -6,13 +6,14 @@ Overview
 
 **Welcome to Processor SDK Linux Edge AI for AM62DX!**
 
-The SDK provides software and tools to let users run high-performance audio deep
-learning inference on Texas Instruments' AM62DX processor. We offer a practical
-embedded audio AI solution for smart speakers, industrial monitoring, voice interfaces,
-and acoustic event detection applications. The AM62DX integrates a high-performance
-A53 ARM processor with a dedicated C7x DSP optimized for neural network inference
-and digital signal processing. With a few simple steps one can run real-time audio
-AI pipelines such as speech enhancement and audio classification on the C7x DSP.
+The SDK provides software and tools to run high-performance deep learning inference
+on Texas Instruments' AM62DX processor. It enables a practical Edge AI solution by
+combining a high-performance A53 ARM processor with a dedicated C7x DSP optimized for
+neural network inference and digital signal processing. This Edge AI inference chain
+is a common pattern across TI devices, allowing efficient on-device AI workloads with
+real-time performance. The AM62DX specifically supports audio modality (no vision);
+for example, you can run audio analytics pipelines such as speech enhancement and
+audio classification on the C7x DSP.
 
 .. |pic1| image:: /images/am62dx_web_gui_home.png
    :align: middle
@@ -33,9 +34,9 @@ AI pipelines such as speech enhancement and audio classification on the C7x DSP.
 
 The SDK enables an interplay of open-source components such as GStreamer and
 deep learning runtimes such as TVM-RT. The reference applications showcase
-audio AI examples such as speech enhancement and audio classification in C++
-variants. The SDK supports edit-build-debug cycles directly on the target and
-also on a host PC to cross compile and build the applications.
+inference examples in C++ variants (audio AI for AM62DX). The SDK supports
+edit-build-debug cycles directly on the target and also on a host PC to
+cross-compile and build the applications.
 
 .. figure:: /images/am62dx_open_src_comp.png
    :scale: 50

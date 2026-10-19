@@ -24,6 +24,7 @@ deinterleave/interleave, and ``titvm`` for TVM model inference.
    model_zoo
    model_compile_evaluate
    model_inspect
+   adding_new_model
    performance
 
 
