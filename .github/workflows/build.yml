@@ -5,7 +5,9 @@ name: "build"
 
 on:  # yamllint disable-line rule:truthy
   push:
-    branches: [master]
+    branches: [master, am62d-edgeai]
+  pull_request:
+    branches: [master, am62d-edgeai]
 
 concurrency:
   group: ${{ github.ref_name }}
