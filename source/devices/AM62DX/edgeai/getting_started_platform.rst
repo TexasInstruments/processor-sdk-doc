@@ -183,6 +183,8 @@ to access the boot logs and Linux console:
    If you cannot input text in minicom, disable Hardware Flow Control:
    Press Ctrl+A, then O (Setup), then S (Serial port), and verify Flow Control is off.
 
+.. _pub_edgeai_am62dxx_flashing:
+
 Preparing and Flashing SD Card
 ================================
 
@@ -337,7 +339,7 @@ Check connected audio devices:
    aplay -l      # Output devices
 
 Remote SSH Connection
-====================
+=====================
 
 For more convenient access and file transfer, you can connect to the EVM via SSH:
 

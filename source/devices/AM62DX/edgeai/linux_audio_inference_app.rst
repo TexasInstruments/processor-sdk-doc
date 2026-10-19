@@ -99,8 +99,8 @@ Build the Linux Application
 Building the Linux Binary from Sources
 ---------------------------------------
 
-#. Download and install the AM62DX Linux SDK from |__SDK_DOWNLOAD_URL__|,
-   following the steps at :ref:`download-and-install-sdk`.
+#. Download and install the AM62DX Linux SDK from |__SDK_DOWNLOAD_URL__|.
+   Extract the SDK tarball and run the installer script on your development host.
 
 #. Prepare the environment for cross compilation:
 
