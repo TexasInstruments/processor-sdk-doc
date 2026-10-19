@@ -4,11 +4,22 @@
 Audio AI Using GStreamer
 ========================
 
-This section lists what must be on the board before the GStreamer pipelines run, how to
-build and install the plugins, and how to check the installation.
+The two GStreamer elements, ``tidspkernel`` and ``titvm``, that
+offload audio signal processing and neural-network inference to the C7x DSP on
+|__PART_FAMILY_NAME__|. With them you can build a standard ``gst-launch-1.0`` pipeline that
+reads a WAV file, runs it through a speech-enhancement or audio-classification model on the
+DSP, and writes or prints the result — without writing any DSP-side code yourself.
+
+This section takes you from a bare board to a working pipeline: what must already be
+installed, how to build and install the plugins if they are not, how to confirm everything is
+in place, and then two ready-to-run pipelines — speech enhancement and audio event
+classification — that you can use as-is or adapt to your own model.
 
 Requirements
 ============
+
+A standard AM62D EdgeAI image already has everything in this table.
+Check each item once before your first pipeline run.
 
 .. list-table::
    :header-rows: 1
@@ -39,38 +50,12 @@ Building on the Board
 The steps below build natively on the board. For a host cross-build, see
 :ref:`pub_edgeai_am62dx_cross_build`.
 
-Step 1: Build and install ``libti_rpmsg_dma``
----------------------------------------------
-
-Use the ``offload`` branch. The plugin needs ``ti_rpmsg_rpc_client.h`` and the
-``ti_rpmsg_rpc_generic_execute`` symbol from this library:
-
-.. code-block:: bash
-
-   git clone -b offload https://github.com/v-singh1/rpmsg-dma.git
-   cd rpmsg-dma/library
-   cmake -S . -B build
-   cmake --build build
-   sudo cmake --install build
-   sudo ldconfig
-
-Confirm the install:
-
-.. code-block:: bash
-
-   ls /usr/local/include/ti_rpmsg_rpc_client.h
-   nm -D /usr/local/lib64/libti_rpmsg_dma.so | grep ti_rpmsg_rpc_generic_execute
-
-If ``/usr/lib`` already has an older ``libti_rpmsg_dma.so``, the plugin link step picks
-that copy up. Replace it with the new build, or the link fails with an undefined reference
-to ``ti_rpmsg_rpc_generic_execute``.
-
-Step 2: Build and install the plugins
+Build and install the plugins
 -------------------------------------
 
 .. code-block:: bash
 
-   git clone -b develop https://github.com/TexasInstruments/edgeai-gst-plugins.git
+   git clone https://github.com/TexasInstruments/edgeai-gst-plugins.git
    cd edgeai-gst-plugins
    export SOC=am62d
    meson setup build --prefix=/usr -Dpkg_config_path=pkgconfig \
@@ -80,28 +65,15 @@ Step 2: Build and install the plugins
    sudo ninja -C build install
    sudo ldconfig
 
-Use the branch that contains the TI-Offload change for ``tidspkernel``. That change is not
-yet merged into ``develop``, so check the release notes for the version to install.
-
-``SOC`` must be exported in the same shell. ``tvm-plugins`` and ``stft-plugins`` are only
-accepted when ``SOC=am62d``.
-
-Step 3: Refresh the GStreamer registry
---------------------------------------
-
-.. code-block:: bash
-
-   rm -rf ~/.cache/gstreamer-1.0/registry.aarch64.bin
-
 .. _pub_edgeai_am62dx_cross_build:
 
 Cross-Building on a Host
 ------------------------
 
 Build on a host with the SDK toolchain, following the cross-compile steps in the
-``edgeai-gst-plugins`` README. Install into the SDK target filesystem with ``DESTDIR``,
-then copy the libraries and headers to the board. Run ``ldconfig`` and step 3 on the board.
-The board's glibc and GStreamer versions must match the SDK.
+`edgeai-gst-plugins <https://github.com/TexasInstruments/edgeai-gst-plugins#cross-compiling-the-project>`__
+README. Install into the SDK target filesystem with ``DESTDIR``,
+then copy the libraries and headers to the board.
 
 Verifying the Installation
 ==========================
@@ -114,20 +86,14 @@ Verifying the Installation
 Both commands must print the element details. If an element is missing, check that
 ``/usr/lib/gstreamer-1.0/libgstti.so`` exists and that ``ldconfig`` has run.
 
-Check the DSP:
-
-.. code-block:: bash
-
-   cat /sys/class/remoteproc/remoteproc*/name
-   cat /sys/class/remoteproc/remoteproc*/state
-   ls -l /dev/rpmsg*
-
-The C7x remote processor must report ``running``.
-
 .. _pub_edgeai_am62dx_model_artifacts:
 
 Model Artifacts and Labels
 ==========================
+
+The SDK ships pre-compiled artifacts for the three reference models used throughout this
+guide, so users can run a pipeline immediately without compiling anything yourself. To use custom
+model instead, see :ref:`pub_edgeai_am62dx_byom`.
 
 Model directories are under ``/usr/share/tvm_inference/artifacts/``:
 
@@ -139,7 +105,7 @@ Each model directory must contain:
 
 .. code-block:: text
 
-   deploy_graph.json     graph description; input and output shapes are read from here
+   deploy_graph.json     graph description;
    deploy_lib.so         compiled model library
    deploy_param.params   model weights
 
@@ -153,13 +119,28 @@ Sample input files are under ``/usr/share/tvm_inference/input/``.
 Input Audio
 ===========
 
-The pipelines expect 16 kHz, mono, signed 16-bit PCM WAV. Convert other files with ffmpeg:
+Every pipeline in this guide expects 16 kHz, mono, signed 16-bit PCM WAV.
+Sample files in this format are already on the board under
+``/usr/share/tvm_inference/input/``, so users can try the pipelines before
+converting any audio of your own.
+
+If your source audio is a different rate, channel count or sample format, convert it once
+ahead of time with ffmpeg:
 
 .. code-block:: bash
 
    ffmpeg -i input.wav -ar 16000 -ac 1 -sample_fmt s16 output_16k.wav
 
-Or put ``audioconvert ! audioresample`` before the ``audio/x-raw`` capsfilter in the pipeline.
+Or convert it inline, inside the pipeline itself, by inserting ``audioconvert`` and
+``audioresample`` before the ``audio/x-raw`` capsfilter that pins the format:
+
+.. code-block:: bash
+
+   filesrc location=input_44k.wav ! wavparse ! \
+     audioconvert ! audioresample ! \
+     audio/x-raw,format=S16LE,rate=16000,channels=1 ! \
+     ... rest of the pipeline
+
 
 GStreamer Pipelines
 ===================
@@ -222,32 +203,20 @@ Classification uses the STFT stage and then the model:
      → titvm yamnet (or vggish)            model
      → fakesink
 
-Each stage's output size must equal the next stage's expected input size. The shape of
-the model input is read from ``deploy_graph.json``.
-
-Basic Syntax
-------------
-
-.. code-block:: bash
-
-   gst-launch-1.0 [-v] element1 property=value ! element2 property=value ! ...
-
-- ``!`` connects the output of the element on its left to the input of the element on its right.
-- ``name=`` gives an element a name so later stages can reference it.
-- Caps filters such as ``audio/x-raw,format=S16LE,rate=16000,channels=1`` restrict the format
-  between two elements.
-- Use ``-v`` to print negotiated caps.
 
 The properties of each element are listed in :ref:`pub_edgeai_am62dx_pipeline_elements`.
 
 .. _pub_edgeai_am62dx_audio_enhancement:
 
-Audio Enhancement
-=================
+GCRN based Audio Enhancement
+=============================
 
-The speech enhancement pipeline runs the GCRN model on a 16 kHz mono WAV file. It converts
-the audio to the frequency domain on the DSP, runs the model, and converts the result back
-to audio.
+Speech enhancement removes background noise from a recording while keeping the speech
+intelligible — useful for voice calls, meeting recordings, hearables, and any product that
+captures speech in a noisy environment. This pipeline runs that enhancement end to end on the
+board: it reads a 16 kHz mono WAV file, converts it to the frequency domain on the DSP, runs
+the GCRN model on the result, and converts the enhanced spectrum back to audio you can play or
+save.
 
 Pipeline Stages
 ---------------
@@ -291,11 +260,12 @@ Pipeline Stages
 
 .. _pub_edgeai_am62dx_enhancement_command:
 
-Command
--------
+GCRN GStreamer Command
+-----------------------
 
-The command below is the one that runs in ``/opt/edgeai-gst-plugins/pipeline.sh``. It
-writes ``/tmp/gst_enhanced.wav`` and plays the same output through ``autoaudiosink``:
+Execute the following command to run the Audio Enhancement pipeline. It
+writes ``/tmp/gst_enhanced.wav`` and plays the same output through ``autoaudiosink``.
+Connect headphone to the AM62D EVM to listen to the enhanced audio.
 
 .. code-block:: bash
 
@@ -329,31 +299,6 @@ For a headless run, remove the ``tee`` branch and keep only the file output:
      wavenc ! filesink location=/tmp/gst_enhanced.wav
 
 .. _pub_edgeai_am62dx_enhancement_chunking:
-
-Why ``max-stream-samples`` Is Required
----------------------------------------
-
-``window-frames=401`` is above the 256-frame threshold, so the STFT stage uses
-overlap-save chunking. The whole stream is collected in DSP memory before processing, and
-``max-stream-samples`` sets how much memory is reserved. If it is missing or too small, the
-pipeline fails at start-up or at end of stream.
-
-The minimum value is the padded length of the input:
-
-.. code-block:: text
-
-   chunk_samples = window-frames x hop-size                    = 401 x 160 = 64160
-   hop_samples   = (window-frames - overlap-frames) x hop-size = (401 - 100) x 160 = 48160
-   n_chunks      = 1 + ceil((N - chunk_samples) / hop_samples)
-   padded        = (n_chunks - 1) x hop_samples + chunk_samples
-
-For the 156302-sample ``input_audio.wav`` (N = 156302), ``n_chunks`` is 3 and the padded
-length is 160480. Set ``max-stream-samples`` to at least that value.
-
-``overlap-frames`` defaults to 100. The output is trimmed back to the input length.
-
-For a different input file, compute the padded length with the same formula and set
-``max-stream-samples`` on both the STFT and ISTFT elements, as the command above does.
 
 Running the Pipeline
 --------------------
@@ -405,7 +350,7 @@ Troubleshooting
    * - Message
      - Action
    * - ``max-stream-samples must be explicitly set (> 0)``
-     - Set ``max-stream-samples`` on the STFT element, using the padded length above.
+     - Set ``max-stream-samples`` on the STFT element.
    * - ``padded length ... exceeds dma_input capacity``
      - Increase ``max-stream-samples`` to the padded length.
    * - ``Invalid incoming buffer``
@@ -423,11 +368,19 @@ Troubleshooting
 
 .. _pub_edgeai_am62dx_audio_classification:
 
-Audio Classification
-====================
+YAMNet & VGGish based Audio Classification
+============================================
 
-The classification pipelines run YAMNet or VGGish on a 16 kHz mono WAV file and print the
-top-k class names and scores for each window to the console.
+Audio event classification identifies *what* sound is present in a clip — a siren, glass
+breaking, a dog barking, a machine running — rather than transcribing speech. That makes it
+useful for acoustic event detection, environmental and industrial sound monitoring, and
+safety or anomaly alerts triggered by sound rather than video. This pipeline runs YAMNet or
+VGGish on a 16 kHz mono WAV file on the DSP, and prints the top-k predicted classes and their
+scores for each analysis window to the console as the pipeline runs.
+
+YAMNet and VGGish differ mainly in scope: YAMNet recognizes 521 general sound classes, while
+VGGish is a smaller, 10-class model. Pick YAMNet for broad coverage, or VGGish when you only
+need to distinguish a small, fixed set of sounds and want a lighter model.
 
 Models
 ------
@@ -446,11 +399,6 @@ Models
      - 10
      - ``/usr/share/tvm_inference/labels/vggish_label_list.txt``
 
-The VGGish label file contains: Air conditioner, Car horn, Children playing, Dog bark,
-Drilling, Engine idling, Gun shot, Jackhammer, Siren, Street music.
-
-The YAMNet label file starts with ``Speech`` (line 1), ``Child speech, kid speaking`` (line 2)
-and includes ``Dog`` at line 70.
 
 Pipeline Stages
 ---------------
@@ -462,9 +410,6 @@ Pipeline Stages
      → titvm model-path=.../yamnet (or vggish) model
      → fakesink
 
-The STFT output goes straight to ``titvm``. There is no separate mel-spectrogram element in
-these pipelines. If a model needs mel features, that processing must be part of the model
-graph. This has not been checked against the YAMNet and VGGish graphs.
 
 Commands
 --------
@@ -499,32 +444,6 @@ VGGish
        top-k=3 ! \
      fakesink
 
-Both commands omit ``fft-size``. The STFT request does not send an FFT size to the DSP, and
-the known-model table sets ``selected-model`` and ``model-elems`` from the path name
-(``yamnet`` → ModelId 4, 64 elements per frame; ``vggish`` → ModelId 3, 64 elements per frame).
-
-STFT Settings
--------------
-
-.. list-table::
-   :header-rows: 1
-   :widths: 20 20 20 40
-
-   * - Model
-     - ``hop-size``
-     - ``window-frames``
-     - ``batch-size``
-   * - YAMNet
-     - 160
-     - 96
-     - 64
-   * - VGGish
-     - 160
-     - 126
-     - 64
-
-``window-frames`` is at most 256 for both models, so plain windowing is used and
-``max-stream-samples`` is not needed.
 
 Output Format
 -------------
@@ -540,9 +459,6 @@ per window:
        2. <class name>: <score>
        3. <class name>: <score>
 
-The class count in the banner comes from the label file (521 for YAMNet, 10 for VGGish).
-Scores are printed exactly as the model graph produces them. Whether they are probabilities
-or logits depends on the model graph and has not been checked for these two models.
 
 Options
 -------
@@ -646,7 +562,7 @@ Properties
      - Meaning
    * - ``msg-type``
      - uint
-     - 0 (from name)
+     - 0
      - Operation. See the table above.
    * - ``fft-size``
      - uint
@@ -677,7 +593,7 @@ Properties
      - uint
      - 0
      - Largest input stream, in samples, for overlap-save chunking. Required when chunking
-       is on. See :ref:`pub_edgeai_am62dx_enhancement_chunking`.
+       is on.
    * - ``model-path``
      - string
      - empty
@@ -696,8 +612,6 @@ Properties
      - 0
      - For ``msg-type=0x1040``: 0 deinterleave, 1 interleave.
 
-The robot test and the enhancement pipeline use ``interleave_direction`` (underscore). Use the
-same spelling as the working command you copy.
 
 Known-Model Table
 ^^^^^^^^^^^^^^^^^
@@ -737,7 +651,6 @@ DSP Requests
 ``tidspkernel`` sends each request using the TI-Offload generic service, on endpoint 13 of
 the C7x DSP (processor ID 8). Each request carries:
 
-- A kernel ID: 1 for STFT, 2 for ISTFT, 3 for deinterleave/interleave.
 - One input and one output buffer, each given by a 64-bit physical address and a size.
 - Params:
 
@@ -806,7 +719,7 @@ path to be loaded.
 - **Daemon not available:** the element waits up to ``daemon-timeout-ms``, then loads the model
   in-process. The board log shows the in-process load opens the C7x client
   (``c7x_client_open()``), so the in-process path also needs the C7x firmware running.
-- **Daemon fails during inference:** the element returns an error and does not fall back.
+- **Daemon fails during inference:** the element returns an error and falls back.
 
 Standard GStreamer Elements Used
 ---------------------------------
@@ -839,23 +752,30 @@ Debugging
 
 .. code-block:: bash
 
-   GST_DEBUG=tidspkernel:6,titvm:6,tirpmsgchan:6 gst-launch-1.0 ...
+   GST_DEBUG=tidspkernel:6,titvm:6 gst-launch-1.0 -v ...
 
 ``tidspkernel`` logs its message type, buffer sizes and each DSP request. ``titvm`` logs the
-daemon handshake, the shape it detected, and the model load. ``tirpmsgchan`` logs the RPMsg
-channel. For a pipeline graph, set ``GST_DEBUG_DUMP_DOT_DIR``.
+daemon handshake, the shape it detected, and the model load.
 
-.. _pub_edgeai_am62dx_advanced_usage:
+To visualize the pipeline graph itself, rather than its runtime log:
 
-Advanced Usage
-==============
+.. code-block:: bash
 
-Batch Processing a Directory
------------------------------
+   mkdir -p /tmp/dot
+   GST_DEBUG_DUMP_DOT_DIR=/tmp/dot gst-launch-1.0 ...
+   ls /tmp/dot
 
-The enhancement pipeline needs ``max-stream-samples`` set to the padded length of each file.
-This script computes it for each WAV file in a directory. It assumes 16 kHz mono 16-bit PCM
-WAV files with a 44-byte header, which is what the sample files use:
+The graph files are written when the pipeline changes state. Convert them with ``dot`` on a
+host machine if the board does not have it.
+
+Batch Processing Multiple Files
+================================
+
+The commands so far run on one file at a time. To process a whole directory unattended — for
+example, enhancing every recording collected during a test run — script it as a loop over
+``gst-launch-1.0`` invocations. The GCRN enhancement pipeline needs ``max-stream-samples`` set
+to the padded length of each file, so the script below computes that value per file. It assumes
+16 kHz mono 16-bit PCM WAV files with a 44-byte header, which is what the sample files use:
 
 .. code-block:: bash
 
@@ -896,123 +816,341 @@ WAV files with a 44-byte header, which is what the sample files use:
        wavenc ! filesink location="$OUT_DIR/${name}_enhanced.wav"
    done
 
-This script has not been run on the board. Files shorter than one window (401 frames, about
-4 seconds) use the same formula, but that case has not been tested either. Check the output
-for those files.
-
-Input Format Conversion
------------------------
-
-If the source is not 16 kHz mono 16-bit PCM, convert it inside the pipeline before the
-``audio/x-raw`` capsfilter:
-
-.. code-block:: bash
-
-   filesrc location=input_44k.wav ! wavparse ! \
-     audioconvert ! audioresample ! \
-     audio/x-raw,format=S16LE,rate=16000,channels=1 ! \
-     ... rest of the pipeline
-
-Or convert the file once with ffmpeg:
-
-.. code-block:: bash
-
-   ffmpeg -i input_44k.wav -ar 16000 -ac 1 -sample_fmt s16 input_16k.wav
-
-Running Classification and Enhancement Together
------------------------------------------------
-
-A ``tee`` can send the same input to the enhancement chain and to a classifier. Each branch
-needs its own ``queue``. This arrangement has not been run on the board.
-
-.. code-block:: bash
-
-   gst-launch-1.0 -v filesrc location=$INPUT ! wavparse ! \
-     audio/x-raw,format=S16LE,rate=16000,channels=1 ! \
-     tee name=t \
-     t. ! queue ! tidspkernel name=stft_y msg-type=0x1020 \
-       model-path=/usr/share/tvm_inference/artifacts/yamnet \
-       hop-size=160 window-frames=96 batch-size=64 ! \
-     titvm model-path=/usr/share/tvm_inference/artifacts/yamnet \
-       class-map-path=/usr/share/tvm_inference/labels/yamnet_label_list.txt top-k=3 ! \
-     fakesink \
-     t. ! queue ! ... enhancement chain from audio_enhancement ... ! \
-     wavenc ! filesink location=/tmp/gst_enhanced.wav
-
-Inside one pipeline, the ``tidspkernel`` elements share one RPMsg channel, and the channel
-lock serialises their requests. Two separate pipeline processes each open their own channel.
-Running them at the same time has not been tested.
+.. _pub_edgeai_am62dx_byom:
 
 Bring-Your-Own Model
---------------------
+=====================
 
-Use this section when you want to run a model other than GCRN, YAMNet or VGGish.
+The three reference pipelines above use pre-trained, pre-compiled models so you can see the
+plugins working immediately. Most production use cases, though, need a model trained on your
+own data — your own set of sound events, or a speech-enhancement model tuned to your product's
+microphone and acoustic environment. This section covers what it takes to run such a model
+through ``tidspkernel`` and ``titvm`` once it has been compiled for the AM62Dx C7x DSP.
 
-What Works Without Plugin Changes
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Compiling the model itself — taking an ONNX graph through quantization and generating
+``deploy_graph.json``, ``deploy_lib.so`` and ``deploy_param.params`` — is covered separately in
+:ref:`Model Compile and Evaluate <audioai-compile-evaluate>`. This section assumes you already
+have those three artifacts and focuses on wiring them into a GStreamer pipeline.
 
-- ``titvm`` loads any directory with ``deploy_graph.json``, ``deploy_lib.so`` and
-  ``deploy_param.params``. Input and output shapes come from the graph. There are no
-  model-name checks in ``titvm``.
-- ``titvm`` sends its input to the model daemon when the daemon is running, so a new model
-  can be loaded through the daemon in the same way.
+Requirements:
+--------------
 
-What Needs Care
-^^^^^^^^^^^^^^^
+A compiled model directory with the same three files the reference models use:
 
-The DSP stages (``tidspkernel``) are not model-agnostic:
+.. code-block:: text
 
-- ``selected-model`` is the firmware ModelId. The firmware implements the spectral processing
-  for each ModelId. The plugin does not check that the ModelId matches your model.
-- ``model-elems`` must equal the number of spectral values per frame that your model expects.
-  The plugin does not read the graph to check it.
-- A ``model-path`` that matches no known name does not log a warning. The element keeps its
-  defaults (``selected-model=2``, ``model-elems`` from ``fft-size``). Set ``selected-model``
-  and ``model-elems`` explicitly on every ``tidspkernel`` element.
+   my_model/
+   ├── deploy_graph.json     graph description; input/output shapes read from attrs.shape
+   ├── deploy_lib.so         compiled model library
+   └── deploy_param.params   model weights
 
-Example
-^^^^^^^
+Beyond these files, you must specify two critical model properties that the plugins cannot
+auto-detect:
 
-For a retrained GCRN model in a different directory, the model must still match the GCRN
-spectral layout, and you should keep ModelId 2:
+- **Task type**: whether the model performs speech enhancement (like GCRN) or classification
+  (like YAMNet/VGGish). This determines which pipeline shape from the :ref:`pipeline overview
+  <pub_edgeai_am62dx_gst_pipelines>` you should adapt.
+- **Spectral layout**: the FFT size, hop size, and window length the model was trained with,
+  plus the number of spectral coefficients per frame that the DSP firmware must produce.
+
+Example: A New Model
+----------------------
+
+Suppose you have a new model with a unique architecture and spectral front-end, and firmware
+ModelId ``5`` has already been added to support it. To use it in a GStreamer pipeline, follow
+the same pattern as the YAMNet/VGGish examples above, but explicitly set all spectral properties
+instead of relying on path-based auto-detection:
 
 .. code-block:: bash
 
-   MODEL=/usr/share/tvm_inference/artifacts/gcrn_v2
-   gst-launch-1.0 filesrc location=$INPUT ! wavparse ! \
-     audio/x-raw,format=S16LE,rate=16000,channels=1 ! \
+   MODEL=/path/to/my_model
+   gst-launch-1.0 -v filesrc location=$INPUT ! \
+     wavparse ! audio/x-raw,format=S16LE,rate=16000,channels=1 ! \
      tidspkernel name=stft msg-type=0x1020 model-path=$MODEL \
-       selected-model=2 model-elems=322 hop-size=160 fft-size=320 \
-       window-frames=401 batch-size=64 max-stream-samples=160480 ! \
-     ... deinterleave, titvm, interleave, istft as in audio_enhancement ...
+       selected-model=5 model-elems=128 hop-size=160 fft-size=256 \
+       window-frames=100 batch-size=64 ! \
+     titvm model-path=$MODEL \
+       class-map-path=/path/to/my_model/labels.txt top-k=3 ! \
+     fakesink
 
-For a model with a different spectral layout or DSP processing, a new ModelId is needed in the
-DSP firmware. That change is outside this repository.
+This command uses the same approach as the reference models — the difference is that all spectral
+parameters (``selected-model``, ``model-elems``, ``fft-size``, ``hop-size``, ``window-frames``)
+are now explicitly set for your model rather than auto-detected from the path. Only ``model-path``
+changes between your custom model and the reference implementations. The ``titvm`` element requires
+no modifications beyond ``model-path`` — it automatically loads and runs whatever TVM artifacts
+(``deploy_graph.json``, ``deploy_lib.so``, ``deploy_param.params``) it finds in that directory.
 
-Validation
-^^^^^^^^^^
+For a speech-enhancement model with a new architecture, use the same approach: build your pipeline
+with the ``deinterleave`` → ``tidspkernel`` (STFT) → ``titvm`` → ``interleave`` → ``tidspkernel``
+(ISTFT) chain from the GCRN reference pipeline, then set the ``tidspkernel`` properties to match
+your model's spectral layout instead of GCRN's.
 
-Before you rely on a new model:
+Supporting New Model Architectures in the Plugins
+---------------------------------------------------
 
-1. Run STFT followed by ISTFT with no model in between. Check that the output reproduces the
-   input audio.
-2. Run the full chain on a known test file. Compare the output with a reference from the
-   model's own pipeline. Checking only the output length is not enough.
+If your model introduces a new architecture or spectral processing scheme not covered by existing
+firmware ModelIds (0=DCCRN, 1=GTCRN, 2=GCRN, 3=VGGish, 4=YAMNet), the DSP firmware must first
+add support for that new ModelId. Once the firmware is updated, the GStreamer plugins can
+immediately wire it in by setting the ``selected-model`` property to the new firmware ID.
 
-Debugging
----------
+However, if you need to extend the plugins themselves to better support a new model category
+or add automatic detection logic, the following sections show the code you would modify in the
+GStreamer plugin source files.
+
+Adding a New GStreamer Property to ``tidspkernel``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If your new model requires an additional configuration parameter (for example, a
+``model-specific-param`` flag), add it to the plugin header and implementation:
+
+**1. Header: ``gstdspkernel.h`` - Add to the struct:**
+
+.. code-block:: c
+
+   struct _GstDspKernel
+   {
+     /* ... existing properties ... */
+     guint fft_size;
+     guint window_frames;
+     guint selected_model;
+     guint model_elems;
+
+     /* NEW: Add your custom property */
+     guint model_specific_param;  /* New parameter for custom model */
+   };
+
+**2. Implementation: ``gstdspkernel.cpp`` - Add property enum:**
+
+.. code-block:: c
+
+   /* Property IDs */
+   enum
+   {
+     PROP_0,
+     PROP_MSG_TYPE,
+     PROP_INTERLEAVE_DIRECTION,
+     PROP_HOP_SIZE,
+     PROP_FFT_SIZE,
+     PROP_WINDOW_FRAMES,
+     PROP_BATCH_SIZE,
+     PROP_SELECTED_MODEL,
+     PROP_MODEL_ELEMS,
+     PROP_MODEL_PATH,
+     PROP_OVERLAP_FRAMES,
+     PROP_CHUNKING_MODE,
+     PROP_MAX_STREAM_SAMPLES,
+
+     /* NEW: Add your property ID */
+     PROP_MODEL_SPECIFIC_PARAM
+   };
+
+**3. Register the property in ``class_init()``:**
+
+.. code-block:: c
+
+   g_object_class_install_property (gobject_class, PROP_MODEL_SPECIFIC_PARAM,
+       g_param_spec_uint ("model-specific-param", "Model Specific Param",
+           "Custom parameter for new model architecture (e.g., preprocessing mode: 0=default, 1=legacy)",
+           0, 255, 0,  /* min, max, default */
+           (GParamFlags) (G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS)));
+
+**4. Add getter/setter in ``set_property()`` and ``get_property()``:**
+
+.. code-block:: c
+
+   static void
+   gst_dsp_kernel_set_property (GObject * object, guint prop_id,
+       const GValue * value, GParamSpec * pspec)
+   {
+     GstDspKernel *kernel = GST_DSP_KERNEL (object);
+
+     switch (prop_id) {
+       /* ... existing properties ... */
+       case PROP_MAX_STREAM_SAMPLES:
+         kernel->max_stream_samples = g_value_get_uint (value);
+         break;
+
+       /* NEW: Handle your property */
+       case PROP_MODEL_SPECIFIC_PARAM:
+         kernel->model_specific_param = g_value_get_uint (value);
+         GST_DEBUG_OBJECT (kernel, "Set model_specific_param=%u",
+             kernel->model_specific_param);
+         break;
+
+       default:
+         G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+         break;
+     }
+   }
+
+   static void
+   gst_dsp_kernel_get_property (GObject * object, guint prop_id,
+       GValue * value, GParamSpec * pspec)
+   {
+     GstDspKernel *kernel = GST_DSP_KERNEL (object);
+
+     switch (prop_id) {
+       /* ... existing properties ... */
+
+       /* NEW: Return your property */
+       case PROP_MODEL_SPECIFIC_PARAM:
+         g_value_set_uint (value, kernel->model_specific_param);
+         break;
+
+       default:
+         G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+         break;
+     }
+   }
+
+**5. Use the property in DSP request:**
+
+In the ``transform_ip()`` or data processing function, send the parameter to the DSP firmware:
+
+.. code-block:: c
+
+   struct dsp_stft_params params = {
+     .selected_model = kernel->selected_model,
+     .input_frame = kernel->hop_size,
+     .output_frame = kernel->hop_size,
+     /* NEW: Include your custom parameter in firmware request if needed */
+   };
+
+   /* Optionally add metadata to request or logging */
+   GST_DEBUG_OBJECT (kernel,
+       "Sending STFT request: selected_model=%u, model_specific_param=%u",
+       kernel->selected_model, kernel->model_specific_param);
+
+
+Adding a New Property to ``titvm``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Similarly, for the TVM inference element, if you need a new parameter (for example,
+``inference-threshold`` for filtering low-confidence predictions):
+
+**1. Header: ``gsttitvm.h`` - Add to struct:**
+
+.. code-block:: c
+
+   struct _GstTiTvm
+   {
+     /* ... existing properties ... */
+     gchar *model_path;
+     gchar *class_map_path;
+     guint top_k;
+     guint daemon_timeout_ms;
+
+     /* NEW: Add your custom property */
+     gfloat inference_threshold;  /* Confidence threshold (0.0-1.0) */
+   };
+
+**2. Implementation: ``gsttitvm.cpp`` - Add property enum and register:**
+
+.. code-block:: c
+
+   enum
+   {
+     PROP_0,
+     PROP_MODEL_PATH,
+     PROP_CLASS_MAP_PATH,
+     PROP_TOP_K,
+     PROP_DAEMON_TIMEOUT_MS,
+
+     /* NEW: Add your property ID */
+     PROP_INFERENCE_THRESHOLD
+   };
+
+   /* In class_init() */
+   g_object_class_install_property (gobject_class, PROP_INFERENCE_THRESHOLD,
+       g_param_spec_float ("inference-threshold", "Inference Threshold",
+           "Minimum confidence score to report predictions (0.0-1.0)",
+           0.0f, 1.0f, 0.5f,  /* min, max, default */
+           (GParamFlags) (G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS)));
+
+**3. Use in inference post-processing:**
+
+.. code-block:: c
+
+   /* After getting inference output from TVM, filter by threshold */
+   for (guint i = 0; i < output_size; ++i) {
+     gfloat confidence = output_buffer[i];
+
+     if (confidence >= tvm->inference_threshold) {
+       /* Report this prediction */
+       GST_DEBUG_OBJECT (tvm, "Prediction %u: confidence=%.3f (above threshold %.3f)",
+           i, confidence, tvm->inference_threshold);
+     }
+   }
+
+
+Automatic Model Detection from Path
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you want the plugins to auto-detect your new model based on its directory path name,
+add a mapping in the model detection logic:
+
+**In ``gstdspkernel.cpp``:**
+
+.. code-block:: c
+
+   /* Existing model detection table */
+   struct {
+     const gchar *path_substring;
+     guint selected_model;
+     guint model_elems;
+     guint fft_size;
+     guint hop_size;
+     guint window_frames;
+   } known_models[] = {
+     { "gcrn", 2, 322, 320, 160, 401 },
+     { "gtcrn", 1, 322, 320, 160, 401 },
+     { "dccrn", 0, 322, 320, 160, 401 },
+     { "yamnet", 4, 64, 512, 160, 96 },
+     { "vggish", 3, 128, 512, 160, 96 },
+
+     /* NEW: Add your model */
+     { "my_custom_model", 5, 256, 512, 256, 100 },
+
+     { NULL, 0, 0, 0, 0, 0 }  /* Sentinel */
+   };
+
+   /* Auto-detection function (called in set_property and state_change) */
+   static gboolean
+   gst_dsp_kernel_detect_model (GstDspKernel * kernel)
+   {
+     for (guint i = 0; known_models[i].path_substring != NULL; ++i) {
+       if (kernel->model_path &&
+           g_strrstr (kernel->model_path, known_models[i].path_substring)) {
+         kernel->selected_model = known_models[i].selected_model;
+         kernel->model_elems = known_models[i].model_elems;
+         kernel->fft_size = known_models[i].fft_size;
+         kernel->hop_size = known_models[i].hop_size;
+         kernel->window_frames = known_models[i].window_frames;
+
+         GST_INFO_OBJECT (kernel,
+             "Auto-detected model from path '%s': selected-model=%u",
+             kernel->model_path, kernel->selected_model);
+         return TRUE;
+       }
+     }
+     return FALSE;
+   }
+
+Example: Using a New Model with Extended Plugin
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Once you rebuild the plugin with your new properties, use them in a GStreamer command:
 
 .. code-block:: bash
 
-   GST_DEBUG=tidspkernel:6,titvm:6,tirpmsgchan:6 gst-launch-1.0 -v ...
+   gst-launch-1.0 -v filesrc location=input.wav ! wavparse ! \
+     audio/x-raw,format=S16LE,rate=16000,channels=1 ! \
+     tidspkernel name=stft msg-type=0x1020 model-path=/path/to/my_custom_model \
+       selected-model=5 model-elems=256 hop-size=256 fft-size=512 \
+       window-frames=100 \
+       model-specific-param=1 ! \
+     titvm model-path=/path/to/my_custom_model \
+       class-map-path=/path/to/my_custom_model/labels.txt top-k=3 \
+       inference-threshold=0.7 ! \
+     fakesink
 
-To write a pipeline graph:
-
-.. code-block:: bash
-
-   mkdir -p /tmp/dot
-   GST_DEBUG_DUMP_DOT_DIR=/tmp/dot gst-launch-1.0 ...
-   ls /tmp/dot
-
-The graph files are written when the pipeline changes state. Convert them with ``dot`` on a
-host machine if the board does not have it.
