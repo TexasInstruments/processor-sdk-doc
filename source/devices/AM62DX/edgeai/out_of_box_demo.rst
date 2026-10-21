@@ -1,15 +1,15 @@
 .. _am62dx_edgeai_oob_demo:
 
-==========================
-Out-of-Box Web GUI Demo
-==========================
+===========================
+How to run OOB Web GUI Demo
+===========================
 
-The AM62DX EVM ships with an out-of-box web-based GUI that demonstrates audio AI
+The AM62DX EVM ships with an out-of-box web-based GUI that demonstrates EdgeAI
 capabilities directly from a browser. Once the board is powered on and connected to
 a network, the web portal can be accessed from any device on the same network without
 any additional setup.
 
-The portal showcases the three core audio AI pipelines — home screen, speech
+The portal showcases the three core EdgeAI pipelines — home screen, speech
 enhancement, and audio classification — running on the C7x DSP via the TVM runtime.
 
 Home Screen
@@ -87,7 +87,7 @@ GCRN-based noise-suppression model. The ``Audio Source`` card shows the active i
 (for example ``input_audio.wav`` — 1ch, 16 kHz, 16-bit, 9.77s) with a ``Default`` tag, and a
 status indicator (``Ready``, ``Running``, etc.).
 
-To run Speech Enhancement:
+To run the speech enhancement demo:
 
 1. Click **Run Demo** in the top-right corner to begin the process. The status line below the
    Audio Source card changes from ``Ready`` to running, and the button itself becomes
@@ -149,7 +149,7 @@ WAV file, Audio Classification defaults to live input: the ``Audio Source`` card
 PCM, 1s chunks). The ``Input Source`` dropdown lets you switch to a different captured device
 with ``REFRESH``, or classify a recorded clip instead with ``UPLOAD WAV FILE``.
 
-To run the Audio Classification Demo:
+To run the audio classification demo:
 
 1. Select Audio Classification from the Demo Selection menu on the left.
 2. Select Model from the model list — YAMNet or VGGish.
@@ -211,6 +211,7 @@ This preset runs a GCRN-based noise-suppression pipeline using the C7x DSP and T
 
 **To run the GCRN speech enhancement pipeline:**
 
+
 1. Click the ``Speech Enhancement`` preset tab to load the pre-built command.
 2. The ``Pipeline Command`` box displays the full GStreamer command.
 3. Click ``Run Demo`` to start the pipeline.
@@ -241,6 +242,7 @@ event classification.
 
 **To run the YAMNet classification pipeline:**
 
+
 1. Click the ``Classification (YAMNet)`` tab.
 2. The ``Pipeline Command`` box displays the full GStreamer command for YAMNet classification.
 3. Choose the audio source — a file or live microphone — from the ``Input Source`` dropdown.
@@ -266,6 +268,7 @@ Audio Classification with VGGish
 This preset runs VGGish (UrbanSound8K, 10 classes) for environmental sound classification.
 
 **To run the VGGish classification pipeline:**
+
 
 1. Click the ``Classification (VGGish)`` tab.
 2. The command is similar to YAMNet but uses VGGish model weights and UrbanSound8K class labels.

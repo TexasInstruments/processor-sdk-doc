@@ -1,8 +1,8 @@
 .. _am62dx_linux_audio_inference_app:
 
-#################################
-Linux Audio Inference Application
-#################################
+############################################
+How to run Linux Audio Inference Application
+############################################
 
 Introduction
 ============

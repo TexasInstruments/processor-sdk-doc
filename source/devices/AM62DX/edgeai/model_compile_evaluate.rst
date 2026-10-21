@@ -6,7 +6,7 @@
 Model Compile and Evaluate
 ##########################
 
-The :ref:`Audio AI Model Zoo <audioai-model-zoo>` runs *pre-compiled* artifacts
+The :ref:`EdgeAI Model Zoo <audioai-model-zoo>` runs *pre-compiled* artifacts
 on the |__PART_FAMILY_NAME__| target. This section covers the **x86 host
 workflow** that produces those artifacts: how to compile an audio model for
 the C7\ |trade| NPU, run host-emulation inference, and measure accuracy against a

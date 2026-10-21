@@ -5,7 +5,7 @@ Getting Started
 ===============
 
 This section covers the hardware setup, software requirements, and initial boot process
-for the AM62DX EVM to prepare it for running audio AI inference applications.
+for the AM62DX EVM to prepare it for running EdgeAI inference applications.
 
 Hardware Prerequisites
 ======================
@@ -83,6 +83,8 @@ The following software components are required on the host machine:
 - ALSA (Advanced Linux Sound Architecture) libraries
 - libsndfile - Audio file I/O library
 - json-c - JSON parsing library
+
+.. _pub_edgeai_am62dx_evm_setup:
 
 EVM Setup and Cable Connections
 ================================

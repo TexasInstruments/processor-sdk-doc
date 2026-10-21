@@ -3,11 +3,11 @@
 .. _audioai-introduction:
 
 ########################
-Audio AI Model Workflow
+EdgeAI Model Workflow
 ########################
 
 This guide walks through the workflow for developing and deploying audio
-deep-learning (Audio AI/DL) models on the |__PART_FAMILY_NAME__| platform, using
+deep-learning (EdgeAI/DL) models on the |__PART_FAMILY_NAME__| platform, using
 |__SDK_FULL_NAME__| |__AUDIOAI_SDK_VERSION__|. It is written for embedded
 developers who want to run, compile, evaluate, and benchmark audio models on the
 AM62D - either out of the box on the target with pre-compiled artifacts, or
@@ -20,7 +20,7 @@ bring-your-own-model (BYOM) flow that accepts any supported `ONNX
 
 The remaining sections cover:
 
-- :ref:`Audio AI Model Zoo <audioai-model-zoo>` - out-of-box demos on the AM62D
+- :ref:`EdgeAI Model Zoo <audioai-model-zoo>` - out-of-box demos on the AM62D
   target (inference scripts and Jupyter notebooks) using pre-trained models and
   pre-compiled artifacts.
 - :ref:`Model Compile and Evaluate <audioai-compile-evaluate>` - the
@@ -45,7 +45,7 @@ The end-to-end path is the same for a reference model or your own model:
 #. **Inspect** the compiled subgraphs and per-layer analysis (:ref:`Model
    Inspect <audioai-model-inspect>`).
 #. **Run** on the AM62D target using the compiled artifact
-   (:ref:`Audio AI Model Zoo <audioai-model-zoo>`).
+   (:ref:`EdgeAI Model Zoo <audioai-model-zoo>`).
 #. **Benchmark** latency and memory (:ref:`Performance <audioai-performance>`).
 
 ****************

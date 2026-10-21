@@ -167,7 +167,7 @@ For ``titvm``:
 - ``gsttitvm.cpp`` — same pattern: enum, ``class_init()``, ``set_property()``,
   ``get_property()``, and use in inference post-processing
 
-See :ref:`Audio AI Using GStreamer <pub_edgeai_am62dx_getting_started>` for the full
+See :ref:`How to run GStreamer Pipelines <pub_edgeai_am62dx_getting_started>` for the full
 pipeline command reference and element property details.
 
 Summary
@@ -192,4 +192,4 @@ Summary
      - :ref:`Linux Audio Inference Application <am62dx_linux_audio_inference_app>`
    * - 4. GStreamer
      - Set spectral properties explicitly; optionally extend ``known_models[]`` table
-     - :ref:`Audio AI Using GStreamer <pub_edgeai_am62dx_getting_started>`
+     - :ref:`How to run GStreamer Pipelines <pub_edgeai_am62dx_getting_started>`

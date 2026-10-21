@@ -3,7 +3,7 @@
 .. _audioai-model-zoo:
 
 ##################
-Audio AI Model Zoo
+EdgeAI Model Zoo
 ##################
 
 The AudioAI ModelZoo delivers out-of-box audio deep-learning demos that run

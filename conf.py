@@ -262,8 +262,8 @@ graphviz_output_format = 'svg'
 FAMILY = os.environ.get("DEVFAMILY", "")
 OS = os.environ.get("OS", "")
 
-# Audio AI docs prefix every shell command with a "$ " prompt symbol; strip it
-# from the copy-button output so copied text is directly runnable. 
+# EdgeAI docs prefix every shell command with a "$ " prompt symbol; strip it
+# from the copy-button output so copied text is directly runnable.
 if OS == "edgeai" and FAMILY == "AM62DX":
     copybutton_prompt_text = "$ "
 
