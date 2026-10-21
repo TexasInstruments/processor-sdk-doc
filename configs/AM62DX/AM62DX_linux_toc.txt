@@ -23,6 +23,7 @@ linux/Overview/GCC_ToolChain
 linux/Overview/Processor_SDK_Linux_create_SD_card
 
 linux/Foundational_Components
+linux/index_Edge_AI
 linux/Foundational_Components_U-Boot
 linux/Foundational_Components/U-Boot/Users-Guide
 linux/Foundational_Components/U-Boot/Build-Guide-K3
