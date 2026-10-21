@@ -34,7 +34,7 @@ audio classification on the C7x DSP.
 
 The SDK enables an interplay of open-source components such as GStreamer and
 deep learning runtimes such as TVM-RT. The reference applications showcase
-inference examples in C++ variants (audio AI for AM62DX). The SDK supports
+inference examples in C++ variants (EdgeAI for AM62DX). The SDK supports
 edit-build-debug cycles directly on the target and also on a host PC to
 cross-compile and build the applications.
 
