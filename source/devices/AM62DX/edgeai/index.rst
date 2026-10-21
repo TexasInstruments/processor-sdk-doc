@@ -30,15 +30,6 @@ deinterleave/interleave, and ``titvm`` for TVM model inference.
 
 |
 
-.. rubric:: What the GStreamer plugins do
-
-- **tidspkernel** runs STFT, ISTFT and deinterleave/interleave kernels on the C7x DSP.
-- **titvm** runs TVM-compiled models, through the model daemon or in-process.
-- Both elements exchange data with the DSP over RPMsg. Buffers are shared with DMA
-  where the pipeline allows it.
-
-|
-
 +--------------------------------+--------------------------------------------------------------------------------------------------+
 | .. Image:: /images/E2e.jpg     | For technical support please post your questions at `http://e2e.ti.com <http://e2e.ti.com/>`__.  |
 +--------------------------------+--------------------------------------------------------------------------------------------------+
