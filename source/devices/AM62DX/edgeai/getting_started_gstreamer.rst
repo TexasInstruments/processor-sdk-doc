@@ -4,11 +4,42 @@
 How to run GStreamer Pipelines
 ##############################
 
-The two GStreamer elements, ``tidspkernel`` and ``titvm``, that
-offload audio signal processing and neural-network inference to the C7x DSP on
-|__PART_FAMILY_NAME__|. With them you can build a standard ``gst-launch-1.0`` pipeline that
-reads a WAV file, runs it through a speech-enhancement or audio-classification model on the
-DSP, and writes or prints the result — without writing any DSP-side code yourself.
+Introduction
+============
+
+The GStreamer pipeline framework on AM62DX enables real-time audio AI inference through two custom
+plugins: ``tidspkernel`` and ``titvm``. Together, they offload signal processing and neural network
+inference to the C7x DSP while orchestrating the data flow from Linux. With GStreamer, you can:
+
+- **Build Custom Pipelines** — Compose audio processing chains using standard GStreamer elements
+- **DSP Offload** — Offload STFT, ISTFT, and deinterleave/interleave to the C7x DSP
+- **TVM Inference** — Run TVM-compiled models on the C7x NPU via the TVM runtime
+- **Flexible I/O** — Read from WAV files, live ALSA input, or other GStreamer sources
+- **Direct Command-Line Control** — Use ``gst-launch-1.0`` to quickly test and prototype pipelines
+
+Supported Pipelines
+===================
+
+.. list-table::
+   :header-rows: 1
+   :widths: 30 30 20 20
+
+   * - Pipeline
+     - Use Case
+     - Default Input
+     - Output
+   * - Speech enhancement (GCRN)
+     - Noise reduction with spectral reconstruction
+     - ``input_audio.wav``
+     - Enhanced WAV file (playback or file)
+   * - Audio classification (YAMNet)
+     - 521-class audio event detection
+     - ``urbansound_16k.wav``
+     - Top-k class names and scores (console)
+   * - Audio classification (VGGish)
+     - 10-class environmental sound classification
+     - ``urbansound_16k.wav``
+     - Top-k class names and scores (console)
 
 Prerequisites
 =============
