@@ -1,8 +1,8 @@
 .. _am62dx_linux_audio_inference_app:
 
-############################################
-How to run Linux Audio Inference Application
-############################################
+##########################################
+How to run Linux C++ Inference Application
+##########################################
 
 Introduction
 ============
@@ -46,38 +46,38 @@ Supported Pipelines
 Prerequisites
 =============
 
-**Board and Firmware**
+All runtime libraries, model artifacts, sample audio files, model daemon, and DSP firmware
+verification are pre-packaged in the AM62DX EdgeAI image. See
+:ref:`Models, Artifacts and Setup <am62dx_edgeai_models_artifacts_and_setup>` for details.
 
-- AM62DX EVM running Processor SDK Linux
-- C7x dual-task firmware providing the generic DSP service and TVM service.
-  Refer to `MCU+ SDK Documentation <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62DX/12_00_00_22/exports/docs/api_guide_am62dx/GETTING_STARTED_BUILD.html>`__
-  for building the C7x firmware.
-- Remoteproc, RPMsg-char, and DMA heap kernel support
+To build the application from source, the following host tools are required:
 
-**Libraries (on target or SDK sysroot)**
+.. list-table::
+   :header-rows: 1
+   :widths: 30 70
 
-- ``libti_rpmsg_dma`` — RPMsg DMA client library
-- ``libtvm_runtime.so`` — Neo-TVM ARM64 runtime. Refer to `TI TVM Documentation <http://tvm-tidl-04.dhcp.ti.com:9090/index.html>`__.
-- ``libasound`` — ALSA library
-- ``libsndfile`` — Audio file I/O
-- ``libjson-c`` — JSON pipeline parsing
+   * - Tool
+     - Purpose
+   * - ARM Clang Toolchain
+     - From Processor SDK Linux devkit; for cross-compilation
+   * - CMake 3.10 or higher
+     - Build system
+   * - ``make``, ``git``
+     - Build utilities
+   * - Neo-TVM headers (``TVM_ROOT``)
+     - Refer to `TI TVM Documentation <http://tvm-tidl-04.dhcp.ti.com:9090/index.html>`__
 
-**Host Build Tools**
+*******************************
+Building on AUDIO-AM62D-EVM
+*******************************
 
-- ARM Clang Toolchain (from Processor SDK Linux devkit)
-- CMake 3.10 or higher
-- ``make``, ``git``
-- Neo-TVM headers (``TVM_ROOT``). Refer to `TI TVM Documentation <http://tvm-tidl-04.dhcp.ti.com:9090/index.html>`__.
-
-Clone the Source
-================
-
-The ``edge-ai`` example is part of the ``rpmsg-dma`` repository:
+The application is pre-installed on the AM62DX EdgeAI image. If you need to rebuild it
+natively on the AUDIO-AM62D-EVM, clone the source and build:
 
 .. code-block:: console
 
-   host# git clone https://github.com/TexasInstruments/rpmsg-dma.git -b main
-   host# cd rpmsg-dma
+   root@am62dxx-evm:~# git clone https://github.com/TexasInstruments/rpmsg-dma.git -b main
+   root@am62dxx-evm:~# cd rpmsg-dma
 
 The example is under ``example/edge-ai/`` and contains:
 
@@ -93,11 +93,17 @@ The example is under ``example/edge-ai/`` and contains:
    ├── tvm-model-daemon.service
    └── tvm-model-preload.service
 
-Build the Linux Application
-============================
+.. code-block:: console
 
-Building the Linux Binary from Sources
----------------------------------------
+   root@am62dxx-evm:~/rpmsg-dma# cmake -S . -B build -DBUILD_EDGE_AI_EXAMPLE=ON \
+                      -DBUILD_AUDIO_OFFLOAD_EXAMPLE=OFF \
+                      -DBUILD_2DFFT_OFFLOAD_EXAMPLE=OFF \
+                      -DBUILD_SIGNAL_CHAIN_BIQUAD_EXAMPLE=OFF
+   root@am62dxx-evm:~/rpmsg-dma# cmake --build build
+
+**********************
+Building on Host
+**********************
 
 #. Download and install the AM62DX Linux SDK from |__SDK_DOWNLOAD_URL__|.
    Extract the SDK tarball and run the installer script on your development host.
@@ -130,7 +136,12 @@ Building the Linux Binary from Sources
               -DTVM_ROOT=/path/to/neo-tvm \
               -DTVM_RUNTIME_LIB=/path/to/aarch64/libtvm_runtime.so
 
-#. Build only the edge-ai example to avoid building unrelated examples:
+#. Clone the source and build only the edge-ai example:
+
+   .. code-block:: console
+
+      host# git clone https://github.com/TexasInstruments/rpmsg-dma.git -b main
+      host# cd rpmsg-dma
 
    .. code-block:: console
 
@@ -145,13 +156,13 @@ Building the Linux Binary from Sources
    - ``build/example/edge-ai/rpmsg_inference_example`` — main inference application
    - ``build/example/edge-ai/tvm_model_daemon`` — persistent model daemon
 
-#. Install to a staging directory and transfer to the EVM:
+#. Install to a staging directory and transfer to the AUDIO-AM62D-EVM:
 
    .. code-block:: console
 
       [linux-devkit]:> cmake --install build --prefix /tmp/edge-ai-install
 
-   Transfer to the EVM:
+   Transfer to the AUDIO-AM62D-EVM:
 
    .. code-block:: console
 
@@ -166,28 +177,62 @@ Building the Linux Binary from Sources
       host# cp /tmp/edge-ai-install/bin/rpmsg_inference_example /mnt/rootfs/usr/bin/
       host# cp -r /tmp/edge-ai-install/share/tvm_inference/ /mnt/rootfs/usr/share/
 
-Running the Application
-=======================
+*****************
+Running Pipelines
+*****************
 
 Basic Syntax
-------------
+============
 
 .. code-block:: console
 
    rpmsg_inference_example <pipeline.json> [options]
 
-Run with a WAV file input:
+Additional options:
+
+.. code-block:: console
+
+   rpmsg_inference_example --help
+   rpmsg_inference_example --version
+   rpmsg_inference_example <pipeline.json> --debug
+
+GCRN based Speech Enhancement
+==============================
+
+Speech enhancement removes background noise from a recording while keeping the speech
+intelligible — useful for voice calls, meeting recordings, hearables, and any product
+that captures speech in a noisy environment.
+
+How to run Linux C++ based GCRN Speech Enhancement
+---------------------------------------------------
+
+Run with the default WAV file input:
 
 .. code-block:: console
 
    root@am62dxx-evm:~# rpmsg_inference_example \
      /usr/share/tvm_inference/json/pipeline_speech_enhancement.json
 
+YAMNet & VGGish based Audio Classification
+===========================================
+
+Audio event classification identifies *what* sound is present in a clip — a siren,
+glass breaking, a dog barking, a machine running. YAMNet recognizes 521 general sound
+classes, while VGGish is a smaller 10-class model. Pick YAMNet for broad coverage, or
+VGGish when you need a lighter model for a fixed set of sounds.
+
+How to run Linux C++ based YAMNet Audio Classification
+------------------------------------------------------
+
+Run with the default WAV file input:
+
+.. code-block:: console
+
    root@am62dxx-evm:~# rpmsg_inference_example \
      /usr/share/tvm_inference/json/pipeline_audio_classification_yamnet.json \
      --input-file /usr/share/tvm_inference/input/speech_whistling2.wav
 
-Live ALSA device input (audio classification pipelines only):
+Live ALSA device input:
 
 .. code-block:: console
 
@@ -204,293 +249,13 @@ Stream raw PCM from stdin (mono, S16_LE, 16 kHz):
        /usr/share/tvm_inference/json/pipeline_audio_classification_yamnet.json \
        --stream
 
-Additional options:
+How to run Linux C++ based VGGish Audio Classification
+------------------------------------------------------
+
+Run with the default WAV file input:
 
 .. code-block:: console
 
-   rpmsg_inference_example --help
-   rpmsg_inference_example --version
-   rpmsg_inference_example <pipeline.json> --debug
-
-Model Daemon
-============
-
-The ``tvm_model_daemon`` keeps a TVM model loaded in memory and serves inference requests
-over a Unix domain socket, eliminating repeated artifact loading for each run.
-
-.. code-block:: console
-
-   root@am62dxx-evm:~# systemctl enable --now tvm-model-daemon.service
-   root@am62dxx-evm:~# journalctl -u tvm-model-daemon -f
-
-To preload artifacts at boot using the preload service:
-
-.. code-block:: console
-
-   root@am62dxx-evm:~# systemctl enable --now tvm-model-preload.service
-
-Using a New Model or Custom Pipeline
-======================================
-
-Using a New Model with an Existing Pipeline Type
--------------------------------------------------
-
-To bring your own model, first compile it for the AM62DX C7x NPU using the
-:ref:`Model Compile and Evaluate <audioai-compile-evaluate>` workflow, which produces
-the ``deploy_graph.json``, ``deploy_lib.so`` and ``deploy_param.params`` artifacts.
-
-Once you have the compiled artifacts:
-
-#. Deploy the model artifacts to the target:
-
-   .. code-block:: console
-
-      root@am62dxx-evm:~# mkdir -p /usr/share/tvm_inference/artifacts/my_model/
-      root@am62dxx-evm:~# cp deploy_graph.json deploy_lib.so deploy_param.params \
-                            /usr/share/tvm_inference/artifacts/my_model/
-
-#. Copy the nearest existing JSON pipeline file as a starting point and adjust it for
-   your model. The JSON files in ``example/edge-ai/json_files/`` are the authoritative
-   reference. Key fields to update:
-
-   .. code-block:: json
-
-      {
-        "pipeline_type": "audio_classification",
-        "input_file": "/usr/share/tvm_inference/input/my_audio.wav",
-        "artifacts_path": "/usr/share/tvm_inference/artifacts/my_model",
-        "labels_path": "/usr/share/tvm_inference/labels/my_model_labels.txt",
-        "num_classes": 10,
-        "dsp_config": {
-          "proc_id": 8,
-          "endpoint": 13
-        },
-        "stages": [
-          {
-            "stage_id": "stft_analysis",
-            "service": "dsp",
-            "message_type": "C7X_MSG_STFT_ANALYZE",
-            "parameters": {
-              "selected_model": 4,
-              "hop_size": 160,
-              "model_elems": 64,
-              "total_frames": 96,
-              "batch_n": 64
-            }
-          },
-          {
-            "stage_id": "tvm_inference",
-            "service": "tvm",
-            "message_type": "TVM_INFERENCE",
-            "parameters": {
-              "input_shape": "1,1,96,64"
-            }
-          }
-        ]
-      }
-
-   Keep ``proc_id``, ``endpoint``, and DSP ``message_type`` values consistent with
-   the deployed firmware. Adjust ``selected_model``, ``model_elems``, ``total_frames``
-   and ``input_shape`` to match your model's spectral layout.
-
-#. If your model outputs classifications, provide a labels file (one label per line):
-
-   .. code-block:: console
-
-      root@am62dxx-evm:~# cat > /usr/share/tvm_inference/labels/my_model_labels.txt << EOF
-      Label 0
-      Label 1
-      ...
-      EOF
-
-#. Run the application with the new pipeline:
-
-   .. code-block:: console
-
-      root@am62dxx-evm:~# rpmsg_inference_example /path/to/my_pipeline.json \
-                            --input-file /path/to/test_audio.wav
-
-Adding a New Pipeline Type in C++
-----------------------------------
-
-If the existing pipeline types (``speech_enhancement``, ``audio_classification``,
-``stft_istft``, ``tvm_only``) do not cover your use case, you can add a new pipeline
-type. The dispatch is in ``pipeline_manager.cpp`` and follows the same pattern for
-every pipeline.
-
-**Step 1: Add a header and source file**
-
-Create ``example/edge-ai/include/my_pipeline.h``:
-
-.. code-block:: cpp
-
-   #pragma once
-   #include "pipeline_manager.h"
-   #include "dsp_task_client.h"
-   #include "tvm_inference_client.h"
-
-   PipelineManager::CommandResult run_my_pipeline(
-       PipelineManager::State& state,
-       DspTaskClient& dsp_client,
-       TvmInferenceClient& tvm_client,
-       bool debug);
-
-Create ``example/edge-ai/src/my_pipeline.cpp``:
-
-.. code-block:: cpp
-
-   #include "my_pipeline.h"
-   #include "pipeline_common.h"
-   #include <iostream>
-
-   PipelineManager::CommandResult run_my_pipeline(
-       PipelineManager::State& state,
-       DspTaskClient& dsp_client,
-       TvmInferenceClient& tvm_client,
-       bool debug)
-   {
-       // Access pipeline config and stages from state
-       const auto& config = state.pipeline_config;
-       const auto& stages = config.stages;
-
-       // Find your custom stage by message_type
-       const PipelineManager::PipelineStage* my_stage = nullptr;
-       for (const auto& s : stages) {
-           if (s.message_type == "MY_CUSTOM_MSG") {
-               my_stage = &s;
-               break;
-           }
-       }
-       if (!my_stage)
-           throw PipelineError{"my_pipeline requires a MY_CUSTOM_MSG stage"};
-
-       // Read stage parameters
-       size_t hop_size = std::stoul(my_stage->parameters.at("hop_size"));
-
-       // ... run DSP and TVM stages using dsp_client and tvm_client ...
-
-       std::cout << "[App] my_pipeline complete" << std::endl;
-       return PipelineManager::CommandResult::SUCCESS;
-   }
-
-**Step 2: Register the pipeline type in** ``pipeline_manager.cpp``
-
-In ``run_from_json_file()``, add your new ``pipeline_type`` string to the dispatch
-block alongside the existing types:
-
-.. code-block:: cpp
-
-   #include "my_pipeline.h"   // add this include at the top
-
-   // ... inside run_from_json_file(), in the dispatch block:
-   if (pipeline_type == "speech_enhancement") {
-       result = run_speech_enhancement_pipeline(state_, *generic_client_, *tvm_client_, debug_);
-   } else if (pipeline_type == "audio_classification") {
-       result = run_audio_classification_pipeline(state_, *generic_client_, *tvm_client_, debug_);
-   } else if (pipeline_type == "tvm_only") {
-       result = run_tvm_pipeline(state_, *tvm_client_);
-   } else if (pipeline_type == "stft_istft") {
-       result = run_stft_istft_pipeline(state_, *generic_client_, debug_);
-   } else if (pipeline_type == "my_pipeline") {          // add this
-       result = run_my_pipeline(state_, *generic_client_, *tvm_client_, debug_);
-   } else {
-       std::cout << "[App] Error: Unknown pipeline_type: " << pipeline_type << std::endl;
-       return -1;
-   }
-
-**Step 3: Add the source file to** ``CMakeLists.txt``
-
-In ``example/edge-ai/CMakeLists.txt``, add ``src/my_pipeline.cpp`` to the
-``EDGE_AI_SOURCES`` list:
-
-.. code-block:: cmake
-
-   set(EDGE_AI_SOURCES
-       src/main.cpp
-       src/tvm_inference_client.cpp
-       src/dsp_task_client.cpp
-       src/pipeline_manager.cpp
-       src/pipeline_common.cpp
-       src/audio_utils.cpp
-       src/speech_enhancement_pipeline.cpp
-       src/audio_classification_pipeline.cpp
-       src/tvm_pipeline.cpp
-       src/stft_istft_pipeline.cpp
-       src/my_pipeline.cpp          # add this
-   )
-
-**Step 4: Create a JSON pipeline file for the new type**
-
-.. code-block:: json
-
-   {
-     "pipeline_type": "my_pipeline",
-     "input_file": "/usr/share/tvm_inference/input/my_audio.wav",
-     "artifacts_path": "/usr/share/tvm_inference/artifacts/my_model",
-     "dsp_config": { "proc_id": 8, "endpoint": 13 },
-     "stages": [
-       {
-         "stage_id": "my_stage",
-         "service": "dsp",
-         "message_type": "MY_CUSTOM_MSG",
-         "parameters": { "hop_size": "160" }
-       },
-       {
-         "stage_id": "tvm_inference",
-         "service": "tvm",
-         "message_type": "TVM_INFERENCE",
-         "parameters": { "input_shape": "1,1,96,64" }
-       }
-     ]
-   }
-
-Rebuild with ``cmake --build build`` and run:
-
-.. code-block:: console
-
-   root@am62dxx-evm:~# rpmsg_inference_example /path/to/my_pipeline.json
-
-Debugging and Troubleshooting
-=============================
-
-**System checks**
-
-.. code-block:: console
-
-   root@am62dxx-evm:~# grep . /sys/class/remoteproc/remoteproc*/name
-   root@am62dxx-evm:~# grep . /sys/class/remoteproc/remoteproc*/state
-   root@am62dxx-evm:~# ls -l /dev/rpmsg* /dev/dma_heap/*
-   root@am62dxx-evm:~# ldd /usr/bin/rpmsg_inference_example
-   root@am62dxx-evm:~# find /usr/share/tvm_inference -maxdepth 3 -type f
-
-**DSP firmware trace**
-
-.. code-block:: console
-
-   root@am62dxx-evm:~# cat /sys/kernel/debug/remoteproc/remoteproc*/trace0
-
-**Enable debug logging**
-
-.. code-block:: console
-
-   root@am62dxx-evm:~# rpmsg_inference_example <pipeline.json> --debug
-
-.. list-table::
-   :header-rows: 1
-   :widths: 40 60
-
-   * - Symptom
-     - Action
-   * - ``rpmsg_inference_example`` not found
-     - Check binary is in ``/usr/bin/`` and has execute permission.
-       Run ``ldd`` to check for missing shared libraries.
-   * - Connection to DSP endpoint fails
-     - Verify DSP state is ``running``. Check ``/dev/rpmsg*`` exists.
-       View DSP trace with ``trace0``.
-   * - Model artifact path not found
-     - Verify ``artifacts_path`` in the JSON matches the deployed directory.
-       Check ``deploy_graph.json``, ``deploy_lib.so`` and ``deploy_param.params`` are present.
-   * - Audio input device not found
-     - Run ``arecord -l`` to list ALSA devices. Verify ``--device`` name matches.
-   * - Long wait before inference starts
-     - ``tvm_model_daemon`` is not running. Start it or accept the in-process load time.
+   root@am62dxx-evm:~# rpmsg_inference_example \
+     /usr/share/tvm_inference/json/pipeline_audio_classification_vggish.json \
+     --input-file /usr/share/tvm_inference/input/urbansound_16k.wav

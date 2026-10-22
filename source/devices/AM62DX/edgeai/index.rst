@@ -16,8 +16,9 @@ deinterleave/interleave, and ``titvm`` for TVM model inference.
    :numbered:
 
    overview
-   getting_started_platform
+   evm_hardware_setup
    out_of_box_demo
+   models_artifacts_and_setup
    linux_audio_inference_app
    getting_started_gstreamer
    audio_ai_model_workflow

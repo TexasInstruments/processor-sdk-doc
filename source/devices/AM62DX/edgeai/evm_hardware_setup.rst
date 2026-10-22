@@ -1,18 +1,18 @@
-.. _am62dx_edgeai_getting_started:
+.. _am62dx_edgeai_getting_started_platform:
 
-===============
-Getting Started
-===============
+==============================
+AUDIO-AM62D-EVM Hardware Setup
+==============================
 
 This section covers the hardware setup, software requirements, and initial boot process
-for the AM62DX EVM to prepare it for running EdgeAI inference applications.
+for the AUDIO-AM62D-EVM to prepare it for running EdgeAI inference applications.
 
 Hardware Prerequisites
 ======================
 
 The following hardware is required to run AM62DX EdgeAI demos:
 
-**AM62D-EVM Development Board**
+**AUDIO-AM62D-EVM Development Board**
 
 - `AM62D-EVM <https://www.ti.com/tool/AUDIO-AM62D-EVM>`__
 - Integrated AM62DX processor with C7x DSP
@@ -28,11 +28,11 @@ The following hardware is required to run AM62DX EdgeAI demos:
 **Power Supply**
 
 - USB Type-C power supply (20W recommended)
-- USB Type-C to Type-C cable for power connection to EVM
+- USB Type-C to Type-C cable for power connection to AUDIO-AM62D-EVM
 
 **Connectivity**
 
-- USB-to-UART cable for serial console access to board
+- USB-to-UART cable for serial console access to AUDIO-AM62D-EVM
 - Ethernet cable and network connectivity (optional but recommended for remote access)
 - Ethernet expansion board `DP83867-EVM-AM <https://www.ti.com/tool/DP83867-EVM-AM>`__ (optional)
 
@@ -40,7 +40,7 @@ The following hardware is required to run AM62DX EdgeAI demos:
 
 - Audio input source (e.g., microphone, audio interface) connected to J1/J2
 - Audio output device (e.g., speakers, headphones) connected to J3/J4
-- 3.5mm audio jacks or TRS connectors compatible with EVM audio connectors
+- 3.5mm audio jacks or TRS connectors compatible with AUDIO-AM62D-EVM audio connectors
 
 **Host Computer Requirements**
 
@@ -52,53 +52,41 @@ The following hardware is required to run AM62DX EdgeAI demos:
 Software and Tools
 ==================
 
-The following software components are required on the host machine:
+The following software tools are required on the host machine to flash and access the
+AUDIO-AM62D-EVM. All runtime libraries and inference software are pre-installed on the
+EdgeAI image — no additional installation is needed on the board. Build tools for
+application or DSP firmware development are covered in the respective application docs.
 
-**SDK Components**
+.. list-table::
+   :header-rows: 1
+   :widths: 30 70
 
-- TI Processor SDK Linux for AM62DX (latest version)
-- MCU+ SDK for AM62DX (for firmware compilation)
-- Yocto build system (for building custom images)
-
-**Compilers and Tools**
-
-- ARM Clang Toolchain for ARM64 cross-compilation
-- C7000 CGT (C7x compiler) for DSP firmware
-- CMake 3.16 or higher
-- GCC, make, git
-- Python 3.7+
-
-**Development Utilities**
-
-- Balena Etcher (for SD card flashing)
-- minicom or Tera Term (for UART serial console)
-- SSH client (for remote board access)
-- scp (for file transfer)
-
-**Libraries**
-
-- libti_rpmsg_dma - RPMsg DMA library for inter-processor communication
-- ti-rpmsg-char - Character device driver for RPMsg
-- TVM runtime libraries (Neo-TVM)
-- ALSA (Advanced Linux Sound Architecture) libraries
-- libsndfile - Audio file I/O library
-- json-c - JSON parsing library
+   * - Tool
+     - Purpose
+   * - Processor SDK Linux for AM62DX
+     - Provides the SD card image to flash
+   * - Balena Etcher
+     - SD card flashing tool
+   * - minicom or Tera Term
+     - UART serial console access
+   * - SSH client / scp
+     - Remote access and file transfer
 
 .. _pub_edgeai_am62dx_evm_setup:
 
-EVM Setup and Cable Connections
-================================
+AUDIO-AM62D-EVM Setup and Cable Connections
+===========================================
 
 **Step 1: Identify Board Components and Switch Positions**
 
-The AM62D-EVM has several important components and switches:
+The AUDIO-AM62D-EVM has several important components and switches:
 
 .. figure:: /images/AM62D_evm_setup.png
    :height: 600
    :width: 1000
    :align: center
 
-   AM62D-EVM layout showing connectors, switches, and boot mode selection
+   AUDIO-AM62D-EVM layout showing connectors, switches, and boot mode selection
 
 Take note of:
 
@@ -109,7 +97,7 @@ Take note of:
 - Ethernet port (if available)
 
 Refer to the `AM62D Quick Start Guide <https://dev.ti.com/tirex/explore/node?isTheia=false&node=A__ARZXwcKmAzaWG2hcFPpKRA__PROCESSORS-DEVTOOLS__FUz-xrs__LATEST>`__
-for detailed information about EVM layout and component locations.
+for detailed information about AUDIO-AM62D-EVM layout and component locations.
 
 **Step 2: Configure Boot Mode Switches**
 
@@ -123,12 +111,12 @@ These settings select SD card as the primary boot device.
 **Step 3: Connect Power Supply**
 
 - Ensure the power adapter is disconnected
-- Connect the USB Type-C cable from the EVM to the power adapter (do not connect to computer)
-- The EVM can be powered on once all other connections are complete
+- Connect the USB Type-C cable from the AUDIO-AM62D-EVM to the power adapter (do not connect to computer)
+- The AUDIO-AM62D-EVM can be powered on once all other connections are complete
 
 **Step 4: Connect UART Cable**
 
-Connect the USB-to-UART cable to the EVM's UART port for console access:
+Connect the USB-to-UART cable to the AUDIO-AM62D-EVM UART port for console access:
 
 - On Windows: Use Device Manager to identify the COM port
 - On Linux: Use ``ls /dev/ttyUSB*`` to identify the serial port device
@@ -143,13 +131,13 @@ Connect the USB-to-UART cable to the EVM's UART port for console access:
 
 For remote SSH access and higher bandwidth:
 
-- Connect Ethernet cable from EVM to network
+- Connect Ethernet cable from AUDIO-AM62D-EVM to network
 - If using the DP83867-EVM-AM expansion board, connect it to the appropriate header first
 
 UART Serial Console Setup
 ==========================
 
-The EVM provides multiple serial ports via USB. Configure your terminal software
+The AUDIO-AM62D-EVM provides multiple serial ports via USB. Configure your terminal software
 to access the boot logs and Linux console:
 
 **On Linux with minicom:**
@@ -251,13 +239,13 @@ Power On and Initial Boot
 **Step 1: Insert SD Card**
 
 - Ensure power adapter is disconnected
-- Firmly insert the flashed SD card into the SD card slot on the EVM
+- Firmly insert the flashed SD card into the SD card slot on the AUDIO-AM62D-EVM
 - The card should be fully seated with a click
 
 **Step 2: Connect Power**
 
-- Connect the USB Type-C power adapter to the EVM
-- The EVM will automatically power on and begin booting
+- Connect the USB Type-C power adapter to the AUDIO-AM62D-EVM
+- The AUDIO-AM62D-EVM will automatically power on and begin booting
 - Boot process typically takes 15-30 seconds
 
 **Step 3: Verify Boot on UART Console**
@@ -286,7 +274,7 @@ At the login prompt, log in as the root user with no password:
    Arago login: root
    root@am62dxx-evm:~#
 
-You now have shell access to the AM62DX EVM!
+You now have shell access to the AUDIO-AM62D-EVM!
 
 Verifying System and Initialization
 ====================================
@@ -343,11 +331,11 @@ Check connected audio devices:
 Remote SSH Connection
 =====================
 
-For more convenient access and file transfer, you can connect to the EVM via SSH:
+For more convenient access and file transfer, you can connect to the AUDIO-AM62D-EVM via SSH:
 
-**Step 1: Get EVM IP Address**
+**Step 1: Get AUDIO-AM62D-EVM IP Address**
 
-On the EVM console, get the IP address:
+On the AUDIO-AM62D-EVM console, get the IP address:
 
 .. code-block:: bash
 
@@ -364,7 +352,7 @@ From your host PC, connect via SSH:
 
 .. code-block:: bash
 
-   # Connect to EVM
+   # Connect to AUDIO-AM62D-EVM
    ssh root@192.168.1.100
 
    # You should be prompted for a password (default: none for root)
@@ -381,11 +369,11 @@ For a full IDE experience with remote development:
 2. Install the "Remote Development" extension pack
 3. In VSCode, press Ctrl+Shift+P and select "Remote-SSH: Connect to Host"
 4. Enter ``root@<EVM_IP_ADDRESS>`` and connect
-5. You can now browse files and edit directly on the EVM
+5. You can now browse files and edit directly on the AUDIO-AM62D-EVM
 
 Next Steps
 ==========
 
-With the EVM now running and accessible, you're ready to proceed with building and running
-the AM62DX audio inference application. Proceed to the Linux Audio Inference Application
+With the AUDIO-AM62D-EVM now running and accessible, you're ready to proceed with building and running
+the AM62DX EdgeAI inference applications. Proceed to the Linux Audio Inference Application
 section for detailed build and usage instructions.

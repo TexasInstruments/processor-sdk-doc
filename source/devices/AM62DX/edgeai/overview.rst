@@ -47,7 +47,7 @@ cross-compile and build the applications.
 The SDK mainly comprises of three parts as shown in the illustration below.
 The Edge AI application stack is used to run audio analytics applications with
 real-time inputs/outputs. The Foundational Linux components provide OS, U-Boot,
-kernel, filesystem, Linux drivers and firmware for the C7x DSP and hardware
+kernel, filesystem, Linux drivers and DSP firmware for the C7x DSP and hardware
 accelerators.
 
 .. figure:: /images/am62dx_sdk_overview.jpg
