@@ -438,14 +438,14 @@ Supporting New Model Architectures in the Plugins
 ==================================================
 
 If your model introduces a new architecture or spectral processing scheme not covered by
-existing DSP firmware ModelIds (0=DCCRN, 1=GTCRN, 2=GCRN, 3=VGGish, 4=YAMNet), the DSP
-DSP firmware must first add support for that new ModelId. Once the DSP firmware is updated, the
-GStreamer plugins can immediately wire it in by setting the ``selected-model`` property
-to the new DSP firmware ID.
+existing DSP firmware ModelIds, the DSP DSP firmware must first add support for that new
+ModelId. Once the DSP firmware is updated, the GStreamer plugins can immediately wire it
+in by setting the ``selected-model`` property to the new DSP firmware ID.
 
 However, if you need to extend the plugins themselves to better support a new model
 category or add automatic detection logic, the following sections show the code you
-would modify in the GStreamer plugin source files.
+would modify in the GStreamer plugin source files. Section :ref:`pub_edgeai_am62dx_building_plugin`
+shows how to build the new modified plugin.
 
 Adding a New GStreamer Property to ``tidspkernel``
 --------------------------------------------------
@@ -542,6 +542,30 @@ If your new model requires an additional configuration parameter (for example, a
      }
    }
 
+**5. Verify the property is registered (after rebuild and install):**
+
+After rebuilding and installing the plugin, verify that the new property appears in the
+element's property list using ``gst-inspect-1.0``:
+
+.. code-block:: bash
+
+   root@am62dxx-evm:~# gst-inspect-1.0 tidspkernel | grep -A 5 "model-specific-param"
+
+Expected output:
+
+.. code-block:: text
+
+                     model-specific-param : Custom parameter for new model architecture
+                            flags: readable, writable
+                            Unsigned Integer. Range: 0 - 255 Default: 0
+
+If your new property appears in the output with the correct type, range, and default value,
+the registration was successful. You can now use it in GStreamer pipelines:
+
+.. code-block:: bash
+
+   gst-launch-1.0 -v ... tidspkernel name=stft ... model-specific-param=1 ... ! ...
+
 Adding a New Property to ``titvm``
 -----------------------------------
 
@@ -633,20 +657,38 @@ The ``gst_dsp_kernel_detect_model()`` function iterates this table and auto-sets
 ``selected-model``, ``model-elems``, ``fft-size``, ``hop-size``, and ``window-frames``
 when ``model-path`` contains the matching substring.
 
-Example: Using a New Model with Extended Plugin
------------------------------------------------
+.. _pub_edgeai_am62dx_building_plugin:
 
-Once you rebuild the plugin with your new properties, use them in a GStreamer command:
+Building the Modified Plugins
+------------------------------
+
+Plugin source files are located in the ``/opt/edgeai-gst-plugins/`` repository.
+
+**Source File Locations:**
+
+- ``ext/ti/gstdspkernel.h`` — Header for DSP kernel element (STFT/ISTFT/deinterleave)
+- ``ext/ti/gstdspkernel.cpp`` — Implementation of DSP kernel element
+- ``ext/ti/gsttitvm.h`` — Header for TVM inference element
+- ``ext/ti/gsttitvm.cpp`` — Implementation of TVM inference element
+- ``utility/gsttirpmsgctx.h`` / ``utility/gsttirpmsgctx.cpp`` — RPMsg context utilities
+
+After modifying any of these files, rebuild the plugin. The meson build system automatically
+detects all source files in ``ext/ti/`` — **no meson.build file changes are required**.
+
+Native Build on the Board
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: bash
 
-   gst-launch-1.0 -v filesrc location=input.wav ! wavparse ! \
-     audio/x-raw,format=S16LE,rate=16000,channels=1 ! \
-     tidspkernel name=stft msg-type=0x1020 model-path=/path/to/my_custom_model \
-       selected-model=5 model-elems=256 hop-size=256 fft-size=512 \
-       window-frames=100 \
-       model-specific-param=1 ! \
-     titvm model-path=/path/to/my_custom_model \
-       class-map-path=/path/to/my_custom_model/labels.txt top-k=3 \
-       inference-threshold=0.7 ! \
-     fakesink
+   root@am62dxx-evm:/opt/edgeai-gst-plugins# export SOC=am62d
+   root@am62dxx-evm:/opt/edgeai-gst-plugins# meson setup build --prefix=/usr \
+     -Dpkg_config_path=pkgconfig \
+     -Dtvm-plugins=enabled \
+     -Dstft-plugins=enabled \
+     -Ddl-plugins=disabled \
+     -Denable-tidl=disabled
+   root@am62dxx-evm:/opt/edgeai-gst-plugins# ninja -C build
+   root@am62dxx-evm:/opt/edgeai-gst-plugins# sudo ninja -C build install
+   root@am62dxx-evm:/opt/edgeai-gst-plugins# sudo ldconfig
+
+The updated plugin will be installed to ``/usr/lib/gstreamer-1.0/libgstti.so``.

@@ -177,9 +177,9 @@ Building on Host
       host# cp /tmp/edge-ai-install/bin/rpmsg_inference_example /mnt/rootfs/usr/bin/
       host# cp -r /tmp/edge-ai-install/share/tvm_inference/ /mnt/rootfs/usr/share/
 
-*****************
+*************************************
 Running Pipelines
-*****************
+*************************************
 
 Basic Syntax
 ============
@@ -196,15 +196,17 @@ Additional options:
    rpmsg_inference_example --version
    rpmsg_inference_example <pipeline.json> --debug
 
+******************************************
 GCRN based Speech Enhancement
-==============================
+******************************************
 
 Speech enhancement removes background noise from a recording while keeping the speech
 intelligible — useful for voice calls, meeting recordings, hearables, and any product
 that captures speech in a noisy environment.
 
+**************************************************
 How to run Linux C++ based GCRN Speech Enhancement
----------------------------------------------------
+**************************************************
 
 Run with the default WAV file input:
 
@@ -213,16 +215,18 @@ Run with the default WAV file input:
    root@am62dxx-evm:~# rpmsg_inference_example \
      /usr/share/tvm_inference/json/pipeline_speech_enhancement.json
 
+******************************************
 YAMNet & VGGish based Audio Classification
-===========================================
+******************************************
 
 Audio event classification identifies *what* sound is present in a clip — a siren,
 glass breaking, a dog barking, a machine running. YAMNet recognizes 521 general sound
 classes, while VGGish is a smaller 10-class model. Pick YAMNet for broad coverage, or
 VGGish when you need a lighter model for a fixed set of sounds.
 
+******************************************************
 How to run Linux C++ based YAMNet Audio Classification
-------------------------------------------------------
+******************************************************
 
 Run with the default WAV file input:
 
@@ -249,8 +253,9 @@ Stream raw PCM from stdin (mono, S16_LE, 16 kHz):
        /usr/share/tvm_inference/json/pipeline_audio_classification_yamnet.json \
        --stream
 
+******************************************************
 How to run Linux C++ based VGGish Audio Classification
-------------------------------------------------------
+******************************************************
 
 Run with the default WAV file input:
 

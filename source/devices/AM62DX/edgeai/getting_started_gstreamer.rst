@@ -72,15 +72,14 @@ natively on the AUDIO-AM62D-EVM:
 
 .. code-block:: console
 
-   root@am62dxx-evm:~# git clone https://github.com/TexasInstruments/edgeai-gst-plugins.git
-   root@am62dxx-evm:~# cd edgeai-gst-plugins
-   root@am62dxx-evm:~/edgeai-gst-plugins# export SOC=am62d
-   root@am62dxx-evm:~/edgeai-gst-plugins# meson setup build --prefix=/usr -Dpkg_config_path=pkgconfig \
+   root@am62dxx-evm:~# cd /opt/edgeai-gst-plugins/
+   root@am62dxx-evm:/opt/edgeai-gst-plugins# export SOC=am62d
+   root@am62dxx-evm:/opt/edgeai-gst-plugins# meson setup build --prefix=/usr -Dpkg_config_path=pkgconfig \
      -Dtvm-plugins=enabled -Dstft-plugins=enabled \
      -Ddl-plugins=disabled -Denable-tidl=disabled
-   root@am62dxx-evm:~/edgeai-gst-plugins# ninja -C build
-   root@am62dxx-evm:~/edgeai-gst-plugins# ninja -C build install
-   root@am62dxx-evm:~/edgeai-gst-plugins# ldconfig
+   root@am62dxx-evm:/opt/edgeai-gst-plugins# ninja -C build
+   root@am62dxx-evm:/opt/edgeai-gst-plugins# ninja -C build install
+   root@am62dxx-evm:/opt/edgeai-gst-plugins# ldconfig
 
 **********************
 Building on Host
@@ -161,6 +160,7 @@ Both commands must print the element details. If an element is missing, check th
 
 .. _pub_edgeai_am62dx_model_artifacts:
 
+=============================
 GCRN based Audio Enhancement
 =============================
 
@@ -239,6 +239,7 @@ Troubleshooting
 
 .. _pub_edgeai_am62dx_audio_classification:
 
+============================================
 YAMNet & VGGish based Audio Classification
 ============================================
 
