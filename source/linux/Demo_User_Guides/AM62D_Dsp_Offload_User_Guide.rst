@@ -154,6 +154,42 @@ EVM Setup
 Steps to validate audio DSP offload demo
 ****************************************
 
+There are two ways to run and visualize this demo:
+
+Using Web GUI
+=============
+
+The AM62D EVM ships with a web-based GUI portal that provides an out-of-box way to
+run and visualize the DSP offload demo from any browser on the same network — no host
+utility installation required.
+
+#. Flash and boot the EVM as described in the EVM Setup section above.
+
+#. Get the EVM IP address:
+
+   .. code-block:: console
+
+      root@am62dxx-evm:~# ifconfig
+
+#. Open a browser on your host PC and navigate to ``http://<EVM_IP>:3000``
+
+#. On the home screen, click **DSP Acceleration** or select it from the left sidebar
+   under **Demos**.
+
+#. Select **DSP Offload** from the demo options and click the run button to start the demo.
+
+#. The portal displays real-time metrics including DSP load, filter status, input/output
+   spectrum and latency.
+
+.. figure:: /images/am62dx_webgui_dspoffload.png
+   :align: center
+   :width: 80%
+
+   AM62D Web GUI — DSP Offload demo
+
+Using Python Host Utility
+=========================
+
 #. Flash an SD card with the :file:`tisdk-default-image-rt-am62dxx-evm.rootfs.wic.xz` image and follow the instructions provided at :ref:`Create SD Card <processor-sdk-linux-create-sd-card>` guide.
 
 #. Insert the flashed SD card to `AM62D EVM <https://www.ti.com/tool/AM62D EVM>`__, connect the 3.5mm jack headset/Speaker, Ethernet Cable and power on TI AM62D EVM.

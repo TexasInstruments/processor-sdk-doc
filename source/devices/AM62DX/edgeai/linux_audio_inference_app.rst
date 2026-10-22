@@ -182,15 +182,14 @@ Basic Syntax
 
 .. code-block:: console
 
-   rpmsg_inference_example <pipeline.json> [options]
-
-Additional options:
-
-.. code-block:: console
-
-   rpmsg_inference_example --help
+   rpmsg_inference_example <pipeline.json>                       # file input from JSON
+   rpmsg_inference_example <pipeline.json> --device <alsa-dev>   # live ALSA capture
+   rpmsg_inference_example <pipeline.json> --input-file <path>   # override input file
+   rpmsg_inference_example <pipeline.json> --stream              # raw PCM from stdin
+   rpmsg_inference_example <pipeline.json> --debug               # enable per-batch logs
+   rpmsg_inference_example --preload                             # preload default model
    rpmsg_inference_example --version
-   rpmsg_inference_example <pipeline.json> --debug
+   rpmsg_inference_example --help
 
 *****************************
 GCRN based Speech Enhancement
