@@ -1,8 +1,8 @@
 .. _am62dx_linux_audio_inference_app:
 
-##########################################
-How to run Linux C++ Inference Application
-##########################################
+#############################################
+Audio Inference Application (C++ Runtime)
+#############################################
 
 Introduction
 ============
@@ -68,11 +68,11 @@ To build the application from source, the following host tools are required:
      - Refer to `TI TVM Documentation <http://tvm-tidl-04.dhcp.ti.com:9090/index.html>`__
 
 *******************************
-Building on AUDIO-AM62D-EVM
+Building on AM62D EVM
 *******************************
 
 The application is pre-installed on the AM62DX EdgeAI image. If you need to rebuild it
-natively on the AUDIO-AM62D-EVM, clone the source and build:
+natively on the AM62D EVM, clone the source and build:
 
 .. code-block:: console
 
@@ -156,13 +156,13 @@ Building on Host
    - ``build/example/edge-ai/rpmsg_inference_example`` — main inference application
    - ``build/example/edge-ai/tvm_model_daemon`` — persistent model daemon
 
-#. Install to a staging directory and transfer to the AUDIO-AM62D-EVM:
+#. Install to a staging directory and transfer to the AM62D EVM:
 
    .. code-block:: console
 
       [linux-devkit]:> cmake --install build --prefix /tmp/edge-ai-install
 
-   Transfer to the AUDIO-AM62D-EVM:
+   Transfer to the AM62D EVM:
 
    .. code-block:: console
 
@@ -176,10 +176,6 @@ Building on Host
 
       host# cp /tmp/edge-ai-install/bin/rpmsg_inference_example /mnt/rootfs/usr/bin/
       host# cp -r /tmp/edge-ai-install/share/tvm_inference/ /mnt/rootfs/usr/share/
-
-*************************************
-Running Pipelines
-*************************************
 
 Basic Syntax
 ============
@@ -204,9 +200,8 @@ Speech enhancement removes background noise from a recording while keeping the s
 intelligible — useful for voice calls, meeting recordings, hearables, and any product
 that captures speech in a noisy environment.
 
-**************************************************
-How to run Linux C++ based GCRN Speech Enhancement
-**************************************************
+Speech Enhancement Pipeline using GCRN
+--------------------------------------
 
 Run with the default WAV file input:
 
@@ -224,9 +219,8 @@ glass breaking, a dog barking, a machine running. YAMNet recognizes 521 general 
 classes, while VGGish is a smaller 10-class model. Pick YAMNet for broad coverage, or
 VGGish when you need a lighter model for a fixed set of sounds.
 
-******************************************************
-How to run Linux C++ based YAMNet Audio Classification
-******************************************************
+Audio Classification pipeline using YAMNet
+------------------------------------------
 
 Run with the default WAV file input:
 
@@ -253,9 +247,8 @@ Stream raw PCM from stdin (mono, S16_LE, 16 kHz):
        /usr/share/tvm_inference/json/pipeline_audio_classification_yamnet.json \
        --stream
 
-******************************************************
-How to run Linux C++ based VGGish Audio Classification
-******************************************************
+Audio Classification Pipeline using VGGish
+------------------------------------------
 
 Run with the default WAV file input:
 

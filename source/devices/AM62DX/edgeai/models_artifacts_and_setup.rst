@@ -1,8 +1,8 @@
 .. _am62dx_edgeai_models_artifacts_and_setup:
 
-############################
-Models, Artifacts and Setup
-############################
+################################################
+Pre-Built Model Artifacts and Configuration
+################################################
 
 The AM62DX EdgeAI image ships with three pre-compiled, pre-packaged models ready to run
 out of the box — no compilation required. These models, artifacts, and setup steps are
@@ -111,7 +111,7 @@ Pre-Packaged Libraries
 **********************
 
 The following libraries are pre-installed on the AM62DX EdgeAI image. No installation
-is required to run the out-of-box pipelines on the AUDIO-AM62D-EVM.
+is required to run the out-of-box pipelines on the AM62D EVM.
 
 .. list-table::
    :header-rows: 1

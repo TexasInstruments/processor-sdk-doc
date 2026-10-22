@@ -1,8 +1,8 @@
 .. _am62dx_edgeai_oob_demo:
 
-===========================
-How to run OOB Web GUI Demo
-===========================
+=========================================
+Getting Started with the OOB Web GUI Demo
+=========================================
 
 The AM62DX EVM ships with an out-of-box web-based GUI that demonstrates EdgeAI
 capabilities directly from a browser. Once the board is powered on and connected to

@@ -1,8 +1,8 @@
 .. _pub_edgeai_am62dx_getting_started:
 
-##############################
-How to run GStreamer Pipelines
-##############################
+##############################################
+Audio Pipeline Development with GStreamer
+##############################################
 
 Introduction
 ============
@@ -63,12 +63,12 @@ To build the GStreamer plugins from source, the following host tools are require
    * - ``pkg-config``
      - Dependency resolution during build
 
-*******************************
-Building on AUDIO-AM62D-EVM
-*******************************
+
+Native Compilation on AM62D EVM
+-------------------------------
 
 The plugins are pre-installed on the AM62DX EdgeAI image. If you need to rebuild them
-natively on the AUDIO-AM62D-EVM:
+natively on the AM62D EVM, follow the steps below:
 
 .. code-block:: console
 
@@ -81,20 +81,9 @@ natively on the AUDIO-AM62D-EVM:
    root@am62dxx-evm:/opt/edgeai-gst-plugins# ninja -C build install
    root@am62dxx-evm:/opt/edgeai-gst-plugins# ldconfig
 
-**********************
-Building on Host
-**********************
 
-.. _pub_edgeai_am62dx_cross_build:
-
-For cross-building on a host machine, follow the cross-compile steps in the
-`edgeai-gst-plugins README <https://github.com/TexasInstruments/edgeai-gst-plugins#cross-compiling-the-project>`__.
-Install into the SDK target filesystem with ``DESTDIR``, then copy the libraries
-to the AUDIO-AM62D-EVM.
-
-**************************
 Verifying the Installation
-**************************
+--------------------------
 
 Execute the following command to verify the tidspkernel GStreamer plugin is installed:
 
@@ -160,9 +149,8 @@ Both commands must print the element details. If an element is missing, check th
 
 .. _pub_edgeai_am62dx_model_artifacts:
 
-=============================
 GCRN based Audio Enhancement
-=============================
+============================
 
 Speech enhancement removes background noise from a recording while keeping the speech
 intelligible — useful for voice calls, meeting recordings, hearables, and any product that
@@ -173,8 +161,8 @@ save.
 
 .. _pub_edgeai_am62dx_enhancement_command:
 
-How to run GStreamer based GCRN Audio Enhancement
--------------------------------------------------
+Speech Enhancement Pipeline using GCRN
+--------------------------------------
 
 Execute the following command to run the audio enhancement pipeline. The command writes ``/tmp/gst_enhanced.wav`` and plays the enhanced audio output through ``autoaudiosink``. Connect headphones to J3/J4 as directed in :ref:`pub_edgeai_am62dx_evm_setup` to listen to the enhanced audio.
 
@@ -209,39 +197,18 @@ For a headless run, remove the ``tee`` branch and keep only the file output:
    ... ! audio/x-raw,format=S16LE,rate=16000,channels=1 ! \
      wavenc ! filesink location=/tmp/gst_enhanced.wav
 
+.. figure:: /images/am62dx/edgeai/pipeline_gcrn.png
+   :scale: 75
+   :align: center
+
+   GStreamer data-flow for GCRN speech enhancement: input WAV → STFT on DSP → GCRN model inference on TVM → ISTFT on DSP → output WAV + playback
+
 .. _pub_edgeai_am62dx_enhancement_chunking:
-
-Troubleshooting
----------------
-
-.. list-table::
-   :header-rows: 1
-   :widths: 40 60
-
-   * - Message
-     - Action
-   * - ``max-stream-samples must be explicitly set (> 0)``
-     - Set ``max-stream-samples`` on the STFT element.
-   * - ``padded length ... exceeds dma_input capacity``
-     - Increase ``max-stream-samples`` to the padded length.
-   * - ``Invalid incoming buffer``
-     - The input is longer than ``max-stream-samples``. Increase it.
-   * - ``Model daemon handshake failed`` followed by a long wait
-     - Start the daemon, or accept the in-process load time.
-   * - ``c7x_client_open() failed — is the c7x_compute DSP firmware running?``
-     - The DSP firmware is not running. Check ``/sys/class/remoteproc/remoteproc*/state``.
-   * - ``DMA heap alloc failed``
-     - Not enough contiguous memory for the model. Reboot and retry, then check ``/proc/meminfo``.
-   * - ``TI-Offload exchange failed`` or ``DSP kernel failed: remote status=``
-     - The DSP firmware does not match the plugin. Check the DSP firmware version.
-   * - ``Failed to set pipeline to PAUSED``
-     - Run again with ``GST_DEBUG=tidspkernel:6,titvm:6`` and check the first error.
 
 .. _pub_edgeai_am62dx_audio_classification:
 
-============================================
 YAMNet & VGGish based Audio Classification
-============================================
+==========================================
 
 Audio event classification identifies *what* sound is present in a clip — a siren, glass
 breaking, a dog barking, a machine running — rather than transcribing speech. That makes it
@@ -254,8 +221,8 @@ YAMNet and VGGish differ mainly in scope: YAMNet recognizes 521 general sound cl
 VGGish is a smaller, 10-class model. Pick YAMNet for broad coverage, or VGGish when you only
 need to distinguish a small, fixed set of sounds and want a lighter model.
 
-How to run GStreamer based YAMNet Audio Classification
-------------------------------------------------------
+Audio Classification Pipeline using YAMNet
+------------------------------------------
 
 Execute the following pipeline to run GStreamer based YAMNet audio classification:
 
@@ -330,8 +297,14 @@ The following output appears:
    Setting pipeline to NULL ...
    Freeing pipeline ...``
 
-How to run GStreamer based VGGish Audio Classification
-------------------------------------------------------
+.. figure:: /images/am62dx/edgeai/pipeline_yamnet.png
+   :scale: 75
+   :align: center
+
+   GStreamer data-flow for YAMNet audio classification: input WAV → STFT on DSP → YAMNet model inference on TVM → console output
+
+Audio Classification Pipeline using VGGish
+------------------------------------------
 
 Execute the following pipeline to run GStreamer based VGGish audio classification:
 
@@ -397,15 +370,37 @@ The following output appears:
    Setting pipeline to NULL ...
    Freeing pipeline ...
 
+.. figure:: /images/am62dx/edgeai/pipeline_vggish.png
+   :scale: 75
+   :align: center
+
+   GStreamer data-flow for VGGish audio classification: input WAV → STFT on DSP → VGGish model inference on TVM → console output
+
 Troubleshooting
----------------
+===============
 
 .. list-table::
    :header-rows: 1
    :widths: 40 60
 
-   * - Symptom
-     - Action
+   * - Issue
+     - Resolution
+   * - ``max-stream-samples must be explicitly set (> 0)``
+     - Set ``max-stream-samples`` on the STFT element.
+   * - ``padded length ... exceeds dma_input capacity``
+     - Increase ``max-stream-samples`` to the padded length.
+   * - ``Invalid incoming buffer``
+     - The input is longer than ``max-stream-samples``. Increase it.
+   * - ``Model daemon handshake failed`` followed by a long wait
+     - Start the daemon, or accept the in-process load time.
+   * - ``c7x_client_open() failed — is the c7x_compute DSP firmware running?``
+     - The DSP firmware is not running. Check ``/sys/class/remoteproc/remoteproc*/state``.
+   * - ``DMA heap alloc failed``
+     - Not enough contiguous memory for the model. Reboot and retry, then check ``/proc/meminfo``.
+   * - ``TI-Offload exchange failed`` or ``DSP kernel failed: remote status=``
+     - The DSP firmware does not match the plugin. Check the DSP firmware version.
+   * - ``Failed to set pipeline to PAUSED``
+     - Run again with ``GST_DEBUG=tidspkernel:6,titvm:6`` and check the first error.
    * - ``Failed to load class-map-path``
      - Check the path, and that the file is readable.
    * - Banner prints but no predictions appear

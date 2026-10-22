@@ -1,8 +1,8 @@
 .. _am62dx_edgeai_overview:
 
-########
-Overview
-########
+########################################
+AM62DX Edge AI Platform Overview
+########################################
 
 **Welcome to Processor SDK Linux Edge AI for AM62DX!**
 
@@ -15,16 +15,17 @@ real-time performance. The AM62DX specifically supports audio modality (no visio
 for example, you can run audio analytics pipelines such as speech enhancement and
 audio classification on the C7x DSP.
 
-.. |pic1| image:: /images/am62dx_web_gui_home.png
-   :align: middle
-.. |pic2| image:: /images/am62dx_web_gui_speech_enhancement.png
-   :align: middle
-.. |pic3| image:: /images/am62dx_web_gui_audio_classification.png
-   :align: middle
+.. figure:: /images/am62dx_web_gui_home.png
+   :scale: 50
+   :align: center
 
-+--------+--------+--------+
-| |pic1| | |pic2| | |pic3| |
-+--------+--------+--------+
+   AM62DX out-of-box web GUI home screen
+
+.. figure:: /images/am62dx_web_gui_speech_enhancement_result_1.png
+   :scale: 50
+   :align: center
+
+   AM62DX out-of-box web GUI Audio Intelligence demo
 
 .. figure:: /images/edgeai/edgeai-sdk-feature.png
    :scale: 50
