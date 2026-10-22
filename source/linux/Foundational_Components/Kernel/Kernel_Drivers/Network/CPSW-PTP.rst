@@ -240,40 +240,60 @@ CPWSxG CPTS GENF0 output to HW4_TS_PUSH input.
 .. ifconfig:: CONFIG_part_variant in ('AM62AX','AM62X')
 
    The following block shows the Time Sync Router device-tree node with the mapping from CPSW3G CPTS
-   GENF0 to HW3_TS_PUSH added.
+   GENF1 to HW3_TS_PUSH added.
 
       .. code:: dts
 
          /* Include following header file */
-         #include <dt-bindings/timesync/k3-timesync-router.h>
+         #include "k3-timesync-router.h"
 
          &timesync_router {
             /* Use Time Sync Router to map CPTS GENF outputs to HW_TS_PUSH inputs */
-            mux-reg-masks-state = <
+            mux-reg-mask-val = <
                      /* pps [cpsw cpts genf1] in17 -> out12 [cpsw cpts hw3_push] */
                      K3_TS_OFFSET(12, 0x0001ffff, 17)
             >;
+            idle-states = <0x1>;
+            status = "okay";
+         };
+
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+   The following block shows the Time Sync Router device-tree node with the mapping from CPSW3G CPTS
+   GENF1 to HW3_TS_PUSH added.
+
+      .. code:: dts
+
+         /* Include following header file */
+         #include "k3-timesync-router.h"
+
+         &timesync_router {
+            /* Use Time Sync Router to map CPTS GENF outputs to HW_TS_PUSH inputs */
+            mux-reg-mask-val = <
+                     /* pps [cpsw cpts genf1] in9 -> out2 [cpsw cpts hw3_push] */
+                     K3_TS_OFFSET(2, 0xff, 9)
+            >;
+            idle-states = <0x1>;
             status = "okay";
          };
 
 .. ifconfig:: CONFIG_part_variant in ('AM64X')
 
    The following block shows the Time Sync Router device-tree node with the mapping from CPSW3G CPTS
-   GENF0 to HW4_TS_PUSH and GENF1 to HW8_TS_PUSH added.
+   GENF1 to HW8_TS_PUSH added.
 
       .. code:: dts
 
          /* Include following header file */
-         #include <dt-bindings/timesync/k3-timesync-router.h>
+         #include "k3-timesync-router.h"
 
          &timesync_router {
             /* Use Time Sync Router to map CPTS GENF outputs to HW_TS_PUSH inputs */
-            mux-reg-masks-state = <
-                     /* pps [cpsw cpts genf0] in29 -> out23 [cpsw cpts hw4_push] */
-                     K3_TS_OFFSET(23, 0x0001ffff, 29)
-                     /* pps [cpsw cpts genf1] in22 -> out37 [cpsw cpts hw8_push] */
+            mux-reg-mask-val = <
+                     /* pps [cpts genf1] in22 -> out37 [cpts hw8_push] */
                      K3_TS_OFFSET(37, 0x0001ffff, 22)
             >;
+            idle-states = <0x1>;
             status = "okay";
          };
 
@@ -285,14 +305,15 @@ CPWSxG CPTS GENF0 output to HW4_TS_PUSH input.
       .. code:: dts
 
          /* Include following header file */
-         #include <dt-bindings/timesync/k3-timesync-router.h>
+         #include "k3-timesync-router.h"
 
          &timesync_router {
             /* Use Time Sync Router to map CPTS GENF outputs to HW_TS_PUSH inputs */
-            mux-reg-masks-state = <
-                     /* pps [cpsw cpts genf1] in17 -> out25 [cpsw cpts hw4_push] */
+            mux-reg-mask-val = <
+                     /* pps [mcu cpsw cpts genf1] in17 -> out25 [mcu cpsw cpts hw4_push] */
                      K3_TS_OFFSET(25, 0x0001ffff, 17)
             >;
+            idle-states = <0x1>;
             status = "okay";
          };
 
@@ -307,6 +328,10 @@ The Input Sources for the Time Sync Router are documented at:
 .. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
    `Time Sync Router Input Sources for AM62AX <https://software-dl.ti.com/tisci/esd/latest/5_soc_doc/am62ax/interrupt_cfg.html#timesync-event-router0-interrupt-router-input-sources>`_
+
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+   `Time Sync Router Input Sources for AM62L <https://software-dl.ti.com/tisci/esd/latest/5_soc_doc/am62lx/interrupt_cfg.html#timesync-event-router0-interrupt-router-input-sources>`_
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
@@ -337,6 +362,10 @@ The Output Destinations for the Time Sync Router are documented at:
 .. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
    `Time Sync Router Output Destinations for AM62AX <https://software-dl.ti.com/tisci/esd/latest/5_soc_doc/am62ax/interrupt_cfg.html#cmp-event-introuter0-interrupt-router-output-destinations>`_
+
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
+
+   `Time Sync Router Output Destinations for AM62L <https://software-dl.ti.com/tisci/esd/latest/5_soc_doc/am62lx/interrupt_cfg.html#cmp-event-introuter0-interrupt-router-output-destinations>`_
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
@@ -397,18 +426,42 @@ The PPS support for |__PART_FAMILY_DEVICE_NAMES__| can be enabled with the follo
 
          .. code:: dts
 
-            #include <dt-bindings/timesync/k3-timesync-router.h>
+            #include "k3-timesync-router.h"
 
             &timesync_router {
                   /* Use Time Sync Router to map CPTS GENF1 to HW3_TS_PUSH for PPS */
-                  mux-reg-masks-state = <
+                  mux-reg-mask-val = <
                            /* pps [cpsw cpts genf1] in17 -> out12 [cpsw cpts hw3_push] */
                            K3_TS_OFFSET(12, 0x0001ffff, 17)
                   >;
+                  idle-states = <0x1>;
                   status = "okay";
             };
 
 .. ifconfig:: CONFIG_part_variant in ('AM64X')
+
+   1. Route the output of the CPSW3G CPTS timestamp generator function (GENFy) to one of the
+      CPSW3G CPTS timestamp generator inputs (HWx_TS_PUSH) using the Time Sync Router, by
+      modifying the device-tree node corresponding to the Time Sync Router:
+
+      For example, route CPSW3G CPTS GENF1 output to HW8_TS_PUSH input for PPS generation:
+
+         .. code:: dts
+
+            /* Include following header file */
+            #include "k3-timesync-router.h"
+
+            &timesync_router {
+                  /* Use Time Sync Router to map CPTS GENF1 to HW8_TS_PUSH for PPS */
+                  mux-reg-mask-val = <
+                           /* pps [cpts genf1] in22 -> out37 [cpts hw8_push] */
+                           K3_TS_OFFSET(37, 0x0001ffff, 22)
+                  >;
+                  idle-states = <0x1>;
+                  status = "okay";
+            };
+
+.. ifconfig:: CONFIG_part_variant in ('AM62LX')
 
    1. Route the output of the CPSW3G CPTS timestamp generator function (GENFy) to one of the
       CPSW3G CPTS timestamp generator inputs (HWx_TS_PUSH) using the Time Sync Router, by
@@ -419,18 +472,19 @@ The PPS support for |__PART_FAMILY_DEVICE_NAMES__| can be enabled with the follo
          .. code:: dts
 
             /* Include following header file */
-            #include <dt-bindings/timesync/k3-timesync-router.h>
+            #include "k3-timesync-router.h"
 
             &timesync_router {
                   /* Use Time Sync Router to map CPTS GENF1 to HW3_TS_PUSH for PPS */
-                  mux-reg-masks-state = <
-                           /* pps [cpts genf1] in22 -> out32 [cpts hw3_push] */
-                           K3_TS_OFFSET(32, 0x0001ffff, 22)
+                  mux-reg-mask-val = <
+                           /* pps [cpsw cpts genf1] in9 -> out2 [cpsw cpts hw3_push] */
+                           K3_TS_OFFSET(2, 0xff, 9)
                   >;
+                  idle-states = <0x1>;
                   status = "okay";
             };
 
-.. ifconfig:: CONFIG_part_variant in ('AM62AX','AM62X','AM64X')
+.. ifconfig:: CONFIG_part_variant in ('AM62AX','AM62X','AM62LX','AM64X')
 
    2. Inform the mapping to the CPSW3G driver, by using the "ti,pps" device-tree property
       in the cpts device-tree node present within the CPSW3G device-tree node:
@@ -454,14 +508,15 @@ The PPS support for |__PART_FAMILY_DEVICE_NAMES__| can be enabled with the follo
          .. code:: dts
 
             /* Include following header file */
-            #include <dt-bindings/timesync/k3-timesync-router.h>
+            #include "k3-timesync-router.h"
 
             &timesync_router {
                   /* Use Time Sync Router to map CPTS GENF1 to HW4_TS_PUSH for PPS */
-                  mux-reg-masks-state = <
+                  mux-reg-mask-val = <
                            /* pps [mcu cpsw cpts genf1] in17 -> out25 [mcu cpsw cpts hw4_push] */
                            K3_TS_OFFSET(25, 0x0001ffff, 17)
                   >;
+                  idle-states = <0x1>;
                   status = "okay";
             };
 
