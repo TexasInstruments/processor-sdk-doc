@@ -1,8 +1,8 @@
 .. _am62dx_edgeai_overview:
 
-########################################
-AM62DX Edge AI Platform Overview
-########################################
+########
+Overview
+########
 
 **Welcome to Processor SDK Linux Edge AI for AM62DX!**
 

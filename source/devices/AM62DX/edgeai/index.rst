@@ -1,8 +1,8 @@
 .. _audioai-index:
 
-#########################################
-AM62D EdgeAI Software Developer's Guide
-#########################################
+######################################################
+Processor SDK Linux Edge AI Software Developer’s Guide
+######################################################
 
 .. rubric:: Welcome to the AM62D EdgeAI/DL Software Developer's Guide
 
