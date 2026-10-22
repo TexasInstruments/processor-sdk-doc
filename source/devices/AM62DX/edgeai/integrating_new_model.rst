@@ -1,8 +1,8 @@
-.. _am62dx_edgeai_adding_new_model:
+.. _am62dx_edgeai_integrating_new_model:
 
-####################
-Adding a New Model
-####################
+########################
+Integrating a New Model
+########################
 
 This page covers what is needed to integrate a new deep learning model into the AM62DX
 Edge AI system. Compiling the model and updating the DSP firmware are required for all

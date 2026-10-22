@@ -9,5 +9,5 @@ devices/AM62DX/edgeai/audio_ai_model_workflow
 devices/AM62DX/edgeai/model_zoo
 devices/AM62DX/edgeai/model_compile_evaluate
 devices/AM62DX/edgeai/model_inspect
-devices/AM62DX/edgeai/adding_new_model
+devices/AM62DX/edgeai/integrating_new_model
 devices/AM62DX/edgeai/performance

@@ -4,82 +4,32 @@
 Hardware Setup and Configuration
 ======================================
 
-This section covers the hardware setup, software requirements, and initial boot process
-for the AM62D EVM to prepare it for running EdgeAI inference applications.
+This section covers the hardware setup and software configuration required to prepare
+the AM62D EVM for running EdgeAI inference applications.
 
-Hardware Prerequisites
-======================
-
-The following hardware is required to run AM62DX EdgeAI demos:
-
-**AM62D EVM Development Board**
-
-- `AM62D-EVM <https://www.ti.com/tool/AM62D EVM>`__
-- Integrated AM62DX processor with C7x DSP
-- Audio input and output connectors (J1, J2, J3, J4)
-- McASP interface for audio codec communication
-
-**Storage & Media**
-
-- SD card (minimum 16GB capacity)
-- SD card reader for flashing on host PC
-- Balena Etcher or similar SD card flashing tool
-
-**Power Supply**
-
-- USB Type-C power supply (20W recommended)
-- USB Type-C to Type-C cable for power connection to AM62D EVM
-
-**Connectivity**
-
-- USB-to-UART cable for serial console access to AM62D EVM
-- Ethernet cable and network connectivity (optional but recommended for remote access)
-- Ethernet expansion board `DP83867-EVM-AM <https://www.ti.com/tool/DP83867-EVM-AM>`__ (optional)
-
-**Audio I/O**
-
-- Audio input source (e.g., microphone, audio interface) connected to J1/J2
-- Audio output device (e.g., speakers, headphones) connected to J3/J4
-- 3.5mm audio jacks or TRS connectors compatible with AM62D EVM audio connectors
-
-**Host Computer Requirements**
-
-- Operating System: Windows 10/11 or Ubuntu 20.04/22.04 LTS
-- Memory: Minimum 4GB RAM (8GB recommended)
-- Storage: At least 10GB free space for SDK and build artifacts
-- USB ports for SD card reader and UART adapter
-
-Software and Tools
-==================
-
-The following software tools are required on the host machine to flash and access the
-AM62D EVM. All runtime libraries and inference software are pre-installed on the
-EdgeAI image — no additional installation is needed on the board. Build tools for
-application or DSP firmware development are covered in the respective application docs.
-
-.. list-table::
-   :header-rows: 1
-   :widths: 30 70
-
-   * - Tool
-     - Purpose
-   * - Processor SDK Linux for AM62DX
-     - Provides the SD card image to flash
-   * - Balena Etcher
-     - SD card flashing tool
-   * - minicom or Tera Term
-     - UART serial console access
-   * - SSH client / scp
-     - Remote access and file transfer
+Hardware setup
+==============
 
 .. _pub_edgeai_am62dx_evm_setup:
 
-AM62D EVM Setup and Cable Connections
-===========================================
+AM62D EVM
+---------
 
-**Step 1: Identify Board Components and Switch Positions**
+The AM62D EVM is a development board for audio AI applications built around the AM62DX
+processor with a dedicated C7x DSP for neural network inference and digital signal
+processing.
 
-The AM62D EVM has several important components and switches:
+To run the demos on the AM62D EVM you will require:
+
+- `AM62D EVM <https://www.ti.com/tool/AUDIO-AM62D-EVM>`__
+- Minimum 16GB SD card
+- USB Type-C power supply (20W recommended)
+- USB-to-UART cable for serial console access
+- Audio input source (e.g., microphone) connected to J1/J2
+- Audio output device (e.g., headphones) connected to J3/J4
+- Optional: Ethernet cable for remote access via `DP83867-EVM-AM <https://www.ti.com/tool/DP83867-EVM-AM>`__
+
+Connect the components to the AM62D EVM as shown below:
 
 .. figure:: /images/AM62D_evm_setup.png
    :height: 600
@@ -88,97 +38,28 @@ The AM62D EVM has several important components and switches:
 
    AM62D EVM layout showing connectors, switches, and boot mode selection
 
-Take note of:
-
-- BOOTMODE switch (SW2 and SW3) for selecting SD card boot mode
-- UART connectors (multiple serial ports)
-- Audio connectors (J1, J2 for input; J3, J4 for output)
-- Power connector (USB Type-C)
-- Ethernet port (if available)
-
 Refer to the `AM62D Quick Start Guide <https://dev.ti.com/tirex/explore/node?isTheia=false&node=A__ARZXwcKmAzaWG2hcFPpKRA__PROCESSORS-DEVTOOLS__FUz-xrs__LATEST>`__
 for detailed information about AM62D EVM layout and component locations.
 
-**Step 2: Configure Boot Mode Switches**
+Boot Mode Configuration
+-----------------------
 
 Set the BOOTMODE switches to SD card boot mode before powering on:
 
 - BOOTMODE [8:15] (SW3) = 0100 0000
 - BOOTMODE [0:7] (SW2) = 1100 0010
 
-These settings select SD card as the primary boot device.
+Audio Connectors
+----------------
 
-**Step 3: Connect Power Supply**
+- Connect audio input source to J1 and J2 (PCM6240 ADC input)
+- Connect audio output to speakers/headphones via J3 and J4 (TAD5212 DAC output)
 
-- Ensure the power adapter is disconnected
-- Connect the USB Type-C cable from the AM62D EVM to the power adapter (do not connect to computer)
-- The AM62D EVM can be powered on once all other connections are complete
+Software setup
+==============
 
-**Step 4: Connect UART Cable**
-
-Connect the USB-to-UART cable to the AM62D EVM UART port for console access:
-
-- On Windows: Use Device Manager to identify the COM port
-- On Linux: Use ``ls /dev/ttyUSB*`` to identify the serial port device
-- Install FTDI drivers if needed: https://ftdichip.com/drivers
-
-**Step 5: Connect Audio Devices**
-
-- Connect audio input source to connectors J1 and J2 (PCM6240 ADC input)
-- Connect audio output to speakers/headphones via connectors J3 and J4 (TAD5212 DAC output)
-
-**Step 6: (Optional) Connect Ethernet**
-
-For remote SSH access and higher bandwidth:
-
-- Connect Ethernet cable from AM62D EVM to network
-- If using the DP83867-EVM-AM expansion board, connect it to the appropriate header first
-
-UART Serial Console Setup
-==========================
-
-The AM62D EVM provides multiple serial ports via USB. Configure your terminal software
-to access the boot logs and Linux console:
-
-**On Linux with minicom:**
-
-.. code-block:: bash
-
-   # Install minicom if not already installed
-   sudo apt-get install minicom
-
-   # Connect to the UART port (typically /dev/ttyUSB0 for first serial port)
-   sudo minicom -D /dev/ttyUSB0 -c on
-
-   # Configuration: Set baud rate to 115200 bps
-   # To change baud rate in minicom: Ctrl+A, then Z, then B
-
-**On Windows with Tera Term:**
-
-1. Download Tera Term from https://learn.sparkfun.com/tutorials/terminal-basics/tera-term-windows
-2. Launch Tera Term and select the COM port shown in Device Manager
-3. Go to Setup → Serial port and set baud rate to 115200 bps
-4. Click OK to establish the connection
-
-**Configuration Settings:**
-
-- Baud Rate: 115200 bps
-- Data Bits: 8
-- Stop Bits: 1
-- Parity: None
-- Flow Control: None (disable hardware flow control if enabled)
-
-.. note::
-
-   If you cannot input text in minicom, disable Hardware Flow Control:
-   Press Ctrl+A, then O (Setup), then S (Serial port), and verify Flow Control is off.
-
-.. _pub_edgeai_am62dxx_flashing:
-
-Preparing and Flashing SD Card
-================================
-
-**Step 1: Download the SD Card Image**
+Preparing SD Card Image
+-----------------------
 
 Download the latest Processor SDK Linux AM62DX image from:
 
@@ -186,17 +67,13 @@ Download the latest Processor SDK Linux AM62DX image from:
 
 Look for the file: ``tisdk-edgeai-image-am62dxx-evm.rootfs.wic.xz``
 
-**Step 2: Flash the Image Using Balena Etcher**
-
-Download Balena Etcher from https://www.balena.io/etcher/
+Download Balena Etcher from https://www.balena.io/etcher/ and flash the image:
 
 .. figure:: /images/edgeai/balena_etcher.png
    :scale: 100
    :align: center
 
    Balena Etcher SD card flashing tool
-
-Steps to flash:
 
 1. Insert SD card into card reader connected to host PC
 2. Launch Balena Etcher
@@ -211,44 +88,30 @@ Steps to flash:
    Tested with Balena Etcher version 1.7.0. Some issues reported with version 1.7.2.
    If flashing fails, try a different version or use ``dd`` command on Linux.
 
-**Step 3: Expand Filesystem (if needed)**
-
-The default image is configured for 16GB SD cards. If using a larger card,
-expand the root filesystem to use the full capacity:
+If using a larger than 16GB SD card, expand the root filesystem to use the full capacity:
 
 .. code-block:: bash
 
-   # On Linux host machine:
-   # 1. Find the SD card device (e.g., /dev/sdc)
-   lsblk
-
-   # 2. Unmount partitions
+   #find the SD card device entry using lsblk (Eg: /dev/sdc)
+   #Unmount the BOOT and rootfs partition before using parted tool
    umount /dev/sdX1
    umount /dev/sdX2
 
-   # 3. Resize rootfs partition to use full card
-   sudo parted -s /dev/sdX resizepart 2 '100%'
-   sudo e2fsck -f /dev/sdX2
-   sudo resize2fs /dev/sdX2
+   #Use parted tool to resize the rootfs partition
+   parted -s /dev/sdX resizepart 2 '100%'
+   e2fsck -f /dev/sdX2
+   resize2fs /dev/sdX2
 
-   # Replace /dev/sdX with your SD card device identifier
+   #replace /dev/sdX in above commands with SD card device entry
 
-Power On and Initial Boot
-==========================
+.. _pub_edgeai_am62dxx_flashing:
 
-**Step 1: Insert SD Card**
+Power ON and Boot
+-----------------
 
-- Ensure power adapter is disconnected
-- Firmly insert the flashed SD card into the SD card slot on the AM62D EVM
-- The card should be fully seated with a click
-
-**Step 2: Connect Power**
-
-- Connect the USB Type-C power adapter to the AM62D EVM
-- The AM62D EVM will automatically power on and begin booting
-- Boot process typically takes 15-30 seconds
-
-**Step 3: Verify Boot on UART Console**
+Ensure that the power supply is disconnected before inserting the SD card.
+Once the SD card is firmly inserted and the AM62D EVM is powered ON, the board will
+boot in 15-30 seconds.
 
 Monitor the UART console for boot messages:
 
@@ -265,8 +128,6 @@ Monitor the UART console for boot messages:
    ...
    Arago login:
 
-**Step 4: Login to Linux**
-
 At the login prompt, log in as the root user with no password:
 
 .. code-block:: console
@@ -274,43 +135,65 @@ At the login prompt, log in as the root user with no password:
    Arago login: root
    root@am62dxx-evm:~#
 
-You now have shell access to the AM62D EVM!
+UART Serial Console
+-------------------
 
-Verifying System and Initialization
-====================================
+The AM62D EVM provides multiple serial ports via USB. 4 serial ports will come up on
+your PC — connect to port 0 to get the boot logs.
 
-**Check System Information**
+For **Linux** use minicom:
+
+.. code-block:: bash
+
+   sudo minicom -D /dev/ttyUSB0 -c on
+
+.. note::
+
+   If you are unable to input from keyboard, disable Hardware Flow Control in minicom:
+   Press Ctrl+A, then O (Setup), then S (Serial port), and verify Flow Control is off.
+
+For **Windows** use Tera Term:
+
+https://learn.sparkfun.com/tutorials/terminal-basics/tera-term-windows
+
+.. note::
+
+   Baud rate should be configured to 115200 bps.
+
+Connect Remotely
+----------------
+
+You can also access the AM62D EVM via SSH using the IP address shown on the console:
+
+.. code-block:: bash
+
+   root@am62dxx-evm:~# ifconfig
+
+From your host PC:
+
+.. code-block:: bash
+
+   ssh root@<EVM_IP_ADDRESS>
+
+If using Ubuntu 22.04, add the following to ``~/.ssh/config``:
+
+.. code-block:: bash
+
+   Host 192.168.*
+      HostKeyAlgorithms=+ssh-rsa
+
+For a full IDE experience, install Visual Studio Code with the "Remote Development"
+extension pack from https://code.visualstudio.com/download and connect via Remote-SSH.
+
+Verifying the System
+--------------------
 
 After logging in, verify the system is properly booted:
 
 .. code-block:: bash
 
-   # Check processor information
-   cat /proc/cpuinfo
-
-   # Check memory
-   free -h
-
-   # Check Linux version
-   uname -a
-
-**Check DSP Remoteproc**
-
-Verify the C7x DSP is available for communication:
-
-.. code-block:: bash
-
-   # List available remote processors
-   grep . /sys/class/remoteproc/remoteproc*/name
-
    # Check DSP state (should report 'running')
    cat /sys/class/remoteproc/remoteproc*/state
-
-**Check RPMsg and DMA Heap**
-
-Verify RPMsg-char and DMA heap devices are available:
-
-.. code-block:: bash
 
    # List RPMsg devices
    ls -l /dev/rpmsg*
@@ -318,62 +201,6 @@ Verify RPMsg-char and DMA heap devices are available:
    # List DMA heap devices
    ls -l /dev/dma_heap/
 
-**Audio Device Setup**
-
-Check connected audio devices:
-
-.. code-block:: bash
-
    # List ALSA audio devices
    arecord -l    # Input devices
    aplay -l      # Output devices
-
-Remote SSH Connection
-=====================
-
-For more convenient access and file transfer, you can connect to the AM62D EVM via SSH:
-
-**Step 1: Get AM62D EVM IP Address**
-
-On the AM62D EVM console, get the IP address:
-
-.. code-block:: bash
-
-   root@am62dxx-evm:~# ifconfig
-   eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>
-       inet 192.168.1.100  netmask 255.255.255.0  broadcast 192.168.1.255
-       ...
-
-Note the IP address assigned to eth0 (in this example: 192.168.1.100)
-
-**Step 2: SSH from Host Machine**
-
-From your host PC, connect via SSH:
-
-.. code-block:: bash
-
-   # Connect to AM62D EVM
-   ssh root@192.168.1.100
-
-   # You should be prompted for a password (default: none for root)
-   # If needed, use SSH config to avoid key issues (Ubuntu 22.04):
-   # Add to ~/.ssh/config:
-   # Host 192.168.*
-   #    HostKeyAlgorithms=+ssh-rsa
-
-**Step 3: Visual Studio Code Remote Development (Optional)**
-
-For a full IDE experience with remote development:
-
-1. Install Visual Studio Code from https://code.visualstudio.com/download
-2. Install the "Remote Development" extension pack
-3. In VSCode, press Ctrl+Shift+P and select "Remote-SSH: Connect to Host"
-4. Enter ``root@<EVM_IP_ADDRESS>`` and connect
-5. You can now browse files and edit directly on the AM62D EVM
-
-Next Steps
-==========
-
-With the AM62D EVM now running and accessible, you're ready to proceed with building and running
-the AM62DX EdgeAI inference applications. Proceed to the Linux Audio Inference Application
-section for detailed build and usage instructions.

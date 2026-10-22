@@ -20,7 +20,7 @@ Processor SDK Linux Edge AI Software Developer’s Guide
    model_zoo
    model_compile_evaluate
    model_inspect
-   adding_new_model
+   integrating_new_model
    performance
 
 
