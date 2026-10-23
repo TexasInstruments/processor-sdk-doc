@@ -1,19 +1,19 @@
 .. _pub_edgeai_am62dx_getting_started:
 
-##############################################
+#########################################
 Audio Pipeline Development with GStreamer
-##############################################
+#########################################
 
 Introduction
 ============
 
 The GStreamer pipeline framework on AM62DX enables real-time audio AI inference through two custom
 plugins: ``tidspkernel`` and ``titvm``. Together, they offload signal processing and neural network
-inference to the C7x DSP while orchestrating the data flow from Linux. With GStreamer, you can:
+inference to the C7x™ DSP while orchestrating the data flow from Linux. With GStreamer, you can:
 
 - **Build Custom Pipelines** — Compose audio processing chains using standard GStreamer elements
-- **DSP Offload** — Offload STFT, ISTFT, and deinterleave/interleave to the C7x DSP
-- **TVM Inference** — Run TVM-compiled models on the C7x NPU via the TVM runtime
+- **DSP Offload** — Offload STFT, ISTFT, and deinterleave/interleave to the C7x™ DSP
+- **TVM Inference** — Run TVM-compiled models on the C7x™ NPU via the TVM runtime
 - **Flexible I/O** — Read from WAV files, live ALSA input, or other GStreamer sources
 - **Direct Command-Line Control** — Use ``gst-launch-1.0`` to quickly test and prototype pipelines
 
@@ -59,13 +59,13 @@ To build the GStreamer plugins from source, the following host tools are require
    * - ``meson`` / ``ninja``
      - Build system for GStreamer plugins
    * - ARM cross-toolchain
-     - Required for host cross-build only
+     - Required for host-side cross-compilation
    * - ``pkg-config``
      - Dependency resolution during build
 
 
-Native Compilation on AM62D EVM
--------------------------------
+Native Compilation & Installation on AM62D EVM
+----------------------------------------------
 
 The plugins are pre-installed on the AM62DX EdgeAI image. If you need to rebuild them
 natively on the AM62D EVM, follow the steps below:
@@ -123,7 +123,7 @@ Execute the following command to verify the titvm GStreamer plugin is installed:
    Rank                     none (0)
    Long-name                TI TVM Inference
    Klass                    Transform/ML
-   Description              TVM inference on TI processors with C7x DSP acceleration
+   Description              TVM inference on TI processors with C7x™ DSP acceleration
    Author                   Pratham Deshmukh <p-deshmukh@ti.com>
 
    Plugin Details:
@@ -145,26 +145,26 @@ Execute the following command to verify the titvm GStreamer plugin is installed:
 
 
 Both commands must print the element details. If an element is missing, check that
-``/usr/lib/gstreamer-1.0/libgstti.so`` exists and that ``ldconfig`` has run.
+:file:`/usr/lib/gstreamer-1.0/libgstti.so` exists and that :command:`ldconfig` has run.
 
 .. _pub_edgeai_am62dx_model_artifacts:
 
-GCRN based Audio Enhancement
-============================
+GCRN based Speech Enhancement
+=============================
 
-Speech enhancement removes background noise from a recording while keeping the speech
+Speech enhancement removes background noise from input audio source while keeping the speech
 intelligible — useful for voice calls, meeting recordings, hearables, and any product that
-captures speech in a noisy environment. This pipeline runs that enhancement end to end on the
+captures speech in a noisy environment. This pipeline runs the speech enhancement on the
 board: it reads a 16 kHz mono WAV file, converts it to the frequency domain on the DSP, runs
-the GCRN model on the result, and converts the enhanced spectrum back to audio you can play or
-save.
+the GCRN model on the result, and converts the enhanced spectrum back to audio which can be played or
+saved.
 
 .. _pub_edgeai_am62dx_enhancement_command:
 
 Speech Enhancement Pipeline using GCRN
 --------------------------------------
 
-Execute the following command to run the audio enhancement pipeline. The command writes ``/tmp/gst_enhanced.wav`` and plays the enhanced audio output through ``autoaudiosink``. Connect headphones to J3/J4 as directed in :ref:`pub_edgeai_am62dx_evm_setup` to listen to the enhanced audio.
+Execute the following command to run the speech enhancement pipeline. The command writes ``/tmp/gst_enhanced.wav`` and plays the enhanced audio output through ``autoaudiosink``. Connect headphones to J3/J4 as directed in :ref:`pub_edgeai_am62dx_evm_setup` to listen to the enhanced audio.
 
 .. code-block:: bash
 
@@ -201,7 +201,7 @@ For a headless run, remove the ``tee`` branch and keep only the file output:
    :scale: 75
    :align: center
 
-   GStreamer data-flow for GCRN speech enhancement: input WAV → STFT on DSP → GCRN model inference on TVM → ISTFT on DSP → output WAV + playback
+   GStreamer data-flow for GCRN speech enhancement: input WAV → STFT on DSP → GCRN model inference → ISTFT on DSP → output WAV + playback
 
 .. _pub_edgeai_am62dx_enhancement_chunking:
 
@@ -210,7 +210,7 @@ For a headless run, remove the ``tee`` branch and keep only the file output:
 YAMNet & VGGish based Audio Classification
 ==========================================
 
-Audio event classification identifies *what* sound is present in a clip — a siren, glass
+Audio classification identifies *what* sound is present in input audio source — a siren, glass
 breaking, a dog barking, a machine running — rather than transcribing speech. That makes it
 useful for acoustic event detection, environmental and industrial sound monitoring, and
 safety or anomaly alerts triggered by sound rather than video. This pipeline runs YAMNet or
@@ -224,7 +224,7 @@ need to distinguish a small, fixed set of sounds and want a lighter model.
 Audio Classification Pipeline using YAMNet
 ------------------------------------------
 
-Execute the following pipeline to run GStreamer based YAMNet audio classification:
+Execute the command to run GStreamer based YAMNet audio classification pipeline:
 
 .. code-block:: bash
 
@@ -238,7 +238,7 @@ Execute the following pipeline to run GStreamer based YAMNet audio classificatio
        top-k=3 ! \
      fakesink
 
-The following output appears:
+Results in the following command output:
 
 .. code-block:: bash
 
@@ -301,12 +301,12 @@ The following output appears:
    :scale: 75
    :align: center
 
-   GStreamer data-flow for YAMNet audio classification: input WAV → STFT on DSP → YAMNet model inference on TVM → console output
+   GStreamer data-flow for YAMNet based audio classification: input WAV → STFT on DSP → YAMNet model inference → console output
 
 Audio Classification Pipeline using VGGish
 ------------------------------------------
 
-Execute the following pipeline to run GStreamer based VGGish audio classification:
+Execute the following pipeline to run GStreamer based VGGish audio classification pipeline:
 
 .. code-block:: bash
 
@@ -320,7 +320,7 @@ Execute the following pipeline to run GStreamer based VGGish audio classificatio
        top-k=3 ! \
      fakesink
 
-The following output appears:
+Results in the following command output:
 
 .. code-block:: bash
 
@@ -374,7 +374,7 @@ The following output appears:
    :scale: 75
    :align: center
 
-   GStreamer data-flow for VGGish audio classification: input WAV → STFT on DSP → VGGish model inference on TVM → console output
+   GStreamer data-flow for VGGish based audio classification: input WAV → STFT on DSP → VGGish model inference on TVM → console output
 
 Troubleshooting
 ===============
@@ -394,7 +394,9 @@ Troubleshooting
    * - ``Model daemon handshake failed`` followed by a long wait
      - Start the daemon, or accept the in-process load time.
    * - ``c7x_client_open() failed — is the c7x_compute DSP firmware running?``
-     - The DSP firmware is not running. Check ``/sys/class/remoteproc/remoteproc*/state``.
+     - The DSP firmware is not running. Check ``/sys/class/remoteproc/remoteproc0/state``.
+       If it shows ``offline``, reboot the evm. After  the reboot,
+       rerun ``/sys/class/remoteproc/remoteproc0/state`` it should now show ``running``
    * - ``DMA heap alloc failed``
      - Not enough contiguous memory for the model. Reboot and retry, then check ``/proc/meminfo``.
    * - ``TI-Offload exchange failed`` or ``DSP kernel failed: remote status=``

@@ -29,7 +29,7 @@ runtime, task, dataset, and model, e.g.
 
 The report has three tabs:
 
-- **Model Summary** - acceleration ratio (layers on the C7x DSP vs. Arm
+- **Model Summary** - acceleration ratio (layers on the C7x™ DSP vs. Arm
   fallback), input/output specs, and an interactive ONNX graph.
 - **Subgraphs** - the TIDL subgraph(s) offloaded to the DSP, with per-layer
   identity and a quantization analysis (INT8 vs. FP32 activation histograms and
@@ -47,7 +47,7 @@ GCRN showcase - an offloaded DSP subgraph
 =========================================
 
 Because GCRN now compiles with ``tidl_offload: true`` on AM62D, its inspector
-report shows a **real C7x DSP subgraph** rather than an all-Arm fallback:
+report shows a **real C7x™ DSP subgraph** rather than an all-Arm fallback:
 the Subgraphs tab lists a single offloaded subgraph (16-bit) with its layer
 mapping, and the Performance tab breaks that subgraph down by cycles and memory.
 Generate it with the AM62D env sourced (see :ref:`Setup <audioai-am62d-setup>`):

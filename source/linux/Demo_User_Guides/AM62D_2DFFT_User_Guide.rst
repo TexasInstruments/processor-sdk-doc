@@ -73,7 +73,7 @@ Below figure shows how this demo works:
 Hardware prerequisites
 **********************
 
-- `AM62D-EVM <https://www.ti.com/tool/AM62D EVM>`__
+- `AM62D-EVM <https://www.ti.com/tool/AUDIO-AM62D-EVM>`__
 - Secure Digital (SD) card (minimum 16GB)
 - Universal Serial Bus (USB) Type-C 20W power supply (make sure to use type-C to type-C cable)
 - USB to Universal asynchronous receiver-transmitter (UART) cable for console access
@@ -180,7 +180,7 @@ Using Console
 #. Flash an SD card with the :file:`tisdk-default-image-rt-am62dxx-evm.rootfs.wic.xz`
    image and follow the instructions provided at :ref:`Create SD Card <processor-sdk-linux-create-sd-card>` guide.
 
-#. Insert the flashed SD card into the `AM62D EVM <https://www.ti.com/tool/AM62D EVM>`__
+#. Insert the flashed SD card into the `AM62D EVM <https://www.ti.com/tool/AUDIO-AM62D-EVM>`__
    and power on the TI AM62D EVM.
 
 #. Make sure the EVM boot mode switches are positioned for SD card boot as

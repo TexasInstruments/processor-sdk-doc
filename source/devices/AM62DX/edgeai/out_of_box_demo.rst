@@ -1,8 +1,8 @@
 .. _am62dx_edgeai_oob_demo:
 
-=========================================
-Getting Started with the OOB Web GUI Demo
-=========================================
+===============================================
+Getting Started with the OOB Demo using Web GUI
+===============================================
 
 The AM62DX EVM ships with an out-of-box web-based GUI that demonstrates EdgeAI
 capabilities directly from a browser. Once the board is powered on and connected to
@@ -10,10 +10,10 @@ a network, the web portal can be accessed from any device on the same network wi
 any additional setup.
 
 The portal showcases the three core EdgeAI pipelines — home screen, speech
-enhancement, and audio classification — running on the C7x DSP via the TVM runtime.
+enhancement, and audio classification — running on the C7x™ DSP.
 
-Home Screen
-===========
+OOB Web GUI Home Screen
+=======================
 
 .. figure:: /images/am62dx_web_gui_home.png
    :align: center
@@ -21,11 +21,10 @@ Home Screen
 
    AM62DX out-of-box web GUI home screen
 
-This is the Sitara AM62D Edge AI Portal, a web-based user interface for managing and
+This is the Sitara AM62D DSP + Edge AI Portal, a web-based user interface for managing and
 evaluating Texas Instruments' AM62D Evaluation Module. The dashboard allows developers
-to launch real-time audio analytics and DSP compute demos, inspect AI models via the
-TIDL, and monitor live system telemetry like CPU load, memory footprints, and SDK software
-versions.
+to launch real-time audio analytics and DSP compute demos, and monitor live system
+telemetry like CPU load, memory footprints, and SDK software versions.
 
 To open the EdgeAI portal, follow these steps:
 
@@ -55,7 +54,7 @@ The home screen itself surfaces the board's connection state and identity at a g
 - **Info panel** — current ``SDK Version``, ``MCU+ SDK Version``, and ``TIDL Version``
   installed on the board.
 - **Device Info panel** — ``Device``, ``Board``, ``SoC`` (AM62Dx quad Cortex-A53 @ 1.4GHz +
-  C7x DSP), ``IP Address``, and system ``Uptime``.
+  C7x™ DSP), ``IP Address``, and system ``Uptime``.
 - **Runtime Status panel** — live ``CPU Load``, ``CPU Avg``, ``CPU Peak``, and ``RAM
   Used/Free``, refreshed continuously while the portal is open.
 
@@ -63,8 +62,8 @@ A status bar at the bottom of every page repeats ``Uptime``, ``CPU Load``, and `
 quick reference while you are deep in a demo page, along with the portal version, build date,
 and a link to the full documentation.
 
-Speech Enhancement
-==================
+Speech Enhancement Demo
+=======================
 
 .. figure:: /images/am62dx_web_gui_speech_enhancement.png
    :align: center
@@ -73,12 +72,12 @@ Speech Enhancement
    AM62DX web GUI — speech enhancement demo
 
 This demonstration showcases real-time speech enhancement. It integrates noise reduction
-powered by the C7x DSP with TIDL-accelerated processing to significantly improve speech quality.
+powered by the C7x™ DSP with TIDL-accelerated processing to significantly improve speech quality.
 
 Under ``Demo Selection`` on the left, three options are available:
 
-- **Speech Enhancement** — C7x DSP noise reduction + TIDL.
-- **Audio Classification** — AI-based audio event classification.
+- **Speech Enhancement** — C7x™ DSP noise reduction + TIDL.
+- **Audio Classification** — AI-based audio classification.
 - **Custom Audio Pipeline** — a generic ``gst-launch`` runner with artifact management for
   running custom GStreamer pipelines from the portal.
 
@@ -129,8 +128,8 @@ dominates the total, so this table is the quickest way to see where latency budg
 DSP is actually going.
 
 
-Audio Classification
-====================
+Audio Classification Demo
+=========================
 
 .. figure:: /images/am62dx_web_gui_audio_classification.png
    :align: center
@@ -138,7 +137,7 @@ Audio Classification
 
    AM62DX web GUI — audio classification demo
 
-This demo demonstrates audio classification using YAMNet and VGGish models on the AM62D C7x DSP.
+This demo demonstrates audio classification using YAMNet and VGGish models on the AM62D C7x™ DSP.
 
 The ``Model`` panel lets you pick the ``Classification Model`` — ``YAMNet`` (521 AudioSet
 classes, MobileNet v1) or ``VGGish`` (10 UrbanSound8K classes, VGGish features); the panel
@@ -173,7 +172,7 @@ which classes the model was close to choosing, not just the winning one.
 
    AM62DX web GUI — audio classification YAMNet demo.
 
-**VGGISH Model Result**
+**VGGish  Model Result**
 
 .. figure:: /images/am62dx_web_gui_audio_classification_vggish_result.png
    :align: center
@@ -207,10 +206,9 @@ ready, running, or idle.
 Speech Enhancement Pipeline with GCRN
 -------------------------------------
 
-This preset runs a GCRN-based noise-suppression pipeline using the C7x DSP and TIDL runtime.
+This preset runs a GCRN-based noise-suppression pipeline using the C7x™ DSP and TIDL runtime.
 
 **To run the GCRN speech enhancement pipeline:**
-
 
 1. Click the ``Speech Enhancement`` preset tab to load the pre-built command.
 2. The ``Pipeline Command`` box displays the full GStreamer command.
@@ -233,15 +231,13 @@ This preset runs a GCRN-based noise-suppression pipeline using the C7x DSP and T
 
    Output from the GCRN pipeline
 
-
 Audio Classification with YAMNet
 --------------------------------
 
-This preset runs YAMNet (AudioSet, 521 classes) using the C7x DSP for real-time audio
+This preset runs YAMNet (AudioSet, 521 classes) using the C7x™ DSP for real-time audio
 event classification.
 
 **To run the YAMNet classification pipeline:**
-
 
 1. Click the ``Classification (YAMNet)`` tab.
 2. The ``Pipeline Command`` box displays the full GStreamer command for YAMNet classification.
@@ -269,7 +265,6 @@ This preset runs VGGish (UrbanSound8K, 10 classes) for environmental sound class
 
 **To run the VGGish classification pipeline:**
 
-
 1. Click the ``Classification (VGGish)`` tab.
 2. The command is similar to YAMNet but uses VGGish model weights and UrbanSound8K class labels.
 3. Select your audio source and click ``Run Demo``.
@@ -280,7 +275,6 @@ This preset runs VGGish (UrbanSound8K, 10 classes) for environmental sound class
    :width: 80%
 
    VGGish classification pipeline command
-
 
 .. figure:: /images/am62dx_web_gui_speech_classification_gst_vggish_result.png
    :align: center

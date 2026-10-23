@@ -50,10 +50,10 @@ The SDK mainly comprises of three parts as shown in the illustration below.
   that drive audio inference using TVM-RT and open-source components.
 - **Foundational Linux components** — OS, U-Boot, kernel, filesystem, and Linux
   drivers that form the base platform.
-- **DSP firmware** — C7x DSP firmware that runs the signal chain (STFT/ISTFT) and
+- **DSP firmware** — C7x™ DSP firmware that runs the signal chain (STFT/ISTFT) and
   TVM model inference on the dedicated DSP hardware.
 
-.. figure:: /images/am62dx_edgeai_stack.png
+.. figure:: /images/am62dx_sdk_overview.png
    :scale: 80
    :align: center
 

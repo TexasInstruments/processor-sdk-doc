@@ -8,16 +8,16 @@ Introduction
 ============
 
 The AM62DX audio inference application (``rpmsg_inference_example``) is a C++ application
-for running configurable audio and tensor pipelines across Linux and the C7x DSP. It is part
+for running configurable audio and tensor pipelines across Linux and the C7x™ DSP. It is part
 of the `rpmsg-dma <https://github.com/TexasInstruments/rpmsg-dma>`__ repository. The
 application enables:
 
-- **Real-time Audio Processing** — Process live ALSA audio devices or WAV file inputs
-- **DSP Offload** — Offload STFT, ISTFT and deinterleave/interleave to the C7x DSP over RPMsg-DMA
-- **TVM Inference** — Run TVM-compiled deep learning models on the C7x NPU
+- **Real-time Audio Processing** — Process live input or WAV file inputs
+- **DSP Offload** — Offload DSP signalchains (ex :STFT, ISTFT and deinterleave/interleave) to the C7x DSP over RPMsg-DMA
+- **TVM Inference** — Run TVM-compiled deep learning models on the C7x™ NPU
 - **Flexible I/O** — WAV files, live ALSA capture, raw PCM streams, or binary tensors
 - **JSON Pipeline Configuration** — Define processing chains via JSON files
-- **Model Daemon Mode** — Persistent TVM model daemon to avoid repeated artifact loading
+- **Model Daemon Mode** — A model daemon hot-reloads artifacts without an application rebuild
 
 Supported Pipelines
 ===================
@@ -64,7 +64,7 @@ To build the application from source, the following host tools are required:
      - Build system
    * - ``make``, ``git``
      - Build utilities
-   * - Neo-TVM headers (``TVM_ROOT``)
+   * - Apache TVM headers (``TVM_ROOT``)
      - Refer to `TI TVM Documentation <http://tvm-tidl-04.dhcp.ti.com:9090/index.html>`__
 
 *********************
@@ -195,7 +195,7 @@ Basic Syntax
 GCRN based Speech Enhancement
 *****************************
 
-Speech enhancement removes background noise from a recording while keeping the speech
+Speech enhancement removes background noise from input audio source while keeping the speech
 intelligible — useful for voice calls, meeting recordings, hearables, and any product
 that captures speech in a noisy environment.
 
@@ -249,7 +249,7 @@ Run with the default WAV file input:
 YAMNet & VGGish based Audio Classification
 ******************************************
 
-Audio event classification identifies *what* sound is present in a clip — a siren,
+Audio classification identifies *what* sound is present in input audio source — a siren,
 glass breaking, a dog barking, a machine running. YAMNet recognizes 521 general sound
 classes, while VGGish is a smaller 10-class model. Pick YAMNet for broad coverage, or
 VGGish when you need a lighter model for a fixed set of sounds.

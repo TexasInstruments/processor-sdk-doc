@@ -4,7 +4,7 @@
 Processor SDK Linux Edge AI Software Developer’s Guide
 ######################################################
 
-.. rubric:: Welcome to the AM62D EdgeAI/DL Software Developer's Guide
+.. rubric:: Welcome to the AM62D EdgeAI Software Developer's Guide
 
 .. toctree::
    :maxdepth: 5
@@ -22,7 +22,6 @@ Processor SDK Linux Edge AI Software Developer’s Guide
    model_inspect
    integrating_new_model
    performance
-
 
 |
 

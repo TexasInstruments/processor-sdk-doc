@@ -66,7 +66,7 @@ Below figure shows how this demo works:
 Hardware Prerequisites
 **********************
 
-- `AM62D-EVM <https://www.ti.com/tool/AM62D EVM>`__
+- `AM62D-EVM <https://www.ti.com/tool/AUDIO-AM62D-EVM>`__
 
 - Audio devices for input (J1,J2) and output (J3,J4). ( 3.5mm audio jack and TRS compatible )
 
@@ -200,7 +200,7 @@ Using Python Host Utility
 
 #. Flash an SD card with the :file:`tisdk-default-image-rt-am62dxx-evm.rootfs.wic.xz` image and follow the instructions provided at :ref:`Create SD Card <processor-sdk-linux-create-sd-card>` guide.
 
-#. Insert the flashed SD card to `AM62D EVM <https://www.ti.com/tool/AM62D EVM>`__, connect the audio input/output, Ethernet Cable and power on TI AM62D EVM.
+#. Insert the flashed SD card to `AM62D EVM <https://www.ti.com/tool/AUDIO-AM62D-EVM>`__, connect the audio input/output, Ethernet Cable and power on TI AM62D EVM.
 
 #. Make sure the EVM boot mode switches position set for SD card boot as described earlier
 

@@ -17,7 +17,7 @@ Processor SDK 12.00.00.07.04
 - ATF 2.14+
 - OPTEE 4.9.0+
 - Yocto Master
-- Platforms Supported : AM62Dx (HS-FS, HS-SE) : `AM62D-EVM <https://www.ti.com/tool/AM62D EVM>`__
+- Platforms Supported : AM62Dx (HS-FS, HS-SE) : `AM62D-EVM <https://www.ti.com/tool/AUDIO-AM62D-EVM>`__
 
 .. note::
 

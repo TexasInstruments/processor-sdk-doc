@@ -1,6 +1,6 @@
 .. include:: <isonum.txt>
 
-.. _audioai-introduction:
+.. _edgeai-introduction:
 
 ########################
 EdgeAI Model Workflow

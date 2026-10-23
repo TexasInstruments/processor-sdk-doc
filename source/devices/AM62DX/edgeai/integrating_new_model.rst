@@ -1,8 +1,8 @@
 .. _am62dx_edgeai_integrating_new_model:
 
-########################
+#######################
 Integrating a New Model
-########################
+#######################
 
 This page covers what is needed to integrate a new deep learning model into the AM62DX
 Edge AI system. Compiling the model and updating the DSP firmware are required for all
@@ -13,16 +13,16 @@ or GStreamer pipelines — both are independent paths.
 Overview
 ********
 
-- **Compile the Model** — required; generate TVM artifacts for the C7x DSP
+- **Compile the Model** — required; generate TVM artifacts for the C7x™ DSP
 - **DSP Firmware Changes** — required; register the model in the DSP signal chain
 - **Linux Application** — use the ``rpmsg_inference_example`` application
 - **GStreamer** — use ``tidspkernel`` and ``titvm`` GStreamer elements
 
-*************************
+*****************
 Compile the Model
-*************************
+*****************
 
-Use the TVM compilation workflow to produce three artifacts for the C7x DSP:
+Use the TVM compilation workflow to produce three artifacts for the C7x™ DSP:
 
 - ``deploy_graph.json`` — graph description with input/output shapes
 - ``deploy_lib.so`` — compiled model library
@@ -99,7 +99,7 @@ Linux Application
 Using a New Model with an Existing Pipeline Type
 ================================================
 
-To bring your own model, first compile it for the AM62DX C7x NPU using the
+To bring your own model, first compile it for the AM62DX C7x™ NPU using the
 :ref:`Model Compile and Evaluate <audioai-compile-evaluate>` workflow, which produces
 the ``deploy_graph.json``, ``deploy_lib.so`` and ``deploy_param.params`` artifacts.
 
@@ -373,7 +373,7 @@ plugins working immediately. Most production use cases, though, need a model tra
 your own data — your own set of sound events, or a speech-enhancement model tuned to
 your product's microphone and acoustic environment. This section covers what it takes to
 run such a model through ``tidspkernel`` and ``titvm`` once it has been compiled for the
-AM62Dx C7x DSP.
+AM62Dx C7x™ DSP.
 
 Compiling the model itself — taking an ONNX graph through quantization and generating
 ``deploy_graph.json``, ``deploy_lib.so`` and ``deploy_param.params`` — is covered
