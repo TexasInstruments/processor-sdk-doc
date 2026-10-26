@@ -4,7 +4,7 @@
 Processor SDK Linux Software Developer's Guide
 **********************************************
 
-Placeholder text.
+Placeholder text. Kick.
 
 .. rubric:: Welcome to the Processor SDK Linux Software Developer's Guide for AM62X
 
