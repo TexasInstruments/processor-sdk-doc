@@ -4,6 +4,8 @@
 Processor SDK Linux Software Developer's Guide
 **********************************************
 
+Placeholder text.
+
 .. rubric:: Welcome to the Processor SDK Linux Software Developer's Guide for AM62X
 
 .. include:: /linux/Overview/_Processor_SDK_Linux_Software_Developers_Guide.rst
