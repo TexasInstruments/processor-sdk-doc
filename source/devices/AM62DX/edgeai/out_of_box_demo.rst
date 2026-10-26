@@ -106,7 +106,7 @@ The ``Visualization`` section plots both a spectrogram and a waveform for the ``
 reporting time, frequency, and spectral level (or sample amplitude for the waveform).
 Spectrogram controls let you switch between ``per-plot peak`` (auto-scale each spectrogram independently)
 and ``fixed -80 to 0 dB`` color scale, zoom the time axis, and **SAVE ZIP** to download the plotted data
- and waveforms for offline analysis.
+and waveforms for offline analysis.
 
 .. figure:: /images/am62dx/edgeai/web_speech_enhancement.gif
    :align: center
