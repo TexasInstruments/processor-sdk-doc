@@ -105,6 +105,13 @@ The example is under ``example/edge-ai/`` and contains:
 Building on Host
 ****************
 
+#. Clone the source repository:
+
+   .. code-block:: console
+
+      host# git clone https://github.com/TexasInstruments/rpmsg-dma.git -b main
+      host# cd rpmsg-dma
+
 #. Download and install the AM62DX Linux SDK from |__SDK_DOWNLOAD_URL__|.
    Extract the SDK tarball and run the installer script on your development host.
 
@@ -114,34 +121,13 @@ Building on Host
 
       host# source <path to linux installer>/linux-devkit/environment-setup
 
-#. Set the Neo-TVM path. Either pass it directly to CMake or export it as an
-   environment variable:
+#. Set the Neo-TVM path:
 
    .. code-block:: console
 
       host# export NEO_TVM_PATH=/path/to/neo-tvm
 
-   Or pass it on the CMake command line:
-
-   .. code-block:: console
-
-      host# cmake -S . -B build -DTVM_ROOT=/path/to/neo-tvm
-
-   If the TVM runtime library is not at ``${TVM_ROOT}/libtvm_runtime.so``, specify
-   it explicitly:
-
-   .. code-block:: console
-
-      host# cmake -S . -B build \
-              -DTVM_ROOT=/path/to/neo-tvm \
-              -DTVM_RUNTIME_LIB=/path/to/aarch64/libtvm_runtime.so
-
-#. Clone the source and build only the edge-ai example:
-
-   .. code-block:: console
-
-      host# git clone https://github.com/TexasInstruments/rpmsg-dma.git -b main
-      host# cd rpmsg-dma
+#. Build only the edge-ai example:
 
    .. code-block:: console
 
@@ -151,31 +137,24 @@ Building on Host
                          -DBUILD_SIGNAL_CHAIN_BIQUAD_EXAMPLE=OFF
       [linux-devkit]:> cmake --build build
 
-#. This builds:
+#. The following binaries are generated after a successful build:
 
    - ``build/example/edge-ai/rpmsg_inference_example`` — main inference application
    - ``build/example/edge-ai/tvm_model_daemon`` — persistent model daemon
 
-#. Install to a staging directory and transfer to the AM62D EVM:
+   Transfer the binaries to the AM62D EVM:
 
    .. code-block:: console
 
-      [linux-devkit]:> cmake --install build --prefix /tmp/edge-ai-install
-
-   Transfer to the AM62D EVM:
-
-   .. code-block:: console
-
-      host# scp /tmp/edge-ai-install/bin/rpmsg_inference_example root@<EVM_IP>:/usr/bin/
-      host# scp /tmp/edge-ai-install/bin/tvm_model_daemon root@<EVM_IP>:/usr/bin/
-      host# scp -r /tmp/edge-ai-install/share/tvm_inference/ root@<EVM_IP>:/usr/share/
+      host# scp build/example/edge-ai/rpmsg_inference_example root@<EVM_IP>:/usr/bin/
+      host# scp build/example/edge-ai/tvm_model_daemon root@<EVM_IP>:/usr/bin/
 
    Or copy directly to a mounted SD card:
 
    .. code-block:: console
 
-      host# cp /tmp/edge-ai-install/bin/rpmsg_inference_example /mnt/rootfs/usr/bin/
-      host# cp -r /tmp/edge-ai-install/share/tvm_inference/ /mnt/rootfs/usr/share/
+      host# cp build/example/edge-ai/rpmsg_inference_example /mnt/rootfs/usr/bin/
+      host# cp build/example/edge-ai/tvm_model_daemon /mnt/rootfs/usr/bin/
 
 Basic Syntax
 ============

@@ -311,6 +311,7 @@ Building the Linux inference application from sources
    .. code-block:: console
 
       [linux-devkit]:> cd <path to rpmsg-dma source>
+      [linux-devkit]:> export NEO_TVM_PATH=/path/to/neo-tvm
       [linux-devkit]:> cmake -S . -B build -DBUILD_EDGE_AI_EXAMPLE=ON \
                          -DBUILD_AUDIO_OFFLOAD_EXAMPLE=OFF \
                          -DBUILD_2DFFT_OFFLOAD_EXAMPLE=OFF \
