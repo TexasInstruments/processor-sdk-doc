@@ -1,8 +1,8 @@
 .. _pub_edgeai_am62dx_getting_started:
 
-#########################################
-Audio Pipeline Development with GStreamer
-#########################################
+#########################
+GStreamer Audio Pipelines
+#########################
 
 Introduction
 ============

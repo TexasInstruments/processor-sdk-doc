@@ -1,8 +1,8 @@
 .. _am62dx_edgeai_models_artifacts_and_setup:
 
-################################################
-Pre-Built Model Artifacts and Configuration
-################################################
+#########################
+Model Artifacts and Setup
+#########################
 
 The AM62DX EdgeAI image ships with three pre-compiled, pre-packaged models ready to run
 out of the box — no compilation required. These models, artifacts, and setup steps are

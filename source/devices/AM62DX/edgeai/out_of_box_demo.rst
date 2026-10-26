@@ -1,8 +1,8 @@
 .. _am62dx_edgeai_oob_demo:
 
-===============================================
-Getting Started with the OOB Demo using Web GUI
-===============================================
+=======================
+Out-of-Box Web GUI Demo
+=======================
 
 The AM62DX EVM ships with an out-of-box web-based GUI that demonstrates EdgeAI
 capabilities directly from a browser. Once the board is powered on and connected to
@@ -106,7 +106,7 @@ The ``Visualization`` section plots both a spectrogram and a waveform for the ``
 reporting time, frequency, and spectral level (or sample amplitude for the waveform).
 Spectrogram controls let you switch between ``per-plot peak`` (auto-scale each spectrogram independently)
 and ``fixed -80 to 0 dB`` color scale, zoom the time axis, and **SAVE ZIP** to download the plotted data
-for offline analysis and waveforms.
+ and waveforms for offline analysis.
 
 .. figure:: /images/am62dx/edgeai/web_speech_enhancement.gif
    :align: center
@@ -223,13 +223,6 @@ This preset runs a GCRN-based noise-suppression pipeline using the C7x™ DSP an
    model inference latency, and phase transitions (``PREROLLED``, ``PLAYING``, etc.).
 5. After execution, the output file is ready for playback — download it or use the play
    button to verify the noise reduction.
-
-.. figure:: /images/am62dx_web_gui_speech_enhancement_gst.png
-   :align: center
-   :width: 80%
-
-   Custom pipeline editor with GCRN-based speech enhancement command pre-loaded
-
 
 .. figure:: /images/am62dx/edgeai/web_gst_speech_enhancement_gcrn.gif
    :align: center

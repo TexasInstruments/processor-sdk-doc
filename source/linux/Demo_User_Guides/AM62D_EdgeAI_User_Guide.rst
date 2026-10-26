@@ -236,7 +236,7 @@ Using Linux Inference Application
 
 The ``rpmsg_inference_example`` C++ application provides a command-line interface to
 run the same inference pipelines. For full details on building and running the application,
-refer to :ref:`Audio Inference Application (C++ Runtime) <am62dx_linux_audio_inference_app>`.
+refer to :ref:`C++ Inference Application <am62dx_linux_audio_inference_app>`.
 
 #. Flash an SD card with the :file:`tisdk-edgeai-image-am62dxx-evm.rootfs.wic.xz`
    image and boot the EVM as described above.

@@ -1,8 +1,8 @@
 .. _am62dx_linux_audio_inference_app:
 
-#########################################
-Audio Inference Application (C++ Runtime)
-#########################################
+#########################
+C++ Inference Application
+#########################
 
 Introduction
 ============
