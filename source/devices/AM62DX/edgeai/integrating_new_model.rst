@@ -28,7 +28,7 @@ Use the TVM compilation workflow to produce three artifacts for the C7x™ DSP:
 - ``deploy_lib.so`` — compiled model library
 - ``deploy_param.params`` — model weights
 
-See :ref:`Model Compile and Evaluate <audioai-compile-evaluate>`.
+See :ref:`Model Compile and Evaluate <edgeai-compile-evaluate>`.
 
 ********************
 DSP Firmware Changes
@@ -100,7 +100,7 @@ Using a New Model with an Existing Pipeline Type
 ================================================
 
 To bring your own model, first compile it for the AM62DX C7x™ NPU using the
-:ref:`Model Compile and Evaluate <audioai-compile-evaluate>` workflow, which produces
+:ref:`Model Compile and Evaluate <edgeai-compile-evaluate>` workflow, which produces
 the ``deploy_graph.json``, ``deploy_lib.so`` and ``deploy_param.params`` artifacts.
 
 Once you have the compiled artifacts:
@@ -377,7 +377,7 @@ AM62Dx C7x™ DSP.
 
 Compiling the model itself — taking an ONNX graph through quantization and generating
 ``deploy_graph.json``, ``deploy_lib.so`` and ``deploy_param.params`` — is covered
-separately in :ref:`Model Compile and Evaluate <audioai-compile-evaluate>`. This section
+separately in :ref:`Model Compile and Evaluate <edgeai-compile-evaluate>`. This section
 assumes you already have those three artifacts and focuses on wiring them into a GStreamer
 pipeline.
 

@@ -1,12 +1,12 @@
 .. include:: <isonum.txt>
 
-.. _audioai-compile-evaluate:
+.. _edgeai-compile-evaluate:
 
 ##########################
 Model Compile and Evaluate
 ##########################
 
-The :ref:`EdgeAI Model Zoo <audioai-model-zoo>` runs *pre-compiled* artifacts
+The :ref:`EdgeAI Model Zoo <edgeai-model-zoo>` runs *pre-compiled* artifacts
 on the |__PART_FAMILY_NAME__| target. This section covers the **x86 host
 workflow** that produces those artifacts: how to compile an audio model for
 the C7\ |trade| NPU, run host-emulation inference, and measure accuracy against a
@@ -47,13 +47,13 @@ CLI - ``tidlrunner-cli`` - exposes the stages this section uses:
        speech-enhancement metrics.
    * - ``inspect``
      - One-shot compile + inference + reference comparison that emits an
-       interactive HTML analysis report (see :ref:`Model Inspect <audioai-model-inspect>`).
+       interactive HTML analysis report (see :ref:`Model Inspect <edgeai-model-inspect>`).
 
 All commands are run from the repository root (``edgeai-tidlrunner/``) and take
 ``--config_path <cfg>`` pointing at the per-model YAML. The same config file is
 reused across ``compile``, ``infer``, and ``evaluate``.
 
-.. _audioai-am62d-setup:
+.. _edgeai-am62d-setup:
 
 *****
 Setup

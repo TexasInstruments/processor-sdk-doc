@@ -1,4 +1,4 @@
-.. _audioai-index:
+.. _edgeai-index:
 
 ######################################################
 Processor SDK Linux Edge AI Software Developer’s Guide
@@ -16,7 +16,7 @@ Processor SDK Linux Edge AI Software Developer’s Guide
    models_artifacts_and_setup
    linux_audio_inference_app
    getting_started_gstreamer
-   audio_ai_model_workflow
+   edgeai_model_workflow
    model_zoo
    model_compile_evaluate
    model_inspect

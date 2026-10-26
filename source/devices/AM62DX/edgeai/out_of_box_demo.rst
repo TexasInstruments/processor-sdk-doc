@@ -37,30 +37,33 @@ The left navigation sidebar starts with ``Home``, then groups the rest into thre
 - **Demos** — ``Audio Intelligence`` (speech enhancement and audio classification) and
   ``DSP Acceleration`` (2D FFT, biquad filter chain, and workload offload via RPMsg-DMA
   compute demos).
-- **Tools** — ``AI Model Inspector`` to upload and browse TIDL model inspection reports,
-  including architecture, layer details, and performance metrics.
+- **Tools** — ``AI Model Inspector`` to upload and browse TIDL (TI Deep Learning) model
+  inspection reports, including architecture, layer details, and performance metrics.
 - **System** — ``Device Info``, ``Logs``, and ``Help``.
 
 The main panel opens with a welcome banner — ``SITARA AM62D DSP + Edge AI Portal`` — and a
 **GET STARTED** button that jumps straight to the Audio Intelligence demo. Below it, an
-**Explore Demos And Tools** panel repeats the same three entry points (Audio Intelligence, DSP
-Acceleration, AI Model Inspector) as clickable cards with a one-line description each, so a
-first-time visitor does not need to use the sidebar at all to start exploring.
+**Explore Demos And Tools** panel opens or shows the same three entry points (Audio
+Intelligence, DSP Acceleration, AI Model Inspector) as clickable cards with a one-line
+description each.
 
-The home screen itself surfaces the board's connection state and identity at a glance:
+The home screen surfaces the board's connection state and identity at a glance:
 
 - **Connection status** — top-right banner shows ``Connected to AM62D EVM`` along with the
   board's IP address.
 - **Info panel** — current ``SDK Version``, ``MCU+ SDK Version``, and ``TIDL Version``
   installed on the board.
-- **Device Info panel** — ``Device``, ``Board``, ``SoC`` (AM62Dx quad Cortex-A53 @ 1.4GHz +
-  C7x™ DSP), ``IP Address``, and system ``Uptime``.
+- **Device Info panel** — ``Device``, ``Board``, ``SoC``, ``IP Address``, and system ``Uptime``.
 - **Runtime Status panel** — live ``CPU Load``, ``CPU Avg``, ``CPU Peak``, and ``RAM
   Used/Free``, refreshed continuously while the portal is open.
 
 A status bar at the bottom of every page repeats ``Uptime``, ``CPU Load``, and ``RAM`` for
 quick reference while you are deep in a demo page, along with the portal version, build date,
 and a link to the full documentation.
+
+A theme toggle in the top navigation bar switches the entire portal between dark mode
+(default) and light mode. The selection applies immediately across all pages and persists
+as you navigate between demos.
 
 Speech Enhancement Demo
 =======================
@@ -72,12 +75,12 @@ Speech Enhancement Demo
    AM62DX web GUI — speech enhancement demo
 
 This demonstration showcases real-time speech enhancement. It integrates noise reduction
-powered by the C7x™ DSP with TIDL-accelerated processing to significantly improve speech quality.
+powered by the C7x™ DSP to significantly improve speech quality.
 
 Under ``Demo Selection`` on the left, three options are available:
 
-- **Speech Enhancement** — C7x™ DSP noise reduction + TIDL.
-- **Audio Classification** — AI-based audio classification.
+- **Speech Enhancement** — C7x™ DSP signal processing + GCRN model inference
+- **Audio Classification** — C7x™ DSP + YAMNet/VGGish classification models
 - **Custom Audio Pipeline** — a generic ``gst-launch`` runner with artifact management for
   running custom GStreamer pipelines from the portal.
 
@@ -101,10 +104,11 @@ To run the speech enhancement demo:
 The ``Visualization`` section plots both a spectrogram and a waveform for the ``Input
 (Noisy)`` and ``Output (Enhanced)`` audio, stacked one above the other, with hover tooltips
 reporting time, frequency, and spectral level (or sample amplitude for the waveform).
-Spectrogram controls let you switch between per-plot peak and a fixed -80 to 0 dB color scale,
-zoom the time axis, and **SAVE ZIP** to download the plotted data for offline analysis.
+Spectrogram controls let you switch between ``per-plot peak`` (auto-scale each spectrogram independently)
+and ``fixed -80 to 0 dB`` color scale, zoom the time axis, and **SAVE ZIP** to download the plotted data
+for offline analysis and waveforms.
 
-.. figure:: /images/am62dx_web_gui_speech_enhancement_result_1.png
+.. figure:: /images/am62dx/edgeai/web_speech_enhancement.gif
    :align: center
    :width: 80%
 
@@ -166,7 +170,7 @@ which classes the model was close to choosing, not just the winning one.
 
 **YAMNET Model Result**
 
-.. figure:: /images/am62dx_web_gui_audio_classification_yamnet_result.png
+.. figure:: /images/am62dx/edgeai/web_audio_classification_yamnet.gif
    :align: center
    :width: 80%
 
@@ -174,7 +178,7 @@ which classes the model was close to choosing, not just the winning one.
 
 **VGGish  Model Result**
 
-.. figure:: /images/am62dx_web_gui_audio_classification_vggish_result.png
+.. figure:: /images/am62dx/edgeai/web_audio_classification_vggish.gif
    :align: center
    :width: 80%
 
@@ -187,6 +191,8 @@ The ``Custom Audio Pipeline`` demo in the sidebar lets you run arbitrary GStream
 pipelines directly on the AM62D. This is useful for prototyping custom audio processing
 chains, debugging GCRN-based models with custom parameters, or testing YAMNet/VGGish
 classification on different audio sources.
+
+To use your own trained model, see :ref:`Integrating a New Model <am62dx_edgeai_integrating_new_model>`.
 
 The interface has three main areas:
 
@@ -225,7 +231,7 @@ This preset runs a GCRN-based noise-suppression pipeline using the C7x™ DSP an
    Custom pipeline editor with GCRN-based speech enhancement command pre-loaded
 
 
-.. figure:: /images/am62dx_web_gui_speech_enhancement_gst_result.png
+.. figure:: /images/am62dx/edgeai/web_gst_speech_enhancement_gcrn.gif
    :align: center
    :width: 80%
 
@@ -252,7 +258,7 @@ event classification.
 
    YAMNet pipeline command
 
-.. figure:: /images/am62dx_web_gui_speech_classification_gst_yamnet_result.png
+.. figure:: /images/am62dx/edgeai/web_gst_audio_classification_yamnet.gif
    :align: center
    :width: 80%
 
@@ -276,7 +282,7 @@ This preset runs VGGish (UrbanSound8K, 10 classes) for environmental sound class
 
    VGGish classification pipeline command
 
-.. figure:: /images/am62dx_web_gui_speech_classification_gst_vggish_result.png
+.. figure:: /images/am62dx/edgeai/web_gst_audio_classification_vggish.gif
    :align: center
    :width: 80%
 

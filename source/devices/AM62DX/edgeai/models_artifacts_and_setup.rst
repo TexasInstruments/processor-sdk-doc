@@ -30,7 +30,7 @@ Pre-Packaged Models
      - Audio classification
      - 4
      - ``/usr/share/tvm_inference/artifacts/yamnet/``
-     - 521-class AudioSet audio event classification
+     - 521-class AudioSet audio classification
    * - VGGish
      - Audio classification
      - 3
@@ -122,7 +122,7 @@ is required to run the out-of-box pipelines on the AM62D EVM.
    * - ``libti_rpmsg_dma``
      - RPMsg and DMA client library for inter-processor communication
    * - ``libtvm_runtime.so``
-     - Neo-TVM ARM64 runtime for model inference
+     - Apache TVM ARM64 runtime for model inference
    * - ``libgstti.so``
      - GStreamer plugin library containing ``tidspkernel`` and ``titvm`` elements
    * - ``libasound``

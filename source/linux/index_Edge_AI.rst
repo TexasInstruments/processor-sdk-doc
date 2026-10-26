@@ -16,7 +16,7 @@ Edge AI
 
    The SDK provides software and tools to let users run high-performance audio deep learning inference on Texas Instruments' AM62DX processor. We offer a practical embedded EdgeAI solution for smart speakers, industrial monitoring, voice interfaces, and acoustic event detection applications. The AM62DX integrates a high-performance A53 ARM processor with a dedicated C7x™ DSP optimized for neural network inference and digital signal processing. With a few simple steps one can run real-time EdgeAI pipelines such as speech enhancement and audio classification on the C7x™ DSP.
 
-   The SDK enables an interplay of open-source components such as GStreamer and deep learning runtimes such as TVM-RT. The reference applications showcase EdgeAI examples such as speech enhancement and audio classification in C++ variants. The SDK supports edit-build-debug cycles directly on the target and also on a host PC to cross compile and build the applications.
+   The SDK enables an interplay of open-source components such as GStreamer and Apache TVM. The reference applications showcase EdgeAI examples such as speech enhancement and audio classification. The SDK supports editing, building, and debugging applications directly on the target, as well as on a host PC where applications are cross-compiled and built before being deployed to the target.
 
    For more information on edge AI software stack, refer `Edge AI Documentation <https://prathamti.github.io/processor-sdk-doc/processor-sdk-edgeai-AM62DX/esd/docs/am62d-edgeai/devices/AM62DX/edgeai/index.html>`_
 

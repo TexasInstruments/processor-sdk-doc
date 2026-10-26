@@ -1,13 +1,13 @@
-.. _audioai-model-inspect:
+.. _edgeai-model-inspect:
 
 #############
 Model Inspect
 #############
 
 Model Inspector analyzes a model on the x86 host after (or instead of) the
-:ref:`compile and evaluate <audioai-compile-evaluate>` flow. It uses the same
+:ref:`compile and evaluate <edgeai-compile-evaluate>` flow. It uses the same
 edgeai-tidlrunner installation and environment described in
-:ref:`Setup <audioai-am62d-setup>`.
+:ref:`Setup <edgeai-am62d-setup>`.
 
 ***************
 Model Inspector
@@ -50,7 +50,7 @@ Because GCRN now compiles with ``tidl_offload: true`` on AM62D, its inspector
 report shows a **real C7x™ DSP subgraph** rather than an all-Arm fallback:
 the Subgraphs tab lists a single offloaded subgraph (16-bit) with its layer
 mapping, and the Performance tab breaks that subgraph down by cycles and memory.
-Generate it with the AM62D env sourced (see :ref:`Setup <audioai-am62d-setup>`):
+Generate it with the AM62D env sourced (see :ref:`Setup <edgeai-am62d-setup>`):
 
 .. code-block:: console
 

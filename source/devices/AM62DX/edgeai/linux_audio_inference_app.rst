@@ -13,7 +13,7 @@ of the `rpmsg-dma <https://github.com/TexasInstruments/rpmsg-dma>`__ repository.
 application enables:
 
 - **Real-time Audio Processing** — Process live input or WAV file inputs
-- **DSP Offload** — Offload DSP signalchains (ex :STFT, ISTFT and deinterleave/interleave) to the C7x DSP over RPMsg-DMA
+- **DSP Offload** — Offload signal chains (ex: STFT, ISTFT and deinterleave/interleave) to the C7x™ DSP over RPMsg-DMA
 - **TVM Inference** — Run TVM-compiled deep learning models on the C7x™ NPU
 - **Flexible I/O** — WAV files, live ALSA capture, raw PCM streams, or binary tensors
 - **JSON Pipeline Configuration** — Define processing chains via JSON files

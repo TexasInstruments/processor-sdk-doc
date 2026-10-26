@@ -1,12 +1,12 @@
 .. include:: <isonum.txt>
 
-.. _audioai-model-zoo:
+.. _edgeai-model-zoo:
 
 ##################
 EdgeAI Model Zoo
 ##################
 
-The AudioAI ModelZoo delivers out-of-box audio deep-learning demos that run
+The EdgeAI ModelZoo delivers out-of-box audio deep-learning demos that run
 directly on the |__PART_FAMILY_NAME__| target. Each reference model ships as an
 `ONNX <https://onnx.ai/>`__ graph plus, where applicable, a pre-compiled
 TVM-RT + TIDL artifact, so you can reproduce these examples on the AM62D without
@@ -14,7 +14,7 @@ compiling anything yourself. Two demo front-ends are provided: standalone
 Python inference scripts and Jupyter notebooks. The same on-target runtime hosts
 your own compiled artifacts once you build them through the x86 flow. This
 section runs entirely **on the target**; the x86 compile/evaluate flow is covered
-in :ref:`Model Compile and Evaluate <audioai-compile-evaluate>`.
+in :ref:`Model Compile and Evaluate <edgeai-compile-evaluate>`.
 
 .. note::
 
@@ -242,7 +242,7 @@ pass ``--output`` to change the destination wav. Expected output (abridged):
 GTCRN is already faster than real time on the Arm core, so it needs no NPU
 offload.
 
-.. _audioai-model-zoo-notebooks:
+.. _edgeai-model-zoo-notebooks:
 
 **********************
 Jupyter notebook demos
@@ -311,4 +311,4 @@ graph - there is no ``artifacts/`` folder since no TIDL compilation is
 involved. The demo script and notebook load the ONNX model directly with
 ``CPUExecutionProvider`` and run FP32 on the Arm core. Compiled TVM-RT + TIDL
 artifacts for your own models are produced by the x86 workflow in
-:ref:`Model Compile and Evaluate <audioai-compile-evaluate>`.
+:ref:`Model Compile and Evaluate <edgeai-compile-evaluate>`.

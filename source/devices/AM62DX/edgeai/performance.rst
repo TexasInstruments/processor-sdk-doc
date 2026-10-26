@@ -1,6 +1,6 @@
 .. include:: <isonum.txt>
 
-.. _audioai-performance:
+.. _edgeai-performance:
 
 #####################
 Performance Benchmark
@@ -11,7 +11,7 @@ reference |__PART_FAMILY_NAME__| EdgeAI models. The same methodology (perfsim
 estimate + on-target measured) applies to any model you compile through the
 workflow. It is **not** an accuracy or audio-quality benchmark: model quality
 (classification accuracy, PESQ / STOI / SI-SDR) is measured by the ``evaluate``
-step in :ref:`Model Compile and Evaluate <audioai-compile-evaluate>`.
+step in :ref:`Model Compile and Evaluate <edgeai-compile-evaluate>`.
 
 ***********
 Methodology
@@ -35,7 +35,7 @@ confused:
        runtime overhead.
    * - **on-target measured**
      - Wall-clock latency timed on the AM62D target while running the
-       :ref:`Model Zoo <audioai-model-zoo>` inference scripts. For the
+       :ref:`Model Zoo <edgeai-model-zoo>` inference scripts. For the
        streaming speech-enhancement models it is also expressed as a
        **real-time factor (RTF)** = processing time / audio duration; RTF < 1
        means the model keeps up with real-time audio.
@@ -133,4 +133,4 @@ Scope & Limitations
 This section does **not** assess model quality. Classification accuracy and
 speech-enhancement quality metrics are produced by ``tidlrunner-cli evaluate``
 and documented in
-:ref:`Model Compile and Evaluate <audioai-compile-evaluate>`.
+:ref:`Model Compile and Evaluate <edgeai-compile-evaluate>`.

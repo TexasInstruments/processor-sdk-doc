@@ -19,7 +19,7 @@ Replacement Variables
 '__SDK_FULL_NAME__'              : 'Processor SDK Linux EdgeAI AM62Dx'
 '__SDK_SHORT_NAME__'             : 'PSDK EdgeAI'
 '__SDK_DOWNLOAD_URL__'           : '`AM62D-SDK-Download-page <https://www.ti.com/drr/opn/AM62D-LINUX-RT-RESTRICTED-SDK>`__'
-'__AUDIOAI_SDK_VERSION__'        : '12.1'
+'__EDGEAI_SDK_VERSION__'         : '12.1'
 '__TIDL_VERSION__'               : '11_02_18_00'
 '__TIDL_TOOLS_VERSION__'         : '11.2.x'
 

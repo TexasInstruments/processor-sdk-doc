@@ -12,8 +12,8 @@ plugins: ``tidspkernel`` and ``titvm``. Together, they offload signal processing
 inference to the C7x™ DSP while orchestrating the data flow from Linux. With GStreamer, you can:
 
 - **Build Custom Pipelines** — Compose audio processing chains using standard GStreamer elements
-- **DSP Offload** — Offload STFT, ISTFT, and deinterleave/interleave to the C7x™ DSP
-- **TVM Inference** — Run TVM-compiled models on the C7x™ NPU via the TVM runtime
+- **DSP Offload** — Offload DSP signal chains (ex: STFT, ISTFT, and deinterleave/interleave) to the C7x™ DSP
+- **TVM Inference** — Run TVM-compiled AI models on the C7x™ NPU via the TVM runtime
 - **Flexible I/O** — Read from WAV files, live ALSA input, or other GStreamer sources
 - **Direct Command-Line Control** — Use ``gst-launch-1.0`` to quickly test and prototype pipelines
 
@@ -58,8 +58,8 @@ To build the GStreamer plugins from source, the following host tools are require
      - Purpose
    * - ``meson`` / ``ninja``
      - Build system for GStreamer plugins
-   * - ARM cross-toolchain
-     - Required for host-side cross-compilation
+   * - ARM cross-compiler
+     - Required only for host-side cross-compilation
    * - ``pkg-config``
      - Dependency resolution during build
 
@@ -154,17 +154,17 @@ GCRN based Speech Enhancement
 
 Speech enhancement removes background noise from input audio source while keeping the speech
 intelligible — useful for voice calls, meeting recordings, hearables, and any product that
-captures speech in a noisy environment. This pipeline runs the speech enhancement on the
-board: it reads a 16 kHz mono WAV file, converts it to the frequency domain on the DSP, runs
-the GCRN model on the result, and converts the enhanced spectrum back to audio which can be played or
-saved.
+captures speech in a noisy environment. This pipeline runs that speech enhancement full
+pipeline on the board: it reads a 16 kHz mono WAV file, converts it to the frequency domain on
+the DSP, runs the GCRN model on the result, and converts the enhanced spectrum back to audio
+which can be played or saved.
 
 .. _pub_edgeai_am62dx_enhancement_command:
 
 Speech Enhancement Pipeline using GCRN
 --------------------------------------
 
-Execute the following command to run the speech enhancement pipeline. The command writes ``/tmp/gst_enhanced.wav`` and plays the enhanced audio output through ``autoaudiosink``. Connect headphones to J3/J4 as directed in :ref:`pub_edgeai_am62dx_evm_setup` to listen to the enhanced audio.
+Execute the following command to run the speech enhancement pipeline. The command writes ``/tmp/gst_enhanced.wav`` and plays the enhanced speech output through ``autoaudiosink``. Connect headphones to J3/J4 as directed in :ref:`pub_edgeai_am62dx_evm_setup` to listen to the enhanced speech.
 
 .. code-block:: bash
 
@@ -201,7 +201,7 @@ For a headless run, remove the ``tee`` branch and keep only the file output:
    :scale: 75
    :align: center
 
-   GStreamer data-flow for GCRN speech enhancement: input WAV → STFT on DSP → GCRN model inference → ISTFT on DSP → output WAV + playback
+   GStreamer data-flow for GCRN speech enhancement: input WAV → STFT → GCRN model inference → ISTFT → output WAV + playback
 
 .. _pub_edgeai_am62dx_enhancement_chunking:
 
@@ -224,7 +224,7 @@ need to distinguish a small, fixed set of sounds and want a lighter model.
 Audio Classification Pipeline using YAMNet
 ------------------------------------------
 
-Execute the command to run GStreamer based YAMNet audio classification pipeline:
+Execute the following command to run GStreamer based YAMNet audio classification pipeline:
 
 .. code-block:: bash
 
@@ -238,9 +238,10 @@ Execute the command to run GStreamer based YAMNet audio classification pipeline:
        top-k=3 ! \
      fakesink
 
-Results in the following command output:
+YAMNet Command Output
+~~~~~~~~~~~~~~~~~~~~~
 
-.. code-block:: bash
+.. code-block:: text
 
    root@am62dxx-evm:~# gst-launch-1.0 -v filesrc location=/usr/share/tvm_inference/input/urbansound_16k.wav ! \
    Setting pipeline to PAUSED ...
@@ -301,12 +302,12 @@ Results in the following command output:
    :scale: 75
    :align: center
 
-   GStreamer data-flow for YAMNet based audio classification: input WAV → STFT on DSP → YAMNet model inference → console output
+   GStreamer data-flow for YAMNet based audio classification: input WAV → STFT → YAMNet model inference → console output
 
 Audio Classification Pipeline using VGGish
 ------------------------------------------
 
-Execute the following pipeline to run GStreamer based VGGish audio classification pipeline:
+Execute the following command to run GStreamer based VGGish audio classification pipeline:
 
 .. code-block:: bash
 
@@ -314,20 +315,21 @@ Execute the following pipeline to run GStreamer based VGGish audio classificatio
      wavparse ! audio/x-raw,format=S16LE,rate=16000,channels=1 ! \
      tidspkernel name=stft msg-type=0x1020 \
        model-path=/usr/share/tvm_inference/artifacts/vggish \
-       hop-size=160 window-frames=126 batch-size=64 ! \
+       hop-size=512 window-frames=126 batch-size=64 ! \
      titvm model-path=/usr/share/tvm_inference/artifacts/vggish \
        class-map-path=/usr/share/tvm_inference/labels/vggish_label_list.txt \
        top-k=3 ! \
      fakesink
 
-Results in the following command output:
+VGGish Command Output
+~~~~~~~~~~~~~~~~~~~~~
 
-.. code-block:: bash
+.. code-block:: text
 
    Setting pipeline to PAUSED ...
    [TVM] Live top-3 prediction printing enabled (10 classes from /usr/share/tvm_inference/labels/vggish_label_list.txt)
-   eptdev = rpmsg-char-8-1464
-   Created endpt device rpmsg-char-8-1464, fd = 7 port = 1027
+   eptdev = rpmsg-char-8-1295
+   Created endpt device rpmsg-char-8-1295, fd = 7 port = 1027
    Pipeline is PREROLLING ...
    /GstPipeline:pipeline0/GstWavParse:wavparse0.GstPad:src: caps = audio/x-raw, format=(string)S16LE, layout=(string)interleaved, channels=(int)1, rate=(int)16000
    /GstPipeline:pipeline0/GstCapsFilter:capsfilter0.GstPad:src: caps = audio/x-raw, format=(string)S16LE, layout=(string)interleaved, channels=(int)1, rate=(int)16000
@@ -342,39 +344,20 @@ Results in the following command output:
    Redistribute latency...
    New clock: GstSystemClock
    Top-3 predictions for window 1:
-      1. Drilling: 15.796625
-      2. Street music: -1.641208
-      3. Car horn: -3.077265
-   Top-3 predictions for window 2:
-      1. Drilling: 10.873002
-      2. Car horn: 0.205151
-      3. Street music: -2.051510
-   Top-3 predictions for window 3:
-      1. Drilling: 9.642096
-      2. Car horn: 1.025755
-      3. Street music: -2.256661
-   Top-3 predictions for window 4:
-      1. Engine idling: 7.180284
-      2. Children playing: 1.436057
-      3. Dog bark: -0.820604
-   Top-3 predictions for window 5:
-      1. Children playing: 1.846359
-      2. Dog bark: 1.025755
-      3. Engine idling: 0.410302
-   Top-3 predictions for window 6:
-      1. Children playing: 2.051510
-      2. Dog bark: 1.025755
-      3. Engine idling: 0.820604
+      1. Street music: 8.411190
+      2. Children playing: 8.206039
+      3. Air conditioner: -4.513321
    Got EOS from element "pipeline0".
-   Execution ended after 0:00:00.338050160
+   Execution ended after 0:00:00.082239915
    Setting pipeline to NULL ...
    Freeing pipeline ...
+
 
 .. figure:: /images/am62dx/edgeai/pipeline_vggish.png
    :scale: 75
    :align: center
 
-   GStreamer data-flow for VGGish based audio classification: input WAV → STFT on DSP → VGGish model inference on TVM → console output
+   GStreamer data-flow for VGGish based audio classification: input WAV → STFT → VGGish model inference → console output
 
 Troubleshooting
 ===============

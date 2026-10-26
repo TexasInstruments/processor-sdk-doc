@@ -25,8 +25,8 @@ To run the demos on the AM62D EVM you will require:
 - Minimum 16GB SD card
 - USB2.0 Type-C ports (5V‐15V input range)
 - USB-to-UART cable for serial console access
-- Audio input source (e.g., microphone) connected to J1/J2 3.5mm Jack
-- Audio output device (e.g., headphones) connected to J3/J4 3.5mm Jack
+- Audio input source (e.g., microphone) connected to J1/J2 3.5mm TRS Port
+- Audio output device (e.g., headphones) connected to J3/J4 3.5mm TRS Port
 - Required: Ethernet cable for remote access via `DP83867-EVM-AM <https://www.ti.com/tool/DP83867-EVM-AM>`__
 
 Connect the components to the AM62D EVM as shown below:
@@ -60,7 +60,7 @@ Audio Connectors
 ----------------
 
 - Connect audio input source to J1 and J2 TRS 3.5mm Jacks (PCM6240 ADC input) (Refer Fig: 2.1)
-- Connect audio output to speakers/headphones via J3 and J4 (TAD5212 DAC output)
+- Connect audio output to speakers/headphones via J3 and J4 TRS 3.5mm Jacks (TAD5212 DAC output)
 
 Software setup
 ==============
@@ -188,9 +188,9 @@ You can also access the AM62D EVM via SSH using the IP address shown on the cons
 
 From your host PC:
 
-.. code-block:: bash
+.. code-block:: console
 
-   ssh root@<EVM_IP_ADDRESS>
+   host# ssh root@<EVM_IP_ADDRESS>
 
 If using Ubuntu 22.04, add the following to ``~/.ssh/config``:
 

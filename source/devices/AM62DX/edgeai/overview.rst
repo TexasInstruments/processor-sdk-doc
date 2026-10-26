@@ -15,17 +15,11 @@ real-time performance. The AM62DX specifically supports audio modality to run
 audio analytics pipelines such as speech enhancement and audio classification
 on the DSP.
 
-.. figure:: /images/am62dx_web_gui_home.png
-   :scale: 50
+.. figure:: /images/am62dx/edgeai/web_home_screen.gif
+   :scale: 30
    :align: center
 
    AM62DX out-of-box web GUI home screen
-
-.. figure:: /images/am62dx_web_gui_speech_enhancement_result_1.png
-   :scale: 50
-   :align: center
-
-   AM62DX out-of-box web GUI Audio Intelligence demo
 
 .. figure:: /images/edgeai/edgeai-sdk-feature.png
    :scale: 50
@@ -34,9 +28,9 @@ on the DSP.
    Processor SDK Linux Edge AI for AM62DX feature overview
 
 The SDK enables an interplay of open-source components such as GStreamer and
-deep learning runtimes such as TVM-RT. The SDK supports edit-build-debug
-cycles directly on the target and also on a host PC to cross-compile and
-build the applications.
+Apache TVM. The SDK supports editing, building, and debugging applications directly
+on the target, as well as on a host PC where applications are cross-compiled and
+built before being deployed to the target.
 
 .. figure:: /images/am62dx_open_src_comp.png
    :scale: 50
@@ -48,10 +42,10 @@ The SDK mainly comprises of three parts as shown in the illustration below.
 
 - **Edge AI application stack** — Linux-side applications and GStreamer pipelines
   that drive audio inference using TVM-RT and open-source components.
-- **Foundational Linux components** — OS, U-Boot, kernel, filesystem, and Linux
+- **Foundational Linux components** — AArch64 Linux , secure boot, filesystem, and Linux
   drivers that form the base platform.
-- **DSP firmware** — C7x™ DSP firmware that runs the signal chain (STFT/ISTFT) and
-  TVM model inference on the dedicated DSP hardware.
+- **MCU+ SDK** — firmware framework for the C7x™ DSP, handles signal chains (STFT/ISTFT, pre/post-processing)
+  and model dispatch. Includes build system and flashing utilities.
 
 .. figure:: /images/am62dx_sdk_overview.png
    :scale: 80

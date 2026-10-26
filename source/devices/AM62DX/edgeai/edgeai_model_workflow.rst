@@ -7,8 +7,8 @@ EdgeAI Model Workflow
 ########################
 
 This guide walks through the workflow for developing and deploying audio
-deep-learning (EdgeAI/DL) models on the |__PART_FAMILY_NAME__| platform, using
-|__SDK_FULL_NAME__| |__AUDIOAI_SDK_VERSION__|. It is written for embedded
+deep-learning (DL) models on the |__PART_FAMILY_NAME__| platform, using
+|__SDK_FULL_NAME__| |__EDGEAI_SDK_VERSION__|. It is written for embedded
 developers who want to run, compile, evaluate, and benchmark audio models on the
 AM62D - either out of the box on the target with pre-compiled artifacts, or
 through the x86 compile/evaluate workflow.
@@ -20,15 +20,15 @@ bring-your-own-model (BYOM) flow that accepts any supported `ONNX
 
 The remaining sections cover:
 
-- :ref:`EdgeAI Model Zoo <audioai-model-zoo>` - out-of-box demos on the AM62D
+- :ref:`EdgeAI Model Zoo <edgeai-model-zoo>` - out-of-box demos on the AM62D
   target (inference scripts and Jupyter notebooks) using pre-trained models and
   pre-compiled artifacts.
-- :ref:`Model Compile and Evaluate <audioai-compile-evaluate>` - the
+- :ref:`Model Compile and Evaluate <edgeai-compile-evaluate>` - the
   x86 BYOM workflow built on ``edgeai-tidlrunner``: compile a model for the AM62D
   and evaluate accuracy on a dataset.
-- :ref:`Model Inspect <audioai-model-inspect>` - analyze the compiled subgraphs
+- :ref:`Model Inspect <edgeai-model-inspect>` - analyze the compiled subgraphs
   and per-layer behavior with Model Inspector.
-- :ref:`Performance benchmark <audioai-performance>` - latency and memory
+- :ref:`Performance benchmark <edgeai-performance>` - latency and memory
   methodology with per-model tables.
 
 ********************
@@ -37,16 +37,16 @@ Development workflow
 
 The end-to-end path is the same for a reference model or your own model:
 
-#. **Obtain an ONNX model** - a reference graph shipped with the AudioAI ModelZoo,
+#. **Obtain an ONNX model** - a reference graph shipped with the EdgeAI ModelZoo,
    or your own exported ONNX.
 #. **Compile** it for the C7\ |trade| NPU on an x86 host (:ref:`Model Compile and
-   Evaluate <audioai-compile-evaluate>`).
+   Evaluate <edgeai-compile-evaluate>`).
 #. **Evaluate** accuracy or audio-quality metrics on a dataset.
 #. **Inspect** the compiled subgraphs and per-layer analysis (:ref:`Model
-   Inspect <audioai-model-inspect>`).
+   Inspect <edgeai-model-inspect>`).
 #. **Run** on the AM62D target using the compiled artifact
-   (:ref:`EdgeAI Model Zoo <audioai-model-zoo>`).
-#. **Benchmark** latency and memory (:ref:`Performance <audioai-performance>`).
+   (:ref:`EdgeAI Model Zoo <edgeai-model-zoo>`).
+#. **Benchmark** latency and memory (:ref:`Performance <edgeai-performance>`).
 
 ****************
 Reference models
@@ -56,7 +56,7 @@ Four reference models are provided across two task families, as worked examples
 of the workflow. Each is delivered as an `ONNX <https://onnx.ai/>`__ graph and,
 except for GTCRN, is offloaded to the C7\ |trade| NPU through the TVM runtime
 (TVM-RT); GTCRN is the one that runs ARM-only. See :ref:`the framework overview
-<audioai-tvm-tidl>` below for what that means. The same flow accepts your own
+<edgeai-tvm-tidl>` below for what that means. The same flow accepts your own
 ONNX model, and more reference models will be added over time.
 
 Audio analysis and classification
@@ -93,7 +93,7 @@ Speech enhancement
 Both speech-enhancement models are evaluated on the VoiceBank-DEMAND-16k
 dataset.
 
-.. _audioai-tvm-tidl:
+.. _edgeai-tvm-tidl:
 
 ********************
 TVM + TIDL framework
