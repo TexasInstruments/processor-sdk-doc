@@ -39,3 +39,6 @@ bdebstrap
 fdisk
 mmdebstrap
 umount
+Isense
+Vpredict
+unmute
