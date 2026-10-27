@@ -161,9 +161,46 @@ EVM Setup
 Steps to run Cascade Biquad Parametric EQ demo
 **********************************************
 
+There are two ways to run and visualize this demo:
+
+Using Web GUI
+=============
+
+The AM62D EVM includes a web-based GUI portal that provides an out-of-box way to
+run and visualize the Cascade Biquad Parametric EQ demo from any browser on the same
+network — no host utility installation required.
+
+#. Flash and boot the EVM as described in the EVM Setup section above.
+
+#. Get the EVM IP address:
+
+   .. code-block:: console
+
+      root@am62dxx-evm:~# ifconfig
+
+#. Open a browser on your host PC and navigate to ``http://<EVM_IP>:3000``
+
+#. On the home screen, click **DSP Acceleration** or select it from the left sidebar
+   under **Demos**.
+
+#. Select **Cascade Biquad** from the demo options and click the run button to start
+   the demo.
+
+#. The portal displays real-time metrics including DSP load, cycle count, throughput,
+   and EQ filter controls.
+
+.. figure:: /images/am62dx_webgui_cascade_biquad.png
+   :align: center
+   :width: 80%
+
+   AM62D Web GUI — Cascade Biquad Parametric EQ demo
+
+Using Python Host Utility
+=========================
+
 #. Flash an SD card with the :file:`tisdk-default-image-rt-am62dxx-evm.rootfs.wic.xz` image and follow the instructions provided at :ref:`Create SD Card <processor-sdk-linux-create-sd-card>` guide.
 
-#. Insert the flashed SD card to `AUDIO-AM62D-EVM <https://www.ti.com/tool/AUDIO-AM62D-EVM>`__, connect the audio input/output, Ethernet Cable and power on TI AUDIO-AM62D-EVM.
+#. Insert the flashed SD card to `AM62D EVM <https://www.ti.com/tool/AUDIO-AM62D-EVM>`__, connect the audio input/output, Ethernet Cable and power on TI AM62D EVM.
 
 #. Make sure the EVM boot mode switches position set for SD card boot as described earlier
 

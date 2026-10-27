@@ -18,10 +18,25 @@ The SDK supports the following Out-Of-Box demo-applications
    Display_Cluster_User_Guide
    TI_LVGL_Demo_User_Guide
    GUI_Frameworks_User_Guide
+   EV_charging_Demo_User_Guide.rst
+
+AM62D DSP Offload Demos
+=======================
+
+.. toctree::
+   :maxdepth: 1
+
    AM62D_Dsp_Offload_User_Guide.rst
    AM62D_2DFFT_User_Guide.rst
    AM62D_Cascade_Biquad_Parametric_EQ_User_Guide.rst
-   EV_charging_Demo_User_Guide.rst
+
+AM62D Edge AI Demos
+===================
+
+.. toctree::
+   :maxdepth: 1
+
+   AM62D_EdgeAI_User_Guide.rst
 
 .. ifconfig:: CONFIG_sdk in ('j7_foundational')
 
