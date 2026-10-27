@@ -35,15 +35,15 @@ Below figure shows how this demo works:
    .. figure:: /images/AM62D_dsp_signal_chain_audio_offload.png
       :height: 80
       :width: 1000
-      
+
    - CasadeBiquad Low-Pass Filter: This filter is a three-stage, direct form 1 design with a low-pass cut-off frequency of 10KHz.
-       
+
    - CasadeBiquad High-Pass Filter: This filter is also a three-stage, direct form 1 design with a high-pass cut-off frequency of 2KHz.
 
    - Finite Impulse Response(FIR) Low-Pass Filter: This filter is a 64-tap low-pass filter with a cut-off frequency of 8KHz.
-       
+
    - Real Fast Fourier Transform(FFT) and Inverse Fast Fourier Transform(IFFT) Real: Perform FFT and IFFT of a real signal.
-       
+
    - Matrix Transpose: Convert the data format between de-interleaved and interleaved formats within the signal chain.
 
 - Step 6: Processed data copied back to shared DMA Buffer (DDR)
@@ -90,9 +90,9 @@ Hardware Prerequisites
     - Windows: |__WINDOWS_SUPPORTED_LONG__|
 
     - Ubuntu: |__LINUX_UBUNTU_VERSION_LONG__|
-      
+
   - Memory: Minimum 4GB RAM (8GB or more recommended)
-  
+
   - Storage: At least 10GB of free space
 
 ******************
@@ -137,7 +137,7 @@ EVM Setup
 
    - In windows, you can use the "Device Manager" to see the detected UART ports
      - Search "Device Manager" in Windows Search Box in the Windows taskbar.
-       
+
    - If you do not see any USB serial ports listed in "Device Manager" under "Ports (COM & LPT)", then make sure you have installed the UART to USB driver from `FTDI <https://www.ftdichip.com/drivers>`__.
 
    - For A53 Linux console select UART boot port (ex: COM34 in below screenshot), keep other options to default and set 115200 baud rate.
@@ -147,16 +147,52 @@ EVM Setup
    - EVM SD card  boot mode setting:
 
      - BOOTMODE [ 8 : 15 ] (SW3) = 0100 0000
-       
+
      - BOOTMODE [ 0 : 7 ] (SW2) = 1100 0010
 
 ****************************************
 Steps to validate audio DSP offload demo
 ****************************************
 
+There are two ways to run and visualize this demo:
+
+Using Web GUI
+=============
+
+The AM62D EVM includes a web-based GUI portal that provides an out-of-box way to
+run and visualize the DSP offload demo from any browser on the same network — no host
+utility installation required.
+
+#. Flash and boot the EVM as described in the EVM Setup section above.
+
+#. Get the EVM IP address:
+
+   .. code-block:: console
+
+      root@am62dxx-evm:~# ifconfig
+
+#. Open a browser on your host PC and navigate to ``http://<EVM_IP>:3000``
+
+#. On the home screen, click **DSP Acceleration** or select it from the left sidebar
+   under **Demos**.
+
+#. Select **DSP Offload** from the demo options and click the run button to start the demo.
+
+#. The portal displays real-time metrics including DSP load, filter status, input/output
+   spectrum and latency.
+
+.. figure:: /images/am62dx_webgui_dspoffload.png
+   :align: center
+   :width: 80%
+
+   AM62D Web GUI — DSP Offload demo
+
+Using Python Host Utility
+=========================
+
 #. Flash an SD card with the :file:`tisdk-default-image-rt-am62dxx-evm.rootfs.wic.xz` image and follow the instructions provided at :ref:`Create SD Card <processor-sdk-linux-create-sd-card>` guide.
 
-#. Insert the flashed SD card to `AUDIO-AM62D-EVM <https://www.ti.com/tool/AUDIO-AM62D-EVM>`__, connect the 3.5mm jack headset/Speaker, Ethernet Cable and power on TI AUDIO-AM62D-EVM.
+#. Insert the flashed SD card to `AM62D EVM <https://www.ti.com/tool/AUDIO-AM62D-EVM>`__, connect the 3.5mm jack headset/Speaker, Ethernet Cable and power on TI AM62D EVM.
 
 #. Make sure the EVM boot mode switches position set for SD card boot as described earlier
 
@@ -183,14 +219,14 @@ Steps to validate audio DSP offload demo
       root@am62dxx-evm:~# rpmsg_audio_offload_example
 
 #. On host machine launch the :file:`audiomon.py` utility either in IP mode or UART mode
-   
+
    - IP Mode
-     
+
    .. code-block:: console
 
       # python audmon.py ip <EVM IP address>
       Ex: # python audmon.py ip 192.168.0.101
-   
+
    - UART mode
 
    .. code-block:: console
@@ -203,11 +239,11 @@ Steps to validate audio DSP offload demo
    - Real-time visualization of:
 
      - Frame-level average amplitude (dBFS)
-     
+
      - latency tracking
-     
+
      - Avg load
-     
+
      - Input/output FFT spectrum (only in IP mode)
 
    - Command interface to toggle features (e.g., enabling/disabling FFT filter)
@@ -219,9 +255,9 @@ Steps to validate audio DSP offload demo
    - For more information refer: `README <https://github.com/TexasInstruments/rpmsg-dma/blob/main/example/audio_offload/host%20utility/README.md>`_.
 
 .. note::
-   
+
    Input/output audio spectrum plotting is only supported in IP mode. UART mode supports only metrics and command interface, not audio data streams.
-   
+
 Below is sample snapshot:
 
 .. figure:: /images/AM62D_host_utility_snapshot.png

@@ -1,0 +1,125 @@
+.. include:: <isonum.txt>
+
+.. _edgeai_performance:
+
+#####################
+Performance Benchmark
+#####################
+
+This section reports **inference performance** - latency and memory - for the
+reference |__PART_FAMILY_NAME__| EdgeAI models. The same methodology (perfsim
+estimate + on-target measured) applies to any model you compile through the
+workflow. It is **not** an accuracy or audio-quality benchmark: model quality
+(classification accuracy, PESQ / STOI / SI-SDR) is measured by the ``evaluate``
+step in :ref:`Model Compile and Evaluate <edgeai_compile_evaluate>`.
+
+***********
+Methodology
+***********
+
+Two independent figures are reported for each model, and they must not be
+confused:
+
+.. list-table::
+   :header-rows: 1
+   :widths: 22 78
+
+   * - Figure
+     - How it is obtained
+   * - **perfsim estimate**
+     - Produced by the TIDL performance simulator during ``compile``. The
+       compiler writes a :file:`result.yaml` per model under its work directory;
+       the ``perfsim`` latency, GMAC count, and estimated DDR transfer are
+       read directly from it. This is a *static estimate* for the C7\ |trade|
+       NPU subgraph - it does not include Arm-side pre/post-processing or
+       runtime overhead.
+   * - **on-target measured**
+     - Wall-clock latency timed on the AM62D target while running the
+       :ref:`Model Zoo <edgeai_model_zoo>` inference scripts. For the
+       streaming speech-enhancement models it is also expressed as a
+       **real-time factor (RTF)** = processing time / audio duration; RTF < 1
+       means the model keeps up with real-time audio.
+
+Only models compiled for the C7\ |trade| NPU (TVM-RT + TIDL) have a perfsim
+estimate.
+
+.. note::
+
+   The perfsim values below are read from :file:`result.yaml` and are labeled
+   *estimated (perfsim)*. On-target measured latency and RTF are marked **TBD**
+   until measured on the AM62D EVM.
+
+*****************
+Per-model results
+*****************
+
+.. list-table::
+   :header-rows: 1
+   :widths: 16 12 12 20 14 26
+
+   * - Model
+     - Model ID
+     - Precision
+     - perfsim latency *(estimated)*
+     - GMACs
+     - DDR transfer *(estimated)*
+   * - VGGish11
+     - ``ac-0101``
+     - 8-bit
+     - 5.235 ms
+     - 1.1515
+     - 10.73 MB
+   * - YAMNet
+     - ``ac-0201``
+     - 8-bit
+     - 1.990 ms
+     - 0.0692
+     - 3.55 MB
+   * - GCRN
+     - ``ase-0201``
+     - 16-bit
+     - TBD
+     - TBD
+     - TBD
+
+VGGish11 and YAMNet are compiled and have :file:`result.yaml` perfsim values (shown
+above). GCRN is compiled at 16-bit but its :file:`result.yaml` is not yet captured,
+so its perfsim figures are **TBD**.
+
+On-target measured latency and RTF for all four models are **TBD** - to be
+filled in from the Model Zoo inference scripts on the AM62D EVM:
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 30 30
+
+   * - Model
+     - On target
+     - Measured latency
+     - RTF
+   * - VGGish11
+     - C7\ |trade| NPU
+     - TBD
+     - - (clip classifier)
+   * - YAMNet
+     - C7\ |trade| NPU
+     - TBD
+     - - (clip classifier)
+   * - GCRN
+     - C7\ |trade| NPU
+     - TBD
+     - TBD
+
+
+RTF is reported only for the streaming speech-enhancement models (GCRN);
+VGGish11 and YAMNet classify a whole clip, so a real-time factor is not
+meaningful for them.
+
+*******************
+Scope & Limitations
+*******************
+
+This section does **not** assess model quality. Classification accuracy and
+speech-enhancement quality metrics are produced by ``tidlrunner-cli evaluate``
+and documented in
+:ref:`Model Compile and Evaluate <edgeai_compile_evaluate>`.

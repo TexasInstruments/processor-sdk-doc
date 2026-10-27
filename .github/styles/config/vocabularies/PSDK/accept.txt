@@ -33,9 +33,13 @@ Zink
 [Mm]ulticast
 [Rr]enderers?
 [Ss]carthgap
+[Ss]ubgraphs?
 [Tt]oolchain
 balenaEtcher
 bdebstrap
 fdisk
+logits?
 mmdebstrap
+perfsim
 umount
+venv
