@@ -261,6 +261,12 @@ graphviz_output_format = 'svg'
 
 FAMILY = os.environ.get("DEVFAMILY", "")
 OS = os.environ.get("OS", "")
+
+# EdgeAI docs prefix every shell command with a "$ " prompt symbol; strip it
+# from the copy-button output so copied text is directly runnable.
+if OS == "edgeai" and FAMILY == "AM62DX":
+    copybutton_prompt_text = "$ "
+
 try:
     globals().update(importlib.import_module(f"configs.{FAMILY}.{FAMILY}_{OS}_tags").__dict__)
 except ModuleNotFoundError as exc:
