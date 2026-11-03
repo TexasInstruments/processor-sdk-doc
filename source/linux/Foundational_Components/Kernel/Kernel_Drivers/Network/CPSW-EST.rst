@@ -66,7 +66,7 @@ Here are the steps to configure this schedule.
    #  S - SetGateStates operation
    #  4 - Bit mask showing bit 2 set (Q2/TC2)
    #  125000 - 125000 nsecs (125 usecs ) duration of Gate open
-   #  The cycle-time is 500 msec
+   #  The cycle-time is 500 usecs
 
    #enable classifier. Classifier is used to mark the packet based on packet meta data. For example UDP port
    #number
