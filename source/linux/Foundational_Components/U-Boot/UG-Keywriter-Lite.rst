@@ -72,6 +72,11 @@ Generate the binary blob based out of U-boot keywriter lite
 structure by populating the structure and extracting the
 .data section to a bin file and copy it to SD card.
 
+.. note::
+
+   A helper utility for blob generation is available:
+   https://github.com/TexasInstruments/security-utils/tree/release/key_configurator
+
 **Typical Keywriter Lite Flow**
 
 A typical flow to do OTP keywriter lite is as follows:
