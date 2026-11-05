@@ -40,18 +40,26 @@ CLI - ``tidlrunner-cli`` - exposes the stages this section uses:
      - Imports the ONNX graph, quantizes and partitions it, and writes the
        deployable TIDL/TVM-RT artifacts.
    * - ``infer``
-     - Runs the compiled model on the x86 host (PC emulation) to check output
-       correctness before deploying to the target.
+     - Runs the compiled model on the x86 host (PC emulation), or on the AM62D
+       evaluation module (EVM) itself, to check output correctness before deploying to the target.
    * - ``evaluate``
      - Runs the compiled model over a data set and reports accuracy or
        speech-enhancement metrics.
    * - ``inspect``
      - One-shot compile + inference + reference comparison that emits an
-       interactive HTML analysis report (see :ref:`Model Inspect <edgeai_model_inspect>`).
+       interactive HTML analysis report (see :ref:`Model Inspector <edgeai_model_inspector>`).
 
 All commands are run from the repository root (``edgeai-tidlrunner/``) and take
 ``--config_path <cfg>`` pointing at the per-model YAML. The same config file is
 reused across ``compile``, ``infer``, and ``evaluate``.
+
+.. note::
+
+   ``compile``, ``infer`` and ``evaluate`` also write or refresh the Model
+   Inspector report (:file:`work_dirs/.../inspect/modelinspector.html`) at the end
+   of the run; add ``--no_inspector`` to skip it. Running ``infer`` on the EVM
+   with ``--debug_level 2`` adds measured per-layer cycle counts to the report.
+   See :ref:`Model Inspector <edgeai_model_inspector>` for details.
 
 .. _edgeai-am62d-setup:
 
@@ -228,3 +236,16 @@ input):
    $ tidlrunner-cli evaluate --config_path $CFG
 
 ``evaluate`` reports PESQ / STOI / SI-SDR over the VoiceBank-DEMAND-16k test set.
+
+**********
+Next steps
+**********
+
+To see how a compiled model behaves, read :ref:`Model Inspector
+<edgeai_model_inspector>`. The report shows what runs on the C7\ |trade| Neural
+Processing Unit (NPU) and what falls back to the Arm core. It also shows how much
+accuracy quantization costs, and where the time and memory go.
+
+The page explains the interactive HTML report that ``compile``, ``infer`` and
+``evaluate`` generate. It also explains how to produce the full analysis with
+``tidlrunner-cli inspect``.
