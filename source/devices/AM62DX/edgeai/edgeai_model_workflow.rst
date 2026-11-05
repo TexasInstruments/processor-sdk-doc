@@ -30,7 +30,7 @@ The end-to-end path is the same for a reference model or your own model:
    (:ref:`Model Compile and Evaluate <edgeai_compile_evaluate>`).
 #. **Evaluate** accuracy or audio-quality metrics on a data set.
 #. **Inspect** the compiled subgraphs and per-layer analysis (:ref:`Model
-   Inspect <edgeai_model_inspect>`).
+   Inspector <edgeai_model_inspector>`).
 #. **Run** on the AM62D target using the compiled artifact
    (:ref:`EdgeAI Model Zoo <edgeai_model_zoo>`).
 #. **Benchmark** latency and memory (:ref:`Performance <edgeai_performance>`).
