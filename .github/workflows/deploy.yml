@@ -16,6 +16,8 @@ concurrency:
 
 permissions:
   contents: read
+  pages: write
+  id-token: write
 
 jobs:
   agregate:
@@ -62,7 +64,11 @@ jobs:
     permissions:
       pages: write  # Required for deployment to GitHub Pages
       id-token: write  # Required for deployment to GitHub Pages
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
       - name: Update github page deployment
+        id: deployment
         uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346  # v5.0.1
