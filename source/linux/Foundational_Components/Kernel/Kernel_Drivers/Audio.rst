@@ -1492,6 +1492,10 @@ Board-specific instructions
 
       root@am62dxx-evm:~# arecord -c 8 -r 48000 -f S32_LE test.wav
 
+   **TAS67CD-AEC daughter card**
+
+   For the TAS67CD-AEC audio daughter card that connects to the Audio Expansion Connector (AEC) of the AM62D-EVM, refer to :ref:`TAS67CD-AEC daughter card setup <tas67cd-aec-daughter-card>`.
+
 Potential issues
 ^^^^^^^^^^^^^^^^
 

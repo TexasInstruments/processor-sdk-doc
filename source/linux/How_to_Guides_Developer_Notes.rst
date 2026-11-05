@@ -26,6 +26,7 @@ Developer Notes
    How_to_Guides/Target/How_to_test_MCAN_on_AM62x
    How_to_Guides/Target/How_to_enable_DT_overlays_in_linux
    How_to_Guides/Target/How_to_playback_audio_over_HDMI
+   How_to_Guides/Target/How_to_connect_TAS67CD_AEC_daughter_card
    How_to_Guides/Target/How_to_enable_Microtips_LVDS_Panel
    How_to_Guides/Target/How_to_visualize_statistics_data
    How_to_Guides/Target/How_to_Use_K3Conf_Tool
