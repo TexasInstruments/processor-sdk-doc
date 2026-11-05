@@ -19,7 +19,7 @@ Processor SDK Linux Edge AI Software Developer’s Guide
    edgeai_model_workflow
    model_zoo
    model_compile_evaluate
-   model_inspect
+   model_inspector
    integrating_new_model
    performance
 
