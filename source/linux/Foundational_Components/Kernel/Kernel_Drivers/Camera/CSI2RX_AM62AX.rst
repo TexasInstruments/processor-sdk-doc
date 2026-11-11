@@ -194,8 +194,8 @@ utilities like `7yuv <http://datahammer.de/7yuv_manual/index.htm>`__ or `PixelVi
 <https://carinastudio.azurewebsites.net/PixelViewer/>`__, or converted
 using OpenCV.
 
-Capture to Display using ISP
-============================
+Capture to Display using tiovxisp
+========================================
 
 To use the full capture to display pipeline, you can use gstreamer to call
 the required ISP components to convert the raw frames, apply
@@ -246,6 +246,79 @@ For OV2312 use mosaic to display both streams together:
    sink_0::startx="<0>" sink_0::starty="<0>" sink_0::widths="<640>" sink_0::heights="<480>" \
    sink_1::startx="<640>" sink_1::starty="<480>" sink_1::widths="<640>" sink_1::heights="<480>" ! \
    queue ! kmssink driver-name=tidss plane-properties=s,zpos=1
+
+IMX219 Camera with libcamera Soft ISP
+=====================================
+
+IMX219-based modules on the 15-pin FFC connector can also be used with
+libcamera's CPU soft ISP as an alternative to the tiovxisp hardware ISP
+pipeline. The IMX219 outputs raw Bayer frames - libcamera handles the
+debayering in software.
+
+Applying the sensor overlay
+---------------------------
+
+At the u-boot prompt:
+
+.. code-block:: text
+
+   => setenv name_overlays ti/k3-am62x-sk-csi2-imx219.dtbo
+   => boot
+
+To apply persistently, edit :file:`uEnv.txt` on the boot partition:
+
+.. code-block:: console
+
+   $ vi /run/media/boot-mmcblk1p1/uEnv.txt
+
+.. code-block:: text
+
+   name_overlays=ti/k3-am62x-sk-csi2-imx219.dtbo
+
+Verifying the sensor is detected
+---------------------------------
+
+.. code-block:: console
+
+   $ cam -l
+   [...]  INFO Camera camera_manager.cpp:223 Adding camera \
+   '/base/bus@f0000/i2c@20020000/i2c-mux@71/i2c@1/camera@10' for pipeline handler simple
+   Available cameras:
+   1: External camera 'imx219' (...)
+
+The sensor is listed as ``External camera`` because the device tree sets
+``orientation = <MEDIA_ORIENTATION_EXTERNAL>``. libcamera requires this
+property to expose ``V4L2_CID_CAMERA_ORIENTATION`` and will refuse to open
+the sensor without it.
+
+.. note::
+
+   The ``Rotation control not available`` warning is expected and harmless.
+
+Capturing frames
+----------------
+
+.. code-block:: console
+
+   $ export LIBCAMERA_SOFTISP_MODE=cpu
+   $ cam -c 1 --capture=1 --file
+
+The frame is saved as ``frame-cam0-stream0-000000.bin`` in the current
+directory in ``ABGR8888`` format.
+
+libcamera capture to display
+-----------------------------
+
+.. code-block:: console
+
+   $ systemctl stop emptty
+   $ export LIBCAMERA_SOFTISP_MODE=cpu
+
+   # 1920x1080 — expected ~15 fps
+   $ gst-launch-1.0 libcamerasrc ! video/x-raw,format=RGBA,width=1920,height=1080 ! kmssink driver-name=tidss
+
+   # 640x480 — expected ~30 fps
+   $ gst-launch-1.0 libcamerasrc ! video/x-raw,format=RGBA,width=640,height=480 ! kmssink driver-name=tidss
 
 CSI2RX testing details
 ======================

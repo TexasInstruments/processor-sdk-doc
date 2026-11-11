@@ -155,6 +155,7 @@ I2C2 and CSI-RX Port 0:
    /plugin/;
 
    #include <dt-bindings/gpio/gpio.h>
+   #include <dt-bindings/media/video-interface-devices.h>
 
    &{/} {
         clk_sensor_fixed: sensor-xclk {
@@ -175,6 +176,8 @@ I2C2 and CSI-RX Port 0:
 
            clocks = <&clk_sensor_fixed>;
            clock-names = "xclk";
+
+           orientation = <MEDIA_ORIENTATION_EXTERNAL>;
 
            port {
                csi2_cam0: endpoint {
