@@ -58,7 +58,7 @@ See :ref:`here <release-specific-supported-platforms-and-versions>` for a list o
 Release 11.02.02
 ================
 
-Released Aug 2026
+Released Oct 2026
 
 .. rubric:: What's New
    :name: whats-new
@@ -179,23 +179,23 @@ Yocto
 .. rubric:: meta-ti
    :name: meta-ti
 
-| Head Commit: ef43a90c91d5a9754b2f28f09debd553fbc6a2d5: CI/CD Auto-Merger: cicd.scarthgap.202608190946
-| Date:   Wed Aug 19 09:46:45 2026 -0500
+| Head Commit: a28461e373c3b7c05d7eddb5067a114babcf5537: CI/CD Auto-Merger: cicd.scarthgap.202610011545
+| Date:   Thu Oct 1 15:45:31 2026 -0500
 
 | Repo: https://git.ti.com/cgit/arago-project/meta-ti
 | Branch: scarthgap
-| Release Tag: 11.02.18
+| Release Tag: 11.02.20
 |
 
 .. rubric:: meta-arago
    :name: meta-arago
 
-| Head Commit: 73ab0405254988a501b849d221acf5f468cb8997: libyang: Fix CVE-2026-41401
-| Date:   Wed Jul 22 11:59:56 2026 -0500
+| Head Commit: dd1b7f9b85c093931f3eed954d28eb6f52e271c1: websocketd: update to main branch
+| Date:   Thu Aug 20 15:11:17 2026 +0530
 
 | Repo: https://git.yoctoproject.org/meta-arago
 | Branch: scarthgap
-| Release Tag: 11.02.18
+| Release Tag: 11.02.20
 |
 
 .. rubric:: meta-tisdk
