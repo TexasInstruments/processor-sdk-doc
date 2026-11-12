@@ -13,15 +13,15 @@ The Display Cluster Demo helps evaluate the display sharing feature out of the b
 Hardware Prerequisites
 ======================
 
-  - `SK-AM62P-LP <https://www.ti.com/tool/SK-AM62P-LP>`__
+#. `SK-AM62P-LP <https://www.ti.com/tool/SK-AM62P-LP>`__
 
-  - Microtips LVDS Panel
+#. Microtips LVDS Panel
 
-  - SD card (minimum 32GB)
+#. SD card (minimum 32GB)
 
-  - PC (Windows or Linux) to flash wic image onto an SD Card
+#. PC (Windows or Linux) to flash wic image onto an SD Card
 
-  - :file:`tisdk-display-cluster` wic image (Available at |__SDK_DOWNLOAD_URL__|)
+#. :file:`tisdk-display-cluster` wic image (Available at |__SDK_DOWNLOAD_URL__|)
 
 Steps to validate Display Cluster Demo
 ======================================
@@ -36,7 +36,7 @@ Steps to validate Display Cluster Demo
 
 #. The entire screen is controlled by the A53 displaying the Cluster except the region where MCU R5 is overlaying the Tell Tales.
 
-    .. figure:: /images/AM62P-display-cluster.png
+   .. figure:: /images/AM62P-display-cluster.png
       :width: 500
       :height: 400
 
@@ -53,49 +53,53 @@ How to build Display Cluster Demo
 Building Display Cluster wic image from Yocto
 ---------------------------------------------
 
-    #. To build the display cluster wic image, please refer :ref:`Processor SDK - Building the SDK with Yocto <building-the-sdk-with-yocto>`
+#. To build the display cluster wic image, please refer :ref:`Processor SDK - Building the SDK with Yocto <building-the-sdk-with-yocto>`
 
 Building Display Cluster image from SDK Installer
 -------------------------------------------------
 
-    #. :ref:`Download and Install the SDK <download-and-install-sdk>`
+#. :ref:`Download and Install the SDK <download-and-install-sdk>`
 
-    #. Compile U-boot for Display cluster, by issuing the following command
-       .. code-block:: console
+#. Compile U-boot for Display cluster, by issuing the following command
 
-          DISPLAY_CLUSTER=1 make u-boot
+   .. code-block:: console
 
-    #. The compiled u-boot will be located at :file:`<SDK-root>/board-support/u-boot-build`
+      DISPLAY_CLUSTER=1 make u-boot
 
-    #. Create a temporary copy of the folder :file:`<SDK-root>/board-support/prebuilt-images/am62pxx-evm-display-cluster`
+#. The compiled u-boot will be located at :file:`<SDK-root>/board-support/u-boot-build`
 
-       .. code-block:: console
+#. Create a temporary copy of the folder :file:`<SDK-root>/board-support/prebuilt-images/am62pxx-evm-display-cluster`
 
-          cp -arv <SDK-root>/board-support/prebuilt-images/am62pxx-evm-display-cluster /tmp/am62pxx-evm-display-cluster-boot
+   .. code-block:: console
 
-    #. Copy compiled u-boot to the temporary folder
+      cp -arv <SDK-root>/board-support/prebuilt-images/am62pxx-evm-display-cluster /tmp/am62pxx-evm-display-cluster-boot
 
-       .. code-block:: console
+#. Copy compiled u-boot to the temporary folder
 
-          cp -arv <SDK-root>/board-support/u-boot-build/r5/tiboot3.bin /tmp/am62pxx-evm-display-cluster-boot
-          cp -arv <SDK-root>/board-support/u-boot-build/a53/tispl.bin /tmp/am62pxx-evm-display-cluster-boot
-          cp -arv <SDK-root>/board-support/u-boot-build/a53/u-boot.img /tmp/am62pxx-evm-display-cluster-boot
+   .. code-block:: console
 
-    #. Create the SD card by following the instructions provided at :ref:`Create SD Card <processor-sdk-linux-create-sd-card-with-custom-images>` guide.
+      cp -arv <SDK-root>/board-support/u-boot-build/r5/tiboot3.bin /tmp/am62pxx-evm-display-cluster-boot
+      cp -arv <SDK-root>/board-support/u-boot-build/a53/tispl.bin /tmp/am62pxx-evm-display-cluster-boot
+      cp -arv <SDK-root>/board-support/u-boot-build/a53/u-boot.img /tmp/am62pxx-evm-display-cluster-boot
+
+#. Create the SD card by following the instructions provided at :ref:`Create SD Card <processor-sdk-linux-create-sd-card-with-custom-images>` guide.
 
 Building the Display Cluster Demo from source
 ---------------------------------------------
 
-    #. The source code for Display Cluster demo is available as part of the `ti-apps-launcher <https://github.com/TexasInstruments/ti-apps-launcher>`__.
-    #. Display Cluster Demo does not require building the source code.
-    #. The demo can run provided that the app source code and Qt 6's  ``qmlscene`` utility are present.
+#. The source code for Display Cluster demo is available as part of the `ti-apps-launcher <https://github.com/TexasInstruments/ti-apps-launcher>`__.
 
-    #. To start the demo, issue the following command
-       .. code-block:: console
+#. Display Cluster Demo does not require building the source code.
 
-          qmlscene --fullscreen apps/auto_cluster.qml
+#. The demo can run provided that the app source code and Qt 6's  ``qmlscene`` utility are present.
+
+#. To start the demo, issue the following command
+
+   .. code-block:: console
+
+      qmlscene --fullscreen apps/auto_cluster.qml
 
 Building the MCU Firmware from sources
 --------------------------------------
 
-    #. Please refer to the `MCU+ SDK Documentation <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62PX/11_01_01_08/exports/docs/api_guide_am62px/group__DRV__DSS__MODULE.html>`__
+#. Please refer to the `MCU+ SDK Documentation <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62PX/11_01_01_08/exports/docs/api_guide_am62px/group__DRV__DSS__MODULE.html>`__
