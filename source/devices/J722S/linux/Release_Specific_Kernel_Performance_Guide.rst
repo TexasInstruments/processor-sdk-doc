@@ -1,8 +1,8 @@
 .. include:: <isonum.txt>
 
-#############################
-Linux 11.02 Performance Guide
-#############################
+################################
+Linux 11.02.02 Performance Guide
+################################
 
 .. rubric::  **Read This First**
    :name: read-this-first-kernel-perf-guide
