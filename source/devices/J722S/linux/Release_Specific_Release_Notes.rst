@@ -55,15 +55,15 @@ Supported Platforms
 ===================
 See :ref:`here <release-specific-supported-platforms-and-versions>` for a list of supported platforms and links to more information.
 
-Release 11.02.01
+Release 11.02.02
 ================
 
-Released June 2026
+Released Oct 2026
 
 .. rubric:: What's New
    :name: whats-new
 
-Processor SDK 11.02.01 Release supports the following platforms:
+Processor SDK 11.02.02 Release supports the following platforms:
 
   * J721E
   * J7200
@@ -72,13 +72,13 @@ Processor SDK 11.02.01 Release supports the following platforms:
   * J722S
   * J742S2
 
-Processor SDK 11.02.01 Release has following features
+Processor SDK 11.02.02 Release has following features
 
-  * Fourth 2025 LTS (Linux 6.12 and u-boot 2025.01)
+  * Fifth 2025 LTS (Linux 6.12 and u-boot 2025.01)
   * ATF v2.13.0+
   * OPTEE 4.7.0
   * Yocto Scarthgap/5.0
-  * Bug fixes for errata.
+  * Bug Fixes
 
 .. _release-specific-build-information:
 
@@ -87,14 +87,14 @@ Build Information
 
 U-Boot
 ------
-| Head Commit: 1612e4d1deb11d49304c715576854b28cc10e34d: TI: dts: upstream: arm64: ti: Sync dtbs from ti-linux sha 98bbe0d37952
-| Date: Thu Jun 11 18:38:10 2026 +0530
+| Head Commit: 4ca322ca563a21cccad8c9ba65e386b9fd34dd16: TI: mmc: am654_sdhci: Fix up eMMC OTAP delay for HS200 on SR2.0
+| Wed Aug 12 12:08:10 2026 +0530
 | uBoot Version: 2025.01
-| uBoot Description: 11.02.15
+| uBoot Description: 11.02.18
 
 | Repo: git://git.ti.com/ti-u-boot/ti-u-boot.git
 | Branch: ti-u-boot-2025.01
-| uBoot Tag: 11.02.15
+| uBoot Tag: 11.02.18
 
 | Compiler Information: arm-oe-eabi-gcc (GCC) 13.4.0, aarch64-oe-linux-gcc (GCC) 13.4.0
 |
@@ -103,7 +103,7 @@ U-Boot
 
    .. note::
 
-      meta-edgeai Yocto layer contains additional patches for U-Boot `here <https://git.ti.com/cgit/edgeai/meta-edgeai/tree/recipes-bsp/u-boot?h=REL.PSDK.ANALYTICS.11.02.02.07>`__.
+      meta-edgeai Yocto layer contains additional patches for U-Boot `here <https://git.ti.com/cgit/edgeai/meta-edgeai/tree/recipes-bsp/u-boot?h=REL.PSDK.ANALYTICS.11.02.01.02>`__.
 
 .. _kernel-release-notes:
 
@@ -112,20 +112,19 @@ Kernel
 .. rubric:: Linux Kernel
    :name: linux-kernel
 
-| Head Commit: 98bbe0d37952d0ce1b6508f108c357ceb6d58bf3: PENDING: remoteproc: k3-dsp: Add support to suspend attached rprocs
-| Date:  Thu Jun 11 17:56:58 2026 +0530
+| Head Commit: ca77f7291a4f1c5f6927fee4e47282b03a39ebfd: UPSTREAM: PCI: j721e: Fix incorrect max_lanes for J7200
+| Date:   Thu Aug 13 09:49:37 2026 +0530
 | Kernel Version: 6.12.57
-| Kernel Description: 11.02.15
+| Kernel Description: 11.02.18
 
 | Repo: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
 | Branch: ti-linux-6.12.y
-| Tag: 11.02.15
+| Tag: 11.02.18
 | Non-RT Kernel defconfig: defconfig + ti_arm64_prune.config
 | RT Kernel defconfig: defconfig + ti_rt.config + ti_arm64_prune.config
 
 | Compiler Information: aarch64-oe-linux-gcc (GCC) 13.4.0, GNU ld (GNU Binutils) 2.42.0
 |
-
 
 .. ifconfig:: CONFIG_image_type in ('edgeai', 'adas')
 
@@ -164,38 +163,36 @@ OP-TEE
 
 ti-linux-firmware
 -----------------
-| Head Commit: 59351d453295295909a25a68b30f87e5c85a6e8a: ti-ipc: j721s2/j7200/j784s4/j742s2/j721e/j722s: update ipc binaries
-| Date: Mon Jun 8 16:45:01 2026 +0530
+| Head Commit: 639e8ed77b8c51071537ec9353fdc6200371235e: ti-ipc: j721s2/j7200/j784s4/j742s2/j721e/j722s: update ipc binaries
+| Date:   Mon Aug 17 17:12:08 2026 +0530
 
 | Repo: https://git.ti.com/cgit/processor-firmware/ti-linux-firmware
 | Branch: ti-linux-firmware
-| Tag: 11.02.15
+| Tag: 11.02.18
 |
-
-
 
 Yocto
 -----
 .. rubric:: meta-ti
    :name: meta-ti
 
-| Head Commit: 9859d582984a87b42db107127e829c976f315ee3: CI/CD Auto-Merger: cicd.scarthgap.202606151035
-| Date: Mon Jun 15 10:35:34 2026 -0500
+| Head Commit: ef43a90c91d5a9754b2f28f09debd553fbc6a2d5: CI/CD Auto-Merger: cicd.scarthgap.202608190946
+| Date:   Wed Aug 19 09:46:45 2026 -0500
 
 | Repo: https://git.ti.com/cgit/arago-project/meta-ti
 | Branch: scarthgap
-| Release Tag: 11.02.15
+| Release Tag: 11.02.18
 |
 
 .. rubric:: meta-arago
    :name: meta-arago
 
-| Head Commit: f6dc5e4817c6551ea5250ab1beed6ffc6fc235f2: CI/CD Auto-Merger: cicd.scarthgap.202606151035
-| Date: Thu Feb 12 15:38:01 2026 -0600
+| Head Commit: 73ab0405254988a501b849d221acf5f468cb8997: libyang: Fix CVE-2026-41401
+| Date:   Wed Jul 22 11:59:56 2026 -0500
 
 | Repo: https://git.yoctoproject.org/meta-arago
 | Branch: scarthgap
-| Release Tag: 11.02.15
+| Release Tag: 11.02.18
 |
 
 .. rubric:: meta-tisdk
@@ -229,14 +226,9 @@ Issues opened in previous releases that were closed on this release
   :header: "Record ID", "Title", "Platform"
   :widths: 15, 70, 20
 
-  "LCPD-45902","J722s/AM67 & AM62P: eDP HPD failure","am62pxx_sk-fs,j722s_evm-fs,j722s_evm-se"
-  "LCPD-45771","GPIO PADCONFIG Bits Changing after using gpiod userspace","am62pxx_sk-fs,am62pxx_sk-se,j722s_evm-fs,j722s_evm-se"
-  "LCPD-45577","Job_ready false reporting ready state too frequently in Wave5 driver","am62axx_sk-fs,am62pxx_sk-fs,am68_sk-fs,am69_sk-fs,j721s2-evm,j722s_evm-fs,j742s2_evm-fs,j784s4-evm"
-  "LCPD-45257","MK-Image tool packaged in U-boot increasing size of u-boot.img","j721e-hsevm,j721s2_evm-se,j722s_evm-se,j784s4-hsevm"
-  "LCPD-44298","J722s: MAIN_I2C4 device tree node is missing","j722s_evm-fs,j722s_evm-se"
-  "LCPD-42341","Missing Test support to verify order of remotecores being loaded at U-Boot","j7200-evm,j721e-idk-gw,j721s2-evm,j722s_evm-fs,j784s4-evm"
-  "LCPD-24654","MCAN: Implement workaround for errata i2279","j7200-evm,j721e-idk-gw,j721s2-evm,j722s_evm-fs,j742s2_evm-fs,j784s4-evm"
-  "LCPD-19068","DSS: Disabling a layer connected to Overlay may result in synclost during the next frame","j721e-evm,j721e-evm-ivi,j721e-idk-gw,j721s2-evm,j722s_evm-fs,j742s2_evm-fs,j784s4-evm"
+  "LCPD-48208","Audio codec MCLK is set to incorrect speed on J722S EVM rev 2 and later","j722s_evm-fs,j722s_evm-se"
+  "LCPD-48085","Wave5 Decoder Test Failing Because File not found","j721s2-evm,j722s_evm-fs,j742s2_evm-fs,j784s4-evm"
+  "LCPD-47868","When booted in attached mode (IPC does not work after s2r)","j7200-evm,j721s2-evm,j722s_evm-se,j742s2_evm-fs,j784s4-evm"
 
 |
 
@@ -246,12 +238,6 @@ Issues found and closed on this release that may be applicable to prior releases
   :header: "Record ID", "Title", "Platform"
   :widths: 15, 70, 20
 
-  "LCPD-47654","DDR: Valid VRef range must be defined during LPDDR4 Command Bus Training","j7200-evm,j7200-hsevm,j721e-idk-gw,j721s2-hsevm,j721s2_evm-fs,j722s_evm-fs,j722s_evm-se,j784s4-evm,j784s4-hsevm"
-  "LCPD-47605","k3conf tool does not show k3conf ddrbw","j722s_evm-fs"
-  "LCPD-47389","USART: Erroneous clear/trigger of timeout interrupt","j7200-evm,j7200-hsevm,j7200_evm-fs,j721e-evm-ivi,j721e-hsevm,j721e-idk-gw,j721e-sk,j721s2-evm,j721s2-hsevm,j721s2_evm-fs,j721s2_evm-se,j722s_evm-fs,j722s_evm-se,j742s2_evm-fs,j784s4-evm,j784s4-hsevm"
-  "LCPD-47381","MCAN: Message Transmit order not guaranteed from dedicated Tx Buffers configured with same Message ID","j7200-evm,j7200-hsevm,j7200_evm-fs,j721e-evm-ivi,j721e-hsevm,j721e-idk-gw,j721e-sk,j721s2-evm,j721s2-hsevm,j721s2_evm-fs,j721s2_evm-se,j722s_evm-fs,j722s_evm-se,j742s2_evm-fs,j784s4-evm,j784s4-hsevm"
-  "LCPD-46928","gstreamer 1.26.9: v4l2src format negotiation fails with capsfilter constraints","am62axx_sk-fs,am62dxx_evm-fs,am62pxx_sk-fs,am62xx_lp_sk-fs,am62xx_sk-fs,am62xxsip_sk-fs,am68_sk-fs,am69_sk-fs,j721e-idk-gw,j721s2_evm-fs,j722s_evm-fs,j784s4-hsevm"
-  "LCPD-46401","Resolve and test the parameters passed to cppi5_trdesc_calc_size() function","am62axx_sk-fs,am62axx_sk-se,am62dxx_evm-fs,am62dxx_evm-se,am62lxx_evm-fs,am62lxx_evm-se,am62pxx-zebu,am62pxx_sk-fs,am62pxx_sk-se,am62xx_lp_sk-fs,am62xx_lp_sk-se,am62xx_p0_sk-fs,am62xx_sk-fs,am62xx_sk-se,am62xxsip_sk-fs,am62xxsip_sk-se,am64xx-evm,am64xx-hsevm,am64xx-hssk,am64xx_evm-se,am64xx_sk-fs,am64xx_sk-se,am654x-evm,am654x-hsevm,am654x-idk,am68_sk-fs,am68_sk-se,am69_sk-fs,bbai64-gp,beagleplay-gp,beagleplay-gp-uart,beagley_ai,j7200-evm,j7200-hsevm,j7200_evm-fs,j721e-evm-ivi,j721e-hsevm,j721e-idk-gw,j721e-sk,j721s2-evm,j721s2-hsevm,j721s2_evm-fs,j721s2_evm-se,j722s_evm-fs,j722s_evm-se,j742s2_evm-fs,j784s4-evm,j784s4-hsevm"
 
 |
 
@@ -261,8 +247,12 @@ Errata Fixes Available Before this Release
   :header: "Record ID", "Title", "Platform", "ErrataId"
   :widths: 15, 30, 70, 60
 
+  "LCPD-47654","DDR: Valid VRef range must be defined during LPDDR4 Command Bus Training","j7200-evm,j7200-hsevm,j721e-idk-gw,j721s2-hsevm,j721s2_evm-fs,j722s_evm-fs,j722s_evm-se,j784s4-evm,j784s4-hsevm","i2160"
   "LCPD-47389","USART: Erroneous clear/trigger of timeout interrupt","j7200-evm,j7200-hsevm,j7200_evm-fs,j721e-evm-ivi,j721e-hsevm,j721e-idk-gw,j721e-sk,j721s2-evm,j721s2-hsevm,j721s2_evm-fs,j721s2_evm-se,j722s_evm-fs,j722s_evm-se,j742s2_evm-fs,j784s4-evm,j784s4-hsevm","i2310"
+  "LCPD-47381","MCAN: Message Transmit order not guaranteed from dedicated Tx Buffers configured with same Message ID","j7200-evm,j7200-hsevm,j7200_evm-fs,j721e-evm-ivi,j721e-hsevm,j721e-idk-gw,j721e-sk,j721s2-evm,j721s2-hsevm,j721s2_evm-fs,j721s2_evm-se,j722s_evm-fs,j722s_evm-se,j742s2_evm-fs,j784s4-evm,j784s4-hsevm","i2278"
   "LCPD-32351","MMCSD: HS200 and SDR104 Command Timeout Window Too Small","am62axx_sk-fs,am62axx_sk-se,am62pxx_sk-fs,am62pxx_sk-se,am62xx-sk,am62xx_lp_sk-fs,am62xx_lp_sk-se,am62xx_sk-fs,am62xx_sk-se,am62xxsip_sk-fs,am62xxsip_sk-se,am64xx-hsevm,am68_sk-fs,am69_sk-fs,j7200-evm,j721e-idk-gw,j721s2-evm,j722s_evm-fs,j742s2_evm-fs,j784s4-evm","i2312"
+  "LCPD-24654","MCAN: Implement workaround for errata i2279","j7200-evm,j721e-idk-gw,j721s2-evm,j722s_evm-fs,j742s2_evm-fs,j784s4-evm","i2279"
+  "LCPD-19068","DSS: Disabling a layer connected to Overlay may result in synclost during the next frame","j721e-evm,j721e-evm-ivi,j721e-idk-gw,j721s2-evm,j722s_evm-fs,j742s2_evm-fs,j784s4-evm","i2097"
 
 |
 
@@ -272,10 +262,6 @@ Errata Workarounds Available in this Release
   :header: "Record ID", "Title", "Platform", "ErrataId"
   :widths: 15, 30, 70, 60
 
-  "LCPD-47654","DDR: Valid VRef range must be defined during LPDDR4 Command Bus Training","j7200-evm,j7200-hsevm,j721e-idk-gw,j721s2-hsevm,j721s2_evm-fs,j722s_evm-fs,j722s_evm-se,j784s4-evm,j784s4-hsevm","i2160"
-  "LCPD-47381","MCAN: Message Transmit order not guaranteed from dedicated Tx Buffers configured with same Message ID","j7200-evm,j7200-hsevm,j7200_evm-fs,j721e-evm-ivi,j721e-hsevm,j721e-idk-gw,j721e-sk,j721s2-evm,j721s2-hsevm,j721s2_evm-fs,j721s2_evm-se,j722s_evm-fs,j722s_evm-se,j742s2_evm-fs,j784s4-evm,j784s4-hsevm","i2278"
-  "LCPD-24654","MCAN: Implement workaround for errata i2279","j7200-evm,j721e-idk-gw,j721s2-evm,j722s_evm-fs,j742s2_evm-fs,j784s4-evm","i2279"
-  "LCPD-19068","DSS: Disabling a layer connected to Overlay may result in synclost during the next frame","j721e-evm,j721e-evm-ivi,j721e-idk-gw,j721s2-evm,j722s_evm-fs,j742s2_evm-fs,j784s4-evm","i2097"
 
 |
 
@@ -295,7 +281,9 @@ Open Erratum
   :header: "Record ID", "Title", "Platform", "ErrataId"
   :widths: 15, 30, 70, 60
 
-  "LCPD-47799","BCDMA RX_IGNORE_LONG setting in RX CHAN CFG register doesnt work","j721s2-evm,j721s2-hsevm,j721s2_evm-fs,j721s2_evm-se,j722s_evm-fs,j722s_evm-se,j742s2_evm-fs,j784s4-evm,j784s4-hsevm","i2436"
+  "LCPD-49333","Update to i2189: OSPI: Controller PHY Tuning Algorithm - U-Boot","j7200-evm,j7200-hsevm,j7200_evm-fs,j721e-evm-ivi,j721e-hsevm,j721e-idk-gw,j721e-sk,j721s2-evm,j721s2-hsevm,j721s2_evm-fs,j721s2_evm-se,j722s_evm-fs,j722s_evm-se,j742s2_evm-fs,j784s4-evm,j784s4-hsevm","i2509"
+  "LCPD-48726","Update to i2189: OSPI: Controller PHY Tuning Algorithm","j7200-evm,j7200-hsevm,j7200_evm-fs,j721e-evm-ivi,j721e-hsevm,j721e-idk-gw,j721e-sk,j721s2-evm,j721s2-hsevm,j721s2_evm-fs,j721s2_evm-se,j722s_evm-fs,j722s_evm-se,j742s2_evm-fs,j784s4-evm,j784s4-hsevm","i2509"
+  "LCPD-48725","OSPI: XIP in PHY Mode Not Supported","j7200-evm,j7200-hsevm,j7200_evm-fs,j721e-evm-ivi,j721e-hsevm,j721e-idk-gw,j721e-sk,j721s2-evm,j721s2-hsevm,j721s2_evm-fs,j721s2_evm-se,j722s_evm-fs,j722s_evm-se,j742s2_evm-fs,j784s4-evm,j784s4-hsevm","i2510"
 
 |
 
@@ -305,6 +293,8 @@ U-Boot Known Issues
   :header: "Record ID", "Title", "Platform", "Workaround"
   :widths: 15, 30, 70, 30
 
+  "LCPD-48474","Boot modes: Ethernet with kernel is failing in 12.01.00.05","am62pxx_sk-fs,am62xx_lp_sk-fs,am62xx_sk-fs,am62xxsip_sk-fs,am68_sk-fs,am69_sk-fs,j722s_evm-fs",""
+  "LCPD-46031","DFU: SPL-DFU boot support is failing in 12.01.00.05","am62axx_sk-fs,am62dxx_evm-fs,am62pxx_sk-fs,am62xx_lp_sk-fs,am62xx_sk-fs,am62xxsip_sk-fs,am64xx-hsevm,j721e-idk-gw,j722s_evm-fs,j742s2_evm-fs",""
   "LCPD-44857","j722s_evm-fs: RC-08: Failure: UBOOT : MSC boot shall be supported","j722s_evm-fs",""
   "LCPD-38569","j722s: Unable to communicate with MCU R5 and Main R5 when FW loaded from U-Boot","j722s_evm-fs",""
 
@@ -316,57 +306,55 @@ Linux Known Issues
    :header: "Record ID", "Title", "Platform", "Workaround"
    :widths: 5, 10, 70, 35
 
-   "LCPD-48097","MCAN: Implement workaround for errata i2279","j7200-evm,j721e-idk-gw,j721s2-evm,j722s_evm-fs,j742s2_evm-fs,j784s4-evm",""
-   "LCPD-48096","MCAN: Message Transmit order not guaranteed from dedicated Tx Buffers configured with same Message ID","j7200-evm,j7200-hsevm,j7200_evm-fs,j721e-evm-ivi,j721e-hsevm,j721e-idk-gw,j721e-sk,j721s2-evm,j721s2-hsevm,j721s2_evm-fs,j721s2_evm-se,j722s_evm-fs,j722s_evm-se,j742s2_evm-fs,j784s4-evm,j784s4-hsevm","Workaround #1: After writing the Tx messages with same Message ID to the Message RAM, request transmission of all these message concurrently by single write access to TXBAR. Make sure none of these messages have a pending Tx request before making the concurrent request. Workaround #2: Use the Tx FIFO instead of dedicated Tx Buffers (set bit MCAN_TXBC[30] TFQM = 0 to use Tx FIFO) for the transmission of several messages with the same Message ID in a specific order."
-   "LCPD-48061","DSS: Disabling a layer connected to Overlay may result in synclost during the next frame","j721e-evm-ivi,j721e-idk-gw,j721s2-evm,j722s_evm-fs,j742s2_evm-fs,j784s4-evm",""
-   "LCPD-48060","J722s/AM67 & AM62P: eDP random display init failure","am62pxx_sk-fs,j722s_evm-fs,j722s_evm-se",""
-   "LCPD-48059","J722s/AM67 & AM62P: eDP HPD failure","am62pxx_sk-fs,j722s_evm-fs,j722s_evm-se",""
+   "LCPD-49301","CICD: Boot modes: eMMC boot from boot0 failing","j722s_evm-fs",""
+   "LCPD-49213","CICD:  Crypto test NOTRUN","am62lxx_evm-fs,am64xx-hsevm,am654x-hsevm,am68_sk-fs,j7200-evm,j721s2_evm-fs,j722s_evm-fs,j742s2_evm-fs,j784s4-evm",""
+   "LCPD-49110","j722s_evm-fs: RNG_S_FUNC_10000 test is failing with in 12.02 CICD","j722s_evm-fs",""
+   "LCPD-49072","SDK 11.02.02 Audio bugs","j7200-evm,j721e-idk-gw,j721s2-evm,j722s_evm-fs,j742s2_evm-fs,j784s4-evm",""
+   "LCPD-48967","PCIe MSIX failure in 11.02.18","j722s_evm-fs",""
+   "LCPD-48743","Linux SDK Documentation doesn't capture MCAN Performance Data","j7200-evm,j7200-hsevm,j7200_evm-fs,j721s2-evm,j721s2_evm-fs,j722s_evm-fs,j722s_evm-se",""
+   "LCPD-48726","Update to i2189: OSPI: Controller PHY Tuning Algorithm","j7200-evm,j7200-hsevm,j7200_evm-fs,j721e-evm-ivi,j721e-hsevm,j721e-idk-gw,j721e-sk,j721s2-evm,j721s2-hsevm,j721s2_evm-fs,j721s2_evm-se,j722s_evm-fs,j722s_evm-se,j742s2_evm-fs,j784s4-evm,j784s4-hsevm","In order to sample data under some conditions, it is necessary to increment the Read Delay field to shift the internal clock sampling window. This allows sampling of the data anywhere within the data eye. However, this has two side effects: 1) PHY Pipeline mode must be enabled for all read operations. Since PHY Pipeline mode must be disabled for writes, reads and writes must be handled separately. 2)Hardware polling of the busy bit is broken when the workaround is in place, so SW polling must be used instead. Writes must occur through DMA accesses, within page boundaries, to prevent interruption from either the host or the flash device. Software must poll the busy bit between page writes. Alternatively, writes can be performed in non-PHY mode with Hardware polling enabled. 3) STIG reads must be padded with extra bytes, and the received data must be right-shifted. To select optimal TX, RX, and Read delay values a tuning algorithm must be run. The original implementation of this software tuning algorithm is described in detail in the application note SPRACT2 (link: https://www.ti.com/lit/spract2 ). This tuning algorithm has been revised in order to improve robustness of the optimal tuning point selected. This algorithm is updated to pick a centered tuning point with run time validation to adjust this point as needed to account for temperature fluctuations. The implementation of this algorithm is described in detail in the application note SDAA315 (link: https://www.ti.com/lit/pdf/SDAA315 )."
+   "LCPD-48725","OSPI: XIP in PHY Mode Not Supported","j7200-evm,j7200-hsevm,j7200_evm-fs,j721e-evm-ivi,j721e-hsevm,j721e-idk-gw,j721e-sk,j721s2-evm,j721s2-hsevm,j721s2_evm-fs,j721s2_evm-se,j722s_evm-fs,j722s_evm-se,j742s2_evm-fs,j784s4-evm,j784s4-hsevm","If OSPI XIP is needed use TAP mode."
+   "LCPD-48716","J722S: NFS BOOT Fails while running ETHFW due to RPMsg Response Timeout","j722s_evm-fs,j722s_evm-se",""
+   "LCPD-48480","USBHOST_S_FUNC_HIGHSPEED_HUB_FULLSPEED_0001 is failing in 12.01.00.05","j722s_evm-fs",""
+   "LCPD-48470","Ethernet tests failing in 12.1","am62lxx_evm-fs,am62xx_sk-fs,am64xx-hsevm,j7200-evm,j721s2-evm,j722s_evm-fs",""
+   "LCPD-48394","USBHOST_XS_FUNC_AUDIO_LOOPBACK_ACCESSTYPE_NONINTER_01 is failing in 12.01.00.05","j721e-idk-gw,j722s_evm-fs,j742s2_evm-fs,j784s4-evm",""
+   "LCPD-48393","USBDEV_highspeed_msc_enumeration is failing in 12.01.00.05","am62axx_sk-fs,am62dxx_evm-fs,am62pxx_sk-fs,am62xx_lp_sk-fs,j721e-idk-gw,j721s2-evm,j722s_evm-fs,j784s4-evm",""
+   "LCPD-48212","USBHOST_S_FUNC_HIGHSPEED_HUB_MULTI_SPEED_0001 is failing in 12.01.00.05","j722s_evm-fs",""
    "LCPD-47981","NFS BOOT Fails while at CORE LINUX FUCNTIONALITY level while running ETHFW standalone code","j722s_evm-fs",""
    "LCPD-47918","Kernel crash due to CPSW Tx timeout","j722s_evm-fs",""
-   "LCPD-47868","When booted in attached mode (IPC does not work after s2r)","j7200-evm,j721s2-evm,j722s_evm-se,j742s2_evm-fs,j784s4-evm",""
    "LCPD-47799","BCDMA RX_IGNORE_LONG setting in RX CHAN CFG register doesnt work","j721s2-evm,j721s2-hsevm,j721s2_evm-fs,j721s2_evm-se,j722s_evm-fs,j722s_evm-se,j742s2_evm-fs,j784s4-evm,j784s4-hsevm","Workaround: RX_IGNORE_LONG is unusable, so remote endpoint such as PDMA should close packet by sending EOP to match TR boundary (PDMA X*Y*Z should match TR ICNT0*ICNT1*ICNT2*ICNT3). If infinite stream is desired (PDMA Z=0) then switch to PKTDMA and use Single Buffer Mode"
    "LCPD-47763","Defects for J7AEN 11.02 release","j722s_evm-fs,j722s_evm-se",""
    "LCPD-47749","NFS boot fails when EthFW is enabled on MCU2_0 R5F core due to CPSW Proxy Client driver circular dependency","j722s_evm-fs,j722s_evm-se",""
-   "LCPD-47686","ETH_CPSW2g_PTP_DUT_TEE is failing in 11.02.13","j722s_evm-fs",""
-   "LCPD-47393","DWC3 USB should not be configured as a wakeup source by default","j722s_evm-fs,j722s_evm-se",""
-   "LCPD-47267","J722S: Dual Ethernet port testcases are failing","j722s_evm-fs",""
-   "LCPD-47223","TEST: RC-07: CPSW: Add test automation support for packet classification based on ALE engine","j722s_evm-fs",""
    "LCPD-47220","TEST: RC-07: CPSW: Capability gap for testing XDP tests on j722s","j722s_evm-fs",""
    "LCPD-46418","Crypto: cbc and ecb sa2ul self tests fails on few platforms","am62axx_sk-fs,am62pxx_sk-fs,j722s_evm-fs",""
-   "LCPD-46190","j722s_evm-fs: RC-08: TESTGAP: Linux SDK: CPSW: Native XDP Support + zero copy su...","j722s_evm-fs",""
    "LCPD-46120","cpuloadgen testcase fails to run on all cores","j7200-evm,j721e-idk-gw,j721s2-evm,j722s_evm-fs,j742s2_evm-fs,j784s4-evm",""
-   "LCPD-46058","USBDEV_fullspeed_cdc_ping is failing in 12.00.00.07","am62xxsip_sk-fs,j722s_evm-fs",""
-   "LCPD-46057","USBDEV_fullspeed_msc_func is failing in 12.00.00.07","j722s_evm-fs",""
-   "LCPD-46056","USBDEV_highspeed_cdc_ping_zlp is failing in 12.00.00.07","j722s_evm-fs",""
-   "LCPD-46055","USBDEV_highspeed_msc_enumeration is failing in 12.00.00.07","j722s_evm-fs",""
-   "LCPD-46054","USBDEV_highspeed_cdc_ncm_ping is failing in 12.00.00.07","j722s_evm-fs",""
-   "LCPD-46052","USBDEV_highspeed_cdc_ping is failing in 12.00.00.07","j722s_evm-fs",""
-   "LCPD-46050","USBDEV_fullspeed_cdc_ncm_ping is failing in 12.00.00.07","j722s_evm-fs",""
-   "LCPD-46049","USBDEV_fullspeed_serial_enumerate is failing in 12.00.00.07","j722s_evm-fs",""
-   "LCPD-46047","USBDEV_highspeed_serial_enumerate is failing in 12.00.00.07","j722s_evm-fs",""
+   "LCPD-46058","USBDEV_fullspeed_cdc_ping is failing in 12.01.00.05","am62axx_sk-fs,am62xxsip_sk-fs,j721s2-evm,j722s_evm-fs",""
+   "LCPD-46057","USBDEV_fullspeed_msc_func is failing in 12.01.00.05","am62xxsip_sk-fs,j722s_evm-fs",""
+   "LCPD-46056","USBDEV_highspeed_cdc_ping_zlp is failing in 12.01.00.05","j721s2-evm,j722s_evm-fs",""
+   "LCPD-46054","USBDEV_highspeed_cdc_ncm_ping is failing in 12.01.00.05","j721s2-evm,j722s_evm-fs",""
+   "LCPD-46052","USBDEV_highspeed_cdc_ping is failing in 12.01.00.05","am62pxx_sk-fs,j721s2-evm,j722s_evm-fs",""
+   "LCPD-46050","USBDEV_fullspeed_cdc_ncm_ping is failing in 12.01.00.05","am62axx_sk-fs,am62xxsip_sk-fs,j721s2-evm,j722s_evm-fs",""
+   "LCPD-46049","USBDEV_fullspeed_serial_enumerate is failing in 12.01.00.05","j722s_evm-fs",""
+   "LCPD-46047","USBDEV_highspeed_serial_enumerate is failing in 12.01.00.05","j722s_evm-fs",""
    "LCPD-46045","ETH_CPSW2g_PTP_Switch is failing in 12.00.00.07","am62axx_sk-fs,am62xxsip_sk-fs,j7200-evm,j721e-idk-gw,j722s_evm-fs,j784s4-evm",""
-   "LCPD-46044","USBDEV_highspeed_msc_slave_perf is failing in 12.00.00.07","j722s_evm-fs",""
-   "LCPD-46043","ETH_CPSW2g_CBS_DUT_TEE is failing in 12.00.00.07","j722s_evm-fs",""
+   "LCPD-46044","USBDEV_highspeed_msc_slave_perf is failing in 12.01.00.05","j722s_evm-fs",""
+   "LCPD-45975","USBHOST_L_FUNC_HID_Mouse_Detection_Test is failing in 12.01.00.05","j722s_evm-fs",""
    "LCPD-45969","J722S: Changing DPHY parent refclk breaks USB","am62pxx_sk-fs,j722s_evm-fs",""
    "LCPD-45963","OPTEE xtest failures","am62pxx_sk-fs,am64xx-hsevm,am64xx-hssk,j722s_evm-fs",""
-   "LCPD-45903","J722s/AM67 & AM62P: eDP random display init failure","am62pxx_sk-fs,j722s_evm-fs,j722s_evm-se",""
    "LCPD-45253","c7x ipc failure on linux loading remote core firmwares","j722s_evm-fs",""
-   "LCPD-45239","VTM module sensor reset sequence modification for reliable functionality","am62axx_sk-fs,am62axx_sk-se,am62dxx_evm-fs,am62dxx_evm-se,am62lxx_evm-fs,am62lxx_evm-se,am62pxx-zebu,am62pxx_sk-fs,am62pxx_sk-se,am62xx_lp_sk-fs,am62xx_lp_sk-se,am62xx_p0_sk-fs,am62xx_sk-fs,am62xx_sk-se,am62xxsip_sk-fs,am62xxsip_sk-se,am64xx-evm,am64xx-hsevm,am64xx-hssk,am64xx_evm-se,am64xx_sk-fs,am64xx_sk-se,am654x-evm,am654x-hsevm,am654x-idk,am68_sk-fs,am68_sk-se,am69_sk-fs,j7200-evm,j7200-hsevm,j7200_evm-fs,j721e-evm-ivi,j721e-hsevm,j721e-idk-gw,j721e-sk,j721s2-evm,j721s2-hsevm,j721s2_evm-fs,j721s2_evm-se,j722s_evm-fs,j722s_evm-se,j742s2_evm-fs,j784s4-evm,j784s4-hsevm",""
    "LCPD-44854","Test: Ethernet slave peripheral boot failure","am62pxx_sk-fs,am62xx_lp_sk-fs,am62xx_sk-fs,am69_sk-fs,j722s_evm-fs",""
-   "LCPD-44841","PCI_S_FUNC_CDNS_MSIX is failing in 12.00.00.07","j722s_evm-fs",""
    "LCPD-44505","WDT_RTI: Make the watchdog timeout configurable","j722s_evm-fs,j722s_evm-se",""
-   "LCPD-43407","IPC Graceful Shutdown on C7x cores","j721e-idk-gw,j721s2-evm,j722s_evm-fs,j784s4-evm",""
-   "LCPD-43304","CSI RX driver does not consider byterperline parameter in set format","am62axx_sk-fs,am62axx_sk-se,j721e-evm-ivi,j721e-sk,j721s2-evm,j721s2-hsevm,j721s2_evm-fs,j721s2_evm-se,j722s_evm-fs,j722s_evm-se,j742s2_evm-fs,j784s4-evm,j784s4-hsevm",""
+   "LCPD-43407","IPC Graceful Shutdown on C7x cores","j721e-idk-gw,j721s2-evm,j722s_evm-fs,j742s2_evm-fs,j784s4-evm",""
    "LCPD-42843","remoteproc/k3-dsp: PDK IPC echo test binaries fails to do IPC in remoteproc mode on second run","j7200-evm,j721e-idk-gw,j721s2-evm,j722s_evm-fs,j784s4-evm",""
    "LCPD-41066","CSI outputs black images when DMA is set to ASEL 15","am62pxx_sk-fs,j722s_evm-fs",""
    "LCPD-41044","ARM toolchain used in Yocto build keeps on updating every release","am62axx_sk-fs,am62axx_sk-se,am68_sk-fs,am68_sk-se,am69_sk-fs,j721e-evm-ivi,j721e-hsevm,j721e-idk-gw,j721e-sk,j721s2-evm,j721s2-hsevm,j721s2_evm-fs,j721s2_evm-se,j722s_evm-fs,j742s2_evm-fs,j784s4-evm,j784s4-hsevm",""
+   "LCPD-38756","AM64x: Linux hangs on repetitive probe/removal of gadget zero","am64xx-evm,am64xx_sk-fs,am68_sk-fs,am68_sk-se,am69_sk-fs,j7200-evm,j7200-hsevm,j7200_evm-fs,j721e-evm-ivi,j721e-hsevm,j721e-idk-gw,j721e-sk,j721s2-evm,j721s2-hsevm,j721s2_evm-fs,j721s2_evm-se,j722s_evm-fs,j722s_evm-se,j742s2_evm-fs,j784s4-evm,j784s4-hsevm",""
    "LCPD-38311","Power off test case failing","j7200-evm,j721e-idk-gw,j721s2-evm,j722s_evm-fs,j742s2_evm-fs,j784s4-evm",""
    "LCPD-38267","J722S: tiboot3.bin / R5 SPL within size limit fails to boot","j722s_evm-fs",""
    "LCPD-37705","crypto perf failure","am68_sk-fs,j7200-evm,j722s_evm-fs",""
    "LCPD-37702","J722S : Crypto perf (ipsec) test failed","j722s_evm-fs",""
    "LCPD-37314","NFS in UBOOT on J722S EVM (HS-FS) Fails","j722s_evm-fs",""
    "LCPD-34712","OSPI: 2-byte address is not supported in PHY DDR mode","j7200-evm,j721e-idk-gw,j721s2-evm,j721s2-hsevm,j721s2_evm-fs,j721s2_evm-se,j722s_evm-fs,j722s_evm-se,j742s2_evm-fs,j784s4-evm,j784s4-hsevm","For compatible OSPI memories that have programmable address byte settings, set the amount of address bytes required from 2 to 4 on the flash. This may involve sending a specific command to change address bytes and/or writing a configuration register on the flash. Once done, update the amount of address bytes sent in the controller settings from 2 to 4. For compatible OSPI memories that only support 2-byte addressing and cannot be re-programmed, PHY DDR mode will not be compatible with that memory. Alternative modes include: PHY SDR mode TAP (no-PHY) DDR mode TAP (no-PHY) SDR mode"
-   "LCPD-20653","ltp: kernel syscall tests fail","am335x-evm,am43xx-gpevm,am654x-idk,j721e-idk-gw,j722s_evm-fs",""
 
 |
 
