@@ -12,6 +12,15 @@ of the Processor SDK for Linux.
 Processor SDK 11.xx Releases
 ============================
 
+Processor SDK Jacinto 11.02.02
+------------------------------
+
+- Fifth 2025 LTS (Linux 6.12 and u-boot 2025.01)
+- ATF v2.13.0+
+- OPTEE 4.7.0
+- Yocto Scarthgap/5.0
+- Bug fixes
+- Platforms Supported : J722S
 
 Processor SDK Jacinto 11.02.01
 ------------------------------
@@ -22,7 +31,6 @@ Processor SDK Jacinto 11.02.01
 - Yocto Scarthgap/5.0
 - Bug fix release
 - Platforms Supported : J721E, J7200, J721S2, J784S4, J742S2, J722S
-
 
 Processor SDK Jacinto 11.02
 ---------------------------
