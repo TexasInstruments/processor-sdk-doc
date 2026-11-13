@@ -28,6 +28,10 @@ Linux ALSA (Advanced Linux Sound Architecture) framework, which allows control
 and configuration of the hardware through common APIs. For more details check
 the `links below <#additional-information>`__.
 
+The default audio server on TI Linux SDK is PipeWire, which provides a modern
+multimedia framework for audio and video handling. For more information about
+PipeWire setup and usage, refer :ref:`how-to-use-pipewire`.
+
 Within the kernel there are separate drivers for each component. For each
 board a sound-card instance is created, usually using the :code:`sound {}`
 device tree node, that links together various components like different McASP
@@ -1474,23 +1478,23 @@ Board-specific instructions
 
       # To select Profile 0 (8ch Non-Interleaved - default profile)
 
-      root@am62dxx-evm:~# amixer cset name='pcm6240-2dev-reg PCM6240 i2c1 Profile id' 0
+      root@am62dxx-evm:~# amixer -c 0 cset name='pcm6240-2dev-reg PCM6240 i2c1 Profile id' 0
       numid=17,iface=MIXER,name='pcm6240-2dev-reg PCM6240 i2c1 Profile id'
       type=INTEGER,access=rw------,values=1,min=0,max=9,step=0
       values=0
 
       # To select Profile 1 (8ch Interleaved):
     
-      root@am62dxx-evm:~# amixer cset name='pcm6240-2dev-reg PCM6240 i2c1 Profile id' 1
+      root@am62dxx-evm:~# amixer -c 0 cset name='pcm6240-2dev-reg PCM6240 i2c1 Profile id' 1
       numid=17,iface=MIXER,name='pcm6240-2dev-reg PCM6240 i2c1 Profile id'
       type=INTEGER,access=rw------,values=1,min=0,max=9,step=0
       values=1
 
-   To record 8-channel audio at 48kHz sample rate with 32-bit depth:
+   To record 8-channel audio at 48kHz sample rate with 16-bit depth:
 
    .. code-block:: console
 
-      root@am62dxx-evm:~# arecord -c 8 -r 48000 -f S32_LE test.wav
+      root@am62dxx-evm:~# arecord -c 8 -r 48000 -f S16_LE test.wav
 
 Potential issues
 ^^^^^^^^^^^^^^^^
