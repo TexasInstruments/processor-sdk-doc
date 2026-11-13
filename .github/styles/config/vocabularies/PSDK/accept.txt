@@ -33,6 +33,7 @@ Zink
 [Mm]ulticast
 [Rr]enderers?
 [Ss]carthgap
+[Ss]nagboot
 [Tt]oolchain
 balenaEtcher
 bdebstrap
