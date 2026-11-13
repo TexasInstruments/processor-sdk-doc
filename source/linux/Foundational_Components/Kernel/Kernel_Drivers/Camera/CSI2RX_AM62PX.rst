@@ -129,8 +129,8 @@ than the default (640x480 UYVY):
 
       $ echo "on" > /sys/devices/platform/bus@f0000/20020000.i2c/i2c-2/i2c-4/4-003c/power/control
 
-Capture to display
-==================
+OV5640 Capture to Display
+=========================
 
 If a display (HDMI or LVDS) is connected then use the following steps to view the camera frames:
 
@@ -192,6 +192,78 @@ should resume from where it left (as long as the sensor supports it).
 .. attention::
 
    Only TEVI OV5640 and IMX219 are known to work reliably when system is suspended with capture running.
+
+IMX219 Camera with libcamera Soft ISP
+======================================
+
+|__PART_FAMILY_NAME__| SK supports IMX219-based camera modules on the same
+15-pin FFC connector. The IMX219 outputs raw Bayer frames - libcamera
+debayering is done in software on the CPU.
+
+Applying the sensor overlay
+---------------------------
+
+At the u-boot prompt:
+
+.. code-block:: text
+
+   => setenv name_overlays ti/k3-am62x-sk-csi2-imx219.dtbo
+   => boot
+
+To apply persistently, edit :file:`uEnv.txt` on the boot partition:
+
+.. code-block:: console
+
+   $ vi /run/media/boot-mmcblk1p1/uEnv.txt
+
+.. code-block:: text
+
+   name_overlays=ti/k3-am62x-sk-csi2-imx219.dtbo
+
+Verifying the sensor is detected
+---------------------------------
+
+.. code-block:: console
+
+   $ cam -l
+   [...]  INFO Camera camera_manager.cpp:223 Adding camera \
+   '/base/bus@f0000/i2c@20020000/i2c-mux@71/i2c@1/camera@10' for pipeline handler simple
+   Available cameras:
+   1: External camera 'imx219' (...)
+
+The sensor is listed as ``External camera`` because the device tree sets
+``orientation = <MEDIA_ORIENTATION_EXTERNAL>``. libcamera requires this
+property to expose ``V4L2_CID_CAMERA_ORIENTATION`` and will refuse to open
+the sensor without it.
+
+.. note::
+
+   The ``Rotation control not available`` warning is expected and harmless.
+
+Capturing frames
+----------------
+
+.. code-block:: console
+
+   $ export LIBCAMERA_SOFTISP_MODE=cpu
+   $ cam -c 1 --capture=1 --file
+
+The frame is saved as ``frame-cam0-stream0-000000.bin`` in the current
+directory in ``ABGR8888`` format.
+
+libcamera capture to display
+-----------------------------
+
+.. code-block:: console
+
+   $ systemctl stop emptty
+   $ export LIBCAMERA_SOFTISP_MODE=cpu
+
+   # 1920x1080 — expected ~15 fps
+   $ gst-launch-1.0 libcamerasrc ! video/x-raw,format=RGBA,width=1920,height=1080 ! kmssink driver-name=tidss
+
+   # 640x480 — expected ~30 fps
+   $ gst-launch-1.0 libcamerasrc ! video/x-raw,format=RGBA,width=640,height=480 ! kmssink driver-name=tidss
 
 Embedded Data
 =============
