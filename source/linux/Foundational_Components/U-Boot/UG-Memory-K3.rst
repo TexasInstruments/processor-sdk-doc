@@ -259,7 +259,7 @@ USB
 Configuring USB in Host Mode
 ============================
 
-.. ifconfig:: CONFIG_part_variant not in ('J721E', 'J7200', 'J721S2', 'AM64X', 'AM62X', 'AM65X')
+.. ifconfig:: CONFIG_part_variant not in ('J721E', 'J7200', 'J721S2', 'AM64X', 'AM62X', 'AM65X', 'AM62AX')
 
    Configuring USB in host mode documentation is pending for |__PART_FAMILY_DEVICE_NAMES__|
    reach out to:  `Help e2e <https://e2e.ti.com//>`__ for additional information.
@@ -365,6 +365,35 @@ Configuring USB in Host Mode
       +       dr_mode = "host";
               u-boot,dm-spl;
 
+.. ifconfig:: CONFIG_part_variant in ('AM62AX')
+
+   .. note::
+
+      There are two instances of USB on AM62Ax SoC. On the SK board, zeroth instance is
+      brought out through a Type C port and the first instance is brought through a Type
+      A port. By default, USB0 port is configured to be in **peripheral mode**. Since
+      U-Boot does not support dynamic switching of USB roles, below DT fragment needs to
+      be applied and U-Boot image needs to be rebuilt to make USB0 port to be USB 2.0
+      host port.
+
+   .. code-block:: diff
+
+      diff --git a/dts/upstream/src/arm64/ti/k3-am62a7-sk.dts b/dts/upstream/src/arm64/ti/k3-am62a7-sk.dts
+      index 3a6d18c1..fb2b50a7 100644
+      --- a/dts/upstream/src/arm64/ti/k3-am62a7-sk.dts
+      +++ b/dts/upstream/src/arm64/ti/k3-am62a7-sk.dts
+      @@ -726,6 +726,8 @@
+
+      &usb0 {
+            usb-role-switch;
+      +       dr_mode = "host";
+      +       bootph-all;
+
+            port {
+                     usb0_hs_ep: endpoint {
+
+   .. note:: The same changes should be made in the Linux DTS (arch/arm64/boot/dts/ti/k3-am62a7-sk.dts b/arch/arm64/boot/dts/ti/k3-am62a7-sk.dts) too.
+
 .. ifconfig:: CONFIG_part_variant in ('AM65X')
 
    .. note::
@@ -392,7 +421,7 @@ Configuring USB in Host Mode
        /* Disable ICSSG2 EMAC1 */
        /delete-node/ &icssg2_emac1;
 
-.. ifconfig:: CONFIG_part_variant in ('J721E', 'J7200', 'J721S2', 'AM64X', 'AM62X', 'AM65X')
+.. ifconfig:: CONFIG_part_variant in ('J721E', 'J7200', 'J721S2', 'AM64X', 'AM62X', 'AM65X', 'AM62AX')
 
    Loading images from USB storage
    ===============================
@@ -411,7 +440,7 @@ Configuring USB in Host Mode
 Flash and boot SPL from USB storage
 ===================================
 
-.. ifconfig:: CONFIG_part_variant not in ('J7200', 'J721E', 'AM64X', 'AM65X', 'J722S', 'AM62LX')
+.. ifconfig:: CONFIG_part_variant not in ('J7200', 'J721E', 'AM64X', 'AM65X', 'J722S', 'AM62LX', 'AM62AX')
 
    Boot SPL from USB storage documentation is pending for |__PART_FAMILY_DEVICE_NAMES__|
    reach out to:  `Help e2e <https://e2e.ti.com//>`__ for additional information.
@@ -440,6 +469,31 @@ Flash and boot SPL from USB storage
    - Connect the USB Mass storage device with the boot loader images and boot up
      the board.
    - The board should now boot to u-boot prompt.
+
+.. ifconfig:: CONFIG_part_variant in ('AM62AX')
+
+   Booting to U-Boot prompt from USB storage is supported. The following are the
+   steps to be followed:
+
+   - In U-Boot the USB controller can be used in either host or peripheral mode.
+      For booting to Linux kernel from USB storage device, the USB port should be
+      in host mode.
+   - By default, USB0 is set to peripheral mode. Change this from peripheral to
+      host mode.
+   - To build the boot loader images with USB mass storage support, apply the following configuration fragments on top of the default defconfigs:
+
+      - R5 SPL: am62ax_evm_r5_defconfig + am62x_r5_usbmsc.config
+      - A53 U-Boot: am62ax_evm_a53_defconfig + am62x_a53_usbmsc.config
+
+      USB support is disabled by default in both SPL and U-Boot.
+      For instructions to build the boot loader images, refer to :ref:`Build-U-Boot-label`.
+   - Create a FAT32 partition with boot flag enabled on the USB storage device.
+   - Copy the boot loader images (tiboot3.bin, tispl.bin, u-boot.img) into the above
+      created partition.
+   - Set the boot mode switches to USB host boot mode (Refer to the **Initialization**
+      chapter of TRM for boot switch details)
+   - Connect the USB Mass storage device with the boot loader images and boot up
+      the board.
 
 .. ifconfig:: CONFIG_part_variant in ('AM64X', 'AM65X', 'J722S')
 
@@ -512,7 +566,7 @@ Flash and boot SPL from USB storage
 Boot Linux from USB storage
 ==============================
 
-.. ifconfig:: CONFIG_part_family not in ('J7_family', 'AM62X_family', 'AM64X_family')
+.. ifconfig:: CONFIG_part_family not in ('J7_family', 'AM62X_family', 'AM64X_family', 'AM62AX_family')
 
    Booting Linux from USB storage documentation is pending for |__PART_FAMILY_DEVICE_NAMES__|,
    reach out to:  `Help e2e <https://e2e.ti.com//>`__ for additional information.
@@ -575,6 +629,128 @@ Boot Linux from USB storage
          .. code-block:: console
 
             => run usb_boot
+
+.. ifconfig:: CONFIG_part_family in ('AM62AX_family')
+
+   To load the Linux kernel, Device Tree and the Root file system from USB Mass storage
+   device, the following changes are required to be done:
+
+   - U-Boot
+
+      - In U-Boot the USB controller can be used in either host or peripheral mode. For
+        booting to Linux kernel from USB storage device, the USB port is to be set as host.
+      - By default, on SK-AM62A-LP board the zero instance of USB connected to the Type C
+        port, is set to peripheral mode and the first instance of USB connected to the Type
+        A port is set to host mode.
+      - Therefore, USB controller needs to be set host mode and custom boot loader images
+        are required to be built, if zeroth instance is used. Refer to note in section
+        :ref:`uboot-configure-usb-in-host-mode`
+
+   - Linux
+
+      - In Linux, by default the USB subsystem is built as modules. For booting from USB
+        mass storage device, USB subsytem is required to be built into the image. This can be
+        done by making the following changes in the configuration used for building kernel:
+
+      .. code-block:: Kconfig
+
+         CONFIG_USB_COMMON=y
+         CONFIG_USB=y
+         CONFIG_USB_XHCI_HCD=y
+         CONFIG_USB_XHCI_PCI=y
+         CONFIG_USB_XHCI_PLATFORM=y
+         CONFIG_USB_STORAGE=y
+         CONFIG_USB_DWC3=y
+         CONFIG_USB_DWC3_AM62=y
+         CONFIG_USB_GADGET=y
+         CONFIG_TYPEC=y
+         CONFIG_TYPEC_TPS6598X=y
+         CONFIG_USB_ROLE_SWITCH=y
+
+   **Copying the images to USB storage device**
+
+      - After making the required changes mentioned above, build the kernel, device tree
+        file and modules.
+      - The USB Mass storage device should have the rootfs as the second
+        partition with ext4 file system. The following images should be in /boot/ directory:
+
+         #. Linux kernel **Image**
+         #. Device tree blob (dtb) file
+
+
+   **Run usbboot**
+
+      By default, the U-Boot environment does not define a ``usbboot`` command.
+      Add the following environment variables to the board environment file
+      (``board/ti/am62ax/am62ax.env``), rebuild and use the A53 U-Boot (with the
+      abovementioned fragment).
+
+      .. code-block:: diff
+
+         diff --git a/board/ti/am62ax/am62ax.env b/board/ti/am62ax/am62ax.env
+         index ea0d81b1..fc884c6c 100644
+         --- a/board/ti/am62ax/am62ax.env
+         +++ b/board/ti/am62ax/am62ax.env
+         @@ -20,3 +20,24 @@ bootdir=/boot
+         rd_spec=-
+         rproc_fw_binaries= 0 /lib/firmware/am62a-mcu-r5f0_0-fw 2 /lib/firmware/am62a-c71_0-fw
+         name_overlays=ti/k3-am62a7-sk-edgeai.dtbo
+         +
+         +args_usb=part uuid usb ${bootpart} uuid;
+         +	setenv bootargs console=${console} ${optargs} root=PARTUUID=${uuid} rw rootwait
+         +init_usb=run args_all args_usb
+         +get_fdt_usb=load usb ${bootpart} ${fdtaddr} ${bootdir}/dtb/${fdtfile}
+         +get_overlay_usb=
+         +	fdt address ${fdtaddr};
+         +	fdt resize 0x100000;
+         +	for overlay in $name_overlays;
+         +	do;
+         +	load usb ${bootpart} ${dtboaddr} ${bootdir}/dtb/${overlay} && fdt apply ${dtboaddr};
+         +	done;
+         +get_kern_usb=load usb ${bootpart} ${loadaddr} ${bootdir}/${name_kern}
+         +usbboot=setenv boot usb;
+         +	setenv bootpart 0:2;
+         +	usb start;
+         +	run init_usb;
+         +	run get_kern_usb;
+         +	run get_fdt_usb;
+         +	run get_overlay_usb;
+         +	run run_kern;
+
+      .. note::
+
+         Drop any variable from the patch that is already defined in your
+         environment (for example ``args_usb``), and adjust ``root=`` and
+         ``bootpart`` to match the partition layout of your USB drive.
+
+      During boot, cancel the autoboot at the U-Boot prompt and run the
+      following command:
+
+         .. code-block:: console
+
+            => run usbboot
+
+      **Manual steps (without modifying the environment)**
+
+      If the environment is not modified, the same boot can be performed manually
+      from the U-Boot prompt. The USB drive must use the same layout as the SDK
+      SD card image: a FAT boot partition (partition 1) and an ext4 root
+      filesystem partition (partition 2). The kernel ``Image`` and the device
+      tree blob are loaded from the ``/boot`` directory of the ext4 partition.
+
+         .. code-block:: console
+
+            => usb start
+            => usb storage
+            => ls usb 0:2 /boot
+            => load usb 0:2 ${loadaddr} /boot/Image
+            => load usb 0:2 ${fdtaddr} /boot/<board>.dtb
+            => setenv bootargs console=ttyS2,115200n8 root=/dev/sda2 rootwait
+            => booti ${loadaddr} - ${fdtaddr}
+
+      Replace ``<board>.dtb`` with the device tree for your board, and update
+      the console and root device to match your setup. For example, on the
+      SK-AM62A-LP use ``/boot/dtb/ti/k3-am62a7-sk.dtb``.
 
 .. ifconfig:: CONFIG_part_family in ('AM62X_family')
 
@@ -687,8 +863,6 @@ Boot Linux from USB storage
          .. code-block:: console
 
             => run usbboot
-
-|
 
 .. _uboot-mmc-support:
 
