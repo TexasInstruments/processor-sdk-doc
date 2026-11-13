@@ -78,6 +78,8 @@ What's included
   - ARM only Analytics support :ref:`Machine Learning <foundational-components-machine-learning>`
   - Snagfactory Support - :ref:`Snagfactory Tool <Flash-via-Fastboot>`
   - LPM support :ref:`Power-Management <Power-Management>`
+  - TAS67CD-AEC audio daughter card support in :ref:`DPCM mode <mcasp-dpcm-topology>`, see :ref:`TAS67CD-AEC daughter card setup <tas67cd-aec-daughter-card>`
+  - CDCE6214 external clock support, providing a 48 kHz-derived clock source to McASP for audio
 
 **Component version:**
 
