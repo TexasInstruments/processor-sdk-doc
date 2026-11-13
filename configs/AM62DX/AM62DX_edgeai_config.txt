@@ -1,0 +1,30 @@
+# General family replacement variables and configuration values for AM62D EdgeAI build
+
+# This file is processed by Python scripts to define both replacement
+# variable and configuration values for a device family build.
+# For replacement variables, all variables should be listed on a single
+# line, and all the variables should be listed on consecutive lines
+# (i.e. no additional blank lines between the replacement variables).
+# Similarly, all the configuration values should be listed on individual,
+# consecutive lines (with no blank lines between the configuration values).
+#
+# Note that neither replacement variables nor configuration values may contain
+# a colon (i.e. ":") in their name.  However, values may contain colons.
+
+Replacement Variables
+---------------------
+'__PART_FAMILY_NAME__'           : 'AM62Dx'
+'__PART_FAMILY_DEVICE_NAMES__'   : 'AM62Dx'
+'__PRODUCT_LINE_NAME__'          : 'Sitara MPU'
+'__SDK_FULL_NAME__'              : 'Processor SDK Linux EdgeAI AM62Dx'
+'__SDK_SHORT_NAME__'             : 'PSDK EdgeAI'
+'__SDK_DOWNLOAD_URL__'           : '`AM62D-SDK-Download-page <https://www.ti.com/drr/opn/AM62D-LINUX-RT-RESTRICTED-SDK>`__'
+'__EDGEAI_SDK_VERSION__'         : '12.1'
+'__TIDL_VERSION__'               : '11_02_18_00'
+'__TIDL_TOOLS_VERSION__'         : '11.2.x'
+
+Configuration Values
+--------------------
+'CONFIG_part_family'      : 'AM62DX_family'
+'CONFIG_part_variant'     : 'AM62DX'
+'CONFIG_sdk'              : 'SITARA'
