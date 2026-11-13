@@ -49,9 +49,16 @@ What ships
      - ``ase-0201``
      - C7\ |trade| NPU (TVM-RT + TIDL, 16-bit)
      - Script + notebook
+   * - GTCRN
+     - Speech enhancement (VoiceBank-DEMAND-16k)
+     - ``ase-0100``
+     - Arm CPU (ONNX Runtime, FP32)
+     - Script + notebook
 
 VGGish11, YAMNet, and GCRN each ship a pre-compiled TVM-RT + TIDL artifact and
-run offloaded to the C7\ |trade| NPU.
+run offloaded to the C7\ |trade| NPU. GTCRN needs no compilation: it ships as
+the ONNX model only and runs in FP32 on the Arm CPU through ONNX Runtime, already
+faster than real time.
 
 ***************
 On-target setup
@@ -72,7 +79,7 @@ rootfs.
       $ cd audioai-modelzoo
 
 #. **Download the model artifacts.** Downloads the three pre-compiled
-   TVM-RT + TIDL artifacts (VGGish11, YAMNet, GCRN)
+   TVM-RT + TIDL artifacts (VGGish11, YAMNet, GCRN) and the GTCRN ONNX model:
 
    .. code-block:: console
 
@@ -199,6 +206,33 @@ the destination wav. Expected output (abridged):
 
    Wrote benchmark report to sample_wav/gcrn-benchmark.md
 
+GTCRN (speech enhancement)
+==========================
+
+.. code-block:: console
+
+   $ cd ~/tidl/audioai-modelzoo/inference/gtcrn_se
+   $ python3 gtcrn_infer_audio.py --input sample_wav/mix.wav
+
+The script runs the ONNX model on the Arm CPU through ONNX Runtime; no TIDL
+artifact is involved. It writes the enhanced audio to :file:`enh_onnx.wav` beside
+the input and prints a per-block timing table. Pass ``--output`` to change the
+destination wav. Expected output (abridged):
+
+.. code-block:: text
+
+   Machine: aarch64
+   Model: .../ase-0100_onnxrt_speech_enhancement_voicebank_demand_16k_gtcrn_dns3_onnx/model/gtcrn_dns3.onnx
+   Loading ONNX Runtime session...
+   Running inference on mix.wav (9.77s)...
+   Wrote enhanced audio to sample_wav/enh_onnx.wav
+
+   GTCRN ONNX Runtime (CPU) benchmark (9.77s audio)
+
+   block                    total (ms)
+   ...
+   Real-Time Factor (inference / audio) = 0.0700
+
 .. _edgeai_model_zoo_notebooks:
 
 **********************
@@ -233,6 +267,8 @@ its notebook from the file browser in the left sidebar. The notebooks are:
      - ``inference/gcrn_se/gcrn_inference.ipynb``
    * - VGGish11
      - ``inference/vggish11_sc/vggish_inference.ipynb``
+   * - GTCRN
+     - ``inference/gtcrn_se/gtcrn_inference.ipynb``
    * - YAMNet
      - ``inference/yamnet_sc/yamnet_inference.ipynb``
 
@@ -250,6 +286,11 @@ artifact:
 - ``ac-0101`` - ``ac-0101_tvmrt_audio_classification_urbansound8k_vggish11_onnx`` (VGGish11)
 - ``ac-0201`` - ``ac-0201_tvmrt_audio_classification_urbansound8k_yamnet_onnx`` (YAMNet)
 - ``ase-0201`` - ``ase-0201_tvmrt_speech_enhancement_voicebank_demand_16k_gcrn_fixed_4sec_onnx`` (GCRN)
+
+GTCRN runs through ONNX Runtime, so its directory holds only the ONNX model
+(:file:`model/gtcrn_dns3.onnx`) and no compiled artifacts:
+
+- ``ase-0100`` - ``ase-0100_onnxrt_speech_enhancement_voicebank_demand_16k_gtcrn_dns3_onnx`` (GTCRN)
 
 Each of those artifact directories' :file:`artifacts/` folder holds the TVM-RT
 deployment artifacts (:file:`deploy_lib.so`, :file:`deploy_graph.json`, :file:`deploy_param.params`)
