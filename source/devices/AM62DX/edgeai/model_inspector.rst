@@ -242,7 +242,7 @@ breaks that subgraph down by cycles and memory. Generate it with the
 
 .. code-block:: console
 
-   $ CFG=data/configs/samples/models/audio/speech_enhancement/voicebank_demand_16k/gcrn_fixed_4sec_tvmrt_config.yaml
+   $ CFG=data/configs/samples/models/audio/speech_enhancement/voicebank_demand_16k/gcrn_fixed_4sec_config.yaml
    $ tidlrunner-cli inspect --config_path $CFG
 
 For contrast, running ``inspect`` on the GTCRN (ONNX-RT) config produces a report
