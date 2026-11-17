@@ -683,7 +683,7 @@ Boot Linux from USB storage
       By default, the U-Boot environment does not define a ``usbboot`` command.
       Add the following environment variables to the board environment file
       (``board/ti/am62ax/am62ax.env``), rebuild and use the A53 U-Boot (with the
-      abovementioned fragment).
+      previously mentioned fragment).
 
       .. code-block:: diff
 
