@@ -632,8 +632,8 @@ Boot Linux from USB storage
 
 .. ifconfig:: CONFIG_part_family in ('AM62AX_family')
 
-   To load the Linux kernel, Device Tree and the Root file system from USB Mass storage
-   device, the following changes are required to be done:
+   Loading the Linux kernel, Device Tree and the Root file system from USB Mass storage
+   device requires the following changes:
 
    - U-Boot
 
