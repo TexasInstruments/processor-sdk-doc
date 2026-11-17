@@ -672,7 +672,7 @@ Boot Linux from USB storage
       - After making the required changes mentioned above, build the kernel, device tree
         file and modules.
       - The USB Mass storage device should have the rootfs as the second
-        partition with ext4 file system. The following images should be in /boot/ directory:
+        partition with ext4 file system. The following images should be in :file:`/boot` directory:
 
          #. Linux kernel **Image**
          #. Device tree blob (dtb) file
