@@ -717,7 +717,7 @@ Boot Linux from USB storage
          +	run get_overlay_usb;
          +	run run_kern;
 
-      .. note::
+      .. important::
 
          Drop any variable from the patch that is already defined in your
          environment (for example ``args_usb``), and adjust ``root=`` and
