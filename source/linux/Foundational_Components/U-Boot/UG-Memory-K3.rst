@@ -370,10 +370,10 @@ Configuring USB in Host Mode
    .. note::
 
       There are two instances of USB on AM62Ax SoC. On the SK board, zeroth instance is
-      brought out through a Type C port and the first instance is brought through a Type
+      brought out through a Type C port and the first instance is brought out through a Type
       A port. By default, USB0 port is configured to be in **peripheral mode**. Since
       U-Boot does not support dynamic switching of USB roles, below DT fragment needs to
-      be applied and U-Boot image needs to be rebuilt to make USB0 port to be USB 2.0
+      be applied and U-Boot image needs to be rebuilt to make USB0 port as a USB 2.0
       host port.
 
    .. code-block:: diff
@@ -391,8 +391,6 @@ Configuring USB in Host Mode
 
             port {
                      usb0_hs_ep: endpoint {
-
-   .. note:: The same changes should be made in the Linux DTS (arch/arm64/boot/dts/ti/k3-am62a7-sk.dts b/arch/arm64/boot/dts/ti/k3-am62a7-sk.dts) too.
 
 .. ifconfig:: CONFIG_part_variant in ('AM65X')
 
@@ -475,25 +473,20 @@ Flash and boot SPL from USB storage
    Booting to U-Boot prompt from USB storage is supported. The following are the
    steps to be followed:
 
-   - In U-Boot the USB controller can be used in either host or peripheral mode.
-      For booting to Linux kernel from USB storage device, the USB port should be
-      in host mode.
-   - By default, USB0 is set to peripheral mode. Change this from peripheral to
-      host mode.
    - To build the boot loader images with USB mass storage support, apply the following configuration fragments on top of the default defconfigs:
 
       - R5 SPL: am62ax_evm_r5_defconfig + am62x_r5_usbmsc.config
       - A53 U-Boot: am62ax_evm_a53_defconfig + am62x_a53_usbmsc.config
 
-      USB support is disabled by default in both SPL and U-Boot.
-      For instructions to build the boot loader images, refer to :ref:`Build-U-Boot-label`.
+     USB support is disabled by default in both SPL and U-Boot. For instructions to build the boot loader images, refer to :ref:`Build-U-Boot-label`.
    - Create a FAT32 partition with boot flag enabled on the USB storage device.
-   - Copy the boot loader images (tiboot3.bin, tispl.bin, u-boot.img) into the above
-      created partition.
-   - Set the boot mode switches to USB host boot mode (Refer to the **Initialization**
-      chapter of TRM for boot switch details)
+   - Copy the boot loader images (:file:`tiboot3.bin`, :file:`tispl.bin`,
+     :file:`u-boot.img`) into the above created partition.
+   - Set the boot mode switches to USB host boot mode (Refer to the
+     **Initialization/Boot Mode Pins** chapter of TRM for boot switch details).
    - Connect the USB Mass storage device with the boot loader images and boot up
-      the board.
+     the board.
+   - The board should now boot to u-boot prompt.
 
 .. ifconfig:: CONFIG_part_variant in ('AM64X', 'AM65X', 'J722S')
 
@@ -635,9 +628,9 @@ Boot Linux from USB storage
    Loading the Linux kernel, Device Tree and the Root file system from USB Mass storage
    device requires the following changes:
 
-   - U-Boot
+   - **U-Boot**
 
-      - In U-Boot the USB controller can be used in either host or peripheral mode. For
+      - In U-Boot, the USB controller can be used in either host or peripheral mode. For
         booting to Linux kernel from USB storage device, the USB port is to be set as host.
       - By default, on SK-AM62A-LP board the zero instance of USB connected to the Type C
         port, is set to peripheral mode and the first instance of USB connected to the Type
@@ -646,26 +639,54 @@ Boot Linux from USB storage
         are required to be built, if zeroth instance is used. Refer to note in section
         :ref:`uboot-configure-usb-in-host-mode`
 
-   - Linux
+   - **Linux**
 
-      - In Linux, by default the USB subsystem is built as modules. For booting from USB
-        mass storage device, USB subsytem is required to be built into the image. This can be
-        done by making the following changes in the configuration used for building kernel:
+      -  In Linux, by default the USB subsystem is built as modules. For booting from USB
+         mass storage device, USB subsytem is required to be built into the image. This can be
+         done by making the following changes in the configuration used for building kernel:
 
-      .. code-block:: Kconfig
+         .. code-block:: Kconfig
 
-         CONFIG_USB_COMMON=y
-         CONFIG_USB=y
-         CONFIG_USB_XHCI_HCD=y
-         CONFIG_USB_XHCI_PCI=y
-         CONFIG_USB_XHCI_PLATFORM=y
-         CONFIG_USB_STORAGE=y
-         CONFIG_USB_DWC3=y
-         CONFIG_USB_DWC3_AM62=y
-         CONFIG_USB_GADGET=y
-         CONFIG_TYPEC=y
-         CONFIG_TYPEC_TPS6598X=y
-         CONFIG_USB_ROLE_SWITCH=y
+            CONFIG_USB_COMMON=y
+            CONFIG_USB=y
+            CONFIG_USB_XHCI_HCD=y
+            CONFIG_USB_XHCI_PCI=y
+            CONFIG_USB_XHCI_PLATFORM=y
+            CONFIG_USB_STORAGE=y
+            CONFIG_USB_DWC3=y
+            CONFIG_USB_DWC3_AM62=y
+            CONFIG_USB_GADGET=y
+            CONFIG_TYPEC=y
+            CONFIG_TYPEC_TPS6598X=y
+            CONFIG_USB_ROLE_SWITCH=y
+
+      -  By default, the USB0 port (Type-C) is configured in peripheral mode in the Linux
+         device tree. To boot from a USB mass storage device connected to USB0, apply the
+         following device tree change so that USB0 operates as a USB 2.0 host port, and
+         rebuild the device tree blob:
+
+         .. code-block:: diff
+
+            diff --git a/arch/arm64/boot/dts/ti/k3-am62a7-sk.dts b/arch/arm64/boot/dts/ti/k3-am62a7-sk.dts
+            index 3a6d18c14..b220ec5c2 100644
+            --- a/arch/arm64/boot/dts/ti/k3-am62a7-sk.dts
+            +++ b/arch/arm64/boot/dts/ti/k3-am62a7-sk.dts
+            @@ -726,7 +726,8 @@ &usbss0 {
+
+            &usb0 {
+                  usb-role-switch;
+            -
+            +       dr_mode = "host";
+            +       bootph-all;
+                  port {
+                           usb0_hs_ep: endpoint {
+                                    remote-endpoint = <&usb_con_hs>;
+
+         .. note::
+
+            This change must be applied to both the U-Boot device tree (see
+            `Configuring USB in Host Mode`_) and the Linux device tree. The two are
+            configured independently, and the U-Boot setting does not carry over to Linux.
 
    **Copying the images to USB storage device**
 
