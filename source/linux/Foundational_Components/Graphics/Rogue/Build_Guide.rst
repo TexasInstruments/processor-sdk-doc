@@ -136,24 +136,18 @@ Proprietary mesa components
 
 Mesa, at this point in time, is a collection of Graphics (GFX) tools and
 utilities for setting up and interacting with rendering contexts. It has
-everything from a DRI "megadriver" to full GLES/GL implementations. If you're
-interested in learning GFX under Linux it is worth familiarizing yourself with
-everything else it provides.
+everything from a driver selection system to full GLES/GL implementations. If
+you're interested in learning GFX under Linux it is worth familiarizing yourself
+with everything else it provides.
 
-For us, the important part is that DRI megadriver. This is the mechanism used to
-decide what GLES / GL implementation to pick when you bind one of the earlier
-mentioned API to a context. This is also where things get tricky.
+With mesa 25.X the legacy DRI interface is no longer present. With this update
+``kmsro`` binds displays to their associated drivers. We still need a small shim
+to load our GLES implementation and configure the mesa dispatch table.
 
-Historically there has been some issues with embedded GFX because, unlike your
-standard PC GPU, we tend to mix and match actual Graphics Processing Units and
-Display Controllers. The megadriver uses the display device name to coordinate
-between API implementations. As such, we need a shim to act as a ``tidss`` DRI
-driver and coordinate the link with the PVR GLES implementation.
-
-This shim, currently, takes the form of a Gallium Frontend. This is the main
+This shim, currently, is in the form of a gallium driver. This is the main
 reason for the fork and the 60 odd patches we carry at the following repository:
 
-   https://gitlab.freedesktop.org/StaticRocket/mesa
+   https://github.com/texasInstruments/mesa
 
 There are also other nice-to-have features there such as additional pixel
 formats, minor fix-ups, and a few performance tweaks Imagination has picked up
@@ -164,7 +158,8 @@ Building the proprietary mesa components
 
 We recommend following the `Mesa build guide`_ for general options. Currently
 the mesa components use a standard interface that allows the use of any
-``powervr/*`` branch.
+``powervr/*`` branch. This guide expects a version equal to or greater than
+``25.2.8``.
 
 .. note::
 
@@ -176,26 +171,14 @@ The only necessary build options are:
    - ``-Dgallium-drivers=pvr`` -- This is a comma separated list, just make sure
      pvr is present in it.
 
-   - ``-Dgallium-pvr-alias=tidss`` -- This should match the display controller
-     you want to bind to. For all K3 devices this is ``tidss``.
-
    - ``-Dvulkan-drivers=pvr`` -- If using Vulkan
-
-This will produce 2 important files relevant to the shim mechanism we discussed
-earlier:
-
-   - :file:`pvr_dri.so` -- Main DRI interface
-
-   - :file:`tidss_dri.so` -- Display controller interface that points back at
-     :file:`pvr_dri.so`. This uses the value specified with
-     ``-Dgallium-pvr-alias``.
 
 Using the proprietary stack
 ===========================
 
 Assuming you're using the SDK or you've built and installed the earlier parts
 correctly, you should see a message similar to the following in :command:`dmesg`
-after the kernel module has loaded:
+after the kernel module loads:
 
 .. code-block:: dmesg
 
