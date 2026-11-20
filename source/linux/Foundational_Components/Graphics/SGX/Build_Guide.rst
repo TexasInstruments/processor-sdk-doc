@@ -2,9 +2,8 @@
 SGX build guide
 ###############
 
-The graphics stack on SGX will not receive any new major updates. The last major
-change occurred in release 09.01. This will capture the build process and some
-of the caveats of this legacy driver.
+The graphics stack on SGX will not receive any major feature updates. The last
+major change occurred in release 12.02.
 
 As part of the kernel 6.1 support effort, this driver now mimics the build and
 structure of rogue. The stack consists of 3 main components with varying
@@ -36,8 +35,8 @@ Building the SGX kernel module
 
 The latest branch has the most bug-fixes and has the widest general
 compatibility in modern applications. This is ``1.17.4948957/mesa/k6.1``, and
-despite the mention of kernel 6.1 it is also interoperable with kernel 6.6 and
-6.12.
+despite the mention of kernel 6.1 it is also interoperable with kernel 6.6,
+6.12, and 6.18.
 
 The :file:`INSTALL` file gives a brief overview of how to build and install the
 module. This gives you the common variables, but it does omit some of the more
@@ -57,7 +56,7 @@ always contain the latest required variables to compile the driver.
 
 As before mentioned these build options must match with the corresponding UM
 build options. Currently we only release binaries with ``BUILD=release`` and
-``WINDOW_SYSTEM=lws-generic``. The UM section will go previous exceptions
+``WINDOW_SYSTEM=lws-generic``. The UM section will go over earlier exceptions
 to this.
 
 *************************
@@ -66,7 +65,7 @@ SGX user space components
 
 The proprietary user space components are necessary for all interactions with
 the GPU. It has the firmware, GLES implementation, and the primary control
-server. Unlike rogue, the firmware part of the control sever library.
+server. Unlike rogue, the firmware is part of the control sever library.
 
 The binary release is available at:
 
@@ -78,8 +77,8 @@ Installing the SGX user space components
 The repository has binaries for each platform in release specific branches. The
 newest release, which matches with the earlier mentioned kernel module branch is
 ``1.17.4948957/mesa/glibc-2.35``. This branch deviates from the existing naming
-pattern to indicate that unlike previous releases it required a new version of
-mesa and was linked against glibc-2.35.
+pattern to indicate that, unlike other releases, it requires a new version of
+mesa and at least glibc-2.35.
 
 The repository has the following structure:
 
@@ -138,63 +137,51 @@ SGX mesa components
 
 Mesa, at this point in time, is a collection of Graphics (GFX) tools and
 utilities for setting up and interacting with rendering contexts. It has
-everything from a DRI "megadriver" to full GLES/GL implementations. If you're
-interested in learning GFX under Linux it is worth familiarizing yourself with
-everything else it provides.
+everything from a driver selection system to full GLES/GL implementations. If
+you're interested in learning GFX under Linux it is worth familiarizing yourself
+with everything else it provides.
 
-For us, the important part is that DRI "megadriver." This is the mechanism used
-to decide what GLES / GL implementation gets selected when you bind one of the
-before mentioned API to a context. This is also where things get tricky.
+With mesa 25.X the legacy DRI interface is no longer present. With this update
+``kmsro`` binds displays to their associated drivers. We still need a small shim
+to load our GLES implementation and configure the mesa dispatch table.
 
-Historically there has been some issues with embedded GFX because, unlike your
-standard PC GPU, we tend to mix and match actual Graphics Processing Units and
-Display Controllers. The megadriver uses the display device name to coordinate
-between API implementations. As such, we need a shim to act as a DRI driver and
-coordinate the link with the SGX GLES implementation.
-
-This shim, currently, is in the form of a Gallium Frontend. This is the main
+This shim, currently, is in the form of a gallium driver. This is the main
 reason for the fork and the 60 odd patches we carry at the following repository:
 
-   https://gitlab.freedesktop.org/StaticRocket/mesa
+   https://github.com/texasInstruments/mesa
 
 There are also other nice-to-have features there such as additional pixel
-formats, minor fix-ups, and a few performance tweaks IMG have picked up over the
-years. The main reason we need it is for that shim.
+formats, minor fix-ups, and a few performance tweaks Imagination has picked up
+over the years. The main reason we need it is for that shim.
 
 Building the SGX mesa components
 ================================
 
+In earlier releases the SGX shim was a separate gallium frontend. Starting with
+``f52f27edce0e (all: unify sgx and rogue dri layers, 2026-11-12)`` a unified PVR
+driver replaces this. This means any older PVR specific mesa branches should
+also work, though support is not guaranteed.
+
 We recommend following the `Mesa build guide`_ for general options. Currently
-the mesa components use a standard interface that allows use of any
-``powervr/*`` branch equal to or greater than ``22.3.5``.
+the mesa components use a standard interface that allows the use of any
+``powervr/*`` branch. This guide expects a version equal to or greater than
+``25.2.8``.
+
+.. note::
+
+   Releases before 1.18 did not use this standard interface. Instead the UM
+   binaries include all relevant mesa components for those releases.
 
 The only necessary build options are:
 
-   - ``-Dgallium-drivers=sgx`` -- This is a comma separated list, just make sure
-     sgx is present in it.
-
-   - ``-Dgallium-sgx-alias=`` -- This should match the display controller you
-     want to bind to. This can either be ``tilcdc``, ``tidss``, or ``omapdrm``
-     depending on the device.
-
-This will produce 3 important files relevant to the shim mechanism we discussed
-earlier:
-
-   - :file:`sgx_dri.so` -- Main DRI interface
-
-   - :file:`pvr_dri.so` -- GPU interface that points back to :file:`sgx_dri.so`.
-     This is for an application that attempts to interact with the GPU directly
-     because the DRI device is still registered with the name ``pvr``.
-
-   - :file:`<display>_dri.so` -- Display controller interface that points back
-     at :file:`sgx_dri.so`. This is from the value specified with
-     ``-Dgallium-sgx-alias``.
+   - ``-Dgallium-drivers=pvr`` -- This is a comma separated list, just make sure
+     pvr is present in it.
 
 *******************
 Using the SGX stack
 *******************
 
-Assuming you're using the SDK or you've built and installed the preceding
+Assuming you're using the SDK or you've built and installed the earlier parts
 correctly, you should see a message similar to the following in :command:`dmesg`
 after the kernel module loads:
 
@@ -213,23 +200,29 @@ Upon starting the user space daemon you should see the following message:
    [   29.277564] PVR_K: UM DDK-(4948957) and KM DDK-(4948957) match. [ OK ]
 
 You should now be able to issue a simple test. We recommend
-:command:`glmark2-es2-drm`. You should see the following indicating you are
+:command:`kmscube`. You should see the following indicating you are
 using the correct driver:
 
 .. code-block:: console
 
-   root@am335x-evm:~# glmark2-es2-drm
-   MESA: info: Loaded libpvr_dri_support.so
-   =======================================================
-       glmark2 2021.12
-   =======================================================
-       OpenGL Information
-       GL_VENDOR:     Imagination Technologies
-       GL_RENDERER:   PowerVR SGX 530
-       GL_VERSION:    OpenGL ES 2.0 build 1.17@4948957
-   =======================================================
+   root@am335x-evm:~# kmscube
+   Using display 0x6564b0 with EGL version 1.4
+   ===================================
+   EGL information:
+     version: "1.4"
+     vendor: "Mesa Project"
+   [snip]
+   ===================================
+   OpenGL ES 2.x information:
+     version: "OpenGL ES 2.0 build 1.17@4948957"
+     shading language version: "OpenGL ES GLSL ES 1.00 build 1.17@4948957"
+     vendor: "Imagination Technologies"
+     renderer: "PowerVR SGX 530"
+   [snip]
+   ===================================
+   Rendered 120 frames in 2.002120 sec (59.936461 fps)
 
-The ``GL_VENDOR`` should report ``Imagination Technologies`` with the renderer
+The vendor should report ``Imagination Technologies`` with the renderer
 corresponding to the graphics processor in that device.
 
 .. _Mesa build guide: https://docs.mesa3d.org/install.html
