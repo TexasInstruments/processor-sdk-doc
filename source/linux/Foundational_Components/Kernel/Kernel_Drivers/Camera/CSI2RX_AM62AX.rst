@@ -194,8 +194,8 @@ utilities like `7yuv <http://datahammer.de/7yuv_manual/index.htm>`__ or `PixelVi
 <https://carinastudio.azurewebsites.net/PixelViewer/>`__, or converted
 using OpenCV.
 
-Capture to Display using ISP
-============================
+Capture to Display using VPAC ISP
+=================================
 
 To use the full capture to display pipeline, you can use gstreamer to call
 the required ISP components to convert the raw frames, apply
@@ -246,6 +246,110 @@ For OV2312 use mosaic to display both streams together:
    sink_0::startx="<0>" sink_0::starty="<0>" sink_0::widths="<640>" sink_0::heights="<480>" \
    sink_1::startx="<640>" sink_1::starty="<480>" sink_1::widths="<640>" sink_1::heights="<480>" ! \
    queue ! kmssink driver-name=tidss plane-properties=s,zpos=1
+
+IMX219 Camera with libcamera Soft ISP
+=====================================
+
+IMX219-based modules on the 15-pin FFC connector can also be used with
+libcamera's CPU soft ISP as an alternative to the tiovxisp hardware ISP
+pipeline. The IMX219 outputs raw Bayer frames - libcamera debayers them in software.
+
+Applying the sensor overlay
+---------------------------
+
+Press any key during the U-Boot countdown to stop autoboot, then run:
+
+.. code-block:: text
+
+   Hit any key to stop autoboot:  0
+   => setenv name_overlays ti/k3-am62x-sk-csi2-imx219.dtbo
+   => boot
+   switch to partitions #0, OK
+   mmc1 is current device
+   SD/MMC found on device 1
+   574 bytes read in 1 ms (560.5 KiB/s)
+   Loaded env from uEnv.txt
+   Importing environment from mmc1 ...
+   21905920 bytes read in 224 ms (93.3 MiB/s)
+   Failed to load 'ti-core-initramfs.cpio.xz'
+   WARNING: Initramfs not found, continuing without initramfs
+   71374 bytes read in 2 ms (34 MiB/s)
+   Working FDT set to 88000000
+   3378 bytes read in 1 ms (3.2 MiB/s)
+   ## Flattened Device Tree blob at 88000000
+      Booting using the fdt blob at 0x88000000
+   Working FDT set to 88000000
+      Loading Device Tree to 00000000fc414000, end 00000000fc528fff ... OK
+   Working FDT set to fc414000
+
+To apply persistently, edit :file:`uEnv.txt` on the boot partition and
+add or update the ``name_overlays`` line:
+
+.. code-block:: text
+
+   name_overlays=ti/k3-am62x-sk-csi2-imx219.dtbo
+
+Verifying the sensor is detected
+--------------------------------
+
+Confirm the CSI bridge probed and the camera node is present:
+
+.. code-block:: console
+
+   $ dmesg | grep csi
+   [    8.991216] cdns-csi2rx 30101000.csi-bridge: Probed CSI2RX with 2/4 lanes, 4 streams, external D-PHY
+
+If the CSI bridge did not probe, the overlay was not applied - go back
+and check the ``name_overlays`` setting.
+
+Then verify libcamera detects the sensor:
+
+.. code-block:: console
+
+   $ cam -l
+   [...] INFO Camera camera_manager.cpp:340 libcamera v0.6.0 (...)
+   [...] WARN CameraSensor camera_sensor_raw.cpp:622 'imx219 4-0010': Rotation control not available, default to 0 degrees
+   [...] WARN IPAProxy ipa_proxy.cpp:192 Configuration file 'imx219.yaml' not found for IPA module 'simple', falling back to '/usr/share/libcamera/ipa/simple/uncalibrated.yaml'
+   [...] INFO Camera camera_manager.cpp:223 Adding camera '...' for pipeline handler simple
+   Available cameras:
+   1: External camera 'imx219' (...)
+
+libcamera lists the sensor as ``External camera`` because the device tree
+sets ``orientation = <MEDIA_ORIENTATION_EXTERNAL>``. libcamera requires this
+property to expose ``V4L2_CID_CAMERA_ORIENTATION`` and will refuse to open
+the sensor without it.
+
+.. note::
+
+   The ``Rotation control not available`` warning is expected and harmless.
+
+Capturing frames
+----------------
+
+.. code-block:: console
+
+   $ export LIBCAMERA_SOFTISP_MODE=cpu
+   $ cam -c 1 --capture=1 --file
+
+cam saves the frame as ``frame-cam0-stream0-000000.bin`` in the current
+directory in ``ABGR8888`` format.
+
+libcamera capture to display
+----------------------------
+
+``waylandsink`` displays inside the running Weston session without stopping
+the display manager:
+
+.. code-block:: console
+
+   $ export LIBCAMERA_SOFTISP_MODE=cpu
+   $ export WAYLAND_DISPLAY=/run/user/1000/wayland-1
+
+   # 1920x1080 — expected ~15 fps
+   $ gst-launch-1.0 libcamerasrc ! video/x-raw,format=RGBA,width=1920,height=1080 ! waylandsink
+
+   # 640x480 — expected ~30 fps
+   $ gst-launch-1.0 libcamerasrc ! video/x-raw,format=RGBA,width=640,height=480 ! waylandsink
 
 CSI2RX testing details
 ======================
