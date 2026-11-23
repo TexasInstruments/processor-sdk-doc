@@ -1,0 +1,30 @@
+# General family replacement variables and configuration values for Buildroot build
+
+# This file is processed by Python scripts to define both replacement
+# variable and configuration values for a device family build.
+# For replacement variables, all variables should be listed on a single
+# line, and all the variables should be listed on consecutive lines
+# (i.e. no additional blank lines between the replacement variables).
+# Similarly, all the configuration values should be listed on individual,
+# consecutive lines (with no blank linues between the configuration values).
+#
+# Note that neither replacement variables nor configuration values may contain
+# a colon (i.e. ":") in their name.  However, values may contain colons.
+
+Replacement Variables
+---------------------
+'__PART_FAMILY_NAME__'           : 'AM335x'
+'__PART_FAMILY_DEVICE_NAMES__'   : 'AM335x'
+'__PRODUCT_LINE_NAME__'          : 'Sitara MPU'
+'__SDK_BUILD_MACHINE__'          : 'am335x-evm'
+'__SDK_FULL_NAME__'              : 'Buildroot for AM335x'
+'__SDK_SHORT_NAME__'             : 'Buildroot'
+'__SDK_DOWNLOAD_URL__'           : '`AM335X-Linux-SDK-Download-page <https://www.ti.com/tool/PROCESSOR-SDK-AM335X>`__'
+'__LINUX_UBUNTU_VERSION_LONG__'  : '22.04 (64-bit)'
+'__LINUX_UBUNTU_VERSION_SHORT__' : '22.04'
+
+Configuration Values
+--------------------
+'CONFIG_part_family'      : 'AM335X_family'
+'CONFIG_part_variant'     : 'AM335X'
+'CONFIG_sdk'              : 'BuildrootSDK'
