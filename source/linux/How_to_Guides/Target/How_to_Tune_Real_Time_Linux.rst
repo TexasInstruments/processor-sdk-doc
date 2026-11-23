@@ -38,22 +38,17 @@ this effort here: https://wiki.linuxfoundation.org/realtime/
 Validating We Are Using A Real-Time Capable Kernel
 --------------------------------------------------
 
-Because of the length of time the real-time patchset has been working
-its way into the mainline Linux kernel some of its features are already
-in use with vanilla kernel builds. This can make it difficult to
-determine if the kernel is fully real-time capable.
-
 One easy way to determine if the kernel currently running is real-time
-capable is by looking if the realtime file exists in our :file:`/sys`
-directory
+capable is by looking for :code:`PREEMPT_RT` or :code:`PREEMPT_DYNAMIC`
+in the output of the :code:`uname -a` command.
 
 .. code:: console
 
-   cat /sys/kernel/realtime
+   uname -a
 
-If the file is not found then the current kernel does not have all the
-required features needed by the kernel to be fully preemptible and is
-not suited for running a real-time application.
+If the output contains only :code:`PREEMPT` the kernel does not have all
+the required features needed by the kernel to be fully preemptible and
+is not suited for running a real-time application.
 
 Testing Kernel Performance
 --------------------------
