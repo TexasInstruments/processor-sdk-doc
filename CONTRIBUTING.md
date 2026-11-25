@@ -42,6 +42,16 @@ convention. The following goes over the more common tags in this project.
  Other supported tags exist in the conventional commit specification, but they
  are not used as often here.
 
+### Signed-off-by requirements
+
+[All commits must include a `Signed-off-by:`
+trailer.](https://git-scm.com/docs/SubmittingPatches.html#sign-off)
+
+TI employees must sign-off all commits with their `@ti.com` email address.
+Contractors, similarly, must sign-off their commits with their `x.*@ti.com`
+email address. Community contributions are not bound by these requirements and
+can use the standard GitHub no-reply email if necessary.
+
 ## Project structure
 
 This project uses reStructuredText (reST or RST) for generating standard HTML
