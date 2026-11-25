@@ -21,7 +21,6 @@ Processor SDK Linux Edge AI Software Developer’s Guide
    model_compile_evaluate
    model_inspector
    integrating_new_model
-   performance
 
 |
 

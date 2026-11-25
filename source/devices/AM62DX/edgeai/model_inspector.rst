@@ -84,7 +84,7 @@ costs accuracy:
 
 .. code-block:: console
 
-   $ tidlrunner-cli inspect --config_path $CFG
+   $ tidlrunner-cli inspect --config_path $CFG --target_device AM62D
 
 ``inspect`` is a one-command pipeline. In order, it:
 
@@ -164,7 +164,7 @@ compiled:
 
 .. code-block:: console
 
-   $ tidlrunner-cli infer --config_path $CFG --debug_level 2
+   $ tidlrunner-cli infer --config_path $CFG --target_device AM62D --debug_level 2
 
 On the |__PART_FAMILY_NAME__| EVM, use the same ``--debug_level 2`` setting with the target device
 selected. The report additionally gets the whole-model inference time measured on
@@ -234,7 +234,7 @@ The report has four tabs.
 GCRN showcase - an offloaded NPU subgraph
 =========================================
 
-GCRN compiles with ``tidl_offload: true`` on |__PART_FAMILY_NAME__|. Its report shows a **real
+GCRN-mod-g8 compiles with ``tidl_offload: true`` on |__PART_FAMILY_NAME__|. Its report shows a **real
 C7x™ NPU subgraph** rather than an all-Arm model. The *Subgraphs* tab lists one
 offloaded subgraph (16-bit) with its layer mapping. The *Performance* tab
 breaks that subgraph down by cycles and memory. Generate it with the
@@ -242,8 +242,8 @@ breaks that subgraph down by cycles and memory. Generate it with the
 
 .. code-block:: console
 
-   $ CFG=data/configs/samples/models/audio/speech_enhancement/voicebank_demand_16k/gcrn_fixed_4sec_config.yaml
-   $ tidlrunner-cli inspect --config_path $CFG
+   $ CFG=data/configs/samples/models/audio/speech_enhancement/voicebank_demand_16k/gcrn_mod_g8_fixed_4sec_config.yaml
+   $ tidlrunner-cli inspect --config_path $CFG --target_device AM62D
 
 For contrast, running ``inspect`` on the GTCRN (ONNX-RT) config produces a report
 with **no** NPU subgraph. Every layer runs on the Arm core, as a non-offloaded
@@ -275,7 +275,7 @@ To skip the report for a run, add ``--no_inspector`` to any command
 
 .. code-block:: console
 
-   $ tidlrunner-cli compile --config_path $CFG --no_inspector
+   $ tidlrunner-cli compile --config_path $CFG --target_device AM62D --no_inspector
 
 No report is created or updated during that run. A report that already exists is
 left exactly as it is.

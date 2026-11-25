@@ -44,10 +44,10 @@ What ships
      - ``ac-0201``
      - C7\ |trade| NPU (TVM-RT + TIDL, 8-bit)
      - Script + notebook
-   * - GCRN
+   * - GCRN-mod-g16
      - Speech enhancement (VoiceBank-DEMAND-16k)
-     - ``ase-0201``
-     - C7\ |trade| NPU (TVM-RT + TIDL, 16-bit)
+     - ``ase-0212``
+     - C7\ |trade| NPU (TVM-RT + TIDL, 16-bit; LSTM FP32)
      - Script + notebook
    * - GTCRN
      - Speech enhancement (VoiceBank-DEMAND-16k)
@@ -55,10 +55,47 @@ What ships
      - Arm CPU (ONNX Runtime, FP32)
      - Script + notebook
 
-VGGish11, YAMNet, and GCRN each ship a pre-compiled TVM-RT + TIDL artifact and
-run offloaded to the C7\ |trade| NPU. GTCRN needs no compilation: it ships as
-the ONNX model only and runs in FP32 on the Arm CPU through ONNX Runtime, already
-faster than real time.
+VGGish11, YAMNet, and GCRN-mod-g16 each ship a pre-compiled TVM-RT + TIDL
+artifact and run offloaded to the C7\ |trade| NPU. GTCRN needs no compilation: it
+ships as the ONNX model only and runs in FP32 on the Arm CPU through ONNX Runtime,
+already faster than real time.
+
+GCRN-mod-g16 is a GCRN variant modified by TI for TIDL. It keeps the grouped LSTM
+of the original GCRN (16 groups), and rewrites only the encoder and decoder
+layers with exact transforms that keep the trained weights. The whole model
+offloads to the C7\ |trade| NPU as a single TIDL subgraph, with no layers left
+for TVM code generation. The encoder and decoder layers are quantized to 16 bits.
+The LSTM layers run in FP32: TIDL runs an LSTM in fixed point only when both its
+hidden size and its input size are greater than 64, and each of the 16 LSTM
+groups has size 64. :ref:`Model Compile and Evaluate <edgeai_compile_evaluate>`
+also covers GCRN-mod-g8, whose 8 wider LSTM groups are quantized to 16 bits.
+
+Model cards
+===========
+
+Each model directory in the repository has a model card,
+:file:`inference/<model>/README.md`. A model card lists the parameter and MAC
+counts, input and output shapes, precision and TIDL offload, the model origin
+and paper, the architecture, the pre-processing settings, any TI modifications,
+and the reference accuracy:
+
+.. list-table::
+   :header-rows: 1
+   :widths: 22 40
+
+   * - Model
+     - Model card
+   * - GCRN-mod-g16
+     - :file:`inference/gcrn_se/README.md`
+   * - GTCRN
+     - :file:`inference/gtcrn_se/README.md`
+   * - VGGish11
+     - :file:`inference/vggish11_sc/README.md`
+   * - YAMNet
+     - :file:`inference/yamnet_sc/README.md`
+
+The repository :file:`README.md` also has a model summary table that compares
+the four models.
 
 ***************
 On-target setup
@@ -79,7 +116,7 @@ rootfs.
       $ cd audioai-modelzoo
 
 #. **Download the model artifacts.** Downloads the three pre-compiled
-   TVM-RT + TIDL artifacts (VGGish11, YAMNet, GCRN) and the GTCRN ONNX model:
+   TVM-RT + TIDL artifacts (VGGish11, YAMNet, GCRN-mod-g16) and the GTCRN ONNX model:
 
    .. code-block:: console
 
@@ -108,8 +145,9 @@ rootfs.
 Inference script demos
 **********************
 
-Run each script from its own model directory in the activated venv. All three
-models ship a command-line script.
+Run each script from its own model directory in the activated venv. All four
+models ship a command-line script. Each script prints its results and the
+inference time to the console.
 
 YAMNet (sound classification)
 =============================
@@ -121,34 +159,7 @@ YAMNet (sound classification)
 
 The script converts the audio into log-mel patches, runs each patch through
 the TVM-RT + TIDL session, and averages the per-patch scores. For the bundled
-:file:`miaow_16k.wav` clip the top classes are cat/animal sounds. Expected output
-(abridged):
-
-.. code-block:: text
-
-   ======================================================================
-   YAMNET INFERENCE SUMMARY
-   ======================================================================
-
-   Audio File: miaow_16k.wav
-   Artifacts: ac-0201_tvmrt_audio_classification_urbansound8k_yamnet_onnx
-   Audio Duration: 6.73 seconds
-   Number of Patches: 7
-
-   ======================================================================
-   TOP 10 PREDICTIONS (averaged across all patches):
-   ======================================================================
-   Rank   Score      Class
-   ----------------------------------------------------------------------
-   1      ...        Cat
-   2      ...        Animal
-   ...
-   ======================================================================
-   PERFORMANCE METRICS:
-   ======================================================================
-   Inference Time (all patches): 17.53 ms total | 7 patches
-   RTF = 0.0026 (0.018s / 6.73s)
-   ======================================================================
+:file:`miaow_16k.wav` clip the top classes are cat/animal sounds.
 
 A second sample, :file:`samples/speech_whistling2.wav`, is also included.
 
@@ -160,27 +171,12 @@ VGGish11 (sound classification)
    $ cd ~/tidl/audioai-modelzoo/inference/vggish11_sc
    $ python3 vggish_infer_audio.py --audio-file sample_wav/139951-9-0-9.wav
 
-The bundled clip is UrbanSound8K class 9 (street music). Expected
-output (abridged):
+The script prints the top class and its score, followed by the inference time
+and real-time factor (RTF). The bundled clip is UrbanSound8K class 9 (street
+music).
 
-.. code-block:: text
-
-   ======================================================================
-   VGGISH11 INFERENCE SUMMARY
-   ======================================================================
-
-   Audio File: 139951-9-0-9.wav
-   Artifacts: ac-0101_tvmrt_audio_classification_urbansound8k_vggish11_onnx
-   Audio Duration: 4.00 seconds
-   Top Class: Street music (Class 9) - Score: ...
-
-   Performance:
-     Inference: 8.88 ms
-     Throughput: RTF = 0.0022 (0.009s / 4.00s)
-   ======================================================================
-
-GCRN (speech enhancement)
-=========================
+GCRN-mod-g16 (speech enhancement)
+=================================
 
 .. code-block:: console
 
@@ -189,22 +185,10 @@ GCRN (speech enhancement)
 
 The script writes the enhanced audio to :file:`enhanced.wav` beside the input and a
 per-block timing report to :file:`gcrn-benchmark.md`. Pass ``--output`` to change
-the destination wav. Expected output (abridged):
-
-.. code-block:: text
-
-   Machine: aarch64  SOC: am62d  TIDL_VER: ...
-   Loading TVM + TIDL session...
-   Running inference on noisy.wav (9.77s)...
-   Wrote enhanced audio to sample_wav/enhanced.wav
-
-   GCRN TVM+TIDL benchmark (3 chunk(s), 9.77s audio)
-
-   block                    total (ms)  per-chunk (ms)
-   ...
-   Real-Time Factor (inference / audio) = 3.9500
-
-   Wrote benchmark report to sample_wav/gcrn-benchmark.md
+the destination wav. The script processes the file in 4-second chunks that
+overlap by 1 second and reports two real-time factors: the model RTF divides the
+inference time by the audio actually processed (all chunks), and the file RTF
+divides it by the duration of the input file.
 
 GTCRN (speech enhancement)
 ==========================
@@ -217,21 +201,7 @@ GTCRN (speech enhancement)
 The script runs the ONNX model on the Arm CPU through ONNX Runtime; no TIDL
 artifact is involved. It writes the enhanced audio to :file:`enh_onnx.wav` beside
 the input and prints a per-block timing table. Pass ``--output`` to change the
-destination wav. Expected output (abridged):
-
-.. code-block:: text
-
-   Machine: aarch64
-   Model: .../ase-0100_onnxrt_speech_enhancement_voicebank_demand_16k_gtcrn_dns3_onnx/model/gtcrn_dns3.onnx
-   Loading ONNX Runtime session...
-   Running inference on mix.wav (9.77s)...
-   Wrote enhanced audio to sample_wav/enh_onnx.wav
-
-   GTCRN ONNX Runtime (CPU) benchmark (9.77s audio)
-
-   block                    total (ms)
-   ...
-   Real-Time Factor (inference / audio) = 0.0700
+destination wav.
 
 .. _edgeai_model_zoo_notebooks:
 
@@ -239,7 +209,7 @@ destination wav. Expected output (abridged):
 Jupyter notebook demos
 **********************
 
-All three reference models have a Jupyter notebook demo. Start Jupyter Lab from
+All four models have a Jupyter notebook demo. Start Jupyter Lab from
 the activated venv:
 
 .. code-block:: console
@@ -254,7 +224,7 @@ machine that can reach the target and enter the token ``tidl`` when prompted:
 
    Access URL: http://<target-ip>:8888/lab?token=tidl
 
-Jupyter Lab opens with the GCRN notebook loaded. To run a different model, pick
+Jupyter Lab opens with the GCRN-mod-g16 notebook loaded. To run a different model, pick
 its notebook from the file browser in the left sidebar. The notebooks are:
 
 .. list-table::
@@ -263,7 +233,7 @@ its notebook from the file browser in the left sidebar. The notebooks are:
 
    * - Model
      - Notebook
-   * - GCRN
+   * - GCRN-mod-g16
      - ``inference/gcrn_se/gcrn_inference.ipynb``
    * - VGGish11
      - ``inference/vggish11_sc/vggish_inference.ipynb``
@@ -280,12 +250,12 @@ Compiled artifacts
 :file:`model_artifacts/<TIDL_VER>/am62d/`. Each model gets its own directory,
 named after its model ID, containing a ``model/`` folder (the trained ONNX
 model) and, where applicable, an ``artifacts/`` folder (the compiled model
-artifacts). VGGish11, YAMNet, and GCRN each get a pre-compiled TVM-RT + TIDL
+artifacts). VGGish11, YAMNet, and GCRN-mod-g16 each get a pre-compiled TVM-RT + TIDL
 artifact:
 
 - ``ac-0101`` - ``ac-0101_tvmrt_audio_classification_urbansound8k_vggish11_onnx`` (VGGish11)
 - ``ac-0201`` - ``ac-0201_tvmrt_audio_classification_urbansound8k_yamnet_onnx`` (YAMNet)
-- ``ase-0201`` - ``ase-0201_tvmrt_speech_enhancement_voicebank_demand_16k_gcrn_fixed_4sec_onnx`` (GCRN)
+- ``ase-0212`` - ``ase-0212_tvmrt_speech_enhancement_voicebank_demand_16k_gcrn_mod_g16_fixed_4sec_onnx`` (GCRN-mod-g16)
 
 GTCRN runs through ONNX Runtime, so its directory holds only the ONNX model
 (:file:`model/gtcrn_dns3.onnx`) and no compiled artifacts:
