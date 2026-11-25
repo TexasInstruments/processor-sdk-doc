@@ -13,6 +13,17 @@ As of Oct 2023, Linux SDK for AM437x is in long term maintenance mode. TI will s
 Processor SDK Linux AM437x Releases
 ***********************************
 
+Processor SDK 12.xx Releases
+============================
+
+Processor SDK 12.02.00.07.05
+----------------------------
+- This is the first reference release on the 2026 LTS stream with 6.18 Kernel, 2026.01 U-Boot
+- Kernel 6.18.63
+- U-Boot 2026.01
+- Yocto Wrynose/6.0
+- Platforms Supported : `TMDSEVM437X <https://www.ti.com/tool/TMDSEVM437X>`__ , `TMDSIDK437X <https://www.ti.com/tool/TMDSIDK437X>`__
+
 Processor SDK 11.xx Releases
 ============================
 

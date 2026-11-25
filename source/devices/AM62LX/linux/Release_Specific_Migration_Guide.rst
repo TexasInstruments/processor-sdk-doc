@@ -11,6 +11,14 @@ of the AM62L Linux SDK.
 Processor SDK Linux AM62LX 12.xx Releases
 *****************************************
 
+Processor SDK 12.02.00.07.05
+============================
+- This is the third reference release on the 2026 LTS stream with 6.18 Kernel, 2026.01 U-Boot
+- ATF 2.14+
+- OPTEE 4.11.0+
+- Yocto Wrynose/6.0
+- Platforms Supported : AM62Lx SR1.1 (HS-FS) : `AM62LX-EVM <https://www.ti.com/tool/TMDS62LEVM>`__
+
 Processor SDK 12.01.00.05.03
 ============================
 - This is the second reference release on the 2026 LTS stream with 6.18 Kernel, 2026.01 U-Boot

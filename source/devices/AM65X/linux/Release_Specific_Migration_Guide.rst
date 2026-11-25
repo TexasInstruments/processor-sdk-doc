@@ -13,6 +13,17 @@ As of Oct 2023, Linux SDK for AM65x is in long term maintenance mode. TI will su
 Processor SDK Linux AM65x Releases
 **********************************
 
+Processor SDK 12.xx Releases
+============================
+
+Processor SDK 12.02.00.07.05
+----------------------------
+- This is the first reference release on the 2026 LTS stream with 6.18 Kernel, 2026.01 U-Boot
+- ATF 2.15+
+- OPTEE 4.11.0+
+- Yocto Wrynose/6.0
+- Platforms Supported : `TMDX654IDKEVM <https://www.ti.com/tool/TMDX654IDKEVM>`__
+
 Processor SDK 11.xx Releases
 ============================
 
