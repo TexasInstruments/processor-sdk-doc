@@ -18,15 +18,6 @@ execution of Linux based applications and includes the following:
 -  WLAN support (Wilink 8)
 -  Code Composer Studio
 
-Licensing
-=========
-
-Please refer to the software manifest, which outlines the licensing
-status for all packages included in this release. The manifest can be
-found on the SDK download page. The manifest can be found on the SDK
-download page or in the installed directory as indicated below. In
-addition, see :ref:`Processor SDK Linux GPLv3 Disclaimer <overview-gplv3-disclaimer>`.
-
 Documentation
 =============
 -  :ref:`Processor SDK Linux Software Developer's Guide <linux-index>`: Provides information on features, functions, delivery package and,
@@ -42,42 +33,69 @@ Documentation
    running the demonstration application that is loaded on flash. This
    document is provided as part of the EVM kit.
 
-Release 11.02.05.02
-===================
+Release versioning scheme
+=========================
 
-Released November 2025
+Processor SDK releases follow the 5-duplet versioning scheme ``YY.RR.EE.CC.SS``, where:
 
-.. rubric:: What's New
-   :name: whats-new
+- ``YY`` - Yearly baseline. Increments with each new LTS baseline.
+- ``RR`` - Release index within the yearly baseline. Each yearly baseline includes many stable releases.
+- ``EE`` - Extended release index within a stable baseline.
+- ``CC`` - Release Candidate for common foundational BSP components such as Linux, U-Boot, ATF, OPTEE, Firmware and OE manifest including meta-ti, meta-arago.
+- ``SS`` - SDK Release identifier for Distro layers (Yocto meta-tisdk, Armbian, Buildroot) with OOB Demos and Installers.
+
+Licensing
+=========
+
+Please refer to the software manifests, which outlines the licensing
+status for all packages included in this release. The manifest can be
+found on the SDK download page or in the installed directory as indicated below.
+
+-  Linux Manifest:  :file:`<PSDK_PATH>/manifest/software_manifest.htm`
+
+Software Bill of Materials (SBOM)
+=================================
+
+|__SDK_FULL_NAME__| releases include Software Bill of Materials (SBOM) files in SPDX 3.0
+format for Yocto and CycloneDX 1.6 format for Buildroot. SBOMs for all released artifacts
+are bundled into a single archive and can be found on the |__SDK_DOWNLOAD_URL__|.
+For more refer :ref:`Working with SBOM <how-to-work-with-sbom>`.
+
+Release 12.02.00.07.05
+======================
+
+Released on December 2026
+
+What's new
+----------
 
 .. note:: As of Dec 2023, Linux SDK for AM65 is in long term maintenance mode. TI will support critical bug fixes and once a year LTS updates but no new development or new features are planned for this device SDK at this time. The SDK is supported and tested on TMDX654IDKEVM. TMDX654GPEVM is no longer supported.
 
 **Processor SDK Linux AM65X Release has following new features:**
 
- - 2025 LTS Stable Update to 6.12.49
- - ICSSM bug fixes
- - VLAN Multicast filtering on ICSSG
- - ICSSG XDP Support (Zero Copy)
- - ARM Analytics AI stack enabled in the filesystem
- - LVGL (Light and Versatile Graphics Library) based interactive demo as out-of-the-box (OOB) on display
- - Added support for McASP async mode: independent transmit (playback) and receive (capture) clocking
+  - 2026 LTS Stable Update to 6.18.63 and common RT-kernel branch
+  - ICSSM bug fixes
+  - VLAN Multicast filtering on ICSSG
+  - ICSSG XDP Support (Zero Copy)
+  - ARM Analytics AI stack enabled in the filesystem
+  - LVGL (Light and Versatile Graphics Library) based interactive demo as out-of-the-box (OOB) on display
+  - Added support for McASP async mode: independent transmit (playback) and receive (capture) clocking
+  - Review Issue Tracker Section for the new fixes.
+
+**Key Release References:**
+
+  - RT Kernel : Real-Time Linux Interrupt Latency numbers here - :ref:`RT Interrupt Latencies <RT-linux-performance>`
 
 **Component version:**
 
-  - Kernel 6.12.49
-  - RT Kernel 6.12.49
-  - U-Boot 2025.01
-  - Toolchain GCC 13.4+
-  - ATF 2.13+
-  - OPTEE 4.7+
+  - Kernel 6.18.63
+  - U-Boot 2026.01
+  - Toolchain GCC 15.3
+  - ATF 2.15
+  - OPTEE 4.11
+  - TIFS Firmware `v12.02.02 <https://software-dl.ti.com/tisci/esd/12_02_02/release_notes/release_notes.html>`__ (Click on the link for more information)
+  - Yocto Wrynose/6.0
   - Graphics DDK 1.17
-  - SYSFW v11.02.05
-  - Yocto Scarthgap
-
-
-Supported Platforms
-===================
-See :ref:`here <release-specific-supported-platforms-and-versions>` for a list of supported platforms and links to more information.
 
 .. _release-specific-build-information:
 
@@ -93,36 +111,36 @@ Build Information
      - Tag Info
      - Config Info
    * - U-Boot
-     - `ti-u-boot-2025.01 <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/log/?h=ti-u-boot-2025.01>`__
-     - `11.02.05 <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/tag/?h=11.02.05>`__
+     - `ti-u-boot-2026.01 <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/log/?h=ti-u-boot-2026.01>`__
+     - `12.02.00.07 <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/tag/?h=12.02.00.07>`__
      - :ref:`Build Config <Build-U-Boot-label>`
    * - TF-A
      - `master <https://git.trustedfirmware.org/plugins/gitiles/TF-A/trusted-firmware-a.git/+/refs/heads/master>`__
-     - `v2.13+ <https://git.yoctoproject.org/meta-ti/tree/meta-ti-bsp/recipes-bsp/trusted-firmware-a/trusted-firmware-a-ti.inc?h=11.02.05#n3>`__
+     - `v2.15 <https://git.yoctoproject.org/meta-ti/tree/meta-ti-bsp/recipes-bsp/trusted-firmware-a/trusted-firmware-a-ti.inc?h=12.02.00.07#n5>`__
      -
    * - OPTEE
      - `master <https://github.com/OP-TEE/optee_os/tree/master>`__
-     - `4.7.0+ <https://git.yoctoproject.org/meta-ti/tree/meta-ti-bsp/recipes-security/optee/optee-os-ti-version.inc?h=11.02.05#n1>`__
+     - `4.11.0 <https://git.yoctoproject.org/meta-ti/tree/meta-ti-bsp/recipes-security/optee/optee-os-ti-version.inc?h=12.02.00.07#n1>`__
      - |__OPTEE_PLATFORM_FLAVOR__|
    * - Linux Firmware
      - `ti-linux-firmware <https://git.ti.com/cgit/processor-firmware/ti-linux-firmware/log/?h=ti-linux-firmware>`__
-     - `11.02.05 <https://git.ti.com/cgit/processor-firmware/ti-linux-firmware/tag/?h=11.02.05>`__
+     - `12.02.00.07 <https://git.ti.com/cgit/processor-firmware/ti-linux-firmware/tag/?h=12.02.00.07>`__
      -
    * - Linux Kernel
-     - `ti-linux-6.12.y <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/log/?h=ti-linux-6.12.y>`__
-     - `11.02.05 <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tag/?h=11.02.05>`__
-     - `non-RT <https://git.yoctoproject.org/meta-ti/tree/meta-ti-bsp/recipes-kernel/linux/linux-ti-staging-6.12/k3/defconfig?h=11.02.05>`__ , `RT <https://git.yoctoproject.org/meta-ti/tree/meta-ti-bsp/recipes-kernel/linux/linux-ti-staging-rt-6.12/k3/defconfig?h=11.02.05>`__
+     - `ti-linux-6.18.y <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/log/?h=ti-linux-6.18.y>`__
+     - `12.02.00.07 <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tag/?h=12.02.00.07>`__
+     - `non-RT <https://git.yoctoproject.org/meta-ti/tree/meta-ti-bsp/recipes-kernel/linux/linux-ti-staging-6.18/k3/defconfig?h=12.02.00.07>`__ , `RT <https://git.yoctoproject.org/meta-ti/tree/meta-ti-bsp/recipes-kernel/linux/linux-ti-staging-rt-6.18/k3/defconfig?h=12.02.00.07>`__
    * - meta-ti
-     - `scarthgap <https://git.yoctoproject.org/meta-ti/log/?h=scarthgap>`__
-     - `11.02.05 <https://git.yoctoproject.org/meta-ti/tag/?h=11.02.05>`__
+     - `wrynose <https://git.yoctoproject.org/meta-ti/log/?h=wrynose>`__
+     - `12.02.00.07 <https://git.yoctoproject.org/meta-ti/tag/?h=12.02.00.07>`__
      - |__SDK_BUILD_MACHINE__|
    * - meta-arago
-     - `scarthgap <https://git.yoctoproject.org/meta-arago/log/?h=scarthgap>`__
-     - `11.02.05 <https://git.yoctoproject.org/meta-arago/tag/?h=11.02.05>`__
+     - `wrynose <https://git.yoctoproject.org/meta-arago/log/?h=wrynose>`__
+     - `12.02.00.07 <https://git.yoctoproject.org/meta-arago/tag/?h=12.02.00.07>`__
      -
    * - meta-tisdk
-     - `scarthgap <https://git.ti.com/cgit/ti-sdk-linux/meta-tisdk/log/?h=scarthgap>`__
-     - `11.02.05.02 <https://git.ti.com/cgit/ti-sdk-linux/meta-tisdk/tag/?h=11.02.05.02>`__
+     - `wrynose <https://git.ti.com/cgit/ti-sdk-linux/meta-tisdk/log/?h=wrynose>`__
+     - `12.02.00.07.05 <https://git.ti.com/cgit/ti-sdk-linux/meta-tisdk/tag/?h=12.02.00.07.05>`__
      -
 
 Issues Tracker
