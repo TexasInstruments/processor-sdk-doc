@@ -16,6 +16,7 @@ Linux SDK Software Developer's Guide
    /devices/AM62DX/linux/Overview
    /devices/AM62DX/linux/Release_Specific
    /linux/Foundational_Components
+   /linux/index_Edge_AI
    /linux/How_to_Guides
    /devices/AM62DX/index_RTOS
    /linux/Demo_User_Guides/index_Demos
