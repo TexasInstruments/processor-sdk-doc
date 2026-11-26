@@ -10,9 +10,6 @@ Hardware EVM Setup
    How_to_Guides/Hardware_Setup_with_CCS/TMDX654_EVM_Hardware_Setup
    How_to_Guides/Hardware_Setup_with_CCS/AM572x_GP_EVM_Hardware_Setup
    How_to_Guides/Hardware_Setup_with_CCS/TMDXIDK5728_Hardware_Setup
-   How_to_Guides/Hardware_Setup_with_CCS/EVMK2H_Hardware_Setup
-   How_to_Guides/Hardware_Setup_with_CCS/ICE_AM335x_Hardware_Setup
-   How_to_Guides/Hardware_Setup_with_CCS/ICE_AMIC110_EVM_Hardware_Setup
    How_to_Guides/Hardware_Setup_with_CCS/J721E_EVM_Hardware_Setup
    How_to_Guides/Hardware_Setup_with_CCS/J7200_EVM_Hardware_Setup
    How_to_Guides/Hardware_Setup_with_CCS/J721S2_EVM_Hardware_Setup
