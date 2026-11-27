@@ -20,15 +20,6 @@ execution of Linux based applications and includes the following:
 -  WLAN support (Wilink 8)
 -  Code Composer Studio
 
-Licensing
-=========
-
-Please refer to the software manifest, which outlines the licensing
-status for all packages included in this release. The manifest can be
-found on the SDK download page. The manifest can be found on the SDK
-download page or in the installed directory as indicated below. In
-addition, see :ref:`GPLv3 Disclaimer <overview-gplv3-disclaimer>`.
-
 Documentation
 =============
 -  :ref:`Processor SDK Linux Software Developer's Guide <linux-index>`: Provides information on features, functions, delivery package and,
@@ -44,51 +35,72 @@ Documentation
    running the demonstration application that is loaded on flash. This
    document is provided as part of the EVM kit.
 
-Release 11.02.05.02
-===================
+Release versioning scheme
+=========================
 
-Released November 2025
+Processor SDK releases follow the 5-duplet versioning scheme ``YY.RR.EE.CC.SS``, where:
 
-.. rubric:: What's New
-   :name: whats-new
+- ``YY`` - Yearly baseline. Increments with each new LTS baseline.
+- ``RR`` - Release index within the yearly baseline. Each yearly baseline includes many stable releases.
+- ``EE`` - Extended release index within a stable baseline.
+- ``CC`` - Release Candidate for common foundational BSP components such as Linux, U-Boot, ATF, OPTEE, Firmware and OE manifest including meta-ti, meta-arago.
+- ``SS`` - SDK Release identifier for Distro layers (Yocto meta-tisdk, Armbian, Buildroot) with OOB Demos and Installers.
 
-Processor SDK 11.02 Release has following new features:
+Licensing
+=========
 
- - 2025 LTS Stable Update to 6.12.49
- - ICSSM bug fixes
- - Test automation improvements
- - HDMI suport in Linux
- - ARM Analytics AI stack enabled in the filesystem
- - LVGL (Light and Versatile Graphics Library) based interactive demo as out-of-the-box (OOB) on display
- - Added support for McASP async mode: independent transmit (playback) and receive (capture) clocking
+Please refer to the software manifests, which outlines the licensing
+status for all packages included in this release. The manifest can be
+found on the SDK download page or in the installed directory as indicated below.
 
-.. rubric:: SDK Components & Versions
-   :name: sdk-components-versions
+-  Linux Manifest:  :file:`<PSDK_PATH>/manifest/software_manifest.htm`
 
-+--------------------------+----------------------------+
-| Component                | Version                    |
-+==========================+============================+
-| Linux Kernel             | 6.12.49 (2025 LTS)         |
-+--------------------------+----------------------------+
-| U-Boot                   | 2025.01                    |
-+--------------------------+----------------------------+
-| Yocto Project            | 5.0 (Scarthgap)            |
-+--------------------------+----------------------------+
-| ARM Toolchain (gcc)      | 13.4+                      |
-+--------------------------+----------------------------+
+Software Bill of Materials (SBOM)
+=================================
 
-|
+|__SDK_FULL_NAME__| releases include Software Bill of Materials (SBOM) files in SPDX 3.0
+format for Yocto and CycloneDX 1.6 format for Buildroot. SBOMs for all released artifacts
+are bundled into a single archive and can be found on the |__SDK_DOWNLOAD_URL__|.
+For more refer :ref:`Working with SBOM <how-to-work-with-sbom>`.
 
-Supported Platforms
-===================
-See :ref:`here <release-specific-supported-platforms-and-versions>` for a list of supported platforms and links to more information.
+Release 12.02.00.07.05
+======================
 
-|
+Released on December 2026
+
+What's new
+----------
+
+.. note:: As of Dec 2023, Linux SDK for AM437x is in long term maintenance mode. TI will support critical bug fixes and once a year LTS updates but no new development or new features are planned for this device SDK at this time.
+
+**Processor SDK Linux AM437X Release has following new features:**
+
+  - RT-Linux Support
+  - ICSSM bug fixes
+  - ARM Analytics AI stack enabled in the filesystem
+  - LVGL (Light and Versatile Graphics Library) based interactive demo as out-of-the-box (OOB) on display
+  - Web-based dashboard (port 3000) for real-time CPU performance and Arm Audio analytics demo via standard web browser
+  - Added support for McASP async mode: independent transmit (playback) and receive (capture) clocking
+  - Review Issue Tracker Section for the new fixes.
+
+**Key Release References:**
+
+
+**Component version:**
+
+  - Kernel 6.18.63
+  - U-Boot 2026.01
+  - Toolchain GCC 15.3
+  - Yocto Wrynose/6.0
+  - Graphics DDK 1.17
 
 .. _release-specific-build-information:
 
 Build Information
 =================
+
+Arago (Yocto/OE)
+----------------
 
 .. list-table::
    :header-rows: 1
@@ -99,24 +111,32 @@ Build Information
      - Tag Info
      - Config Info
    * - U-Boot
-     - `ti-u-boot-2025.01 <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/log/?h=ti-u-boot-2025.01>`__
-     - `11.02.05 <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/tag/?h=11.02.05>`__
+     - `ti-u-boot-2026.01 <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/log/?h=ti-u-boot-2026.01>`__
+     - `12.02.00.07 <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/tag/?h=12.02.00.07>`__
      - :ref:`Build Config <Build-U-Boot-label>`
+   * - Linux Firmware
+     - `ti-linux-firmware <https://git.ti.com/cgit/processor-firmware/ti-linux-firmware/log/?h=ti-linux-firmware>`__
+     - `12.02.00.07 <https://git.ti.com/cgit/processor-firmware/ti-linux-firmware/tag/?h=12.02.00.07>`__
+     -
    * - Linux Kernel
-     - `ti-linux-6.12.y <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/log/?h=ti-linux-6.12.y>`__
-     - `11.02.05 <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tag/?h=11.02.05>`__
-     - `non-RT <https://git.yoctoproject.org/meta-ti/tree/meta-ti-bsp/recipes-kernel/linux/linux-ti-staging-6.12/ti43x/defconfig?h=11.02.05>`__
+     - `ti-linux-6.18.y <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/log/?h=ti-linux-6.18.y>`__
+     - `12.02.00.07 <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tag/?h=12.02.00.07>`__
+     - `non-RT <https://git.yoctoproject.org/meta-ti/tree/meta-ti-bsp/recipes-kernel/linux/linux-ti-staging-6.18/ti43x/defconfig?h=12.02.00.07>`__
+   * - RT-Linux Kernel
+     - `ti-rt-linux-6.18.y-arm32 <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/log/?h=ti-rt-linux-6.18.y-arm32>`__
+     - `12.02.00.07-rt <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tag/?h=12.02.00.07-rt>`__
+     - `RT <https://git.yoctoproject.org/meta-ti/tree/meta-ti-bsp/recipes-kernel/linux/linux-ti-staging-rt-6.18/ti43x/defconfig?h=12.02.00.07>`__
    * - meta-ti
-     - `scarthgap <https://git.yoctoproject.org/meta-ti/log/?h=scarthgap>`__
-     - `11.02.05 <https://git.yoctoproject.org/meta-ti/tag/?h=11.02.05>`__
+     - `wrynose <https://git.yoctoproject.org/meta-ti/log/?h=wrynose>`__
+     - `12.02.00.07 <https://git.yoctoproject.org/meta-ti/tag/?h=12.02.00.07>`__
      - |__SDK_BUILD_MACHINE__|
    * - meta-arago
-     - `scarthgap <https://git.yoctoproject.org/meta-arago/log/?h=scarthgap>`__
-     - `11.02.05 <https://git.yoctoproject.org/meta-arago/tag/?h=11.02.05>`__
+     - `wrynose <https://git.yoctoproject.org/meta-arago/log/?h=wrynose>`__
+     - `12.02.00.07 <https://git.yoctoproject.org/meta-arago/tag/?h=12.02.00.07>`__
      -
    * - meta-tisdk
-     - `scarthgap <https://git.ti.com/cgit/ti-sdk-linux/meta-tisdk/log/?h=scarthgap>`__
-     - `11.02.05.02 <https://git.ti.com/cgit/ti-sdk-linux/meta-tisdk/tag/?h=11.02.05.02>`__
+     - `wrynose <https://git.ti.com/cgit/ti-sdk-linux/meta-tisdk/log/?h=wrynose>`__
+     - `12.02.00.07.05 <https://git.ti.com/cgit/ti-sdk-linux/meta-tisdk/tag/?h=12.02.00.07.05>`__
      -
 
 Issues Tracker

@@ -23,6 +23,6 @@ contains the following configuration files in the :file:`configs/processor-sdk` 
    * - Config File
      - Description
      - Supported machines/platforms
-   * - :file:`processor-sdk-scarthgap-11.02.05.02-config.txt`
-     - Processor SDK 11.02.05.02 Release
+   * - :file:`processor-sdk-wrynose-12.02.00.07.05-config.txt`
+     - Processor SDK 12.02.00.07.05 Release
      - |__SDK_BUILD_MACHINE__|

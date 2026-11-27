@@ -60,18 +60,18 @@ format by default. SBOMs for all released artifacts are bundled into a single
 archive and can be found on the |__SDK_DOWNLOAD_URL__|.
 For more refer :ref:`Working with SBOM <how-to-work-with-sbom>`.
 
-Release 12.01.00.05.03
+Release 12.02.00.07.05
 ======================
 
-Released on July 2026
+Released on December 2026
 
 What's new
 ----------
 
 **Processor SDK Linux AM62PX Release has following new features:**
 
-  - Second 2026 LTS Reference Release Including RT combined branch model
-  - Important Bug Fixes on top of Processor SDK 12.00.00.07 Release
+  - Third 2026 LTS Reference Release Including RT combined branch model
+  - Important Bug Fixes on top of Processor SDK 12.01.00.05.03 Release
   - Review Issue Tracker Section for the new fixes.
 
 **Key Release References:**
@@ -88,16 +88,16 @@ What's new
 
 **Component version:**
 
-  - Kernel 6.18.38
+  - Kernel 6.18.63
   - U-Boot 2026.01
-  - Toolchain GCC 15.2
+  - Toolchain GCC 15.3
   - ATF 2.15
-  - OPTEE 4.10.0+
-  - TIFS Firmware `v12.01.02 <https://software-dl.ti.com/tisci/esd/12_01_02/release_notes/release_notes.html>`__ (Click on the link for more information)
+  - OPTEE 4.11.0
+  - TIFS Firmware `v12.02.02 <https://software-dl.ti.com/tisci/esd/12_02_02/release_notes/release_notes.html>`__ (Click on the link for more information)
   - Yocto Wrynose/6.0
   - Security: Post Quantum Cryptography using Module Lattice (ML) Key Encapsulation Mechanism (KEM) or ML-KEM, ML Digital Signature Algorithm (DSA) or ML-DSA, and Stateless Hash-Based (SLH) DSA or SLH-DSA - :ref:`Post Quantum Cryptography <post_quantum_cryptography>`
   - Graphics DDK 26.1
-  - DM Firmware 12.01.00.18
+  - DM Firmware 12.02.00.08
 
 .. _release-specific-build-information:
 
@@ -117,35 +117,35 @@ Arago (Yocto/OE)
      - Config Info
    * - U-Boot
      - `ti-u-boot-2026.01 <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/log/?h=ti-u-boot-2026.01>`__
-     - `12.01.00.05 <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/tag/?h=12.01.00.05>`__
+     - `12.02.00.07 <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/tag/?h=12.02.00.07>`__
      - :ref:`Build Config <Build-U-Boot-label>`
    * - TF-A
      - `master <https://git.trustedfirmware.org/plugins/gitiles/TF-A/trusted-firmware-a.git/+/refs/heads/master>`__
-     - `v2.15 <https://git.yoctoproject.org/meta-ti/tree/meta-ti-bsp/recipes-bsp/trusted-firmware-a/trusted-firmware-a-ti.inc?h=12.01.00.05#n5>`__
+     - `v2.15 <https://git.yoctoproject.org/meta-ti/tree/meta-ti-bsp/recipes-bsp/trusted-firmware-a/trusted-firmware-a-ti.inc?h=12.02.00.07#n5>`__
      -
    * - OPTEE
      - `master <https://github.com/OP-TEE/optee_os/tree/master>`__
-     - `4.10.0+ <https://git.yoctoproject.org/meta-ti/tree/meta-ti-bsp/recipes-security/optee/optee-os-ti-version.inc?h=12.01.00.05#n1>`__
+     - `4.11.0 <https://git.yoctoproject.org/meta-ti/tree/meta-ti-bsp/recipes-security/optee/optee-os-ti-version.inc?h=12.02.00.07#n1>`__
      - |__OPTEE_PLATFORM_FLAVOR__|
    * - Linux Firmware
      - `ti-linux-firmware <https://git.ti.com/cgit/processor-firmware/ti-linux-firmware/log/?h=ti-linux-firmware>`__
-     - `12.01.00.05 <https://git.ti.com/cgit/processor-firmware/ti-linux-firmware/tag/?h=12.01.00.05>`__
+     - `12.02.00.07 <https://git.ti.com/cgit/processor-firmware/ti-linux-firmware/tag/?h=12.02.00.07>`__
      -
    * - Linux Kernel
      - `ti-linux-6.18.y <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/log/?h=ti-linux-6.18.y>`__
-     - `12.01.00.05 <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tag/?h=12.01.00.05>`__
-     - `non-RT <https://git.yoctoproject.org/meta-ti/tree/meta-ti-bsp/recipes-kernel/linux/linux-ti-staging-6.18/k3/defconfig?h=12.01.00.05>`__ , `RT <https://git.yoctoproject.org/meta-ti/tree/meta-ti-bsp/recipes-kernel/linux/linux-ti-staging-rt-6.18/k3/defconfig?h=12.01.00.05>`__
+     - `12.02.00.07 <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tag/?h=12.02.00.07>`__
+     - `non-RT <https://git.yoctoproject.org/meta-ti/tree/meta-ti-bsp/recipes-kernel/linux/linux-ti-staging-6.18/k3/defconfig?h=12.02.00.07>`__ , `RT <https://git.yoctoproject.org/meta-ti/tree/meta-ti-bsp/recipes-kernel/linux/linux-ti-staging-rt-6.18/k3/defconfig?h=12.02.00.07>`__
    * - meta-ti
      - `wrynose <https://git.yoctoproject.org/meta-ti/log/?h=wrynose>`__
-     - `12.01.00.05 <https://git.yoctoproject.org/meta-ti/tag/?h=12.01.00.05>`__
+     - `12.02.00.07 <https://git.yoctoproject.org/meta-ti/tag/?h=12.02.00.07>`__
      - |__SDK_BUILD_MACHINE__|
    * - meta-arago
      - `wrynose <https://git.yoctoproject.org/meta-arago/log/?h=wrynose>`__
-     - `12.01.00.05 <https://git.yoctoproject.org/meta-arago/tag/?h=12.01.00.05>`__
+     - `12.02.00.07 <https://git.yoctoproject.org/meta-arago/tag/?h=12.02.00.07>`__
      -
    * - meta-tisdk
      - `wrynose <https://git.ti.com/cgit/ti-sdk-linux/meta-tisdk/log/?h=wrynose>`__
-     - `12.01.00.05.03 <https://git.ti.com/cgit/ti-sdk-linux/meta-tisdk/tag/?h=12.01.00.05.03>`__
+     - `12.02.00.07.05 <https://git.ti.com/cgit/ti-sdk-linux/meta-tisdk/tag/?h=12.02.00.07.05>`__
      -
 
 Debian (Armbian)
@@ -161,30 +161,29 @@ Debian (Armbian)
      - Config Info
    * - U-Boot
      - `ti-u-boot-2026.01 <https://github.com/TexasInstruments/ti-u-boot/tree/ti-u-boot-2026.01>`__
-     - `12.01.00.05 <https://github.com/TexasInstruments/ti-u-boot/releases/tag/12.01.00.05>`__
-     - `Build <https://github.com/TexasInstruments/armbian-build/blob/12.01.00.05.03/config/sources/families/include/k3_common.inc#L73>`__
+     - `12.02.00.07 <https://github.com/TexasInstruments/ti-u-boot/releases/tag/12.02.00.07>`__
+     - `Build <https://github.com/TexasInstruments/armbian-build/blob/12.02.00.07.05/config/sources/families/include/k3_common.inc#L73>`__
    * - TF-A
      - `master <https://github.com/ARM-Software/arm-trusted-firmware/tree/master>`__
      - `v2.15 <https://github.com/ARM-software/arm-trusted-firmware/commit/da738d5eae93af342fdc4995dd3c05acb4c9d757>`__
-     - `Build <https://github.com/TexasInstruments/armbian-build/blob/12.01.00.05.03/config/sources/families/include/k3_common.inc#L71>`__
+     - `Build <https://github.com/TexasInstruments/armbian-build/blob/12.02.00.07.05/config/sources/families/include/k3_common.inc#L71>`__
    * - OPTEE
      - `master <https://github.com/OP-TEE/optee_os/tree/master>`__
-     - `4.10.0 <https://github.com/OP-TEE/optee_os/commit/753afbbee1682f5d16fd30e87b31058a4fd4f4b8>`__
-     - `Build <https://github.com/TexasInstruments/armbian-build/blob/12.01.00.05.03/config/sources/families/include/k3_common.inc#L99>`__
+     - `4.11.0 <https://github.com/OP-TEE/optee_os/commit/f54190f22611dd5ad5d22546fd4209aa100f56bd>`__
+     - `Build <https://github.com/TexasInstruments/armbian-build/blob/12.02.00.07.05/config/sources/families/include/k3_common.inc#L99>`__
    * - Linux Firmware
      - `ti-linux-firmware <https://github.com/TexasInstruments/ti-linux-firmware/tree/ti-linux-firmware>`__
-     - `12.01.00.05 <https://github.com/TexasInstruments/ti-linux-firmware/releases/tag/12.01.00.05>`__
-     - `Git Clone <https://github.com/TexasInstruments/armbian-build/blob/12.01.00.05.03/config/sources/families/include/k3_common.inc#L86>`__
+     - `12.02.00.07 <https://github.com/TexasInstruments/ti-linux-firmware/releases/tag/12.02.00.07>`__
+     - `Git Clone <https://github.com/TexasInstruments/armbian-build/blob/12.02.00.07.05/config/sources/families/include/k3_common.inc#L86>`__
    * - Linux Kernel
      - `ti-linux-6.18.y <https://github.com/TexasInstruments/ti-linux-kernel/tree/ti-linux-6.18.y>`__
-     - `12.01.00.05 <https://github.com/TexasInstruments/ti-linux-kernel/releases/tag/12.01.00.05>`__
-     - `non-RT <https://github.com/TexasInstruments/armbian-build/blob/12.01.00.05.03/config/kernel/linux-k3-vendor.config>`__, `RT <https://github.com/TexasInstruments/armbian-build/blob/12.01.00.05.03/config/kernel/linux-k3-vendor-rt.config>`__
+     - `12.02.00.07 <https://github.com/TexasInstruments/ti-linux-kernel/releases/tag/12.02.00.07>`__
+     - `non-RT <https://github.com/TexasInstruments/armbian-build/blob/12.02.00.07.05/config/kernel/linux-k3-vendor.config>`__, `RT <https://github.com/TexasInstruments/armbian-build/blob/12.02.00.07.05/config/kernel/linux-k3-vendor-rt.config>`__
    * - Armbian Build
-     - `2026.07-release <https://github.com/TexasInstruments/armbian-build/tree/2026.07-release>`__
-     - `12.01.00.05.03 <https://github.com/TexasInstruments/armbian-build/releases/tag/12.01.00.05.03>`__
-     - | Build: `k3_common.inc <https://github.com/TexasInstruments/armbian-build/blob/12.01.00.05.03/config/sources/families/include/k3_common.inc>`__ + `k3.conf <https://github.com/TexasInstruments/armbian-build/blob/12.01.00.05.03/config/sources/families/k3.conf>`__
-       | Board: `SK-AM62P <https://github.com/TexasInstruments/armbian-build/blob/12.01.00.05.03/config/boards/sk-am62p.conf>`__
-
+     - `2026.08-release <https://github.com/TexasInstruments/armbian-build/tree/2026.07-release>`__
+     - `12.02.00.07.05 <https://github.com/TexasInstruments/armbian-build/releases/tag/12.02.00.07.05>`__
+     - | Build: `k3_common.inc <https://github.com/TexasInstruments/armbian-build/blob/12.02.00.07.05/config/sources/families/include/k3_common.inc>`__ + `k3.conf <https://github.com/TexasInstruments/armbian-build/blob/12.02.00.07.05/config/sources/families/k3.conf>`__
+       | Board: `SK-AM62P <https://github.com/TexasInstruments/armbian-build/blob/12.02.00.07.05/config/boards/sk-am62p.conf>`__
 
 Buildroot (Buildroot External TI)
 ----------------------------------
@@ -199,33 +198,32 @@ Buildroot (Buildroot External TI)
      - Config Info
    * - U-Boot
      - `ti-u-boot-2026.01 <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/log/?h=ti-u-boot-2026.01>`__
-     - `12.01.00.05 <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/tag/?h=12.01.00.05>`__
+     - `12.02.00.07 <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/tag/?h=12.02.00.07>`__
      - `Build <https://github.com/TexasInstruments/buildroot-external-TI/blob/main/configs/ti_release_am62p_sk_defconfig#L61>`__
    * - ATF
      - `master <https://github.com/ARM-Software/arm-trusted-firmware/tree/master>`__
-     - `v2.14+ <https://github.com/ARM-Software/arm-trusted-firmware/commit/da738d5eae93af342fdc4995dd3c05acb4c9d757>`__
+     - `v2.15 <https://github.com/ARM-Software/arm-trusted-firmware/commit/da738d5eae93af342fdc4995dd3c05acb4c9d757>`__
      - `Build <https://github.com/TexasInstruments/buildroot-external-TI/blob/main/configs/ti_release_am62p_sk_defconfig#L40>`__
    * - OPTEE
      - `master <https://github.com/OP-TEE/optee_os/tree/master>`__
-     - `4.9.0+ <https://github.com/OP-TEE/optee_os/commit/753afbbee1682f5d16fd30e87b31058a4fd4f4b8>`__
+     - `4.11.0 <https://github.com/OP-TEE/optee_os/commit/f54190f22611dd5ad5d22546fd4209aa100f56bd>`__
      - `Build <https://github.com/TexasInstruments/buildroot-external-TI/blob/main/configs/ti_release_am62p_sk_defconfig#L48>`__
    * - Linux Firmware
      - `ti-linux-firmware <https://github.com/TexasInstruments/ti-linux-firmware/tree/ti-linux-firmware>`__
-     - `12.01.00.05 <https://github.com/TexasInstruments/ti-linux-firmware/releases/tag/12.01.00.05>`__
-     - `Git Clone <https://github.com/buildroot/buildroot/blob/1a17185606161d7a03198e249c02bdc2bdc972d0/boot/ti-k3-boot-firmware/ti-k3-boot-firmware.mk#L8>`__
+     - `12.02.00.07 <https://github.com/TexasInstruments/ti-linux-firmware/releases/tag/12.02.00.07>`__
+     - `Git Clone <https://github.com/buildroot/buildroot/blob/2026.08.x/boot/ti-k3-boot-firmware/ti-k3-boot-firmware.mk#L8>`__
    * - Linux Kernel
      - `ti-linux-6.18.y <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/log/?h=ti-linux-6.18.y>`__
-     - `12.01.00.05 <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tag/?h=12.01.00.05>`__
-     - `non-RT <https://github.com/TexasInstruments/buildroot-external-TI/blob/main/configs/ti_release_am62p_sk_defconfig#L16>`__, `RT <https://github.com/TexasInstruments/buildroot-external-TI/blob/main/configs/ti_release_am62p_sk_rt_defconfig#L16>`__
+     - `12.02.00.07 <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tag/?h=12.02.00.07>`__
+     - `non-RT <https://github.com/TexasInstruments/buildroot-external-TI/blob/main/configs/ti_release_am62p_sk_defconfig#L16>`__, `RT <https://github.com/TexasInstruments/buildroot-external-TI/blob/main/configs/ti_release_am62p_sk_rt_defconfig#L16>`_
    * - Buildroot External TI
      - `main <https://github.com/TexasInstruments/buildroot-external-TI/tree/main>`__
-     - `12.01.00.05.03 <https://github.com/TexasInstruments/buildroot-external-TI/releases/tag/12.01.00.05.03>`__
+     - `12.02.00.07.05 <https://github.com/TexasInstruments/buildroot-external-TI/releases/tag/12.02.00.07.05>`__
      - `Build <https://github.com/TexasInstruments/buildroot-external-TI/tree/main/configs>`__, `Board <https://github.com/TexasInstruments/buildroot-external-TI/tree/main/board/ti/am62p-sk>`__
    * - Buildroot
-     - `2026.05.x <https://github.com/buildroot/buildroot/tree/2026.05.x>`__
-     - `2026.05 <https://github.com/buildroot/buildroot/releases/tag/2026.05>`__
+     - `2026.08.x <https://github.com/buildroot/buildroot/tree/2026.08.x>`__
+     - `2026.08 <https://github.com/buildroot/buildroot/releases/tag/2026.08>`__
      -
-
 
 Issues Tracker
 ==============
