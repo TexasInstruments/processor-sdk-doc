@@ -14,19 +14,20 @@ data set - using **edgeai-tidlrunner**. Everything runs on an Ubuntu x86 PC,
 except the optional `Run inference on the EVM`_ step.
 
 This is the workflow for *any* audio model, not just the reference models. The
-three reference models below are worked examples. To bring your own model you
+reference models below are worked examples. To bring your own model you
 point the same ``tidlrunner-cli`` at your ONNX graph and a per-model YAML config,
-using a reference config as a starting template. Which operators offload to the
-C7\ |trade| NPU (versus fall back to the Arm core) is determined by TIDL - see
-`edgeai-tidl-tools <https://github.com/TexasInstruments/edgeai-tidl-tools>`__ for
-the authoritative list of supported operators.
+using a reference config as a starting template. TIDL determines which operators
+it accelerates; TVM generates C7x DSP code for the rest - see the `Supported
+Operators
+<https://software-dl.ti.com/codegen/docs/tvm/tvm_tidl_users_guide/supported-operators.html>`__
+chapter of the TI TVM User's Guide for the authoritative list.
 
 *****************
 edgeai-tidlrunner
 *****************
 
 edgeai-tidlrunner is a bring-your-own-model (BYOM) command-line wrapper over the
-core `edgeai-tidl-tools <https://github.com/TexasInstruments/edgeai-tidl-tools>`__
+`TI TVM + TIDL <https://software-dl.ti.com/codegen/docs/tvm/tvm_tidl_users_guide/index.html>`__
 compilation stack. A single YAML config per model drives every stage, and one
 CLI - ``tidlrunner-cli`` - exposes the stages this section uses:
 
@@ -82,7 +83,7 @@ The flow uses these toolchain versions:
      - Version
      - Location
    * - TVM wheel (x86, cp310)
-     - ``ti_tvm_am62x-3.0.0.5``
+     - ``ti_tvm_am62x-3.0.0``
      - ``tidlrunner-am62d`` Python environment
    * - TIDL tools (x86)
      - Bundled in the TVM wheel, CPU and GPU builds
@@ -192,7 +193,7 @@ sets. Download them from the repository root:
    $ # UrbanSound8K (~5.6 GB) - sound classification (VGGish11, YAMNet)
    $ bash examples/audio/scripts/download_urbansound8k.sh
 
-   $ # VoiceBank-DEMAND-16k (~2 GB) - speech enhancement (GCRN)
+   $ # VoiceBank-DEMAND-16k (~2 GB) - speech enhancement (GCRN-mod, GTCRN)
    $ python3 examples/audio/scripts/download_voicebank_demand.py
 
 They land under :file:`data/datasets/UrbanSound8K/` and
@@ -212,10 +213,10 @@ fetching them ahead of time is **optional**. To pre-download all reference ONNX 
 Compile and evaluate
 ********************
 
-Each model has one config that drives all stages. All three run under the
+Each model has one config that drives all stages. All of them run under the
 ``tidlrunner-am62d`` environment with :file:`devices/am62d_env.sh` already sourced
-(see `Setup`_). Three models compile to the C7\ |trade| NPU through the TVM runtime
-(``session_name: tvmrt``). The AM62D config paths are:
+(see `Setup`_). The models below compile to the C7\ |trade| NPU through the TVM
+runtime (``session_name: tvmrt``). The AM62D config paths are:
 
 .. list-table::
    :header-rows: 1
@@ -236,11 +237,16 @@ Each model has one config that drives all stages. All three run under the
      - TVM-RT
      - 8
      - :file:`data/configs/samples/models/audio/audio_classification/urbansound8k/yamnet_config.yaml`
-   * - GCRN
-     - ``ase-0201``
+   * - GCRN-mod-g16
+     - ``ase-0212``
      - TVM-RT
-     - 16 (LSTM), FP32 (Enc/Dec)
-     - :file:`data/configs/samples/models/audio/speech_enhancement/voicebank_demand_16k/gcrn_fixed_4sec_config.yaml`
+     - 16 (Enc/Dec), FP32 (LSTM)
+     - :file:`data/configs/samples/models/audio/speech_enhancement/voicebank_demand_16k/gcrn_mod_g16_fixed_4sec_config.yaml`
+   * - GCRN-mod-g8
+     - ``ase-0213``
+     - TVM-RT
+     - 16 (Enc/Dec, LSTM)
+     - :file:`data/configs/samples/models/audio/speech_enhancement/voicebank_demand_16k/gcrn_mod_g8_fixed_4sec_config.yaml`
 
 VGGish11 (TVM-RT, 8-bit)
 ========================
@@ -250,9 +256,9 @@ Runs on the C7\ |trade| NPU (``tidl_offload: true``):
 .. code-block:: console
 
    $ CFG=data/configs/samples/models/audio/audio_classification/urbansound8k/vggish11_config.yaml
-   $ tidlrunner-cli compile  --config_path $CFG
-   $ tidlrunner-cli infer    --config_path $CFG
-   $ tidlrunner-cli evaluate --config_path $CFG
+   $ tidlrunner-cli compile  --config_path $CFG --target_device AM62D
+   $ tidlrunner-cli infer    --config_path $CFG --target_device AM62D
+   $ tidlrunner-cli evaluate --config_path $CFG --target_device AM62D
 
 ``evaluate`` reports top-1 / top-5 / macro-F1 over UrbanSound8K fold 10.
 
@@ -270,25 +276,44 @@ YAMNet (TVM-RT, 8-bit)
 .. code-block:: console
 
    $ CFG=data/configs/samples/models/audio/audio_classification/urbansound8k/yamnet_config.yaml
-   $ tidlrunner-cli compile  --config_path $CFG
-   $ tidlrunner-cli infer    --config_path $CFG
-   $ tidlrunner-cli evaluate --config_path $CFG
+   $ tidlrunner-cli compile  --config_path $CFG --target_device AM62D
+   $ tidlrunner-cli infer    --config_path $CFG --target_device AM62D
+   $ tidlrunner-cli evaluate --config_path $CFG --target_device AM62D
 
-GCRN (TVM-RT, 16-bit)
-=====================
+GCRN-mod (TVM-RT)
+=================
 
-GCRN is C7\ |trade| NPU-offloaded at 16-bit (``tidl_offload: true``, fixed 4-second
-input). Its ``compile`` takes much longer than the classifiers because 16-bit
-calibration dominates (see ``advanced_options:calibration_frames`` and
+GCRN-mod is a GCRN variant modified by TI for TIDL: the encoder and decoder
+layers are rewritten so that TIDL supports them, while the grouped LSTM of the
+original GCRN is kept. Both variants compile into a single TIDL subgraph on the
+C7\ |trade| NPU (``tidl_offload: true``, fixed 4-second input), with the encoder
+and decoder layers quantized to 16 bits. They differ in the number of LSTM
+groups:
+
+- **GCRN-mod-g16** (``ase-0212``) splits the LSTM into 16 groups, each with
+  input size 64 and hidden size 64. The LSTM layers run in FP32. This is the
+  reference model of the EdgeAI Model Zoo.
+- **GCRN-mod-g8** (``ase-0213``) splits the LSTM into 8 groups, each with input
+  size 128 and hidden size 128. The LSTM layers are quantized to 16 bits, and
+  the model runs faster than GCRN-mod-g16 (see `Performance benchmark`_).
+
+The LSTM precision follows from a TIDL rule: an LSTM layer runs in fixed point
+only when both its hidden size and its input size are greater than 64.
+Otherwise TIDL keeps the layer in FP32, whatever ``tensor_bits`` the config
+sets. Fewer groups make each LSTM wider, so GCRN-mod-g8 meets the rule and
+GCRN-mod-g16 does not.
+
+The example below uses GCRN-mod-g8. Its ``compile`` takes much longer than the
+classifiers because 16-bit calibration dominates (see ``advanced_options:calibration_frames`` and
 ``advanced_options:calibration_iterations`` in the config); the
 `GPU TIDL tools`_ shorten it:
 
 .. code-block:: console
 
-   $ CFG=data/configs/samples/models/audio/speech_enhancement/voicebank_demand_16k/gcrn_fixed_4sec_config.yaml
-   $ tidlrunner-cli compile  --config_path $CFG
-   $ tidlrunner-cli infer    --config_path $CFG
-   $ tidlrunner-cli evaluate --config_path $CFG
+   $ CFG=data/configs/samples/models/audio/speech_enhancement/voicebank_demand_16k/gcrn_mod_g8_fixed_4sec_config.yaml
+   $ tidlrunner-cli compile  --config_path $CFG --target_device AM62D
+   $ tidlrunner-cli infer    --config_path $CFG --target_device AM62D
+   $ tidlrunner-cli evaluate --config_path $CFG --target_device AM62D
 
 ``evaluate`` reports PESQ / STOI / SI-SDR over the VoiceBank-DEMAND-16k test set.
 
@@ -297,9 +322,8 @@ written as :file:`.wav` files, named after the input files, to
 :file:`<run_dir>/outputs/` (the first 10 files by default; change the count with
 ``--save_output_frames``). The config ships with ``postprocess.save_output: false``.
 
-The same commands work for the GCRN g16 variant (model ID ``ase-0211``): set
-``CFG`` to
-:file:`data/configs/samples/models/audio/speech_enhancement/voicebank_demand_16k/gcrn_g16_fixed_4sec_config.yaml`.
+The same commands work for GCRN-mod-g16: set ``CFG`` to
+:file:`data/configs/samples/models/audio/speech_enhancement/voicebank_demand_16k/gcrn_mod_g16_fixed_4sec_config.yaml`.
 
 ************************
 Run inference on the EVM
@@ -335,11 +359,102 @@ from the host), so the compiled :file:`artifacts/` (with
 
       $ source ~/venv/tidlrunner/bin/activate
       $ cd /opt/edgeai-tidlrunner
-      $ CFG=data/configs/samples/models/audio/speech_enhancement/voicebank_demand_16k/gcrn_fixed_4sec_config.yaml
-      $ tidlrunner-cli infer --config_path $CFG --num_frames 3
+      $ CFG=data/configs/samples/models/audio/speech_enhancement/voicebank_demand_16k/gcrn_mod_g8_fixed_4sec_config.yaml
+      $ tidlrunner-cli infer --config_path $CFG --target_device AM62D --num_frames 3
 
    :file:`devices/am62d_env.sh` is only for the x86 host and is not needed on
    the EVM.
+
+.. _edgeai_performance:
+
+*********************
+Performance benchmark
+*********************
+
+:file:`devices/run_audio_latency_am62d_evm.sh` measures the inference latency of
+the audio models on the EVM. It runs ``tidlrunner-cli infer`` for each model
+and collects the results into one summary table. The models must already be
+compiled on the x86 host, so that their artifacts are in
+:file:`work_dirs/compile/AM62D/`.
+
+On the EVM, set up the environment as described in `Run inference on the EVM`_,
+then run:
+
+.. code-block:: console
+
+   $ source ~/venv/tidlrunner/bin/activate
+   $ cd /opt/edgeai-tidlrunner
+   $ ./devices/run_audio_latency_am62d_evm.sh
+
+Without arguments the script benchmarks VGGish11, YAMNet, GTCRN, GCRN-mod-g16
+and GCRN-mod-g8. To benchmark only some models, pass their config files:
+
+.. code-block:: console
+
+   $ ./devices/run_audio_latency_am62d_evm.sh \
+       data/configs/samples/models/audio/speech_enhancement/voicebank_demand_16k/gcrn_mod_g8_fixed_4sec_config.yaml
+
+Each model runs over 10 frames by default; set ``NUM_FRAMES`` to change the
+count. GTCRN takes variable-length input, so the script fixes its clip length
+to 4 seconds (``GTCRN_BENCH_SECONDS``). The script writes a log per model and
+:file:`summary.md` to :file:`work_dirs/benchmark_reports/<timestamp>/`.
+
+The table below shows the results measured on the AM62D EVM with Processor SDK
+12.2:
+
+.. list-table::
+   :header-rows: 1
+   :widths: 22 14 14 16 16 18
+
+   * - Model
+     - Precision
+     - Audio per call (s)
+     - Wall-clock (ms)
+     - C7\ |trade| NPU (ms)
+     - RTF
+   * - VGGish11
+     - 8-bit
+     - 4.00
+     - 11.270
+     - 8.184
+     - 0.0028
+   * - YAMNet
+     - 8-bit
+     - 0.96
+     - 6.098
+     - 3.362
+     - 0.0064
+   * - GTCRN
+     - FP32 (Arm)
+     - 4.00
+     - 358.805
+     - N/A
+     - 0.0897
+   * - GCRN-mod-g16
+     - 16-bit, FP32 LSTM
+     - 4.00
+     - 2255.496
+     - 2249.852
+     - 0.5639
+   * - GCRN-mod-g8
+     - 16-bit
+     - 4.00
+     - 1957.377
+     - 1951.783
+     - 0.4893
+
+- **Audio per call**: seconds of audio processed by one inference call.
+- **Wall-clock**: time of one inference call as seen from Python, averaged over
+  the frames. It includes the Arm-side overhead (RPMsg, data copies, Python).
+  For GTCRN, which runs only on the Arm cores, this is the full processing time.
+- **C7**\ |trade| **NPU**: time spent running the model on the C7\ |trade| NPU,
+  measured on the device and averaged over the frames. It excludes the Arm-side
+  overhead. GTCRN does not use the C7\ |trade| NPU, so it has no value.
+- **RTF**: real-time factor, the wall-clock time divided by the audio duration
+  of one call. A value below 1 means the model runs faster than real time.
+
+The latency covers the model call only; pre-processing (STFT, log-mel) and
+post-processing (iSTFT) are not included. Results vary with system conditions.
 
 **********
 Next steps

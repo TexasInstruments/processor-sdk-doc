@@ -33,15 +33,15 @@ The end-to-end path is the same for a reference model or your own model:
    Inspector <edgeai_model_inspector>`).
 #. **Run** on the AM62D target using the compiled artifact
    (:ref:`EdgeAI Model Zoo <edgeai_model_zoo>`).
-#. **Benchmark** latency and memory (:ref:`Performance <edgeai_performance>`).
+#. **Benchmark** latency on the EVM (:ref:`Performance benchmark <edgeai_performance>`).
 
 ****************
 Reference models
 ****************
 
-Three reference models cover two task families. Each is a worked example of the
-workflow, delivered as an `ONNX <https://onnx.ai/>`__ graph. All
-run on the C7\ |trade| NPU through the TVM runtime (TVM-RT).
+The reference models cover two task families. Each is a worked example of the
+workflow, delivered as an `ONNX <https://onnx.ai/>`__ graph. VGGish11, YAMNet
+and GCRN-mod run on the C7\ |trade| NPU through the TVM runtime (TVM-RT).
 
 Audio analysis and classification
 =================================
@@ -61,13 +61,20 @@ Both classification models are evaluated on the UrbanSound8K data set.
 Speech enhancement
 ==================
 
-**GCRN** (model ID ``ase-0201``)
+**GCRN-mod-g16** (model ID ``ase-0212``) and **GCRN-mod-g8** (model ID ``ase-0213``)
    Convolutional-recurrent speech enhancement (noise suppression) over a fixed 4-second
    window. Input and output are complex spectrograms of shape ``(1, 2, 401, 161)``.
-   Runs at 16-bit and is offloaded to the C7\ |trade| NPU via TVM-RT
-   (``tidl_offload: true``).
+   TI modified the encoder and decoder layers of GCRN for TIDL, and kept its
+   grouped LSTM (16 or 8 groups). Each model is fully offloaded to the
+   C7\ |trade| NPU via TVM-RT as a single TIDL subgraph. The encoder and decoder
+   run at 16-bit; the LSTM layers run in FP32 for GCRN-mod-g16 and at 16-bit for
+   GCRN-mod-g8.
 
-Both speech-enhancement models are evaluated on the VoiceBank-DEMAND-16k
+**GTCRN** (model ID ``ase-0100``)
+   Lightweight speech enhancement that runs in FP32 on the Arm CPU through ONNX
+   Runtime, with no TIDL offload.
+
+All speech-enhancement models are evaluated on the VoiceBank-DEMAND-16k
 data set.
 
 .. _edgeai-tvm-tidl:
