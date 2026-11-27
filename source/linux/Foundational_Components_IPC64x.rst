@@ -145,12 +145,6 @@ Finally, use the sysfs interface to start the remote core:
 	[ 1141.536806]  remoteproc1#vdev0buffer: registered virtio1 (type 7)
 	[ 1141.544195] remoteproc remoteproc1: remote processor 78000000.r5f is now up
 
-.. note::
-
-   The RemoteProc driver does not support a graceful shutdown of R5 and M4 cores
-   in the current Linux Processor SDK. For now, it is recommended to reboot the
-   board when loading new binaries into an R5F or M4F core.
-
 DMA memory Carveouts
 --------------------
 
